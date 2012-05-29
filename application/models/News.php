@@ -7,6 +7,10 @@ class News extends CActiveRecord
         return parent::model($className);
     }
     
+    public function tableName()
+    {
+        return 'news';
+    }
     
     public function relations()
     {
