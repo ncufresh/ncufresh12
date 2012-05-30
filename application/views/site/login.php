@@ -1,11 +1,8 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - Login';
-$this->breadcrumbs=array(
-	'Login',
-);
+$this->pageTitle = Yii::app()->name . ' - 登入';
 ?>
 
-<h1>Login</h1>
+<h1>登入（尚未完成）</h1>
 
 <p>Please fill out the following form with your login credentials:</p>
 

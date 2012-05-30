@@ -1,11 +1,10 @@
-<?php
-$this->pageTitle=Yii::app()->name . ' - Error';
-$this->breadcrumbs=array(
-	'Error',
-);
-?>
+<?php $this->pageTitle = Yii::app()->name . ' - 找不到網頁'; ?>
 
-<h2>Error <?php echo $code; ?></h2>
+<h2>找不到網頁</h2>
+
+<?php if ( $code == 403 ) : ?>
+<form><!-- 登入介面 --></form>
+<?php endif; ?>
 
 <div class="error">
 <?php echo CHtml::encode($message); ?>

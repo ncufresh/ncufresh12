@@ -1227,3 +1227,39 @@ Stack trace:
 REQUEST_URI=/NcuFresh2012/statics/style.css
 HTTP_REFERER=http://localhost/NcuFresh2012/
 ---
+2012/05/30 14:13:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "statics/style.css".' in D:\Developments\Environment\Websites\Frameworks\Yii\web\CWebApplication.php:280
+Stack trace:
+#0 D:\Developments\Environment\Websites\Frameworks\Yii\web\CWebApplication.php(135): CWebApplication->runController('statics/style.c...')
+#1 D:\Developments\Environment\Websites\Frameworks\Yii\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\Developments\Website\NcuFresh2012\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/NcuFresh2012/statics/style.css
+HTTP_REFERER=http://localhost/NcuFresh2012/
+---
+2012/05/30 14:13:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "statics/print.css".' in D:\Developments\Environment\Websites\Frameworks\Yii\web\CWebApplication.php:280
+Stack trace:
+#0 D:\Developments\Environment\Websites\Frameworks\Yii\web\CWebApplication.php(135): CWebApplication->runController('statics/print.c...')
+#1 D:\Developments\Environment\Websites\Frameworks\Yii\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\Developments\Website\NcuFresh2012\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/NcuFresh2012/statics/print.css
+HTTP_REFERER=http://localhost/NcuFresh2012/
+---
+2012/05/30 14:15:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "statics/style.css".' in D:\Developments\Environment\Websites\Frameworks\Yii\web\CWebApplication.php:280
+Stack trace:
+#0 D:\Developments\Environment\Websites\Frameworks\Yii\web\CWebApplication.php(135): CWebApplication->runController('statics/style.c...')
+#1 D:\Developments\Environment\Websites\Frameworks\Yii\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\Developments\Website\NcuFresh2012\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/NcuFresh2012/statics/style.css
+HTTP_REFERER=http://localhost/NcuFresh2012/
+---
+2012/05/30 14:15:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "statics/print.css".' in D:\Developments\Environment\Websites\Frameworks\Yii\web\CWebApplication.php:280
+Stack trace:
+#0 D:\Developments\Environment\Websites\Frameworks\Yii\web\CWebApplication.php(135): CWebApplication->runController('statics/print.c...')
+#1 D:\Developments\Environment\Websites\Frameworks\Yii\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\Developments\Website\NcuFresh2012\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/NcuFresh2012/statics/print.css
+HTTP_REFERER=http://localhost/NcuFresh2012/
+---
