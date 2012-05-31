@@ -12,13 +12,12 @@
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
-<body>
+<body class="<?php echo $this->getId(); ?>">
 
-<div id="container">
-    <div id="header">
-        <div class="logo"></div>
-        <div class="statics"></div>
-        <div class="searchbox"></div>
+<div id="header">
+    <div class="logo"></div>
+    <div class="statics"></div>
+    <div class="searchbox"></div>
 <?php
     $this->widget('zii.widgets.CMenu', array(
         'id'    => 'navigation',
@@ -31,20 +30,18 @@
         )
     ));
 ?>
+</div>
+<div id="content"><?php echo $content; ?></div>
+<div id="sidebar">
+    <div class="profile">
     </div>
-    <div id="content"><?php echo $content; ?></div>
-    <div id="sidebar">
-        <div class="profile">
-        </div>
-        <div class="links">
-        </div>
-        <div class="recommendands">
-        </div>
+    <div class="links">
     </div>
-    <div id="footer">
+    <div class="recommendands">
     </div>
-    <div id="chat">
-    </div>
+</div>
+<div id="footer">這是版權宣告</div>
+<div id="chat">
 </div>
 
 </body>
