@@ -2,17 +2,24 @@
 
 class NewsController extends Controller
 {
-    
-    public function actionView()
-    {
-        $this->render('view');
+    const NEWS_PER_PAGE = 5;
+    public function actionView($id)
+    {   
+        $news = News::model()->findByPk($id);
+        if($news===null)
+            throw new CHttpException(404);
+        $this->render('view', array(
+            'news' => $news,
+            'currentPage' => $news->getCurrentPage(self::NEWS_PER_PAGE),
+        ));
     }
     
-    public function actionIndex()
+    public function actionIndex($page=1)
     {
         $model = new News();
         $this->render('index', array(
-            'news' => $model->getRecentNews(),
+            'news' => $model->getPage($page),
+            'pageStatus' => $model->getPageStatus($page, self::NEWS_PER_PAGE),
         ));
     }
     
