@@ -3,6 +3,7 @@
 global $ncufreshdb;
 
 return array(
+    'name'      => '2012 大一生活知訊網',
     'basePath'  => dirname(__FILE__) . DIRECTORY_SEPARATOR . 'application',
     'preload'   => array('log'),
     'import'    => array(

@@ -1,2 +1,3 @@
-<?php $this->pageTitle = '影音專區'; ?>
+<?php $this->pageTitle = Yii::app()->name . ' - 影音專區'; ?>
+
 影音專區

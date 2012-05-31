@@ -1,4 +1,4 @@
-<?php $this->pageTitle = Yii::app()->name . ' - 找不到網頁'; ?>
+<?php $this->pageTitle = Yii::app()->name . ' - 發生錯誤'; ?>
 
 <h2>找不到網頁</h2>
 
