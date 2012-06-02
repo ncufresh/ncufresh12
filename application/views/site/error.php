@@ -1,6 +1,6 @@
 <?php $this->pageTitle = Yii::app()->name . ' - 發生錯誤'; ?>
 
-<h2>找不到網頁</h2>
+<h2>發生錯誤</h2>
 
 <?php if ( $code == 403 ) : ?>
 <form><!-- 登入介面 --></form>

@@ -1,0 +1,58 @@
+#index_calendar {
+    background: purple;
+
+    float: left;
+    width: 30%;
+}
+
+#index_container {
+    background: gray;
+
+    float: right;
+    width: 70%;
+}
+
+#index_marquee {
+    height: 30px;
+}
+
+#index_marquee ul {
+    height: 30px;
+    list-style: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0 15px;
+}
+
+#index_marquee li {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+    width: 100%;
+}
+
+#index_marquee a {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+    left: 445px;
+    top: -30px;
+}
+
+#index_news_box {
+    background: aqua;
+
+    clear: left;
+    float: left;
+    width: 50%;
+}
+
+#index_forums_box {
+    background: lime;
+
+    clear: right;
+    float: right;
+    width: 50%;
+}

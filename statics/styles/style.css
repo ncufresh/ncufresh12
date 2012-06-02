@@ -47,31 +47,3 @@ body {
     right: 40px;
     width: 120px;
 }
-
-#index_calendar {
-    background: purple;
-
-    float: left;
-    width: 30%;
-}
-
-#index_container {
-    background: gray;
-
-    float: right;
-    width: 70%;
-}
-
-#index_news_box {
-    background: aqua;
-
-    float: left;
-    width: 50%;
-}
-
-#index_forums_box {
-    background: lime;
-
-    float: right;
-    width: 50%;
-}
