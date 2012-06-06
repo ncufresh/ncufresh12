@@ -1,5 +1,7 @@
 <?php
 
+define('TIMESTAMP', time());
+
 global $ncufreshdb;
 
 return array(

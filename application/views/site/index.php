@@ -4,9 +4,9 @@
 <div id="index_container">
     <div id="index_marquee">
         <ul>
-            <li>第一筆</li>
-            <li>第二筆</li>
-            <li>第三筆</li>
+<?php foreach ( $marquees as $marquee ) : ?>
+            <li><?php echo $marquee->message; ?></li>
+<?php endforeach; ?>
         </ul>
         <a href="#" title="編輯">編輯</a>
     </div>
