@@ -1,4 +1,4 @@
-<?php $this->pageTitle = '影音專區'; ?>
+<?php $this->pageTitle = Yii::app()->name . ' - 影音專區'; ?>
 <div id="mm_container">
 影音專區
 <div id="mm_sidebar">

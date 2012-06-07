@@ -1,6 +1,4 @@
-<?php
-$this->pageTitle = Yii::app()->name . ' - 登入';
-?>
+<?php $this->pageTitle = Yii::app()->name . ' - 管理登入'; ?>
 
 <h1>登入（尚未完成）</h1>
 

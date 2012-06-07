@@ -6,19 +6,18 @@ class News extends CActiveRecord
     {
         return parent::model($className);
     }
-    
+
     public function tableName()
     {
         return 'news';
     }
-    
+
     public function relations()
     {
         return array(
         );
     }
 
-    
     public function getPage($page = 1, $entriesPerPage = 5)
     {
         $criteria = new CDbCriteria();
@@ -29,7 +28,7 @@ class News extends CActiveRecord
         $criteria->offset = ($currentPage-1) * $entriesPerPage;
         return $this->findAll($criteria);
     }
-    
+
     public function getPageStatus($currentPage = 1, $entriesPerPage = 5)
     {
         $totalPages = ceil($this->count() / $entriesPerPage);
@@ -49,12 +48,12 @@ class News extends CActiveRecord
            'lastPage' => $lastPage,
         );
     }
-    
+
     public function getCurrentPage($entriesPerPage)
     {
         return ceil($this->count('id <= ' . $this->id)/$entriesPerPage);
     }
-    
+
     public function getUrl()
     {
         return Yii::app()->createUrl('news/view', array(
@@ -62,5 +61,4 @@ class News extends CActiveRecord
             'title'=>$this->title,
         ));
     }
-    
 }

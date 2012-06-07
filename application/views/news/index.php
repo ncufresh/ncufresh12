@@ -1,4 +1,5 @@
-<?php $this->pageTitle = '最新消息'; ?>
+<?php $this->pageTitle = Yii::app()->name . ' - 最新消息'; ?>
+
 這裡是最新消息~<br />
 
 <?php foreach($news as $each):?>

@@ -4,7 +4,34 @@ class SiteController extends Controller
 {
     public function actionIndex()
     {
-        $this->render('index');
+        $this->render('index', array(
+            'marquees'  => Marquee::model()->getMarquees()
+        ));
+    }
+
+    public function actionMarquee($id = 0)
+    {
+        if ( isset($_POST['marquee']) )
+        {
+            if ( $id )
+            {
+                $model = Marquee::model()->findByPk($id);
+            }
+            else
+            {
+                $model = new Marquee();
+            }
+            $model->attributes = $_POST['marquee'];
+
+            if ( $model->validate() && $model->save() )
+            {
+                $this->redirect(Yii::app()->user->returnUrl);
+            }
+        }
+
+        $this->render('marquee', array(
+            'marquees'  => Marquee::model()->getMarquees()
+        ));
     }
 
     /**

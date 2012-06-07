@@ -1,4 +1,4 @@
-<?php $this->pageTitle = '最新消息'; ?>
+<?php $this->pageTitle = Yii::app()->name . ' - 最新消息'; ?>
 
 最新消息內文
 <h1><?php echo $news->title; ?></h1>

@@ -3,22 +3,23 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/style.css" media="screen, projection" />
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/print.css" media="print" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/styles/style.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/styles/<?php echo $this->getId(); ?>.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/styles/print.css" media="print" />
     <!--[if lt IE 8]>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/ie.css" media="screen, projection" />
     <![endif]-->
 
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
 <body>
 
-<div id="container">
-    <div id="header">
-        <div class="logo"></div>
-        <div class="statics"></div>
-        <div class="searchbox"></div>
+<div id="header">
+    <div class="logo"></div>
+    <div class="statics"></div>
+    <div class="searchbox"></div>
 <?php
     $this->widget('zii.widgets.CMenu', array(
         'id'    => 'navigation',
@@ -31,21 +32,20 @@
         )
     ));
 ?>
+</div>
+<div id="content"><?php echo $content; ?></div>
+<div id="sidebar">
+    <div class="profile">
     </div>
-    <div id="content"><?php echo $content; ?></div>
-    <div id="sidebar">
-        <div class="profile">
-        </div>
-        <div class="links">
-        </div>
-        <div class="recommendands">
-        </div>
+    <div class="links">
     </div>
-    <div id="footer">
-    </div>
-    <div id="chat">
+    <div class="recommendands">
     </div>
 </div>
+<div id="footer">這是版權宣告</div>
+<div id="chat">
+</div>
 
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/<?php echo $this->getId(); ?>.js"></script>
 </body>
 </html>
