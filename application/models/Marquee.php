@@ -25,6 +25,7 @@ class Marquee extends CActiveRecord
     {
         return $this->findAll(array(
             'limit'     => $count,
+            'order'     => 'updated DESC',
             'condition' => 'invisible = FALSE'
         ));
     }

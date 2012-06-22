@@ -4,7 +4,8 @@ class NewsController extends Controller
 {
     const NEWS_PER_PAGE = 5;
     public function actionView($id)
-    {   
+    {
+        $this->setPageTitle(Yii::app()->name . ' - 最新消息');
         $news = News::model()->findByPk($id);
         if($news===null)
             throw new CHttpException(404);
@@ -16,6 +17,7 @@ class NewsController extends Controller
     
     public function actionIndex($page=1)
     {
+        $this->setPageTitle(Yii::app()->name . ' - 最新消息');
         $model = new News();
         $this->render('index', array(
             'news' => $model->getPage($page),
@@ -25,6 +27,7 @@ class NewsController extends Controller
     
     public function actionAdmin()
     {
+        $this->setPageTitle(Yii::app()->name . ' - 最新消息');
         $this->render('admin');
     }
     

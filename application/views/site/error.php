@@ -1,5 +1,3 @@
-<?php $this->pageTitle = Yii::app()->name . ' - 發生錯誤'; ?>
-
 <h2>發生錯誤</h2>
 
 <?php if ( $code == 403 ) : ?>
