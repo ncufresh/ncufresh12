@@ -36,7 +36,7 @@ class Marquee extends CActiveRecord
         $this->created = Yii::app()->format->datetime($this->created);
         $this->updated = Yii::app()->format->datetime($this->updated);
         $this->invisible = $this->invisible ? true : false;
-        return parent::beforeFind();
+        return parent::afterFind();
     }
 
     protected function beforeSave()
@@ -47,6 +47,6 @@ class Marquee extends CActiveRecord
             $this->invisible = false;
         }
         $this->updated = TIMESTAMP;
-        return true;
+        return parent::beforeSave();
     }
 }
