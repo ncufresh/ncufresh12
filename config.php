@@ -7,7 +7,7 @@ global $ncufreshdb;
 return array(
     'name'      => '2012 大一生活知訊網',
     'basePath'  => dirname(__FILE__) . DIRECTORY_SEPARATOR . 'application',
-    'preload'   => array('log'),
+    'preload'   => array('log', 'security'),
     'import'    => array(
         'application.models.*',
         'application.components.*'
@@ -17,6 +17,10 @@ return array(
     'components'=> array(
         'user'          => array(
             'allowAutoLogin'    => true,
+        ),
+        'session'       => array(
+            'autoStart'         => true,
+            'sessionName'       => 'NcuFresh2012'
         ),
         'urlManager'    => array(
             'urlFormat'         => 'path',
@@ -35,6 +39,9 @@ return array(
         ),
         'errorHandler'  => array(
             'errorAction'       => 'site/error',
+        ),
+        'security'      => array(
+            'class'             => 'Security'
         ),
         'log'           => array(
             'class'             => 'CLogRouter',

@@ -4,6 +4,7 @@ class SiteController extends Controller
 {
     public function actionIndex()
     {
+        $this->setPageTitle(Yii::app()->name);
         $this->render('index', array(
             'marquees'  => Marquee::model()->getMarquees()
         ));
@@ -29,6 +30,7 @@ class SiteController extends Controller
             }
         }
 
+        $this->setPageTitle(Yii::app()->name . ' - 跑馬燈管理');
         $this->render('marquee', array(
             'marquees'  => Marquee::model()->getMarquees()
         ));
@@ -47,6 +49,7 @@ class SiteController extends Controller
             }
             else
             {
+                $this->setPageTitle(Yii::app()->name . ' - 發生錯誤');
                 $this->render('error', $error);
             }
         }
@@ -76,7 +79,8 @@ class SiteController extends Controller
                 $this->redirect(Yii::app()->user->returnUrl);
             }
         }
-
+        
+        $this->setPageTitle(Yii::app()->name . ' - 管理登入');
         // display the login form
         $this->render('login',array('model'=>$model));
     }
