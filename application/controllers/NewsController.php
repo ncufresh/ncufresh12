@@ -23,17 +23,23 @@ class NewsController extends Controller
         ));
     }
     
-    public function actionAdmin()
+    public function actionAdmin($page=1)
     {
-        $this->render('admin');
+        $model = new News();
+        $this->render('admin', array(
+            'news' => $model->getPage($page),
+            'pageStatus' => $model->getPageStatus($page, self::NEWS_PER_PAGE),
+        ));
     }
     
     public function actionCreate()
     {
+        
     }
     
     public function actionUpdate()
     {
+        
     }
     
     public function actionDelete()

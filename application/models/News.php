@@ -22,6 +22,7 @@ class News extends CActiveRecord
     {
         $criteria = new CDbCriteria();
         $criteria->limit = $entriesPerPage;
+        $criteria->order = 'updated DESC';
         $count = $this->count();
         $totalPages = ceil($count / $entriesPerPage);
         $currentPage = ($page<$totalPages?$page:$totalPages);
