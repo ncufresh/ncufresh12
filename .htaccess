@@ -1,7 +1,7 @@
 RewriteEngine on
 
 # rewrite assets directory to statics
-RewriteRule ^statics/(.*)$ statics/$1
+RewriteRule ^assets/(.*)$ statics/$1
 
 # if a directory or a file exists, use it directly
 RewriteCond %{REQUEST_FILENAME} !-f
