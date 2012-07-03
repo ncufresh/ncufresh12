@@ -35,7 +35,6 @@ class Security extends CApplicationComponent
                 }
                 return false;
             }
-            return true;
         }
         return true;
     }
