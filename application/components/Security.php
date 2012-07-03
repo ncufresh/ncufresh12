@@ -33,9 +33,10 @@ class Security extends CApplicationComponent
                 {
                     throw new CHttpException(400, '表單發生錯誤，請重試一次！');
                 }
+                return false;
             }
             return true;
         }
-        return false;
+        return true;
     }
 }
