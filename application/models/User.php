@@ -96,16 +96,12 @@ class User extends CActiveRecord
 
     protected function afterFind()
     {
-        if ( parent::afterFind() )
-        {
-            $this->is_admin = $this->is_admin ? true : false;
-            $this->register_ip = $this->long2ip($this->register_ip);
-            $this->last_login_ip = $this->long2ip($this->last_login_ip);
-            $this->created = Yii::app()->format->datetime($this->created);
-            $this->updated = Yii::app()->format->datetime($this->updated);
-            return true;
-        }
-        return false;
+        parent::afterFind();
+        $this->is_admin = $this->is_admin ? true : false;
+        $this->register_ip = $this->long2ip($this->register_ip);
+        $this->last_login_ip = $this->long2ip($this->last_login_ip);
+        $this->created = Yii::app()->format->datetime($this->created);
+        $this->updated = Yii::app()->format->datetime($this->updated);
     }
 
     protected function beforeSave()
