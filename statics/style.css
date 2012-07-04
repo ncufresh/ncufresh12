@@ -1,7 +1,23 @@
 body {
     background: #DCE4ED url('header.png') repeat-x;
+    font-family: "微軟正黑體", Arial, sans-serif;
     margin: 0 auto;
     width: 1000px;
+}
+
+form dl dt,
+form dl dd {
+    margin: 0;
+}
+
+form dl dt {
+    clear: left;
+    float: left;
+}
+
+form dl dd {
+    clear: right;
+    float: right;
 }
 
 #logo {
@@ -41,6 +57,11 @@ body {
     text-align: center;
 }
 
+#tab a {
+    color: #414141;
+    text-decoration: none;
+}
+
 #navigation {
     background: url('navigation.png');
     list-style: none;
@@ -59,6 +80,16 @@ body {
     width: 110px;
 }
 
+#navigation a {
+    color: #210530;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+#navigation a:hover {
+    color: #FFFFFF;
+}
+
 #content {
     margin-right: 200px;
     overflow: hidden;
@@ -75,7 +106,73 @@ body {
 
 #sidebar .profile {
     height: 90px;
-    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#sidebar form.profile label {
+    color: #474747;
+}
+
+#sidebar form.profile dt,
+#sidebar form.profile dd,
+#sidebar form.profile input {
+    height: 15px;
+    margin: 6px 0;
+    padding: 3px 5px;
+    width: 180px;
+}
+
+#sidebar form.profile dl {
+    margin: 0;
+    padding: 5px 0;
+}
+
+#sidebar form.profile dt {
+    margin-left: 5px;
+}
+
+#sidebar form.profile dd {
+    margin-top: -28px;
+}
+
+#sidebar form.profile label {
+    position: relative;
+}
+
+#sidebar form.profile input {
+    -webkit-border-radius: 5px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px 0 -10px;
+    width: 180px;
+    
+}
+
+#sidebar form.profile input:focus {
+    position: relative;
+}
+
+#sidebar form.profile div {
+    margin-top: 5px;
+    text-align: center;
+}
+
+#sidebar form.profile button {
+    border: none;
+    cursor: pointer;
+    font-size: 0;
+    height: 25px;
+    line-heigth: 25px;
+    margin: 0 10px;
+    width: 55px;
+}
+
+#form-login-button {
+    background: url('login.png');
+}
+
+#form-register-button {
+    background: url('register.png');
 }
 
 #sidebar .sidebar_box {
@@ -113,9 +210,9 @@ body {
 }
 
 #chat {
-    background: url('chat.png') no-repeat;
+    background: url('chat.png') 0 5px no-repeat;
     height: 120px;
-    margin: -115px 0 0 830px;
+    margin: -120px 0 0 830px;
     position: absolute;
     width: 160px;
 }
