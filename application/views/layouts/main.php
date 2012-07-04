@@ -56,6 +56,7 @@
 </div>
 <div id="content"><?php echo $content; ?></div>
 <div id="sidebar">
+<?php if ( Yii::app()->user->getIsGuest() ) : ?>
     <form class="profile" action="<?php echo Yii::app()->createUrl('site/login'); ?>" method="POST">
         <dl>
             <dt>
@@ -79,6 +80,12 @@
             <button id="form-register-button">[註冊]</button>
         </div>
     </form>
+<?php else : ?>
+    <div class="profile">
+        <p>帳號：<?php echo Yii::app()->user->getName(); ?></p>
+        <a href="<?php echo Yii::app()->createUrl('site/logout'); ?>" title="登出">登出</a>
+    </div>
+<?php endif; ?>
     <div class="links sidebar_box">
         <h4>連結區</h4>
     </div>
