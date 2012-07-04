@@ -1,7 +1,7 @@
-這裡是最新消息~<br />
+這裡是最新消息<br />
 <?php foreach($news as $each):?>
     <?php echo CHtml::link($each->title, $each->url);?>
-    | 時間<?php echo date('Y/m/d', $each->updated )?><br />
+    | 時間<?php echo date('Y/m/d H:i:s', $each->updated )?><br />
 <?php endforeach ?>
 
 
