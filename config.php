@@ -23,7 +23,7 @@ return array(
             'sessionName'       => 'NcuFresh2012'
         ),
 		'assetManager'	=> array(
-			'basePath'			=> dirname(__FILE__) . DIRECTORY_SEPARATOR . 'statics'
+			'basePath'			=> dirname(__FILE__) . DIRECTORY_SEPARATOR . 'statics' . DIRECTORY_SEPARATOR . 'assets'
 		),
         'urlManager'    => array(
             'urlFormat'         => 'path',

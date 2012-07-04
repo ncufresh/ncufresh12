@@ -32,21 +32,29 @@ class Marquee extends CActiveRecord
 
     protected function afterFind()
     {
-        $this->message = Yii::app()->format->formatText($this->message);
-        $this->created = Yii::app()->format->datetime($this->created);
-        $this->updated = Yii::app()->format->datetime($this->updated);
-        $this->invisible = $this->invisible ? true : false;
-        return parent::afterFind();
+        if ( parent::afterFind() )
+        {
+            $this->message = Yii::app()->format->formatText($this->message);
+            $this->created = Yii::app()->format->datetime($this->created);
+            $this->updated = Yii::app()->format->datetime($this->updated);
+            $this->invisible = $this->invisible ? true : false;
+            return true;
+        }
+        return false;
     }
 
     protected function beforeSave()
     {
-        if ( $this->getIsNewRecord() )
+        if ( parent::beforeSave() )
         {
-            $this->created = TIMESTAMP;
-            $this->invisible = false;
+            if ( $this->getIsNewRecord() )
+            {
+                $this->created = TIMESTAMP;
+                $this->invisible = false;
+            }
+            $this->updated = TIMESTAMP;
+            return true;
         }
-        $this->updated = TIMESTAMP;
-        return parent::beforeSave();
+        return false;
     }
 }
