@@ -1,5 +1,6 @@
 body {
     background: #DCE4ED url('header.png') repeat-x;
+    font-family: "微軟正黑體", Arial, sans-serif;
     margin: 0 auto;
     width: 1000px;
 }
@@ -41,6 +42,11 @@ body {
     text-align: center;
 }
 
+#tab a {
+    color: #414141;
+    text-decoration: none;
+}
+
 #navigation {
     background: url('navigation.png');
     list-style: none;
@@ -57,6 +63,16 @@ body {
     line-height: 60px;
     text-align: center;
     width: 110px;
+}
+
+#navigation a {
+    color: #210530;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+#navigation a:hover {
+    color: #FFFFFF;
 }
 
 #content {
@@ -113,9 +129,9 @@ body {
 }
 
 #chat {
-    background: url('chat.png') no-repeat;
+    background: url('chat.png') 0 5px no-repeat;
     height: 120px;
-    margin: -115px 0 0 830px;
+    margin: -120px 0 0 830px;
     position: absolute;
     width: 160px;
 }
