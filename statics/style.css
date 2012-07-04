@@ -5,6 +5,21 @@ body {
     width: 1000px;
 }
 
+form dl dt,
+form dl dd {
+    margin: 0;
+}
+
+form dl dt {
+    clear: left;
+    float: left;
+}
+
+form dl dd {
+    clear: right;
+    float: right;
+}
+
 #logo {
     background: url('logo.png') no-repeat;
     height: 160px;
@@ -91,7 +106,73 @@ body {
 
 #sidebar .profile {
     height: 90px;
-    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#sidebar form.profile label {
+    color: #474747;
+}
+
+#sidebar form.profile dt,
+#sidebar form.profile dd,
+#sidebar form.profile input {
+    height: 15px;
+    margin: 6px 0;
+    padding: 3px 5px;
+    width: 180px;
+}
+
+#sidebar form.profile dl {
+    margin: 0;
+    padding: 5px 0;
+}
+
+#sidebar form.profile dt {
+    margin-left: 5px;
+}
+
+#sidebar form.profile dd {
+    margin-top: -28px;
+}
+
+#sidebar form.profile label {
+    position: relative;
+}
+
+#sidebar form.profile input {
+    -webkit-border-radius: 5px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px 0 -10px;
+    width: 180px;
+    
+}
+
+#sidebar form.profile input:focus {
+    position: relative;
+}
+
+#sidebar form.profile div {
+    margin-top: 5px;
+    text-align: center;
+}
+
+#sidebar form.profile button {
+    border: none;
+    cursor: pointer;
+    font-size: 0;
+    height: 25px;
+    line-heigth: 25px;
+    margin: 0 10px;
+    width: 55px;
+}
+
+#form-login-button {
+    background: url('login.png');
+}
+
+#form-register-button {
+    background: url('register.png');
 }
 
 #sidebar .sidebar_box {

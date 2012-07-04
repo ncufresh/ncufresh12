@@ -81,4 +81,32 @@
 $(document).ready(function() {
     $('#header').star();
     $('#marquee').marquee();
+
+    $('form input').each(function() {
+        var input = $(this);
+        var label = $('label[for="' + $(this).attr('id') + '"]');
+        if ( label.length ) {
+            var update = function() {
+                if ( input.val() != '' ) {
+                    label.css({
+                        display: 'none'
+                    });
+                } else {
+                    label.css({
+                        display: 'block'
+                    });
+                }
+            };
+            label.css({
+                cursor: 'text',
+                display: 'block'
+            }).click(function() {
+                input.focus();
+            });
+            input.focusout(function() {
+                update();
+            })
+            update();  
+        } 
+    });
 });
