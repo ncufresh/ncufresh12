@@ -14,7 +14,10 @@
                 }, settings);
                 var items = $(this).children('li');
                 var animation = function() {
-                    var position = parseInt(items.css('top'), 10) - items.height();
+                    var position = parseInt(
+                        items.css('top'),
+                        10
+                    ) - items.height();
                     if ( position <= -1 * items.length * items.height() ) {
                         position = 0;
                     }
