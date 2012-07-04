@@ -1,4 +1,5 @@
 <h2>最新消息管理介面</h2>
+<a href="<?php echo Yii::app()->createUrl('news/create') ;?>">新增文章</a><br />
 <?php foreach($news as $each):?>
     <?php echo CHtml::link($each->title, $each->url);?>
     | 時間<?php echo date('Y/m/d', $each->updated )?><br />

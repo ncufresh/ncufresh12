@@ -11,7 +11,14 @@ class News extends CActiveRecord
     {
         return 'news';
     }
-
+	
+	public function rules()
+	{
+		return array(
+			array('title, content', 'required'),
+		);
+	}
+	
     public function relations()
     {
         return array(
@@ -50,9 +57,12 @@ class News extends CActiveRecord
         );
     }
 
-    public function getCurrentPage($entriesPerPage)
+    public function getCurrentPage( $entriesPerPage, $desc = false )
     {
-        return ceil($this->count('id <= ' . $this->id)/$entriesPerPage);
+		if( $desc )
+			return ceil( $this->count('id >= ' . $this->id)/$entriesPerPage );
+		else
+			return ceil( $this->count('id <= ' . $this->id)/$entriesPerPage );
     }
 
     public function getUrl()
@@ -61,5 +71,19 @@ class News extends CActiveRecord
             'id'=>$this->id,
             'title'=>$this->title,
         ));
+    }
+    
+    public function beforeSave()
+    {
+        if(parent::beforeSave())
+        {
+            $this->updated = time();
+            if( $this->created == 0 )
+                $this->created = time();
+            return true;
+        }
+        else
+            return false;
+        
     }
 }

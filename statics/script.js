@@ -58,3 +58,32 @@ function star(object) {
     };
     generator();
 }
+
+function checkFileSize(name)
+{
+	if( typeof checkFileSize.counter == 'undefined')
+		checkFileSize.counter = 0;
+	var id;
+	if( checkFileSize.counter == 0 )
+		id = name;
+	else
+		id = name + '_F' + checkFileSize.counter;
+	checkFileSize.counter++;
+	var f = document.getElementById(id);
+	var file_size = 0;
+	if($.browser.msie)
+	{
+		var img = new Image();
+		img.onload = function()
+		{
+			file_size = this.fileSize;
+		}
+		img.src = f.value;
+	}
+	else
+	{
+		file_size = f.files.item(0).size;
+	}
+	$('.MultiFile-label:last').append( ' (' + Math.ceil(file_size/1024) + ' KB)')
+}
+

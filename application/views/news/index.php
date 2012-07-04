@@ -1,5 +1,4 @@
 這裡是最新消息~<br />
-
 <?php foreach($news as $each):?>
     <?php echo CHtml::link($each->title, $each->url);?>
     | 時間<?php echo date('Y/m/d', $each->updated )?><br />
@@ -19,3 +18,5 @@
     if($pageStatus['nextPage']!==null)
         echo CHtml::link('下一頁', Yii::app()->createUrl('news/index', array('page'=>$pageStatus['nextPage'])));
 ?>
+
+<a href="<?php echo Yii::app()->createUrl('news/admin'); ?>">管理文章</a>
