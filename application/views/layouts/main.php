@@ -17,8 +17,24 @@
 
 <div id="header">
     <a id="logo" href="<?php echo Yii::app()->createUrl('site/index'); ?>"></a>
-    <div class="statics">線上人數：瀏覽人次：</div>
-    <div class="searchbox"></div>
+    <div class="statics">
+        <p class="online">8</p>
+        <p class="browsered">1024</p>
+    </div>
+    <form id="search" action="<?php echo Yii::app()->createUrl('site/search'); ?>" method="POST">
+        <dl>
+            <dt>
+                <label for="form-search-keywords">搜尋</label>
+            </dt>
+            <dd>
+                <input id="form-search-keywords" name="search[keywords]" type="text" />
+            </dd>
+        </dl>
+        <div>
+            <input name="token" value="<?php echo Yii::app()->security->getToekn(); ?>" type="hidden" />
+            <button id="form-search-button" type="submit">搜尋</button>
+        </div>
+    </form>
     <ul id="tab">
         <li>
             <a href="<?php echo Yii::app()->createUrl('site/index'); ?>" title="回首頁">回首頁</a>

@@ -6,22 +6,55 @@ body
     width: 1000px;
 }
 
-form dl dt,
-form dl dd
+form dl,
+form dt,
+form dd
 {
     margin: 0;
+    height: 24px;
+    width: 100%;
 }
 
-form dl dt
+form dl
+{
+    margin: 4px 0;
+    overflow: hidden;
+    padding: 3px 0;
+}
+
+form dt
 {
     clear: left;
     float: left;
+    margin-left: 6px;
+    width: 85%;
 }
 
-form dl dd
+form dd
 {
     clear: right;
     float: right;
+    margin-top: -26px;
+}
+
+form input
+{
+    -webkit-border-radius: 5px;
+    border: none;
+    border-radius: 5px;
+    height: 16px;
+    padding: 4px 8px;
+}
+
+form input:focus
+{
+    position: relative;
+}
+
+form label
+{
+    color: #474747;
+    position: relative;
 }
 
 #logo
@@ -40,8 +73,55 @@ form dl dd
 
 #header .statics
 {
-    margin: 15px 0 0 360px;
+    margin: 15px 0 0 320px;
     position: absolute;
+}
+
+#header .statics p
+{
+    color: #FFDD00;
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0 0 0 85px;
+    width: 15px;
+}
+
+#search
+{
+    margin: 8px 0 0 560px;
+    position: absolute;
+    height: 90px;
+    width: 220px;
+}
+
+#search input
+{
+    width: 200px;
+}
+
+#search button
+{
+    background: url('search_box_icon.png') no-repeat;
+    border: none;
+    cursor: pointer;
+    float: right;
+    height: 20px;
+    margin: -30px 4px 0 0;
+    position: relative;
+    text-indent: -100000px;
+    width: 32px;
+}
+
+#header .online
+{
+    background: url('online.png') no-repeat;
+}
+
+#header .browsered
+{
+    background: url('browsered.png') no-repeat;
 }
 
 #tab
@@ -124,63 +204,21 @@ form dl dd
 #sidebar .profile
 {
     height: 90px;
-    margin-bottom: 30px;
-}
-
-#sidebar form.profile label
-{
-    color: #474747;
-}
-
-#sidebar form.profile dt,
-#sidebar form.profile dd,
-#sidebar form.profile input
-{
-    height: 15px;
-    margin: 6px 0;
-    padding: 3px 5px;
-    width: 180px;
+    margin: 15px 0;
 }
 
 #sidebar form.profile dl
 {
-    margin: 0;
-    padding: 5px 0;
-}
-
-#sidebar form.profile dt
-{
-    margin-left: 5px;
-}
-
-#sidebar form.profile dd
-{
-    margin-top: -28px;
-}
-
-#sidebar form.profile label
-{
-    position: relative;
+    margin-left: 10px;
 }
 
 #sidebar form.profile input
 {
-    -webkit-border-radius: 5px;
-    border: none;
-    border-radius: 5px;
-    margin: 0 5px 0 -10px;
-    width: 180px;
-    
-}
-
-#sidebar form.profile input:focus
-{
-    position: relative;
+    width: 160px;
 }
 
 #sidebar form.profile div
 {
-    margin-top: 5px;
     text-align: center;
 }
 
@@ -188,10 +226,10 @@ form dl dd
 {
     border: none;
     cursor: pointer;
-    font-size: 0;
     height: 25px;
     line-heigth: 25px;
     margin: 0 10px;
+    text-indent: -100000px;
     width: 55px;
 }
 
