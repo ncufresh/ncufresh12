@@ -1,0 +1,27 @@
+<?php
+
+class ForumCategory extends CActiveRecord
+{
+    public static function model($className = __CLASS__)
+    {
+        return parent::model($className);
+    }
+
+    public function tableName()
+    {
+        return 'forum_category';
+    }
+
+    public function relations()
+    {
+        return array(
+        );
+    }
+	
+	public function getUrl()
+	{
+		return Yii::app()->createUrl('forum/forum', array(
+            'fid'=>$this->id,
+        ));
+	}
+}
