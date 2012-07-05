@@ -21,6 +21,13 @@ class Controller extends CController
         if ( is_null($activity) ) $activity = new Activity();
         $activity->save();
         Yii::app()->session['uuid'] = $activity->uuid;
+
+		Yii::app()->getClientScript()
+            ->registerScriptFile(Yii::app()->request->baseUrl . '/statics/script.js')
+            ->scriptMap = array(
+            'jquery.js'             => false
+        );
+
         return true;
     }
 

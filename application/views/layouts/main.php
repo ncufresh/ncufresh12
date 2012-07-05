@@ -9,8 +9,23 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/ie.css" media="screen, projection" />
     <![endif]-->
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <?php echo CGoogleApi::init(); ?>
+    <?php echo CHtml::script(CGoogleApi::load('jquery')); ?>
+    <?php echo CHtml::script(CGoogleApi::load('jqueryui')); ?>
+
     <title><?php echo $this->getPageTitle(); ?></title>
+
+    <script type="text/javascript">
+    (function($)
+    {
+        var keep = function()
+        {
+            $.get('<?php echo Yii::app()->createUrl('site/keep'); ?>');
+            setTimeout(arguments.callee, <?php echo Activity::STATE_UPDATE_TIMEOUT; ?> * 1000);
+        };
+        keep();
+    })(jQuery);
+    </script>
 </head>
 
 <body>
@@ -119,18 +134,5 @@
 </div>
 <div id="chat">
 </div>
-
-<script type="text/javascript">
-(function($)
-{
-    var keep = function()
-    {
-        $.get('<?php echo Yii::app()->createUrl('site/keep'); ?>');
-        setTimeout(arguments.callee, <?php echo Activity::STATE_UPDATE_TIMEOUT; ?> * 1000);
-    };
-    keep();
-})(jQuery);
-</script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
 </body>
 </html>
