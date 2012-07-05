@@ -63,7 +63,7 @@
             <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="系所社團">系所社團</a>
         </li>
         <li>
-            <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="影音專區">影音專區</a>
+            <a href="<?php echo Yii::app()->createUrl('multimedia/index'); ?>" title="影音專區">影音專區</a>
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="關於我們">關於我們</a>

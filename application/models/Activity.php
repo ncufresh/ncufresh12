@@ -32,7 +32,9 @@ class Activity extends CActiveRecord
     {
         $criteria = new CDbCriteria();
         $criteria->condition = 'updated < :updated';
-        $criteria->params = array(':updated' => TIMESTAMP - self::STATE_UPDATE_TIMEOUT - 5);
+        $criteria->params = array(
+            ':updated'  => TIMESTAMP - self::STATE_UPDATE_TIMEOUT - 5
+        );
 
         $data = self::getPersister()->load() ?: array(
             'cleaned'   => 0,
