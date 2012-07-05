@@ -184,6 +184,12 @@
             $('#news-window').dialog();
             return false;
         });
+		
+		$('.news-back-link').click(function()
+		{
+			history.back();
+			return false;
+		});
     });
 })(jQuery);
 
