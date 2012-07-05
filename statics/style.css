@@ -281,3 +281,8 @@ form dl dd {
     min-height: 400px;
     width: 49%;
 }
+
+#news-window
+{
+	display: none;
+}

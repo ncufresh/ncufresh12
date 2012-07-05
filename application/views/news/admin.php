@@ -1,8 +1,10 @@
+<?php Yii::app()->clientScript->registerCoreScript('jquery.ui'); ?>
 <h2>最新消息管理介面</h2>
 <a href="<?php echo Yii::app()->createUrl('news/create') ;?>">新增文章</a><br />
 <?php foreach($news as $each):?>
     <?php echo CHtml::link($each->title, $each->url);?>
-    | 時間<?php echo date('Y/m/d', $each->updated )?><br />
+    | <a href="<?php echo Yii::app()->createUrl('news/update', array( 'id' => $each->id) ); ?>">編輯</a> | <a class="news-delete-link" href="<?php echo Yii::app()->createUrl('news/delete', array( 'id' => $each->id) ); ?>">刪除</a>
+	| <?php echo date('Y/m/d H:i:s', $each->updated )?><br />
 <?php endforeach ?>
 
 <?php
@@ -18,3 +20,4 @@
     if($pageStatus['nextPage']!==null)
         echo CHtml::link('下一頁', Yii::app()->createUrl('news/admin', array('page'=>$pageStatus['nextPage'])));
 ?>
+<div id="news-dialog"></div>
