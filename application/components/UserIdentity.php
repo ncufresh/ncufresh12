@@ -33,9 +33,7 @@ class UserIdentity extends CUserIdentity
         else
         {
             $this->id = $user->id;
-            $this->username = $user->username;
             $this->errorCode = self::ERROR_NONE;
-            $user->save();
         }
         return $this->errorCode === self::ERROR_NONE;
     }

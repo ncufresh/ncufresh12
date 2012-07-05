@@ -2,6 +2,43 @@
 
 class SiteController extends Controller
 {
+    public function filters()
+    {
+        return array(
+            'accessControl'
+        );
+    }
+
+    public function accessRules()
+    {
+        return array(
+            array(
+                'allow',
+                'actions'   => array('index', 'error'),
+                'users'     => array('*')
+            ),
+            array(
+                'allow',
+                'actions'   => array('login'),
+                'users'     => array('?')
+            ),
+            array(
+                'allow',
+                'actions'   => array('logout'),
+                'users'     => array('@')
+            ),
+            array(
+                'allow',
+                'actions'   => array('marquee'),
+                'roles'     => array('admin')
+            ),
+            array(
+                'deny',
+                'users'     => array('*')
+            )
+        );
+    }
+
     public function actionIndex()
     {
         $this->setPageTitle(Yii::app()->name);

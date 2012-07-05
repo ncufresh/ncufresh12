@@ -16,7 +16,8 @@ return array(
     ),
     'components'=> array(
         'user'          => array(
-            'allowAutoLogin'    => true,
+            'class'             => 'WebUser',
+            'allowAutoLogin'    => true
         ),
         'session'       => array(
             'autoStart'         => true,

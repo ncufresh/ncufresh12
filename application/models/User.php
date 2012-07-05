@@ -90,7 +90,8 @@ class User extends CActiveRecord
         return $this->is_admin;
     }
 
-    protected function generatePasswordSalt() {
+    protected function generatePasswordSalt()
+    {
         return md5(uniqid($this->username . mt_rand() . TIMESTAMP, true));
     }
 
@@ -110,6 +111,7 @@ class User extends CActiveRecord
         {
             if ( $this->getIsNewRecord() )
             {
+                $this->is_admin = 0;
                 $this->created = TIMESTAMP;
                 $this->register_ip = $this->ip2long($this->getClientIP());
                 $this->salt = $this->generatePasswordSalt();
@@ -117,6 +119,7 @@ class User extends CActiveRecord
             }
             else
             {
+                $this->is_admin = $this->is_admin ? 1 : 0;
                 $this->created = $this->getOldAttributeValue('created');
                 $this->register_ip = $this->getOldAttributeValue('register_ip');
             }
