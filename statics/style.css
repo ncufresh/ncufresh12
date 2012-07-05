@@ -1,4 +1,5 @@
-body {
+body
+{
     background: #DCE4ED url('header.png') repeat-x;
     font-family: "微軟正黑體", Arial, sans-serif;
     margin: 0 auto;
@@ -6,21 +7,25 @@ body {
 }
 
 form dl dt,
-form dl dd {
+form dl dd
+{
     margin: 0;
 }
 
-form dl dt {
+form dl dt
+{
     clear: left;
     float: left;
 }
 
-form dl dd {
+form dl dd
+{
     clear: right;
     float: right;
 }
 
-#logo {
+#logo
+{
     background: url('logo.png') no-repeat;
     height: 160px;
     margin-left: 15px;
@@ -28,16 +33,19 @@ form dl dd {
     width: 240px;
 }
 
-#header {
+#header
+{
     height: 240px;
 }
 
-#header .statics {
+#header .statics
+{
     margin: 15px 0 0 360px;
     position: absolute;
 }
 
-#tab {
+#tab
+{
     list-style: none;
     margin: 120px 0 0 480px;
     overflow: hidden;
@@ -45,7 +53,8 @@ form dl dd {
     position: absolute;
 }
 
-#tab li {
+#tab li
+{
     -webkit-border-radius: 15px;
     background: #E1E5EE;
     border-radius: 15px;
@@ -57,12 +66,14 @@ form dl dd {
     text-align: center;
 }
 
-#tab a {
+#tab a
+{
     color: #414141;
     text-decoration: none;
 }
 
-#navigation {
+#navigation
+{
     background: url('navigation.png');
     list-style: none;
     margin: 160px 0 0 0;
@@ -72,7 +83,8 @@ form dl dd {
     width: 800px;
 }
 
-#navigation li {
+#navigation li
+{
     float: left;
     height: 60px;
     line-height: 60px;
@@ -80,23 +92,27 @@ form dl dd {
     width: 110px;
 }
 
-#navigation a {
+#navigation a
+{
     color: #210530;
     font-weight: bolder;
     text-decoration: none;
 }
 
-#navigation a:hover {
+#navigation a:hover
+{
     color: #FFFFFF;
 }
 
-#content {
+#content
+{
     margin-right: 200px;
     min-height: 360px;
     overflow: hidden;
 }
 
-#sidebar {
+#sidebar
+{
     height: 100%;
     margin-left: 800px;
     padding-left: 15px;
@@ -105,42 +121,50 @@ form dl dd {
     width: 200px;
 }
 
-#sidebar .profile {
+#sidebar .profile
+{
     height: 90px;
     margin-bottom: 30px;
 }
 
-#sidebar form.profile label {
+#sidebar form.profile label
+{
     color: #474747;
 }
 
 #sidebar form.profile dt,
 #sidebar form.profile dd,
-#sidebar form.profile input {
+#sidebar form.profile input
+{
     height: 15px;
     margin: 6px 0;
     padding: 3px 5px;
     width: 180px;
 }
 
-#sidebar form.profile dl {
+#sidebar form.profile dl
+{
     margin: 0;
     padding: 5px 0;
 }
 
-#sidebar form.profile dt {
+#sidebar form.profile dt
+{
     margin-left: 5px;
 }
 
-#sidebar form.profile dd {
+#sidebar form.profile dd
+{
     margin-top: -28px;
 }
 
-#sidebar form.profile label {
+#sidebar form.profile label
+{
     position: relative;
 }
 
-#sidebar form.profile input {
+#sidebar form.profile input
+{
     -webkit-border-radius: 5px;
     border: none;
     border-radius: 5px;
@@ -149,16 +173,19 @@ form dl dd {
     
 }
 
-#sidebar form.profile input:focus {
+#sidebar form.profile input:focus
+{
     position: relative;
 }
 
-#sidebar form.profile div {
+#sidebar form.profile div
+{
     margin-top: 5px;
     text-align: center;
 }
 
-#sidebar form.profile button {
+#sidebar form.profile button
+{
     border: none;
     cursor: pointer;
     font-size: 0;
@@ -168,15 +195,18 @@ form dl dd {
     width: 55px;
 }
 
-#form-login-button {
+#form-login-button
+{
     background: url('login.png');
 }
 
-#form-register-button {
+#form-register-button
+{
     background: url('register.png');
 }
 
-#sidebar .sidebar_box {
+#sidebar .sidebar_box
+{
     -webkit-border-radius: 10px;
     background: #EEF2F6;
     border-radius: 10px;
@@ -185,7 +215,8 @@ form dl dd {
     padding: 5px;
 }
 
-#sidebar .sidebar_box h4 {
+#sidebar .sidebar_box h4
+{
     -webkit-border-radius: 10px;
     background: #DCE4ED;
     border-radius: 10px;
@@ -194,13 +225,15 @@ form dl dd {
     text-align: center;
 }
 
-#footer {
+#footer
+{
     background: url('footer.png');
     clear: both;
     height: 120px;
 }
 
-#footer p {
+#footer p
+{
     font-size: 0.85em;
     margin: 0;
     padding: 0;
@@ -210,7 +243,8 @@ form dl dd {
     top: 80px;
 }
 
-#chat {
+#chat
+{
     background: url('chat.png') 0 5px no-repeat;
     height: 120px;
     margin: -120px 0 0 830px;
@@ -218,7 +252,8 @@ form dl dd {
     width: 160px;
 }
 
-#marquee {
+#marquee
+{
     -webkit-border-radius: 10px;
     background: #FEFFB2;
     border-radius: 10px;
@@ -229,7 +264,8 @@ form dl dd {
     padding: 0 15px 0 45px;
 }
 
-#marquee li {
+#marquee li
+{
     float: left;
     height: 30px;
     line-height: 30px;
@@ -237,7 +273,8 @@ form dl dd {
     width: 100%;
 }
 
-#marquee span {
+#marquee span
+{
     background: url('marquee_star_icon.png') no-repeat;
     display: block;
     height: 50px;
@@ -246,7 +283,8 @@ form dl dd {
     width: 50px;
 }
 
-#marquee a {
+#marquee a
+{
     display: block;
     height: 30px;
     line-height: 30px;
@@ -254,33 +292,76 @@ form dl dd {
     position: absolute;
 }
 
-#index_calendar {
+#index_calendar
+{
     float: left;
     width: 30%;
 }
 
-#index_container {
+#index_container
+{
     float: right;
     width: 70%;
 }
 
-#index_news_box {
-    clear: left;
-    float: left;
-}
-
-#index_forums_box {
-    clear: right;
-    float: right;
-}
-
-.index_box {
+.index_box
+{
     -webkit-border-radius: 10px;
     background: #CBD3E6;
     border-radius: 10px;
     margin-left: 1%;
     min-height: 400px;
     width: 49%;
+}
+
+.index_box h4
+{
+    margin: 5px;
+    text-indent: -100000px;
+}
+
+.index_box table
+{
+    width: 100%;
+}
+
+.index_box td
+{
+    padding: 5px;
+    width: 85%;
+}
+
+.index_box td.time
+{
+    text-align: right;
+    width: 15%;
+}
+
+.index_box tfoot
+{
+    text-align: right;
+}
+
+.index_latest_box
+{
+    clear: left;
+    float: left;
+}
+
+.index_latest_box h4
+{
+    background: url('index_latest_icon.png') no-repeat;
+}
+
+.index_forums_box
+{
+    clear: right;
+    float: right;
+}
+
+.index_forums_box h4
+{
+    background: url('index_forums_icon.png') no-repeat;
 }
 
 #news-window
