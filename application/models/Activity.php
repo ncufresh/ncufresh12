@@ -2,6 +2,8 @@
 
 class Activity extends CActiveRecord
 {
+    const STATE_CLEAN_TIMEOUT = 3600;
+
     const STATE_UPDATE_TIMEOUT = 30;
 
     static private $_persister;
@@ -28,20 +30,28 @@ class Activity extends CActiveRecord
 
     public static function updateActivityState()
     {
-        $table = self::model()->getTableSchema();
-        $builder = self::model()->getCommandBuilder();
-        $command = $builder->createSqlCommand(
-            'ALTER TABLE ' . $table->rawName . ' ENGINE = MEMORY'
-        );
-        $command->execute();
-
         $criteria = new CDbCriteria();
         $criteria->condition = 'updated < :updated';
         $criteria->params = array(':updated' => TIMESTAMP - self::STATE_UPDATE_TIMEOUT - 5);
 
-        $counter = (self::getPersister()->load() ?: 0);
-        $counter = $counter + self::model()->count($criteria);
-        self::getPersister()->save($counter);
+        $data = self::getPersister()->load() ?: array(
+            'cleaned'   => 0,
+            'counter'   => 0
+        );
+
+        if ( TIMESTAMP - $data['cleaned'] > self::STATE_CLEAN_TIMEOUT )
+        {
+            $table = self::model()->getTableSchema();
+            $builder = self::model()->getCommandBuilder();
+            $command = $builder->createSqlCommand(
+                'ALTER TABLE ' . $table->rawName . ' ENGINE = MEMORY'
+            );
+            $command->execute();
+            $data['cleaned'] = TIMESTAMP;
+        }
+
+        $data['counter'] = $data['counter'] + self::model()->count($criteria);
+        self::getPersister()->save($data);
 
         return self::model()->deleteAll($criteria);
     }
@@ -53,7 +63,8 @@ class Activity extends CActiveRecord
 
     public static function getTotalCount()
     {
-        return self::getPersister()->load() + self::getOnlineCount();
+        $data = self::getPersister()->load();
+        return $data['counter'] + self::getOnlineCount();
     }
 
     protected function beforeSave()
