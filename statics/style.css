@@ -316,8 +316,10 @@ form dl dd
 
 .index_box h4
 {
+    height: 25px;
     margin: 5px;
     text-indent: -100000px;
+    width: 80px;
 }
 
 .index_box table
@@ -351,8 +353,6 @@ form dl dd
 .index_latest_box h4
 {
     background: url('index_latest_icon.png') no-repeat;
-    height: 25px;
-    width: 80px;
 }
 
 .index_forums_box
