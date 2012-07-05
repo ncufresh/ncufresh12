@@ -43,6 +43,8 @@ class SiteController extends Controller
     {
         $this->setPageTitle(Yii::app()->name);
         $this->render('index', array(
+            'latests'   => News::model()->getPage(1, 10, true),
+            'articles'   => array(),
             'marquees'  => Marquee::model()->getMarquees()
         ));
     }

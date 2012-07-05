@@ -89,10 +89,12 @@ class News extends CActiveRecord
     {
         if(parent::beforeSave())
         {
-			$this->author_id = 1;
-            $this->updated = time();
-            if( $this->created == 0 )
-                $this->created = time();
+			if( $this->isNewRecord )
+			{
+				$this->author_id = Yii::app()->user->id;
+				$this->created = TIMESTAMP;
+			}
+            $this->updated = TIMESTAMP;
             return true;
         }
         else
