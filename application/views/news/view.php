@@ -12,15 +12,10 @@
 	<a href="<?php echo $url->link;?>"><?php echo $url->name;?></a><br />
 <?php endforeach; ?>
 
-<?php if( $dir !== null ):?>
+<?php if( !empty($files) ):?>
 <h3>附加檔案</h3>
 <?php endif;?>
-
-<?php if( $dir !== null ): ?>
-	<?php while($entry = $dir->read()): ?>
-		<?php if( $entry == '.' || $entry == '..') continue; ?>
-		 <a href="<?php echo Yii::app()->baseUrl . DIRECTORY_SEPARATOR . $dir->path . DIRECTORY_SEPARATOR . iconv("big5", "utf-8",  $entry);?>"><?php echo iconv("big5", "utf-8",  $entry) ;?></a><br />	
-	<?php endwhile; ?>
-	<?php $dir->close(); ?>
-<?php endif;?>
+<?php foreach( $files as $filename => $file_url ):?>
+	<a href="<?php echo $file_url;?>"><?php echo $filename;?></a><br />
+<?php endforeach; ?>
 <a href="<?php echo Yii::app()->createUrl('news/index', array('page' => $currentPage));?>">返回</a>

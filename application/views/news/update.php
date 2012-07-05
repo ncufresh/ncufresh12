@@ -10,17 +10,12 @@
 	<a href="<?php echo $url->link;?>"><?php echo $url->name;?></a><br />
 <?php endforeach; ?>
 
-<?php if( $dir !== null ):?>
+<?php if( !empty($files)  ):?>
 <h3>附加檔案</h3>
 <?php endif;?>
-
-<?php if( $dir !== null ): ?>
-	<?php while($entry = $dir->read()): ?>
-		<?php if( $entry == '.' || $entry == '..') continue; ?>
-		 <a href="<?php echo Yii::app()->baseUrl . DIRECTORY_SEPARATOR . $dir->path . DIRECTORY_SEPARATOR . iconv("big5", "utf-8",  $entry);?>"><?php echo iconv("big5", "utf-8",  $entry) ;?></a><br />	
-	<?php endwhile; ?>
-	<?php $dir->close(); ?>
-<?php endif;?>
+<?php foreach( $files as $filename => $file_url ):?>
+	<a href="<?php echo $file_url;?>"><?php echo $filename;?></a><br />
+<?php endforeach; ?>
 <input type="submit" value="發佈" />
 <input class="news-cancel-button" type="button" value="取消" />
 <input name="token" value="<?php echo Yii::app()->security->getToekn(); ?>" type="hidden" />

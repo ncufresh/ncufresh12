@@ -3,6 +3,7 @@
 class NewsController extends Controller
 {
     const NEWS_PER_PAGE = 10;
+	const NEWS_FILE_DIR = 'files';
     public function actionView($id)
     {
         $this->setPageTitle(Yii::app()->name . ' - 最新消息');
@@ -12,7 +13,7 @@ class NewsController extends Controller
         $this->render('view', array(
             'news' => $news,
             'currentPage' => $news->getCurrentPage(self::NEWS_PER_PAGE, true),
-			'dir' => is_dir( 'files' . DIRECTORY_SEPARATOR . $news->id )?dir('files' . DIRECTORY_SEPARATOR . $news->id):null,
+			'files' => $this->loadFiles(self::NEWS_FILE_DIR . DIRECTORY_SEPARATOR . $news->id),
         ));
     }
     
@@ -63,7 +64,7 @@ class NewsController extends Controller
 			$files = CUploadedFile::getInstancesByName('news_files');
 			if( $news->id != 0 && isset($files) && count($files) > 0 )
 			{		
-				$dir = Yii::getPathOfAlias('webroot'). DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . $news->id;
+				$dir = Yii::getPathOfAlias('webroot'). DIRECTORY_SEPARATOR . NEWS_FILE_DIR . DIRECTORY_SEPARATOR . $news->id;
 				if(!is_dir($dir)) 
 				{
 				   mkdir($dir);
@@ -71,8 +72,8 @@ class NewsController extends Controller
 				}
 				foreach( $files as $key => $file )
 				{	
-					$file->saveAs( $dir . DIRECTORY_SEPARATOR . iconv("UTF-8","big5",$file->name) );
-					echo $dir . DIRECTORY_SEPARATOR . $file->name;
+					$filename = $this->isWindows()?iconv("UTF-8","big5",$file->name ):$file->name;
+					$file->saveAs( $dir . DIRECTORY_SEPARATOR . $filename );
 				}
 			}
             
@@ -89,9 +90,10 @@ class NewsController extends Controller
 			if( $news->save() )
 				$this->redirect($news->url);
 		}
+		
         $this->render('update', array(
 			'news' => $news,
-			'dir' => is_dir( 'files' . DIRECTORY_SEPARATOR . $news->id )?dir('files' . DIRECTORY_SEPARATOR . $news->id):null,
+			'files' => $this->loadFiles(self::NEWS_FILE_DIR . DIRECTORY_SEPARATOR . $news->id),
 		));
     }
     
@@ -102,11 +104,34 @@ class NewsController extends Controller
 		$this->redirect(array('news/admin'));
     }
     
-	public function loadModel($id)
+	private function loadModel($id)
 	{
 		$news = News::model()->findByPk($id);
 		if( $news === null )
 			throw new CHttpException( 404 );
 		return $news;
+	}
+	
+	private function isWindows()
+	{
+		return strtoupper(substr(PHP_OS, 0, 3)) == 'WIN';
+	}
+	
+	private function loadFiles($directory)
+	{
+		$files = array();		
+		if(is_dir( $directory ))
+		{
+			$dir = dir($directory);
+			while($entry = $dir->read())
+			{
+				if($entry != '.' && $entry !='..')
+				{
+					$entry = $this->isWindows()?iconv("big5","UTF-8",$entry):$entry;
+					$files[$entry] = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . $dir->path . DIRECTORY_SEPARATOR . $entry;
+				}
+			}
+		}
+		return $files;
 	}
 }
