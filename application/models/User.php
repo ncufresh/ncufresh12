@@ -90,22 +90,19 @@ class User extends CActiveRecord
         return $this->is_admin;
     }
 
-    protected function generatePasswordSalt() {
+    protected function generatePasswordSalt()
+    {
         return md5(uniqid($this->username . mt_rand() . TIMESTAMP, true));
     }
 
     protected function afterFind()
     {
-        if ( parent::afterFind() )
-        {
-            $this->is_admin = $this->is_admin ? true : false;
-            $this->register_ip = $this->long2ip($this->register_ip);
-            $this->last_login_ip = $this->long2ip($this->last_login_ip);
-            $this->created = Yii::app()->format->datetime($this->created);
-            $this->updated = Yii::app()->format->datetime($this->updated);
-            return true;
-        }
-        return false;
+        parent::afterFind();
+        $this->is_admin = $this->is_admin ? true : false;
+        $this->register_ip = $this->long2ip($this->register_ip);
+        $this->last_login_ip = $this->long2ip($this->last_login_ip);
+        $this->created = Yii::app()->format->datetime($this->created);
+        $this->updated = Yii::app()->format->datetime($this->updated);
     }
 
     protected function beforeSave()
@@ -114,6 +111,7 @@ class User extends CActiveRecord
         {
             if ( $this->getIsNewRecord() )
             {
+                $this->is_admin = 0;
                 $this->created = TIMESTAMP;
                 $this->register_ip = $this->ip2long($this->getClientIP());
                 $this->salt = $this->generatePasswordSalt();
@@ -121,6 +119,7 @@ class User extends CActiveRecord
             }
             else
             {
+                $this->is_admin = $this->is_admin ? 1 : 0;
                 $this->created = $this->getOldAttributeValue('created');
                 $this->register_ip = $this->getOldAttributeValue('register_ip');
             }
