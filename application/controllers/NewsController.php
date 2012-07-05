@@ -4,6 +4,34 @@ class NewsController extends Controller
 {
     const NEWS_PER_PAGE = 10;
 	const NEWS_FILE_DIR = 'files';
+	
+    public function filters()
+    {
+        return array(
+            'accessControl'
+        );
+    }
+	
+	public function accessRules()
+	{
+		return array(
+			array(
+				'allow',
+				'actions'=>array('admin', 'create', 'update', 'delete'),
+				'roles'=>array('admin'),
+			),
+			array(
+				'allow',
+				'actions'=>array('index', 'view'),
+				'users'=>array('*'),
+			),
+			array(
+				'deny',
+				'users'=>array('*'),
+			),
+		);
+	}
+	
     public function actionView($id)
     {
         $this->setPageTitle(Yii::app()->name . ' - 最新消息');
