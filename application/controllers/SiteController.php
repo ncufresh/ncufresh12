@@ -14,7 +14,7 @@ class SiteController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('index', 'error'),
+                'actions'   => array('index', 'error', 'keep'),
                 'users'     => array('*')
             ),
             array(
@@ -92,6 +92,14 @@ class SiteController extends Controller
                 $this->render('error', $error);
             }
         }
+    }
+
+    /**
+     * Keep the user online
+     */
+    public function actionKeep()
+    {
+        $this->_data = false;
     }
 
     /**

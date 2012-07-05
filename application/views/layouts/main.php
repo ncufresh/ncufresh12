@@ -120,6 +120,17 @@
 <div id="chat">
 </div>
 
+<script type="text/javascript">
+(function($)
+{
+    var keep = function()
+    {
+        $.get('<?php echo Yii::app()->createUrl('site/keep'); ?>');
+        setTimeout(arguments.callee, <?php echo Activity::STATE_UPDATE_TIMEOUT; ?> * 1000);
+    };
+    keep();
+})(jQuery);
+</script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
 </body>
 </html>

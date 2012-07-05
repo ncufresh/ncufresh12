@@ -42,7 +42,7 @@
                     timer = setTimeout(animation, options.speed);
                 });
 
-				 items.css({
+                items.css({
 					top: 0
 				});
             });

@@ -73,7 +73,7 @@ form label
 
 #header .statics
 {
-    margin: 15px 0 0 320px;
+    margin: 15px 0 0 280px;
     position: absolute;
 }
 
@@ -85,12 +85,12 @@ form label
     line-height: 20px;
     margin: 0;
     padding: 0 0 0 85px;
-    width: 15px;
+    width: 45px;
 }
 
 #search
 {
-    margin: 8px 0 0 560px;
+    margin: 8px 0 0 580px;
     position: absolute;
     height: 90px;
     width: 220px;

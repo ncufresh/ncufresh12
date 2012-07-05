@@ -11,6 +11,8 @@ class Controller extends CController
      */
     public $layout = '//layouts/main';
 
+    protected $_data = array();
+
     public function init()
     {
         parent::init();
@@ -30,5 +32,27 @@ class Controller extends CController
     public function getTotalCount()
     {
         return Activity::getTotalCount();
+    }
+
+    protected function beforeAction($action)
+    {
+        if ( parent::beforeAction($action) )
+        {
+            if ( Yii::app()->request->getIsAjaxRequest() )
+            {
+                header('Content-Type: application/json; charset=utf-8');
+            }
+            return true;
+        }
+        return false;
+    }
+
+    protected function afterAction($action)
+    {
+        parent::afterAction($action);
+        if ( Yii::app()->request->getIsAjaxRequest() && $this->_data !== false )
+        {
+            echo json_encode($this->_data);
+        }
     }
 }
