@@ -33,6 +33,10 @@
                 }, function() {
                     timer = setTimeout(animation, options.speed);
                 });
+
+				 items.css({
+					top: 0
+				});
             });
         },
         star: function(settings) {
