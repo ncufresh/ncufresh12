@@ -9,7 +9,7 @@ class News extends CActiveRecord
 
     public function tableName()
     {
-        return 'news';
+        return '{{news}}';
     }
 	
 	public function rules()

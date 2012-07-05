@@ -29,11 +29,15 @@ return array(
         'urlManager'    => array(
             'urlFormat'         => 'path',
             'rules'             => array(
-                '<controller:\w+>/<id:\d+>'                 =>'<controller>/view',
-                '<controller:\w+>/<action:\w+>/<id:\d+>'    =>'<controller>/<action>',
-                '<controller:\w+>/<action:\w+>'             =>'<controller>/<action>',
+                '<action:\w+>'                              => 'site/<action>',
+                '<controller:\w+>/<id:\d+>'                 => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>'    => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>'             => '<controller>/<action>'
             ),
-			//'showScriptName' => false,
+            'urlSuffix'         => '.html',
+            'caseSensitive'     => true,
+			'showScriptName'    => false,
+            'useStrictParsing'  => true
         ),
         'db'            => array(
             'connectionString'  => 'mysql:host=' . $ncufreshdb['host']. ';dbname=' . $ncufreshdb['database'],
@@ -41,9 +45,10 @@ return array(
             'username'          => $ncufreshdb['username'],
             'password'          => $ncufreshdb['password'],
             'charset'           => 'utf8',
+            'tablePrefix'       => ''
         ),
         'errorHandler'  => array(
-            'errorAction'       => 'site/error',
+            'errorAction'       => 'site/error'
         ),
         'security'      => array(
             'class'             => 'Security'

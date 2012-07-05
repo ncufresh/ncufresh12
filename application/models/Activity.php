@@ -13,7 +13,7 @@ class Activity extends CActiveRecord
 
     public function tableName()
     {
-        return 'activities';
+        return '{{activities}}';
     }
 
     public function getId()
@@ -28,6 +28,13 @@ class Activity extends CActiveRecord
 
     public static function updateActivityState()
     {
+        $table = self::model()->getTableSchema();
+        $builder = self::model()->getCommandBuilder();
+        $command = $builder->createSqlCommand(
+            'ALTER TABLE ' . $table->rawName . ' ENGINE = MEMORY'
+        );
+        $command->execute();
+
         $criteria = new CDbCriteria();
         $criteria->condition = 'updated < :updated';
         $criteria->params = array(':updated' => TIMESTAMP - self::STATE_UPDATE_TIMEOUT - 5);
