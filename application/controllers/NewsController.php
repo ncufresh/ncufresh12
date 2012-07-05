@@ -64,7 +64,7 @@ class NewsController extends Controller
 			$files = CUploadedFile::getInstancesByName('news_files');
 			if( $news->id != 0 && isset($files) && count($files) > 0 )
 			{		
-				$dir = Yii::getPathOfAlias('webroot'). DIRECTORY_SEPARATOR . NEWS_FILE_DIR . DIRECTORY_SEPARATOR . $news->id;
+				$dir = Yii::getPathOfAlias('webroot'). DIRECTORY_SEPARATOR . self::NEWS_FILE_DIR . DIRECTORY_SEPARATOR . $news->id;
 				if(!is_dir($dir)) 
 				{
 				   mkdir($dir);
