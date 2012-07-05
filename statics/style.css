@@ -92,6 +92,7 @@ form dl dd {
 
 #content {
     margin-right: 200px;
+    min-height: 360px;
     overflow: hidden;
 }
 
