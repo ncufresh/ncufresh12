@@ -18,8 +18,8 @@
 <div id="header">
     <a id="logo" href="<?php echo Yii::app()->createUrl('site/index'); ?>"></a>
     <div class="statics">
-        <p class="online">8</p>
-        <p class="browsered">1024</p>
+        <p class="online"><?php echo $this->getOnlineCount(); ?></p>
+        <p class="browsered"><?php echo $this->getTotalCount(); ?></p>
     </div>
     <form id="search" action="<?php echo Yii::app()->createUrl('site/search'); ?>" method="POST">
         <dl>
