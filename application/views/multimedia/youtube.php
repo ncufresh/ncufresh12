@@ -1,1 +1,1 @@
-<iframe style="top:0; left:0; position: absolute;" width="600" height="400" src="http://www.youtube.com/embed/<?php echo $video_id; ?>?autoplay=1&wmode=transparent&rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe style="top:0; left:0; position: absolute;" width="600" height="400" src="http://www.youtube.com/embed/<?php echo $video_id; ?>?autoplay=1&wmode=transparent&autohide=1&allowfullscreen=1" frameborder="0"></iframe>

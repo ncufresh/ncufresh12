@@ -367,6 +367,7 @@
 			$('#mm-video-frame').attr('src', url);
 			return false;
 		});
+		$('#mm-menu a').eq($.random(0, $('#mm-menu a').length - 1)).click();
 		
 		mmMenuScroll.margin_top_max = 0;
 		mmMenuScroll.margin_top_min = parseInt($('#mm-menu').css('height')) - parseInt($('#mm-menu-items').css('height'));
