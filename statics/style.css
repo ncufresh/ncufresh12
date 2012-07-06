@@ -242,7 +242,7 @@ a:hover
     width: 55px;
 }
 
-#sidebar .sidebar_box
+#sidebar .sidebar-box
 {
     -webkit-border-radius: 10px;
     background: #EEF2F6;
@@ -252,7 +252,7 @@ a:hover
     padding: 5px;
 }
 
-#sidebar .sidebar_box h4
+#sidebar .sidebar-box h4
 {
     -webkit-border-radius: 10px;
     background: #DCE4ED;
@@ -293,10 +293,65 @@ a:hover
 #chat
 {
     background: url('chat.png') 0 5px no-repeat;
+    bottom: 0;
+    cursor: pointer;
     height: 120px;
     margin: -120px 0 0 830px;
-    position: absolute;
+    position: fixed;
     width: 160px;
+}
+
+#chat .online-friends
+{
+    margin: 40px 0 0 85px;
+    position: absolute;
+    text-align: center;
+}
+
+#chat .friendcounts:before
+{
+    content: '\A';
+    white-space: pre;
+}
+
+#chatlist
+{
+    -webkit-border-radius: 10px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    bottom: 0;
+    height: 0;
+    margin: -120px 0 0 830px;
+    opacity: 0.7;
+    padding: 5px;
+    position: fixed;
+    width: 160px;
+}
+
+#chatlist img
+{
+    border: 2px solid #000000;
+    height: 35px;
+    float: left;
+    margin: 3px;
+    width: 35px;
+}
+
+#chatlist p
+{
+    margin-left: 50px;
+}
+
+#chatlist .friend-list-entry
+{
+    height: 45px;
+    line-height: 45px;
+}
+
+#chatlist .friend-list-entry:hover
+{
+    background: #EEEEEE;
+    cursor: pointer;
 }
 
 #marquee
@@ -339,19 +394,19 @@ a:hover
     position: absolute;
 }
 
-#index_calendar
+#index-calendar
 {
     float: left;
     width: 30%;
 }
 
-#index_container
+#index-container
 {
     float: right;
     width: 70%;
 }
 
-.index_box
+.index-box
 {
     -webkit-border-radius: 10px;
     background: #CBD3E6;
@@ -361,7 +416,7 @@ a:hover
     width: 49%;
 }
 
-.index_box h4
+.index-box h4
 {
     height: 25px;
     margin: 5px;
@@ -369,46 +424,46 @@ a:hover
     width: 80px;
 }
 
-.index_box table
+.index-box table
 {
     width: 100%;
 }
 
-.index_box td
+.index-box td
 {
     padding: 5px;
     width: 85%;
 }
 
-.index_box td.time
+.index-box td.time
 {
     text-align: right;
     width: 15%;
 }
 
-.index_box tfoot
+.index-box tfoot
 {
     text-align: right;
 }
 
-.index_latest_box
+.index-latest-box
 {
     clear: left;
     float: left;
 }
 
-.index_latest_box h4
+.index-latest-box h4
 {
     background: url('index_latest_icon.png') no-repeat;
 }
 
-.index_forums_box
+.index-forums-box
 {
     clear: right;
     float: right;
 }
 
-.index_forums_box h4
+.index-forums-box h4
 {
     background: url('index_forums_icon.png') no-repeat;
 }

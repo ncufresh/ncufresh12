@@ -16,15 +16,20 @@
     <title><?php echo $this->getPageTitle(); ?></title>
 
     <script type="text/javascript">
-    (function($)
-    {
-        var keep = function()
+        $.extend({
+            configures: {
+                chatFriendsListUrl: '<?php echo Yii::app()->createUrl('chat/list'); ?>'
+            }
+        });
+        (function($)
         {
-            $.get('<?php echo Yii::app()->createUrl('site/keep'); ?>');
-            setTimeout(arguments.callee, <?php echo Activity::STATE_UPDATE_TIMEOUT; ?> * 1000);
-        };
-        keep();
-    })(jQuery);
+            var keep = function()
+            {
+                $.get('<?php echo Yii::app()->createUrl('site/keep'); ?>');
+                setTimeout(arguments.callee, <?php echo Activity::STATE_UPDATE_TIMEOUT; ?> * 1000);
+            };
+            keep();
+        })(jQuery);
     </script>
 </head>
 
@@ -117,10 +122,10 @@
         <a href="<?php echo Yii::app()->createUrl('site/logout'); ?>" title="登出">登出</a>
     </div>
 <?php endif; ?>
-    <div class="links sidebar_box">
+    <div class="links sidebar-box">
         <h4>連結區</h4>
     </div>
-    <div class="recommendands sidebar_box">
+    <div class="recommendands sidebar-box">
         <h4>連結區</h4>
     </div>
 </div>
@@ -133,6 +138,9 @@
     </p>
 </div>
 <div id="chat">
+    <p class="online-friends">
+        線上好友<span class="friendcounts"><?php echo 999; // $this->getOnlineFriendsCount(); ?></span>人
+    </p>
 </div>
 </body>
 </html>
