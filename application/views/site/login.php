@@ -19,6 +19,6 @@
     </dl>
     <div>
         <input name="token" value="<?php echo Yii::app()->security->getToekn(); ?>" type="hidden" />
-        <button id="form-login-button" type="submit">[登入]</button>
+        <button id="form-login-button" type="submit">登入</button>
     </div>
 </form>

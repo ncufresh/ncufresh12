@@ -9,7 +9,7 @@ class NewsLink extends CActiveRecord
 
     public function tableName()
     {
-        return 'news_links';
+        return '{{news_links}}';
     }
 
 	public function rules()

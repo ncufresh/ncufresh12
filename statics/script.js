@@ -4,6 +4,66 @@
         random: function(min, max)
         {
             return Math.floor(Math.random() * (max - min + 1) + min);
+        },
+        cookie: function(key, value, settings) {
+            var options = $.extend({
+            }, settings);
+
+            if (
+                arguments.length > 1
+             && (
+                 ! /Object/.test(Object.prototype.toString.call(value))
+              || value === null
+              || value === undefined
+                )
+            ) {
+                if ( value === null || value === undefined ) options.expires = -1;
+
+                if ( typeof options.expires === 'number' )
+                {
+                    var days = options.expires;
+                    var t = options.expires = new Date();
+                    t.setDate(t.getDate() + days);
+                }
+
+                value = String(value);
+
+                return (document.cookie = [
+                    encodeURIComponent(key),
+                    '=',
+                    options.raw
+                  ? value
+                  : encodeURIComponent(value),
+                    options.expires
+                  ? '; expires=' + options.expires.toUTCString()
+                  : '',
+                    options.path
+                  ? '; path=' + options.path
+                  : '',
+                    options.domain
+                  ? '; domain=' + options.domain
+                  : '',
+                    options.secure
+                  ? '; secure'
+                  : ''
+                ].join(''));
+            }
+
+            var decode = options.raw ? function(raw)
+            {
+                return raw;
+            } : decodeURIComponent;
+
+            var pairs = document.cookie.split('; ');
+
+            options = value || {};
+
+            for ( var i = 0, pair ; pair = pairs[i] && pairs[i].split('=') ; ++i )
+            {
+                if ( decode(pair[0]) === key ) return decode(pair[1] || '');
+            }
+
+            return null;
         }
     });
 
@@ -42,7 +102,7 @@
                     timer = setTimeout(animation, options.speed);
                 });
 
-				 items.css({
+                items.css({
 					top: 0
 				});
             });
@@ -90,6 +150,59 @@
                 };
                 setTimeout(generator, 0);
             });
+        },
+        chat: function(settings)
+        {
+            return this.each(function()
+            {
+                var options = $.extend({
+                    timeout:                30000,
+                    speed:                  500,
+                    charListHeight:         200,
+                    chatListId:             'chatlist',
+                    unknownIcon:            'unknown.png'
+                }, settings);
+                $(this).click(function()
+                {
+                    var list = $('<div></div>')
+                        .attr('id', options.chatListId)
+                        .insertBefore($(this))
+                        .animate({
+                            height: options.charListHeight
+                        }, options.speed);
+                    $.getJSON(
+                        $.configures.chatFriendsListUrl,
+                        function(response)
+                        {
+                            for ( var key in response.friends )
+                            {
+                                var data = response.friends[key];
+                                var entry = $('<div></div>')
+                                    .attr('chat:id', data.id)
+                                    .addClass('friend-list-entry')
+                                    .click(function()
+                                    {
+                                        alert('Not Completed!');
+                                    })
+                                    .appendTo(list);
+                                var icon = $('<img></img>')
+                                    .attr(
+                                        'src',
+                                        data.icon
+                                      ? data.icon
+                                      : options.unknownIcon
+                                    )
+                                    .appendTo(entry);
+                                var name = $('<p>')
+                                    .text(data.name)
+                                    .appendTo(entry);
+                            }
+                        }
+                    );
+                    $(this).fadeOut();
+                    return true;
+                });
+            });
         }
     });
 
@@ -98,6 +211,8 @@
         if ( $('#header') ) $('#header').star();
 
         if ( $('#marquee') ) $('#marquee').marquee();
+
+        if ( $('#chat') ) $('#chat').chat();
 
         $('form input').each(function()
         {

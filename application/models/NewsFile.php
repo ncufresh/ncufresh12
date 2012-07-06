@@ -9,7 +9,7 @@ class NewsFile extends CActiveRecord
 
     public function tableName()
     {
-        return 'news_files';
+        return '{{news_files}}';
     }
 
     public function relations()

@@ -9,7 +9,7 @@ class Marquee extends CActiveRecord
 
     public function tableName()
     {
-        return 'marquees';
+        return '{{marquees}}';
     }
 
     public function rules()

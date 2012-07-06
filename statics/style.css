@@ -57,6 +57,17 @@ form label
     position: relative;
 }
 
+a
+{
+    color: #5C5C5C;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: #7C7C7C;
+}
+
 #logo
 {
     background: url('logo.png') no-repeat;
@@ -73,7 +84,7 @@ form label
 
 #header .statics
 {
-    margin: 15px 0 0 320px;
+    margin: 15px 0 0 280px;
     position: absolute;
 }
 
@@ -85,12 +96,12 @@ form label
     line-height: 20px;
     margin: 0;
     padding: 0 0 0 85px;
-    width: 15px;
+    width: 45px;
 }
 
 #search
 {
-    margin: 8px 0 0 560px;
+    margin: 8px 0 0 580px;
     position: absolute;
     height: 90px;
     width: 220px;
@@ -149,7 +160,6 @@ form label
 #tab a
 {
     color: #414141;
-    text-decoration: none;
 }
 
 #navigation
@@ -176,7 +186,6 @@ form label
 {
     color: #210530;
     font-weight: bolder;
-    text-decoration: none;
 }
 
 #navigation a:hover
@@ -233,17 +242,7 @@ form label
     width: 55px;
 }
 
-#form-login-button
-{
-    background: url('login.png');
-}
-
-#form-register-button
-{
-    background: url('register.png');
-}
-
-#sidebar .sidebar_box
+#sidebar .sidebar-box
 {
     -webkit-border-radius: 10px;
     background: #EEF2F6;
@@ -253,7 +252,7 @@ form label
     padding: 5px;
 }
 
-#sidebar .sidebar_box h4
+#sidebar .sidebar-box h4
 {
     -webkit-border-radius: 10px;
     background: #DCE4ED;
@@ -261,6 +260,16 @@ form label
     margin: 0;
     padding: 5px;
     text-align: center;
+}
+
+#form-sidebar-login
+{
+    background: url('login.png');
+}
+
+#form-sidebar-register
+{
+    background: url('register.png');
 }
 
 #footer
@@ -284,10 +293,65 @@ form label
 #chat
 {
     background: url('chat.png') 0 5px no-repeat;
+    bottom: 0;
+    cursor: pointer;
     height: 120px;
     margin: -120px 0 0 830px;
-    position: absolute;
+    position: fixed;
     width: 160px;
+}
+
+#chat .online-friends
+{
+    margin: 40px 0 0 85px;
+    position: absolute;
+    text-align: center;
+}
+
+#chat .friendcounts:before
+{
+    content: '\A';
+    white-space: pre;
+}
+
+#chatlist
+{
+    -webkit-border-radius: 10px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    bottom: 0;
+    height: 0;
+    margin: -120px 0 0 830px;
+    opacity: 0.7;
+    padding: 5px;
+    position: fixed;
+    width: 160px;
+}
+
+#chatlist img
+{
+    border: 2px solid #000000;
+    height: 35px;
+    float: left;
+    margin: 3px;
+    width: 35px;
+}
+
+#chatlist p
+{
+    margin-left: 50px;
+}
+
+#chatlist .friend-list-entry
+{
+    height: 45px;
+    line-height: 45px;
+}
+
+#chatlist .friend-list-entry:hover
+{
+    background: #EEEEEE;
+    cursor: pointer;
 }
 
 #marquee
@@ -330,19 +394,19 @@ form label
     position: absolute;
 }
 
-#index_calendar
+#index-calendar
 {
     float: left;
     width: 30%;
 }
 
-#index_container
+#index-container
 {
     float: right;
     width: 70%;
 }
 
-.index_box
+.index-box
 {
     -webkit-border-radius: 10px;
     background: #CBD3E6;
@@ -352,7 +416,7 @@ form label
     width: 49%;
 }
 
-.index_box h4
+.index-box h4
 {
     height: 25px;
     margin: 5px;
@@ -360,46 +424,46 @@ form label
     width: 80px;
 }
 
-.index_box table
+.index-box table
 {
     width: 100%;
 }
 
-.index_box td
+.index-box td
 {
     padding: 5px;
     width: 85%;
 }
 
-.index_box td.time
+.index-box td.time
 {
     text-align: right;
     width: 15%;
 }
 
-.index_box tfoot
+.index-box tfoot
 {
     text-align: right;
 }
 
-.index_latest_box
+.index-latest-box
 {
     clear: left;
     float: left;
 }
 
-.index_latest_box h4
+.index-latest-box h4
 {
     background: url('index_latest_icon.png') no-repeat;
 }
 
-.index_forums_box
+.index-forums-box
 {
     clear: right;
     float: right;
 }
 
-.index_forums_box h4
+.index-forums-box h4
 {
     background: url('index_forums_icon.png') no-repeat;
 }

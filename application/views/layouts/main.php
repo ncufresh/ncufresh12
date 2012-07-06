@@ -9,8 +9,28 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/ie.css" media="screen, projection" />
     <![endif]-->
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <?php echo CGoogleApi::init(); ?>
+    <?php echo CHtml::script(CGoogleApi::load('jquery')); ?>
+    <?php echo CHtml::script(CGoogleApi::load('jqueryui')); ?>
+
     <title><?php echo $this->getPageTitle(); ?></title>
+
+    <script type="text/javascript">
+        $.extend({
+            configures: {
+                chatFriendsListUrl: '<?php echo Yii::app()->createUrl('chat/list'); ?>'
+            }
+        });
+        (function($)
+        {
+            var keep = function()
+            {
+                $.get('<?php echo Yii::app()->createUrl('site/keep'); ?>');
+                setTimeout(arguments.callee, <?php echo Activity::STATE_UPDATE_TIMEOUT; ?> * 1000);
+            };
+            keep();
+        })(jQuery);
+    </script>
 </head>
 
 <body>
@@ -18,8 +38,8 @@
 <div id="header">
     <a id="logo" href="<?php echo Yii::app()->createUrl('site/index'); ?>"></a>
     <div class="statics">
-        <p class="online">8</p>
-        <p class="browsered">1024</p>
+        <p class="online"><?php echo $this->getOnlineCount(); ?></p>
+        <p class="browsered"><?php echo $this->getTotalCount(); ?></p>
     </div>
     <form id="search" action="<?php echo Yii::app()->createUrl('site/search'); ?>" method="POST">
         <dl>
@@ -48,10 +68,10 @@
     </ul>
     <ul id="navigation">
         <li>
-            <a href="<?php echo Yii::app()->createUrl('site/index'); ?>" title="大一必讀">大一必讀</a>
+            <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" title="大一必讀">大一必讀</a>
         </li>
         <li>
-            <a href="<?php echo Yii::app()->createUrl('site/page', array('view' => 'about')); ?>" title="中大生活">中大生活</a>
+            <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>" title="中大生活">中大生活</a>
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="校園導覽">校園導覽</a>
@@ -63,7 +83,7 @@
             <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="系所社團">系所社團</a>
         </li>
         <li>
-            <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="影音專區">影音專區</a>
+            <a href="<?php echo Yii::app()->createUrl('multimedia/index'); ?>" title="影音專區">影音專區</a>
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="關於我們">關於我們</a>
@@ -76,24 +96,24 @@
     <form class="profile" action="<?php echo Yii::app()->createUrl('site/login'); ?>" method="POST">
         <dl>
             <dt>
-                <label for="form-login-username">帳號</label>
+                <label for="form-sidebar-username">帳號</label>
             </dt>
             <dd>
-                <input id="form-login-username" name="login[username]" type="text" />
+                <input id="form-sidebar-username" name="login[username]" type="text" />
             </dd>
         </dl>
         <dl>
             <dt>
-                <label for="form-login-password">密碼</label>
+                <label for="form-sidebar-password">密碼</label>
             </dt>
             <dd>
-                <input id="form-login-password" name="login[password]" type="password" />
+                <input id="form-sidebar-password" name="login[password]" type="password" />
             </dd>
         </dl>
         <div>
             <input name="token" value="<?php echo Yii::app()->security->getToekn(); ?>" type="hidden" />
-            <button id="form-login-button" type="submit">[登入]</button>
-            <button id="form-register-button">[註冊]</button>
+            <button id="form-sidebar-login" type="submit">[登入]</button>
+            <button id="form-sidebar-register">[註冊]</button>
         </div>
     </form>
 <?php else : ?>
@@ -102,10 +122,10 @@
         <a href="<?php echo Yii::app()->createUrl('site/logout'); ?>" title="登出">登出</a>
     </div>
 <?php endif; ?>
-    <div class="links sidebar_box">
+    <div class="links sidebar-box">
         <h4>連結區</h4>
     </div>
-    <div class="recommendands sidebar_box">
+    <div class="recommendands sidebar-box">
         <h4>連結區</h4>
     </div>
 </div>
@@ -118,8 +138,9 @@
     </p>
 </div>
 <div id="chat">
+    <p class="online-friends">
+        線上好友<span class="friendcounts"><?php echo 999; // $this->getOnlineFriendsCount(); ?></span>人
+    </p>
 </div>
-
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
 </body>
 </html>
