@@ -131,7 +131,7 @@ class NewsController extends Controller
 		$news->hide();
 		$this->redirect(array('news/admin'));
     }
-    
+	
 	private function loadModel($id)
 	{
 		$news = News::model()->findByPk($id);

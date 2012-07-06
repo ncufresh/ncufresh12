@@ -353,8 +353,69 @@
 			history.back();
 			return false;
 		});
+		
+		$('#mm-menu a').each(function(index, element){
+			$(this).html('<span>'+$(this).text()+'</span>');
+			$(this).append('<img src="http://img.youtube.com/vi/' + $(this).attr('href').substr(1) + '/0.jpg" />')
+		});
+		
+		$('#mm-menu-items').css('height', $('#mm-menu a').length * 150);
+		
+		$('#mm-menu a').click(function(){
+			$('#mm-video-frame').attr('src', '/ncufresh12/multimedia/youtube.html?video_id=' + $(this).attr('href').substr(1));
+			return false;
+		});
+		
+		mmMenuScroll.margin_top_max = 0;
+		mmMenuScroll.margin_top_min = parseInt($('#mm-menu').css('height')) - parseInt($('#mm-menu-items').css('height'));
+		$('.mm-menu-up').mouseenter(function(){
+			mmMenuScroll.mousein = true;
+			mmMenuScroll(+10);
+		}).mouseleave(function(){
+			mmMenuScroll.mousein = false;
+		});	
+		
+		$('.mm-menu-down').mouseenter(function(){
+			mmMenuScroll.mousein = true;
+			mmMenuScroll(-10);
+		}).mouseleave(function(){
+			mmMenuScroll.mousein = false;
+		});
     });
 })(jQuery);
+
+function mmMenuScroll(offset)
+{
+	if( typeof(mmMenuScroll.mousein) == 'undefined' )
+		mmMenuScroll.mousein = false;
+	if( typeof(mmMenuScroll.margin_top_max) == 'undefined' )
+		mmMenuScroll.margin_top_max = 0;
+	if( typeof(mmMenuScroll.margin_top_min) == 'undefined' )
+		mmMenuScroll.margin_top_min = -100;
+	var margin_top = parseInt($('#mm-menu-items').css('margin-top'));
+	if( margin_top + offset > mmMenuScroll.margin_top_max )
+	{
+		margin_top = mmMenuScroll.margin_top_max;
+		mmMenuScroll.mousein = false;
+		$('#mm-menu-items').css('margin-top', margin_top);
+	}
+	if( margin_top + offset < mmMenuScroll.margin_top_min )
+	{
+		margin_top = mmMenuScroll.margin_top_min ;
+		mmMenuScroll.mousein = false;
+		$('#mm-menu-items').css('margin-top', margin_top);
+	}
+
+	if( mmMenuScroll.mousein )
+	{
+		$('#mm-menu-items').css('margin-top', margin_top + offset);
+		setTimeout( "mmMenuScroll("+offset+")", 30 );
+	}
+	else
+		return;
+}
+
+
 
 function checkFileSize(name)
 {
