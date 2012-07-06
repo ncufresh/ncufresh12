@@ -57,6 +57,17 @@ form label
     position: relative;
 }
 
+a
+{
+    color: #5C5C5C;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: #7C7C7C;
+}
+
 #logo
 {
     background: url('logo.png') no-repeat;
@@ -149,7 +160,6 @@ form label
 #tab a
 {
     color: #414141;
-    text-decoration: none;
 }
 
 #navigation
@@ -176,7 +186,6 @@ form label
 {
     color: #210530;
     font-weight: bolder;
-    text-decoration: none;
 }
 
 #navigation a:hover

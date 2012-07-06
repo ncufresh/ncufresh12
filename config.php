@@ -29,6 +29,7 @@ return array(
         'urlManager'    => array(
             'urlFormat'         => 'path',
             'rules'             => array(
+                ''                                          => array('site/index', 'urlSuffix' => ''),
                 '<action:\w+>'                              => 'site/<action>',
                 '<controller:\w+>/<id:\d+>'                 => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>'    => '<controller>/<action>',
