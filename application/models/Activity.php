@@ -31,9 +31,9 @@ class Activity extends CActiveRecord
     public static function updateActivityState()
     {
         $criteria = new CDbCriteria();
-        $criteria->condition = 'updated < :updated';
+        $criteria->condition = 'timestamp < :timestamp';
         $criteria->params = array(
-            ':updated'  => TIMESTAMP - self::STATE_UPDATE_TIMEOUT - 5
+            ':timestamp'  => TIMESTAMP - self::STATE_UPDATE_TIMEOUT - 5
         );
 
         $data = self::getPersister()->load() ?: array(
@@ -78,7 +78,7 @@ class Activity extends CActiveRecord
                 $this->uuid = md5(uniqid(mt_rand() . TIMESTAMP . rand(), true));
             }
             $this->id = Yii::app()->user->id ?: 0;
-            $this->updated = TIMESTAMP;
+            $this->timestamp = TIMESTAMP;
             return true;
         }
         return false;
