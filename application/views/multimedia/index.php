@@ -19,7 +19,7 @@
 	</div>
 	<div id="mm-content">
 		<div id="mm-video">
-			<iframe id="mm-video-frame" name="videoframe" width="600" height="400" src="/ncufresh12/multimedia/youtube.html?video_id=66TuSJo4dZM" frameborder="0" allowfullscreen></iframe>	
+			<iframe id="mm-video-frame" name="videoframe" width="600" height="400" src="about:blank" frameborder="0" allowfullscreen></iframe>	
 		</div>
 		<div id="mm-introduction"></div>
 	</div>

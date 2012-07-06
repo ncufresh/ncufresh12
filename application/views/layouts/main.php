@@ -20,7 +20,8 @@
             configures: {
                 chatFriendsListUrl: '<?php echo Yii::app()->createUrl('chat/list'); ?>',
                 chatReceiveMessageUrl: '<?php echo Yii::app()->createUrl('chat/receive', array('id' => ':id')); ?>',
-                chatRetrieveMessageUrl: '<?php echo Yii::app()->createUrl('chat/retrieve'); ?>'
+                chatRetrieveMessageUrl: '<?php echo Yii::app()->createUrl('chat/retrieve'); ?>',
+                multimediaYoutubeUrl: '<?php echo Yii::app()->createUrl('multimedia/youtube', array('video_id' => ':id')); ?>'
             }
         });
         (function($)

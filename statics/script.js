@@ -362,7 +362,9 @@
 		$('#mm-menu-items').css('height', $('#mm-menu a').length * 150);
 		
 		$('#mm-menu a').click(function(){
-			$('#mm-video-frame').attr('src', '/ncufresh12/multimedia/youtube.html?video_id=' + $(this).attr('href').substr(1));
+            var url = decodeURIComponent($.configures.multimediaYoutubeUrl)
+                .replace(':id', $(this).attr('href').substr(1));
+			$('#mm-video-frame').attr('src', url);
 			return false;
 		});
 		
