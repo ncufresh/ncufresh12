@@ -153,52 +153,100 @@
         },
         chat: function(settings)
         {
+            var options = $.extend({
+                speed:                  500,
+                chatListHeight:         200,
+                chatListId:             'chatlist',
+                chatDialogClass:        'chat-dialog',
+                unknownIcon:            'unknown.png'
+            }, settings);
+            var list = $('<div></div>')
+                .attr('id', options.chatListId)
+                .insertBefore($(this));
+            var openChatList = function()
+            {
+                list.animate({
+                    height: options.chatListHeight
+                }, options.speed);
+                $.getJSON(
+                    $.configures.chatFriendsListUrl,
+                    function(response)
+                    {
+                        for ( var key in response )
+                        {
+                            var data = response[key];
+                            var entry = $('<div></div>')
+                                .attr('chat:id', data.id)
+                                .addClass('friend-list-entry')
+                                .click(function()
+                                {
+                                    openChatDialog($(this).attr('chat:id'));
+                                })
+                                .appendTo(list);
+                            var icon = $('<img></img>')
+                                .attr(
+                                    'src',
+                                    data.icon
+                                  ? data.icon
+                                  : options.unknownIcon
+                                )
+                                .appendTo(entry);
+                            var name = $('<p>')
+                                .text(data.name)
+                                .appendTo(entry);
+                        }
+                    }
+                );
+            }
+            var openChatDialog = function(id)
+            {
+                var dialog;
+                var left = list.position().left
+                         + list.outerWidth(true)
+                         - list.innerWidth();
+                var url = decodeURIComponent(
+                        $.configures.chatReceiveMessageUrl
+                    )
+                    .replace(':id', id);
+                $('.' + options.chatDialogClass).each(function(index)
+                {
+                    if ( $(this).attr('chat:id') == id ) dialog = $(this);
+                    $(this).css({
+                        left: left - $(this).outerWidth(true) * (index + 1)
+                    });
+                });
+                if ( ! dialog )
+                {
+                    dialog = $('<div></div>')
+                        .attr('chat:id', id)
+                        .addClass(options.chatDialogClass)
+                        .insertBefore(list);
+                    dialog.css({
+                        left: left - dialog.outerWidth(true) * $('.' + options.chatDialogClass).length
+                    });
+                }
+                return dialog;
+            };  
+            (function()
+            {
+                var url = decodeURIComponent($.configures.chatRetrieveMessageUrl);
+                $.getJSON(url, function(response)
+                {
+                    for ( var key in response )
+                    {
+                        var data = response[key];
+                        var dialog = openChatDialog(data.id);
+                        dialog.html(dialog.html() + '<br />' + data.sender + ':' + data.message);
+                    }
+                });
+                setTimeout(arguments.callee, 3000);
+                return true;
+            })();
             return this.each(function()
             {
-                var options = $.extend({
-                    timeout:                30000,
-                    speed:                  500,
-                    charListHeight:         200,
-                    chatListId:             'chatlist',
-                    unknownIcon:            'unknown.png'
-                }, settings);
                 $(this).click(function()
                 {
-                    var list = $('<div></div>')
-                        .attr('id', options.chatListId)
-                        .insertBefore($(this))
-                        .animate({
-                            height: options.charListHeight
-                        }, options.speed);
-                    $.getJSON(
-                        $.configures.chatFriendsListUrl,
-                        function(response)
-                        {
-                            for ( var key in response.friends )
-                            {
-                                var data = response.friends[key];
-                                var entry = $('<div></div>')
-                                    .attr('chat:id', data.id)
-                                    .addClass('friend-list-entry')
-                                    .click(function()
-                                    {
-                                        alert('Not Completed!');
-                                    })
-                                    .appendTo(list);
-                                var icon = $('<img></img>')
-                                    .attr(
-                                        'src',
-                                        data.icon
-                                      ? data.icon
-                                      : options.unknownIcon
-                                    )
-                                    .appendTo(entry);
-                                var name = $('<p>')
-                                    .text(data.name)
-                                    .appendTo(entry);
-                            }
-                        }
-                    );
+                    openChatList();
                     $(this).fadeOut();
                     return true;
                 });
@@ -207,7 +255,7 @@
     });
 
     $(document).ready(function()
-        {
+    {
         if ( $('#header') ) $('#header').star();
 
         if ( $('#marquee') ) $('#marquee').marquee();

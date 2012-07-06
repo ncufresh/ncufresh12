@@ -37,6 +37,7 @@ class Helper extends CBehavior
     }
 
     function ip2long($ip) {
+        if ( $ip === null ) return 0;
         list($a, $b, $c, $d) = explode('.', $ip);
         return (($a * 256 + $b) * 256 + $c) * 256 + $d;
     }

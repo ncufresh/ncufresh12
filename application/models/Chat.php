@@ -28,25 +28,83 @@ class Chat extends CActiveRecord
         );
     }
 
+    public function getAllMessages($id)
+    {
+        $data = array();
+
+        $criteria = new CDbCriteria();
+        $criteria->select = 'sender_id, message, timestamp';
+        $criteria->order = 'timestamp ASC';
+        $criteria->condition = 'sender_id = :sender OR receiver_id = :receiver';
+        $criteria->params = array(
+            ':sender'   => $id,
+            ':receiver' => Yii::app()->user->getId()
+        );
+
+        foreach ( $this->findAll($criteria) as $entry )
+        {
+            $data[] = array(
+                'sender'    => $entry->sender->username ?: 'Unknown',
+                'message'   => $entry->message,
+                'timestamp' => $entry->timestamp
+            );
+        }
+
+        return $data;
+    }
+
     public function getRecentMessages($id)
     {
         $data = array();
-        $lasttime = Yii::app()->session['chatlasttime'];
-        foreach (
-            $this->findAll(array(
-                'select'    => 'sender_id, message, timestamp',
-                'order'     => 'timestamp ASC',
-                'condition' => 'receiver_id = ' . $id
-            )) as $entry
-        )
+        // $timestamp = 0;
+
+        $criteria = new CDbCriteria();
+        $criteria->select = 'sender_id, message, timestamp';
+        $criteria->order = 'timestamp ASC';
+        $criteria->condition = 'sender_id = :id OR receiver_id = :id';
+        $criteria->params = array(
+            ':id'       => $id
+        );
+
+        foreach ( $this->findAll($criteria) as $entry )
         {
-            if ( $entry['timestamp'] <= $lasttime ) continue;
+            // if ( $timestamp === 0 ) $timestamp = $entry->timestamp;
             $data[] = array(
-                'sender'    => $entry['sender']['username'] ?: 'Unknown',
-                'message'   => $entry['message'],
-                'timestamp' => $entry['timestamp']
+                'sender'    => $entry->sender->username ?: 'Unknown',
+                'message'   => $entry->message,
+                'timestamp' => $entry->timestamp
             );
         }
+
+        // $data = $this->getNewMessages();
+        return $data;
+    }
+
+    public function getNewMessages($id)
+    {
+        $data = array();
+        $lasttime = Yii::app()->session['chatlasttime'];
+
+        $criteria = new CDbCriteria();
+        $criteria->select = 'sender_id, message, timestamp';
+        $criteria->order = 'timestamp ASC';
+        $criteria->condition = 'sender_id = :sender OR receiver_id = :receiver';
+        $criteria->params = array(
+            ':sender'   => $id,
+            ':receiver' => Yii::app()->user->getId()
+        );
+
+        foreach ( $this->findAll($criteria) as $entry )
+        {
+            if ( $entry->timestamp <= $lasttime ) continue;
+            $data[] = array(
+                'id'        => $id,
+                'sender'    => $entry->sender->username ?: 'Unknown',
+                'message'   => $entry->message,
+                'timestamp' => $entry->timestamp
+            );
+        }
+
         Yii::app()->session['chatlasttime'] = TIMESTAMP;
         return $data;
     }

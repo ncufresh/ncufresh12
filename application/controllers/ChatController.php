@@ -14,7 +14,7 @@ class ChatController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('list', 'retrieve', 'messages', 'send'),
+                'actions'   => array('list', 'retrieve', 'receive', 'send'),
                 'users'     => array('@')
             ),
             array(
@@ -26,7 +26,7 @@ class ChatController extends Controller
 
     public function actionList()
     {
-        $this->_data['friends'] = array(
+        $this->_data = array(
             array(
                 'id'        => 1,
                 'name'      => 'Test 1',
@@ -45,16 +45,15 @@ class ChatController extends Controller
         );
     }
 
+    public function actionReceive($id)
+    {
+        $this->_data['messages'] = Chat::model()->getAllMessages((integer)$id);
+    }
+
     public function actionRetrieve()
     {
         $id = Yii::app()->user->getId() ?: 0;
-        $this->_data['messages'] = Chat::model()->getRecentMessages($id);
-    }
-
-    public function actionMessages()
-    {
-        $id = Yii::app()->user->getId() ?: 0;
-        $this->_data['messages'] = Chat::model()->getAllMessages($id);
+        $this->_data = Chat::model()->getNewMessages((integer)$id);
     }
 
     public function actionSend()
@@ -67,7 +66,7 @@ class ChatController extends Controller
             $model->attributes = $_POST['chat'];
             if ( $model->validate() && $model->save() )
             {
-                $this->_data['messages'] = Chat::model()->getRecentMessages($id);
+                $this->_data['messages'] = Chat::model()->getNewMessages($id);
             }
         }
         else

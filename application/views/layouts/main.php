@@ -18,7 +18,9 @@
     <script type="text/javascript">
         $.extend({
             configures: {
-                chatFriendsListUrl: '<?php echo Yii::app()->createUrl('chat/list'); ?>'
+                chatFriendsListUrl: '<?php echo Yii::app()->createUrl('chat/list'); ?>',
+                chatReceiveMessageUrl: '<?php echo Yii::app()->createUrl('chat/receive'); ?>',
+                chatRetrieveMessageUrl: '<?php echo Yii::app()->createUrl('chat/retrieve'); ?>'
             }
         });
         (function($)
