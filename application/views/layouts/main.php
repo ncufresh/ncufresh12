@@ -91,24 +91,24 @@
     <form class="profile" action="<?php echo Yii::app()->createUrl('site/login'); ?>" method="POST">
         <dl>
             <dt>
-                <label for="form-login-username">帳號</label>
+                <label for="form-sidebar-username">帳號</label>
             </dt>
             <dd>
-                <input id="form-login-username" name="login[username]" type="text" />
+                <input id="form-sidebar-username" name="login[username]" type="text" />
             </dd>
         </dl>
         <dl>
             <dt>
-                <label for="form-login-password">密碼</label>
+                <label for="form-sidebar-password">密碼</label>
             </dt>
             <dd>
-                <input id="form-login-password" name="login[password]" type="password" />
+                <input id="form-sidebar-password" name="login[password]" type="password" />
             </dd>
         </dl>
         <div>
             <input name="token" value="<?php echo Yii::app()->security->getToekn(); ?>" type="hidden" />
-            <button id="form-login-button" type="submit">[登入]</button>
-            <button id="form-register-button">[註冊]</button>
+            <button id="form-sidebar-login" type="submit">[登入]</button>
+            <button id="form-sidebar-register">[註冊]</button>
         </div>
     </form>
 <?php else : ?>

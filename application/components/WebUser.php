@@ -18,12 +18,12 @@ class WebUser extends CWebUser
     {
         switch ( strtolower($operation) )
         {
-        case 'admin':
-            return $this->getIsAdmin();
-        case 'member':
-            return $this->getIsMember();
-        case 'guest':
-            return $this->getIsGuest();
+            case 'admin':
+                return $this->getIsAdmin();
+            case 'member':
+                return $this->getIsMember();
+            case 'guest':
+                return $this->getIsGuest();
         }
         return parent::checkAccess($operation, $params, $allowCaching);
     }
