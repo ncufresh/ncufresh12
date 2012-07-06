@@ -23,7 +23,7 @@ class Security extends CApplicationComponent
         {
             $token = Yii::app()->session['token'];
             unset(Yii::app()->session['token']);
-            if ( $token !== $_POST['token'] )
+            if ( ! isset($_POST['token']) || $token !== $_POST['token'] )
             {
                 if ( YII_DEBUG )
                 {

@@ -1,7 +1,14 @@
+body,
+input,
+textarea
+{
+    font-size: 16px;
+    font-family: "微軟正黑體", Arial, sans-serif;
+}
+
 body
 {
     background: #DCE4ED url('header.png') repeat-x;
-    font-family: "微軟正黑體", Arial, sans-serif;
     margin: 0 auto;
     width: 1000px;
 }
@@ -37,12 +44,26 @@ form dd
     margin-top: -26px;
 }
 
+form input,
+form textarea
+{
+    font-size: 0.85em;
+}
+
 form input
 {
     -webkit-border-radius: 5px;
     border: none;
     border-radius: 5px;
     height: 16px;
+    padding: 4px 8px;
+}
+
+form textarea
+{
+    -webkit-border-radius: 5px;
+    border: none;
+    border-radius: 5px;
     padding: 4px 8px;
 }
 
