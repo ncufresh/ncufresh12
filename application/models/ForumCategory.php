@@ -15,6 +15,7 @@ class ForumCategory extends CActiveRecord
     public function relations()
     {
         return array(
+			'article_categories' => array(self::MANY_MANY, 'ForumArticleCategory', 'forum_forum2category(fid, cid)'),
         );
     }
 	
