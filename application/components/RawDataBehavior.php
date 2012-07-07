@@ -4,7 +4,38 @@ class RawDataBehavior extends CActiveRecordBehavior
 {
     public $reloadAfterSave = true;
 
-    private $_old_attributes = array();
+    private $_raws = array();
+
+    public function isAnyChanged()
+    {
+        if ( empty($this->_raws) ) return false;
+
+        $changed_attribute_counts = count(array_diff(
+            $this->owner->attributes,
+            $this->_raws
+        ));
+        return $changed_attribute_counts > 0;
+    }
+
+    public function isChanged($attribute) {
+        if (
+            array_key_exists($attribute, $this->_raws)
+         && array_key_exists($attribute, $this->owner->attributes)
+        )
+        {
+            return $this->_raws[$attribute] != $this->owner->$attribute;
+        }
+        return false;
+    }
+
+    public function getRawValue($attribute)
+    {
+        if ( array_key_exists($attribute, $this->_raws) )
+        {
+            return $this->_raws[$attribute];
+        }
+        return null;
+    }
 
     public function afterFind($event)
     {
@@ -18,40 +49,12 @@ class RawDataBehavior extends CActiveRecordBehavior
         if ( $this->reloadAfterSave ) $this->getAttributesFromOwner();
     }
 
-    public function isAttributesChanged()
-    {
-        if ( empty($this->_old_attributes) ) return false;
-
-        $number_of_changed_attributes = count(array_diff($this->owner->attributes, $this->_old_attributes));
-        return $number_of_changed_attributes > 0;
-    }
-
-    public function isAttributeChanged($attribute) {
-        if (
-            array_key_exists($attribute, $this->_old_attributes)
-         && array_key_exists($attribute, $this->owner->attributes)
-        )
-        {
-            return $this->_old_attributes[$attribute] != $this->owner->$attribute;
-        }
-        return false;
-    }
-
-    public function getOldAttributeValue($attribute)
-    {
-        if ( array_key_exists($attribute, $this->_old_attributes) )
-        {
-            return $this->_old_attributes[$attribute];
-        }
-        return null;
-    }
-
     protected function getAttributesFromOwner()
     {
-        $this->_old_attributes = array();
+        $this->_raws = array();
         foreach ( $this->owner->attributes as $name => $value )
         {
-            $this->_old_attributes[$name] = $value;
+            $this->_raws[$name] = $value;
         }
     }
 }

@@ -11,7 +11,7 @@ class User extends CActiveRecord
 
     public function tableName()
     {
-        return 'users';
+        return '{{users}}';
     }
 
     public function rules()
@@ -120,8 +120,8 @@ class User extends CActiveRecord
             else
             {
                 $this->is_admin = $this->is_admin ? 1 : 0;
-                $this->created = $this->getOldAttributeValue('created');
-                $this->register_ip = $this->getOldAttributeValue('register_ip');
+                $this->created = $this->getRawValue('created');
+                $this->register_ip = $this->getRawValue('register_ip');
             }
             $this->updated = TIMESTAMP;
             $this->last_login_ip = $this->ip2long($this->getClientIP());

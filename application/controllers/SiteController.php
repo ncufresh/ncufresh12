@@ -14,13 +14,8 @@ class SiteController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('index', 'error'),
+                'actions'   => array('index', 'error', 'search', 'keep', 'login'),
                 'users'     => array('*')
-            ),
-            array(
-                'allow',
-                'actions'   => array('login'),
-                'users'     => array('?')
             ),
             array(
                 'allow',
@@ -75,6 +70,14 @@ class SiteController extends Controller
         ));
     }
 
+    public function actionSearch($query)
+    {
+        $this->setPageTitle(Yii::app()->name . ' - 搜尋結果');
+        $this->render('search', array(
+            'query'     => $query
+        ));
+    }
+
     /**
      * This is the action to handle external exceptions.
      */
@@ -82,14 +85,25 @@ class SiteController extends Controller
     {
         if ( $error = Yii::app()->errorHandler->error )
         {
-            if ( Yii::app()->request->isAjaxRequest )
+            if ( Yii::app()->request->getIsAjaxRequest() )
             {
                 echo $error['message'];
             }
             else
             {
                 $this->setPageTitle(Yii::app()->name . ' - 發生錯誤');
-                $this->render('error', $error);
+                switch ( $error['code'] )
+                {
+                    case 403 :
+                        Yii::app()->user->loginRequired();
+                        break;
+                    case 404 :
+                        $this->render('notfound', $error);
+                        break;
+                    default :
+                        $this->render('error', $error);
+                        break;
+                }
             }
         }
     }
@@ -119,7 +133,7 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
-        Yii::app()->user->logout();
+        Yii::app()->user->logout(false);
         $this->redirect(Yii::app()->homeUrl);
     }
 }

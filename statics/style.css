@@ -1,7 +1,14 @@
+body,
+input,
+textarea
+{
+    font-size: 16px;
+    font-family: "微軟正黑體", Arial, sans-serif;
+}
+
 body
 {
     background: #DCE4ED url('header.png') repeat-x;
-    font-family: "微軟正黑體", Arial, sans-serif;
     margin: 0 auto;
     width: 1000px;
 }
@@ -37,12 +44,26 @@ form dd
     margin-top: -26px;
 }
 
+form input,
+form textarea
+{
+    font-size: 0.85em;
+}
+
 form input
 {
     -webkit-border-radius: 5px;
     border: none;
     border-radius: 5px;
     height: 16px;
+    padding: 4px 8px;
+}
+
+form textarea
+{
+    -webkit-border-radius: 5px;
+    border: none;
+    border-radius: 5px;
     padding: 4px 8px;
 }
 
@@ -55,6 +76,17 @@ form label
 {
     color: #474747;
     position: relative;
+}
+
+a
+{
+    color: #5C5C5C;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: #7C7C7C;
 }
 
 #logo
@@ -73,7 +105,7 @@ form label
 
 #header .statics
 {
-    margin: 15px 0 0 320px;
+    margin: 15px 0 0 280px;
     position: absolute;
 }
 
@@ -85,12 +117,12 @@ form label
     line-height: 20px;
     margin: 0;
     padding: 0 0 0 85px;
-    width: 15px;
+    width: 45px;
 }
 
 #search
 {
-    margin: 8px 0 0 560px;
+    margin: 8px 0 0 580px;
     position: absolute;
     height: 90px;
     width: 220px;
@@ -98,7 +130,8 @@ form label
 
 #search input
 {
-    width: 200px;
+    padding-right: 30px;
+    width: 174px;
 }
 
 #search button
@@ -149,7 +182,6 @@ form label
 #tab a
 {
     color: #414141;
-    text-decoration: none;
 }
 
 #navigation
@@ -176,7 +208,6 @@ form label
 {
     color: #210530;
     font-weight: bolder;
-    text-decoration: none;
 }
 
 #navigation a:hover
@@ -186,7 +217,7 @@ form label
 
 #content
 {
-    margin-right: 200px;
+    margin: 0 225px 0 25px;
     min-height: 360px;
     overflow: hidden;
 }
@@ -233,17 +264,7 @@ form label
     width: 55px;
 }
 
-#form-login-button
-{
-    background: url('login.png');
-}
-
-#form-register-button
-{
-    background: url('register.png');
-}
-
-#sidebar .sidebar_box
+#sidebar .sidebar-box
 {
     -webkit-border-radius: 10px;
     background: #EEF2F6;
@@ -253,7 +274,7 @@ form label
     padding: 5px;
 }
 
-#sidebar .sidebar_box h4
+#sidebar .sidebar-box h4
 {
     -webkit-border-radius: 10px;
     background: #DCE4ED;
@@ -261,6 +282,16 @@ form label
     margin: 0;
     padding: 5px;
     text-align: center;
+}
+
+#form-sidebar-login
+{
+    background: url('login.png');
+}
+
+#form-sidebar-register
+{
+    background: url('register.png');
 }
 
 #footer
@@ -284,10 +315,137 @@ form label
 #chat
 {
     background: url('chat.png') 0 5px no-repeat;
+    bottom: 0;
+    cursor: pointer;
     height: 120px;
     margin: -120px 0 0 830px;
-    position: absolute;
+    position: fixed;
     width: 160px;
+}
+
+#chat .online-friends
+{
+    margin: 40px 0 0 85px;
+    position: absolute;
+    text-align: center;
+}
+
+#chat .friendcounts:before
+{
+    content: '\A';
+    white-space: pre;
+}
+
+#chatlist
+{
+    -webkit-border-radius: 10px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    bottom: -10px;
+    height: 0;
+    margin: -120px 0 0 830px;
+    opacity: 0.7;
+    padding: 5px;
+    position: fixed;
+    width: 160px;
+}
+
+#chatlist img
+{
+    border: 2px solid #000000;
+    height: 35px;
+    float: left;
+    margin: 3px;
+    width: 35px;
+}
+
+#chatlist p
+{
+    margin-left: 50px;
+}
+
+#chatlist .friend-list-entry
+{
+    height: 45px;
+    line-height: 45px;
+}
+
+#chatlist .friend-list-entry:hover
+{
+    background: #EEEEEE;
+    cursor: pointer;
+}
+
+.chat-dialog
+{
+    -webkit-border-radius: 10px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    bottom: -10px;
+    float: left;
+    height: 200px;
+    margin-right: 10px;
+    opacity: 0.7;
+    padding: 5px;
+    position: fixed;
+    width: 160px;
+}
+
+#result
+{
+    margin: 0 auto;
+}
+
+#result .gs-title
+{
+    text-decoration: none;
+}
+
+#result a.gs-title:link,
+#result a.gs-title:visited
+{
+    color: #5C5C5C;
+}
+
+#result a.gs-title:hover
+{
+    color: #7C7C7C;
+}
+
+#result .gs-snippet
+{
+    text-indent: 2em;
+}
+
+#result .gsc-above-wrapper-area,
+#result .gsc-result
+{
+    border-bottom: 3px solid #FFFFFF;
+}
+
+#result .gsc-cursor-box
+{
+    margin: 15px;
+}
+
+#result .gsc-cursor-page
+{
+    border: 3px solid #5C5C5C;
+    height: 25px;
+    padding: 5px;
+    width: 25px;
+}
+
+#result .gsc-cursor-page:hover
+{
+    border: 3px solid #7C7C7C;
+    background: #5C5C5C;
+    color: #FFFFFF;
+}
+
+#result .gsc-cursor-current-page
+{
+    border: 3px solid #7C7C7C;
 }
 
 #marquee
@@ -330,19 +488,19 @@ form label
     position: absolute;
 }
 
-#index_calendar
+#index-calendar
 {
     float: left;
     width: 30%;
 }
 
-#index_container
+#index-container
 {
     float: right;
     width: 70%;
 }
 
-.index_box
+.index-box
 {
     -webkit-border-radius: 10px;
     background: #CBD3E6;
@@ -352,7 +510,7 @@ form label
     width: 49%;
 }
 
-.index_box h4
+.index-box h4
 {
     height: 25px;
     margin: 5px;
@@ -360,46 +518,46 @@ form label
     width: 80px;
 }
 
-.index_box table
+.index-box table
 {
     width: 100%;
 }
 
-.index_box td
+.index-box td
 {
     padding: 5px;
     width: 85%;
 }
 
-.index_box td.time
+.index-box td.time
 {
     text-align: right;
     width: 15%;
 }
 
-.index_box tfoot
+.index-box tfoot
 {
     text-align: right;
 }
 
-.index_latest_box
+.index-latest-box
 {
     clear: left;
     float: left;
 }
 
-.index_latest_box h4
+.index-latest-box h4
 {
     background: url('index_latest_icon.png') no-repeat;
 }
 
-.index_forums_box
+.index-forums-box
 {
     clear: right;
     float: right;
 }
 
-.index_forums_box h4
+.index-forums-box h4
 {
     background: url('index_forums_icon.png') no-repeat;
 }
@@ -407,4 +565,119 @@ form label
 #news-window
 {
 	display: none;
+}
+
+#mm-container
+{
+}
+#mm-sidebar
+{
+	width: 25%;
+	float: left;
+}
+#mm-menu
+{
+	width: 100%;
+	height: 400px;
+	background: white;
+	overflow: hidden;
+}
+
+#mm-menu button
+{
+	border: 0;
+	margin: 0;
+	padding: 0;
+	background: none;
+	position: absolute;
+	color: black;
+	width: 200px;
+	height: 50px;
+	background: white;
+	opacity: 0;
+	z-index: 1000;
+}
+
+#mm-menu #mm-menu-items
+{
+	margin-top: 0;
+}
+
+#mm-menu button:hover
+{
+	opacity: 0.9;
+	cursor: pointer;
+}
+
+#mm-menu button.mm-menu-up
+{
+	
+}
+
+#mm-menu button.mm-menu-down
+{
+	margin-top: 350px;
+}
+#mm-menu a
+{
+	display: block;
+	width: 200px;
+	height: 150px;
+	display: block;
+	text-decoration: none;
+	opacity: 1;
+}
+
+#mm-menu a:hover
+{
+	opacity: 0.8;
+}
+
+#mm-menu a span
+{
+	color: white;
+	position: relative;
+	height: 16px;
+	display:block;
+	margin-bottom: -16px;	
+	top: 134px;
+	left: 0;
+	text-align: right;
+	background: black;
+	opacity: 0.5;
+}
+
+#mm-menu a img
+{
+	width: 100%;
+	height: 100%;
+}
+#mm-player
+{
+	width: 100%;
+	height: 200px;
+	background: blue;
+}
+#mm-content
+{
+	width: 75%;
+	float: left;
+}
+#mm-video
+{
+	width: 100%;
+	height: 400px;
+	background: url(loading.gif) no-repeat black 225px 125px;
+}
+#mm-video-frame
+{
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+#mm-introduction
+{
+	width: 100%;
+	height: 200px;
+	background: gray;
 }

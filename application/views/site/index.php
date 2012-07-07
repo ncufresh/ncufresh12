@@ -1,5 +1,5 @@
-<div id="index_calendar">行事曆</div>
-<div id="index_container">
+<div id="index-calendar">行事曆</div>
+<div id="index-container">
     <ul id="marquee">
         <span></span>
 <?php foreach ( $marquees as $marquee ) : ?>
@@ -7,7 +7,7 @@
 <?php endforeach; ?>
         <a href="<?php echo $this->createUrl('site/marquee'); ?>" title="編輯">編輯</a>
     </ul>
-    <div class="index_latest_box index_box">
+    <div class="index-latest-box index-box">
         <h4>最新消息</h4>
         <table>
             <tbody>
@@ -31,7 +31,7 @@
             </tfoot>
         </table>
     </div>
-    <div class="index_forums_box index_box">
+    <div class="index-forums-box index-box">
         <h4>最新論壇</h4>
         <table>
             <tbody>
