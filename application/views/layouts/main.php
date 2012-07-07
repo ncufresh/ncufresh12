@@ -25,15 +25,6 @@
                 multimediaYoutubeUrl: '<?php echo Yii::app()->createUrl('multimedia/youtube', array('video_id' => ':id')); ?>'
             }
         });
-        (function($)
-        {
-            var keep = function()
-            {
-                $.get('<?php echo Yii::app()->createUrl('site/keep'); ?>');
-                setTimeout(arguments.callee, <?php echo Activity::STATE_UPDATE_TIMEOUT; ?> * 1000);
-            };
-            keep();
-        })(jQuery);
     </script>
 </head>
 

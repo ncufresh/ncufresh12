@@ -109,14 +109,6 @@ class SiteController extends Controller
     }
 
     /**
-     * Keep the user online
-     */
-    public function actionKeep()
-    {
-        $this->_data = false;
-    }
-
-    /**
      * Displays the login page
      */
     public function actionLogin()
