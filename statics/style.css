@@ -130,7 +130,8 @@ a:hover
 
 #search input
 {
-    width: 200px;
+    padding-right: 30px;
+    width: 174px;
 }
 
 #search button
@@ -212,6 +213,13 @@ a:hover
 #navigation a:hover
 {
     color: #FFFFFF;
+}
+
+#result
+{
+    display: none;
+    margin-right: 200px;
+    position: relative;
 }
 
 #content

@@ -12,6 +12,7 @@
     <?php echo CGoogleApi::init(); ?>
     <?php echo CHtml::script(CGoogleApi::load('jquery')); ?>
     <?php echo CHtml::script(CGoogleApi::load('jqueryui')); ?>
+    <?php echo CHtml::script(CGoogleApi::load('search')); ?>
 
     <title><?php echo $this->getPageTitle(); ?></title>
 
@@ -44,17 +45,16 @@
         <p class="online"><?php echo $this->getOnlineCount(); ?></p>
         <p class="browsered"><?php echo $this->getTotalCount(); ?></p>
     </div>
-    <form id="search" action="<?php echo Yii::app()->createUrl('site/search'); ?>" method="POST">
+    <form id="search" action="<?php echo Yii::app()->createUrl('site/search'); ?>" method="GET">
         <dl>
             <dt>
                 <label for="form-search-keywords">搜尋</label>
             </dt>
             <dd>
-                <input id="form-search-keywords" name="search[keywords]" type="text" />
+                <input id="form-search-keywords" name="query" type="text" />
             </dd>
         </dl>
         <div>
-            <input name="token" value="<?php echo Yii::app()->security->getToekn(); ?>" type="hidden" />
             <button id="form-search-button" type="submit">搜尋</button>
         </div>
     </form>
@@ -93,6 +93,7 @@
         </li>
     </ul>
 </div>
+<div id="result"></div>
 <div id="content"><?php echo $content; ?></div>
 <div id="sidebar">
 <?php if ( Yii::app()->user->getIsGuest() ) : ?>
@@ -140,6 +141,7 @@
         地址：32001桃園縣中壢市五權里2鄰中大路300號 | 電話：(03)422-7151#57261 | 版權所有：2012大一生活知訊網工作團隊
     </p>
 </div>
+
 <div id="chat">
     <p class="online-friends">
         線上好友<span class="friendcounts"><?php echo 999; // $this->getOnlineFriendsCount(); ?></span>人
