@@ -76,8 +76,8 @@
         {
             return this.each(function()
             {
-                var currentScrollPosition = 0;
-
+                var active = false;
+                var inside = false;
                 var options = $.extend({
                     scrollableClass:        false,
                     fadeInDuration:         'slow',
@@ -86,17 +86,25 @@
                 var scrollContainer = $('<div></div>')
                     .addClass('scroll-container')
                     .css({
-                        height: $(this).height() - 120,
-                        width: $(this).width()
+                        height: $(this).outerHeight(),
+                        width: $(this).outerWidth()
                     })
                     .mouseenter(function()
                     {
-                        scrollBar.stop(true, true)
+                        scrollBar
+                            .stop(true, true)
                             .fadeIn(options.fadeInDuration);
-                    }).mouseleave(function()
+                        inside = true;
+                    })
+                    .mouseleave(function()
                     {
-                        scrollBar.stop(true, true)
-                            .fadeOut(options.fadeInDuration);
+                        if ( ! active )
+                        {
+                            scrollBar
+                                .stop(true, true)
+                                .fadeOut(options.fadeInDuration);
+                        }
+                        inside = false;
                     })
                     .insertAfter($(this));
                 var scrollArea = $('<div></div>')
@@ -117,40 +125,56 @@
                     })
                     .mousedown(function(event)
                     {
+                        var y = event.screenY;
                         var scroll = $(this);
-                        var getPosition = function(event)
-                        {
-                            return event['pageY'] || (event['clientY'] + (document.documentElement['scrollTop'] || document.body['scrollTop'])) || 0;
-                        };
-                        var maximun = scrollArea.height() - scrollTrack.height();
-                        var original = getPosition(event) - $.integer(scroll.css('top'));
+                        var top = $.integer(scroll.css('top'));
                         var stop = function()
                         {
                             $('html')
                                 .unbind('mouseup', stop)
                                 .unbind('mousemove', update);
+                            if ( ! inside )
+                            {
+                                scrollBar.stop(true, true)
+                                    .fadeOut(options.fadeInDuration);
+                            }
+                            active = false;
                         };
                         var update = function(event)
                         {
-                            var maximun = scrollTrack.height() - scroll.height();
-                            var difference = getPosition(event) - $.integer(scroll.css('top')) - original;
-                            if ( difference <= 0 ) difference = 0;
-                            if ( difference >= maximun ) difference = maximun;
+                            var maximun = (
+                                scrollContainer.height()
+                              - scroll.height()
+                              );
+                            var position = top + event.screenY - y;
+                            var scale = (
+                                    scrollArea.height()
+                                  - scrollContainer.height()
+                                ) / (
+                                    scrollContainer.height()
+                                  - scroll.height()
+                                ) * -1;
+                            if ( position <= 0 ) position = 0;
+                            if ( position >= maximun ) position = maximun;
                             scroll.css({
-                                top: difference
+                                top: position
                             });
                             scrollArea.css({
-                                top: -1 * difference * scroll.height() / maximun
+                                top: position * scale
                             });
                         };
                         $('html')
                             .bind('mouseup', stop)
                             .bind('mouseleave', stop)
                             .bind('mousemove', update);
+                        active = true;
                         return false;
                     })
                     .appendTo(scrollTrack);
-                if ( options.scrollableClass ) scrollContainer.addClass(options.scrollableClass);
+                if ( options.scrollableClass )
+                {
+                    scrollContainer.addClass(options.scrollableClass);
+                }
             });
         },
         marquee: function(settings)
@@ -338,9 +362,6 @@
 
     $(document).ready(function()
     {
-        // For test use
-        $('.index-latest-box table').scrollable();
-
         if ( $('#header') ) $('#header').star();
 
         if ( $('#marquee') ) $('#marquee').marquee();
