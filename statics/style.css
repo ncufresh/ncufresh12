@@ -217,7 +217,7 @@ a:hover
 
 #content
 {
-    margin-right: 200px;
+    margin: 0 225px 0 25px;
     min-height: 360px;
     overflow: hidden;
 }
@@ -389,6 +389,63 @@ a:hover
     padding: 5px;
     position: fixed;
     width: 160px;
+}
+
+#result
+{
+    margin: 0 auto;
+}
+
+#result .gs-title
+{
+    text-decoration: none;
+}
+
+#result a.gs-title:link,
+#result a.gs-title:visited
+{
+    color: #5C5C5C;
+}
+
+#result a.gs-title:hover
+{
+    color: #7C7C7C;
+}
+
+#result .gs-snippet
+{
+    text-indent: 2em;
+}
+
+#result .gsc-above-wrapper-area,
+#result .gsc-result
+{
+    border-bottom: 3px solid #FFFFFF;
+}
+
+#result .gsc-cursor-box
+{
+    margin: 15px;
+}
+
+#result .gsc-cursor-page
+{
+    border: 3px solid #5C5C5C;
+    height: 25px;
+    padding: 5px;
+    width: 25px;
+}
+
+#result .gsc-cursor-page:hover
+{
+    border: 3px solid #7C7C7C;
+    background: #5C5C5C;
+    color: #FFFFFF;
+}
+
+#result .gsc-cursor-current-page
+{
+    border: 3px solid #7C7C7C;
 }
 
 #marquee

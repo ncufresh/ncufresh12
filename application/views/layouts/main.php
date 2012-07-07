@@ -45,17 +45,17 @@
         <p class="online"><?php echo $this->getOnlineCount(); ?></p>
         <p class="browsered"><?php echo $this->getTotalCount(); ?></p>
     </div>
-    <form id="search" action="<?php echo Yii::app()->createUrl('site/search'); ?>" method="GET">
+    <form id="search" action="<?php echo Yii::app()->createUrl('site/search'); ?>" method="GET" autocomplete="off">
         <dl>
             <dt>
-                <label for="form-search-keywords">搜尋</label>
+                <label for="form-search-query">搜尋</label>
             </dt>
             <dd>
-                <input id="form-search-keywords" name="query" type="text" />
+                <input id="form-search-query" name="query" type="text" />
             </dd>
         </dl>
         <div>
-            <button id="form-search-button">搜尋</button>
+            <button id="form-search-button" type="submit">搜尋</button>
         </div>
     </form>
     <ul id="tab">
