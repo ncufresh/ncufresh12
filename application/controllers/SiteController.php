@@ -14,7 +14,7 @@ class SiteController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('index', 'error', 'keep', 'login'),
+                'actions'   => array('index', 'error', 'search', 'keep', 'login'),
                 'users'     => array('*')
             ),
             array(
@@ -67,6 +67,14 @@ class SiteController extends Controller
         $this->setPageTitle(Yii::app()->name . ' - 跑馬燈管理');
         $this->render('marquee', array(
             'marquees'  => Marquee::model()->getMarquees()
+        ));
+    }
+
+    public function actionSearch($query)
+    {
+        $this->setPageTitle(Yii::app()->name . ' - 搜尋結果');
+        $this->render('search', array(
+            'query'     => $query
         ));
     }
 

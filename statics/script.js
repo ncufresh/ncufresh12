@@ -384,27 +384,6 @@
 		}).mouseleave(function(){
 			mmMenuScroll.mousein = false;
 		});
-
-        google.setOnLoadCallback(function() {
-            var options = new google.search.DrawOptions();
-            var control = new google.search.CustomSearchControl('011017124764723419863:mdibrr3n-py');
-            options.enableSearchResultsOnly();
-            control.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-            control.draw('result', options);
-
-            $('#search input').keyup(function()
-            {
-                if ( $(this).val() != '' )
-                {
-                    $('#result').slideDown();
-                    control.execute($(this).val());
-                }
-                else
-                {
-                    $('#result').slideUp();
-                }
-            });
-        }, true);
     });
 })(jQuery);
 

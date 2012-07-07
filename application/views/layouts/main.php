@@ -55,7 +55,7 @@
             </dd>
         </dl>
         <div>
-            <button id="form-search-button" type="submit">搜尋</button>
+            <button id="form-search-button">搜尋</button>
         </div>
     </form>
     <ul id="tab">
@@ -93,7 +93,6 @@
         </li>
     </ul>
 </div>
-<div id="result"></div>
 <div id="content"><?php echo $content; ?></div>
 <div id="sidebar">
 <?php if ( Yii::app()->user->getIsGuest() ) : ?>
