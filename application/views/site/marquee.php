@@ -108,7 +108,7 @@ jQuery(document).ready(function()
                 <form method="POST">
                     <input id="marquee-form-message" name="marquee[message]" type="text" />
                     <input name="token" value="<?php echo Yii::app()->security->getToekn(); ?>" type="hidden" />
-                    <input value="新增" type="submit" />
+                    <button type="submit">新增</button>
                 </form>
             </td>
         </tr>

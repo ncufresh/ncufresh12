@@ -60,6 +60,15 @@ form input
     padding: 4px 8px;
 }
 
+form button
+{
+    background: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    height: 24px;
+    padding: 4px 8px;
+}
+
 form textarea
 {
     -webkit-border-radius: 5px;
