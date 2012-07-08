@@ -72,6 +72,12 @@
     });
 
     $.fn.extend({
+        highlight: function(color, duration) {
+            var original = this.css('background-color');
+            this.stop().css("background-color", color || '#FFFF9C').animate({
+                backgroundColor: original
+            }, duration || 1000);
+        },
         scrollable: function(settings)
         {
             return this.each(function()
