@@ -10,6 +10,7 @@ body
 {
     background: #DCE4ED url('header.png') repeat-x;
     margin: 0 auto;
+    overflow-y: scroll;
     width: 1000px;
 }
 
@@ -186,7 +187,7 @@ a:hover
 
 #navigation
 {
-    background: url('navigation.png');
+    background: url('navigation.png') no-repeat;
     list-style: none;
     margin: 160px 0 0 0;
     overflow: hidden;
@@ -217,7 +218,7 @@ a:hover
 
 #content
 {
-    margin-right: 200px;
+    margin: 0 225px 0 25px;
     min-height: 360px;
     overflow: hidden;
 }
@@ -386,9 +387,68 @@ a:hover
     height: 200px;
     margin-right: 10px;
     opacity: 0.7;
+    overflow-x: hidden;
+    overflow-y: atuo;
     padding: 5px;
     position: fixed;
     width: 160px;
+}
+
+#result
+{
+    margin: 0 auto;
+}
+
+#result .gs-title
+{
+    text-decoration: none;
+}
+
+#result a.gs-title:link,
+#result a.gs-title:visited
+{
+    color: #5C5C5C;
+}
+
+#result a.gs-title:hover
+{
+    color: #7C7C7C;
+}
+
+#result .gs-snippet
+{
+    text-indent: 2em;
+}
+
+#result .gsc-above-wrapper-area,
+#result .gsc-result
+{
+    border-bottom: 3px solid #FFFFFF;
+}
+
+#result .gsc-cursor-box
+{
+    margin: 15px;
+}
+
+#result .gsc-cursor-page
+{
+    border: 3px solid #5C5C5C;
+    height: 25px;
+    padding: 5px;
+    width: 25px;
+}
+
+#result .gsc-cursor-page:hover
+{
+    border: 3px solid #7C7C7C;
+    background: #5C5C5C;
+    color: #FFFFFF;
+}
+
+#result .gsc-cursor-current-page
+{
+    border: 3px solid #7C7C7C;
 }
 
 #marquee
@@ -400,7 +460,7 @@ a:hover
     list-style: none;
     margin: 5px 0;
     overflow: hidden;
-    padding: 0 15px 0 45px;
+    padding: 0 60px 0 45px;
 }
 
 #marquee li
@@ -427,8 +487,9 @@ a:hover
     display: block;
     height: 30px;
     line-height: 30px;
-    margin: 0 0 0 470px;
+    margin: 0 0 0 430px;
     position: absolute;
+    width: 45px;
 }
 
 #index-calendar
@@ -468,7 +529,7 @@ a:hover
 
 .index-box td
 {
-    padding: 5px;
+    padding: 4px;
     width: 85%;
 }
 
@@ -520,17 +581,16 @@ a:hover
     display: none;
 }
 
-
-
-
 #mm-container
 {
 }
+
 #mm-sidebar
 {
-	width: 25%;
-	float: left;
+    width: 25%;
+    float: left;
 }
+
 #mm-menu
 {
 	width: 100%;
@@ -541,52 +601,48 @@ a:hover
 
 #mm-menu button
 {
-	border: 0;
-	margin: 0;
-	padding: 0;
-	background: none;
-	position: absolute;
-	color: black;
-	width: 200px;
-	height: 50px;
-	background: white;
-	opacity: 0;
-	z-index: 1000;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background: none;
+    position: absolute;
+    color: black;
+    width: 200px;
+    height: 50px;
+    background: white;
+    opacity: 0;
+    z-index: 1000;
 }
 
 #mm-menu #mm-menu-items
 {
-	margin-top: 0;
+    margin-top: 0;
 }
 
 #mm-menu button:hover
 {
-	opacity: 0.9;
-	cursor: pointer;
-}
-
-#mm-menu button.mm-menu-up
-{
-	
+    opacity: 0.9;
+    cursor: pointer;
 }
 
 #mm-menu button.mm-menu-down
 {
-	margin-top: 350px;
+    margin-top: 350px;
 }
+
 #mm-menu a
 {
-	display: block;
-	width: 200px;
-	height: 150px;
-	display: block;
-	text-decoration: none;
-	opacity: 1;
+    display: block;
+    width: 200px;
+    height: 150px;
+    display: block;
+    text-decoration: none;
+    opacity: 1;
 }
 
 #mm-menu a:hover
 {
-	opacity: 0.8;
+    opacity: 0.8;
 }
 
 #mm-menu a span
@@ -606,32 +662,37 @@ a:hover
 
 #mm-menu a img
 {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
+
 #mm-player
 {
-	width: 100%;
-	height: 200px;
-	background: blue;
+    width: 100%;
+    height: 200px;
+    background: blue;
 }
+
 #mm-content
 {
-	width: 75%;
-	float: left;
+    width: 75%;
+    float: left;
 }
+
 #mm-video
 {
-	width: 100%;
-	height: 400px;
-	background: url(loading.gif) no-repeat black 225px 125px;
+    width: 100%;
+    height: 400px;
+    background: url(loading.gif) no-repeat black 225px 125px;
 }
+
 #mm-video-frame
 {
-	border: 0;
-	padding: 0;
-	margin: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
 }
+
 #mm-introduction
 {
 	width: 100%;
@@ -652,4 +713,44 @@ a:hover
 	height: 100%;
 	float: left;
 
+}
+
+.scroll-container
+{
+    overflow: hidden;
+    position: relative;
+}
+
+.scroll-container .scroll-area
+{
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.scroll-container .scroll-bar
+{
+    /*display: none;*/
+    height: 100%;
+    right: 2px;
+    position: absolute;
+    top: 0;
+    width: 8px;
+}
+
+.scroll-container .scroll-track
+{
+    position: relative;
+    height: 100%;
+}
+
+.scroll-container .scroll-dragable
+{
+    -webkit-border-radius: 5px;
+    background: #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+    position: relative;
+    top: 0;
 }

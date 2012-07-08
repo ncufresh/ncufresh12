@@ -64,10 +64,125 @@
             }
 
             return null;
+        },
+        integer: function(value)
+        {
+            return parseInt(value, 10);
         }
     });
 
     $.fn.extend({
+        highlight: function(color, duration) {
+            var original = this.css('background-color');
+            this.stop().css("background-color", color || '#FFFF9C').animate({
+                backgroundColor: original
+            }, duration || 1000);
+        },
+        scrollable: function(settings)
+        {
+            return this.each(function()
+            {
+                var active = false;
+                var inside = false;
+                var options = $.extend({
+                    scrollableClass:        false,
+                    fadeInDuration:         'slow',
+                    fadeOutDuration:        'slow',
+                }, settings);
+                var scrollContainer = $('<div></div>')
+                    .addClass('scroll-container')
+                    .css({
+                        height: $(this).outerHeight(),
+                        width: $(this).outerWidth()
+                    })
+                    .mouseenter(function()
+                    {
+                        scrollBar
+                            .stop(true, true)
+                            .fadeIn(options.fadeInDuration);
+                        inside = true;
+                    })
+                    .mouseleave(function()
+                    {
+                        if ( ! active )
+                        {
+                            scrollBar
+                                .stop(true, true)
+                                .fadeOut(options.fadeInDuration);
+                        }
+                        inside = false;
+                    })
+                    .insertAfter($(this));
+                var scrollArea = $('<div></div>')
+                    .addClass('scroll-area')
+                    .insertBefore($(this))
+                    .wrapInner($(this))
+                    .appendTo(scrollContainer);
+                var scrollBar = $('<div></div>')
+                    .addClass('scroll-bar')
+                    .insertAfter(scrollArea);
+                var scrollTrack = $('<div></div>')
+                    .addClass('scroll-track')
+                    .appendTo(scrollBar);
+                var scrollDragable = $('<div></div>')
+                    .addClass('scroll-dragable')
+                    .css({
+                        height: scrollArea.height() - scrollContainer.height()
+                    })
+                    .mousedown(function(event)
+                    {
+                        var y = event.screenY;
+                        var scroll = $(this);
+                        var top = $.integer(scroll.css('top'));
+                        var stop = function()
+                        {
+                            $('html')
+                                .unbind('mouseup', stop)
+                                .unbind('mousemove', update);
+                            if ( ! inside )
+                            {
+                                scrollBar.stop(true, true)
+                                    .fadeOut(options.fadeInDuration);
+                            }
+                            active = false;
+                        };
+                        var update = function(event)
+                        {
+                            var maximun = (
+                                scrollContainer.height()
+                              - scroll.height()
+                              );
+                            var position = top + event.screenY - y;
+                            var scale = (
+                                    scrollArea.height()
+                                  - scrollContainer.height()
+                                ) / (
+                                    scrollContainer.height()
+                                  - scroll.height()
+                                ) * -1;
+                            if ( position <= 0 ) position = 0;
+                            if ( position >= maximun ) position = maximun;
+                            scroll.css({
+                                top: position
+                            });
+                            scrollArea.css({
+                                top: position * scale
+                            });
+                        };
+                        $('html')
+                            .bind('mouseup', stop)
+                            .bind('mouseleave', stop)
+                            .bind('mousemove', update);
+                        active = true;
+                        return false;
+                    })
+                    .appendTo(scrollTrack);
+                if ( options.scrollableClass )
+                {
+                    scrollContainer.addClass(options.scrollableClass);
+                }
+            });
+        },
         marquee: function(settings)
         {
             return this.each(function()
@@ -79,10 +194,7 @@
                 var items = $(this).children('li');
                 var animation = function()
                 {
-                    var position = parseInt(
-                        items.css('top'),
-                        10
-                    ) - items.height();
+                    var position = $.integer(items.css('top')) - items.height();
                     if ( position <= -1 * items.length * items.height() )
                     {
                         position = 0;
@@ -257,8 +369,6 @@
     $(document).ready(function()
     {
         if ( $('#header') ) $('#header').star();
-
-        if ( $('#marquee') ) $('#marquee').marquee();
 
         if ( $('#chat') ) $('#chat').chat();
 

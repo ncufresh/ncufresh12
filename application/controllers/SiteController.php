@@ -46,22 +46,45 @@ class SiteController extends Controller
 
     public function actionMarquee($id = 0)
     {
+        $id = (integer)$id;
         if ( isset($_POST['marquee']) )
         {
-            if ( $id )
+            if ( isset($_POST['marquee']['id']) )
             {
-                $model = Marquee::model()->findByPk($id);
+                $id = (integer)$_POST['marquee']['id'];
+            }
+
+            if ( isset($_POST['marquee']['message']) )
+            {
+                if ( $id )
+                {
+                    $model = Marquee::model()->findByPk($id);
+                }
+                else
+                {
+                    $model = new Marquee();
+                }
+                $model->attributes = $_POST['marquee'];
+
+                if ( $model->validate() && $model->save() )
+                {
+                    $this->_data['message'] = $model->message;
+                    $this->_data['token'] = Yii::app()->security->getToekn();
+                }
+                else
+                {
+                    $this->_data['error'] = true;
+                    $this->_data['token'] = Yii::app()->security->getToekn();
+                }
             }
             else
             {
-                $model = new Marquee();
+                $this->_data['error'] = true;
+                $this->_data['token'] = Yii::app()->security->getToekn();
             }
-            $model->attributes = $_POST['marquee'];
 
-            if ( $model->validate() && $model->save() )
-            {
-                $this->redirect(Yii::app()->user->returnUrl);
-            }
+            if ( Yii::app()->request->getIsAjaxRequest() ) return true;
+            $this->redirect(Yii::app()->user->returnUrl);
         }
 
         $this->setPageTitle(Yii::app()->name . ' - 跑馬燈管理');
@@ -106,14 +129,6 @@ class SiteController extends Controller
                 }
             }
         }
-    }
-
-    /**
-     * Keep the user online
-     */
-    public function actionKeep()
-    {
-        $this->_data = false;
     }
 
     /**
