@@ -4,6 +4,8 @@ defined('NCUFRESH2012') or die();
 
 $yii = dirname(__FILE__) . '/yii/yii.php';
 
+$facebook = dirname(__FILE__) . '/facebook/facebook.php';
+
 $ncufreshdb = array(
     'host'      => 'localhost',
     'port'      => 3306,

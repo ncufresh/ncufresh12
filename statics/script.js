@@ -1,11 +1,12 @@
-(function($)
+var execute = function($)
 {
     $.extend({
         random: function(min, max)
         {
             return Math.floor(Math.random() * (max - min + 1) + min);
         },
-        cookie: function(key, value, settings) {
+        cookie: function(key, value, settings)
+        {
             var options = $.extend({
             }, settings);
 
@@ -362,6 +363,13 @@
 
     $(document).ready(function()
     {
+        $('<script></script>')
+            .attr('id', 'facebook-jssdk')
+            .attr('async', 'async')
+            .attr('type', 'text/javascript')
+            .attr('src', '//connect.facebook.net/zh_TW/all.js')
+            .insertBefore($('script').first());
+
         if ( $('#header') ) $('#header').star();
 
         if ( $('#marquee') ) $('#marquee').marquee();
@@ -491,7 +499,17 @@
 			mmMenuScroll.mousein = false;
 		});
     });
-})(jQuery);
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId:      '263317567110789',
+            channelUrl: $.configures.facebookChannelUrl,
+            status:     true,
+            cookie:     true,
+            xfbml:      true
+        });
+    };
+};
 
 function mmMenuScroll(offset)
 {

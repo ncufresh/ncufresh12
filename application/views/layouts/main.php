@@ -9,21 +9,25 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/ie.css" media="screen, projection" />
     <![endif]-->
 
-    <?php echo CGoogleApi::init(); ?>
-    <?php echo CHtml::script(CGoogleApi::load('jquery')); ?>
-    <?php echo CHtml::script(CGoogleApi::load('jqueryui')); ?>
-    <?php echo CHtml::script(CGoogleApi::load('search')); ?>
-
     <title><?php echo $this->getPageTitle(); ?></title>
 
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
     <script type="text/javascript">
-        $.extend({
-            configures: {
-                chatFriendsListUrl: '<?php echo Yii::app()->createUrl('chat/list'); ?>',
-                chatReceiveMessageUrl: '<?php echo Yii::app()->createUrl('chat/receive', array('id' => ':id')); ?>',
-                chatRetrieveMessageUrl: '<?php echo Yii::app()->createUrl('chat/retrieve'); ?>',
-                multimediaYoutubeUrl: '<?php echo Yii::app()->createUrl('multimedia/youtube', array('video_id' => ':id')); ?>'
-            }
+        google.load('jquery', '1');
+        google.load('jqueryui', '1');
+        google.setOnLoadCallback(function()
+        {
+            jQuery.extend({
+                configures: {
+                    facebookChannelUrl: '<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>',
+                    chatFriendsListUrl: '<?php echo Yii::app()->createAbsoluteUrl('chat/list'); ?>',
+                    chatReceiveMessageUrl: '<?php echo Yii::app()->createAbsoluteUrl('chat/receive', array('id' => ':id')); ?>',
+                    chatRetrieveMessageUrl: '<?php echo Yii::app()->createAbsoluteUrl('chat/retrieve'); ?>',
+                    multimediaYoutubeUrl: '<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>'
+                }
+            });
+            execute(jQuery);
         });
     </script>
 </head>
@@ -137,5 +141,6 @@
         線上好友<span class="friendcounts"><?php echo 999; // $this->getOnlineFriendsCount(); ?></span>人
     </p>
 </div>
+<div id="fb-root"></div>
 </body>
 </html>
