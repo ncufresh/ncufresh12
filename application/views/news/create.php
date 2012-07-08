@@ -25,4 +25,7 @@
 <input class="news-cancel-button" type="button" value="取消" />
 <input name="token" value="<?php echo Yii::app()->security->getToekn(); ?>" type="hidden" />
 </form>
+<?php foreach($errors as $key => $error):?>
+    <b><?php echo $key . ':' .$error[0]; ?></b>
+<?php endforeach;?>
 <div class="news-dialog"></div>
