@@ -187,7 +187,7 @@ a:hover
 
 #navigation
 {
-    background: url('navigation.png');
+    background: url('navigation.png') no-repeat;
     list-style: none;
     margin: 160px 0 0 0;
     overflow: hidden;
