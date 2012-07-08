@@ -1,4 +1,3 @@
-<?php Yii::app()->clientScript->registerCoreScript('jquery.ui'); ?>
 <h2>新增文章</h2>
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('news/create')?>" method="post" class="MultiFile-intercepted">
 標題<input type="text" name="news[title]" /><br />

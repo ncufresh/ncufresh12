@@ -1,4 +1,3 @@
-<?php Yii::app()->clientScript->registerCoreScript('jquery.ui'); ?>
 <h1>管理最新消息</h1>
 <a href="<?php echo Yii::app()->createUrl('news/create') ;?>">新增文章</a><br />
 <table class="news-table">
