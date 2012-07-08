@@ -372,8 +372,6 @@ var execute = function($)
 
         if ( $('#header') ) $('#header').star();
 
-        if ( $('#marquee') ) $('#marquee').marquee();
-
         if ( $('#chat') ) $('#chat').chat();
 
         $('form input').each(function()

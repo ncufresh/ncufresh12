@@ -1,4 +1,3 @@
-<div id="result">載入搜尋結果中……</div>
 <script type="text/javascript">
 google.load('search', '1', {
      language: 'zh_TW'
@@ -13,3 +12,4 @@ google.setOnLoadCallback(function()
     control.execute('<?php echo $query; ?>');
 });
 </script>
+<div id="result">載入搜尋結果中……</div>
