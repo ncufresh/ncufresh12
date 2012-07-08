@@ -15,7 +15,7 @@ class ChatController extends Controller
             array(
                 'allow',
                 'actions'   => array('list', 'retrieve', 'receive', 'send'),
-                'users'     => array('@')
+                'users'     => array('*')
             ),
             array(
                 'deny',
