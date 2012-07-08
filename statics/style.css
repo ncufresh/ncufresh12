@@ -568,122 +568,121 @@ a:hover
 
 #news-window
 {
-	display: none;
+    display: none;
 }
 
-#mm-container
-{
-}
 #mm-sidebar
 {
-	width: 25%;
-	float: left;
+    width: 25%;
+    float: left;
 }
+
 #mm-menu
 {
-	width: 100%;
-	height: 400px;
-	background: white;
-	overflow: hidden;
+    width: 100%;
+    height: 400px;
+    background: white;
+    overflow: hidden;
 }
 
 #mm-menu button
 {
-	border: 0;
-	margin: 0;
-	padding: 0;
-	background: none;
-	position: absolute;
-	color: black;
-	width: 200px;
-	height: 50px;
-	background: white;
-	opacity: 0;
-	z-index: 1000;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background: none;
+    position: absolute;
+    color: black;
+    width: 200px;
+    height: 50px;
+    background: white;
+    opacity: 0;
+    z-index: 1000;
 }
 
 #mm-menu #mm-menu-items
 {
-	margin-top: 0;
+    margin-top: 0;
 }
 
 #mm-menu button:hover
 {
-	opacity: 0.9;
-	cursor: pointer;
-}
-
-#mm-menu button.mm-menu-up
-{
-	
+    opacity: 0.9;
+    cursor: pointer;
 }
 
 #mm-menu button.mm-menu-down
 {
-	margin-top: 350px;
+    margin-top: 350px;
 }
+
 #mm-menu a
 {
-	display: block;
-	width: 200px;
-	height: 150px;
-	display: block;
-	text-decoration: none;
-	opacity: 1;
+    display: block;
+    width: 200px;
+    height: 150px;
+    display: block;
+    text-decoration: none;
+    opacity: 1;
 }
 
 #mm-menu a:hover
 {
-	opacity: 0.8;
+    opacity: 0.8;
 }
 
 #mm-menu a span
 {
-	color: white;
-	position: relative;
-	height: 16px;
-	display:block;
-	margin-bottom: -16px;	
-	top: 134px;
-	left: 0;
-	text-align: right;
-	background: black;
-	opacity: 0.5;
+    color: white;
+    position: relative;
+    height: 16px;
+    display:block;
+    margin-bottom: -16px;    
+    top: 134px;
+    left: 0;
+    text-align: right;
+    background: black;
+    opacity: 0.5;
 }
 
 #mm-menu a img
 {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
+
 #mm-player
 {
-	width: 100%;
-	height: 200px;
-	background: blue;
+    width: 100%;
+    height: 200px;
+    background: blue;
 }
+
 #mm-content
 {
-	width: 75%;
-	float: left;
+    width: 75%;
+    float: left;
 }
+
 #mm-video
 {
-	width: 100%;
-	height: 400px;
-	background: url(loading.gif) no-repeat black 225px 125px;
+    width: 100%;
+    height: 400px;
+    background: url(loading.gif) no-repeat black 225px 125px;
 }
+
 #mm-video-frame
 {
-	border: 0;
-	padding: 0;
-	margin: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
 }
+
 #mm-introduction
 {
-	width: 100%;
-	height: 200px;
-	background: gray;
+    width: 100%;
+    height: 200px;
+    background: gray;
 }
 
 .scroll-container
