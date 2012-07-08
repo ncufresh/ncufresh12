@@ -32,7 +32,7 @@ jQuery(document).ready(function()
                         .text(response.message)
                         .replaceAll(object);
                     token = response.token;
-                    $('input[name=token]').val(token);
+                    $('input[name="token"]').val(token);
                     text.highlight();
                 }
             );

@@ -69,19 +69,17 @@ class SiteController extends Controller
                 if ( $model->validate() && $model->save() )
                 {
                     $this->_data['message'] = $model->message;
-                    $this->_data['token'] = Yii::app()->security->getToekn();
                 }
                 else
                 {
                     $this->_data['error'] = true;
-                    $this->_data['token'] = Yii::app()->security->getToekn();
                 }
             }
             else
             {
                 $this->_data['error'] = true;
-                $this->_data['token'] = Yii::app()->security->getToekn();
             }
+            $this->_data['token'] = Yii::app()->security->getToekn();
 
             if ( Yii::app()->request->getIsAjaxRequest() ) return true;
             $this->redirect(Yii::app()->user->returnUrl);
