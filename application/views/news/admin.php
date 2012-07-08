@@ -31,4 +31,4 @@
 <?php endif; ?>
 </ul>
 <a class="news-back-link" href="#">返回</a>
-<div id="news-dialog"></div>
+<div class="news-dialog"></div>

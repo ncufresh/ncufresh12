@@ -20,4 +20,4 @@
 <input class="news-cancel-button" type="button" value="取消" />
 <input name="token" value="<?php echo Yii::app()->security->getToekn(); ?>" type="hidden" />
 </form>
-<div id="news-dialog"></div>
+<div class="news-dialog"></div>

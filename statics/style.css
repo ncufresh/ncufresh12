@@ -505,10 +505,23 @@ a:hover
     background: url('index_forums_icon.png') no-repeat;
 }
 
-#news-window
+.news-dialog-warp
 {
-	display: none;
+	background: white;
 }
+
+.ui-dialog
+{
+    position: absolute;
+}
+
+.news-dialog
+{
+    display: none;
+}
+
+
+
 
 #mm-container
 {
@@ -522,7 +535,7 @@ a:hover
 {
 	width: 100%;
 	height: 400px;
-	background: white;
+	background: skyblue;
 	overflow: hidden;
 }
 
@@ -588,6 +601,7 @@ a:hover
 	text-align: right;
 	background: black;
 	opacity: 0.5;
+	padding: 0 8px 0 0;
 }
 
 #mm-menu a img
@@ -623,4 +637,19 @@ a:hover
 	width: 100%;
 	height: 200px;
 	background: gray;
+}
+#mm-introduction .text
+{
+	width: 65%;
+	height: 100%;
+	background: red;
+	float: left;
+}
+#mm-introduction .pic
+{
+	background: yellow;
+	width: 35%;	
+	height: 100%;
+	float: left;
+
 }

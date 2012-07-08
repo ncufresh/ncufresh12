@@ -305,58 +305,46 @@
 
         $(".news-cancel-button").click(function()
         {
-            var yes = '<a class="dialog-yes" href="#">是</a>';
-            var no = '<a class="dialog-no" href="#">否</a>';
-            var dialog = $('#news-dialog');
-            dialog.dialog();
-            dialog.html('確定取消編輯此篇文章？<br />' + yes + no);
-            $('.dialog-yes').click(function()
-            {
-                history.back();
-                return false;
-            });
-            $('.dialog-no').click(function()
-            {
-                dialog.dialog('close');
-                return false;
-            });
-            
-            $('#news-window').dialog();
+            var dialog = $('.news-dialog');
+            dialog.text('確定取消編輯此篇文章？')
+                .dialog({
+                    buttons: { 
+                        "是": function(){ location = $.configures.newsAdminUrl; }, 
+                        "否": function() {dialog.dialog('close');}
+                    },
+                    dialogClass: 'news-dialog-warp',
+                });      
             return false;
         });
 
         $('.news-delete-link').click(function()
         {
-            var link = $(this).attr('href');
-            var yes = '<a class="dialog-yes" href="#">是</a>';
-            var no = '<a class="dialog-no" href="#">否</a>';
-            var dialog = $('#news-dialog');
-            dialog.dialog();
-            dialog.html('確定刪除此篇文章？<br />' + yes + no);
-            $('.dialog-yes').click(function()
-            {
-                location.href = link;
-                return false;
-            });
-            $('.dialog-no').click(function()
-            {
-                dialog.dialog('close');
-                return false;
-            });
-
-            $('#news-window').dialog();
+			var link = $(this).attr('href');
+            var dialog = $('.news-dialog');
+            dialog.text('確定刪除此篇文章？')
+                .dialog({
+                    buttons: { 
+                        "是": function(){ location = link }, 
+                        "否": function() {dialog.dialog('close');}
+                    },
+                    dialogClass: 'news-dialog-warp',
+                });   
             return false;
         });
 		
 		$('.news-back-link').click(function()
 		{
-			history.back();
+			window.location = decodeURIComponent($.configures.newsIndexUrl);
 			return false;
 		});
 		
 		$('#mm-menu a').each(function(index, element){
-			$(this).html('<span>'+$(this).text()+'</span>');
-			$(this).append('<img src="http://img.youtube.com/vi/' + $(this).attr('href').substr(1) + '/0.jpg" />')
+            var youtube_img_src = 'http://img.youtube.com/vi/:id/0.jpg';
+            var video_img_id = $(this).attr('href').substr(1);
+            var video_title = $('<span></span>').text($(this).text());
+            var video_img = $('<img />')
+                .attr('src', youtube_img_src.replace(':id', video_img_id));
+            $(this).html(video_title).append(video_img);
 		});
 		
 		$('#mm-menu-items').css('height', $('#mm-menu a').length * 150);
@@ -368,19 +356,21 @@
 			return false;
 		});
 		$('#mm-menu a').eq($.random(0, $('#mm-menu a').length - 1)).click();
-		
+        
+        var srcoll_offset = 10;
 		mmMenuScroll.margin_top_max = 0;
 		mmMenuScroll.margin_top_min = parseInt($('#mm-menu').css('height')) - parseInt($('#mm-menu-items').css('height'));
+        
 		$('.mm-menu-up').mouseenter(function(){
 			mmMenuScroll.mousein = true;
-			mmMenuScroll(+10);
+			mmMenuScroll(srcoll_offset);
 		}).mouseleave(function(){
 			mmMenuScroll.mousein = false;
 		});	
-		
+        
 		$('.mm-menu-down').mouseenter(function(){
 			mmMenuScroll.mousein = true;
-			mmMenuScroll(-10);
+			mmMenuScroll(-1 * srcoll_offset);
 		}).mouseleave(function(){
 			mmMenuScroll.mousein = false;
 		});
@@ -417,8 +407,6 @@ function mmMenuScroll(offset)
 	else
 		return;
 }
-
-
 
 function checkFileSize(name)
 {
@@ -467,11 +455,30 @@ function createNewsUrl()
 
     if ( news_url=='' || news_url_alias == '' ) return false;
 
-    var link = '<div id="news-url-row-' + counter + '"><a id="news-url-link-' + counter + '" href="' + news_url + '">' + news_url_alias + '</a><a id="news-url-delete-' + counter + '" href="#">x</a></div>';
-    var input = '<input id="news-url-data-' + counter + '" type="text" name="news[news_urls][]" value="' + news_url + '" /><input id="news-url-alias-data-' + counter + '" type="text" name="news[news_urls_alias][]" value="' + news_url_alias + '" />';
+	var row = $('<div></div>')
+				.attr('id', 'news-url-row-' + counter);
+	var link = $('<a></a>')
+				.attr('id', 'news-url-link-' + counter )
+				.attr('href', news_url)
+				.append(news_url_alias);
+	var delete_link = $('<a></a>')
+				.attr('id', 'news-url-delete-' + counter )
+				.attr('href', '#')
+				.append('x');
+	row.append(delete_link).append(link)
 
-    $('#news-url-result').append(link);
-    $('#news-url-data-warp').append(input);
+	var url_input = $('<input />')
+        .attr( 'id', 'news-url-data-' + counter )
+        .attr( 'type', 'text')
+        .attr( 'name', 'news[news_urls][]')
+        .attr( 'value', news_url );
+	var url_alias_input = $('<input />')
+        .attr( 'id', 'news-url-alias-data-' + counter )
+        .attr( 'type', 'text')
+        .attr( 'name', 'news[news_urls_alias][]')
+        .attr( 'value', news_url_alias );
+    $('#news-url-result').append(row);
+    $('#news-url-data-warp').append(url_input).append(url_alias_input);
     $('#news-url-delete-' + counter).click(function()
     {
         deleteNewsUrl(counter);
@@ -479,7 +486,6 @@ function createNewsUrl()
     });
     $('#news-url-input').val('');
     $('#news-url-alias-input').val('');
-
     createNewsUrl.counter++;
 }
 
