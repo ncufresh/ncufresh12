@@ -1,6 +1,6 @@
 <h1><?php echo $news->title; ?></h1>
 <p>作者:<?php echo $news->author->username;?></p>
-<p>時間:<?php echo date('Y/m/d', $news->updated )?></p>
+<p>時間:<?php echo $news->updated; ?></p>
 <?php if(Yii::app()->user->isAdmin):?>
 <a href="<?php echo Yii::app()->createUrl('news/update', array('id' => $news->id));?>">編輯文章</a>
 <?php endif;?>
