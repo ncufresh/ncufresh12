@@ -14,7 +14,7 @@ class SiteController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('index', 'error', 'search', 'keep', 'login'),
+                'actions'   => array('index', 'error', 'search', 'pull', 'login'),
                 'users'     => array('*')
             ),
             array(
@@ -89,6 +89,18 @@ class SiteController extends Controller
         $this->render('marquee', array(
             'marquees'  => Marquee::model()->getMarquees()
         ));
+    }
+
+    public function actionPull($lasttime = 0)
+    {
+        $id = Yii::app()->user->getId() ?: 0;
+
+        $this->_data['chat']['messages'] = Chat::model()->getMessages(
+            (integer)$id,
+            (integer)$lasttime
+        );
+
+        $this->_data['lasttime'] = TIMESTAMP;
     }
 
     public function actionSearch($query)

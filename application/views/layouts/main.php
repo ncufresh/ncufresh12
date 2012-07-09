@@ -19,6 +19,7 @@
     <script type="text/javascript">
         $.extend({
             configures: {
+                pullUrl: decodeURIComponent('<?php echo Yii::app()->createUrl('site/pull'); ?>'),
                 chatFriendsListUrl: '<?php echo Yii::app()->createUrl('chat/list'); ?>',
                 chatReceiveMessageUrl: '<?php echo Yii::app()->createUrl('chat/receive', array('id' => ':id')); ?>',
                 chatRetrieveMessageUrl: '<?php echo Yii::app()->createUrl('chat/retrieve'); ?>',
