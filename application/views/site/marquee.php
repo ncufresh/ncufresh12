@@ -1,8 +1,6 @@
 <script type="text/javascript">
 jQuery(document).ready(function()
 {
-    var token = '<?php echo Yii::app()->security->getToekn(); ?>';
-
     var submitAllChanges = function()
     {
         return jQuery('.marquee-message-edit').each(function()
@@ -17,7 +15,7 @@ jQuery(document).ready(function()
                         id: id,
                         message: jQuery(this).val(),
                     },
-                    token: token
+                    token: $.configures.token
                 },
                 function(response)
                 {
@@ -31,8 +29,7 @@ jQuery(document).ready(function()
                         .addClass('marquee-message-text')
                         .text(response.message)
                         .replaceAll(object);
-                    token = response.token;
-                    $('input[name="token"]').val(token);
+                    $.configures.token = response.token;
                     text.highlight();
                 }
             );
@@ -69,7 +66,7 @@ jQuery(document).ready(function()
                 {
                     id: id
                 },
-                token: token
+                token: $.configures.token
             },
             function(response)
             {
@@ -107,7 +104,6 @@ jQuery(document).ready(function()
             <td colspan="5">
                 <form method="POST">
                     <input id="marquee-form-message" name="marquee[message]" type="text" />
-                    <input name="token" value="<?php echo Yii::app()->security->getToekn(); ?>" type="hidden" />
                     <button type="submit">新增</button>
                 </form>
             </td>

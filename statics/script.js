@@ -265,6 +265,7 @@
         },
         chat: function(settings)
         {
+            var lasttime = 0;
             var options = $.extend({
                 speed:                  500,
                 chatListHeight:         200,
@@ -329,11 +330,38 @@
                 });
                 if ( ! dialog )
                 {
+                    var url = decodeURIComponent(
+                            $.configures.chatSendMessageUrl
+                        )
+                    var token = '';
+                    var input = $('<input></input>');
+                    var form = $('<form></form>')
+                        .submit(function()
+                        {
+                            $.post(
+                                url,
+                                {
+                                    chat:
+                                    {
+                                        receiver_id: dialog.attr('chat:id'),
+                                        message: input.val()
+                                    },
+                                    lasttime: lasttime,
+                                    token: $.configures.token
+                                },
+                                function(response)
+                                {
+                                    $.configures.token = response.token;
+                                }
+                            );
+                            return false;
+                        })
+                        .append(input);
                     dialog = $('<div></div>')
                         .attr('chat:id', id)
                         .addClass(options.chatDialogClass)
                         .insertBefore(list);
-                    dialog.css({
+                    dialog.append(form).css({
                         left: left - dialog.outerWidth(true) * $('.' + options.chatDialogClass).length
                     });
                 }
@@ -342,16 +370,22 @@
             (function()
             {
                 var url = decodeURIComponent($.configures.chatRetrieveMessageUrl);
-                $.getJSON(url, function(response)
+                $.getJSON(url,
                 {
-                    for ( var key in response )
+                    lasttime: lasttime
+                }, function(response)
+                {
+                    lasttime = response.lasttime;
+                    for ( var key in response.messages )
                     {
-                        var data = response[key];
+                        var data = response.messages[key];
                         var dialog = openChatDialog(data.id);
-                        dialog.html(dialog.html() + '<br />' + data.sender + ':' + data.message);
+                        var message = $('<p></p>')
+                            .text(data.sender + ':' + data.message)
+                            .appendTo(dialog);
                     }
                 });
-                setTimeout(arguments.callee, 3000);
+                setTimeout(arguments.callee, 5000);
                 return true;
             })();
             return this.each(function()

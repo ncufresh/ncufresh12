@@ -80,10 +80,7 @@ class Activity extends CActiveRecord
     {
         if ( parent::beforeSave() )
         {
-            if ( $this->getIsNewRecord() )
-            {
-                $this->uuid = md5(uniqid(mt_rand() . TIMESTAMP . rand(), true));
-            }
+            if ( $this->getIsNewRecord() ) $this->uuid = $this->uuid();
             $this->id = Yii::app()->user->getId() ?: 0;
             $this->ip = $this->ip2long($this->getClientIP());
             $this->timestamp = TIMESTAMP;

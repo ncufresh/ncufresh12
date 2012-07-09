@@ -51,4 +51,9 @@ class Helper extends CBehavior
         }
         return implode('.', $ip);
     }
+
+    function uuid()
+    {
+        return md5(uniqid('NCUFRESH2012' . mt_rand() . TIMESTAMP, true));
+    }
 }

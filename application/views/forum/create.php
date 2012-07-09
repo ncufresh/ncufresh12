@@ -20,5 +20,5 @@
 <input type="submit" value="發佈" />
 
 <input class="news-cancel-button" type="button" value="取消" />
-<input type="hidden" name="token" value="<?php echo Yii::app()->security->getToekn(); ?>" />
+<input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
 </form>
