@@ -34,12 +34,12 @@ class ChatController extends Controller
             ),
             array(
                 'id'        => 2,
-                'name'      => 'Test 2',
+                'name'      => 'Demodemo',
                 'icon'      => null
             ),
             array(
                 'id'        => 3,
-                'name'      => 'Test 3',
+                'name'      => 'Adminadmin',
                 'icon'      => null
             )
         );
@@ -52,21 +52,25 @@ class ChatController extends Controller
 
     public function actionRetrieve()
     {
-        $id = Yii::app()->user->getId() ?: 0;
-        $this->_data = Chat::model()->getNewMessages((integer)$id);
+        // $id = Yii::app()->user->getId() ?: 0;
+        $this->_data = Chat::model()->getNewMessages();
     }
 
     public function actionSend()
     {
-        // NOTE: $_POST['chat'] consists of sender_id, receiver_id, and message.
+        //NOTE: $_POST['chat'] consists of sender_id, receiver_id, and message.
         $id = Yii::app()->user->id ?: 0;
         if ( Yii::app()->request->isPostRequest )
         {
             $model = new Chat();
-            $model->attributes = $_POST['chat'];
+            $model->receiver_id = $_POST['chat']['receiver_id'];
+            $model->sender_id = $id;
+            $model->message = $_POST['chat']['message'];
             if ( $model->validate() && $model->save() )
             {
-                $this->_data['messages'] = Chat::model()->getNewMessages($id);
+                $this->_data['message'] = $_POST['chat']['message'];
+                $this->_data['token'] = Yii::app()->security->getToekn();
+                $this->_data['me'] = $model->sender->username;
             }
         }
         else

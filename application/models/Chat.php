@@ -80,7 +80,8 @@ class Chat extends CActiveRecord
         return $data;
     }
 
-    public function getNewMessages($id)
+    // public function getNewMessages($id)
+    public function getNewMessages()
     {
         $data = array();
         $lasttime = Yii::app()->session['chatlasttime'];
@@ -88,9 +89,10 @@ class Chat extends CActiveRecord
         $criteria = new CDbCriteria();
         $criteria->select = 'sender_id, message, timestamp';
         $criteria->order = 'timestamp ASC';
-        $criteria->condition = 'sender_id = :sender OR receiver_id = :receiver';
+        // $criteria->condition = 'sender_id = :sender OR receiver_id = :receiver';
+        $criteria->condition = 'receiver_id = :receiver';
         $criteria->params = array(
-            ':sender'   => $id,
+            // ':sender'   => $id,
             ':receiver' => Yii::app()->user->getId()
         );
 
@@ -98,7 +100,7 @@ class Chat extends CActiveRecord
         {
             if ( $entry->timestamp <= $lasttime ) continue;
             $data[] = array(
-                'id'        => $id,
+                'id'        => $entry->sender->id,
                 'sender'    => $entry->sender->username ?: 'Unknown',
                 'message'   => $entry->message,
                 'timestamp' => $entry->timestamp
@@ -117,7 +119,10 @@ class Chat extends CActiveRecord
 
     protected function beforeSave()
     {
-        if ( $this->getIsNewRecord() ) $this->timestamp = TIMESTAMP;
+        if ( $this->getIsNewRecord() ){
+            $this->uuid = md5(uniqid(mt_rand(), true));
+            $this->timestamp = TIMESTAMP;
+        }
         return parent::beforeSave();
     }
 }

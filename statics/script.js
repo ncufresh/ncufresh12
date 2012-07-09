@@ -270,6 +270,8 @@
                 chatListHeight:         200,
                 chatListId:             'chatlist',
                 chatDialogClass:        'chat-dialog',
+                chatDisplayClass:       'chat-display',
+                chatInputClass:         'chat-input',
                 unknownIcon:            'unknown.png'
             }, settings);
             var list = $('<div></div>')
@@ -313,6 +315,8 @@
             var openChatDialog = function(id)
             {
                 var dialog;
+                var display;
+                var char_input;
                 var left = list.position().left
                          + list.outerWidth(true)
                          - list.innerWidth();
@@ -336,9 +340,51 @@
                     dialog.css({
                         left: left - dialog.outerWidth(true) * $('.' + options.chatDialogClass).length
                     });
+                    display = $('<div></div>')
+                        .addClass(options.chatDisplayClass)
+                        .appendTo( dialog ); 
+                    char_input = $('<input />')
+                        .addClass(options.chatInputClass)
+                        .appendTo( dialog ).keydown(function(event)
+                        {
+                            if(event.which==13)
+                            {
+                                sendMessage(id, $(this).val());
+                                $(this).val('');
+                            }
+                        });
+                      
+                    
                 }
                 return dialog;
-            };  
+            };
+            var sendMessage = function(id, message)
+            {  
+                $.ajax({
+                    url: $.configures.chatSendMessageUrl,
+                    type: 'POST',
+                    data: {
+                        chat: {
+                            receiver_id: id,
+                            message: message,
+                        },
+                        token: $.configures.chatToken,
+                    },
+                    dataType: 'json',
+                    success: function(response)
+                    {
+                        $.configures.chatToken = response.token;
+                        var dialog = openChatDialog(id);
+                        var display = dialog.children('.'+options.chatDisplayClass);
+                        display.html(display.html() + '<br />' + response.me + ':' + response.message);
+                    },
+                    error: function(request)
+                    {
+                        alert(request.responseText);
+                    },
+                });
+                
+            };
             (function()
             {
                 var url = decodeURIComponent($.configures.chatRetrieveMessageUrl);
@@ -348,7 +394,8 @@
                     {
                         var data = response[key];
                         var dialog = openChatDialog(data.id);
-                        dialog.html(dialog.html() + '<br />' + data.sender + ':' + data.message);
+                        var display = dialog.children('.'+options.chatDisplayClass);
+                        display.html(display.html() + '<br />' + data.sender + ':' + data.message);
                     }
                 });
                 setTimeout(arguments.callee, 3000);
