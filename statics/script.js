@@ -265,6 +265,7 @@
         },
         chat: function(settings)
         {
+            var lasttime = 0;
             var options = $.extend({
                 speed:                  500,
                 chatListHeight:         200,
@@ -316,7 +317,7 @@
             {
                 var dialog;
                 var display;
-                var char_input;
+                var input;
                 var left = list.position().left
                          + list.outerWidth(true)
                          - list.innerWidth();
@@ -343,62 +344,60 @@
                     display = $('<div></div>')
                         .addClass(options.chatDisplayClass)
                         .appendTo( dialog ); 
-                    char_input = $('<input />')
+                    input = $('<input />')
                         .addClass(options.chatInputClass)
                         .appendTo( dialog ).keydown(function(event)
                         {
                             if(event.which==13)
                             {
-                                sendMessage(id, $(this).val());
-                                $(this).val('');
+                                var message = input.val();
+                                $.ajax({
+                                    url: $.configures.chatSendMessageUrl,
+                                    type: 'post',
+                                    data: {
+                                        chat: {
+                                            receiver_id: id,
+                                            message: message,
+                                        },
+                                        token: $.configures.token,
+                                        lasttime: lasttime,
+                                    },
+                                    dataType: 'json',
+                                    success: function(response)
+                                    {
+                                        $.configures.token = response.token;
+                                    },
+                                    error: function(request)
+                                    {
+                                        alert(request.responseText);
+                                    },
+                                });
+                                input.val('');
                             }
                         });
                 }
                 return dialog;
             };
-            var sendMessage = function(id, message)
-            {  
-                $.ajax({
-                    url: $.configures.chatSendMessageUrl,
-                    type: 'POST',
-                    data: {
-                        chat: {
-                            receiver_id: id,
-                            message: message,
-                        },
-                        token: $.configures.chatToken,
-                    },
-                    dataType: 'json',
-                    success: function(response)
-                    {
-                        $.configures.chatToken = response.token;
-                        var dialog = openChatDialog(id);
-                        var display = dialog.children('.'+options.chatDisplayClass);
-                        display.html(display.html() + '<br />' + response.me + ':' + response.message);
-                        display.stop().animate({ scrollTop: display[0].scrollHeight }, 1000);
-                    },
-                    error: function(request)
-                    {
-                        alert(request.responseText);
-                    },
-                });
-                
-            };
             (function()
             {
                 var url = decodeURIComponent($.configures.chatRetrieveMessageUrl);
-                $.getJSON(url, function(response)
+                $.getJSON(url,
                 {
-                    for ( var key in response )
+                    lasttime: lasttime
+                }, function(response)
+                {
+                    lasttime = response.lasttime;
+                    for ( var key in response.messages )
                     {
-                        var data = response[key];
-                        var dialog = openChatDialog(data.id);
+                        
+                        var data = response.messages[key];
+                        var dialog = data.sender_id==response.me?openChatDialog(data.receiver_id):openChatDialog(data.sender_id);
                         var display = dialog.children('.'+options.chatDisplayClass);
                         display.html(display.html() + '<br />' + data.sender + ':' + data.message);
                         display.stop().animate({ scrollTop: display[0].scrollHeight }, 1000);
                     }
                 });
-                setTimeout(arguments.callee, 3000);
+                setTimeout(arguments.callee, 5000);
                 return true;
             })();
             return this.each(function()

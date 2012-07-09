@@ -45,22 +45,33 @@ class ChatController extends Controller
         );
     }
 
-    public function actionReceive($id)
-    {
-        $this->_data['messages'] = Chat::model()->getAllMessages((integer)$id);
-    }
+    // public function actionReceive($id)
+    // {
+        // $this->_data['messages'] = Chat::model()->getAllMessages((integer)$id);
+    // }
 
-    public function actionRetrieve()
+    public function actionRetrieve($lasttime = 0)
     {
-        // $id = Yii::app()->user->getId() ?: 0;
-        $this->_data = Chat::model()->getNewMessages();
+        $id = Yii::app()->user->getId() ?: 0;
+
+        if ( isset($_GET['lasttime']) )
+        {
+            $this->_data['messages'] = Chat::model()->getMessages(
+                (integer)$id,
+                (integer)$lasttime
+            );
+            $this->_data['me'] = Yii::app()->user->getId();
+            $this->_data['lasttime'] = TIMESTAMP;
+            return true;
+        }
+        $this->_data['error'] = true;
     }
 
     public function actionSend()
     {
-        //NOTE: $_POST['chat'] consists of sender_id, receiver_id, and message.
-        $id = Yii::app()->user->id ?: 0;
-        if ( Yii::app()->request->isPostRequest )
+        // NOTE: $_POST['chat'] consists of sender_id, receiver_id, and message.
+        $id = Yii::app()->user->getId() ?: 0;
+        if ( Yii::app()->request->getIsPostRequest() )
         {
             $model = new Chat();
             $model->receiver_id = $_POST['chat']['receiver_id'];
@@ -68,14 +79,15 @@ class ChatController extends Controller
             $model->message = $_POST['chat']['message'];
             if ( $model->validate() && $model->save() )
             {
-                $this->_data['message'] = $_POST['chat']['message'];
-                $this->_data['token'] = Yii::app()->security->getToekn();
-                $this->_data['me'] = $model->sender->username;
+                $this->_data['messages'] = Chat::model()->getMessages(
+                    (integer)$id,
+                    (integer)$_POST['lasttime']
+                );
+                
             }
+            $this->_data['token'] = Yii::app()->security->getToken();
+            return true;
         }
-        else
-        {
-            $this->_data['errors'][] = '發生錯誤！';
-        }
+        $this->_data['errors'][] = '發生錯誤！';
     }
 }

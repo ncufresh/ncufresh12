@@ -79,7 +79,7 @@ class SiteController extends Controller
             {
                 $this->_data['error'] = true;
             }
-            $this->_data['token'] = Yii::app()->security->getToekn();
+            $this->_data['token'] = Yii::app()->security->getToken();
 
             if ( Yii::app()->request->getIsAjaxRequest() ) return true;
             $this->redirect(Yii::app()->user->returnUrl);

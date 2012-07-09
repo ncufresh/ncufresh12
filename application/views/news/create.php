@@ -23,6 +23,6 @@
 )); ?>
 <input type="submit" value="發佈" />
 <input class="news-cancel-button" type="button" value="取消" />
-<input name="token" value="<?php echo Yii::app()->security->getToekn(); ?>" type="hidden" />
+<input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
 </form>
 <div class="news-dialog"></div>

@@ -12,6 +12,20 @@ class Chat extends CActiveRecord
         return '{{chat_queues}}';
     }
 
+    public function behaviors()
+    {
+        return array(
+            'Helper'
+        );
+    }
+
+    public function rules()
+    {
+        return array(
+            array('receiver_id, message', 'required')
+        );
+    }
+
     public function relations()
     {
         return array(
@@ -28,12 +42,12 @@ class Chat extends CActiveRecord
         );
     }
 
-    public function getAllMessages($id)
+    public function getMessages($id, $lasttime)
     {
         $data = array();
 
         $criteria = new CDbCriteria();
-        $criteria->select = 'sender_id, message, timestamp';
+        $criteria->select = 'sender_id, receiver_id, message, timestamp';
         $criteria->order = 'timestamp ASC';
         $criteria->condition = 'sender_id = :sender OR receiver_id = :receiver';
         $criteria->params = array(
@@ -43,72 +57,27 @@ class Chat extends CActiveRecord
 
         foreach ( $this->findAll($criteria) as $entry )
         {
-            $data[] = array(
-                'sender'    => $entry->sender->username ?: 'Unknown',
-                'message'   => $entry->message,
-                'timestamp' => $entry->timestamp
-            );
-        }
-
-        return $data;
-    }
-
-    public function getRecentMessages($id)
-    {
-        $data = array();
-        // $timestamp = 0;
-
-        $criteria = new CDbCriteria();
-        $criteria->select = 'sender_id, message, timestamp';
-        $criteria->order = 'timestamp ASC';
-        $criteria->condition = 'sender_id = :id OR receiver_id = :id';
-        $criteria->params = array(
-            ':id'       => $id
-        );
-
-        foreach ( $this->findAll($criteria) as $entry )
-        {
-            // if ( $timestamp === 0 ) $timestamp = $entry->timestamp;
-            $data[] = array(
-                'sender'    => $entry->sender->username ?: 'Unknown',
-                'message'   => $entry->message,
-                'timestamp' => $entry->timestamp
-            );
-        }
-
-        // $data = $this->getNewMessages();
-        return $data;
-    }
-
-    // public function getNewMessages($id)
-    public function getNewMessages()
-    {
-        $data = array();
-        $lasttime = Yii::app()->session['chatlasttime'];
-
-        $criteria = new CDbCriteria();
-        $criteria->select = 'sender_id, message, timestamp';
-        $criteria->order = 'timestamp ASC';
-        // $criteria->condition = 'sender_id = :sender OR receiver_id = :receiver';
-        $criteria->condition = 'receiver_id = :receiver';
-        $criteria->params = array(
-            // ':sender'   => $id,
-            ':receiver' => Yii::app()->user->getId()
-        );
-
-        foreach ( $this->findAll($criteria) as $entry )
-        {
             if ( $entry->timestamp <= $lasttime ) continue;
             $data[] = array(
-                'id'        => $entry->sender->id,
-                'sender'    => $entry->sender->username ?: 'Unknown',
-                'message'   => $entry->message,
-                'timestamp' => $entry->timestamp
+                'sender_id'   => $entry->sender_id,
+                'receiver_id' => $entry->receiver_id,
+                'sender'      => $entry->sender ? $entry->sender->username : 'Unknown',
+                'message'     => $entry->message,
+                'timestamp'   => $entry->timestamp
             );
         }
-
-        Yii::app()->session['chatlasttime'] = TIMESTAMP;
         return $data;
+    }
+
+    // public function getRecentMessages($id)
+    // {
+        // return $this->getMessages($id, 0);
+    // }
+
+
+    public function getAllMessages($id)
+    {
+        return $this->getMessages($id, 0);
     }
 
     protected function afterFind()
@@ -119,8 +88,10 @@ class Chat extends CActiveRecord
 
     protected function beforeSave()
     {
-        if ( $this->getIsNewRecord() ){
-            $this->uuid = md5(uniqid(mt_rand(), true));
+        if ( $this->getIsNewRecord() )
+        {
+            $this->uuid = $this->uuid();
+            $this->sender_id = Yii::app()->user->getId();
             $this->timestamp = TIMESTAMP;
         }
         return parent::beforeSave();
