@@ -353,8 +353,6 @@
                                 $(this).val('');
                             }
                         });
-                      
-                    
                 }
                 return dialog;
             };
@@ -377,6 +375,7 @@
                         var dialog = openChatDialog(id);
                         var display = dialog.children('.'+options.chatDisplayClass);
                         display.html(display.html() + '<br />' + response.me + ':' + response.message);
+                        display.stop().animate({ scrollTop: display[0].scrollHeight }, 1000);
                     },
                     error: function(request)
                     {
@@ -396,6 +395,7 @@
                         var dialog = openChatDialog(data.id);
                         var display = dialog.children('.'+options.chatDisplayClass);
                         display.html(display.html() + '<br />' + data.sender + ':' + data.message);
+                        display.stop().animate({ scrollTop: display[0].scrollHeight }, 1000);
                     }
                 });
                 setTimeout(arguments.callee, 3000);
@@ -504,7 +504,7 @@
             $(this).html(video_title).append(video_img);
 		});
 		
-		$('#mm-menu-items').css('height', $('#mm-menu a').length * 150);
+		$('#mm-menu-items').css('height', $('#mm-menu a').length * $('#mm-menu a').first().css('height'));
 		
 		$('#mm-menu a').click(function(){
             var url = decodeURIComponent($.configures.multimediaYoutubeUrl)
