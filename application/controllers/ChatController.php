@@ -34,12 +34,12 @@ class ChatController extends Controller
             ),
             array(
                 'id'        => 2,
-                'name'      => 'Test 2',
+                'name'      => 'Demodemo',
                 'icon'      => null
             ),
             array(
                 'id'        => 3,
-                'name'      => 'Test 3',
+                'name'      => 'Adminadmin',
                 'icon'      => null
             )
         );
@@ -60,6 +60,7 @@ class ChatController extends Controller
                 (integer)$id,
                 (integer)$lasttime
             );
+            $this->_data['me'] = Yii::app()->user->getId();
             $this->_data['lasttime'] = TIMESTAMP;
             return true;
         }
@@ -73,13 +74,16 @@ class ChatController extends Controller
         if ( Yii::app()->request->getIsPostRequest() )
         {
             $model = new Chat();
-            $model->attributes = $_POST['chat'];
+            $model->receiver_id = $_POST['chat']['receiver_id'];
+            $model->sender_id = $id;
+            $model->message = $_POST['chat']['message'];
             if ( $model->validate() && $model->save() )
             {
                 $this->_data['messages'] = Chat::model()->getMessages(
                     (integer)$id,
                     (integer)$_POST['lasttime']
                 );
+                
             }
             $this->_data['token'] = Yii::app()->security->getToken();
             return true;

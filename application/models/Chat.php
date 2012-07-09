@@ -47,7 +47,7 @@ class Chat extends CActiveRecord
         $data = array();
 
         $criteria = new CDbCriteria();
-        $criteria->select = 'sender_id, message, timestamp';
+        $criteria->select = 'sender_id, receiver_id, message, timestamp';
         $criteria->order = 'timestamp ASC';
         $criteria->condition = 'sender_id = :sender OR receiver_id = :receiver';
         $criteria->params = array(
@@ -59,10 +59,11 @@ class Chat extends CActiveRecord
         {
             if ( $entry->timestamp <= $lasttime ) continue;
             $data[] = array(
-                'id'        => $id,
-                'sender'    => $entry->sender->username ?: 'Unknown',
-                'message'   => $entry->message,
-                'timestamp' => $entry->timestamp
+                'sender_id'   => $entry->sender_id,
+                'receiver_id' => $entry->receiver_id,
+                'sender'      => $entry->sender ? $entry->sender->username : 'Unknown',
+                'message'     => $entry->message,
+                'timestamp'   => $entry->timestamp
             );
         }
         return $data;
@@ -72,6 +73,7 @@ class Chat extends CActiveRecord
     // {
         // return $this->getMessages($id, 0);
     // }
+
 
     public function getAllMessages($id)
     {

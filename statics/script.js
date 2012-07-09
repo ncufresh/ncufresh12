@@ -271,6 +271,8 @@
                 chatListHeight:         200,
                 chatListId:             'chatlist',
                 chatDialogClass:        'chat-dialog',
+                chatDisplayClass:       'chat-display',
+                chatInputClass:         'chat-input',
                 unknownIcon:            'unknown.png'
             }, settings);
             var list = $('<div></div>')
@@ -314,6 +316,8 @@
             var openChatDialog = function(id)
             {
                 var dialog;
+                var display;
+                var input;
                 var left = list.position().left
                          + list.outerWidth(true)
                          - list.innerWidth();
@@ -330,43 +334,50 @@
                 });
                 if ( ! dialog )
                 {
-                    var url = decodeURIComponent(
-                            $.configures.chatSendMessageUrl
-                        )
-                    var token = '';
-                    var input = $('<input></input>');
-                    var form = $('<form></form>')
-                        .submit(function()
-                        {
-                            $.post(
-                                url,
-                                {
-                                    chat:
-                                    {
-                                        receiver_id: dialog.attr('chat:id'),
-                                        message: input.val()
-                                    },
-                                    lasttime: lasttime,
-                                    token: $.configures.token
-                                },
-                                function(response)
-                                {
-                                    $.configures.token = response.token;
-                                }
-                            );
-                            return false;
-                        })
-                        .append(input);
                     dialog = $('<div></div>')
                         .attr('chat:id', id)
                         .addClass(options.chatDialogClass)
                         .insertBefore(list);
-                    dialog.append(form).css({
+                    dialog.css({
                         left: left - dialog.outerWidth(true) * $('.' + options.chatDialogClass).length
                     });
+                    display = $('<div></div>')
+                        .addClass(options.chatDisplayClass)
+                        .appendTo( dialog ); 
+                    input = $('<input />')
+                        .addClass(options.chatInputClass)
+                        .appendTo( dialog ).keydown(function(event)
+                        {
+                            if(event.which==13)
+                            {
+                                var message = input.val();
+                                $.ajax({
+                                    url: $.configures.chatSendMessageUrl,
+                                    type: 'post',
+                                    data: {
+                                        chat: {
+                                            receiver_id: id,
+                                            message: message,
+                                        },
+                                        token: $.configures.token,
+                                        lasttime: lasttime,
+                                    },
+                                    dataType: 'json',
+                                    success: function(response)
+                                    {
+                                        $.configures.token = response.token;
+                                    },
+                                    error: function(request)
+                                    {
+                                        alert(request.responseText);
+                                    },
+                                });
+                                input.val('');
+                            }
+                        });
                 }
                 return dialog;
-            };  
+            };
             (function()
             {
                 var url = decodeURIComponent($.configures.chatRetrieveMessageUrl);
@@ -378,11 +389,12 @@
                     lasttime = response.lasttime;
                     for ( var key in response.messages )
                     {
+                        
                         var data = response.messages[key];
-                        var dialog = openChatDialog(data.id);
-                        var message = $('<p></p>')
-                            .text(data.sender + ':' + data.message)
-                            .appendTo(dialog);
+                        var dialog = data.sender_id==response.me?openChatDialog(data.receiver_id):openChatDialog(data.sender_id);
+                        var display = dialog.children('.'+options.chatDisplayClass);
+                        display.html(display.html() + '<br />' + data.sender + ':' + data.message);
+                        display.stop().animate({ scrollTop: display[0].scrollHeight }, 1000);
                     }
                 });
                 setTimeout(arguments.callee, 5000);
@@ -491,7 +503,7 @@
             $(this).html(video_title).append(video_img);
 		});
 		
-		$('#mm-menu-items').css('height', $('#mm-menu a').length * 150);
+		$('#mm-menu-items').css('height', $('#mm-menu a').length * $('#mm-menu a').first().css('height'));
 		
 		$('#mm-menu a').click(function(){
             var url = decodeURIComponent($.configures.multimediaYoutubeUrl)
