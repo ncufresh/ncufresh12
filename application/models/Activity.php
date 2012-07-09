@@ -84,7 +84,7 @@ class Activity extends CActiveRecord
             {
                 $this->uuid = md5(uniqid(mt_rand() . TIMESTAMP . rand(), true));
             }
-            $this->id = Yii::app()->user->id ?: 0;
+            $this->id = Yii::app()->user->getId() ?: 0;
             $this->ip = $this->ip2long($this->getClientIP());
             $this->timestamp = TIMESTAMP;
             return true;

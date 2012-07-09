@@ -61,9 +61,10 @@ class Chat extends CActiveRecord
         $criteria = new CDbCriteria();
         $criteria->select = 'sender_id, message, timestamp';
         $criteria->order = 'timestamp ASC';
-        $criteria->condition = 'sender_id = :id OR receiver_id = :id';
+        $criteria->condition = 'sender_id = :sender OR receiver_id = :id';
         $criteria->params = array(
-            ':id'       => $id
+            ':sender'   => $id,
+            ':receiver' => Yii::app()->user->getId()
         );
 
         foreach ( $this->findAll($criteria) as $entry )

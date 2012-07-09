@@ -59,7 +59,7 @@ class ChatController extends Controller
     public function actionSend()
     {
         // NOTE: $_POST['chat'] consists of sender_id, receiver_id, and message.
-        $id = Yii::app()->user->id ?: 0;
+        $id = Yii::app()->user->getId() ?: 0;
         if ( Yii::app()->request->isPostRequest )
         {
             $model = new Chat();
