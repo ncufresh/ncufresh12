@@ -20,11 +20,13 @@
         {
             jQuery.extend({
                 configures: {
-                    facebookChannelUrl: '<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>',
-                    chatFriendsListUrl: '<?php echo Yii::app()->createAbsoluteUrl('chat/list'); ?>',
-                    chatReceiveMessageUrl: '<?php echo Yii::app()->createAbsoluteUrl('chat/receive', array('id' => ':id')); ?>',
-                    chatRetrieveMessageUrl: '<?php echo Yii::app()->createAbsoluteUrl('chat/retrieve'); ?>',
-                    multimediaYoutubeUrl: '<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>'
+                    pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
+                    facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
+                    chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
+                    multimediaYoutubeUrl: '<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
+                    newsIndexUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>',
+                    newsAdminUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/admin'); ?>',
+                    token: '<?php echo Yii::app()->security->getToken(); ?>'
                 }
             });
             execute(jQuery);
@@ -75,7 +77,7 @@
             <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="校園導覽">校園導覽</a>
         </li>
         <li>
-            <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="論壇專區">論壇專區</a>
+            <a href="<?php echo Yii::app()->createUrl('forum/index'); ?>" title="論壇專區">論壇專區</a>
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="系所社團">系所社團</a>
@@ -109,7 +111,7 @@
             </dd>
         </dl>
         <div>
-            <input name="token" value="<?php echo Yii::app()->security->getToekn(); ?>" type="hidden" />
+            <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
             <button id="form-sidebar-login" type="submit">[登入]</button>
             <button id="form-sidebar-register">[註冊]</button>
         </div>

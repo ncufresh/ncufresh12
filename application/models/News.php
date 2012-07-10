@@ -19,6 +19,13 @@ class News extends CActiveRecord
 		);
 	}
 	
+    public function behaviors()
+    {
+        return array(
+            'RawDataBehavior',
+        );
+    }
+    
     public function relations()
     {
         return array(
@@ -27,6 +34,17 @@ class News extends CActiveRecord
         );
     }
 
+    public function getPopularNews($num)
+    {
+        $news = $this->getPage(1,$num,true);
+        foreach($news as $each)
+        {
+            $each->updated = Yii::app()->format->date($each->getRawValue('updated'));
+            $each->created = Yii::app()->format->date($each->getRawValue('created'));
+        }
+        return $news;
+    }
+    
     public function getPage($page, $entriesPerPage, $desc = false)
     {
         $criteria = new CDbCriteria();
@@ -66,9 +84,9 @@ class News extends CActiveRecord
     public function getCurrentPage( $entriesPerPage, $desc = false )
     {
 		if( $desc )
-			return ceil( $this->count('updated >= ' . $this->updated . ' AND invisible=0')/$entriesPerPage );
+			return ceil( $this->count('updated >= ' . $this->getRawValue('updated') . ' AND invisible=0')/$entriesPerPage );
 		else
-			return ceil( $this->count('updated <= ' . $this->updated . ' AND invisible=0')/$entriesPerPage );
+			return ceil( $this->count('updated <= ' . $this->getRawValue('updated') . ' AND invisible=0')/$entriesPerPage );
     }
 
     public function getUrl()
@@ -100,5 +118,12 @@ class News extends CActiveRecord
         else
             return false;
         
+    }
+    
+    public function afterFind()
+    {
+        parent::afterFind();
+        $this->created = Yii::app()->format->datetime($this->created);
+        $this->updated = Yii::app()->format->datetime($this->updated);
     }
 }

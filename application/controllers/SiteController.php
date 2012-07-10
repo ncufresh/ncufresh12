@@ -14,7 +14,7 @@ class SiteController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('index', 'error', 'search', 'keep', 'login', 'channel'),
+                'actions'   => array('index', 'error', 'search', 'pull', 'login', 'channel'),
                 'users'     => array('*')
             ),
             array(
@@ -38,7 +38,7 @@ class SiteController extends Controller
     {
         $this->setPageTitle(Yii::app()->name);
         $this->render('index', array(
-            'latests'   => News::model()->getPage(1, 10, true),
+            'latests'   => News::model()->getPopularNews(10),
             'articles'   => array(),
             'marquees'  => Marquee::model()->getMarquees()
         ));
@@ -69,19 +69,17 @@ class SiteController extends Controller
                 if ( $model->validate() && $model->save() )
                 {
                     $this->_data['message'] = $model->message;
-                    $this->_data['token'] = Yii::app()->security->getToekn();
                 }
                 else
                 {
                     $this->_data['error'] = true;
-                    $this->_data['token'] = Yii::app()->security->getToekn();
                 }
             }
             else
             {
                 $this->_data['error'] = true;
-                $this->_data['token'] = Yii::app()->security->getToekn();
             }
+            $this->_data['token'] = Yii::app()->security->getToken();
 
             if ( Yii::app()->request->getIsAjaxRequest() ) return true;
             $this->redirect(Yii::app()->user->returnUrl);
@@ -91,6 +89,40 @@ class SiteController extends Controller
         $this->render('marquee', array(
             'marquees'  => Marquee::model()->getMarquees()
         ));
+    }
+
+    public function actionPull($lasttime = 0)
+    {
+        $id = Yii::app()->user->getId() ?: 0;
+
+        if ( $lasttime == 0 ) // Debug only
+        {
+            $this->_data['friends'] = array(
+                array(
+                    'id'        => 1,
+                    'name'      => 'Test 1',
+                    'icon'      => null,
+                    'active'    => true
+                ),
+                array(
+                    'id'        => 2,
+                    'name'      => 'Demodemo',
+                    'icon'      => null,
+                    'active'    => true
+                ),
+                array(
+                    'id'        => 3,
+                    'name'      => 'Adminadmin',
+                    'icon'      => null,
+                    'active'    => true
+                )
+            );
+        }
+        $this->_data['messages'] = Chat::model()->getMessages(
+            (integer)$id,
+            (integer)$lasttime
+        );
+        $this->_data['lasttime'] = TIMESTAMP;
     }
 
     public function actionSearch($query)
