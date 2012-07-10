@@ -20,7 +20,6 @@
         $.extend({
             configures: {
                 pullUrl: decodeURIComponent('<?php echo Yii::app()->createUrl('site/pull'); ?>'),
-                chatRetrieveMessageUrl: decodeURIComponent('<?php echo Yii::app()->createUrl('chat/retrieve'); ?>'),
                 chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createUrl('chat/send'); ?>'),
                 multimediaYoutubeUrl: '<?php echo Yii::app()->createUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
                 newsIndexUrl: '<?php echo Yii::app()->createUrl('news/index'); ?>',

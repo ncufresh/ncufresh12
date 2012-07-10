@@ -322,8 +322,6 @@ a:hover
     top: 80px;
 }
 
-
-
 #chat
 {
     background: url('chat.png') 0 5px no-repeat;
@@ -417,12 +415,17 @@ a:hover
 
 .chat-dialog .chat-input
 {
-    position: relative;
+    border-top: 1px solid #333333;
+    height: 20px;
     margin: 0;
     padding: 0;
-    height: 20px;
     width: 160px;
-    border: 0;
+}
+
+.chat-dialog .chat-display p
+{
+    margin: 0;
+    padding: 0;
 }
 
 #result

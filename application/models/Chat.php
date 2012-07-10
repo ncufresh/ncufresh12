@@ -22,7 +22,7 @@ class Chat extends CActiveRecord
     public function rules()
     {
         return array(
-            array('receiver_id, message', 'required')
+            array('receiver_id, message, sequence', 'required')
         );
     }
 
@@ -48,8 +48,11 @@ class Chat extends CActiveRecord
 
         $criteria = new CDbCriteria();
         $criteria->select = 'sender_id, receiver_id, message, timestamp';
-        $criteria->order = 'timestamp ASC';
-        $criteria->condition = 'sender_id = :sender OR receiver_id = :receiver';
+        $criteria->order = 'timestamp ASC, sequence ASC';
+        $criteria->condition = '
+            sender_id = :sender AND receiver_id = :receiver
+         OR sender_id = :receiver AND receiver_id = :sender
+        ';
         $criteria->params = array(
             ':sender'   => $id,
             ':receiver' => Yii::app()->user->getId()

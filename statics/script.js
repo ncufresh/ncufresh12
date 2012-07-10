@@ -9,6 +9,7 @@
             friendListHeight:       200,
             chatDialogClass:        'chat-dialog',
             chatDisplayClass:       'chat-display',
+            chatFormClass:          'chat-form',
             chatInputClass:         'chat-input',
             unknownIcon:            'unknown.png'
         }, options);
@@ -55,7 +56,7 @@
                     $.fn.chat.openChatDialog($(this).attr('chat:id'));
                 })
                 .appendTo(list);
-            var icon = $('<img></img>')
+            var icon = $('<img />')
                 .attr(
                     'src',
                     data.icon ? data.icon : $.chat.options.unknownIcon
@@ -94,20 +95,21 @@
             var display = $('<div></div>')
                 .addClass($.chat.options.chatDisplayClass);
             var input = $('<input />')
-                .addClass($.chat.options.chatInputClass)
-                .keydown(function(event)
+                .addClass($.chat.options.chatInputClass);
+            var form = $('<form></form>')
+                .addClass($.chat.options.chatFormClass)
+                .submit(function()
                 {
-                    if ( event.which == 13 )
-                    {
-                        $.fn.chat.sendMessage(id, input.val());
-                        input.val('');
-                    }
-                });
+                    $.fn.chat.sendMessage(id, input.val());
+                    input.val('');
+                    return false;
+                })
+                .append(input);
             dialog = $('<div></div>')
                 .attr('chat:id', id)
                 .addClass($.chat.options.chatDialogClass)
                 .append(display)
-                .append(input)
+                .append(form)
                 .insertBefore(list);
             dialog.css({
                 left: left - dialog.outerWidth(true) * size
@@ -131,13 +133,17 @@
     $.fn.chat.updateChatDialog = function(id, data)
     {
         var dialog = $.fn.chat.showChatDialog(id);
-        var display = dialog.children('.' + $.chat.options.chatDisplayClass);
-        display
-            .html(display.html() + '<br />' + data.sender + ':' + data.message)
-            .stop()
-            .animate({
-                scrollTop: display[0].scrollHeight
-            }, 1000);
+        var message = $('<p></p>').text(data.sender + ':' + data.message);
+        var display = dialog
+            .children('.' + $.chat.options.chatDisplayClass)
+            .each(function()
+            {
+                $(this).append(message)
+                .stop()
+                .animate({
+                    scrollTop: this.scrollHeight
+                }, 1000);
+            });
         return dialog;
     };
 
