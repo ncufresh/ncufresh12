@@ -14,7 +14,7 @@ class ChatController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('retrieve', 'send'),
+                'actions'   => array('send'),
                 'users'     => array('*')
             ),
             array(
@@ -23,23 +23,6 @@ class ChatController extends Controller
             )
         );
     }
-
-    // public function actionRetrieve($lasttime = 0)
-    // {
-        // $id = Yii::app()->user->getId() ?: 0;
-
-        // if ( isset($_GET['lasttime']) )
-        // {
-            // $this->_data['messages'] = Chat::model()->getMessages(
-                // (integer)$id,
-                // (integer)$lasttime
-            // );
-            // $this->_data['me'] = Yii::app()->user->getId();
-            // $this->_data['lasttime'] = TIMESTAMP;
-            // return true;
-        // }
-        // $this->_data['error'] = true;
-    // }
 
     public function actionSend()
     {
