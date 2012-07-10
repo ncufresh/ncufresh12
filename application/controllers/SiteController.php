@@ -95,11 +95,33 @@ class SiteController extends Controller
     {
         $id = Yii::app()->user->getId() ?: 0;
 
-        $this->_data['chat']['messages'] = Chat::model()->getMessages(
+        if ( $lasttime == 0 ) // Debug only
+        {
+            $this->_data['friends'] = array(
+                array(
+                    'id'        => 1,
+                    'name'      => 'Test 1',
+                    'icon'      => null,
+                    'active'    => true
+                ),
+                array(
+                    'id'        => 2,
+                    'name'      => 'Demodemo',
+                    'icon'      => null,
+                    'active'    => true
+                ),
+                array(
+                    'id'        => 3,
+                    'name'      => 'Adminadmin',
+                    'icon'      => null,
+                    'active'    => true
+                )
+            );
+        }
+        $this->_data['messages'] = Chat::model()->getMessages(
             (integer)$id,
             (integer)$lasttime
         );
-
         $this->_data['lasttime'] = TIMESTAMP;
     }
 

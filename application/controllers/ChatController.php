@@ -14,7 +14,7 @@ class ChatController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('list', 'retrieve', 'send'),
+                'actions'   => array('retrieve', 'send'),
                 'users'     => array('*')
             ),
             array(
@@ -23,32 +23,6 @@ class ChatController extends Controller
             )
         );
     }
-
-    public function actionList()
-    {
-        $this->_data = array(
-            array(
-                'id'        => 1,
-                'name'      => 'Test 1',
-                'icon'      => null
-            ),
-            array(
-                'id'        => 2,
-                'name'      => 'Demodemo',
-                'icon'      => null
-            ),
-            array(
-                'id'        => 3,
-                'name'      => 'Adminadmin',
-                'icon'      => null
-            )
-        );
-    }
-
-    // public function actionReceive($id)
-    // {
-        // $this->_data['messages'] = Chat::model()->getAllMessages((integer)$id);
-    // }
 
     public function actionRetrieve($lasttime = 0)
     {
@@ -86,6 +60,7 @@ class ChatController extends Controller
                 
             }
             $this->_data['token'] = Yii::app()->security->getToken();
+            $this->_data['lasttime'] = TIMESTAMP;
             return true;
         }
         $this->_data['errors'][] = '發生錯誤！';

@@ -20,10 +20,8 @@
         $.extend({
             configures: {
                 pullUrl: decodeURIComponent('<?php echo Yii::app()->createUrl('site/pull'); ?>'),
-                chatFriendsListUrl: '<?php echo Yii::app()->createUrl('chat/list'); ?>',
-                chatReceiveMessageUrl: '<?php echo Yii::app()->createUrl('chat/receive', array('id' => ':id')); ?>',
-                chatRetrieveMessageUrl: '<?php echo Yii::app()->createUrl('chat/retrieve'); ?>',
-                chatSendMessageUrl: '<?php echo Yii::app()->createUrl('chat/send'); ?>',
+                chatRetrieveMessageUrl: decodeURIComponent('<?php echo Yii::app()->createUrl('chat/retrieve'); ?>'),
+                chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createUrl('chat/send'); ?>'),
                 multimediaYoutubeUrl: '<?php echo Yii::app()->createUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
                 newsIndexUrl: '<?php echo Yii::app()->createUrl('news/index'); ?>',
                 newsAdminUrl: '<?php echo Yii::app()->createUrl('news/admin'); ?>',

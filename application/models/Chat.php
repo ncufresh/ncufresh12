@@ -59,11 +59,12 @@ class Chat extends CActiveRecord
         {
             if ( $entry->timestamp <= $lasttime ) continue;
             $data[] = array(
-                'sender_id'   => $entry->sender_id,
-                'receiver_id' => $entry->receiver_id,
-                'sender'      => $entry->sender ? $entry->sender->username : 'Unknown',
-                'message'     => $entry->message,
-                'timestamp'   => $entry->timestamp
+                'id'        => $entry->sender_id,
+                'sender'    => $entry->sender
+                             ? $entry->sender->username
+                             : 'Unknown',
+                'message'   => $entry->message,
+                'timestamp' => $entry->timestamp
             );
         }
         return $data;
