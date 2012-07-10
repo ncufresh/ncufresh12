@@ -42,21 +42,31 @@ class Chat extends CActiveRecord
         );
     }
 
-    public function getMessages($id, $lasttime)
+    public function getMessages($sender = 0, $lasttime = 0)
     {
         $data = array();
 
         $criteria = new CDbCriteria();
         $criteria->select = 'sender_id, receiver_id, message, timestamp';
-        $criteria->order = 'timestamp ASC, sequence ASC';
-        $criteria->condition = '
-            sender_id = :sender AND receiver_id = :receiver
-         OR sender_id = :receiver AND receiver_id = :sender
-        ';
-        $criteria->params = array(
-            ':sender'   => $id,
-            ':receiver' => Yii::app()->user->getId()
-        );
+        $criteria->order = 'timestamp ASC';
+        if ( $sender )
+        {
+            $criteria->condition = '
+                sender_id = :sender AND receiver_id = :receiver
+             OR sender_id = :receiver AND receiver_id = :sender
+            ';
+            $criteria->params = array(
+                ':sender'   => $sender,
+                ':receiver' => Yii::app()->user->getId()
+            );
+        }
+        else
+        {
+            $criteria->condition = 'receiver_id = :receiver';
+            $criteria->params = array(
+                ':receiver' => Yii::app()->user->getId()
+            );
+        }
 
         foreach ( $this->findAll($criteria) as $entry )
         {
@@ -71,17 +81,6 @@ class Chat extends CActiveRecord
             );
         }
         return $data;
-    }
-
-    // public function getRecentMessages($id)
-    // {
-        // return $this->getMessages($id, 0);
-    // }
-
-
-    public function getAllMessages($id)
-    {
-        return $this->getMessages($id, 0);
     }
 
     protected function afterFind()

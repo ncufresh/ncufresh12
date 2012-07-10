@@ -93,8 +93,6 @@ class SiteController extends Controller
 
     public function actionPull($lasttime = 0)
     {
-        $id = Yii::app()->user->getId() ?: 0;
-
         if ( $lasttime == 0 ) // Debug only
         {
             $this->_data['friends'] = array(
@@ -119,8 +117,8 @@ class SiteController extends Controller
             );
         }
         $this->_data['messages'] = Chat::model()->getMessages(
-            (integer)$id,
-            (integer)$lasttime
+            0,
+            $lasttime
         );
         $this->_data['lasttime'] = TIMESTAMP;
     }

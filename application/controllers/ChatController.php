@@ -43,7 +43,6 @@ class ChatController extends Controller
 
     public function actionSend()
     {
-        $id = Yii::app()->user->getId() ?: 0;
         if ( Yii::app()->request->getIsPostRequest() )
         {
             $model = new Chat();
@@ -52,8 +51,8 @@ class ChatController extends Controller
             if ( $model->validate() && $model->save() )
             {
                 $this->_data['messages'] = Chat::model()->getMessages(
-                    (integer)$id,
-                    (integer)$_POST['lasttime']
+                    $model->sender_id,
+                    $_POST['lasttime']
                 );
                 
             }

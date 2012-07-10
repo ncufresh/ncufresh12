@@ -1,5 +1,46 @@
 (function($)
 {
+    $.pull = {};
+
+    $.pull.interval = 5000;
+
+    $.pull.start = function()
+    {
+        $.getJSON(
+            $.configures.pullUrl,
+            {
+                lasttime: $.configures.lasttime
+            },
+            function(response)
+            {
+                $.configures.lasttime = response.lasttime;
+                if ( response.friends )
+                {
+                    $.fn.chat.updateFriendList(response.friends);
+                }
+                if ( response.messages )
+                {
+                    for ( var key in response.messages )
+                    {
+                        var data = response.messages[key];
+                        $.fn.chat.updateChatDialog(data.id, data);
+                    }
+                }
+            }
+        );
+        $.pull.timer = setTimeout(arguments.callee, $.pull.interval);
+    };
+
+    $.pull.pause = function()
+    {
+        $.pull.timer = clearTimeout($.pull.timer);
+    };
+
+    $.pull.restart = function()
+    {
+        $.pull.timer = setTimeout($.pull.start, $.pull.interval);
+    };
+
     $.chat = {};
 
     $.fn.chat = function(options) {
@@ -173,6 +214,7 @@
             },
             function(response)
             {
+                $.pull.pause();
                 $.configures.token = response.token;
                 $.configures.lasttime = response.lasttime;
                 for ( var key in response.messages )
@@ -180,6 +222,7 @@
                     var data = response.messages[key];
                     $.fn.chat.updateChatDialog(data.id, data);
                 }
+                $.pull.restart();
             }
         );
     };
@@ -573,32 +616,7 @@
 			mmMenuScroll.mousein = false;
 		});
 
-        (function()
-        {
-            $.getJSON(
-                $.configures.pullUrl,
-                {
-                    lasttime: $.configures.lasttime
-                },
-                function(response)
-                {
-                    $.configures.lasttime = response.lasttime;
-                    if ( response.friends )
-                    {
-                        $.fn.chat.updateFriendList(response.friends);
-                    }
-                    if ( response.messages )
-                    {
-                        for ( var key in response.messages )
-                        {
-                            var data = response.messages[key];
-                            $.fn.chat.updateChatDialog(data.id, data);
-                        }
-                    }
-                }
-            );
-            setTimeout(arguments.callee, 5000);
-        })();
+        $.pull.start();
     });
 })(jQuery);
 
