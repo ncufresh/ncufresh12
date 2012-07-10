@@ -42,37 +42,26 @@ class Chat extends CActiveRecord
         );
     }
 
-    public function getMessages($sender = 0, $lasttime = 0)
+    public function getMessages($lasttime = 0)
     {
         $data = array();
 
         $criteria = new CDbCriteria();
         $criteria->select = 'sender_id, receiver_id, message, timestamp';
-        $criteria->order = 'timestamp ASC';
-        if ( $sender )
-        {
-            $criteria->condition = '
-                sender_id = :sender AND receiver_id = :receiver
-             OR sender_id = :receiver AND receiver_id = :sender
-            ';
-            $criteria->params = array(
-                ':sender'   => $sender,
-                ':receiver' => Yii::app()->user->getId()
-            );
-        }
-        else
-        {
-            $criteria->condition = 'receiver_id = :receiver';
-            $criteria->params = array(
-                ':receiver' => Yii::app()->user->getId()
-            );
-        }
-
+        $criteria->order = 'timestamp ASC, sequence ASC';
+        $criteria->condition = '
+            sender_id = :receiver OR receiver_id = :receiver
+        ';
+        $criteria->params = array(
+            ':receiver' => Yii::app()->user->getId()
+        );
         foreach ( $this->findAll($criteria) as $entry )
         {
             if ( $entry->timestamp <= $lasttime ) continue;
             $data[] = array(
-                'id'        => $entry->sender_id,
+                'id'        => $entry->sender_id == Yii::app()->user->getId()
+                             ? $entry->receiver_id
+                             : $entry->sender_id,
                 'sender'    => $entry->sender
                              ? $entry->sender->username
                              : 'Unknown',

@@ -116,10 +116,7 @@ class SiteController extends Controller
                 )
             );
         }
-        $this->_data['messages'] = Chat::model()->getMessages(
-            0,
-            $lasttime
-        );
+        $this->_data['messages'] = Chat::model()->getMessages($lasttime);
         $this->_data['lasttime'] = TIMESTAMP;
     }
 
