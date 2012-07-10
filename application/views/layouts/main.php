@@ -11,27 +11,22 @@
 
     <title><?php echo $this->getPageTitle(); ?></title>
 
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
     <script type="text/javascript">
-        google.load('jquery', '1');
-        google.load('jqueryui', '1');
-        google.setOnLoadCallback(function()
-        {
-            jQuery.extend({
-                configures: {
-                    pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
-                    facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
-                    chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
-                    multimediaYoutubeUrl: '<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
-                    newsIndexUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>',
-                    newsAdminUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/admin'); ?>',
-                    token: '<?php echo Yii::app()->security->getToken(); ?>'
-                }
-            });
-            execute(jQuery);
+        jQuery.extend({
+            configures: {
+                pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
+                facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
+                chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
+                multimediaYoutubeUrl: '<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
+                newsIndexUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>',
+                newsAdminUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/admin'); ?>',
+                token: '<?php echo Yii::app()->security->getToken(); ?>'
+            }
         });
     </script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
 </head>
 
 <body>
