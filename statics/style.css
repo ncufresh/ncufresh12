@@ -322,8 +322,6 @@ a:hover
     top: 80px;
 }
 
-
-
 #chat
 {
     background: url('chat.png') 0 5px no-repeat;
@@ -348,7 +346,7 @@ a:hover
     white-space: pre;
 }
 
-#chatlist
+#chat-friend-list
 {
     -webkit-border-radius: 10px;
     background: #FFFFFF;
@@ -362,7 +360,7 @@ a:hover
     width: 160px;
 }
 
-#chatlist img
+#chat-friend-list img
 {
     border: 2px solid #000000;
     height: 35px;
@@ -371,18 +369,18 @@ a:hover
     width: 35px;
 }
 
-#chatlist p
+#chat-friend-list p
 {
     margin-left: 50px;
 }
 
-#chatlist .friend-list-entry
+#chat-friend-list .friend-list-entry
 {
     height: 45px;
     line-height: 45px;
 }
 
-#chatlist .friend-list-entry:hover
+#chat-friend-list .friend-list-entry:hover
 {
     background: #EEEEEE;
     cursor: pointer;
@@ -417,15 +415,18 @@ a:hover
 
 .chat-dialog .chat-input
 {
-    position: relative;
+    border-top: 1px solid #333333;
+    height: 20px;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    width: 160px;
+}
+
+.chat-dialog .chat-display p
+{
     margin: 0;
     padding: 0;
-    height: 19px;
-    width: 160px;
-    border: 0;
-    border-top: 1px solid gray;
-    outline: none;
-    line-height: 19px;
 }
 
 
