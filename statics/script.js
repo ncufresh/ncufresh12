@@ -1,5 +1,232 @@
 (function($)
 {
+    $.pull = {};
+
+    $.pull.interval = 5000;
+
+    $.pull.start = function()
+    {
+        $.getJSON(
+            $.configures.pullUrl,
+            {
+                lasttime: $.configures.lasttime
+            },
+            function(response)
+            {
+                $.configures.lasttime = response.lasttime;
+                if ( response.friends )
+                {
+                    $.fn.chat.updateFriendList(response.friends);
+                }
+                if ( response.messages )
+                {
+                    for ( var key in response.messages )
+                    {
+                        var data = response.messages[key];
+                        $.fn.chat.updateChatDialog(data.id, data);
+                    }
+                }
+            }
+        );
+        $.pull.timer = setTimeout(arguments.callee, $.pull.interval);
+    };
+
+    $.pull.pause = function()
+    {
+        $.pull.timer = clearTimeout($.pull.timer);
+    };
+
+    $.pull.restart = function()
+    {
+        $.pull.timer = setTimeout($.pull.start, $.pull.interval);
+    };
+
+    $.chat = {};
+
+    $.fn.chat = function(options) {
+        $.chat.options = $.extend({
+            animationSpeed:         500,
+            friendListId:           'chat-friend-list',
+            friendListHeight:       200,
+            chatDialogClass:        'chat-dialog',
+            chatDisplayClass:       'chat-display',
+            chatFormClass:          'chat-form',
+            chatInputClass:         'chat-input',
+            unknownIcon:            'unknown.png'
+        }, options);
+        return $(this).click(function()
+        {
+            $.fn.chat.openFriendList();
+            $(this).fadeOut();
+            return true;
+        });
+    };
+
+    $.fn.chat.createFriendList = function()
+    {
+        var list = $('#' + $.chat.options.friendListId);
+        if ( list.length == 0 )
+        {
+            list = $('<div></div>')
+                .attr('id', $.chat.options.friendListId)
+                .appendTo($('body'));
+        }
+        return list;
+    };
+
+    $.fn.chat.openFriendList = function()
+    {
+        var list = $.fn.chat.createFriendList();
+        list.animate({
+            height: $.chat.options.friendListHeight
+        }, $.chat.options.animationSpeed);
+        return list;
+    };
+
+    $.fn.chat.updateFriendList = function(response)
+    {
+        var list = $.fn.chat.createFriendList();
+        for ( var key in response )
+        {
+            var data = response[key];
+            var entry = $('<div></div>')
+                .attr('chat:id', data.id)
+                .addClass('friend-list-entry')
+                .click(function()
+                {
+                    $.fn.chat.openChatDialog($(this).attr('chat:id'));
+                })
+                .appendTo(list);
+            var icon = $('<img />')
+                .attr(
+                    'src',
+                    data.icon ? data.icon : $.chat.options.unknownIcon
+                )
+                .appendTo(entry);
+            var name = $('<p>')
+                .text(data.name)
+                .appendTo(entry);
+        }
+        return list;
+    };
+
+    $.fn.chat.closeFriendList = function()
+    {
+        var list = $.fn.chat.createFriendList();
+    };
+
+    $.fn.chat.createChatDialog = function(id)
+    {
+        var list = $.fn.chat.createFriendList();
+        var left = list.position().left
+                 + list.outerWidth(true)
+                 - list.innerWidth();
+        var size = 1;
+        var dialog = null;
+        $('.' + $.chat.options.chatDialogClass).each(function(index)
+        {
+            if ( $(this).attr('chat:id') == id ) dialog = $(this);
+            $(this).css({
+                left: left - $(this).outerWidth(true) * (index + 1)
+            });
+            size++;
+        });
+        if ( ! dialog )
+        {
+            var display = $('<div></div>')
+                .addClass($.chat.options.chatDisplayClass);
+            var input = $('<input />')
+                .addClass($.chat.options.chatInputClass);
+            var form = $('<form></form>')
+                .addClass($.chat.options.chatFormClass)
+                .submit(function()
+                {
+                    $.fn.chat.sendMessage(id, input.val());
+                    input.val('');
+                    return false;
+                })
+                .append(input);
+            dialog = $('<div></div>')
+                .attr('chat:id', id)
+                .addClass($.chat.options.chatDialogClass)
+                .append(display)
+                .append(form)
+                .insertBefore(list);
+            dialog.css({
+                left: left - dialog.outerWidth(true) * size
+            });
+        }
+        return dialog;
+    };
+
+    $.fn.chat.openChatDialog = function(id)
+    {
+        var dialog = $.fn.chat.createChatDialog(id);
+        return dialog;
+    };
+
+    $.fn.chat.showChatDialog = function(id)
+    {
+        var dialog = $.fn.chat.openChatDialog(id);
+        return dialog;
+    };
+
+    $.fn.chat.updateChatDialog = function(id, data)
+    {
+        var dialog = $.fn.chat.showChatDialog(id);
+        var message = $('<p></p>').text(data.sender + ':' + data.message);
+        var display = dialog
+            .children('.' + $.chat.options.chatDisplayClass)
+            .each(function()
+            {
+                $(this).append(message)
+                .stop()
+                .animate({
+                    scrollTop: this.scrollHeight
+                }, 1000);
+            });
+        return dialog;
+    };
+
+    $.fn.chat.hideChatDialog = function(id)
+    {
+        var dialog = $.fn.chat.createChatDialog(id);
+        return dialog;
+    };
+
+    $.fn.chat.closeChatDialog = function(id)
+    {
+        var dialog = $.fn.chat.createChatDialog(id);
+    };
+
+    $.fn.chat.sendMessage = function(id, message)
+    {
+        $.post(
+            $.configures.chatSendMessageUrl,
+            {
+                chat: {
+                    receiver_id: id,
+                    message: message,
+                },
+                token: $.configures.token,
+                lasttime: $.configures.lasttime,
+                sequence: $.configures.sequence++
+            },
+            function(response)
+            {
+                $.pull.pause();
+                $.configures.token = response.token;
+                $.configures.lasttime = response.lasttime;
+                for ( var key in response.messages )
+                {
+                    var data = response.messages[key];
+                    $.fn.chat.updateChatDialog(data.id, data);
+                }
+                $.pull.restart();
+            }
+        );
+    };
+
     $.extend({
         random: function(min, max)
         {
@@ -72,7 +299,8 @@
     });
 
     $.fn.extend({
-        highlight: function(color, duration) {
+        highlight: function(color, duration)
+        {
             var original = this.css('background-color');
             this.stop().css("background-color", color || '#FFFF9C').animate({
                 backgroundColor: original
@@ -263,111 +491,14 @@
                 setTimeout(generator, 0);
             });
         },
-        chat: function(settings)
-        {
-            var options = $.extend({
-                speed:                  500,
-                chatListHeight:         200,
-                chatListId:             'chatlist',
-                chatDialogClass:        'chat-dialog',
-                unknownIcon:            'unknown.png'
-            }, settings);
-            var list = $('<div></div>')
-                .attr('id', options.chatListId)
-                .insertBefore($(this));
-            var openChatList = function()
-            {
-                list.animate({
-                    height: options.chatListHeight
-                }, options.speed);
-                $.getJSON(
-                    $.configures.chatFriendsListUrl,
-                    function(response)
-                    {
-                        for ( var key in response )
-                        {
-                            var data = response[key];
-                            var entry = $('<div></div>')
-                                .attr('chat:id', data.id)
-                                .addClass('friend-list-entry')
-                                .click(function()
-                                {
-                                    openChatDialog($(this).attr('chat:id'));
-                                })
-                                .appendTo(list);
-                            var icon = $('<img></img>')
-                                .attr(
-                                    'src',
-                                    data.icon
-                                  ? data.icon
-                                  : options.unknownIcon
-                                )
-                                .appendTo(entry);
-                            var name = $('<p>')
-                                .text(data.name)
-                                .appendTo(entry);
-                        }
-                    }
-                );
-            }
-            var openChatDialog = function(id)
-            {
-                var dialog;
-                var left = list.position().left
-                         + list.outerWidth(true)
-                         - list.innerWidth();
-                var url = decodeURIComponent(
-                        $.configures.chatReceiveMessageUrl
-                    )
-                    .replace(':id', id);
-                $('.' + options.chatDialogClass).each(function(index)
-                {
-                    if ( $(this).attr('chat:id') == id ) dialog = $(this);
-                    $(this).css({
-                        left: left - $(this).outerWidth(true) * (index + 1)
-                    });
-                });
-                if ( ! dialog )
-                {
-                    dialog = $('<div></div>')
-                        .attr('chat:id', id)
-                        .addClass(options.chatDialogClass)
-                        .insertBefore(list);
-                    dialog.css({
-                        left: left - dialog.outerWidth(true) * $('.' + options.chatDialogClass).length
-                    });
-                }
-                return dialog;
-            };  
-            (function()
-            {
-                var url = decodeURIComponent($.configures.chatRetrieveMessageUrl);
-                $.getJSON(url, function(response)
-                {
-                    for ( var key in response )
-                    {
-                        var data = response[key];
-                        var dialog = openChatDialog(data.id);
-                        dialog.html(dialog.html() + '<br />' + data.sender + ':' + data.message);
-                    }
-                });
-                setTimeout(arguments.callee, 3000);
-                return true;
-            })();
-            return this.each(function()
-            {
-                $(this).click(function()
-                {
-                    openChatList();
-                    $(this).fadeOut();
-                    return true;
-                });
-            });
-        }
     });
 
     $(document).ready(function()
     {
+        $.configures.lasttime = 0;
+
+        $.configures.sequence = $.random(0, 1000);
+
         if ( $('#header') ) $('#header').star();
 
         if ( $('#chat') ) $('#chat').chat();
@@ -457,7 +588,7 @@
             $(this).html(video_title).append(video_img);
 		});
 		
-		$('#mm-menu-items').css('height', $('#mm-menu a').length * 150);
+		$('#mm-menu-items').css('height', $('#mm-menu a').length * $('#mm-menu a').first().css('height'));
 		
 		$('#mm-menu a').click(function(){
             var url = decodeURIComponent($.configures.multimediaYoutubeUrl)
@@ -484,6 +615,8 @@
 		}).mouseleave(function(){
 			mmMenuScroll.mousein = false;
 		});
+
+        $.pull.start();
     });
 })(jQuery);
 

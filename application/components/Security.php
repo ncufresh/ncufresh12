@@ -8,7 +8,7 @@ class Security extends CApplicationComponent
         Yii::app()->attachEventHandler('onBeginRequest', array($this, 'checkToken'));
     }
     
-    public function getToekn()
+    public function getToken()
     {
         if ( ! isset(Yii::app()->session['token']) )
         {

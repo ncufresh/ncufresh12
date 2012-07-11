@@ -346,7 +346,7 @@ a:hover
     white-space: pre;
 }
 
-#chatlist
+#chat-friend-list
 {
     -webkit-border-radius: 10px;
     background: #FFFFFF;
@@ -360,7 +360,7 @@ a:hover
     width: 160px;
 }
 
-#chatlist img
+#chat-friend-list img
 {
     border: 2px solid #000000;
     height: 35px;
@@ -369,18 +369,18 @@ a:hover
     width: 35px;
 }
 
-#chatlist p
+#chat-friend-list p
 {
     margin-left: 50px;
 }
 
-#chatlist .friend-list-entry
+#chat-friend-list .friend-list-entry
 {
     height: 45px;
     line-height: 45px;
 }
 
-#chatlist .friend-list-entry:hover
+#chat-friend-list .friend-list-entry:hover
 {
     background: #EEEEEE;
     cursor: pointer;
@@ -392,7 +392,6 @@ a:hover
     background: #FFFFFF;
     border-radius: 10px;
     bottom: -10px;
-    float: left;
     height: 200px;
     margin-right: 10px;
     opacity: 0.7;
@@ -402,6 +401,35 @@ a:hover
     position: fixed;
     width: 160px;
 }
+
+
+.chat-dialog .chat-display
+{   
+    top: 0;
+    position: relative;
+    height: 175px;
+    width: 160px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.chat-dialog .chat-input
+{
+    border-top: 1px solid #333333;
+    height: 20px;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    width: 160px;
+}
+
+.chat-dialog .chat-display p
+{
+    margin: 0;
+    padding: 0;
+}
+
+
 
 #result
 {
@@ -616,7 +644,7 @@ a:hover
     background: none;
     position: absolute;
     color: black;
-    width: 200px;
+    width: 187px;
     height: 50px;
     background: white;
     opacity: 0;
@@ -642,8 +670,8 @@ a:hover
 #mm-menu a
 {
     display: block;
-    width: 200px;
-    height: 150px;
+    width: 100%;
+    height: 140px;
     display: block;
     text-decoration: none;
     opacity: 1;
@@ -661,7 +689,7 @@ a:hover
 	height: 16px;
 	display:block;
 	margin-bottom: -16px;	
-	top: 134px;
+	top: 124px;
 	left: 0;
 	text-align: right;
 	background: black;
@@ -692,7 +720,7 @@ a:hover
 {
     width: 100%;
     height: 400px;
-    background: url(loading.gif) no-repeat black 225px 125px;
+    background: url(loading.gif) no-repeat black center;
 }
 
 #mm-video-frame
