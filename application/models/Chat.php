@@ -47,7 +47,7 @@ class Chat extends CActiveRecord
         $data = array();
 
         $criteria = new CDbCriteria();
-        $criteria->select = 'sender_id, receiver_id, message, timestamp';
+        $criteria->select = 'sender_id, receiver_id, message, sequence, timestamp';
         $criteria->order = 'timestamp ASC, sequence ASC';
         $criteria->condition = '
             sender_id = :receiver OR receiver_id = :receiver
@@ -57,7 +57,7 @@ class Chat extends CActiveRecord
         );
         foreach ( $this->findAll($criteria) as $entry )
         {
-            if ( $entry->timestamp <= $lasttime ) continue;
+            if ( $entry->timestamp < $lasttime ) continue;
             $data[] = array(
                 'id'        => $entry->sender_id == Yii::app()->user->getId()
                              ? $entry->receiver_id
@@ -66,6 +66,7 @@ class Chat extends CActiveRecord
                              ? $entry->sender->username
                              : 'Unknown',
                 'message'   => $entry->message,
+                'sequence'  => $entry->sequence,
                 'timestamp' => $entry->timestamp
             );
         }

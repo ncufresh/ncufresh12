@@ -173,8 +173,23 @@
 
     $.fn.chat.updateChatDialog = function(id, data)
     {
+        var condition = 'p[seq=:seq][timestamp=:timestamp]';
         var dialog = $.fn.chat.showChatDialog(id);
-        var message = $('<p></p>').text(data.sender + ':' + data.message);
+        var p = dialog.find(
+            condition
+                .replace(':seq', data.sequence)
+                .replace(':timestamp', data.timestamp)
+        );
+        var message;
+        if(p.length == 0)
+        {
+            message = $('<p></p>')
+                .attr('seq', data.sequence)
+                .attr('timestamp', data.timestamp)
+                .text(data.sender + ':' + data.message);
+        }
+        
+        // var message = $('<p></p>').text(data.sender + ':' + data.message);
         var display = dialog
             .children('.' + $.chat.options.chatDisplayClass)
             .each(function()
