@@ -173,19 +173,17 @@
 
     $.fn.chat.updateChatDialog = function(id, data)
     {
-        var condition = 'p[seq=:seq][timestamp=:timestamp]';
+        var condition = 'p[uuid=:uuid]';
         var dialog = $.fn.chat.showChatDialog(id);
         var p = dialog.find(
             condition
-                .replace(':seq', data.sequence)
-                .replace(':timestamp', data.timestamp)
+                .replace(':uuid', data.uuid)
         );
         var message;
         if(p.length == 0)
         {
             message = $('<p></p>')
-                .attr('seq', data.sequence)
-                .attr('timestamp', data.timestamp)
+                .attr('uuid', data.uuid)
                 .text(data.sender + ':' + data.message);
         }
         
