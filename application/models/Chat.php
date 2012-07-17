@@ -59,15 +59,14 @@ class Chat extends CActiveRecord
         {
             if ( $entry->timestamp < $lasttime ) continue;
             $data[] = array(
+                'uuid'      => $entry->uuid,
                 'id'        => $entry->sender_id == Yii::app()->user->getId()
                              ? $entry->receiver_id
                              : $entry->sender_id,
                 'sender'    => $entry->sender
                              ? $entry->sender->username
                              : 'Unknown',
-                'message'   => $entry->message,
-                'uuid'  => $entry->uuid,
-                'timestamp' => $entry->timestamp
+                'message'   => $entry->message
             );
         }
         return $data;

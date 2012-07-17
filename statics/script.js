@@ -173,31 +173,29 @@
 
     $.fn.chat.updateChatDialog = function(id, data)
     {
-        var condition = 'p[uuid=:uuid]';
+        var exists;
         var dialog = $.fn.chat.showChatDialog(id);
-        var p = dialog.find(
-            condition
-                .replace(':uuid', data.uuid)
-        );
-        var message;
-        if(p.length == 0)
-        {
-            message = $('<p></p>')
-                .attr('uuid', data.uuid)
-                .text(data.sender + ':' + data.message);
-        }
-        
-        // var message = $('<p></p>').text(data.sender + ':' + data.message);
-        var display = dialog
-            .children('.' + $.chat.options.chatDisplayClass)
+        dialog.children('.' + $.chat.options.chatDisplayClass)
             .each(function()
             {
-                $(this).append(message)
-                .stop()
-                .animate({
-                    scrollTop: this.scrollHeight
-                }, 1000);
-            });
+                $(this).children('p').each(function()
+                {
+                    if ( $(this).attr('chat:uuid') == data.uuid ) exists = true;
+                });
+                if ( ! exists )
+                {
+                    $('<p></p>')
+                        .attr('chat:uuid', data.uuid)
+                        .text(data.sender + ':' + data.message)
+                        .appendTo($(this));
+                }
+                $(this)
+                    .stop()
+                    .animate({
+                        scrollTop: this.scrollHeight
+                    }, 1000);
+            }
+        );
         return dialog;
     };
 
