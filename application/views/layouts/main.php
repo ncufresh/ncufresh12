@@ -17,6 +17,7 @@
         jQuery.extend({
             configures: {
                 pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
+                facebookAppId: '<?php echo Yii::app()->facebook->getAppId(); ?>',
                 facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
                 chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
                 multimediaYoutubeUrl: '<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
@@ -26,7 +27,7 @@
             }
         });
     </script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
 </head>
 
 <body>
@@ -69,7 +70,7 @@
             <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>" title="中大生活">中大生活</a>
         </li>
         <li>
-            <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="校園導覽">校園導覽</a>
+            <a href="<?php echo Yii::app()->createUrl('street/index'); ?>" title="校園導覽">校園導覽</a>
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('forum/index'); ?>" title="論壇專區">論壇專區</a>
@@ -81,13 +82,14 @@
             <a href="<?php echo Yii::app()->createUrl('multimedia/index'); ?>" title="影音專區">影音專區</a>
         </li>
         <li>
-            <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="關於我們">關於我們</a>
+            <a href="<?php echo Yii::app()->createUrl('about/index'); ?>" title="關於我們">關於我們</a>
         </li>
     </ul>
 </div>
 <div id="content"><?php echo $content; ?></div>
 <div id="sidebar">
 <?php if ( Yii::app()->user->getIsGuest() ) : ?>
+    <a href="<?php echo Yii::app()->facebook->getLoginUrl(); ?>" title="使用Facebook帳號登入">使用Facebook帳號登入</a>
     <form class="profile" action="<?php echo Yii::app()->createUrl('site/login'); ?>" method="POST">
         <dl>
             <dt>

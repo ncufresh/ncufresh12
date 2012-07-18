@@ -2,10 +2,6 @@
 
 defined('NCUFRESH2012') or die();
 
-$yii = dirname(__FILE__) . '/yii/yii.php';
-
-$facebook = dirname(__FILE__) . '/facebook/facebook.php';
-
 $ncufreshdb = array(
     'host'      => 'localhost',
     'port'      => 3306,
@@ -13,3 +9,10 @@ $ncufreshdb = array(
     'username'  => 'root',
     'password'  => ''
 );
+
+$ncufreshfb = array(
+    'appId'     => '299021976861868',
+    'secret'    => 'da3b004c79c3122de3a702a90a8a6dbf'
+);
+
+require_once(dirname(__FILE__) . '/yii/yii.php');

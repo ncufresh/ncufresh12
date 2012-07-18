@@ -36,8 +36,6 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $facebook = FB::getFacebook();
-
         $this->setPageTitle(Yii::app()->name);
         $this->render('index', array(
             'latests'   => News::model()->getPopularNews(10),
