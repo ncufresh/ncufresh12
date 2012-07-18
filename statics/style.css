@@ -755,11 +755,17 @@ a:hover
 {
     float:up;
 }
-#about-title
+#about-h1
 {
-    
+	font-size:20px;
+    font-family: "微軟正黑體", Arial, sans-serif;
 }
-#about-h
+#about-h2
+{
+	font-size:20px;
+    font-family: "微軟正黑體", Arial, sans-serif;
+}
+#about-h3
 {
 	font-size:20px;
     font-family: "微軟正黑體", Arial, sans-serif;
@@ -773,7 +779,9 @@ a:hover
 }
 #about-what-image
 {
-    background: url('chat.png') 0 5px no-repeat;
+    background: url('photo.png');
+    background-repeat:no-repeat;
+    background-size:400px 300px;
     height: 300px;
     width: 400px;
     align:right;
@@ -806,7 +814,9 @@ a:hover
 }
 #about-what-rightDown-small
 {
-    background-color:white;
+    background: url('photo.png');
+    background-repeat:no-repeat;
+    background-size:40px 40px;
     width:40px;
     height:40px;
     margin-left:5px;

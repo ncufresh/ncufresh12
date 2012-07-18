@@ -1,10 +1,10 @@
 <div id="about">
 	<div id="about-title1">
-		<h1 id="about-h">What is the web ncufresh?</h1>
+		<h1 id="about-h1">What is the web ncufresh?</h1>
 	</div>
 	<div id="about-what">
 		<div id="about-what-left">
-			<p>這裡是文字介紹..............................................................................................</p>
+			<p>................................ </p>
 		</div>
 		<div id="about-what-right">
 			<div id="about-what-rightUp">
@@ -25,7 +25,7 @@
 </div>
 <div id="about">
     <div id="about-title2">
-		<h1 id="about-h">How do we work?</h1>
+		<h1 id="about-h2">How do we work?</h1>
 	</div>
 	<div id="about-how">
 		<div id="about-how-pic"></div>
@@ -41,7 +41,7 @@
 </div>
 <div id="about">
     <div id="about-title3">
-		<h1 id="about-h">Who are we?</h1>
+		<h1 id="about-h3">Who are we?</h1>
 	</div>
 	<div id="about-who">
 		<div id="about-who-block"></div>
