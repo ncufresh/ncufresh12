@@ -3,7 +3,7 @@
     Please enter your username and desired password to sign up 
 </p>
 
-<form method="post" action="<?php echo Yii::app()->createUrl('site/register'); ?>" >
+<form action="<?php echo Yii::app()->createUrl('site/register'); ?>" method="POST">
     <dl>
         <dt>
             <label for="form-register-username">帳號</label>
@@ -21,6 +21,6 @@
     </dl>
     <div>
         <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
-        <button id="form-register-button" type="submit" name="register_submit">註冊</button>
+        <button id="form-register-button" type="submit">註冊</button>
     </div>
 </form>
