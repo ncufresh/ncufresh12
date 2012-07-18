@@ -8,6 +8,4 @@ defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL', 3);
 
 require_once('ncufresh2012.php');
 
-require_once($yii);
-
 Yii::createWebApplication('config.php')->run();

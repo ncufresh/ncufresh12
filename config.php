@@ -2,7 +2,7 @@
 
 define('TIMESTAMP', time());
 
-global $ncufreshdb;
+global $ncufreshdb, $ncufreshfb;
 
 return array(
     'name'      => '2012 大一生活知訊網',
@@ -18,6 +18,11 @@ return array(
         'user'          => array(
             'class'             => 'WebUser',
             'allowAutoLogin'    => true
+        ),
+        'facebook'      => array(
+            'class'             => 'application.extensions.facebook.NFWFacebook',
+            'appId'             => $ncufreshfb['appId'],
+            'secret'            => $ncufreshfb['secret']
         ),
         'session'       => array(
             'autoStart'         => true,

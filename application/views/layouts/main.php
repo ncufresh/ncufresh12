@@ -9,25 +9,25 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/ie.css" media="screen, projection" />
     <![endif]-->
 
-    <?php echo CGoogleApi::init(); ?>
-    <?php echo CHtml::script(CGoogleApi::load('jquery')); ?>
-    <?php echo CHtml::script(CGoogleApi::load('jqueryui')); ?>
-    <?php echo CHtml::script(CGoogleApi::load('search')); ?>
-
     <title><?php echo $this->getPageTitle(); ?></title>
 
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
     <script type="text/javascript">
-        $.extend({
+        jQuery.extend({
             configures: {
-                pullUrl: decodeURIComponent('<?php echo Yii::app()->createUrl('site/pull'); ?>'),
-                chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createUrl('chat/send'); ?>'),
-                multimediaYoutubeUrl: '<?php echo Yii::app()->createUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
-                newsIndexUrl: '<?php echo Yii::app()->createUrl('news/index'); ?>',
-                newsAdminUrl: '<?php echo Yii::app()->createUrl('news/admin'); ?>',
+                pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
+                facebookAppId: '<?php echo Yii::app()->facebook->getAppId(); ?>',
+                facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
+                chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
+                multimediaYoutubeUrl: '<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
+                newsIndexUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>',
+                newsAdminUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/admin'); ?>',
                 token: '<?php echo Yii::app()->security->getToken(); ?>'
             }
         });
     </script>
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
 </head>
 
 <body>
@@ -70,7 +70,7 @@
             <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>" title="中大生活">中大生活</a>
         </li>
         <li>
-            <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="校園導覽">校園導覽</a>
+            <a href="<?php echo Yii::app()->createUrl('street/index'); ?>" title="校園導覽">校園導覽</a>
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('forum/index'); ?>" title="論壇專區">論壇專區</a>
@@ -89,6 +89,7 @@
 <div id="content"><?php echo $content; ?></div>
 <div id="sidebar">
 <?php if ( Yii::app()->user->getIsGuest() ) : ?>
+    <a href="<?php echo Yii::app()->facebook->getLoginUrl(); ?>" title="使用Facebook帳號登入">使用Facebook帳號登入</a>
     <form class="profile" action="<?php echo Yii::app()->createUrl('site/login'); ?>" method="POST">
         <dl>
             <dt>
@@ -139,5 +140,6 @@
         線上好友<span class="friendcounts"><?php echo 999; // $this->getOnlineFriendsCount(); ?></span>人
     </p>
 </div>
+<div id="fb-root"></div>
 </body>
 </html>

@@ -107,6 +107,11 @@ a:hover
     position: absolute;
     width: 240px;
 }
+#pp {
+    height: 500px;
+    margin-left: 100px;
+    width: 500px;
+}
 
 #header
 {
@@ -170,7 +175,7 @@ a:hover
 #tab
 {
     list-style: none;
-    margin: 120px 0 0 480px;
+    margin: 120px 0 0 400px;
     overflow: hidden;
     padding: 0;
     position: absolute;
@@ -605,12 +610,7 @@ a:hover
 
 .news-dialog-warp
 {
-	background: white;
-}
-
-.ui-dialog
-{
-    position: absolute;
+    background: white;
 }
 
 .news-dialog
@@ -630,10 +630,10 @@ a:hover
 
 #mm-menu
 {
-	width: 100%;
-	height: 400px;
-	background: skyblue;
-	overflow: hidden;
+    width: 100%;
+    height: 400px;
+    background: skyblue;
+    overflow: hidden;
 }
 
 #mm-menu button
@@ -684,17 +684,17 @@ a:hover
 
 #mm-menu a span
 {
-	color: white;
-	position: relative;
-	height: 16px;
-	display:block;
-	margin-bottom: -16px;	
-	top: 124px;
-	left: 0;
-	text-align: right;
-	background: black;
-	opacity: 0.5;
-	padding: 0 8px 0 0;
+    color: white;
+    position: relative;
+    height: 16px;
+    display:block;
+    margin-bottom: -16px;    
+    top: 124px;
+    left: 0;
+    text-align: right;
+    background: black;
+    opacity: 0.5;
+    padding: 0 8px 0 0;
 }
 
 #mm-menu a img
@@ -732,23 +732,23 @@ a:hover
 
 #mm-introduction
 {
-	width: 100%;
-	height: 200px;
-	background: gray;
+    width: 100%;
+    height: 200px;
+    background: gray;
 }
 #mm-introduction .text
 {
-	width: 65%;
-	height: 100%;
-	background: red;
-	float: left;
+    width: 65%;
+    height: 100%;
+    background: red;
+    float: left;
 }
 #mm-introduction .pic
 {
-	background: yellow;
-	width: 35%;	
-	height: 100%;
-	float: left;
+    background: yellow;
+    width: 35%;    
+    height: 100%;
+    float: left;
 
 }
 #about
@@ -894,4 +894,25 @@ a:hover
     opacity: 0.7;
     position: relative;
     top: 0;
+}
+
+.ui-dialog
+{
+    position: absolute;
+}
+
+.ui-widget-overlay {
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: #aaaaaa;
+    opacity: 0.3;
+}
+
+#fb-like
+{
+    margin-left: 710px;
+    padding: 2px;
+    position: absolute;
+    top: 120px;
 }
