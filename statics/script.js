@@ -633,37 +633,17 @@
             mmMenuScroll(srcoll_offset);
         }).mouseleave(function(){
             mmMenuScroll.mousein = false;
-<<<<<<< HEAD
-        });	
+        });
         
-		$('.mm-menu-down').mouseenter(function(){
-			mmMenuScroll.mousein = true;
-			mmMenuScroll(-1 * srcoll_offset);
-		}).mouseleave(function(){
-			mmMenuScroll.mousein = false;
-		});
-		
+        $('.mm-menu-down').mouseenter(function(){
+            mmMenuScroll.mousein = true;
+            mmMenuScroll(-1 * srcoll_offset);
+        }).mouseleave(function(){
+            mmMenuScroll.mousein = false;
+        });
+
         inin_about();
         
-		$.pull.start();
-	});
-=======
-        });    
-
-        $('.mm-menu-down').mouseenter(function(){
-            mmMenuScroll.mousein = true;
-            mmMenuScroll(-1 * srcoll_offset);
-        }).mouseleave(function(){
-            mmMenuScroll.mousein = false;
-        });
-
-        $('.mm-menu-down').mouseenter(function(){
-            mmMenuScroll.mousein = true;
-            mmMenuScroll(-1 * srcoll_offset);
-        }).mouseleave(function(){
-            mmMenuScroll.mousein = false;
-        });
-
 		$('.nculife-food .dialog').click(function(){
 			$( "#nculife-dialog" ).dialog({
 				dialogClass: 'nculife-dialog',
@@ -711,7 +691,6 @@
         $.pull.start();
     });
 
->>>>>>> 29818be0338dc8fe89e63943e95433143f47a6b7
     window.fbAsyncInit = function() {
         var like = $('<div></div>')
             .attr('id', 'fb-like')
@@ -735,7 +714,6 @@
 })(jQuery);
 function inin_about()
 {
-    var about_what_photo_index=0;
     $('#about-title1').mouseenter(function(){
         $('#about-what').show(1000);
         $('#about-how').hide(1000);
