@@ -11,22 +11,26 @@
 
     <title><?php echo $this->getPageTitle(); ?></title>
 
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
     <script type="text/javascript">
         jQuery.extend({
             configures: {
                 pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
+                facebookAppId: '<?php echo Yii::app()->facebook->getAppId(); ?>',
                 facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
                 chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
                 multimediaYoutubeUrl: '<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
                 newsIndexUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>',
                 newsAdminUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/admin'); ?>',
+                registerUrl: '<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>',
+                facebookEnable: <?php echo Yii::app()->facebook->enable ? 'true' : 'false'; ?>,
                 token: '<?php echo Yii::app()->security->getToken(); ?>'
             }
         });
     </script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
 </head>
 
 <body>
@@ -43,7 +47,7 @@
                 <label for="form-search-query">搜尋</label>
             </dt>
             <dd>
-                <input id="form-search-query" name="query" type="text" />
+                <input id="form-search-query" name="query" autocomplete="off" type="text" />
             </dd>
         </dl>
         <div>
@@ -81,7 +85,7 @@
             <a href="<?php echo Yii::app()->createUrl('multimedia/index'); ?>" title="影音專區">影音專區</a>
         </li>
         <li>
-            <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="關於我們">關於我們</a>
+            <a href="<?php echo Yii::app()->createUrl('about/index'); ?>" title="關於我們">關於我們</a>
         </li>
     </ul>
 </div>

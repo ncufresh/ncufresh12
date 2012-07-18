@@ -1,8 +1,4 @@
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
-google.load('search', '1', {
-     language: 'zh_TW'
-});
 google.setOnLoadCallback(function()
 {
     var options = new google.search.DrawOptions();
