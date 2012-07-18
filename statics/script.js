@@ -384,6 +384,45 @@
 		}).mouseleave(function(){
 			mmMenuScroll.mousein = false;
 		});
+		
+		$('.nculife-food .dialog').click(function(){
+			$( "#nculife-dialog" ).dialog({
+				dialogClass: 'nculife-dialog',
+				height:500,
+				width:700,
+				modal: true,
+				show: { effect: 'explode', direction: "down"},
+			});
+	
+		});
+		
+		$('#haha1').click(function(){
+			var url = 'index.html';
+			// alert(url);
+			$.ajax({
+				type: 'GET',
+				url: 'index.html',
+				dataType: 'html',
+				success: function(data){ 
+					$('#nculife-cv').html(data);
+				},
+			});	
+			return false;
+		});		
+		$('#haha2').click(function(){
+			var url = 'index.html';
+			// alert(url);
+			$.ajax({
+				type: 'GET',
+				url: 'car.html',
+				dataType: 'html',
+				success: function(data){ 
+					$('#nculife-cv').html(data);
+				},
+			});
+			return false;
+		});
+		
     });
 })(jQuery);
 
