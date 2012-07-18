@@ -1,3 +1,16 @@
+google.load('search', '1', {
+     language: 'zh_TW'
+});
+
+google.setOnLoadCallback(function()
+{
+    google.search.CustomSearchControl.attachAutoCompletion(
+        '011017124764723419863:mdibrr3n-py',
+        document.getElementById('form-search-query'),
+        'search'
+    );
+});
+
 (function($)
 {
     $.pull = {};
@@ -720,20 +733,86 @@
 })(jQuery);
 function inin_about()
 {
-    $('#about-title1').mouseenter(function(){
-        $('#about-what').show(1000);
-        $('#about-how').hide(1000);
-        $('#about-who').hide(1000);
+    var about_what_photo_index=0;
+    var open1=false;
+    var open2=false;
+    var open3=false;
+    $('#about-what').hide();
+    $('#about-how').hide();
+    $('#about-who').hide();
+    $('#about-title1').click(function()
+    {
+        if(open1==false)
+        {
+            open1=true;
+            $('#about-what').show(1000);
+            $('#about-how').hide(1000);
+            $('#about-who').hide(1000);
+        }
+        else
+        {
+            open1=false;
+            $('#about-what').hide(1000);
+        }
     })
-    $('#about-title2').mouseenter(function(){
-        $('#about-how').show(1000);
-        $('#about-what').hide(1000);
-        $('#about-who').hide(1000);
+    $('#about-title2').click(function()
+    {
+        if(open2==false)
+        {
+            open2=true;
+            $('#about-how').show(1000);
+            $('#about-what').hide(1000);
+            $('#about-who').hide(1000);
+        }
+        else
+        {
+            open2=false;
+            $('#about-how').hide(1000);
+        }
     })
-    $('#about-title3').mouseenter(function(){
-        $('#about-who').show(1000);
-        $('#about-what').hide(1000);
-        $('#about-how').hide(1000);
+    $('#about-title3').click(function()
+    {
+        if(open3==false)
+        {
+            open3=true;
+            $('#about-who').show(1000);
+            $('#about-what').hide(1000);
+            $('#about-how').hide(1000);
+        }
+        else
+        {
+            open3=false;
+            $('#about-who').hide(1000);
+        }
+    })
+    $('#about-what-rightUp').mouseenter(function()
+    {
+        $('#about-what-rightDown').stop().animate({
+            height: '50',
+        }, 1000);
+    }).mouseleave(function()
+    {
+        $('#about-what-rightDown').stop().animate({
+            height: '0',
+        }, 1000);
+    })
+    for (var i=0; i<8; i=i+1)
+    {
+        // $('.about-what-rightDown-small').get(i).click(function()
+        // {
+            // about_what_photo_index=i;
+        // });
+    }
+    $('.about-who-block').mouseenter(function()
+    {
+        $(this).stop().animate({
+            height: '400',width: '280',
+        }, 300);
+    }).mouseleave(function()
+    {
+        $(this).stop().animate({
+            height: '100',width: '70',
+        }, 300);
     })
 }
 function mmMenuScroll(offset)
