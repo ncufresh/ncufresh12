@@ -10,6 +10,7 @@ body
 {
     background: #DCE4ED url('header.png') repeat-x;
     margin: 0 auto;
+    overflow-y: scroll;
     width: 1000px;
 }
 
@@ -56,6 +57,15 @@ form input
     border: none;
     border-radius: 5px;
     height: 16px;
+    padding: 4px 8px;
+}
+
+form button
+{
+    background: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    height: 24px;
     padding: 4px 8px;
 }
 
@@ -186,7 +196,7 @@ a:hover
 
 #navigation
 {
-    background: url('navigation.png');
+    background: url('navigation.png') no-repeat;
     list-style: none;
     margin: 160px 0 0 0;
     overflow: hidden;
@@ -336,7 +346,7 @@ a:hover
     white-space: pre;
 }
 
-#chatlist
+#chat-friend-list
 {
     -webkit-border-radius: 10px;
     background: #FFFFFF;
@@ -350,7 +360,7 @@ a:hover
     width: 160px;
 }
 
-#chatlist img
+#chat-friend-list img
 {
     border: 2px solid #000000;
     height: 35px;
@@ -359,18 +369,18 @@ a:hover
     width: 35px;
 }
 
-#chatlist p
+#chat-friend-list p
 {
     margin-left: 50px;
 }
 
-#chatlist .friend-list-entry
+#chat-friend-list .friend-list-entry
 {
     height: 45px;
     line-height: 45px;
 }
 
-#chatlist .friend-list-entry:hover
+#chat-friend-list .friend-list-entry:hover
 {
     background: #EEEEEE;
     cursor: pointer;
@@ -382,14 +392,44 @@ a:hover
     background: #FFFFFF;
     border-radius: 10px;
     bottom: -10px;
-    float: left;
     height: 200px;
     margin-right: 10px;
     opacity: 0.7;
+    overflow-x: hidden;
+    overflow-y: atuo;
     padding: 5px;
     position: fixed;
     width: 160px;
 }
+
+
+.chat-dialog .chat-display
+{   
+    top: 0;
+    position: relative;
+    height: 175px;
+    width: 160px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.chat-dialog .chat-input
+{
+    border-top: 1px solid #333333;
+    height: 20px;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    width: 160px;
+}
+
+.chat-dialog .chat-display p
+{
+    margin: 0;
+    padding: 0;
+}
+
+
 
 #result
 {
@@ -457,7 +497,7 @@ a:hover
     list-style: none;
     margin: 5px 0;
     overflow: hidden;
-    padding: 0 15px 0 45px;
+    padding: 0 60px 0 45px;
 }
 
 #marquee li
@@ -484,8 +524,9 @@ a:hover
     display: block;
     height: 30px;
     line-height: 30px;
-    margin: 0 0 0 470px;
+    margin: 0 0 0 430px;
     position: absolute;
+    width: 45px;
 }
 
 #index-calendar
@@ -525,7 +566,7 @@ a:hover
 
 .index-box td
 {
-    padding: 5px;
+    padding: 4px;
     width: 85%;
 }
 
@@ -562,75 +603,83 @@ a:hover
     background: url('index_forums_icon.png') no-repeat;
 }
 
-#news-window
+.news-dialog-warp
 {
-	display: none;
+	background: white;
+}
+
+.ui-dialog
+{
+    position: absolute;
+}
+
+.news-dialog
+{
+    display: none;
 }
 
 #mm-container
 {
 }
+
 #mm-sidebar
 {
-	width: 25%;
-	float: left;
+    width: 25%;
+    float: left;
 }
+
 #mm-menu
 {
 	width: 100%;
 	height: 400px;
-	background: white;
+	background: skyblue;
 	overflow: hidden;
 }
 
 #mm-menu button
 {
-	border: 0;
-	margin: 0;
-	padding: 0;
-	background: none;
-	position: absolute;
-	color: black;
-	width: 200px;
-	height: 50px;
-	background: white;
-	opacity: 0;
-	z-index: 1000;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background: none;
+    position: absolute;
+    color: black;
+    width: 187px;
+    height: 50px;
+    background: white;
+    opacity: 0;
+    z-index: 1000;
 }
 
 #mm-menu #mm-menu-items
 {
-	margin-top: 0;
+    margin-top: 0;
 }
 
 #mm-menu button:hover
 {
-	opacity: 0.9;
-	cursor: pointer;
-}
-
-#mm-menu button.mm-menu-up
-{
-	
+    opacity: 0.9;
+    cursor: pointer;
 }
 
 #mm-menu button.mm-menu-down
 {
-	margin-top: 350px;
+    margin-top: 350px;
 }
+
 #mm-menu a
 {
-	display: block;
-	width: 200px;
-	height: 150px;
-	display: block;
-	text-decoration: none;
-	opacity: 1;
+    display: block;
+    width: 100%;
+    height: 140px;
+    display: block;
+    text-decoration: none;
+    opacity: 1;
 }
 
 #mm-menu a:hover
 {
-	opacity: 0.8;
+    opacity: 0.8;
 }
 
 #mm-menu a span
@@ -640,47 +689,54 @@ a:hover
 	height: 16px;
 	display:block;
 	margin-bottom: -16px;	
-	top: 134px;
+	top: 124px;
 	left: 0;
 	text-align: right;
 	background: black;
 	opacity: 0.5;
+	padding: 0 8px 0 0;
 }
 
 #mm-menu a img
 {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
+
 #mm-player
 {
-	width: 100%;
-	height: 200px;
-	background: blue;
+    width: 100%;
+    height: 200px;
+    background: blue;
 }
+
 #mm-content
 {
-	width: 75%;
-	float: left;
+    width: 75%;
+    float: left;
 }
+
 #mm-video
 {
-	width: 100%;
-	height: 400px;
-	background: url(loading.gif) no-repeat black 225px 125px;
+    width: 100%;
+    height: 400px;
+    background: url(loading.gif) no-repeat black center;
 }
+
 #mm-video-frame
 {
-	border: 0;
-	padding: 0;
-	margin: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
 }
+
 #mm-introduction
 {
 	width: 100%;
 	height: 200px;
 	background: gray;
 }
+<<<<<<< HEAD
 
 #nculife-dialog
 {
@@ -775,3 +831,60 @@ a:hover
 	height:50px;
 	
 }
+=======
+#mm-introduction .text
+{
+	width: 65%;
+	height: 100%;
+	background: red;
+	float: left;
+}
+#mm-introduction .pic
+{
+	background: yellow;
+	width: 35%;	
+	height: 100%;
+	float: left;
+
+}
+
+.scroll-container
+{
+    overflow: hidden;
+    position: relative;
+}
+
+.scroll-container .scroll-area
+{
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.scroll-container .scroll-bar
+{
+    /*display: none;*/
+    height: 100%;
+    right: 2px;
+    position: absolute;
+    top: 0;
+    width: 8px;
+}
+
+.scroll-container .scroll-track
+{
+    position: relative;
+    height: 100%;
+}
+
+.scroll-container .scroll-dragable
+{
+    -webkit-border-radius: 5px;
+    background: #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+    position: relative;
+    top: 0;
+}
+>>>>>>> fde385bf26c08fd2c6d55847f004c053b8967be6

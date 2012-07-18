@@ -19,21 +19,14 @@
     <script type="text/javascript">
         $.extend({
             configures: {
-                chatFriendsListUrl: '<?php echo Yii::app()->createUrl('chat/list'); ?>',
-                chatReceiveMessageUrl: '<?php echo Yii::app()->createUrl('chat/receive', array('id' => ':id')); ?>',
-                chatRetrieveMessageUrl: '<?php echo Yii::app()->createUrl('chat/retrieve'); ?>',
-                multimediaYoutubeUrl: '<?php echo Yii::app()->createUrl('multimedia/youtube', array('video_id' => ':id')); ?>'
+                pullUrl: decodeURIComponent('<?php echo Yii::app()->createUrl('site/pull'); ?>'),
+                chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createUrl('chat/send'); ?>'),
+                multimediaYoutubeUrl: '<?php echo Yii::app()->createUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
+                newsIndexUrl: '<?php echo Yii::app()->createUrl('news/index'); ?>',
+                newsAdminUrl: '<?php echo Yii::app()->createUrl('news/admin'); ?>',
+                token: '<?php echo Yii::app()->security->getToken(); ?>'
             }
         });
-        (function($)
-        {
-            var keep = function()
-            {
-                $.get('<?php echo Yii::app()->createUrl('site/keep'); ?>');
-                setTimeout(arguments.callee, <?php echo Activity::STATE_UPDATE_TIMEOUT; ?> * 1000);
-            };
-            keep();
-        })(jQuery);
     </script>
 </head>
 
@@ -80,7 +73,7 @@
             <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="校園導覽">校園導覽</a>
         </li>
         <li>
-            <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="論壇專區">論壇專區</a>
+            <a href="<?php echo Yii::app()->createUrl('forum/index'); ?>" title="論壇專區">論壇專區</a>
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="系所社團">系所社團</a>
@@ -114,7 +107,7 @@
             </dd>
         </dl>
         <div>
-            <input name="token" value="<?php echo Yii::app()->security->getToekn(); ?>" type="hidden" />
+            <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
             <button id="form-sidebar-login" type="submit">[登入]</button>
             <button id="form-sidebar-register">[註冊]</button>
         </div>

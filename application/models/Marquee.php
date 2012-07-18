@@ -21,6 +21,13 @@ class Marquee extends CActiveRecord
         );
     }
 
+    public function behaviors()
+    {
+        return array(
+            'RawDataBehavior'
+        );
+    }
+
     public function getMarquees($count = 5)
     {
         return $this->findAll(array(
@@ -47,6 +54,10 @@ class Marquee extends CActiveRecord
             {
                 $this->created = TIMESTAMP;
                 $this->invisible = false;
+            }
+            else
+            {
+                $this->created = $this->getRawValue('created');
             }
             $this->updated = TIMESTAMP;
             return true;

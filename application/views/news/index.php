@@ -4,7 +4,7 @@
 		<?php foreach($news as $each):?>
 			<tr>
 				<td><?php echo CHtml::link($each->title, $each->url);?></td>
-				<td><?php echo date('Y/m/d H:i:s', $each->updated )?></td>
+				<td><?php echo $each->updated; ?></td>
 			</tr>
 		<?php endforeach ?>
 	</tbody>

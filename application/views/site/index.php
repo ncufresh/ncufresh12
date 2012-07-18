@@ -1,3 +1,9 @@
+<script type="text/javascript">
+jQuery(document).ready(function()
+{
+    jQuery('#marquee').marquee();
+});
+</script>
 <div id="index-calendar">行事曆</div>
 <div id="index-container">
     <ul id="marquee">

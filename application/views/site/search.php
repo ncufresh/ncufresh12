@@ -1,6 +1,5 @@
-<div id="result">載入搜尋結果中……</div>
 <script type="text/javascript">
-$(document).ready(function()
+jQuery(document).ready(function()
 {
     var options = new google.search.DrawOptions();
     var control = new google.search.CustomSearchControl('011017124764723419863:mdibrr3n-py');
@@ -10,3 +9,4 @@ $(document).ready(function()
     control.execute('<?php echo $query; ?>');
 });
 </script>
+<div id="result">載入搜尋結果中……</div>

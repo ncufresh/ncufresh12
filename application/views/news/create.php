@@ -1,4 +1,3 @@
-<?php Yii::app()->clientScript->registerCoreScript('jquery.ui'); ?>
 <h2>新增文章</h2>
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('news/create')?>" method="post" class="MultiFile-intercepted">
 標題<input type="text" name="news[title]" /><br />
@@ -24,6 +23,9 @@
 )); ?>
 <input type="submit" value="發佈" />
 <input class="news-cancel-button" type="button" value="取消" />
-<input name="token" value="<?php echo Yii::app()->security->getToekn(); ?>" type="hidden" />
+<input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
 </form>
-<div id="news-dialog"></div>
+<?php foreach($errors as $key => $error):?>
+    <b><?php echo $key . ':' .$error[0]; ?></b>
+<?php endforeach;?>
+<div class="news-dialog"></div>

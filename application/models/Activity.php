@@ -18,6 +18,13 @@ class Activity extends CActiveRecord
         return '{{activities}}';
     }
 
+    public function behaviors()
+    {
+        return array(
+            'Helper'
+        );
+    }
+
     public function getId()
     {
         return $this->user_id ?: 0;
@@ -73,11 +80,9 @@ class Activity extends CActiveRecord
     {
         if ( parent::beforeSave() )
         {
-            if ( $this->getIsNewRecord() )
-            {
-                $this->uuid = md5(uniqid(mt_rand() . TIMESTAMP . rand(), true));
-            }
-            $this->id = Yii::app()->user->id ?: 0;
+            if ( $this->getIsNewRecord() ) $this->uuid = $this->uuid();
+            $this->id = Yii::app()->user->getId() ?: 0;
+            $this->ip = $this->ip2long($this->getClientIP());
             $this->timestamp = TIMESTAMP;
             return true;
         }
