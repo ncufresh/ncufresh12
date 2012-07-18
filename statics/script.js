@@ -1,5 +1,46 @@
 (function($)
 {
+    $.pull = {};
+
+    $.pull.interval = 5000;
+
+    $.pull.start = function()
+    {
+        $.getJSON(
+            $.configures.pullUrl,
+            {
+                lasttime: $.configures.lasttime
+            },
+            function(response)
+            {
+                $.configures.lasttime = response.lasttime;
+                if ( response.friends )
+                {
+                    $.fn.chat.updateFriendList(response.friends);
+                }
+                if ( response.messages )
+                {
+                    for ( var key in response.messages )
+                    {
+                        var data = response.messages[key];
+                        $.fn.chat.updateChatDialog(data.id, data);
+                    }
+                }
+            }
+        );
+        $.pull.timer = setTimeout(arguments.callee, $.pull.interval);
+    };
+
+    $.pull.pause = function()
+    {
+        $.pull.timer = clearTimeout($.pull.timer);
+    };
+
+    $.pull.restart = function()
+    {
+        $.pull.timer = setTimeout($.pull.start, $.pull.interval);
+    };
+
     $.chat = {};
 
     $.fn.chat = function(options) {
@@ -9,6 +50,7 @@
             friendListHeight:       200,
             chatDialogClass:        'chat-dialog',
             chatDisplayClass:       'chat-display',
+            chatFormClass:          'chat-form',
             chatInputClass:         'chat-input',
             unknownIcon:            'unknown.png'
         }, options);
@@ -55,7 +97,7 @@
                     $.fn.chat.openChatDialog($(this).attr('chat:id'));
                 })
                 .appendTo(list);
-            var icon = $('<img></img>')
+            var icon = $('<img />')
                 .attr(
                     'src',
                     data.icon ? data.icon : $.chat.options.unknownIcon
@@ -94,20 +136,21 @@
             var display = $('<div></div>')
                 .addClass($.chat.options.chatDisplayClass);
             var input = $('<input />')
-                .addClass($.chat.options.chatInputClass)
-                .keydown(function(event)
+                .addClass($.chat.options.chatInputClass);
+            var form = $('<form></form>')
+                .addClass($.chat.options.chatFormClass)
+                .submit(function()
                 {
-                    if ( event.which == 13 )
-                    {
-                        $.fn.chat.sendMessage(id, input.val());
-                        input.val('');
-                    }
-                });
+                    $.fn.chat.sendMessage(id, input.val());
+                    input.val('');
+                    return false;
+                })
+                .append(input);
             dialog = $('<div></div>')
                 .attr('chat:id', id)
                 .addClass($.chat.options.chatDialogClass)
                 .append(display)
-                .append(input)
+                .append(form)
                 .insertBefore(list);
             dialog.css({
                 left: left - dialog.outerWidth(true) * size
@@ -130,14 +173,29 @@
 
     $.fn.chat.updateChatDialog = function(id, data)
     {
+        var exists;
         var dialog = $.fn.chat.showChatDialog(id);
-        var display = dialog.children('.' + $.chat.options.chatDisplayClass);
-        display
-            .html(display.html() + '<br />' + data.sender + ':' + data.message)
-            .stop()
-            .animate({
-                scrollTop: display[0].scrollHeight
-            }, 1000);
+        dialog.children('.' + $.chat.options.chatDisplayClass)
+            .each(function()
+            {
+                $(this).children('p').each(function()
+                {
+                    if ( $(this).attr('chat:uuid') == data.uuid ) exists = true;
+                });
+                if ( ! exists )
+                {
+                    $('<p></p>')
+                        .attr('chat:uuid', data.uuid)
+                        .text(data.sender + ':' + data.message)
+                        .appendTo($(this));
+                }
+                $(this)
+                    .stop()
+                    .animate({
+                        scrollTop: this.scrollHeight
+                    }, 1000);
+            }
+        );
         return dialog;
     };
 
@@ -167,6 +225,7 @@
             },
             function(response)
             {
+                $.pull.pause();
                 $.configures.token = response.token;
                 $.configures.lasttime = response.lasttime;
                 for ( var key in response.messages )
@@ -174,6 +233,7 @@
                     var data = response.messages[key];
                     $.fn.chat.updateChatDialog(data.id, data);
                 }
+                $.pull.restart();
             }
         );
     };
@@ -575,32 +635,7 @@
             mmMenuScroll.mousein = false;
         });
 
-        (function()
-        {
-            $.getJSON(
-                $.configures.pullUrl,
-                {
-                    lasttime: $.configures.lasttime
-                },
-                function(response)
-                {
-                    $.configures.lasttime = response.lasttime;
-                    if ( response.friends )
-                    {
-                        $.fn.chat.updateFriendList(response.friends);
-                    }
-                    if ( response.messages )
-                    {
-                        for ( var key in response.messages )
-                        {
-                            var data = response.messages[key];
-                            $.fn.chat.updateChatDialog(data.id, data);
-                        }
-                    }
-                }
-            );
-            setTimeout(arguments.callee, 5000);
-        })();
+        $.pull.start();
     });
 
     window.fbAsyncInit = function() {

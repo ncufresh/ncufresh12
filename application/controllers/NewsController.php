@@ -74,7 +74,12 @@ class NewsController extends Controller
             $news->title = $_POST['news']['title'];
             $news->content = $_POST['news']['content'];
             $news->author_id = 0;
-            $news->save();
+            if( !$news->save() ){ 
+                $this->render('create', array(
+                    'errors' => $news->errors?:array()
+                ));
+                exit();
+            }
             //saving urls
             if(isset($_POST['news']['news_urls_alias']) && isset($_POST['news']['news_urls']))
             {

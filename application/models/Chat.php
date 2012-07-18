@@ -22,7 +22,7 @@ class Chat extends CActiveRecord
     public function rules()
     {
         return array(
-            array('receiver_id, message', 'required')
+            array('receiver_id, message, sequence', 'required')
         );
     }
 
@@ -42,43 +42,34 @@ class Chat extends CActiveRecord
         );
     }
 
-    public function getMessages($id, $lasttime)
+    public function getMessages($lasttime = 0)
     {
         $data = array();
 
         $criteria = new CDbCriteria();
-        $criteria->select = 'sender_id, receiver_id, message, timestamp';
-        $criteria->order = 'timestamp ASC';
-        $criteria->condition = 'sender_id = :sender OR receiver_id = :receiver';
+        $criteria->select = 'uuid, sender_id, receiver_id, message, timestamp';
+        $criteria->order = 'timestamp ASC, sequence ASC';
+        $criteria->condition = '
+            sender_id = :receiver OR receiver_id = :receiver
+        ';
         $criteria->params = array(
-            ':sender'   => $id,
             ':receiver' => Yii::app()->user->getId()
         );
-
         foreach ( $this->findAll($criteria) as $entry )
         {
-            if ( $entry->timestamp <= $lasttime ) continue;
+            if ( $entry->timestamp < $lasttime ) continue;
             $data[] = array(
-                'id'        => $entry->sender_id,
+                'uuid'      => $entry->uuid,
+                'id'        => $entry->sender_id == Yii::app()->user->getId()
+                             ? $entry->receiver_id
+                             : $entry->sender_id,
                 'sender'    => $entry->sender
                              ? $entry->sender->username
                              : 'Unknown',
-                'message'   => $entry->message,
-                'timestamp' => $entry->timestamp
+                'message'   => $entry->message
             );
         }
         return $data;
-    }
-
-    // public function getRecentMessages($id)
-    // {
-        // return $this->getMessages($id, 0);
-    // }
-
-
-    public function getAllMessages($id)
-    {
-        return $this->getMessages($id, 0);
     }
 
     protected function afterFind()
