@@ -891,8 +891,9 @@ a:hover
 {
     background-color:blue;
     width:400px;
-    height:500px;
+    height:300px;
     float:right;
+    position:relative;
 }
 #about-what-rightUp
 {
@@ -905,8 +906,10 @@ a:hover
     background-color:black;
     width:400px;
     height:50px;
+    bottom:0px;
+    position:absolute;
 }
-#about-what-rightDown-small
+.about-what-rightDown-small
 {
     background: url('photo.png');
     background-repeat:no-repeat;
@@ -940,7 +943,7 @@ a:hover
     height:500px;
     float:top;
 }
-#about-how-photo1
+.about-how-photo
 {
     background-color:white;
     top:20px;
@@ -949,31 +952,14 @@ a:hover
     height:150px;
     float:none;
 }
-#about-how-photo2
+.about-who-block
 {
-    background-color:white;
-    top:200px;
-    left:300px;
-    width:200px;
-    height:150px;
-    float:none;
-}
-#about-how-photo3
-{
-    background-color:white;
-    top:230px;
-    left:520px;
-    width:200px;
-    height:150px;
-    float:none;
-}
-#about-who-block
-{
+    
     background-color:blue;
-    width:140px;
-    height:200px;
+    width:70px;
+    height:100px;
     float:left;
-    margin:5px;
+    margin:10px;
 }
 .scroll-container
 {
