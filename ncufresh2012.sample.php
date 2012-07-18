@@ -15,4 +15,4 @@ $ncufreshfb = array(
     'secret'    => 'da3b004c79c3122de3a702a90a8a6dbf'
 );
 
-require_once(dirname(__FILE__) . '/yii/yii.php');
+require_once('D:/yii/framework/yii.php');

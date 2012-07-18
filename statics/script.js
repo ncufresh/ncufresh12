@@ -507,6 +507,7 @@
 
     $(document).ready(function()
     {
+		
         $.configures.lasttime = 0;
 
         $.configures.sequence = $.random(0, 1000);
@@ -635,8 +636,8 @@
             mmMenuScroll(srcoll_offset);
         }).mouseleave(function(){
             mmMenuScroll.mousein = false;
-        });    
-
+        });
+        
         $('.mm-menu-down').mouseenter(function(){
             mmMenuScroll.mousein = true;
             mmMenuScroll(-1 * srcoll_offset);
@@ -644,12 +645,51 @@
             mmMenuScroll.mousein = false;
         });
 
-        $('.mm-menu-down').mouseenter(function(){
-            mmMenuScroll.mousein = true;
-            mmMenuScroll(-1 * srcoll_offset);
-        }).mouseleave(function(){
-            mmMenuScroll.mousein = false;
-        });
+        inin_about();
+        
+		$('.nculife-food .dialog').click(function(){
+			$( "#nculife-dialog" ).dialog({
+				dialogClass: 'nculife-dialog',
+				height:500,
+				width:700,
+				modal: true,
+				show: { effect: 'explode', direction: "down"},
+			});
+	
+		});
+		
+		$('#haha1').click(function(){
+			var url = 'index.html';
+			// alert(url);
+			$.ajax({
+				type: 'GET',
+				url: '/ncufresh12/nculife/foodContent.html',
+				data:{
+					id: 1
+				},
+				dataType: 'html',
+				success: function(data){ 
+					$('#nculife-cv').html(data);
+				},
+			});	
+			return false;
+		});		
+		$('#haha2').click(function(){
+			var url = 'index.html';
+			// alert(url);
+			$.ajax({
+				type: 'GET',
+				url: '/ncufresh12/nculife/foodContent.html',
+				data:{
+					id: 2
+				},
+				dataType: 'html',
+				success: function(data){ 
+					$('#nculife-cv').html(data);
+				},
+			});
+			return false;
+		});
 
         $.pull.start();
     });
@@ -678,7 +718,24 @@
         };
     }
 })(jQuery);
-
+function inin_about()
+{
+    $('#about-title1').mouseenter(function(){
+        $('#about-what').show(1000);
+        $('#about-how').hide(1000);
+        $('#about-who').hide(1000);
+    })
+    $('#about-title2').mouseenter(function(){
+        $('#about-how').show(1000);
+        $('#about-what').hide(1000);
+        $('#about-who').hide(1000);
+    })
+    $('#about-title3').mouseenter(function(){
+        $('#about-who').show(1000);
+        $('#about-what').hide(1000);
+        $('#about-how').hide(1000);
+    })
+}
 function mmMenuScroll(offset)
 {
     if( typeof(mmMenuScroll.mousein) == 'undefined' )
