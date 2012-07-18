@@ -14,7 +14,7 @@ class SiteController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('index', 'error', 'search', 'pull', 'login', 'channel'),
+                'actions'   => array('index', 'error', 'search', 'pull', 'login', 'channel','register'),
                 'users'     => array('*')
             ),
             array(
@@ -198,4 +198,29 @@ class SiteController extends Controller
         echo '<script src="//connect.facebook.net/zh_TW/all.js"></script>';
         $this->layout = false;
     }
+	
+	public function actionRegister()
+    {
+
+        if(isset($_POST['register'])) 
+		{
+			$user = new User();
+			$user->username = $_POST['register']['username']; 
+			$user->password = $_POST['register']['password'];
+			
+			if($user->validate())//只會驗證rules....
+			{
+				$user ->save(); 
+				$this->redirect(array('site/index')); //註冊成功會導回主頁面
+			}
+			else
+			{
+				print_r($this->getErrors());
+			}
+		}
+		$this->render('register');
+		
+    }
 }
+
+
