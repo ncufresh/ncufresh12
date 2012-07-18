@@ -38,7 +38,7 @@
             <a href="<?php echo Yii::app()->createUrl('site/page', array('view' => 'about')); ?>" title="中大生活">中大生活</a>
         </li>
         <li>
-            <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="校園導覽">校園導覽</a>
+            <a href="<?php echo Yii::app()->createUrl('street/index'); ?>" title="校園導覽">校園導覽</a>
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="論壇專區">論壇專區</a>
