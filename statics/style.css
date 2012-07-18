@@ -751,7 +751,6 @@ a:hover
 	float: left;
 
 }
-
 .scroll-container
 {
     overflow: hidden;
@@ -791,3 +790,23 @@ a:hover
     position: relative;
     top: 0;
 }
+
+#club_view_style
+{
+	background:yellow;
+}
+#content
+{
+    background:green;
+    /* position: relative; */
+}
+.l1
+{   
+    float:left;
+    margin:5px 5px 5px 5px;
+    background:yellow;
+    width:100px;
+    height:250px;
+    
+}
+
