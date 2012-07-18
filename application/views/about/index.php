@@ -33,9 +33,9 @@
 		<div id="about-how-txt">
 			<h1>OO組</h1>
 			<p>文字介紹..............</p>
-			<!--<div id="about-how-photo1"></div>
-			<div id="about-how-photo2"></div>
-			<div id="about-how-photo3"></div>-->
+			<!--<div class="about-how-photo1"></div>
+			<div class="about-how-photo2"></div>
+			<div class="about-how-photo3"></div>-->
 		
 		</div>
 	</div>
@@ -45,10 +45,10 @@
 		<h1 id="about-h3">Who are we?</h1>
 	</div>
 	<div id="about-who">
-		<div id="about-who-block"></div>
-		<div id="about-who-block"></div>
-		<div id="about-who-block"></div>
-		<div id="about-who-block"></div>
-		<div id="about-who-block"></div>
+		<div class="about-who-block"></div>
+		<div class="about-who-block"></div>
+		<div class="about-who-block"></div>
+		<div class="about-who-block"></div>
+		<div class="about-who-block"></div>
 	</div>
 </div>

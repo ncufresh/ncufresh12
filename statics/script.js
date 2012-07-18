@@ -769,7 +769,7 @@ function inin_about()
         else
         {
             open3=false;
-            $('#about-how').hide(1000);
+            $('#about-who').hide(1000);
         }
     })
     $('#about-what-rightUp').mouseenter(function()
@@ -790,6 +790,17 @@ function inin_about()
             about_what_photo_index=i;
         });
     }
+    $('.about-who-block').mouseenter(function()
+    {
+        $(this).stop().animate({
+            height: '400',width: '280',
+        }, 300);
+    }).mouseleave(function()
+    {
+        $(this).stop().animate({
+            height: '100',width: '70',
+        }, 300);
+    })
 }
 function mmMenuScroll(offset)
 {

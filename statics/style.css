@@ -943,7 +943,7 @@ a:hover
     height:500px;
     float:top;
 }
-#about-how-photo1
+.about-how-photo
 {
     background-color:white;
     top:20px;
@@ -952,31 +952,14 @@ a:hover
     height:150px;
     float:none;
 }
-#about-how-photo2
+.about-who-block
 {
-    background-color:white;
-    top:200px;
-    left:300px;
-    width:200px;
-    height:150px;
-    float:none;
-}
-#about-how-photo3
-{
-    background-color:white;
-    top:230px;
-    left:520px;
-    width:200px;
-    height:150px;
-    float:none;
-}
-#about-who-block
-{
+    
     background-color:blue;
-    width:140px;
-    height:200px;
+    width:70px;
+    height:100px;
     float:left;
-    margin:5px;
+    margin:10px;
 }
 .scroll-container
 {
