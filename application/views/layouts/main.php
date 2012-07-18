@@ -11,9 +11,21 @@
 
     <title><?php echo $this->getPageTitle(); ?></title>
 
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
     <script type="text/javascript">
+        google.load('search', '1', {
+             language: 'zh_TW'
+        });
+        google.setOnLoadCallback(function()
+        {
+            google.search.CustomSearchControl.attachAutoCompletion(
+                '011017124764723419863:mdibrr3n-py',
+                document.getElementById('form-search-query'),
+                'search'
+            );
+        });
         jQuery.extend({
             configures: {
                 pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
@@ -24,11 +36,26 @@
                 newsIndexUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>',
                 newsAdminUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/admin'); ?>',
                 registerUrl: '<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>',
+                facebookEnable: <?php echo Yii::app()->facebook->enable ? 'true' : 'false'; ?>,
                 token: '<?php echo Yii::app()->security->getToken(); ?>'
             }
         });
     </script>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
+
+    <style type="text/css">
+    input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus
+    {
+        border-color: #D9D9D9;
+    }
+    input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus
+    {
+        border-color: #2F5BB7;
+        background-color: #357AE8;
+        background-image: none;
+        filter: none;
+    }
+    </style>
 </head>
 
 <body>
@@ -45,7 +72,7 @@
                 <label for="form-search-query">搜尋</label>
             </dt>
             <dd>
-                <input id="form-search-query" name="query" type="text" />
+                <input id="form-search-query" name="query" autocomplete="off" type="text" />
             </dd>
         </dl>
         <div>
