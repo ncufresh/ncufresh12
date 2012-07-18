@@ -507,6 +507,7 @@
 
     $(document).ready(function()
     {
+		
         $.configures.lasttime = 0;
 
         $.configures.sequence = $.random(0, 1000);
@@ -628,7 +629,6 @@
             mmMenuScroll.mousein = false;
         });	
         
-<<<<<<< HEAD
 		$('.mm-menu-down').mouseenter(function(){
 			mmMenuScroll.mousein = true;
 			mmMenuScroll(-1 * srcoll_offset);
@@ -636,18 +636,23 @@
 			mmMenuScroll.mousein = false;
 		});
 		
-=======
-        $('.mm-menu-down').mouseenter(function(){
-            mmMenuScroll.mousein = true;
-            mmMenuScroll(-1 * srcoll_offset);
-        }).mouseleave(function(){
-            mmMenuScroll.mousein = false;
-        });
-
->>>>>>> 13cbfb6028f3d5f497c991a8689623139180917d
-        $.pull.start();
-    });
-
+		$('#about-title1').mouseenter(function(){
+			$('#about-what').show(1000);
+            $('#about-how').hide(1000);
+            $('#about-who').hide(1000);
+		})
+        $('#about-title2').mouseenter(function(){
+			$('#about-how').show(1000);
+            $('#about-what').hide(1000);
+            $('#about-who').hide(1000);
+		})
+        $('#about-title3').mouseenter(function(){
+			$('#about-who').show(1000);
+            $('#about-what').hide(1000);
+            $('#about-how').hide(1000);
+		})
+		$.pull.start();
+	});
     window.fbAsyncInit = function() {
         var like = $('<div></div>')
             .attr('id', 'fb-like')

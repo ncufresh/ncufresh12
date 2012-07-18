@@ -757,11 +757,16 @@ a:hover
 }
 #about-title
 {
-    font-size:20px;
+    
+}
+#about-h
+{
+	font-size:20px;
     font-family: "微軟正黑體", Arial, sans-serif;
 }
 #about-what
 {
+	display:none;
     background-color:yellow;
     width:750px;
     height:500px;
@@ -809,17 +814,27 @@ a:hover
     margin-top:5px;
     float:left;
 }
+#about-how
+{
+    display:none;
+    background-color:yellow;
+    width:750px;
+    height:500px;
+}
 #about-how-pic
 {
     background-color:black;
     width:750px;
     height:500px;
+    float:top;
 }
 #about-how-txt
 {
+    display:none;
     background-color:yellow;
     width:750px;
     height:500px;
+    float:top;
 }
 #about-how-photo1
 {
