@@ -1,0 +1,1 @@
+<iframe style="top:0; left:0; position: absolute;" width="100%" height="100%" src="http://www.youtube.com/embed/<?php echo $video_id; ?>?autoplay=1&wmode=transparent&autohide=1&allowfullscreen=1" frameborder="0"></iframe>

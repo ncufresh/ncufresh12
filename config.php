@@ -16,22 +16,29 @@ return array(
     ),
     'components'=> array(
         'user'          => array(
-            'allowAutoLogin'    => true,
+            'class'             => 'WebUser',
+            'allowAutoLogin'    => true
         ),
         'session'       => array(
             'autoStart'         => true,
             'sessionName'       => 'NcuFresh2012'
         ),
 		'assetManager'	=> array(
-			'basePath'			=> dirname(__FILE__) . DIRECTORY_SEPARATOR . 'statics'
+			'basePath'			=> dirname(__FILE__) . DIRECTORY_SEPARATOR . 'statics' . DIRECTORY_SEPARATOR . 'assets'
 		),
         'urlManager'    => array(
             'urlFormat'         => 'path',
             'rules'             => array(
-                '<controller:\w+>/<id:\d+>'                 =>'<controller>/view',
-                '<controller:\w+>/<action:\w+>/<id:\d+>'    =>'<controller>/<action>',
-                '<controller:\w+>/<action:\w+>'             =>'<controller>/<action>',
+                ''                                          => array('site/index', 'urlSuffix' => ''),
+                '<action:\w+>'                              => 'site/<action>',
+                '<controller:\w+>/<id:\d+>'                 => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>'    => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>'             => '<controller>/<action>'
             ),
+            'urlSuffix'         => '.html',
+            'caseSensitive'     => true,
+			'showScriptName'    => false,
+            'useStrictParsing'  => true
         ),
         'db'            => array(
             'connectionString'  => 'mysql:host=' . $ncufreshdb['host']. ';dbname=' . $ncufreshdb['database'],
@@ -39,9 +46,10 @@ return array(
             'username'          => $ncufreshdb['username'],
             'password'          => $ncufreshdb['password'],
             'charset'           => 'utf8',
+            'tablePrefix'       => ''
         ),
         'errorHandler'  => array(
-            'errorAction'       => 'site/error',
+            'errorAction'       => 'site/error'
         ),
         'security'      => array(
             'class'             => 'Security'

@@ -2,37 +2,129 @@
 
 class SiteController extends Controller
 {
+    public function filters()
+    {
+        return array(
+            'accessControl'
+        );
+    }
+
+    public function accessRules()
+    {
+        return array(
+            array(
+                'allow',
+                'actions'   => array('index', 'error', 'search', 'pull', 'login'),
+                'users'     => array('*')
+            ),
+            array(
+                'allow',
+                'actions'   => array('logout'),
+                'users'     => array('@')
+            ),
+            array(
+                'allow',
+                'actions'   => array('marquee'),
+                'roles'     => array('admin')
+            ),
+            array(
+                'deny',
+                'users'     => array('*')
+            )
+        );
+    }
+
     public function actionIndex()
     {
         $this->setPageTitle(Yii::app()->name);
         $this->render('index', array(
+            'latests'   => News::model()->getPopularNews(10),
+            'articles'   => array(),
             'marquees'  => Marquee::model()->getMarquees()
         ));
     }
 
     public function actionMarquee($id = 0)
     {
+        $id = (integer)$id;
         if ( isset($_POST['marquee']) )
         {
-            if ( $id )
+            if ( isset($_POST['marquee']['id']) )
             {
-                $model = Marquee::model()->findByPk($id);
+                $id = (integer)$_POST['marquee']['id'];
+            }
+
+            if ( isset($_POST['marquee']['message']) )
+            {
+                if ( $id )
+                {
+                    $model = Marquee::model()->findByPk($id);
+                }
+                else
+                {
+                    $model = new Marquee();
+                }
+                $model->attributes = $_POST['marquee'];
+
+                if ( $model->validate() && $model->save() )
+                {
+                    $this->_data['message'] = $model->message;
+                }
+                else
+                {
+                    $this->_data['error'] = true;
+                }
             }
             else
             {
-                $model = new Marquee();
+                $this->_data['error'] = true;
             }
-            $model->attributes = $_POST['marquee'];
+            $this->_data['token'] = Yii::app()->security->getToken();
 
-            if ( $model->validate() && $model->save() )
-            {
-                $this->redirect(Yii::app()->user->returnUrl);
-            }
+            if ( Yii::app()->request->getIsAjaxRequest() ) return true;
+            $this->redirect(Yii::app()->user->returnUrl);
         }
 
         $this->setPageTitle(Yii::app()->name . ' - 跑馬燈管理');
         $this->render('marquee', array(
             'marquees'  => Marquee::model()->getMarquees()
+        ));
+    }
+
+    public function actionPull($lasttime = 0)
+    {
+        if ( $lasttime == 0 ) // Debug only
+        {
+            $this->_data['friends'] = array(
+                array(
+                    'id'        => 1,
+                    'name'      => 'Test 1',
+                    'icon'      => null,
+                    'active'    => true
+                ),
+                array(
+                    'id'        => 2,
+                    'name'      => 'Demodemo',
+                    'icon'      => null,
+                    'active'    => true
+                ),
+                array(
+                    'id'        => 3,
+                    'name'      => 'Adminadmin',
+                    'icon'      => null,
+                    'active'    => true
+                )
+            );
+        }
+        $this->_data['messages'] = Chat::model()->getMessages($lasttime);
+        $this->_data['lasttime'] = TIMESTAMP;
+    }
+
+    public function actionSearch($query)
+    {
+        $this->setPageTitle(Yii::app()->name . ' - 搜尋結果');
+        $this->render('search', array(
+            'query'     => $query
         ));
     }
 
@@ -43,14 +135,25 @@ class SiteController extends Controller
     {
         if ( $error = Yii::app()->errorHandler->error )
         {
-            if ( Yii::app()->request->isAjaxRequest )
+            if ( Yii::app()->request->getIsAjaxRequest() )
             {
                 echo $error['message'];
             }
             else
             {
                 $this->setPageTitle(Yii::app()->name . ' - 發生錯誤');
-                $this->render('error', $error);
+                switch ( $error['code'] )
+                {
+                    case 403 :
+                        Yii::app()->user->loginRequired();
+                        break;
+                    case 404 :
+                        $this->render('notfound', $error);
+                        break;
+                    default :
+                        $this->render('error', $error);
+                        break;
+                }
             }
         }
     }
@@ -80,7 +183,7 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
-        Yii::app()->user->logout();
+        Yii::app()->user->logout(false);
         $this->redirect(Yii::app()->homeUrl);
     }
 }

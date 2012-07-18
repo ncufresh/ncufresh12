@@ -1,6 +1,6 @@
 <?php
 
-class NewsFile extends CActiveRecord
+class ForumArticleCategory extends CActiveRecord
 {
     public static function model($className = __CLASS__)
     {
@@ -9,7 +9,7 @@ class NewsFile extends CActiveRecord
 
     public function tableName()
     {
-        return '{{news_files}}';
+        return 'forum_article_category';
     }
 
     public function relations()

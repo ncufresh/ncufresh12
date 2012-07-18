@@ -9,7 +9,7 @@ class News extends CActiveRecord
 
     public function tableName()
     {
-        return 'news';
+        return '{{news}}';
     }
 	
 	public function rules()
@@ -19,17 +19,41 @@ class News extends CActiveRecord
 		);
 	}
 	
+    public function behaviors()
+    {
+        return array(
+            'RawDataBehavior',
+        );
+    }
+    
     public function relations()
     {
         return array(
+			'urls' => array(self::HAS_MANY, 'NewsLink', 'news_id'),
+			'author' => array(self::BELONGS_TO, 'User', 'author_id'),
         );
     }
 
-    public function getPage($page = 1, $entriesPerPage = 5)
+    public function getPopularNews($num)
+    {
+        $news = $this->getPage(1,$num,true);
+        foreach($news as $each)
+        {
+            $each->updated = Yii::app()->format->date($each->getRawValue('updated'));
+            $each->created = Yii::app()->format->date($each->getRawValue('created'));
+        }
+        return $news;
+    }
+    
+    public function getPage($page, $entriesPerPage, $desc = false)
     {
         $criteria = new CDbCriteria();
+		$criteria->condition = 'invisible=0';
         $criteria->limit = $entriesPerPage;
-        $criteria->order = 'updated DESC';
+		if( $desc )
+			$criteria->order = 'updated DESC';
+		else
+			$criteria->order = 'updated ASC';
         $count = $this->count();
         $totalPages = ceil($count / $entriesPerPage);
         $currentPage = ($page<$totalPages?$page:$totalPages);
@@ -37,9 +61,9 @@ class News extends CActiveRecord
         return $this->findAll($criteria);
     }
 
-    public function getPageStatus($currentPage = 1, $entriesPerPage = 5)
+    public function getPageStatus($currentPage, $entriesPerPage)
     {
-        $totalPages = ceil($this->count() / $entriesPerPage);
+        $totalPages = ceil($this->count('invisible=0') / $entriesPerPage);
         if($currentPage > $totalPages) $currentPage = $totalPages;
         if($currentPage < 1) $currentPage = 1;
         $nextPage = $currentPage==$totalPages?null:($currentPage+1);
@@ -60,9 +84,9 @@ class News extends CActiveRecord
     public function getCurrentPage( $entriesPerPage, $desc = false )
     {
 		if( $desc )
-			return ceil( $this->count('id >= ' . $this->id)/$entriesPerPage );
+			return ceil( $this->count('updated >= ' . $this->getRawValue('updated') . ' AND invisible=0')/$entriesPerPage );
 		else
-			return ceil( $this->count('id <= ' . $this->id)/$entriesPerPage );
+			return ceil( $this->count('updated <= ' . $this->getRawValue('updated') . ' AND invisible=0')/$entriesPerPage );
     }
 
     public function getUrl()
@@ -73,17 +97,33 @@ class News extends CActiveRecord
         ));
     }
     
+	public function hide()
+	{
+		$this->invisible = 1;
+		return $this->save();
+	}
+	
     public function beforeSave()
     {
         if(parent::beforeSave())
         {
-            $this->updated = time();
-            if( $this->created == 0 )
-                $this->created = time();
+			if( $this->isNewRecord )
+			{
+				$this->author_id = Yii::app()->user->id;
+				$this->created = TIMESTAMP;
+			}
+            $this->updated = TIMESTAMP;
             return true;
         }
         else
             return false;
         
+    }
+    
+    public function afterFind()
+    {
+        parent::afterFind();
+        $this->created = Yii::app()->format->datetime($this->created);
+        $this->updated = Yii::app()->format->datetime($this->updated);
     }
 }

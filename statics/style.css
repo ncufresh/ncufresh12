@@ -1,26 +1,106 @@
-body {
-    background: #DCE4ED url('header.png') repeat-x;
+body,
+input,
+textarea
+{
+    font-size: 16px;
     font-family: "微軟正黑體", Arial, sans-serif;
+}
+
+body
+{
+    background: #DCE4ED url('header.png') repeat-x;
     margin: 0 auto;
+    overflow-y: scroll;
     width: 1000px;
 }
 
-form dl dt,
-form dl dd {
+form dl,
+form dt,
+form dd
+{
     margin: 0;
+    height: 24px;
+    width: 100%;
 }
 
-form dl dt {
+form dl
+{
+    margin: 4px 0;
+    overflow: hidden;
+    padding: 3px 0;
+}
+
+form dt
+{
     clear: left;
     float: left;
+    margin-left: 6px;
+    width: 85%;
 }
 
-form dl dd {
+form dd
+{
     clear: right;
     float: right;
+    margin-top: -26px;
 }
 
-#logo {
+form input,
+form textarea
+{
+    font-size: 0.85em;
+}
+
+form input
+{
+    -webkit-border-radius: 5px;
+    border: none;
+    border-radius: 5px;
+    height: 16px;
+    padding: 4px 8px;
+}
+
+form button
+{
+    background: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    height: 24px;
+    padding: 4px 8px;
+}
+
+form textarea
+{
+    -webkit-border-radius: 5px;
+    border: none;
+    border-radius: 5px;
+    padding: 4px 8px;
+}
+
+form input:focus
+{
+    position: relative;
+}
+
+form label
+{
+    color: #474747;
+    position: relative;
+}
+
+a
+{
+    color: #5C5C5C;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: #7C7C7C;
+}
+
+#logo
+{
     background: url('logo.png') no-repeat;
     height: 160px;
     margin-left: 15px;
@@ -33,16 +113,67 @@ form dl dd {
     width: 500px;
 }
 
-#header {
+#header
+{
     height: 240px;
 }
 
-#header .statics {
-    margin: 15px 0 0 360px;
+#header .statics
+{
+    margin: 15px 0 0 280px;
     position: absolute;
 }
 
-#tab {
+#header .statics p
+{
+    color: #FFDD00;
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0 0 0 85px;
+    width: 45px;
+}
+
+#search
+{
+    margin: 8px 0 0 580px;
+    position: absolute;
+    height: 90px;
+    width: 220px;
+}
+
+#search input
+{
+    padding-right: 30px;
+    width: 174px;
+}
+
+#search button
+{
+    background: url('search_box_icon.png') no-repeat;
+    border: none;
+    cursor: pointer;
+    float: right;
+    height: 20px;
+    margin: -30px 4px 0 0;
+    position: relative;
+    text-indent: -100000px;
+    width: 32px;
+}
+
+#header .online
+{
+    background: url('online.png') no-repeat;
+}
+
+#header .browsered
+{
+    background: url('browsered.png') no-repeat;
+}
+
+#tab
+{
     list-style: none;
     margin: 120px 0 0 480px;
     overflow: hidden;
@@ -50,7 +181,8 @@ form dl dd {
     position: absolute;
 }
 
-#tab li {
+#tab li
+{
     -webkit-border-radius: 15px;
     background: #E1E5EE;
     border-radius: 15px;
@@ -62,13 +194,14 @@ form dl dd {
     text-align: center;
 }
 
-#tab a {
+#tab a
+{
     color: #414141;
-    text-decoration: none;
 }
 
-#navigation {
-    background: url('navigation.png');
+#navigation
+{
+    background: url('navigation.png') no-repeat;
     list-style: none;
     margin: 160px 0 0 0;
     overflow: hidden;
@@ -77,7 +210,8 @@ form dl dd {
     width: 800px;
 }
 
-#navigation li {
+#navigation li
+{
     float: left;
     height: 60px;
     line-height: 60px;
@@ -85,22 +219,26 @@ form dl dd {
     width: 110px;
 }
 
-#navigation a {
+#navigation a
+{
     color: #210530;
     font-weight: bolder;
-    text-decoration: none;
 }
 
-#navigation a:hover {
+#navigation a:hover
+{
     color: #FFFFFF;
 }
 
-#content {
-    margin-right: 200px;
+#content
+{
+    margin: 0 225px 0 25px;
+    min-height: 360px;
     overflow: hidden;
 }
 
-#sidebar {
+#sidebar
+{
     height: 100%;
     margin-left: 800px;
     padding-left: 15px;
@@ -109,78 +247,40 @@ form dl dd {
     width: 200px;
 }
 
-#sidebar .profile {
+#sidebar .profile
+{
     height: 90px;
-    margin-bottom: 30px;
+    margin: 15px 0;
 }
 
-#sidebar form.profile label {
-    color: #474747;
+#sidebar form.profile dl
+{
+    margin-left: 10px;
 }
 
-#sidebar form.profile dt,
-#sidebar form.profile dd,
-#sidebar form.profile input {
-    height: 15px;
-    margin: 6px 0;
-    padding: 3px 5px;
-    width: 180px;
+#sidebar form.profile input
+{
+    width: 160px;
 }
 
-#sidebar form.profile dl {
-    margin: 0;
-    padding: 5px 0;
-}
-
-#sidebar form.profile dt {
-    margin-left: 5px;
-}
-
-#sidebar form.profile dd {
-    margin-top: -28px;
-}
-
-#sidebar form.profile label {
-    position: relative;
-}
-
-#sidebar form.profile input {
-    -webkit-border-radius: 5px;
-    border: none;
-    border-radius: 5px;
-    margin: 0 5px 0 -10px;
-    width: 180px;
-    
-}
-
-#sidebar form.profile input:focus {
-    position: relative;
-}
-
-#sidebar form.profile div {
-    margin-top: 5px;
+#sidebar form.profile div
+{
     text-align: center;
 }
 
-#sidebar form.profile button {
+#sidebar form.profile button
+{
     border: none;
     cursor: pointer;
-    font-size: 0;
     height: 25px;
     line-heigth: 25px;
     margin: 0 10px;
+    text-indent: -100000px;
     width: 55px;
 }
 
-#form-login-button {
-    background: url('login.png');
-}
-
-#form-register-button {
-    background: url('register.png');
-}
-
-#sidebar .sidebar_box {
+#sidebar .sidebar-box
+{
     -webkit-border-radius: 10px;
     background: #EEF2F6;
     border-radius: 10px;
@@ -189,7 +289,8 @@ form dl dd {
     padding: 5px;
 }
 
-#sidebar .sidebar_box h4 {
+#sidebar .sidebar-box h4
+{
     -webkit-border-radius: 10px;
     background: #DCE4ED;
     border-radius: 10px;
@@ -198,13 +299,25 @@ form dl dd {
     text-align: center;
 }
 
-#footer {
+#form-sidebar-login
+{
+    background: url('login.png');
+}
+
+#form-sidebar-register
+{
+    background: url('register.png');
+}
+
+#footer
+{
     background: url('footer.png');
     clear: both;
     height: 120px;
 }
 
-#footer p {
+#footer p
+{
     font-size: 0.85em;
     margin: 0;
     padding: 0;
@@ -214,15 +327,174 @@ form dl dd {
     top: 80px;
 }
 
-#chat {
+#chat
+{
     background: url('chat.png') 0 5px no-repeat;
+    bottom: 0;
+    cursor: pointer;
     height: 120px;
     margin: -120px 0 0 830px;
-    position: absolute;
+    position: fixed;
     width: 160px;
 }
 
-#marquee {
+#chat .online-friends
+{
+    margin: 40px 0 0 85px;
+    position: absolute;
+    text-align: center;
+}
+
+#chat .friendcounts:before
+{
+    content: '\A';
+    white-space: pre;
+}
+
+#chat-friend-list
+{
+    -webkit-border-radius: 10px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    bottom: -10px;
+    height: 0;
+    margin: -120px 0 0 830px;
+    opacity: 0.7;
+    padding: 5px;
+    position: fixed;
+    width: 160px;
+}
+
+#chat-friend-list img
+{
+    border: 2px solid #000000;
+    height: 35px;
+    float: left;
+    margin: 3px;
+    width: 35px;
+}
+
+#chat-friend-list p
+{
+    margin-left: 50px;
+}
+
+#chat-friend-list .friend-list-entry
+{
+    height: 45px;
+    line-height: 45px;
+}
+
+#chat-friend-list .friend-list-entry:hover
+{
+    background: #EEEEEE;
+    cursor: pointer;
+}
+
+.chat-dialog
+{
+    -webkit-border-radius: 10px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    bottom: -10px;
+    height: 200px;
+    margin-right: 10px;
+    opacity: 0.7;
+    overflow-x: hidden;
+    overflow-y: atuo;
+    padding: 5px;
+    position: fixed;
+    width: 160px;
+}
+
+
+.chat-dialog .chat-display
+{   
+    top: 0;
+    position: relative;
+    height: 175px;
+    width: 160px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.chat-dialog .chat-input
+{
+    border-top: 1px solid #333333;
+    height: 20px;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    width: 160px;
+}
+
+.chat-dialog .chat-display p
+{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+#result
+{
+    margin: 0 auto;
+}
+
+#result .gs-title
+{
+    text-decoration: none;
+}
+
+#result a.gs-title:link,
+#result a.gs-title:visited
+{
+    color: #5C5C5C;
+}
+
+#result a.gs-title:hover
+{
+    color: #7C7C7C;
+}
+
+#result .gs-snippet
+{
+    text-indent: 2em;
+}
+
+#result .gsc-above-wrapper-area,
+#result .gsc-result
+{
+    border-bottom: 3px solid #FFFFFF;
+}
+
+#result .gsc-cursor-box
+{
+    margin: 15px;
+}
+
+#result .gsc-cursor-page
+{
+    border: 3px solid #5C5C5C;
+    height: 25px;
+    padding: 5px;
+    width: 25px;
+}
+
+#result .gsc-cursor-page:hover
+{
+    border: 3px solid #7C7C7C;
+    background: #5C5C5C;
+    color: #FFFFFF;
+}
+
+#result .gsc-cursor-current-page
+{
+    border: 3px solid #7C7C7C;
+}
+
+#marquee
+{
     -webkit-border-radius: 10px;
     background: #FEFFB2;
     border-radius: 10px;
@@ -230,10 +502,11 @@ form dl dd {
     list-style: none;
     margin: 5px 0;
     overflow: hidden;
-    padding: 0 15px 0 45px;
+    padding: 0 60px 0 45px;
 }
 
-#marquee li {
+#marquee li
+{
     float: left;
     height: 30px;
     line-height: 30px;
@@ -241,7 +514,8 @@ form dl dd {
     width: 100%;
 }
 
-#marquee span {
+#marquee span
+{
     background: url('marquee_star_icon.png') no-repeat;
     display: block;
     height: 50px;
@@ -250,39 +524,275 @@ form dl dd {
     width: 50px;
 }
 
-#marquee a {
+#marquee a
+{
     display: block;
     height: 30px;
     line-height: 30px;
-    margin: 0 0 0 470px;
+    margin: 0 0 0 430px;
     position: absolute;
+    width: 45px;
 }
 
-#index_calendar {
+#index-calendar
+{
     float: left;
     width: 30%;
 }
 
-#index_container {
+#index-container
+{
     float: right;
     width: 70%;
 }
 
-#index_news_box {
-    clear: left;
-    float: left;
-}
-
-#index_forums_box {
-    clear: right;
-    float: right;
-}
-
-.index_box {
+.index-box
+{
     -webkit-border-radius: 10px;
     background: #CBD3E6;
     border-radius: 10px;
     margin-left: 1%;
     min-height: 400px;
     width: 49%;
+}
+
+.index-box h4
+{
+    height: 25px;
+    margin: 5px;
+    text-indent: -100000px;
+    width: 80px;
+}
+
+.index-box table
+{
+    width: 100%;
+}
+
+.index-box td
+{
+    padding: 4px;
+    width: 85%;
+}
+
+.index-box td.time
+{
+    text-align: right;
+    width: 15%;
+}
+
+.index-box tfoot
+{
+    text-align: right;
+}
+
+.index-latest-box
+{
+    clear: left;
+    float: left;
+}
+
+.index-latest-box h4
+{
+    background: url('index_latest_icon.png') no-repeat;
+}
+
+.index-forums-box
+{
+    clear: right;
+    float: right;
+}
+
+.index-forums-box h4
+{
+    background: url('index_forums_icon.png') no-repeat;
+}
+
+.news-dialog-warp
+{
+	background: white;
+}
+
+.ui-dialog
+{
+    position: absolute;
+}
+
+.news-dialog
+{
+    display: none;
+}
+
+#mm-container
+{
+}
+
+#mm-sidebar
+{
+    width: 25%;
+    float: left;
+}
+
+#mm-menu
+{
+	width: 100%;
+	height: 400px;
+	background: skyblue;
+	overflow: hidden;
+}
+
+#mm-menu button
+{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background: none;
+    position: absolute;
+    color: black;
+    width: 187px;
+    height: 50px;
+    background: white;
+    opacity: 0;
+    z-index: 1000;
+}
+
+#mm-menu #mm-menu-items
+{
+    margin-top: 0;
+}
+
+#mm-menu button:hover
+{
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+#mm-menu button.mm-menu-down
+{
+    margin-top: 350px;
+}
+
+#mm-menu a
+{
+    display: block;
+    width: 100%;
+    height: 140px;
+    display: block;
+    text-decoration: none;
+    opacity: 1;
+}
+
+#mm-menu a:hover
+{
+    opacity: 0.8;
+}
+
+#mm-menu a span
+{
+	color: white;
+	position: relative;
+	height: 16px;
+	display:block;
+	margin-bottom: -16px;	
+	top: 124px;
+	left: 0;
+	text-align: right;
+	background: black;
+	opacity: 0.5;
+	padding: 0 8px 0 0;
+}
+
+#mm-menu a img
+{
+    width: 100%;
+    height: 100%;
+}
+
+#mm-player
+{
+    width: 100%;
+    height: 200px;
+    background: blue;
+}
+
+#mm-content
+{
+    width: 75%;
+    float: left;
+}
+
+#mm-video
+{
+    width: 100%;
+    height: 400px;
+    background: url(loading.gif) no-repeat black center;
+}
+
+#mm-video-frame
+{
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#mm-introduction
+{
+	width: 100%;
+	height: 200px;
+	background: gray;
+}
+#mm-introduction .text
+{
+	width: 65%;
+	height: 100%;
+	background: red;
+	float: left;
+}
+#mm-introduction .pic
+{
+	background: yellow;
+	width: 35%;	
+	height: 100%;
+	float: left;
+
+}
+
+.scroll-container
+{
+    overflow: hidden;
+    position: relative;
+}
+
+.scroll-container .scroll-area
+{
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.scroll-container .scroll-bar
+{
+    /*display: none;*/
+    height: 100%;
+    right: 2px;
+    position: absolute;
+    top: 0;
+    width: 8px;
+}
+
+.scroll-container .scroll-track
+{
+    position: relative;
+    height: 100%;
+}
+
+.scroll-container .scroll-dragable
+{
+    -webkit-border-radius: 5px;
+    background: #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+    position: relative;
+    top: 0;
 }

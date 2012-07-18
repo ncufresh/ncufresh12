@@ -11,7 +11,7 @@ class User extends CActiveRecord
 
     public function tableName()
     {
-        return 'users';
+        return '{{users}}';
     }
 
     public function rules()
@@ -23,7 +23,16 @@ class User extends CActiveRecord
         );
     }
 
-    public static function findByUsername($username) {
+    public function behaviors()
+    {
+        return array(
+            'RawDataBehavior',
+            'Helper'
+        );
+    }
+
+    public static function findByUsername($username)
+    {
         return User::model()->find(array(
             'condition' => 'username = :username',
             'params'    => array(
@@ -76,29 +85,48 @@ class User extends CActiveRecord
         return md5($salt . $password);
     }
 
-    protected function generatePasswordSalt() {
+    public function isAdmin()
+    {
+        return $this->is_admin;
+    }
+
+    protected function generatePasswordSalt()
+    {
         return md5(uniqid($this->username . mt_rand() . TIMESTAMP, true));
     }
 
     protected function afterFind()
     {
-        $this->updated = TIMESTAMP;
-        $this->last_login_ip = 0;
-        $this->save();
-        return parent::afterFind();
+        parent::afterFind();
+        $this->is_admin = $this->is_admin ? true : false;
+        $this->register_ip = $this->long2ip($this->register_ip);
+        $this->last_login_ip = $this->long2ip($this->last_login_ip);
+        $this->created = Yii::app()->format->datetime($this->created);
+        $this->updated = Yii::app()->format->datetime($this->updated);
     }
 
     protected function beforeSave()
     {
-        if ( $this->getIsNewRecord() )
+        if ( parent::beforeSave() )
         {
-            $this->created = TIMESTAMP;
-            $this->register_ip = 0;
-            $this->salt = $this->generatePasswordSalt();
-            $this->password = $this->encryptPassword($this->password, $this->salt);
+            if ( $this->getIsNewRecord() )
+            {
+                $this->is_admin = 0;
+                $this->created = TIMESTAMP;
+                $this->register_ip = $this->ip2long($this->getClientIP());
+                $this->salt = $this->generatePasswordSalt();
+                $this->password = $this->encryptPassword($this->password, $this->salt);
+            }
+            else
+            {
+                $this->is_admin = $this->is_admin ? 1 : 0;
+                $this->created = $this->getRawValue('created');
+                $this->register_ip = $this->getRawValue('register_ip');
+            }
+            $this->updated = TIMESTAMP;
+            $this->last_login_ip = $this->ip2long($this->getClientIP());
+            return true;
         }
-        $this->updated = TIMESTAMP;
-        $this->last_login_ip = 0;
-        return parent::beforeSave();
+        return false;
     }
 }
