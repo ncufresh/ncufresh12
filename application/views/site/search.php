@@ -1,5 +1,9 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
-jQuery(document).ready(function()
+google.load('search', '1', {
+     language: 'zh_TW'
+});
+google.setOnLoadCallback(function()
 {
     var options = new google.search.DrawOptions();
     var control = new google.search.CustomSearchControl('011017124764723419863:mdibrr3n-py');

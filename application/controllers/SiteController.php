@@ -14,7 +14,7 @@ class SiteController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('index', 'error', 'search', 'pull', 'login'),
+                'actions'   => array('index', 'error', 'search', 'pull', 'login', 'channel'),
                 'users'     => array('*')
             ),
             array(
@@ -36,6 +36,8 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        $facebook = FB::getFacebook();
+
         $this->setPageTitle(Yii::app()->name);
         $this->render('index', array(
             'latests'   => News::model()->getPopularNews(10),
@@ -185,5 +187,15 @@ class SiteController extends Controller
     {
         Yii::app()->user->logout(false);
         $this->redirect(Yii::app()->homeUrl);
+    }
+
+    public function actionChannel()
+    {
+        $expire = 60 * 60 * 24 * 365;
+        header('Pragma: public');
+        header('Cache-Control: max-age=' . $expire);
+        header('Expires: ' . gmdate('D, d M Y H:i:s', TIMESTAMP + $expire) . ' GMT');
+        echo '<script src="//connect.facebook.net/zh_TW/all.js"></script>';
+        $this->layout = false;
     }
 }
