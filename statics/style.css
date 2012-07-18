@@ -613,11 +613,6 @@ a:hover
 	background: white;
 }
 
-.ui-dialog
-{
-    position: absolute;
-}
-
 .news-dialog
 {
     display: none;
@@ -795,4 +790,18 @@ a:hover
     opacity: 0.7;
     position: relative;
     top: 0;
+}
+
+.ui-dialog
+{
+    position: absolute;
+}
+
+.ui-widget-overlay { 
+	top: 0; 
+	left: 0; 
+	position: absolute;
+	background: #aaaaaa;
+	opacity: 0.3;
+	filter: Alpha(Opacity=30); 
 }
