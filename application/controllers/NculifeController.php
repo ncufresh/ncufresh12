@@ -13,7 +13,7 @@ class NculifeController extends Controller
 		$this->render('live');
 	}
 	
-	public function actionFood($id)
+	public function actionFood()
 	{
 		$this->render('food');
 	}
@@ -22,10 +22,10 @@ class NculifeController extends Controller
 		switch($id)
 		{
 			case 1: 
-				$this->render('live');
+				$this->renderPartial('foodcontent/1');
 				break;
 			case 2:
-				$this->render('food');
+				$this->renderPartial('foodcontent/2');
 				break;
 		}
 	}

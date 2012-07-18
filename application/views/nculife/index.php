@@ -6,7 +6,7 @@
 <div id="life-body">
 	<div id="linkk">  
 	     <a id="ncu-food" href="<?php 
-		 echo Yii::app()->createUrl('nculife/food'); ?>">food</a></br>
+		 echo Yii::app()->createUrl('nculife/food', array('id'=>1)); ?>">food</a></br>
 		 <a id="ncu-health" href="<?php
 		 echo Yii::app()->createUrl('nculife/health');?>">health</a></br>
 	     <a id="ncu-car" href="<?php 

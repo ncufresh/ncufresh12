@@ -651,7 +651,10 @@
 			// alert(url);
 			$.ajax({
 				type: 'GET',
-				url: 'index.html',
+				url: '/ncufresh12/nculife/foodContent.html',
+				data:{
+					id: 1
+				},
 				dataType: 'html',
 				success: function(data){ 
 					$('#nculife-cv').html(data);
@@ -664,7 +667,10 @@
 			// alert(url);
 			$.ajax({
 				type: 'GET',
-				url: 'car.html',
+				url: '/ncufresh12/nculife/foodContent.html',
+				data:{
+					id: 2
+				},
 				dataType: 'html',
 				success: function(data){ 
 					$('#nculife-cv').html(data);
