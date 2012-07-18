@@ -53,7 +53,6 @@ class NFWFacebook extends CApplicationComponent
     public function getLoginUrl()
     {
         return $this->facebook->getLoginUrl(array(
-            // 'scope'             => 'read_stream, friends_likes',
             'display'           => 'popup',
             'redirect_uri'      =>  Yii::app()->request->hostInfo . Yii::app()->user->returnUrl
         ));
