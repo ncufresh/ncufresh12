@@ -626,8 +626,7 @@
 		}).mouseleave(function(){
 			mmMenuScroll.mousein = false;
 		});
-<<<<<<< HEAD
-		
+
 		$('.nculife-food .dialog').click(function(){
 			$( "#nculife-dialog" ).dialog({
 				dialogClass: 'nculife-dialog',
@@ -665,11 +664,8 @@
 			});
 			return false;
 		});
-		
-=======
 
         $.pull.start();
->>>>>>> fde385bf26c08fd2c6d55847f004c053b8967be6
     });
 })(jQuery);
 

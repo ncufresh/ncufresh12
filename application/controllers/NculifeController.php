@@ -13,9 +13,21 @@ class NculifeController extends Controller
 		$this->render('live');
 	}
 	
-	public function actionFood()
+	public function actionFood($id)
 	{
 		$this->render('food');
+	}
+	public function actionFoodContent($id)
+	{
+		switch($id)
+		{
+			case 1: 
+				$this->render('live');
+				break;
+			case 2:
+				$this->render('food');
+				break;
+		}
 	}
 	
 	public function actionHouse()
