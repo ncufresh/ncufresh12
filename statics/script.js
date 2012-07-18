@@ -628,6 +628,15 @@
             mmMenuScroll.mousein = false;
         });	
         
+<<<<<<< HEAD
+		$('.mm-menu-down').mouseenter(function(){
+			mmMenuScroll.mousein = true;
+			mmMenuScroll(-1 * srcoll_offset);
+		}).mouseleave(function(){
+			mmMenuScroll.mousein = false;
+		});
+		
+=======
         $('.mm-menu-down').mouseenter(function(){
             mmMenuScroll.mousein = true;
             mmMenuScroll(-1 * srcoll_offset);
@@ -635,6 +644,7 @@
             mmMenuScroll.mousein = false;
         });
 
+>>>>>>> 13cbfb6028f3d5f497c991a8689623139180917d
         $.pull.start();
     });
 
