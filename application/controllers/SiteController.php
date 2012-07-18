@@ -9,7 +9,7 @@ class SiteController extends Controller
         );
     }
 
-    public function accessRules()
+    public function accessRules() //開權限...
     {
         return array(
             array(
@@ -22,6 +22,7 @@ class SiteController extends Controller
                     'register',
                     'login',
                     'channel'
+             
                 ),
                 'users'     => array('*')
             ),
@@ -219,6 +220,7 @@ class SiteController extends Controller
         }
         $this->render('register');
     }
+    
 }
 
 

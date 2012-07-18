@@ -7,7 +7,7 @@ $ncufreshdb = array(
     'port'      => 3306,
     'database'  => 'ncufresh2012',
     'username'  => 'root',
-    'password'  => ''
+    'password'  => 'audacity0628'
 );
 
 $ncufreshfb = array(
@@ -15,4 +15,4 @@ $ncufreshfb = array(
     'secret'    => 'da3b004c79c3122de3a702a90a8a6dbf'
 );
 
-require_once('D:/yii/framework/yii.php');
+require_once('D:\xampp\htdocs\yii1\framework\yii.php');
