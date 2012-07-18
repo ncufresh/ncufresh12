@@ -455,8 +455,8 @@
                 });
 
                 items.css({
-					top: 0
-				});
+                    top: 0
+                });
             });
         },
         star: function(settings)
@@ -626,17 +626,8 @@
             mmMenuScroll(srcoll_offset);
         }).mouseleave(function(){
             mmMenuScroll.mousein = false;
-        });	
-        
-<<<<<<< HEAD
-		$('.mm-menu-down').mouseenter(function(){
-			mmMenuScroll.mousein = true;
-			mmMenuScroll(-1 * srcoll_offset);
-		}).mouseleave(function(){
-			mmMenuScroll.mousein = false;
-		});
-		
-=======
+        });    
+
         $('.mm-menu-down').mouseenter(function(){
             mmMenuScroll.mousein = true;
             mmMenuScroll(-1 * srcoll_offset);
@@ -644,7 +635,13 @@
             mmMenuScroll.mousein = false;
         });
 
->>>>>>> 13cbfb6028f3d5f497c991a8689623139180917d
+        $('.mm-menu-down').mouseenter(function(){
+            mmMenuScroll.mousein = true;
+            mmMenuScroll(-1 * srcoll_offset);
+        }).mouseleave(function(){
+            mmMenuScroll.mousein = false;
+        });
+
         $.pull.start();
     });
 
@@ -672,33 +669,33 @@
 
 function mmMenuScroll(offset)
 {
-	if( typeof(mmMenuScroll.mousein) == 'undefined' )
-		mmMenuScroll.mousein = false;
-	if( typeof(mmMenuScroll.margin_top_max) == 'undefined' )
-		mmMenuScroll.margin_top_max = 0;
-	if( typeof(mmMenuScroll.margin_top_min) == 'undefined' )
-		mmMenuScroll.margin_top_min = -100;
-	var margin_top = parseInt($('#mm-menu-items').css('margin-top'));
-	if( margin_top + offset > mmMenuScroll.margin_top_max )
-	{
-		margin_top = mmMenuScroll.margin_top_max;
-		mmMenuScroll.mousein = false;
-		$('#mm-menu-items').css('margin-top', margin_top);
-	}
-	if( margin_top + offset < mmMenuScroll.margin_top_min )
-	{
-		margin_top = mmMenuScroll.margin_top_min ;
-		mmMenuScroll.mousein = false;
-		$('#mm-menu-items').css('margin-top', margin_top);
-	}
+    if( typeof(mmMenuScroll.mousein) == 'undefined' )
+        mmMenuScroll.mousein = false;
+    if( typeof(mmMenuScroll.margin_top_max) == 'undefined' )
+        mmMenuScroll.margin_top_max = 0;
+    if( typeof(mmMenuScroll.margin_top_min) == 'undefined' )
+        mmMenuScroll.margin_top_min = -100;
+    var margin_top = parseInt($('#mm-menu-items').css('margin-top'));
+    if( margin_top + offset > mmMenuScroll.margin_top_max )
+    {
+        margin_top = mmMenuScroll.margin_top_max;
+        mmMenuScroll.mousein = false;
+        $('#mm-menu-items').css('margin-top', margin_top);
+    }
+    if( margin_top + offset < mmMenuScroll.margin_top_min )
+    {
+        margin_top = mmMenuScroll.margin_top_min ;
+        mmMenuScroll.mousein = false;
+        $('#mm-menu-items').css('margin-top', margin_top);
+    }
 
-	if( mmMenuScroll.mousein )
-	{
-		$('#mm-menu-items').css('margin-top', margin_top + offset);
-		setTimeout( "mmMenuScroll("+offset+")", 30 );
-	}
-	else
-		return;
+    if( mmMenuScroll.mousein )
+    {
+        $('#mm-menu-items').css('margin-top', margin_top + offset);
+        setTimeout( "mmMenuScroll("+offset+")", 30 );
+    }
+    else
+        return;
 }
 
 function checkFileSize(name)
@@ -748,24 +745,24 @@ function createNewsUrl()
 
     if ( news_url=='' || news_url_alias == '' ) return false;
 
-	var row = $('<div></div>')
-				.attr('id', 'news-url-row-' + counter);
-	var link = $('<a></a>')
-				.attr('id', 'news-url-link-' + counter )
-				.attr('href', news_url)
-				.append(news_url_alias);
-	var delete_link = $('<a></a>')
-				.attr('id', 'news-url-delete-' + counter )
-				.attr('href', '#')
-				.append('x');
-	row.append(delete_link).append(link)
+    var row = $('<div></div>')
+                .attr('id', 'news-url-row-' + counter);
+    var link = $('<a></a>')
+                .attr('id', 'news-url-link-' + counter )
+                .attr('href', news_url)
+                .append(news_url_alias);
+    var delete_link = $('<a></a>')
+                .attr('id', 'news-url-delete-' + counter )
+                .attr('href', '#')
+                .append('x');
+    row.append(delete_link).append(link)
 
-	var url_input = $('<input />')
+    var url_input = $('<input />')
         .attr( 'id', 'news-url-data-' + counter )
         .attr( 'type', 'text')
         .attr( 'name', 'news[news_urls][]')
         .attr( 'value', news_url );
-	var url_alias_input = $('<input />')
+    var url_alias_input = $('<input />')
         .attr( 'id', 'news-url-alias-data-' + counter )
         .attr( 'type', 'text')
         .attr( 'name', 'news[news_urls_alias][]')
