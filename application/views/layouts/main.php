@@ -9,25 +9,24 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/ie.css" media="screen, projection" />
     <![endif]-->
 
-    <?php echo CGoogleApi::init(); ?>
-    <?php echo CHtml::script(CGoogleApi::load('jquery')); ?>
-    <?php echo CHtml::script(CGoogleApi::load('jqueryui')); ?>
-    <?php echo CHtml::script(CGoogleApi::load('search')); ?>
-
     <title><?php echo $this->getPageTitle(); ?></title>
 
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
     <script type="text/javascript">
-        $.extend({
+        jQuery.extend({
             configures: {
-                pullUrl: decodeURIComponent('<?php echo Yii::app()->createUrl('site/pull'); ?>'),
-                chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createUrl('chat/send'); ?>'),
-                multimediaYoutubeUrl: '<?php echo Yii::app()->createUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
-                newsIndexUrl: '<?php echo Yii::app()->createUrl('news/index'); ?>',
-                newsAdminUrl: '<?php echo Yii::app()->createUrl('news/admin'); ?>',
+                pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
+                facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
+                chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
+                multimediaYoutubeUrl: '<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
+                newsIndexUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>',
+                newsAdminUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/admin'); ?>',
                 token: '<?php echo Yii::app()->security->getToken(); ?>'
             }
         });
     </script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
 </head>
 
 <body>
@@ -139,5 +138,6 @@
         線上好友<span class="friendcounts"><?php echo 999; // $this->getOnlineFriendsCount(); ?></span>人
     </p>
 </div>
+<div id="fb-root"></div>
 </body>
 </html>

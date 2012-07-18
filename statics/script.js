@@ -243,7 +243,8 @@
         {
             return Math.floor(Math.random() * (max - min + 1) + min);
         },
-        cookie: function(key, value, settings) {
+        cookie: function(key, value, settings)
+        {
             var options = $.extend({
             }, settings);
 
@@ -510,6 +511,13 @@
 
         $.configures.sequence = $.random(0, 1000);
 
+        $('<script></script>')
+            .attr('id', 'facebook-jssdk')
+            .attr('async', 'async')
+            .attr('type', 'text/javascript')
+            .attr('src', '//connect.facebook.net/zh_TW/all.js')
+            .insertBefore($('script').first());
+
         if ( $('#header') ) $('#header').star();
 
         if ( $('#chat') ) $('#chat').chat();
@@ -571,7 +579,7 @@
 
         $('.news-delete-link').click(function()
         {
-			var link = $(this).attr('href');
+            var link = $(this).attr('href');
             var dialog = $('.news-dialog');
             dialog.text('確定刪除此篇文章？')
                 .dialog({
@@ -583,52 +591,62 @@
                 });   
             return false;
         });
-		
-		$('.news-back-link').click(function()
-		{
-			window.location = decodeURIComponent($.configures.newsIndexUrl);
-			return false;
-		});
-		
-		$('#mm-menu a').each(function(index, element){
+        
+        $('.news-back-link').click(function()
+        {
+            window.location = decodeURIComponent($.configures.newsIndexUrl);
+            return false;
+        });
+        
+        $('#mm-menu a').each(function(index, element){
             var youtube_img_src = 'http://img.youtube.com/vi/:id/0.jpg';
             var video_img_id = $(this).attr('href').substr(1);
             var video_title = $('<span></span>').text($(this).text());
             var video_img = $('<img />')
                 .attr('src', youtube_img_src.replace(':id', video_img_id));
             $(this).html(video_title).append(video_img);
-		});
-		
-		$('#mm-menu-items').css('height', $('#mm-menu a').length * $('#mm-menu a').first().css('height'));
-		
-		$('#mm-menu a').click(function(){
+        });
+        
+        $('#mm-menu-items').css('height', $('#mm-menu a').length * $('#mm-menu a').first().css('height'));
+        
+        $('#mm-menu a').click(function(){
             var url = decodeURIComponent($.configures.multimediaYoutubeUrl)
                 .replace(':id', $(this).attr('href').substr(1));
-			$('#mm-video-frame').attr('src', url);
-			return false;
-		});
-		$('#mm-menu a').eq($.random(0, $('#mm-menu a').length - 1)).click();
+            $('#mm-video-frame').attr('src', url);
+            return false;
+        });
+        $('#mm-menu a').eq($.random(0, $('#mm-menu a').length - 1)).click();
         
         var srcoll_offset = 10;
-		mmMenuScroll.margin_top_max = 0;
-		mmMenuScroll.margin_top_min = parseInt($('#mm-menu').css('height')) - parseInt($('#mm-menu-items').css('height'));
+        mmMenuScroll.margin_top_max = 0;
+        mmMenuScroll.margin_top_min = parseInt($('#mm-menu').css('height')) - parseInt($('#mm-menu-items').css('height'));
         
-		$('.mm-menu-up').mouseenter(function(){
-			mmMenuScroll.mousein = true;
-			mmMenuScroll(srcoll_offset);
-		}).mouseleave(function(){
-			mmMenuScroll.mousein = false;
-		});	
+        $('.mm-menu-up').mouseenter(function(){
+            mmMenuScroll.mousein = true;
+            mmMenuScroll(srcoll_offset);
+        }).mouseleave(function(){
+            mmMenuScroll.mousein = false;
+        });	
         
-		$('.mm-menu-down').mouseenter(function(){
-			mmMenuScroll.mousein = true;
-			mmMenuScroll(-1 * srcoll_offset);
-		}).mouseleave(function(){
-			mmMenuScroll.mousein = false;
-		});
+        $('.mm-menu-down').mouseenter(function(){
+            mmMenuScroll.mousein = true;
+            mmMenuScroll(-1 * srcoll_offset);
+        }).mouseleave(function(){
+            mmMenuScroll.mousein = false;
+        });
 
         $.pull.start();
     });
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId:      '263317567110789',
+            channelUrl: $.configures.facebookChannelUrl,
+            status:     true,
+            cookie:     true,
+            xfbml:      true
+        });
+    };
 })(jQuery);
 
 function mmMenuScroll(offset)

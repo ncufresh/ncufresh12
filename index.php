@@ -10,4 +10,6 @@ require_once('ncufresh2012.php');
 
 require_once($yii);
 
+require_once($facebook);
+
 Yii::createWebApplication('config.php')->run();
