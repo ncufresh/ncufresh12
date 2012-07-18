@@ -29,9 +29,9 @@ return array(
             'autoStart'         => true,
             'sessionName'       => 'NcuFresh2012'
         ),
-		'assetManager'	=> array(
-			'basePath'			=> dirname(__FILE__) . DIRECTORY_SEPARATOR . 'statics' . DIRECTORY_SEPARATOR . 'assets'
-		),
+        'assetManager'    => array(
+            'basePath'            => dirname(__FILE__) . DIRECTORY_SEPARATOR . 'statics' . DIRECTORY_SEPARATOR . 'assets'
+        ),
         'urlManager'    => array(
             'urlFormat'         => 'path',
             'rules'             => array(
@@ -43,7 +43,7 @@ return array(
             ),
             'urlSuffix'         => '.html',
             'caseSensitive'     => true,
-			'showScriptName'    => false,
+            'showScriptName'    => false,
             'useStrictParsing'  => true
         ),
         'db'            => array(

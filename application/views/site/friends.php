@@ -1,14 +1,15 @@
 <h2>好友專區</h2>
+
 <p>
     來分類一下吧
 </p>
 
-<form method="GET" action="<?php echo Yii::app()->createUrl('site/friends'); ?> ">
-	<div>
-        
+<!--
+<form action="<?php echo Yii::app()->createUrl('site/friends'); ?>" method="POST">
+    <div>
         <table>
             <tr>
-            <th align="left" colspan="6"><a href="SiteController.php?id='1' &amp;">同系同屆</a></th>
+            <th align="left" colspan="6"><a href="SiteController.php?id='1' &amp;" title="同系同屆">同系同屆</a></th>
             </tr>
             <tr>
             <td>1111</td>
@@ -23,7 +24,7 @@
     <div>
          <table>
             <tr>
-            <th align="left" colspan="6"><a href="SiteController.php?id='2' &amp;">同系不同屆</a></th>
+            <th align="left" colspan="6"><a href="SiteController.php?id='2' &amp;" title="同系不同屆">同系不同屆</a></th>
             </tr>
             <tr >
             <td>1111111</td>
@@ -35,12 +36,10 @@
             </tr>
         </table>
     </div>
-
     <div>
-    
         <table>
             <tr>
-            <th align="left" colspan="6"><a href="SiteController.php?id='3' &amp;">其他科系</a></th>
+            <th align="left" colspan="6"><a href="SiteController.php?id='3' &amp;" title="其他科系">其他科系</a></th>
             </tr>
             <tr>
             <td>1</td>
@@ -56,5 +55,5 @@
         <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
         <button id="form-friends-button" type="submit" name="friends-self-design">自訂</button>
     </div>
-
 </form>
+-->

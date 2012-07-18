@@ -48,11 +48,11 @@ class WebUser extends CWebUser
         Yii::app()->facebook->logout();
     }
 
-	protected function afterLogin($fromCookie)
-	{
+    protected function afterLogin($fromCookie)
+    {
         parent::afterLogin($fromCookie);
         $this->user()->save();
-	}
+    }
 
     protected function user()
     {

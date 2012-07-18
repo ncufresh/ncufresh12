@@ -9,7 +9,7 @@ class SiteController extends Controller
         );
     }
 
-    public function accessRules() //開權限...
+    public function accessRules()
     {
         return array(
             array(
@@ -22,7 +22,6 @@ class SiteController extends Controller
                     'register',
                     'login',
                     'channel'
-             
                 ),
                 'users'     => array('*')
             ),
@@ -205,7 +204,7 @@ class SiteController extends Controller
         echo '<script src="//connect.facebook.net/zh_TW/all.js"></script>';
         $this->layout = false;
     }
-    
+
     public function actionRegister()
     {
         if ( isset($_POST['register']) ) 
@@ -220,5 +219,4 @@ class SiteController extends Controller
         }
         $this->render('register');
     }
-    
 }

@@ -2,6 +2,5 @@
 <?php
 echo "拉拉拉，這是社團";
 ?>
-<a href="<?php echo Yii::app()->createUrl('club/content');?>">資工系</a>
-
+<a href="<?php echo Yii::app()->createUrl('club/content');?>" title="資工系">資工系</a>
 </div>

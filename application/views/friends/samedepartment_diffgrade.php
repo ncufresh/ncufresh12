@@ -1,11 +1,10 @@
 <form>
-
-<dl>
-<dt>水果</dt>
-<dd>西瓜</dd>
-<dd>葡萄</dd>
-<dd>芭樂</dd>
-<dt>飯</dt>
-<dd>滷肉飯</dd>
-</dl>
+    <dl>
+    <dt>水果</dt>
+    <dd>西瓜</dd>
+    <dd>葡萄</dd>
+    <dd>芭樂</dd>
+    <dt>飯</dt>
+    <dd>滷肉飯</dd>
+    </dl>
 </form>

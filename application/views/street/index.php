@@ -1,7 +1,7 @@
-<?php Yii::app()->clientScript->registerCoreScript('jquery.ui'); ?>
+<?php //Yii::app()->clientScript->registerCoreScript('jquery.ui'); ?>
 
 <?php
-	// <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css" />
+    // <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css" />
 ?>
 <?php
 $content='額額額額額額額額額額額額額額額額額額額額額
@@ -208,8 +208,9 @@ dialog_div_1.dialog({
     height: 700,
     modal: true,
     draggable: false, 
-    buttons:{"I'm a button":function(){
-    $('div#dialog_div_2').dialog('open');		
+    buttons:{"I'm a button":function()
+    {
+        $('div#dialog_div_2').dialog('open');        
     }},
 }); 
 dialog_div_1.dialog('close');//dialog_1 瞬間出現再結束
@@ -217,17 +218,17 @@ $('div.ui-dialog-buttonpane').css("background", "yellow");// 第一層底下區�
 //---------------------------------------------------------------------------------------------
 var dialog_div_2=$('div#dialog_div_2');
     dialog_div_2.dialog({ 
-	width:500,
-	height:400,
-	modal:true,
-	draggable:false,
+    width:500,
+    height:400,
+    modal:true,
+    draggable:false,
 });
 
 $('div#dialog_div_2').css({
 background:'yellow',
 });
 
-dialog_div_2.dialog('close');//dialog_2 瞬間出現再結束 	  
+dialog_div_2.dialog('close');//dialog_2 瞬間出現再結束       
 //----------------------------------------------------------------------------------------------  
  
 </script>
@@ -235,17 +236,20 @@ dialog_div_2.dialog('close');//dialog_2 瞬間出現再結束
 
  <script>
  //////////////////////////////picture
-$('#Q13').mouseenter(function(){
+$('#Q13').mouseenter(function()
+{
     $('#Q13').attr("src","<?php echo Yii::app()->baseUrl?>/statics/chat.png");
 });
 
-$('#Q13').mouseleave(function(){
+$('#Q13').mouseleave(function()
+{
     $('#Q13').attr("src","<?php echo Yii::app()->baseUrl?>/statics/Q13.jpg" );
 });
 
-$('#Q13').click(function(){//打開第一層
+$('#Q13').click(function() // 打開第一層
+{
     dialog_div_1.dialog('open');
-	
+    
     $('div#dialog_div_1').css({
         background:'white' 
     });
@@ -258,7 +262,8 @@ $('#Q13').click(function(){//打開第一層
 
 });
  <?php
-// $(document).ready(function() {
+// $(document).ready(function()
+// {
     // $(#test).hoverpulse({
         // size: 40,  // 圖片縮放的大小
         // speed: 400 // 圖片變換大小的速度 
@@ -268,18 +273,27 @@ $('#Q13').click(function(){//打開第一層
 //$("#Q13").src();
 ?>
 
-$('#dialog2_button_left').click(function() {$('#img1').animate({left:"0px"});});
-$('#dialog2_button_right').click(function() {$('#img1').animate({left:"80px"});});
+$('#dialog2_button_left').click(function()
+{
+    $('#img1').animate({left:"0px"});
+});
+$('#dialog2_button_right').click(function()
+{
+    $('#img1').animate({left:"80px"});
+});
 
-$('#img1').click(function(){
+$('#img1').click(function()
+{
     $('#dialog2_main_picture').attr("src","<?php echo Yii::app()->request->baseUrl;?>/statics/1.jpg");
 });
 
-$('#img2').click(function(){
+$('#img2').click(function()
+{
     $('#dialog2_main_picture').attr("src","<?php echo Yii::app()->request->baseUrl;?>/statics/2.png");
 });
 
-$('#img3').click(function(){
+$('#img3').click(function()
+{
     $('#dialog2_main_picture').attr("src","<?php echo Yii::app()->request->baseUrl;?>/statics/3.jpg");
 });
 </script>

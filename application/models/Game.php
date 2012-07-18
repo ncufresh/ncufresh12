@@ -9,13 +9,13 @@ class Game extends CActiveRecord
 
     public function tableName()
     {
-        return 'game_character';
+        return '{{game_character}}';
     }
 
     public function relations()
     {
         return array(
-            'hair'    => array(  //hair為Items的hair_id row
+            'hair'    => array(  // hair為Items的hair_id row
                 self::BELONGS_TO,
                 'Items',
                 'hair_id'
@@ -52,22 +52,22 @@ class Game extends CActiveRecord
             )
          );
     }
-    
+
     public function getId($row)
     {
         return $this->findByPk($row)->id;
     }
-    
+
     public function getUserId($row)
     {
         return $this->findByPk($row)->user_id;
     }
-    
+
     public function getHairName($row)
     {
         return $this->findByPk($row)->hair->name;
     }
-    
+
     public function getEyesName($row)
     {
         return $this->findByPk($row)->eyes->name;
@@ -82,30 +82,29 @@ class Game extends CActiveRecord
     {
         return $this->findByPk($row)->pants->name;
     }
-    
+
     public function getHandsName($row)
     {
         return $this->findByPk($row)->hands->name;
     }
-    
+
     public function getShoesName($row)
     {
         return $this->findByPk($row)->shoes->name;
     }
-    
+
     public function getOthersName($row)
     {
         return $this->findByPk($row)->others->name;
     }
-    
+
     public function getExpValue($row)
     {
         return $this->findByPk($row)->exp;
     }
-    
+
     public function getMoneyValue($row)
     {
         return $this->findByPk($row)->money;
     }
-    
 }

@@ -36,16 +36,19 @@ class Helper extends CBehavior
         return null;
     }
 
-    function ip2long($ip) {
+    function ip2long($ip)
+    {
         if ( $ip === null ) return 0;
         list($a, $b, $c, $d) = explode('.', $ip);
         return (($a * 256 + $b) * 256 + $c) * 256 + $d;
     }
-    
-    function long2ip($long) {
+
+    function long2ip($long)
+    {
         if ( $long < 0 || $long > 4294967295 ) return false;
         $ip = array();
-        for ( $power = 3; $power >= 0 ; --$power ) {
+        for ( $power = 3; $power >= 0 ; --$power )
+        {
             $ip[] = (integer)($long / pow(256, $power));
             $long -= (integer)($long / pow(256, $power)) * pow(256, $power);
         }

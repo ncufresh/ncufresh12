@@ -21,7 +21,7 @@
                 facebookAppId: '<?php echo Yii::app()->facebook->getAppId(); ?>',
                 facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
                 chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
-                multimediaYoutubeUrl: '<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
+                multimediaYoutubeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>'),
                 newsIndexUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>',
                 newsAdminUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/admin'); ?>',
                 registerUrl: '<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>',
@@ -36,7 +36,7 @@
 <body>
 
 <div id="header">
-    <a id="logo" href="<?php echo Yii::app()->createUrl('site/index'); ?>"></a>
+    <a id="logo" href="<?php echo Yii::app()->createUrl('site/index'); ?>" title="<?php echo Yii::app()->name; ?>"></a>
     <div class="statics">
         <p class="online"><?php echo $this->getOnlineCount(); ?></p>
         <p class="browsered"><?php echo $this->getTotalCount(); ?></p>

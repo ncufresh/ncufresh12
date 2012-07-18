@@ -9,13 +9,6 @@ class Items extends CActiveRecord
 
     public function tableName()
     {
-        return 'game_items';
+        return '{{game_items}}';
     }
-
-    public function relations()
-    {
-        return array(
-        );
-    }
-    
 }

@@ -1,7 +1,6 @@
-    <img src="../statics/fire.png">
- <?php   
-        $id=2;
-        
+<img src="../statics/fire.png">
+<?php   
+        $id = 2;
         echo '<br/>Id：';
         print_r(Game::model()->getId($id));
         echo '<br/>User_Id：';
@@ -24,5 +23,4 @@
         print_r(Game::model()->getExpValue($id));
         echo '<br/>金錢：';
         print_r(Game::model()->getMoneyValue($id));
-        
 ?>
