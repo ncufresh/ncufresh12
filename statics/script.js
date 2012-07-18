@@ -798,10 +798,10 @@ function inin_about()
     })
     for (var i=0; i<8; i=i+1)
     {
-        $('.about-what-rightDown-small').get(i).click(function()
-        {
-            about_what_photo_index=i;
-        });
+        // $('.about-what-rightDown-small').get(i).click(function()
+        // {
+            // about_what_photo_index=i;
+        // });
     }
     $('.about-who-block').mouseenter(function()
     {
