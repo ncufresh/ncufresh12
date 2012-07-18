@@ -1,3 +1,16 @@
+google.load('search', '1', {
+     language: 'zh_TW'
+});
+
+google.setOnLoadCallback(function()
+{
+    google.search.CustomSearchControl.attachAutoCompletion(
+        '011017124764723419863:mdibrr3n-py',
+        document.getElementById('form-search-query'),
+        'search'
+    );
+});
+
 (function($)
 {
     $.pull = {};
@@ -455,8 +468,8 @@
                 });
 
                 items.css({
-					top: 0
-				});
+                    top: 0
+                });
             });
         },
         star: function(settings)
@@ -507,21 +520,31 @@
 
     $(document).ready(function()
     {
+		
         $.configures.lasttime = 0;
 
         $.configures.sequence = $.random(0, 1000);
 
-        $('<script></script>')
-            .attr('id', 'facebook-jssdk')
-            .attr('async', 'async')
-            .attr('type', 'text/javascript')
-            .attr('src', '//connect.facebook.net/zh_TW/all.js')
-            .insertBefore($('script').first());
+        if ( $.configures.facebookEnable )
+        {
+            $('<script></script>')
+                .attr('id', 'facebook-jssdk')
+                .attr('async', 'async')
+                .attr('type', 'text/javascript')
+                .attr('src', '//connect.facebook.net/zh_TW/all.js')
+                .insertBefore($('script').first());
+        }
 
         if ( $('#header') ) $('#header').star();
 
         if ( $('#chat') ) $('#chat').chat();
 
+        $('#form-sidebar-register').click(function()
+        {
+            window.location.href = $.configures.registerUrl;
+            return false;
+        });
+    
         $('form input').each(function()
         {
             var input = $(this);
@@ -626,7 +649,7 @@
             mmMenuScroll(srcoll_offset);
         }).mouseleave(function(){
             mmMenuScroll.mousein = false;
-        });	
+        });
         
         $('.mm-menu-down').mouseenter(function(){
             mmMenuScroll.mousein = true;
@@ -635,49 +658,192 @@
             mmMenuScroll.mousein = false;
         });
 
+        inin_about();
+        
+		$('.nculife-food .dialog').click(function(){
+			$( "#nculife-dialog" ).dialog({
+				dialogClass: 'nculife-dialog',
+				height:500,
+				width:700,
+				modal: true,
+				show: { effect: 'explode', direction: "down"},
+			});
+	
+		});
+		
+		$('#haha1').click(function(){
+			var url = 'index.html';
+			// alert(url);
+			$.ajax({
+				type: 'GET',
+				url: '/ncufresh12/nculife/foodContent.html',
+				data:{
+					id: 1
+				},
+				dataType: 'html',
+				success: function(data){ 
+					$('#nculife-cv').html(data);
+				},
+			});	
+			return false;
+		});		
+		$('#haha2').click(function(){
+			var url = 'index.html';
+			// alert(url);
+			$.ajax({
+				type: 'GET',
+				url: '/ncufresh12/nculife/foodContent.html',
+				data:{
+					id: 2
+				},
+				dataType: 'html',
+				success: function(data){ 
+					$('#nculife-cv').html(data);
+				},
+			});
+			return false;
+		});
+
         $.pull.start();
     });
 
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId:      '263317567110789',
-            channelUrl: $.configures.facebookChannelUrl,
-            status:     true,
-            cookie:     true,
-            xfbml:      true
-        });
-    };
-})(jQuery);
+    if ( $.configures.facebookEnable )
+    {
+        window.fbAsyncInit = function() {
+            var like = $('<div></div>')
+                .attr('id', 'fb-like')
+                .appendTo($('#fb-root'));
 
+            $('<fb:like></fb:like>')
+                .attr('href', window.location.href)
+                .attr('data-send', 'false')
+                .attr('data-layout', 'button_count')
+                .attr('data-show-faces', 'false')
+                .appendTo(like);
+
+            FB.init({
+                appId:      $.configures.facebookAppId,
+                channelUrl: $.configures.facebookChannelUrl,
+                status:     true,
+                cookie:     true,
+                xfbml:      true
+            });
+        };
+    }
+})(jQuery);
+function inin_about()
+{
+    var about_what_photo_index=0;
+    var open1=false;
+    var open2=false;
+    var open3=false;
+    $('#about-what').hide();
+    $('#about-how').hide();
+    $('#about-who').hide();
+    $('#about-title1').click(function()
+    {
+        if(open1==false)
+        {
+            open1=true;
+            $('#about-what').show(1000);
+            $('#about-how').hide(1000);
+            $('#about-who').hide(1000);
+        }
+        else
+        {
+            open1=false;
+            $('#about-what').hide(1000);
+        }
+    })
+    $('#about-title2').click(function()
+    {
+        if(open2==false)
+        {
+            open2=true;
+            $('#about-how').show(1000);
+            $('#about-what').hide(1000);
+            $('#about-who').hide(1000);
+        }
+        else
+        {
+            open2=false;
+            $('#about-how').hide(1000);
+        }
+    })
+    $('#about-title3').click(function()
+    {
+        if(open3==false)
+        {
+            open3=true;
+            $('#about-who').show(1000);
+            $('#about-what').hide(1000);
+            $('#about-how').hide(1000);
+        }
+        else
+        {
+            open3=false;
+            $('#about-who').hide(1000);
+        }
+    })
+    $('#about-what-rightUp').mouseenter(function()
+    {
+        $('#about-what-rightDown').stop().animate({
+            height: '50',
+        }, 1000);
+    }).mouseleave(function()
+    {
+        $('#about-what-rightDown').stop().animate({
+            height: '0',
+        }, 1000);
+    })
+    for (var i=0; i<8; i=i+1)
+    {
+        // $('.about-what-rightDown-small').get(i).click(function()
+        // {
+            // about_what_photo_index=i;
+        // });
+    }
+    $('.about-who-block').mouseenter(function()
+    {
+        $(this).stop().animate({
+            height: '400',width: '280',
+        }, 300);
+    }).mouseleave(function()
+    {
+        $(this).stop().animate({
+            height: '100',width: '70',
+        }, 300);
+    })
+}
 function mmMenuScroll(offset)
 {
-	if( typeof(mmMenuScroll.mousein) == 'undefined' )
-		mmMenuScroll.mousein = false;
-	if( typeof(mmMenuScroll.margin_top_max) == 'undefined' )
-		mmMenuScroll.margin_top_max = 0;
-	if( typeof(mmMenuScroll.margin_top_min) == 'undefined' )
-		mmMenuScroll.margin_top_min = -100;
-	var margin_top = parseInt($('#mm-menu-items').css('margin-top'));
-	if( margin_top + offset > mmMenuScroll.margin_top_max )
-	{
-		margin_top = mmMenuScroll.margin_top_max;
-		mmMenuScroll.mousein = false;
-		$('#mm-menu-items').css('margin-top', margin_top);
-	}
-	if( margin_top + offset < mmMenuScroll.margin_top_min )
-	{
-		margin_top = mmMenuScroll.margin_top_min ;
-		mmMenuScroll.mousein = false;
-		$('#mm-menu-items').css('margin-top', margin_top);
-	}
+    if( typeof(mmMenuScroll.mousein) == 'undefined' )
+        mmMenuScroll.mousein = false;
+    if( typeof(mmMenuScroll.margin_top_max) == 'undefined' )
+        mmMenuScroll.margin_top_max = 0;
+    if( typeof(mmMenuScroll.margin_top_min) == 'undefined' )
+        mmMenuScroll.margin_top_min = -100;
+    var margin_top = parseInt($('#mm-menu-items').css('margin-top'));
+    if( margin_top + offset > mmMenuScroll.margin_top_max )
+    {
+        margin_top = mmMenuScroll.margin_top_max;
+        mmMenuScroll.mousein = false;
+        $('#mm-menu-items').css('margin-top', margin_top);
+    }
+    if( margin_top + offset < mmMenuScroll.margin_top_min )
+    {
+        margin_top = mmMenuScroll.margin_top_min ;
+        mmMenuScroll.mousein = false;
+        $('#mm-menu-items').css('margin-top', margin_top);
+    }
 
-	if( mmMenuScroll.mousein )
-	{
-		$('#mm-menu-items').css('margin-top', margin_top + offset);
-		setTimeout( "mmMenuScroll("+offset+")", 30 );
-	}
-	else
-		return;
+    if( mmMenuScroll.mousein )
+    {
+        $('#mm-menu-items').css('margin-top', margin_top + offset);
+        setTimeout( "mmMenuScroll("+offset+")", 30 );
+    }
+    else
+        return;
 }
 
 function checkFileSize(name)
@@ -727,24 +893,24 @@ function createNewsUrl()
 
     if ( news_url=='' || news_url_alias == '' ) return false;
 
-	var row = $('<div></div>')
-				.attr('id', 'news-url-row-' + counter);
-	var link = $('<a></a>')
-				.attr('id', 'news-url-link-' + counter )
-				.attr('href', news_url)
-				.append(news_url_alias);
-	var delete_link = $('<a></a>')
-				.attr('id', 'news-url-delete-' + counter )
-				.attr('href', '#')
-				.append('x');
-	row.append(delete_link).append(link)
+    var row = $('<div></div>')
+                .attr('id', 'news-url-row-' + counter);
+    var link = $('<a></a>')
+                .attr('id', 'news-url-link-' + counter )
+                .attr('href', news_url)
+                .append(news_url_alias);
+    var delete_link = $('<a></a>')
+                .attr('id', 'news-url-delete-' + counter )
+                .attr('href', '#')
+                .append('x');
+    row.append(delete_link).append(link)
 
-	var url_input = $('<input />')
+    var url_input = $('<input />')
         .attr( 'id', 'news-url-data-' + counter )
         .attr( 'type', 'text')
         .attr( 'name', 'news[news_urls][]')
         .attr( 'value', news_url );
-	var url_alias_input = $('<input />')
+    var url_alias_input = $('<input />')
         .attr( 'id', 'news-url-alias-data-' + counter )
         .attr( 'type', 'text')
         .attr( 'name', 'news[news_urls_alias][]')

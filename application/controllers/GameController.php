@@ -36,7 +36,6 @@ class GameController extends Controller
 
     public function actionIndex()
     {
-        $facebook = FB::getFacebook();
         $this->setPageTitle(Yii::app()->name);
         $this->render('index', array('marquees'  => Marquee::model()->getMarquees()));
     }
