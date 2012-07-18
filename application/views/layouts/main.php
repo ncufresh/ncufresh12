@@ -17,6 +17,7 @@
         jQuery.extend({
             configures: {
                 pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
+                facebookAppId: '<?php echo Yii::app()->facebook->getAppId(); ?>',
                 facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
                 chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
                 multimediaYoutubeUrl: '<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
@@ -26,7 +27,7 @@
             }
         });
     </script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
 </head>
 
 <body>
