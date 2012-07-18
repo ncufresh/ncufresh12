@@ -522,6 +522,12 @@
 
         if ( $('#chat') ) $('#chat').chat();
 
+        $('#form-sidebar-register').click(function()
+        {
+            window.location.href = $.configures.registerUrl;
+            return false;
+        });
+    
         $('form input').each(function()
         {
             var input = $(this);

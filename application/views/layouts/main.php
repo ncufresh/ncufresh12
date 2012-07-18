@@ -23,6 +23,7 @@
                 multimediaYoutubeUrl: '<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
                 newsIndexUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>',
                 newsAdminUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/admin'); ?>',
+                registerUrl: '<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>',
                 token: '<?php echo Yii::app()->security->getToken(); ?>'
             }
         });
