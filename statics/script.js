@@ -639,8 +639,19 @@
     });
 
     window.fbAsyncInit = function() {
+        var like = $('<div></div>')
+            .attr('id', 'fb-like')
+            .appendTo($('#fb-root'));
+
+        $('<fb:like></fb:like>')
+            .attr('href', window.location.href)
+            .attr('data-send', 'false')
+            .attr('data-layout', 'button_count')
+            .attr('data-show-faces', 'false')
+            .appendTo(like);
+
         FB.init({
-            appId:      '263317567110789',
+            appId:      $.configures.facebookAppId,
             channelUrl: $.configures.facebookChannelUrl,
             status:     true,
             cookie:     true,
