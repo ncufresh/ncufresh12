@@ -1,3 +1,16 @@
+google.load('search', '1', {
+     language: 'zh_TW'
+});
+
+google.setOnLoadCallback(function()
+{
+    google.search.CustomSearchControl.attachAutoCompletion(
+        '011017124764723419863:mdibrr3n-py',
+        document.getElementById('form-search-query'),
+        'search'
+    );
+});
+
 (function($)
 {
     $.pull = {};

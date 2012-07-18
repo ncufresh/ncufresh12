@@ -15,17 +15,6 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
     <script type="text/javascript">
-        google.load('search', '1', {
-             language: 'zh_TW'
-        });
-        google.setOnLoadCallback(function()
-        {
-            google.search.CustomSearchControl.attachAutoCompletion(
-                '011017124764723419863:mdibrr3n-py',
-                document.getElementById('form-search-query'),
-                'search'
-            );
-        });
         jQuery.extend({
             configures: {
                 pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
@@ -42,20 +31,6 @@
         });
     </script>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
-
-    <style type="text/css">
-    input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus
-    {
-        border-color: #D9D9D9;
-    }
-    input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus
-    {
-        border-color: #2F5BB7;
-        background-color: #357AE8;
-        background-image: none;
-        filter: none;
-    }
-    </style>
 </head>
 
 <body>
