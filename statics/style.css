@@ -107,6 +107,11 @@ a:hover
     position: absolute;
     width: 240px;
 }
+#pp {
+    height: 500px;
+    margin-left: 100px;
+    width: 500px;
+}
 
 #header
 {
@@ -170,7 +175,7 @@ a:hover
 #tab
 {
     list-style: none;
-    margin: 120px 0 0 480px;
+    margin: 120px 0 0 400px;
     overflow: hidden;
     padding: 0;
     position: absolute;
@@ -605,12 +610,7 @@ a:hover
 
 .news-dialog-warp
 {
-	background: white;
-}
-
-.ui-dialog
-{
-    position: absolute;
+    background: white;
 }
 
 .news-dialog
@@ -630,10 +630,10 @@ a:hover
 
 #mm-menu
 {
-	width: 100%;
-	height: 400px;
-	background: skyblue;
-	overflow: hidden;
+    width: 100%;
+    height: 400px;
+    background: skyblue;
+    overflow: hidden;
 }
 
 #mm-menu button
@@ -684,17 +684,17 @@ a:hover
 
 #mm-menu a span
 {
-	color: white;
-	position: relative;
-	height: 16px;
-	display:block;
-	margin-bottom: -16px;	
-	top: 124px;
-	left: 0;
-	text-align: right;
-	background: black;
-	opacity: 0.5;
-	padding: 0 8px 0 0;
+    color: white;
+    position: relative;
+    height: 16px;
+    display:block;
+    margin-bottom: -16px;
+    top: 124px;
+    left: 0;
+    text-align: right;
+    background: black;
+    opacity: 0.5;
+    padding: 0 8px 0 0;
 }
 
 #mm-menu a img
@@ -732,9 +732,9 @@ a:hover
 
 #mm-introduction
 {
-	width: 100%;
-	height: 200px;
-	background: gray;
+    width: 100%;
+    height: 200px;
+    background: gray;
 }
 
 #nculife-dialog
@@ -832,20 +832,124 @@ a:hover
 }
 #mm-introduction .text
 {
-	width: 65%;
-	height: 100%;
-	background: red;
-	float: left;
+    width: 65%;
+    height: 100%;
+    background: red;
+    float: left;
 }
 #mm-introduction .pic
 {
-	background: yellow;
-	width: 35%;	
-	height: 100%;
-	float: left;
+    background: yellow;
+    width: 35%;    
+    height: 100%;
+    float: left;
 
 }
-
+#about
+{
+    float:up;
+}
+#about-title
+{
+    font-size:20px;
+    font-family: "微軟正黑體", Arial, sans-serif;
+}
+#about-what
+{
+    background-color:yellow;
+    width:750px;
+    height:500px;
+}
+#about-what-image
+{
+    background: url('chat.png') 0 5px no-repeat;
+    height: 300px;
+    width: 400px;
+    align:right;
+}
+#about-what-left
+{
+    background-color:blue;
+    width:350px;
+    height:500px;
+    float:left;
+}
+#about-what-right	
+{
+    background-color:blue;
+    width:400px;
+    height:500px;
+    float:right;
+}
+#about-what-rightUp
+{
+    background-color:red;
+    width:400px;
+    height:300px;
+}
+#about-what-rightDown
+{
+    background-color:black;
+    width:400px;
+    height:50px;
+}
+#about-what-rightDown-small
+{
+    background-color:white;
+    width:40px;
+    height:40px;
+    margin-left:5px;
+    margin-right:5px;
+    margin-top:5px;
+    float:left;
+}
+#about-how-pic
+{
+    background-color:black;
+    width:750px;
+    height:500px;
+}
+#about-how-txt
+{
+    background-color:yellow;
+    width:750px;
+    height:500px;
+}
+#about-how-photo1
+{
+    background-color:white;
+    top:20px;
+    right:30px;
+    width:200px;
+    height:150px;
+    float:none;
+}
+#about-how-photo2
+{
+    background-color:white;
+    top:200px;
+    left:300px;
+    width:200px;
+    height:150px;
+    float:none;
+}
+#about-how-photo3
+{
+    background-color:white;
+    top:230px;
+    left:520px;
+    width:200px;
+    height:150px;
+    float:none;
+}
+#about-who-block
+{
+    background-color:blue;
+    width:140px;
+    height:200px;
+    float:left;
+    margin:5px;
+}
 .scroll-container
 {
     overflow: hidden;
@@ -886,3 +990,26 @@ a:hover
     top: 0;
 }
 
+<<<<<<< HEAD
+=======
+.ui-dialog
+{
+    position: absolute;
+}
+
+.ui-widget-overlay {
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: #aaaaaa;
+    opacity: 0.3;
+}
+
+#fb-like
+{
+    margin-left: 710px;
+    padding: 2px;
+    position: absolute;
+    top: 120px;
+}
+>>>>>>> 278e1a945b52d9e9b0cb55069e560a5f1c22b754

@@ -4,6 +4,11 @@ class WebUser extends CWebUser
 {
     private $_model;
 
+    public function getIsGuest()
+    {
+        return parent::getIsGuest() && Yii::app()->facebook->getIsGuest();
+    }
+
     public function getIsMember()
     {
         return ! $this->getIsGuest();
@@ -12,6 +17,15 @@ class WebUser extends CWebUser
     public function getIsAdmin()
     {
         return $this->getIsMember() && $this->user()->is_admin;
+    }
+
+    public function getName()
+    {
+        if ( ! Yii::app()->facebook->getIsGuest() )
+        {
+            return Yii::app()->facebook->getUsername();
+        }
+        return parent::getName();
     }
 
     public function checkAccess($operation, $params = array(), $allowCaching = true)
@@ -26,6 +40,12 @@ class WebUser extends CWebUser
                 return $this->getIsGuest();
         }
         return parent::checkAccess($operation, $params, $allowCaching);
+    }
+
+    public function afterLogout()
+    {
+        parent::afterLogout();
+        Yii::app()->facebook->logout();
     }
 
 	protected function afterLogin($fromCookie)

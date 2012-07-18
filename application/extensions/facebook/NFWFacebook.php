@@ -10,6 +10,8 @@ class NFWFacebook extends CApplicationComponent
 
     public $facebook;
 
+    public $profile;
+
     public function init()
     {
         if ( ! $this->facebook )
@@ -23,12 +25,41 @@ class NFWFacebook extends CApplicationComponent
         return $this->facebook;
     }
 
+    public function getIsGuest()
+    {
+        return $this->facebook->getUser() == 0;
+    }
+
+    public function getUserProfile()
+    {
+        if ( ! $this->profile )
+        {
+            $this->profile = $this->facebook->api('/me', 'GET');
+        }
+        return $this->profile;
+    }
+
+    public function getUsername()
+    {
+        $this->getUserProfile();
+        return $this->profile['name'];
+    }
+
+    public function getAppId()
+    {
+        return $this->facebook->getAppId();
+    }
+
     public function getLoginUrl()
     {
         return $this->facebook->getLoginUrl(array(
-            // 'scope'             => 'read_stream, friends_likes',
             'display'           => 'popup',
             'redirect_uri'      =>  Yii::app()->request->hostInfo . Yii::app()->user->returnUrl
         ));
+    }
+
+    public function logout()
+    {
+        return $this->facebook->destroySession();
     }
 }
