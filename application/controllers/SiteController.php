@@ -204,7 +204,7 @@ class SiteController extends Controller
         echo '<script src="//connect.facebook.net/zh_TW/all.js"></script>';
         $this->layout = false;
     }
-    
+
     public function actionRegister()
     {
         if ( isset($_POST['register']) ) 
@@ -220,5 +220,3 @@ class SiteController extends Controller
         $this->render('register');
     }
 }
-
-

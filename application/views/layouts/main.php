@@ -11,6 +11,7 @@
 
     <title><?php echo $this->getPageTitle(); ?></title>
 
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
     <script type="text/javascript">
@@ -20,7 +21,7 @@
                 facebookAppId: '<?php echo Yii::app()->facebook->getAppId(); ?>',
                 facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
                 chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
-                multimediaYoutubeUrl: '<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
+                multimediaYoutubeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>'),
                 newsIndexUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>',
                 newsAdminUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/admin'); ?>',
                 registerUrl: '<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>',
@@ -35,7 +36,7 @@
 <body>
 
 <div id="header">
-    <a id="logo" href="<?php echo Yii::app()->createUrl('site/index'); ?>"></a>
+    <a id="logo" href="<?php echo Yii::app()->createUrl('site/index'); ?>" title="<?php echo Yii::app()->name; ?>"></a>
     <div class="statics">
         <p class="online"><?php echo $this->getOnlineCount(); ?></p>
         <p class="browsered"><?php echo $this->getTotalCount(); ?></p>
@@ -46,7 +47,7 @@
                 <label for="form-search-query">搜尋</label>
             </dt>
             <dd>
-                <input id="form-search-query" name="query" type="text" />
+                <input id="form-search-query" name="query" autocomplete="off" type="text" />
             </dd>
         </dl>
         <div>

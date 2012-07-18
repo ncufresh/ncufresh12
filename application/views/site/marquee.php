@@ -87,6 +87,7 @@ jQuery(document).ready(function()
     });
 });
 </script>
+
 <h1>跑馬燈管理</h1>
 
 <table>

@@ -11,10 +11,4 @@ class NewsFile extends CActiveRecord
     {
         return '{{news_files}}';
     }
-
-    public function relations()
-    {
-        return array(
-        );
-    }
 }

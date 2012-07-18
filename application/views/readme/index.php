@@ -1,27 +1,19 @@
 這裡是大一必讀唷<br />
 
 <ul>
-
-	<li>
-		<a href="<?php
-		 echo Yii::app()->createUrl('readme/freshman');?>">新生區</a>
-	</li>
-	<li>
-		<a href="<?php
-		 echo Yii::app()->createUrl('readme/schedule');?>">行事曆</a>
-	</li>
-	<li>
-		<a href="<?php
-		 echo Yii::app()->createUrl('readme/download');?>">文件下載</a>
-	</li>
-	<li>
-		<a href="<?php
-		 echo Yii::app()->createUrl('readme/notice');?>">相關須知</a>
-	</li>
-	<li>
-		<a href="<?php
-		 echo Yii::app()->createUrl('readme/reschool');?>">復學區</a>
-	</li>
-			
-
+    <li>
+        <a href="<?php echo Yii::app()->createUrl('readme/freshman');?>" title="新生區">新生區</a>
+    </li>
+    <li>
+        <a href="<?php echo Yii::app()->createUrl('readme/schedule');?>" title="行事曆">行事曆</a>
+    </li>
+    <li>
+        <a href="<?php echo Yii::app()->createUrl('readme/download');?>" title="文件下載">文件下載</a>
+    </li>
+    <li>
+        <a href="<?php echo Yii::app()->createUrl('readme/notice');?>" title="相關須知">相關須知</a>
+    </li>
+    <li>
+        <a href="<?php echo Yii::app()->createUrl('readme/reschool');?>" title="復學區">復學區</a>
+    </li>
 </ul>

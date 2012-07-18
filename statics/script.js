@@ -1,3 +1,16 @@
+google.load('search', '1', {
+     language: 'zh_TW'
+});
+
+google.setOnLoadCallback(function()
+{
+    google.search.CustomSearchControl.attachAutoCompletion(
+        '011017124764723419863:mdibrr3n-py',
+        document.getElementById('form-search-query'),
+        'search'
+    );
+});
+
 (function($)
 {
     $.pull = {};
@@ -43,7 +56,8 @@
 
     $.chat = {};
 
-    $.fn.chat = function(options) {
+    $.fn.chat = function(options)
+    {
         $.chat.options = $.extend({
             animationSpeed:         500,
             friendListId:           'chat-friend-list',
@@ -652,8 +666,14 @@
             dialog.text('確定取消編輯此篇文章？')
                 .dialog({
                     buttons: { 
-                        "是": function(){ location = $.configures.newsAdminUrl; }, 
-                        "否": function() {dialog.dialog('close');}
+                        "是": function()
+                        {
+                            location = $.configures.newsAdminUrl;
+                        }, 
+                        "否": function()
+                        {
+                            dialog.dialog('close');
+                        }
                     },
                     dialogClass: 'news-dialog-warp',
                 });      
@@ -667,8 +687,14 @@
             dialog.text('確定刪除此篇文章？')
                 .dialog({
                     buttons: { 
-                        "是": function(){ location = link }, 
-                        "否": function() {dialog.dialog('close');}
+                        "是": function()
+                        {
+                            location = link;
+                        }, 
+                        "否": function()
+                        {
+                            dialog.dialog('close');
+                        }
                     },
                     dialogClass: 'news-dialog-warp',
                 });   
@@ -681,7 +707,8 @@
             return false;
         });
         
-        $('#mm-menu a').each(function(index, element){
+        $('#mm-menu a').each(function(index, element)
+        {
             var youtube_img_src = 'http://img.youtube.com/vi/:id/0.jpg';
             var video_img_id = $(this).attr('href').substr(1);
             var video_title = $('<span></span>').text($(this).text());
@@ -692,9 +719,9 @@
         
         $('#mm-menu-items').css('height', $('#mm-menu a').length * $('#mm-menu a').first().css('height'));
         
-        $('#mm-menu a').click(function(){
-            var url = decodeURIComponent($.configures.multimediaYoutubeUrl)
-                .replace(':id', $(this).attr('href').substr(1));
+        $('#mm-menu a').click(function()
+        {
+            var url = $.configures.multimediaYoutubeUrl.replace(':id', $(this).attr('href').substr(1));
             $('#mm-video-frame').attr('src', url);
             return false;
         });
@@ -704,34 +731,43 @@
         mmMenuScroll.margin_top_max = 0;
         mmMenuScroll.margin_top_min = parseInt($('#mm-menu').css('height')) - parseInt($('#mm-menu-items').css('height'));
         
-        $('.mm-menu-up').mouseenter(function(){
+        $('.mm-menu-up').mouseenter(function()
+        {
             mmMenuScroll.mousein = true;
             mmMenuScroll(srcoll_offset);
-        }).mouseleave(function(){
+        }).mouseleave(function()
+        {
             mmMenuScroll.mousein = false;
         });
         
-        $('.mm-menu-down').mouseenter(function(){
+        $('.mm-menu-down').mouseenter(function()
+        {
             mmMenuScroll.mousein = true;
             mmMenuScroll(-1 * srcoll_offset);
-        }).mouseleave(function(){
+        }).mouseleave(function()
+        {
             mmMenuScroll.mousein = false;
         });
 
         inin_about();
         
-		$('.nculife-food .dialog').click(function(){
-			$( "#nculife-dialog" ).dialog({
+		$('.nculife-food .dialog').click(function()
+        {
+			$('#nculife-dialog').dialog({
 				dialogClass: 'nculife-dialog',
-				height:500,
-				width:700,
+				height: 500,
+				width: 700,
 				modal: true,
-				show: { effect: 'explode', direction: "down"},
+				show: {
+                    effect: 'explode',
+                    direction: 'down'
+                }
 			});
 	
 		});
 		
-		$('#haha1').click(function(){
+		$('#haha1').click(function()
+        {
 			var url = 'index.html';
 			// alert(url);
 			$.ajax({
@@ -741,13 +777,15 @@
 					id: 1
 				},
 				dataType: 'html',
-				success: function(data){ 
+				success: function(data)
+                { 
 					$('#nculife-cv').html(data);
 				},
 			});	
 			return false;
 		});		
-		$('#haha2').click(function(){
+		$('#haha2').click(function()
+        {
 			var url = 'index.html';
 			// alert(url);
 			$.ajax({
@@ -757,7 +795,8 @@
 					id: 2
 				},
 				dataType: 'html',
-				success: function(data){ 
+				success: function(data)
+                { 
 					$('#nculife-cv').html(data);
 				},
 			});
@@ -769,7 +808,8 @@
 
     if ( $.configures.facebookEnable )
     {
-        window.fbAsyncInit = function() {
+        window.fbAsyncInit = function()
+        {
             var like = $('<div></div>')
                 .attr('id', 'fb-like')
                 .appendTo($('#fb-root'));
@@ -793,51 +833,128 @@
 })(jQuery);
 function inin_about()
 {
-    $('#about-title1').mouseenter(function(){
-        $('#about-what').show(1000);
-        $('#about-how').hide(1000);
-        $('#about-who').hide(1000);
+    var about_what_photo_index = 0;
+    var open1 = false;
+    var open2 = false;
+    var open3 = false;
+    $('#about-what').hide();
+    $('#about-how').hide();
+    $('#about-who').hide();
+    $('#about-title1').click(function()
+    {
+        if ( open1 == false )
+        {
+            open1 = true;
+            $('#about-what').show(1000);
+            $('#about-how').hide(1000);
+            $('#about-who').hide(1000);
+        }
+        else
+        {
+            open1 = false;
+            $('#about-what').hide(1000);
+        }
+    });
+    $('#about-title2').click(function()
+    {
+        if ( open2 == false )
+        {
+            open2 = true;
+            $('#about-how').show(1000);
+            $('#about-what').hide(1000);
+            $('#about-who').hide(1000);
+        }
+        else
+        {
+            open2 = false;
+            $('#about-how').hide(1000);
+        }
+    });
+    $('#about-title3').click(function()
+    {
+        if(open3 == false)
+        {
+            open3 = true;
+            $('#about-who').show(1000);
+            $('#about-what').hide(1000);
+            $('#about-how').hide(1000);
+        }
+        else
+        {
+            open3 = false;
+            $('#about-who').hide(1000);
+        }
+    });
+    $('#about-what-rightUp').mouseenter(function()
+    {
+        $('#about-what-rightDown').stop().animate({
+            height: '50',
+        }, 1000);
+    }).mouseleave(function()
+    {
+        $('#about-what-rightDown').stop().animate({
+            height: '0',
+        }, 1000);
     })
-    $('#about-title2').mouseenter(function(){
-        $('#about-how').show(1000);
-        $('#about-what').hide(1000);
-        $('#about-who').hide(1000);
-    })
-    $('#about-title3').mouseenter(function(){
-        $('#about-who').show(1000);
-        $('#about-what').hide(1000);
-        $('#about-how').hide(1000);
+    for ( var i = 0; i < 8; ++i )
+    {
+        // $('.about-what-rightDown-small').get(i).click(function()
+        // {
+            // about_what_photo_index=i;
+        // });
+    }
+    $('.about-who-block').mouseenter(function()
+    {
+        $(this).stop().animate({
+            height: 400,
+            width: 280,
+        }, 300);
+    }).mouseleave(function()
+    {
+        $(this).stop().animate({
+            height: 100,
+            width: 70,
+        }, 300);
     })
 }
+
 function mmMenuScroll(offset)
 {
-    if( typeof(mmMenuScroll.mousein) == 'undefined' )
+    if ( typeof(mmMenuScroll.mousein) == 'undefined' )
+    {
         mmMenuScroll.mousein = false;
-    if( typeof(mmMenuScroll.margin_top_max) == 'undefined' )
+    }
+    if ( typeof(mmMenuScroll.margin_top_max) == 'undefined' )
+    {
         mmMenuScroll.margin_top_max = 0;
-    if( typeof(mmMenuScroll.margin_top_min) == 'undefined' )
+    }
+    if ( typeof(mmMenuScroll.margin_top_min) == 'undefined' )
+    {
         mmMenuScroll.margin_top_min = -100;
+    }
     var margin_top = parseInt($('#mm-menu-items').css('margin-top'));
-    if( margin_top + offset > mmMenuScroll.margin_top_max )
+    if ( margin_top + offset > mmMenuScroll.margin_top_max )
     {
         margin_top = mmMenuScroll.margin_top_max;
         mmMenuScroll.mousein = false;
         $('#mm-menu-items').css('margin-top', margin_top);
     }
-    if( margin_top + offset < mmMenuScroll.margin_top_min )
+    if ( margin_top + offset < mmMenuScroll.margin_top_min )
     {
         margin_top = mmMenuScroll.margin_top_min ;
         mmMenuScroll.mousein = false;
         $('#mm-menu-items').css('margin-top', margin_top);
     }
 
-    if( mmMenuScroll.mousein )
+    if ( mmMenuScroll.mousein )
     {
         $('#mm-menu-items').css('margin-top', margin_top + offset);
-        setTimeout( "mmMenuScroll("+offset+")", 30 );
+        setTimeout('mmMenuScroll(' + offset + ')', 30);
     }
     else
+    {
         return;
+    }
 }
 
 function checkFileSize(name)

@@ -17,7 +17,8 @@ class RawDataBehavior extends CActiveRecordBehavior
         return $changed_attribute_counts > 0;
     }
 
-    public function isChanged($attribute) {
+    public function isChanged($attribute)
+    {
         if (
             array_key_exists($attribute, $this->_raws)
          && array_key_exists($attribute, $this->owner->attributes)
@@ -58,5 +59,3 @@ class RawDataBehavior extends CActiveRecordBehavior
         }
     }
 }
-
-?>
