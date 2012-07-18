@@ -14,7 +14,7 @@ class SiteController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('index', 'error', 'search', 'pull', 'login', 'channel'),
+                'actions'   => array('index', 'error', 'search', 'pull', 'login', 'channel','game'),
                 'users'     => array('*')
             ),
             array(
@@ -197,5 +197,5 @@ class SiteController extends Controller
         header('Expires: ' . gmdate('D, d M Y H:i:s', TIMESTAMP + $expire) . ' GMT');
         echo '<script src="//connect.facebook.net/zh_TW/all.js"></script>';
         $this->layout = false;
-    }
+    }   
 }
