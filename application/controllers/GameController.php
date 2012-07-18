@@ -1,6 +1,6 @@
 <?php
 
-class SiteController extends Controller
+class GameController extends Controller
 {
     public function filters()
     {
@@ -9,21 +9,12 @@ class SiteController extends Controller
         );
     }
 
-    public function accessRules() //開權限...
+    public function accessRules()
     {
         return array(
             array(
                 'allow',
-                'actions'   => array(
-                    'index',
-                    'error',
-                    'search',
-                    'pull',
-                    'register',
-                    'login',
-                    'channel'
-             
-                ),
+                'actions'   => array('index', 'error', 'search', 'pull', 'login', 'channel'),
                 'users'     => array('*')
             ),
             array(
@@ -46,11 +37,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->setPageTitle(Yii::app()->name);
-        $this->render('index', array(
-            'latests'   => News::model()->getPopularNews(10),
-            'articles'  => array(),
-            'marquees'  => Marquee::model()->getMarquees()
-        ));
+        $this->render('index', array('marquees'  => Marquee::model()->getMarquees()));
     }
 
     public function actionMarquee($id = 0)
@@ -129,14 +116,6 @@ class SiteController extends Controller
         $this->_data['lasttime'] = TIMESTAMP;
     }
 
-    public function actionSearch($query)
-    {
-        $this->setPageTitle(Yii::app()->name . ' - 搜尋結果');
-        $this->render('search', array(
-            'query'     => $query
-        ));
-    }
-
     /**
      * This is the action to handle external exceptions.
      */
@@ -168,26 +147,6 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays the login page
-     */
-    public function actionLogin()
-    {
-        if ( isset($_POST['login']) )
-        {
-            $model = new User();
-            $model->attributes = $_POST['login'];
-
-            if ( $model->login() )
-            {
-                $this->redirect(Yii::app()->user->returnUrl);
-            }
-        }
-
-        $this->setPageTitle(Yii::app()->name . ' - 登入');
-        $this->render('login');
-    }
-
-    /**
      * Logs out the current user and redirect to homepage.
      */
     public function actionLogout()
@@ -204,21 +163,5 @@ class SiteController extends Controller
         header('Expires: ' . gmdate('D, d M Y H:i:s', TIMESTAMP + $expire) . ' GMT');
         echo '<script src="//connect.facebook.net/zh_TW/all.js"></script>';
         $this->layout = false;
-    }
-    
-    public function actionRegister()
-    {
-        if ( isset($_POST['register']) ) 
-        {
-            $model = new User();
-            $model->attributes = $_POST['register'];
-
-            if ( $model->validate() && $model->save() )
-            {
-                $this->redirect(array('site/index'));
-            }
-        }
-        $this->render('register');
-    }
-    
+    }   
 }
