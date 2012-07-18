@@ -8,17 +8,18 @@
 		</div>
 		<div id="about-what-right">
 			<div id="about-what-rightUp">
-				<div id="about-what-image"></div>
-			</div>
-			<div id="about-what-rightDown">
-				<div id="about-what-rightDown-small"></div>
-				<div id="about-what-rightDown-small"></div>
-				<div id="about-what-rightDown-small"></div>
-				<div id="about-what-rightDown-small"></div>
-				<div id="about-what-rightDown-small"></div>
-				<div id="about-what-rightDown-small"></div>
-				<div id="about-what-rightDown-small"></div>
-				<div id="about-what-rightDown-small"></div>
+				<div id="about-what-image">
+                    <div id="about-what-rightDown">
+                        <div class="about-what-rightDown-small"></div>
+                        <div class="about-what-rightDown-small"></div>
+                        <div class="about-what-rightDown-small"></div>
+                        <div class="about-what-rightDown-small"></div>
+                        <div class="about-what-rightDown-small"></div>
+                        <div class="about-what-rightDown-small"></div>
+                        <div class="about-what-rightDown-small"></div>
+                        <div class="about-what-rightDown-small"></div>
+                    </div>
+                </div>
 			</div>
 		</div>
 	</div>
