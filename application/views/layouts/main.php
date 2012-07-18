@@ -24,6 +24,7 @@
                 newsIndexUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>',
                 newsAdminUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/admin'); ?>',
                 registerUrl: '<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>',
+                facebookEnable: <?php echo Yii::app()->facebook->enable ? 'true' : 'false'; ?>,
                 token: '<?php echo Yii::app()->security->getToken(); ?>'
             }
         });

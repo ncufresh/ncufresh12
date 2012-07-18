@@ -511,12 +511,15 @@
 
         $.configures.sequence = $.random(0, 1000);
 
-        $('<script></script>')
-            .attr('id', 'facebook-jssdk')
-            .attr('async', 'async')
-            .attr('type', 'text/javascript')
-            .attr('src', '//connect.facebook.net/zh_TW/all.js')
-            .insertBefore($('script').first());
+        if ( $.configures.facebookEnable )
+        {
+            $('<script></script>')
+                .attr('id', 'facebook-jssdk')
+                .attr('async', 'async')
+                .attr('type', 'text/javascript')
+                .attr('src', '//connect.facebook.net/zh_TW/all.js')
+                .insertBefore($('script').first());
+        }
 
         if ( $('#header') ) $('#header').star();
 
@@ -651,26 +654,29 @@
         $.pull.start();
     });
 
-    window.fbAsyncInit = function() {
-        var like = $('<div></div>')
-            .attr('id', 'fb-like')
-            .appendTo($('#fb-root'));
+    if ( $.configures.facebookEnable )
+    {
+        window.fbAsyncInit = function() {
+            var like = $('<div></div>')
+                .attr('id', 'fb-like')
+                .appendTo($('#fb-root'));
 
-        $('<fb:like></fb:like>')
-            .attr('href', window.location.href)
-            .attr('data-send', 'false')
-            .attr('data-layout', 'button_count')
-            .attr('data-show-faces', 'false')
-            .appendTo(like);
+            $('<fb:like></fb:like>')
+                .attr('href', window.location.href)
+                .attr('data-send', 'false')
+                .attr('data-layout', 'button_count')
+                .attr('data-show-faces', 'false')
+                .appendTo(like);
 
-        FB.init({
-            appId:      $.configures.facebookAppId,
-            channelUrl: $.configures.facebookChannelUrl,
-            status:     true,
-            cookie:     true,
-            xfbml:      true
-        });
-    };
+            FB.init({
+                appId:      $.configures.facebookAppId,
+                channelUrl: $.configures.facebookChannelUrl,
+                status:     true,
+                cookie:     true,
+                xfbml:      true
+            });
+        };
+    }
 })(jQuery);
 
 function mmMenuScroll(offset)

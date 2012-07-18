@@ -8,6 +8,8 @@ class NFWFacebook extends CApplicationComponent
 
     public $secret;
 
+    public $enable = true;
+
     public $facebook;
 
     public $profile;
@@ -27,7 +29,8 @@ class NFWFacebook extends CApplicationComponent
 
     public function getIsGuest()
     {
-        return $this->facebook->getUser() == 0;
+        if ( $this->enable ) return $this->facebook->getUser() == 0;
+        return true;
     }
 
     public function getUserProfile()
