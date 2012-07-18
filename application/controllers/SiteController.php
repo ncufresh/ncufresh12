@@ -14,7 +14,15 @@ class SiteController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('index', 'error', 'search', 'pull', 'login', 'channel'),
+                'actions'   => array(
+                    'index',
+                    'error',
+                    'search',
+                    'pull',
+                    'register',
+                    'login',
+                    'channel'
+                ),
                 'users'     => array('*')
             ),
             array(
@@ -36,12 +44,10 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $facebook = FB::getFacebook();
-
         $this->setPageTitle(Yii::app()->name);
         $this->render('index', array(
             'latests'   => News::model()->getPopularNews(10),
-            'articles'   => array(),
+            'articles'  => array(),
             'marquees'  => Marquee::model()->getMarquees()
         ));
     }
@@ -198,4 +204,21 @@ class SiteController extends Controller
         echo '<script src="//connect.facebook.net/zh_TW/all.js"></script>';
         $this->layout = false;
     }
+    
+    public function actionRegister()
+    {
+        if ( isset($_POST['register']) ) 
+        {
+            $model = new User();
+            $model->attributes = $_POST['register'];
+
+            if ( $model->validate() && $model->save() )
+            {
+                $this->redirect(array('site/index'));
+            }
+        }
+        $this->render('register');
+    }
 }
+
+
