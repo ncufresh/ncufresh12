@@ -840,6 +840,7 @@ a:hover
     float: left;
 
 }
+
 #about
 {
     float:up;
@@ -956,6 +957,7 @@ a:hover
     float:left;
     margin:10px;
 }
+
 .scroll-container
 {
     overflow: hidden;
@@ -997,6 +999,27 @@ a:hover
 }
 
 
+#club_view_style
+{
+	background:yellow;
+}
+#content
+{
+    background:green;
+    /* position: relative; */
+}
+.l1
+{   
+    float:left;
+    margin:5px 5px 5px 5px;
+    background:yellow;
+    width:100px;
+    height:250px;
+    
+}
+
+
+
 .ui-dialog
 {
     position: absolute;
@@ -1030,3 +1053,4 @@ input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:
     position: absolute;
     top: 120px;
 }
+
