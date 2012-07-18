@@ -7,7 +7,7 @@ $ncufreshdb = array(
     'port'      => 3306,
     'database'  => 'ncufresh2012',
     'username'  => 'root',
-    'password'  => 'audacity0628'
+    'password'  => ''
 );
 
 $ncufreshfb = array(
