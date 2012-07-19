@@ -31,6 +31,17 @@ class User extends CActiveRecord
         );
     }
 
+    public function relations()
+    {
+        return array(
+            'profile'  => array(
+                self::HAS_ONE,
+                'Profile',
+                'user_id'
+            )
+        );
+    }
+
     public static function findByUsername($username)
     {
         return User::model()->find(array(

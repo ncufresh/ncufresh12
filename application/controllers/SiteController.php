@@ -221,26 +221,36 @@ class SiteController extends Controller
 
     public function actionRegister()
     {
-        if ( isset($_POST['register']) ) 
+        if ( isset($_POST['register']) && isset($_POST['profile']) ) 
         {
-            $model = new User();
-            $model->attributes = $_POST['register'];
+            $user = new User();
+            $user->attributes = $_POST['register'];
 
-            if ( $model->validate() && $model->save() )
+            if ( $user->validate() )
             {
-                $this->redirect(array('site/index'));
+                $profile = new Profile();
+                $profile->attributes = $_POST['profile'];
+                $profile->department_id = $_POST['profile']['department'];
+                $profile->grade = $_POST['profile']['grade'];
+                if ( $profile->validate() )
+                {
+                    if ( $user->save() )
+                    {
+                        $profile->id = $user->id;
+                        if ( $profile->save() )
+                        {
+                            $this->redirect(array('site/index'));
+                        }
+                    }
+                }
             }
+
+            // 有問題的時候
         }
-       /* $this->render('index', array(
-            'latests'   => News::model()->getPopularNews(10),
-            'articles'  => array(),
-            'marquees'  => Marquee::model()->getMarquees()
-        ));*/
+
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('register', array(
             'departments'  => Department::model()->getDepartment() //取得所有系所
         ));
-        
     }
-    
 }

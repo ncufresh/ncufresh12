@@ -4,14 +4,14 @@
         <dt>
             <label for="form-register-name">姓名</label>
         <dd>
-            <input id="form-register-name" name="register[name]" type="text" />
+            <input id="form-register-name" name="profile[name]" type="text" />
         </dd>
     </dl>
     <dl>
         <dt>
             <label for="form-register-nickname">暱稱</label>
         <dd>
-            <input id="form-register-nickname" name="register[nickname]" type="text" />
+            <input id="form-register-nickname" name="profile[nickname]" type="text" />
         </dd>
     </dl>
     <dl>
@@ -31,16 +31,13 @@
     </dl>
     <div> 
         <label for="form-register-department">系級</label>
-            <select name="registers[profile][department]">
+            <select name="profile[department]">
                 <?php foreach ( $departments as $department ) : ?>
                     <option><?php echo $department->content; ?></option> <!--$department->content;   content是欄位名稱(成員)-->
                 <?php endforeach; ?>
-                <!--<option>Volvo</option>
-                <option>Saab</option>
-                <option>Mercedes</option>
-                <option>Audi</option>-->
+                
             </select>
-            <select name="registers[profile][grade]">
+            <select name="profile[grade]">
                 <option value="1">一年級</option>
                 <option value="2">二年級</option>
                 <option value="3">三年級</option>
@@ -52,20 +49,20 @@
         <dt>
             <label for="form-register-senior">畢業高中</label>
         <dd>
-            <input id="form-register-senior" name="register[senior]" type="text" />
+            <input id="form-register-senior" name="profile[senior]" type="text" />
         </dd>
     </dl>
     <dl>
         <dt>
             <label for="form-register-birthday">生日</label>
         <dd>
-            <input id="form-register-birthday" name="register[birthday]" type="text" />
+            <input id="form-register-birthday" name="profile[birthday]" type="text" />
         </dd>
            
     </dl>
         
     <!--<div>
-        //上傳圖片
+        上傳圖片
     </div>-->
     <div>
         <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
