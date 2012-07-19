@@ -96,9 +96,15 @@ class User extends CActiveRecord
         return md5($salt . $password);
     }
 
-    public function isAdmin()
+    public function getIsAdmin()
     {
         return $this->is_admin;
+    }
+
+    public function updateOnlineState()
+    {
+        $this->online_count += 1;
+        return $this->save();
     }
 
     protected function generatePasswordSalt()
