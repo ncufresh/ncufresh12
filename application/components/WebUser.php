@@ -16,7 +16,7 @@ class WebUser extends CWebUser
 
     public function getIsAdmin()
     {
-        return $this->getIsMember() && $this->user()->is_admin;
+        return $this->getIsMember() && $this->user()->getIsAdmin();
     }
 
     public function getName()
@@ -45,7 +45,7 @@ class WebUser extends CWebUser
     protected function afterLogin($fromCookie)
     {
         parent::afterLogin($fromCookie);
-        $this->user()->save();
+        $this->user()->updateOnlineState();
     }
 
     public function afterLogout()
