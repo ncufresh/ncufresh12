@@ -99,7 +99,6 @@ jQuery(document).ready(function()
 <table>
     <thead>
         <tr>
-            <th>&nbsp;</th>
             <th>當前顯示</th>
             <th>修改</th>
             <th>移除</th>
@@ -108,7 +107,7 @@ jQuery(document).ready(function()
     </thead>
     <tfoot>
         <tr>
-            <td colspan="5">
+            <td colspan="4">
                 <form method="POST">
                     <input id="marquee-form-message" name="marquee[message]" type="text" />
                     <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
