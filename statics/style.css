@@ -999,11 +999,11 @@ input.gsc-search-button:focus
  */
 #about #what
 {
-	display: none;
     background-color: yellow;
     width: 750px;
     height: 500px;
 }
+
 #about #h1
 {
     float: top;
@@ -1015,6 +1015,7 @@ input.gsc-search-button:focus
     font-family: 'Microsoft YaHei Mono';
     font-size:40px;
 }
+
 #about #h2
 {
     float: top;
@@ -1026,6 +1027,7 @@ input.gsc-search-button:focus
     font-family: 'Microsoft YaHei Mono';
     font-size:40px;
 }
+
 #about #h3
 {
     float: top;
@@ -1037,12 +1039,11 @@ input.gsc-search-button:focus
     font-family: 'Microsoft YaHei Mono';
     font-size:40px;
 }
+
 #about #what-image
 {
-    /*background: url('photo.png') no-repeat;*/
-    background-color: green;
+    background: url('about/photo.png') no-repeat;
     background-repeat: no-repeat;
-    background-size: 400px 300px; /* NOTE */
     height: 300px;
     width: 400px;
     text-align: right;
@@ -1067,7 +1068,7 @@ input.gsc-search-button:focus
 
 #about #what-rightUp
 {
-    background-color: red;
+    background-color: white;
     width: 400px;
     height: 300px;
 }
@@ -1083,7 +1084,7 @@ input.gsc-search-button:focus
 
 #about .what-rightDown-small
 {
-    /*background: url('photo.png');*/
+    background: url('about/small_photo.png');
     background: white;
     background-repeat: no-repeat;
     background-size: 40px 40px; /* NOTE */
@@ -1097,25 +1098,23 @@ input.gsc-search-button:focus
 
 #about #how
 {
-    display: none;
     background-color: yellow;
     width: 750px;
-    height: 500px;
+    height: 700px;
 }
 
 #about #how-pic
 {
     background-color: black;
     width: 750px;
-    height: 500px;
+    height: 400px;
 }
 
 #about #how-txt
 {
-    display :none;
     background-color: yellow;
     width: 750px;
-    height: 500px;
+    height: 300px;
 }
 
 #about .how-photo
@@ -1128,15 +1127,28 @@ input.gsc-search-button:focus
     float: none;
 }
 
+#about #who
+{
+    background-color: white;
+    width: 750px;
+    height: 40px;
+}
+
 #about .who-block
 {
     background-color: blue;
-    width: 70px;
-    height: 100px;
+    width: 150px;
+    height: 40px;
     float: left;
-    margin: 10px;
 }
 
+#about #who_txt
+{
+    background-color: red;
+    width: 750px;
+    height: 400px;
+    float: top;
+}
 /**
  * Facebook style
  */
@@ -1154,6 +1166,7 @@ tr.friends-title
     border:5px solid gray;
     margin:0px;
 }
+
 td.friends-close-ones
 {
     border:5px solid gray;

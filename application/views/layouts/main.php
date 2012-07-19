@@ -24,6 +24,7 @@
                 multimediaYoutubeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>'),
                 newsIndexUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>',
                 newsAdminUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/admin'); ?>',
+                staticsUrl: '<?php echo Yii::app()->request->baseUrl; ?>/statics',
                 registerUrl: '<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>',
                 facebookEnable: <?php echo Yii::app()->facebook->enable ? 'true' : 'false'; ?>,
                 token: '<?php echo Yii::app()->security->getToken(); ?>'
