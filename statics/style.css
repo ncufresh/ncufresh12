@@ -17,6 +17,11 @@ body
     width: 1000px;
 }
 
+form
+{
+	margin: 0;
+}
+
 form dl,
 form dt,
 form dd
@@ -401,6 +406,7 @@ a:hover
     bottom: -10px;
     height: 0;
     margin: -120px 0 0 830px;
+    max-height: 242px;
     opacity: 0.9;
     padding: 5px;
     position: fixed;
@@ -464,27 +470,27 @@ a:hover
     height: 200px;
     margin-right: 10px;
     opacity: 0.9;
-    overflow: hidden;
+    overflow-x: hidden;
     position: fixed;
-    width: 165px;
+    width: 160px;
 }
 
 .chat-dialog .chat-title
 {
-	cursor: pointer;
-	width: 165px;
-	height: 28px;
 	background: #7097f2;
+	cursor: pointer;
+	height: 30px;
+	width: 160px;
 }
 
 .chat-dialog .chat-title span
 {
+	background: url('chat_online.png') no-repeat;
+	display: block;
+	float: left;
+	height: 16px;
 	margin: 6px;
 	width: 16px;
-	height: 16px;
-	display: block;
-	background: url('chat_online.png') no-repeat;
-	float: left;
 }
 
 .chat-dialog .chat-title span.offline
@@ -494,22 +500,23 @@ a:hover
 
 .chat-dialog .chat-title p
 {
-	margin: 6px 0;
-	width: auto;
-	height: 16px;
 	display: block;
 	float: left;
+	height: 16px;
+	line-height: 16px;
+	margin: 6px 0;
+	width: auto;
 }
 
 .chat-dialog .chat-title button
 {
-	float: right;
-	width: 16px;
-	height: 16px;
-	margin: 6px;
-	padding: 0;
-	border: 0;
 	background: url('chat_close.png') 50% 50% no-repeat;
+	border: 0;
+	float: right;
+	height: 16px;
+	margin: 7px;
+	padding: 0;
+	width: 16px;
 }
 
 .chat-dialog .chat-title button:hover
@@ -519,30 +526,35 @@ a:hover
 }
 
 .chat-dialog .chat-display
-{   
-    top: 0;
-    position: relative;
-    height: 152px;
-    width: 155px;
-	padding: 0 5px;
+{
+    height: 150px;
     overflow-x: hidden;
     overflow-y: auto;
-}
-
-.chat-dialog .chat-input
-{
-	border-top: 1px solid black;
-    height: 19px;
-    margin: 0;
-    outline: none;
+    margin: -3px 0;
 	padding: 0 5px;
-    width: 155px;
+    width: 150px;
 }
 
 .chat-dialog .chat-display p
 {
     margin: 0;
     padding: 0;
+}
+
+.chat-dialog .chat-form
+{
+    height: 20px;
+}
+
+.chat-dialog .chat-input
+{
+	border-top: 1px solid black;
+    border-radius: 0;
+    height: 19px;
+    margin: 0;
+    outline: none;
+	padding: 0 5px;
+    width: 150px;
 }
 
 /**

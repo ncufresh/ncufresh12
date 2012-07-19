@@ -60,7 +60,6 @@ google.setOnLoadCallback(function()
     {
         $.chat.options = $.extend({
             animationSpeed:         500,
-            friendListHeight:       242,
             chatId:                 'chat',
             friendListId:           'chat-friend-list',
 			friendListEntriesWrapId:'chat-friend-list-entries-wrap',	
@@ -84,25 +83,23 @@ google.setOnLoadCallback(function()
         var list = $('#' + $.chat.options.friendListId);
         if ( list.length == 0 )
         {
+            list = $('<div></div>')
+                .attr('id', $.chat.options.friendListId)
+                .appendTo($('body'));
 			title = $('<span></span>')
 				.text('Chat Room')
 				.click(function()
 				{
 					$.fn.chat.closeFriendList();
-				});
+				})
+				.appendTo(list);
 			display = $('<div></div>')
-				.attr('id', $.chat.options.friendListEntriesWrapId);
+				.attr('id', $.chat.options.friendListEntriesWrapId)
+				.appendTo(list);
 			search = $('<input />')
 				.attr('type', 'text')
-				.attr('id', $.chat.options.friendListSearchId);
-            list = $('<div></div>')
-                .attr('id', $.chat.options.friendListId)
-                .appendTo($('body'));
-			list
-				.append(title)
-				.append(display)
-				.append(search);
-				
+				.attr('id', $.chat.options.friendListSearchId)
+				.appendTo(list);
         }
         return list;
     };
@@ -111,7 +108,7 @@ google.setOnLoadCallback(function()
     {
         var list = $.fn.chat.createFriendList();
         list.animate({
-            height: $.chat.options.friendListHeight
+            height: list.css('max-height')
         }, $.chat.options.animationSpeed);
         $('#' + $.chat.options.chatId).fadeOut();
         return list;
