@@ -1159,7 +1159,24 @@ input.gsc-search-button:focus
     position: absolute;
     top: 120px;
 }
-
+.sep-group
+{
+    float:left;
+}
+.close-group
+{
+    float:right;
+}
+th.form-friends-title
+{
+    align:left;
+    color:yellow;
+}
+a.form-friends-title
+{
+    align:left;
+    color:DeepPink;
+}
 tr.friends-title
 {
     height:10%;

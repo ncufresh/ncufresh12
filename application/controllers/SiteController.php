@@ -218,14 +218,14 @@ class SiteController extends Controller
         "></script>';
         $this->layout = false;
     }
-
+    /*define('USER_IMAGE', 'avatars/'); // 預設路徑名稱*/
     public function actionRegister()
     {
         if ( isset($_POST['register']) && isset($_POST['profile']) ) 
         {
             $user = new User();
             $user->attributes = $_POST['register'];
-
+            
             if ( $user->validate() )
             {
                 $profile = new Profile();
@@ -244,10 +244,17 @@ class SiteController extends Controller
                     }
                 }
             }
-
-            // 有問題的時候
+            // 有問題的時候 上傳圖片
+           /* $profile->picture = $_FILES['picture']['name'];
+            $target = USER_IMAGE.$profile; //儲存檔案的目的地
+            move_uploaded_file($_FILES['picture']['tmp_name'],$target);
+            $picture_size=$_FILES['picture']['size'];
+            $picture_type=$_FILES['picture']['type'];
+            if(is_file(USER_IMAGE.$row['picture'])&&filesize(USER_IMAGE.$row['picture'])>0)
+                echo '<img src="'.USER_IMAGE.$row['picture'].'" alt="Score image"/>';
+            else
+                echo '<img src="'.USER_IMAGE.'6196.jpg" alt="Unverified" />';*/
         }
-
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('register', array(
             'departments'  => Department::model()->getDepartment() //取得所有系所

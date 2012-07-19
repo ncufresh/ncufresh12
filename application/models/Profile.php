@@ -1,6 +1,6 @@
 <?php
 
-define('USER_UPLOAD_IMAGE', 'images/'); // 預設路徑名稱
+
 
 class Profile extends CActiveRecord
 {
@@ -15,10 +15,10 @@ class Profile extends CActiveRecord
     }
 
     public function rules()
-    {
+    {   
         return array(
             array(
-                'name, nickname, department_id, senior, birthday', 
+                'name, nickname, department_id, senior, birthday', //必填
                 'required'
             )
         );
