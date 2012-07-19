@@ -1,6 +1,6 @@
-<table border="1" width="90%" height="70%">
+<table class="other-page">
    <tr>
-    <th colspan="5">其他科系</th>
+    <th colspan="5" class="friend-other-page">其他科系</th>
     </tr>
     <?php 
         for($row=1;$row<=4;$row++)
@@ -9,9 +9,9 @@
             for($col=1;$col<=5;$col++)
             {
                 if($col%5==0)
-                    echo '<td class="">'.$col.'</td>';
+                    echo '<td>'.$col.'<br /><input type="checkbox" name="friend"  />齁</td>';
                 else
-                    echo '<td class="">'.$col.'</td>';
+                    echo '<td>'.$col.'<br /><input type="checkbox" name="friend"  />齁</td>';
 
             }
             echo "</tr>";
