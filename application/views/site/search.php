@@ -2,7 +2,7 @@
 google.setOnLoadCallback(function()
 {
     var options = new google.search.DrawOptions();
-    var control = new google.search.CustomSearchControl('011017124764723419863:mdibrr3n-py');
+    var control = new google.search.CustomSearchControl($.configures.googleSearchAppId);
     options.enableSearchResultsOnly();
     control.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
     control.draw('result', options);
