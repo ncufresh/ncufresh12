@@ -144,7 +144,7 @@ google.setOnLoadCallback(function()
         }
         return list;
     };
-	
+
     $.fn.chat.closeFriendList = function()
     {
         var list = $.fn.chat.createFriendList();
@@ -153,7 +153,7 @@ google.setOnLoadCallback(function()
             height: 0
         }, $.chat.options.animationSpeed);
     };
-	
+
 	$.fn.chat.updateChatDialogsPosition = function()
 	{
         var list = $.fn.chat.createFriendList();
@@ -167,7 +167,7 @@ google.setOnLoadCallback(function()
             });
         });
 	}
-	
+
     $.fn.chat.createChatDialog = function(id)
     {
         var list = $.fn.chat.createFriendList();
@@ -297,7 +297,7 @@ google.setOnLoadCallback(function()
         $.fn.chat.createChatDialog(id).remove();
 		$.fn.chat.updateChatDialogsPosition();
     };
-		
+
     $.fn.chat.sendMessage = function(id, message)
     {
         $.post(
@@ -333,7 +333,7 @@ google.setOnLoadCallback(function()
             verticalFrames:         4,
             FrameXDimension:        128,
             FrameYDimension:        128,
-            interval:               100,
+            interval:               100
         }, options);
         return $(this).each(function()
         {
@@ -364,6 +364,87 @@ google.setOnLoadCallback(function()
             }, options.interval);
         });
     };
+
+    $.about = function(options)
+    {
+        options = $.extend({
+            aboutId:                         'about',
+            titleClass:                      'title',
+            introduceId:                     'introduce',
+            smallPicClass:                   'small_pic',
+            whatImageId:                     'what-image',
+            picBarSpeed:                     1000,
+            picAutoSpeed:                    3000
+        }, options);
+        var titles = $('#' + options.aboutId + ' .' + options.titleClass);
+        titles.eq(0).appendTo($('#' + options.aboutId));
+        var firstBlock = $('<div></div>')
+            .css({
+                backgroundColor: 'blue',
+                height: 500,
+                width:  750
+            })
+            .appendTo($('#' + options.aboutId));
+        var introduce = $('<div></div>')
+            .css({
+                backgroundColor: 'blue',
+                float: 'left',
+                height: 500,
+                width:  350
+            })
+            .appendTo(firstBlock);
+        $('#' + options.introduceId).appendTo(introduce);
+        var picture = $('<div></div>')
+            .css({
+                backgroundColor: 'blue',
+                float: 'right',
+                height: 300,
+                position: 'relative',
+                width:  400
+            })
+            .appendTo(firstBlock)
+            .mouseenter(function()
+            {
+                picture_display.stop().animate({
+                    height: 50,
+                    opacity: 1
+                }, 1000);
+            }).mouseleave(function()
+            {
+                picture_display.stop().animate({
+                    height: 0,
+                    opacity: 0
+                }, 1000);
+            });
+        $('#' + options.whatImageId).appendTo(picture);
+        var picture_display = $('<div></div>')
+            .css({
+                backgroundColor: '#000000',
+                bottom: 0,
+                height: 0,
+                opacity: 0,
+                position: 'absolute',
+                width: 400
+            })       
+            .appendTo(picture);
+        $('.' + options.smallPicClass).each(function(index)
+        {
+            $(this).css({
+                float: 'left',
+                margin: 5                
+            })         
+            .appendTo(picture_display);
+        });
+        titles.eq(1).appendTo($('#' + options.aboutId));
+        var secondBlock = $('<div></div>')
+            .css({
+                backgroundColor: 'yellow',
+                height: 500,
+                width:  750
+            })
+            .appendTo($('#' + options.aboutId));
+        titles.eq(2).appendTo($('#' + options.aboutId));
+    };    
 
     $.extend({
         random: function(min, max)
@@ -654,6 +735,8 @@ google.setOnLoadCallback(function()
 
         $('.loading').loading();
 
+        $.about();
+
         $('#form-sidebar-register').click(function()
         {
             window.location.href = $.configures.registerUrl;
@@ -790,8 +873,6 @@ google.setOnLoadCallback(function()
             mmMenuScroll.mousein = false;
         });
 
-        inin_about();
-
 		$('.nculife-food .dialog').click(function()
         {
 			$('#nculife-dialog').dialog({
@@ -873,69 +954,7 @@ google.setOnLoadCallback(function()
     }
 })(jQuery);
 
-function inin_about()
-{
-    var about_what_photo_index = 0;
-    var photoArray=new Array(8);
-    photoArray[0]= 'url(\'' + $.configures.staticsUrl + '/about/photo0.png\')';
-    photoArray[1]= 'url(\'' + $.configures.staticsUrl + '/about/photo1.png\')';
-    photoArray[2]= 'url(\'' + $.configures.staticsUrl + '/about/photo2.png\')';
-    photoArray[3]= 'url(\'' + $.configures.staticsUrl + '/about/photo3.png\')';
-    photoArray[4]= 'url(\'' + $.configures.staticsUrl + '/about/photo4.png\')';
-    photoArray[5]= 'url(\'' + $.configures.staticsUrl + '/about/photo5.png\')';
-    photoArray[6]= 'url(\'' + $.configures.staticsUrl + '/about/photo6.png\')';
-    photoArray[7]= 'url(\'' + $.configures.staticsUrl + '/about/photo7.png\')';
-    $('#about #what-rightUp').mouseenter(function()
-    {
-        $('#about #what-rightDown').stop().animate({
-            height: '50',
-        }, 1000);
-    }).mouseleave(function()
-    {
-        $('#about #what-rightDown').stop().animate({
-            height: '0',
-        }, 1000);
-    })  
 
-    $('#about .what-rightDown-small').each(function(index)
-    {
-        $(this).css('background-image', 'url(\'' + $.configures.staticsUrl + '/about/small_photo' + index + '.png\')');
-        $(this).click(function()
-        {
-            about_what_photo_index = index;
-            $('#about #what-image').css('background-image', photoArray[index]);
-            /*更換全體照片*/
-        });
-    });
-    
-    $('#about .who-block').each(function(index)
-    {
-        $(this).click(function()
-        {
-            　/*更換組介紹*/
-        }).mouseenter(function()
-        { 
-            $(this).css("background-color", "green");
-        }).mouseleave(function()
-        { 
-            $(this).css("background-color", "blue");
-        });
-    });
-    
-    setInterval(function()
-    {
-        if(about_what_photo_index<8)
-        {
-            about_what_photo_index++;
-        }
-        else
-        {
-            about_what_photo_index=0;
-        }
-        $('#about #what-image').css('background-image', photoArray[about_what_photo_index]);
-    },1000);
-        
-}
 
 function mmMenuScroll(offset)
 {

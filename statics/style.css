@@ -994,9 +994,24 @@ input.gsc-search-button:focus
 	
 }
 
-/**
+#about ul
+{
+    list-style-type:none;
+}
+#about h4
+{
+    float: top;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    text-align: left;
+    margin-left: 10px;
+    font-family: 'Microsoft YaHei Mono';
+    font-size:40px;
+}
+/** 
  * About style
- */
+
 #about #what
 {
     background-color: yellow;
@@ -1087,7 +1102,7 @@ input.gsc-search-button:focus
     background: url('about/small_photo.png');
     background: white;
     background-repeat: no-repeat;
-    background-size: 40px 40px; /* NOTE */
+    background-size: 40px 40px; /* NOTE 
     width: 40px;
     height: 40px;
     margin-left: 5px;
@@ -1148,7 +1163,7 @@ input.gsc-search-button:focus
     width: 750px;
     height: 400px;
     float: top;
-}
+}*/
 /**
  * Facebook style
  */
