@@ -60,10 +60,11 @@ google.setOnLoadCallback(function()
     {
         $.chat.options = $.extend({
             animationSpeed:         500,
+            friendListHeight:       242,
+            chatId:                 'chat',
             friendListId:           'chat-friend-list',
 			friendListEntriesWrapId:'chat-friend-list-entries-wrap',	
-			friendListSearchId:		'chat-friend-list-search',		
-            friendListHeight:       242,
+			friendListSearchId:		'chat-friend-list-search',
 			chatTitleClass:			'chat-title',
             chatDialogClass:        'chat-dialog',
             chatDisplayClass:       'chat-display',
@@ -74,7 +75,6 @@ google.setOnLoadCallback(function()
         return $(this).click(function()
         {
             $.fn.chat.openFriendList();
-            $(this).fadeOut();
             return true;
         });
     };
@@ -113,6 +113,7 @@ google.setOnLoadCallback(function()
         list.animate({
             height: $.chat.options.friendListHeight
         }, $.chat.options.animationSpeed);
+        $('#' + $.chat.options.chatId).fadeOut();
         return list;
     };
 
@@ -147,10 +148,10 @@ google.setOnLoadCallback(function()
     $.fn.chat.closeFriendList = function()
     {
         var list = $.fn.chat.createFriendList();
+		$('#' + $.chat.options.chatId).fadeIn();
 		list.animate({
             height: 0
         }, $.chat.options.animationSpeed);
-		$('#chat').fadeIn();
     };
 	
 	$.fn.chat.updateChatDialogsPosition = function()

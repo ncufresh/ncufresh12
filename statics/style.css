@@ -464,7 +464,7 @@ a:hover
     height: 200px;
     margin-right: 10px;
     opacity: 0.9;
-    overflow-x: hidden;
+    overflow: hidden;
     position: fixed;
     width: 165px;
 }
