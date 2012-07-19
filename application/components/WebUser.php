@@ -42,16 +42,19 @@ class WebUser extends CWebUser
         return parent::checkAccess($operation, $params, $allowCaching);
     }
 
-    public function afterLogout()
-    {
-        parent::afterLogout();
-        Yii::app()->facebook->logout();
-    }
-
     protected function afterLogin($fromCookie)
     {
         parent::afterLogin($fromCookie);
         $this->user()->save();
+    }
+
+    public function afterLogout()
+    {
+        parent::afterLogout();
+        if ( ! Yii::app()->facebook->getIsGuest() )
+        {
+            Yii::app()->request->redirect(Yii::app()->facebook->getLogoutUrl());
+        }
     }
 
     protected function user()

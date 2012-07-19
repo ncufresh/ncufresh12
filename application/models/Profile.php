@@ -18,11 +18,25 @@ class Profile extends CActiveRecord
     {
         return array(
             array(
-                'user_id, name, nickname, department_id, grade,
-                email, senior, birthday, bbsuser, ipcture', 
+                'name, nickname, department_id, senior, birthday', 
                 'required'
-            ),
+            )
         );
         
+    }
+    public function relations()
+    {
+        return array(
+            'department'    => array(
+                self::HAS_ONE,
+                'Department', //model
+                'department_id' //column
+            ),
+            
+        );
+        /*$profile = Profile::model()->findByPk(1);
+          $department = Department::model()->findByPk($profile->department_id); 
+          若有寫relation的話  就可改成      $profile = Profile::model()->findByPk(1);
+                                            $profile->department*/
     }
 }

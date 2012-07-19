@@ -60,10 +60,11 @@ google.setOnLoadCallback(function()
     {
         $.chat.options = $.extend({
             animationSpeed:         500,
+            friendListHeight:       242,
+            chatId:                 'chat',
             friendListId:           'chat-friend-list',
 			friendListEntriesWrapId:'chat-friend-list-entries-wrap',	
-			friendListSearchId:		'chat-friend-list-search',		
-            friendListHeight:       242,
+			friendListSearchId:		'chat-friend-list-search',
 			chatTitleClass:			'chat-title',
             chatDialogClass:        'chat-dialog',
             chatDisplayClass:       'chat-display',
@@ -74,7 +75,6 @@ google.setOnLoadCallback(function()
         return $(this).click(function()
         {
             $.fn.chat.openFriendList();
-            $(this).fadeOut();
             return true;
         });
     };
@@ -113,6 +113,7 @@ google.setOnLoadCallback(function()
         list.animate({
             height: $.chat.options.friendListHeight
         }, $.chat.options.animationSpeed);
+        $('#' + $.chat.options.chatId).fadeOut();
         return list;
     };
 
@@ -147,10 +148,10 @@ google.setOnLoadCallback(function()
     $.fn.chat.closeFriendList = function()
     {
         var list = $.fn.chat.createFriendList();
+		$('#' + $.chat.options.chatId).fadeIn();
 		list.animate({
             height: 0
         }, $.chat.options.animationSpeed);
-		$('#chat').fadeIn();
     };
 	
 	$.fn.chat.updateChatDialogsPosition = function()
@@ -323,6 +324,45 @@ google.setOnLoadCallback(function()
                 $.pull.restart();
             }
         );
+    };
+
+    $.fn.loading = function(options)
+    {
+        options = $.extend({
+            horizontalFrames:       4,
+            verticalFrames:         4,
+            FrameXDimension:        128,
+            FrameYDimension:        128,
+            interval:               100,
+        }, options);
+        return $(this).each(function()
+        {
+            var loading = $(this);
+            loading.css({
+                backgroundPosition: '0px 0px'
+            });
+            setInterval(function()
+            {
+                var position = loading.css('background-position').split(' ');
+                var left = $.integer(position[0]);
+                var top = $.integer(position[1]);
+                var ml = options.FrameXDimension * options.horizontalFrames;
+                var mt = options.FrameYDimension * options.verticalFrames;
+
+                left -= options.FrameXDimension;
+                if ( top < -1 * mt ) top = 0;
+
+                if ( left < -1 * ml )
+                {
+                    top -= options.FrameYDimension;
+                    left = 0;
+                }
+
+                loading.css({
+                    backgroundPosition: left + 'px ' + top + 'px'
+                });
+            }, options.interval);
+        });
     };
 
     $.extend({
@@ -594,7 +634,6 @@ google.setOnLoadCallback(function()
 
     $(document).ready(function()
     {
-		
         $.configures.lasttime = 0;
 
         $.configures.sequence = $.random(0, 1000);
@@ -613,12 +652,14 @@ google.setOnLoadCallback(function()
 
         if ( $('#chat') ) $('#chat').chat();
 
+        $('.loading').loading();
+
         $('#form-sidebar-register').click(function()
         {
             window.location.href = $.configures.registerUrl;
             return false;
         });
-    
+
         $('form input').each(function()
         {
             var input = $(this);
@@ -651,7 +692,7 @@ google.setOnLoadCallback(function()
                     update();
                 })
                 update();  
-            } 
+            }
         });
 
         $("#news-url-button").click(function()
@@ -700,13 +741,13 @@ google.setOnLoadCallback(function()
                 });   
             return false;
         });
-        
+
         $('.news-back-link').click(function()
         {
             window.location = decodeURIComponent($.configures.newsIndexUrl);
             return false;
         });
-        
+
         $('#mm-menu a').each(function(index, element)
         {
             var youtube_img_src = 'http://img.youtube.com/vi/:id/0.jpg';
@@ -716,7 +757,7 @@ google.setOnLoadCallback(function()
                 .attr('src', youtube_img_src.replace(':id', video_img_id));
             $(this).html(video_title).append(video_img);
         });
-        
+
         $('#mm-menu-items').css('height', $('#mm-menu a').length * $('#mm-menu a').first().css('height'));
         
         $('#mm-menu a').click(function()
@@ -726,11 +767,11 @@ google.setOnLoadCallback(function()
             return false;
         });
         $('#mm-menu a').eq($.random(0, $('#mm-menu a').length - 1)).click();
-        
+
         var srcoll_offset = 10;
         mmMenuScroll.margin_top_max = 0;
         mmMenuScroll.margin_top_min = parseInt($('#mm-menu').css('height')) - parseInt($('#mm-menu-items').css('height'));
-        
+
         $('.mm-menu-up').mouseenter(function()
         {
             mmMenuScroll.mousein = true;
@@ -739,7 +780,7 @@ google.setOnLoadCallback(function()
         {
             mmMenuScroll.mousein = false;
         });
-        
+
         $('.mm-menu-down').mouseenter(function()
         {
             mmMenuScroll.mousein = true;
@@ -750,7 +791,7 @@ google.setOnLoadCallback(function()
         });
 
         inin_about();
-        
+
 		$('.nculife-food .dialog').click(function()
         {
 			$('#nculife-dialog').dialog(
@@ -767,7 +808,7 @@ google.setOnLoadCallback(function()
 			});
 	
 		});
-		
+
 		$('#haha1').click(function()
         {
 			var url = 'index.html';
@@ -837,91 +878,69 @@ google.setOnLoadCallback(function()
         };
     }
 })(jQuery);
+
 function inin_about()
 {
     var about_what_photo_index = 0;
-    var open1 = false;
-    var open2 = false;
-    var open3 = false;
-    $('#about-what').hide();
-    $('#about-how').hide();
-    $('#about-who').hide();
-    $('#about-title1').click(function()
+    var photoArray=new Array(8);
+    photoArray[0]= 'url(\'' + $.configures.staticsUrl + '/about/photo0.png\')';
+    photoArray[1]= 'url(\'' + $.configures.staticsUrl + '/about/photo1.png\')';
+    photoArray[2]= 'url(\'' + $.configures.staticsUrl + '/about/photo2.png\')';
+    photoArray[3]= 'url(\'' + $.configures.staticsUrl + '/about/photo3.png\')';
+    photoArray[4]= 'url(\'' + $.configures.staticsUrl + '/about/photo4.png\')';
+    photoArray[5]= 'url(\'' + $.configures.staticsUrl + '/about/photo5.png\')';
+    photoArray[6]= 'url(\'' + $.configures.staticsUrl + '/about/photo6.png\')';
+    photoArray[7]= 'url(\'' + $.configures.staticsUrl + '/about/photo7.png\')';
+    $('#about #what-rightUp').mouseenter(function()
     {
-        if ( open1 == false )
-        {
-            open1 = true;
-            $('#about-what').show(1000);
-            $('#about-how').hide(1000);
-            $('#about-who').hide(1000);
-        }
-        else
-        {
-            open1 = false;
-            $('#about-what').hide(1000);
-        }
-    });
-    $('#about-title2').click(function()
-    {
-        if ( open2 == false )
-        {
-            open2 = true;
-            $('#about-how').show(1000);
-            $('#about-what').hide(1000);
-            $('#about-who').hide(1000);
-        }
-        else
-        {
-            open2 = false;
-            $('#about-how').hide(1000);
-        }
-    });
-    $('#about-title3').click(function()
-    {
-        if(open3 == false)
-        {
-            open3 = true;
-            $('#about-who').show(1000);
-            $('#about-what').hide(1000);
-            $('#about-how').hide(1000);
-        }
-        else
-        {
-            open3 = false;
-            $('#about-who').hide(1000);
-        }
-    });
-    $('#about-what-rightUp').mouseenter(function()
-    {
-        $('#about-what-rightDown').stop().animate({
+        $('#about #what-rightDown').stop().animate({
             height: '50',
         }, 1000);
     }).mouseleave(function()
     {
-        $('#about-what-rightDown').stop().animate({
+        $('#about #what-rightDown').stop().animate({
             height: '0',
         }, 1000);
-    })
-    for ( var i = 0; i < 8; ++i )
+    })  
+
+    $('#about .what-rightDown-small').each(function(index)
     {
-        // $('.about-what-rightDown-small').get(i).click(function()
-        // {
-            // about_what_photo_index=i;
-        // });
-    }
-    $('.about-who-block').mouseenter(function()
+        $(this).css('background-image', 'url(\'' + $.configures.staticsUrl + '/about/small_photo' + index + '.png\')');
+        $(this).click(function()
+        {
+            about_what_photo_index = index;
+            $('#about #what-image').css('background-image', photoArray[index]);
+            /*更換全體照片*/
+        });
+    });
+    
+    $('#about .who-block').each(function(index)
     {
-        $(this).stop().animate({
-            height: 400,
-            width: 280,
-        }, 300);
-    }).mouseleave(function()
+        $(this).click(function()
+        {
+            　/*更換組介紹*/
+        }).mouseenter(function()
+        { 
+            $(this).css("background-color", "green");
+        }).mouseleave(function()
+        { 
+            $(this).css("background-color", "blue");
+        });
+    });
+    
+    setInterval(function()
     {
-        $(this).stop().animate({
-            height: 100,
-            width: 70,
-        }, 300);
-    })
+        if(about_what_photo_index<8)
+        {
+            about_what_photo_index++;
+        }
+        else
+        {
+            about_what_photo_index=0;
+        }
+        $('#about #what-image').css('background-image', photoArray[about_what_photo_index]);
+    },1000);
+        
 }
 
 function mmMenuScroll(offset)

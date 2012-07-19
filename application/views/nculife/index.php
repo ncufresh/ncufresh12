@@ -12,6 +12,9 @@
          <a id="ncu-outside" href="<?php echo Yii::app()->createUrl('nculife/outside'); ?>" title="outside">outside</a>
          <a id="ncu-house" href="<?php echo Yii::app()->createUrl('nculife/house');?>" title="house">house</a>
          <a id="ncu-live" href="<?php echo Yii::app()->createUrl('nculife/live'); ?>" title="live">live</a>
+         <a id="life-test1"></a>
+         <a id="life-test2"></a>
+         <a id="life-test3"></a>
     </div>
 </div>
 

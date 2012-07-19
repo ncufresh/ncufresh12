@@ -3,17 +3,9 @@
 <?php
     echo $model->title;
     echo $model->content;
-    if ($model->status==0)
-    {
-     ?><button class="schedule-change">Dimo</button><?php
-    }
-    
-    else
-    {
-    ?>
-    <button class="schedule-change"> Simomo</button>
-         <?php
-        
-    }
 ?>
 
+<form action="<?php echo Yii::app()->createUrl('readme/update'); ?>" method="POST">
+    <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
+    <button id="form-schedule-button" type="submit"><?php if ( $model->status ) : ?>Simomo<?php else : ?>Dimomo<?php endif; ?></button>
+</form>
