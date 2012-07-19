@@ -1096,3 +1096,18 @@ input.gsc-search-button:focus
     position: absolute;
     top: 120px;
 }
+.etmomi
+{
+    background: url('1.jpg');
+    width:30px;
+    height:30px;
+    display:block;
+}
+
+.etmomi:hover
+{
+    background: url('2.PNG');
+    width:300px;
+    height:300px;
+    display:block;
+}

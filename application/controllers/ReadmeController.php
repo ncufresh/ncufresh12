@@ -9,7 +9,24 @@ class ReadmeController extends Controller
 
     public function actionSchedule()
     {
-        $this->render('schedule');
+        $schedule = new Schedule();
+        $data = $schedule->getId(2);
+        $this->render('schedule',array(
+            'model'=>$data,
+            ));
+    }
+    public function actionUpdate()
+    {
+        $schedule = $this;
+        if(isset$_POST['Post'])
+        {
+            $model->attributes=$_POST['Post']['Status'];
+            if($schedule->save())
+                $this->redirect(array('schedule'),id=>$schedule->id);
+           
+            
+        }
+    
     }
 
     public function actionFreshman()
