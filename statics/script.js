@@ -61,7 +61,10 @@ google.setOnLoadCallback(function()
         $.chat.options = $.extend({
             animationSpeed:         500,
             friendListId:           'chat-friend-list',
-            friendListHeight:       200,
+			friendListEntriesWrapId:'chat-friend-list-entries-wrap',	
+			friendListSearchId:		'chat-friend-list-search',		
+            friendListHeight:       242,
+			chatTitleClass:			'chat-title',
             chatDialogClass:        'chat-dialog',
             chatDisplayClass:       'chat-display',
             chatFormClass:          'chat-form',
@@ -81,9 +84,25 @@ google.setOnLoadCallback(function()
         var list = $('#' + $.chat.options.friendListId);
         if ( list.length == 0 )
         {
+			title = $('<span></span>')
+				.text('Chat Room')
+				.click(function()
+				{
+					$.fn.chat.closeFriendList();
+				});
+			display = $('<div></div>')
+				.attr('id', $.chat.options.friendListEntriesWrapId);
+			search = $('<input />')
+				.attr('type', 'text')
+				.attr('id', $.chat.options.friendListSearchId);
             list = $('<div></div>')
                 .attr('id', $.chat.options.friendListId)
                 .appendTo($('body'));
+			list
+				.append(title)
+				.append(display)
+				.append(search);
+				
         }
         return list;
     };
@@ -100,6 +119,7 @@ google.setOnLoadCallback(function()
     $.fn.chat.updateFriendList = function(response)
     {
         var list = $.fn.chat.createFriendList();
+		var list_wrap = list.children('#'+$.chat.options.friendListEntriesWrapId);
         for ( var key in response )
         {
             var data = response[key];
@@ -108,9 +128,9 @@ google.setOnLoadCallback(function()
                 .addClass('friend-list-entry')
                 .click(function()
                 {
-                    $.fn.chat.openChatDialog($(this).attr('chat:id'));
+                    $.fn.chat.showChatDialog($(this).attr('chat:id'));
                 })
-                .appendTo(list);
+                .appendTo(list_wrap);
             var icon = $('<img />')
                 .attr(
                     'src',
@@ -123,12 +143,30 @@ google.setOnLoadCallback(function()
         }
         return list;
     };
-
+	
     $.fn.chat.closeFriendList = function()
     {
         var list = $.fn.chat.createFriendList();
+		list.animate({
+            height: 0
+        }, $.chat.options.animationSpeed);
+		$('#chat').fadeIn();
     };
-
+	
+	$.fn.chat.updateChatDialogsPosition = function()
+	{
+        var list = $.fn.chat.createFriendList();
+        var left = list.position().left
+                 + list.outerWidth(true)
+                 - list.innerWidth();
+        $('.' + $.chat.options.chatDialogClass).each(function(index)
+        {
+            $(this).css({
+                left: left - $(this).outerWidth(true) * (index + 1)
+            });
+        });
+	}
+	
     $.fn.chat.createChatDialog = function(id)
     {
         var list = $.fn.chat.createFriendList();
@@ -146,7 +184,24 @@ google.setOnLoadCallback(function()
             size++;
         });
         if ( ! dialog )
-        {
+        {	
+			var title = $('<div></div>')
+				.addClass($.chat.options.chatTitleClass)
+				.append('<span></span>')
+				.append('<p></p>')
+				.append('<button></button>')
+				.click(function()
+				{
+					if ( dialog.attr('chat:show') == 'true' )
+					{
+						$.fn.chat.hideChatDialog(dialog.attr('chat:id'));
+					}
+					else
+					{
+						$.fn.chat.showChatDialog(dialog.attr('chat:id'));
+					}
+					
+				});
             var display = $('<div></div>')
                 .addClass($.chat.options.chatDisplayClass);
             var input = $('<input />')
@@ -162,33 +217,46 @@ google.setOnLoadCallback(function()
                 .append(input);
             dialog = $('<div></div>')
                 .attr('chat:id', id)
+				.attr('chat:show', 'true')
                 .addClass($.chat.options.chatDialogClass)
-                .append(display)
+                .append(title)
+				.append(display)
                 .append(form)
                 .insertBefore(list);
             dialog.css({
                 left: left - dialog.outerWidth(true) * size
             });
+			title.children('span').addClass('offline');
+			$('.friend-list-entry').each(function(index)
+			{
+				if($(this).attr('chat:id') == id)
+				{
+					title.children('p').text($(this).children('p').text());
+					title.children('span').removeClass('offline');
+				}
+			});
+			title.children('button').click(function()
+			{
+				$.fn.chat.closeChatDialog(dialog.attr('chat:id'));
+			});
         }
-        return dialog;
-    };
-
-    $.fn.chat.openChatDialog = function(id)
-    {
-        var dialog = $.fn.chat.createChatDialog(id);
         return dialog;
     };
 
     $.fn.chat.showChatDialog = function(id)
     {
-        var dialog = $.fn.chat.openChatDialog(id);
+        var dialog = $.fn.chat.createChatDialog(id);
+		dialog.animate({
+			bottom: 0,
+		}, $.chat.options.animationSpeed).attr('chat:show', 'true');
+		$.fn.chat.updateChatDialogsPosition();
         return dialog;
     };
 
     $.fn.chat.updateChatDialog = function(id, data)
     {
         var exists;
-        var dialog = $.fn.chat.showChatDialog(id);
+        var dialog = $.fn.chat.createChatDialog(id);
         dialog.children('.' + $.chat.options.chatDisplayClass)
             .each(function()
             {
@@ -216,14 +284,19 @@ google.setOnLoadCallback(function()
     $.fn.chat.hideChatDialog = function(id)
     {
         var dialog = $.fn.chat.createChatDialog(id);
+		dialog.animate({
+			bottom: -172,
+		}, $.chat.options.animationSpeed).attr('chat:show', 'false');
+		$.fn.chat.updateChatDialogsPosition();
         return dialog;
     };
 
     $.fn.chat.closeChatDialog = function(id)
     {
-        var dialog = $.fn.chat.createChatDialog(id);
+        $.fn.chat.createChatDialog(id).remove();
+		$.fn.chat.updateChatDialogsPosition();
     };
-
+		
     $.fn.chat.sendMessage = function(id, message)
     {
         $.post(

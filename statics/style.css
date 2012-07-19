@@ -401,10 +401,23 @@ a:hover
     bottom: -10px;
     height: 0;
     margin: -120px 0 0 830px;
-    opacity: 0.7;
+    opacity: 0.9;
     padding: 5px;
     position: fixed;
     width: 160px;
+}
+
+#chat-friend-list span
+{
+	-webkit-border-radius: 10px;
+	height: 20px;
+	color: white;
+	line-height: 20px;
+	border-radius: 10px;
+	background: #262a76;
+	text-align: center;
+	display: block;
+	cursor: pointer;
 }
 
 #chat-friend-list img
@@ -421,6 +434,17 @@ a:hover
     margin-left: 50px;
 }
 
+#chat-friend-list-search
+{
+	border: 2px solid #d7d7d7;
+	margin: 5px 0;
+	outline: none;
+	width: 136px;
+	height: 20px;
+	padding: 0 0 0 20px;
+	background: url('friend_list_search.png') no-repeat;
+}
+
 #chat-friend-list .friend-list-entry
 {
     height: 45px;
@@ -435,39 +459,84 @@ a:hover
 
 .chat-dialog
 {
-    -webkit-border-radius: 10px;
     background: #FFFFFF;
-    border-radius: 10px;
-    bottom: -10px;
+    bottom: 0px;
     height: 200px;
     margin-right: 10px;
-    opacity: 0.7;
+    opacity: 0.9;
     overflow-x: hidden;
-    overflow-y: atuo;
-    padding: 5px;
     position: fixed;
-    width: 160px;
+    width: 165px;
 }
 
+.chat-dialog .chat-title
+{
+	cursor: pointer;
+	width: 165px;
+	height: 28px;
+	background: #7097f2;
+}
+
+.chat-dialog .chat-title span
+{
+	margin: 6px;
+	width: 16px;
+	height: 16px;
+	display: block;
+	background: url('chat_online.png') no-repeat;
+	float: left;
+}
+
+.chat-dialog .chat-title span.offline
+{
+	background: url('chat_offline.png') no-repeat;
+}
+
+.chat-dialog .chat-title p
+{
+	margin: 6px 0;
+	width: auto;
+	height: 16px;
+	display: block;
+	float: left;
+}
+
+.chat-dialog .chat-title button
+{
+	float: right;
+	width: 16px;
+	height: 16px;
+	margin: 6px;
+	padding: 0;
+	border: 0;
+	background: url('chat_close.png') 50% 50% no-repeat;
+}
+
+.chat-dialog .chat-title button:hover
+{
+	background: white url('chat_close.png') 50% 50% no-repeat;
+	cursor: pointer;
+}
 
 .chat-dialog .chat-display
 {   
     top: 0;
     position: relative;
-    height: 175px;
-    width: 160px;
+    height: 152px;
+    width: 155px;
+	padding: 0 5px;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
 .chat-dialog .chat-input
 {
-    border-top: 1px solid #333333;
-    height: 20px;
+	border-top: 1px solid black;
+    height: 19px;
     margin: 0;
     outline: none;
-    padding: 0;
-    width: 160px;
+	padding: 0 5px;
+    width: 155px;
 }
 
 .chat-dialog .chat-display p
