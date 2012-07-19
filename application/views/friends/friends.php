@@ -3,12 +3,12 @@
     來分類一下吧
 </p>
 
-<!--
+
 <form action="<?php echo Yii::app()->createUrl('friends/friends'); ?>" method="GET">
     <div>
         <table>
             <tr>
-            <th align="left" colspan="6"><a href="SiteController.php?id='1' &amp;" title="同系同屆">同系同屆</a></th>
+            <th align="left" colspan="6"><a href="Friends.html?id=1" title="同系同屆">同系同屆</a></th>
             </tr>
             <tr>
             <td>1111</td>
@@ -23,7 +23,7 @@
     <div>
          <table>
             <tr>
-            <th align="left" colspan="6"><a href="SiteController.php?id='2' &amp;" title="同系不同屆">同系不同屆</a></th>
+            <th align="left" colspan="6"><a href="Friends.html?id=2" title="同系不同屆">同系不同屆</a></th>
             </tr>
             <tr >
             <td>1111111</td>
@@ -38,7 +38,7 @@
     <div>
         <table>
             <tr>
-            <th align="left" colspan="6"><a href="SiteController.php?id='3' &amp;" title="其他科系">其他科系</a></th>
+            <th align="left" colspan="6"><a href="Friends.html?id=3" title="其他科系">其他科系</a></th>
             </tr>
             <tr>
             <td>1</td>
@@ -55,4 +55,3 @@
         <button id="form-friends-button" type="submit" name="friends-self-design">自訂</button>
     </div>
 </form>
--->

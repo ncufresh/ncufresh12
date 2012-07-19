@@ -1,3 +1,5 @@
+<form action="<?php echo Yii::app()->createUrl('friends/samedepartment_samegrade'); ?>" method="POST">
+
 <dl>
     <dt>水果</dt>
     <dd>水蜜桃</dd>
@@ -6,3 +8,4 @@
     <dt>麵</dt>
     <dd>烏龍麵</dd>
 </dl>
+</form>

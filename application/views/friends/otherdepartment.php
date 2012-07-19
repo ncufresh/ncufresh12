@@ -1,4 +1,4 @@
-<form>
+<form action="<?php echo Yii::app()->createUrl('friends/otherdepartment'); ?>" method="POST">
     <dl>
     <dt>水果</dt>
     <dd>西瓜</dd>

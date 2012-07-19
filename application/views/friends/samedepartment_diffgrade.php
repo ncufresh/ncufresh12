@@ -1,4 +1,4 @@
-<form>
+<form action="<?php echo Yii::app()->createUrl('friends/samedepartment_diffgrade'); ?>" method="POST">
     <dl>
     <dt>水果</dt>
     <dd>西瓜</dd>
