@@ -1197,6 +1197,25 @@ input.gsc-search-button:focus
     top: 120px;
 }
 
+<<<<<<< HEAD
+/*club style*/
+#content
+{
+	width:751px;
+	
+}
+.l1
+{
+	float:left;
+	width:100 px;
+	height:500 px;
+}
+
+#club
+{
+	margin-center:auto;
+}
+=======
 .etmomi
 {
     background: url('1.jpg');
@@ -1262,3 +1281,4 @@ td.friends-close-ones
     
     margin:0px;
 }
+>>>>>>> db768b000185c579fd8d4d5fc57a322d94abccb8

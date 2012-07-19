@@ -2,17 +2,14 @@
 
 defined('NCUFRESH2012') or die();
 
+$yii = dirname(__FILE__) . '/../../yii/yii.php';
+
+$facebook = 'C:\xampp\htdocs\facebook-php-sdk-6c82b3f\src\facebook.php';
+
 $ncufreshdb = array(
     'host'      => 'localhost',
     'port'      => 3306,
-    'database'  => 'ncufresh2012',
+    'database'  => 'ncufresh12',
     'username'  => 'root',
-    'password'  => ''
+    'password'  => 'ji3g4go6'
 );
-
-$ncufreshfb = array(
-    'appId'     => '299021976861868',
-    'secret'    => 'da3b004c79c3122de3a702a90a8a6dbf'
-);
-
-require_once(dirname(__FILE__) . '/yii/yii.php');

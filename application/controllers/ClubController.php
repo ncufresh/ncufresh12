@@ -25,7 +25,8 @@ class ClubController extends Controller
     public function actionContent()
     {
         $club = new Club();
-        $data = $club->getClub(1);
+		$page = (integer)$_GET["id"];
+        $data = $club->getClub($page);
         $this->render('content', array(
             'data'      => $data
         ));
