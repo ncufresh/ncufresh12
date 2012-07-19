@@ -1,54 +1,53 @@
 <div id="about">
-	<div id="title1">
-		<h4 id="h1">What is the web ncufresh?</h4>
-	</div>
-	<div id="what">
-		<div id="what-left">
-			<p>................................ </p>
-		</div>
-		<div id="what-right">
-			<div id="what-rightUp">
-				<div id="what-image">
-                    <div id="what-rightDown">
-                        <div class="what-rightDown-small"></div>
-                        <div class="what-rightDown-small"></div>
-                        <div class="what-rightDown-small"></div>
-                        <div class="what-rightDown-small"></div>
-                        <div class="what-rightDown-small"></div>
-                        <div class="what-rightDown-small"></div>
-                        <div class="what-rightDown-small"></div>
-                        <div class="what-rightDown-small"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="title2">
-        <h4 id="h2">How do we work?</h4>
-    </div>
-    <div id="how">
-        <div id="how-pic"></div>
-        <div id="how-txt">
-            <h1>OO組</h1>
-            <p>文字介紹..............</p>
-            <!--<div class="how-photo1"></div>
-            <div class="how-photo2"></div>
-            <div class="how-photo3"></div>-->
-        </div>
-    </div>
-
-    <div id="title3">
-        <h4 id="h3">Who are we?</h4>
-    </div>
-    <div id="who">
-        <div class="who-block"></div>
-        <div class="who-block"></div>
-        <div class="who-block"></div>
-        <div class="who-block"></div>
-        <div class="who-block"></div>
-    </div>
-    <div id="who_txt">
+    <h4 class="title">What is the web ncufresh?</h4>
+    <p id="introduce">介紹</p>
+    <img id="what-image" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo0.png" alt="" />
+    <ul>
+        <li>
+            <img class="small_pic" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="" />
+        </li>
+        <li>
+            <img class="small_pic" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo1.png" alt="" />
+        </li>
+        <li>
+            <img class="small_pic" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo2.png" alt="" />
+        </li>
+        <li>
+            <img class="small_pic" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo3.png" alt="" />
+        </li>
+        <li>
+            <img class="small_pic" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo4.png" alt="" />
+        </li>
+        <li>
+            <img class="small_pic" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo5.png" alt="" />
+        </li>
+        <li>
+            <img class="small_pic" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo6.png" alt="" />
+        </li>
+        <li>
+            <img class="small_pic" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo7.png" alt="" />
+        </li>
         
-    </div>
+    </ul>
+    <h4 class="title">How do we work?</h4>
+    <!--<img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo0.png" alt="" />-->
+    <h4 class="title">Who are we?</h4>
+    <!--<ul>
+        <li>
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="" />
+        </li>
+        <li>
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo1.png" alt="" />
+        </li>
+        <li>
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo2.png" alt="" />
+        </li>
+        <li>
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo3.png" alt="" />
+        </li>
+        <li>
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo3.png" alt="" />
+        </li>
+    </ul>
+    <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo0.png" alt="" />-->
 </div>

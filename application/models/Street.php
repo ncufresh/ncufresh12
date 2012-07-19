@@ -10,12 +10,10 @@ class Street extends CActiveRecord
     {
         return '{{building_info_content}}';
     }
-    
+
     public function getBuildingInfo($id)
     {
         $data = $this->findByPk($id);
         return $data;
     }    
 }
-?>
-

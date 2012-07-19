@@ -974,37 +974,54 @@ input.gsc-search-button:focus
 
 #nculife-dh
 {
-	background:pink;
-	width:400px;
-	height:25px;
+	background: pink;
+	width: 400px;
+	height: 25px;
 }
 
 #nculife-db
 {
-	background:green;
+	background: green;
 }
 
 #nculife-cv
 {
-	width:400px;
-	height:100px;
-	float:left;
-	background:green;
+	width: 400px;
+	height: 100px;
+	float: left;
+	background: green;
 }
 
 #nculife-ct
 {
-	width:300px;
-	height:100px;
-	float:left;
-	background:gray;
+	width: 300px;
+	height: 100px;
+	float: left;
+	background: gray;
 }
 
 #nculife-dh a
 {
-	width:50px;
-	height:50px;
+	width: 50px;
+	height: 50px;
 	
+}
+
+#about ul
+{
+    list-style-type: none;
+}
+
+#about h4
+{
+    float: top;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    text-align: left;
+    margin-left: 10px;
+    font-family: 'Microsoft YaHei Mono';
+    font-size:40px;
 }
 
 #life-test1
@@ -1032,161 +1049,7 @@ input.gsc-search-button:focus
     margin-top: -30px;
     display:block;
 }
-/**
- * About style
- */
-#about #what
-{
-    background-color: yellow;
-    width: 750px;
-    height: 500px;
-}
 
-#about #h1
-{
-    float: top;
-    background: black;
-    color: white;
-    border-radius: 10px;
-    text-align: left;
-    margin-left: 10px;
-    font-family: 'Microsoft YaHei Mono';
-    font-size:40px;
-}
-
-#about #h2
-{
-    float: top;
-    background: black;
-    color: white;
-    border-radius: 10px;
-    text-align: left;
-    margin-left: 10px;
-    font-family: 'Microsoft YaHei Mono';
-    font-size:40px;
-}
-
-#about #h3
-{
-    float: top;
-    background: black;
-    color: white;
-    border-radius: 10px;
-    text-align: left;
-    margin-left: 10px;
-    font-family: 'Microsoft YaHei Mono';
-    font-size:40px;
-}
-
-#about #what-image
-{
-    background: url('about/photo.png') no-repeat;
-    background-repeat: no-repeat;
-    height: 300px;
-    width: 400px;
-    text-align: right;
-}
-
-#about #what-left
-{
-    background-color: blue;
-    width: 350px;
-    height: 500px;
-    float: left;
-}
-
-#about #what-right	
-{
-    background-color: blue;
-    width: 400px;
-    height: 300px;
-    float: right;
-    position: relative;
-}
-
-#about #what-rightUp
-{
-    background-color: white;
-    width: 400px;
-    height: 300px;
-}
-
-#about #what-rightDown
-{
-    background-color: black;
-    width: 400px;
-    height: 50px;
-    bottom: 0px;
-    position: absolute;
-}
-
-#about .what-rightDown-small
-{
-    background: url('about/small_photo.png');
-    background: white;
-    background-repeat: no-repeat;
-    background-size: 40px 40px; /* NOTE */
-    width: 40px;
-    height: 40px;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 5px;
-    float: left;
-}
-
-#about #how
-{
-    background-color: yellow;
-    width: 750px;
-    height: 700px;
-}
-
-#about #how-pic
-{
-    background-color: black;
-    width: 750px;
-    height: 400px;
-}
-
-#about #how-txt
-{
-    background-color: yellow;
-    width: 750px;
-    height: 300px;
-}
-
-#about .how-photo
-{
-    background-color: white;
-    top: 20px;
-    right: 30px;
-    width: 200px;
-    height: 150px;
-    float: none;
-}
-
-#about #who
-{
-    background-color: white;
-    width: 750px;
-    height: 40px;
-}
-
-#about .who-block
-{
-    background-color: blue;
-    width: 150px;
-    height: 40px;
-    float: left;
-}
-
-#about #who_txt
-{
-    background-color: red;
-    width: 750px;
-    height: 400px;
-    float: top;
-}
 /**
  * Facebook style
  */
