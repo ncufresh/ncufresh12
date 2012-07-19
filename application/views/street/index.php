@@ -412,8 +412,6 @@ dialog_div_2.dialog('close');//dialog_2 瞬間出現再結束
 
 
  <script>
- //////////////////////////////picture
-<<<<<<< HEAD
 $('#building').mouseenter(function(){
     $('#building').attr('src','<?php echo Yii::app()->baseUrl?>/statics/chat.png');
 });
