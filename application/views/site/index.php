@@ -11,7 +11,7 @@ jQuery(document).ready(function()
     <ul id="marquee">
         <span></span>
 <?php foreach ( $marquees as $marquee ) : ?>
-        <li><?php echo $marquee->message; ?></li>
+        <li><?php echo $marquee->message; ?></li> 
 <?php endforeach; ?>
         <a href="<?php echo $this->createUrl('site/marquee'); ?>" title="編輯">編輯</a>
     </ul>

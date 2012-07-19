@@ -214,7 +214,8 @@ class SiteController extends Controller
         header('Pragma: public');
         header('Cache-Control: max-age=' . $expire);
         header('Expires: ' . gmdate('D, d M Y H:i:s', TIMESTAMP + $expire) . ' GMT');
-        echo '<script src="//connect.facebook.net/zh_TW/all.js"></script>';
+        echo '<script src="
+        "></script>';
         $this->layout = false;
     }
 
@@ -230,6 +231,16 @@ class SiteController extends Controller
                 $this->redirect(array('site/index'));
             }
         }
-        $this->render('register');
+       /* $this->render('index', array(
+            'latests'   => News::model()->getPopularNews(10),
+            'articles'  => array(),
+            'marquees'  => Marquee::model()->getMarquees()
+        ));*/
+        $this->_data['token'] = Yii::app()->security->getToken();
+        $this->render('register', array(
+            'departments'  => Department::model()->getDepartment() //取得所有系所
+        ));
+        
     }
+    
 }
