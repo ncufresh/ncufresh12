@@ -19,4 +19,8 @@
         }
     ?>
     </table>
+    <div>
+        <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
+        <button id="form-otherdepartment-button" type="submit" name="otherdepartment-self-design">更多</button>
+    </div>
 </form>
