@@ -1,9 +1,3 @@
-<?php Yii::app()->clientScript->registerCoreScript('jquery.ui'); ?>
-
-<?php
-	// <link type='text/css' rel='stylesheet' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css' />    
-?>
-
 <?php
 $content='額額額額額額額額額額額額額額額額額額額額額
         額額額額額額額額額額額額額額額額額額額額額
@@ -393,6 +387,7 @@ dialog_div_1.dialog({
     draggable: false, 
     buttons:{'button!!':function(){
     $('div#dialog-div-2').dialog('open');		
+
     }},
 }); 
 dialog_div_1.dialog('close');//dialog_1 瞬間出現再結束
@@ -400,17 +395,17 @@ $('div.ui-dialog-buttonpane').css('background', 'yellow');// 第一層底下區�
 //---------------------------------------------------------------------------------------------
 var dialog_div_2=$('div#dialog-div-2');
     dialog_div_2.dialog({ 
-	width:500,
-	height:400,
-	modal:true,
-	draggable:false,
+    width:500,
+    height:400,
+    modal:true,
+    draggable:false,
 });
 
 $('div#dialog-div-2').css({
 background:'yellow',
 });
 
-dialog_div_2.dialog('close');//dialog_2 瞬間出現再結束 	  
+dialog_div_2.dialog('close');//dialog_2 瞬間出現再結束       
 //----------------------------------------------------------------------------------------------  
  
 </script>
@@ -418,6 +413,7 @@ dialog_div_2.dialog('close');//dialog_2 瞬間出現再結束
 
  <script>
  //////////////////////////////picture
+<<<<<<< HEAD
 $('#building').mouseenter(function(){
     $('#building').attr('src','<?php echo Yii::app()->baseUrl?>/statics/chat.png');
 });
@@ -441,7 +437,8 @@ $('#building').click(function(){//打開第一層
 return false;    
 });
  <?php
-// $(document).ready(function() {
+// $(document).ready(function()
+// {
     // $(#test).hoverpulse({
         // size: 40,  // 圖片縮放的大小
         // speed: 400 // 圖片變換大小的速度 
@@ -451,6 +448,7 @@ return false;
 //$('#building').src();
 ?>
 
+<<<<<<< HEAD
 $('#dialog2-button-left').click(function() {$('#img1').animate({left:'0px'});});
 $('#dialog2-button-right').click(function() {$('#img1').animate({left:'80px'});});
 
@@ -464,6 +462,7 @@ $('#img2').click(function(){
 
 $('#img3').click(function(){
     $('#dialog2_main_picture').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/3.jpg');
+
 });
 </script>
 

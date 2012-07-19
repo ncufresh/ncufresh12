@@ -9,12 +9,6 @@ class ForumReply extends CActiveRecord
 
     public function tableName()
     {
-        return 'forum_reply';
-    }
-
-    public function relations()
-    {
-        return array(
-        );
+        return '{{forum_reply}}';
     }
 }

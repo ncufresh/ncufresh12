@@ -56,11 +56,15 @@ google.setOnLoadCallback(function()
 
     $.chat = {};
 
-    $.fn.chat = function(options) {
+    $.fn.chat = function(options)
+    {
         $.chat.options = $.extend({
             animationSpeed:         500,
+            chatId:                 'chat',
             friendListId:           'chat-friend-list',
-            friendListHeight:       200,
+			friendListEntriesWrapId:'chat-friend-list-entries-wrap',	
+			friendListSearchId:		'chat-friend-list-search',
+			chatTitleClass:			'chat-title',
             chatDialogClass:        'chat-dialog',
             chatDisplayClass:       'chat-display',
             chatFormClass:          'chat-form',
@@ -70,7 +74,6 @@ google.setOnLoadCallback(function()
         return $(this).click(function()
         {
             $.fn.chat.openFriendList();
-            $(this).fadeOut();
             return true;
         });
     };
@@ -83,6 +86,20 @@ google.setOnLoadCallback(function()
             list = $('<div></div>')
                 .attr('id', $.chat.options.friendListId)
                 .appendTo($('body'));
+			title = $('<span></span>')
+				.text('Chat Room')
+				.click(function()
+				{
+					$.fn.chat.closeFriendList();
+				})
+				.appendTo(list);
+			display = $('<div></div>')
+				.attr('id', $.chat.options.friendListEntriesWrapId)
+				.appendTo(list);
+			search = $('<input />')
+				.attr('type', 'text')
+				.attr('id', $.chat.options.friendListSearchId)
+				.appendTo(list);
         }
         return list;
     };
@@ -91,14 +108,16 @@ google.setOnLoadCallback(function()
     {
         var list = $.fn.chat.createFriendList();
         list.animate({
-            height: $.chat.options.friendListHeight
+            height: list.css('max-height')
         }, $.chat.options.animationSpeed);
+        $('#' + $.chat.options.chatId).fadeOut();
         return list;
     };
 
     $.fn.chat.updateFriendList = function(response)
     {
         var list = $.fn.chat.createFriendList();
+		var list_wrap = list.children('#'+$.chat.options.friendListEntriesWrapId);
         for ( var key in response )
         {
             var data = response[key];
@@ -107,9 +126,9 @@ google.setOnLoadCallback(function()
                 .addClass('friend-list-entry')
                 .click(function()
                 {
-                    $.fn.chat.openChatDialog($(this).attr('chat:id'));
+                    $.fn.chat.showChatDialog($(this).attr('chat:id'));
                 })
-                .appendTo(list);
+                .appendTo(list_wrap);
             var icon = $('<img />')
                 .attr(
                     'src',
@@ -122,12 +141,30 @@ google.setOnLoadCallback(function()
         }
         return list;
     };
-
+	
     $.fn.chat.closeFriendList = function()
     {
         var list = $.fn.chat.createFriendList();
+		$('#' + $.chat.options.chatId).fadeIn();
+		list.animate({
+            height: 0
+        }, $.chat.options.animationSpeed);
     };
-
+	
+	$.fn.chat.updateChatDialogsPosition = function()
+	{
+        var list = $.fn.chat.createFriendList();
+        var left = list.position().left
+                 + list.outerWidth(true)
+                 - list.innerWidth();
+        $('.' + $.chat.options.chatDialogClass).each(function(index)
+        {
+            $(this).css({
+                left: left - $(this).outerWidth(true) * (index + 1)
+            });
+        });
+	}
+	
     $.fn.chat.createChatDialog = function(id)
     {
         var list = $.fn.chat.createFriendList();
@@ -145,7 +182,24 @@ google.setOnLoadCallback(function()
             size++;
         });
         if ( ! dialog )
-        {
+        {	
+			var title = $('<div></div>')
+				.addClass($.chat.options.chatTitleClass)
+				.append('<span></span>')
+				.append('<p></p>')
+				.append('<button></button>')
+				.click(function()
+				{
+					if ( dialog.attr('chat:show') == 'true' )
+					{
+						$.fn.chat.hideChatDialog(dialog.attr('chat:id'));
+					}
+					else
+					{
+						$.fn.chat.showChatDialog(dialog.attr('chat:id'));
+					}
+					
+				});
             var display = $('<div></div>')
                 .addClass($.chat.options.chatDisplayClass);
             var input = $('<input />')
@@ -161,33 +215,46 @@ google.setOnLoadCallback(function()
                 .append(input);
             dialog = $('<div></div>')
                 .attr('chat:id', id)
+				.attr('chat:show', 'true')
                 .addClass($.chat.options.chatDialogClass)
-                .append(display)
+                .append(title)
+				.append(display)
                 .append(form)
                 .insertBefore(list);
             dialog.css({
                 left: left - dialog.outerWidth(true) * size
             });
+			title.children('span').addClass('offline');
+			$('.friend-list-entry').each(function(index)
+			{
+				if($(this).attr('chat:id') == id)
+				{
+					title.children('p').text($(this).children('p').text());
+					title.children('span').removeClass('offline');
+				}
+			});
+			title.children('button').click(function()
+			{
+				$.fn.chat.closeChatDialog(dialog.attr('chat:id'));
+			});
         }
-        return dialog;
-    };
-
-    $.fn.chat.openChatDialog = function(id)
-    {
-        var dialog = $.fn.chat.createChatDialog(id);
         return dialog;
     };
 
     $.fn.chat.showChatDialog = function(id)
     {
-        var dialog = $.fn.chat.openChatDialog(id);
+        var dialog = $.fn.chat.createChatDialog(id);
+		dialog.animate({
+			bottom: 0,
+		}, $.chat.options.animationSpeed).attr('chat:show', 'true');
+		$.fn.chat.updateChatDialogsPosition();
         return dialog;
     };
 
     $.fn.chat.updateChatDialog = function(id, data)
     {
         var exists;
-        var dialog = $.fn.chat.showChatDialog(id);
+        var dialog = $.fn.chat.createChatDialog(id);
         dialog.children('.' + $.chat.options.chatDisplayClass)
             .each(function()
             {
@@ -215,14 +282,19 @@ google.setOnLoadCallback(function()
     $.fn.chat.hideChatDialog = function(id)
     {
         var dialog = $.fn.chat.createChatDialog(id);
+		dialog.animate({
+			bottom: -172,
+		}, $.chat.options.animationSpeed).attr('chat:show', 'false');
+		$.fn.chat.updateChatDialogsPosition();
         return dialog;
     };
 
     $.fn.chat.closeChatDialog = function(id)
     {
-        var dialog = $.fn.chat.createChatDialog(id);
+        $.fn.chat.createChatDialog(id).remove();
+		$.fn.chat.updateChatDialogsPosition();
     };
-
+		
     $.fn.chat.sendMessage = function(id, message)
     {
         $.post(
@@ -249,6 +321,45 @@ google.setOnLoadCallback(function()
                 $.pull.restart();
             }
         );
+    };
+
+    $.fn.loading = function(options)
+    {
+        options = $.extend({
+            horizontalFrames:       4,
+            verticalFrames:         4,
+            FrameXDimension:        128,
+            FrameYDimension:        128,
+            interval:               100,
+        }, options);
+        return $(this).each(function()
+        {
+            var loading = $(this);
+            loading.css({
+                backgroundPosition: '0px 0px'
+            });
+            setInterval(function()
+            {
+                var position = loading.css('background-position').split(' ');
+                var left = $.integer(position[0]);
+                var top = $.integer(position[1]);
+                var ml = options.FrameXDimension * options.horizontalFrames;
+                var mt = options.FrameYDimension * options.verticalFrames;
+
+                left -= options.FrameXDimension;
+                if ( top < -1 * mt ) top = 0;
+
+                if ( left < -1 * ml )
+                {
+                    top -= options.FrameYDimension;
+                    left = 0;
+                }
+
+                loading.css({
+                    backgroundPosition: left + 'px ' + top + 'px'
+                });
+            }, options.interval);
+        });
     };
 
     $.extend({
@@ -520,7 +631,6 @@ google.setOnLoadCallback(function()
 
     $(document).ready(function()
     {
-		
         $.configures.lasttime = 0;
 
         $.configures.sequence = $.random(0, 1000);
@@ -539,12 +649,14 @@ google.setOnLoadCallback(function()
 
         if ( $('#chat') ) $('#chat').chat();
 
+        $('.loading').loading();
+
         $('#form-sidebar-register').click(function()
         {
             window.location.href = $.configures.registerUrl;
             return false;
         });
-    
+
         $('form input').each(function()
         {
             var input = $(this);
@@ -577,7 +689,7 @@ google.setOnLoadCallback(function()
                     update();
                 })
                 update();  
-            } 
+            }
         });
 
         $("#news-url-button").click(function()
@@ -592,8 +704,14 @@ google.setOnLoadCallback(function()
             dialog.text('確定取消編輯此篇文章？')
                 .dialog({
                     buttons: { 
-                        "是": function(){ location = $.configures.newsAdminUrl; }, 
-                        "否": function() {dialog.dialog('close');}
+                        "是": function()
+                        {
+                            location = $.configures.newsAdminUrl;
+                        }, 
+                        "否": function()
+                        {
+                            dialog.dialog('close');
+                        }
                     },
                     dialogClass: 'news-dialog-warp',
                 });      
@@ -607,21 +725,28 @@ google.setOnLoadCallback(function()
             dialog.text('確定刪除此篇文章？')
                 .dialog({
                     buttons: { 
-                        "是": function(){ location = link }, 
-                        "否": function() {dialog.dialog('close');}
+                        "是": function()
+                        {
+                            location = link;
+                        }, 
+                        "否": function()
+                        {
+                            dialog.dialog('close');
+                        }
                     },
                     dialogClass: 'news-dialog-warp',
                 });   
             return false;
         });
-        
+
         $('.news-back-link').click(function()
         {
             window.location = decodeURIComponent($.configures.newsIndexUrl);
             return false;
         });
-        
-        $('#mm-menu a').each(function(index, element){
+
+        $('#mm-menu a').each(function(index, element)
+        {
             var youtube_img_src = 'http://img.youtube.com/vi/:id/0.jpg';
             var video_img_id = $(this).attr('href').substr(1);
             var video_title = $('<span></span>').text($(this).text());
@@ -629,49 +754,58 @@ google.setOnLoadCallback(function()
                 .attr('src', youtube_img_src.replace(':id', video_img_id));
             $(this).html(video_title).append(video_img);
         });
-        
+
         $('#mm-menu-items').css('height', $('#mm-menu a').length * $('#mm-menu a').first().css('height'));
         
-        $('#mm-menu a').click(function(){
-            var url = decodeURIComponent($.configures.multimediaYoutubeUrl)
-                .replace(':id', $(this).attr('href').substr(1));
+        $('#mm-menu a').click(function()
+        {
+            var url = $.configures.multimediaYoutubeUrl.replace(':id', $(this).attr('href').substr(1));
             $('#mm-video-frame').attr('src', url);
             return false;
         });
         $('#mm-menu a').eq($.random(0, $('#mm-menu a').length - 1)).click();
-        
+
         var srcoll_offset = 10;
         mmMenuScroll.margin_top_max = 0;
         mmMenuScroll.margin_top_min = parseInt($('#mm-menu').css('height')) - parseInt($('#mm-menu-items').css('height'));
-        
-        $('.mm-menu-up').mouseenter(function(){
+
+        $('.mm-menu-up').mouseenter(function()
+        {
             mmMenuScroll.mousein = true;
             mmMenuScroll(srcoll_offset);
-        }).mouseleave(function(){
+        }).mouseleave(function()
+        {
             mmMenuScroll.mousein = false;
         });
-        
-        $('.mm-menu-down').mouseenter(function(){
+
+        $('.mm-menu-down').mouseenter(function()
+        {
             mmMenuScroll.mousein = true;
             mmMenuScroll(-1 * srcoll_offset);
-        }).mouseleave(function(){
+        }).mouseleave(function()
+        {
             mmMenuScroll.mousein = false;
         });
 
         inin_about();
-        
-		$('.nculife-food .dialog').click(function(){
-			$( "#nculife-dialog" ).dialog({
+
+		$('.nculife-food .dialog').click(function()
+        {
+			$('#nculife-dialog').dialog({
 				dialogClass: 'nculife-dialog',
-				height:500,
-				width:700,
+				height: 500,
+				width: 700,
 				modal: true,
-				show: { effect: 'explode', direction: "down"},
+				show: {
+                    effect: 'explode',
+                    direction: 'down'
+                }
 			});
 	
 		});
-		
-		$('#haha1').click(function(){
+
+		$('#haha1').click(function()
+        {
 			var url = 'index.html';
 			// alert(url);
 			$.ajax({
@@ -681,13 +815,15 @@ google.setOnLoadCallback(function()
 					id: 1
 				},
 				dataType: 'html',
-				success: function(data){ 
+				success: function(data)
+                { 
 					$('#nculife-cv').html(data);
 				},
 			});	
 			return false;
 		});		
-		$('#haha2').click(function(){
+		$('#haha2').click(function()
+        {
 			var url = 'index.html';
 			// alert(url);
 			$.ajax({
@@ -697,7 +833,8 @@ google.setOnLoadCallback(function()
 					id: 2
 				},
 				dataType: 'html',
-				success: function(data){ 
+				success: function(data)
+                { 
 					$('#nculife-cv').html(data);
 				},
 			});
@@ -709,7 +846,8 @@ google.setOnLoadCallback(function()
 
     if ( $.configures.facebookEnable )
     {
-        window.fbAsyncInit = function() {
+        window.fbAsyncInit = function()
+        {
             var like = $('<div></div>')
                 .attr('id', 'fb-like')
                 .appendTo($('#fb-root'));
@@ -731,119 +869,108 @@ google.setOnLoadCallback(function()
         };
     }
 })(jQuery);
+
 function inin_about()
 {
-    var about_what_photo_index=0;
-    var open1=false;
-    var open2=false;
-    var open3=false;
-    $('#about-what').hide();
-    $('#about-how').hide();
-    $('#about-who').hide();
-    $('#about-title1').click(function()
+    var about_what_photo_index = 0;
+    var photoArray=new Array(8);
+    photoArray[0]= 'url(\'' + $.configures.staticsUrl + '/about/photo0.png\')';
+    photoArray[1]= 'url(\'' + $.configures.staticsUrl + '/about/photo1.png\')';
+    photoArray[2]= 'url(\'' + $.configures.staticsUrl + '/about/photo2.png\')';
+    photoArray[3]= 'url(\'' + $.configures.staticsUrl + '/about/photo3.png\')';
+    photoArray[4]= 'url(\'' + $.configures.staticsUrl + '/about/photo4.png\')';
+    photoArray[5]= 'url(\'' + $.configures.staticsUrl + '/about/photo5.png\')';
+    photoArray[6]= 'url(\'' + $.configures.staticsUrl + '/about/photo6.png\')';
+    photoArray[7]= 'url(\'' + $.configures.staticsUrl + '/about/photo7.png\')';
+    $('#about #what-rightUp').mouseenter(function()
     {
-        if(open1==false)
-        {
-            open1=true;
-            $('#about-what').show(1000);
-            $('#about-how').hide(1000);
-            $('#about-who').hide(1000);
-        }
-        else
-        {
-            open1=false;
-            $('#about-what').hide(1000);
-        }
-    })
-    $('#about-title2').click(function()
-    {
-        if(open2==false)
-        {
-            open2=true;
-            $('#about-how').show(1000);
-            $('#about-what').hide(1000);
-            $('#about-who').hide(1000);
-        }
-        else
-        {
-            open2=false;
-            $('#about-how').hide(1000);
-        }
-    })
-    $('#about-title3').click(function()
-    {
-        if(open3==false)
-        {
-            open3=true;
-            $('#about-who').show(1000);
-            $('#about-what').hide(1000);
-            $('#about-how').hide(1000);
-        }
-        else
-        {
-            open3=false;
-            $('#about-who').hide(1000);
-        }
-    })
-    $('#about-what-rightUp').mouseenter(function()
-    {
-        $('#about-what-rightDown').stop().animate({
+        $('#about #what-rightDown').stop().animate({
             height: '50',
         }, 1000);
     }).mouseleave(function()
     {
-        $('#about-what-rightDown').stop().animate({
+        $('#about #what-rightDown').stop().animate({
             height: '0',
         }, 1000);
-    })
-    for (var i=0; i<8; i=i+1)
+    })  
+
+    $('#about .what-rightDown-small').each(function(index)
     {
-        // $('.about-what-rightDown-small').get(i).click(function()
-        // {
-            // about_what_photo_index=i;
-        // });
-    }
-    $('.about-who-block').mouseenter(function()
+        $(this).css('background-image', 'url(\'' + $.configures.staticsUrl + '/about/small_photo' + index + '.png\')');
+        $(this).click(function()
+        {
+            about_what_photo_index = index;
+            $('#about #what-image').css('background-image', photoArray[index]);
+            /*更換全體照片*/
+        });
+    });
+    
+    $('#about .who-block').each(function(index)
     {
-        $(this).stop().animate({
-            height: '400',width: '280',
-        }, 300);
-    }).mouseleave(function()
+        $(this).click(function()
+        {
+            　/*更換組介紹*/
+        }).mouseenter(function()
+        { 
+            $(this).css("background-color", "green");
+        }).mouseleave(function()
+        { 
+            $(this).css("background-color", "blue");
+        });
+    });
+    
+    setInterval(function()
     {
-        $(this).stop().animate({
-            height: '100',width: '70',
-        }, 300);
-    })
+        if(about_what_photo_index<8)
+        {
+            about_what_photo_index++;
+        }
+        else
+        {
+            about_what_photo_index=0;
+        }
+        $('#about #what-image').css('background-image', photoArray[about_what_photo_index]);
+    },1000);
+        
 }
+
 function mmMenuScroll(offset)
 {
-    if( typeof(mmMenuScroll.mousein) == 'undefined' )
+    if ( typeof(mmMenuScroll.mousein) == 'undefined' )
+    {
         mmMenuScroll.mousein = false;
-    if( typeof(mmMenuScroll.margin_top_max) == 'undefined' )
+    }
+    if ( typeof(mmMenuScroll.margin_top_max) == 'undefined' )
+    {
         mmMenuScroll.margin_top_max = 0;
-    if( typeof(mmMenuScroll.margin_top_min) == 'undefined' )
+    }
+    if ( typeof(mmMenuScroll.margin_top_min) == 'undefined' )
+    {
         mmMenuScroll.margin_top_min = -100;
+    }
     var margin_top = parseInt($('#mm-menu-items').css('margin-top'));
-    if( margin_top + offset > mmMenuScroll.margin_top_max )
+    if ( margin_top + offset > mmMenuScroll.margin_top_max )
     {
         margin_top = mmMenuScroll.margin_top_max;
         mmMenuScroll.mousein = false;
         $('#mm-menu-items').css('margin-top', margin_top);
     }
-    if( margin_top + offset < mmMenuScroll.margin_top_min )
+    if ( margin_top + offset < mmMenuScroll.margin_top_min )
     {
         margin_top = mmMenuScroll.margin_top_min ;
         mmMenuScroll.mousein = false;
         $('#mm-menu-items').css('margin-top', margin_top);
     }
 
-    if( mmMenuScroll.mousein )
+    if ( mmMenuScroll.mousein )
     {
         $('#mm-menu-items').css('margin-top', margin_top + offset);
-        setTimeout( "mmMenuScroll("+offset+")", 30 );
+        setTimeout('mmMenuScroll(' + offset + ')', 30);
     }
     else
+    {
         return;
+    }
 }
 
 function checkFileSize(name)

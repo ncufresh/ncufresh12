@@ -1,4 +1,5 @@
 <?php
+
   class  StreetController extends Controller
   {
   
@@ -19,38 +20,17 @@
         }        
         $data=$model->getBuildingInfo($getId);
         $this->render('index', array('data'=>$data));    
-  
+
     }
-  
-    public function actionStreet()//µó´ºªA°È­¶
+
+    public function actionPicture() // ¸õ¥X¤¶²Ð¤å¦r­¶
     {
-  
-  
+    
     }
-      
-  
-  }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-?> 
+    public function actionStreet() // µó´ºªA°È­¶
+    {
+    
+    }
+}

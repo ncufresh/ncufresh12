@@ -9,12 +9,6 @@ class ForumArticleCategory extends CActiveRecord
 
     public function tableName()
     {
-        return 'forum_article_category';
-    }
-
-    public function relations()
-    {
-        return array(
-        );
+        return '{{forum_article_category}}';
     }
 }
