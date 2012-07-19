@@ -788,6 +788,7 @@ function inin_about()
         $('.about-what-rightDown-small').get(i).click(function()
         {
             about_what_photo_index=i;
+            $('#about-what-image').css("background-color", "blue");　
         });
     }
     $('.about-who-block').mouseenter(function()

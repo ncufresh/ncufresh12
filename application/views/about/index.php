@@ -1,4 +1,4 @@
-<div id="about">
+<div class="about">
 	<div id="about-title1">
 		<h1 id="about-h1">What is the web ncufresh?</h1>
 	</div>
@@ -24,7 +24,7 @@
 		</div>
 	</div>
 </div>
-<div id="about">
+<div class="about">
     <div id="about-title2">
 		<h1 id="about-h2">How do we work?</h1>
 	</div>
@@ -40,7 +40,7 @@
 		</div>
 	</div>
 </div>
-<div id="about">
+<div class="about">
     <div id="about-title3">
 		<h1 id="about-h3">Who are we?</h1>
 	</div>
