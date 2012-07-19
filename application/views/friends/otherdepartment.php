@@ -18,4 +18,6 @@
         }
     ?>
 </table>
-<button id="form-otherdepartment-button" type="submit" name="otherdepartment-self-design">更多</button>
+<button id="form-otherdepartment-rechoose" type="submit" name="otherdepartment-rechoose">重選</button>
+<button id="form-otherdepartment-ensure" type="submit" name="otherdepartment-ensure">確定加為好友</button>
+<button id="form-otherdepartment-cancel" type="submit" name="otherdepartmente-cancel">取消</button>

@@ -24,4 +24,12 @@ class FriendsController extends Controller
          $this->setPageTitle(Yii::app()->name . ' - 其他科系');
          $this->render('otherdepartment');
     }
+    public function acctionMyFriends()
+    {
+        $this->setPageTitle(Yii::app()->name . ' - 同系不同屆');
+        $this->_data['token'] = Yii::app()->security->getToken();
+        $this->render('register', array(
+            'departments'  => Department::model()->getDepartment() //取得所有好友
+        ));
+    }
 }
