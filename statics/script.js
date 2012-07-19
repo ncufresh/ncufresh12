@@ -780,7 +780,7 @@
             return false;
         });
 
-        $('form input').each(function()
+        $('form input, form textarea').each(function()
         {
             var input = $(this);
             var label = $('label[for="' + $(this).attr('id') + '"]');

@@ -22,12 +22,9 @@ form
 	margin: 0;
 }
 
-form dl,
 form dt,
 form dd
 {
-    margin: 0;
-    height: 24px;
     width: 100%;
 }
 
@@ -42,6 +39,7 @@ form dt
 {
     clear: left;
     float: left;
+    height: 24px;
     margin-left: 6px;
     width: 85%;
 }
@@ -51,6 +49,7 @@ form dd
     clear: right;
     float: right;
     margin-top: -26px;
+    overflow: hidden;
 }
 
 form input,
@@ -59,33 +58,30 @@ form textarea
     font-size: 0.85em;
 }
 
-form input
+form input,
+form textarea,
+form button
 {
     -webkit-border-radius: 5px;
+    background: #FFFFFF;
     border: none;
     border-radius: 5px;
     height: 16px;
     padding: 4px 8px;
 }
 
-form button
-{
-    background: #FFFFFF;
-    border: none;
-    border-radius: 5px;
-    height: 24px;
-    padding: 4px 8px;
-}
-
 form textarea
 {
-    -webkit-border-radius: 5px;
-    border: none;
-    border-radius: 5px;
-    padding: 4px 8px;
+    height: 160px;
 }
 
-form input:focus
+form button
+{
+    height: 24px;
+}
+
+form input:focus,
+form textarea:focus
 {
     position: relative;
 }
