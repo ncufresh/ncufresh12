@@ -1,4 +1,4 @@
-<img src="../statics/fire.png">
+﻿<img src="../statics/fire.png">
 <?php   
         $id = 2;
         echo '<br/>Id：';

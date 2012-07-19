@@ -1,4 +1,3 @@
-<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/statics/dump.js" ></script>
 <div id="mm-container">
     <div id="mm-sidebar">
         <div id="mm-menu">
@@ -19,6 +18,7 @@
     </div>
     <div id="mm-content">
         <div id="mm-video">
+            <div class="loading"></div>
             <iframe id="mm-video-frame" name="videoframe" width="100%" height="100%" src="about:blank" frameborder="0" allowfullscreen></iframe>    
         </div>
         <div id="mm-introduction">
