@@ -9,20 +9,24 @@ class ForumCategory extends CActiveRecord
 
     public function tableName()
     {
-        return 'forum_category';
+        return '{{forum_category}}';
     }
 
     public function relations()
     {
         return array(
-			'article_categories' => array(self::MANY_MANY, 'ForumArticleCategory', 'forum_forum2category(fid, cid)'),
+            'article_categories' => array(
+                self::MANY_MANY,
+                'ForumArticleCategory',
+                'forum_forum2category(fid, cid)'
+            ),
         );
     }
-	
-	public function getUrl()
-	{
-		return Yii::app()->createUrl('forum/forum', array(
-            'fid'=>$this->id,
+
+    public function getUrl()
+    {
+        return Yii::app()->createUrl('forum/forum', array(
+            'fid'   => $this->id,
         ));
-	}
+    }
 }

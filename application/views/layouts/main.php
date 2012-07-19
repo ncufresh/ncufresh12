@@ -15,24 +15,13 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
     <script type="text/javascript">
-        google.load('search', '1', {
-             language: 'zh_TW'
-        });
-        google.setOnLoadCallback(function()
-        {
-            google.search.CustomSearchControl.attachAutoCompletion(
-                '011017124764723419863:mdibrr3n-py',
-                document.getElementById('form-search-query'),
-                'search'
-            );
-        });
         jQuery.extend({
             configures: {
                 pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
                 facebookAppId: '<?php echo Yii::app()->facebook->getAppId(); ?>',
                 facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
                 chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
-                multimediaYoutubeUrl: '<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>',
+                multimediaYoutubeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('multimedia/youtube', array('video_id' => ':id')); ?>'),
                 newsIndexUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>',
                 newsAdminUrl: '<?php echo Yii::app()->createAbsoluteUrl('news/admin'); ?>',
                 registerUrl: '<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>',
@@ -42,26 +31,12 @@
         });
     </script>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/script.js"></script>
-
-    <style type="text/css">
-    input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus
-    {
-        border-color: #D9D9D9;
-    }
-    input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus
-    {
-        border-color: #2F5BB7;
-        background-color: #357AE8;
-        background-image: none;
-        filter: none;
-    }
-    </style>
 </head>
 
 <body>
 
 <div id="header">
-    <a id="logo" href="<?php echo Yii::app()->createUrl('site/index'); ?>"></a>
+    <a id="logo" href="<?php echo Yii::app()->createUrl('site/index'); ?>" title="<?php echo Yii::app()->name; ?>"></a>
     <div class="statics">
         <p class="online"><?php echo $this->getOnlineCount(); ?></p>
         <p class="browsered"><?php echo $this->getTotalCount(); ?></p>

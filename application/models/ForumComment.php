@@ -9,12 +9,6 @@ class ForumComment extends CActiveRecord
 
     public function tableName()
     {
-        return 'forum_comment';
-    }
-
-    public function relations()
-    {
-        return array(
-        );
+        return '{{forum_comment}}';
     }
 }

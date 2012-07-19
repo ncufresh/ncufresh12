@@ -38,9 +38,9 @@ class UserIdentity extends CUserIdentity
         return $this->errorCode === self::ERROR_NONE;
     }
 
-	/**
-	 * @return integer the ID of the user record
-	 */
+    /**
+     * @return integer the ID of the user record
+     */
     public function getId()
     {
         return $this->id;
