@@ -1096,3 +1096,21 @@ input.gsc-search-button:focus
     position: absolute;
     top: 120px;
 }
+
+/*club style*/
+#content
+{
+	width:751px;
+	
+}
+.l1
+{
+	float:left;
+	width:100 px;
+	height:500 px;
+}
+
+#club
+{
+	margin-center:auto;
+}
