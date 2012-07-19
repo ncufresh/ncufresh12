@@ -1113,3 +1113,15 @@ input.gsc-search-button:focus
     position: absolute;
     top: 120px;
 }
+
+tr.friends-title
+{
+    height:10%;
+    border:5px solid gray;
+    margin:0px;
+}
+td.friends-close-ones
+{
+    border:5px solid gray;
+    margin:0px;
+}

@@ -2,56 +2,43 @@
 <p>
     來分類一下吧
 </p>
-
-
-<form action="<?php echo Yii::app()->createUrl('friends/friends'); ?>" method="GET">
-    <div>
-        <table>
-            <tr>
-            <th align="left" colspan="6"><a href="Friends.html?id=1" title="同系同屆">同系同屆</a></th>
+    <table>
+            <tr class="friends-title" >
+            <th align="left" colspan="6" ><a href="<?php echo Yii::app()->createUrl('friends/samedepartmentsamegrade'); ?>" title="同系同屆">同系同屆</a></th>
             </tr>
             <tr>
-            <td>1111</td>
-            <td>2222</td>
-            <td>3333</td>
-            <td>4444</td>
-            <td>5555</td>
-            <td>6666</td>
+            <td class="friends-close-ones">1111</td>
+            <td class="friends-close-ones">2222</td>
+            <td class="friends-close-ones">3333</td>
+            <td class="friends-close-ones">4444</td>
+            <td class="friends-close-ones">5555</td>
+            <td class="friends-close-ones">6666</td>
             </tr>
-        </table>
-    </div>
-    <div>
-         <table>
-            <tr>
-            <th align="left" colspan="6"><a href="Friends.html?id=2" title="同系不同屆">同系不同屆</a></th>
-            </tr>
-            <tr >
-            <td>1111111</td>
-            <td>2222222</td>
-            <td>3333333</td>
-            <td>4444444</td>
-            <td>55555555</td>
-            <td>66666666</td>
-            </tr>
-        </table>
-    </div>
-    <div>
-        <table>
-            <tr>
-            <th align="left" colspan="6"><a href="Friends.html?id=3" title="其他科系">其他科系</a></th>
-            </tr>
-            <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            </tr>
-        </table>
-    </div>
-    <div>
-        <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
-        <button id="form-friends-button" type="submit" name="friends-self-design">自訂</button>
-    </div>
-</form>
+    </table>
+    <table>
+        <tr class="friends-title">
+        <th align="left" colspan="6" ><a href="<?php echo Yii::app()->createUrl('friends/samedepartmentdiffgrade'); ?>" title="同系不同屆">同系不同屆</a></th>
+        </tr>
+        <tr >
+        <td class="friends-close-ones">1111111</td>
+        <td class="friends-close-ones">2222222</td>
+        <td class="friends-close-ones">3333333</td>
+        <td class="friends-close-ones">4444444</td>
+        <td class="friends-close-ones">55555555</td>
+        <td class="friends-close-ones">66666666</td>
+        </tr>
+    </table>
+    <table>
+        <tr class="friends-title">
+        <th align="left" colspan="6" ><a href="<?php echo Yii::app()->createUrl('friends/otherdepartment'); ?>" title="其他科系">其他科系</a></th>
+        </tr>
+        <tr>
+        <td class="friends-close-ones">1</td>
+        <td class="friends-close-ones">2</td>
+        <td class="friends-close-ones">3</td>
+        <td class="friends-close-ones">4</td>
+        <td class="friends-close-ones">5</td>
+        <td class="friends-close-ones">6</td>
+        </tr>
+    </table>
+    <button id="form-friends-button" type="submit" name="friends-self-design">自訂</button>
