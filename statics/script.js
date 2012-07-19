@@ -252,6 +252,45 @@ google.setOnLoadCallback(function()
         );
     };
 
+    $.fn.loading = function(options)
+    {
+        options = $.extend({
+            horizontalFrames:       4,
+            verticalFrames:         4,
+            FrameXDimension:        128,
+            FrameYDimension:        128,
+            interval:               100,
+        }, options);
+        return $(this).each(function()
+        {
+            var loading = $(this);
+            loading.css({
+                backgroundPosition: '0px 0px'
+            });
+            setInterval(function()
+            {
+                var position = loading.css('background-position').split(' ');
+                var left = $.integer(position[0]);
+                var top = $.integer(position[1]);
+                var ml = options.FrameXDimension * options.horizontalFrames;
+                var mt = options.FrameYDimension * options.verticalFrames;
+
+                left -= options.FrameXDimension;
+                if ( top < -1 * mt ) top = 0;
+
+                if ( left < -1 * ml )
+                {
+                    top -= options.FrameYDimension;
+                    left = 0;
+                }
+
+                loading.css({
+                    backgroundPosition: left + 'px ' + top + 'px'
+                });
+            }, options.interval);
+        });
+    };
+
     $.extend({
         random: function(min, max)
         {
@@ -521,7 +560,6 @@ google.setOnLoadCallback(function()
 
     $(document).ready(function()
     {
-		
         $.configures.lasttime = 0;
 
         $.configures.sequence = $.random(0, 1000);
@@ -540,12 +578,14 @@ google.setOnLoadCallback(function()
 
         if ( $('#chat') ) $('#chat').chat();
 
+        $('.loading').loading();
+
         $('#form-sidebar-register').click(function()
         {
             window.location.href = $.configures.registerUrl;
             return false;
         });
-    
+
         $('form input').each(function()
         {
             var input = $(this);
@@ -578,7 +618,7 @@ google.setOnLoadCallback(function()
                     update();
                 })
                 update();  
-            } 
+            }
         });
 
         $("#news-url-button").click(function()
@@ -627,13 +667,13 @@ google.setOnLoadCallback(function()
                 });   
             return false;
         });
-        
+
         $('.news-back-link').click(function()
         {
             window.location = decodeURIComponent($.configures.newsIndexUrl);
             return false;
         });
-        
+
         $('#mm-menu a').each(function(index, element)
         {
             var youtube_img_src = 'http://img.youtube.com/vi/:id/0.jpg';
@@ -643,7 +683,7 @@ google.setOnLoadCallback(function()
                 .attr('src', youtube_img_src.replace(':id', video_img_id));
             $(this).html(video_title).append(video_img);
         });
-        
+
         $('#mm-menu-items').css('height', $('#mm-menu a').length * $('#mm-menu a').first().css('height'));
         
         $('#mm-menu a').click(function()
@@ -653,11 +693,11 @@ google.setOnLoadCallback(function()
             return false;
         });
         $('#mm-menu a').eq($.random(0, $('#mm-menu a').length - 1)).click();
-        
+
         var srcoll_offset = 10;
         mmMenuScroll.margin_top_max = 0;
         mmMenuScroll.margin_top_min = parseInt($('#mm-menu').css('height')) - parseInt($('#mm-menu-items').css('height'));
-        
+
         $('.mm-menu-up').mouseenter(function()
         {
             mmMenuScroll.mousein = true;
@@ -666,7 +706,7 @@ google.setOnLoadCallback(function()
         {
             mmMenuScroll.mousein = false;
         });
-        
+
         $('.mm-menu-down').mouseenter(function()
         {
             mmMenuScroll.mousein = true;
@@ -677,7 +717,7 @@ google.setOnLoadCallback(function()
         });
 
         inin_about();
-        
+
 		$('.nculife-food .dialog').click(function()
         {
 			$('#nculife-dialog').dialog({
@@ -692,7 +732,7 @@ google.setOnLoadCallback(function()
 			});
 	
 		});
-		
+
 		$('#haha1').click(function()
         {
 			var url = 'index.html';
@@ -758,12 +798,14 @@ google.setOnLoadCallback(function()
         };
     }
 })(jQuery);
+
 function inin_about()
 {
     var about_what_photo_index = 0;
     var open1 = false;
     var open2 = false;
     var open3 = false;
+
     $('#about-what').hide();
     $('#about-how').hide();
     $('#about-who').hide();
@@ -782,6 +824,7 @@ function inin_about()
             $('#about-what').hide(1000);
         }
     });
+
     $('#about-title2').click(function()
     {
         if ( open2 == false )
@@ -797,6 +840,7 @@ function inin_about()
             $('#about-how').hide(1000);
         }
     });
+
     $('#about-title3').click(function()
     {
         if(open3 == false)
@@ -812,6 +856,7 @@ function inin_about()
             $('#about-who').hide(1000);
         }
     });
+
     $('#about-what-rightUp').mouseenter(function()
     {
         $('#about-what-rightDown').stop().animate({
@@ -823,6 +868,7 @@ function inin_about()
             height: '0',
         }, 1000);
     })
+
     for ( var i = 0; i < 8; ++i )
     {
         // $('.about-what-rightDown-small').get(i).click(function()
@@ -830,6 +876,7 @@ function inin_about()
             // about_what_photo_index=i;
         // });
     }
+
     $('.about-who-block').mouseenter(function()
     {
         $(this).stop().animate({

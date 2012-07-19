@@ -117,6 +117,13 @@ a:hover
 	opacity: 0.7;
 }
 
+.loading
+{
+    background: url('loading.png');
+    height: 128px;
+    width: 128px;
+}
+
 .scroll-container
 {
     overflow: hidden;
@@ -805,16 +812,26 @@ input.gsc-search-button:focus
 
 #mm-video
 {
-    width: 100%;
+    background: #000000;
     height: 400px;
-    background: url(loading.gif) no-repeat black center;
+    width: 100%;
+}
+
+#mm-video .loading
+{
+    left: 50%;
+    margin: 32px 0 0 -64px;
+    overflow: auto;
+    position: absolute;
+    top: 50%;
 }
 
 #mm-video-frame
 {
     border: 0;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    position: relative;
 }
 
 #mm-introduction
