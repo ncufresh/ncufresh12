@@ -1,10 +1,23 @@
-<form>
-    <dl>
-    <dt>水果</dt>
-    <dd>西瓜</dd>
-    <dd>葡萄</dd>
-    <dd>芭樂</dd>
-    <dt>湯</dt>
-    <dd>海龜湯</dd>
-    </dl>
-</form>
+<table class="other-page">
+   <tr>
+    <th colspan="5" class="friend-other-page">其他科系</th>
+    </tr>
+    <?php 
+        for($row=1;$row<=4;$row++)
+        {
+            echo "<tr>";
+            for($col=1;$col<=5;$col++)
+            {
+                if($col%5==0)
+                    echo '<td>'.$col.'<br /><input type="checkbox" name="friend"  />齁</td>';
+                else
+                    echo '<td>'.$col.'<br /><input type="checkbox" name="friend"  />齁</td>';
+
+            }
+            echo "</tr>";
+        }
+    ?>
+</table>
+<button id="form-otherdepartment-rechoose" type="submit" name="otherdepartment-rechoose">重選</button>
+<button id="form-otherdepartment-ensure" type="submit" name="otherdepartment-ensure">確定加為好友</button>
+<button id="form-otherdepartment-cancel" type="submit" name="otherdepartmente-cancel">取消</button>

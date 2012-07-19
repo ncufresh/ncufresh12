@@ -17,6 +17,11 @@ body
     width: 1000px;
 }
 
+form
+{
+	margin: 0;
+}
+
 form dl,
 form dt,
 form dd
@@ -115,6 +120,13 @@ a:hover
 	height: 100%;
 	background: #000000;
 	opacity: 0.7;
+}
+
+.loading
+{
+    background: url('loading.png');
+    height: 128px;
+    width: 128px;
 }
 
 .scroll-container
@@ -394,6 +406,7 @@ a:hover
     bottom: -10px;
     height: 0;
     margin: -120px 0 0 830px;
+    max-height: 242px;
     opacity: 0.9;
     padding: 5px;
     position: fixed;
@@ -459,25 +472,25 @@ a:hover
     opacity: 0.9;
     overflow-x: hidden;
     position: fixed;
-    width: 165px;
+    width: 160px;
 }
 
 .chat-dialog .chat-title
 {
-	cursor: pointer;
-	width: 165px;
-	height: 28px;
 	background: #7097f2;
+	cursor: pointer;
+	height: 30px;
+	width: 160px;
 }
 
 .chat-dialog .chat-title span
 {
+	background: url('chat_online.png') no-repeat;
+	display: block;
+	float: left;
+	height: 16px;
 	margin: 6px;
 	width: 16px;
-	height: 16px;
-	display: block;
-	background: url('chat_online.png') no-repeat;
-	float: left;
 }
 
 .chat-dialog .chat-title span.offline
@@ -487,22 +500,23 @@ a:hover
 
 .chat-dialog .chat-title p
 {
-	margin: 6px 0;
-	width: auto;
-	height: 16px;
 	display: block;
 	float: left;
+	height: 16px;
+	line-height: 16px;
+	margin: 6px 0;
+	width: auto;
 }
 
 .chat-dialog .chat-title button
 {
-	float: right;
-	width: 16px;
-	height: 16px;
-	margin: 6px;
-	padding: 0;
-	border: 0;
 	background: url('chat_close.png') 50% 50% no-repeat;
+	border: 0;
+	float: right;
+	height: 16px;
+	margin: 7px;
+	padding: 0;
+	width: 16px;
 }
 
 .chat-dialog .chat-title button:hover
@@ -512,30 +526,35 @@ a:hover
 }
 
 .chat-dialog .chat-display
-{   
-    top: 0;
-    position: relative;
-    height: 152px;
-    width: 155px;
-	padding: 0 5px;
+{
+    height: 150px;
     overflow-x: hidden;
     overflow-y: auto;
-}
-
-.chat-dialog .chat-input
-{
-	border-top: 1px solid black;
-    height: 19px;
-    margin: 0;
-    outline: none;
+    margin: -3px 0;
 	padding: 0 5px;
-    width: 155px;
+    width: 150px;
 }
 
 .chat-dialog .chat-display p
 {
     margin: 0;
     padding: 0;
+}
+
+.chat-dialog .chat-form
+{
+    height: 20px;
+}
+
+.chat-dialog .chat-input
+{
+	border-top: 1px solid black;
+    border-radius: 0;
+    height: 19px;
+    margin: 0;
+    outline: none;
+	padding: 0 5px;
+    width: 150px;
 }
 
 /**
@@ -874,16 +893,26 @@ input.gsc-search-button:focus
 
 #mm-video
 {
-    width: 100%;
+    background: #000000;
     height: 400px;
-    background: url(loading.gif) no-repeat black center;
+    width: 100%;
+}
+
+#mm-video .loading
+{
+    left: 50%;
+    margin: 32px 0 0 -64px;
+    overflow: auto;
+    position: absolute;
+    top: 50%;
 }
 
 #mm-video-frame
 {
     border: 0;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    position: relative;
 }
 
 #mm-introduction
@@ -977,28 +1006,87 @@ input.gsc-search-button:focus
 	
 }
 
+#life-test1
+{
+    background: url('1.jpg');
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
+#life-test2
+{
+    background: url('2.png');
+    width: 30px;
+    height: 30px;
+    margin-top: -30px;
+    display: block;
+}
+
+#life-test3
+{
+    background: url('3.jpg');
+    width: 30px;
+    height: 30px;
+    margin-top: -30px;
+    display:block;
+}
 /**
  * About style
  */
-#about-what
+#about #what
 {
-	display: none;
     background-color: yellow;
     width: 750px;
     height: 500px;
 }
 
-#about-what-image
+#about #h1
 {
-    background: url('photo.png') no-repeat;
+    float: top;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    text-align: left;
+    margin-left: 10px;
+    font-family: 'Microsoft YaHei Mono';
+    font-size:40px;
+}
+
+#about #h2
+{
+    float: top;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    text-align: left;
+    margin-left: 10px;
+    font-family: 'Microsoft YaHei Mono';
+    font-size:40px;
+}
+
+#about #h3
+{
+    float: top;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    text-align: left;
+    margin-left: 10px;
+    font-family: 'Microsoft YaHei Mono';
+    font-size:40px;
+}
+
+#about #what-image
+{
+    background: url('about/photo.png') no-repeat;
     background-repeat: no-repeat;
-    background-size: 400px 300px; /* NOTE */
     height: 300px;
     width: 400px;
     text-align: right;
 }
 
-#about-what-left
+#about #what-left
 {
     background-color: blue;
     width: 350px;
@@ -1006,7 +1094,7 @@ input.gsc-search-button:focus
     float: left;
 }
 
-#about-what-right	
+#about #what-right	
 {
     background-color: blue;
     width: 400px;
@@ -1015,14 +1103,14 @@ input.gsc-search-button:focus
     position: relative;
 }
 
-#about-what-rightUp
+#about #what-rightUp
 {
-    background-color: red;
+    background-color: white;
     width: 400px;
     height: 300px;
 }
 
-#about-what-rightDown
+#about #what-rightDown
 {
     background-color: black;
     width: 400px;
@@ -1031,9 +1119,10 @@ input.gsc-search-button:focus
     position: absolute;
 }
 
-.about-what-rightDown-small
+#about .what-rightDown-small
 {
-    background: url('photo.png');
+    background: url('about/small_photo.png');
+    background: white;
     background-repeat: no-repeat;
     background-size: 40px 40px; /* NOTE */
     width: 40px;
@@ -1044,30 +1133,28 @@ input.gsc-search-button:focus
     float: left;
 }
 
-#about-how
+#about #how
 {
-    display: none;
     background-color: yellow;
     width: 750px;
-    height: 500px;
+    height: 700px;
 }
 
-#about-how-pic
+#about #how-pic
 {
     background-color: black;
     width: 750px;
-    height: 500px;
+    height: 400px;
 }
 
-#about-how-txt
+#about #how-txt
 {
-    display :none;
     background-color: yellow;
     width: 750px;
-    height: 500px;
+    height: 300px;
 }
 
-.about-how-photo
+#about .how-photo
 {
     background-color: white;
     top: 20px;
@@ -1077,15 +1164,28 @@ input.gsc-search-button:focus
     float: none;
 }
 
-.about-who-block
+#about #who
 {
-    background-color: blue;
-    width: 70px;
-    height: 100px;
-    float: left;
-    margin: 10px;
+    background-color: white;
+    width: 750px;
+    height: 40px;
 }
 
+#about .who-block
+{
+    background-color: blue;
+    width: 150px;
+    height: 40px;
+    float: left;
+}
+
+#about #who_txt
+{
+    background-color: red;
+    width: 750px;
+    height: 400px;
+    float: top;
+}
 /**
  * Facebook style
  */
@@ -1097,6 +1197,7 @@ input.gsc-search-button:focus
     top: 120px;
 }
 
+<<<<<<< HEAD
 /*club style*/
 #content
 {
@@ -1114,3 +1215,70 @@ input.gsc-search-button:focus
 {
 	margin-center:auto;
 }
+=======
+.etmomi
+{
+    background: url('1.jpg');
+    width:30px;
+    height:30px;
+    display:block;
+}
+
+.etmomi:hover
+{
+    background: url('2.PNG');
+    width:300px;
+    height:300px;
+    display:block;
+}
+table.other-page
+{
+    border:0px;
+    width:90%; 
+    height=:70%;
+}
+.sep-group
+{
+    float:left;
+}
+.close-group
+{
+    float:right;
+}
+th.form-friends-sort-title
+{
+    font-size:30px;
+    align:left;
+    color:yellow;
+}
+th.form-friends-title
+{
+    border:5px solid gray;
+    font-size:20px;
+    align:left;
+    color:yellow;
+}
+th.friend-other-page
+{
+    color:green;
+    font-size:30px;
+}
+a.form-friends-title
+{
+    align:left;
+    color:DeepPink;
+}
+
+tr.friends-title
+{
+    height:10%;
+    /*border:5px solid gray;*/
+    margin:0px;
+}
+
+td.friends-close-ones
+{
+    
+    margin:0px;
+}
+>>>>>>> db768b000185c579fd8d4d5fc57a322d94abccb8

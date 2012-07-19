@@ -52,17 +52,23 @@ class SiteController extends Controller
         ));
     }
 
-    public function actionMarquee($id = 0)
+    public function actionMarquee()
     {
-        $id = (integer)$id;
+        $id = 0;
         if ( isset($_POST['marquee']) )
         {
+            $delete = false;
             if ( isset($_POST['marquee']['id']) )
             {
                 $id = (integer)$_POST['marquee']['id'];
+                if ( $id < 0 )
+                {
+                    $id *= -1;
+                    $delete = true;
+                }
             }
 
-            if ( isset($_POST['marquee']['message']) )
+            if ( isset($_POST['marquee']['message']) || $delete )
             {
                 if ( $id )
                 {
@@ -72,15 +78,22 @@ class SiteController extends Controller
                 {
                     $model = new Marquee();
                 }
-                $model->attributes = $_POST['marquee'];
-
-                if ( $model->validate() && $model->save() )
+                
+                if ( $delete && $id )
                 {
-                    $this->_data['message'] = $model->message;
+                    $model->deleteMarquee();
                 }
                 else
                 {
-                    $this->_data['error'] = true;
+                    $model->attributes = $_POST['marquee'];
+                    if ( $model->validate() && $model->save() )
+                    {
+                        $this->_data['message'] = $model->message;
+                    }
+                    else
+                    {
+                        $this->_data['error'] = true;
+                    }
                 }
             }
             else
@@ -201,22 +214,50 @@ class SiteController extends Controller
         header('Pragma: public');
         header('Cache-Control: max-age=' . $expire);
         header('Expires: ' . gmdate('D, d M Y H:i:s', TIMESTAMP + $expire) . ' GMT');
-        echo '<script src="//connect.facebook.net/zh_TW/all.js"></script>';
+        echo '<script src="
+        "></script>';
         $this->layout = false;
     }
-
+    /*define('USER_IMAGE', 'avatars/'); // 預設路徑名稱*/
     public function actionRegister()
     {
-        if ( isset($_POST['register']) ) 
+        if ( isset($_POST['register']) && isset($_POST['profile']) ) 
         {
-            $model = new User();
-            $model->attributes = $_POST['register'];
-
-            if ( $model->validate() && $model->save() )
+            $user = new User();
+            $user->attributes = $_POST['register'];
+            
+            if ( $user->validate() )
             {
-                $this->redirect(array('site/index'));
+                $profile = new Profile();
+                $profile->attributes = $_POST['profile'];
+                $profile->department_id = $_POST['profile']['department'];
+                $profile->grade = $_POST['profile']['grade'];
+                if ( $profile->validate() )
+                {
+                    if ( $user->save() )
+                    {
+                        $profile->id = $user->id;
+                        if ( $profile->save() )
+                        {
+                            $this->redirect(array('site/index'));
+                        }
+                    }
+                }
             }
+            // 有問題的時候 上傳圖片
+           /* $profile->picture = $_FILES['picture']['name'];
+            $target = USER_IMAGE.$profile; //儲存檔案的目的地
+            move_uploaded_file($_FILES['picture']['tmp_name'],$target);
+            $picture_size=$_FILES['picture']['size'];
+            $picture_type=$_FILES['picture']['type'];
+            if(is_file(USER_IMAGE.$row['picture'])&&filesize(USER_IMAGE.$row['picture'])>0)
+                echo '<img src="'.USER_IMAGE.$row['picture'].'" alt="Score image"/>';
+            else
+                echo '<img src="'.USER_IMAGE.'6196.jpg" alt="Unverified" />';*/
         }
-        $this->render('register');
+        $this->_data['token'] = Yii::app()->security->getToken();
+        $this->render('register', array(
+            'departments'  => Department::model()->getDepartment() //取得所有系所
+        ));
     }
 }
