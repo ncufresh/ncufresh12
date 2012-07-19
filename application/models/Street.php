@@ -1,7 +1,6 @@
 <?php
 class Street extends CActiveRecord
 {
-
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
@@ -13,12 +12,10 @@ class Street extends CActiveRecord
     }
     
     public function getBuildingInfo($id)
-    {     
-        $data = $this->findByPk($id);        
-        return $data;        
-    }
-    
+    {
+        $data = $this->findByPk($id);
+        return $data;
+    }    
 }
-
 ?>
 
