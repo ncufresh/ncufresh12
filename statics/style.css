@@ -1003,6 +1003,7 @@ input.gsc-search-button:focus
     width: 750px;
     height: 500px;
 }
+
 #about #h1
 {
     float: top;
@@ -1014,6 +1015,7 @@ input.gsc-search-button:focus
     font-family: 'Microsoft YaHei Mono';
     font-size:40px;
 }
+
 #about #h2
 {
     float: top;
@@ -1025,6 +1027,7 @@ input.gsc-search-button:focus
     font-family: 'Microsoft YaHei Mono';
     font-size:40px;
 }
+
 #about #h3
 {
     float: top;
@@ -1036,6 +1039,7 @@ input.gsc-search-button:focus
     font-family: 'Microsoft YaHei Mono';
     font-size:40px;
 }
+
 #about #what-image
 {
     background: url('about/photo.png') no-repeat;
@@ -1122,12 +1126,14 @@ input.gsc-search-button:focus
     height: 150px;
     float: none;
 }
+
 #about #who
 {
     background-color: white;
     width: 750px;
     height: 40px;
 }
+
 #about .who-block
 {
     background-color: blue;
@@ -1135,6 +1141,7 @@ input.gsc-search-button:focus
     height: 40px;
     float: left;
 }
+
 #about #who_txt
 {
     background-color: red;
@@ -1159,6 +1166,7 @@ tr.friends-title
     border:5px solid gray;
     margin:0px;
 }
+
 td.friends-close-ones
 {
     border:5px solid gray;
