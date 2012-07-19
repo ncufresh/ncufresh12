@@ -9,7 +9,25 @@ class ReadmeController extends Controller
 
     public function actionSchedule()
     {
-        $this->render('schedule');
+        $schedule = new Schedule();
+        $data = $schedule->getId(1);
+        $this->render('schedule', array(
+            'model'     => $data
+        ));
+    }
+
+    public function actionUpdate()
+    {
+        if ( Yii::app()->request->getIsPostRequest() )
+        {
+            $model = Schedule::model()->findByPk(1);
+            $model->status = ! $model->status;
+
+            if ( $model->validate() && $model->save() )
+            {
+                $this->redirect(array('readme/schedule'));
+            }
+        }
     }
 
     public function actionFreshman()

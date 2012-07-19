@@ -791,12 +791,14 @@ google.setOnLoadCallback(function()
 
 		$('.nculife-food .dialog').click(function()
         {
-			$('#nculife-dialog').dialog({
+			$('#nculife-dialog').dialog(
+            {
 				dialogClass: 'nculife-dialog',
 				height: 500,
 				width: 700,
 				modal: true,
-				show: {
+				show: 
+                {
                     effect: 'explode',
                     direction: 'down'
                 }
@@ -808,10 +810,12 @@ google.setOnLoadCallback(function()
         {
 			var url = 'index.html';
 			// alert(url);
-			$.ajax({
+			$.ajax(
+            {
 				type: 'GET',
 				url: '/ncufresh12/nculife/foodContent.html',
-				data:{
+				data:
+                {
 					id: 1
 				},
 				dataType: 'html',
@@ -826,10 +830,12 @@ google.setOnLoadCallback(function()
         {
 			var url = 'index.html';
 			// alert(url);
-			$.ajax({
+			$.ajax(
+            {
 				type: 'GET',
 				url: '/ncufresh12/nculife/foodContent.html',
-				data:{
+				data:
+                {
 					id: 2
 				},
 				dataType: 'html',
