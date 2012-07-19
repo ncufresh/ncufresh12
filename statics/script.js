@@ -100,7 +100,6 @@ google.setOnLoadCallback(function()
 				.attr('type', 'text')
 				.attr('id', $.chat.options.friendListSearchId)
 				.appendTo(list);
-				
         }
         return list;
     };
