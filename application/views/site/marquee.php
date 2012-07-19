@@ -19,6 +19,7 @@ jQuery(document).ready(function()
                 },
                 function(response)
                 {
+                    $.configures.token = response.token;
                     if ( response.error )
                     {
                         alert('更新失敗！請稍後再試一次！');
@@ -29,7 +30,6 @@ jQuery(document).ready(function()
                         .addClass('marquee-message-text')
                         .text(response.message)
                         .replaceAll(object);
-                    $.configures.token = response.token;
                     text.highlight();
                 }
             );
@@ -59,24 +59,30 @@ jQuery(document).ready(function()
     jQuery('.marquee-delete-button').live('click', function()
     {
         var id = jQuery(this).attr('href').replace('#', '');
-        jQuery.post(
-            window.location.href,
-            {
-                marquee:
+        var element = jQuery(this).parent().parent();
+        if ( confirm('真的想要刪除這一筆跑馬燈消息？') )
+        {
+            jQuery.post(
+                window.location.href,
                 {
-                    id: id
+                    marquee:
+                    {
+                        id: '-' + id
+                    },
+                    token: $.configures.token
                 },
-                token: $.configures.token
-            },
-            function(response)
-            {
-                if ( response.error )
+                function(response)
                 {
-                    alert('刪除失敗！請稍後再試一次！');
-                    return false;
+                    $.configures.token = response.token;
+                    if ( response.error )
+                    {
+                        alert('刪除失敗！請稍後再試一次！');
+                        return false;
+                    }
+                    element.remove();
                 }
-            }
-        );
+            );
+        }
         return false;
     });
 
@@ -105,15 +111,15 @@ jQuery(document).ready(function()
             <td colspan="5">
                 <form method="POST">
                     <input id="marquee-form-message" name="marquee[message]" type="text" />
+                    <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
                     <button type="submit">新增</button>
                 </form>
             </td>
         </tr>
     </tfoot>
     <tbody>
-<?php foreach ( $marquees as $index => $marquee ) : ?>
+<?php foreach ( $marquees as $marquee ) : ?>
         <tr>
-            <td><?php echo $index + 1; ?></td>
             <td id="marquee-message-<?php echo $marquee->id; ?>" class="marquee-message-text"><?php echo $marquee->message; ?></td>
             <td><a class="marquee-edit-button" href="#<?php echo $marquee->id; ?>" title="修改">修</a></td>
             <td><a class="marquee-delete-button" href="#<?php echo $marquee->id; ?>" title="移除">移</a></td>

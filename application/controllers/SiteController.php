@@ -52,17 +52,23 @@ class SiteController extends Controller
         ));
     }
 
-    public function actionMarquee($id = 0)
+    public function actionMarquee()
     {
-        $id = (integer)$id;
+        $id = 0;
         if ( isset($_POST['marquee']) )
         {
+            $delete = false;
             if ( isset($_POST['marquee']['id']) )
             {
                 $id = (integer)$_POST['marquee']['id'];
+                if ( $id < 0 )
+                {
+                    $id *= -1;
+                    $delete = true;
+                }
             }
 
-            if ( isset($_POST['marquee']['message']) )
+            if ( isset($_POST['marquee']['message']) || $delete )
             {
                 if ( $id )
                 {
@@ -72,15 +78,22 @@ class SiteController extends Controller
                 {
                     $model = new Marquee();
                 }
-                $model->attributes = $_POST['marquee'];
-
-                if ( $model->validate() && $model->save() )
+                
+                if ( $delete && $id )
                 {
-                    $this->_data['message'] = $model->message;
+                    $model->deleteMarquee();
                 }
                 else
                 {
-                    $this->_data['error'] = true;
+                    $model->attributes = $_POST['marquee'];
+                    if ( $model->validate() && $model->save() )
+                    {
+                        $this->_data['message'] = $model->message;
+                    }
+                    else
+                    {
+                        $this->_data['error'] = true;
+                    }
                 }
             }
             else

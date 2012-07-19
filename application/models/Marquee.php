@@ -28,12 +28,19 @@ class Marquee extends CActiveRecord
         );
     }
 
-    public function getMarquees($count = 5)
+    public function getMarquees()
     {
         return $this->findAll(array(
-            'limit'     => $count,
+            'limit'     => 5,
             'order'     => 'updated DESC',
             'condition' => 'invisible = FALSE'
+        ));
+    }
+
+    public function deleteMarquee()
+    {
+        return $this->updateByPk($this->id, array(
+            'invisible' => true
         ));
     }
 
@@ -63,5 +70,23 @@ class Marquee extends CActiveRecord
             return true;
         }
         return false;
+    }
+
+    protected function afterSave()
+    {
+        parent::afterSave();
+
+        $counter = 0;
+        $data = $this->findAll(array(
+            'order'     => 'updated DESC',
+            'condition' => 'invisible = FALSE'
+        ));
+
+        foreach ( $data as $entry )
+        {
+            if ( $counter++ < 5 ) continue;
+            $entry->invisible = true;
+            $entry->save();
+        }
     }
 }
