@@ -33,7 +33,7 @@
         <label for="form-register-department">系級</label>
             <select name="profile[department]">
                 <?php foreach ( $departments as $department ) : ?>
-                    <option><?php echo $department->content; ?></option> <!--$department->content;   content是欄位名稱(成員)-->
+                    <option value="<?php echo $department->department_id; ?>"><?php echo $department->content; ?></option> <!--$department->content;   content是欄位名稱(成員)-->
                 <?php endforeach; ?>
                 
             </select>
