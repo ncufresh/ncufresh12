@@ -1,10 +1,21 @@
-<form>
-    <dl>
-    <dt>水果</dt>
-    <dd>西瓜</dd>
-    <dd>葡萄</dd>
-    <dd>芭樂</dd>
-    <dt>湯</dt>
-    <dd>海龜湯</dd>
-    </dl>
-</form>
+<table border="1" width="90%" height="70%">
+   <tr>
+    <th colspan="5">其他科系</th>
+    </tr>
+    <?php 
+        for($row=1;$row<=4;$row++)
+        {
+            echo "<tr>";
+            for($col=1;$col<=5;$col++)
+            {
+                if($col%5==0)
+                    echo '<td class="">'.$col.'</td>';
+                else
+                    echo '<td class="">'.$col.'</td>';
+
+            }
+            echo "</tr>";
+        }
+    ?>
+</table>
+<button id="form-otherdepartment-button" type="submit" name="otherdepartment-self-design">更多</button>

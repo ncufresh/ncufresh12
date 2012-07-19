@@ -33,19 +33,10 @@ class NFWFacebook extends CApplicationComponent
         return true;
     }
 
-    public function getUserProfile()
-    {
-        if ( ! $this->profile )
-        {
-            $this->profile = $this->facebook->api('/me', 'GET');
-        }
-        return $this->profile;
-    }
-
     public function getUsername()
     {
-        $this->getUserProfile();
-        return $this->profile['name'];
+        $profile = $this->facebook->api('/me', 'GET');
+        return $profile['name'];
     }
 
     public function getAppId()
@@ -61,8 +52,10 @@ class NFWFacebook extends CApplicationComponent
         ));
     }
 
-    public function logout()
+    public function getLogoutUrl()
     {
-        return $this->facebook->destroySession();
+        return $this->facebook->getLogoutUrl(array(
+            'next'              =>  Yii::app()->request->hostInfo . Yii::app()->homeUrl
+        ));
     }
 }
