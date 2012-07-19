@@ -1,3 +1,14 @@
+<script type="text/javascript">
+	jQuery(document).ready(function()
+	{
+		jQuery.extend({
+            configures: 
+			{
+                newsAdminUrl: '<?php echo Yii::app()->createUrl('news/admin'); ?>',
+            }
+        });
+	});
+</script>
 <h2>編輯文章</h2>
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('news/update', array('id'=>$news->id) ); ?>" method="POST" class="MultiFile-intercepted">
 標題<input type="text" name="news[title]" value="<?php echo $news->title; ?>"/><br />

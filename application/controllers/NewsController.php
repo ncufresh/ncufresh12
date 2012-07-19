@@ -117,7 +117,7 @@ class NewsController extends Controller
             $this->redirect($news->url);
         }
         $this->render('create', array(
-			'errors'    =>  array()
+			'errors'    =>  array(),
 		));
     }
 
