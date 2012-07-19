@@ -997,17 +997,50 @@ input.gsc-search-button:focus
 /**
  * About style
  */
-#about-what
+#about #what
 {
 	display: none;
     background-color: yellow;
     width: 750px;
     height: 500px;
 }
-
-#about-what-image
+#about #h1
 {
-    background: url('photo.png') no-repeat;
+    float: top;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    text-align: left;
+    margin-left: 10px;
+    font-family: 'Microsoft YaHei Mono';
+    font-size:40px;
+}
+#about #h2
+{
+    float: top;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    text-align: left;
+    margin-left: 10px;
+    font-family: 'Microsoft YaHei Mono';
+    font-size:40px;
+}
+#about #h3
+{
+    float: top;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    text-align: left;
+    margin-left: 10px;
+    font-family: 'Microsoft YaHei Mono';
+    font-size:40px;
+}
+#about #what-image
+{
+    /*background: url('photo.png') no-repeat;*/
+    background-color: green;
     background-repeat: no-repeat;
     background-size: 400px 300px; /* NOTE */
     height: 300px;
@@ -1015,7 +1048,7 @@ input.gsc-search-button:focus
     text-align: right;
 }
 
-#about-what-left
+#about #what-left
 {
     background-color: blue;
     width: 350px;
@@ -1023,7 +1056,7 @@ input.gsc-search-button:focus
     float: left;
 }
 
-#about-what-right	
+#about #what-right	
 {
     background-color: blue;
     width: 400px;
@@ -1032,14 +1065,14 @@ input.gsc-search-button:focus
     position: relative;
 }
 
-#about-what-rightUp
+#about #what-rightUp
 {
     background-color: red;
     width: 400px;
     height: 300px;
 }
 
-#about-what-rightDown
+#about #what-rightDown
 {
     background-color: black;
     width: 400px;
@@ -1048,9 +1081,10 @@ input.gsc-search-button:focus
     position: absolute;
 }
 
-.about-what-rightDown-small
+#about .what-rightDown-small
 {
-    background: url('photo.png');
+    /*background: url('photo.png');*/
+    background: white;
     background-repeat: no-repeat;
     background-size: 40px 40px; /* NOTE */
     width: 40px;
@@ -1061,7 +1095,7 @@ input.gsc-search-button:focus
     float: left;
 }
 
-#about-how
+#about #how
 {
     display: none;
     background-color: yellow;
@@ -1069,14 +1103,14 @@ input.gsc-search-button:focus
     height: 500px;
 }
 
-#about-how-pic
+#about #how-pic
 {
     background-color: black;
     width: 750px;
     height: 500px;
 }
 
-#about-how-txt
+#about #how-txt
 {
     display :none;
     background-color: yellow;
@@ -1084,7 +1118,7 @@ input.gsc-search-button:focus
     height: 500px;
 }
 
-.about-how-photo
+#about .how-photo
 {
     background-color: white;
     top: 20px;
@@ -1094,7 +1128,7 @@ input.gsc-search-button:focus
     float: none;
 }
 
-.about-who-block
+#about .who-block
 {
     background-color: blue;
     width: 70px;
