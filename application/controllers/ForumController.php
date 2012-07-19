@@ -19,7 +19,7 @@ class ForumController extends Controller
         ));
     }
 
-    public function actionForum($fid,$sort=0,$category=0)
+    public function actionForum($fid, $sort = 0, $category = 0)
     {
         //content of each forum
         $this->render('forum', array(
@@ -53,7 +53,7 @@ class ForumController extends Controller
             $article->save();
             $this->redirect($article->url);
         }
-    
+
         $this->render('create',array(
             'fid'       => $fid,
             'category'  => ForumCategory::model()->find('id=' . $fid)
@@ -72,5 +72,4 @@ class ForumController extends Controller
     public function actionDelete() // delete article
     {
     }
-    
 }
