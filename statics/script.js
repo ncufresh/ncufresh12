@@ -97,12 +97,10 @@ google.setOnLoadCallback(function()
 				.attr('id', $.chat.options.friendListSearchId);
             list = $('<div></div>')
                 .attr('id', $.chat.options.friendListId)
-                .appendTo($('body'));
-			list
 				.append(title)
 				.append(display)
-				.append(search);
-				
+				.append(search)
+                .appendTo($('body'));
         }
         return list;
     };

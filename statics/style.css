@@ -17,6 +17,11 @@ body
     width: 1000px;
 }
 
+form
+{
+	margin: 0;
+}
+
 form dl,
 form dt,
 form dd

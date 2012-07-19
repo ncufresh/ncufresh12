@@ -3,7 +3,7 @@
 標題<input type="text" name="news[title]" /><br />
 內容<textarea name="news[content]" id="news-form-content" cols="30" rows="10"></textarea><br />
 <span>附加連結與檔案</span>
-<div id="news-url-warp">連結名稱:<input type="text" id="news-url-alias-input"/>URL:<input type="text" id="news-url-input"/><input id="news-url-button" type="button" value="v"/>
+<div id="news-url-warp">連結名稱:<input type="text" id="news-url-alias-input"/>URL:<input type="text" id="news-url-input"/><button id="news-url-button">v</button>
     <div id="news-url-data-warp" style="display:none">
     </div>
 </div>
@@ -22,11 +22,11 @@
          }',
       ),
 )); ?>
-<input type="submit" value="發佈" />
-<input class="news-cancel-button" type="button" value="取消" />
+<button type="submit">發佈</button>
+<button class="news-cancel-button">取消</button>
 <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
 </form>
 <?php foreach ( $errors as $key => $error ) : ?>
-    <b><?php echo $key . ':' .$error[0]; ?></b>
+    <b><?php echo $key . ':' . $error[0]; ?></b><br />
 <?php endforeach; ?>
 <div class="news-dialog"></div>

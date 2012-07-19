@@ -15,8 +15,8 @@
 <?php foreach ( $files as $filename => $file_url ) : ?>
     <a href="<?php echo $file_url; ?>" title="<?php echo $filename; ?>"><?php echo $filename; ?></a>
 <?php endforeach; ?>
-<input type="submit" value="發佈" />
-<input class="news-cancel-button" type="button" value="取消" />
+<button type="submit">發佈</button>
+<button class="news-cancel-button">取消</button>
 <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
 </form>
 <div class="news-dialog"></div>

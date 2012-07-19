@@ -50,7 +50,7 @@ class NewsController extends Controller
         $model = new News();
         $this->render('index', array(
             'news'          => $model->getPage($page, self::NEWS_PER_PAGE, true),
-            'pageStatus'    => $model->getPageStatus($page, self::NEWS_PER_PAGE)
+            'page_status'    => $model->getPageStatus($page, self::NEWS_PER_PAGE)
         ));
     }
 
@@ -60,7 +60,7 @@ class NewsController extends Controller
         $this->setPageTitle(Yii::app()->name . ' - 最新消息');
         $this->render('admin', array(
             'news'          => $model->getPage($page, self::NEWS_PER_PAGE, true),
-            'pageStatus'    => $model->getPageStatus($page, self::NEWS_PER_PAGE)
+            'page_status'    => $model->getPageStatus($page, self::NEWS_PER_PAGE)
         ));
     }
 
@@ -116,7 +116,9 @@ class NewsController extends Controller
             }
             $this->redirect($news->url);
         }
-        $this->render('create');
+        $this->render('create', array(
+			'errors'    =>  array()
+		));
     }
 
     public function actionUpdate($id)
