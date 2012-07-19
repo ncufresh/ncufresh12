@@ -14,7 +14,7 @@ class GameController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('index'),
+                'actions'   => array('index', 'togetExp'),
                 'users'     => array('*')
             ),
             array(
@@ -26,6 +26,17 @@ class GameController extends Controller
 
     public function actionIndex()
     {
+        $model = GameCharacter::model()->findByPk(3);
+        $model->addExp(47);
+        $model->addMoney(10);
+        $this->render('index');
+    }
+
+    public function actiontogetExp()
+    {
+        $model = GameCharacter::model()->findByPk(3);
+        $model->addExp(1);
+        $model->addMoney(1);
         $this->render('index');
     }
 }
