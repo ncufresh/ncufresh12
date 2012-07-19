@@ -1,16 +1,28 @@
 <?php
 
-class StreetController extends Controller
-{
+  class  StreetController extends Controller
+  {
   
-    public function actionIndex() // 綜視圖主頁
+    public function actionIndex() // main page
+    {   
+        $this->render('index');
+	}
+    
+	public function actionPicture() // dialog building information page
     {
-        $sss='111';
-        $this->render('index',array('test'=>$sss)); 
-    }
-
-    public function actionPicture() // 跳出介紹文字頁
-    {
+        $model = new Street();
+        if ( isset($_GET['id']) )
+        {
+            $getId = $_GET['id'];  
+        }
+        else
+        {
+            $getId = 1;
+        }
+        $data=$model->getBuildingInfo($getId);
+        $this->render('index', array(
+            'data'      => $data
+        ));
     }
 
     public function actionStreet() // 街景服務頁

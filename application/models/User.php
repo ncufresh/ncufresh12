@@ -2,6 +2,8 @@
 
 class User extends CActiveRecord
 {
+    public $lastLoginTimestamp;
+
     private $_identity;
 
     public static function model($className = __CLASS__)
@@ -28,6 +30,17 @@ class User extends CActiveRecord
         return array(
             'RawDataBehavior',
             'Helper'
+        );
+    }
+
+    public function relations()
+    {
+        return array(
+            'profile'  => array(
+                self::HAS_ONE,
+                'Profile',
+                'user_id'
+            )
         );
     }
 
@@ -85,9 +98,16 @@ class User extends CActiveRecord
         return md5($salt . $password);
     }
 
-    public function isAdmin()
+    public function getIsAdmin()
     {
         return $this->is_admin;
+    }
+
+    public function updateOnlineState()
+    {
+        $this->online_count += 1;
+        $this->last_login_timestamp = $this->getRawValue('updated');
+        return $this->save();
     }
 
     protected function generatePasswordSalt()
