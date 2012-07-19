@@ -14,12 +14,16 @@ class Department extends CActiveRecord
     public function rules()
     {
         return array(
-            array('building_info_content, department_id', 'required'),
+            array('content, department_id', 'required'),
         );
     }
 
-    public function getdepartment() // 取得系所
-    {
-        $department = Department::model()->findByPk($id);
+    public function getDepartment() // 取得系所
+    {   
+        
+        return $this->findAll(array(  //相當於select
+            'order'     => 'department_id ASC', //還有'limit'   'condition'(跟where一樣) 'order'(排序)
+        ));
     }
+    
 }

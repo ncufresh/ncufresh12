@@ -5,7 +5,7 @@ class FriendsController extends Controller
 
     public function actionFriends() // 好友專區
     {
-        
+         $this->setPageTitle(Yii::app()->name . ' - 好友專區');
         $this->render('friends');
     }
     
