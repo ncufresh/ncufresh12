@@ -945,10 +945,18 @@ function inin_about()
 
     for ( var i = 0; i < 8; ++i )
     {
+<<<<<<< HEAD
+        $('.about-what-rightDown-small').get(i).click(function()
+        {
+            about_what_photo_index=i;
+            $('#about-what-image').css("background-color", "blue");　
+        });
+=======
         // $('.about-what-rightDown-small').get(i).click(function()
         // {
             // about_what_photo_index=i;
         // });
+>>>>>>> 84ff6135bbab337aa54d4ecb7622523351fc3783
     }
 
     $('.about-who-block').mouseenter(function()

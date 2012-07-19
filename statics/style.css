@@ -994,9 +994,32 @@ input.gsc-search-button:focus
 	
 }
 
+<<<<<<< HEAD
+}
+.about
+{
+    float:up;
+}
+#about-h1
+{
+	font-size:20px;
+    font-family: "微軟正黑體", Arial, sans-serif;
+}
+#about-h2
+{
+	font-size:20px;
+    font-family: "微軟正黑體", Arial, sans-serif;
+}
+#about-h3
+{
+	font-size:20px;
+    font-family: "微軟正黑體", Arial, sans-serif;
+}
+=======
 /**
  * About style
  */
+>>>>>>> 84ff6135bbab337aa54d4ecb7622523351fc3783
 #about-what
 {
 	display: none;
