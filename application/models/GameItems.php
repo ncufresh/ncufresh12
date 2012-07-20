@@ -1,6 +1,6 @@
 <?php
 
-class Items extends CActiveRecord
+class GameItems extends CActiveRecord
 {
     public static function model($className = __CLASS__)
     {

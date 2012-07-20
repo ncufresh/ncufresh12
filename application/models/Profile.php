@@ -1,7 +1,5 @@
 <?php
 
-
-
 class Profile extends CActiveRecord
 {
     public static function model($className = __CLASS__)
@@ -11,7 +9,7 @@ class Profile extends CActiveRecord
 
     public function tableName()
     {
-        return '{{profile}}';
+        return '{{profiles}}';
     }
 
     public function rules()
@@ -22,8 +20,8 @@ class Profile extends CActiveRecord
                 'required'
             )
         );
-        
     }
+
     public function relations()
     {
         return array(
@@ -32,8 +30,6 @@ class Profile extends CActiveRecord
                 'Department', 
                 'department_id' 
             ),
-            
-        );
-        
+        ); 
     }
 }
