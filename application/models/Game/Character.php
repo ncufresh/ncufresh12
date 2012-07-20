@@ -54,6 +54,11 @@ class Character extends CActiveRecord
                 self::BELONGS_TO,
                 'Item',
                 'others_id'
+            ),
+            'achievements'    => array(
+                self::MANY_MANY,
+                'Achievement',
+                'game_achievements_owner(user_id, achievement_id)'
             )
          );
     }
@@ -121,6 +126,11 @@ class Character extends CActiveRecord
     public function addMoney($value)
     {
         $this->saveCounters(array('money' => $value));
+    }
+    
+    public function Owner()
+    {
+        return $this->achievements;
     }
     
 }
