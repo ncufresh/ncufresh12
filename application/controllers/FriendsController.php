@@ -28,12 +28,12 @@ class FriendsController extends Controller
 
     public function actionMyFriends()
     {
-        echo '哈哈';
         $this->setPageTitle(Yii::app()->name . ' - 我的好友');
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('myfriends', array(                
-            'myfriendsId'  => Friend::model()->getFriendsId(/*要填入登入者的ID...先假設user_id=3*/3),
-            'myfriendData'  => Friend::model()->findByFriendId(2),
+            // 'myfriendsId'  => Friend::model()->getFriendsId(/*要填入登入者的ID...先假設user_id=3*/3),
+            /*'myfriendData'  => Friend::model()->findByFriendId(2),*/
+            'user'=>User::model()->findByPk(3),
         ));
     }
 }
