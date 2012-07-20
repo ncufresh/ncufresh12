@@ -498,11 +498,11 @@
 })(jQuery);
 
 /**
- * Loading
+ * Sprite
  */
 (function($)
 {
-    $.fn.loading = function(options)
+    $.fn.sprite = function(options)
     {
         options = $.extend({
             horizontalFrames:       4,
@@ -513,13 +513,13 @@
         }, options);
         return $(this).each(function()
         {
-            var loading = $(this);
-            loading.css({
+            var sprite = $(this);
+            sprite.css({
                 backgroundPosition: '0px 0px'
             });
             setInterval(function()
             {
-                var position = loading.css('background-position').split(' ');
+                var position = sprite.css('background-position').split(' ');
                 var left = $.integer(position[0]);
                 var top = $.integer(position[1]);
                 var ml = options.FrameXDimension * options.horizontalFrames;
@@ -534,7 +534,7 @@
                     left = 0;
                 }
 
-                loading.css({
+                sprite.css({
                     backgroundPosition: left + 'px ' + top + 'px'
                 });
             }, options.interval);
@@ -945,7 +945,7 @@
 
         if ( $('#chat') ) $('#chat').chat();
 
-        $('.loading').loading();
+        $('.loading').sprite();
 
         $.about();
 
