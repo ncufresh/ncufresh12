@@ -1080,7 +1080,29 @@ input.gsc-search-button:focus
 {
 	margin-center:auto;
 }
+<<<<<<< HEAD
+#title
+{
+	font-weight: bold;
+	background-color:yellow;
+}
+#all
+{
+	display:block;
+}
+#picture
+{	
+	background: url('3.png');
+	border:10 px;
+	background-color:white;
+}
+#underpicture
+{
+	display:block;
+}
+=======
 
+>>>>>>> b47332bb01d1b565562a3672dbd230ebfc2f4679
 .etmomi
 {
     background: url('1.jpg');
@@ -1150,4 +1172,9 @@ tr.friends-title
 td.friends-close-ones
 {
     margin:0px;
+<<<<<<< HEAD
 }
+
+=======
+}
+>>>>>>> b47332bb01d1b565562a3672dbd230ebfc2f4679
