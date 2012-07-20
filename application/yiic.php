@@ -12,6 +12,10 @@ $yiic = dirname($yii) . DIRECTORY_SEPARATOR . 'yiic.php';
 
 $config = array(
     'basePath'  => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'application',
+    'import'    => array(
+        'application.models.*',
+        'application.components.*'
+    ),
 	'components'=> array(
         'db'            => array(
             'connectionString'  => 'mysql:host=' . $ncufreshdb['host'] . ';dbname=' . $ncufreshdb['database'],
