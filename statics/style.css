@@ -1020,6 +1020,80 @@ input.gsc-search-button:focus
     font-size:40px;
 }
 
+#about .block1
+{
+    background: url('pp.jpg');
+}
+
+#about .block2
+{
+    background: url('');
+}
+
+#about .block3
+{
+    background: url('');
+}
+
+#about .back
+{
+    margin: 0 0 0 0;
+    top: 0;
+    left: 0;
+    width: 750;
+    height: 400;
+}
+
+#about .art
+{
+    margin: 0 0 0 0;
+    top: 0;
+    left: 0px;
+    width: 50;
+    height: 40;
+}
+
+#about .pro
+{
+    margin: 0 0 0 0;
+    top: 0;
+    left: 50px;
+    width: 50;
+    height: 40;
+}
+
+#about .vdo
+{
+    margin: 0 0 0 0;
+    top: 0;
+    left: 0;
+    width: 50;
+    height: 40;
+}
+
+#about .des
+{
+    margin: 0 0 0 0;
+    top: 0;
+    left: 0;
+    width: 50;
+    height: 40;
+}
+
+#about .boss
+{
+    margin: 0 0 0 0;
+    top: 0;
+    left: 0;
+    width: 50;
+    height: 40;
+}
+
+#about .information
+{
+    
+}
+
 #life-test1
 {
     background: url('1.jpg');
