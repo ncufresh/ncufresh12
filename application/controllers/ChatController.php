@@ -2,6 +2,13 @@
 
 class ChatController extends Controller
 {
+    public function init()
+    {
+        parent::init();
+        Yii::import('application.models.Chat.*');
+        return true;
+    }
+
     public function filters()
     {
         return array(
