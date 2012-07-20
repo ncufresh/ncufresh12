@@ -72,8 +72,9 @@ class ForumController extends Controller
     {
         $article = Article::model()->findByPk($id);
         $comment = new Comment();
+        $reply = new Reply();
         
-        $this->render('view', array('article'=>$article,'comments'=>$comment));
+        $this->render('view', array('article'=>$article,'comments'=>$comment, 'reply'=>$reply));
         
     }
     
@@ -89,6 +90,25 @@ class ForumController extends Controller
                     'fid'   => $comment->article->forum->id,
                     'id'    => $comment->article_id
         )));
+    }
+    
+    public function actionReply($aid){
+    
+        $reply = new Reply();
+        if ( isset($_POST['reply']) )
+        {
+            $reply->content = $_POST['reply']['content'];
+            $reply->article_id = $aid;
+            if($reply->save()){
+                $this->redirect(Yii::app()->createUrl('forum/view', array(
+                    'fid'   => $reply->article->forum->id,
+                    'id'    => $reply->article_id
+                )));
+            }
+        }
+        $this->render('reply');
+        
+        
     }
     
     public function actionUpdate() // update article
