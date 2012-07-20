@@ -1,6 +1,6 @@
 <?php
 
-class NewsFile extends CActiveRecord
+class Item extends CActiveRecord
 {
     public static function model($className = __CLASS__)
     {
@@ -9,6 +9,6 @@ class NewsFile extends CActiveRecord
 
     public function tableName()
     {
-        return '{{news_files}}';
+        return '{{game_items}}';
     }
 }

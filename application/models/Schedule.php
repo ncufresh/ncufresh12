@@ -8,7 +8,7 @@ class Schedule extends CActiveRecord
 
     public function tableName()
     {
-        return '{{schedule}}';
+        return '{{schedules}}';
     }
 
     public function getId($row)
