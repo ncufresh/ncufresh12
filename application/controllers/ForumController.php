@@ -71,9 +71,9 @@ class ForumController extends Controller
     public function actionView($fid, $id)
     {
         $article = Article::model()->findByPk($id);
+        $comment = new Comment();
         
-        
-        $this->render('view', array('article'=>$article));
+        $this->render('view', array('article'=>$article,'comments'=>$comment));
         
     }
     
