@@ -6,6 +6,7 @@ class SiteController extends Controller
     {
         parent::init();
         Yii::import('application.models.Chat.*');
+        Yii::import('application.models.News.*');
         return true;
     }
 
@@ -121,6 +122,10 @@ class SiteController extends Controller
 
     public function actionPull($lasttime = 0)
     {
+        $this->_data['counter'] = array(
+            'online'    => $this->getOnlineCount(),
+            'browsered' => $this->getTotalCount()
+        );
         if ( $lasttime == 0 ) // Debug only
         {
             $this->_data['friends'] = array(

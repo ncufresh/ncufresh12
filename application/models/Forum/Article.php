@@ -12,17 +12,22 @@ class Article extends CActiveRecord
         return '{{forum_articles}}';
     }
 
+    public function relations()
+    {
+        return array('forum'=>array(self::BELONGS_TO,'ArticleCategory','forum_id'));
+    }
+    
     public function getUrl()
     {
         return Yii::app()->createUrl('forum/view', array(
             'fid'   => $this->forum_id,
-            'id'    => $this->id,
-            'title' => $this->title,
+            'id'    => $this->id
         ));
     }
 
     public function beforeSave()
     {
+        //尚未檢查是否所有資料都有填寫
         if ( parent::beforeSave() )
         {
             if ( $this->isNewRecord )

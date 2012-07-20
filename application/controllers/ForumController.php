@@ -28,10 +28,11 @@ class ForumController extends Controller
 
     public function actionForum($fid, $sort = 0, $category = 0)
     {
+        $article = new Article();
         //content of each forum
         $this->render('forum', array(
             'fid'       => $fid,
-            'model'     => new Article()
+            'model'     => $article->findAll('forum_id='.$fid)
         ));
     }
 
@@ -63,15 +64,33 @@ class ForumController extends Controller
 
         $this->render('create',array(
             'fid'       => $fid,
-            'category'  => ForumCategory::model()->find('id=' . $fid)
+            'category'  => Category::model()->find('id=' . $fid)
         ));
     }
 
-    public function actionView($fid, $id, $title)
+    public function actionView($fid, $id)
     {
-        $this->render('view');
+        $article = Article::model()->findByPk($id);
+        $comment = new Comment();
+        
+        $this->render('view', array('article'=>$article,'comments'=>$comment));
+        
     }
-
+    
+    public function actionComment(){
+        $comment = new Comment();
+        if ( isset($_POST['comment']) )
+        {
+            $comment->content = $_POST['comment']['content'];
+            $comment->article_id = $_POST['comment']['aid'];
+            $comment->save();
+        }
+        $this->redirect(Yii::app()->createUrl('forum/view', array(
+                    'fid'   => $comment->article->forum->id,
+                    'id'    => $comment->article_id
+        )));
+    }
+    
     public function actionUpdate() // update article
     {
     }
