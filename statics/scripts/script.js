@@ -558,33 +558,42 @@
             tagBar:                          'tag-bar',
             animationClass:                  'animation',
             block1InfClass:                  'information',
-            picBarSpeed:                     '1000',
+            picBarSpeed:                     1000,
             picAutoSpeed:                    3000
         }, options);
+        var photo_index = 0;
+        var photoArray=new Array(8);
+        photoArray[0]= 'url(\'' + $.configures.staticsUrl + '/about/photo0.png\')';
+        photoArray[1]= 'url(\'' + $.configures.staticsUrl + '/about/photo1.png\')';
+        photoArray[2]= 'url(\'' + $.configures.staticsUrl + '/about/photo2.png\')';
+        photoArray[3]= 'url(\'' + $.configures.staticsUrl + '/about/photo3.png\')';
+        photoArray[4]= 'url(\'' + $.configures.staticsUrl + '/about/photo4.png\')';
+        photoArray[5]= 'url(\'' + $.configures.staticsUrl + '/about/photo5.png\')';
+        photoArray[6]= 'url(\'' + $.configures.staticsUrl + '/about/photo6.png\')';
+        photoArray[7]= 'url(\'' + $.configures.staticsUrl + '/about/photo7.png\')';
         var blocks = [
             $('<div></div>')
                 .addClass('block1')
                 .css({
-                    height: 500,
+                    height: 500,    
                     width: 750
                 }),
             $('<div></div>')
                 .addClass('block2')
                 .css({
-                    background: 'yellow',
                     height: 700,
                     width:  750
                 }),
             $('<div></div>')
                 .addClass('block3')
                 .css({
-                    background: 'black',
                     height: 400,
                     width:  750
                 })
         ]
         var picture = $('<div></div>')
             .css({
+                background: photoArray[0],
                 float: 'right',
                 height: 300,
                 position: 'relative',
@@ -604,11 +613,10 @@
                     opacity: 0
                 }, options.picBarSpeed);
             })
-            .append($('#' + options.whatImageId))
             .appendTo(blocks[0]);
         var display = $('<div></div>')
             .css({
-                backgroundColor: '#000000',
+                background: 'black',
                 bottom: 0,
                 height: 0,
                 opacity: 0,
@@ -617,15 +625,20 @@
             })
             .appendTo(picture);
 
-        $('.' + options.smallPicClass).each(function()
+        $('.' + options.smallPicClass).each(function(index)
         {
             $(this).css({
                 float: 'left',
                 margin: 5
-            })         
+            })  
+            .click(function()
+            {
+                picture.css({
+                   background: photoArray[index]
+                });
+            })
             .appendTo(display);
         });
-
         $('<div></div>')
             .css({
                 float: 'left',
@@ -643,7 +656,6 @@
             .appendTo(blocks[1]);
         var block1_txt = $('<div></div>')
             .css({
-                background: 'white',
                 height: 300,
                 width: 750,
                 position: 'relative'
@@ -691,13 +703,24 @@
             })
             .appendTo(blocks[2]);
         });
+        setInterval(function()
+        {
+            if(photo_index<8)
+            {
+                photo_index++;
+            }
+            else
+            {
+                photo_index=0;
+            }
+            picture.css('background-image', photoArray[photo_index]);
+        },options.picAutoSpeed);
         $('#' + options.aboutId + ' .' + options.titleClass)
             .appendTo($('#' + options.aboutId))
             .each(function(index)
             {
                 blocks[index].insertAfter($(this));
             });
-        
     };
 })(jQuery);
 

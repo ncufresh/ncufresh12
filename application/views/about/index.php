@@ -1,7 +1,6 @@
 <div id="about">
     <h4 class="title">What is the web ncufresh?</h4>
     <p id="introduce">介紹</p>
-    <img id="what-image" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo0.png" alt="" />
     <ul>
         <li>
             <img class="small_pic" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="" />
