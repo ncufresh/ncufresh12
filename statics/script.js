@@ -1,16 +1,84 @@
-google.load('search', '1', {
-     language: 'zh_TW'
-});
-
-google.setOnLoadCallback(function()
+/**
+ * Utilities
+ */
+(function($)
 {
-    google.search.CustomSearchControl.attachAutoCompletion(
-        '011017124764723419863:mdibrr3n-py',
-        document.getElementById('form-search-query'),
-        'search'
-    );
-});
+    $.extend({
+        random: function(min, max)
+        {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        },
+        cookie: function(key, value, settings)
+        {
+            var options = $.extend({
+            }, settings);
 
+            if (
+                arguments.length > 1
+             && (
+                 ! /Object/.test(Object.prototype.toString.call(value))
+              || value === null
+              || value === undefined
+                )
+            ) {
+                if ( value === null || value === undefined ) options.expires = -1;
+
+                if ( typeof options.expires === 'number' )
+                {
+                    var days = options.expires;
+                    var t = options.expires = new Date();
+                    t.setDate(t.getDate() + days);
+                }
+
+                value = String(value);
+
+                return (document.cookie = [
+                    encodeURIComponent(key),
+                    '=',
+                    options.raw
+                  ? value
+                  : encodeURIComponent(value),
+                    options.expires
+                  ? '; expires=' + options.expires.toUTCString()
+                  : '',
+                    options.path
+                  ? '; path=' + options.path
+                  : '',
+                    options.domain
+                  ? '; domain=' + options.domain
+                  : '',
+                    options.secure
+                  ? '; secure'
+                  : ''
+                ].join(''));
+            }
+
+            var decode = options.raw ? function(raw)
+            {
+                return raw;
+            } : decodeURIComponent;
+
+            var pairs = document.cookie.split('; ');
+
+            options = value || {};
+
+            for ( var i = 0, pair ; pair = pairs[i] && pairs[i].split('=') ; ++i )
+            {
+                if ( decode(pair[0]) === key ) return decode(pair[1] || '');
+            }
+
+            return null;
+        },
+        integer: function(value)
+        {
+            return parseInt(value, 10);
+        }
+    });
+})(jQuery);
+
+/**
+ * Pull
+ */
 (function($)
 {
     $.pull = {};
@@ -53,7 +121,13 @@ google.setOnLoadCallback(function()
     {
         $.pull.timer = setTimeout($.pull.start, $.pull.interval);
     };
+})(jQuery);
 
+/**
+ * Chat
+ */
+(function($)
+{
     $.chat = {};
 
     $.fn.chat = function(options)
@@ -322,12 +396,18 @@ google.setOnLoadCallback(function()
             }
         );
     };
+})(jQuery);
 
+/**
+ * Loading
+ */
+(function($)
+{
     $.fn.loading = function(options)
     {
         options = $.extend({
             horizontalFrames:       4,
-            verticalFrames:         4,
+            verticalFrames:         4, 
             FrameXDimension:        128,
             FrameYDimension:        128,
             interval:               100
@@ -361,10 +441,16 @@ google.setOnLoadCallback(function()
             }, options.interval);
         });
     };
+})(jQuery);
 
+/**
+ * About
+ */
+(function($)
+{
     $.about = function(options)
     {
-        options = $.extend({
+        var options = $.extend({
             aboutId:                         'about',
             titleClass:                      'title',
             introduceId:                     'introduce',
@@ -373,24 +459,20 @@ google.setOnLoadCallback(function()
             picBarSpeed:                     1000,
             picAutoSpeed:                    3000
         }, options);
-        var titles = $('#' + options.aboutId + ' .' + options.titleClass);
-        titles.eq(0).appendTo($('#' + options.aboutId));
-        var firstBlock = $('<div></div>')
-            .css({
-                backgroundColor: 'blue',
-                height: 500,
-                width:  750
-            })
-            .appendTo($('#' + options.aboutId));
-        var introduce = $('<div></div>')
-            .css({
-                backgroundColor: 'blue',
-                float: 'left',
-                height: 500,
-                width:  350
-            })
-            .appendTo(firstBlock);
-        $('#' + options.introduceId).appendTo(introduce);
+        var blocks = [
+            $('<div></div>')
+                .css({
+                    backgroundColor: 'blue',
+                    height: 500,
+                    width: 750
+                }),
+            $('<div></div>')
+                .css({
+                    backgroundColor: 'yellow',
+                    height: 500,
+                    width:  750
+                })
+        ]
         var picture = $('<div></div>')
             .css({
                 backgroundColor: 'blue',
@@ -399,22 +481,23 @@ google.setOnLoadCallback(function()
                 position: 'relative',
                 width:  400
             })
-            .appendTo(firstBlock)
             .mouseenter(function()
             {
-                picture_display.stop().animate({
+                display.stop().animate({
                     height: 50,
                     opacity: 1
                 }, 1000);
-            }).mouseleave(function()
+            })
+            .mouseleave(function()
             {
-                picture_display.stop().animate({
+                display.stop().animate({
                     height: 0,
                     opacity: 0
                 }, 1000);
-            });
-        $('#' + options.whatImageId).appendTo(picture);
-        var picture_display = $('<div></div>')
+            })
+            .append($('#' + options.whatImageId))
+            .appendTo(blocks[0]);
+        var display = $('<div></div>')
             .css({
                 backgroundColor: '#000000',
                 bottom: 0,
@@ -422,309 +505,266 @@ google.setOnLoadCallback(function()
                 opacity: 0,
                 position: 'absolute',
                 width: 400
-            })       
+            })
             .appendTo(picture);
-        $('.' + options.smallPicClass).each(function(index)
+
+        $('.' + options.smallPicClass).each(function()
         {
             $(this).css({
                 float: 'left',
-                margin: 5                
+                margin: 5
             })         
-            .appendTo(picture_display);
+            .appendTo(display);
         });
-        titles.eq(1).appendTo($('#' + options.aboutId));
-        var secondBlock = $('<div></div>')
+
+        $('<div></div>')
             .css({
-                backgroundColor: 'yellow',
+                backgroundColor: 'blue',
+                float: 'left',
                 height: 500,
-                width:  750
+                width: 350
             })
-            .appendTo($('#' + options.aboutId));
-        titles.eq(2).appendTo($('#' + options.aboutId));
-    };    
+            .appendTo(blocks[0])
+            .append($('#' + options.introduceId));
 
-    $.extend({
-        random: function(min, max)
+        $('#' + options.aboutId + ' .' + options.titleClass)
+            .appendTo($('#' + options.aboutId))
+            .each(function(index)
+            {
+                blocks[index].insertAfter($(this));
+            });
+    };
+})(jQuery);
+
+/**
+ * Highlight
+ */
+(function($)
+{
+    $.fn.highlight = function(color, duration)
+    {
+        var original = this.css('background-color');
+        this.stop().css("background-color", color || '#FFFF9C').animate({
+            backgroundColor: original
+        }, duration || 1000);
+    };
+})(jQuery);
+
+/**
+ * Scrollable
+ */
+(function($)
+{
+    $.fn.scrollable = function(options)
+    {
+        return this.each(function()
         {
-            return Math.floor(Math.random() * (max - min + 1) + min);
-        },
-        cookie: function(key, value, settings)
-        {
+            var active = false;
+            var inside = false;
             var options = $.extend({
-            }, settings);
-
-            if (
-                arguments.length > 1
-             && (
-                 ! /Object/.test(Object.prototype.toString.call(value))
-              || value === null
-              || value === undefined
-                )
-            ) {
-                if ( value === null || value === undefined ) options.expires = -1;
-
-                if ( typeof options.expires === 'number' )
+                scrollableClass:        false,
+                fadeInDuration:         'slow',
+                fadeOutDuration:        'slow',
+            }, options);
+            var scrollContainer = $('<div></div>')
+                .addClass('scroll-container')
+                .css({
+                    height: $(this).outerHeight(),
+                    width: $(this).outerWidth()
+                })
+                .mouseenter(function()
                 {
-                    var days = options.expires;
-                    var t = options.expires = new Date();
-                    t.setDate(t.getDate() + days);
-                }
-
-                value = String(value);
-
-                return (document.cookie = [
-                    encodeURIComponent(key),
-                    '=',
-                    options.raw
-                  ? value
-                  : encodeURIComponent(value),
-                    options.expires
-                  ? '; expires=' + options.expires.toUTCString()
-                  : '',
-                    options.path
-                  ? '; path=' + options.path
-                  : '',
-                    options.domain
-                  ? '; domain=' + options.domain
-                  : '',
-                    options.secure
-                  ? '; secure'
-                  : ''
-                ].join(''));
-            }
-
-            var decode = options.raw ? function(raw)
-            {
-                return raw;
-            } : decodeURIComponent;
-
-            var pairs = document.cookie.split('; ');
-
-            options = value || {};
-
-            for ( var i = 0, pair ; pair = pairs[i] && pairs[i].split('=') ; ++i )
-            {
-                if ( decode(pair[0]) === key ) return decode(pair[1] || '');
-            }
-
-            return null;
-        },
-        integer: function(value)
-        {
-            return parseInt(value, 10);
-        }
-    });
-
-    $.fn.extend({
-        highlight: function(color, duration)
-        {
-            var original = this.css('background-color');
-            this.stop().css("background-color", color || '#FFFF9C').animate({
-                backgroundColor: original
-            }, duration || 1000);
-        },
-        scrollable: function(settings)
-        {
-            return this.each(function()
-            {
-                var active = false;
-                var inside = false;
-                var options = $.extend({
-                    scrollableClass:        false,
-                    fadeInDuration:         'slow',
-                    fadeOutDuration:        'slow',
-                }, settings);
-                var scrollContainer = $('<div></div>')
-                    .addClass('scroll-container')
-                    .css({
-                        height: $(this).outerHeight(),
-                        width: $(this).outerWidth()
-                    })
-                    .mouseenter(function()
+                    scrollBar
+                        .stop(true, true)
+                        .fadeIn(options.fadeInDuration);
+                    inside = true;
+                })
+                .mouseleave(function()
+                {
+                    if ( ! active )
                     {
                         scrollBar
                             .stop(true, true)
-                            .fadeIn(options.fadeInDuration);
-                        inside = true;
-                    })
-                    .mouseleave(function()
+                            .fadeOut(options.fadeInDuration);
+                    }
+                    inside = false;
+                })
+                .insertAfter($(this));
+            var scrollArea = $('<div></div>')
+                .addClass('scroll-area')
+                .insertBefore($(this))
+                .wrapInner($(this))
+                .appendTo(scrollContainer);
+            var scrollBar = $('<div></div>')
+                .addClass('scroll-bar')
+                .insertAfter(scrollArea);
+            var scrollTrack = $('<div></div>')
+                .addClass('scroll-track')
+                .appendTo(scrollBar);
+            var scrollDragable = $('<div></div>')
+                .addClass('scroll-dragable')
+                .css({
+                    height: scrollArea.height() - scrollContainer.height()
+                })
+                .mousedown(function(event)
+                {
+                    var y = event.screenY;
+                    var scroll = $(this);
+                    var top = $.integer(scroll.css('top'));
+                    var stop = function()
                     {
-                        if ( ! active )
+                        $('html')
+                            .unbind('mouseup', stop)
+                            .unbind('mousemove', update);
+                        if ( ! inside )
                         {
-                            scrollBar
-                                .stop(true, true)
+                            scrollBar.stop(true, true)
                                 .fadeOut(options.fadeInDuration);
                         }
-                        inside = false;
-                    })
-                    .insertAfter($(this));
-                var scrollArea = $('<div></div>')
-                    .addClass('scroll-area')
-                    .insertBefore($(this))
-                    .wrapInner($(this))
-                    .appendTo(scrollContainer);
-                var scrollBar = $('<div></div>')
-                    .addClass('scroll-bar')
-                    .insertAfter(scrollArea);
-                var scrollTrack = $('<div></div>')
-                    .addClass('scroll-track')
-                    .appendTo(scrollBar);
-                var scrollDragable = $('<div></div>')
-                    .addClass('scroll-dragable')
-                    .css({
-                        height: scrollArea.height() - scrollContainer.height()
-                    })
-                    .mousedown(function(event)
+                        active = false;
+                    };
+                    var update = function(event)
                     {
-                        var y = event.screenY;
-                        var scroll = $(this);
-                        var top = $.integer(scroll.css('top'));
-                        var stop = function()
-                        {
-                            $('html')
-                                .unbind('mouseup', stop)
-                                .unbind('mousemove', update);
-                            if ( ! inside )
-                            {
-                                scrollBar.stop(true, true)
-                                    .fadeOut(options.fadeInDuration);
-                            }
-                            active = false;
-                        };
-                        var update = function(event)
-                        {
-                            var maximun = (
+                        var maximun = (
+                            scrollContainer.height()
+                          - scroll.height()
+                          );
+                        var position = top + event.screenY - y;
+                        var scale = (
+                                scrollArea.height()
+                              - scrollContainer.height()
+                            ) / (
                                 scrollContainer.height()
                               - scroll.height()
-                              );
-                            var position = top + event.screenY - y;
-                            var scale = (
-                                    scrollArea.height()
-                                  - scrollContainer.height()
-                                ) / (
-                                    scrollContainer.height()
-                                  - scroll.height()
-                                ) * -1;
-                            if ( position <= 0 ) position = 0;
-                            if ( position >= maximun ) position = maximun;
-                            scroll.css({
-                                top: position
-                            });
-                            scrollArea.css({
-                                top: position * scale
-                            });
-                        };
-                        $('html')
-                            .bind('mouseup', stop)
-                            .bind('mouseleave', stop)
-                            .bind('mousemove', update);
-                        active = true;
-                        return false;
-                    })
-                    .appendTo(scrollTrack);
-                if ( options.scrollableClass )
+                            ) * -1;
+                        if ( position <= 0 ) position = 0;
+                        if ( position >= maximun ) position = maximun;
+                        scroll.css({
+                            top: position
+                        });
+                        scrollArea.css({
+                            top: position * scale
+                        });
+                    };
+                    $('html')
+                        .bind('mouseup', stop)
+                        .bind('mouseleave', stop)
+                        .bind('mousemove', update);
+                    active = true;
+                    return false;
+                })
+                .appendTo(scrollTrack);
+            if ( options.scrollableClass )
+            {
+                scrollContainer.addClass(options.scrollableClass);
+            }
+        });
+    };
+})(jQuery);
+
+/**
+ * Marquee
+ */
+(function($)
+{
+    $.fn.marquee = function(options)
+    {
+        return this.each(function()
+        {
+            var options = $.extend({
+                speed:                  1000,
+                duration:               500
+            }, options);
+            var items = $(this).children('li');
+            var animation = function()
+            {
+                var position = $.integer(items.css('top')) - items.height();
+                if ( position <= -1 * items.length * items.height() )
                 {
-                    scrollContainer.addClass(options.scrollableClass);
+                    position = 0;
                 }
-            });
-        },
-        marquee: function(settings)
-        {
-            return this.each(function()
+                items.animate({
+                    top: position
+                }, options.duration);
+            };
+            var timer = setInterval(animation, options.speed);
+
+            $(this).hover(function()
             {
-                var options = $.extend({
-                    speed:                  1000,
-                    duration:               500
-                }, settings);
-                var items = $(this).children('li');
-                var animation = function()
-                {
-                    var position = $.integer(items.css('top')) - items.height();
-                    if ( position <= -1 * items.length * items.height() )
-                    {
-                        position = 0;
-                    }
-                    items.animate({
-                        top: position
-                    }, options.duration);
-                    timer = setTimeout(arguments.callee, options.speed);
-                };
-                var timer = setTimeout(animation, options.speed);
-
-                $(this).hover(function()
-                {
-                    clearTimeout(timer);
-                }, function()
-                {
-                    timer = setTimeout(animation, options.speed);
-                });
-
-                items.css({
-                    top: 0
-                });
-            });
-        },
-        star: function(settings)
-        {
-            return this.each(function()
+                clearInterval(timer);
+            }, function()
             {
-                var options = $.extend({
-                    speed:                  2000,
-                    minDensity:             0.02,
-                    maxDensity:             0.05,
-                    minSize:                1,
-                    maxSize:                3,
-                    backgroundColor:        '#FFFFFF'
-                }, settings);
-                var width = $(document).width();
-                var height = $(this).height();
-                var number = $.random(
-                    width * options.minDensity,
-                    width * options.maxDensity
-                );
-                var object = $(this);
-                var generator = function()
-                {
-                    object.children('span').remove();
-                    for ( var n = 0 ; n < number ; ++n )
-                    {
-                        var x = $.random(0, width);
-                        var y = $.random(0, height);
-                        var s = $.random(options.minSize, options.maxSize);
-
-                        $('<span></span>').css({
-                            WebkitBorderRadius: s,
-                            borderRadius: s,
-                            background: options.backgroundColor,
-                            height: s,
-                            left: x,
-                            position: 'absolute',
-                            top: y,
-                            width: s
-                        }).prependTo(object);
-                    }
-                    setTimeout(arguments.callee, options.speed);
-                };
-                setTimeout(generator, 0);
+                timer = setInterval(animation, options.speed);
             });
-        },
-    });
 
+            items.css({
+                top: 0
+            });
+        });
+    };
+})(jQuery);
+
+/**
+ * Star
+ */
+(function($)
+{
+    $.fn.star = function(options)
+    {
+        return this.each(function()
+        {
+            var options = $.extend({
+                speed:                  2000,
+                minDensity:             0.02,
+                maxDensity:             0.05,
+                minSize:                1,
+                maxSize:                3,
+                backgroundColor:        '#FFFFFF'
+            }, options);
+            var width = $(document).width();
+            var height = $(this).height();
+            var number = $.random(
+                width * options.minDensity,
+                width * options.maxDensity
+            );
+            var object = $(this);
+            var generator = function()
+            {
+                object.children('span').remove();
+                for ( var n = 0 ; n < number ; ++n )
+                {
+                    var x = $.random(0, width);
+                    var y = $.random(0, height);
+                    var s = $.random(options.minSize, options.maxSize);
+
+                    $('<span></span>').css({
+                        WebkitBorderRadius: s,
+                        borderRadius: s,
+                        background: options.backgroundColor,
+                        height: s,
+                        left: x,
+                        position: 'absolute',
+                        top: y,
+                        width: s
+                    }).prependTo(object);
+                }
+                setTimeout(arguments.callee, options.speed);
+            };
+            setTimeout(generator, 0);
+        });
+    };
+})(jQuery);
+
+/**
+ * Main
+ */
+(function($)
+{
     $(document).ready(function()
     {
         $.configures.lasttime = 0;
 
         $.configures.sequence = $.random(0, 1000);
-
-        if ( $.configures.facebookEnable )
-        {
-            $('<script></script>')
-                .attr('id', 'facebook-jssdk')
-                .attr('async', 'async')
-                .attr('type', 'text/javascript')
-                .attr('src', '//connect.facebook.net/zh_TW/all.js')
-                .insertBefore($('script').first());
-        }
 
         if ( $('#header') ) $('#header').star();
 
@@ -740,7 +780,7 @@ google.setOnLoadCallback(function()
             return false;
         });
 
-        $('form input').each(function()
+        $('form input, form textarea').each(function()
         {
             var input = $(this);
             var label = $('label[for="' + $(this).attr('id') + '"]');
@@ -890,7 +930,6 @@ google.setOnLoadCallback(function()
 		$('#haha1').click(function()
         {
 			var url = 'index.html';
-			// alert(url);
 			$.ajax(
             {
 				type: 'GET',
@@ -906,11 +945,11 @@ google.setOnLoadCallback(function()
 				},
 			});	
 			return false;
-		});		
+		});
+
 		$('#haha2').click(function()
         {
 			var url = 'index.html';
-			// alert(url);
 			$.ajax(
             {
 				type: 'GET',
@@ -931,8 +970,28 @@ google.setOnLoadCallback(function()
         $.pull.start();
     });
 
+    google.load('search', '1', {
+         language: 'zh_TW'
+    });
+
+    google.setOnLoadCallback(function()
+    {
+        google.search.CustomSearchControl.attachAutoCompletion(
+            $.configures.googleSearchAppId,
+            document.getElementById('form-search-query'),
+            'search'
+        );
+    });
+
     if ( $.configures.facebookEnable )
     {
+        $('<script></script>')
+            .attr('id', 'facebook-jssdk')
+            .attr('async', 'async')
+            .attr('type', 'text/javascript')
+            .attr('src', '//connect.facebook.net/zh_TW/all.js')
+            .insertBefore($('script').first());
+
         window.fbAsyncInit = function()
         {
             var like = $('<div></div>')

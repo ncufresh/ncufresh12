@@ -9,25 +9,31 @@
         });
 	});
 </script>
-<h2>編輯文章</h2>
+<h1>編輯文章</h1>
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('news/update', array('id'=>$news->id) ); ?>" method="POST" class="MultiFile-intercepted">
-標題<input type="text" name="news[title]" value="<?php echo $news->title; ?>"/><br />
-內容<textarea name="news[content]" id="news-form-content" cols="30" rows="10"><?php echo $news->content; ?></textarea><br />
-<?php if ( ! empty($news->urls) ) : ?>
-<h3>相關連結</h3>
-<?php endif; ?>
-<?php foreach ( $news->urls as $url ) : ?>
-    <a href="<?php echo $url->link; ?>" title="<?php echo $url->name; ?>"><?php echo $url->name; ?></a>
-<?php endforeach; ?>
+	<dl>
+		<dt><label for="form-news-title">標題</label></dt>
+		<dd><input id="form-news-title" type="text" name="news[title]" value="<?php echo $news->title; ?>"/></dd>
+	</dl>
+	<dl>
+		<dt><label for="form-news-content">內容</label></dt>
+		<dd><textarea id="form-news-content" name="news[content]" id="news-form-content" cols="30" rows="10"><?php echo $news->content; ?></textarea></dd>
+	</dl>
+	<?php if ( ! empty($news->urls) ) : ?>
+	<p>相關連結</p>
+	<?php endif; ?>
+	<?php foreach ( $news->urls as $url ) : ?>
+		<a href="<?php echo $url->link; ?>" title="<?php echo $url->name; ?>"><?php echo $url->name; ?></a>
+	<?php endforeach; ?>
 
-<?php if ( ! empty($files) ) : ?>
-<h3>附加檔案</h3>
-<?php endif; ?>
-<?php foreach ( $files as $filename => $file_url ) : ?>
-    <a href="<?php echo $file_url; ?>" title="<?php echo $filename; ?>"><?php echo $filename; ?></a>
-<?php endforeach; ?>
-<button type="submit">發佈</button>
-<button class="news-cancel-button">取消</button>
-<input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
+	<?php if ( ! empty($files) ) : ?>
+	<p>附加檔案</p>
+	<?php endif; ?>
+	<?php foreach ( $files as $filename => $file_url ) : ?>
+		<a href="<?php echo $file_url; ?>" title="<?php echo $filename; ?>"><?php echo $filename; ?></a>
+	<?php endforeach; ?>
+	<button type="submit">發佈</button>
+	<button class="news-cancel-button">取消</button>
+	<input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
 </form>
 <div class="news-dialog"></div>
