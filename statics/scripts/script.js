@@ -103,7 +103,7 @@
         )
         {
             deltaY = 0;
-            deltaX = -1*delta;
+            deltaX = -1 * delta;
         }
 
         if ( orgEvent.wheelDeltaY !== undefined )
@@ -736,11 +736,13 @@
                 .addClass('scroll-container')
                 .mouseenter(function()
                 {
+                    var height = scrollArea.height() - scrollContainer.height();
+                    if ( height <= 0 ) height = scrollContainer.height();
                     scrollBar
                         .stop(true, true)
                         .fadeIn(options.fadeInDuration);
                     scrollDragable.css({
-                        height: scrollArea.height() - scrollContainer.height()
+                        height: height
                     })
                     inside = true;
                 })
