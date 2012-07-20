@@ -796,8 +796,15 @@
                 .addClass('scroll-container')
                 .mouseenter(function()
                 {
-                    var height = scrollArea.height() - scrollContainer.height();
-                    if ( height <= 0 ) height = scrollContainer.height();
+                    var scrollAreaHeight = scrollArea.height();
+                    var scrollContainerHeight = scrollContainer.height();
+                    var height = 0;
+                    if ( scrollAreaHeight > scrollContainerHeight )
+                    {
+                        height = scrollContainerHeight
+                               * scrollContainerHeight
+                               / scrollAreaHeight;
+                    }
                     scrollBar
                         .stop(true, true)
                         .fadeIn(options.fadeInDuration);
@@ -909,7 +916,7 @@
         return this.each(function()
         {
             var options = $.extend({
-                speed:                  1000,
+                speed:                  2000,
                 duration:               500
             }, options);
             var items = $(this).children('li');
