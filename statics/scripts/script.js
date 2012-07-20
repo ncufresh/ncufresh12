@@ -879,6 +879,146 @@
             onlinecounter: $('#header .online'),
             browseredcounter: $('#header .browsered')
         });
+
+        $(".news-cancel-button").click(function()
+        {
+            var dialog = $('.news-dialog');
+            dialog.text('確定取消編輯此篇文章？')
+                .dialog({
+                    buttons: { 
+                        "是": function()
+                        {
+                            location = $.configures.newsAdminUrl;
+                        }, 
+                        "否": function()
+                        {
+                            dialog.dialog('close');
+                        }
+                    },
+                    dialogClass: 'news-dialog-warp',
+                });      
+            return false;
+        });
+
+        $('.news-delete-link').click(function()
+        {
+            var link = $(this).attr('href');
+            var dialog = $('.news-dialog');
+            dialog.text('確定刪除此篇文章？')
+                .dialog({
+                    buttons: { 
+                        "是": function()
+                        {
+                            location = link;
+                        }, 
+                        "否": function()
+                        {
+                            dialog.dialog('close');
+                        }
+                    },
+                    dialogClass: 'news-dialog-warp',
+                });   
+            return false;
+        });
+
+        $('.news-back-link').click(function()
+        {
+            window.location = decodeURIComponent($.configures.newsIndexUrl);
+            return false;
+        });
+
+        $('#mm-menu a').each(function(index, element)
+        {
+            var youtube_img_src = 'http://img.youtube.com/vi/:id/0.jpg';
+            var video_img_id = $(this).attr('href').substr(1);
+            var video_title = $('<span></span>').text($(this).text());
+            var video_img = $('<img />')
+                .attr('src', youtube_img_src.replace(':id', video_img_id));
+            $(this).html(video_title).append(video_img);
+        });
+
+        $('#mm-menu-items').css('height', $('#mm-menu a').length * $('#mm-menu a').first().css('height'));
+        
+        $('#mm-menu a').click(function()
+        {
+            var url = $.configures.multimediaYoutubeUrl.replace(':id', $(this).attr('href').substr(1));
+            $('#mm-video-frame').attr('src', url);
+            return false;
+        });
+        $('#mm-menu a').eq($.random(0, $('#mm-menu a').length - 1)).click();
+
+        var srcoll_offset = 10;
+        mmMenuScroll.margin_top_max = 0;
+        mmMenuScroll.margin_top_min = parseInt($('#mm-menu').css('height')) - parseInt($('#mm-menu-items').css('height'));
+
+        $('.mm-menu-up').mouseenter(function()
+        {
+            mmMenuScroll.mousein = true;
+            mmMenuScroll(srcoll_offset);
+        }).mouseleave(function()
+        {
+            mmMenuScroll.mousein = false;
+        });
+
+        $('.mm-menu-down').mouseenter(function()
+        {
+            mmMenuScroll.mousein = true;
+            mmMenuScroll(-1 * srcoll_offset);
+        }).mouseleave(function()
+        {
+            mmMenuScroll.mousein = false;
+        });
+
+		$('.nculife-food .dialog').click(function()
+        {
+			$('#nculife-dialog').dialog(
+            {
+				dialogClass: 'nculife-dialog',
+				height: 500,
+				width: 700,
+				modal: true,
+				show: 
+                {
+                    effect: 'explode',
+                    direction: 'down'
+                }
+			});
+	
+		});
+
+        $('.life-tab').click(function(){
+            var url = 'index.html';
+            var id = $(this).attr('href').replace('#','');
+			$.ajax(
+            {
+				type: 'GET',
+				url: '/ncufresh12/nculife/foodContent.html',
+				data:
+                {
+					id: id
+				},
+				dataType: 'json',
+				success: function(data)
+                { 
+					$('#nculife-cv').html(data.content);
+				},
+			});
+			$.ajax(
+            {
+				type: 'GET',
+				url: '/ncufresh12/nculife/foodContent.html',
+				data:
+                {
+					id: id
+				},
+				dataType: 'json',
+				success: function(data)
+                { 
+					$('#nculife-ct').html(data.content);
+				},
+			});	
+        });
+        $.pull.start();
     });
 
     google.load('search', '1', {
