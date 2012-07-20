@@ -327,7 +327,7 @@ google.setOnLoadCallback(function()
     {
         options = $.extend({
             horizontalFrames:       4,
-            verticalFrames:         4,
+            verticalFrames:         4, 
             FrameXDimension:        128,
             FrameYDimension:        128,
             interval:               100
