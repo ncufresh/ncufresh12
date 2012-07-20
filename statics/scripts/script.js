@@ -79,7 +79,8 @@
 /**
  * Mousewheel
  */
-(function($) {
+(function($)
+{
     var types = ['DOMMouseScroll', 'mousewheel'];
 
     var handler = function(event) {
@@ -103,7 +104,7 @@
         )
         {
             deltaY = 0;
-            deltaX = -1*delta;
+            deltaX = -1 * delta;
         }
 
         if ( orgEvent.wheelDeltaY !== undefined )
@@ -177,10 +178,17 @@
 {
     $.pull = {};
 
-    $.pull.interval = 5000;
+    $.pull.options = {
+        onlinecounter:          null,
+        browseredcounter:       null,
+        counterAnimationSpeed:  30,
+        minimumAnimationTimes:  4,
+        interval:               5000
+    };
 
-    $.pull.start = function()
+    $.pull.start = function(options)
     {
+        $.pull.options = $.extend($.pull.options, options);
         $.getJSON(
             $.configures.pullUrl,
             {
@@ -189,6 +197,35 @@
             function(response)
             {
                 $.configures.lasttime = response.lasttime;
+                if ( response.counter )
+                {
+                    if ( $.pull.options.onlinecounter )
+                    {
+                        $.pull.options.onlinecounter.text(
+                            response.counter.online
+                        );
+                    }
+                    if ( $.pull.options.browseredcounter )
+                    {
+                        var browsered = response.counter.browsered;
+                        var current = $.integer(
+                            $.pull.options.browseredcounter.text()
+                        );
+                        var timer = setInterval(function()
+                        {
+                            current += $.random(
+                                1,
+                                browsered / $.pull.options.minimumAnimationTimes
+                            );
+                            if ( current >= browsered )
+                            {
+                                current = browsered;
+                                clearInterval(timer);
+                            }
+                            $.pull.options.browseredcounter.text(current);
+                        }, $.pull.options.counterAnimationSpeed);
+                    }
+                }
                 if ( response.friends )
                 {
                     $.fn.chat.updateFriendList(response.friends);
@@ -203,7 +240,7 @@
                 }
             }
         );
-        $.pull.timer = setTimeout(arguments.callee, $.pull.interval);
+        $.pull.timer = setTimeout(arguments.callee, $.pull.options.interval);
     };
 
     $.pull.pause = function()
@@ -213,7 +250,7 @@
 
     $.pull.restart = function()
     {
-        $.pull.timer = setTimeout($.pull.start, $.pull.interval);
+        $.pull.timer = setTimeout($.pull.start, $.pull.options.interval);
     };
 })(jQuery);
 
@@ -577,11 +614,13 @@
                 .addClass('scroll-container')
                 .mouseenter(function()
                 {
+                    var height = scrollArea.height() - scrollContainer.height();
+                    if ( height <= 0 ) height = scrollContainer.height();
                     scrollBar
                         .stop(true, true)
                         .fadeIn(options.fadeInDuration);
                     scrollDragable.css({
-                        height: scrollArea.height() - scrollContainer.height()
+                        height: height
                     })
                     inside = true;
                 })
@@ -829,7 +868,10 @@
             }
         });
 
-        $.pull.start();
+        $.pull.start({
+            onlinecounter: $('#header .online'),
+            browseredcounter: $('#header .browsered')
+        });
     });
 
     google.load('search', '1', {
