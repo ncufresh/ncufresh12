@@ -5,7 +5,14 @@ jQuery(document).ready(function()
 });
 </script>
 
-<div id="index-calendar">行事曆</div>
+<div id="index-calendar">
+    <div class="calendar-top">
+        <a href="#" id="calendar-all"></a>
+        <a href="#" id="calendar-personal"></a>
+    </div>
+    <div class="calendar-bottom">
+    </div>
+</div>
 
 <div id="index-container">
     <ul id="marquee">

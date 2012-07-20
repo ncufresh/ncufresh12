@@ -714,6 +714,48 @@ input.gsc-search-button:focus
     width: 30%;
 }
 
+#index-calendar .calendar-top
+{
+    width: 204px;
+    height: 85px;
+    background: url('../images/calendar_top2.png');
+}
+
+#index-calendar .calendar-top .login
+{
+    background: url('../images/calendar_top.png');
+}
+
+#index-calendar .calendar-top .personal
+{
+    background: url('../images/calendar_top3.png');
+}
+
+#index-calendar .calendar-bottom
+{
+    width: 204px;
+    height: 349px;
+    background: url('../images/calendar_content.png');
+}
+
+#index-calendar a{
+    margin-top: 51px;
+    height: 33px;
+    width: 102px;
+    float: left;
+    display: inline-block;
+}
+
+#index-calendar a#calendar-all
+{
+    
+}
+
+#index-calendar a#calendar-persional
+{
+    
+}
+
 #index-container
 {
     float: right;
