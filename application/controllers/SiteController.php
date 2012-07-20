@@ -231,20 +231,34 @@ class SiteController extends Controller
         $this->layout = false;
     }
 
-    /*define('USER_IMAGE', 'avatars/'); // 預設路徑名稱*/
     public function actionRegister()
     {
+        $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         if ( isset($_POST['register']) && isset($_POST['profile']) ) 
         {
             $user = new User();
             $user->attributes = $_POST['register'];
-            
             if ( $user->validate() )
             {
                 $profile = new Profile();
                 $profile->attributes = $_POST['profile'];
                 $profile->department_id = $_POST['profile']['department'];
                 $profile->grade = $_POST['profile']['grade'];
+                $profile->picture = $_FILES['picture']['name'];
+                $target = $path . DIRECTORY_SEPARATOR . $profile->picture;
+                move_uploaded_file($_FILES['picture']['tmp_name'], $target);
+                $picture_size=$_FILES['picture']['size'];
+                $picture_type=$_FILES['picture']['type'];
+                /*if(is_file($path.$profile->picture)&&filesize($path.$profile->picture)>0)
+                {
+                    echo '成功咯';
+                    echo '<img src="'.$path.$profile->picture.'" alt="Score image"/>';
+                }
+                else
+                {
+                    echo '失敗咯';
+                    echo '<img src="'.$path.'image1.jpg" alt="Unverified" />';
+                }*/
                 if ( $profile->validate() )
                 {
                     if ( $user->save() )
@@ -257,20 +271,12 @@ class SiteController extends Controller
                     }
                 }
             }
-            // 有問題的時候 上傳圖片
-           /* $profile->picture = $_FILES['picture']['name'];
-            $target = USER_IMAGE.$profile; //儲存檔案的目的地
-            move_uploaded_file($_FILES['picture']['tmp_name'],$target);
-            $picture_size=$_FILES['picture']['size'];
-            $picture_type=$_FILES['picture']['type'];
-            if(is_file(USER_IMAGE.$row['picture'])&&filesize(USER_IMAGE.$row['picture'])>0)
-                echo '<img src="'.USER_IMAGE.$row['picture'].'" alt="Score image"/>';
-            else
-                echo '<img src="'.USER_IMAGE.'6196.jpg" alt="Unverified" />';*/
+            
+            
         }
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('register', array(
-            'departments'  => Department::model()->getDepartment() //取得所有系所
+            'departments'  => Department::model()->getDepartment() 
         ));
     }
 }

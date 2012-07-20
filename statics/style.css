@@ -11,7 +11,7 @@ textarea
 
 body
 {
-    background: #DCE4ED url('../images/header.png') repeat-x;
+    background: #DCE4ED url('header.png') repeat-x;
     margin: 0 auto;
     overflow-y: scroll;
     width: 1000px;
@@ -22,9 +22,12 @@ form
 	margin: 0;
 }
 
+form dl,
 form dt,
 form dd
 {
+    margin: 0;
+    height: 24px;
     width: 100%;
 }
 
@@ -39,7 +42,6 @@ form dt
 {
     clear: left;
     float: left;
-    height: 24px;
     margin-left: 6px;
     width: 85%;
 }
@@ -49,7 +51,6 @@ form dd
     clear: right;
     float: right;
     margin-top: -26px;
-    overflow: hidden;
 }
 
 form input,
@@ -58,30 +59,33 @@ form textarea
     font-size: 0.85em;
 }
 
-form input,
-form textarea,
-form button
+form input
 {
     -webkit-border-radius: 5px;
-    background: #FFFFFF;
     border: none;
     border-radius: 5px;
     height: 16px;
     padding: 4px 8px;
 }
 
-form textarea
-{
-    height: 160px;
-}
-
 form button
 {
+    background: #FFFFFF;
+    border: none;
+    border-radius: 5px;
     height: 24px;
+    padding: 4px 8px;
 }
 
-form input:focus,
-form textarea:focus
+form textarea
+{
+    -webkit-border-radius: 5px;
+    border: none;
+    border-radius: 5px;
+    padding: 4px 8px;
+}
+
+form input:focus
 {
     position: relative;
 }
@@ -120,7 +124,7 @@ a:hover
 
 .loading
 {
-    background: url('../images/loading.png');
+    background: url('loading.png');
     height: 128px;
     width: 128px;
 }
@@ -170,7 +174,7 @@ a:hover
  */
 #logo
 {
-    background: url('../images/logo.png') no-repeat;
+    background: url('logo.png') no-repeat;
     height: 160px;
     margin-left: 15px;
     position: absolute;
@@ -201,12 +205,12 @@ a:hover
 
 #header .online
 {
-    background: url('../images/online.png') no-repeat;
+    background: url('online.png') no-repeat;
 }
 
 #header .browsered
 {
-    background: url('../images/browsered.png') no-repeat;
+    background: url('browsered.png') no-repeat;
 }
 
 #tab
@@ -238,7 +242,7 @@ a:hover
 
 #navigation
 {
-    background: url('../images/navigation.png') no-repeat;
+    background: url('navigation.png') no-repeat;
     list-style: none;
     margin: 160px 0 0 0;
     overflow: hidden;
@@ -276,7 +280,7 @@ a:hover
 
 #footer
 {
-    background: url('../images/footer.png');
+    background: url('footer.png');
     clear: both;
     height: 120px;
 }
@@ -359,12 +363,12 @@ a:hover
 
 #form-sidebar-login
 {
-    background: url('../images/login.png');
+    background: url('login.png');
 }
 
 #form-sidebar-register
 {
-    background: url('../images/register.png');
+    background: url('register.png');
 }
 
 /**
@@ -372,7 +376,7 @@ a:hover
  */
 #chat
 {
-    background: url('../images/chat.png') 0 5px no-repeat;
+    background: url('chat.png') 0 5px no-repeat;
     bottom: 0;
     cursor: pointer;
     height: 120px;
@@ -444,7 +448,7 @@ a:hover
 	width: 136px;
 	height: 20px;
 	padding: 0 0 0 20px;
-	background: url('../images/friend_list_search.png') no-repeat;
+	background: url('friend_list_search.png') no-repeat;
 }
 
 #chat-friend-list .friend-list-entry
@@ -466,6 +470,7 @@ a:hover
     height: 200px;
     margin-right: 10px;
     opacity: 0.9;
+    overflow-x: hidden;
     position: fixed;
     width: 160px;
 }
@@ -480,7 +485,7 @@ a:hover
 
 .chat-dialog .chat-title span
 {
-	background: url('../images/chat_online.png') no-repeat;
+	background: url('chat_online.png') no-repeat;
 	display: block;
 	float: left;
 	height: 16px;
@@ -490,7 +495,7 @@ a:hover
 
 .chat-dialog .chat-title span.offline
 {
-	background: url('../images/chat_offline.png') no-repeat;
+	background: url('chat_offline.png') no-repeat;
 }
 
 .chat-dialog .chat-title p
@@ -505,7 +510,7 @@ a:hover
 
 .chat-dialog .chat-title button
 {
-	background: url('../images/chat_close.png') 50% 50% no-repeat;
+	background: url('chat_close.png') 50% 50% no-repeat;
 	border: 0;
 	float: right;
 	height: 16px;
@@ -516,23 +521,16 @@ a:hover
 
 .chat-dialog .chat-title button:hover
 {
-	background: white url('../images/chat_close.png') 50% 50% no-repeat;
+	background: white url('chat_close.png') 50% 50% no-repeat;
 	cursor: pointer;
-}
-
-.chat-dialog .scroll-container
-{
-    height: 150px;
-}
-
-.chat-dialog .scroll-area
-{
-    margin: -3px 0;
-    width: 160px;
 }
 
 .chat-dialog .chat-display
 {
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: -3px 0;
 	padding: 0 5px;
     width: 150px;
 }
@@ -596,7 +594,7 @@ input.gsc-search-button:focus
 
 #search button
 {
-    background: url('../images/search_box_icon.png') no-repeat;
+    background: url('search_box_icon.png') no-repeat;
     border: none;
     cursor: pointer;
     float: right;
@@ -690,7 +688,7 @@ input.gsc-search-button:focus
 
 #marquee span
 {
-    background: url('../images/marquee_star_icon.png') no-repeat;
+    background: url('marquee_star_icon.png') no-repeat;
     display: block;
     height: 50px;
     margin: -15px 0 0 -55px;
@@ -768,7 +766,7 @@ input.gsc-search-button:focus
 
 .index-latest-box h4
 {
-    background: url('../images/index_latest_icon.png') no-repeat;
+    background: url('index_latest_icon.png') no-repeat;
 }
 
 .index-forums-box
@@ -779,7 +777,7 @@ input.gsc-search-button:focus
 
 .index-forums-box h4
 {
-    background: url('../images/index_forums_icon.png') no-repeat;
+    background: url('index_forums_icon.png') no-repeat;
 }
 
 .news-dialog-warp
@@ -897,14 +895,13 @@ input.gsc-search-button:focus
 {
     background: #000000;
     height: 400px;
-    position: relative;
     width: 100%;
 }
 
 #mm-video .loading
 {
     left: 50%;
-    margin: -64px 0 0 -64px;
+    margin: 32px 0 0 -64px;
     overflow: auto;
     position: absolute;
     top: 50%;
@@ -976,63 +973,75 @@ input.gsc-search-button:focus
 
 #nculife-dh
 {
-	background: pink;
-	width: 400px;
-	height: 25px;
+	background:pink;
+	width:400px;
+	height:25px;
 }
 
 #nculife-db
 {
-    width: 695px;
-    height: 325px;
-	border: solid;
+	background:green;
 }
 
 #nculife-cv
 {
-	width: 400px;
-	height: 100px;
-	float: left;
-	background: green;
+	width:400px;
+	height:100px;
+	float:left;
+	background:green;
 }
 
 #nculife-ct
 {
-	width: 295px;
-	height: 100px;
-	float: left;
-	background: gray;
+	width:300px;
+	height:100px;
+	float:left;
+	background:gray;
 }
 
 #nculife-dh a
 {
-	width: 50px;
-	height: 50px;
+	width:50px;
+	height:50px;
+	
 }
 
-#linkk li
+#life-test1
 {
-    list-style: none;
-    float: left;
-    width: 100px;
-    height: 50px;
-    background-color: #66CD00;
-    border-right: 1px solid #000;
-        
-    
+    background: url('1.jpg');
+    width: 30px;
+    height: 30px;
+    display: block;
 }
 
-#life-container
+#life-test2
 {
-    position:relative;
+    background: url('2.png');
+    width: 30px;
+    height: 30px;
+    margin-top: -30px;
+    display: block;
 }
 
-#about ul
+#life-test3
 {
-    list-style-type: none;
+    background: url('3.jpg');
+    width: 30px;
+    height: 30px;
+    margin-top: -30px;
+    display:block;
+}
+/**
+ * About style
+ */
+#about #what
+{
+    background-color: yellow;
+    width: 750px;
+    height: 500px;
 }
 
-#about h4
+#about #h1
 {
     float: top;
     background: black;
@@ -1044,116 +1053,139 @@ input.gsc-search-button:focus
     font-size:40px;
 }
 
-#about .block1
+#about #h2
 {
-    background: url('../pp.jpg');
+    float: top;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    text-align: left;
+    margin-left: 10px;
+    font-family: 'Microsoft YaHei Mono';
+    font-size:40px;
 }
 
-#about .block2
+#about #h3
 {
-    background: url('../images/');
+    float: top;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    text-align: left;
+    margin-left: 10px;
+    font-family: 'Microsoft YaHei Mono';
+    font-size:40px;
 }
 
-#about .block3
+#about #what-image
 {
-    background: url('../images/');
+    background: url('about/photo.png') no-repeat;
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 400px;
+    text-align: right;
 }
 
-#about .back
+#about #what-left
 {
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 0;
-    width: 750;
-    height: 400;
+    background-color: blue;
+    width: 350px;
+    height: 500px;
+    float: left;
 }
 
-#about .art
+#about #what-right	
 {
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 0px;
-    width: 50;
-    height: 40;
+    background-color: blue;
+    width: 400px;
+    height: 300px;
+    float: right;
+    position: relative;
 }
 
-#about .pro
+#about #what-rightUp
 {
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 50px;
-    width: 50;
-    height: 40;
+    background-color: white;
+    width: 400px;
+    height: 300px;
 }
 
-#about .vdo
+#about #what-rightDown
 {
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 0;
-    width: 50;
-    height: 40;
-}
-
-#about .des
-{
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 0;
-    width: 50;
-    height: 40;
-}
-
-#about .boss
-{
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 0;
-    width: 50;
-    height: 40;
-}
-
-#about .information
-{
-    
-}
-
-#life-test1
-{
-    background: url('../1.jpg');
-    width: 30px;
-    height: 30px;
-    top: 100px;
-    display: block;
+    background-color: black;
+    width: 400px;
+    height: 50px;
+    bottom: 0px;
     position: absolute;
 }
 
-#life-test2
+#about .what-rightDown-small
 {
-    background: url('../2.png');
-    width: 30px;
-    height: 30px;
-    top: 100px;
-    display: block;
-    position: absolute;
+    background: url('about/small_photo.png');
+    background: white;
+    background-repeat: no-repeat;
+    background-size: 40px 40px; /* NOTE */
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    float: left;
 }
 
-#life-test3
+#about #how
 {
-    background: url('../3.jpg');
-    width: 30px;
-    height: 30px;
-    top: 100px;
-    display: block;
-    position: absolute;
+    background-color: yellow;
+    width: 750px;
+    height: 700px;
 }
 
+#about #how-pic
+{
+    background-color: black;
+    width: 750px;
+    height: 400px;
+}
+
+#about #how-txt
+{
+    background-color: yellow;
+    width: 750px;
+    height: 300px;
+}
+
+#about .how-photo
+{
+    background-color: white;
+    top: 20px;
+    right: 30px;
+    width: 200px;
+    height: 150px;
+    float: none;
+}
+
+#about #who
+{
+    background-color: white;
+    width: 750px;
+    height: 40px;
+}
+
+#about .who-block
+{
+    background-color: blue;
+    width: 150px;
+    height: 40px;
+    float: left;
+}
+
+#about #who_txt
+{
+    background-color: red;
+    width: 750px;
+    height: 400px;
+    float: top;
+}
 /**
  * Facebook style
  */
@@ -1166,9 +1198,9 @@ input.gsc-search-button:focus
 }
 
 /*club style*/
-#club-content
+#content
 {
-
+	width:751px;
 	
 }
 .l1
@@ -1176,67 +1208,6 @@ input.gsc-search-button:focus
 	float:left;
 	width:100 px;
 	height:500 px;
-}
-#club-title
-{
-	font-weight: bold;
-	background-color:yellow;
-}
-#club-all
-{
-	background-color:green;
-
-}
-#club-display
-{
-	float:right;
-	width:600px;
-}
-.club-picture1
-{	
-	background: url('1.jpg');
-    width: 200px;
-    height: 100px;
-    display: block;
-}
-.club-picture2
-{
-	background: url('logo.png');
-	width: 200px;
-    height: 100px;
-    display: block;
-}
-.club-picture3
-{
-	background: url('3.jpg');
-	width: 200 px;
-    height: 100px;
-    display: block;
-}
-.club-picture4
-{
-	background: url('chat.png');
-	width: 200px;
-    height: 100px;
-    display: block;
-}
-#club-underpicture
-{
-	float:left;
-	width:150px;
-	height:700px;
-}
-#club-picture-menu
-{
-	width: 95%;
-    height: 700px;
-    background: skyblue;
-    overflow: hidden;
-}
-#club-menu-items
-{
-	margin-top:5px;
-	width:751px;
 }
 
 #club
@@ -1246,7 +1217,7 @@ input.gsc-search-button:focus
 
 .etmomi
 {
-    background: url('../1.jpg');
+    background: url('1.jpg');
     width:30px;
     height:30px;
     display:block;
@@ -1254,36 +1225,31 @@ input.gsc-search-button:focus
 
 .etmomi:hover
 {
-    background: url('../2.png');
+    background: url('2.PNG');
     width:300px;
     height:300px;
     display:block;
 }
-
 table.other-page
 {
     border:0px;
     width:90%; 
     height=:70%;
 }
-
 .sep-group
 {
     float:left;
 }
-
 .close-group
 {
     float:right;
 }
-
 th.form-friends-sort-title
 {
     font-size:30px;
     align:left;
     color:yellow;
 }
-
 th.form-friends-title
 {
     border:5px solid gray;
@@ -1291,13 +1257,11 @@ th.form-friends-title
     align:left;
     color:yellow;
 }
-
 th.friend-other-page
 {
     color:green;
     font-size:30px;
 }
-
 a.form-friends-title
 {
     align:left;
@@ -1306,20 +1270,14 @@ a.form-friends-title
 
 tr.friends-title
 {
-    /*height:10%;*/
+    height:10%;
+    /*border:5px solid gray;*/
     margin:0px;
 }
 
 td.friends-close-ones
 {
-    height:5%;
-    width:5%;
+    
     margin:0px;
 }
 
-img.user_img
-{
-    height:50%;
-    width:80%;
-<<<<<<< HEAD
-}
