@@ -1,3 +1,4 @@
+
 <?php        
 class  StreetController extends Controller
 {
@@ -13,7 +14,7 @@ class  StreetController extends Controller
         $content[1]='額額額額額額額額額額額額額額額額額額額額額';
         $content[2]='嗚嗚嗚嗚嗚嗚嗚嗚嗚嗚嗚嗚嗚嗚嗚嗚嗚嗚嗚嗚嗚';
         $this->_data['content'] = $content[$id];       
-        $this->_data['id'] = $id;       
+        $this->_data['id'] = $id;
     }
     
     public function actionStreet() // 街景服務頁

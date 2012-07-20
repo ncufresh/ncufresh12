@@ -1,3 +1,78 @@
+<script type="text/javascript">
+jQuery(document).ready(function()
+{
+    jQuery('.nculife-food .dialog').click(function()
+    {
+        jQuery('#nculife-dialog').dialog(
+        {
+            dialogClass: 'nculife-dialog',
+            height: 500,
+            width: 700,
+            modal: true,
+            show: 
+            {
+                effect: 'explode',
+                direction: 'down'
+            }
+        });
+    });
+
+    $('#haha1').click(function()
+    {
+        var url = 'index.html';
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/ncufresh12/nculife/foodContent.html',
+            data:
+            {
+                id: 1
+            },
+            dataType: 'html',
+            success: function(data)
+            { 
+                $('#nculife-cv').html(data);
+            },
+        });
+        var url = 'index.html';
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/ncufresh12/nculife/foodContent.html',
+            data:
+            {
+                id: 1
+            },
+            dataType: 'html',
+            success: function(data)
+            { 
+                $('#nculife-ct').html(data);
+            },
+        });	
+        return false;
+    });
+
+    $('#haha2').click(function()
+    {
+        var url = 'index.html';
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/ncufresh12/nculife/foodContent.html',
+            data:
+            {
+                id: 2
+            },
+            dataType: 'html',
+            success: function(data)
+            { 
+                $('#nculife-cv').html(data);
+            },
+        });
+        return false;
+    });
+});
+</script>
 <div class="nculife-food">
     食在中央
     <Button class="dialog">校園美食</Button>
@@ -8,8 +83,8 @@
 
     <div id="nculife-dialog" title="Basic modal dialog">
         <div id="nculife-dh">
-            <a href="#" id="haha1">TAB1</a>
-            <a href="#" id="haha2">TAB2</a>
+            <a href="#1" id="haha1" class="life-tab">TAB1</a>
+            <a href="#2" id="haha2" class="life-tab">TAB2</a>
             <a>TAB3</a>
         </div><!-- end nculife-dh -->
         <div id="nculife-db">

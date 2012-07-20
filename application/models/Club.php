@@ -8,7 +8,7 @@ class Club extends CActiveRecord
 
     public function tableName()
     {
-        return '{{club}}';
+        return '{{clubs}}';
     }
 
     public function getClub($clubid)
@@ -16,4 +16,3 @@ class Club extends CActiveRecord
         return $this->findByPk($clubid);
     }
 }
-?>

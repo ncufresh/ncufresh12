@@ -23,10 +23,10 @@ class NculifeController extends Controller
         switch ( $id )
         {
             case 1 : 
-                $this->renderPartial('foodcontent/1');
+                $this->_data['content'] = $this->renderPartial('foodcontent/1', null, true, false);
                 break;
             case 2 :
-                $this->renderPartial('foodcontent/2');
+                $this->_data['content'] = $this->renderPartial('foodcontent/2', null, true, false);
                 break;
         }
     }

@@ -1,6 +1,6 @@
 <?php
 
-class ForumArticle extends CActiveRecord
+class Comment extends CActiveRecord
 {
     public static function model($className = __CLASS__)
     {
@@ -9,20 +9,16 @@ class ForumArticle extends CActiveRecord
 
     public function tableName()
     {
-        return '{{forum_article}}';
+        return '{{forum_comments}}';
     }
-
-    public function getUrl()
-    {
-        return Yii::app()->createUrl('forum/view', array(
-            'fid'   => $this->forum_id,
-            'id'    => $this->id,
-            'title' => $this->title,
-        ));
+    
+    public function relations(){
+        return array('article'=>array(self::BELONGS_TO,'Article','article_id'));
     }
-
+    
     public function beforeSave()
     {
+        //尚未檢查是否所有資料都有填寫
         if ( parent::beforeSave() )
         {
             if ( $this->isNewRecord )
@@ -31,7 +27,7 @@ class ForumArticle extends CActiveRecord
                 $this->author_id = Yii::app()->user->getId();
                 $this->create_time = TIMESTAMP;
             }
-            $this->update_time = TIMESTAMP;
+            //$this->update_time = TIMESTAMP;
             return true;
         }
         return false;

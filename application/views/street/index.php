@@ -338,8 +338,7 @@
     // $('#building').mouseleave(function()
     // {
         // $('#building').attr('src','<?php echo Yii::app()->baseUrl?>/statics/marquee_star_icon.png' );
-    // });
-    
+    // });    
     $('#electricity-5, #electricity-1 ,#electricity-4, #flower,#kon-fu, #tree, #cake, #mose, #street, #computer, #government, #library, #boy-11, #girl-14, #new').click(function()
     {        
         $.getJSON($('#'+$(this).attr('id')).attr('href'), function(data)
@@ -353,7 +352,7 @@
             position: 'absolute',
             background:'gray'
         });
-        return false;    
+        return false;   
     });
     
     // $('#electricity-5').click(function()

@@ -2,8 +2,6 @@
 
 class User extends CActiveRecord
 {
-    public $lastLoginTimestamp;
-
     private $_identity;
 
     public static function model($className = __CLASS__)
@@ -39,8 +37,14 @@ class User extends CActiveRecord
             'profile'  => array(
                 self::HAS_ONE,
                 'Profile',
-                'user_id'
-            )
+                'id'
+            ),
+            'friends'     => array(
+                self::MANY_MANY,
+                'User',
+                'friends(user_id,friend_id)'
+            ),
+            
         );
     }
 
@@ -101,6 +105,11 @@ class User extends CActiveRecord
     public function getIsAdmin()
     {
         return $this->is_admin;
+    }
+
+    public function getLastLoginTimestamp()
+    {
+        return $this->last_login_timestamp;
     }
 
     public function updateOnlineState()

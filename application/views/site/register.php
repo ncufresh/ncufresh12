@@ -1,7 +1,7 @@
 <h2>基本資料</h2>
-<form enctype="multiprat/form-data" action="<?php echo Yii::app()->createUrl('site/register'); ?>" method="POST">
-   <input type="hidden" name="MAX_FILE_SIZE" value="32768" />
-   <dl>
+<form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('site/register'); ?>" method="POST">
+    <input type="hidden" name="MAX_FILE_SIZE" value="32768" />
+    <dl>
         <dt>
             <label for="form-register-name">姓名</label>
         <dd>
@@ -34,7 +34,7 @@
         <label for="form-register-department">系級</label>
             <select name="profile[department]">
                 <?php foreach ( $departments as $department ) : ?>
-                    <option value="<?php echo $department->department_id; ?>"><?php echo $department->content; ?></option> <!--$department->content;   content是欄位名稱(成員)-->
+                    <option value="<?php echo $department->id; ?>"><?php echo $department->department; ?></option> <!--$department->content;   content是欄位名稱(成員)-->
                 <?php endforeach; ?>
                 
             </select>
@@ -58,15 +58,9 @@
             <label for="form-register-birthday">生日</label>
         <dd>
             <input id="form-register-birthday" name="profile[birthday]" type="text" />
-        </dd>
-           
+        </dd>        
     </dl>
-        
-    <div id="pic">
-        <input type="file" name="profile[picture]" id="UserPicture" accept="image/*" />
-    </div>
-    <div>
-        <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
-        <button id="form-register-button" type="submit">註冊</button>
-    </div>
+    <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
+    <input type="file" name="picture" id="UserPicture" />
+    <button id="form-register-button" type="submit">註冊</button>
 </form>
