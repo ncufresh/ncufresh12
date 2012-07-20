@@ -58,7 +58,8 @@ class WebUser extends CWebUser
         parent::afterLogout();
         if ( ! Yii::app()->facebook->getIsGuest() )
         {
-            Yii::app()->request->redirect(Yii::app()->facebook->getLogoutUrl());
+            Yii::app()->facebook->destroySession();
+            // Yii::app()->request->redirect(Yii::app()->facebook->getLogoutUrl());
         }
     }
 

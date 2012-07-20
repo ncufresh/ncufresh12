@@ -126,7 +126,11 @@
 <?php else : ?>
     <div class="profile">
         <p>帳號：<?php echo Yii::app()->user->getName(); ?></p>
+<?php  if ( Yii::app()->facebook->getIsGuest() ) : ?>
         <a href="<?php echo Yii::app()->createUrl('site/logout'); ?>" title="登出">登出</a>
+<?php else : ?>
+        <a href="<?php echo Yii::app()->facebook->getLogoutUrl(); ?>" title="登出">登出</a>
+<?php endif; ?>
     </div>
 <?php endif; ?>
     <div class="links sidebar-box">

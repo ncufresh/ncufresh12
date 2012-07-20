@@ -52,10 +52,15 @@ class NFWFacebook extends CApplicationComponent
         ));
     }
 
+    public function destroySession()
+    {
+        $this->facebook->destroySession();
+    }
+
     public function getLogoutUrl()
     {
         return $this->facebook->getLogoutUrl(array(
-            'next'              =>  Yii::app()->request->hostInfo . Yii::app()->homeUrl
+            'next'              =>  Yii::app()->createAbsoluteUrl('site/logout')
         ));
     }
 }
