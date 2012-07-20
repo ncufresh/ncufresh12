@@ -1173,9 +1173,9 @@ td.friends-close-ones
     height:5%;
     width:5%;
     margin:0px;
-<<<<<<< HEAD
 }
-
-=======
+img.user_img
+{
+    height:50%;
+    width:80%;
 }
->>>>>>> b47332bb01d1b565562a3672dbd230ebfc2f4679

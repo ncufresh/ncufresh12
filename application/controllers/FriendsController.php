@@ -28,12 +28,13 @@ class FriendsController extends Controller
 
     public function actionMyFriends()
     {
+        $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+        $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $this->setPageTitle(Yii::app()->name . ' - 我的好友');
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('myfriends', array(                
-            // 'myfriendsId'  => Friend::model()->getFriendsId(/*要填入登入者的ID...先假設user_id=3*/3),
-            /*'myfriendData'  => Friend::model()->findByFriendId(2),*/
             'user'=>User::model()->findByPk(3),
+            'target'=>$img_url
         ));
     }
 }

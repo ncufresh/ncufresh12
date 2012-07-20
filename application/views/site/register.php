@@ -1,7 +1,7 @@
 <h2>基本資料</h2>
-<form enctype="multiprat/form-data" action="<?php echo Yii::app()->createUrl('site/register'); ?>" method="POST">
-   <input type="hidden" name="MAX_FILE_SIZE" value="32768" />
-   <dl>
+<form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('site/register'); ?>" method="POST">
+    <input type="hidden" name="MAX_FILE_SIZE" value="32768" />
+    <dl>
         <dt>
             <label for="form-register-name">姓名</label>
         <dd>
@@ -59,8 +59,8 @@
         <dd>
             <input id="form-register-birthday" name="profile[birthday]" type="text" />
         </dd>        
-    </dl>  
-    <input type="file" name="profile[picture]" id="UserPicture" accept="image/*" />
+    </dl>
     <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
+    <input type="file" name="picture" id="UserPicture" />
     <button id="form-register-button" type="submit">註冊</button>
 </form>
