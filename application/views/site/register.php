@@ -58,15 +58,9 @@
             <label for="form-register-birthday">生日</label>
         <dd>
             <input id="form-register-birthday" name="profile[birthday]" type="text" />
-        </dd>
-           
-    </dl>
-        
-    <div id="pic">
-        <input type="file" name="profile[picture]" id="UserPicture" accept="image/*" />
-    </div>
-    <div>
-        <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
-        <button id="form-register-button" type="submit">註冊</button>
-    </div>
+        </dd>        
+    </dl>  
+    <input type="file" name="profile[picture]" id="UserPicture" accept="image/*" />
+    <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
+    <button id="form-register-button" type="submit">註冊</button>
 </form>

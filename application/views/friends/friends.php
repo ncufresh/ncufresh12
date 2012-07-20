@@ -35,7 +35,7 @@
         <tr class="friends-title" >
         <th colspan="3" class="form-friends-sort-title" >好友分類</a></th>
         </tr>
-        <th colspan="3" class="form-friends-title" ><a href="<?php echo Yii::app()->createUrl('site/index'); ?>" title="朋友" class="form-friends-title">朋友</a></th> <!--重新導向一個自訂的網頁-->
+        <th colspan="3" class="form-friends-title" ><a href="<?php echo Yii::app()->createUrl('friends/myfriends'); ?>" title="朋友" class="form-friends-title">朋友</a></th> <!--重新導向一個自訂的網頁-->
         <tr>
         <td class="friends-close-ones">111111</td>
         <td class="friends-close-ones">222222</td>
