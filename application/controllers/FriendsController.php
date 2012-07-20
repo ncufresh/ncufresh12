@@ -26,10 +26,12 @@ class FriendsController extends Controller
     }
     public function acctionMyFriends()
     {
-        $this->setPageTitle(Yii::app()->name . ' - 同系不同屆');
+        
+        $this->setPageTitle(Yii::app()->name . ' - 我的好友');
         $this->_data['token'] = Yii::app()->security->getToken();
-        $this->render('register', array(
-            'departments'  => Department::model()->getDepartment() //取得所有好友
+        $this->render('myfriends', array(                
+            'myfriendId'  => Friend::model()->getFriendsId(/*要填入登入者的ID...先假設user_id=3*/3),
+            'myfriendData'  => Friend::model()->findByFriendId(3),
         ));
     }
 }

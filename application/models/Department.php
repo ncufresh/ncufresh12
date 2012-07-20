@@ -19,10 +19,10 @@ class Department extends CActiveRecord
         );
     }
 
-    public function getDepartment() // 取得系所
+    public function getDepartment()
     {
-        return $this->findAll(array(  //相當於select
-            'order'     => 'department_id ASC', //還有'limit'   'condition'(跟where一樣) 'order'(排序)
+        return $this->findAll(array(  
+            'order'     => 'department_id ASC', 
         ));
     }
 }
