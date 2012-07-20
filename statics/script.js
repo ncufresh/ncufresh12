@@ -77,6 +77,100 @@
 })(jQuery);
 
 /**
+ * Mousewheel
+ */
+(function($) {
+    var types = ['DOMMouseScroll', 'mousewheel'];
+
+    var handler = function(event) {
+        var orgEvent = event || window.event, args = [].slice.call(arguments, 1);
+        var delta = 0;
+        var deltaX = 0;
+        var deltaY = 0;
+        var returnValue = true;
+
+        event = $.event.fix(orgEvent);
+        event.type = 'mousewheel';
+
+        if ( orgEvent.wheelDelta ) delta = orgEvent.wheelDelta / 120;
+        if ( orgEvent.detail ) delta = -1 * orgEvent.detail / 3;
+
+        deltaY = delta;
+
+        if (
+            orgEvent.axis !== undefined
+         && orgEvent.axis === orgEvent.HORIZONTAL_AXIS
+        )
+        {
+            deltaY = 0;
+            deltaX = -1*delta;
+        }
+
+        if ( orgEvent.wheelDeltaY !== undefined )
+        {
+            deltaY = orgEvent.wheelDeltaY / 120;
+        }
+        if ( orgEvent.wheelDeltaX !== undefined )
+        {
+            deltaX = -1 * orgEvent.wheelDeltaX / 120;
+        }
+
+        args.unshift(event, delta, deltaX, deltaY);
+        return ($.event.dispatch || $.event.handle).apply(this, args);
+    }
+
+    if ( $.event.fixHooks )
+    {
+        for ( var i = types.length ; i ; )
+        {
+            $.event.fixHooks[types[--i]] = $.event.mouseHooks;
+        }
+    }
+
+    $.event.special.mousewheel = {
+        setup: function()
+        {
+            if ( this.addEventListener )
+            {
+                for ( var i = types.length ; i ; )
+                {
+                    this.addEventListener(types[--i], handler, false);
+                }
+            }
+            else
+            {
+                this.onmousewheel = handler;
+            }
+        },
+        teardown: function()
+        {
+            if ( this.removeEventListener )
+            {
+                for ( var i = types.length ; i ; )
+                {
+                    this.removeEventListener(types[--i], handler, false);
+                }
+            }
+            else
+            {
+                this.onmousewheel = null;
+            }
+        }
+    };
+
+    $.fn.extend({
+        mousewheel: function(fn)
+        {
+            return fn ? this.bind('mousewheel', fn) : this.trigger('mousewheel');
+        },
+        unmousewheel: function(fn)
+        {
+            return this.unbind('mousewheel', fn);
+        }
+    });
+})(jQuery);
+
+/**
  * Pull
  */
 (function($)
@@ -191,7 +285,7 @@
     $.fn.chat.updateFriendList = function(response)
     {
         var list = $.fn.chat.createFriendList();
-		var list_wrap = list.children('#'+$.chat.options.friendListEntriesWrapId);
+		var wrap = list.children('#'+$.chat.options.friendListEntriesWrapId);
         for ( var key in response )
         {
             var data = response[key];
@@ -202,7 +296,7 @@
                 {
                     $.fn.chat.showChatDialog($(this).attr('chat:id'));
                 })
-                .appendTo(list_wrap);
+                .appendTo(wrap);
             var icon = $('<img />')
                 .attr(
                     'src',
@@ -291,6 +385,10 @@
                 .attr('chat:id', id)
 				.attr('chat:show', 'true')
                 .addClass($.chat.options.chatDialogClass)
+                .scroll(function()
+                {
+                    alert('!');
+                })
                 .append(title)
 				.append(display)
                 .append(form)
@@ -311,6 +409,7 @@
 			{
 				$.fn.chat.closeChatDialog(dialog.attr('chat:id'));
 			});
+            display.scrollable();
         }
         return dialog;
     };
@@ -329,7 +428,7 @@
     {
         var exists;
         var dialog = $.fn.chat.createChatDialog(id);
-        dialog.children('.' + $.chat.options.chatDisplayClass)
+        dialog.find('.' + $.chat.options.chatDisplayClass)
             .each(function()
             {
                 $(this).children('p').each(function()
@@ -565,18 +664,18 @@
                 scrollableClass:        false,
                 fadeInDuration:         'slow',
                 fadeOutDuration:        'slow',
+                wheelSpeed:             6
             }, options);
             var scrollContainer = $('<div></div>')
                 .addClass('scroll-container')
-                .css({
-                    height: $(this).outerHeight(),
-                    width: $(this).outerWidth()
-                })
                 .mouseenter(function()
                 {
                     scrollBar
                         .stop(true, true)
                         .fadeIn(options.fadeInDuration);
+                    scrollDragable.css({
+                        height: scrollArea.height() - scrollContainer.height()
+                    })
                     inside = true;
                 })
                 .mouseleave(function()
@@ -592,7 +691,17 @@
                 .insertAfter($(this));
             var scrollArea = $('<div></div>')
                 .addClass('scroll-area')
-                .insertBefore($(this))
+                .mousewheel(function(event, delta)
+                {
+                    var top = $.integer(scrollDragable.css('top'));
+                    var multiplier =
+                        2
+                      * options.wheelSpeed
+                      * (scrollContainer.height() - scrollDragable.height())
+                      / $(this).outerHeight();
+                    updateScrollDragable(top - delta * multiplier);
+                    return false;
+                })
                 .wrapInner($(this))
                 .appendTo(scrollContainer);
             var scrollBar = $('<div></div>')
@@ -603,9 +712,6 @@
                 .appendTo(scrollBar);
             var scrollDragable = $('<div></div>')
                 .addClass('scroll-dragable')
-                .css({
-                    height: scrollArea.height() - scrollContainer.height()
-                })
                 .mousedown(function(event)
                 {
                     var y = event.screenY;
@@ -625,26 +731,7 @@
                     };
                     var update = function(event)
                     {
-                        var maximun = (
-                            scrollContainer.height()
-                          - scroll.height()
-                          );
-                        var position = top + event.screenY - y;
-                        var scale = (
-                                scrollArea.height()
-                              - scrollContainer.height()
-                            ) / (
-                                scrollContainer.height()
-                              - scroll.height()
-                            ) * -1;
-                        if ( position <= 0 ) position = 0;
-                        if ( position >= maximun ) position = maximun;
-                        scroll.css({
-                            top: position
-                        });
-                        scrollArea.css({
-                            top: position * scale
-                        });
+                        updateScrollDragable(top + event.screenY - y);
                     };
                     $('html')
                         .bind('mouseup', stop)
@@ -654,6 +741,28 @@
                     return false;
                 })
                 .appendTo(scrollTrack);
+            var updateScrollDragable = function(position)
+            {
+                var maximun = (
+                    scrollContainer.height()
+                  - scrollDragable.height()
+                  );
+                var scale = (
+                        scrollArea.height()
+                      - scrollContainer.height()
+                    ) / (
+                        scrollContainer.height()
+                      - scrollDragable.height()
+                    ) * -1;
+                if ( position <= 0 ) position = 0;
+                if ( position >= maximun ) position = maximun;
+                scrollDragable.css({
+                    top: position
+                });
+                scrollArea.css({
+                    top: position * scale
+                });
+            };
             if ( options.scrollableClass )
             {
                 scrollContainer.addClass(options.scrollableClass);
