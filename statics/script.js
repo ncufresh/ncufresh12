@@ -927,60 +927,93 @@
 	
 		});
 
-		$('#haha1').click(function()
-        {
-			var url = 'index.html';
+        $('.life-tab').click(function(){
+            var url = 'index.html';
+            var id = $(this).attr('href').replace('#','');
 			$.ajax(
             {
 				type: 'GET',
 				url: '/ncufresh12/nculife/foodContent.html',
 				data:
                 {
-					id: 1
+					id: id
 				},
-				dataType: 'html',
+				dataType: 'json',
 				success: function(data)
                 { 
-					$('#nculife-cv').html(data);
+					$('#nculife-cv').html(data.content);
 				},
 			});
-            var url = 'index.html';
 			$.ajax(
             {
 				type: 'GET',
 				url: '/ncufresh12/nculife/foodContent.html',
 				data:
                 {
-					id: 1
+					id: id
 				},
-				dataType: 'html',
+				dataType: 'json',
 				success: function(data)
                 { 
-					$('#nculife-ct').html(data);
+					$('#nculife-ct').html(data.content);
 				},
 			});	
-			return false;
-		});
+        });
+        
+		// $('#haha1').click(function()
+        // {
+			// var url = 'index.html';
+			// $.ajax(
+            // {
+				// type: 'GET',
+				// url: '/ncufresh12/nculife/foodContent.html',
+				// data:
+                // {
+					// id: 1
+				// },
+				// dataType: 'json',
+				// success: function(data)
+                // { 
+					// $('#nculife-cv').html(data.content);
+				// },
+			// });
+            // var url = 'index.html';
+			// $.ajax(
+            // {
+				// type: 'GET',
+				// url: '/ncufresh12/nculife/foodContent.html',
+				// data:
+                // {
+					// id: 1
+				// },
+				// dataType: 'json',
+				// success: function(data)
+                // { 
+					// $('#nculife-ct').html(data.content);
+				// },
+			// });	
+			// return false;
+		// });
 
-		$('#haha2').click(function()
-        {
-			var url = 'index.html';
-			$.ajax(
-            {
-				type: 'GET',
-				url: '/ncufresh12/nculife/foodContent.html',
-				data:
-                {
-					id: 2
-				},
-				dataType: 'html',
-				success: function(data)
-                { 
-					$('#nculife-cv').html(data);
-				},
-			});
-			return false;
-		});
+		// $('#haha2').click(function()
+        // {
+			// var url = 'index.html';
+			// $.ajax(
+            // {
+				// type: 'GET',
+				// url: '/ncufresh12/nculife/foodContent.html',
+				// data:
+                // {
+					// id: 2
+				// },
+				// dataType: 'html',
+				// success: function(data)
+                // { 
+					// $('#nculife-cv').html(data);
+				// },
+			// });
+			// return false;
+		// });
 
         $.pull.start();
     });
