@@ -718,15 +718,19 @@ input.gsc-search-button:focus
 {
     width: 204px;
     height: 85px;
+}
+
+#index-calendar .calendar-top-all-nologin
+{
     background: url('../images/calendar_top2.png');
 }
 
-#index-calendar .calendar-top .login
+#index-calendar .calendar-top-all-login
 {
     background: url('../images/calendar_top.png');
 }
 
-#index-calendar .calendar-top .personal
+#index-calendar .calendar-top-personal
 {
     background: url('../images/calendar_top3.png');
 }
@@ -735,7 +739,7 @@ input.gsc-search-button:focus
 {
     width: 204px;
     height: 349px;
-    background: url('../images/calendar_content.png');
+    background: url('../images/calendar_content2.png');
 }
 
 #index-calendar a{

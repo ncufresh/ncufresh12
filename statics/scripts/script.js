@@ -817,6 +817,56 @@
 })(jQuery);
 
 /**
+ * indexCalendar
+ */
+(function($)
+{
+    $.fn.indexCalendar = function(options)
+    {
+        var options = $.extend({ 
+        }, options);
+        var top = $(this).children('.calendar-top');
+       
+        if ( options.isMember )
+        {
+            top.removeClass('calendar-top-all-nologin');
+            top.addClass('calendar-top-all-login');
+        }
+        else
+        {
+            $(this).find('#calendar-personal').css('cursor', 'default');
+        }
+        return this.children('.calendar-top')
+            .children('a')
+            .click(function()
+        {
+            var id = $(this).attr('id');
+            if ( id == 'calendar-all' )
+            {
+                top.removeClass('calendar-top-personal');
+                if ( options.isMember )
+                {
+                    top.addClass('calendar-top-all-login');
+                }
+                else
+                {
+                    top.addClass('calendar-top-all-nologin');
+                }
+            }
+            else if ( id == 'calendar-personal' )
+            {
+                if ( options.isMember )
+                {
+                    top.removeClass('calendar-top-all-login');
+                    top.addClass('calendar-top-personal');
+                }
+            }
+            return false;
+        });
+    };
+})(jQuery);
+
+/**
  * Main
  */
 (function($)

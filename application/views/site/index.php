@@ -1,12 +1,16 @@
 <script type="text/javascript">
 jQuery(document).ready(function()
-{
+{   
+    var options = $.extend({
+        isMember:    <?php echo Yii::app()->user->isMember?1:0;?>,
+    });
     jQuery('#marquee').marquee();
+    jQuery('#index-calendar').indexCalendar(options);
 });
 </script>
 
 <div id="index-calendar">
-    <div class="calendar-top">
+    <div class="calendar-top calendar-top-all-nologin">
         <a href="#" id="calendar-all"></a>
         <a href="#" id="calendar-personal"></a>
     </div>
