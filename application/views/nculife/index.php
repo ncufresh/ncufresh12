@@ -1,4 +1,13 @@
-﻿<div id="life-container">
+﻿<script type="text/javascript">
+jQuery(document).ready(function()
+{
+    setInterval(function()
+    {
+        jQuery('.life-picture').fadeOut(500).eq(jQuery.random(0, $('.life-picture').length - 1)).fadeIn(500);
+    }, 1000);
+});
+</script>
+<div id="life-container">
 <div id="life-head">
 -------------這裡是中大生活唷-----------
 </div>
@@ -12,9 +21,9 @@
          <a id="ncu-outside" href="<?php echo Yii::app()->createUrl('nculife/outside'); ?>" title="outside">outside</a>
          <a id="ncu-house" href="<?php echo Yii::app()->createUrl('nculife/house');?>" title="house">house</a>
          <a id="ncu-live" href="<?php echo Yii::app()->createUrl('nculife/live'); ?>" title="live">live</a>
-         <a id="life-test1"></a>
-         <a id="life-test2"></a>
-         <a id="life-test3"></a>
+         <a id="life-test1" class="life-picture"></a>
+         <a id="life-test2" class="life-picture"></a>
+         <a id="life-test3" class="life-picture"></a>
     </div>
 </div>
 

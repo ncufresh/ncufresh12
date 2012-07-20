@@ -1006,12 +1006,18 @@ input.gsc-search-button:focus
 	
 }
 
+#life-container
+{
+    position:relative;
+}
+
 #life-test1
 {
     background: url('1.jpg');
     width: 30px;
     height: 30px;
     display: block;
+    position: absolute;
 }
 
 #life-test2
@@ -1019,8 +1025,8 @@ input.gsc-search-button:focus
     background: url('2.png');
     width: 30px;
     height: 30px;
-    margin-top: -30px;
     display: block;
+    position: absolute;
 }
 
 #life-test3
@@ -1028,8 +1034,8 @@ input.gsc-search-button:focus
     background: url('3.jpg');
     width: 30px;
     height: 30px;
-    margin-top: -30px;
-    display:block;
+    display: block;
+    position: absolute;
 }
 /**
  * About style
@@ -1197,7 +1203,6 @@ input.gsc-search-button:focus
     top: 120px;
 }
 
-<<<<<<< HEAD
 /*club style*/
 #content
 {
@@ -1215,7 +1220,7 @@ input.gsc-search-button:focus
 {
 	margin-center:auto;
 }
-=======
+
 .etmomi
 {
     background: url('1.jpg');
@@ -1278,7 +1283,5 @@ tr.friends-title
 
 td.friends-close-ones
 {
-    
     margin:0px;
 }
->>>>>>> db768b000185c579fd8d4d5fc57a322d94abccb8
