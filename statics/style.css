@@ -1064,9 +1064,8 @@ input.gsc-search-button:focus
 }
 
 /*club style*/
-#content
+#club-content
 {
-	width:751px;
 	
 }
 .l1
@@ -1075,34 +1074,67 @@ input.gsc-search-button:focus
 	width:100 px;
 	height:500 px;
 }
-
-#club
-{
-	margin-center:auto;
-}
-<<<<<<< HEAD
-#title
+#club-title
 {
 	font-weight: bold;
 	background-color:yellow;
 }
-#all
+#club-all
 {
-	display:block;
-}
-#picture
-{	
-	background: url('3.png');
-	border:10 px;
-	background-color:white;
-}
-#underpicture
-{
-	display:block;
-}
-=======
+	background-color:green;
 
->>>>>>> b47332bb01d1b565562a3672dbd230ebfc2f4679
+}
+#club-display
+{
+	float:right;
+	width:600px;
+}
+.club-picture1
+{	
+	background: url('1.jpg');
+    width: 200px;
+    height: 100px;
+    display: block;
+}
+.club-picture2
+{
+	background: url('logo.png');
+	width: 200px;
+    height: 100px;
+    display: block;
+}
+.club-picture3
+{
+	background: url('3.jpg');
+	width: 200 px;
+    height: 100px;
+    display: block;
+}
+.club-picture4
+{
+	background: url('chat.png');
+	width: 200px;
+    height: 100px;
+    display: block;
+}
+#club-underpicture
+{
+	float:left;
+	width:150px;
+	height:700px;
+}
+#club-picture-menu
+{
+	width: 95%;
+    height: 700px;
+    background: skyblue;
+    overflow: hidden;
+}
+#club-menu-items
+{
+	margin-top:5px;
+}
+
 .etmomi
 {
     background: url('1.jpg');
@@ -1172,9 +1204,5 @@ tr.friends-title
 td.friends-close-ones
 {
     margin:0px;
-<<<<<<< HEAD
 }
 
-=======
-}
->>>>>>> b47332bb01d1b565562a3672dbd230ebfc2f4679
