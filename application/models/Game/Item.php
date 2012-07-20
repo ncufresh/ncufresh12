@@ -1,6 +1,6 @@
 <?php
 
-class Items extends CActiveRecord
+class Item extends CActiveRecord
 {
     public static function model($className = __CLASS__)
     {

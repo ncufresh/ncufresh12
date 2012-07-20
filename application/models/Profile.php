@@ -1,7 +1,5 @@
 <?php
 
-
-
 class Profile extends CActiveRecord
 {
     public static function model($className = __CLASS__)
@@ -18,19 +16,20 @@ class Profile extends CActiveRecord
     {   
         return array(
             array(
-                'name, nickname, department_id, senior, birthday', //必填
+                'name, nickname, department_id, senior, birthday', // 必填
                 'required'
             )
         );
         
     }
+
     public function relations()
     {
         return array(
             'department'    => array(
                 self::HAS_ONE,
-                'Department', //model
-                'department_id' //column
+                'Department', // model
+                'department_id' // column
             ),
             
         );

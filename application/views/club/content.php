@@ -1,10 +1,6 @@
 ﻿<div id="all">
 	<div id="display">
-		<?php
-			if((integer)$_GET["id"]>=0&&(integer)$_GET["id"]<=77)
-				{?>
-					<a href="<?php echo Yii::app()->createUrl('club/club');?>>社團</a>
-			<?php}?>
+		
 		<h1><?php echo $data->name;?></h1>
 		
 		<div id="title">簡介:</div>

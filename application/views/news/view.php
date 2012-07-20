@@ -8,14 +8,14 @@
 
 
 <?php if ( ! empty($news->urls) ) : ?>
-<h2>相關連結</h2>
+<p>相關連結</p>
 <?php endif; ?>
 <?php foreach ( $news->urls as $url ) : ?>
     <a href="<?php echo $url->link; ?>" title="<?php echo $url->name; ?>"><?php echo $url->name; ?></a>
 <?php endforeach; ?>
 
 <?php if( !empty($files) ):?>
-<h2>附加檔案</h2>
+<p>附加檔案</p>
 <?php endif; ?>
 <?php foreach ( $files as $filename => $file_url ) : ?>
     <a href="<?php echo $file_url; ?>" title="<?php echo $filename; ?>"><?php echo $filename; ?></a>

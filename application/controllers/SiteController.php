@@ -2,6 +2,13 @@
 
 class SiteController extends Controller
 {
+    public function init()
+    {
+        parent::init();
+        Yii::import('application.models.Chat.*');
+        return true;
+    }
+
     public function filters()
     {
         return array(
@@ -218,6 +225,7 @@ class SiteController extends Controller
         "></script>';
         $this->layout = false;
     }
+
     /*define('USER_IMAGE', 'avatars/'); // 預設路徑名稱*/
     public function actionRegister()
     {

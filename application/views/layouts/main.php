@@ -26,6 +26,7 @@
                 staticsUrl: '<?php echo Yii::app()->request->baseUrl; ?>/statics',
                 registerUrl: '<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>',
                 facebookEnable: <?php echo Yii::app()->facebook->enable ? 'true' : 'false'; ?>,
+                googleSearchAppId: '011017124764723419863:mdibrr3n-py',
                 token: '<?php echo Yii::app()->security->getToken(); ?>'
             }
         });
@@ -79,7 +80,7 @@
             <a href="<?php echo Yii::app()->createUrl('forum/index'); ?>" title="論壇專區">論壇專區</a>
         </li>
         <li>
-            <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="系所社團">系所社團</a>
+            <a href="<?php echo Yii::app()->createUrl('club/index'); ?>" title="系所社團">系所社團</a>
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('multimedia/index'); ?>" title="影音專區">影音專區</a>
