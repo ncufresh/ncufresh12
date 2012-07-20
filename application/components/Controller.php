@@ -24,16 +24,6 @@ class Controller extends CController
         return true;
     }
 
-    public function getOnlineCount()
-    {
-        return Activity::getOnlineCount();
-    }
-
-    public function getTotalCount()
-    {
-        return Activity::getTotalCount();
-    }
-
     protected function beforeAction($action)
     {
         if ( parent::beforeAction($action) )
