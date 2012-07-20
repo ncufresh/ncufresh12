@@ -1,6 +1,6 @@
 <?php
 
-class ForumArticle extends CActiveRecord
+class Article extends CActiveRecord
 {
     public static function model($className = __CLASS__)
     {
@@ -9,20 +9,20 @@ class ForumArticle extends CActiveRecord
 
     public function tableName()
     {
-        return '{{forum_article}}';
+        return '{{forum_articles}}';
     }
 
     public function getUrl()
     {
         return Yii::app()->createUrl('forum/view', array(
             'fid'   => $this->forum_id,
-            'id'    => $this->id,
-            'title' => $this->title,
+            'id'    => $this->id
         ));
     }
 
     public function beforeSave()
     {
+        //尚未檢查是否所有資料都有填寫
         if ( parent::beforeSave() )
         {
             if ( $this->isNewRecord )

@@ -11,7 +11,7 @@ textarea
 
 body
 {
-    background: #DCE4ED url('header.png') repeat-x;
+    background: #DCE4ED url('../images/header.png') repeat-x;
     margin: 0 auto;
     overflow-y: scroll;
     width: 1000px;
@@ -120,7 +120,7 @@ a:hover
 
 .loading
 {
-    background: url('loading.png');
+    background: url('../images/loading.png');
     height: 128px;
     width: 128px;
 }
@@ -170,7 +170,7 @@ a:hover
  */
 #logo
 {
-    background: url('logo.png') no-repeat;
+    background: url('../images/logo.png') no-repeat;
     height: 160px;
     margin-left: 15px;
     position: absolute;
@@ -201,12 +201,12 @@ a:hover
 
 #header .online
 {
-    background: url('online.png') no-repeat;
+    background: url('../images/online.png') no-repeat;
 }
 
 #header .browsered
 {
-    background: url('browsered.png') no-repeat;
+    background: url('../images/browsered.png') no-repeat;
 }
 
 #tab
@@ -238,7 +238,7 @@ a:hover
 
 #navigation
 {
-    background: url('navigation.png') no-repeat;
+    background: url('../images/navigation.png') no-repeat;
     list-style: none;
     margin: 160px 0 0 0;
     overflow: hidden;
@@ -276,7 +276,7 @@ a:hover
 
 #footer
 {
-    background: url('footer.png');
+    background: url('../images/footer.png');
     clear: both;
     height: 120px;
 }
@@ -359,12 +359,12 @@ a:hover
 
 #form-sidebar-login
 {
-    background: url('login.png');
+    background: url('../images/login.png');
 }
 
 #form-sidebar-register
 {
-    background: url('register.png');
+    background: url('../images/register.png');
 }
 
 /**
@@ -372,7 +372,7 @@ a:hover
  */
 #chat
 {
-    background: url('chat.png') 0 5px no-repeat;
+    background: url('../images/chat.png') 0 5px no-repeat;
     bottom: 0;
     cursor: pointer;
     height: 120px;
@@ -444,7 +444,7 @@ a:hover
 	width: 136px;
 	height: 20px;
 	padding: 0 0 0 20px;
-	background: url('friend_list_search.png') no-repeat;
+	background: url('../images/friend_list_search.png') no-repeat;
 }
 
 #chat-friend-list .friend-list-entry
@@ -466,7 +466,6 @@ a:hover
     height: 200px;
     margin-right: 10px;
     opacity: 0.9;
-    overflow-x: hidden;
     position: fixed;
     width: 160px;
 }
@@ -481,7 +480,7 @@ a:hover
 
 .chat-dialog .chat-title span
 {
-	background: url('chat_online.png') no-repeat;
+	background: url('../images/chat_online.png') no-repeat;
 	display: block;
 	float: left;
 	height: 16px;
@@ -491,7 +490,7 @@ a:hover
 
 .chat-dialog .chat-title span.offline
 {
-	background: url('chat_offline.png') no-repeat;
+	background: url('../images/chat_offline.png') no-repeat;
 }
 
 .chat-dialog .chat-title p
@@ -506,7 +505,7 @@ a:hover
 
 .chat-dialog .chat-title button
 {
-	background: url('chat_close.png') 50% 50% no-repeat;
+	background: url('../images/chat_close.png') 50% 50% no-repeat;
 	border: 0;
 	float: right;
 	height: 16px;
@@ -517,16 +516,23 @@ a:hover
 
 .chat-dialog .chat-title button:hover
 {
-	background: white url('chat_close.png') 50% 50% no-repeat;
+	background: white url('../images/chat_close.png') 50% 50% no-repeat;
 	cursor: pointer;
+}
+
+.chat-dialog .scroll-container
+{
+    height: 150px;
+}
+
+.chat-dialog .scroll-area
+{
+    margin: -3px 0;
+    width: 160px;
 }
 
 .chat-dialog .chat-display
 {
-    height: 150px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    margin: -3px 0;
 	padding: 0 5px;
     width: 150px;
 }
@@ -590,7 +596,7 @@ input.gsc-search-button:focus
 
 #search button
 {
-    background: url('search_box_icon.png') no-repeat;
+    background: url('../images/search_box_icon.png') no-repeat;
     border: none;
     cursor: pointer;
     float: right;
@@ -684,7 +690,7 @@ input.gsc-search-button:focus
 
 #marquee span
 {
-    background: url('marquee_star_icon.png') no-repeat;
+    background: url('../images/marquee_star_icon.png') no-repeat;
     display: block;
     height: 50px;
     margin: -15px 0 0 -55px;
@@ -762,7 +768,7 @@ input.gsc-search-button:focus
 
 .index-latest-box h4
 {
-    background: url('index_latest_icon.png') no-repeat;
+    background: url('../images/index_latest_icon.png') no-repeat;
 }
 
 .index-forums-box
@@ -773,7 +779,7 @@ input.gsc-search-button:focus
 
 .index-forums-box h4
 {
-    background: url('index_forums_icon.png') no-repeat;
+    background: url('../images/index_forums_icon.png') no-repeat;
 }
 
 .news-dialog-warp
@@ -1025,9 +1031,89 @@ input.gsc-search-button:focus
     font-size:40px;
 }
 
+#about .block1
+{
+    background: url('../pp.jpg');
+}
+
+#about .block2
+{
+    background: url('../images/');
+}
+
+#about .block3
+{
+    background: url('../images/');
+}
+
+#about .back
+{
+    background: url('');
+    margin: 0 0 0 0;
+    top: 0;
+    left: 0;
+    width: 750;
+    height: 400;
+}
+
+#about .art
+{
+    background: url('');
+    margin: 0 0 0 0;
+    top: 0;
+    left: 0px;
+    width: 50;
+    height: 40;
+}
+
+#about .pro
+{
+    background: url('');
+    margin: 0 0 0 0;
+    top: 0;
+    left: 50px;
+    width: 50;
+    height: 40;
+}
+
+#about .vdo
+{
+    background: url('');
+    margin: 0 0 0 0;
+    top: 0;
+    left: 0;
+    width: 50;
+    height: 40;
+}
+
+#about .des
+{
+    background: url('');
+    margin: 0 0 0 0;
+    top: 0;
+    left: 0;
+    width: 50;
+    height: 40;
+}
+
+#about .boss
+{
+    background: url('');
+    margin: 0 0 0 0;
+    top: 0;
+    left: 0;
+    width: 50;
+    height: 40;
+}
+
+#about .information
+{
+    
+}
+
 #life-test1
 {
-    background: url('1.jpg');
+    background: url('../1.jpg');
     width: 30px;
     height: 30px;
     display: block;
@@ -1036,7 +1122,7 @@ input.gsc-search-button:focus
 
 #life-test2
 {
-    background: url('2.png');
+    background: url('../2.png');
     width: 30px;
     height: 30px;
     display: block;
@@ -1045,7 +1131,7 @@ input.gsc-search-button:focus
 
 #life-test3
 {
-    background: url('3.jpg');
+    background: url('../3.jpg');
     width: 30px;
     height: 30px;
     display: block;
@@ -1067,13 +1153,6 @@ input.gsc-search-button:focus
 #content
 {
 	width:751px;
-	
-}
-.l1
-{
-	float:left;
-	width:100 px;
-	height:500 px;
 }
 
 #club
@@ -1083,7 +1162,7 @@ input.gsc-search-button:focus
 
 .etmomi
 {
-    background: url('1.jpg');
+    background: url('../1.jpg');
     width:30px;
     height:30px;
     display:block;
@@ -1091,7 +1170,7 @@ input.gsc-search-button:focus
 
 .etmomi:hover
 {
-    background: url('2.PNG');
+    background: url('../2.png');
     width:300px;
     height:300px;
     display:block;

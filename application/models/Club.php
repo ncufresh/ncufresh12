@@ -8,7 +8,7 @@ class Club extends CActiveRecord
 
     public function tableName()
     {
-        return '{{club}}';
+        return '{{clubs}}';
     }
 
     public function getClub($clubid)
