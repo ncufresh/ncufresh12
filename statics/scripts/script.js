@@ -288,6 +288,9 @@
         var list = $('#' + $.chat.options.friendListId);
         if ( list.length == 0 )
         {
+			var search = $('<input />')
+				.attr('type', 'text')
+				.attr('id', $.chat.options.friendListSearchId)
             list = $('<div></div>')
                 .attr('id', $.chat.options.friendListId)
                 .appendTo($('body'));
@@ -301,10 +304,7 @@
 			display = $('<div></div>')
 				.attr('id', $.chat.options.friendListEntriesWrapId)
 				.appendTo(list);
-			search = $('<input />')
-				.attr('type', 'text')
-				.attr('id', $.chat.options.friendListSearchId)
-				.appendTo(list);
+            search.appendTo(list);
         }
         return list;
     };
@@ -455,7 +455,7 @@
     {
         var dialog = $.fn.chat.createChatDialog(id);
 		dialog.animate({
-			bottom: 0,
+			bottom: 0
 		}, $.chat.options.animationSpeed).attr('chat:show', 'true');
 		$.fn.chat.updateChatDialogsPosition();
         return dialog;
@@ -493,7 +493,7 @@
     {
         var dialog = $.fn.chat.createChatDialog(id);
 		dialog.animate({
-			bottom: -172,
+			bottom: -172
 		}, $.chat.options.animationSpeed).attr('chat:show', 'false');
 		$.fn.chat.updateChatDialogsPosition();
         return dialog;
@@ -512,7 +512,7 @@
             {
                 chat: {
                     receiver_id: id,
-                    message: message,
+                    message: message
                 },
                 token: $.configures.token,
                 lasttime: $.configures.lasttime,
