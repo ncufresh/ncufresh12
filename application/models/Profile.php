@@ -9,18 +9,17 @@ class Profile extends CActiveRecord
 
     public function tableName()
     {
-        return '{{profile}}';
+        return '{{profiles}}';
     }
 
     public function rules()
     {   
         return array(
             array(
-                'name, nickname, department_id, senior, birthday', // 必填
+                'name, nickname, department_id, senior, birthday', 
                 'required'
             )
         );
-        
     }
 
     public function relations()
@@ -28,14 +27,9 @@ class Profile extends CActiveRecord
         return array(
             'department'    => array(
                 self::HAS_ONE,
-                'Department', // model
-                'department_id' // column
+                'Department', 
+                'department_id' 
             ),
-            
-        );
-        /*$profile = Profile::model()->findByPk(1);
-          $department = Department::model()->findByPk($profile->department_id); 
-          若有寫relation的話  就可改成      $profile = Profile::model()->findByPk(1);
-                                            $profile->department*/
+        ); 
     }
 }

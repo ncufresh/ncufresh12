@@ -1,6 +1,6 @@
 <?php
 
-class Character extends CActiveRecord
+class GameCharacter extends CActiveRecord
 {
     public static function model($className = __CLASS__)
     {
@@ -9,7 +9,7 @@ class Character extends CActiveRecord
 
     public function tableName()
     {
-        return '{{game_characters}}';
+        return '{{game_character}}';
     }
 
     public function relations()
@@ -20,45 +20,40 @@ class Character extends CActiveRecord
                 'Profile',
                 'id'
             ),
-            'hair'    => array(  // hair為Item的hair_id row
+            'hair'    => array(  // hair為GameItems的hair_id row
                 self::BELONGS_TO,
-                'Item',
+                'GameItems',
                 'hair_id'
             ),
             'eyes'    => array(
                 self::BELONGS_TO,
-                'Item',
+                'GameItems',
                 'eyes_id'
             ),
             'cloths'    => array(
                 self::BELONGS_TO,
-                'Item',
+                'GameItems',
                 'cloths_id'
             ),
             'pants'    => array(
                 self::BELONGS_TO,
-                'Item',
+                'GameItems',
                 'pants_id'
             ),
             'hands'    => array(
                 self::BELONGS_TO,
-                'Item',
+                'GameItems',
                 'hands_id'
             ),
             'shoes'    => array(
                 self::BELONGS_TO,
-                'Item',
+                'GameItems',
                 'shoes_id'
             ),
             'others'    => array(
                 self::BELONGS_TO,
-                'Item',
+                'GameItems',
                 'others_id'
-            ),
-            'achievements'    => array(
-                self::MANY_MANY,
-                'Achievement',
-                'game_achievements_owner(user_id, achievement_id)'
             )
          );
     }
@@ -126,11 +121,6 @@ class Character extends CActiveRecord
     public function addMoney($value)
     {
         $this->saveCounters(array('money' => $value));
-    }
-    
-    public function Owner()
-    {
-        return $this->achievements;
     }
     
 }
