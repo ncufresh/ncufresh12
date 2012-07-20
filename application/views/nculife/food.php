@@ -17,6 +17,39 @@ jQuery(document).ready(function()
         });
     });
 
+    $('.life-tab').click(function(){
+        var url = 'index.html';
+        var id = $(this).attr('href').replace('#','');
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/ncufresh12/nculife/foodContent.html',
+            data:
+            {
+                id: id
+            },
+            dataType: 'json',
+            success: function(data)
+            { 
+                $('#nculife-cv').html(data.content);
+            },
+        });
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/ncufresh12/nculife/foodContent.html',
+            data:
+            {
+                id: id
+            },
+            dataType: 'json',
+            success: function(data)
+            { 
+                $('#nculife-ct').html(data.content);
+            },
+        });	
+    });
+
     $('#haha1').click(function()
     {
         var url = 'index.html';
@@ -83,8 +116,8 @@ jQuery(document).ready(function()
 
     <div id="nculife-dialog" title="Basic modal dialog">
         <div id="nculife-dh">
-            <a href="#" id="haha1">TAB1</a>
-            <a href="#" id="haha2">TAB2</a>
+            <a href="#1" id="haha1" class="life-tab">TAB1</a>
+            <a href="#2" id="haha2" class="life-tab">TAB2</a>
             <a>TAB3</a>
         </div><!-- end nculife-dh -->
         <div id="nculife-db">

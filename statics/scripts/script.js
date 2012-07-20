@@ -552,7 +552,7 @@
             verticalFrames:         4, 
             FrameXDimension:        128,
             FrameYDimension:        128,
-            interval:               100
+            interval:               200
         }, options);
         return $(this).each(function()
         {
@@ -569,13 +569,12 @@
                 var mt = options.FrameYDimension * options.verticalFrames;
 
                 left -= options.FrameXDimension;
-                if ( top < -1 * mt ) top = 0;
-
-                if ( left < -1 * ml )
+                if ( left <= -1 * ml )
                 {
                     top -= options.FrameYDimension;
                     left = 0;
                 }
+                if ( top <= -1 * mt ) top = 0;
 
                 sprite.css({
                     backgroundPosition: left + 'px ' + top + 'px'
