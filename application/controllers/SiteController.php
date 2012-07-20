@@ -6,6 +6,7 @@ class SiteController extends Controller
     {
         parent::init();
         Yii::import('application.models.Chat.*');
+        Yii::import('application.models.News.*');
         return true;
     }
 
