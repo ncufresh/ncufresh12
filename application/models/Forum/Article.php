@@ -12,6 +12,11 @@ class Article extends CActiveRecord
         return '{{forum_articles}}';
     }
 
+    public function relations()
+    {
+        return array('forum'=>array(self::BELONGS_TO,'ArticleCategory','forum_id'));
+    }
+    
     public function getUrl()
     {
         return Yii::app()->createUrl('forum/view', array(

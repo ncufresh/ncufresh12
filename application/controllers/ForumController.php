@@ -72,9 +72,25 @@ class ForumController extends Controller
     {
         $article = Article::model()->findByPk($id);
         
+        
         $this->render('view', array('article'=>$article));
+        
     }
-
+    
+    public function actionComment(){
+        $comment = new Comment();
+        if ( isset($_POST['comment']) )
+        {
+            $comment->content = $_POST['comment']['content'];
+            $comment->article_id = $_POST['comment']['aid'];
+            $comment->save();
+        }
+        $this->redirect(Yii::app()->createUrl('forum/view', array(
+                    'fid'   => $comment->article->forum->id,
+                    'id'    => $comment->article_id
+        )));
+    }
+    
     public function actionUpdate() // update article
     {
     }
