@@ -28,10 +28,11 @@ class ForumController extends Controller
 
     public function actionForum($fid, $sort = 0, $category = 0)
     {
+        $article = new Article();
         //content of each forum
         $this->render('forum', array(
             'fid'       => $fid,
-            'model'     => new Article()
+            'model'     => $article->findAll('forum_id='.$fid)
         ));
     }
 
@@ -63,13 +64,15 @@ class ForumController extends Controller
 
         $this->render('create',array(
             'fid'       => $fid,
-            'category'  => ForumCategory::model()->find('id=' . $fid)
+            'category'  => Category::model()->find('id=' . $fid)
         ));
     }
 
-    public function actionView($fid, $id, $title)
+    public function actionView($fid, $id)
     {
-        $this->render('view');
+        $article = Article::model()->findByPk($id);
+        
+        $this->render('view', array('article'=>$article));
     }
 
     public function actionUpdate() // update article
