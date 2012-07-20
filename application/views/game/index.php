@@ -64,7 +64,7 @@ jQuery(document).ready(function()
             )
         );
         $id = 3;
-        $model = GameCharacter::model()->findByPk($id);
+        $model = Character::model()->findByPk($id);
         $count=0; //計算等級
         foreach ($level as $value)
         {

@@ -1,6 +1,6 @@
 <?php
 
-class GameCharacter extends CActiveRecord
+class Character extends CActiveRecord
 {
     public static function model($className = __CLASS__)
     {
@@ -9,7 +9,7 @@ class GameCharacter extends CActiveRecord
 
     public function tableName()
     {
-        return '{{game_character}}';
+        return '{{game_characters}}';
     }
 
     public function relations()
@@ -20,39 +20,39 @@ class GameCharacter extends CActiveRecord
                 'Profile',
                 'id'
             ),
-            'hair'    => array(  // hair為GameItems的hair_id row
+            'hair'    => array(  // hair為Item的hair_id row
                 self::BELONGS_TO,
-                'GameItems',
+                'Item',
                 'hair_id'
             ),
             'eyes'    => array(
                 self::BELONGS_TO,
-                'GameItems',
+                'Item',
                 'eyes_id'
             ),
             'cloths'    => array(
                 self::BELONGS_TO,
-                'GameItems',
+                'Item',
                 'cloths_id'
             ),
             'pants'    => array(
                 self::BELONGS_TO,
-                'GameItems',
+                'Item',
                 'pants_id'
             ),
             'hands'    => array(
                 self::BELONGS_TO,
-                'GameItems',
+                'Item',
                 'hands_id'
             ),
             'shoes'    => array(
                 self::BELONGS_TO,
-                'GameItems',
+                'Item',
                 'shoes_id'
             ),
             'others'    => array(
                 self::BELONGS_TO,
-                'GameItems',
+                'Item',
                 'others_id'
             )
          );

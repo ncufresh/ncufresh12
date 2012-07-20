@@ -2,6 +2,13 @@
 
 class GameController extends Controller
 {
+    public function init()
+    {
+        parent::init();
+        Yii::import('application.models.Game.*');
+        return true;
+    }
+
     public function filters()
     {
         return array(
@@ -26,7 +33,7 @@ class GameController extends Controller
 
     public function actionIndex()
     {
-        $model = GameCharacter::model()->findByPk(3);
+        $model = Character::model()->findByPk(3);
         $model->addExp(47);
         $model->addMoney(10);
         $this->render('index');
@@ -34,7 +41,7 @@ class GameController extends Controller
 
     public function actiontogetExp()
     {
-        $model = GameCharacter::model()->findByPk(3);
+        $model = Character::model()->findByPk(3);
         $model->addExp(1);
         $model->addMoney(1);
         $this->render('index');
