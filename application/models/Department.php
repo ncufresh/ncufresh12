@@ -9,20 +9,20 @@ class Department extends CActiveRecord
 
     public function tableName()
     {
-        return '{{building_info_content}}';
+        return '{{departments}}';
     }
 
     public function rules()
     {
         return array(
-            array('content, department_id', 'required')
+            array('department , id', 'required')
         );
     }
 
-    public function getDepartment() // 取得系所
+    public function getDepartment()
     {
-        return $this->findAll(array(  //相當於select
-            'order'     => 'department_id ASC', //還有'limit'   'condition'(跟where一樣) 'order'(排序)
+        return $this->findAll(array(  
+            'order'     => 'id ASC', 
         ));
     }
 }

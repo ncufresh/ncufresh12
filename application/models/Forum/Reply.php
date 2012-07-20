@@ -9,6 +9,6 @@ class ForumReply extends CActiveRecord
 
     public function tableName()
     {
-        return '{{forum_reply}}';
+        return '{{forum_replies}}';
     }
 }

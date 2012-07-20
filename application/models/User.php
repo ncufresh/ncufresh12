@@ -37,8 +37,14 @@ class User extends CActiveRecord
             'profile'  => array(
                 self::HAS_ONE,
                 'Profile',
-                'user_id'
-            )
+                'id'
+            ),
+            'friends'     => array(
+                self::MANY_MANY,
+                'User',
+                'friends(user_id,friend_id)'
+            ),
+            
         );
     }
 

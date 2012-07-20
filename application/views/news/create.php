@@ -1,14 +1,4 @@
-<script type="text/javascript">
-	jQuery(document).ready(function()
-	{
-		jQuery.extend({
-            configures: 
-			{
-                newsAdminUrl: '<?php echo Yii::app()->createUrl('news/admin'); ?>',
-            }
-        });
-	});
-</script>
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'statics' . DIRECTORY_SEPARATOR . 'scripts' . DIRECTORY_SEPARATOR .'jquery.MultiFile.js';?>"></script>
 <h1>新增文章</h1>
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('news/create')?>" method="POST" class="MultiFile-intercepted">
 	<dl>
@@ -34,7 +24,7 @@
 	</div>
 	<div id="news-url-result">
 	</div>
-	<?php $this->widget('CMultiFileUpload', array(
+	<?php /*$this->widget('CMultiFileUpload', array(
 		'name' => 'news_files',
 		'accept' => 'doc|pdf|docx|txt|xls|xlsx',
 		'duplicate' => '檔案重複',
@@ -46,7 +36,8 @@
 				checkFileSize("news_files");
 			 }',
 		  ),
-	)); ?>
+	)); */?>
+    <input id="news_files" type="file" name="news_files[]" />
 	<button type="submit">發佈</button>
 	<button class="news-cancel-button">取消</button>
 	<input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
