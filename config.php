@@ -47,7 +47,7 @@ return array(
             'useStrictParsing'  => true
         ),
         'db'            => array(
-            'connectionString'  => 'mysql:host=' . $ncufreshdb['host']. ';dbname=' . $ncufreshdb['database'],
+            'connectionString'  => 'mysql:host=' . $ncufreshdb['host'] . ';dbname=' . $ncufreshdb['database'],
             'emulatePrepare'    => true,
             'username'          => $ncufreshdb['username'],
             'password'          => $ncufreshdb['password'],
