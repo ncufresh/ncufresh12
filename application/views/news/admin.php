@@ -1,3 +1,34 @@
+<script type="text/javascript">
+jQuery(document).ready(function()
+{
+    jQuery('.news-delete-link').click(function()
+    {
+        var link = jQuery(this).attr('href');
+        var dialog = $('.news-dialog');
+        dialog.text('確定刪除此篇文章？')
+            .dialog({
+                buttons: { 
+                    "是": function()
+                    {
+                        location = link;
+                    }, 
+                    "否": function()
+                    {
+                        dialog.dialog('close');
+                    }
+                },
+                dialogClass: 'news-dialog-warp',
+            });   
+        return false;
+    });
+
+    jQuery('.news-back-link').click(function()
+    {
+        window.location = $.configures.newsIndexUrl;
+        return false;
+    });
+});
+</script>
 <h1>管理最新消息</h1>
 <a href="<?php echo Yii::app()->createUrl('news/create') ;?>" title="新增文章">新增文章</a>
 <table class="news-table">

@@ -1,3 +1,13 @@
+<script type="text/javascript">
+jQuery(document).ready(function()
+{
+    jQuery('.news-back-link').click(function()
+    {
+        window.location = $.configures.newsIndexUrl;
+        return false;
+    });
+});
+</script>
 <h1>最新消息</h1>
 <table class="news-table">
     <tbody>
