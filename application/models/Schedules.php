@@ -1,5 +1,5 @@
 <?php 
-class Schedule extends CActiveRecord
+class Schedules extends CActiveRecord
 {
     public static function model($className = __CLASS__)
     {

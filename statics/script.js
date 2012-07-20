@@ -943,6 +943,21 @@
                 { 
 					$('#nculife-cv').html(data);
 				},
+			});
+            var url = 'index.html';
+			$.ajax(
+            {
+				type: 'GET',
+				url: '/ncufresh12/nculife/foodContent.html',
+				data:
+                {
+					id: 1
+				},
+				dataType: 'html',
+				success: function(data)
+                { 
+					$('#nculife-ct').html(data);
+				},
 			});	
 			return false;
 		});
