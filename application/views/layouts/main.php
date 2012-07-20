@@ -26,6 +26,7 @@
                 staticsUrl: '<?php echo Yii::app()->request->baseUrl; ?>/statics',
                 registerUrl: '<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>',
                 facebookEnable: <?php echo Yii::app()->facebook->enable ? 'true' : 'false'; ?>,
+                googleSearchAppId: '011017124764723419863:mdibrr3n-py',
                 token: '<?php echo Yii::app()->security->getToken(); ?>'
             }
         });

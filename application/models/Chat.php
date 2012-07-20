@@ -1,6 +1,10 @@
 <?php
 
-class Chat extends CActiveRecord
+class Chat extends ChatQueue
+{
+}
+
+class ChatQueue extends CActiveRecord
 {
     public static function model($className = __CLASS__)
     {
@@ -55,6 +59,10 @@ class Chat extends CActiveRecord
         $criteria->params = array(
             ':receiver' => Yii::app()->user->getId()
         );
+
+        $lasttime = $lasttime ?: Yii::app()->user->getLastLoginTimestamp();
+        if ( $lasttime < 0 ) $lasttime = 0;
+
         foreach ( $this->findAll($criteria) as $entry )
         {
             if ( $entry->timestamp < $lasttime ) continue;
@@ -90,7 +98,7 @@ class Chat extends CActiveRecord
     }
 }
 
-class ChatInternal extends CActiveRecord
+class ChatMessages extends CActiveRecord
 {
     public static function model($className = __CLASS__)
     {
@@ -100,6 +108,20 @@ class ChatInternal extends CActiveRecord
     public function tableName()
     {
         return '{{chat_messages}}';
+    }
+
+    public function behaviors()
+    {
+        return array(
+            'Helper'
+        );
+    }
+
+    public function rules()
+    {
+        return array(
+            array('receiver_id, message, sequence', 'required')
+        );
     }
 
     public function relations()
@@ -116,40 +138,5 @@ class ChatInternal extends CActiveRecord
                 'receiver_id'
             )
         );
-    }
-
-    public function getRecentMessages($id)
-    {
-        $data = array();
-        $lasttime = Yii::app()->session['chatlasttime'];
-        foreach (
-            $this->findAll(array(
-                'select'    => 'sender_id, message, timestamp',
-                'order'     => 'timestamp ASC',
-                'condition' => 'receiver_id = ' . $id
-            )) as $entry
-        )
-        {
-            if ( $entry['timestamp'] <= $lasttime ) continue;
-            $data[] = array(
-                'sender'    => $entry['sender']['username'] ?: 'Unknown',
-                'message'   => $entry['message'],
-                'timestamp' => $entry['timestamp']
-            );
-        }
-        Yii::app()->session['chatlasttime'] = TIMESTAMP;
-        return $data;
-    }
-
-    protected function afterFind()
-    {
-        $this->timestamp = (integer)$this->timestamp;
-        return parent::afterFind();
-    }
-
-    protected function beforeSave()
-    {
-        if ( $this->getIsNewRecord() ) $this->timestamp = TIMESTAMP;
-        return parent::beforeSave();
     }
 }
