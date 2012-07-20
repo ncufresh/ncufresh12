@@ -123,8 +123,8 @@ class SiteController extends Controller
     public function actionPull($lasttime = 0)
     {
         $this->_data['counter'] = array(
-            'online'    => $this->getOnlineCount(),
-            'browsered' => $this->getTotalCount()
+            'online'    => Activity::getOnlineCount(),
+            'browsered' => Activity::getTotalCount()
         );
         if ( $lasttime == 0 ) // Debug only
         {
@@ -149,7 +149,10 @@ class SiteController extends Controller
                 )
             );
         }
-        $this->_data['messages'] = Chat::model()->getMessages($lasttime);
+        if ( Yii::app()->user->getIsMember() )
+        {
+            $this->_data['messages'] = Chat::model()->getMessages($lasttime);
+        }
         $this->_data['lasttime'] = TIMESTAMP;
     }
 

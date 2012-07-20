@@ -1,4 +1,3 @@
-
 (function($)
 {
     $.about = function(options)
