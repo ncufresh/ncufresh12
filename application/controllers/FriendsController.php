@@ -2,36 +2,44 @@
 
 class FriendsController extends Controller
 {
-    public function actionFriends() // 好友專區
+    public function actionFriends() 
     {
-         $this->setPageTitle(Yii::app()->name . ' - 好友專區');
+        $this->setPageTitle(Yii::app()->name . ' - 好友專區');
         $this->render('friends');
     }
 
-    public function actionSameDepartmentSameGrade() // 好友專區
+    public function actionSameDepartmentSameGrade() 
     {
-         $this->setPageTitle(Yii::app()->name . ' - 同系同屆');
-         $this->render('samedepartmentsamegrade');
+        $departmentId  = Profile::model()->findByPK(1)->department_id;
+        $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+        $this->setPageTitle(Yii::app()->name . ' - 同系同屆');
+        $this->_data['token'] = Yii::app()->security->getToken();
+        $this->render('samedepartmentsamegrade', array(
+            'profiles'=>Profile::model()->getSameDepartment($departmentId),/*自己的department_id*/
+            'target'=>$img_url
+        ));
     }
 
-    public function actionSameDepartmentDiffGrade() // 好友專區
+    public function actionSameDepartmentDiffGrade() 
     {
         $this->setPageTitle(Yii::app()->name . ' - 同系不同屆');
         $this->render('samedepartmentdiffgrade');
     }
 
-    public function actionOtherDepartment() // 好友專區
+    public function actionOtherDepartment() 
     {
-         $this->setPageTitle(Yii::app()->name . ' - 其他科系');
-         $this->render('otherdepartment');
+        $this->setPageTitle(Yii::app()->name . ' - 其他科系');
+        $this->render('otherdepartment');
     }
 
-    public function acctionMyFriends()
+    public function actionMyFriends()
     {
-        $this->setPageTitle(Yii::app()->name . ' - 同系不同屆');
+        $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+        $this->setPageTitle(Yii::app()->name . ' - 我的好友');
         $this->_data['token'] = Yii::app()->security->getToken();
-        $this->render('register', array(
-            'departments'  => Department::model()->getDepartment() //取得所有好友
+        $this->render('myfriends', array(                
+            'user'=>User::model()->findByPk(3),
+            'target'=>$img_url
         ));
     }
 }

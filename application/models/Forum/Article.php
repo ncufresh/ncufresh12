@@ -12,6 +12,17 @@ class Article extends CActiveRecord
         return '{{forum_articles}}';
     }
 
+    public function relations()
+    {
+        return array(
+            'forum'     => array(
+                self::BELONGS_TO,
+                'ArticleCategory',
+                'forum_id'
+            )
+        );
+    }
+    
     public function getUrl()
     {
         return Yii::app()->createUrl('forum/view', array(
@@ -22,10 +33,10 @@ class Article extends CActiveRecord
 
     public function beforeSave()
     {
-        //尚未檢查是否所有資料都有填寫
+        // 尚未檢查是否所有資料都有填寫
         if ( parent::beforeSave() )
         {
-            if ( $this->isNewRecord )
+            if ( $this->getIsNewRecord() )
             {
                 // 如果未登入author_id=0 ; 檢查登入與否
                 $this->author_id = Yii::app()->user->getId();

@@ -1025,7 +1025,9 @@ input.gsc-search-button:focus
 
 #nculife-db
 {
-	border-color: black;
+    width: 695px;
+    height: 325px;
+	border: solid;
 }
 
 #nculife-cv
@@ -1038,7 +1040,7 @@ input.gsc-search-button:focus
 
 #nculife-ct
 {
-	width: 300px;
+	width: 295px;
 	height: 100px;
 	float: left;
 	background: gray;
@@ -1050,6 +1052,17 @@ input.gsc-search-button:focus
 	height: 50px;
 }
 
+#linkk li
+{
+    list-style: none;
+    float: left;
+    width: 100px;
+    height: 50px;
+    background-color: #66CD00;
+    border-right: 1px solid #000;
+        
+    
+}
 
 #life-container
 {
@@ -1158,6 +1171,7 @@ input.gsc-search-button:focus
     background: url('../1.jpg');
     width: 30px;
     height: 30px;
+    top: 100px;
     display: block;
     position: absolute;
 }
@@ -1167,6 +1181,7 @@ input.gsc-search-button:focus
     background: url('../2.png');
     width: 30px;
     height: 30px;
+    top: 100px;
     display: block;
     position: absolute;
 }
@@ -1176,6 +1191,7 @@ input.gsc-search-button:focus
     background: url('../3.jpg');
     width: 30px;
     height: 30px;
+    top: 100px;
     display: block;
     position: absolute;
 }
@@ -1192,8 +1208,76 @@ input.gsc-search-button:focus
 }
 
 /*club style*/
-#content
+#club-content
 {
+
+	
+}
+.l1
+{
+	float:left;
+	width:100 px;
+	height:500 px;
+}
+#club-title
+{
+	font-weight: bold;
+	background-color:yellow;
+}
+#club-all
+{
+	background-color:green;
+
+}
+#club-display
+{
+	float:right;
+	width:600px;
+}
+.club-picture1
+{	
+	background: url('1.jpg');
+    width: 200px;
+    height: 100px;
+    display: block;
+}
+.club-picture2
+{
+	background: url('logo.png');
+	width: 200px;
+    height: 100px;
+    display: block;
+}
+.club-picture3
+{
+	background: url('3.jpg');
+	width: 200 px;
+    height: 100px;
+    display: block;
+}
+.club-picture4
+{
+	background: url('chat.png');
+	width: 200px;
+    height: 100px;
+    display: block;
+}
+#club-underpicture
+{
+	float:left;
+	width:150px;
+	height:700px;
+}
+#club-picture-menu
+{
+	width: 95%;
+    height: 700px;
+    background: skyblue;
+    overflow: hidden;
+}
+#club-menu-items
+{
+	margin-top:5px;
 	width:751px;
 }
 
@@ -1237,38 +1321,90 @@ table.other-page
 
 th.form-friends-sort-title
 {
-    font-size:30px;
-    align:left;
-    color:yellow;
+    color: yellow;
+    font-size: 30px;
+    text-align: left;
 }
 
 th.form-friends-title
 {
-    border:5px solid gray;
-    font-size:20px;
-    align:left;
-    color:yellow;
+    border: 5px solid gray;
+    color: yellow;
+    font-size: 20px;
+    text-align: left;
 }
 
 th.friend-other-page
 {
-    color:green;
-    font-size:30px;
+    color: green;
+    font-size: 30px;
 }
 
 a.form-friends-title
 {
-    align:left;
-    color:DeepPink;
+    text-lign: left;
+    color: DeepPink;
 }
 
 tr.friends-title
 {
-    height:10%;
-    margin:0px;
+    margin: 0px;
 }
 
 td.friends-close-ones
 {
-    margin:0px;
+    height: 5%;
+    width: 5%;
+    margin: 0px;
+}
+
+img.user_img
+{
+    height: 50%;
+    width: 80%;
+}
+
+#notfound
+{
+    background: url('../images/notfound.png');
+    height: 450px;
+    position: relative;
+    width: 750px;
+}
+
+#notfound h2
+{
+    display: none;
+}
+
+#notfound p
+{
+    left: 70px;
+    position: absolute;
+    top: 195px;
+}
+
+#notfound ul
+{
+    left: 50px;
+    position: absolute;
+    top: 225px;
+    width: 280px;
+}
+
+#notfound a
+{
+    background: url('../images/back.png');
+    display: block;
+    height: 40px;
+    left: 160px;
+    position: absolute;
+    text-indent: -100000%;
+    top: 375px;
+    width: 115px;
+}
+
+#notfound a:hover
+{
+    background: url('../images/back_hover.png');
 }

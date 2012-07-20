@@ -7,7 +7,7 @@ class NewsController extends Controller
 	 * the number how many pieces of news will be listed.
 	 */
     const NEWS_PER_PAGE = 10;
-	
+
 	/**
 	 * Configuration: 
 	 * The path of the files will be placed.
@@ -23,7 +23,7 @@ class NewsController extends Controller
         Yii::import('application.models.News.*');
         return true;
     }
-	
+
 	/**
 	 * Filters
 	 */
@@ -33,7 +33,7 @@ class NewsController extends Controller
             'accessControl'
         );
     }
-	
+
 	/**
 	 * Access rules
 	 */
@@ -56,7 +56,7 @@ class NewsController extends Controller
             ),
         );
     }
-	
+
 	/**
 	 * Display the content of the news with an id
 	 */

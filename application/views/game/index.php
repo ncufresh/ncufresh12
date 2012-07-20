@@ -65,8 +65,9 @@ jQuery(document).ready(function()
         );
         $id = 3;
         $model = Character::model()->findByPk($id);
-        $count=0; //計算等級
-        foreach ($level as $value)
+        $achievement_is_whom = Character::model()->findByPK(3);
+        $count = 0; //計算等級
+        foreach ( $level as $value )
         {
 
           if ( $model->getExpValue() < $value['exp'] )
@@ -106,6 +107,13 @@ jQuery(document).ready(function()
         print_r($model->getMoneyValue());
         echo '<br/>';
         echo '</div>';
+        echo sizeof($achievement_is_whom->Owner());
+        echo '<br/>';
+        foreach ( $achievement_is_whom->Owner() as $array )
+        {
+            echo $array['name'];
+            echo '<br/>';
+        }
 
 ?>
 <img src="../statics/fire.png">
