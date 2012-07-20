@@ -1,7 +1,6 @@
 <div id="about">
     <h4 class="title">What is the web ncufresh?</h4>
     <p id="introduce">介紹</p>
-    <img id="what-image" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo0.png" alt="" />
     <ul>
         <li>
             <img class="small_pic" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="" />
@@ -30,24 +29,33 @@
         
     </ul>
     <h4 class="title">How do we work?</h4>
-    <!--<img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo0.png" alt="" />-->
+    <img class="animation" class="back" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="背景" />
+    <img class="animation" class="art" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="美工" />
+    <img class="animation" class="pro" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="程設" />
+    <img class="animation" class="vdo" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="影音" />
+    <img class="animation" class="des" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="企劃" />
+    <img class="animation" class="boss" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="執行" />
+    <p class="information">美工組介紹</p>
+    <p class="information">程設組介紹</p>
+    <p class="information">影音組介紹</p>
+    <p class="information">企劃組介紹</p>
+    <p class="information">執行組介紹</p>
     <h4 class="title">Who are we?</h4>
-    <!--<ul>
+    <ul>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="" />
+            <img class="tag-bar" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="美工" />
         </li>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo1.png" alt="" />
+            <img class="tag-bar" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="程設" />
         </li>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo2.png" alt="" />
+            <img class="tag-bar" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="影音" />
         </li>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo3.png" alt="" />
+            <img class="tag-bar" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="企劃" />
         </li>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo3.png" alt="" />
+            <img class="tag-bar" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="執行" />
         </li>
     </ul>
-    <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo0.png" alt="" />-->
 </div>
