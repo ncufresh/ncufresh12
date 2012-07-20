@@ -2,8 +2,4 @@
 
 class DepartmentController extends Controller
 {
-    
-
-
-
 }
