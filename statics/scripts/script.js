@@ -217,12 +217,18 @@
                                 1,
                                 browsered / $.pull.options.minimumAnimationTimes
                             );
+                            $.pull.options.browseredcounter.animate({
+                                top: -100
+                                }, $.pull.options.counterAnimationSpeed);
                             if ( current >= browsered )
                             {
                                 current = browsered;
                                 clearInterval(timer);
                             }
                             $.pull.options.browseredcounter.text(current);
+                            $.pull.options.browseredcounter.css({
+                                top: 0
+                            });
                         }, $.pull.options.counterAnimationSpeed);
                     }
                 }
