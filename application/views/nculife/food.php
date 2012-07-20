@@ -83,8 +83,8 @@ jQuery(document).ready(function()
 
     <div id="nculife-dialog" title="Basic modal dialog">
         <div id="nculife-dh">
-            <a href="#" id="haha1">TAB1</a>
-            <a href="#" id="haha2">TAB2</a>
+            <a href="#1" id="haha1" class="life-tab">TAB1</a>
+            <a href="#2" id="haha2" class="life-tab">TAB2</a>
             <a>TAB3</a>
         </div><!-- end nculife-dh -->
         <div id="nculife-db">

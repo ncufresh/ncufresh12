@@ -983,7 +983,9 @@ input.gsc-search-button:focus
 
 #nculife-db
 {
-	border-color: black;
+    width: 695px;
+    height: 325px;
+	border: solid;
 }
 
 #nculife-cv
@@ -996,7 +998,7 @@ input.gsc-search-button:focus
 
 #nculife-ct
 {
-	width: 300px;
+	width: 295px;
 	height: 100px;
 	float: left;
 	background: gray;
@@ -1008,6 +1010,17 @@ input.gsc-search-button:focus
 	height: 50px;
 }
 
+#linkk li
+{
+    list-style: none;
+    float: left;
+    width: 100px;
+    height: 50px;
+    background-color: #66CD00;
+    border-right: 1px solid #000;
+        
+    
+}
 
 #life-container
 {
@@ -1116,6 +1129,7 @@ input.gsc-search-button:focus
     background: url('../1.jpg');
     width: 30px;
     height: 30px;
+    top: 100px;
     display: block;
     position: absolute;
 }
@@ -1125,6 +1139,7 @@ input.gsc-search-button:focus
     background: url('../2.png');
     width: 30px;
     height: 30px;
+    top: 100px;
     display: block;
     position: absolute;
 }
@@ -1134,6 +1149,7 @@ input.gsc-search-button:focus
     background: url('../3.jpg');
     width: 30px;
     height: 30px;
+    top: 100px;
     display: block;
     position: absolute;
 }
@@ -1300,8 +1316,10 @@ td.friends-close-ones
     width:5%;
     margin:0px;
 }
+
 img.user_img
 {
     height:50%;
     width:80%;
+<<<<<<< HEAD
 }
