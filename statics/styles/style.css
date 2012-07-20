@@ -1279,47 +1279,90 @@ table.other-page
 
 th.form-friends-sort-title
 {
-    font-size:30px;
-    align:left;
-    color:yellow;
+    color: yellow;
+    font-size: 30px;
+    text-align: left;
 }
 
 th.form-friends-title
 {
-    border:5px solid gray;
-    font-size:20px;
-    align:left;
-    color:yellow;
+    border: 5px solid gray;
+    color: yellow;
+    font-size: 20px;
+    text-align: left;
 }
 
 th.friend-other-page
 {
-    color:green;
-    font-size:30px;
+    color: green;
+    font-size: 30px;
 }
 
 a.form-friends-title
 {
-    align:left;
-    color:DeepPink;
+    text-lign: left;
+    color: DeepPink;
 }
 
 tr.friends-title
 {
-    /*height:10%;*/
-    margin:0px;
+    margin: 0px;
 }
 
 td.friends-close-ones
 {
-    height:5%;
-    width:5%;
-    margin:0px;
+    height: 5%;
+    width: 5%;
+    margin: 0px;
 }
 
 img.user_img
 {
-    height:50%;
-    width:80%;
-<<<<<<< HEAD
+    height: 50%;
+    width: 80%;
+}
+
+#notfound
+{
+    background: url('../images/notfound.png');
+    height: 450px;
+    position: relative;
+    width: 750px;
+}
+
+#notfound h2
+{
+    display: none;
+}
+
+#notfound p
+{
+    left: 70px;
+    position: absolute;
+    top: 195px;
+}
+
+#notfound ul
+{
+    left: 50px;
+    position: absolute;
+    top: 225px;
+    width: 280px;
+}
+
+#notfound a
+{
+    background: url('../images/back.png');
+    display: block;
+    height: 40px;
+    left: 160px;
+    position: absolute;
+    text-indent: -100000%;
+    top: 375px;
+    width: 115px;
+}
+
+#notfound a:hover
+{
+    background: url('../images/back_hover.png');
 }
