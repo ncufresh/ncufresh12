@@ -105,7 +105,7 @@
        
         setInterval(function()
         {
-            if ( photo_index < 8 )
+            if ( photo_index < 7 )
             {
                 photo_index++;
             }
@@ -131,6 +131,7 @@
                 })
                 .click(function()
                 {
+                    photo_index = index;
                     picture.css({
                        background: 'url(\'' + photos.eq(index).attr('photo') + '\')'
                     });
@@ -169,7 +170,6 @@
             .appendTo(blocks[2]);
         });
     };
-
     $(document).ready(function()
     {
         $.about();
