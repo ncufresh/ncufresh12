@@ -79,7 +79,8 @@
 /**
  * Mousewheel
  */
-(function($) {
+(function($)
+{
     var types = ['DOMMouseScroll', 'mousewheel'];
 
     var handler = function(event) {
@@ -177,10 +178,17 @@
 {
     $.pull = {};
 
-    $.pull.interval = 5000;
+    $.pull.options = {
+        onlinecounter:          null,
+        browseredcounter:       null,
+        counterAnimationSpeed:  30,
+        minimumAnimationTimes:  4,
+        interval:               5000
+    };
 
-    $.pull.start = function()
+    $.pull.start = function(options)
     {
+        $.pull.options = $.extend($.pull.options, options);
         $.getJSON(
             $.configures.pullUrl,
             {
@@ -189,6 +197,35 @@
             function(response)
             {
                 $.configures.lasttime = response.lasttime;
+                if ( response.counter )
+                {
+                    if ( $.pull.options.onlinecounter )
+                    {
+                        $.pull.options.onlinecounter.text(
+                            response.counter.online
+                        );
+                    }
+                    if ( $.pull.options.browseredcounter )
+                    {
+                        var browsered = response.counter.browsered;
+                        var current = $.integer(
+                            $.pull.options.browseredcounter.text()
+                        );
+                        var timer = setInterval(function()
+                        {
+                            current += $.random(
+                                1,
+                                browsered / $.pull.options.minimumAnimationTimes
+                            );
+                            if ( current >= browsered )
+                            {
+                                current = browsered;
+                                clearInterval(timer);
+                            }
+                            $.pull.options.browseredcounter.text(current);
+                        }, $.pull.options.counterAnimationSpeed);
+                    }
+                }
                 if ( response.friends )
                 {
                     $.fn.chat.updateFriendList(response.friends);
@@ -203,7 +240,7 @@
                 }
             }
         );
-        $.pull.timer = setTimeout(arguments.callee, $.pull.interval);
+        $.pull.timer = setTimeout(arguments.callee, $.pull.options.interval);
     };
 
     $.pull.pause = function()
@@ -213,7 +250,7 @@
 
     $.pull.restart = function()
     {
-        $.pull.timer = setTimeout($.pull.start, $.pull.interval);
+        $.pull.timer = setTimeout($.pull.start, $.pull.options.interval);
     };
 })(jQuery);
 
@@ -543,188 +580,6 @@
 })(jQuery);
 
 /**
- * About
- */
-(function($)
-{
-    $.about = function(options)
-    {
-        var options = $.extend({
-            aboutId:                         'about',
-            titleClass:                      'title',
-            introduceId:                     'introduce',
-            smallPicClass:                   'small_pic',
-            whatImageId:                     'what-image',
-            tagBar:                          'tag-bar',
-            animationClass:                  'animation',
-            block1InfClass:                  'information',
-            picBarSpeed:                     1000,
-            picAutoSpeed:                    3000
-        }, options);
-        var photo_index = 0;
-        var photoArray=new Array(8);
-        photoArray[0]= 'url(\'' + $.configures.staticsUrl + '/about/photo0.png\')';
-        photoArray[1]= 'url(\'' + $.configures.staticsUrl + '/about/photo1.png\')';
-        photoArray[2]= 'url(\'' + $.configures.staticsUrl + '/about/photo2.png\')';
-        photoArray[3]= 'url(\'' + $.configures.staticsUrl + '/about/photo3.png\')';
-        photoArray[4]= 'url(\'' + $.configures.staticsUrl + '/about/photo4.png\')';
-        photoArray[5]= 'url(\'' + $.configures.staticsUrl + '/about/photo5.png\')';
-        photoArray[6]= 'url(\'' + $.configures.staticsUrl + '/about/photo6.png\')';
-        photoArray[7]= 'url(\'' + $.configures.staticsUrl + '/about/photo7.png\')';
-        var blocks = [
-            $('<div></div>')
-                .addClass('block1')
-                .css({
-                    height: 500,    
-                    width: 750
-                }),
-            $('<div></div>')
-                .addClass('block2')
-                .css({
-                    height: 700,
-                    width:  750
-                }),
-            $('<div></div>')
-                .addClass('block3')
-                .css({
-                    height: 400,
-                    width:  750
-                })
-        ]
-        var picture = $('<div></div>')
-            .css({
-                background: photoArray[0],
-                float: 'right',
-                height: 300,
-                position: 'relative',
-                width:  400
-            })
-            .mouseenter(function()
-            {
-                display.stop().animate({
-                    height: 50,
-                    opacity: 1
-                }, options.picBarSpeed);
-            })
-            .mouseleave(function()
-            {
-                display.stop().animate({
-                    height: 0,
-                    opacity: 0
-                }, options.picBarSpeed);
-            })
-            .appendTo(blocks[0]);
-        var display = $('<div></div>')
-            .css({
-                background: 'black',
-                bottom: 0,
-                height: 0,
-                opacity: 0,
-                position: 'absolute',
-                width: 400
-            })
-            .appendTo(picture);
-
-        $('.' + options.smallPicClass).each(function(index)
-        {
-            $(this).css({
-                float: 'left',
-                margin: 5
-            })  
-            .click(function()
-            {
-                picture.css({
-                   background: photoArray[index]
-                });
-            })
-            .appendTo(display);
-        });
-        $('<div></div>')
-            .css({
-                float: 'left',
-                height: 500,
-                width: 350
-            })
-            .appendTo(blocks[0])
-            .append($('#' + options.introduceId));
-        var block1_pic = $('<div></div>')
-            .css({
-                height: 400,
-                width: 750,
-                position: 'relative'
-            })
-            .appendTo(blocks[1]);
-        var block1_txt = $('<div></div>')
-            .css({
-                height: 300,
-                width: 750,
-                position: 'relative'
-            })
-            .appendTo(blocks[1]);
-        var block1_inf = $('#' + options.aboutId + ' .' + options.block1InfClass);
-        block1_inf.each(function()
-        {
-            $(this).css({
-                position: 'absolute'
-            })
-            .hide()
-            .appendTo(block1_txt);
-        });
-        $('#' + options.aboutId + ' .' + options.animationClass).each(function(index)
-        {
-            $(this).css({
-                position: 'absolute'
-            })
-            .click(function()
-            {
-                block1_inf.eq(index-1).show();
-            })
-            .appendTo(block1_pic);
-        });
-        $('#' + options.aboutId + ' .' + options.tagBar).each(function()
-        {
-            $(this).css({
-                backgroundColor: 'yellow',
-                float: 'left',
-                height: 40,
-                width: 150
-            })
-            .mouseenter(function()
-            {
-                $(this).css({
-                    backgroundColor: 'red'
-                });
-            })
-            .mouseleave(function()
-            {
-                $(this).css({
-                    backgroundColor: 'yellow'
-                });
-            })
-            .appendTo(blocks[2]);
-        });
-        setInterval(function()
-        {
-            if(photo_index<8)
-            {
-                photo_index++;
-            }
-            else
-            {
-                photo_index=0;
-            }
-            picture.css('background-image', photoArray[photo_index]);
-        },options.picAutoSpeed);
-        $('#' + options.aboutId + ' .' + options.titleClass)
-            .appendTo($('#' + options.aboutId))
-            .each(function(index)
-            {
-                blocks[index].insertAfter($(this));
-            });
-    };
-})(jQuery);
-
-/**
  * Highlight
  */
 (function($)
@@ -759,8 +614,15 @@
                 .addClass('scroll-container')
                 .mouseenter(function()
                 {
-                    var height = scrollArea.height() - scrollContainer.height();
-                    if ( height <= 0 ) height = scrollContainer.height();
+                    var scrollAreaHeight = scrollArea.height();
+                    var scrollContainerHeight = scrollContainer.height();
+                    var height = 0;
+                    if ( scrollAreaHeight > scrollContainerHeight )
+                    {
+                        height = scrollContainerHeight
+                               * scrollContainerHeight
+                               / scrollAreaHeight;
+                    }
                     scrollBar
                         .stop(true, true)
                         .fadeIn(options.fadeInDuration);
@@ -872,7 +734,7 @@
         return this.each(function()
         {
             var options = $.extend({
-                speed:                  1000,
+                speed:                  2000,
                 duration:               500
             }, options);
             var items = $(this).children('li');
@@ -972,8 +834,6 @@
 
         $('.loading').sprite();
 
-        $.about();
-
         $('#form-sidebar-register').click(function()
         {
             window.location.href = $.configures.registerUrl;
@@ -1015,7 +875,10 @@
             }
         });
 
-        $.pull.start();
+        $.pull.start({
+            onlinecounter: $('#header .online'),
+            browseredcounter: $('#header .browsered')
+        });
     });
 
     google.load('search', '1', {
