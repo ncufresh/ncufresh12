@@ -17,7 +17,7 @@ class Category extends CActiveRecord
         return array(
             'article_categories' => array(
                 self::MANY_MANY,
-                'ForumArticleCategory',
+                'ArticleCategory',
                 'forum_forum2category(fid, cid)'
             ),
         );

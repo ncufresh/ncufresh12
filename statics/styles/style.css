@@ -1048,6 +1048,7 @@ input.gsc-search-button:focus
 
 #about .back
 {
+    background: url('');
     margin: 0 0 0 0;
     top: 0;
     left: 0;
@@ -1057,6 +1058,7 @@ input.gsc-search-button:focus
 
 #about .art
 {
+    background: url('');
     margin: 0 0 0 0;
     top: 0;
     left: 0px;
@@ -1066,6 +1068,7 @@ input.gsc-search-button:focus
 
 #about .pro
 {
+    background: url('');
     margin: 0 0 0 0;
     top: 0;
     left: 50px;
@@ -1075,6 +1078,7 @@ input.gsc-search-button:focus
 
 #about .vdo
 {
+    background: url('');
     margin: 0 0 0 0;
     top: 0;
     left: 0;
@@ -1084,6 +1088,7 @@ input.gsc-search-button:focus
 
 #about .des
 {
+    background: url('');
     margin: 0 0 0 0;
     top: 0;
     left: 0;
@@ -1093,6 +1098,7 @@ input.gsc-search-button:focus
 
 #about .boss
 {
+    background: url('');
     margin: 0 0 0 0;
     top: 0;
     left: 0;

@@ -45,8 +45,8 @@
 <div id="header">
     <a id="logo" href="<?php echo Yii::app()->createUrl('site/index'); ?>" title="<?php echo Yii::app()->name; ?>"></a>
     <div class="statics">
-        <p class="online"><?php echo $this->getOnlineCount(); ?></p>
-        <p class="browsered"><?php echo $this->getTotalCount(); ?></p>
+        <p class="online">0</p>
+        <p class="browsered">0</p>
     </div>
     <form id="search" action="<?php echo Yii::app()->createUrl('site/search'); ?>" method="GET" autocomplete="off">
         <dl>
