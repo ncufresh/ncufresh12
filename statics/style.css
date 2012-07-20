@@ -977,7 +977,7 @@ input.gsc-search-button:focus
 
 #nculife-db
 {
-	background: green;
+	border-color: black;
 }
 
 #nculife-cv
@@ -1067,7 +1067,6 @@ input.gsc-search-button:focus
 #content
 {
 	width:751px;
-	
 }
 .l1
 {
@@ -1080,7 +1079,29 @@ input.gsc-search-button:focus
 {
 	margin-center:auto;
 }
+<<<<<<< HEAD
+#title
+{
+	font-weight: bold;
+	background-color:yellow;
+}
+#all
+{
+	display:block;
+}
+#picture
+{	
+	background: url('3.png');
+	border:10 px;
+	background-color:white;
+}
+#underpicture
+{
+	display:block;
+}
+=======
 
+>>>>>>> b47332bb01d1b565562a3672dbd230ebfc2f4679
 .etmomi
 {
     background: url('1.jpg');
@@ -1152,4 +1173,9 @@ td.friends-close-ones
     height:5%;
     width:5%;
     margin:0px;
+<<<<<<< HEAD
 }
+
+=======
+}
+>>>>>>> b47332bb01d1b565562a3672dbd230ebfc2f4679

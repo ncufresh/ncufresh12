@@ -1,6 +1,6 @@
 <?php
 
-class ForumArticleCategory extends CActiveRecord
+class Item extends CActiveRecord
 {
     public static function model($className = __CLASS__)
     {
@@ -9,6 +9,6 @@ class ForumArticleCategory extends CActiveRecord
 
     public function tableName()
     {
-        return '{{forum_article_category}}';
+        return '{{game_items}}';
     }
 }

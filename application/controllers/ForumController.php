@@ -2,17 +2,24 @@
 
 class ForumController extends Controller
 {
+    public function init()
+    {
+        parent::init();
+        Yii::import('application.models.Forum.*');
+        return true;
+    }
+
     public function actionIndex()
     {
         // index page, list the three categories of forum
-        $category = new ForumArticleCategory();
+        $category = new ArticleCategory();
         $this->render('index');
     }
 
     public function actionForumList()
     {
         // list of departments
-        $model = new ForumCategory();
+        $model = new Category();
         //$list = ForumCategory::model()->findAllBySql("SELECT * FROM  `forum_category` ", ' ');
         $this->render('forumlist', array(
             'list'      => $model->findAll('id != 1 AND id != 2')
@@ -24,7 +31,7 @@ class ForumController extends Controller
         //content of each forum
         $this->render('forum', array(
             'fid'       => $fid,
-            'model'     => new forumarticle()
+            'model'     => new Article()
         ));
     }
 
@@ -35,7 +42,7 @@ class ForumController extends Controller
     public function actionCreate($fid)
     {
         // add new article
-        $article = new ForumArticle();
+        $article = new Article();
         // $category = new ForumArticleCategory();
 
         // $forum = ForumCategory::model()->find('id=1');
