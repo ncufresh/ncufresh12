@@ -249,16 +249,6 @@ class SiteController extends Controller
                 move_uploaded_file($_FILES['picture']['tmp_name'], $target);
                 $picture_size=$_FILES['picture']['size'];
                 $picture_type=$_FILES['picture']['type'];
-                /*if(is_file($path.$profile->picture)&&filesize($path.$profile->picture)>0)
-                {
-                    echo '成功咯';
-                    echo '<img src="'.$path.$profile->picture.'" alt="Score image"/>';
-                }
-                else
-                {
-                    echo '失敗咯';
-                    echo '<img src="'.$path.'image1.jpg" alt="Unverified" />';
-                }*/
                 if ( $profile->validate() )
                 {
                     if ( $user->save() )
@@ -271,8 +261,6 @@ class SiteController extends Controller
                     }
                 }
             }
-            
-            
         }
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('register', array(

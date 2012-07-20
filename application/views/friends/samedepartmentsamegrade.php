@@ -1,3 +1,14 @@
+<table>
+<?php
+    foreach ( $profiles as $profile ) :
+?>
+    <tr>
+        <td class="friends-close-ones"><img  height="70" width="70" src=" <?php echo $target.'/'.$profile->picture; ?>" alt="Score image"/><br /><input type="checkbox" name="friend[]" value="<?php $profile->id;?>"  /><?php echo $profile->name;?></td>
+    </tr>
+<?php  
+    endforeach;
+?>
+</table>
 <table class="other-page"">
    <tr>
         <th colspan="5" class="friend-other-page">同屆同系</th>
