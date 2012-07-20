@@ -31,7 +31,7 @@ class News extends CActiveRecord
         return array(
             'urls'      => array(
                 self::HAS_MANY,
-                'NewsLink',
+                'Link',
                 'news_id'
             ),
             'author'    => array(

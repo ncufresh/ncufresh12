@@ -15,6 +15,16 @@ class NewsController extends Controller
     const NEWS_FILE_DIR = 'files';
 
 	/**
+	 * Initialize
+	 */
+	public function init()
+    {
+        parent::init();
+        Yii::import('application.models.News.*');
+        return true;
+    }
+	
+	/**
 	 * Filters
 	 */
     public function filters()
@@ -57,7 +67,7 @@ class NewsController extends Controller
         $this->setPageTitle(Yii::app()->name . ' - 最新消息');
         $this->render('view', array(
             'news'          => $news,
-            'currentPage'   => $news->getCurrentPage(self::NEWS_PER_PAGE, true),
+            'current_page'   => $news->getCurrentPage(self::NEWS_PER_PAGE, true),
             'files'         => $this->loadFiles(self::NEWS_FILE_DIR . DIRECTORY_SEPARATOR . $news->id)
         ));
     }
@@ -117,7 +127,7 @@ class NewsController extends Controller
             {
                 foreach ( $_POST['news']['news_urls'] as $key => $url )
                 {
-                    $url_model = new NewsLink();
+                    $url_model = new Link();
                     $url_model->name = $_POST['news']['news_urls_alias'][$key];
                     $url_model->link = $_POST['news']['news_urls'][$key];
                     $url_model->news_id = $news->id;

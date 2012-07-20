@@ -11,7 +11,7 @@ jQuery(document).ready(function()
 <?php
         $level = array(
             array(
-                'name'  => '怪胎級',
+                'name'  => '錯誤級',  //原則上不會跑到這
                 'exp'   => 0
             ),
             array(
@@ -72,6 +72,11 @@ jQuery(document).ready(function()
           if ( $model->getExpValue() < $value['exp'] )
           {
               echo '<h1 style="background-color:black;color:red;text-align:center;font-size:40px">'.$count.'次加持 '.$value['name'].'</h1>';
+              if($count>=10)
+              echo '<h1 style="background-color:black;color:red;text-align:center;font-size:40px">'.$model->getExpValue().' / ∞ (最高等級)</h1>';
+              else
+              echo '<h1 style="background-color:black;color:red;text-align:center;font-size:40px">'.$model->getExpValue().' / '.$value['exp'].' (下一等級)</h1>';
+              
               break;
           }
           $count++;

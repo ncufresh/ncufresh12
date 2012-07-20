@@ -9,8 +9,6 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/styles/ie.css" media="screen, projection" />
     <![endif]-->
 
-    <title><?php echo $this->getPageTitle(); ?></title>
-
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
@@ -32,12 +30,14 @@
         });
     </script>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/script.js"></script>
-<?php if ( file_exists(Yii::app()->basePath . DIRECTORY_SEPARATOR . 'statics' . DIRECTORY_SEPARATOR . 'scripts' . DIRECTORY_SEPARATOR . $this->getId() . '.js') ) : ?>
+<?php if ( file_exists(dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'statics' . DIRECTORY_SEPARATOR . 'scripts' . DIRECTORY_SEPARATOR . $this->getId() . '.js') ) : ?>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/<?php echo $this->getId(); ?>.js"></script>
 <?php endif; ?>
     <!--[if lt IE 8]>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/ie.js"></script>
     <![endif]-->
+
+    <title><?php echo $this->getPageTitle(); ?></title>
 </head>
 
 <body>
@@ -45,8 +45,8 @@
 <div id="header">
     <a id="logo" href="<?php echo Yii::app()->createUrl('site/index'); ?>" title="<?php echo Yii::app()->name; ?>"></a>
     <div class="statics">
-        <p class="online"><?php echo $this->getOnlineCount(); ?></p>
-        <p class="browsered"><?php echo $this->getTotalCount(); ?></p>
+        <p class="online">0</p>
+        <p class="browsered">0</p>
     </div>
     <form id="search" action="<?php echo Yii::app()->createUrl('site/search'); ?>" method="GET" autocomplete="off">
         <dl>
