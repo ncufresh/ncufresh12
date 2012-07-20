@@ -27,10 +27,15 @@ class NFWFacebook extends CApplicationComponent
         return $this->facebook;
     }
 
-    public function getIsGuest()
+    public function isGuest()
     {
         if ( $this->enable ) return $this->facebook->getUser() == 0;
         return true;
+    }
+
+    public function isMember()
+    {
+        return ! $this->isGuest();
     }
 
     public function getUsername()
@@ -44,23 +49,33 @@ class NFWFacebook extends CApplicationComponent
         return $this->facebook->getAppId();
     }
 
-    public function getLoginUrl()
+    public function login()
     {
-        return $this->facebook->getLoginUrl(array(
-            'display'           => 'popup',
-            'redirect_uri'      =>  Yii::app()->request->hostInfo . Yii::app()->user->returnUrl
-        ));
+        if ( $this->isGuest() )
+        {
+            Yii::app()->request->redirect($this->facebook->getLoginUrl(array(
+                'display'       => 'popup',
+                'redirect_uri'  => Yii::app()->request->hostInfo
+                                 . Yii::app()->user->returnUrl
+            )));
+        }
+    }
+
+    public function logout()
+    {
+        if ( $this->isMember() )
+        {
+            Yii::app()->request->redirect($this->facebook->getLogoutUrl(array(
+                'next'          => Yii::app()->createAbsoluteUrl(
+                    'site/logout',
+                    array('facebook' => true)
+                )
+            )));
+        }
     }
 
     public function destroySession()
     {
         $this->facebook->destroySession();
-    }
-
-    public function getLogoutUrl()
-    {
-        return $this->facebook->getLogoutUrl(array(
-            'next'              =>  Yii::app()->createAbsoluteUrl('site/logout')
-        ));
     }
 }

@@ -99,7 +99,7 @@
 <div id="content"><?php echo $content; ?></div>
 <div id="sidebar">
 <?php if ( Yii::app()->user->getIsGuest() ) : ?>
-    <a href="<?php echo Yii::app()->facebook->getLoginUrl(); ?>" title="使用Facebook帳號登入">使用Facebook帳號登入</a>
+    <a href="<?php echo Yii::app()->createUrl('site/login', array('facebook' => true)); ?>" title="使用Facebook帳號登入">使用Facebook帳號登入</a>
     <form class="profile" action="<?php echo Yii::app()->createUrl('site/login'); ?>" method="POST">
         <dl>
             <dt>
@@ -126,11 +126,7 @@
 <?php else : ?>
     <div class="profile">
         <p>帳號：<?php echo Yii::app()->user->getName(); ?></p>
-<?php  if ( Yii::app()->facebook->getIsGuest() ) : ?>
         <a href="<?php echo Yii::app()->createUrl('site/logout'); ?>" title="登出">登出</a>
-<?php else : ?>
-        <a href="<?php echo Yii::app()->facebook->getLogoutUrl(); ?>" title="登出">登出</a>
-<?php endif; ?>
     </div>
 <?php endif; ?>
     <div class="links sidebar-box">

@@ -21,7 +21,7 @@ return array(
         ),
         'facebook'      => array(
             'class'             => 'application.extensions.facebook.NFWFacebook',
-            'enable'            => true,
+            'enable'            => false,
             'appId'             => $ncufreshfb['appId'],
             'secret'            => $ncufreshfb['secret']
         ),
