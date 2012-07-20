@@ -10,7 +10,7 @@ class Schedule extends CActiveRecord
     {
         return '{{schedule}}';
     }
-    
+
     public function getId($row)
     {
         return $this->findByPk($row);

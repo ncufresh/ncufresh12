@@ -133,7 +133,7 @@ class News extends CActiveRecord
         }
         return false;
     }
-    
+
     public function afterFind()
     {
         parent::afterFind();

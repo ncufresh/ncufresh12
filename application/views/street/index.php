@@ -38,7 +38,7 @@ $content='額額額額額額額額額額額額額額額額額額額額額
         額額額額額額額額額額額額額額額額額額額額額
         額額額額額額額額額額額額額額額額額額額額額';
         // echo $test;
-        echo $data->content;
+        // echo $data->content;
 ?>
 <style>
 #back-div
@@ -57,8 +57,8 @@ $content='額額額額額額額額額額額額額額額額額額額額額
 #building
 {
     height:100px;
-    width:100px; 
-    position:absolute; 
+    width:100px;
+    position:absolute;
     z-index:2;
     left:0px;
     top:0px;
@@ -412,8 +412,6 @@ dialog_div_2.dialog('close');//dialog_2 瞬間出現再結束
 
 
  <script>
- //////////////////////////////picture
-<<<<<<< HEAD
 $('#building').mouseenter(function(){
     $('#building').attr('src','<?php echo Yii::app()->baseUrl?>/statics/chat.png');
 });
@@ -448,7 +446,6 @@ return false;
 //$('#building').src();
 ?>
 
-<<<<<<< HEAD
 $('#dialog2-button-left').click(function() {$('#img1').animate({left:'0px'});});
 $('#dialog2-button-right').click(function() {$('#img1').animate({left:'80px'});});
 

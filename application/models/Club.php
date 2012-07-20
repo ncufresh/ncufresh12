@@ -16,4 +16,3 @@ class Club extends CActiveRecord
         return $this->findByPk($clubid);
     }
 }
-?>
