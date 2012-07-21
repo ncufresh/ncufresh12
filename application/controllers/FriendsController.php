@@ -25,8 +25,18 @@ class FriendsController extends Controller
 
     public function actionFriends() 
     {
+        $userID = Yii::app()->user->id;
+        $departmentId  = Profile::model()->findByPK($userID)->department_id;
+        $grade = Profile::model()->findByPK($userID)->grade;
+        $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $this->setPageTitle(Yii::app()->name . ' - 好友專區');
-        $this->render('friends');
+        $this->render('friends', array(
+            'profileFir'=>Profile::model()->getSameDepartmentSameGrade($departmentId, $grade),
+            'profileSec'=>Profile::model()->getSameDepartmentDiffGrade($departmentId, $grade),
+            'profileThir'=>Profile::model()->getOtherDepartment($departmentId, $grade),
+            'profileFor'=>User::model()->findByPk($userID),           
+            'target'=>$img_url
+        ));
     }
 
     public function actionSameDepartmentSameGrade() 

@@ -1,4 +1,5 @@
-<table class="other-page"">
+<form method="POST" action="<?php echo $this->createUrl('friends/friends'); ?>">
+<table class="other-page">
    <tr>
         <th colspan="5" class="friend-allsame-page">同屆同系</th>
    </tr>
@@ -44,3 +45,4 @@
 <button id="form-samedepartmentsamegrade-rechoose" type="submit" name="samedepartmentsamegrade-rechoose">重選</button>
 <button id="form-samedepartmentsamegrade-ensure" type="submit" name="samedepartmentsamegrade-ensure">確定加為好友</button>
 <button id="form-samedepartmentsamegrade-cancel" type="submit" name="samedepartmentsamegrade-cancel">取消</button>
+</form>
