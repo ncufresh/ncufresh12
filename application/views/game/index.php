@@ -55,16 +55,10 @@
         );
         $id = 1;
         $model = Character::model()->findByPk($id);
-<<<<<<< HEAD
         $model->addExp(47);     //加經驗
         $model->addMoney(10);   //加錢幣
         $count=0; //計算等級
         foreach ($level as $value)
-=======
-        $achievement_is_whom = Character::model()->findByPK(3);
-        $count = 0; //計算等級
-        foreach ( $level as $value )
->>>>>>> adea7c36b50c3812b631896b47bc7d34ecd4d00b
         {
 
           if ( $model->getExpValue() < $value['exp'] )
@@ -104,7 +98,6 @@
         print_r($model->getMoneyValue());
         echo '<br/>';
         echo '</div>';
-<<<<<<< HEAD
 
         static $counter_one=1;
         static $counter_two=1;
@@ -119,11 +112,6 @@
         
         echo '========================<br/>您目前的道具(' . sizeof($model->ItemsBag()) . ')：<br/>';
         foreach ($model->ItemsBag() as $array)
-=======
-        echo sizeof($achievement_is_whom->Owner());
-        echo '<br/>';
-        foreach ( $achievement_is_whom->Owner() as $array )
->>>>>>> adea7c36b50c3812b631896b47bc7d34ecd4d00b
         {
             echo $counter_two.'.';
             $s = $model->GetItemsTime();
