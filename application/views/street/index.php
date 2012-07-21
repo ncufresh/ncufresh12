@@ -29,6 +29,36 @@
     z-index:2;
     left:640px;
     top:50px;
+}#checkbox-2
+{
+    position:absolute;
+    z-index:2;
+    left:640px;
+    top:70px;
+}#checkbox-3
+{
+    position:absolute;
+    z-index:2;
+    left:640px;
+    top:90px;
+}#checkbox-4
+{
+    position:absolute;
+    z-index:2;
+    left:640px;
+    top:110px;
+}#checkbox-5
+{
+    position:absolute;
+    z-index:2;
+    left:640px;
+    top:130px;
+}#checkbox-6
+{
+    position:absolute;
+    z-index:2;
+    left:640px;
+    top:150px;
 }
 #cake
 {
@@ -230,9 +260,9 @@
     <img src="<?php echo Yii::app()->baseUrl?>/statics/pp.jpg" id="map-picture"><!--底圖-->
     <!--<a id="building" href="<?php //echo Yii::app()->createUrl('street/building', array('id' => 2));?>"><img src="<?php //echo Yii::app()->baseUrl?>/statics/marquee_star_icon.png" ></a>-->
     <!--系館-->
-    <a id="electricity-5" class="department-building picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 1));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/555.png"></a>
-    <a id="electricity-1" class="department-building picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 2));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/111.png"></a>
-    <a id="electricity-4" class="department-building picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 3));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/444.png"></a>
+    <a id="electricity-5" class="department-building picture" href="#1"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/555.png"></a>
+    <a id="electricity-1" class="department-building picture" href="#2"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/111.png"></a>
+    <a id="electricity-4" class="department-building picture" href="#3"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/444.png"></a>
     <!--景觀-->
     <a id="flower" class="landscape picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 4));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/flower.png"></a>
     <a id="kon-fu" class="landscape picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 5));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/kon_fu.png"></a>
@@ -250,14 +280,19 @@
     <a id="girl-14" class="dormitory picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 14));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/girl_14.png"></a>
     <a id="new" class="dormitory picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 15));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/new.png"></a>
     <!--綜觀-->
-    <input type="checkbox" id="checkbox-1">     
-</div>
+    <input type="checkbox" id="checkbox-1" value="222"><label>跑步</label>
+    <input type="checkbox" id="checkbox-2">
+    <input type="checkbox" id="checkbox-3">
+    <input type="checkbox" id="checkbox-4">
+    <input type="checkbox" id="checkbox-5">
+    <input type="checkbox" id="checkbox-6">
+   </div>
 
 <div id="dialog-div-1"><!--第一層-->
     <div id="dialog1-up-div">          
         <p id="dialog1-up-content">
         <div id="picture-main">
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/logo.png" style="height:">
+        <img id="main">
         <!--正視圖-->
         </div>  
         </p>
@@ -265,10 +300,12 @@
     
     <div id="dialog1-down-div">
         <div id="picture-other-1">
-        其他圖 1
+        <img id="other-1">
+        <!--其他圖 1-->
         </div>    
         <div id="picture-other-2">
-        其他圖 2
+        <img id="other-2">
+        <!--其他圖 2-->
         </div>
         <img src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg" id="little-man">      
     </div>
@@ -293,6 +330,14 @@
 </div>
 
 <script type="text/javascript">
+    if($('#checkbox-1').attr("checked"))
+    {
+        alter('555');
+    }
+    else
+    {
+        alter('111');
+    }
     // function getJSONById($id)
     // {
         // $.getJSON($('#'+$id).attr('href'), function(data)
@@ -338,13 +383,17 @@
     // $('#building').mouseleave(function()
     // {
         // $('#building').attr('src','<?php echo Yii::app()->baseUrl?>/statics/marquee_star_icon.png' );
-    // });    
+    // }); 
+    
+    // $('#electricity-5, #electricity-1 ,#electricity-4, #flower,#kon-fu, #tree, #cake, #mose, #street, #computer, #government, #library, #boy-11, #girl-14, #new').click(function()
+    // {        
+        // $.getJSON($('#'+$(this).attr('id')).attr('href'), function(data)
+        // {
+            // $('#dialog1-up-content').text(data.content);
+        // });    
+
     $('#electricity-5, #electricity-1 ,#electricity-4, #flower,#kon-fu, #tree, #cake, #mose, #street, #computer, #government, #library, #boy-11, #girl-14, #new').click(function()
-    {        
-        $.getJSON($('#'+$(this).attr('id')).attr('href'), function(data)
-        {        
-        $('#dialog1-up-content').text(data.content);
-        });
+    {    
         dialog_div_1.dialog('open'); // 打開第一層
         $('span.ui-icon').text('關閉'); // 關閉鈕
         $('.ui-dialog-titlebar-close').css({
@@ -352,8 +401,39 @@
             position: 'absolute',
             background:'gray'
         });
-        return false;   
+        var id = $(this).attr('href').replace('#','');        
+         $.ajax(
+        {
+            type: 'GET',
+            url: 'http://localhost/ncufresh12/street/building/'+id+'.html',
+            dataType:'json',
+            success:function(data)
+            {
+                // alert(data.picture_main);
+                $('#dialog1-up-content').text(data.content);
+                $('#main').attr('src',data.picture_main);
+                $('#other-1').attr('src',data.picture_other_1);
+                $('#other-2').attr('src',data.picture_other_2);                
+                // $('#test').attr('src','<?php echo Yii::app()->baseUrl?>/statics/1.jpg');
+            },
+        });         
+        return false;
     });
+    
+    // $.ajax(
+        // {
+        // type: 'GET',
+        // url: '/ncufresh12/nculife/foodContent.html',
+        // data:
+        // {
+            // id: id
+        // },
+        // dataType: 'json',
+        // success: function(data)
+        // { 
+            // $('#nculife-ct').html(data.content);
+        // },
+        // });	   
     
     // $('#electricity-5').click(function()
     // {
