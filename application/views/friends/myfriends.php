@@ -14,13 +14,13 @@
                 if ( $friend->profile->picture !='' )
                 {
         ?>
-                    <td class="friends-close-ones"><img  height="70" width="70" src=" <?php echo $target.'/'.$friend->profile->picture; ?>" alt="Score image"/><br /><input type="checkbox" name="friend[]" value="<?php $friend->id;?>"  /><?php echo $friend->profile->name;?></td>
+                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/'.$friend->profile->picture; ?>" alt="Score image"/><br /><input type="checkbox" name="friend[]" value="<?php $friend->id;?>"  /><?php echo $friend->profile->name;?></td>
                 <?php
                 }
                 else
                 {
                 ?>
-                    <td class="friends-close-ones"><img  height="70" width="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><input type="checkbox" name="friend[]" value="<?php echo $friend->id;?>"  /><?php echo $friend->profile->name;?></td>
+                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><input type="checkbox" name="friend[]" value="<?php echo $friend->id;?>"  /><?php echo $friend->profile->name;?></td>
                 <?php
                 }
                 if ( $col%5==0 ) 
