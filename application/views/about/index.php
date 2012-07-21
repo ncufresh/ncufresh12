@@ -41,21 +41,42 @@
     <p class="information">企劃組介紹</p>
     <p class="information">執行組介紹</p>
     <h4 class="title">Who are we?</h4>
-    <ul>
+    <ul class="tagBar">
         <li>
-            <img class="tag-bar" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="美工" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="美工" />
         </li>
         <li>
-            <img class="tag-bar" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="程設" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="程設" />
         </li>
         <li>
-            <img class="tag-bar" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="影音" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="影音" />
         </li>
         <li>
-            <img class="tag-bar" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="企劃" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="企劃" />
         </li>
         <li>
-            <img class="tag-bar" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="執行" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="執行" />
+        </li>
+        <li>
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="向左" />
+        </li>
+        <li>
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="向右" />
+        </li>
+        <li>
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="下小圖1" />
+        </li>
+        <li>
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="下小圖2" />
+        </li>
+        <li>
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="下小圖3" />
+        </li>
+        <li>
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="下小圖4" />
+        </li>
+        <li>
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="下小圖5" />
         </li>
     </ul>
 </div>

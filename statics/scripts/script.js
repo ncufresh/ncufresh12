@@ -181,7 +181,7 @@
     $.pull.options = {
         onlinecounter:          null,
         browseredcounter:       null,
-        counterAnimationSpeed:  30,
+        counterAnimationSpeed:  50,
         minimumAnimationTimes:  4,
         interval:               5000
     };
@@ -208,20 +208,40 @@
                     if ( $.pull.options.browseredcounter )
                     {
                         var browsered = response.counter.browsered;
-                        var current = $.integer(
-                            $.pull.options.browseredcounter.text()
-                        );
+                        var browseredText = browsered.toString();
+                        var current = $.pull.options.browseredcounter.text();
+                        if ( current == '0' )
+                        {
+                            for ( var i = 1; i < browseredText.length; i++)
+                            {
+                                current += '0';
+                            }
+                        }
+                        var temp = '';
+                        var run = false;
                         var timer = setInterval(function()
                         {
-                            /*current += $.random(
-                                1,
-                                browsered / $.pull.options.minimumAnimationTimes
-                            );*/
-                            current += 1;
-                            $.pull.options.browseredcounter.css({
-                                top: $.pull.options.browseredcounter.top-10
-                            });
-                            if ( current >= browsered )
+                            for ( var i = 0; i < browseredText.length; i++)
+                            {
+                                temp = '';
+                                if ( browseredText.charAt(i) != current.charAt(i) )
+                                {
+                                    for ( var j = 0; j < browseredText.length; j++)
+                                    {
+                                        if ( j != i)
+                                        {
+                                            temp += current.charAt(j);
+                                        }
+                                        else
+                                        {
+                                            temp += $.random(0, 9).toString();
+                                        }
+                                    }
+                                    current = temp;
+                                    run = true;
+                                }
+                            }
+                            if ( run == false )
                             {
                                 current = browsered;
                                 clearInterval(timer);
