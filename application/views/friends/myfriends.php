@@ -1,5 +1,4 @@
 <form method="POST" action="<?php echo $this->createUrl('friends/deletefriends'); ?>">
-</table>
 <table class="other-page">
    <tr >
     <th colspan="5" class="friend-close-page">我的好友</th>

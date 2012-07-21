@@ -29,7 +29,8 @@ class SiteController extends Controller
                     'pull',
                     'register',
                     'login',
-                    'channel'
+                    'channel',
+                    'profile'
                 ),
                 'users'     => array('*')
             ),
@@ -270,6 +271,17 @@ class SiteController extends Controller
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('register', array(
             'departments'  => Department::model()->getDepartment() 
+        ));
+    }
+
+    public function actionProfile() 
+    {
+        $userID = Yii::app()->user->id;
+        $departmentId  = Profile::model()->findByPK($userID)->department_id;
+        $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+        $this->render('profile', array(                
+            'user'=>User::model()->findByPk($userID), 
+            'target'=>$img_url
         ));
     }
 }

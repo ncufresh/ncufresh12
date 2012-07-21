@@ -110,7 +110,7 @@
                 if ( $friend->profile->picture !='' )
                 {
         ?>  
-                    <td class="friends-samediff-ones"><img  height="70" src=" <?php echo $target.'/'.$friend->profile->picture; ?>" alt="Score image"/><br /><?php echo $friend->profile->name;?></td>
+                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/'.$friend->profile->picture; ?>" alt="Score image"/><br /><?php echo $friend->profile->name;?></td>
                 <?php
                 }
                 else
