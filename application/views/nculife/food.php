@@ -17,7 +17,7 @@ jQuery(document).ready(function()
         });
     });
 
-    $('.life-tab').click(function(){
+     $('.life-tab').click(function(){
         
         var id = $(this).attr('href').replace('#','');
         $.ajax(
@@ -46,7 +46,7 @@ jQuery(document).ready(function()
         });    
     });
 
-    $('#haha1').click(function()
+   /*  $('#haha1').click(function()
     {
         var url = 'index.html';
         $.ajax(
@@ -79,9 +79,9 @@ jQuery(document).ready(function()
             },
         });    
         return false;
-    });
+    });  */
 
-    $('#haha2').click(function()
+/*     $('#haha2').click(function()
     {
         var url = 'index.html';
         $.ajax(
@@ -99,7 +99,7 @@ jQuery(document).ready(function()
             },
         });
         return false;
-    });
+    }); */
 });
 </script>
 <div class="nculife-food">
