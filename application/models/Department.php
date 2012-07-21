@@ -25,4 +25,14 @@ class Department extends CActiveRecord
             'order'     => 'id ASC', 
         ));
     }
+
+    public function getSelfDepartment($id)
+    {
+        return $this->findAll(array(
+            'condition' => 'id = :id',
+            'params'    => array(
+                ':id' => $id
+            )
+        ));
+    }
 }

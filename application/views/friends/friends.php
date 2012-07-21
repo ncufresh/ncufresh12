@@ -15,13 +15,13 @@
                 if ( $profilefir->picture !='' )
                 {
         ?>  
-                    <td class="friends-samediff-ones"><img  height="70" src=" <?php echo $target.'/'.$profilefir->picture; ?>" alt="Score image"/><br /><input type="checkbox" name="samedepartment[]" value="<?php $profilefir->id;?>"  /><?php echo $profilefir->name;?></td>
+                    <td class="friends-samediff-ones"><img  height="70" src=" <?php echo $target.'/'.$profilefir->picture; ?>" alt="Score image"/><br /><?php echo $profilefir->name;?></td>
                 <?php
                 }
                 else
                 {
                 ?>
-                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><input type="checkbox" name="samedepartment[]" value="<?php echo $profilefir->id;?>"  /><?php echo $profilefir->name;?></td>
+                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><?php echo $profilefir->name;?></td>
         <?php
                 }
             $account++;
@@ -45,13 +45,13 @@
                 if ( $profilesec->picture !='' )
                 {
         ?>  
-                    <td class="friends-samediff-ones"><img  height="70" src=" <?php echo $target.'/'.$profilesec->picture; ?>" alt="Score image"/><br /><input type="checkbox" name="samedepartment[]" value="<?php $profilesec->id;?>"  /><?php echo $profilesec->name;?></td>
+                    <td class="friends-samediff-ones"><img  height="70" src=" <?php echo $target.'/'.$profilesec->picture; ?>" alt="Score image"/><br /><?php echo $profilesec->name;?></td>
                 <?php
                 }
                 else
                 {
                 ?>
-                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><input type="checkbox" name="samedepartment[]" value="<?php echo $profilesec->id;?>"  /><?php echo $profilesec->name;?></td>
+                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><?php echo $profilesec->name;?></td>
         <?php
                 }
             $account++;
@@ -75,13 +75,13 @@
                 if ( $profilethir->picture !='' )
                 {
         ?>  
-                    <td class="friends-samediff-ones"><img  height="70" src=" <?php echo $target.'/'.$profilethir->picture; ?>" alt="Score image"/><br /><input type="checkbox" name="samedepartment[]" value="<?php $profilethir->id;?>"  /><?php echo $profilethir->name;?></td>
+                    <td class="friends-samediff-ones"><img  height="70" src=" <?php echo $target.'/'.$profilethir->picture; ?>" alt="Score image"/><br /><?php echo $profilethir->name;?></td>
                 <?php
                 }
                 else
                 {
                 ?>
-                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><input type="checkbox" name="samedepartment[]" value="<?php echo $profilethir->id;?>"  /><?php echo $profilethir->name;?></td>
+                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><?php echo $profilethir->name;?></td>
         <?php
                 }
             $account++;
@@ -110,13 +110,13 @@
                 if ( $friend->profile->picture !='' )
                 {
         ?>  
-                    <td class="friends-samediff-ones"><img  height="70" src=" <?php echo $target.'/'.$friend->profile->picture; ?>" alt="Score image"/><br /><input type="checkbox" name="samedepartment[]" value="<?php $friend->profile->id;?>"  /><?php echo $friend->profile->name;?></td>
+                    <td class="friends-samediff-ones"><img  height="70" src=" <?php echo $target.'/'.$friend->profile->picture; ?>" alt="Score image"/><br /><?php echo $friend->profile->name;?></td>
                 <?php
                 }
                 else
                 {
                 ?>
-                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><input type="checkbox" name="samedepartment[]" value="<?php echo $friend->profile->id;?>"  /><?php echo $friend->profile->name;?></td>
+                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><?php echo $friend->profile->name;?></td>
         <?php
                 }
             $account++;

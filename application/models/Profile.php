@@ -26,9 +26,9 @@ class Profile extends CActiveRecord
     {
         return array(
             'department'    => array(
-                self::HAS_ONE,
+                self::BELONGS_TO,
                 'Department', 
-                'id' 
+                'department_id' 
             ),
         ); 
     }
