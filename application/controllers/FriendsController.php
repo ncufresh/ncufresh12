@@ -90,12 +90,67 @@ class FriendsController extends Controller
         ));
     }
 
-    /*public function actionMakeFriends()
+    public function actionMakeFriends()
     {
         if ( isset($_POST['samedepartmentsamegrade-ensure']) || isset($_POST['samedepartmentdiffgrade-ensure']) || isset($_POST['otherdepartment-ensure']) )
         {
-            if ( isset($_POST['friends[]']) )
+            foreach($_POST['friends'] as $friend)
+            {   
+                $model = new Friend();
+                $model->user_id = Yii::app()->user->id;
+                $model->friend_id = $friend;
+                $model->save();
+                $model = new Friend();
+                $model->user_id = $friend;
+                $model->friend_id = Yii::app()->user->id;
+                $model->save();
+            }
         }
-        $this->redirect(array('friends/friends'));
-    }*/
+        else if ( isset($_POST['samedepartmentsamegrade-rechoose']) )
+        {
+            $this->redirect(array('friends/samedepartmentsamegrade'));
+        }
+        else if ( isset($_POST['samedepartmentdiffgrade-rechoose']) )
+        {
+             $this->redirect(array('friends/samedepartmentdiffgrade'));
+        }
+        else if ( isset($_POST['otherdepartmente-rechoose']) )
+        {
+            $this->redirect(array('friends/otherdepartmente'));
+        }
+        else
+        {
+            $this->redirect(array('friends/friends'));
+        }
+    }
+    
+    public function actionDeleteFriends()
+    {
+        if ( isset($_POST['myfriends-cancel']) )
+        {
+            foreach($_POST['friends'] as $Cancelfriend)
+            {   
+                $data1 = Friend::model()->find(array(
+                    'condition' => 'user_id = :user_id AND friend_id = :friend_id',
+                    'params'    => array(
+                        ':user_id' => Yii::app()->user->id,
+                        ':friend_id' => $Cancelfriend 
+                    )
+                ));
+                echo $data1->id;
+                Friend::model()->deleteByPk($data1->id);
+                $data2 = Friend::model()->find(array(
+                    'condition' => 'user_id = :user_id AND friend_id = :friend_id',
+                    'params'    => array(
+                        ':user_id' => $Cancelfriend,
+                        ':friend_id' => Yii::app()->user->id 
+                    )
+                ));
+                echo $data2->id;
+                Friend::model()->deleteByPk($data2->id); 
+            }
+            // exit;
+            $this->redirect(array('friends/friends'));
+        }
+    }
 }

@@ -1,3 +1,4 @@
+<form method="POST" action="<?php echo $this->createUrl('friends/deletefriends'); ?>">
 </table>
 <table class="other-page">
    <tr >
@@ -5,6 +6,7 @@
     </tr>
         <tr>
         <?php 
+        
         $row = 0;
         $col = 1;
         foreach ( $user->friends as $friend ) :
@@ -14,13 +16,19 @@
                 if ( $friend->profile->picture !='' )
                 {
         ?>
-                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/'.$friend->profile->picture; ?>" alt="Score image"/><br /><input type="checkbox" name="friend[]" value="<?php $friend->id;?>"  /><?php echo $friend->profile->name;?></td>
+                    <td class="friends-close-ones">
+                        <img  height="70" src=" <?php echo $target.'/'.$friend->profile->picture; ?>" alt="Score image"/><br />
+                        <input type="checkbox" name="friends[]" value="<?php echo $friend->profile->id;?>"  /><?php echo $friend->profile->name;?>
+                    </td>
                 <?php
                 }
                 else
                 {
                 ?>
-                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><input type="checkbox" name="friend[]" value="<?php echo $friend->id;?>"  /><?php echo $friend->profile->name;?></td>
+                    <td class="friends-close-ones">
+                        <img  height="70" src="<?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br />
+                        <input type="checkbox" name="friends[]" value="<?php echo $friend->profile->id;?>" /><?php echo $friend->profile->name;?>
+                    </td>
                 <?php
                 }
                 if ( $col%5==0 ) 
@@ -43,6 +51,5 @@
         ?>
     
 </table>
-<button id="form-otherdepartment-rechoose" type="submit" name="myfriends-rechoose">重選</button>
-<button id="form-otherdepartment-ensure" type="submit" name="myfriends-ensure">確定加為好友</button>
-<button id="form-otherdepartment-cancel" type="submit" name="myfriends-cancel">取消</button>
+<button id="form-otherdepartment-cancel" type="submit" name="myfriends-cancel">取消好友/BACK</button>
+</form>

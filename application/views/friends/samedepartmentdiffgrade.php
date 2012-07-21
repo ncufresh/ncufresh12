@@ -1,3 +1,4 @@
+<form method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
 <table class="other-page">
     <tr>
         
@@ -46,4 +47,5 @@
 </table> 
 <button id="form-samedepartmentdiffgrade-rechoose" type="submit" name="samedepartmentdiffgrade-rechoose">重選</button>
 <button id="form-samedepartmentdiffgrade-ensure" type="submit" name="samedepartmentdiffgrade-ensure">確定加為好友</button>
-<button id="form-samedepartmentdiffgrade-cancel" type="submit" name="samedepartmentdiffgrade-cancel">取消</button>
+<button id="form-samedepartmentdiffgrade-cancel" type="submit" name="samedepartmentdiffgrade-cancel">取消/BACK</button>
+</form>

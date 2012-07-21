@@ -7,6 +7,7 @@
         <?php 
         $row = 0;
         $col = 1;
+        
         foreach ( $profiles as $profile ) :
             if ( $row<=4 )   //限顯現4行
             { 
@@ -15,7 +16,6 @@
         <?php
                 if ( $profile->picture !='' )
                 {
-        
                     echo $target.'/'.$profile->picture; 
                 }
                 else
@@ -46,5 +46,5 @@
 </table>
 <button id="form-samedepartmentsamegrade-rechoose" type="submit" name="samedepartmentsamegrade-rechoose">重選</button>
 <button id="form-samedepartmentsamegrade-ensure" type="submit" name="samedepartmentsamegrade-ensure">確定加為好友</button>
-<button id="form-samedepartmentsamegrade-cancel" type="submit" name="samedepartmentsamegrade-cancel">取消</button>
+<button id="form-samedepartmentsamegrade-cancel" type="submit" name="samedepartmentsamegrade-cancel">取消/BACK</button>
 </form>
