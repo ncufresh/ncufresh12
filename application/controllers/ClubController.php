@@ -28,7 +28,8 @@ class ClubController extends Controller
 		$page = (integer)$_GET['id'];
         $data = $club->getClub($page);
         $this->render('content', array(
-            'data'      => $data
+            'data'      => $data,
+			'id'		=> $page
         ));
     }
 }

@@ -6,7 +6,7 @@
             aboutId:                         'about',
             titleClass:                      'title',
             introduceId:                     'introduce',
-            tagBar:                          'tag-bar',
+            tagBar:                          'tagBar',
             animationClass:                  'animation',
             block1InfClass:                  'information',
             picBarSpeed:                     1000,
@@ -14,6 +14,8 @@
         }, options);
         var photo_index = 0;
         var photos = $('#' + options.aboutId + ' img');
+        var tagbar_index = 0;
+        var tagbar = $('.' + options.tagBar + ' img');
         var blocks = [
             $('<div></div>')
                 .addClass('block1')
@@ -30,7 +32,8 @@
             $('<div></div>')
                 .addClass('block3')
                 .css({
-                    height: 400,
+                    height: 600,
+                    position: 'relative',
                     width:  750
                 })
         ]
@@ -146,27 +149,220 @@
             })
             .appendTo(blocks[0])
             .append($('#' + options.introduceId));
-        $('#' + options.aboutId + ' .' + options.tagBar).each(function()
+        tagbar.eq(0).css({
+            left: 225,
+            top: 0,
+            height: 400,
+            width: 300
+        })
+        .show();
+        tagbar.eq(1).css({
+            left: 475,
+            top: 20,
+            height: 200,
+            width: 150
+        })
+        .show();
+        tagbar.eq(2).hide();
+        tagbar.eq(3).hide();
+        tagbar.eq(4).hide();
+        tagbar.each(function(index)
         {
-            $(this).css({
-                backgroundColor: 'yellow',
-                float: 'left',
-                height: 40,
-                width: 150
-            })
-            .mouseenter(function()
+            if ( index < 5 )
             {
                 $(this).css({
-                    backgroundColor: 'red'
-                });
-            })
-            .mouseleave(function()
+                    backgroundColor: 'yellow',
+                    float: 'left',
+                    position: 'absolute'
+                })
+                .mouseenter(function()
+                {
+                    $(this).css({
+                        backgroundColor: 'red'
+                    });
+                })
+                .mouseleave(function()
+                {    
+                    $(this).css({
+                        backgroundColor: 'yellow'
+                    });
+                })
+                .appendTo(blocks[2]);
+            }
+            else if ( index == 5 )
             {
                 $(this).css({
-                    backgroundColor: 'yellow'
-                });
-            })
-            .appendTo(blocks[2]);
+                    backgroundColor: 'yellow',
+                    float: 'left',
+                    left: 0,
+                    top: 80,
+                    height: 40,
+                    position: 'absolute',
+                    width: 40
+                })
+                .mouseenter(function()
+                {
+                    $(this).css({
+                        backgroundColor: 'red'
+                    });
+                })
+                .mouseleave(function()
+                {    
+                    $(this).css({
+                        backgroundColor: 'yellow'
+                    });
+                })
+                .click(function()
+                {
+                    if ( tagbar_index > 0 )
+                    {
+                        tagbar_index--;
+                        tagbar.eq(0).hide();
+                        tagbar.eq(1).hide();
+                        tagbar.eq(2).hide();
+                        tagbar.eq(3).hide();
+                        tagbar.eq(4).hide();
+                        if ( tagbar_index == 0 )
+                        {
+                            tagbar.eq(0).css({
+                                left: 225,
+                                top: 0,
+                                height: 400,
+                                width: 300
+                            })
+                            .show();
+                            tagbar.eq(1).css({
+                                left: 475,
+                                top: 20,
+                                height: 200,
+                                width: 150
+                            })
+                            .show();
+                            tagbar.eq(2).hide();
+                            tagbar.eq(3).hide();
+                            tagbar.eq(4).hide();
+                        }
+                        else
+                        {
+                            tagbar.eq( tagbar_index - 1).css({
+                                left: 125,
+                                top: 20,
+                                height: 200,
+                                width: 150
+                            })
+                            .show();
+                            tagbar.eq( tagbar_index ).css({
+                                left: 225,
+                                top: 0,
+                                height: 400,
+                                width: 300
+                            })
+                            .show();
+                            tagbar.eq( tagbar_index + 1 ).css({
+                                left: 475,
+                                top: 20,
+                                height: 200,
+                                width: 150
+                            })
+                            .show();
+                        }
+                    }
+                        
+                })
+                .appendTo(blocks[2]);
+            }
+            else if ( index == 6 )  
+            {
+                $(this).css({
+                    backgroundColor: 'yellow',
+                    float: 'left',
+                    left: 710,
+                    top: 80,
+                    height: 40,
+                    position: 'absolute',
+                    width: 40
+                })
+                .mouseenter(function()
+                {
+                    $(this).css({
+                        backgroundColor: 'red'
+                    });
+                })
+                .mouseleave(function()
+                {    
+                    $(this).css({
+                        backgroundColor: 'yellow'
+                    });
+                })
+                .click(function()
+                {
+                    
+                    if ( tagbar_index < 4 )
+                    {
+                        tagbar_index++;
+                        tagbar.eq(0).hide();
+                        tagbar.eq(1).hide();
+                        tagbar.eq(2).hide();
+                        tagbar.eq(3).hide();
+                        tagbar.eq(4).hide();
+                        if ( tagbar_index == 4 )
+                        {
+                            tagbar.eq(3).css({
+                                left: 125,
+                                top: 20,
+                                height: 200,
+                                width: 150
+                            })
+                            .show();
+                            tagbar.eq(4).css({
+                                left: 225,
+                                top: 0,
+                                height: 400,
+                                width: 300
+                            })
+                            .show();
+                        }
+                        else
+                        {
+                            tagbar.eq( tagbar_index - 1 ).css({
+                                left: 125,
+                                top: 20,
+                                height: 200,
+                                width: 150
+                            })
+                            .show();
+                            tagbar.eq( tagbar_index ).css({
+                                left: 225,
+                                top: 0,
+                                height: 400,
+                                width: 300
+                            })
+                            .show();
+                            tagbar.eq( tagbar_index + 1 ).css({
+                                left: 475,
+                                top: 20,
+                                height: 200,
+                                width: 150
+                            })
+                            .show();
+                        }
+                    }
+                })
+                .appendTo(blocks[2]);
+            }
+            else
+            {
+                $(this).css({
+                    backgroundColor: 'yellow',
+                    float: 'left',
+                    left: 305 + ( index - 7 ) * 30,
+                    top: 420,
+                    height: 20,
+                    position: 'absolute',
+                    width: 20
+                })
+                .appendTo(blocks[2]);
+            }
         });
     };
     $(document).ready(function()
