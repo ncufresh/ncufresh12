@@ -1,6 +1,6 @@
+<?php
 
-<?php        
-class  StreetController extends Controller
+class StreetController extends Controller
 {
     public function actionIndex() // main page
     {
@@ -29,13 +29,11 @@ class  StreetController extends Controller
             case 3:
             $this->_data['content'] = $this->renderPartial('department-building/content3', null, true, false);
             break;
-        }      
+        }
     }
-    
+
     public function actionStreet() // 街景服務頁
     {
     }
 }
 ?>
-
-       

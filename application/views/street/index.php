@@ -280,12 +280,12 @@
     <a id="girl-14" class="dormitory picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 14));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/girl_14.png"></a>
     <a id="new" class="dormitory picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 15));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/new.png"></a>
     <!--綜觀-->
-    <input type="checkbox" id="checkbox-1" value="222"><label>跑步</label>
-    <input type="checkbox" id="checkbox-2">
-    <input type="checkbox" id="checkbox-3">
-    <input type="checkbox" id="checkbox-4">
-    <input type="checkbox" id="checkbox-5">
-    <input type="checkbox" id="checkbox-6">
+    <input type="checkbox" id="checkbox-1" class="box">
+    <input type="checkbox" id="checkbox-2" class="box">
+    <input type="checkbox" id="checkbox-3" class="box">
+    <input type="checkbox" id="checkbox-4" class="box">
+    <input type="checkbox" id="checkbox-5" class="box">
+    <input type="checkbox" id="checkbox-6" class="box">
    </div>
 
 <div id="dialog-div-1"><!--第一層-->
@@ -330,14 +330,87 @@
 </div>
 
 <script type="text/javascript">
-    if($('#checkbox-1').attr("checked"))
-    {
-        alter('555');
-    }
-    else
-    {
-        alter('111');
-    }
+    $('#checkbox-1').click(function()
+    {//系館
+        $('.department-building, .landscape, .diet, .government, .dormitory').show();
+        $("#checkbox-2, #checkbox-3, #checkbox-4, #checkbox-5, #checkbox-6").removeAttr("checked");
+        if($('#checkbox-1').prop('checked'))
+        {
+            $('.landscape, .diet, .government, .dormitory').hide();
+        }
+        else
+        {
+            $('.landscape, .diet, .government, .dormitory').show();
+        }
+    });
+    $('#checkbox-2').click(function()
+    {//景觀
+        $('.department-building, .landscape, .diet, .government, .dormitory').show();
+        $("#checkbox-1, #checkbox-3, #checkbox-4, #checkbox-5, #checkbox-6").removeAttr("checked");
+        if($('#checkbox-2').prop('checked'))
+        {
+            $('.department-building, .diet, .government, .dormitory').hide(); 
+        }
+        else
+        {
+            $('.department-building, .diet, .government, .dormitory').show();
+        }
+    });
+    $('#checkbox-3').click(function()
+    {//飲食
+        $('.department-building, .landscape, .diet, .government, .dormitory').show();
+        $("#checkbox-1, #checkbox-2, #checkbox-4, #checkbox-5, #checkbox-6").removeAttr("checked");
+        if($('#checkbox-3').prop('checked'))
+        {
+            $('.department-building, .landscape, .government, .dormitory').hide();
+        }
+        else
+        {
+            $('.department-building, .landscape, .government, .dormitory').show();
+        }
+    });
+    $('#checkbox-4').click(function()
+    {//行政
+        $('.department-building, .landscape, .diet, .government, .dormitory').show();
+        $("#checkbox-1 #checkbox-2, #checkbox-3, #checkbox-5, #checkbox-6").removeAttr("checked");
+        if($('#checkbox-4').prop('checked'))
+        {
+            $('.department-building, .landscape, .diet, .dormitory').hide();
+        }
+        else
+        {
+            $('.department-building, .landscape, .diet, .dormitory').show();
+        }
+    });
+    $('#checkbox-5').click(function()
+    {//宿舍
+        $('.department-building, .landscape, .diet, .government, .dormitory').show();
+        $("#checkbox-1, #checkbox-2, #checkbox-3, #checkbox-4, #checkbox-6").removeAttr("checked");
+        if($('#checkbox-5').prop('checked'))
+        {
+            $('.department-building, .landscape, .diet, .government').hide();
+        }
+        else
+        {
+            $('.department-building, .landscape, .diet, .government').show();
+        }
+    });  
+    $('#checkbox-6').click(function()
+    {//綜觀     
+        $('.department-building, .landscape, .diet, .government, .dormitory').show();
+        $("#checkbox-1, #checkbox-2, #checkbox-3, #checkbox-4, #checkbox-5").removeAttr("checked");
+    });
+    
+    // $(document).ready(function(){
+    // if($('#checkbox-1').attr('checked'))
+    // {
+        // alert('checked');
+    // }
+    // else
+    // {
+        // alter('no');
+    // }
+    // });
     // function getJSONById($id)
     // {
         // $.getJSON($('#'+$id).attr('href'), function(data)

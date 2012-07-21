@@ -123,8 +123,8 @@ class SiteController extends Controller
     public function actionPull($lasttime = 0)
     {
         $this->_data['counter'] = array(
-            'online'    => $this->getOnlineCount(),
-            'browsered' => $this->getTotalCount()
+            'online'    => Activity::getOnlineCount(),
+            'browsered' => Activity::getTotalCount()
         );
         if ( $lasttime == 0 ) // Debug only
         {
@@ -149,7 +149,10 @@ class SiteController extends Controller
                 )
             );
         }
-        $this->_data['messages'] = Chat::model()->getMessages($lasttime);
+        if ( Yii::app()->user->getIsMember() )
+        {
+            $this->_data['messages'] = Chat::model()->getMessages($lasttime);
+        }
         $this->_data['lasttime'] = TIMESTAMP;
     }
 
@@ -194,8 +197,9 @@ class SiteController extends Controller
     /**
      * Displays the login page
      */
-    public function actionLogin()
+    public function actionLogin($facebook = false)
     {
+        if ( $facebook ) Yii::app()->facebook->login();
         if ( isset($_POST['login']) )
         {
             $model = new User();
@@ -214,8 +218,9 @@ class SiteController extends Controller
     /**
      * Logs out the current user and redirect to homepage.
      */
-    public function actionLogout()
+    public function actionLogout($facebook = false)
     {
+        if ( ! $facebook ) Yii::app()->facebook->logout();
         Yii::app()->user->logout(false);
         $this->redirect(Yii::app()->homeUrl);
     }
@@ -249,16 +254,6 @@ class SiteController extends Controller
                 move_uploaded_file($_FILES['picture']['tmp_name'], $target);
                 $picture_size=$_FILES['picture']['size'];
                 $picture_type=$_FILES['picture']['type'];
-                /*if(is_file($path.$profile->picture)&&filesize($path.$profile->picture)>0)
-                {
-                    echo '成功咯';
-                    echo '<img src="'.$path.$profile->picture.'" alt="Score image"/>';
-                }
-                else
-                {
-                    echo '失敗咯';
-                    echo '<img src="'.$path.'image1.jpg" alt="Unverified" />';
-                }*/
                 if ( $profile->validate() )
                 {
                     if ( $user->save() )
@@ -271,8 +266,6 @@ class SiteController extends Controller
                     }
                 }
             }
-            
-            
         }
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('register', array(
