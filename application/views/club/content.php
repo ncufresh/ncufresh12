@@ -1,13 +1,91 @@
-﻿<div id='club-underpicture'>
+﻿<script type="text/javascript">
+jQuery(document).ready(function()
+{
+    jQuery('.club-picture1').click(function()
+    {
+		jQuery('#club-picture-dialog1').dialog(
+        {
+            height: 620,
+            width: 820,
+            modal: true,
+            show: 
+            {
+                effect: 'flod',
+                direction: 'down'
+            }
+        });
+    });
+	jQuery('.club-picture2').click(function()
+    {
+		jQuery('#club-picture-dialog2').dialog(
+        {
+            height: 620,
+            width: 820,
+            modal: true,
+            show: 
+            {
+                effect: 'flod',
+                direction: 'down'
+            }
+        });
+    });
+	jQuery('.club-picture3').click(function()
+    {
+		jQuery('#club-picture-dialog3').dialog(
+        {
+            height: 620,
+            width: 820,
+            modal: true,
+            show: 
+            {
+                effect: 'flod',
+                direction: 'down'
+            }
+        });
+    });
+	jQuery('.club-picture4').click(function()
+    {
+		jQuery('#club-picture-dialog4').dialog(
+        {
+            height: 620,
+            width: 820,
+            modal: true,
+            show: 
+            {
+                effect: 'flod',
+                direction: 'down'
+            }
+        });
+    });
+	
+});
+</script>
+
+<div id="club-underpicture">
 	<div id="club-picture-menu">
             <button>UP</button>
             <button>DOWN</button>
             <div id="club-menu-items">
-                <button class="club-picture1"></button>
-                <button class="club-picture2"></button>
-                <button class="club-picture3"></button>
-				<button class="club-picture4"></button>
+                <button class="club-picture1"><img src="<?php echo Yii::app()->baseUrl . "/statics/images/club/$id/1.jpg"?>"/></button>
+                <button class="club-picture2"><img src="<?php echo Yii::app()->baseUrl . "/statics/images/club/$id/2.jpg"?>"/></button>
+                <button class="club-picture3"><img src="<?php echo Yii::app()->baseUrl . "/statics/images/club/$id/3.jpg"?>"/></button>
+				<button class="club-picture4"><img src="<?php echo Yii::app()->baseUrl . "/statics/images/club/$id/4.jpg"?>"/></button>
 			</div>
+	</div>
+</div>
+<div id="club-picture-dialog1">
+	<div class="club-picture1-display1"><img src="<?php echo Yii::app()->baseUrl . "/statics/images/club/$id/1.jpg"?>"/></div>
+</div>
+<div id="club-picture-dialog2">
+	<div class="club-picture2-display2"><img src="<?php echo Yii::app()->baseUrl . "/statics/images/club/$id/2.jpg"?>"/></div>
+</div>
+<div id="club-picture-dialog3">
+	<div class="club-picture-display3"><img src="<?php echo Yii::app()->baseUrl . "/statics/images/club/$id/3.jpg"?>"/></div>
+</div>
+<div id="club-picture-dialog4">
+	<div class="club-picture-display4"><img src="<?php echo Yii::app()->baseUrl . "/statics/images/club/$id/4.jpg"?>"/>"/></div>
+</div>
+
 <div id="club-display">    
     <?php if((integer)$_GET['id']>=1&&(integer)$_GET['id']<=77)
             {?>

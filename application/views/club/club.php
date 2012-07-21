@@ -161,6 +161,9 @@
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 49));?>" title="中央火舞藝術研究社">中央火舞藝術研究社</a>
             </li>
+			<li>
+                <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 99));?>" title="管樂社">管樂社</a>
+            </li>
         </ul>
         <ul class="l1">
             <h2>聯誼性</h2>
