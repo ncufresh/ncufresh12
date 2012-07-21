@@ -10,16 +10,16 @@
             if ( $row<=4 )   //限顯現4行
             { 
             
-                if ( $target.'/'.$profile->picture !='' )
+                if ( $profile->picture !='' )
                 {
         ?>
-                    <td class="friends-allsame-ones"><img  height="70" width="70" src=" <?php echo $target.'/'.$profile->picture; ?>" alt="Score image"/><br /><input type="checkbox" name="samedepartment[]" value="<?php $profile->id;?>"  /><?php echo $profile->name;?></td>
+                    <td class="friends-allsame-ones"><img  height="70" src=" <?php echo $target.'/'.$profile->picture; ?>" alt="Score image"/><br /><input type="checkbox" name="samedepartment[]" value="<?php $profile->id;?>"  /><?php echo $profile->name;?></td>
                 <?php
                 }
                 else
                 {
                 ?>
-                    <td class="friends-allsame-ones"><img  height="70" width="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><input type="checkbox" name="samedepartment[]" value="<?php echo $profile->id;?>"  /><?php echo $profile->name;?></td>
+                    <td class="friends-allsame-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><input type="checkbox" name="samedepartment[]" value="<?php echo $profile->id;?>"  /><?php echo $profile->name;?></td>
                 <?php
                 }
                 if ( $col%5==0 ) 

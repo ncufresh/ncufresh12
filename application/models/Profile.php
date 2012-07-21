@@ -54,4 +54,14 @@ class Profile extends CActiveRecord
             )
         ));
     }
+
+    public function getOtherDepartment($id)
+    {
+        return $this->findAll(array(
+            'condition' => 'department_id <> :id',
+            'params'    => array(
+                ':id' => $id
+            )
+        ));
+    }
 }

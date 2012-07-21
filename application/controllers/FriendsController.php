@@ -37,8 +37,14 @@ class FriendsController extends Controller
 
     public function actionOtherDepartment() 
     {
+        $userID = 1;
+        $departmentId  = Profile::model()->findByPK($userID)->department_id;
+        $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $this->setPageTitle(Yii::app()->name . ' - 其他科系');
-        $this->render('otherdepartment');
+        $this->render('otherdepartment', array(
+            'profiles'=>Profile::model()->getOtherDepartment($departmentId),/*自己的department_id*/
+            'target'=>$img_url
+        ));
     }
 
     public function actionMyFriends()
