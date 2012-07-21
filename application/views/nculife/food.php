@@ -17,17 +17,13 @@ jQuery(document).ready(function()
         });
     });
 
-    $('.life-tab').click(function(){
-        var url = 'index.html';
+     $('.life-tab').click(function(){
+        
         var id = $(this).attr('href').replace('#','');
         $.ajax(
         {
             type: 'GET',
-            url: '/ncufresh12/nculife/foodContent.html',
-            data:
-            {
-                id: id
-            },
+            url: jQuery.configures.ncuLife.replace(':id', id),
             dataType: 'json',
             success: function(data)
             { 
@@ -50,7 +46,7 @@ jQuery(document).ready(function()
         });    
     });
 
-    $('#haha1').click(function()
+   /*  $('#haha1').click(function()
     {
         var url = 'index.html';
         $.ajax(
@@ -83,9 +79,9 @@ jQuery(document).ready(function()
             },
         });    
         return false;
-    });
+    });  */
 
-    $('#haha2').click(function()
+/*     $('#haha2').click(function()
     {
         var url = 'index.html';
         $.ajax(
@@ -103,7 +99,7 @@ jQuery(document).ready(function()
             },
         });
         return false;
-    });
+    }); */
 });
 </script>
 <div class="nculife-food">
