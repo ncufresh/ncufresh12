@@ -276,6 +276,10 @@ class SiteController extends Controller
 
     public function actionProfile() 
     {
+        if ( isset($_POST['form-profile-editor']) && isset($_POST['profile']) )
+        {
+            
+        }
         $userID = Yii::app()->user->id;
         $departmentId  = Profile::model()->findByPK($userID)->department_id;
         $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
