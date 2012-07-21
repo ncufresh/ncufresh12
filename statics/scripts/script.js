@@ -213,22 +213,20 @@
                         );
                         var timer = setInterval(function()
                         {
-                            current += $.random(
+                            /*current += $.random(
                                 1,
                                 browsered / $.pull.options.minimumAnimationTimes
-                            );
-                            $.pull.options.browseredcounter.animate({
-                                top: -100
-                                }, $.pull.options.counterAnimationSpeed);
+                            );*/
+                            current += 1;
+                            $.pull.options.browseredcounter.css({
+                                top: $.pull.options.browseredcounter.top-10
+                            });
                             if ( current >= browsered )
                             {
                                 current = browsered;
                                 clearInterval(timer);
                             }
                             $.pull.options.browseredcounter.text(current);
-                            $.pull.options.browseredcounter.css({
-                                top: 0
-                            });
                         }, $.pull.options.counterAnimationSpeed);
                     }
                 }
