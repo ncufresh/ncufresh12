@@ -92,12 +92,14 @@ class FriendsController extends Controller
 
     public function actionMakeFriends()
     {
-        if ( isset($_POST['samedepartmentsamegrade-ensure']) || isset($_POST['samedepartmentdiffgrade-ensure']) || isset($_POST['otherdepartment-ensure']) )
+        if ( isset($_POST['samedepartmentsamegrade-ensure']) || isset($_POST['samedepartmentdiffgrade-ensure'] ) || isset($_POST['otherdepartment-ensure']) )
         {
             foreach($_POST['friends'] as $friend)
             {   
                 $model = new Friend();
                 $model->user_id = Yii::app()->user->id;
+                echo $friend;
+                echo '<br />';
                 $model->friend_id = $friend;
                 $model->save();
                 $model = new Friend();
@@ -105,6 +107,7 @@ class FriendsController extends Controller
                 $model->friend_id = Yii::app()->user->id;
                 $model->save();
             }
+            $this->redirect(array('friends/friends'));
         }
         else if ( isset($_POST['samedepartmentsamegrade-rechoose']) )
         {
@@ -126,7 +129,7 @@ class FriendsController extends Controller
     
     public function actionDeleteFriends()
     {
-        if ( isset($_POST['myfriends-cancel']) )
+        if ( isset($_POST['myfriends-cancel']) &&  isset($_POST['friends']) )
         {
             foreach($_POST['friends'] as $Cancelfriend)
             {   
@@ -137,7 +140,6 @@ class FriendsController extends Controller
                         ':friend_id' => $Cancelfriend 
                     )
                 ));
-                echo $data1->id;
                 Friend::model()->deleteByPk($data1->id);
                 $data2 = Friend::model()->find(array(
                     'condition' => 'user_id = :user_id AND friend_id = :friend_id',
@@ -146,11 +148,9 @@ class FriendsController extends Controller
                         ':friend_id' => Yii::app()->user->id 
                     )
                 ));
-                echo $data2->id;
                 Friend::model()->deleteByPk($data2->id); 
-            }
-            // exit;
-            $this->redirect(array('friends/friends'));
+            }   
         }
+        $this->redirect(array('friends/friends'));
     }
 }

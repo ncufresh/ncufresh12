@@ -4,33 +4,28 @@
    <tr >
     <th colspan="5" class="friend-close-page">我的好友</th>
     </tr>
-        <tr>
+    <tr>
         <?php 
-        
         $row = 0;
         $col = 1;
         foreach ( $user->friends as $friend ) :
             if ( $row<=4 )   //限顯現4行
             { 
-            
+        ?>
+                <td class="friends-close-ones"><img  height="70" src="
+        <?php
                 if ( $friend->profile->picture !='' )
                 {
-        ?>
-                    <td class="friends-close-ones">
-                        <img  height="70" src=" <?php echo $target.'/'.$friend->profile->picture; ?>" alt="Score image"/><br />
-                        <input type="checkbox" name="friends[]" value="<?php echo $friend->profile->id;?>"  /><?php echo $friend->profile->name;?>
-                    </td>
-                <?php
+                    echo $target.'/'.$friend->profile->picture;             
                 }
                 else
                 {
-                ?>
-                    <td class="friends-close-ones">
-                        <img  height="70" src="<?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br />
-                        <input type="checkbox" name="friends[]" value="<?php echo $friend->profile->id;?>" /><?php echo $friend->profile->name;?>
-                    </td>
-                <?php
+                    echo $target.'/image1.jpg'; 
                 }
+        ?>
+                " alt="Score image"/><br /><input type="checkbox" name="friends[]" value="<?php echo $friend->profile->id;?>" /><?php echo $friend->profile->name;?>
+                </td>
+                <?php
                 if ( $col%5==0 ) 
                 {
                     $row+=1;
@@ -49,7 +44,6 @@
         <?php
         }
         ?>
-    
 </table>
 <button id="form-otherdepartment-cancel" type="submit" name="myfriends-cancel">取消好友/BACK</button>
 </form>

@@ -16,7 +16,6 @@
         <?php
                 if ( $profile->picture !='' )
                 {
-        
                     echo $target.'/'.$profile->picture; 
                 }
                 else
