@@ -53,7 +53,7 @@
                 'exp'   => 10000000000
             )
         );
-        $id = 1;
+        $id = 3;
         $model = Character::model()->findByPk($id);
         $model->addExp(47);     //加經驗
         $model->addMoney(10);   //加錢幣
@@ -101,8 +101,12 @@
 
         static $counter_one=1;
         static $counter_two=1;
-        echo '<h3>TEST 時間總數：'.sizeof($model->GetAchievementsTime()).'</h3><br/>';
-        echo '<h3>TEST 成就總數：'.sizeof($model->AchievementsBag()).'</h3><br/>';
+        echo '<br/><br/>';
+        echo 'TEST => 時間資料筆數 / 成就資料筆數：'.sizeof($model->GetAchievementsTime()).' / '.sizeof($model->AchievementsBag()).'<br/>';
+        if(sizeof($model->GetAchievementsTime())!=sizeof($model->AchievementsBag()))
+            echo 'Error => 資料庫錯誤!!! <br/>';
+        else
+            echo 'Right => 資料庫無誤!!! <br/>';
         echo '========================<br/>您目前的成就(' . sizeof($model->AchievementsBag()) . ')：<br/>';
         foreach ($model->AchievementsBag() as $array)
         {
@@ -112,8 +116,12 @@
             echo '<br/>';
             $counter_one++;
         }
-        echo '<h3>TEST 時間總數：'.sizeof($model->GetItemsTime()).'</h3><br/>';
-        echo '<h3>TEST 道具總數：'.sizeof($model->ItemsBag()).'</h3><br/>';
+        echo '<br/><br/>';
+        echo 'TEST => 時間資料筆數 / 道具資料筆數：'.sizeof($model->GetItemsTime()).' / '.sizeof($model->ItemsBag()).'<br/>';
+        if(sizeof($model->GetItemsTime())!=sizeof($model->ItemsBag()))
+            echo 'Error => 資料庫錯誤!!! <br/>';
+        else
+            echo 'Right => 資料庫無誤!!! <br/>';
         echo '========================<br/>您目前的道具(' . sizeof($model->ItemsBag()) . ')：<br/>';
         // foreach ($model->GetItemsTime() as $test)
         // {
