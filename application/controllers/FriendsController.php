@@ -89,4 +89,13 @@ class FriendsController extends Controller
             'target'=>$img_url
         ));
     }
+
+    /*public function actionMakeFriends()
+    {
+        if ( isset($_POST['samedepartmentsamegrade-ensure']) || isset($_POST['samedepartmentdiffgrade-ensure']) || isset($_POST['otherdepartment-ensure']) )
+        {
+            if ( isset($_POST['friends[]']) )
+        }
+        $this->redirect(array('friends/friends'));
+    }*/
 }
