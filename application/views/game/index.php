@@ -79,7 +79,7 @@
         echo '<br/>綽號：';
         // print_r($model->getUserNickName());
         // echo '<br/>頭髮：';
-        print_r($model->getHairName());
+        print_r($model->getUserNickName());
         echo '<br/>眼睛：';
         print_r($model->getEyesName());
         echo '<br/>衣服：';
@@ -101,25 +101,35 @@
 
         static $counter_one=1;
         static $counter_two=1;
+        echo '<h3>TEST 時間總數：'.sizeof($model->GetAchievementsTime()).'</h3><br/>';
+        echo '<h3>TEST 成就總數：'.sizeof($model->AchievementsBag()).'</h3><br/>';
         echo '========================<br/>您目前的成就(' . sizeof($model->AchievementsBag()) . ')：<br/>';
         foreach ($model->AchievementsBag() as $array)
         {
-            echo $counter_one.'.';
-            // echo $array['name'].'   ('.$model->time.' 獲得)';
+            echo $counter_one.'->';
+            $time_array = $model->GetAchievementsTime();
+            echo '成就id：'.$array->id.'，名稱：'.$array['name'].'('.$array['description'].')   ('. $time_array[$counter_one-1]->time.' 獲得)';
             echo '<br/>';
             $counter_one++;
         }
-        
+        echo '<h3>TEST 時間總數：'.sizeof($model->GetItemsTime()).'</h3><br/>';
+        echo '<h3>TEST 道具總數：'.sizeof($model->ItemsBag()).'</h3><br/>';
         echo '========================<br/>您目前的道具(' . sizeof($model->ItemsBag()) . ')：<br/>';
+        // foreach ($model->GetItemsTime() as $test)
+        // {
+            // echo $test['time'].'時間)'.$test['items_id'];
+            // echo '<br/>';
+        // }
         foreach ($model->ItemsBag() as $array)
         {
-            echo $counter_two.'.';
-            $s = $model->GetItemsTime();
-            print_r($s[$counter_two]->time);
-            // echo $array['name'].'   ('.$model->GetItemsTime()->time.' 獲得)';
+            echo $counter_two.'->';
+            $time_array = $model->GetItemsTime();
+            // print_r($time_array[$counter_two-1]->time);
+            echo '道具id：'.$array->id.'，名稱：'.$array['name'].'   ('. $time_array[$counter_two-1]->time.' 獲得)';
             echo '<br/>';
             $counter_two++;
         }
+        
 
 ?>
 <img src="../statics/fire.png">
