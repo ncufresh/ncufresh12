@@ -30,9 +30,10 @@ class ForumController extends Controller
     {
         $article = new Article();
         //content of each forum
+        //[not yet] 傳入是否為admin 用於判斷是否顯示置頂checkbox及刪除文章選項
         $this->render('forum', array(
             'fid'       => $fid,
-            'model'     => $article->findAll('forum_id='.$fid)
+            'model'     => $article->findAll('forum_id='.$fid.' AND visibility=1')
         ));
     }
 
@@ -58,16 +59,20 @@ class ForumController extends Controller
             $article->content = $_POST['forum']['content'];
             $article->forum_id = $_POST['forum']['fid'];
             $article->category = $_POST['forum']['category'];
+            $article->is_top = $_POST['forum']['is_top'];
             $article->save();
             $this->redirect($article->url);
         }
-
+        //[not yet] 傳入是否為admin 用於判斷是否顯示置頂checkbox選項
         $this->render('create',array(
             'fid'       => $fid,
             'category'  => Category::model()->find('id=' . $fid)
         ));
+        
     }
-
+    // public function actionTop(){
+        
+    // }
     public function actionView($fid, $id)
     {
         $article = Article::model()->findByPk($id);
@@ -117,5 +122,17 @@ class ForumController extends Controller
 
     public function actionDelete() // delete article
     {
+        $article = new Article();
+        //[not yet]判斷傳過來的fid
+        if(isset($_POST['delete'])){
+            $aid = $_POST['delete'];
+            $article_to_be_del = $article->find('id='.$aid);
+            $article_to_be_del->visibility = 0;
+            $article_to_be_del->save();
+        }
+        
+        $this->redirect(Yii::app()->createUrl('forum/forum', array(
+                    'fid'   => $article_to_be_del->forum->id
+        )));
     }
 }
