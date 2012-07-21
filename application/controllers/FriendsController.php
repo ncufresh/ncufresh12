@@ -2,6 +2,27 @@
 
 class FriendsController extends Controller
 {
+    public function filters()
+    {
+        return array(
+            'accessControl'
+        );
+    }
+
+    public function accessRules()
+    {
+        return array(
+            array(
+                'allow',
+                'users'     => array('@')
+            ),
+            array(
+                'deny',
+                'users'     => array('*')
+            ),
+        );
+    }
+
     public function actionFriends() 
     {
         $this->setPageTitle(Yii::app()->name . ' - 好友專區');
@@ -10,7 +31,7 @@ class FriendsController extends Controller
 
     public function actionSameDepartmentSameGrade() 
     {
-        $userID = 1;
+        $userID = Yii::app()->user->id;
         $departmentId  = Profile::model()->findByPK($userID)->department_id;
         $grade = Profile::model()->findByPK($userID)->grade;
         $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
@@ -24,7 +45,7 @@ class FriendsController extends Controller
 
     public function actionSameDepartmentDiffGrade() 
     {
-        $userID = 1;
+        $userID = Yii::app()->user->id;
         $departmentId  = Profile::model()->findByPK($userID)->department_id;
         $grade = Profile::model()->findByPK($userID)->grade;
         $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
@@ -37,7 +58,7 @@ class FriendsController extends Controller
 
     public function actionOtherDepartment() 
     {
-        $userID = 1;
+        $userID = Yii::app()->user->id;
         $departmentId  = Profile::model()->findByPK($userID)->department_id;
         $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $this->setPageTitle(Yii::app()->name . ' - 其他科系');
@@ -49,11 +70,12 @@ class FriendsController extends Controller
 
     public function actionMyFriends()
     {
+        $userID = Yii::app()->user->id;
         $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $this->setPageTitle(Yii::app()->name . ' - 我的好友');
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('myfriends', array(                
-            'user'=>User::model()->findByPk(3),
+            'user'=>User::model()->findByPk($userID),
             'target'=>$img_url
         ));
     }
