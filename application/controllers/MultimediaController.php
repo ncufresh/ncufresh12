@@ -7,7 +7,7 @@ class MultimediaController extends Controller
         return array(
             array(
                 'allow',
-                'users'     => array('*'),
+                'users'     => array('*')
             )
         );
     }
@@ -21,17 +21,10 @@ class MultimediaController extends Controller
         $this->render('index');
     }
 
-    public function actionYoutube()
+    public function actionWatch($v)
     {
-        if ( isset($_GET['video_id']) )
-        {
-            $this->renderPartial('youtube', array(
-                'video_id' => $_GET['video_id']
-            ));
-        }
-        else
-        {
-            throw new CHttpException(404);
-        }
+        $this->renderPartial('watch', array(
+            'v'         => $v
+        ));
     }
 }

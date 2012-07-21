@@ -292,6 +292,9 @@
         var list = $('#' + $.chat.options.friendListId);
         if ( list.length == 0 )
         {
+			var search = $('<input />')
+				.attr('type', 'text')
+				.attr('id', $.chat.options.friendListSearchId)
             list = $('<div></div>')
                 .attr('id', $.chat.options.friendListId)
                 .appendTo($('body'));
@@ -305,10 +308,7 @@
 			display = $('<div></div>')
 				.attr('id', $.chat.options.friendListEntriesWrapId)
 				.appendTo(list);
-			search = $('<input />')
-				.attr('type', 'text')
-				.attr('id', $.chat.options.friendListSearchId)
-				.appendTo(list);
+            search.appendTo(list);
         }
         return list;
     };
@@ -459,7 +459,7 @@
     {
         var dialog = $.fn.chat.createChatDialog(id);
 		dialog.animate({
-			bottom: 0,
+			bottom: 0
 		}, $.chat.options.animationSpeed).attr('chat:show', 'true');
 		$.fn.chat.updateChatDialogsPosition();
         return dialog;
@@ -497,7 +497,7 @@
     {
         var dialog = $.fn.chat.createChatDialog(id);
 		dialog.animate({
-			bottom: -172,
+			bottom: -172
 		}, $.chat.options.animationSpeed).attr('chat:show', 'false');
 		$.fn.chat.updateChatDialogsPosition();
         return dialog;
@@ -516,7 +516,7 @@
             {
                 chat: {
                     receiver_id: id,
-                    message: message,
+                    message: message
                 },
                 token: $.configures.token,
                 lasttime: $.configures.lasttime,
@@ -816,6 +816,56 @@
                 setTimeout(arguments.callee, options.speed);
             };
             setTimeout(generator, 0);
+        });
+    };
+})(jQuery);
+
+/**
+ * indexCalendar
+ */
+(function($)
+{
+    $.fn.indexCalendar = function(options)
+    {
+        var options = $.extend({ 
+        }, options);
+        var top = $(this).children('.calendar-top');
+       
+        if ( options.isMember )
+        {
+            top.removeClass('calendar-top-all-nologin');
+            top.addClass('calendar-top-all-login');
+        }
+        else
+        {
+            $(this).find('#calendar-personal').css('cursor', 'default');
+        }
+        return this.children('.calendar-top')
+            .children('a')
+            .click(function()
+        {
+            var id = $(this).attr('id');
+            if ( id == 'calendar-all' )
+            {
+                top.removeClass('calendar-top-personal');
+                if ( options.isMember )
+                {
+                    top.addClass('calendar-top-all-login');
+                }
+                else
+                {
+                    top.addClass('calendar-top-all-nologin');
+                }
+            }
+            else if ( id == 'calendar-personal' )
+            {
+                if ( options.isMember )
+                {
+                    top.removeClass('calendar-top-all-login');
+                    top.addClass('calendar-top-personal');
+                }
+            }
+            return false;
         });
     };
 })(jQuery);

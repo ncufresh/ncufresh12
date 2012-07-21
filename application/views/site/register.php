@@ -1,6 +1,6 @@
 <h2>基本資料</h2>
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('site/register'); ?>" method="POST">
-    <input type="hidden" name="MAX_FILE_SIZE" value="32768" />
+    <input type="hidden" name="MAX_FILE_SIZE" value="327680" />
     <dl>
         <dt>
             <label for="form-register-name">姓名</label>
