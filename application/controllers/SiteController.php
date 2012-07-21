@@ -30,7 +30,8 @@ class SiteController extends Controller
                     'register',
                     'login',
                     'channel',
-                    'profile'
+                    'profile',
+                    'editor'
                 ),
                 'users'     => array('*')
             ),
@@ -276,16 +277,30 @@ class SiteController extends Controller
 
     public function actionProfile() 
     {
-        if ( isset($_POST['form-profile-editor']) && isset($_POST['profile']) )
-        {
-            
-        }
         $userID = Yii::app()->user->id;
         $departmentId  = Profile::model()->findByPK($userID)->department_id;
         $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
-        $this->render('profile', array(                
-            'user'=>User::model()->findByPk($userID), 
-            'target'=>$img_url
+        if ( isset($_POST['form-profile-editor']) )
+        {
+            $this->redirect(array('site/editor'));
+        }
+        else
+        {
+            $this->render('profile', array(                
+                'user'=>User::model()->findByPk($userID), 
+                'target'=>$img_url
+            ));
+        }
+    }
+
+    public function actionEditor() 
+    {
+        $userID = Yii::app()->user->id;
+        $departmentId  = Profile::model()->findByPK($userID)->department_id;
+        $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+        $this->render('editor', array(                
+                'user'=>User::model()->findByPk($userID), 
+                'target'=>$img_url
         ));
     }
 }
