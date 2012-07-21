@@ -18,9 +18,20 @@ class Friend extends CActiveRecord
             array('user_id, friend_id', 'required')
         );
     }
-    
-   
-    
-    
 
+    public function relations()
+    {
+        return array(
+            'profile'  => array(
+                self::HAS_ONE,
+                'Profile',
+                'id'
+            ),
+            'friends'     => array(
+                self::MANY_MANY,
+                'User',
+                'friends(user_id,friend_id)'
+            ),
+        );
+    }
 }

@@ -1,4 +1,3 @@
-
 (function($)
 {
     $.about = function(options)
@@ -37,7 +36,7 @@
         ]
         var picture = $('<div></div>')
             .css({
-                background: 'url(\'' + $('.small_pic').eq(0).attr('photo') + '\')',
+                background: 'url(\'' + $('.small-pic').eq(0).attr('photo') + '\')',
                 float: 'right',
                 height: 300,
                 position: 'relative',

@@ -32,4 +32,14 @@ class Profile extends CActiveRecord
             ),
         ); 
     }
+
+    public function getSameDepartment($id)
+    {
+        return $this->findAll(array(
+            'condition' => 'department_id = :id',
+            'params'    => array(
+                ':id' => $id
+            )
+        ));
+    }
 }

@@ -47,7 +47,7 @@ jQuery(document).ready(function()
             { 
                 $('#nculife-ct').html(data.content);
             },
-        });	
+        });    
     });
 
     $('#haha1').click(function()
@@ -81,7 +81,7 @@ jQuery(document).ready(function()
             { 
                 $('#nculife-ct').html(data);
             },
-        });	
+        });    
         return false;
     });
 
@@ -130,7 +130,3 @@ jQuery(document).ready(function()
         </div><!-- end nculife-db -->
     </div><!-- end nculife-dialog -->
 </div><!-- end nculife-food --><!-- end -->
-
-
-
-
