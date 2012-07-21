@@ -17,6 +17,35 @@ jQuery(document).ready(function()
         });
     });
 
+    $('.life-tab').click(function(){
+        
+        var id = $(this).attr('href').replace('#','');
+        $.ajax(
+        {
+            type: 'GET',
+            url: jQuery.configures.ncuLife.replace(':id', id),
+            dataType: 'json',
+            success: function(data)
+            { 
+                $('#nculife-cv').html(data.content);
+            },
+        });
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/ncufresh12/nculife/foodContent.html',
+            data:
+            {
+                id: id
+            },
+            dataType: 'json',
+            success: function(data)
+            { 
+                $('#nculife-ct').html(data.content);
+            },
+        });    
+    });
+
     $('#haha1').click(function()
     {
         var url = 'index.html';
@@ -48,7 +77,7 @@ jQuery(document).ready(function()
             { 
                 $('#nculife-ct').html(data);
             },
-        });	
+        });    
         return false;
     });
 
@@ -97,7 +126,3 @@ jQuery(document).ready(function()
         </div><!-- end nculife-db -->
     </div><!-- end nculife-dialog -->
 </div><!-- end nculife-food --><!-- end -->
-
-
-
-

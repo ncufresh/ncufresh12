@@ -213,10 +213,14 @@
                         );
                         var timer = setInterval(function()
                         {
-                            current += $.random(
+                            /*current += $.random(
                                 1,
                                 browsered / $.pull.options.minimumAnimationTimes
-                            );
+                            );*/
+                            current += 1;
+                            $.pull.options.browseredcounter.css({
+                                top: $.pull.options.browseredcounter.top-10
+                            });
                             if ( current >= browsered )
                             {
                                 current = browsered;
@@ -288,6 +292,9 @@
         var list = $('#' + $.chat.options.friendListId);
         if ( list.length == 0 )
         {
+			var search = $('<input />')
+				.attr('type', 'text')
+				.attr('id', $.chat.options.friendListSearchId)
             list = $('<div></div>')
                 .attr('id', $.chat.options.friendListId)
                 .appendTo($('body'));
@@ -301,10 +308,7 @@
 			display = $('<div></div>')
 				.attr('id', $.chat.options.friendListEntriesWrapId)
 				.appendTo(list);
-			search = $('<input />')
-				.attr('type', 'text')
-				.attr('id', $.chat.options.friendListSearchId)
-				.appendTo(list);
+            search.appendTo(list);
         }
         return list;
     };
@@ -455,7 +459,7 @@
     {
         var dialog = $.fn.chat.createChatDialog(id);
 		dialog.animate({
-			bottom: 0,
+			bottom: 0
 		}, $.chat.options.animationSpeed).attr('chat:show', 'true');
 		$.fn.chat.updateChatDialogsPosition();
         return dialog;
@@ -493,7 +497,7 @@
     {
         var dialog = $.fn.chat.createChatDialog(id);
 		dialog.animate({
-			bottom: -172,
+			bottom: -172
 		}, $.chat.options.animationSpeed).attr('chat:show', 'false');
 		$.fn.chat.updateChatDialogsPosition();
         return dialog;
@@ -512,7 +516,7 @@
             {
                 chat: {
                     receiver_id: id,
-                    message: message,
+                    message: message
                 },
                 token: $.configures.token,
                 lasttime: $.configures.lasttime,
@@ -546,7 +550,7 @@
             verticalFrames:         4, 
             FrameXDimension:        128,
             FrameYDimension:        128,
-            interval:               100
+            interval:               200
         }, options);
         return $(this).each(function()
         {
@@ -563,13 +567,12 @@
                 var mt = options.FrameYDimension * options.verticalFrames;
 
                 left -= options.FrameXDimension;
-                if ( top < -1 * mt ) top = 0;
-
-                if ( left < -1 * ml )
+                if ( left <= -1 * ml )
                 {
                     top -= options.FrameYDimension;
                     left = 0;
                 }
+                if ( top <= -1 * mt ) top = 0;
 
                 sprite.css({
                     backgroundPosition: left + 'px ' + top + 'px'
@@ -818,6 +821,56 @@
 })(jQuery);
 
 /**
+ * indexCalendar
+ */
+(function($)
+{
+    $.fn.indexCalendar = function(options)
+    {
+        var options = $.extend({ 
+        }, options);
+        var top = $(this).children('.calendar-top');
+       
+        if ( options.isMember )
+        {
+            top.removeClass('calendar-top-all-nologin');
+            top.addClass('calendar-top-all-login');
+        }
+        else
+        {
+            $(this).find('#calendar-personal').css('cursor', 'default');
+        }
+        return this.children('.calendar-top')
+            .children('a')
+            .click(function()
+        {
+            var id = $(this).attr('id');
+            if ( id == 'calendar-all' )
+            {
+                top.removeClass('calendar-top-personal');
+                if ( options.isMember )
+                {
+                    top.addClass('calendar-top-all-login');
+                }
+                else
+                {
+                    top.addClass('calendar-top-all-nologin');
+                }
+            }
+            else if ( id == 'calendar-personal' )
+            {
+                if ( options.isMember )
+                {
+                    top.removeClass('calendar-top-all-login');
+                    top.addClass('calendar-top-personal');
+                }
+            }
+            return false;
+        });
+    };
+})(jQuery);
+
+/**
  * Main
  */
 (function($)
@@ -879,146 +932,6 @@
             onlinecounter: $('#header .online'),
             browseredcounter: $('#header .browsered')
         });
-
-        $(".news-cancel-button").click(function()
-        {
-            var dialog = $('.news-dialog');
-            dialog.text('確定取消編輯此篇文章？')
-                .dialog({
-                    buttons: { 
-                        "是": function()
-                        {
-                            location = $.configures.newsAdminUrl;
-                        }, 
-                        "否": function()
-                        {
-                            dialog.dialog('close');
-                        }
-                    },
-                    dialogClass: 'news-dialog-warp',
-                });      
-            return false;
-        });
-
-        $('.news-delete-link').click(function()
-        {
-            var link = $(this).attr('href');
-            var dialog = $('.news-dialog');
-            dialog.text('確定刪除此篇文章？')
-                .dialog({
-                    buttons: { 
-                        "是": function()
-                        {
-                            location = link;
-                        }, 
-                        "否": function()
-                        {
-                            dialog.dialog('close');
-                        }
-                    },
-                    dialogClass: 'news-dialog-warp',
-                });   
-            return false;
-        });
-
-        $('.news-back-link').click(function()
-        {
-            window.location = decodeURIComponent($.configures.newsIndexUrl);
-            return false;
-        });
-
-        $('#mm-menu a').each(function(index, element)
-        {
-            var youtube_img_src = 'http://img.youtube.com/vi/:id/0.jpg';
-            var video_img_id = $(this).attr('href').substr(1);
-            var video_title = $('<span></span>').text($(this).text());
-            var video_img = $('<img />')
-                .attr('src', youtube_img_src.replace(':id', video_img_id));
-            $(this).html(video_title).append(video_img);
-        });
-
-        $('#mm-menu-items').css('height', $('#mm-menu a').length * $('#mm-menu a').first().css('height'));
-        
-        $('#mm-menu a').click(function()
-        {
-            var url = $.configures.multimediaYoutubeUrl.replace(':id', $(this).attr('href').substr(1));
-            $('#mm-video-frame').attr('src', url);
-            return false;
-        });
-        $('#mm-menu a').eq($.random(0, $('#mm-menu a').length - 1)).click();
-
-        var srcoll_offset = 10;
-        mmMenuScroll.margin_top_max = 0;
-        mmMenuScroll.margin_top_min = parseInt($('#mm-menu').css('height')) - parseInt($('#mm-menu-items').css('height'));
-
-        $('.mm-menu-up').mouseenter(function()
-        {
-            mmMenuScroll.mousein = true;
-            mmMenuScroll(srcoll_offset);
-        }).mouseleave(function()
-        {
-            mmMenuScroll.mousein = false;
-        });
-
-        $('.mm-menu-down').mouseenter(function()
-        {
-            mmMenuScroll.mousein = true;
-            mmMenuScroll(-1 * srcoll_offset);
-        }).mouseleave(function()
-        {
-            mmMenuScroll.mousein = false;
-        });
-
-		$('.nculife-food .dialog').click(function()
-        {
-			$('#nculife-dialog').dialog(
-            {
-				dialogClass: 'nculife-dialog',
-				height: 500,
-				width: 700,
-				modal: true,
-				show: 
-                {
-                    effect: 'explode',
-                    direction: 'down'
-                }
-			});
-	
-		});
-
-        $('.life-tab').click(function(){
-            var url = 'index.html';
-            var id = $(this).attr('href').replace('#','');
-			$.ajax(
-            {
-				type: 'GET',
-				url: '/ncufresh12/nculife/foodContent.html',
-				data:
-                {
-					id: id
-				},
-				dataType: 'json',
-				success: function(data)
-                { 
-					$('#nculife-cv').html(data.content);
-				},
-			});
-			$.ajax(
-            {
-				type: 'GET',
-				url: '/ncufresh12/nculife/foodContent.html',
-				data:
-                {
-					id: id
-				},
-				dataType: 'json',
-				success: function(data)
-                { 
-					$('#nculife-ct').html(data.content);
-				},
-			});	
-        });
-        $.pull.start();
     });
 
     google.load('search', '1', {

@@ -127,16 +127,17 @@ class Character extends CActiveRecord
     {
         return $this->money;
     }
-    
+
     public function addExp($value)
     {
         $this->saveCounters(array('exp' => $value));
     }
-    
+
     public function addMoney($value)
     {
         $this->saveCounters(array('money' => $value));
     }
+<<<<<<< HEAD
     
     public function AchievementsBag()
     {
@@ -153,4 +154,11 @@ class Character extends CActiveRecord
         return $this->items_time;
     }
     
+=======
+
+    public function Owner()
+    {
+        return $this->achievements;
+    }
+>>>>>>> adea7c36b50c3812b631896b47bc7d34ecd4d00b
 }

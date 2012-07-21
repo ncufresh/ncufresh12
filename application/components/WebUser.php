@@ -6,7 +6,7 @@ class WebUser extends CWebUser
 
     public function getIsGuest()
     {
-        return parent::getIsGuest() && Yii::app()->facebook->getIsGuest();
+        return parent::getIsGuest() && Yii::app()->facebook->isGuest();
     }
 
     public function getIsMember()
@@ -21,7 +21,7 @@ class WebUser extends CWebUser
 
     public function getName()
     {
-        if ( ! Yii::app()->facebook->getIsGuest() )
+        if ( Yii::app()->facebook->isMember() )
         {
             return Yii::app()->facebook->getUsername();
         }
@@ -56,10 +56,7 @@ class WebUser extends CWebUser
     public function afterLogout()
     {
         parent::afterLogout();
-        if ( ! Yii::app()->facebook->getIsGuest() )
-        {
-            Yii::app()->request->redirect(Yii::app()->facebook->getLogoutUrl());
-        }
+        Yii::app()->facebook->destroySession();
     }
 
     protected function user()
