@@ -82,7 +82,7 @@ class ForumController extends Controller
         $this->render('view', array('article'=>$article,'comments'=>$comment, 'reply'=>$reply));
         
     }
-    
+
     public function actionComment(){
         $comment = new Comment();
         if ( isset($_POST['comment']) )
@@ -96,7 +96,7 @@ class ForumController extends Controller
                     'id'    => $comment->article_id
         )));
     }
-    
+
     public function actionReply($aid){
     
         $reply = new Reply();
@@ -112,10 +112,8 @@ class ForumController extends Controller
             }
         }
         $this->render('reply');
-        
-        
     }
-    
+
     public function actionUpdate() // update article
     {
     }

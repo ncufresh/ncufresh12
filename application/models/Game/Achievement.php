@@ -11,7 +11,7 @@ class Achievement extends CActiveRecord
     {
         return '{{game_achievements}}';
     }
-    
+
     public function relations()
     {
         return array(

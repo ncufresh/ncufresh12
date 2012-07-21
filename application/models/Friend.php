@@ -18,9 +18,4 @@ class Friend extends CActiveRecord
             array('user_id, friend_id', 'required')
         );
     }
-    
-   
-    
-    
-
 }
