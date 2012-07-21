@@ -10,12 +10,14 @@ class FriendsController extends Controller
 
     public function actionSameDepartmentSameGrade() 
     {
-        $departmentId  = Profile::model()->findByPK(1)->department_id;
+        $userID = 1;
+        $departmentId  = Profile::model()->findByPK($userID)->department_id;
+        $grade = Profile::model()->findByPK($userID)->grade;
         $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $this->setPageTitle(Yii::app()->name . ' - 同系同屆');
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('samedepartmentsamegrade', array(
-            'profiles'=>Profile::model()->getSameDepartment($departmentId),/*自己的department_id*/
+            'profiles'=>Profile::model()->getSameDepartmentSameGrade($departmentId, $grade),/*自己的department_id*/
             'target'=>$img_url
         ));
     }
