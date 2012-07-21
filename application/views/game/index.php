@@ -103,11 +103,6 @@
         $counter_one=1;
         $counter_two=1;
         echo '<br/><br/>';
-        echo 'TEST => 時間資料筆數 / 成就資料筆數：'.sizeof($model->achievement_bag->time).' / '.sizeof($model->achievement_bag).'<br/>';
-        // if(sizeof($model->GetAchievementsTime())!=sizeof($model->AchievementsBag()))
-            // echo 'Error => 資料庫錯誤!!! <br/>';
-        // else
-            // echo 'Right => 資料庫無誤!!! <br/>';
             // $temp=$model->AchievementsBag();
             // echo sizeof($temp);
             // echo $temp[0]->name.'<br/>';
@@ -116,7 +111,7 @@
             // echo $temp[3]->name.'<br/>';
             $temp_2=$model->achievement_bag;
         // print_r($temp_2[0]->translation);
-        echo $temp_2[0]->translation->name;
+        echo $temp_2[4]->achievement_id;
         
         // echo '========================<br/>您目前的成就(' . sizeof($model->AchievementsBag()) . ')：<br/>';
         // foreach ($model->AchievementsBag() as $array)
