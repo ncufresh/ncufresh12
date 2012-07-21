@@ -664,6 +664,13 @@ input.gsc-search-button:focus
     border: 3px solid #7C7C7C;
 }
 
+#readme-list ul li
+{
+    float: left;
+    list-style: none;
+}
+
+
 /**
  * Index style
  */
@@ -739,10 +746,59 @@ input.gsc-search-button:focus
 {
     width: 204px;
     height: 349px;
+    float: left;
     background: url('../images/calendar_content2.png');
 }
 
-#index-calendar a{
+#index-calendar .calendar-bottom table.calendar-table caption
+{
+    margin:  15px 0 10px 0 ;
+}
+
+#index-calendar .calendar-bottom table.calendar-table td
+{
+    text-align: right;
+    width: 28px;
+}
+
+#index-calendar .calendar-bottom table.calendar-table thead
+{
+    display: block;
+}
+#index-calendar .calendar-bottom table.calendar-table thead td
+{
+    text-align: center;
+}
+
+#index-calendar .calendar-bottom table.calendar-table thead td.weekend
+{
+    color: red;
+}
+
+#index-calendar .calendar-bottom table.calendar-table 
+{
+    width: 204px;
+}
+
+#index-calendar .calendar-bottom table.calendar-table tbody
+{
+    border-top: 1px solid #946722;
+    border-bottom: 1px solid #946722;
+    display: block;
+}
+
+#index-calendar .calendar-bottom table.todolist-table td
+{
+    width: 100px;
+    text-align: center;
+}
+
+#index-calendar .calendar-bottom table.todolist-table thead td
+{
+    color: #946722;
+}
+
+#index-calendar .calendar-top a{
     margin-top: 51px;
     height: 33px;
     width: 102px;
@@ -750,16 +806,19 @@ input.gsc-search-button:focus
     display: inline-block;
 }
 
-#index-calendar a#calendar-all
+#index-calendar .calendar-top a#calendar-all
 {
     
 }
 
-#index-calendar a#calendar-persional
+#index-calendar .calendar-top a#calendar-personal
 {
     
 }
-
+#index-calendar .calendar-top a
+{
+    
+}
 #index-container
 {
     float: right;
@@ -1056,16 +1115,41 @@ input.gsc-search-button:focus
 	height: 50px;
 }
 
-#linkk li
+#nculife-dh li
+{
+    float: left;
+	list-style: none;
+}
+
+ul.life-index li:hover ul.life-indexs
+{
+    display: block;
+}
+
+ul.life-indexs
+{
+    margin: -1px;
+    padding: 0;
+    display: none;
+}
+
+ul.life-index li
 {
     list-style: none;
     float: left;
-    width: 100px;
-    height: 50px;
-    background-color: #66CD00;
-    border-right: 1px solid #000;
-        
-    
+    width: 80px;
+    height: 20px;
+    text-align: center;
+    background: black;      
+	color: white; 
+    border: 1px solid red;
+    padding: 0;
+    display: block;
+}
+
+.ncu-index
+{
+    list-style: none;
 }
 
 #life-container
@@ -1243,32 +1327,134 @@ input.gsc-search-button:focus
 	width:600px;
 }
 .club-picture1
-{	
-	background: url('1.jpg');
-    width: 200px;
+{
+	background:none;
+	border:0px;
+	margin:0px;
+	padding:0px;
+	cursor:pointer;
+    width: 150px;
+    height: 100px;
+    display: block;
+	
+}
+.club-picture1 img
+{
+	width: 150px;
+    height: 100px;
+	border-color:white;
+	border:5px;
+}
+
+.club-picture2
+{
+	background:none;
+	border:0px;
+	margin:0px;
+	padding:0px;
+	cursor:pointer;
+    width: 150px;
     height: 100px;
     display: block;
 }
-.club-picture2
+.club-picture2 img
 {
-	background: url('logo.png');
-	width: 200px;
+	width: 150px;
     height: 100px;
-    display: block;
+	border-color:white;
+	border:5px;
 }
 .club-picture3
 {
-	background: url('3.jpg');
-	width: 200 px;
+	background:none;
+	border:0px;
+	margin:0px;
+	padding:0px;
+	cursor:pointer;
+    width: 150px;
     height: 100px;
     display: block;
 }
+.club-picture3 img
+{
+	width: 150px;
+    height: 100px;
+	border-color:white;
+	border:5px;
+}
 .club-picture4
 {
-	background: url('chat.png');
-	width: 200px;
+	background:none;
+	border:0px;
+	margin:0px;
+	padding:0px;
+	cursor:pointer;
+    width: 150px;
     height: 100px;
     display: block;
+}
+.club-picture4 img
+{
+	width: 150px;
+    height: 100px;
+	border-color:white;
+	border:5px;
+}
+.club-picture-display1 img
+{
+	width: 800px;
+    height: 600px;
+}
+.club-picture-display2 img
+{
+	width: 800px;
+    height: 600px;
+}
+.club-picture-display3 img
+{
+	width: 800px;
+    height: 600px;
+}
+.club-picture-display4 img
+{
+	width: 800px;
+    height: 600px;
+}
+#club-picture-dialog1
+{
+	display: none; 	
+	background: white;
+	width:850px;
+	height:650px;
+	position: relative;
+
+}
+#club-picture-dialog2
+{
+	display: none; 	
+	background: white;
+	width:850px;
+	height:650px;
+	position: relative;
+
+}
+#club-picture-dialog3
+{
+	display: none; 	
+	background: white;
+	width:850px;
+	height:650px;
+	position: relative;
+
+}
+#club-picture-dialog4
+{
+	display: none; 	
+	background: white;
+	width:850px;
+	height:650px;
+	position: relative;
+
 }
 #club-underpicture
 {
@@ -1278,7 +1464,7 @@ input.gsc-search-button:focus
 }
 #club-picture-menu
 {
-	width: 95%;
+	width: 150px;
     height: 700px;
     background: skyblue;
     overflow: hidden;
@@ -1286,7 +1472,8 @@ input.gsc-search-button:focus
 #club-menu-items
 {
 	margin-top:5px;
-	width:751px;
+	width:150px;
+	height:500px;
 }
 
 #club

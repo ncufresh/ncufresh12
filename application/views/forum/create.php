@@ -17,6 +17,9 @@
         <option value="<?php echo $entry->id; ?>"><?php echo $entry->name; ?></option>
     <?php endforeach; ?>
 </select>
+<!--置頂-->
+<input type="checkbox" name="forum[is_top]" value="1">置頂<br>
+<input type="hidden" name="forum[is_top]" value="0"/>
 <input type="hidden" name="forum[fid]" value="<?php echo $fid; ?>" />
 <input type="submit" value="發佈" />
 
