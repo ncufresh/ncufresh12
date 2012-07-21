@@ -24,8 +24,15 @@ class FriendsController extends Controller
 
     public function actionSameDepartmentDiffGrade() 
     {
+        $userID = 1;
+        $departmentId  = Profile::model()->findByPK($userID)->department_id;
+        $grade = Profile::model()->findByPK($userID)->grade;
+        $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $this->setPageTitle(Yii::app()->name . ' - 同系不同屆');
-        $this->render('samedepartmentdiffgrade');
+        $this->render('samedepartmentdiffgrade', array(
+            'profiles'=>Profile::model()->getSameDepartmentDiffGrade($departmentId, $grade),/*自己的department_id*/
+            'target'=>$img_url
+        ));
     }
 
     public function actionOtherDepartment() 

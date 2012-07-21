@@ -44,12 +44,13 @@ class Profile extends CActiveRecord
         ));
     }
 
-    public function getSameDepartmentDiffGrade($id)
+    public function getSameDepartmentDiffGrade($id, $grade)
     {
         return $this->findAll(array(
-            'condition' => 'department_id = :id',
+            'condition' => 'department_id = :id AND grade <> :grade',
             'params'    => array(
-                ':id' => $id
+                ':id' => $id,
+                ':grade' => $grade
             )
         ));
     }

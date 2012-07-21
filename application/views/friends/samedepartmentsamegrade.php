@@ -1,6 +1,6 @@
 <table class="other-page"">
    <tr>
-        <th colspan="5" class="friend-other-page">同屆同系</th>
+        <th colspan="5" class="friend-allsame-page">同屆同系</th>
    </tr>
    <tr>
         <?php 
@@ -13,13 +13,13 @@
                 if ( $target.'/'.$profile->picture !='' )
                 {
         ?>
-                    <td class="friends-close-ones"><img  height="70" width="70" src=" <?php echo $target.'/'.$profile->picture; ?>" alt="Score image"/><br /><input type="checkbox" name="samedepartment[]" value="<?php $profile->id;?>"  /><?php echo $profile->name;?></td>
+                    <td class="friends-allsame-ones"><img  height="70" width="70" src=" <?php echo $target.'/'.$profile->picture; ?>" alt="Score image"/><br /><input type="checkbox" name="samedepartment[]" value="<?php $profile->id;?>"  /><?php echo $profile->name;?></td>
                 <?php
                 }
                 else
                 {
                 ?>
-                    <td class="friends-close-ones"><img  height="70" width="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><input type="checkbox" name="samedepartment[]" value="<?php echo $profile->id;?>"  /><?php echo $profile->name;?></td>
+                    <td class="friends-allsame-ones"><img  height="70" width="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><input type="checkbox" name="samedepartment[]" value="<?php echo $profile->id;?>"  /><?php echo $profile->name;?></td>
                 <?php
                 }
                 if ( $col%5==0 ) 
