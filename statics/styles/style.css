@@ -664,6 +664,13 @@ input.gsc-search-button:focus
     border: 3px solid #7C7C7C;
 }
 
+#readme-list ul li
+{
+    float: left;
+    list-style: none;
+}
+
+
 /**
  * Index style
  */
@@ -1108,16 +1115,41 @@ input.gsc-search-button:focus
 	height: 50px;
 }
 
-#linkk li
+#nculife-dh li
+{
+    float: left;
+	list-style: none;
+}
+
+ul.life-index li:hover ul.life-indexs
+{
+    display: block;
+}
+
+ul.life-indexs
+{
+    margin: -1px;
+    padding: 0;
+    display: none;
+}
+
+ul.life-index li
 {
     list-style: none;
     float: left;
-    width: 100px;
-    height: 50px;
-    background-color: #66CD00;
-    border-right: 1px solid #000;
-        
-    
+    width: 80px;
+    height: 20px;
+    text-align: center;
+    background: black;      
+	color: white; 
+    border: 1px solid red;
+    padding: 0;
+    display: block;
+}
+
+.ncu-index
+{
+    list-style: none;
 }
 
 #life-container
