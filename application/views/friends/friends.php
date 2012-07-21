@@ -1,7 +1,7 @@
 <h2>好友專區</h2>
     <table class="sep-group">
         <tr class="friends-title" >
-        <th colspan="4" class="form-friends-sort-title" >新增好友</a></th>
+        <th colspan="4" class="form-friends-sort-title" >新增好友</a></th
         </tr>
         <tr class="friends-title" >
         <th colspan="4" class="form-friends-title"><a href="<?php echo Yii::app()->createUrl('friends/samedepartmentsamegrade'); ?>" title="同系同屆" class="form-friends-title">同系同屆</a></th> <!--重新導向一個自訂的網頁-->
@@ -13,7 +13,7 @@
         <td class="friends-close-ones">4444</td>
         </tr>
         <tr class="friends-title">
-        <th colspan="4" class="form-friends-title" ><a href="<?php echo Yii::app()->createUrl('friends/samedepartmentdiffgrade'); ?>" title="同系不同屆" class="form-friends-title">同系不同屆</a></th> <!--重新導向一個自訂的網頁-->
+        <th align="center";  colspan="4" class="form-friends-title" ><a href="<?php echo Yii::app()->createUrl('friends/samedepartmentdiffgrade'); ?>" title="同系不同屆" class="form-friends-title">同系不同屆</a></th> <!--重新導向一個自訂的網頁-->
         </tr>
         <tr >
         <td class="friends-close-ones">1111111</td>
