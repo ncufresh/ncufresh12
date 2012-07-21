@@ -826,7 +826,9 @@
         var options = $.extend({ 
         }, options);
         var top = $(this).children('.calendar-top');
-       
+        var bottom = this.children('.calendar-bottom');
+        var id = 0;
+
         if ( options.isMember )
         {
             top.removeClass('calendar-top-all-nologin');
@@ -836,7 +838,8 @@
         {
             $(this).find('#calendar-personal').css('cursor', 'default');
         }
-        return this.children('.calendar-top')
+        
+        this.children('.calendar-top')
             .children('a')
             .click(function()
         {
@@ -863,6 +866,10 @@
             }
             return false;
         });
+        bottom.css({
+            display: 'none'
+        });
+        return this;
     };
 })(jQuery);
 
