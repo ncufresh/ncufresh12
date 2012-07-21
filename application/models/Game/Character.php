@@ -69,6 +69,11 @@ class Character extends CActiveRecord
                 self::HAS_MANY,
                 'ItemGetTime',
                 'user_id'
+            ),
+            'achievements_time'    => array(
+                self::HAS_MANY,
+                'AchievementGetTime',
+                'user_id'
             )
          );
     }
@@ -141,6 +146,11 @@ class Character extends CActiveRecord
     public function AchievementsBag()
     {
         return $this->achievements;
+    }
+    
+    public function GetAchievementsTime()
+    {
+        return $this->achievements_time;
     }
     
     public function ItemsBag()
