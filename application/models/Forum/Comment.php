@@ -11,17 +11,23 @@ class Comment extends CActiveRecord
     {
         return '{{forum_comments}}';
     }
-    
+
     public function relations(){
-        return array('article'=>array(self::BELONGS_TO,'Article','article_id'));
+        return array(
+            'article'   => array(
+                self::BELONGS_TO,
+                'Article',
+                'article_id'
+            )
+        );
     }
-    
+
     public function beforeSave()
     {
-        //尚未檢查是否所有資料都有填寫
+        // 尚未檢查是否所有資料都有填寫
         if ( parent::beforeSave() )
         {
-            if ( $this->isNewRecord )
+            if ( $this->getIsNewRecord() )
             {
                 // 如果未登入author_id=0 ; 檢查登入與否
                 $this->author_id = Yii::app()->user->getId();

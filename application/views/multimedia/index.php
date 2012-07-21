@@ -54,7 +54,7 @@ jQuery(document).ready(function()
     
     jQuery('#mm-menu a').click(function()
     {
-        var url = $.configures.multimediaYoutubeUrl.replace(':id', jQuery(this).attr('href').substr(1));
+        var url = $.configures.multimediaYoutubeUrl.replace(':v', jQuery(this).attr('href').substr(1));
         jQuery('#mm-video-frame').attr('src', url);
         return false;
     });
