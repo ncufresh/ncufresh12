@@ -1194,31 +1194,35 @@ input.gsc-search-button:focus
 }
 .club-picture1
 {	
-	background: url('1.jpg');
+	background: url('../1.jpg');
     width: 200px;
     height: 100px;
     display: block;
 }
 .club-picture2
 {
-	background: url('logo.png');
+	background: url('../images/logo.png');
 	width: 200px;
     height: 100px;
     display: block;
 }
 .club-picture3
 {
-	background: url('3.jpg');
-	width: 200 px;
+	background: url('../3.jpg');
+	width: 200px;
     height: 100px;
     display: block;
 }
 .club-picture4
 {
-	background: url('chat.png');
+	background: url('../images/chat.png');
 	width: 200px;
     height: 100px;
     display: block;
+}
+.club-picture-dialog
+{
+	background: white;
 }
 #club-underpicture
 {
@@ -1237,6 +1241,7 @@ input.gsc-search-button:focus
 {
 	margin-top:5px;
 	width:751px;
+	height:500px;
 }
 
 #club

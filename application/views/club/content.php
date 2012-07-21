@@ -1,14 +1,12 @@
-﻿
-
-<div id='club-underpicture'>
+﻿<div id='club-underpicture'>
 	<div id="club-picture-menu">
             <button>UP</button>
             <button>DOWN</button>
             <div id="club-menu-items">
-                <a class="club-picture1"></a>
-                <a class="club-picture2"></a>
-                <a class="club-picture3"></a>
-				<a class="club-picture4"></a>
+                <button class="club-picture1"></button>
+                <button class="club-picture2"></button>
+                <button class="club-picture3"></button>
+				<button class="club-picture4"></button>
             </div>
         </div>
 </div>
