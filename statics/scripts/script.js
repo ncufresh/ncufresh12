@@ -246,7 +246,6 @@
                                 current = browsered;
                                 clearInterval(timer);
                             }
-                            
                             $.pull.options.browseredcounter.text(current);
                         }, $.pull.options.counterAnimationSpeed);
                     }
