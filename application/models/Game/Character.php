@@ -60,6 +60,11 @@ class Character extends CActiveRecord
                 'Achievement',
                 'game_achievements_bag(user_id, achievement_id)'
             ),
+            'achievements_time'    => array(
+                self::HAS_MANY,
+                'AchievementGetTime',
+                'user_id'
+            ),
             'items'    => array(
                 self::MANY_MANY,
                 'Item',
@@ -68,11 +73,6 @@ class Character extends CActiveRecord
             'items_time'    => array(
                 self::HAS_MANY,
                 'ItemGetTime',
-                'user_id'
-            ),
-            'achievements_time'    => array(
-                self::HAS_MANY,
-                'AchievementGetTime',
                 'user_id'
             )
          );
