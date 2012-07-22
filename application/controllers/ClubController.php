@@ -32,4 +32,9 @@ class ClubController extends Controller
 			'id'		=> $id
         ));
     }
+	public function actionModify()
+	{
+		$model = new Club();
+		$leader -> leader => $_POST['leader'];
+	}
 }

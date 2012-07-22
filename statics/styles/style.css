@@ -1002,6 +1002,7 @@ input.gsc-search-button:focus
 /**
  * Multimedia style
  */
+
 #mm-container
 {
 }
@@ -1438,14 +1439,16 @@ ul.life-indexs li.life-indexs-content:hover
 }
 
 /*club style*/
-#club-content
+#club-list
 {
+	overflow:scroll;
+	text-align:left;
 }
 
 .l1
 {
 	float: left;
-	width: 100px;
+	width: 143px;
 	height: 500px;
 }
 
@@ -1632,6 +1635,28 @@ ul.life-indexs li.life-indexs-content:hover
 #club
 {
 	margin-center:auto;
+}
+
+div.group-friends
+{
+    background-color:yellow;
+	display: none;
+	height: 500px;
+	width: 200px;
+}
+
+div.all-members
+{
+     width:400px; 
+     height:280px;
+     padding:10px 20px;
+     /*display: none;*/
+}
+
+label.group-friends-name
+{
+    color:red;
+    background-color:green;
 }
 
 .etmomi
