@@ -157,4 +157,9 @@ class FriendsController extends Controller
         }
         $this->redirect(array('friends/friends'));
     }
+
+    public function actionGroups()
+    {
+        $this->redirect(array('friends/friends'));
+    }
 }

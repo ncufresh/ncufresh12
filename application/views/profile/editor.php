@@ -1,5 +1,5 @@
 <h2>編輯基本資料</h2>
-<form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('site/editor'); ?>" method="POST">
+<form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('profile/editor'); ?>" method="POST">
    <!-- <input type="hidden" name="MAX_FILE_SIZE" value="327680" />-->    
     <img  height="200" src="
     <?php
@@ -76,6 +76,6 @@
             <input type="file" name="picture" value="<?php if ( empty($picture) ) echo $user->profile->picture; ?>" /><br /><br />
         </li> 
     </ul>
-    <button name="form-profile-sure" type="submit">確認</button>
-    <button name="form-profile-cancel" type="submit">取消/BACK</button>
+    <button name="form-editor-sure" type="submit">確認</button>
+    <button name="form-editor-cancel" type="submit">取消/BACK</button>
 </form>

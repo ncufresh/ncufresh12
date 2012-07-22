@@ -129,6 +129,25 @@
         ?>
         </tr>
         <tr>
-        <th colspan="5" class="form-friends-title"><a href="<?php echo Yii::app()->createUrl('site/index'); ?>" title="自訂" class="form-friends-title">自訂</a></th> <!--跳出視窗-->
+        <th colspan="5" class="form-friends-title"><a href="#" title="自訂" class="form-friends-self-editor">自訂</a></th> <!--跳出視窗-->
         </tr>
     </table>
+    <div class="group-friends" title="自訂好友">
+        <form method="POST" action="<?php echo $this->createUrl('friends/groups'); ?>">
+        <div class="all-members">
+            <div>
+                <div class="group-name">
+                    <label>名稱: </label>
+                    <input name="group-name" required="true">
+                </div>
+                <div class="group-all-friends">
+                    <label>成員: </label>
+                    <input name="area">
+                </div>
+            </div>
+            <button class="form-add-new-group" iconcls="icon-ok" onclick="saveData()">新增</a>
+            <button class="form-cancel-group" iconcls="icon-cancel" onclick="javascript:$('#group-friends').dialog('close')">取消</a>
+        </div>
+        
+        </form>
+    </div>
