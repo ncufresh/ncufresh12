@@ -355,11 +355,11 @@
         {
             var data = response[key];
             var entry = $('<div></div>')
-                .attr('chat:id', data.id)
+                .data('id', data.id)
                 .addClass('friend-list-entry')
                 .click(function()
                 {
-                    $.fn.chat.showChatDialog($(this).attr('chat:id'));
+                    $.fn.chat.showChatDialog($(this).data('id'));
                 })
                 .appendTo(wrap);
             var icon = $('<img />')
@@ -408,7 +408,7 @@
         var dialog = null;
         $('.' + $.chat.options.chatDialogClass).each(function(index)
         {
-            if ( $(this).attr('chat:id') == id ) dialog = $(this);
+            if ( $(this).data('id') == id ) dialog = $(this);
             $(this).css({
                 left: left - $(this).outerWidth(true) * (index + 1)
             });
@@ -423,13 +423,13 @@
 				.append('<button></button>')
 				.click(function()
 				{
-					if ( dialog.attr('chat:show') == 'true' )
+					if ( dialog.data('show') )
 					{
-						$.fn.chat.hideChatDialog(dialog.attr('chat:id'));
+						$.fn.chat.hideChatDialog(dialog.data('id'));
 					}
 					else
 					{
-						$.fn.chat.showChatDialog(dialog.attr('chat:id'));
+						$.fn.chat.showChatDialog(dialog.data('id'));
 					}
 					
 				});
@@ -447,8 +447,8 @@
                 })
                 .append(input);
             dialog = $('<div></div>')
-                .attr('chat:id', id)
-				.attr('chat:show', 'true')
+                .data('id', id)
+				.data('show', true)
                 .addClass($.chat.options.chatDialogClass)
                 .scroll(function()
                 {
@@ -464,7 +464,7 @@
 			title.children('span').addClass('offline');
 			$('.friend-list-entry').each(function(index)
 			{
-				if($(this).attr('chat:id') == id)
+				if ( $(this).data('id') == id )
 				{
 					title.children('p').text($(this).children('p').text());
 					title.children('span').removeClass('offline');
@@ -472,7 +472,7 @@
 			});
 			title.children('button').click(function()
 			{
-				$.fn.chat.closeChatDialog(dialog.attr('chat:id'));
+				$.fn.chat.closeChatDialog(dialog.data('id'));
 			});
             display.scrollable();
         }
@@ -484,7 +484,7 @@
         var dialog = $.fn.chat.createChatDialog(id);
 		dialog.animate({
 			bottom: 0
-		}, $.chat.options.animationSpeed).attr('chat:show', 'true');
+		}, $.chat.options.animationSpeed).data('show', true);
 		$.fn.chat.updateChatDialogsPosition();
         return dialog;
     };
@@ -498,20 +498,16 @@
             {
                 $(this).children('p').each(function()
                 {
-                    if ( $(this).attr('chat:uuid') == data.uuid ) exists = true;
+                    if ( $(this).data('uuid') == data.uuid ) exists = true;
                 });
                 if ( ! exists )
                 {
                     $('<p></p>')
-                        .attr('chat:uuid', data.uuid)
+                        .data('uuid', data.uuid)
                         .text(data.sender + ':' + data.message)
                         .appendTo($(this));
                 }
-                $(this)
-                    .stop()
-                    .animate({
-                        scrollTop: this.scrollHeight
-                    }, 1000);
+                $(this).scrollTo($(this).height());
             }
         );
         return dialog;
@@ -522,7 +518,7 @@
         var dialog = $.fn.chat.createChatDialog(id);
 		dialog.animate({
 			bottom: -172
-		}, $.chat.options.animationSpeed).attr('chat:show', 'false');
+		}, $.chat.options.animationSpeed).data('show', false);
 		$.fn.chat.updateChatDialogsPosition();
         return dialog;
     };
@@ -637,25 +633,30 @@
                 fadeOutDuration:        'slow',
                 wheelSpeed:             6
             }, options);
+            var updateScrollDraggableHeight = function()
+            {
+                var scrollAreaHeight = scrollArea.height();
+                var scrollContainerHeight = scrollContainer.height();
+                var height = 0;
+                if ( scrollAreaHeight > scrollContainerHeight )
+                {
+                    height = scrollContainerHeight
+                           * scrollContainerHeight
+                           / scrollAreaHeight;
+                }
+                scrollDragable.css({
+                    height: height
+                });
+                return height;
+            };
             var scrollContainer = $('<div></div>')
                 .addClass('scroll-container')
                 .mouseenter(function()
                 {
-                    var scrollAreaHeight = scrollArea.height();
-                    var scrollContainerHeight = scrollContainer.height();
-                    var height = 0;
-                    if ( scrollAreaHeight > scrollContainerHeight )
-                    {
-                        height = scrollContainerHeight
-                               * scrollContainerHeight
-                               / scrollAreaHeight;
-                    }
+                    updateScrollDraggableHeight();
                     scrollBar
                         .stop(true, true)
                         .fadeIn(options.fadeInDuration);
-                    scrollDragable.css({
-                        height: height
-                    })
                     inside = true;
                 })
                 .mouseleave(function()
@@ -723,16 +724,14 @@
                 .appendTo(scrollTrack);
             var updateScrollDragable = function(position)
             {
-                var maximun = (
-                    scrollContainer.height()
-                  - scrollDragable.height()
-                  );
+                var height = updateScrollDraggableHeight();
+                var maximun = scrollContainer.height() - height;
                 var scale = (
                         scrollArea.height()
                       - scrollContainer.height()
                     ) / (
                         scrollContainer.height()
-                      - scrollDragable.height()
+                      - height
                     ) * -1;
                 if ( position <= 0 ) position = 0;
                 if ( position >= maximun ) position = maximun;
@@ -743,6 +742,9 @@
                     top: position * scale
                 });
             };
+            $.extend($(this).__proto__, {
+                scrollTo: updateScrollDragable
+            });
             if ( options.scrollableClass )
             {
                 scrollContainer.addClass(options.scrollableClass);
