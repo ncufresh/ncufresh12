@@ -1,4 +1,4 @@
-<form method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
+<form enctype="multipart/form-data" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
 <table class="other-page">
     <tr>
         
@@ -16,7 +16,6 @@
         <?php
                 if ( $profile->picture !='' )
                 {
-        
                     echo $target.'/'.$profile->picture; 
                 }
                 else

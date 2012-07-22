@@ -29,7 +29,9 @@ class SiteController extends Controller
                     'pull',
                     'register',
                     'login',
-                    'channel'
+                    'channel',
+                    'profile',
+                    'editor'
                 ),
                 'users'     => array('*')
             ),
@@ -204,13 +206,11 @@ class SiteController extends Controller
         {
             $model = new User();
             $model->attributes = $_POST['login'];
-
             if ( $model->login() )
             {
                 $this->redirect(Yii::app()->user->returnUrl);
             }
         }
-
         $this->setPageTitle(Yii::app()->name . ' - 登入');
         $this->render('login');
     }
@@ -269,7 +269,7 @@ class SiteController extends Controller
         }
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('register', array(
-            'departments'  => Department::model()->getDepartment() 
+            'departments'   => Department::model()->getDepartment()
         ));
     }
 }

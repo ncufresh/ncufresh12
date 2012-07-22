@@ -22,7 +22,7 @@ class Article extends CActiveRecord
             )
         );
     }
-    
+
     public function getUrl()
     {
         return Yii::app()->createUrl('forum/view', array(

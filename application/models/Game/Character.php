@@ -60,7 +60,7 @@ class Character extends CActiveRecord
                 'Achievement',
                 'game_achievements_bag(user_id, achievement_id)'
             ),
-            'achievement_bag'    => array(
+            'achievements_bag'    => array(
                 self::HAS_MANY,
                 'AchievementBag',
                 'user_id'
@@ -145,19 +145,19 @@ class Character extends CActiveRecord
 
     public function AchievementsBag()
     {
-        return $this->achievement_bag;
+        return $this->achievements_bag;
     }
-    
+
     // public function GetAchievementsTime()
     // {
         // return $this->achievements_bag;
     // }
-    
+
     public function ItemsBag()
     {
         return $this->items;
     }
-    
+
     public function GetItemsTime()
     {
         return $this->items_bag;
@@ -167,5 +167,4 @@ class Character extends CActiveRecord
     {
         return $this->achievements;
     }
-
 }

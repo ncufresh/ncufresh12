@@ -16,8 +16,8 @@ jQuery(document).ready(function()
         });
     });
 
-     $('.life-tab').click(function()
-     {  
+    $('.life-tab').click(function()
+    {  
         var id = $(this).attr('href').replace('#','');
          // alert(jQuery.configures.ncuLifeUrl.replace(':id', id));  
         /* $('#nculife-cv').html(jQuery.configures.ncuLifeUrl.replace(':id', id)); */
@@ -41,8 +41,9 @@ jQuery(document).ready(function()
             { 
                 $('#nculife-ct').html(data.content);
             },
-        });    
+        });
     });
+
     jQuery('.food-dialog').click(function()
     {
             jQuery('#nculife-dialog').dialog(
@@ -59,7 +60,8 @@ jQuery(document).ready(function()
             }); 
     });
 
-   /*  $('#haha1').click(function()
+    /*
+    $('#haha1').click(function()
     {
         var url = 'index.html';
         $.ajax(
@@ -90,11 +92,13 @@ jQuery(document).ready(function()
             { 
                 $('#nculife-ct').html(data);
             },
-        });    
+        });
         return false;
-    });  */
+    });
+    */
 
-/*     $('#haha2').click(function()
+    /*
+    $('#haha2').click(function()
     {
         var url = 'index.html';
         $.ajax(
@@ -112,5 +116,6 @@ jQuery(document).ready(function()
             },
         });
         return false;
-    }); */
+    });
+    */
 });

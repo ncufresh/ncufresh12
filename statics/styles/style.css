@@ -670,7 +670,6 @@ input.gsc-search-button:focus
     list-style: none;
 }
 
-
 /**
  * Index style
  */
@@ -765,6 +764,7 @@ input.gsc-search-button:focus
 {
     display: block;
 }
+
 #index-calendar .calendar-bottom table.calendar-table thead td
 {
     text-align: center;
@@ -808,17 +808,16 @@ input.gsc-search-button:focus
 
 #index-calendar .calendar-top a#calendar-all
 {
-    
 }
 
 #index-calendar .calendar-top a#calendar-personal
 {
-    
 }
+
 #index-calendar .calendar-top a
 {
-    
 }
+
 #index-container
 {
     float: right;
@@ -1044,7 +1043,6 @@ input.gsc-search-button:focus
     width: 35%;    
     height: 100%;
     float: left;
-
 }
 
 /**
@@ -1329,166 +1327,180 @@ ul.life-indexs li.life-indexs-content:hover
 /*club style*/
 #club-content
 {
-
-	
 }
+
 .l1
 {
-	float:left;
-	width:100 px;
-	height:500 px;
+	float: left;
+	width: 100px;
+	height: 500px;
 }
+
 #club-title
 {
+	background-color: yellow;
 	font-weight: bold;
-	background-color:yellow;
 }
+
 #club-all
 {
-	background-color:green;
+	background-color: green;
 
 }
+
 #club-display
 {
-	float:right;
-	width:600px;
+	float: right;
+	width: 600px;
 }
+
 .club-picture1
 {
-	background:none;
-	border:0px;
-	margin:0px;
-	padding:0px;
-	cursor:pointer;
+	background: none;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
     width: 150px;
     height: 100px;
     display: block;
-	
 }
+
 .club-picture1 img
 {
+	border: 5px solid #FFFFFF;
 	width: 150px;
     height: 100px;
-	border-color:white;
-	border:5px;
 }
 
 .club-picture2
 {
-	background:none;
-	border:0px;
-	margin:0px;
-	padding:0px;
-	cursor:pointer;
+	background: none;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
     width: 150px;
     height: 100px;
     display: block;
 }
+
 .club-picture2 img
 {
-	width: 150px;
+	border: 5px solid #FFFFFF;
     height: 100px;
-	border-color:white;
-	border:5px;
+	width: 150px;
 }
+
 .club-picture3
 {
-	background:none;
-	border:0px;
-	margin:0px;
-	padding:0px;
-	cursor:pointer;
+	background: none;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
     width: 150px;
     height: 100px;
     display: block;
 }
+
 .club-picture3 img
 {
-	width: 150px;
+	border: 5px solid #FFFFFF;
     height: 100px;
-	border-color:white;
-	border:5px;
+	width: 150px;
 }
+
 .club-picture4
 {
-	background:none;
-	border:0px;
-	margin:0px;
-	padding:0px;
-	cursor:pointer;
+	background: none;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
     width: 150px;
     height: 100px;
     display: block;
 }
+
 .club-picture4 img
 {
-	width: 150px;
+	border: 5px solid #FFFFFF;
     height: 100px;
-	border-color:white;
-	border:5px;
+	width: 150px;
 }
+
 .club-picture-display1 img
 {
 	width: 800px;
     height: 600px;
 }
+
 .club-picture-display2 img
 {
 	width: 800px;
     height: 600px;
 }
+
 .club-picture-display3 img
 {
 	width: 800px;
     height: 600px;
 }
+
 .club-picture-display4 img
 {
 	width: 800px;
     height: 600px;
 }
+
 #club-picture-dialog1
 {
 	display: none; 	
 	background: white;
-	width:850px;
-	height:650px;
+	width: 850px;
+	height: 650px;
 	position: relative;
 
 }
+
 #club-picture-dialog2
 {
 	display: none; 	
 	background: white;
-	width:850px;
-	height:650px;
+	width: 850px;
+	height: 650px;
 	position: relative;
 
 }
+
 #club-picture-dialog3
 {
 	display: none; 	
 	background: white;
-	width:850px;
-	height:650px;
+	width: 850px;
+	height: 650px;
 	position: relative;
 
 }
+
 #club-picture-dialog4
 {
 	display: none; 	
 	background: white;
-	width:850px;
-	height:650px;
+	width: 850px;
+	height: 650px;
 	position: relative;
 
 }
+
 #club-underpicture
 {
 	float:left;
 	width:150px;
 	height:700px;
 }
+
 #club-picture-menu
 {
 	width: 150px;
@@ -1496,6 +1508,7 @@ ul.life-indexs li.life-indexs-content:hover
     background: skyblue;
     overflow: hidden;
 }
+
 #club-menu-items
 {
 	margin-top:5px;
@@ -1565,7 +1578,7 @@ th.friend-other-page
 a.form-friends-title
 {
     text-lign: left;
-    color: DeepPink;
+    color: DeepPink; /* NOTE */
 }
 
 tr.friends-title

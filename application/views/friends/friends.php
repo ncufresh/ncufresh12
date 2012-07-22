@@ -1,3 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.form-friends-self-editor').click(function(){
+                $('input').attr('value', 'submit');
+                $('.s1').attr('class', 's2');
+                //return false;
+            });
+        });
+    </script>
+	<title></title>
+</head>
 <h2>好友專區</h2>
     <table class="sep-group">
         <tr class="friends-title" >
@@ -110,7 +126,7 @@
                 if ( $friend->profile->picture !='' )
                 {
         ?>  
-                    <td class="friends-samediff-ones"><img  height="70" src=" <?php echo $target.'/'.$friend->profile->picture; ?>" alt="Score image"/><br /><?php echo $friend->profile->name;?></td>
+                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/'.$friend->profile->picture; ?>" alt="Score image"/><br /><?php echo $friend->profile->name;?></td>
                 <?php
                 }
                 else
@@ -129,6 +145,7 @@
         ?>
         </tr>
         <tr>
-        <th colspan="5" class="form-friends-title"><a href="<?php echo Yii::app()->createUrl('site/index'); ?>" title="自訂" class="form-friends-title">自訂</a></th> <!--跳出視窗-->
+        <th colspan="5" class="form-friends-title"><a href="http://api.jquery.com/category/events/" title="自訂" class="form-friends-self-editor">自訂</a></th> <!--跳出視窗-->
         </tr>
     </table>
+<html>
