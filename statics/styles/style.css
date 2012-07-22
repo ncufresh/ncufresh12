@@ -1298,14 +1298,16 @@ ul.life-index li
 }
 
 /*club style*/
-#club-content
+#club-list
 {
+	overflow:scroll;
+	text-align:left;
 }
 
 .l1
 {
 	float: left;
-	width: 100px;
+	width: 143px;
 	height: 500px;
 }
 
