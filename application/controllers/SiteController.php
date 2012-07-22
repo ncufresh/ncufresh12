@@ -284,6 +284,10 @@ class SiteController extends Controller
         {
             $this->redirect(array('site/editor'));
         }
+        else if ( isset($_POST['form-profile-back']) )
+        {
+            $this->redirect(array('friends/friends'));
+        }
         else
         {
             $this->render('profile', array(                
@@ -297,10 +301,42 @@ class SiteController extends Controller
     {
         $userID = Yii::app()->user->id;
         $departmentId  = Profile::model()->findByPK($userID)->department_id;
-        $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+        $img_url = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+        $user = User::model()->findByPk($userID);
+        if ( isset($_POST['form-profile-sure']) && isset($_POST['profile']) ) 
+        {
+            $user->attributes = $_POST['register'];
+            if ( $user->validate() )
+            {
+                $profile = $user->profile;
+                $profile->attributes = $_POST['profile'];
+                $profile->department_id = $_POST['profile']['department'];
+                $profile->grade = $_POST['profile']['grade'];
+                $profile->picture = $_FILES['picture']['name'];
+                $target = $img_url . DIRECTORY_SEPARATOR . $profile->picture;
+                move_uploaded_file($_FILES['picture']['tmp_name'], $target);
+                $picture_size=$_FILES['picture']['size'];
+                $picture_type=$_FILES['picture']['type'];
+                if ( $profile->validate() )
+                {
+                    if ( $user->save() )
+                    {
+                        $profile->id = $user->id;
+                        if ( $profile->save() )
+                        {
+                            $this->redirect(array('site/profile'));
+                        }
+                    }
+                }
+            }
+        }
+        //var_dump($user);exit;
+        $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('editor', array(                
-                'user'=>User::model()->findByPk($userID), 
-                'target'=>$img_url
+                'user'=>$user, 
+                'departmentId' => $departmentId,
+                'departments' => Department::model()->getDepartment(), 
+                'target' => $img_url
         ));
     }
 }
