@@ -314,6 +314,7 @@ a:hover
 {
     -webkit-border-radius: 10px;
     background: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     padding: 5px;
 }
@@ -408,6 +409,7 @@ a:hover
 {
     -webkit-border-radius: 10px;
     background: #FFFFFF url('../images/personal.png') center top;
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     display: none;
     height: 150px;
