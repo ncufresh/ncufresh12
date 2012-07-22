@@ -924,6 +924,26 @@
             return false;
         });
 
+        $('#sidebar-personal-toggle').click(function()
+        {
+            var button = $(this);
+            if ( button.hasClass('active') )
+            {
+                $('#sidebar-personal').slideUp(300, function()
+                {
+                    button.removeClass('active');
+                });
+            }
+            else
+            {
+                $('#sidebar-personal').slideDown(300, function()
+                {
+                    button.addClass('active');
+                });
+            }
+            return false;
+        });
+
         $('form input, form textarea').each(function()
         {
             var input = $(this);

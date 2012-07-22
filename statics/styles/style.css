@@ -307,8 +307,32 @@ a:hover
 
 #sidebar .profile
 {
-    height: 90px;
     margin: 15px 0;
+}
+
+#sidebar div.profile
+{
+    -webkit-border-radius: 10px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#sidebar .profile img
+{
+    float: left;
+    height: 48px;
+    margin: 3px;
+    width: 48px;
+}
+
+#sidebar .profile p
+{
+    height: 42px;
+    line-height: 42px;
+    margin: 3px 0 3px 55px;
+    padding: 3px;
+    text-align: center;
 }
 
 #sidebar form.profile dl
@@ -357,6 +381,19 @@ a:hover
     text-align: center;
 }
 
+#sidebar .links ul
+{
+    list-style: none;
+    padding: 0 15px;
+}
+
+#sidebar .links li
+{
+    float: left;
+    margin: 3px 0;
+    width: 50%;
+}
+
 #form-sidebar-login
 {
     background: url('../images/login.png');
@@ -365,6 +402,70 @@ a:hover
 #form-sidebar-register
 {
     background: url('../images/register.png');
+}
+
+#sidebar-personal
+{
+    -webkit-border-radius: 10px;
+    background: #FFFFFF url('../images/personal.png') center top;
+    border-radius: 10px;
+    display: none;
+    height: 150px;
+    overflow: hidden;
+    padding: 5px;
+    position: relative;
+    width: 190px;
+}
+
+#sidebar-personal ul
+{
+    list-style: none;
+    height: 120px;
+}
+
+#sidebar-personal li
+{
+    height: 30px;
+    line-height: 30px;
+}
+
+#sidebar-personal-toggle
+{
+    background: url('../images/arrow-down.png');
+    display: block;
+    float: right;
+    height: 16px;
+    margin-top: -12px;
+    width: 16px;
+}
+
+#sidebar-personal-toggle.active
+{
+    background: url('../images/arrow-up.png');
+}
+
+#sidebar-personal-button,
+#sidebar-logout-button
+{
+    border: 2px solid #939495;
+    padding: 3px;
+    position: absolute;
+    right: 24px;
+    width: 32px;
+}
+
+#sidebar-personal-button
+{
+    height: 32px;
+    line-height: 16px;
+    top: 48px;
+}
+
+#sidebar-logout-button
+{
+    height: 16px;
+    line-height: 16px;
+    top: 96px;
 }
 
 /**
@@ -1322,6 +1423,16 @@ ul.life-indexs li.life-indexs-content:hover
     padding: 2px;
     position: absolute;
     top: 120px;
+}
+
+#fb-login-button
+{
+    background: url('../images/fblogin.png');
+    display: block;
+    height: 32px;
+    margin: 5px auto -10px;
+    text-indent: -100000%;
+    width: 96px;
 }
 
 /*club style*/
