@@ -3,6 +3,11 @@
  */
 (function($)
 {
+    String.prototype.replaceAt = function(index, string)
+    {
+        return this.substr(0, index) + string + this.substr(index + string.length);
+    }
+
     $.extend({
         random: function(min, max)
         {
@@ -207,46 +212,45 @@
                     }
                     if ( $.pull.options.browseredcounter )
                     {
-                        var browsered = response.counter.browsered;
-                        var browseredText = browsered.toString();
-                        var current = $.pull.options.browseredcounter.text();
-                        if ( current == '0' )
+                        var p = 0;
+                        var c = 0;
+                        var browsered = response.counter.browsered.toString();
+                        var text = $.pull.options.browseredcounter.text();
+                        if ( text.length > browsered.length ) text = '';
+                        for ( var i = 0 ; i < browsered.length ; ++i )
                         {
-                            for ( var i = 1; i < browseredText.length; i++)
+                            if ( text[i] != browsered[i] )
                             {
-                                current += '0';
+                                text = text.replaceAt(i, '0');
                             }
                         }
-                        var temp = '';
-                        var run = false;
                         var timer = setInterval(function()
                         {
-                            for ( var i = 0; i < browseredText.length; i++)
+                            if ( text === browsered )
                             {
-                                temp = '';
-                                if ( browseredText.charAt(i) != current.charAt(i) )
-                                {
-                                    for ( var j = 0; j < browseredText.length; j++)
-                                    {
-                                        if ( j != i)
-                                        {
-                                            temp += current.charAt(j);
-                                        }
-                                        else
-                                        {
-                                            temp += $.random(0, 9).toString();
-                                        }
-                                    }
-                                    current = temp;
-                                    run = true;
-                                }
-                            }
-                            if ( run == false )
-                            {
-                                current = browsered;
                                 clearInterval(timer);
                             }
-                            $.pull.options.browseredcounter.text(current);
+                            else
+                            {
+                                if ( text[p] == browsered[p] )
+                                {
+                                    c = 0;
+                                    p++;
+                                }
+                                else
+                                {
+                                    c++;
+                                }
+                                for ( var i = p ; i < browsered.length ; ++i )
+                                {
+                                    text = text.replaceAt(
+                                        i,
+                                        $.random(0, 9).toString()
+                                    );
+                                }
+                                text = text.replaceAt(p, c.toString());
+                                $.pull.options.browseredcounter.text(text);
+                            }
                         }, $.pull.options.counterAnimationSpeed);
                     }
                 }
