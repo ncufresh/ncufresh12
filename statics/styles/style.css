@@ -1124,6 +1124,8 @@ input.gsc-search-button:focus
 ul.life-index li:hover ul.life-indexs
 {
     display: block;
+    background: white;
+    color: black;
 }
 
 ul.life-indexs
@@ -1145,6 +1147,31 @@ ul.life-index li
     border: 1px solid red;
     padding: 0;
     display: block;
+}
+
+ul.life-index li:hover
+{
+    background: white;
+    color: black;
+}
+
+ul.life-indexs-inner
+{
+    display: none;
+}
+
+ul.life-indexs li.life-indexs-content:hover ul.life-indexs-inner
+{
+    display: block;
+    padding: 0;
+    margin-left: 80px;
+    margin-top: -21px;
+}
+
+ul.life-indexs li.life-indexs-content:hover
+{
+    background: red;
+    color: black;
 }
 
 .ncu-index
