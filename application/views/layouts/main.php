@@ -107,7 +107,7 @@
 <div id="content"><?php echo $content; ?></div>
 <div id="sidebar">
 <?php if ( Yii::app()->user->getIsGuest() ) : ?>
-    <a href="<?php echo Yii::app()->createUrl('site/login', array('facebook' => true)); ?>" title="使用Facebook帳號登入">使用Facebook帳號登入</a>
+    <a id="fb-login-button" href="<?php echo Yii::app()->createUrl('site/login', array('facebook' => true)); ?>" title="使用Facebook帳號登入">使用Facebook帳號登入</a>
     <form class="profile" action="<?php echo Yii::app()->createUrl('site/login'); ?>" method="POST">
         <dl>
             <dt>
@@ -133,15 +133,42 @@
     </form>
 <?php else : ?>
     <div class="profile">
-        <p>帳號：<?php echo Yii::app()->user->getName(); ?></p>
-        <a href="<?php echo Yii::app()->createUrl('site/logout'); ?>" title="登出">登出</a>
+        <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/sin.png"/>
+        <p><?php echo Yii::app()->user->getName(); ?></p>
+        <a id="sidebar-personal-toggle" href="#" title="點此打開或關閉個人功能"></a>
+    </div>
+    <div id="sidebar-personal">
+        <ul>
+            <li>
+                <a href="#">個人行事曆</a>
+            </li>
+            <li>
+                <a href="#">最新更新</a>
+            </li>
+            <li>
+                <a href="#">個人資料</a>
+            </li>
+            <li>
+                <a href="#">遊戲介面</a>
+            </li>
+        </ul>
+        <a id="sidebar-personal-button" href="#" title="個人專區">個人專區</a>
+        <a id="sidebar-logout-button" href="<?php echo Yii::app()->createUrl('site/logout'); ?>" title="登出">登出</a>
     </div>
 <?php endif; ?>
     <div class="links sidebar-box">
         <h4>連結區</h4>
-    </div>
-    <div class="recommendands sidebar-box">
-        <h4>連結區</h4>
+        <ul>
+            <li>
+                <a href="http://www.ncu.edu.tw" title="中大首頁">中大首頁</a>
+            </li>
+            <li>
+                <a href="http://portal.ncu.edu.tw" title="Portal入口">Portal入口</a>
+            </li>
+            <li>
+                <a href="http://www.cc.ncu.edu.tw" title="電算中心">電算中心</a>
+            </li>
+        </ul>
     </div>
 </div>
 <div id="footer">
