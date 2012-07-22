@@ -206,13 +206,11 @@ class SiteController extends Controller
         {
             $model = new User();
             $model->attributes = $_POST['login'];
-
             if ( $model->login() )
             {
                 $this->redirect(Yii::app()->user->returnUrl);
             }
         }
-
         $this->setPageTitle(Yii::app()->name . ' - 登入');
         $this->render('login');
     }
@@ -252,12 +250,10 @@ class SiteController extends Controller
                 $profile->department_id = $_POST['profile']['department'];
                 $profile->grade = $_POST['profile']['grade'];
                 $profile->picture = $_FILES['picture']['name'];
-
                 $target = $path . DIRECTORY_SEPARATOR . $profile->picture;
                 move_uploaded_file($_FILES['picture']['tmp_name'], $target);
                 $picture_size=$_FILES['picture']['size'];
                 $picture_type=$_FILES['picture']['type'];
-
                 if ( $profile->validate() )
                 {
                     if ( $user->save() )
@@ -271,73 +267,9 @@ class SiteController extends Controller
                 }
             }
         }
-
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('register', array(
             'departments'   => Department::model()->getDepartment()
-        ));
-    }
-
-    public function actionProfile() 
-    {
-        $id = Yii::app()->user->id;
-        $url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
-        if ( isset($_POST['form-profile-editor']) )
-        {
-            $this->redirect(array('site/editor'));
-        }
-        else if ( isset($_POST['form-profile-back']) )
-        {
-            $this->redirect(array('friends/friends'));
-        }
-        else
-        {
-            $this->render('profile', array(
-                'user'      => User::model()->findByPk($id), 
-                'target'    => $url
-            ));
-        }
-    }
-
-    public function actionEditor() 
-    {
-        $userID = Yii::app()->user->id;
-        $departmentId  = Profile::model()->findByPK($userID)->department_id;
-        $url = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
-        $user = User::model()->findByPk($userID);
-        if ( isset($_POST['form-profile-sure']) && isset($_POST['profile']) ) 
-        {
-            $user->attributes = $_POST['register'];
-            if ( $user->validate() )
-            {
-                $profile = $user->profile;
-                $profile->attributes = $_POST['profile'];
-                $profile->department_id = $_POST['profile']['department'];
-                $profile->grade = $_POST['profile']['grade'];
-                $profile->picture = $_FILES['picture']['name'];
-                $target = $url . DIRECTORY_SEPARATOR . $profile->picture;
-                move_uploaded_file($_FILES['picture']['tmp_name'], $target);
-                $picture_size = $_FILES['picture']['size'];
-                $picture_type = $_FILES['picture']['type'];
-                if ( $profile->validate() )
-                {
-                    if ( $user->save() )
-                    {
-                        $profile->id = $user->id;
-                        if ( $profile->save() )
-                        {
-                            $this->redirect(array('site/profile'));
-                        }
-                    }
-                }
-            }
-        }
-        $this->_data['token'] = Yii::app()->security->getToken();
-        $this->render('editor', array(                
-                'user'          => $user, 
-                'departmentId'  => $departmentId,
-                'departments'   => Department::model()->getDepartment(), 
-                'target'        => $url
         ));
     }
 }

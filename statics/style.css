@@ -11,7 +11,7 @@ textarea
 
 body
 {
-    background: #DCE4ED url('../images/header.png') repeat-x;
+    background: #DCE4ED url('header.png') repeat-x;
     margin: 0 auto;
     overflow-y: scroll;
     width: 1000px;
@@ -120,7 +120,7 @@ a:hover
 
 .loading
 {
-    background: url('../images/loading.png');
+    background: url('loading.png');
     height: 128px;
     width: 128px;
 }
@@ -170,7 +170,7 @@ a:hover
  */
 #logo
 {
-    background: url('../images/logo.png') no-repeat;
+    background: url('logo.png') no-repeat;
     height: 160px;
     margin-left: 15px;
     position: absolute;
@@ -201,12 +201,12 @@ a:hover
 
 #header .online
 {
-    background: url('../images/online.png') no-repeat;
+    background: url('online.png') no-repeat;
 }
 
 #header .browsered
 {
-    background: url('../images/browsered.png') no-repeat;
+    background: url('browsered.png') no-repeat;
 }
 
 #tab
@@ -238,7 +238,7 @@ a:hover
 
 #navigation
 {
-    background: url('../images/navigation.png') no-repeat;
+    background: url('navigation.png') no-repeat;
     list-style: none;
     margin: 160px 0 0 0;
     overflow: hidden;
@@ -276,7 +276,7 @@ a:hover
 
 #footer
 {
-    background: url('../images/footer.png');
+    background: url('footer.png');
     clear: both;
     height: 120px;
 }
@@ -359,12 +359,12 @@ a:hover
 
 #form-sidebar-login
 {
-    background: url('../images/login.png');
+    background: url('login.png');
 }
 
 #form-sidebar-register
 {
-    background: url('../images/register.png');
+    background: url('register.png');
 }
 
 /**
@@ -372,7 +372,7 @@ a:hover
  */
 #chat
 {
-    background: url('../images/chat.png') 0 5px no-repeat;
+    background: url('chat.png') 0 5px no-repeat;
     bottom: 0;
     cursor: pointer;
     height: 120px;
@@ -444,7 +444,7 @@ a:hover
 	width: 136px;
 	height: 20px;
 	padding: 0 0 0 20px;
-	background: url('../images/friend_list_search.png') no-repeat;
+	background: url('friend_list_search.png') no-repeat;
 }
 
 #chat-friend-list .friend-list-entry
@@ -466,6 +466,7 @@ a:hover
     height: 200px;
     margin-right: 10px;
     opacity: 0.9;
+    overflow-x: hidden;
     position: fixed;
     width: 160px;
 }
@@ -480,7 +481,7 @@ a:hover
 
 .chat-dialog .chat-title span
 {
-	background: url('../images/chat_online.png') no-repeat;
+	background: url('chat_online.png') no-repeat;
 	display: block;
 	float: left;
 	height: 16px;
@@ -490,7 +491,7 @@ a:hover
 
 .chat-dialog .chat-title span.offline
 {
-	background: url('../images/chat_offline.png') no-repeat;
+	background: url('chat_offline.png') no-repeat;
 }
 
 .chat-dialog .chat-title p
@@ -505,7 +506,7 @@ a:hover
 
 .chat-dialog .chat-title button
 {
-	background: url('../images/chat_close.png') 50% 50% no-repeat;
+	background: url('chat_close.png') 50% 50% no-repeat;
 	border: 0;
 	float: right;
 	height: 16px;
@@ -516,23 +517,16 @@ a:hover
 
 .chat-dialog .chat-title button:hover
 {
-	background: white url('../images/chat_close.png') 50% 50% no-repeat;
+	background: white url('chat_close.png') 50% 50% no-repeat;
 	cursor: pointer;
-}
-
-.chat-dialog .scroll-container
-{
-    height: 150px;
-}
-
-.chat-dialog .scroll-area
-{
-    margin: -3px 0;
-    width: 160px;
 }
 
 .chat-dialog .chat-display
 {
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: -3px 0;
 	padding: 0 5px;
     width: 150px;
 }
@@ -596,7 +590,7 @@ input.gsc-search-button:focus
 
 #search button
 {
-    background: url('../images/search_box_icon.png') no-repeat;
+    background: url('search_box_icon.png') no-repeat;
     border: none;
     cursor: pointer;
     float: right;
@@ -664,12 +658,6 @@ input.gsc-search-button:focus
     border: 3px solid #7C7C7C;
 }
 
-#readme-list ul li
-{
-    float: left;
-    list-style: none;
-}
-
 /**
  * Index style
  */
@@ -696,7 +684,7 @@ input.gsc-search-button:focus
 
 #marquee span
 {
-    background: url('../images/marquee_star_icon.png') no-repeat;
+    background: url('marquee_star_icon.png') no-repeat;
     display: block;
     height: 50px;
     margin: -15px 0 0 -55px;
@@ -718,104 +706,6 @@ input.gsc-search-button:focus
 {
     float: left;
     width: 30%;
-}
-
-#index-calendar .calendar-top
-{
-    width: 204px;
-    height: 85px;
-}
-
-#index-calendar .calendar-top-all-nologin
-{
-    background: url('../images/calendar_top2.png');
-}
-
-#index-calendar .calendar-top-all-login
-{
-    background: url('../images/calendar_top.png');
-}
-
-#index-calendar .calendar-top-personal
-{
-    background: url('../images/calendar_top3.png');
-}
-
-#index-calendar .calendar-bottom
-{
-    width: 204px;
-    height: 349px;
-    float: left;
-    background: url('../images/calendar_content2.png');
-}
-
-#index-calendar .calendar-bottom table.calendar-table caption
-{
-    margin:  15px 0 10px 0 ;
-}
-
-#index-calendar .calendar-bottom table.calendar-table td
-{
-    text-align: right;
-    width: 28px;
-}
-
-#index-calendar .calendar-bottom table.calendar-table thead
-{
-    display: block;
-}
-
-#index-calendar .calendar-bottom table.calendar-table thead td
-{
-    text-align: center;
-}
-
-#index-calendar .calendar-bottom table.calendar-table thead td.weekend
-{
-    color: red;
-}
-
-#index-calendar .calendar-bottom table.calendar-table 
-{
-    width: 204px;
-}
-
-#index-calendar .calendar-bottom table.calendar-table tbody
-{
-    border-top: 1px solid #946722;
-    border-bottom: 1px solid #946722;
-    display: block;
-}
-
-#index-calendar .calendar-bottom table.todolist-table td
-{
-    width: 100px;
-    text-align: center;
-}
-
-#index-calendar .calendar-bottom table.todolist-table thead td
-{
-    color: #946722;
-}
-
-#index-calendar .calendar-top a{
-    margin-top: 51px;
-    height: 33px;
-    width: 102px;
-    float: left;
-    display: inline-block;
-}
-
-#index-calendar .calendar-top a#calendar-all
-{
-}
-
-#index-calendar .calendar-top a#calendar-personal
-{
-}
-
-#index-calendar .calendar-top a
-{
 }
 
 #index-container
@@ -872,7 +762,7 @@ input.gsc-search-button:focus
 
 .index-latest-box h4
 {
-    background: url('../images/index_latest_icon.png') no-repeat;
+    background: url('index_latest_icon.png') no-repeat;
 }
 
 .index-forums-box
@@ -883,7 +773,7 @@ input.gsc-search-button:focus
 
 .index-forums-box h4
 {
-    background: url('../images/index_forums_icon.png') no-repeat;
+    background: url('index_forums_icon.png') no-repeat;
 }
 
 .news-dialog-warp
@@ -1043,6 +933,7 @@ input.gsc-search-button:focus
     width: 35%;    
     height: 100%;
     float: left;
+
 }
 
 /**
@@ -1086,9 +977,7 @@ input.gsc-search-button:focus
 
 #nculife-db
 {
-    width: 695px;
-    height: 325px;
-	border: solid;
+	border-color: black;
 }
 
 #nculife-cv
@@ -1101,7 +990,7 @@ input.gsc-search-button:focus
 
 #nculife-ct
 {
-	width: 295px;
+	width: 300px;
 	height: 100px;
 	float: left;
 	background: gray;
@@ -1113,69 +1002,6 @@ input.gsc-search-button:focus
 	height: 50px;
 }
 
-#nculife-dh li
-{
-    float: left;
-	list-style: none;
-}
-
-ul.life-index li:hover ul.life-indexs
-{
-    display: block;
-    background: white;
-    color: black;
-}
-
-ul.life-indexs
-{
-    margin: -1px;
-    padding: 0;
-    display: none;
-}
-
-ul.life-index li
-{
-    list-style: none;
-    float: left;
-    width: 80px;
-    height: 20px;
-    text-align: center;
-    background: black;      
-	color: white; 
-    border: 1px solid red;
-    padding: 0;
-    display: block;
-}
-
-ul.life-index li:hover
-{
-    background: white;
-    color: black;
-}
-
-ul.life-indexs-inner
-{
-    display: none;
-}
-
-ul.life-indexs li.life-indexs-content:hover ul.life-indexs-inner
-{
-    display: block;
-    padding: 0;
-    margin-left: 80px;
-    margin-top: -21px;
-}
-
-ul.life-indexs li.life-indexs-content:hover
-{
-    background: red;
-    color: black;
-}
-
-.ncu-index
-{
-    list-style: none;
-}
 
 #life-container
 {
@@ -1199,116 +1025,29 @@ ul.life-indexs li.life-indexs-content:hover
     font-size:40px;
 }
 
-#about .block1
-{
-    background: url('../pp.jpg');
-}
-
-#about .block2
-{
-    background: url('../images/');
-}
-
-#about .block3
-{
-    background: url('../images/');
-}
-
-#about .back
-{
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 0;
-    width: 750;
-    height: 400;
-}
-
-#about .art
-{
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 0px;
-    width: 50;
-    height: 40;
-}
-
-#about .pro
-{
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 50px;
-    width: 50;
-    height: 40;
-}
-
-#about .vdo
-{
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 0;
-    width: 50;
-    height: 40;
-}
-
-#about .des
-{
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 0;
-    width: 50;
-    height: 40;
-}
-
-#about .boss
-{
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 0;
-    width: 50;
-    height: 40;
-}
-
-#about .information
-{
-    
-}
-
-#about .tagbar
-{
-}
-
 #life-test1
 {
-    background: url('../1.jpg');
+    background: url('1.jpg');
     width: 30px;
     height: 30px;
-    top: 100px;
     display: block;
     position: absolute;
 }
 
 #life-test2
 {
-    background: url('../2.png');
+    background: url('2.png');
     width: 30px;
     height: 30px;
-    top: 100px;
     display: block;
     position: absolute;
 }
 
 #life-test3
 {
-    background: url('../3.jpg');
+    background: url('3.jpg');
     width: 30px;
     height: 30px;
-    top: 100px;
     display: block;
     position: absolute;
 }
@@ -1325,205 +1064,44 @@ ul.life-indexs li.life-indexs-content:hover
 }
 
 /*club style*/
-#club-content
+#content
 {
+	width:751px;
 }
-
 .l1
 {
-	float: left;
-	width: 100px;
-	height: 500px;
-}
-
-#club-title
-{
-	background-color: yellow;
-	font-weight: bold;
-}
-
-#club-all
-{
-	background-color: green;
-
-}
-
-#club-display
-{
-	float: right;
-	width: 600px;
-}
-
-.club-picture1
-{
-	background: none;
-	border: 0px;
-	margin: 0px;
-	padding: 0px;
-	cursor: pointer;
-    width: 150px;
-    height: 100px;
-    display: block;
-}
-
-.club-picture1 img
-{
-	border: 5px solid #FFFFFF;
-	width: 150px;
-    height: 100px;
-}
-
-.club-picture2
-{
-	background: none;
-	border: 0px;
-	margin: 0px;
-	padding: 0px;
-	cursor: pointer;
-    width: 150px;
-    height: 100px;
-    display: block;
-}
-
-.club-picture2 img
-{
-	border: 5px solid #FFFFFF;
-    height: 100px;
-	width: 150px;
-}
-
-.club-picture3
-{
-	background: none;
-	border: 0px;
-	margin: 0px;
-	padding: 0px;
-	cursor: pointer;
-    width: 150px;
-    height: 100px;
-    display: block;
-}
-
-.club-picture3 img
-{
-	border: 5px solid #FFFFFF;
-    height: 100px;
-	width: 150px;
-}
-
-.club-picture4
-{
-	background: none;
-	border: 0px;
-	margin: 0px;
-	padding: 0px;
-	cursor: pointer;
-    width: 150px;
-    height: 100px;
-    display: block;
-}
-
-.club-picture4 img
-{
-	border: 5px solid #FFFFFF;
-    height: 100px;
-	width: 150px;
-}
-
-.club-picture-display1 img
-{
-	width: 800px;
-    height: 600px;
-}
-
-.club-picture-display2 img
-{
-	width: 800px;
-    height: 600px;
-}
-
-.club-picture-display3 img
-{
-	width: 800px;
-    height: 600px;
-}
-
-.club-picture-display4 img
-{
-	width: 800px;
-    height: 600px;
-}
-
-#club-picture-dialog1
-{
-	display: none; 	
-	background: white;
-	width: 850px;
-	height: 650px;
-	position: relative;
-
-}
-
-#club-picture-dialog2
-{
-	display: none; 	
-	background: white;
-	width: 850px;
-	height: 650px;
-	position: relative;
-
-}
-
-#club-picture-dialog3
-{
-	display: none; 	
-	background: white;
-	width: 850px;
-	height: 650px;
-	position: relative;
-
-}
-
-#club-picture-dialog4
-{
-	display: none; 	
-	background: white;
-	width: 850px;
-	height: 650px;
-	position: relative;
-
-}
-
-#club-underpicture
-{
 	float:left;
-	width:150px;
-	height:700px;
-}
-
-#club-picture-menu
-{
-	width: 150px;
-    height: 700px;
-    background: skyblue;
-    overflow: hidden;
-}
-
-#club-menu-items
-{
-	margin-top:5px;
-	width:150px;
-	height:500px;
+	width:100 px;
+	height:500 px;
 }
 
 #club
 {
 	margin-center:auto;
 }
-
+<<<<<<< HEAD
+#title
+{
+	font-weight: bold;
+	background-color:yellow;
+}
+#all
+{
+	display:block;
+}
+#picture
+{	
+	background: url('3.png');
+	border:10 px;
+	background-color:white;
+}
+#underpicture
+{
+	display:block;
+}
 .etmomi
 {
-    background: url('../1.jpg');
+    background: url('1.jpg');
     width:30px;
     height:30px;
     display:block;
@@ -1531,7 +1109,7 @@ ul.life-indexs li.life-indexs-content:hover
 
 .etmomi:hover
 {
-    background: url('../2.png');
+    background: url('2.PNG');
     width:300px;
     height:300px;
     display:block;
@@ -1539,9 +1117,8 @@ ul.life-indexs li.life-indexs-content:hover
 
 table.other-page
 {
-    border:0px;
-    width:90%; 
-    height=:70%;
+    width:30%; 
+    height:30%;
 }
 
 .sep-group
@@ -1556,92 +1133,72 @@ table.other-page
 
 th.form-friends-sort-title
 {
-    color: yellow;
-    font-size: 30px;
-    text-align: left;
+    font-size:30px;
+    align:left;
+    color:yellow;
 }
 
 th.form-friends-title
 {
-    border: 5px solid gray;
-    color: yellow;
-    font-size: 20px;
-    text-align: left;
+    border:5px solid gray;
+    font-size:20px;
+    align:center;
+    color:yellow;
 }
 
 th.friend-other-page
 {
-    color: green;
-    font-size: 30px;
+    color:green;
+    font-size:30px;
 }
 
-a.form-friends-title
+th.friend-close-page
 {
-    text-lign: left;
-    color: DeepPink; /* NOTE */
+    color:green;
+    font-size:30px;
+}
+
+th.friend-close-page
+{
+    color:green;
+    font-size:30px;
+}
+
+th.friend-samediff-page
+{
+    color:green;
+    font-size:30px;
+}
+
+a.form-allsame-title
+{
+    align:left;
+    color:DeepPink;
 }
 
 tr.friends-title
 {
-    margin: 0px;
+    /*height:10%;*/
+    margin:0px;
 }
 
 td.friends-close-ones
 {
-    height: 5%;
-    width: 5%;
-    margin: 0px;
+    height:30px;
+    width:30px;
+    margin:0px;
 }
 
-img.user_img
+td.friends-allsame-ones
 {
-    height:50%;
-    width:80%;
-    height: 50%;
-    width: 80%;
+    height:30px;
+    width:30px;
+    margin:0px;
 }
 
-#notfound
+td.friends-samediff-ones
 {
-    background: url('../images/notfound.png');
-    height: 450px;
-    position: relative;
-    width: 750px;
-}
-
-#notfound h2
-{
-    display: none;
-}
-
-#notfound p
-{
-    left: 70px;
-    position: absolute;
-    top: 195px;
-}
-
-#notfound ul
-{
-    left: 50px;
-    position: absolute;
-    top: 225px;
-    width: 280px;
-}
-
-#notfound a
-{
-    background: url('../images/back.png');
-    display: block;
-    height: 40px;
-    left: 160px;
-    position: absolute;
-    text-indent: -100000%;
-    top: 375px;
-    width: 115px;
-}
-
-#notfound a:hover
-{
-    background: url('../images/back_hover.png');
+    height:30px;
+    width:30px;
+    margin:0px;
 }

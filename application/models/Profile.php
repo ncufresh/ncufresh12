@@ -16,9 +16,11 @@ class Profile extends CActiveRecord
     {   
         return array(
             array(
-                'name, nickname, department_id, senior, birthday', 
+                'name, nickname, department_id, grade,senior, birthday', 
                 'required'
-            )
+            ),
+            array('department_id', 'numerical', 'integerOnly'=>true), //½d³ò1-21
+            array('grade', 'numerical', 'integerOnly'=>true) //½d³ò1-5
         );
     }
 
