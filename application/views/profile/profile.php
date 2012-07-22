@@ -1,5 +1,5 @@
 <h2>基本資料</h2>
-<form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('site/profile'); ?>" method="POST">
+<form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('profile/profile'); ?>" method="POST">
    <!-- <input type="hidden" name="MAX_FILE_SIZE" value="327680" />-->    
     <img  height="200" src="
     <?php
