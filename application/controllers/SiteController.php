@@ -252,10 +252,12 @@ class SiteController extends Controller
                 $profile->department_id = $_POST['profile']['department'];
                 $profile->grade = $_POST['profile']['grade'];
                 $profile->picture = $_FILES['picture']['name'];
+
                 $target = $path . DIRECTORY_SEPARATOR . $profile->picture;
                 move_uploaded_file($_FILES['picture']['tmp_name'], $target);
                 $picture_size=$_FILES['picture']['size'];
                 $picture_type=$_FILES['picture']['type'];
+
                 if ( $profile->validate() )
                 {
                     if ( $user->save() )
@@ -269,17 +271,17 @@ class SiteController extends Controller
                 }
             }
         }
+
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('register', array(
-            'departments'  => Department::model()->getDepartment() 
+            'departments'   => Department::model()->getDepartment()
         ));
     }
 
     public function actionProfile() 
     {
-        $userID = Yii::app()->user->id;
-        $departmentId  = Profile::model()->findByPK($userID)->department_id;
-        $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+        $id = Yii::app()->user->id;
+        $url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         if ( isset($_POST['form-profile-editor']) )
         {
             $this->redirect(array('site/editor'));
@@ -290,9 +292,9 @@ class SiteController extends Controller
         }
         else
         {
-            $this->render('profile', array(                
-                'user'=>User::model()->findByPk($userID), 
-                'target'=>$img_url
+            $this->render('profile', array(
+                'user'      => User::model()->findByPk($id), 
+                'target'    => $url
             ));
         }
     }
@@ -301,8 +303,12 @@ class SiteController extends Controller
     {
         $userID = Yii::app()->user->id;
         $departmentId  = Profile::model()->findByPK($userID)->department_id;
+<<<<<<< HEAD
         $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+=======
+        $url = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+>>>>>>> 798f897380dd26a8bfcbc22b3a6766c7c301c34b
         $user = User::model()->findByPk($userID);
         if ( isset($_POST['form-profile-sure']) && isset($_POST['profile']) ) 
         {
@@ -314,10 +320,14 @@ class SiteController extends Controller
                 $profile->department_id = $_POST['profile']['department'];
                 $profile->grade = $_POST['profile']['grade'];
                 $profile->picture = $_FILES['picture']['name'];
+<<<<<<< HEAD
                 $target = $path . DIRECTORY_SEPARATOR . $profile->picture;
+=======
+                $target = $url . DIRECTORY_SEPARATOR . $profile->picture;
+>>>>>>> 798f897380dd26a8bfcbc22b3a6766c7c301c34b
                 move_uploaded_file($_FILES['picture']['tmp_name'], $target);
-                $picture_size=$_FILES['picture']['size'];
-                $picture_type=$_FILES['picture']['type'];
+                $picture_size = $_FILES['picture']['size'];
+                $picture_type = $_FILES['picture']['type'];
                 if ( $profile->validate() )
                 {
                     if ( $user->save() )
@@ -331,13 +341,12 @@ class SiteController extends Controller
                 }
             }
         }
-        //var_dump($user);exit;
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('editor', array(                
-                'user'=>$user, 
-                'departmentId' => $departmentId,
-                'departments' => Department::model()->getDepartment(), 
-                'target' => $img_url
+                'user'          => $user, 
+                'departmentId'  => $departmentId,
+                'departments'   => Department::model()->getDepartment(), 
+                'target'        => $url
         ));
     }
 }

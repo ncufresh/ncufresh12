@@ -12,6 +12,7 @@ class NculifeController extends Controller
     {
         $this->render('live');
     }
+
     public function actionLiveContent($tab_id)
     {
         switch ( $tab_id )
@@ -47,6 +48,7 @@ class NculifeController extends Controller
     {
         $this->render('house');
     }
+
     public function actionHouseContent($tab_id)
     {
         switch ( $tab_id )
@@ -65,6 +67,7 @@ class NculifeController extends Controller
          $this->render('car');
         /* $this->renderPartial('car'); */
     }
+
     public function actionCarContent($tab_id)
     {
         switch ( $tab_id )
@@ -100,6 +103,7 @@ class NculifeController extends Controller
     {
         $this->render('sport');
     }
+
     public function actionSportContent($tab_id)
     {
         switch ( $tab_id )
@@ -117,6 +121,7 @@ class NculifeController extends Controller
     {
         $this->render('health');
     }
+
     public function actionHealthContent($tab_id)
     {
         switch ( $tab_id )

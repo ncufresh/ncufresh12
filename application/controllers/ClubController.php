@@ -22,14 +22,14 @@ class ClubController extends Controller
         $this->render('department');
     }
 
-    public function actionContent()
+    public function actionContent($id)
     {
+        $id = (integer)$id;
         $club = new Club();
-		$page = (integer)$_GET['id'];
-        $data = $club->getClub($page);
+        $data = $club->getClub($id);
         $this->render('content', array(
             'data'      => $data,
-			'id'		=> $page
+			'id'		=> $id
         ));
     }
 }
