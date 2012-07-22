@@ -147,17 +147,17 @@ class Character extends CActiveRecord
     {
         return $this->achievements_bag;
     }
-    
+
     // public function GetAchievementsTime()
     // {
         // return $this->achievements_bag;
     // }
-    
+
     public function ItemsBag()
     {
         return $this->items;
     }
-    
+
     public function GetItemsTime()
     {
         return $this->items_bag;
@@ -167,5 +167,4 @@ class Character extends CActiveRecord
     {
         return $this->achievements;
     }
-
 }
