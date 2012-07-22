@@ -890,9 +890,8 @@
             }
             return false;
         });
-        bottom.css({
-            display: 'none'
-        });
+        var table = $('<table></table>')
+            .append('<tbody></tbody>');
         return this;
     };
 })(jQuery);
