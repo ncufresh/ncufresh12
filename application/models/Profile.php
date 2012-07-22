@@ -29,7 +29,7 @@ class Profile extends CActiveRecord
                 self::BELONGS_TO,
                 'Department', 
                 'department_id' 
-            ),
+            )
         ); 
     }
 

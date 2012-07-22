@@ -20,7 +20,7 @@ class ForumController extends Controller
     {
         // list of departments
         $model = new Category();
-        //$list = ForumCategory::model()->findAllBySql("SELECT * FROM  `forum_category` ", ' ');
+        // $list = ForumCategory::model()->findAllBySql("SELECT * FROM  `forum_category` ", ' ');
         $this->render('forumlist', array(
             'list'      => $model->findAll('id != 1 AND id != 2')
         ));
@@ -29,11 +29,11 @@ class ForumController extends Controller
     public function actionForum($fid, $sort = 0, $category = 0)
     {
         $article = new Article();
-        //content of each forum
-        //[not yet] 傳入是否為admin 用於判斷是否顯示置頂checkbox及刪除文章選項
+        // content of each forum
+        // [not yet] 傳入是否為admin 用於判斷是否顯示置頂checkbox及刪除文章選項
         $this->render('forum', array(
             'fid'       => $fid,
-            'model'     => $article->findAll('forum_id='.$fid.' AND visibility=1')
+            'model'     => $article->findAll('forum_id = ' . $fid . ' AND visibility = 1')
         ));
     }
 
@@ -63,24 +63,28 @@ class ForumController extends Controller
             $article->save();
             $this->redirect($article->url);
         }
-        //[not yet] 傳入是否為admin 用於判斷是否顯示置頂checkbox選項
+        // [not yet] 傳入是否為admin 用於判斷是否顯示置頂checkbox選項
         $this->render('create',array(
             'fid'       => $fid,
-            'category'  => Category::model()->find('id=' . $fid)
+            'category'  => Category::model()->findByPk($fid)
         ));
         
     }
+
     // public function actionTop(){
-        
     // }
+
     public function actionView($fid, $id)
     {
         $article = Article::model()->findByPk($id);
         $comment = new Comment();
         $reply = new Reply();
-        
-        $this->render('view', array('article'=>$article,'comments'=>$comment, 'reply'=>$reply));
-        
+
+        $this->render('view', array(
+            'article'   => $article,
+            'comments'  => $comment,
+            'reply'     => $reply
+        ));        
     }
 
     public function actionComment(){
@@ -92,19 +96,21 @@ class ForumController extends Controller
             $comment->save();
         }
         $this->redirect(Yii::app()->createUrl('forum/view', array(
-                    'fid'   => $comment->article->forum->id,
-                    'id'    => $comment->article_id
+            'fid'       => $comment->article->forum->id,
+            'id'        => $comment->article_id
         )));
     }
 
-    public function actionReply($aid){
-    
+    public function actionReply($aid)
+    {
         $reply = new Reply();
+
         if ( isset($_POST['reply']) )
         {
             $reply->content = $_POST['reply']['content'];
             $reply->article_id = $aid;
-            if($reply->save()){
+            if ( $reply->save() )
+            {
                 $this->redirect(Yii::app()->createUrl('forum/view', array(
                     'fid'   => $reply->article->forum->id,
                     'id'    => $reply->article_id
@@ -121,16 +127,18 @@ class ForumController extends Controller
     public function actionDelete() // delete article
     {
         $article = new Article();
-        //[not yet]判斷傳過來的fid
-        if(isset($_POST['delete'])){
+
+        // [not yet]判斷傳過來的fid
+        if ( isset($_POST['delete']) )
+        {
             $aid = $_POST['delete'];
-            $article_to_be_del = $article->find('id='.$aid);
+            $article_to_be_del = $article->findByPk('id = ' . $aid);
             $article_to_be_del->visibility = 0;
             $article_to_be_del->save();
         }
         
         $this->redirect(Yii::app()->createUrl('forum/forum', array(
-                    'fid'   => $article_to_be_del->forum->id
+            'fid'       => $article_to_be_del->forum->id
         )));
     }
 }
