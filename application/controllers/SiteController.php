@@ -301,7 +301,8 @@ class SiteController extends Controller
     {
         $userID = Yii::app()->user->id;
         $departmentId  = Profile::model()->findByPK($userID)->department_id;
-        $img_url = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+        $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+        $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $user = User::model()->findByPk($userID);
         if ( isset($_POST['form-profile-sure']) && isset($_POST['profile']) ) 
         {
@@ -313,7 +314,7 @@ class SiteController extends Controller
                 $profile->department_id = $_POST['profile']['department'];
                 $profile->grade = $_POST['profile']['grade'];
                 $profile->picture = $_FILES['picture']['name'];
-                $target = $img_url . DIRECTORY_SEPARATOR . $profile->picture;
+                $target = $path . DIRECTORY_SEPARATOR . $profile->picture;
                 move_uploaded_file($_FILES['picture']['tmp_name'], $target);
                 $picture_size=$_FILES['picture']['size'];
                 $picture_type=$_FILES['picture']['type'];
