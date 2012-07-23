@@ -15,8 +15,6 @@ jQuery(document).ready(function()
         <a href="#" id="calendar-personal"></a>
     </div>
     <div class="calendar-bottom-wrap">
-        <div class="calendar-bottom">
-        </div>
     </div>
 </div>
 
