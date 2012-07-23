@@ -846,6 +846,41 @@
     };
 })(jQuery);
 
+(function($)
+{
+    $.konami = function()
+    {
+        var options = $.extend({
+            code:                   [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
+            interval:               10,
+            complete:               function()
+            {
+                alert('You complete the konami code!');
+            }
+        }, options);
+        var index = 0;
+        var interval = options.interval;
+        var timer = setInterval(function()
+        {
+            if ( interval-- <= 0 ) index = 0;
+        }, 50);
+        $(document).keyup(function(event)
+        {
+            if (
+                event.keyCode != 231
+             && event.keyCode == options.code[index]
+            )
+            {
+                interval = options.interval;
+                if ( index++ == options.code.length - 1 ) options.complete();
+                return true;
+            }
+            index = 0;
+            return true;
+        });
+    };
+})(jQuery);
+
 /**
  * indexCalendar
  */
@@ -980,6 +1015,8 @@
                 update();  
             }
         });
+
+        $.konami();
 
         $.pull.start({
             onlinecounter: $('#header .online'),
