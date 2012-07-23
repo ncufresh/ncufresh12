@@ -1,4 +1,4 @@
-<form method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
+<form enctype="multipart/form-data" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
 <table class="other-page">
     <tr>
         <th colspan="5" class="friend-other-page">其他科系</th>
@@ -15,7 +15,6 @@
         <?php
                 if ( $profile->picture !='' )
                 {
-        
                     echo $target.'/'.$profile->picture; 
                 }
                 else
@@ -23,7 +22,10 @@
                     echo $target.'/image1.jpg';
                 }
         ?>
-                " alt="Score image"/><br /><input type="checkbox" name="friends[]" value="<?php echo $profile->id;?>"  /><?php echo $profile->name;?></td>
+                " alt="Score image"/><br /><input type="checkbox" name="friends[]" value="<?php echo $profile->id;?>"  /><?php echo $profile->name;?>
+                <br />
+                <?php echo $profile->department->short_name; ?>
+                </td>
                 <?php
                 if ( $col%5==0 ) 
                 {

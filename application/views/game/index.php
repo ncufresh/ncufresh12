@@ -54,21 +54,23 @@
             )
         );
         $id = 3;
-        $model = Character::model()->findByPk($id);
+        $user = Character::model()->findByPk($id);
+        $achievements_bag = Character::model()->findByPk($id)->achievements_bag;
+        $items_bag = Character::model()->findByPk($id)->items_bag;
         $test = Achievement::model()->findByPk($id);
-        $model->addExp(47);     //加經驗
-        $model->addMoney(10);   //加錢幣
+        $user->addExp(47);     //加經驗
+        $user->addMoney(10);   //加錢幣
         $count=0; //計算等級
         foreach ($level as $value)
         {
 
-          if ( $model->getExpValue() < $value['exp'] )
+          if ( $user->getExpValue() < $value['exp'] )
           {
               echo '<h1 style="background-color:black;color:red;text-align:center;font-size:40px">'.$count.'次加持 '.$value['name'].'</h1>';
               if($count>=10)
-              echo '<h1 style="background-color:black;color:red;text-align:center;font-size:40px">'.$model->getExpValue().' / ∞ (最高等級)</h1>';
+              echo '<h1 style="background-color:black;color:red;text-align:center;font-size:40px">'.$user->getExpValue().' / ∞ (最高等級)</h1>';
               else
-              echo '<h1 style="background-color:black;color:red;text-align:center;font-size:40px">'.$model->getExpValue().' / '.$value['exp'].' (下一等級)</h1>';
+              echo '<h1 style="background-color:black;color:red;text-align:center;font-size:40px">'.$user->getExpValue().' / '.$value['exp'].' (下一等級)</h1>';
               
               break;
           }
@@ -76,67 +78,77 @@
         }
         echo '<div style="color:navy;font-size:18px">';
         echo 'Id：';
-        print_r($model->getId());
+        print_r($user->id);
         echo '<br/>綽號：';
         // print_r($model->getUserNickName());
         // echo '<br/>頭髮：';
-        print_r($model->getUserNickName());
+        print_r($user->profile->nickname);
+        echo '<br/>頭髮：';
+        print_r($user->hair->name);
         echo '<br/>眼睛：';
-        print_r($model->getEyesName());
+        print_r($user->eyes->name);
         echo '<br/>衣服：';
-        print_r($model->getClothsName());
+        print_r($user->cloths->name);
         echo '<br/>褲子：';
-        print_r($model->getPantsName());
+        print_r($user->pants->name);
         echo '<br/>手勢：';
-        print_r($model->getHandsName());
+        print_r($user->hands->name);
         echo '<br/>鞋子：';
-        print_r($model->getShoesName());
+        print_r($user->shoes->name);
         echo '<br/>特殊寶物：';
-        print_r($model->getOthersName());
+        print_r($user->others->name);
         echo '<br/>經驗值：';
-        print_r($model->getExpValue());
+        print_r($user->exp);
         echo '<br/>金錢：';
-        print_r($model->getMoneyValue());
+        print_r($user->money);
         echo '<br/>';
         echo '</div>';
 
         $counter_one=1;
         $counter_two=1;
         echo '<br/><br/>';
-        echo 'TEST => 時間資料筆數 / 成就資料筆數：'.sizeof($model->achievement_bag->time).' / '.sizeof($model->achievement_bag).'<br/>';
-        // if(sizeof($model->GetAchievementsTime())!=sizeof($model->AchievementsBag()))
-            // echo 'Error => 資料庫錯誤!!! <br/>';
-        // else
-            // echo 'Right => 資料庫無誤!!! <br/>';
             // $temp=$model->AchievementsBag();
             // echo sizeof($temp);
             // echo $temp[0]->name.'<br/>';
             // echo $temp[1]->name.'<br/>';
             // echo $temp[2]->name.'<br/>';
             // echo $temp[3]->name.'<br/>';
-            $temp_2=$model->achievement_bag;
-        // print_r($temp_2[0]->translation);
-        echo $temp_2[0]->translation->name;
         
-        // echo '========================<br/>您目前的成就(' . sizeof($model->AchievementsBag()) . ')：<br/>';
-        // foreach ($model->AchievementsBag() as $array)
-        // {
-            // echo $counter_one.'->';
-            // $time_array = $model->GetAchievementsTime();
-            // echo '成就id：'.$array->id.'，名稱：'.$array->name.'('.$array->description.')   ('. $array->translation->time.' 獲得)';
-            // echo '<br/>';
-            // $counter_one++;
-        // }
-        
-        
-        // echo '<br/><br/>';
-        // echo 'TEST => 時間資料筆數 / 道具資料筆數：'.sizeof($model->GetItemsTime()).' / '.sizeof($model->ItemsBag()).'<br/>';
-        // if(sizeof($model->GetItemsTime())!=sizeof($model->ItemsBag()))
-            // echo 'Error => 資料庫錯誤!!! <br/>';
-        // else
-            // echo 'Right => 資料庫無誤!!! <br/>';
-        // echo '========================<br/>您目前的道具(' . sizeof($model->ItemsBag()) . ')：<br/>';
-        
+        echo '<table width="100%" border="1">';
+        echo '<th colspan="4">您目前的成就 <b> (' . sizeof($achievements_bag) . ')</b></th>';
+        foreach ($achievements_bag as $row)
+        {
+            echo '<tr><td>';
+            echo $counter_one;
+            // echo '成就id：'.$row->achievement_id.'，名稱：'.$row->translation->name.'('.$row->translation->description.')   ('. $row->time.' 獲得)';
+            echo '<td>成就id：'.$row->achievement_id.'</td><td>名稱：'.$row->translation->name;
+            if($row->translation->description!='')
+            echo ' ( '.$row->translation->description.' )</td><td>'. $row->time.' 獲得</td>';
+            else
+            echo ' ( 無此成就相關描述 )</td><td>'. $row->time.' 獲得</td>';
+            $counter_one++;
+            echo '</td></tr>';
+        }
+        echo '</table></br>';
+
+        echo '<table width="100%" border="1">';
+        echo '<th colspan="4">您目前的道具 <b> (' . sizeof($items_bag) . ')</b></th>';
+
+        foreach ($items_bag as $row)
+        {
+            echo '<tr><td>';
+            echo $counter_two;
+            echo '<td>道具id：'.$row->items_id.'</td><td>名稱：'.$row->translation->name;
+            if($row->translation->description!='')
+            echo ' ( '.$row->translation->description.' )</td><td>'. $row->time.' 獲得</td>';
+            else
+            echo ' ( 無此道具相關描述 )</td><td>'. $row->time.' 獲得</td>';
+            $counter_two++;
+            echo '</td></tr>';
+        }
+        echo '</table>';
+        echo '</br>';
+
         
         
         
@@ -146,18 +158,7 @@
             // echo '<br/>';
         // }
         
-        
-        
-        
-        // foreach ($model->ItemsBag() as $array)
-        // {
-            // echo $counter_two.'->';
-            // $time_array = $model->GetItemsTime();
-            // print_r($time_array[$counter_two-1]->time);
-            // echo '道具id：'.$array->id.'，名稱：'.$array['name'].'   ('. $time_array[$counter_two-1]->time.' 獲得)';
-            // echo '<br/>';
-            // $counter_two++;
-        // }
+
         
 
 ?>

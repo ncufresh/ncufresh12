@@ -11,7 +11,7 @@ class ItemBag extends CActiveRecord
     {
         return '{{game_items_bag}}';
     }
-    
+
     public function relations()
     {
         return array(

@@ -45,7 +45,7 @@
                 <option value="4">四年級</option>
                 <option value="5">其它</option>
             </select>
-        </div>
+    </div>
     <dl>
         <dt>
             <label for="form-register-senior">畢業高中</label>
@@ -61,6 +61,6 @@
         </dd>        
     </dl>
     <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
-    <input type="file" name="picture" id="UserPicture" />
+    <input type="file" name="picture" />
     <button id="form-register-button" type="submit">註冊</button>
 </form>

@@ -27,6 +27,7 @@ class Article extends CActiveRecord
             ),
         );
     }
+
     
     public function getArticlesSort($fid, $sort){
         switch ($sort)
@@ -78,6 +79,7 @@ class Article extends CActiveRecord
     }
     */
     
+
     public function getUrl()
     {
         return Yii::app()->createUrl('forum/view', array(

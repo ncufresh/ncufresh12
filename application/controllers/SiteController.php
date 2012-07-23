@@ -29,7 +29,9 @@ class SiteController extends Controller
                     'pull',
                     'register',
                     'login',
-                    'channel'
+                    'channel',
+                    'profile',
+                    'editor'
                 ),
                 'users'     => array('*')
             ),
@@ -132,19 +134,19 @@ class SiteController extends Controller
                 array(
                     'id'        => 1,
                     'name'      => 'Test 1',
-                    'icon'      => null,
+                    'icon'      => Yii::app()->request->baseUrl . '/statics/images/unknown.png',
                     'active'    => true
                 ),
                 array(
                     'id'        => 2,
                     'name'      => 'Demodemo',
-                    'icon'      => null,
+                    'icon'      => Yii::app()->request->baseUrl . '/statics/images/unknown.png',
                     'active'    => true
                 ),
                 array(
                     'id'        => 3,
                     'name'      => 'Adminadmin',
-                    'icon'      => null,
+                    'icon'      => Yii::app()->request->baseUrl . '/statics/images/unknown.png',
                     'active'    => true
                 )
             );
@@ -204,13 +206,11 @@ class SiteController extends Controller
         {
             $model = new User();
             $model->attributes = $_POST['login'];
-
             if ( $model->login() )
             {
                 $this->redirect(Yii::app()->user->returnUrl);
             }
         }
-
         $this->setPageTitle(Yii::app()->name . ' - 登入');
         $this->render('login');
     }
@@ -269,7 +269,7 @@ class SiteController extends Controller
         }
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('register', array(
-            'departments'  => Department::model()->getDepartment() 
+            'departments'   => Department::model()->getDepartment()
         ));
     }
 }

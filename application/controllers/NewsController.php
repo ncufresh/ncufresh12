@@ -53,7 +53,7 @@ class NewsController extends Controller
             array(
                 'deny',
                 'users'     => array('*')
-            ),
+            )
         );
     }
 
@@ -67,7 +67,7 @@ class NewsController extends Controller
         $this->setPageTitle(Yii::app()->name . ' - 最新消息');
         $this->render('view', array(
             'news'          => $news,
-            'current_page'   => $news->getCurrentPage(self::NEWS_PER_PAGE, true),
+            'current_page'  => $news->getCurrentPage(self::NEWS_PER_PAGE, true),
             'files'         => $this->loadFiles(self::NEWS_FILE_DIR . DIRECTORY_SEPARATOR . $news->id)
         ));
     }
@@ -81,20 +81,20 @@ class NewsController extends Controller
         $model = new News();
         $this->render('index', array(
             'news'          => $model->getPage($page, self::NEWS_PER_PAGE, true),
-            'page_status'    => $model->getPageStatus($page, self::NEWS_PER_PAGE)
+            'page_status'   => $model->getPageStatus($page, self::NEWS_PER_PAGE)
         ));
     }
 
 	/**
 	 * List all news and manipulations with pagination.
 	 */
-    public function actionAdmin($page=1)
+    public function actionAdmin($page = 1)
     {
         $model = News::model();
         $this->setPageTitle(Yii::app()->name . ' - 最新消息');
         $this->render('admin', array(
             'news'          => $model->getPage($page, self::NEWS_PER_PAGE, true),
-            'page_status'    => $model->getPageStatus($page, self::NEWS_PER_PAGE)
+            'page_status'   => $model->getPageStatus($page, self::NEWS_PER_PAGE)
         ));
     }
 
@@ -138,24 +138,25 @@ class NewsController extends Controller
             // saving files
             $files = CUploadedFile::getInstancesByName('news_files');
             if ( $news->id != 0 && isset($files) && count($files) > 0 )
-            {        
+            {
                 $dir = Yii::getPathOfAlias('webroot') . DIRECTORY_SEPARATOR . self::NEWS_FILE_DIR . DIRECTORY_SEPARATOR . $news->id;
-                if ( ! is_dir($dir) ) 
+                if ( ! is_dir($dir) )
                 {
                    mkdir($dir);
-                   chmod($dir, 0755); 
+                   chmod($dir, 0755);
                 }
 
                 foreach ( $files as $key => $file )
-                {    
-                    $filename = $this->isWindows() ? iconv("UTF-8","big5",$file->name ) : $file->name;
+                {
+                    $filename = $this->isWindows() ? iconv('UTF-8', 'big5', $file->name) : $file->name;
                     $file->saveAs($dir . DIRECTORY_SEPARATOR . $filename);
                 }
             }
             $this->redirect($news->url);
         }
+
         $this->render('create', array(
-			'errors'    =>  array(),
+			'errors'    =>  array()
 		));
     }
 
@@ -211,7 +212,7 @@ class NewsController extends Controller
 	 */
     private function loadFiles($directory)
     {
-        $files = array();        
+        $files = array();
         if ( is_dir( $directory ) )
         {
             $dir = dir($directory);
@@ -219,7 +220,7 @@ class NewsController extends Controller
             {
                 if ( $entry != '.' && $entry != '..' )
                 {
-                    $entry = $this->isWindows() ? iconv("big5","UTF-8",$entry) : $entry;
+                    $entry = $this->isWindows() ? iconv('big5', 'UTF-8', $entry) : $entry;
                     $files[$entry] = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . $dir->path . DIRECTORY_SEPARATOR . $entry;
                 }
             }
