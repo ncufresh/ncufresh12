@@ -913,17 +913,35 @@
     $.fn.generateTodolist = function(events, options)
     {
         options = $.extend({
-            tableClass:  'todolist-table'
+            tableClass:  'todolist-table',
+            dateText:    '日期',
+            eventText:   '事件'
         }, options);
-        events = { '2012/8/6': '資訊網上線' };
+        events = [
+            ['2012/8/6', '資訊網上線'],
+            ['2012/8/6', '資訊網上線'],
+            ['2012/8/6', '資訊網上線'],
+            ['2012/8/6', '資訊網上線']
+        ];
         var table = $('<table></table>').addClass(options.tableClass);
         var thead = $('<thead></thead>');
         var tbody = $('<tbody></tbody>');
         var tr = $('<tr></tr>');
+        $('<td></td>').text(options.dateText).appendTo(tr);
+        $('<td></td>').text(options.eventText).appendTo(tr);
+        tr.appendTo(thead);
+        for(var key in events)
+        {
+            var tr = $('<tr></tr>');
+            var td = $('<td></td>').text(events[key][0]);
+            var td2 = $('<td></td>').text(events[key][1]);
+            tr.append(td).append(td2).appendTo(tbody);
+        }
         table.append(thead)
             .append(tbody);
         return table;
     }
+
     $.fn.generateCalendar = function(options)
     {
         options = $.extend({
@@ -932,13 +950,19 @@
             tableClass:  'calendar-table',
             month_tc:    ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
             month_en:    ['January','February','March','April','May','June','July','August','September','October','November','December'],
-            dayOfWeek:   ['日','一','二','三','四','五','六']
+            dayOfWeek:   ['日','一','二','三','四','五','六'],
+            linkClick:   function(){ return false; },
         }, options);
-        var daysOfMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
+        options.month -= 1;
+        var daysInMonth = function(iMonth, iYear)
+        {
+            return 32 - new Date(iYear, iMonth, 32).getDate();
+        }
         var table = $('<table></table>').addClass(options.tableClass);
         var link = $('<a></a>')
             .attr('href', '#')
-            .text(options.month_en[options.month]+' '+options.month_tc[options.month]);
+            .text(options.month_en[options.month]+' '+options.month_tc[options.month])
+            .click(options.linkClick);
         var caption = $('<caption></caption>')
             .append(link);
         var thead = $('<thead></thead>');
@@ -952,7 +976,7 @@
             td.appendTo(tr);
         }
         tr.appendTo(thead);
-        for(var day=1, position=0; day<=31; position++)
+        for(var day=1, position=0; day<=daysInMonth(options.month, options.year); position++)
         {
             if ( position%7 == 0 )
             {
@@ -990,7 +1014,9 @@
         {
             $(this).find('#calendar-personal').css('cursor', 'default');
         }
-
+        var september;
+        var august;
+        var todolist;
         this.children('.calendar-top')
             .children('a')
             .click(function()
@@ -1018,22 +1044,30 @@
             }
             return false;
         });
-        
-        $.fn.generateCalendar({
+        september = $.fn.generateCalendar({
             year: 2012,
-            month: 7
+            month: 9,
+            linkClick: function()
+            {
+                september.detach();
+                august.prependTo(bottom);
+                $.fn.generateCalendar
+                return false;
+            }
+        });
+        august = $.fn.generateCalendar({
+            year: 2012,
+            month: 8,
+            linkClick: function()
+            {
+                august.detach();
+                september.prependTo(bottom);
+                $.fn.generateCalendar
+                return false;
+            }
         }).appendTo(bottom);
         bottom.appendTo(bottom_wrap);
-
-        bottom = $('<div></div>')
-            .attr('id', 'calendar-August')
-            .addClass('calendar-bottom')
-            .hide();
-        $.fn.generateCalendar({
-            year: 2012,
-            month: 8
-        }).appendTo(bottom);
-        bottom.appendTo(bottom_wrap);
+        todolist = $.fn.generateTodolist().appendTo(bottom);
         return this;
     };
 })(jQuery);
