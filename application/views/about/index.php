@@ -29,12 +29,12 @@
         
     </ul>
     <h4 class="title">How do we work?</h4>
-    <img class="animation" class="back" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="背景" />
-    <img class="animation" class="art" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="美工" />
-    <img class="animation" class="pro" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="程設" />
-    <img class="animation" class="vdo" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="影音" />
-    <img class="animation" class="des" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="企劃" />
-    <img class="animation" class="boss" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" alt="執行" />
+    <img class="animation" class="back" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="背景" />
+    <img class="animation" class="art" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="美工" />
+    <img class="animation" class="pro" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="程設" />
+    <img class="animation" class="vdo" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="影音" />
+    <img class="animation" class="des" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="企劃" />
+    <img class="animation" class="boss" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/xxx.png" alt="執行" />
     <p class="information">美工組介紹</p>
     <p class="information">程設組介紹</p>
     <p class="information">影音組介紹</p>

@@ -99,6 +99,18 @@
             $(this).css({
                 position: 'absolute'
             })
+            .mouseenter(function()
+            {
+                $(this).css({
+                    background: 'url(\'' + tagbar.eq(index).attr('photo') + '\')'
+                });
+            })
+            .mouseleave(function()
+            {
+                $(this).css({
+                    background: 'url(\'' + tagbar.eq(index).attr('src') + '\')'
+                });
+            })
             .click(function()
             {
                 block1_inf.eq(index - 1).show();
@@ -408,7 +420,15 @@
                 });
             }
         });
+        
     };
+    $(document).keydown(function(event)
+    {
+        if ( event.keyCode == 37 )
+        {
+            alert("哈哈哈~這是硬硬做的喔>.^");
+        }
+    });
     $(document).ready(function()
     {
         $.about();
