@@ -1,13 +1,15 @@
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
 jQuery(document).ready(function()
-{   
+{
     var options = $.extend({
-        isMember:    <?php echo Yii::app()->user->isMember?1:0;?>,
+        isMember:       <?php echo Yii::app()->user->isMember ? 'true' : 'false'; ?>
     });
     jQuery('#marquee').marquee();
     jQuery('#index-calendar').indexCalendar(options);
 });
 </script>
+<?php $this->endWidget();?>
 
 <div id="index-calendar">
     <div class="calendar-top calendar-top-all-nologin">

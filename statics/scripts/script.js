@@ -1108,7 +1108,7 @@
 
         $('#chat').chat();
 
-        // $('#header').star();
+        $('#header').star();
 
         $('#moon').moon();
 
@@ -1184,7 +1184,7 @@
     });
 
     google.load('search', '1', {
-         language: 'zh_TW'
+        language: 'zh_TW'
     });
 
     google.setOnLoadCallback(function()
