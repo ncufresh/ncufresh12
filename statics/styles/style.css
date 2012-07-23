@@ -6,7 +6,7 @@ input,
 textarea
 {
     font-size: 16px;
-    font-family: "微軟正黑體", Arial, sans-serif;
+    font-family: Microsoft JhengHei, Arial, sans-serif;
 }
 
 body
@@ -184,7 +184,7 @@ a:hover
 
 #header .statics
 {
-    margin: 15px 0 0 280px;
+    margin: 15px 0 0 240px;
     position: absolute;
 }
 
@@ -192,10 +192,12 @@ a:hover
 {
     color: #FFDD00;
     float: left;
-    height: 20px;
-    line-height: 20px;
+    font-family: Consolas, Courier New, monospace;
+    font-size: 1.1em;
+    height: 16px;
+    line-height: 16px;
     margin: 0;
-    padding: 0 0 0 85px;
+    padding: 4px 0 4px 85px;
     width: 45px;
 }
 

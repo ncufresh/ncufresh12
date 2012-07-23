@@ -188,7 +188,8 @@
         browseredcounter:       null,
         counterAnimationSpeed:  50,
         minimumAnimationTimes:  4,
-        interval:               5000
+        interval:               5000,
+        counterDigitElements:   '0123456789ABCDEFGHIJKMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*'
     };
 
     $.pull.start = function(options)
@@ -243,10 +244,13 @@
                                 }
                                 for ( var i = p ; i < browsered.length ; ++i )
                                 {
-                                    text = text.replaceAt(
-                                        i,
-                                        $.random(0, 9).toString()
-                                    );
+                                    var d = $.pull.options.counterDigitElements[
+                                        $.random(
+                                            0,
+                                            $.pull.options.counterDigitElements.length - 1
+                                        )
+                                    ].toString();
+                                    text = text.replaceAt(i, d);
                                 }
                                 text = text.replaceAt(p, c.toString());
                                 $.pull.options.browseredcounter.text(text);
