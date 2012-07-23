@@ -161,7 +161,8 @@
                                     echo $target.'/image1.jpg';
                                 }
                         ?>
-                                " alt="Score image"/><br /><input type="checkbox" name="friends[]" value="<?php echo $friend->profile->id;?>"  /><?php echo $friend->profile->name;?>
+                                " alt="Score image"/><br /><input type="checkbox" name="friends[<?php echo $friend->profile->id;?>]" value="<?php echo $friend->profile->id;?>"/>
+                                <?php echo $friend->profile->name;?>
                                 <br />
                                 <?php echo $friend->profile->department->short_name; ?>
                                 </td>
@@ -186,8 +187,8 @@
                     </table>
                 </div>
             </div>
-            <button class="form-add-new-group" iconcls="icon-ok" onclick="saveData()" name="addgroup">新增</a>
-            <button class="form-cancel-group" iconcls="icon-cancel" onclick="javascript:$('.group-friends').dialog('close')">取消</a>
+            <button class="form-add-new-group" name="addgroup">新增</a>
+            <button class="form-cancel-group" onclick="javascript:$('.group-friends').dialog('close')">取消</a>
         </div> 
         </form>
     </div>

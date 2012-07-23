@@ -1,6 +1,6 @@
 <?php
 
-class Group extends CActiveRecord
+class  Group extends CActiveRecord
 {
     public static function model($className = __CLASS__)
     {
@@ -15,7 +15,35 @@ class Group extends CActiveRecord
     public function rules()
     {
         return array(
-            array('user_id, group_id', 'required')
+            array('name', 'required')
         );
     }
-}
+
+    public function relations()
+    {
+        return array(
+            'profile'  => array(
+                self::BELONGS_TO,
+                'Profile',
+                'user_id'
+            )
+        );
+    }
+
+    public function getAllGroup()
+    {
+        return $this->findAll(array(
+            'order'=>'id ASC'
+        ));
+    }
+
+    public function FindGroup($groupId)
+    {
+        return $this->findAll(array(
+            'condition' => 'id = :id',
+            'params'    => array(
+                ':id' => $groupId,
+            )
+        ));
+    }
+}    

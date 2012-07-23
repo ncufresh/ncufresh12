@@ -7,19 +7,23 @@ jQuery(document).ready(function()
                 dialogClass: 'group-friends',
                 height: 500,
                 width: 450,
-                //position: "top";
                 modal: true,
                 show: 
                 {
                     effect: 'explode',
                     direction: 'down'
                 },
-                buttons: 
+                /*buttons: 
                 [{
                         text: "關閉",
                         click: function() { $(this).dialog("close"); }
-                }] 
+                }] */
             });
+            jQuery('.form-add-new-group').click(function()
+            {
+                
+            });
+           
             return false;            
     });
 });

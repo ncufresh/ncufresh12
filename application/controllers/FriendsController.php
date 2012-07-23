@@ -30,21 +30,23 @@ class FriendsController extends Controller
         $grade = Profile::model()->findByPK($userID)->grade;
         $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         if ( isset($_POST['addgroup']) )
-        {
+        {  
             foreach ( $_POST['friends'] as $friend )
             {   
-                $nameofgroup = new NameOfGroup();
-                $nameofgroup->name = $_POST['group-name'];
-                $group = new Group();
-                $group->user_id = Yii::app()->user->id;
-                $group->friend_id = $friend;
+                
+                $group = new Group();        
+                $group->user_id = $userID;
+                $group->name = $_POST['group-name'];
+                //$group->description = $_POST['group-description'];
                 $group->save();
-                $group = new Friend();
-                $group->user_id = $friend;
-                $group->friend_id = Yii::app()->user->id;
-                $group->save();
+                
+                //Profile::model()->         
+                if ( $group->save() ) 
+                {
+                    
+                    $this->redirect(array('friends/friends'));
+                }
             }
-            $this->redirect(array('friends/friends'));
         }
         $this->setPageTitle(Yii::app()->name . ' - 好友專區');
         $this->render('friends', array(
