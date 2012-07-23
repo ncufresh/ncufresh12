@@ -12,6 +12,34 @@ class NculifeController extends Controller
     {
         $this->render('live');
     }
+    
+    public function actionContent($page, $tab)
+    {
+        switch( strtolower($page) )
+        {
+            case 'food' :
+                $this->food($tab);
+                break;
+            case 'live' :
+                $this->live($tab);
+                break;
+            case 'house' :
+                $this->house($tab);
+                break;
+            case 'sport' :
+                $this->sport($tab);
+                break;
+            case 'health' :
+                $this->health($tab);
+                break;
+            case 'car' :
+                $this->car($tab);
+                break;
+            case 'outside' :
+                $this->outside($tab);
+                break;
+        }
+    }
 
     public function actionLiveContent($tab_id)
     {
@@ -26,17 +54,18 @@ class NculifeController extends Controller
         }
     }
 
-    public function actionFood()
+/*     public function food($tab)
     {
         $this->render('food');
     }
-
-    public function actionFoodContent($tab_id)
+ */
+    public function food($tab)
     {
-        switch ( $tab_id )
+        switch ( $tab )
         {
             case 1 : 
                 $this->_data['content'] = $this->renderPartial('foodcontent/1', null, true, false);
+                $this->_data['image'] = $this->renderPartial('foodcontent/1', null, true, false);
                 break;
             case 2 :
                 $this->_data['content'] = $this->renderPartial('foodcontent/2', null, true, false);
