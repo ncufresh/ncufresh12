@@ -36,13 +36,13 @@ class FriendsController extends Controller
                 $nameofgroup = new NameOfGroup();
                 $nameofgroup->name = $_POST['group-name'];
                 $group = new Group();
-                $model->user_id = Yii::app()->user->id;
-                $model->friend_id = $friend;
-                $model->save();
-                $model = new Friend();
-                $model->user_id = $friend;
-                $model->friend_id = Yii::app()->user->id;
-                $model->save();
+                $group->user_id = Yii::app()->user->id;
+                $group->friend_id = $friend;
+                $group->save();
+                $group = new Friend();
+                $group->user_id = $friend;
+                $group->friend_id = Yii::app()->user->id;
+                $group->save();
             }
             $this->redirect(array('friends/friends'));
         }
@@ -52,7 +52,8 @@ class FriendsController extends Controller
             'profileSec'    => Profile::model()->getSameDepartmentDiffGrade($departmentId, $grade),
             'profileThir'   => Profile::model()->getOtherDepartment($departmentId, $grade),
             'profileFor'    => User::model()->findByPk($userID),                   
-            'profiles'      => Profile::model()->getAllMember(),         
+            'profiles'      => Profile::model()->getAllMember(), 
+            'user'          => User::model()->findByPk($userID),
             'target'        => $imgUrl
         ));
     }
@@ -66,7 +67,8 @@ class FriendsController extends Controller
         $this->setPageTitle(Yii::app()->name . ' - 同系同屆');
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('samedepartmentsamegrade', array(
-            'profiles'      => Profile::model()->getSameDepartmentSameGrade($departmentId, $grade), // 自己的department_id
+            'profiles'      => Profile::model()->getSameDepartmentSameGrade($departmentId, $grade),
+            'user'          => User::model()->findByPk($userID),
             'target'        => $imgUrl
         ));
     }
@@ -79,7 +81,8 @@ class FriendsController extends Controller
         $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $this->setPageTitle(Yii::app()->name . ' - 同系不同屆');
         $this->render('samedepartmentdiffgrade', array(
-            'profiles'      => Profile::model()->getSameDepartmentDiffGrade($departmentId, $grade), // 自己的department_id
+            'profiles'      => Profile::model()->getSameDepartmentDiffGrade($departmentId, $grade),
+            'user'          => User::model()->findByPk($userID),
             'target'        => $imgUrl
         ));
     }
@@ -91,7 +94,8 @@ class FriendsController extends Controller
         $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $this->setPageTitle(Yii::app()->name . ' - 其他科系');
         $this->render('otherdepartment', array(
-            'profiles'      => Profile::model()->getOtherDepartment($departmentId), // 自己的department_id
+            'profiles'      => Profile::model()->getOtherDepartment($departmentId),
+            'user'          => User::model()->findByPk($userID),
             'target'        => $imgUrl
         ));
     }
@@ -118,14 +122,18 @@ class FriendsController extends Controller
         {
             foreach ( $_POST['friends'] as $friend )
             {   
-                $model = new Friend();
-                $model->user_id = Yii::app()->user->id;
-                $model->friend_id = $friend;
-                $model->save();
-                $model = new Friend();
-                $model->user_id = $friend;
-                $model->friend_id = Yii::app()->user->id;
-                $model->save();
+                $userId = Yii::app()->user->id;
+                if ( $userId<>$friend )
+                {
+                    $model = new Friend();
+                    $model->user_id = $userId;
+                    $model->friend_id = $friend;
+                    $model->save();
+                    $model = new Friend();
+                    $model->user_id = $friend;
+                    $model->friend_id = $userId;
+                    $model->save();
+                }
             }
             $this->redirect(array('friends/friends'));
         }

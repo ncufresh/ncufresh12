@@ -146,24 +146,24 @@
                         <tr>
                         <?php
                         $account = 1;
-                        foreach ( $profiles as $profile ) :
+                        foreach ( $user->friends as $friend ) :
                             if ( $account%5!=0 )   
                             { 
                         ?>
-                                <td class="friends-allsame-ones"><img  height="50" src="
+                                <td><img  height="50" src="
                         <?php
-                                if ( $profile->picture !='' )
+                                if ( $friend->profile->picture !='' )
                                 {
-                                    echo $target.'/'.$profile->picture; 
+                                    echo $target.'/'.$friend->profile->picture; 
                                 }
                                 else
                                 { 
                                     echo $target.'/image1.jpg';
                                 }
                         ?>
-                                " alt="Score image"/><br /><input type="checkbox" name="friends[]" value="<?php echo $profile->id;?>"  /><?php echo $profile->name;?>
+                                " alt="Score image"/><br /><input type="checkbox" name="friends[]" value="<?php echo $friend->profile->id;?>"  /><?php echo $friend->profile->name;?>
                                 <br />
-                                <?php echo $profile->department->short_name; ?>
+                                <?php echo $friend->profile->department->short_name; ?>
                                 </td>
                             <?php 
                             }
@@ -187,7 +187,7 @@
                 </div>
             </div>
             <button class="form-add-new-group" iconcls="icon-ok" onclick="saveData()" name="addgroup">新增</a>
-            <button class="form-cancel-group" iconcls="icon-cancel" onclick="javascript:$('#group-friends').dialog('close')">取消</a>
+            <button class="form-cancel-group" iconcls="icon-cancel" onclick="javascript:$('.group-friends').dialog('close')">取消</a>
         </div> 
         </form>
     </div>

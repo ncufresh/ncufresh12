@@ -23,7 +23,11 @@
                     echo $target.'/image1.jpg';
                 }
         ?>
-                " alt="Score image"/><br /><input type="checkbox" name="friends[]" value="<?php echo $profile->id;?>"  /><?php echo $profile->name;?></td>
+                " alt="Score image"/><br /><input type="checkbox" name="friends[]" value="<?php echo $profile->id;?>"  />
+                <?php echo $profile->name;?>
+                <br />
+                <?php echo $user->profile->department->short_name; ?>
+                </td>
                 <?php
                 if ( $col%5==0 ) 
                 {
