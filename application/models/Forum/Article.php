@@ -19,9 +19,64 @@ class Article extends CActiveRecord
                 self::BELONGS_TO,
                 'ArticleCategory',
                 'forum_id'
-            )
+            ),
+            'replies'    => array(
+                self::HAS_MANY,
+                'Reply',
+                'article_id',
+            ),
         );
     }
+    
+    public function getArticlesSort($fid, $sort){
+        switch ($sort)
+        {
+            case "create":
+                $sort='create_time';
+                break;
+            case "update":
+                $sort='update_time';
+                break;
+            case "reply":
+                $sort='replies_count';
+                break;
+            default:
+                throw new Exception('The sort column name does not exist.');
+                break;
+        }
+        return $this->findAll(array(
+            'condition' => "forum_id='$fid' AND visibility=1",
+            'order' => "$sort DESC",
+        ));
+    }
+    
+    /*
+    public function getArticlesByForum($fid)
+    {
+        $criteria = new CDbCriteria();
+        $criteria->condition = "forum_id='$fid' AND visibility=1";
+        $criteria->order = 'create_time DESC';
+        return $this->findAll($criteria);
+    }
+    
+    public function getArticlesOrderByTime($fid)
+    {
+    
+        //throw new Exception('WHY...');
+        return $this->findAll(array(
+            'condition' => "forum_id='$fid' AND visibility=1",
+            'order' => 'update_time DESC',
+        ));
+    }
+    
+    public function getArticlesOrderByReplies($fid)
+    {
+        return $this->findAll(array(
+            'condition' => "forum_id='$fid' AND visibility=1",
+            'order' => 'replies_count DESC',
+        ));
+    }
+    */
     
     public function getUrl()
     {

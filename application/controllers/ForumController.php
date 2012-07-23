@@ -26,14 +26,16 @@ class ForumController extends Controller
         ));
     }
 
-    public function actionForum($fid, $sort = 0, $category = 0)
+    public function actionForum($fid, $sort = 'create', $category = 0)
     {
         $article = new Article();
         //content of each forum
         //[not yet] 傳入是否為admin 用於判斷是否顯示置頂checkbox及刪除文章選項
         $this->render('forum', array(
             'fid'       => $fid,
-            'model'     => $article->findAll('forum_id='.$fid.' AND visibility=1')
+            'sort'      => $sort,
+            //'model'     => $article->findAll('forum_id='.$fid)
+            'model'     => Article::model()->getArticlesSort($fid, $sort)
         ));
     }
 
@@ -100,11 +102,14 @@ class ForumController extends Controller
     public function actionReply($aid){
     
         $reply = new Reply();
+        $article = Article::model()->findByPk($aid);
         if ( isset($_POST['reply']) )
         {
             $reply->content = $_POST['reply']['content'];
             $reply->article_id = $aid;
             if($reply->save()){
+                $article->replies_count++;
+                $article->save();
                 $this->redirect(Yii::app()->createUrl('forum/view', array(
                     'fid'   => $reply->article->forum->id,
                     'id'    => $reply->article_id
