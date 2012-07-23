@@ -243,7 +243,6 @@ a:hover
     background: url('../images/navigation.png') no-repeat;
     list-style: none;
     margin: 160px 0 0 0;
-    overflow: hidden;
     padding: 0 15px;
     position: absolute;
     width: 800px;
@@ -267,6 +266,42 @@ a:hover
 #navigation a:hover
 {
     color: #FFFFFF;
+}
+
+#navigation ul
+{
+    -webkit-border-radius: 0 0 15px 15px;
+    background: #DAE3EC url('../images/subnavigation.png') repeat-x;
+    border-radius: 0 0 15px 15px;
+    list-style: none;
+    margin-top: -16px;
+    padding: 4px 0;
+    position: relative;
+    visibility: hidden;
+    z-index: 100;
+}
+
+#navigation ul li
+{
+    float: none;
+    height: 30px;
+    line-height: 30px;
+    padding: 4px 0;
+}
+
+#navigation ul a
+{
+    color: #000A3C;
+}
+
+#navigation ul a:hover
+{
+    color: #000300;
+}
+
+#navigation li:hover ul
+{
+    visibility: visible;
 }
 
 #content
@@ -1088,7 +1123,7 @@ ul#nculife-details
     height: 50px;
     background: white;
     opacity: 0;
-    z-index: 1000;
+    z-index: 100;
 }
 
 #mm-menu #mm-menu-items
