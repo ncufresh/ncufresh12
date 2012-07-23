@@ -15,7 +15,4 @@ jQuery(document).ready(function()
             left: '-300px'
         },500);
     });
-    
-    
-    
 });
