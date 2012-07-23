@@ -571,10 +571,14 @@
     {
         options = $.extend({
             horizontalFrames:       4,
-            verticalFrames:         4, 
-            FrameXDimension:        128,
-            FrameYDimension:        128,
-            interval:               200
+            verticalFrames:         4,
+            frameXDimension:        128,
+            frameYDimension:        128,
+            interval:               200,
+            animated:               function()
+            {
+                return true;
+            }
         }, options);
         return $(this).each(function()
         {
@@ -584,23 +588,26 @@
             });
             setInterval(function()
             {
-                var position = sprite.css('background-position').split(' ');
-                var left = $.integer(position[0]);
-                var top = $.integer(position[1]);
-                var ml = options.FrameXDimension * options.horizontalFrames;
-                var mt = options.FrameYDimension * options.verticalFrames;
-
-                left -= options.FrameXDimension;
-                if ( left <= -1 * ml )
+                if ( options.animated() )
                 {
-                    top -= options.FrameYDimension;
-                    left = 0;
-                }
-                if ( top <= -1 * mt ) top = 0;
+                    var position = sprite.css('background-position').split(' ');
+                    var left = $.integer(position[0]);
+                    var top = $.integer(position[1]);
+                    var ml = options.frameXDimension * options.horizontalFrames;
+                    var mt = options.frameYDimension * options.verticalFrames;
 
-                sprite.css({
-                    backgroundPosition: left + 'px ' + top + 'px'
-                });
+                    left -= options.frameXDimension;
+                    if ( left <= -1 * ml )
+                    {
+                        top -= options.frameYDimension;
+                        left = 0;
+                    }
+                    if ( top <= -1 * mt ) top = 0;
+
+                    sprite.css({
+                        backgroundPosition: left + 'px ' + top + 'px'
+                    });
+                }
             }, options.interval);
         });
     };
@@ -825,14 +832,14 @@
             var object = $(this);
             var generator = function()
             {
-                object.children('span').remove();
+                object.children('span.star').remove();
                 for ( var n = 0 ; n < number ; ++n )
                 {
                     var x = $.random(0, width);
                     var y = $.random(0, height);
                     var s = $.random(options.minSize, options.maxSize);
 
-                    $('<span></span>').css({
+                    $('<span></span>').addClass('star').css({
                         WebkitBorderRadius: s,
                         borderRadius: s,
                         background: options.backgroundColor,
@@ -850,9 +857,59 @@
     };
 })(jQuery);
 
+/**
+ * Moon
+ */
 (function($)
 {
-    $.konami = function()
+    $.fn.moon = function(options)
+    {
+        return this.each(function()
+        {
+            var options = $.extend({
+                horizontalFrames:       5,
+                verticalFrames:         6,
+                frameXDimension:        160,
+                frameYDimension:        160,
+                interval:               2880
+            }, options);
+            var getTimeSeconds = function()
+            {
+                var date = new Date();
+                return date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
+            };
+            var t = -1
+                  * $.integer(getTimeSeconds() / options.interval)
+                  % (options.horizontalFrames * options.verticalFrames);
+            var x = t
+                  % options.horizontalFrames
+                  * options.frameXDimension;
+            var y = $.integer(t / options.horizontalFrames)
+                  * options.frameYDimension;
+            $(this).sprite({
+                horizontalFrames:       options.horizontalFrames,
+                verticalFrames:         options.verticalFrames,
+                frameXDimension:        options.frameXDimension,
+                frameYDimension:        options.frameYDimension,
+                interval:               1000,
+                animated:               function()
+                {
+                    if ( getTimeSeconds() % options.interval == 0 ) return true;
+                    return false;
+                }
+            }).css({
+                backgroundPosition: x + 'px ' + y + 'px'
+            });
+        });
+    };
+})(jQuery);
+
+/**
+ * Konami
+ */
+(function($)
+{
+    $.konami = function(options)
     {
         var options = $.extend({
             code:                   [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
@@ -953,9 +1010,11 @@
 
         $.configures.sequence = $.random(0, 1000);
 
-        // if ( $('#header') ) $('#header').star();
+        $('#chat').chat();
 
-        if ( $('#chat') ) $('#chat').chat();
+        // $('#header').star();
+
+        $('#moon').moon();
 
         $('.loading').sprite();
 

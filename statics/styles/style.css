@@ -168,13 +168,22 @@ a:hover
 /**
  * Layout style
  */
-#logo
+#logo,
+#moon
 {
     background: url('../images/logo.png') no-repeat;
+    display: block;
     height: 160px;
-    margin-left: 15px;
     position: absolute;
+    text-indent: -100000%;
     width: 240px;
+}
+
+#moon
+{
+    background: url('../images/moon.png') no-repeat;
+    margin-left: 15px;
+    width: 160px;
 }
 
 #header
