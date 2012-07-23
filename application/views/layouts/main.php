@@ -3,6 +3,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+    <meta name="description" content="「2012 大一生活知訊網」提供中大新鮮人所需要的訊息，包括註冊、選課、宿舍、科系、社團等各方面實用的資訊，還有其它的生活小密技，讓新生提早了解校園生活的各種面貌。" />
+    <meta name="keywords" content="國立中央大學, 中央大學, 中大, 央大, 大一生活知訊網, 生活知訊網, 知訊網, NCU, NCUFreshWeb, NCUFresh, 2012" />
+    <meta name="author" content="National Central University FreshWeb Team." />
+    <meta name="revised" content="<?php echo date('Y/m/d'); ?>" />
+
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/styles/print.css" media="print" />
     <!--[if lt IE 8]>
@@ -33,6 +38,8 @@
             }
         });
     </script>
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/ckeditor.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/jquery.ckeditor.js"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/script.js"></script>
 <?php if ( file_exists(dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'statics' . DIRECTORY_SEPARATOR . 'scripts' . DIRECTORY_SEPARATOR . $this->getId() . '.js') ) : ?>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/<?php echo $this->getId(); ?>.js"></script>
@@ -47,7 +54,9 @@
 <body>
 
 <div id="header">
-    <a id="logo" href="<?php echo Yii::app()->createUrl('site/index'); ?>" title="<?php echo Yii::app()->name; ?>"></a>
+    <span id="moon">
+        <a id="logo" href="<?php echo Yii::app()->createUrl('site/index'); ?>" title="<?php echo Yii::app()->name; ?>"><?php echo Yii::app()->name; ?></a>
+    </span>
     <div class="statics">
         <p class="online">0</p>
         <p class="browsered">0</p>
@@ -79,27 +88,72 @@
     <ul id="navigation">
         <li>
             <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" title="大一必讀">大一必讀</a>
+            <ul>
+                <li>
+                    <a href="#" title="行事曆">行事曆</a>
+                </li>
+                <li>
+                    <a href="#" title="新生區">新生區</a>
+                </li>
+                <li>
+                    <a href="#" title="復學區">復學區</a>
+                </li>
+                <li>
+                    <a href="#" title="相關須知">相關須知</a>
+                </li>
+                <li>
+                    <a href="#" title="文件下載">文件下載</a>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>" title="中大生活">中大生活</a>
+            <ul>
+                <li>
+                    <a href="#" title="住在中大">住在中大</a>
+                </li>
+                <li>
+                    <a href="#" title="健康中大">健康中大</a>
+                </li>
+                <li>
+                    <a href="#" title="行在中大">行在中大</a>
+                </li>
+                <li>
+                    <a href="#" title="玩在中大">玩在中大</a>
+                </li>
+                <li>
+                    <a href="#" title="活在中大">活在中大</a>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('street/index'); ?>" title="校園導覽">校園導覽</a>
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('forum/index'); ?>" title="論壇專區">論壇專區</a>
+            <ul>
+                <li>
+                    <a href="#" title="綜合論壇">綜合論壇</a>
+                </li>
+                <li>
+                    <a href="#" title="系所論壇">系所論壇</a>
+                </li>
+                <li>
+                    <a href="#" title="社團論壇">社團論壇</a>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('club/index'); ?>" title="系所社團">系所社團</a>
             <ul>
                 <li>
-                    <a href="#" title="學術性社團">學術性社團</a>
+                    <a href="#" title="學生組織">學生組織</a>
                 </li>
                 <li>
-                    <a href="#" title="康樂性社團">康樂性社團</a>
+                    <a href="#" title="系學會">系學會</a>
                 </li>
                 <li>
-                    <a href="#" title="服務性社團">服務性社團</a>
+                    <a href="#" title="社團">社團</a>
                 </li>
             </ul>
         </li>
