@@ -55,21 +55,21 @@ class Character extends CActiveRecord
                 'Item',
                 'others_id'
             ),
-            'achievements'    => array(
-                self::MANY_MANY,
-                'Achievement',
-                'game_achievements_bag(user_id, achievement_id)'
-            ),
+            // 'achievements'    => array(
+                // self::MANY_MANY,
+                // 'Achievement',
+                // 'game_achievements_bag(user_id, achievement_id)'
+            // ),
             'achievements_bag'    => array(
                 self::HAS_MANY,
                 'AchievementBag',
                 'user_id'
             ),
-            'items'    => array(
-                self::MANY_MANY,
-                'Item',
-                'game_items_bag(user_id, items_id)'
-            ),
+            // 'items'    => array(
+                // self::MANY_MANY,
+                // 'Item',
+                // 'game_items_bag(user_id, items_id)'
+            // ),
             'items_bag'    => array(
                 self::HAS_MANY,
                 'ItemBag',

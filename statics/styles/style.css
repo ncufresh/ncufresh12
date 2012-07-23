@@ -6,7 +6,7 @@ input,
 textarea
 {
     font-size: 16px;
-    font-family: "微軟正黑體", Arial, sans-serif;
+    font-family: Microsoft JhengHei, Arial, sans-serif;
 }
 
 body
@@ -184,7 +184,7 @@ a:hover
 
 #header .statics
 {
-    margin: 15px 0 0 280px;
+    margin: 15px 0 0 240px;
     position: absolute;
 }
 
@@ -192,10 +192,12 @@ a:hover
 {
     color: #FFDD00;
     float: left;
-    height: 20px;
-    line-height: 20px;
+    font-family: Consolas, Courier New, monospace;
+    font-size: 1.1em;
+    height: 16px;
+    line-height: 16px;
     margin: 0;
-    padding: 0 0 0 85px;
+    padding: 4px 0 4px 85px;
     width: 45px;
 }
 
@@ -241,7 +243,6 @@ a:hover
     background: url('../images/navigation.png') no-repeat;
     list-style: none;
     margin: 160px 0 0 0;
-    overflow: hidden;
     padding: 0 15px;
     position: absolute;
     width: 800px;
@@ -265,6 +266,42 @@ a:hover
 #navigation a:hover
 {
     color: #FFFFFF;
+}
+
+#navigation ul
+{
+    -webkit-border-radius: 0 0 15px 15px;
+    background: #DAE3EC url('../images/subnavigation.png') repeat-x;
+    border-radius: 0 0 15px 15px;
+    list-style: none;
+    margin-top: -16px;
+    padding: 4px 0;
+    position: relative;
+    visibility: hidden;
+    z-index: 100;
+}
+
+#navigation ul li
+{
+    float: none;
+    height: 30px;
+    line-height: 30px;
+    padding: 4px 0;
+}
+
+#navigation ul a
+{
+    color: #000A3C;
+}
+
+#navigation ul a:hover
+{
+    color: #000300;
+}
+
+#navigation li:hover ul
+{
+    visibility: visible;
 }
 
 #content
@@ -897,59 +934,61 @@ ul#nculife-details
     background: url('../images/calendar_top3.png');
 }
 
-#index-calendar .calendar-bottom
+#index-calendar .calendar-bottom-wrap
 {
     width: 204px;
     height: 349px;
     float: left;
+    position: absolute;
     background: url('../images/calendar_content2.png');
 }
 
-#index-calendar .calendar-bottom table.calendar-table caption
+#index-calendar .calendar-bottom-wrap table.calendar-table caption
 {
     margin:  15px 0 10px 0 ;
 }
 
-#index-calendar .calendar-bottom table.calendar-table td
+#index-calendar .calendar-bottom-wrap table.calendar-table td
 {
     text-align: right;
     width: 28px;
 }
 
-#index-calendar .calendar-bottom table.calendar-table thead
+#index-calendar .calendar-bottom-wrap table.calendar-table thead
 {
     display: block;
 }
 
-#index-calendar .calendar-bottom table.calendar-table thead td
+#index-calendar .calendar-bottom-wrap table.calendar-table thead td
 {
+    color: #af8d5a;
     text-align: center;
 }
 
-#index-calendar .calendar-bottom table.calendar-table thead td.weekend
+#index-calendar .calendar-bottom-wrap table.calendar-table thead td.weekend
 {
     color: red;
 }
 
-#index-calendar .calendar-bottom table.calendar-table 
+#index-calendar .calendar-bottom-wrap table.calendar-table 
 {
     width: 204px;
 }
 
-#index-calendar .calendar-bottom table.calendar-table tbody
+#index-calendar .calendar-bottom-wrap table.calendar-table tbody
 {
     border-top: 1px solid #946722;
     border-bottom: 1px solid #946722;
     display: block;
 }
 
-#index-calendar .calendar-bottom table.todolist-table td
+#index-calendar .calendar-bottom-wrap table.todolist-table td
 {
     width: 100px;
     text-align: center;
 }
 
-#index-calendar .calendar-bottom table.todolist-table thead td
+#index-calendar .calendar-bottom-wrap table.todolist-table thead td
 {
     color: #946722;
 }
@@ -1086,7 +1125,7 @@ ul#nculife-details
     height: 50px;
     background: white;
     opacity: 0;
-    z-index: 1000;
+    z-index: 100;
 }
 
 #mm-menu #mm-menu-items
@@ -1518,8 +1557,7 @@ ul.life-indexs li.life-indexs-content:hover
 /*club style*/
 #club-list
 {
-	overflow:scroll;
-	text-align:left;
+    text-align: left;
 }
 
 .l1

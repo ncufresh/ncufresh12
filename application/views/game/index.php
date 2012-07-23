@@ -114,25 +114,41 @@
             // echo $temp[2]->name.'<br/>';
             // echo $temp[3]->name.'<br/>';
         
-        echo '========================<br/>您目前的成就(' . sizeof($achievements_bag) . ')：<br/>';
+        echo '<table width="100%" border="1">';
+        echo '<th colspan="4">您目前的成就 <b> (' . sizeof($achievements_bag) . ')</b></th>';
         foreach ($achievements_bag as $row)
         {
-            echo $counter_one.'->';
-            echo '成就id：'.$row->achievement_id.'，名稱：'.$row->translation->name.'('.$row->translation->description.')   ('. $row->time.' 獲得)';
-            echo '<br/>';
+            echo '<tr><td>';
+            echo $counter_one;
+            // echo '成就id：'.$row->achievement_id.'，名稱：'.$row->translation->name.'('.$row->translation->description.')   ('. $row->time.' 獲得)';
+            echo '<td>成就id：'.$row->achievement_id.'</td><td>名稱：'.$row->translation->name;
+            if($row->translation->description!='')
+            echo ' ( '.$row->translation->description.' )</td><td>'. $row->time.' 獲得</td>';
+            else
+            echo ' ( 無此成就相關描述 )</td><td>'. $row->time.' 獲得</td>';
             $counter_one++;
+            echo '</td></tr>';
         }
-        
-        
-        echo '<br/><br/>';
-        echo '========================<br/>您目前的道具(' . sizeof($items_bag) . ')：<br/>';
+        echo '</table></br>';
+
+        echo '<table width="100%" border="1">';
+        echo '<th colspan="4">您目前的道具 <b> (' . sizeof($items_bag) . ')</b></th>';
+
         foreach ($items_bag as $row)
         {
-            echo $counter_two.'->';
-            echo '道具id：'.$row->items_id.'，名稱：'.$row->translation->name.'('.$row->translation->description.')   ('. $row->time.' 獲得)';
-            echo '<br/>';
+            echo '<tr><td>';
+            echo $counter_two;
+            echo '<td>道具id：'.$row->items_id.'</td><td>名稱：'.$row->translation->name;
+            if($row->translation->description!='')
+            echo ' ( '.$row->translation->description.' )</td><td>'. $row->time.' 獲得</td>';
+            else
+            echo ' ( 無此道具相關描述 )</td><td>'. $row->time.' 獲得</td>';
             $counter_two++;
-        }   
+            echo '</td></tr>';
+        }
+        echo '</table>';
+        echo '</br>';
+
         
         
         

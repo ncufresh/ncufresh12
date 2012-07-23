@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/styles/ie.css" media="screen, projection" />
     <![endif]-->
 
+    <link href="<?php echo Yii::app()->request->baseUrl; ?>/statics/favicon.ico" rel="shortcut icon">
+
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
@@ -89,6 +91,17 @@
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('club/index'); ?>" title="系所社團">系所社團</a>
+            <ul>
+                <li>
+                    <a href="#" title="學術性社團">學術性社團</a>
+                </li>
+                <li>
+                    <a href="#" title="康樂性社團">康樂性社團</a>
+                </li>
+                <li>
+                    <a href="#" title="服務性社團">服務性社團</a>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('multimedia/index'); ?>" title="影音專區">影音專區</a>

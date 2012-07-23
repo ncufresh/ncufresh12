@@ -188,7 +188,8 @@
         browseredcounter:       null,
         counterAnimationSpeed:  50,
         minimumAnimationTimes:  4,
-        interval:               5000
+        interval:               5000,
+        counterDigitElements:   '0123456789ABCDEFGHIJKMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*'
     };
 
     $.pull.start = function(options)
@@ -243,10 +244,13 @@
                                 }
                                 for ( var i = p ; i < browsered.length ; ++i )
                                 {
-                                    text = text.replaceAt(
-                                        i,
-                                        $.random(0, 9).toString()
-                                    );
+                                    var d = $.pull.options.counterDigitElements[
+                                        $.random(
+                                            0,
+                                            $.pull.options.counterDigitElements.length - 1
+                                        )
+                                    ].toString();
+                                    text = text.replaceAt(i, d);
                                 }
                                 text = text.replaceAt(p, c.toString());
                                 $.pull.options.browseredcounter.text(text);
@@ -846,19 +850,137 @@
     };
 })(jQuery);
 
+(function($)
+{
+    $.konami = function()
+    {
+        var options = $.extend({
+            code:                   [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
+            interval:               10,
+            complete:               function()
+            {
+                alert('You complete the konami code!');
+                var back = $('<div></div>').css({
+                    background: 'black',
+                    height: 768,
+                    position: 'absolute',
+                    top: 0,
+                    opacity: 0.5,
+                    left: 0,
+                    width: 1366
+                })
+                .appendTo('body');
+                $('<div></div>').css({
+                    background: 'white',
+                    height: 600,
+                    position: 'relative',
+                    top: 30,
+                    opacity: 1,
+                    left: 200,
+                    width: 900
+                })
+                .appendTo(back);
+            }
+        }, options);
+        var index = 0;
+        var interval = options.interval;
+        var timer = setInterval(function()
+        {
+            if ( interval-- <= 0 ) index = 0;
+        }, 50);
+        $(document).keyup(function(event)
+        {
+            if (
+                event.keyCode != 231
+             && event.keyCode == options.code[index]
+            )
+            {
+                interval = options.interval;
+                if ( index++ == options.code.length - 1 ) options.complete();
+                return true;
+            }
+            index = 0;
+            return true;
+        });
+    };
+})(jQuery);
+
 /**
  * indexCalendar
  */
 (function($)
 {
+    $.fn.generateTodolist = function(events, options)
+    {
+        options = $.extend({
+            tableClass:  'todolist-table'
+        }, options);
+        events = { '2012/8/6': '資訊網上線' };
+        var table = $('<table></table>').addClass(options.tableClass);
+        var thead = $('<thead></thead>');
+        var tbody = $('<tbody></tbody>');
+        var tr = $('<tr></tr>');
+        table.append(thead)
+            .append(tbody);
+        return table;
+    }
+    $.fn.generateCalendar = function(options)
+    {
+        options = $.extend({
+            year:        0,
+            month:       0,
+            tableClass:  'calendar-table',
+            month_tc:    ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+            month_en:    ['January','February','March','April','May','June','July','August','September','October','November','December'],
+            dayOfWeek:   ['日','一','二','三','四','五','六']
+        }, options);
+        var daysOfMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
+        var table = $('<table></table>').addClass(options.tableClass);
+        var link = $('<a></a>')
+            .attr('href', '#')
+            .text(options.month_en[options.month]+' '+options.month_tc[options.month]);
+        var caption = $('<caption></caption>')
+            .append(link);
+        var thead = $('<thead></thead>');
+        var tbody = $('<tbody></tbody>');
+        var tr = $('<tr></tr>');
+        var date = new Date(options.year, options.month);
+        for(var key in options.dayOfWeek)
+        {
+            var td = $('<td></td>').text(options.dayOfWeek[key]);
+            if ( key==0 || key==6 ) td.addClass('weekend');
+            td.appendTo(tr);
+        }
+        tr.appendTo(thead);
+        for(var day=1, position=0; day<=31; position++)
+        {
+            if ( position%7 == 0 )
+            {
+                tr = $('<tr></tr>');
+                tr.appendTo(tbody);
+            }
+            var td = $('<td></td>');
+            if ( position>=date.getDay() )
+            {
+                td.text(day);
+                ++day;
+            }
+            td.appendTo(tr);
+        }
+        return table.append(caption)
+            .append(thead)
+            .append(tbody);
+    }
+
     $.fn.indexCalendar = function(options)
     {
         var options = $.extend({ 
         }, options);
         var top = $(this).children('.calendar-top');
-        var bottom = this.children('.calendar-bottom');
-        var id = 0;
-
+        var bottom = $('<div></div>')
+            .attr('id', 'calendar-August')
+            .addClass('calendar-bottom');
+        var bottom_wrap = this.children('.calendar-bottom-wrap');
         if ( options.isMember )
         {
             top.removeClass('calendar-top-all-nologin');
@@ -868,7 +990,7 @@
         {
             $(this).find('#calendar-personal').css('cursor', 'default');
         }
-        
+
         this.children('.calendar-top')
             .children('a')
             .click(function()
@@ -896,9 +1018,22 @@
             }
             return false;
         });
-        bottom.css({
-            display: 'none'
-        });
+        
+        $.fn.generateCalendar({
+            year: 2012,
+            month: 7
+        }).appendTo(bottom);
+        bottom.appendTo(bottom_wrap);
+
+        bottom = $('<div></div>')
+            .attr('id', 'calendar-August')
+            .addClass('calendar-bottom')
+            .hide();
+        $.fn.generateCalendar({
+            year: 2012,
+            month: 8
+        }).appendTo(bottom);
+        bottom.appendTo(bottom_wrap);
         return this;
     };
 })(jQuery);
@@ -914,7 +1049,7 @@
 
         $.configures.sequence = $.random(0, 1000);
 
-        if ( $('#header') ) $('#header').star();
+        // if ( $('#header') ) $('#header').star();
 
         if ( $('#chat') ) $('#chat').chat();
 
@@ -980,6 +1115,8 @@
                 update();  
             }
         });
+
+        $.konami();
 
         $.pull.start({
             onlinecounter: $('#header .online'),
