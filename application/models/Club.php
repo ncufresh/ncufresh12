@@ -10,10 +10,18 @@ class Club extends CActiveRecord
     {
         return '{{clubs}}';
     }
-	 public function relations()
+
+    public function relations()
     {
-        return array('manager'=>array(self::BELONGS_TO,'users','username'));
+        return array(
+            'manager'   => array(
+                self::BELONGS_TO,
+                'users',
+                'username'
+            )
+        );
     }
+
     public function getClub($clubid)
     {
         return $this->findByPk($clubid);

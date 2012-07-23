@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/styles/ie.css" media="screen, projection" />
     <![endif]-->
 
+    <link href="<?php echo Yii::app()->request->baseUrl; ?>/statics/favicon.ico" rel="shortcut icon">
+
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
@@ -19,13 +21,7 @@
                 facebookAppId: '<?php echo Yii::app()->facebook->getAppId(); ?>',
                 facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
                 chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
-                ncuLifeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('nculife',array('tab_id'=> ':id'));?>'),
-                ncuLifeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('nculife/carcontent',array('tab_id'=> ':id'));?>'),
-                ncuLifeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('nculife/healthcontent',array('tab_id'=> ':id'));?>'),
-                ncuLifeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('nculife/livecontent',array('tab_id'=> ':id'));?>'),
-                ncuLifeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('nculife/housecontent',array('tab_id'=> ':id'));?>'),
-                ncuLifeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('nculife/outsidecontent',array('tab_id'=> ':id'));?>'),
-                ncuLifeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('nculife/sportcontent',array('tab_id'=> ':id'));?>'),
+                ncuLifeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('nculife/content', array('tab' => ':tab', 'page' => ':page'));?>'),
                 multimediaYoutubeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('multimedia/watch', array('v' => ':v')); ?>'),
                 newsIndexUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>'),
                 staticsUrl: decodeURIComponent('<?php echo Yii::app()->request->baseUrl; ?>/statics'),
@@ -95,6 +91,17 @@
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('club/index'); ?>" title="系所社團">系所社團</a>
+            <ul>
+                <li>
+                    <a href="#" title="學術性社團">學術性社團</a>
+                </li>
+                <li>
+                    <a href="#" title="康樂性社團">康樂性社團</a>
+                </li>
+                <li>
+                    <a href="#" title="服務性社團">服務性社團</a>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="<?php echo Yii::app()->createUrl('multimedia/index'); ?>" title="影音專區">影音專區</a>
@@ -107,7 +114,7 @@
 <div id="content"><?php echo $content; ?></div>
 <div id="sidebar">
 <?php if ( Yii::app()->user->getIsGuest() ) : ?>
-    <a href="<?php echo Yii::app()->createUrl('site/login', array('facebook' => true)); ?>" title="使用Facebook帳號登入">使用Facebook帳號登入</a>
+    <a id="fb-login-button" href="<?php echo Yii::app()->createUrl('site/login', array('facebook' => true)); ?>" title="使用Facebook帳號登入">使用Facebook帳號登入</a>
     <form class="profile" action="<?php echo Yii::app()->createUrl('site/login'); ?>" method="POST">
         <dl>
             <dt>
@@ -133,15 +140,42 @@
     </form>
 <?php else : ?>
     <div class="profile">
-        <p>帳號：<?php echo Yii::app()->user->getName(); ?></p>
-        <a href="<?php echo Yii::app()->createUrl('site/logout'); ?>" title="登出">登出</a>
+        <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/sin.png"/>
+        <p><?php echo Yii::app()->user->getName(); ?></p>
+        <a id="sidebar-personal-toggle" href="#" title="點此打開或關閉個人功能"></a>
+    </div>
+    <div id="sidebar-personal">
+        <ul>
+            <li>
+                <a href="#">個人行事曆</a>
+            </li>
+            <li>
+                <a href="#">最新更新</a>
+            </li>
+            <li>
+                <a href="#">個人資料</a>
+            </li>
+            <li>
+                <a href="#">遊戲介面</a>
+            </li>
+        </ul>
+        <a id="sidebar-personal-button" href="#" title="個人專區">個人專區</a>
+        <a id="sidebar-logout-button" href="<?php echo Yii::app()->createUrl('site/logout'); ?>" title="登出">登出</a>
     </div>
 <?php endif; ?>
     <div class="links sidebar-box">
         <h4>連結區</h4>
-    </div>
-    <div class="recommendands sidebar-box">
-        <h4>連結區</h4>
+        <ul>
+            <li>
+                <a href="http://www.ncu.edu.tw" title="中大首頁">中大首頁</a>
+            </li>
+            <li>
+                <a href="http://portal.ncu.edu.tw" title="Portal入口">Portal入口</a>
+            </li>
+            <li>
+                <a href="http://www.cc.ncu.edu.tw" title="電算中心">電算中心</a>
+            </li>
+        </ul>
     </div>
 </div>
 <div id="footer">

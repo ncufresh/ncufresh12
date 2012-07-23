@@ -1,11 +1,42 @@
-RewriteEngine on
+SetEnv SERVER_ADMIN ncufresh@ncu.edu.tw
 
-# rewrite assets directory to statics
-RewriteRule ^assets/(.*)$ statics/assets/$1
+FileETag MTime Size
 
-# if a directory or a file exists, use it directly
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+AddDefaultCharset UTF-8
 
-# otherwise forward it to index.php
-RewriteRule . index.php
+<ifModule mod_headers.c>
+    <filesMatch "\.php$">
+        Header set X-UA-Compatible "IE=edge,chrome=IE7"
+    </filesMatch>
+</ifModule>
+
+<IfModule mod_expires.c>
+    <FilesMatch "\.(png|ico|css|js)$">
+        ExpiresActive on
+        ExpiresDefault "access plus 2 months"
+    </FilesMatch>
+</IfModule>
+
+<ifModule mod_deflate.c>
+    AddOutputFilter DEFLATE html .php .js .css
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/javascript
+</ifModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+
+    # rewrite assets directory to statics
+    RewriteRule ^assets/(.*)$ statics/assets/$1
+
+    # if a directory or a file exists, use it directly
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # otherwise forward it to index.php
+    RewriteRule . index.php
+</IfModule>

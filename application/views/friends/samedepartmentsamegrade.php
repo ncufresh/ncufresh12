@@ -1,4 +1,4 @@
-<form method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
+<form enctype="multipart/form-data" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
 <table class="other-page">
    <tr>
         <th colspan="5" class="friend-allsame-page">同屆同系</th>
