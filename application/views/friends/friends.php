@@ -1,19 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('.form-friends-self-editor').click(function(){
-                $('input').attr('value', 'submit');
-                $('.s1').attr('class', 's2');
-                //return false;
-            });
-        });
-    </script>
-	<title></title>
-</head>
 <h2>好友專區</h2>
     <table class="sep-group">
         <tr class="friends-title" >
@@ -145,7 +129,25 @@
         ?>
         </tr>
         <tr>
-        <th colspan="5" class="form-friends-title"><a href="http://api.jquery.com/category/events/" title="自訂" class="form-friends-self-editor">自訂</a></th> <!--跳出視窗-->
+        <th colspan="5" class="form-friends-title"><a href="#" title="自訂" class="form-friends-self-editor">自訂</a></th> <!--跳出視窗-->
         </tr>
     </table>
-<html>
+    <div class="group-friends" title="自訂好友">
+        <form method="POST" action="<?php echo $this->createUrl('friends/groups'); ?>">
+        <div class="all-members">
+            <div>
+                <div class="group-name">
+                    <label>名稱: </label>
+                    <input name="group-name" required="true">
+                </div>
+                <div class="group-all-friends">
+                    <label>成員: </label>
+                    <input name="area">
+                </div>
+            </div>
+            <button class="form-add-new-group" iconcls="icon-ok" onclick="saveData()">新增</a>
+            <button class="form-cancel-group" iconcls="icon-cancel" onclick="javascript:$('#group-friends').dialog('close')">取消</a>
+        </div>
+        
+        </form>
+    </div>

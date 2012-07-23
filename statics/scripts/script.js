@@ -3,6 +3,11 @@
  */
 (function($)
 {
+    String.prototype.replaceAt = function(index, string)
+    {
+        return this.substr(0, index) + string + this.substr(index + string.length);
+    }
+
     $.extend({
         random: function(min, max)
         {
@@ -183,7 +188,8 @@
         browseredcounter:       null,
         counterAnimationSpeed:  50,
         minimumAnimationTimes:  4,
-        interval:               5000
+        interval:               5000,
+        counterDigitElements:   '0123456789ABCDEFGHIJKMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*'
     };
 
     $.pull.start = function(options)
@@ -207,46 +213,48 @@
                     }
                     if ( $.pull.options.browseredcounter )
                     {
-                        var browsered = response.counter.browsered;
-                        var browseredText = browsered.toString();
-                        var current = $.pull.options.browseredcounter.text();
-                        if ( current == '0' )
+                        var p = 0;
+                        var c = 0;
+                        var browsered = response.counter.browsered.toString();
+                        var text = $.pull.options.browseredcounter.text();
+                        if ( text.length > browsered.length ) text = '';
+                        for ( var i = 0 ; i < browsered.length ; ++i )
                         {
-                            for ( var i = 1; i < browseredText.length; i++)
+                            if ( text[i] != browsered[i] )
                             {
-                                current += '0';
+                                text = text.replaceAt(i, '0');
                             }
                         }
-                        var temp = '';
-                        var run = false;
                         var timer = setInterval(function()
                         {
-                            for ( var i = 0; i < browseredText.length; i++)
+                            if ( text === browsered )
                             {
-                                temp = '';
-                                if ( browseredText.charAt(i) != current.charAt(i) )
-                                {
-                                    for ( var j = 0; j < browseredText.length; j++)
-                                    {
-                                        if ( j != i)
-                                        {
-                                            temp += current.charAt(j);
-                                        }
-                                        else
-                                        {
-                                            temp += $.random(0, 9).toString();
-                                        }
-                                    }
-                                    current = temp;
-                                    run = true;
-                                }
-                            }
-                            if ( run == false )
-                            {
-                                current = browsered;
                                 clearInterval(timer);
                             }
-                            $.pull.options.browseredcounter.text(current);
+                            else
+                            {
+                                if ( text[p] == browsered[p] )
+                                {
+                                    c = 0;
+                                    p++;
+                                }
+                                else
+                                {
+                                    c++;
+                                }
+                                for ( var i = p ; i < browsered.length ; ++i )
+                                {
+                                    var d = $.pull.options.counterDigitElements[
+                                        $.random(
+                                            0,
+                                            $.pull.options.counterDigitElements.length - 1
+                                        )
+                                    ].toString();
+                                    text = text.replaceAt(i, d);
+                                }
+                                text = text.replaceAt(p, c.toString());
+                                $.pull.options.browseredcounter.text(text);
+                            }
                         }, $.pull.options.counterAnimationSpeed);
                     }
                 }
@@ -351,11 +359,11 @@
         {
             var data = response[key];
             var entry = $('<div></div>')
-                .attr('chat:id', data.id)
+                .data('id', data.id)
                 .addClass('friend-list-entry')
                 .click(function()
                 {
-                    $.fn.chat.showChatDialog($(this).attr('chat:id'));
+                    $.fn.chat.showChatDialog($(this).data('id'));
                 })
                 .appendTo(wrap);
             var icon = $('<img />')
@@ -404,7 +412,7 @@
         var dialog = null;
         $('.' + $.chat.options.chatDialogClass).each(function(index)
         {
-            if ( $(this).attr('chat:id') == id ) dialog = $(this);
+            if ( $(this).data('id') == id ) dialog = $(this);
             $(this).css({
                 left: left - $(this).outerWidth(true) * (index + 1)
             });
@@ -419,13 +427,13 @@
 				.append('<button></button>')
 				.click(function()
 				{
-					if ( dialog.attr('chat:show') == 'true' )
+					if ( dialog.data('show') )
 					{
-						$.fn.chat.hideChatDialog(dialog.attr('chat:id'));
+						$.fn.chat.hideChatDialog(dialog.data('id'));
 					}
 					else
 					{
-						$.fn.chat.showChatDialog(dialog.attr('chat:id'));
+						$.fn.chat.showChatDialog(dialog.data('id'));
 					}
 					
 				});
@@ -443,8 +451,8 @@
                 })
                 .append(input);
             dialog = $('<div></div>')
-                .attr('chat:id', id)
-				.attr('chat:show', 'true')
+                .data('id', id)
+				.data('show', true)
                 .addClass($.chat.options.chatDialogClass)
                 .scroll(function()
                 {
@@ -460,7 +468,7 @@
 			title.children('span').addClass('offline');
 			$('.friend-list-entry').each(function(index)
 			{
-				if($(this).attr('chat:id') == id)
+				if ( $(this).data('id') == id )
 				{
 					title.children('p').text($(this).children('p').text());
 					title.children('span').removeClass('offline');
@@ -468,7 +476,7 @@
 			});
 			title.children('button').click(function()
 			{
-				$.fn.chat.closeChatDialog(dialog.attr('chat:id'));
+				$.fn.chat.closeChatDialog(dialog.data('id'));
 			});
             display.scrollable();
         }
@@ -480,7 +488,7 @@
         var dialog = $.fn.chat.createChatDialog(id);
 		dialog.animate({
 			bottom: 0
-		}, $.chat.options.animationSpeed).attr('chat:show', 'true');
+		}, $.chat.options.animationSpeed).data('show', true);
 		$.fn.chat.updateChatDialogsPosition();
         return dialog;
     };
@@ -494,20 +502,16 @@
             {
                 $(this).children('p').each(function()
                 {
-                    if ( $(this).attr('chat:uuid') == data.uuid ) exists = true;
+                    if ( $(this).data('uuid') == data.uuid ) exists = true;
                 });
                 if ( ! exists )
                 {
                     $('<p></p>')
-                        .attr('chat:uuid', data.uuid)
+                        .data('uuid', data.uuid)
                         .text(data.sender + ':' + data.message)
                         .appendTo($(this));
                 }
-                $(this)
-                    .stop()
-                    .animate({
-                        scrollTop: this.scrollHeight
-                    }, 1000);
+                $(this).scrollTo($(this).height());
             }
         );
         return dialog;
@@ -518,7 +522,7 @@
         var dialog = $.fn.chat.createChatDialog(id);
 		dialog.animate({
 			bottom: -172
-		}, $.chat.options.animationSpeed).attr('chat:show', 'false');
+		}, $.chat.options.animationSpeed).data('show', false);
 		$.fn.chat.updateChatDialogsPosition();
         return dialog;
     };
@@ -633,25 +637,30 @@
                 fadeOutDuration:        'slow',
                 wheelSpeed:             6
             }, options);
+            var updateScrollDraggableHeight = function()
+            {
+                var scrollAreaHeight = scrollArea.height();
+                var scrollContainerHeight = scrollContainer.height();
+                var height = 0;
+                if ( scrollAreaHeight > scrollContainerHeight )
+                {
+                    height = scrollContainerHeight
+                           * scrollContainerHeight
+                           / scrollAreaHeight;
+                }
+                scrollDragable.css({
+                    height: height
+                });
+                return height;
+            };
             var scrollContainer = $('<div></div>')
                 .addClass('scroll-container')
                 .mouseenter(function()
                 {
-                    var scrollAreaHeight = scrollArea.height();
-                    var scrollContainerHeight = scrollContainer.height();
-                    var height = 0;
-                    if ( scrollAreaHeight > scrollContainerHeight )
-                    {
-                        height = scrollContainerHeight
-                               * scrollContainerHeight
-                               / scrollAreaHeight;
-                    }
+                    updateScrollDraggableHeight();
                     scrollBar
                         .stop(true, true)
                         .fadeIn(options.fadeInDuration);
-                    scrollDragable.css({
-                        height: height
-                    })
                     inside = true;
                 })
                 .mouseleave(function()
@@ -719,16 +728,14 @@
                 .appendTo(scrollTrack);
             var updateScrollDragable = function(position)
             {
-                var maximun = (
-                    scrollContainer.height()
-                  - scrollDragable.height()
-                  );
+                var height = updateScrollDraggableHeight();
+                var maximun = scrollContainer.height() - height;
                 var scale = (
                         scrollArea.height()
                       - scrollContainer.height()
                     ) / (
                         scrollContainer.height()
-                      - scrollDragable.height()
+                      - height
                     ) * -1;
                 if ( position <= 0 ) position = 0;
                 if ( position >= maximun ) position = maximun;
@@ -739,6 +746,9 @@
                     top: position * scale
                 });
             };
+            $.extend($(this).__proto__, {
+                scrollTo: updateScrollDragable
+            });
             if ( options.scrollableClass )
             {
                 scrollContainer.addClass(options.scrollableClass);
@@ -836,6 +846,61 @@
                 setTimeout(arguments.callee, options.speed);
             };
             setTimeout(generator, 0);
+        });
+    };
+})(jQuery);
+
+(function($)
+{
+    $.konami = function()
+    {
+        var options = $.extend({
+            code:                   [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
+            interval:               10,
+            complete:               function()
+            {
+                alert('You complete the konami code!');
+                var back = $('<div></div>').css({
+                    background: 'black',
+                    height: 768,
+                    position: 'absolute',
+                    top: 0,
+                    opacity: 0.5,
+                    left: 0,
+                    width: 1366
+                })
+                .appendTo('body');
+                $('<div></div>').css({
+                    background: 'white',
+                    height: 600,
+                    position: 'relative',
+                    top: 30,
+                    opacity: 1,
+                    left: 200,
+                    width: 900
+                })
+                .appendTo(back);
+            }
+        }, options);
+        var index = 0;
+        var interval = options.interval;
+        var timer = setInterval(function()
+        {
+            if ( interval-- <= 0 ) index = 0;
+        }, 50);
+        $(document).keyup(function(event)
+        {
+            if (
+                event.keyCode != 231
+             && event.keyCode == options.code[index]
+            )
+            {
+                interval = options.interval;
+                if ( index++ == options.code.length - 1 ) options.complete();
+                return true;
+            }
+            index = 0;
+            return true;
         });
     };
 })(jQuery);
@@ -984,7 +1049,7 @@
 
         $.configures.sequence = $.random(0, 1000);
 
-        if ( $('#header') ) $('#header').star();
+        // if ( $('#header') ) $('#header').star();
 
         if ( $('#chat') ) $('#chat').chat();
 
@@ -993,6 +1058,26 @@
         $('#form-sidebar-register').click(function()
         {
             window.location.href = $.configures.registerUrl;
+            return false;
+        });
+
+        $('#sidebar-personal-toggle').click(function()
+        {
+            var button = $(this);
+            if ( button.hasClass('active') )
+            {
+                $('#sidebar-personal').slideUp(300, function()
+                {
+                    button.removeClass('active');
+                });
+            }
+            else
+            {
+                $('#sidebar-personal').slideDown(300, function()
+                {
+                    button.addClass('active');
+                });
+            }
             return false;
         });
 
@@ -1030,6 +1115,8 @@
                 update();  
             }
         });
+
+        $.konami();
 
         $.pull.start({
             onlinecounter: $('#header .online'),

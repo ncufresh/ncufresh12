@@ -75,7 +75,17 @@ jQuery(document).ready(function()
             <li>
                 <span>住在中央</span>
                 <ul class="life-indexs">
-                    <li>新生宿舍</li>
+                    <li class="life-indexs-content">
+                        <span>新生宿舍</span>
+                            <ul class="life-indexs-inner">
+                                <li>男11舍</li>
+                                <li>男九舍</li>
+                                <li>男7舍</li>
+                                <li>男6舍</li>
+                                <li>男3舍</li>
+                                <li>女1~4舍</li>
+                            </ul>
+                    </li>
                     <li>宿網申請</li>
                     <li>宿舍冷氣</li>
                     <li>宿舍所需</li>

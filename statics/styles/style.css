@@ -6,7 +6,7 @@ input,
 textarea
 {
     font-size: 16px;
-    font-family: "微軟正黑體", Arial, sans-serif;
+    font-family: Microsoft JhengHei, Arial, sans-serif;
 }
 
 body
@@ -184,7 +184,7 @@ a:hover
 
 #header .statics
 {
-    margin: 15px 0 0 280px;
+    margin: 15px 0 0 240px;
     position: absolute;
 }
 
@@ -192,10 +192,12 @@ a:hover
 {
     color: #FFDD00;
     float: left;
-    height: 20px;
-    line-height: 20px;
+    font-family: Consolas, Courier New, monospace;
+    font-size: 1.1em;
+    height: 16px;
+    line-height: 16px;
     margin: 0;
-    padding: 0 0 0 85px;
+    padding: 4px 0 4px 85px;
     width: 45px;
 }
 
@@ -241,7 +243,6 @@ a:hover
     background: url('../images/navigation.png') no-repeat;
     list-style: none;
     margin: 160px 0 0 0;
-    overflow: hidden;
     padding: 0 15px;
     position: absolute;
     width: 800px;
@@ -265,6 +266,42 @@ a:hover
 #navigation a:hover
 {
     color: #FFFFFF;
+}
+
+#navigation ul
+{
+    -webkit-border-radius: 0 0 15px 15px;
+    background: #DAE3EC url('../images/subnavigation.png') repeat-x;
+    border-radius: 0 0 15px 15px;
+    list-style: none;
+    margin-top: -16px;
+    padding: 4px 0;
+    position: relative;
+    visibility: hidden;
+    z-index: 100;
+}
+
+#navigation ul li
+{
+    float: none;
+    height: 30px;
+    line-height: 30px;
+    padding: 4px 0;
+}
+
+#navigation ul a
+{
+    color: #000A3C;
+}
+
+#navigation ul a:hover
+{
+    color: #000300;
+}
+
+#navigation li:hover ul
+{
+    visibility: visible;
 }
 
 #content
@@ -307,8 +344,33 @@ a:hover
 
 #sidebar .profile
 {
-    height: 90px;
     margin: 15px 0;
+}
+
+#sidebar div.profile
+{
+    -webkit-border-radius: 10px;
+    background: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#sidebar .profile img
+{
+    float: left;
+    height: 48px;
+    margin: 3px;
+    width: 48px;
+}
+
+#sidebar .profile p
+{
+    height: 42px;
+    line-height: 42px;
+    margin: 3px 0 3px 55px;
+    padding: 3px;
+    text-align: center;
 }
 
 #sidebar form.profile dl
@@ -357,6 +419,19 @@ a:hover
     text-align: center;
 }
 
+#sidebar .links ul
+{
+    list-style: none;
+    padding: 0 15px;
+}
+
+#sidebar .links li
+{
+    float: left;
+    margin: 3px 0;
+    width: 50%;
+}
+
 #form-sidebar-login
 {
     background: url('../images/login.png');
@@ -365,6 +440,71 @@ a:hover
 #form-sidebar-register
 {
     background: url('../images/register.png');
+}
+
+#sidebar-personal
+{
+    -webkit-border-radius: 10px;
+    background: #FFFFFF url('../images/personal.png') center top;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    display: none;
+    height: 150px;
+    overflow: hidden;
+    padding: 5px;
+    position: relative;
+    width: 190px;
+}
+
+#sidebar-personal ul
+{
+    list-style: none;
+    height: 120px;
+}
+
+#sidebar-personal li
+{
+    height: 30px;
+    line-height: 30px;
+}
+
+#sidebar-personal-toggle
+{
+    background: url('../images/arrow-down.png');
+    display: block;
+    float: right;
+    height: 16px;
+    margin-top: -12px;
+    width: 16px;
+}
+
+#sidebar-personal-toggle.active
+{
+    background: url('../images/arrow-up.png');
+}
+
+#sidebar-personal-button,
+#sidebar-logout-button
+{
+    border: 2px solid #939495;
+    padding: 3px;
+    position: absolute;
+    right: 24px;
+    width: 32px;
+}
+
+#sidebar-personal-button
+{
+    height: 32px;
+    line-height: 16px;
+    top: 48px;
+}
+
+#sidebar-logout-button
+{
+    height: 16px;
+    line-height: 16px;
+    top: 96px;
 }
 
 /**
@@ -666,8 +806,61 @@ input.gsc-search-button:focus
 
 #readme-list ul li
 {
-    float: left;
     list-style: none;
+}
+
+#readme-menu
+{
+    margin: 0;
+    padding: 0;
+    width: 500px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+#nculife-wrapper
+{
+     position: relative;
+}
+
+#caption
+{
+    position: absolute;
+    top: 0;
+    left: -300px;
+}
+
+#caption ul
+{
+    background: url('../images/background.png') repeat;
+    width: 300px;
+    height: 200px;
+    float: left;
+}
+
+#caption a
+{
+    display: block;
+    float: left;
+}
+
+ul#nculife-details
+{  
+    margin: 0;
+    padding: 0;
+}
+
+#readme-direct a
+{
+    width: 50px;
+    height: 50px;
+}
+
+#readme-direct img
+{
+    width: 50px;
+    height: 50px;
 }
 
 /**
@@ -901,6 +1094,7 @@ input.gsc-search-button:focus
 /**
  * Multimedia style
  */
+
 #mm-container
 {
 }
@@ -931,7 +1125,7 @@ input.gsc-search-button:focus
     height: 50px;
     background: white;
     opacity: 0;
-    z-index: 1000;
+    z-index: 100;
 }
 
 #mm-menu #mm-menu-items
@@ -1124,6 +1318,8 @@ input.gsc-search-button:focus
 ul.life-index li:hover ul.life-indexs
 {
     display: block;
+    background: white;
+    color: black;
 }
 
 ul.life-indexs
@@ -1145,6 +1341,31 @@ ul.life-index li
     border: 1px solid red;
     padding: 0;
     display: block;
+}
+
+ul.life-index li:hover
+{
+    background: white;
+    color: black;
+}
+
+ul.life-indexs-inner
+{
+    display: none;
+}
+
+ul.life-indexs li.life-indexs-content:hover ul.life-indexs-inner
+{
+    display: block;
+    padding: 0;
+    margin-left: 80px;
+    margin-top: -21px;
+}
+
+ul.life-indexs li.life-indexs-content:hover
+{
+    background: red;
+    color: black;
 }
 
 .ncu-index
@@ -1299,15 +1520,27 @@ ul.life-index li
     top: 120px;
 }
 
-/*club style*/
-#club-content
+#fb-login-button
 {
+    background: url('../images/fblogin.png');
+    display: block;
+    height: 32px;
+    margin: 5px auto -10px;
+    text-indent: -100000%;
+    width: 96px;
+}
+
+/*club style*/
+#club-list
+{
+	overflow:scroll;
+	text-align:left;
 }
 
 .l1
 {
 	float: left;
-	width: 100px;
+	width: 143px;
 	height: 500px;
 }
 
@@ -1494,6 +1727,28 @@ ul.life-index li
 #club
 {
 	margin-center:auto;
+}
+
+div.group-friends
+{
+    background-color:yellow;
+	display: none;
+	height: 500px;
+	width: 200px;
+}
+
+div.all-members
+{
+     width:400px; 
+     height:280px;
+     padding:10px 20px;
+     /*display: none;*/
+}
+
+label.group-friends-name
+{
+    color:red;
+    background-color:green;
 }
 
 .etmomi
