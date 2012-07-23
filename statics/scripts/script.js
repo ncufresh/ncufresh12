@@ -953,7 +953,7 @@
 
         $.configures.sequence = $.random(0, 1000);
 
-        if ( $('#header') ) $('#header').star();
+        // if ( $('#header') ) $('#header').star();
 
         if ( $('#chat') ) $('#chat').chat();
 
