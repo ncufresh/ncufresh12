@@ -6,7 +6,7 @@ input,
 textarea
 {
     font-size: 16px;
-    font-family: "微軟正黑體", Arial, sans-serif;
+    font-family: Microsoft JhengHei, Arial, sans-serif;
 }
 
 body
@@ -168,13 +168,22 @@ a:hover
 /**
  * Layout style
  */
-#logo
+#logo,
+#moon
 {
     background: url('../images/logo.png') no-repeat;
+    display: block;
     height: 160px;
-    margin-left: 15px;
     position: absolute;
+    text-indent: -100000%;
     width: 240px;
+}
+
+#moon
+{
+    background: url('../images/moon.png') no-repeat;
+    margin-left: 15px;
+    width: 160px;
 }
 
 #header
@@ -184,7 +193,7 @@ a:hover
 
 #header .statics
 {
-    margin: 15px 0 0 280px;
+    margin: 15px 0 0 240px;
     position: absolute;
 }
 
@@ -192,10 +201,12 @@ a:hover
 {
     color: #FFDD00;
     float: left;
-    height: 20px;
-    line-height: 20px;
+    font-family: Consolas, Courier New, monospace;
+    font-size: 1.1em;
+    height: 16px;
+    line-height: 16px;
     margin: 0;
-    padding: 0 0 0 85px;
+    padding: 4px 0 4px 85px;
     width: 45px;
 }
 
@@ -241,7 +252,6 @@ a:hover
     background: url('../images/navigation.png') no-repeat;
     list-style: none;
     margin: 160px 0 0 0;
-    overflow: hidden;
     padding: 0 15px;
     position: absolute;
     width: 800px;
@@ -265,6 +275,42 @@ a:hover
 #navigation a:hover
 {
     color: #FFFFFF;
+}
+
+#navigation ul
+{
+    -webkit-border-radius: 0 0 15px 15px;
+    background: #DAE3EC url('../images/subnavigation.png') repeat-x;
+    border-radius: 0 0 15px 15px;
+    list-style: none;
+    margin-top: -16px;
+    padding: 4px 0;
+    position: relative;
+    visibility: hidden;
+    z-index: 100;
+}
+
+#navigation ul li
+{
+    float: none;
+    height: 30px;
+    line-height: 30px;
+    padding: 4px 0;
+}
+
+#navigation ul a
+{
+    color: #000A3C;
+}
+
+#navigation ul a:hover
+{
+    color: #000300;
+}
+
+#navigation li:hover ul
+{
+    visibility: visible;
 }
 
 #content
@@ -769,8 +815,61 @@ input.gsc-search-button:focus
 
 #readme-list ul li
 {
-    float: left;
     list-style: none;
+}
+
+#readme-menu
+{
+    margin: 0;
+    padding: 0;
+    width: 500px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+#nculife-wrapper
+{
+     position: relative;
+}
+
+#caption
+{
+    position: absolute;
+    top: 0;
+    left: -300px;
+}
+
+#caption ul
+{
+    background: url('../images/background.png') repeat;
+    width: 300px;
+    height: 200px;
+    float: left;
+}
+
+#caption a
+{
+    display: block;
+    float: left;
+}
+
+ul#nculife-details
+{  
+    margin: 0;
+    padding: 0;
+}
+
+#readme-direct a
+{
+    width: 50px;
+    height: 50px;
+}
+
+#readme-direct img
+{
+    width: 50px;
+    height: 50px;
 }
 
 /**
@@ -844,59 +943,61 @@ input.gsc-search-button:focus
     background: url('../images/calendar_top3.png');
 }
 
-#index-calendar .calendar-bottom
+#index-calendar .calendar-bottom-wrap
 {
     width: 204px;
     height: 349px;
     float: left;
+    position: absolute;
     background: url('../images/calendar_content2.png');
 }
 
-#index-calendar .calendar-bottom table.calendar-table caption
+#index-calendar .calendar-bottom-wrap table.calendar-table caption
 {
     margin:  15px 0 10px 0 ;
 }
 
-#index-calendar .calendar-bottom table.calendar-table td
+#index-calendar .calendar-bottom-wrap table.calendar-table td
 {
     text-align: right;
     width: 28px;
 }
 
-#index-calendar .calendar-bottom table.calendar-table thead
+#index-calendar .calendar-bottom-wrap table.calendar-table thead
 {
     display: block;
 }
 
-#index-calendar .calendar-bottom table.calendar-table thead td
+#index-calendar .calendar-bottom-wrap table.calendar-table thead td
 {
+    color: #af8d5a;
     text-align: center;
 }
 
-#index-calendar .calendar-bottom table.calendar-table thead td.weekend
+#index-calendar .calendar-bottom-wrap table.calendar-table thead td.weekend
 {
     color: red;
 }
 
-#index-calendar .calendar-bottom table.calendar-table 
+#index-calendar .calendar-bottom-wrap table.calendar-table 
 {
     width: 204px;
 }
 
-#index-calendar .calendar-bottom table.calendar-table tbody
+#index-calendar .calendar-bottom-wrap table.calendar-table tbody
 {
     border-top: 1px solid #946722;
     border-bottom: 1px solid #946722;
     display: block;
 }
 
-#index-calendar .calendar-bottom table.todolist-table td
+#index-calendar .calendar-bottom-wrap table.todolist-table td
 {
     width: 100px;
     text-align: center;
 }
 
-#index-calendar .calendar-bottom table.todolist-table thead td
+#index-calendar .calendar-bottom-wrap table.todolist-table thead td
 {
     color: #946722;
 }
@@ -1033,7 +1134,7 @@ input.gsc-search-button:focus
     height: 50px;
     background: white;
     opacity: 0;
-    z-index: 1000;
+    z-index: 100;
 }
 
 #mm-menu #mm-menu-items
@@ -1172,20 +1273,29 @@ input.gsc-search-button:focus
 
 .nculife-dialog .ui-dialog-title
 {
-	background: red; 
+	background: black;
+    color: red;
 	margin-right: 100px;
+    font-size: 50px;
+    
 }
 
 .nculife-dialog .ui-icon
 {
-	background: purple;
+	background: black;
+    color: white;
 }
 
 #nculife-dh
 {
 	background: pink;
-	width: 400px;
+	width: 700px;
 	height: 25px;
+}
+
+#nculife-dh a
+{
+    margin-left: 20px;
 }
 
 #nculife-db
@@ -1223,6 +1333,8 @@ input.gsc-search-button:focus
 	list-style: none;
 }
 
+
+
 ul.life-index li:hover ul.life-indexs
 {
     display: block;
@@ -1230,7 +1342,7 @@ ul.life-index li:hover ul.life-indexs
     color: black;
 }
 
-ul.life-indexs
+ul.life-indexs 
 {
     margin: -1px;
     padding: 0;
@@ -1249,12 +1361,14 @@ ul.life-index li
     border: 1px solid red;
     padding: 0;
     display: block;
+    cursor: pointer;
 }
 
 ul.life-index li:hover
 {
     background: white;
     color: black;
+    border: 1px solid red;
 }
 
 ul.life-indexs-inner
@@ -1283,7 +1397,18 @@ ul.life-indexs li.life-indexs-content:hover
 
 #life-container
 {
+    width: 750px;
+    height: 400px;
     position:relative;
+    padding: 0;
+    background: url('../images/life_background.jpg');
+}
+
+#life-dialog
+{
+    display: none;
+    height: 500px;
+	width: 200px;
 }
 
 #about ul
@@ -1439,14 +1564,15 @@ ul.life-indexs li.life-indexs-content:hover
 }
 
 /*club style*/
-#club-content
+#club-list
 {
+    text-align: left;
 }
 
 .l1
 {
 	float: left;
-	width: 100px;
+	width: 143px;
 	height: 500px;
 }
 
