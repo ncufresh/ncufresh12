@@ -10,7 +10,8 @@
             animationClass:                  'animation',
             block1InfClass:                  'information',
             picBarSpeed:                     1000,
-            picAutoSpeed:                    3000
+            picAutoSpeed:                    3000,
+            tagBarSpeed:                     500
         }, options);
         var photo_index = 0;
         var photos = $('#' + options.aboutId + ' img');
@@ -39,7 +40,7 @@
         ]
         var picture = $('<div></div>')
             .css({
-                background: 'url(\'' + $('.small-pic').eq(0).attr('photo') + '\')',
+                background: 'url(\'' + photos.eq(photo_index).attr('photo') + '\')',
                 float: 'right',
                 height: 300,
                 position: 'relative',
@@ -157,8 +158,8 @@
         })
         .show();
         tagbar.eq(1).css({
-            left: 475,
-            top: 20,
+            left: 550,
+            top: 100,
             height: 200,
             width: 150
         })
@@ -195,7 +196,7 @@
                     backgroundColor: 'yellow',
                     float: 'left',
                     left: 0,
-                    top: 80,
+                    top: 160,
                     height: 40,
                     position: 'absolute',
                     width: 40
@@ -203,12 +204,14 @@
                 .mouseenter(function()
                 {
                     $(this).css({
+                        background: 'url(\'' + tagbar.eq(index).attr('photo') + '\')',
                         backgroundColor: 'red'
                     });
                 })
                 .mouseleave(function()
                 {    
                     $(this).css({
+                        background: 'url(\'' + tagbar.eq(index).attr('src') + '\')',
                         backgroundColor: 'yellow'
                     });
                 })
@@ -224,19 +227,19 @@
                         tagbar.eq(4).hide();
                         if ( tagbar_index == 0 )
                         {
-                            tagbar.eq(0).css({
+                            tagbar.eq(0).stop().animate({
                                 left: 225,
                                 top: 0,
                                 height: 400,
                                 width: 300
-                            })
+                            }, options.tagBarSpeed)
                             .show();
-                            tagbar.eq(1).css({
-                                left: 475,
-                                top: 20,
+                            tagbar.eq(1).stop().animate({
+                                left: 550,
+                                top: 100,
                                 height: 200,
                                 width: 150
-                            })
+                            }, options.tagBarSpeed)
                             .show();
                             tagbar.eq(2).hide();
                             tagbar.eq(3).hide();
@@ -245,27 +248,44 @@
                         else
                         {
                             tagbar.eq( tagbar_index - 1).css({
-                                left: 125,
-                                top: 20,
+                                left: -100,
+                                top: 100,
                                 height: 200,
                                 width: 150
-                            })
+                            }, options.tagBarSpeed)
+                            .stop()
+                            .animate({
+                                left: 50,
+                                top: 100,
+                                height: 200,
+                                width: 150
+                            }, options.tagBarSpeed)
                             .show();
-                            tagbar.eq( tagbar_index ).css({
+                            tagbar.eq( tagbar_index ).stop().animate({
                                 left: 225,
                                 top: 0,
                                 height: 400,
                                 width: 300
-                            })
+                            }, options.tagBarSpeed)
                             .show();
-                            tagbar.eq( tagbar_index + 1 ).css({
-                                left: 475,
-                                top: 20,
+                            tagbar.eq( tagbar_index + 1 ).stop().animate({
+                                left: 550,
+                                top: 100,
                                 height: 200,
                                 width: 150
-                            })
+                            }, options.tagBarSpeed)
                             .show();
                         }
+                        for ( var i = 7 ; i < 12 ; i++ )
+                        {
+                            tagbar.eq(i).css({
+                                backgroundColor: 'yellow'
+                            });
+                        }
+                        tagbar.eq( tagbar_index + 7 ).css({
+                            background: 'url(\'' + tagbar.eq(index).attr('photo') + '\')',
+                            backgroundColor: 'red'
+                        });
                     }
                         
                 })
@@ -277,7 +297,7 @@
                     backgroundColor: 'yellow',
                     float: 'left',
                     left: 710,
-                    top: 80,
+                    top: 160,
                     height: 40,
                     position: 'absolute',
                     width: 40
@@ -285,12 +305,14 @@
                 .mouseenter(function()
                 {
                     $(this).css({
+                        background: 'url(\'' + tagbar.eq(index).attr('photo') + '\')',
                         backgroundColor: 'red'
                     });
                 })
                 .mouseleave(function()
                 {    
                     $(this).css({
+                        background: 'url(\'' + tagbar.eq(index).attr('src') + '\')',
                         backgroundColor: 'yellow'
                     });
                 })
@@ -307,45 +329,62 @@
                         tagbar.eq(4).hide();
                         if ( tagbar_index == 4 )
                         {
-                            tagbar.eq(3).css({
-                                left: 125,
-                                top: 20,
+                            tagbar.eq(3).stop().animate({
+                                left: 50,
+                                top: 100,
                                 height: 200,
                                 width: 150
-                            })
+                            }, options.tagBarSpeed)
                             .show();
-                            tagbar.eq(4).css({
+                            tagbar.eq(4).stop().animate({
                                 left: 225,
                                 top: 0,
                                 height: 400,
                                 width: 300
-                            })
+                            }, options.tagBarSpeed)
                             .show();
                         }
                         else
                         {
-                            tagbar.eq( tagbar_index - 1 ).css({
-                                left: 125,
-                                top: 20,
+                            tagbar.eq( tagbar_index - 1 ).stop().animate({
+                                left: 50,
+                                top: 100,
                                 height: 200,
                                 width: 150
-                            })
+                            }, options.tagBarSpeed)
                             .show();
-                            tagbar.eq( tagbar_index ).css({
+                            tagbar.eq( tagbar_index ).stop().animate({
                                 left: 225,
                                 top: 0,
                                 height: 400,
                                 width: 300
-                            })
+                            }, options.tagBarSpeed)
                             .show();
                             tagbar.eq( tagbar_index + 1 ).css({
-                                left: 475,
-                                top: 20,
+                                left: 700,
+                                top: 100,
                                 height: 200,
                                 width: 150
-                            })
+                            }, options.tagBarSpeed)
+                            .stop()
+                            .animate({
+                                left: 550,
+                                top: 100,
+                                height: 200,
+                                width: 150
+                            }, options.tagBarSpeed)
                             .show();
                         }
+                        for ( var i = 7 ; i < 12 ; i++ )
+                        {
+                            tagbar.eq(i).css({
+                                backgroundColor: 'yellow'
+                            });
+                        }
+                        tagbar.eq( tagbar_index + 7 ).css({
+                            background: 'url(\'' + tagbar.eq(index).attr('photo') + '\')',
+                            backgroundColor: 'red'
+                        });
                     }
                 })
                 .appendTo(blocks[2]);
@@ -353,6 +392,7 @@
             else
             {
                 $(this).css({
+                    background: 'url(\'' + tagbar.eq(index).attr('src') + '\')',
                     backgroundColor: 'yellow',
                     float: 'left',
                     left: 305 + ( index - 7 ) * 30,
@@ -362,6 +402,10 @@
                     width: 20
                 })
                 .appendTo(blocks[2]);
+                tagbar.eq(7).css({
+                    background: 'url(\'' + tagbar.eq(index).attr('src') + '\')',
+                    backgroundColor: 'red'
+                });
             }
         });
     };
