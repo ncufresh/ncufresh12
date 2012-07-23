@@ -21,3 +21,5 @@ echo CHtml::link("回覆文章", Yii::app()->createUrl('forum/reply', array('aid
 $rep = $reply->findAll('article_id='.$article->id);
 foreach ($rep as $each)
     echo '作者: '.$each->author_id.' 內容: '.$each -> content. '<br/>';
+?>
+<fb:comments xid="12345678"></fb:comments>
