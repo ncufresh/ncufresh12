@@ -16,12 +16,12 @@ jQuery(document).ready(function()
         });
     });
 
-    $('.life-tab').click(function()
+    jQuery('.life-tab').click(function()
     {  
-        var id = $(this).attr('href').replace('#','');
+        var id = jQuery(this).attr('href').replace('#','');
          // alert(jQuery.configures.ncuLifeUrl.replace(':id', id));  
         /* $('#nculife-cv').html(jQuery.configures.ncuLifeUrl.replace(':id', id)); */
-        $.ajax(
+        jQuery.ajax(
         {
             type: 'GET',
             url: jQuery.configures.ncuLifeUrl.replace(':a', 'foodcontent').replace(':id', id),
@@ -29,10 +29,9 @@ jQuery(document).ready(function()
             success: function(data)
             { 
                 $('#nculife-cv').html(data.content);
-                
             },
         });
-        $.ajax(
+        jQuery.ajax(
         {
             type: 'GET',
             url: jQuery.configures.ncuLifeUrl.replace(':a', 'foodcontent').replace(':id', id),
@@ -57,65 +56,6 @@ jQuery(document).ready(function()
                     effect: 'explode',
                     direction: 'down'
                 }
-            }); 
+            });
     });
-
-    /*
-    $('#haha1').click(function()
-    {
-        var url = 'index.html';
-        $.ajax(
-        {
-            type: 'GET',
-            url: '/ncufresh12/nculife/foodContent.html',
-            data:
-            {
-                id: 1
-            },
-            dataType: 'html',
-            success: function(data)
-            { 
-                $('#nculife-cv').html(data);
-            },
-        });
-        var url = 'index.html';
-        $.ajax(
-        {
-            type: 'GET',
-            url: '/ncufresh12/nculife/foodContent.html',
-            data:
-            {
-                id: 1
-            },
-            dataType: 'html',
-            success: function(data)
-            { 
-                $('#nculife-ct').html(data);
-            },
-        });
-        return false;
-    });
-    */
-
-    /*
-    $('#haha2').click(function()
-    {
-        var url = 'index.html';
-        $.ajax(
-        {
-            type: 'GET',
-            url: '/ncufresh12/nculife/foodContent.html',
-            data:
-            {
-                id: 2
-            },
-            dataType: 'html',
-            success: function(data)
-            { 
-                $('#nculife-cv').html(data);
-            },
-        });
-        return false;
-    });
-    */
 });

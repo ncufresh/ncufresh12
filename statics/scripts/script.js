@@ -188,7 +188,8 @@
         browseredcounter:       null,
         counterAnimationSpeed:  50,
         minimumAnimationTimes:  4,
-        interval:               5000
+        interval:               5000,
+        counterDigitElements:   '0123456789ABCDEFGHIJKMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*'
     };
 
     $.pull.start = function(options)
@@ -243,10 +244,13 @@
                                 }
                                 for ( var i = p ; i < browsered.length ; ++i )
                                 {
-                                    text = text.replaceAt(
-                                        i,
-                                        $.random(0, 9).toString()
-                                    );
+                                    var d = $.pull.options.counterDigitElements[
+                                        $.random(
+                                            0,
+                                            $.pull.options.counterDigitElements.length - 1
+                                        )
+                                    ].toString();
+                                    text = text.replaceAt(i, d);
                                 }
                                 text = text.replaceAt(p, c.toString());
                                 $.pull.options.browseredcounter.text(text);
@@ -846,6 +850,61 @@
     };
 })(jQuery);
 
+(function($)
+{
+    $.konami = function()
+    {
+        var options = $.extend({
+            code:                   [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
+            interval:               10,
+            complete:               function()
+            {
+                alert('You complete the konami code!');
+                var back = $('<div></div>').css({
+                    background: 'black',
+                    height: 768,
+                    position: 'absolute',
+                    top: 0,
+                    opacity: 0.5,
+                    left: 0,
+                    width: 1366
+                })
+                .appendTo('body');
+                $('<div></div>').css({
+                    background: 'white',
+                    height: 600,
+                    position: 'relative',
+                    top: 30,
+                    opacity: 1,
+                    left: 200,
+                    width: 900
+                })
+                .appendTo(back);
+            }
+        }, options);
+        var index = 0;
+        var interval = options.interval;
+        var timer = setInterval(function()
+        {
+            if ( interval-- <= 0 ) index = 0;
+        }, 50);
+        $(document).keyup(function(event)
+        {
+            if (
+                event.keyCode != 231
+             && event.keyCode == options.code[index]
+            )
+            {
+                interval = options.interval;
+                if ( index++ == options.code.length - 1 ) options.complete();
+                return true;
+            }
+            index = 0;
+            return true;
+        });
+    };
+})(jQuery);
+
 /**
  * indexCalendar
  */
@@ -914,7 +973,7 @@
 
         $.configures.sequence = $.random(0, 1000);
 
-        if ( $('#header') ) $('#header').star();
+        // if ( $('#header') ) $('#header').star();
 
         if ( $('#chat') ) $('#chat').chat();
 
@@ -980,6 +1039,8 @@
                 update();  
             }
         });
+
+        $.konami();
 
         $.pull.start({
             onlinecounter: $('#header .online'),

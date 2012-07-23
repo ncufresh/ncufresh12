@@ -134,19 +134,19 @@ class SiteController extends Controller
                 array(
                     'id'        => 1,
                     'name'      => 'Test 1',
-                    'icon'      => null,
+                    'icon'      => Yii::app()->request->baseUrl . '/statics/images/unknown.png',
                     'active'    => true
                 ),
                 array(
                     'id'        => 2,
                     'name'      => 'Demodemo',
-                    'icon'      => null,
+                    'icon'      => Yii::app()->request->baseUrl . '/statics/images/unknown.png',
                     'active'    => true
                 ),
                 array(
                     'id'        => 3,
                     'name'      => 'Adminadmin',
-                    'icon'      => null,
+                    'icon'      => Yii::app()->request->baseUrl . '/statics/images/unknown.png',
                     'active'    => true
                 )
             );
