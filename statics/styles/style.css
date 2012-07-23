@@ -1494,8 +1494,7 @@ ul.life-indexs li.life-indexs-content:hover
 /*club style*/
 #club-list
 {
-	overflow:scroll;
-	text-align:left;
+    text-align: left;
 }
 
 .l1
