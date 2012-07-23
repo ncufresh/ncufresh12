@@ -43,6 +43,11 @@ class User extends CActiveRecord
                 self::MANY_MANY,
                 'User',
                 'friends(user_id,friend_id)'
+            ),
+            'groups'     => array(
+                self::MANY_MANY,
+                'User',
+                'groups(user_id,group_id)'
             )
         );
     }

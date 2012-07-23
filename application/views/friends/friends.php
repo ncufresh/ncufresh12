@@ -105,7 +105,7 @@
         <?php 
         $account = 1;
         foreach ( $profileFor->friends as $friend ) :
-            if ( $account<=5 )   //限顯現4人
+            if ( $account<=5 )   //限顯現5人
             { 
                 if ( $friend->profile->picture !='' )
                 {
@@ -129,11 +129,11 @@
         ?>
         </tr>
         <tr>
-        <th colspan="5" class="form-friends-title"><a href="#" title="自訂" class="form-friends-self-editor">自訂</a></th> <!--跳出視窗-->
+        <th colspan="5" class="form-friends-title"><a href="#" title="自訂" class="form-friends-self-editor" name="friends-self-editor" >自訂</a></th> <!--跳出視窗-->
         </tr>
     </table>
     <div class="group-friends" title="自訂好友">
-        <form method="POST" action="<?php echo $this->createUrl('friends/groups'); ?>">
+        <form method="POST" action="<?php echo Yii::app()->createUrl('friends/friends');  ?>">
         <div class="all-members">
             <div>
                 <div class="group-name">
@@ -142,12 +142,52 @@
                 </div>
                 <div class="group-all-friends">
                     <label>成員: </label>
-                    <input name="area">
+                    <table>
+                        <tr>
+                        <?php
+                        $account = 1;
+                        foreach ( $profiles as $profile ) :
+                            if ( $account%5!=0 )   
+                            { 
+                        ?>
+                                <td class="friends-allsame-ones"><img  height="50" src="
+                        <?php
+                                if ( $profile->picture !='' )
+                                {
+                                    echo $target.'/'.$profile->picture; 
+                                }
+                                else
+                                { 
+                                    echo $target.'/image1.jpg';
+                                }
+                        ?>
+                                " alt="Score image"/><br /><input type="checkbox" name="friends[]" value="<?php echo $profile->id;?>"  /><?php echo $profile->name;?>
+                                <br />
+                                <?php echo $profile->department->short_name; ?>
+                                </td>
+                            <?php 
+                            }
+                            else 
+                            {  
+                            ?>
+                                </tr>
+                                <tr>
+                            <?php
+                            }
+                            $account++;
+                        endforeach; 
+                        if ( $account%5!=0 )
+                        {
+                        ?>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </table>
                 </div>
             </div>
-            <button class="form-add-new-group" iconcls="icon-ok" onclick="saveData()">新增</a>
+            <button class="form-add-new-group" iconcls="icon-ok" onclick="saveData()" name="addgroup">新增</a>
             <button class="form-cancel-group" iconcls="icon-cancel" onclick="javascript:$('#group-friends').dialog('close')">取消</a>
-        </div>
-        
+        </div> 
         </form>
     </div>

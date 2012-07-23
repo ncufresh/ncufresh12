@@ -66,4 +66,11 @@ class Profile extends CActiveRecord
             )
         ));
     }
+
+    public function getAllMember()
+    {
+        return $this->findAll(array(
+            'order'  => 'id ASC' 
+        ));
+    }
 }

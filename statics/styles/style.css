@@ -1639,16 +1639,20 @@ div.group-friends
 {
     background-color:yellow;
 	display: none;
-	height: 500px;
-	width: 200px;
 }
 
 div.all-members
 {
-     width:400px; 
-     height:280px;
-     padding:10px 20px;
-     /*display: none;*/
+        
+    
+}
+
+div.group-all-friends
+{
+    width: 400px; 
+    height: 400px;
+    padding: 10px 20px;
+    overflow: scroll;
 }
 
 label.group-friends-name

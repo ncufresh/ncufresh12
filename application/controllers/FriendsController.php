@@ -29,12 +29,30 @@ class FriendsController extends Controller
         $departmentId = Profile::model()->findByPK($userID)->department_id;
         $grade = Profile::model()->findByPK($userID)->grade;
         $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+        if ( isset($_POST['addgroup']) )
+        {
+            foreach ( $_POST['friends'] as $friend )
+            {   
+                $nameofgroup = new NameOfGroup();
+                $nameofgroup->name = $_POST['group-name'];
+                $group = new Group();
+                $model->user_id = Yii::app()->user->id;
+                $model->friend_id = $friend;
+                $model->save();
+                $model = new Friend();
+                $model->user_id = $friend;
+                $model->friend_id = Yii::app()->user->id;
+                $model->save();
+            }
+            $this->redirect(array('friends/friends'));
+        }
         $this->setPageTitle(Yii::app()->name . ' - 好友專區');
         $this->render('friends', array(
             'profileFir'    => Profile::model()->getSameDepartmentSameGrade($departmentId, $grade),
             'profileSec'    => Profile::model()->getSameDepartmentDiffGrade($departmentId, $grade),
             'profileThir'   => Profile::model()->getOtherDepartment($departmentId, $grade),
-            'profileFor'    => User::model()->findByPk($userID),           
+            'profileFor'    => User::model()->findByPk($userID),                   
+            'profiles'      => Profile::model()->getAllMember(),         
             'target'        => $imgUrl
         ));
     }
@@ -102,8 +120,6 @@ class FriendsController extends Controller
             {   
                 $model = new Friend();
                 $model->user_id = Yii::app()->user->id;
-                echo $friend;
-                echo '<br />'; // NOTE
                 $model->friend_id = $friend;
                 $model->save();
                 $model = new Friend();
@@ -158,8 +174,4 @@ class FriendsController extends Controller
         $this->redirect(array('friends/friends'));
     }
 
-    public function actionGroups()
-    {
-        $this->redirect(array('friends/friends'));
-    }
 }
