@@ -26,6 +26,16 @@ class  Group extends CActiveRecord
                 self::BELONGS_TO,
                 'Profile',
                 'user_id'
+            ),
+            'mygroups'     => array(
+                self::HAS_MANY,
+                'Group',
+                'user_id'
+            ),
+            'users'     => array(
+                self::HAS_MANY,
+                'UserGroup',
+                'group_id'
             )
         );
     }

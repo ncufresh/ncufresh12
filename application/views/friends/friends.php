@@ -134,14 +134,16 @@
     </table>
     <div class="group-friends" title="自訂好友">
         <form method="POST" action="<?php echo Yii::app()->createUrl('friends/friends');  ?>">
-        <div class="all-members">
-            <div>
+        <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
                 <div class="group-name">
                     <label>名稱: </label>
-                    <input name="group-name" required="true">
+                    <input type="text" name="group-name" required="true" />
+                    <label>描述: </label>
+                    <input type="text" name="group-description" />
+                    <br />
+                    <label>成員: </label>
                 </div>
                 <div class="group-all-friends">
-                    <label>成員: </label>
                     <table>
                         <tr>
                         <?php
@@ -186,9 +188,9 @@
                         ?>
                     </table>
                 </div>
+            <div>
+            <button name="addgroup">新增</a>
+            <button onclick="javascript:$('.group-friends').dialog('close')">取消</a>
             </div>
-            <button class="form-add-new-group" name="addgroup">新增</a>
-            <button class="form-cancel-group" onclick="javascript:$('.group-friends').dialog('close')">取消</a>
-        </div> 
         </form>
     </div>

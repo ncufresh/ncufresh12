@@ -78,4 +78,5 @@ class Profile extends CActiveRecord
             'order'  => 'id ASC' 
         ));
     }
+
 }

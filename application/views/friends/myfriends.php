@@ -1,4 +1,5 @@
 <form method="POST" action="<?php echo $this->createUrl('friends/deletefriends'); ?>">
+<input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
 <table class="other-page">
    <tr >
     <th colspan="5" class="friend-close-page">我的好友</th>
