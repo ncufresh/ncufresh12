@@ -860,6 +860,26 @@
             complete:               function()
             {
                 alert('You complete the konami code!');
+                var back = $('<div></div>').css({
+                    background: 'black',
+                    height: 768,
+                    position: 'absolute',
+                    top: 0,
+                    opacity: 0.5,
+                    left: 0,
+                    width: 1366
+                })
+                .appendTo('body');
+                $('<div></div>').css({
+                    background: 'white',
+                    height: 600,
+                    position: 'relative',
+                    top: 30,
+                    opacity: 1,
+                    left: 200,
+                    width: 900
+                })
+                .appendTo(back);
             }
         }, options);
         var index = 0;
