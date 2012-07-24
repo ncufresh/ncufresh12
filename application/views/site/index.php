@@ -26,7 +26,7 @@ jQuery(document).ready(function()
 <?php foreach ( $marquees as $marquee ) : ?>
         <li><?php echo $marquee->message; ?></li> 
 <?php endforeach; ?>
-        <a href="<?php echo $this->createUrl('site/marquee'); ?>" title="編輯">編輯</a>
+        <a href="<?php echo $this->createUrl('site/marquee'); ?>" title="編輯">[編輯]</a>
     </ul>
 
     <div class="index-latest-box index-box">

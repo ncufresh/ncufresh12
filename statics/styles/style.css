@@ -426,6 +426,8 @@ a:hover
     -webkit-border-radius: 10px;
     background: #DCE4ED;
     border-radius: 10px;
+    color: #210520;
+    font-size: 1.2em;
     margin: 0;
     padding: 5px;
     text-align: center;
@@ -478,6 +480,11 @@ a:hover
 {
     height: 30px;
     line-height: 30px;
+}
+
+#sidebar-personal li a
+{
+    color: #040270;
 }
 
 #sidebar-personal-toggle
@@ -911,6 +918,7 @@ ul#nculife-details
 
 #marquee a
 {
+    color: #F2843B;
     display: block;
     height: 30px;
     line-height: 30px;
