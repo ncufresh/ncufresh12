@@ -24,9 +24,9 @@
 <body>
 
 <div id="header">
-    <span id="moon">
+    <h1 id="moon">
         <a id="logo" href="<?php echo Yii::app()->createUrl('site/index'); ?>" title="<?php echo Yii::app()->name; ?>"><?php echo Yii::app()->name; ?></a>
-    </span>
+    </h1>
     <div class="statics">
         <p class="online">0</p>
         <p class="browsered">0</p>
@@ -44,7 +44,7 @@
             <button id="form-search-button" type="submit">搜尋</button>
         </div>
     </form>
-    <ul id="tab">
+    <ul id="menu">
         <li>
             <a href="<?php echo Yii::app()->createUrl('site/index'); ?>" title="回首頁">回首頁</a>
         </li>
