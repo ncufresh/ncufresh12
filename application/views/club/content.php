@@ -1,4 +1,5 @@
-﻿<script type="text/javascript">
+﻿<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
+<script type="text/javascript">
 jQuery(document).ready(function()
 {
     jQuery('.club-picture1').click(function()
@@ -60,6 +61,7 @@ jQuery(document).ready(function()
 	
 });
 </script>
+<?php $this->endWidget();?>
 
 <div id="club-underpicture">
 	<div id="club-picture-menu">

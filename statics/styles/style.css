@@ -220,7 +220,7 @@ a:hover
     background: url('../images/browsered.png') no-repeat;
 }
 
-#tab
+#menu
 {
     list-style: none;
     margin: 120px 0 0 400px;
@@ -229,7 +229,7 @@ a:hover
     position: absolute;
 }
 
-#tab li
+#menu li
 {
     -webkit-border-radius: 15px;
     background: #E1E5EE;
@@ -242,7 +242,7 @@ a:hover
     text-align: center;
 }
 
-#tab a
+#menu a
 {
     color: #414141;
 }
@@ -1564,17 +1564,20 @@ ul.life-indexs li.life-indexs-content:hover
     width: 96px;
 }
 
-/*club style*/
+/**
+ * Club style
+ */
 #club-list
 {
     text-align: left;
+    overflow: hidden;
 }
 
 .l1
 {
-	float: left;
-	width: 143px;
-	height: 500px;
+    float: left;
+    padding: 0;
+    width: 25%;
 }
 
 #club-title
@@ -1586,7 +1589,6 @@ ul.life-indexs li.life-indexs-content:hover
 #club-all
 {
 	background-color: green;
-
 }
 
 #club-display
@@ -1766,16 +1768,14 @@ div.group-friends
 {
     background-color:yellow;
 	display: none;
-	height: 500px;
-	width: 200px;
 }
 
-div.all-members
+div.group-all-friends
 {
-     width:400px; 
-     height:280px;
-     padding:10px 20px;
-     /*display: none;*/
+    width: 400px; 
+    height: 400px;
+    padding: 10px 20px;
+    overflow: scroll;
 }
 
 label.group-friends-name

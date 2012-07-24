@@ -5,7 +5,7 @@ jQuery(document).ready(function()
         jQuery('#nculife-dialog').dialog(
         {
             dialogClass: 'nculife-dialog',
-            height: 500,
+            height: 280,
             width: 700,
             modal: true,
             show: 
