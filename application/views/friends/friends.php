@@ -112,18 +112,19 @@
         <th>
         <?php
             $account = 1;
-            $row = (integer)($amonut / 6);
+            $row = (integer)($amonut / 6)+1;
         ?>
             <ul>
             <?php foreach($group->mygroups as $mygroup): ?>
                 <?php if ( $account % $row <> 0 ): ?>
-                <li>
-                    <a href="<?php echo Yii::app()->createUrl('friends/mygroups', array('id'=>$mygroup->id));?>"><?php echo $mygroup->name; ?></a>
-                </li>
                 <?php else: ?>
                     </th>
                     <th>
                 <?php endif; ?>
+                <li>
+                    <a href="<?php echo Yii::app()->createUrl('friends/mygroups', array('id'=>$mygroup->id));?>"><?php echo $mygroup->name; ?></a>
+                </li>
+               
                 <?php $account++; ?>
             <?php endforeach; ?>
             <?php if ( $account%5==0 ): ?>

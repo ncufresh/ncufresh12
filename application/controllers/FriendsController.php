@@ -47,7 +47,6 @@ class FriendsController extends Controller
                 }
             }
         }
-        
         $this->setPageTitle(Yii::app()->name . ' - 好友專區');
         $this->render('friends', array(
             'profileFir'    => Profile::model()->getSameDepartmentSameGrade($departmentId, $grade),
