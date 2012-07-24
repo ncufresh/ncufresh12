@@ -122,6 +122,10 @@ a:hover
 {
     background: url('../images/loading.png');
     height: 128px;
+    left: 50%;
+    margin: -64px 0 0 -64px;
+    position: relative;
+    top: 50%;
     width: 128px;
 }
 
@@ -220,7 +224,7 @@ a:hover
     background: url('../images/browsered.png') no-repeat;
 }
 
-#tab
+#menu
 {
     list-style: none;
     margin: 120px 0 0 400px;
@@ -229,7 +233,7 @@ a:hover
     position: absolute;
 }
 
-#tab li
+#menu li
 {
     -webkit-border-radius: 15px;
     background: #E1E5EE;
@@ -242,7 +246,7 @@ a:hover
     text-align: center;
 }
 
-#tab a
+#menu a
 {
     color: #414141;
 }
@@ -280,13 +284,15 @@ a:hover
 #navigation ul
 {
     -webkit-border-radius: 0 0 15px 15px;
-    background: #DAE3EC url('../images/subnavigation.png') repeat-x;
+    background: #DAE3EC;
+    background: rgba(170, 190, 215, 0.7);
     border-radius: 0 0 15px 15px;
     list-style: none;
-    margin-top: -16px;
-    padding: 4px 0;
+    margin: -16px 0 0 10px;
+    padding: 0 0 8px;
     position: relative;
     visibility: hidden;
+    width: 100px;
     z-index: 100;
 }
 
@@ -296,6 +302,7 @@ a:hover
     height: 30px;
     line-height: 30px;
     padding: 4px 0;
+    width: 100px;
 }
 
 #navigation ul a
@@ -316,7 +323,6 @@ a:hover
 #content
 {
     margin: 0 225px 0 25px;
-    min-height: 360px;
     overflow: hidden;
 }
 
@@ -423,6 +429,8 @@ a:hover
     -webkit-border-radius: 10px;
     background: #DCE4ED;
     border-radius: 10px;
+    color: #210520;
+    font-size: 1.2em;
     margin: 0;
     padding: 5px;
     text-align: center;
@@ -475,6 +483,11 @@ a:hover
 {
     height: 30px;
     line-height: 30px;
+}
+
+#sidebar-personal li a
+{
+    color: #040270;
 }
 
 #sidebar-personal-toggle
@@ -729,6 +742,21 @@ input.gsc-search-button:focus
     filter: none;
 }
 
+tr.gsc-completion-selected
+{
+    background: #B4C8C8;
+    background: rgba(180, 200, 200, 0.7);
+}
+
+table.gsc-completion-container
+{
+    -webkit-border-radius: 0 0 5px 5px;
+    border: none;
+    border-radius: 0 0 5px 5px;
+    margin-top: -3px;
+    padding: 5px 0;
+}
+
 #search
 {
     margin: 8px 0 0 580px;
@@ -754,6 +782,7 @@ input.gsc-search-button:focus
     position: relative;
     text-indent: -100000px;
     width: 32px;
+    z-index: 10000;
 }
 
 #result
@@ -908,6 +937,7 @@ ul#nculife-details
 
 #marquee a
 {
+    color: #F2843B;
     display: block;
     height: 30px;
     line-height: 30px;
@@ -1563,17 +1593,20 @@ ul.life-indexs li.life-indexs-content:hover
     width: 96px;
 }
 
-/*club style*/
+/**
+ * Club style
+ */
 #club-list
 {
     text-align: left;
+    overflow: hidden;
 }
 
 .l1
 {
-	float: left;
-	width: 143px;
-	height: 500px;
+    float: left;
+    padding: 0;
+    width: 25%;
 }
 
 #club-title
@@ -1585,7 +1618,6 @@ ul.life-indexs li.life-indexs-content:hover
 #club-all
 {
 	background-color: green;
-
 }
 
 #club-display
