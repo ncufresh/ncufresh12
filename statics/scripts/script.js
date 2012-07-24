@@ -977,12 +977,6 @@
             dateText:    '日期',
             eventText:   '事件'
         }, options);
-        events = [
-            ['2012/8/6', '資訊網上線'],
-            ['2012/8/6', '資訊網上線'],
-            ['2012/8/6', '資訊網上線'],
-            ['2012/8/6', '資訊網上線']
-        ];
         var table = $('<table></table>').addClass(options.tableClass);
         var thead = $('<thead></thead>');
         var tbody = $('<tbody></tbody>');
@@ -1012,11 +1006,13 @@
             month_tc:    ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'], 
             month_en:    ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], 
             dayOfWeek:   ['日', '一', '二', '三', '四', '五', '六'], 
+            today:       true,
             left:        false,
             right:       false,
             linkClick:   function(){ return false; },
             leftClick:   function(){ return false; },
-            rightClick:  function(){ return false; }
+            rightClick:  function(){ return false; },
+            dayClick:    function(){}
         }, options);
         options.month -= 1;
         var daysInMonth = function(iMonth, iYear)
@@ -1062,7 +1058,7 @@
             td.appendTo(tr);
         }
         tr.appendTo(thead);
-        for( var day=1, position=0; day<=daysInMonth(options.month, options.year); position++ )
+        for( var day = 1, position = 0; day <= daysInMonth(options.month, options.year); position++ )
         {
             if ( position%7 == 0 )
             {
@@ -1072,7 +1068,13 @@
             var td = $('<td></td>');
             if ( position>=date.getDay() )
             {
-                td.text(day);
+                td.text(day).click(options.dayClick);
+                if( (new Date()).getDate() == day 
+                    && (new Date()).getMonth()==options.month
+                    && options.today)
+                {
+                    td.css({background: '#ace082'});
+                }
                 ++day;
             }
             td.appendTo(tr);
@@ -1132,7 +1134,7 @@
         });
         september = $.fn.generateCalendar({
             year: 2012,
-            month: 9,
+            month: 8,
             left: true,
             leftClick: function()
             {
@@ -1141,10 +1143,11 @@
                 $.fn.generateCalendar
                 return false;
             }
+            
         });
         august = $.fn.generateCalendar({
             year: 2012,
-            month: 8,
+            month: 7,
             right: true,
             rightClick: function()
             {
@@ -1152,10 +1155,21 @@
                 september.prependTo(bottom);
                 $.fn.generateCalendar
                 return false;
+            },
+            dayClick: function()
+            {
+                $(this).css('border', '1px solid black');
             }
         }).appendTo(bottom);
         bottom.appendTo(bottom_wrap);
-        todolist = $.fn.generateTodolist().appendTo(bottom);
+        todolist = $.fn.generateTodolist(
+            [
+                ['2012/8/6', '資訊網上線'],
+                ['2012/8/6', '資訊網上線'],
+                ['2012/8/6', '資訊網上線'],
+                ['2012/8/6', '資訊網上線']
+            ]
+        ).appendTo(bottom);
         return this;
     };
 })(jQuery);
