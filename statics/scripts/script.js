@@ -189,7 +189,7 @@
         counterAnimationSpeed:  50,
         minimumAnimationTimes:  4,
         interval:               5000,
-        counterDigitElements:   '0123456789ABCDEFGHIJKMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*'
+        counterDigitElements:   '0123456789'
     };
 
     $.pull.start = function(options)
