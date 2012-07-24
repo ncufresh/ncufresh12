@@ -1,6 +1,5 @@
 jQuery(document).ready(function()
 {
-
     var getTabContent = function()
     {  
         var id = jQuery(this).attr('href').replace('#','');
@@ -17,38 +16,6 @@ jQuery(document).ready(function()
         return false;
     }
 
-    // jQuery('.sport-dialog').click(function()
-    // {
-        // jQuery('#nculife-dialog').dialog(
-        // {
-            // dialogClass: 'nculife-dialog',
-            // height: 500,
-            // width: 700,
-            // modal: true,
-            // show: 
-            // {
-                // effect: 'explode',
-                // direction: 'down'
-            // }
-        // });
-    // });
-
-    // jQuery('.food-dialog').click(function()
-    // {
-            // jQuery('#nculife-dialog').dialog(
-            // {
-                // dialogClass: 'nculife-dialog',
-                // height: 315,
-                // width: 620,
-                // modal: true,
-                // show: 
-                // {
-                    // effect: 'explode',
-                    // direction: 'down'
-                // }
-            // });
-    // });
-    
     jQuery('.life-index li ul li').click(function()
     {
         // alert();

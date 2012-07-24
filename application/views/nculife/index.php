@@ -1,14 +1,14 @@
-﻿<script type="text/javascript">
+﻿<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
+<script type="text/javascript">
 jQuery(document).ready(function()
 {
     setInterval(function()
     {
         jQuery('.life-picture').fadeOut(500).eq(jQuery.random(0, $('.life-picture').length - 1)).fadeIn(500);
     }, 1000);
-    
-    
 });
 </script>
+<?php $this->endWidget();?>
 
 <div id="life-container">
     <div id="life-head">

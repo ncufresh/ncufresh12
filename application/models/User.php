@@ -43,7 +43,7 @@ class User extends CActiveRecord
                 self::MANY_MANY,
                 'User',
                 'friends(user_id,friend_id)'
-            )
+            ),
         );
     }
 

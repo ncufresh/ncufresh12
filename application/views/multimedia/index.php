@@ -1,3 +1,4 @@
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
 function mmMenuScroll(offset)
 {
@@ -83,6 +84,8 @@ jQuery(document).ready(function()
     });
 });
 </script>
+<?php $this->endWidget();?>
+
 <div id="mm-container">
     <div id="mm-sidebar">
         <div id="mm-menu">

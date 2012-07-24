@@ -6,46 +6,42 @@
             ),
             array(
                 'name'  => '等級一',
-                'exp'   => 50
-            ),
-            array(
-                'name'  => '等級二',
                 'exp'   => 150
             ),
             array(
-                'name'  => '等級三',
-                'exp'   => 300
-            ),
-            array(
-                'name'  => '等級四',
+                'name'  => '等級二',
                 'exp'   => 500
             ),
             array(
+                'name'  => '等級三',
+                'exp'   => 1200
+            ),
+            array(
+                'name'  => '等級四',
+                'exp'   => 2400
+            ),
+            array(
                 'name'  => '等級五',
-                'exp'   => 750
-            ),
-            array(
-                'name'  => '等級六',
-                'exp'   => 1050
-            ),
-            array(
-                'name'  => '等級七',
-                'exp'   => 1400
-            ),
-            array(
-                'name'  => '等級八',
-                'exp'   => 1800
-            ),
-            array(
-                'name'  => '等級九',
-                'exp'   => 2250
-            ),
-            array(
-                'name'  => '神手級',
                 'exp'   => 5000
             ),
             array(
-                'name'  => '雞雞',
+                'name'  => '等級六',
+                'exp'   => 8050
+            ),
+            array(
+                'name'  => '等級七',
+                'exp'   => 13050
+            ),
+            array(
+                'name'  => '等級八',
+                'exp'   => 20000
+            ),
+            array(
+                'name'  => '等級九',
+                'exp'   => 30000
+            ),
+            array(
+                'name'  => '神手級',
                 'exp'   => 1000000
             ),
             array(
@@ -58,7 +54,7 @@
         $achievements_bag = Character::model()->findByPk($id)->achievements_bag;
         $items_bag = Character::model()->findByPk($id)->items_bag;
         $test = Achievement::model()->findByPk($id);
-        $user->addExp(47);     //加經驗
+        $user->addExp(107);     //加經驗
         $user->addMoney(10);   //加錢幣
         $count=0; //計算等級
         foreach ($level as $value)
@@ -66,7 +62,7 @@
 
           if ( $user->getExpValue() < $value['exp'] )
           {
-              echo '<h1 style="background-color:black;color:red;text-align:center;font-size:40px">'.$count.'次加持 '.$value['name'].'</h1>';
+              echo '<h1 style="background-color:black;color:red;text-align:center;font-size:40px">'.$user->profile->nickname.' '.$count.'次淨化 '.$value['name'].'</h1>';
               if($count>=10)
               echo '<h1 style="background-color:black;color:red;text-align:center;font-size:40px">'.$user->getExpValue().' / ∞ (最高等級)</h1>';
               else
