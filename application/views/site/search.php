@@ -1,3 +1,4 @@
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
 google.setOnLoadCallback(function()
 {
@@ -9,4 +10,6 @@ google.setOnLoadCallback(function()
     control.execute('<?php echo $query; ?>');
 });
 </script>
-<div id="result">載入搜尋結果中……</div>
+<?php $this->endWidget();?>
+
+<div id="result"><div class="loading"></div></div>

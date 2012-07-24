@@ -1,8 +1,3 @@
-<script type="text/javascript">
-    jQuery(document).ready(function(){
-            jQuery.configures.ncuLifeUrl = '<?php echo Yii::app()->createAbsoluteUrl('nculife/sportcontent',array('tab_id'=> ':id'));?>';
-    });
-</script>
 中大運動
 <div class="nculife-sport">
     <button class="sport-dialog">游泳池</button>

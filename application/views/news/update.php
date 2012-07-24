@@ -1,5 +1,7 @@
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
-jQuery(document).ready(function(){
+jQuery(document).ready(function()
+{
     jQuery.extend({
         configures: 
         {
@@ -8,6 +10,8 @@ jQuery(document).ready(function(){
     });
 });
 </script>
+<?php $this->endWidget();?>
+
 <h1>編輯文章</h1>
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('news/update', array('id'=>$news->id) ); ?>" method="POST" class="MultiFile-intercepted">
     <dl>

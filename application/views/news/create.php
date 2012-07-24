@@ -1,4 +1,7 @@
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl . '/statics/scripts/jquery.multifile.js'; ?>"></script>
+<?php $this->endWidget();?>
+
 <h1>新增文章</h1>
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('news/create')?>" method="POST" class="MultiFile-intercepted">
     <dl>
