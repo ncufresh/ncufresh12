@@ -119,7 +119,7 @@
                     <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><?php echo $friend->profile->name;?></td>
         <?php
                 }
-            $account++;
+                $account++;
             }
             else
             {
@@ -129,9 +129,50 @@
         ?>
         </tr>
         <tr>
-        <th colspan="5" class="form-friends-title"><a href="#" title="自訂" class="form-friends-self-editor" name="friends-self-editor" >自訂</a></th> <!--跳出視窗-->
+        <th colspan="5" class="form-friends-title" ><a href="<?php echo Yii::app()->createUrl('friends/mygroups'); ?>" title="群組" class="form-friends-title">我的群組</a></th>
         </tr>
     </table>
+    <table>
+        <tr>
+        <th>
+        <?php
+            $account = 1;
+            $row = (integer)($amonut/6);
+            echo '<ul>';
+            foreach($group->mygroups as $mygroup):
+                if ( $account%$row <> 0 )
+                { 
+                    echo '<li><a href="#" id="group">'.$mygroup->name . '</li>';
+                    $temp = UserGroup::model()->getMemberId($mygroup->id);//得到該群組所有朋友ID
+                    /*foreach($temp as $friend):
+                        $member = Profile::model()->findByPk($friend->user_id);
+                        echo '<td>成員有=>'.$member->name.'</td>';
+                    endforeach;*/
+                    
+                }
+                else
+                {
+                    echo '</th>';
+                    echo '<th>';
+                }
+                $account++;
+                $amonut++;
+            endforeach;
+            if ( $account%5==0 )
+            {
+                echo '</th>';
+            }
+            echo '</ul>';
+        ?>
+        </th>
+        </tr>
+    </table>
+    <table>
+        <tr>
+        <th class="form-friends-title"><a href="#" title="自訂" class="form-friends-self-editor" name="friends-self-editor" >自訂</a></th> <!--跳出視窗-->
+        </tr>
+    </table>
+    
     <div class="group-friends" title="自訂好友">
         <form method="POST" action="<?php echo Yii::app()->createUrl('friends/friends');  ?>">
         <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />

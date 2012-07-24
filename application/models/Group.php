@@ -32,7 +32,7 @@ class  Group extends CActiveRecord
                 'Group',
                 'user_id'
             ),
-            'users'     => array(
+            'group_members'     => array(
                 self::HAS_MANY,
                 'UserGroup',
                 'group_id'
@@ -55,5 +55,21 @@ class  Group extends CActiveRecord
                 ':id' => $groupId,
             )
         ));
+    }
+
+    public function getGroupAmount($userID)
+    {
+        $temp = $this->findAll(array(
+            'condition' => 'user_id = :id',
+            'params'    => array(
+                ':id' => $userID,
+            )
+        ));
+        $group_amounts = 0;
+        foreach( $temp as $group)
+        {
+            $group_amounts++;
+        }
+        return $group_amounts;
     }
 }    

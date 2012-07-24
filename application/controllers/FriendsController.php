@@ -56,6 +56,8 @@ class FriendsController extends Controller
             'profileFor'    => User::model()->findByPk($userID),                   
             'profiles'      => Profile::model()->getAllMember(), 
             'user'          => User::model()->findByPk($userID),
+            'group'         => Group::model()->findByPk($userID),
+            'amonut'        => Group::model()->getGroupAmount($userID),
             'target'        => $imgUrl
         ));
     }
@@ -184,6 +186,11 @@ class FriendsController extends Controller
             }   
         }
         $this->redirect(array('friends/friends'));
+    }
+
+    public function actionMyGroups()
+    {
+        //$this->redirect(array('friends/mygroups'));
     }
 
 }
