@@ -36,37 +36,39 @@ class Article extends CActiveRecord
     public function getArticlesSort($fid, $sort, $category, $page, $entries_per_page){
         switch ($sort)
         {
-            case "create":
-                $sort='create_time';
+            case 'create':
+                $sort = 'create_time';
                 break;
-            case "update":
-                $sort='update_time';
+            case 'update':
+                $sort = 'update_time';
                 break;
-            case "reply":
-                $sort='replies_count';
+            case 'reply':
+                $sort = 'replies_count';
                 break;
-            case "viewed":
-                $sort='viewed_times';
+            case 'viewed':
+                $sort = 'viewed_times';
                 break;
             default:
                 throw new Exception('The sort column name does not exist.');
                 break;
         }
-        if($category==0){
+        if ( $category == 0 )
+        {
             $count = $this->count();
             $total_pages = ceil($count / $entries_per_page);
             $current_page = ($page<$total_pages?$page:$total_pages);
             return $this->findAll(array(
                 'condition' => 'forum_id='.$fid.' AND visibility=1',
-                'order' => "$sort DESC",
-                'limit' => $entries_per_page,
-                'offset' => ($current_page-1) * $entries_per_page
+                'order'     => $sort . ' DESC',
+                'limit'     => $entries_per_page,
+                'offset'    => ($current_page - 1) * $entries_per_page
             ));
         }
-        else{
+        else
+        {
             return $this->findAll(array(
-                'condition' => 'forum_id='.$fid.' AND visibility=1 AND category='.$category,
-                'order' => "$sort DESC",
+                'condition' => 'forum_id = ' . $fid . ' AND visibility = 1 AND category = ' . $category,
+                'order'     => $sort . ' DESC'
             ));
         }
     }

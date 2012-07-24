@@ -65,6 +65,7 @@ class ClubController extends Controller
         )); 
         
 	}
+
     public function actionUploadpicture($id)
     {
         $id = (integer)$id;
@@ -84,8 +85,8 @@ class ClubController extends Controller
             }
             $this->redirect(array("club/content/$id"));
         }
-        $this->render('uploadpicture',array(
-            'id'=>$id,
+        $this->render('uploadpicture', array(
+            'id'    => $id,
         ));
     } 
 }
