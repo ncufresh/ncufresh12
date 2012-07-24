@@ -1,4 +1,5 @@
 <form enctype="multipart/form-data" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
+<input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
 <table class="other-page">
    <tr>
         <th colspan="5" class="friend-allsame-page">同屆同系</th>

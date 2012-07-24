@@ -1788,6 +1788,12 @@ ul.life-indexs li.life-indexs-content:hover
 	margin-center:auto;
 }
 
+div.add-members
+{
+    background-color:blue;
+	display: none;
+}
+
 div.group-friends
 {
     background-color:yellow;

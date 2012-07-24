@@ -7,91 +7,72 @@
         <th colspan="4" class="form-friends-title"><a href="<?php echo Yii::app()->createUrl('friends/samedepartmentsamegrade'); ?>" title="同系同屆" class="form-friends-title">同系同屆</a></th> <!--重新導向一個自訂的網頁-->
         </tr>
         <tr>
-        <?php 
-        $account = 1;
-        foreach ( $profileFir as $profilefir ) :
-            if ( $account<=4 )   //限顯現4人
-            { 
-                if ( $profilefir->picture !='' )
-                {
-        ?>  
-                    <td class="friends-samediff-ones"><img  height="70" src=" <?php echo $target.'/'.$profilefir->picture; ?>" alt="Score image"/><br /><?php echo $profilefir->name;?></td>
-                <?php
-                }
-                else
-                {
-                ?>
-                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><?php echo $profilefir->name;?></td>
-        <?php
-                }
-            $account++;
-            }
-            else
-            {
-                break;
-            }
-        endforeach; 
-        ?>
+        <?php $account = 1;?>
+        <?php foreach ( $profileFir as $profilefir ) :?>
+            <?php if ( $account<=4 ):  ?>
+                    <?php if ( $profilefir->picture !='' ):?>
+                        <td class="friends-samediff-ones"><img  height="70" src=" <?php echo $target.'/'.$profilefir->picture; ?>" alt="Score image"/>
+                        <br />
+                        <?php echo $profilefir->name;?>
+                        </td>
+                    <?php else: ?>
+                        <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/>
+                        <br />
+                        <?php echo $profilefir->name;?>
+                        </td>
+                    <?php endif;?>
+                <?php $account++;?>
+            <?php endif;?>
+                    <?php break;?>
+        <?php endforeach; ?>
         </tr>
         <tr class="friends-title">
         <th align="center";  colspan="4" class="form-friends-title" ><a href="<?php echo Yii::app()->createUrl('friends/samedepartmentdiffgrade'); ?>" title="同系不同屆" class="form-friends-title">同系不同屆</a></th> <!--重新導向一個自訂的網頁-->
         </tr>
         <tr>
-        <?php 
-        $account = 1;
-        foreach ( $profileSec as $profilesec ) :
-            if ( $account<=4 )   //限顯現4人
-            { 
-                if ( $profilesec->picture !='' )
-                {
-        ?>  
-                    <td class="friends-samediff-ones"><img  height="70" src=" <?php echo $target.'/'.$profilesec->picture; ?>" alt="Score image"/><br /><?php echo $profilesec->name;?></td>
-                <?php
-                }
-                else
-                {
-                ?>
-                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><?php echo $profilesec->name;?></td>
-        <?php
-                }
-            $account++;
-            }
-            else
-            {
-                break;
-            }
-        endforeach; 
-        ?>
+        <?php $account = 1;?>
+        <?php foreach ( $profileSec as $profilesec ) :?>
+            <?php if ( $account<=4 ) :?>  
+                <?php if ( $profilesec->picture !='' ):?> 
+                    <td class="friends-samediff-ones"><img  height="70" src=" <?php echo $target.'/'.$profilesec->picture; ?>" alt="Score image"/>
+                    <br />
+                    <?php echo $profilesec->name;?>
+                    </td>
+                <?php else:?>
+                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/>
+                    <br />
+                    <?php echo $profilesec->name;?>
+                    </td>
+                <?php endif;?>
+                <?php $account++;?>
+            <?php else:?>
+                <?php break;?>
+             <?php endif;?>
+        <?php endforeach; ?>
         </tr>
         <tr class="friends-title">
         <th colspan="4" class="form-friends-title" ><a href="<?php echo Yii::app()->createUrl('friends/otherdepartment'); ?>" title="其他科系" class="form-friends-title">其他科系</a></th> <!--重新導向一個自訂的網頁-->
         </tr>
         <tr>
-        <?php 
-        $account = 1;
-        foreach ( $profileThir as $profilethir ) :
-            if ( $account<=4 )   //限顯現4人
-            { 
-                if ( $profilethir->picture !='' )
-                {
-        ?>  
-                    <td class="friends-samediff-ones"><img  height="70" src=" <?php echo $target.'/'.$profilethir->picture; ?>" alt="Score image"/><br /><?php echo $profilethir->name;?></td>
-                <?php
-                }
-                else
-                {
-                ?>
-                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><?php echo $profilethir->name;?></td>
-        <?php
-                }
-            $account++;
-            }
-            else
-            {
-                break;
-            }
-        endforeach; 
-        ?>
+        <?php $account = 1;?>
+        <?php foreach ( $profileThir as $profilethir ) :?>
+            <?php if ( $account<=4 ):?> 
+                <?php if ( $profilethir->picture !='' ):?>
+                <td class="friends-samediff-ones"><img  height="70" src=" <?php echo $target.'/'.$profilethir->picture; ?>" alt="Score image"/>
+                <br />
+                <?php echo $profilethir->name;?>
+                </td>
+                <?php else:?>
+                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/>
+                    <br />
+                    <?php echo $profilethir->name;?>
+                    </td>
+                 <?php endif;?>
+            <?php $account++;?>
+            <?php else:?>
+                <?php break;?>
+             <?php endif;?>
+        <?php endforeach; ?>
         </tr>
     </table>
     <table class="close-group">
@@ -102,31 +83,25 @@
         <th colspan="5" class="form-friends-title" ><a href="<?php echo Yii::app()->createUrl('friends/myfriends'); ?>" title="朋友" class="form-friends-title">朋友</a></th> <!--重新導向一個自訂的網頁-->
         </tr>
         <tr>
-        <?php 
-        $account = 1;
-        foreach ( $profileFor->friends as $friend ) :
-            if ( $account<=5 )   //限顯現5人
-            { 
-                if ( $friend->profile->picture !='' )
-                {
-        ?>  
-                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/'.$friend->profile->picture; ?>" alt="Score image"/><br /><?php echo $friend->profile->name;?></td>
-                <?php
-                }
-                else
-                {
-                ?>
-                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/><br /><?php echo $friend->profile->name;?></td>
-        <?php
-                }
-                $account++;
-            }
-            else
-            {
-                break;
-            }
-        endforeach; 
-        ?>
+        <?php  $account = 1;?>
+        <?php foreach ( $profileFor->friends as $friend ) :?>
+            <?php if ( $account<=5 ) :?> 
+                <?php if ( $friend->profile->picture !='' ):?>
+                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/'.$friend->profile->picture; ?>" alt="Score image"/>
+                    <br />
+                    <?php echo $friend->profile->name;?>
+                    </td>
+                <?php else:?>
+                    <td class="friends-close-ones"><img  height="70" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/>
+                    <br />
+                    <?php echo $friend->profile->name;?>
+                    </td>
+                <?php endif;?>
+            <?php $account++;?>
+            <?php else:?>
+                <?php break;?>
+             <?php endif;?>
+        <?php endforeach; ?>
         </tr>
         <tr>
         <th colspan="5" class="form-friends-title" ><a href="<?php echo Yii::app()->createUrl('friends/mygroups'); ?>" title="群組" class="form-friends-title">我的群組</a></th>
@@ -163,7 +138,6 @@
         <th class="form-friends-title"><a href="#" title="自訂" class="form-friends-self-editor" name="friends-self-editor" >自訂</a></th> <!--跳出視窗-->
         </tr>
     </table>
-    
     <div class="group-friends" title="自訂好友">
         <form method="POST" action="<?php echo Yii::app()->createUrl('friends/friends');  ?>">
         <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />

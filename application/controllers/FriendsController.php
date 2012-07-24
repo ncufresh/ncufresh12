@@ -126,19 +126,26 @@ class FriendsController extends Controller
          || isset($_POST['otherdepartment-ensure'])
         )
         {
+            $userId = Yii::app()->user->id;
+            $model = new Friend();
+            $model->user_id = $userId;
+            $model->friend_id = $userId;
+            $model->save();
             foreach ( $_POST['friends'] as $friend )
             {   
-                $userId = Yii::app()->user->id;
                 if ( $userId<>$friend )
                 {
                     $model = new Friend();
-                    $model->user_id = $userId;
-                    $model->friend_id = $friend;
-                    $model->save();
-                    $model = new Friend();
-                    $model->user_id = $friend;
-                    $model->friend_id = $userId;
-                    $model->save();
+                     if ( $model->user_id<>$userId &&  $model->friend_id<>$friend )
+                     {
+                        $model->user_id = $userId;
+                        $model->friend_id = $friend;
+                        $model->save();
+                        $model = new Friend();
+                        $model->user_id = $friend;
+                        $model->friend_id = $userId;
+                        $model->save();
+                    }
                 }
             }
             $this->redirect(array('friends/friends'));
@@ -160,7 +167,7 @@ class FriendsController extends Controller
             $this->redirect(array('friends/friends'));
         }
     }
-    
+
     public function actionDeleteFriends()
     {
         if ( isset($_POST['myfriends-cancel']) && isset($_POST['friends']) )
@@ -190,16 +197,41 @@ class FriendsController extends Controller
 
     public function actionMyGroups()
     {
-         $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';   
-         $this->setPageTitle(Yii::app()->name . ' - 我的群組');
+        $userID = Yii::app()->user->id;
+        $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';   
+        $this->setPageTitle(Yii::app()->name . ' - 我的群組');
         if ( isset($_GET['id']) )
         {
             $this->render('mygroups', array(
+                'user'          => User::model()->findByPk($userID),
                 'members'         => UserGroup::model()->getMemberId($_GET['id']), //得到社團ID
                 'mygroup'       =>Group::model()->findByPK($_GET['id']),
                 'target'        => $imgUrl
             ));
         }
+        else if ( isset($_POST['friends']) && isset($_GET['id']) &&isset($_POST['addmember']) )
+        {  
+            echo '進來了...+新成員';
+            exit();
+            foreach ( $_POST['friends'] as $friend )
+            {
+                $group = new UserGroup();
+                $group->user_id = $friend;
+                $group->group_id = $_GET['id'];
+                $group->save();
+            } 
+            if ( $group->save() )
+            {
+                $this->render('mygroups', array(
+                    'user'          => User::model()->findByPk($userID),
+                    'members'         => UserGroup::model()->getMemberId($_GET['id']), //得到社團ID
+                    'mygroup'       =>Group::model()->findByPK($_GET['id']),
+                    'id'=>$_POST['groupID'],
+                    'target'        => $imgUrl
+                ));
+                //$this->redirect(Yii::app()->createUrl('friends/mygroups', array('id'=>$_POST['groupID'])));
+            } 
+        } 
         else
         {
             $this->redirect(array('friends/friends'));
@@ -208,14 +240,15 @@ class FriendsController extends Controller
 
     public function actionDeleteGroupFriends()
     {
-        if ( isset($_POST['myfriends-cancel']) && isset($_POST['members']) )
+        if ( isset($_POST['mygroups-cancel']) && isset($_POST['members']) )
         {
             foreach ( $_POST['members'] as $cancelmember )
             {   
                 $data1 = UserGroup::model()->find(array(
-                    'condition' => 'user_id = :user_id ',
+                    'condition' => 'user_id = :user_id AND group_id = :group_id',
                     'params'    => array(
                         ':user_id'      => $cancelmember,
+                        ':group_id'      => $_POST['groupID']
                     )
                 ));
                 UserGroup::model()->deleteByPk($data1->id);  
