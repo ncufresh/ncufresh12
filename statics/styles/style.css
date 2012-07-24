@@ -122,6 +122,10 @@ a:hover
 {
     background: url('../images/loading.png');
     height: 128px;
+    left: 50%;
+    margin: -64px 0 0 -64px;
+    position: relative;
+    top: 50%;
     width: 128px;
 }
 
@@ -319,7 +323,6 @@ a:hover
 #content
 {
     margin: 0 225px 0 25px;
-    min-height: 360px;
     overflow: hidden;
 }
 

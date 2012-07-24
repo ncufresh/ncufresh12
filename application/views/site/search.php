@@ -12,4 +12,4 @@ google.setOnLoadCallback(function()
 </script>
 <?php $this->endWidget();?>
 
-<div id="result">載入搜尋結果中……</div>
+<div id="result"><div class="loading"></div></div>
