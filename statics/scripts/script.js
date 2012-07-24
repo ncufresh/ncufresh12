@@ -862,10 +862,10 @@
                 alert('You complete the konami code!');
                 var back = $('<div></div>').css({
                     background: 'black',
-                    height: 768,
+                    height: 3000,
                     position: 'absolute',
                     top: 0,
-                    opacity: 0.5,
+                    opacity: 0.8,
                     left: 0,
                     width: 1366
                 })
@@ -875,9 +875,12 @@
                     height: 600,
                     position: 'relative',
                     top: 30,
-                    opacity: 1,
                     left: 200,
                     width: 900
+                })
+                .appendTo(back);
+                $('<p></p>').css({
+                    
                 })
                 .appendTo(back);
             }
