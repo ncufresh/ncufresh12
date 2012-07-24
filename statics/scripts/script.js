@@ -1004,11 +1004,16 @@
         options = $.extend({
             year:        0,
             month:       0,
-            tableClass:  'calendar-table',
-            month_tc:    ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
-            month_en:    ['January','February','March','April','May','June','July','August','September','October','November','December'],
-            dayOfWeek:   ['日','一','二','三','四','五','六'],
+            tableClass:  'calendar-table', 
+            buttonClass: 'calendar-button',
+            month_tc:    ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'], 
+            month_en:    ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], 
+            dayOfWeek:   ['日', '一', '二', '三', '四', '五', '六'], 
+            left:        false,
+            right:       false,
             linkClick:   function(){ return false; },
+            leftClick:   function(){ return false; },
+            rightClick:  function(){ return false; }
         }, options);
         options.month -= 1;
         var daysInMonth = function(iMonth, iYear)
@@ -1020,20 +1025,41 @@
             .attr('href', '#')
             .text(options.month_en[options.month]+' '+options.month_tc[options.month])
             .click(options.linkClick);
-        var caption = $('<caption></caption>')
-            .append(link);
+        var left = $('<a></a>')
+            .attr('href','#')
+            .text('<<')
+            .addClass(options.buttonClass)
+            .css({
+                left: 0,
+                position: 'absolute'
+            })
+            .click(options.leftClick);
+        var right = $('<a></a>')
+            .attr('href','#')
+            .text('>>')
+            .addClass(options.buttonClass)
+            .css({
+                position: 'absolute',
+                right: 0
+            })
+            .click(options.rightClick);
+        var caption = $('<caption></caption>').css({
+            position: 'relative'
+        }).append(link);
+        if ( options.left ) caption.prepend(left);
+        if ( options.right ) caption.append(right);
         var thead = $('<thead></thead>');
         var tbody = $('<tbody></tbody>');
         var tr = $('<tr></tr>');
         var date = new Date(options.year, options.month);
-        for(var key in options.dayOfWeek)
+        for( var key in options.dayOfWeek )
         {
             var td = $('<td></td>').text(options.dayOfWeek[key]);
             if ( key==0 || key==6 ) td.addClass('weekend');
             td.appendTo(tr);
         }
         tr.appendTo(thead);
-        for(var day=1, position=0; day<=daysInMonth(options.month, options.year); position++)
+        for( var day=1, position=0; day<=daysInMonth(options.month, options.year); position++ )
         {
             if ( position%7 == 0 )
             {
@@ -1104,7 +1130,8 @@
         september = $.fn.generateCalendar({
             year: 2012,
             month: 9,
-            linkClick: function()
+            left: true,
+            leftClick: function()
             {
                 september.detach();
                 august.prependTo(bottom);
@@ -1115,7 +1142,8 @@
         august = $.fn.generateCalendar({
             year: 2012,
             month: 8,
-            linkClick: function()
+            right: true,
+            rightClick: function()
             {
                 august.detach();
                 september.prependTo(bottom);

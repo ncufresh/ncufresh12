@@ -948,6 +948,7 @@ ul#nculife-details
     width: 204px;
     height: 349px;
     float: left;
+    overflow: hidden;
     position: absolute;
     background: url('../images/calendar_content2.png');
 }
