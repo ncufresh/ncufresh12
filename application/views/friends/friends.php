@@ -152,46 +152,30 @@
                 <div class="group-all-friends">
                     <table>
                         <tr>
-                        <?php
-                        $account = 1;
-                        foreach ( $user->friends as $friend ) :
-                            if ( $account%5!=0 )   
-                            { 
-                        ?>
-                                <td><img  height="50" src="
-                        <?php
-                                if ( $friend->profile->picture !='' )
-                                {
-                                    echo $target.'/'.$friend->profile->picture; 
-                                }
-                                else
-                                { 
-                                    echo $target.'/image1.jpg';
-                                }
-                        ?>
-                                " alt="Score image"/><br /><input type="checkbox" name="friends[<?php echo $friend->profile->id;?>]" value="<?php echo $friend->profile->id;?>"/>
-                                <?php echo $friend->profile->name;?>
-                                <br />
-                                <?php echo $friend->profile->department->short_name; ?>
-                                </td>
-                            <?php 
-                            }
-                            else 
-                            {  
-                            ?>
+                        <?php $account = 1;?>
+                        <?php foreach ( $user->friends as $friend ) :?>
+                            <?php if ( $account%5!=0 ):?>
+                            <?php else:?> 
                                 </tr>
                                 <tr>
-                            <?php
-                            }
-                            $account++;
-                        endforeach; 
-                        if ( $account%5!=0 )
-                        {
-                        ?>
+                             <?php $account ++; ?>
+                            <?php endif;?>
+                                    <td><img  height="50" src="
+                                    <?php if ( $friend->profile->picture !='' ):?>
+                                        <?php echo $target.'/'.$friend->profile->picture; ?>
+                                    <?php else:?>
+                                        <?php echo $target.'/image1.jpg';?>
+                                    <?php endif;?>    
+                                        " alt="Score image"/><br /><input type="checkbox" name="friends[<?php echo $friend->profile->id;?>]" value="<?php echo $friend->profile->id;?>"/>
+                                        <?php echo $friend->profile->name;?>
+                                        <br />
+                                        <?php echo $friend->profile->department->short_name; ?>
+                                    </td>
+                            <?php $account++;?>
+                        <?php endforeach; ?>
+                        <?php if ( $account%5!=0 ):?>
                             </tr>
-                        <?php
-                        }
-                        ?>
+                        <?php endif;?>
                     </table>
                 </div>
             <div>
