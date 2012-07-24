@@ -975,12 +975,12 @@ ul#nculife-details
 
 #index-calendar .calendar-bottom-wrap
 {
-    width: 204px;
-    height: 349px;
+    background: #FFEDB7;
+    border-radius: 0 0 15px 15px;
     float: left;
     overflow: hidden;
     position: absolute;
-    background: url('../images/calendar_content2.png');
+    width: 204px;
 }
 
 #index-calendar .calendar-bottom-wrap table.calendar-table caption
