@@ -1,8 +1,7 @@
-<form method="POST" action="<?php echo $this->createUrl('friends/deletegroupfriends'); ?>">
+<form method="POST" action="<?php echo $this->createUrl('friends/deletemembers', array('id'=>$mygroup->id)); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
-<input type="hidden" name="groupID" value="<?php echo $mygroup->id; ?>" />
 <table>
-   <tr >
+    <tr>
     <th colspan="5" class="mygroup-name" ><?php echo $mygroup->name; ?></ th>
     </tr>
     <tr>
@@ -38,11 +37,13 @@
             </tr>
      <?php endif;?>
 </table>
-<button  type="submit" name="mygroups-cancel">退出社團/BACK</button>
+<button type="submit">退出社團</button>
 </form>
+<button><a href="<?php echo Yii::app()->createUrl('friends/friends')  ?>">BACK</a></button>
+<button><a href="<?php echo Yii::app()->createUrl('friends/deletegroup', array('id'=>$mygroup->id))  ?>">刪除群組</a></button>
 <button   id="mygroups-add-member">+新成員</button>
 <div class="add-members" title="+新朋友">
-<form method="POST" action="<?php echo Yii::app()->createUrl('friends/mygroups', array('id'=>$mygroup->id))  ?>">
+<form method="POST" action="<?php echo Yii::app()->createUrl('friends/addnewmembers', array('id'=>$mygroup->id))  ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
         <div>
             <label>成員: </label>

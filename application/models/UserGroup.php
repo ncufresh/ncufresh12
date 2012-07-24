@@ -14,7 +14,7 @@ class  UserGroup extends CActiveRecord
         return '{{user_groups}}';
     }
 
-    public function getMemberId($groupID)
+    public function getMembers($groupID)
     {
         return $this->findAll(array(
             'condition' => 'group_id = :id',

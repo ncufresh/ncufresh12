@@ -124,7 +124,6 @@
                 <li>
                     <a href="<?php echo Yii::app()->createUrl('friends/mygroups', array('id'=>$mygroup->id));?>"><?php echo $mygroup->name; ?></a>
                 </li>
-               
                 <?php $account++; ?>
             <?php endforeach; ?>
             <?php if ( $account%5==0 ): ?>

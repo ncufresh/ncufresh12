@@ -199,13 +199,33 @@ class FriendsController extends Controller
         $userID = Yii::app()->user->id;
         $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';   
         $this->setPageTitle(Yii::app()->name . ' - 我的群組');
+        if ( isset($_GET['id']) )
+        {
+            $this->render('mygroups', array(
+                'user'          => User::model()->findByPk($userID),
+                'members'         => UserGroup::model()->getMembers($_GET['id']), //得到社團ID
+                'mygroup'       =>Group::model()->findByPK($_GET['id']),
+                'target'        => $imgUrl
+            ));
+        }
+        else
+        {
+            $this->redirect(array('friends/friends'));
+        }
+    }
+
+    public function actionAddNewMembers()
+    {
+        $userID = Yii::app()->user->id;
+        $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';   
+        $this->setPageTitle(Yii::app()->name . ' - 新增成員');
         if ( isset($_POST['friends'] ) && isset ( $_GET['id'] ) )
-        {   
+        {
             foreach ( $_POST['friends'] as $friend )
             {
                 $_exist=false;
                 $group = new UserGroup();
-                foreach ( $group->getMemberId($_GET['id']) as $member )
+                foreach ( $group->getMembers($_GET['id']) as $member )
                 {
                     if (  $member->user_id === $friend )
                     {
@@ -218,30 +238,21 @@ class FriendsController extends Controller
                         $group->group_id = $_GET['id'];
                         $group->save();
                 }
-            } 
+            }
             if ( $group->save() )
             {
                 $this->redirect(Yii::app()->createUrl('friends/mygroups', array('id'=>$_GET['id'])));
-            } 
-        } 
-        else if ( isset($_GET['id']) )
-        {
-            $this->render('mygroups', array(
-                'user'          => User::model()->findByPk($userID),
-                'members'         => UserGroup::model()->getMemberId($_GET['id']), //得到社團ID
-                'mygroup'       =>Group::model()->findByPK($_GET['id']),
-                'target'        => $imgUrl
-            ));
+            }
         }
         else
         {
-            $this->redirect(array('friends/friends'));
+            $this->redirect(array('friends/myfriends'));
         }
     }
 
-    public function actionDeleteGroupFriends()
+    public function actionDeleteMembers()
     {
-        if ( isset($_POST['mygroups-cancel']) && isset($_POST['members']) )
+        if ( isset($_POST['members']) && isset($_GET['id']))
         {
             foreach ( $_POST['members'] as $cancelmember )
             {   
@@ -249,16 +260,35 @@ class FriendsController extends Controller
                     'condition' => 'user_id = :user_id AND group_id = :group_id',
                     'params'    => array(
                         ':user_id'      => $cancelmember,
-                        ':group_id'      => $_POST['groupID']
+                        ':group_id'      => $_GET['id']
                     )
                 ));
                 UserGroup::model()->deleteByPk($data1->id);  
             } 
-            $this->redirect(Yii::app()->createUrl('friends/mygroups', array('id'=>$_POST['groupID'])));
+            $this->redirect(Yii::app()->createUrl('friends/mygroups', array('id'=>$_GET['id'])));
         }
         else
         {
-            $this->redirect(array('friends/friends'));
+            $this->redirect(Yii::app()->createUrl('friends/mygroups', array('id'=>$_GET['id'])));
         }
+    }
+
+    public function actionDeleteGroup()
+    {   
+        if ( isset ( $_GET['id'] ) )
+        {
+            Group::model()->deleteByPk($_GET['id']);
+            UserGroup::model()->deleteAll(array(
+                'condition' => 'group_id = :id',
+                'params'    => array(
+                    ':id' => $_GET['id'] 
+                )
+            ));
+            $this->redirect(array('friends/friends'));
+        }    
+        else
+        {
+            $this->redirect(array('friends/myfriends'));
+        }       
     }
 }
