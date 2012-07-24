@@ -8,7 +8,7 @@
         $row = 0;
         $col = 1;
         foreach ( $profiles as $profile ) :
-            if ( $row<=4 )   //限顯現4行
+            if ( $row<=4 )   //限顯現5行
             { 
         ?>
                 <td class="friends-allsame-ones"><img  height="70" src="

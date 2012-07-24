@@ -7,46 +7,35 @@
         <?php 
         $row = 0;
         $col = 1;
-        
         foreach ( $profiles as $profile ) :
-            if ( $row<=4 )   //限顯現4行
-            { 
+            if ( $row<=4 ) :  //限顯現5行
         ?>
                 <td class="friends-allsame-ones"><img  height="70" src="
         <?php
-                if ( $profile->picture !='' )
-                {
+                if ( $profile->picture !='' ):
                     echo $target.'/'.$profile->picture; 
-                }
-                else
-                { 
+                else:
                     echo $target.'/image1.jpg';
-                }
+                endif;
         ?>
-                " alt="Score image"/><br /><input type="checkbox" name="friends[<?php echo $profile->id;?>]" value="<?php echo $profile->id;?>"  />
-                <?php echo $profile->name;?>
-                <br />
+                " alt="Score image"/><br />
+                <input type="checkbox" name="friends[<?php echo $profile->id;?>]" value="<?php echo $profile->id;?>"  />
+                <?php echo $profile->name;?> <br />
                 <?php echo $user->profile->department->short_name; ?>
                 </td>
-                <?php
-                if ( $col%5==0 ) 
-                {
-                    $row+=1;
-                ?>
+                <?php if ( $col%5==0 ) : ?>
+                 <?php $row+=1;?>
                     </tr>
                     <tr>
         <?php
-                }
-            }
+                endif;
+            endif;
             $col++;
         endforeach; 
-        if ( $col%5!=0 )
-        {
+        if ( $col%5!=0 ):
         ?>
             </tr>
-        <?php
-        }
-        ?>
+        <?php endif;?>
 </table>
 <button id="form-samedepartmentsamegrade-rechoose" type="submit" name="samedepartmentsamegrade-rechoose">重選</button>
 <button id="form-samedepartmentsamegrade-ensure" type="submit" name="samedepartmentsamegrade-ensure">確定加為好友</button>

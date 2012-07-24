@@ -1,9 +1,10 @@
 <h2>編輯基本資料</h2>
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('profile/editor'); ?>" method="POST">
+ <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
    <!-- <input type="hidden" name="MAX_FILE_SIZE" value="327680" />-->    
     <img  height="200" src="
-    <?php
-        if ( $user->profile->picture !='' )
+    <?php   
+        if ( $user->profile->picture !=' ' )
         {
             echo $target.'/'.$user->profile->picture; 
         }
@@ -71,7 +72,6 @@
             <br />
         </li> 
         <li>
-            <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
             <label class="form-profile-bpicture">大頭照:  </label>
             <input type="file" name="picture" value="<?php if ( empty($picture) ) echo $user->profile->picture; ?>" /><br /><br />
         </li> 

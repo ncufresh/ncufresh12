@@ -1835,6 +1835,14 @@ th.friend-other-page
     font-size: 30px;
 }
 
+th.mygroup-name
+{
+    border: 5px solid gray;
+    color: blue;
+    font-size: 20px;
+    text-align: center;
+}
+
 a.form-friends-title
 {
     text-lign: left;

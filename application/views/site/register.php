@@ -15,6 +15,8 @@
             <input id="form-register-nickname" name="profile[nickname]" type="text" />
         </dd>
     </dl>
+    <input type="radio" name="sex" value="0" /> Male<br />
+    <input type="radio" name="sex" value="1" /> Female
     <dl>
         <dt>
             <label for="form-register-username">帳號(e-mail)</label>

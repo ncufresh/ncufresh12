@@ -24,6 +24,17 @@
             <label class="form-register-nickname"><?php echo $user->profile->nickname; ?></label>
         </li>
         <li>
+            <label class="form-profile-sex">性別:  </label>
+            <label class="form-register-department">
+            <?php if ( $user->profile->sex==0 ): ?>
+            男孩兒
+            <?php else:?>
+            女孩兒
+            <?php endif; ?>
+            </label>
+            </label> 
+        </li>
+        <li>
             <label class="form-profile-username">帳號(email):  </label>
             <label class="form-register-username"><?php echo $user->username; ?></label>         
         </li>
@@ -44,31 +55,6 @@
             <label class="form-profile-birthday">生日:  </label>
             <label class="form-register-birthday"><?php echo $user->profile->birthday; ?></label> 
         </li>   
-        <li>
-            <label>群組: </label>
-            <ul>
-                <?php
-                    $temp = Group::model()->findByPk(38);
-                    foreach($temp->mygroups as $row1)
-                    {
-                         $one_id = $row1->id;
-                         echo '抓到社團=>'.$one_id . '<br/>';
-                         $temp2 = UserGroup::model()->getMemberId($one_id);
-                         foreach($temp2 as $row2)
-                         {
-                            echo '抓到人類=>';
-                            echo Profile::model()->findByPK($row2->user_id)->name.'<br/>';
-                         }
-                         echo '====一個社團搜尋完畢====</br></br>';
-                    }
-                    exit();
-                    foreach( $temp->mygroup->groups as $group ):
-                        
-                        echo '<li>'.$group->name.'</li>';
-                    endforeach;
-                ?>
-            </ul>
-        </li>
     </ul>
     <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
     <button name="form-profile-editor" type="submit">編輯</button>

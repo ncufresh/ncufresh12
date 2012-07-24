@@ -137,33 +137,24 @@
         <th>
         <?php
             $account = 1;
-            $row = (integer)($amonut/6);
-            echo '<ul>';
-            foreach($group->mygroups as $mygroup):
-                if ( $account%$row <> 0 )
-                { 
-                    echo '<li><a href="#" id="group">'.$mygroup->name . '</li>';
-                    $temp = UserGroup::model()->getMemberId($mygroup->id);//得到該群組所有朋友ID
-                    /*foreach($temp as $friend):
-                        $member = Profile::model()->findByPk($friend->user_id);
-                        echo '<td>成員有=>'.$member->name.'</td>';
-                    endforeach;*/
-                    
-                }
-                else
-                {
-                    echo '</th>';
-                    echo '<th>';
-                }
-                $account++;
-                $amonut++;
-            endforeach;
-            if ( $account%5==0 )
-            {
-                echo '</th>';
-            }
-            echo '</ul>';
+            $row = (integer)($amonut / 6);
         ?>
+            <ul>
+            <?php foreach($group->mygroups as $mygroup): ?>
+                <?php if ( $account % $row <> 0 ): ?>
+                <li>
+                    <a href="<?php echo Yii::app()->createUrl('friends/mygroups', array('id'=>$mygroup->id));?>"><?php echo $mygroup->name; ?></a>
+                </li>
+                <?php else: ?>
+                    </th>
+                    <th>
+                <?php endif; ?>
+                <?php $account++; ?>
+            <?php endforeach; ?>
+            <?php if ( $account%5==0 ): ?>
+               </th>
+            </ul>
+            <?php endif; ?>
         </th>
         </tr>
     </table>

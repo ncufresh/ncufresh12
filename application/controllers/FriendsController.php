@@ -190,7 +190,41 @@ class FriendsController extends Controller
 
     public function actionMyGroups()
     {
-        //$this->redirect(array('friends/mygroups'));
+         $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';   
+         $this->setPageTitle(Yii::app()->name . ' - 我的群組');
+        if ( isset($_GET['id']) )
+        {
+            $this->render('mygroups', array(
+                'members'         => UserGroup::model()->getMemberId($_GET['id']), //得到社團ID
+                'mygroup'       =>Group::model()->findByPK($_GET['id']),
+                'target'        => $imgUrl
+            ));
+        }
+        else
+        {
+            $this->redirect(array('friends/friends'));
+        }
     }
 
+    public function actionDeleteGroupFriends()
+    {
+        if ( isset($_POST['myfriends-cancel']) && isset($_POST['members']) )
+        {
+            foreach ( $_POST['members'] as $cancelmember )
+            {   
+                $data1 = UserGroup::model()->find(array(
+                    'condition' => 'user_id = :user_id ',
+                    'params'    => array(
+                        ':user_id'      => $cancelmember,
+                    )
+                ));
+                UserGroup::model()->deleteByPk($data1->id);  
+            } 
+            $this->redirect(Yii::app()->createUrl('friends/mygroups', array('id'=>$_POST['groupID'])));
+        }
+        else
+        {
+            $this->redirect(array('friends/friends'));
+        }
+    }
 }
