@@ -917,29 +917,6 @@
             complete:               function()
             {
                 alert('You complete the konami code!');
-                var back = $('<div></div>').css({
-                    background: 'black',
-                    height: 3000,
-                    position: 'absolute',
-                    top: 0,
-                    opacity: 0.8,
-                    left: 0,
-                    width: 1366
-                })
-                .appendTo('body');
-                $('<div></div>').css({
-                    background: 'white',
-                    height: 600,
-                    position: 'relative',
-                    top: 30,
-                    left: 200,
-                    width: 900
-                })
-                .appendTo(back);
-                $('<p></p>').css({
-                    
-                })
-                .appendTo(back);
             }
         }, options);
         var index = 0;
@@ -1178,7 +1155,299 @@
             }
         });
 
-        $.konami();
+        $.konami({
+            code:                   [38],
+            complete:               function()
+            {
+                var input = 0;
+                var input_index = 1;
+                var up = 99;
+                var down = 0;
+                var answer = $.random(1, 99);
+                if ( $('#secret').length ) return false;
+                var back = $('<div></div>')
+                    .attr('id', 'secret')
+                    .css({
+                    background: 'black',
+                    height: '100%',
+                    position: 'fixed',
+                    top: 0,
+                    opacity: 0.8,
+                    left: 0,
+                    width: '100%'
+                })
+                .appendTo('body');
+                var box = $('<div></div>').css({
+                    background: 'white',
+                    height: 400,
+                    margin: '-200px 0 0 -200px',
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    width: 400
+                })
+                .appendTo(back);
+                $('<h4>！終極密碼！</h4>').css({
+                    background: 'yellow',
+                    color: 'blue',
+                    textAlign: 'center',
+                })
+                .appendTo(box);
+                var message = $('<p></p>').text('請輸入數字' + down + '到' + up +'之間').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .appendTo(box);
+                var input_text = $('<p></p>').text('0').css({
+                
+                })
+                .appendTo(box);
+                $('<button>確定送出</button><br/>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if( input < up && input >down )
+                    {
+                        if( input == answer )
+                        {
+                            alert('恭喜你猜對了!!!');
+                            back.remove();
+                        }
+                        else if( input > answer )
+                        {
+                            up = input;
+                            message.text('請輸入數字' + down + '到' + up +'之間');
+                        }
+                        else if( input < answer )
+                        {
+                            down = input;
+                            message.text('請輸入數字' + down + '到' + up +'之間');
+                        }
+                        input = 0;
+                        input_index = 1;
+                        input_text.text(input);
+                    }
+                    else
+                    {
+                        alert('要輸在範圍內喔!');
+                    }
+                })
+                .appendTo(box);
+                $('<button>7</button>').css({
+                    color: 'black',
+                    textAlign: 'left'
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 7 * 10;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input += 7;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>8</button>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 8 * 10;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input += 8;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>9</button><br/>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 9 * 10;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input += 9;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>4</button>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 4 * 10;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input += 4;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>5</button>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 5 * 10;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input += 5;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>6</button><br/>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 6 * 10;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input += 6;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>1</button>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 1 * 10;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input += 1;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>2</button>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 2 * 10;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input += 2;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>3</button><br/>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 3 * 10;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input += 3;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>0</button>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .appendTo(box);
+                $('<button>Back</button>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == -1 )
+                    {
+                        input_index = 0;
+                        input = parseInt(input / 10 ) * 10;
+                        input_text.text(input);
+                    }
+                    else if ( input_index == 0 )
+                    {
+                        input_index = 1;
+                        input = 0;
+                        input_text.text(input);
+                    }
+                })
+                .appendTo(box);
+                $('<p>沒猜到不能離開啦~~哇哈哈哈</p>').css({
+                    background: 'yellow',
+                    color: 'blue',
+                    textAlign: 'center',
+                })
+                .appendTo(box);
+            }
+        });
 
         $.pull.start({
             onlinecounter: $('#header .online'),
