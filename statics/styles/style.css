@@ -739,6 +739,21 @@ input.gsc-search-button:focus
     filter: none;
 }
 
+tr.gsc-completion-selected
+{
+    background: #B4C8C8;
+    background: rgba(180, 200, 200, 0.7);
+}
+
+table.gsc-completion-container
+{
+    -webkit-border-radius: 0 0 5px 5px;
+    border: none;
+    border-radius: 0 0 5px 5px;
+    margin-top: -3px;
+    padding: 5px 0;
+}
+
 #search
 {
     margin: 8px 0 0 580px;
@@ -764,6 +779,7 @@ input.gsc-search-button:focus
     position: relative;
     text-indent: -100000px;
     width: 32px;
+    z-index: 10000;
 }
 
 #result
