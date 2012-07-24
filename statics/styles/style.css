@@ -168,13 +168,22 @@ a:hover
 /**
  * Layout style
  */
-#logo
+#logo,
+#moon
 {
     background: url('../images/logo.png') no-repeat;
+    display: block;
     height: 160px;
-    margin-left: 15px;
     position: absolute;
+    text-indent: -100000%;
     width: 240px;
+}
+
+#moon
+{
+    background: url('../images/moon.png') no-repeat;
+    margin-left: 15px;
+    width: 160px;
 }
 
 #header
@@ -934,59 +943,61 @@ ul#nculife-details
     background: url('../images/calendar_top3.png');
 }
 
-#index-calendar .calendar-bottom
+#index-calendar .calendar-bottom-wrap
 {
     width: 204px;
     height: 349px;
     float: left;
+    position: absolute;
     background: url('../images/calendar_content2.png');
 }
 
-#index-calendar .calendar-bottom table.calendar-table caption
+#index-calendar .calendar-bottom-wrap table.calendar-table caption
 {
     margin:  15px 0 10px 0 ;
 }
 
-#index-calendar .calendar-bottom table.calendar-table td
+#index-calendar .calendar-bottom-wrap table.calendar-table td
 {
     text-align: right;
     width: 28px;
 }
 
-#index-calendar .calendar-bottom table.calendar-table thead
+#index-calendar .calendar-bottom-wrap table.calendar-table thead
 {
     display: block;
 }
 
-#index-calendar .calendar-bottom table.calendar-table thead td
+#index-calendar .calendar-bottom-wrap table.calendar-table thead td
 {
+    color: #af8d5a;
     text-align: center;
 }
 
-#index-calendar .calendar-bottom table.calendar-table thead td.weekend
+#index-calendar .calendar-bottom-wrap table.calendar-table thead td.weekend
 {
     color: red;
 }
 
-#index-calendar .calendar-bottom table.calendar-table 
+#index-calendar .calendar-bottom-wrap table.calendar-table 
 {
     width: 204px;
 }
 
-#index-calendar .calendar-bottom table.calendar-table tbody
+#index-calendar .calendar-bottom-wrap table.calendar-table tbody
 {
     border-top: 1px solid #946722;
     border-bottom: 1px solid #946722;
     display: block;
 }
 
-#index-calendar .calendar-bottom table.todolist-table td
+#index-calendar .calendar-bottom-wrap table.todolist-table td
 {
     width: 100px;
     text-align: center;
 }
 
-#index-calendar .calendar-bottom table.todolist-table thead td
+#index-calendar .calendar-bottom-wrap table.todolist-table thead td
 {
     color: #946722;
 }
@@ -1262,20 +1273,29 @@ ul#nculife-details
 
 .nculife-dialog .ui-dialog-title
 {
-	background: red; 
+	background: black;
+    color: red;
 	margin-right: 100px;
+    font-size: 50px;
+    
 }
 
 .nculife-dialog .ui-icon
 {
-	background: purple;
+	background: black;
+    color: white;
 }
 
 #nculife-dh
 {
 	background: pink;
-	width: 400px;
+	width: 700px;
 	height: 25px;
+}
+
+#nculife-dh a
+{
+    margin-left: 20px;
 }
 
 #nculife-db
@@ -1313,6 +1333,8 @@ ul#nculife-details
 	list-style: none;
 }
 
+
+
 ul.life-index li:hover ul.life-indexs
 {
     display: block;
@@ -1320,7 +1342,7 @@ ul.life-index li:hover ul.life-indexs
     color: black;
 }
 
-ul.life-indexs
+ul.life-indexs 
 {
     margin: -1px;
     padding: 0;
@@ -1339,12 +1361,14 @@ ul.life-index li
     border: 1px solid red;
     padding: 0;
     display: block;
+    cursor: pointer;
 }
 
 ul.life-index li:hover
 {
     background: white;
     color: black;
+    border: 1px solid red;
 }
 
 ul.life-indexs-inner
@@ -1373,7 +1397,18 @@ ul.life-indexs li.life-indexs-content:hover
 
 #life-container
 {
+    width: 750px;
+    height: 400px;
     position:relative;
+    padding: 0;
+    background: url('../images/life_background.jpg');
+}
+
+#life-dialog
+{
+    display: none;
+    height: 500px;
+	width: 200px;
 }
 
 #about ul
@@ -1531,8 +1566,7 @@ ul.life-indexs li.life-indexs-content:hover
 /*club style*/
 #club-list
 {
-	overflow:scroll;
-	text-align:left;
+    text-align: left;
 }
 
 .l1
@@ -1731,16 +1765,14 @@ div.group-friends
 {
     background-color:yellow;
 	display: none;
-	height: 500px;
-	width: 200px;
 }
 
-div.all-members
+div.group-all-friends
 {
-     width:400px; 
-     height:280px;
-     padding:10px 20px;
-     /*display: none;*/
+    width: 400px; 
+    height: 400px;
+    padding: 10px 20px;
+    overflow: scroll;
 }
 
 label.group-friends-name

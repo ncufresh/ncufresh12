@@ -31,6 +31,11 @@ class Profile extends CActiveRecord
                 self::BELONGS_TO,
                 'Department', 
                 'department_id' 
+            ),
+            'groups'  => array(
+                self::HAS_MANY,
+                'Group',
+                'user_id'
             )
         ); 
     }
@@ -66,4 +71,12 @@ class Profile extends CActiveRecord
             )
         ));
     }
+
+    public function getAllMember()
+    {
+        return $this->findAll(array(
+            'order'  => 'id ASC' 
+        ));
+    }
+
 }

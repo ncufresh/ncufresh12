@@ -1,4 +1,5 @@
-﻿<script type="text/javascript">
+﻿<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
+<script type="text/javascript">
 jQuery(document).ready(function()
 {
     jQuery('.club-picture1').click(function()
@@ -60,6 +61,7 @@ jQuery(document).ready(function()
 	
 });
 </script>
+<?php $this->endWidget();?>
 
 <div id="club-underpicture">
 	<div id="club-picture-menu">
@@ -98,7 +100,7 @@ jQuery(document).ready(function()
                 <?php echo "→".$data->name?>
            <?}?>
 	<?php
-    echo CHtml::link('修改', Yii::app()->createUrl('club/modify')) . '<br />';
+    echo CHtml::link('修改', Yii::app()->createUrl('club/modify',array('id'=>$id))) . '<br />';
     ?>
     <h1><?php echo $data->name;?></h1>    
     <div id="club-title">簡介:</div>
@@ -112,19 +114,19 @@ jQuery(document).ready(function()
     ?>
     <div id="club-title">手機:</div>
     <?php
-        echo $data->l_phone;
+        echo $data->leader_phone;
     ?>
     <div id="club-title">E-mail:</div>
     <?php
-        echo $data->l_e_mail;
+        echo $data->leader_e_mail;
     ?>
     <div id="club-title">二進位ID:</div>
     <?php
-        echo $data->l_binary_id;
+        echo $data->leader_binary_id;
     ?>
     <div id="club-title">MSN:</div>
     <?php
-        echo $data->l_msn;
+        echo $data->leader_msn;
     ?>
     <div id="club-title"><?php if( !$data->category ) : ?>副社長<?php else : ?>副系代<?php endif; ?></div>
     <?php
@@ -132,19 +134,19 @@ jQuery(document).ready(function()
     ?>
     <div id="club-title">手機:</div>
     <?php
-        echo $data->v_phone;
+        echo $data->viceleader_phone;
     ?>
     <div id="club-title">E-mail:</div>
     <?php
-        echo $data->v_e_mail;
+        echo $data->viceleader_e_mail;
     ?>
     <div id="club-title">二進位ID:</div>
     <?php
-        echo $data->v_binaryid;
+        echo $data->viceleader_binaryid;
     ?>
     <div id="club-title">MSN:</div>
     <?php
-        echo $data->v_msn;
+        echo $data->viceleader_msn;
     ?>
     <div id="club-title">社站:</div>
     <?php
