@@ -200,7 +200,32 @@ class FriendsController extends Controller
         $userID = Yii::app()->user->id;
         $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';   
         $this->setPageTitle(Yii::app()->name . ' - 我的群組');
-        if ( isset($_GET['id']) )
+        if ( isset($_POST['friends'] ) && isset ( $_GET['id'] ) )
+        {   
+            foreach ( $_POST['friends'] as $friend )
+            {
+                $_exist=false;
+                $group = new UserGroup();
+                foreach ( $group->getMemberId($_GET['id']) as $member )
+                {
+                    if (  $member->user_id === $friend )
+                    {
+                        $_exist=true;
+                    }
+                }
+                if ( !$_exist )
+                {
+                        $group->user_id = $friend;
+                        $group->group_id = $_GET['id'];
+                        $group->save();
+                }
+            } 
+            if ( $group->save() )
+            {
+                $this->redirect(Yii::app()->createUrl('friends/mygroups', array('id'=>$_GET['id'])));
+            } 
+        } 
+        else if ( isset($_GET['id']) )
         {
             $this->render('mygroups', array(
                 'user'          => User::model()->findByPk($userID),
@@ -209,29 +234,6 @@ class FriendsController extends Controller
                 'target'        => $imgUrl
             ));
         }
-        else if ( isset($_POST['friends']) && isset($_GET['id']) &&isset($_POST['addmember']) )
-        {  
-            echo '進來了...+新成員';
-            exit();
-            foreach ( $_POST['friends'] as $friend )
-            {
-                $group = new UserGroup();
-                $group->user_id = $friend;
-                $group->group_id = $_GET['id'];
-                $group->save();
-            } 
-            if ( $group->save() )
-            {
-                $this->render('mygroups', array(
-                    'user'          => User::model()->findByPk($userID),
-                    'members'         => UserGroup::model()->getMemberId($_GET['id']), //得到社團ID
-                    'mygroup'       =>Group::model()->findByPK($_GET['id']),
-                    'id'=>$_POST['groupID'],
-                    'target'        => $imgUrl
-                ));
-                //$this->redirect(Yii::app()->createUrl('friends/mygroups', array('id'=>$_POST['groupID'])));
-            } 
-        } 
         else
         {
             $this->redirect(array('friends/friends'));
