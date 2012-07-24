@@ -1,4 +1,5 @@
 <form method="POST" action="<?php echo $this->createUrl('friends/deletefriends'); ?>">
+<input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
 <table class="other-page">
    <tr >
     <th colspan="5" class="friend-close-page">我的好友</th>
@@ -22,7 +23,10 @@
                     echo $target.'/image1.jpg'; 
                 }
         ?>
-                " alt="Score image"/><br /><input type="checkbox" name="friends[]" value="<?php echo $friend->profile->id;?>" /><?php echo $friend->profile->name;?>
+                " alt="Score image"/><br /><input type="checkbox" name="friends[]" value="<?php echo $friend->profile->id;?>" />
+                <?php echo $friend->profile->name;?>
+                <br />
+                <?php echo $friend->profile->department->short_name ?>
                 </td>
                 <?php
                 if ( $col%5==0 ) 

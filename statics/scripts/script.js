@@ -189,7 +189,7 @@
         counterAnimationSpeed:  50,
         minimumAnimationTimes:  4,
         interval:               5000,
-        counterDigitElements:   '0123456789ABCDEFGHIJKMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*'
+        counterDigitElements:   '0123456789'
     };
 
     $.pull.start = function(options)
@@ -917,26 +917,6 @@
             complete:               function()
             {
                 alert('You complete the konami code!');
-                var back = $('<div></div>').css({
-                    background: 'black',
-                    height: 768,
-                    position: 'absolute',
-                    top: 0,
-                    opacity: 0.5,
-                    left: 0,
-                    width: 1366
-                })
-                .appendTo('body');
-                $('<div></div>').css({
-                    background: 'white',
-                    height: 600,
-                    position: 'relative',
-                    top: 30,
-                    opacity: 1,
-                    left: 200,
-                    width: 900
-                })
-                .appendTo(back);
             }
         }, options);
         var index = 0;
@@ -970,46 +950,92 @@
     $.fn.generateTodolist = function(events, options)
     {
         options = $.extend({
-            tableClass:  'todolist-table'
+            tableClass:  'todolist-table',
+            dateText:    '日期',
+            eventText:   '事件'
         }, options);
-        events = { '2012/8/6': '資訊網上線' };
         var table = $('<table></table>').addClass(options.tableClass);
         var thead = $('<thead></thead>');
         var tbody = $('<tbody></tbody>');
         var tr = $('<tr></tr>');
+        $('<td></td>').text(options.dateText).appendTo(tr);
+        $('<td></td>').text(options.eventText).appendTo(tr);
+        tr.appendTo(thead);
+        for(var key in events)
+        {
+            var tr = $('<tr></tr>');
+            var td = $('<td></td>').text(events[key][0]);
+            var td2 = $('<td></td>').text(events[key][1]);
+            tr.append(td).append(td2).appendTo(tbody);
+        }
         table.append(thead)
             .append(tbody);
         return table;
     }
+
     $.fn.generateCalendar = function(options)
     {
         options = $.extend({
             year:        0,
             month:       0,
-            tableClass:  'calendar-table',
-            month_tc:    ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
-            month_en:    ['January','February','March','April','May','June','July','August','September','October','November','December'],
-            dayOfWeek:   ['日','一','二','三','四','五','六']
+            tableClass:  'calendar-table', 
+            buttonClass: 'calendar-button',
+            month_tc:    ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'], 
+            month_en:    ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], 
+            dayOfWeek:   ['日', '一', '二', '三', '四', '五', '六'], 
+            today:       true,
+            left:        false,
+            right:       false,
+            linkClick:   function(){ return false; },
+            leftClick:   function(){ return false; },
+            rightClick:  function(){ return false; },
+            dayClick:    function(){}
         }, options);
-        var daysOfMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
+        options.month -= 1;
+        var daysInMonth = function(iMonth, iYear)
+        {
+            return 32 - new Date(iYear, iMonth, 32).getDate();
+        }
         var table = $('<table></table>').addClass(options.tableClass);
         var link = $('<a></a>')
             .attr('href', '#')
-            .text(options.month_en[options.month]+' '+options.month_tc[options.month]);
-        var caption = $('<caption></caption>')
-            .append(link);
+            .text(options.month_en[options.month]+' '+options.month_tc[options.month])
+            .click(options.linkClick);
+        var left = $('<a></a>')
+            .attr('href','#')
+            .text('<<')
+            .addClass(options.buttonClass)
+            .css({
+                left: 0,
+                position: 'absolute'
+            })
+            .click(options.leftClick);
+        var right = $('<a></a>')
+            .attr('href','#')
+            .text('>>')
+            .addClass(options.buttonClass)
+            .css({
+                position: 'absolute',
+                right: 0
+            })
+            .click(options.rightClick);
+        var caption = $('<caption></caption>').css({
+            position: 'relative'
+        }).append(link);
+        if ( options.left ) caption.prepend(left);
+        if ( options.right ) caption.append(right);
         var thead = $('<thead></thead>');
         var tbody = $('<tbody></tbody>');
         var tr = $('<tr></tr>');
         var date = new Date(options.year, options.month);
-        for(var key in options.dayOfWeek)
+        for( var key in options.dayOfWeek )
         {
             var td = $('<td></td>').text(options.dayOfWeek[key]);
             if ( key==0 || key==6 ) td.addClass('weekend');
             td.appendTo(tr);
         }
         tr.appendTo(thead);
-        for(var day=1, position=0; day<=31; position++)
+        for( var day = 1, position = 0; day <= daysInMonth(options.month, options.year); position++ )
         {
             if ( position%7 == 0 )
             {
@@ -1019,7 +1045,13 @@
             var td = $('<td></td>');
             if ( position>=date.getDay() )
             {
-                td.text(day);
+                td.text(day).click(options.dayClick);
+                if( (new Date()).getDate() == day 
+                    && (new Date()).getMonth()==options.month
+                    && options.today)
+                {
+                    td.css({background: '#ace082'});
+                }
                 ++day;
             }
             td.appendTo(tr);
@@ -1047,7 +1079,9 @@
         {
             $(this).find('#calendar-personal').css('cursor', 'default');
         }
-
+        var september;
+        var august;
+        var todolist;
         this.children('.calendar-top')
             .children('a')
             .click(function()
@@ -1075,22 +1109,44 @@
             }
             return false;
         });
-        
-        $.fn.generateCalendar({
+        september = $.fn.generateCalendar({
             year: 2012,
-            month: 7
+            month: 8,
+            left: true,
+            leftClick: function()
+            {
+                september.detach();
+                august.prependTo(bottom);
+                $.fn.generateCalendar
+                return false;
+            }
+            
+        });
+        august = $.fn.generateCalendar({
+            year: 2012,
+            month: 7,
+            right: true,
+            rightClick: function()
+            {
+                august.detach();
+                september.prependTo(bottom);
+                $.fn.generateCalendar
+                return false;
+            },
+            dayClick: function()
+            {
+                $(this).css('border', '1px solid black');
+            }
         }).appendTo(bottom);
         bottom.appendTo(bottom_wrap);
-
-        bottom = $('<div></div>')
-            .attr('id', 'calendar-August')
-            .addClass('calendar-bottom')
-            .hide();
-        $.fn.generateCalendar({
-            year: 2012,
-            month: 8
-        }).appendTo(bottom);
-        bottom.appendTo(bottom_wrap);
+        todolist = $.fn.generateTodolist(
+            [
+                ['2012/8/6', '資訊網上線'],
+                ['2012/8/6', '資訊網上線'],
+                ['2012/8/6', '資訊網上線'],
+                ['2012/8/6', '資訊網上線']
+            ]
+        ).appendTo(bottom);
         return this;
     };
 })(jQuery);
@@ -1108,7 +1164,7 @@
 
         $('#chat').chat();
 
-        // $('#header').star();
+        $('#header').star();
 
         $('#moon').moon();
 
@@ -1175,7 +1231,304 @@
             }
         });
 
-        $.konami();
+        $.konami({
+            code:                   [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
+            complete:               function()
+            {
+                var input = 0;
+                var input_index = 1;
+                var up = 99;
+                var down = 0;
+                var answer = $.random(1, 99);
+                if ( $('#secret').length ) return false;
+                var back = $('<div></div>')
+                    .attr('id', 'secret')
+                    .css({
+                    background: 'black',
+                    height: '100%',
+                    position: 'fixed',
+                    top: 0,
+                    opacity: 0.8,
+                    left: 0,
+                    width: '100%'
+                })
+                .appendTo('body');
+                var box = $('<div></div>').css({
+                    background: 'white',
+                    height: 400,
+                    margin: '-200px 0 0 -200px',
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    width: 400
+                })
+                .appendTo(back);
+                $('<h4>！終極密碼！</h4>').css({
+                    background: 'yellow',
+                    color: 'blue',
+                    textAlign: 'center',
+                })
+                .appendTo(box);
+                var message = $('<p></p>').text('請輸入數字' + down + '到' + up +'之間').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .appendTo(box);
+                var input_text = $('<p></p>').text('0').css({
+                
+                })
+                .appendTo(box);
+                $('<button>確定送出</button><br/>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if( input < up && input >down )
+                    {
+                        if( input == answer )
+                        {
+                            alert('恭喜你猜對了!!!');
+                            back.remove();
+                        }
+                        else if( input > answer )
+                        {
+                            up = input;
+                            message.text('請輸入數字' + down + '到' + up +'之間');
+                        }
+                        else if( input < answer )
+                        {
+                            down = input;
+                            message.text('請輸入數字' + down + '到' + up +'之間');
+                        }
+                        input_index = 1;
+                    }
+                    else
+                    {
+                        alert('要輸在範圍內喔!');
+                    }
+                    input = 0;
+                    input_text.text(input);
+                })
+                .appendTo(box);
+                $('<button>7</button>').css({
+                    color: 'black',
+                    textAlign: 'left'
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 7;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input = input * 10 + 7;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>8</button>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 8;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input = input * 10 + 8;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>9</button><br/>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 9;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input = input * 10 + 9;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>4</button>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 4;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input = input * 10 + 4;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>5</button>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 5;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input = input * 10 + 5;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>6</button><br/>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 6;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input = input * 10 + 6;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>1</button>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 1;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input = input * 10 + 1;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>2</button>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 2;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input = input * 10 + 2;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>3</button><br/>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input += 3;
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input = input * 10 + 3;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>0</button>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input = input * 10;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
+                .appendTo(box);
+                $('<button>Clean</button>').css({
+                    color: 'black',
+                    textAlign: 'left',
+                })
+                .click(function()
+                {
+                    input_index = 1;
+                    input = 0;
+                    input_text.text(input);
+                })
+                .appendTo(box);
+                $('<p>沒猜到不能離開啦~~哇哈哈哈</p>').css({
+                    background: 'yellow',
+                    color: 'blue',
+                    textAlign: 'center'
+                })
+                .appendTo(box);
+            }
+        });
 
         $.pull.start({
             onlinecounter: $('#header .online'),
@@ -1184,7 +1537,7 @@
     });
 
     google.load('search', '1', {
-         language: 'zh_TW'
+        language: 'zh_TW'
     });
 
     google.setOnLoadCallback(function()

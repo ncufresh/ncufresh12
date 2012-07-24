@@ -599,7 +599,7 @@
 </div>
 
 
-
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript"> 
 // $(document).mousemove(function(e) {
 $(document).mousemove(function(event) { // 相對於 back-div 的座標
@@ -814,4 +814,6 @@ $('#imageimage').css(
         $('#dialog2_main_picture').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/3.jpg');
     });
 </script>
+<?php $this->endWidget();?>
+
 </div>

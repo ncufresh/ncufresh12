@@ -122,6 +122,10 @@ a:hover
 {
     background: url('../images/loading.png');
     height: 128px;
+    left: 50%;
+    margin: -64px 0 0 -64px;
+    position: relative;
+    top: 50%;
     width: 128px;
 }
 
@@ -181,7 +185,7 @@ a:hover
 
 #moon
 {
-    background: url('../images/moon.png') no-repeat;
+    background: url('../images/moon.png') -640px -800px no-repeat;
     margin-left: 15px;
     width: 160px;
 }
@@ -220,7 +224,7 @@ a:hover
     background: url('../images/browsered.png') no-repeat;
 }
 
-#tab
+#menu
 {
     list-style: none;
     margin: 120px 0 0 400px;
@@ -229,7 +233,7 @@ a:hover
     position: absolute;
 }
 
-#tab li
+#menu li
 {
     -webkit-border-radius: 15px;
     background: #E1E5EE;
@@ -242,7 +246,7 @@ a:hover
     text-align: center;
 }
 
-#tab a
+#menu a
 {
     color: #414141;
 }
@@ -280,13 +284,15 @@ a:hover
 #navigation ul
 {
     -webkit-border-radius: 0 0 15px 15px;
-    background: #DAE3EC url('../images/subnavigation.png') repeat-x;
+    background: #DAE3EC;
+    background: rgba(170, 190, 215, 0.7);
     border-radius: 0 0 15px 15px;
     list-style: none;
-    margin-top: -16px;
-    padding: 4px 0;
+    margin: -16px 0 0 10px;
+    padding: 0 0 8px;
     position: relative;
     visibility: hidden;
+    width: 100px;
     z-index: 100;
 }
 
@@ -296,6 +302,7 @@ a:hover
     height: 30px;
     line-height: 30px;
     padding: 4px 0;
+    width: 100px;
 }
 
 #navigation ul a
@@ -316,7 +323,6 @@ a:hover
 #content
 {
     margin: 0 225px 0 25px;
-    min-height: 360px;
     overflow: hidden;
 }
 
@@ -423,6 +429,8 @@ a:hover
     -webkit-border-radius: 10px;
     background: #DCE4ED;
     border-radius: 10px;
+    color: #210520;
+    font-size: 1.2em;
     margin: 0;
     padding: 5px;
     text-align: center;
@@ -475,6 +483,11 @@ a:hover
 {
     height: 30px;
     line-height: 30px;
+}
+
+#sidebar-personal li a
+{
+    color: #040270;
 }
 
 #sidebar-personal-toggle
@@ -729,6 +742,21 @@ input.gsc-search-button:focus
     filter: none;
 }
 
+tr.gsc-completion-selected
+{
+    background: #B4C8C8;
+    background: rgba(180, 200, 200, 0.7);
+}
+
+table.gsc-completion-container
+{
+    -webkit-border-radius: 0 0 5px 5px;
+    border: none;
+    border-radius: 0 0 5px 5px;
+    margin-top: -3px;
+    padding: 5px 0;
+}
+
 #search
 {
     margin: 8px 0 0 580px;
@@ -754,6 +782,7 @@ input.gsc-search-button:focus
     position: relative;
     text-indent: -100000px;
     width: 32px;
+    z-index: 10000;
 }
 
 #result
@@ -908,6 +937,7 @@ ul#nculife-details
 
 #marquee a
 {
+    color: #F2843B;
     display: block;
     height: 30px;
     line-height: 30px;
@@ -948,6 +978,7 @@ ul#nculife-details
     width: 204px;
     height: 349px;
     float: left;
+    overflow: hidden;
     position: absolute;
     background: url('../images/calendar_content2.png');
 }
@@ -1269,39 +1300,67 @@ ul#nculife-details
 .nculife-dialog
 {
 	background: white;
+    height: 620px;
+	width: 315px;
+    top: 200px;
+    left: 145px;
+    position: absolute;
+    background: url('../images/life_background2.png');
+}
+
+#ui-dialog-title-life-dialog
+{
+    width: 550px;
+    height: 150px;
+    display: block;
+    padding: 0 0 0 0;
+    background: url('../images/life_title.png');
 }
 
 .nculife-dialog .ui-dialog-title
 {
-	background: black;
+	/* background: black;
+    width: 585px;
+    height: 500px;
     color: red;
 	margin-right: 100px;
     font-size: 50px;
+    background: url('../images/life_title.png'); */
+    
     
 }
 
-.nculife-dialog .ui-icon
+.nculife-dialog .ui-icon-closethick
 {
 	background: black;
     color: white;
+    width: 40px;
+    height: 40px;
+    left: 620px;
+    top: 20px;
+    position: absolute;
+    background: url('../images/life_exit.png');
 }
 
 #nculife-dh
 {
 	background: pink;
-	width: 700px;
+	width: 612px;
 	height: 25px;
+    left: 1px;
+    position: absolute;
 }
 
 #nculife-dh a
 {
     margin-left: 20px;
+    
 }
 
 #nculife-db
 {
-    width: 695px;
-    height: 325px;
+    width: 620px;
+    height: 315px;
 	border: solid;
 }
 
@@ -1317,8 +1376,11 @@ ul#nculife-details
 {
 	width: 295px;
 	height: 100px;
-	float: left;
+	/* float: left; */
 	background: gray;
+    position: absolute;
+    top: 212px;
+    left: 120px;
 }
 
 #nculife-dh a
@@ -1353,7 +1415,7 @@ ul.life-index li
 {
     list-style: none;
     float: left;
-    width: 80px;
+    width: 100px;
     height: 20px;
     text-align: center;
     background: black;      
@@ -1374,14 +1436,6 @@ ul.life-index li:hover
 ul.life-indexs-inner
 {
     display: none;
-}
-
-ul.life-indexs li.life-indexs-content:hover ul.life-indexs-inner
-{
-    display: block;
-    padding: 0;
-    margin-left: 80px;
-    margin-top: -21px;
 }
 
 ul.life-indexs li.life-indexs-content:hover
@@ -1407,8 +1461,10 @@ ul.life-indexs li.life-indexs-content:hover
 #life-dialog
 {
     display: none;
-    height: 500px;
-	width: 200px;
+    width: 620px;
+    height: 315px;
+    
+    
 }
 
 #about ul
@@ -1512,36 +1568,6 @@ ul.life-indexs li.life-indexs-content:hover
 {
 }
 
-#life-test1
-{
-    background: url('../1.jpg');
-    width: 30px;
-    height: 30px;
-    top: 100px;
-    display: block;
-    position: absolute;
-}
-
-#life-test2
-{
-    background: url('../2.png');
-    width: 30px;
-    height: 30px;
-    top: 100px;
-    display: block;
-    position: absolute;
-}
-
-#life-test3
-{
-    background: url('../3.jpg');
-    width: 30px;
-    height: 30px;
-    top: 100px;
-    display: block;
-    position: absolute;
-}
-
 /**
  * Facebook style
  */
@@ -1563,17 +1589,20 @@ ul.life-indexs li.life-indexs-content:hover
     width: 96px;
 }
 
-/*club style*/
+/**
+ * Club style
+ */
 #club-list
 {
     text-align: left;
+    overflow: hidden;
 }
 
 .l1
 {
-	float: left;
-	width: 143px;
-	height: 500px;
+    float: left;
+    padding: 0;
+    width: 25%;
 }
 
 #club-title
@@ -1585,7 +1614,6 @@ ul.life-indexs li.life-indexs-content:hover
 #club-all
 {
 	background-color: green;
-
 }
 
 #club-display
@@ -1765,16 +1793,14 @@ div.group-friends
 {
     background-color:yellow;
 	display: none;
-	height: 500px;
-	width: 200px;
 }
 
-div.all-members
+div.group-all-friends
 {
-     width:400px; 
-     height:280px;
-     padding:10px 20px;
-     /*display: none;*/
+    width: 400px; 
+    height: 400px;
+    padding: 10px 20px;
+    overflow: scroll;
 }
 
 label.group-friends-name
