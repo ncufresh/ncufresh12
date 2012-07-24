@@ -6,7 +6,7 @@ echo CHtml::link("回上一頁", Yii::app()->createUrl('forum/forum', array('fid
 $com = $comments->findAll('article_id='.$article->id);
 foreach($com as $each)
     echo $each -> content . '<br/>';
-?> 
+?>
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/comment'); ?>" method="POST"> 
 <input type="text" name="comment[content]" />
 <input type="hidden" name="comment[aid]" value="<?php echo $_GET['id']; ?>" />
@@ -21,3 +21,5 @@ echo CHtml::link("回覆文章", Yii::app()->createUrl('forum/reply', array('aid
 $rep = $reply->findAll('article_id='.$article->id);
 foreach ($rep as $each)
     echo '作者: '.$each->author_id.' 內容: '.$each -> content. '<br/>';
+?>
+<fb:comments xid="12345678"></fb:comments>

@@ -1,3 +1,4 @@
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
 jQuery(document).ready(function()
 {
@@ -93,6 +94,7 @@ jQuery(document).ready(function()
     });
 });
 </script>
+<?php $this->endWidget();?>
 
 <h1>跑馬燈管理</h1>
 

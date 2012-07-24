@@ -19,8 +19,56 @@ class Article extends CActiveRecord
                 self::BELONGS_TO,
                 'ArticleCategory',
                 'forum_id'
-            )
+            ),
+            'replies'    => array(
+                self::HAS_MANY,
+                'Reply',
+                'article_id',
+            ),
+            'category_name'  => array(
+                self::BELONGS_TO,
+                'ArticleCategory',
+                'category',
+            ),
         );
+    }
+
+    public function getArticlesSort($fid, $sort, $category, $page, $entries_per_page){
+        switch ($sort)
+        {
+            case "create":
+                $sort='create_time';
+                break;
+            case "update":
+                $sort='update_time';
+                break;
+            case "reply":
+                $sort='replies_count';
+                break;
+            case "viewed":
+                $sort='viewed_times';
+                break;
+            default:
+                throw new Exception('The sort column name does not exist.');
+                break;
+        }
+        if($category==0){
+            $count = $this->count();
+            $total_pages = ceil($count / $entries_per_page);
+            $current_page = ($page<$total_pages?$page:$total_pages);
+            return $this->findAll(array(
+                'condition' => 'forum_id='.$fid.' AND visibility=1',
+                'order' => "$sort DESC",
+                'limit' => $entries_per_page,
+                'offset' => ($current_page-1) * $entries_per_page
+            ));
+        }
+        else{
+            return $this->findAll(array(
+                'condition' => 'forum_id='.$fid.' AND visibility=1 AND category='.$category,
+                'order' => "$sort DESC",
+            ));
+        }
     }
 
     public function getUrl()
@@ -46,5 +94,25 @@ class Article extends CActiveRecord
             return true;
         }
         return false;
+    }
+    
+    public function getPageStatus($current_page, $entries_per_page)
+    {
+        $total_pages = ceil($this->count('visibility=1') / $entries_per_page);
+        if ( $current_page > $total_pages ) $current_page = $total_pages;
+        if ( $current_page < 1 ) $current_page = 1;
+        $next_page = $current_page == $total_pages ? null : ($current_page + 1);
+        $prev_page = $current_page == 1 ? null : ($current_page - 1);
+        $first_page = 1;
+        $last_page = $total_pages;
+        return array(
+           'total_pages'     => $total_pages,
+           'entries_per_page' => $entries_per_page,
+           'current_page'    => $current_page,
+           'next_page'       => $next_page,
+           'prev_page'       => $prev_page,
+           'first_page'      => $first_page,
+           'last_page'       => $last_page
+        );
     }
 }

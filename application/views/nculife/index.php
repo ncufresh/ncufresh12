@@ -1,103 +1,231 @@
-﻿<script type="text/javascript">
+﻿<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
+<script type="text/javascript">
 jQuery(document).ready(function()
 {
     setInterval(function()
     {
         jQuery('.life-picture').fadeOut(500).eq(jQuery.random(0, $('.life-picture').length - 1)).fadeIn(500);
     }, 1000);
-    
-    
 });
 </script>
+<?php $this->endWidget();?>
 
 <div id="life-container">
     <div id="life-head">
     -------------這裡是中大生活唷-----------
-        <a id="life-test1" class="life-picture"></a>
-        <a id="life-test2" class="life-picture"></a>
-        <a id="life-test3" class="life-picture"></a>
     </div>
     <div id="life-body">
         <div id="linkk">  
             <ul class="life-index">
                 <li>
-                    <span>Live</span>
-                    <ul class="life-indexs">
-                        <li class="life-indexs-food" page="food">後門</li>
-                        <li class="life-indexs-food" page="food2">校園美食</li>
-                        <li class="life-indexs-food" page="food3">露天咖啡廳</li>
-                        <li class="life-indexs-food" page="food4">學生餐廳</li>
-                        <li class="life-indexs-food" page="food8">宵夜街</li>
-                    </ul>
-                </li>
-                <li>
                     <span>Health</span>
                     <ul class="life-indexs">
-                        <li class="life-indexs-health" page="health">衛保組</li>
-                        <li class="life-indexs-health" page="health">特約醫院</li>
-                        <li class="life-indexs-health" page="health">心理諮詢</li>
-                    </ul>
-                </li>
-                <li>
-                    <span>Car</span>
-                    <ul class="life-indexs">
-                        <li>腳踏車</li>
-                        <li>汽機車</li>
-                        <li>如何到中央</li>
-                        <li>台聯大專車</li>
-                    </ul>
-                </li>
-                <li>
-                    <span>Sport</span>
-                    <ul class="life-indexs">
-                        <li>游泳池</li>
-                        <li>依仁堂</li>
-                        <li>球類場地</li>
-                        <li>溜冰場</li>
-                        <li>操場</li>
-                    </ul>
-                </li>
-                <li>
-                    <span>Outside</span>
-                    <ul class="life-indexs">
-                        <li>夜市</li>
-                        <li>電影院</li>
-                        <li>NOVA</li>
-                        <li>KTV</li>
+                        <li class="life-indexs-content">
+                            <span>衛保組</span>
+                                <ul class="life-indexs-inner">
+                                    <li>衛保組</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>特約醫院</span>
+                                <ul class="life-indexs-inner">
+                                    <li>特約醫院</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>心理諮商</span>
+                                <ul class="life-indexs-inner">
+                                    <li>心理諮商</li>
+                                </ul>
+                        </li>
                     </ul>
                 </li>
                 <li>
                     <span>Live</span>
                     <ul class="life-indexs">
-                        <li>銀行</li>
-                        <li>體育用品</li>
-                        <li>郵政服務</li>
-                        <li>校園店家</li>
-                        <li>校內影城</li>
-                        <li>小超市</li>
-                    </ul>
-                </li>
-                <li>
-                    <span>House</span>
-                    <ul class="life-indexs">
+                        <li class="life-indexs-content">
+                            <span>所需用品</span>
+                                <ul class="life-indexs-inner">
+                                    <li>所需用品</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>郵件招領</span>
+                                <ul class="life-indexs-inner">
+                                    <li>郵件招領</li>
+                                </ul>
+                        </li>
                         <li class="life-indexs-content">
                             <span>新生宿舍</span>
                                 <ul class="life-indexs-inner">
-                                    <li>男11舍</li>
+                                    <li>女一舍</li>
+                                    <li>女四舍</li>
+                                    <li>男三舍</li>
+                                    <li>男七舍</li>
                                     <li>男九舍</li>
-                                    <li>男7舍</li>
-                                    <li>男6舍</li>
-                                    <li>男3舍</li>
-                                    <li>女1~4舍</li>
+                                    <li>男十一舍</li>
                                 </ul>
                         </li>
-                        <li>宿網申請</li>
-                        <li>宿舍冷氣</li>
-                        <li>宿舍所需</li>
-                        <li>宿舍規則</li>
-                        <li>外宿專區</li>
+                        <li class="life-indexs-content">
+                            <span>銀行</span>
+                                <ul class="life-indexs-inner">
+                                    <li>銀行</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>郵政服務</span>
+                                <ul class="life-indexs-inner">
+                                    <li>郵件快遞</li>
+                                    <li>郵局</li>
+                                </ul>
+                        </li>
                     </ul>
                 </li>
+                <li>
+                    <span>traffic</span>
+                    <ul class="life-indexs">
+                        <li class="life-indexs-content">
+                            <span>腳踏車</span>
+                                <ul class="life-indexs-inner">
+                                    <li>腳踏車</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>汽機車</span>
+                                <ul class="life-indexs-inner">
+                                    <li>汽機車</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>台聯大專車</span>
+                                <ul class="life-indexs-inner">
+                                    <li>台聯大專車</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>如何到中央</span>
+                                <ul class="life-indexs-inner">
+                                    <li>自行開車</li>
+                                    <li>高鐵</li>
+                                    <li>火車</li>
+                                    <li>客運</li>
+                                    <li>公車</li>
+                                </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span>Play</span>
+                    <ul class="life-indexs">
+                        <li class="life-indexs-content">
+                            <span>Movie</span>
+                                <ul class="life-indexs-inner">
+                                    <li>Movie</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>KTV</span>
+                                <ul class="life-indexs-inner">
+                                    <li>KTV</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>NOVA</span>
+                                <ul class="life-indexs-inner">
+                                    <li>NOVA</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>夜市</span>
+                                <ul class="life-indexs-inner">
+                                    <li>夜市</li>
+                                </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span>School</span>
+                    <ul class="life-indexs">
+                        <li class="life-indexs-content">
+                            <span>圖美輸出中心</span>
+                                <ul class="life-indexs-inner">
+                                    <li>圖美輸出中心</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>校園影印</span>
+                                <ul class="life-indexs-inner">
+                                    <li>校園影印</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>校園劇場</span>
+                                <ul class="life-indexs-inner">
+                                    <li>校園劇場</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>校園影城</span>
+                                <ul class="life-indexs-inner">
+                                    <li>校園影城</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>印象美髮</span>
+                                <ul class="life-indexs-inner">
+                                    <li>印象美髮</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>好視康眼鏡</span>
+                                <ul class="life-indexs-inner">
+                                    <li>好視康眼鏡</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>敦煌書局</span>
+                                <ul class="life-indexs-inner">
+                                    <li>敦煌書局</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>悠閒時刻</span>
+                                <ul class="life-indexs-inner">
+                                    <li>海音咖啡</li>
+                                    <li>阿諾可麗餅</li>
+                                    <li>小木屋鬆餅</li>
+                                    <li>校園Cafe</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>松苑</span>
+                                 <ul class="life-indexs-inner">
+                                    <li>香草田園(2F)</li>
+                                    <li>全家-中大三店</li>
+                                    <li>華碩-三井3C</li>
+                                    <li>喫茶小舖</li>
+                                    <li>野味炭烤燒肉飯</li>
+                                    <li>MOS摩斯漢堡</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>女十四舍B1</span>
+                                <ul class="life-indexs-inner">
+                                    <li>全家-中大二店</li>
+                                    <li>龍誠快速影印</li>
+                                    <li>拉雅漢堡</li>
+                                </ul>
+                        </li>
+                        <li class="life-indexs-content">
+                            <span>餐廳</span>
+                                <ul class="life-indexs-inner">
+                                    <li>七餐</li>
+                                    <li>九餐</li>
+                                </ul>
+                        </li>
+                    </ul>
+                </li>
+                
             </ul>
         </div>
     </div>

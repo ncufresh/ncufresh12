@@ -1,13 +1,15 @@
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
 jQuery(document).ready(function()
-{   
+{
     var options = $.extend({
-        isMember:    <?php echo Yii::app()->user->isMember?1:0;?>,
+        isMember:       <?php echo Yii::app()->user->isMember ? 'true' : 'false'; ?>
     });
     jQuery('#marquee').marquee();
     jQuery('#index-calendar').indexCalendar(options);
 });
 </script>
+<?php $this->endWidget();?>
 
 <div id="index-calendar">
     <div class="calendar-top calendar-top-all-nologin">
@@ -24,7 +26,7 @@ jQuery(document).ready(function()
 <?php foreach ( $marquees as $marquee ) : ?>
         <li><?php echo $marquee->message; ?></li> 
 <?php endforeach; ?>
-        <a href="<?php echo $this->createUrl('site/marquee'); ?>" title="編輯">編輯</a>
+        <a href="<?php echo $this->createUrl('site/marquee'); ?>" title="編輯">[編輯]</a>
     </ul>
 
     <div class="index-latest-box index-box">

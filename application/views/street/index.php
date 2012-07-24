@@ -319,7 +319,7 @@
         <button id="dialog2-button-right">right</button>
     </div>
 </div>
-
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
     $('#imageimage').mousedown(function()
     {
@@ -367,7 +367,7 @@
 
     $('.image1, .image2, .image3, .image4, .image5,').attr('item:checked','checked');
     $('.image3').click(function()
-    {//系館    
+    {//系館
         $('.department-building, .landscape, .diet, .government, .dormitory').show();
         // $("#checkbox-2, #checkbox-3, #checkbox-4, #checkbox-5, #checkbox-6").removeAttr('checked');                
         if($('.image3').attr('item:checked')=='checked')
@@ -557,4 +557,6 @@
         $('#dialog2_main_picture').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/3.jpg');
     });
 </script>
+<?php $this->endWidget();?>
+
 </div>

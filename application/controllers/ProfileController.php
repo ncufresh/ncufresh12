@@ -60,7 +60,6 @@ class ProfileController extends Controller
         $user = User::model()->findByPk($userID);
         if ( isset($_POST['form-editor-sure']) && isset($_POST['profile']) ) 
         {
-            echo 123;
             $user->attributes = $_POST['register'];
             if ( $user->validate() )
             {
