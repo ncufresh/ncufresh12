@@ -1,0 +1,113 @@
+body,
+input,
+textarea
+{
+    font-size: 16px;
+    font-family: Microsoft JhengHei, Arial, sans-serif;
+}
+
+body
+{
+    background: #DCE4ED;
+    margin: 0 auto;
+    overflow-y: scroll;
+    width: 750px;
+}
+
+a
+{
+    color: #5C5C5C;
+    text-decoration: none;
+}
+
+#header .statics,
+#header .star,
+#search,
+#menu,
+#navigation,
+#sidebar,
+#marquee,
+#index-calendar,
+#chat,
+#chat-friend-list
+{
+    display: none;
+}
+
+#header
+{
+    height: 60px;
+}
+
+#content
+{
+    min-height: 360px;
+}
+
+#content:after {
+    clear: both;
+    content: '.';
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+#footer
+{
+    font-size: 0.85em;
+    margin: 0;
+    padding: 0;
+    right: 30px;
+    text-align: center;
+}
+
+.index-box
+{
+    -webkit-border-radius: 10px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    margin-left: 7.5px;
+    min-height: 400px;
+    width: 365.5px;
+}
+
+.index-box h4
+{
+    height: 25px;
+    margin: 5px;
+    width: 80px;
+}
+
+.index-box table
+{
+    width: 100%;
+}
+
+.index-box td
+{
+    padding: 4px;
+    width: 85%;
+}
+
+.index-box td.time
+{
+    text-align: right;
+    width: 15%;
+}
+
+.index-box tfoot
+{
+    text-align: right;
+}
+
+.index-latest-box
+{
+    clear: left;
+    float: left;
+}
+
+.index-forums-box
+{
+    clear: right;
+    float: right;
+}
