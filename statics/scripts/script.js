@@ -1225,14 +1225,14 @@
                             down = input;
                             message.text('請輸入數字' + down + '到' + up +'之間');
                         }
-                        input = 0;
                         input_index = 1;
-                        input_text.text(input);
                     }
                     else
                     {
                         alert('要輸在範圍內喔!');
                     }
+                    input = 0;
+                    input_text.text(input);
                 })
                 .appendTo(box);
                 $('<button>7</button>').css({
@@ -1243,13 +1243,13 @@
                 {
                     if ( input_index == 1 )
                     {
-                        input += 7 * 10;
+                        input += 7;
                         input_index = 0;
                         input_text.text(input);
                     }
                     else if( input_index == 0 )
                     {
-                        input += 7;
+                        input = input * 10 + 7;
                         input_text.text(input);
                         input_index = -1;
                     }
@@ -1263,13 +1263,13 @@
                 {
                     if ( input_index == 1 )
                     {
-                        input += 8 * 10;
+                        input += 8;
                         input_index = 0;
                         input_text.text(input);
                     }
                     else if( input_index == 0 )
                     {
-                        input += 8;
+                        input = input * 10 + 8;
                         input_text.text(input);
                         input_index = -1;
                     }
@@ -1283,13 +1283,13 @@
                 {
                     if ( input_index == 1 )
                     {
-                        input += 9 * 10;
+                        input += 9;
                         input_index = 0;
                         input_text.text(input);
                     }
                     else if( input_index == 0 )
                     {
-                        input += 9;
+                        input = input * 10 + 9;
                         input_text.text(input);
                         input_index = -1;
                     }
@@ -1303,13 +1303,13 @@
                 {
                     if ( input_index == 1 )
                     {
-                        input += 4 * 10;
+                        input += 4;
                         input_index = 0;
                         input_text.text(input);
                     }
                     else if( input_index == 0 )
                     {
-                        input += 4;
+                        input = input * 10 + 4;
                         input_text.text(input);
                         input_index = -1;
                     }
@@ -1323,13 +1323,13 @@
                 {
                     if ( input_index == 1 )
                     {
-                        input += 5 * 10;
+                        input += 5;
                         input_index = 0;
                         input_text.text(input);
                     }
                     else if( input_index == 0 )
                     {
-                        input += 5;
+                        input = input * 10 + 5;
                         input_text.text(input);
                         input_index = -1;
                     }
@@ -1343,13 +1343,13 @@
                 {
                     if ( input_index == 1 )
                     {
-                        input += 6 * 10;
+                        input += 6;
                         input_index = 0;
                         input_text.text(input);
                     }
                     else if( input_index == 0 )
                     {
-                        input += 6;
+                        input = input * 10 + 6;
                         input_text.text(input);
                         input_index = -1;
                     }
@@ -1363,13 +1363,13 @@
                 {
                     if ( input_index == 1 )
                     {
-                        input += 1 * 10;
+                        input += 1;
                         input_index = 0;
                         input_text.text(input);
                     }
                     else if( input_index == 0 )
                     {
-                        input += 1;
+                        input = input * 10 + 1;
                         input_text.text(input);
                         input_index = -1;
                     }
@@ -1383,13 +1383,13 @@
                 {
                     if ( input_index == 1 )
                     {
-                        input += 2 * 10;
+                        input += 2;
                         input_index = 0;
                         input_text.text(input);
                     }
                     else if( input_index == 0 )
                     {
-                        input += 2;
+                        input = input * 10 + 2;
                         input_text.text(input);
                         input_index = -1;
                     }
@@ -1403,13 +1403,13 @@
                 {
                     if ( input_index == 1 )
                     {
-                        input += 3 * 10;
+                        input += 3;
                         input_index = 0;
                         input_text.text(input);
                     }
                     else if( input_index == 0 )
                     {
-                        input += 3;
+                        input = input * 10 + 3;
                         input_text.text(input);
                         input_index = -1;
                     }
@@ -1419,31 +1419,36 @@
                     color: 'black',
                     textAlign: 'left',
                 })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input = input * 10;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
                 .appendTo(box);
-                $('<button>Back</button>').css({
+                $('<button>Clean</button>').css({
                     color: 'black',
                     textAlign: 'left',
                 })
                 .click(function()
                 {
-                    if ( input_index == -1 )
-                    {
-                        input_index = 0;
-                        input = parseInt(input / 10 ) * 10;
-                        input_text.text(input);
-                    }
-                    else if ( input_index == 0 )
-                    {
-                        input_index = 1;
-                        input = 0;
-                        input_text.text(input);
-                    }
+                    input_index = 1;
+                    input = 0;
+                    input_text.text(input);
                 })
                 .appendTo(box);
                 $('<p>沒猜到不能離開啦~~哇哈哈哈</p>').css({
                     background: 'yellow',
                     color: 'blue',
-                    textAlign: 'center',
+                    textAlign: 'center'
                 })
                 .appendTo(box);
             }
