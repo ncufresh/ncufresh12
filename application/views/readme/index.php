@@ -17,7 +17,7 @@
                 <a href="<?php echo Yii::app()->createUrl('readme/reschool');?>" title="復學區">復學區</a>
             </li>
         </ul>
-        
+
         <div id="read-menu">
             <div id="caption">
                 <ul id="nculife-details">
@@ -28,6 +28,5 @@
                 <a href="#" id="readme-direct"><img src="<?php echo Yii::app()->baseUrl . "/statics/images/direction.jpg"?>"/></a>
             </div>
         </div>
-        
     </div>
 </div>

@@ -16,7 +16,7 @@ class WebUser extends CWebUser
 
     public function getIsAdmin()
     {
-        return $this->getIsMember() && $this->user()->getIsAdmin();
+        return $this->getIsMember() && $this->getUser()->getIsAdmin();
     }
 
     public function getName()
@@ -26,11 +26,6 @@ class WebUser extends CWebUser
             return Yii::app()->facebook->getUsername();
         }
         return parent::getName();
-    }
-
-    public function getLastLoginTimestamp()
-    {
-        return $this->user()->getLastLoginTimestamp();
     }
 
     public function checkAccess($operation, $params = array(), $allowCaching = true)
@@ -50,7 +45,7 @@ class WebUser extends CWebUser
     protected function afterLogin($fromCookie)
     {
         parent::afterLogin($fromCookie);
-        $this->user()->updateOnlineState();
+        $this->getUser()->updateOnlineState();
     }
 
     public function afterLogout()
@@ -59,7 +54,7 @@ class WebUser extends CWebUser
         Yii::app()->facebook->destroySession();
     }
 
-    protected function user()
+    public function getUser()
     {
         if ( $this->_model === null )
         {

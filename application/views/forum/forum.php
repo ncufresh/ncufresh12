@@ -64,14 +64,10 @@ $(document).ready(function (){
     </div>
 時間顯示(!?)
 <br/>
-<?php
-for ( $i = $page_status['first_page']; $i <= $page_status['last_page']; ++$i ):
-    if ( $i == $page_status['current_page'] ) :
-        echo $i.' ';
-    else :
-        echo CHtml::link($i, Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => $sort, 'category' => $current_category, 'page' => $i))).' ';
-    endif;
-endfor; ?>
+<?php $this->widget('Pager', array(
+    'url'       => 'forum/forum',
+    'pager'     => $page_status
+)); ?>
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/delete'); ?>" method="POST" class="form-delete">
 <input type="hidden" name="delete" value=""/>
 </form>

@@ -5,7 +5,7 @@
         <a href="<?php echo Yii::app()->createUrl('club/department');?>" title="系所">系所</a>
     </div>
     <div id="club-list">
-        <ul class="l1">
+        <ul>
             <h2>學術性</h2>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 1));?>" title="機車研究社">機車研究社</a>
@@ -76,9 +76,8 @@
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 77));?>" title="布研社">布研社</a>
             </li>
-            
         </ul>
-        <ul class="l1">
+        <ul>
             <h2>康樂性</h2>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 23));?>" title="羽球社">羽球社</a>
@@ -165,7 +164,7 @@
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 99));?>" title="管樂社">管樂社</a>
             </li>
         </ul>
-        <ul class="l1">
+        <ul>
             <h2>聯誼性</h2>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 50));?>" title="延平校友會">延平校友會</a>
@@ -222,7 +221,7 @@
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 67));?>" title="港澳同學會">港澳同學會</a>
             </li>
         </ul>
-        <ul class="l1">
+        <ul>
             <h2>服務性</h2>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 68));?>" title="基服社">基服社</a>
