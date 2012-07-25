@@ -981,6 +981,7 @@ ul#nculife-details
     overflow: hidden;
     position: absolute;
     width: 204px;
+    height: 355px;
 }
 
 #index-calendar .calendar-bottom-wrap table.calendar-table caption

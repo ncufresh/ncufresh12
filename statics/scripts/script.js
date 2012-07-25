@@ -943,7 +943,7 @@
 })(jQuery);
 
 /**
- * indexCalendar
+ * Calendar
  */
 (function($)
 {
@@ -1149,6 +1149,106 @@
         ).appendTo(bottom);
         return this;
     };
+})(jQuery);
+
+/**
+ * Dialog
+ */
+(function($){
+    $.dialog = {};
+    
+    $.fn.dialog = function(options)
+    {
+        return $(this).each(function(){
+            this.options = $.extend({
+                dialogClass: 'dialog',
+                modal: true,
+                width: $(this).width(),
+                heigth: $(this).height(),
+                escape: true,
+                closeButton: true,
+                closeText: 'close',
+                closeClass: 'dialog-close-button'
+            }, options);
+            switch(options)
+            {
+                case 'close': 
+                    $.fn.dialog.close(this);
+                    break;
+                case 'destroy':
+                    $.fn.dialog.destroy(this);
+                    break;
+                case 'open':
+                    $.fn.dialog.open(this);
+                    break;
+                case 'create':
+                    $.fn.dialog.create(this);
+                    break;
+                default: 
+                    $.fn.dialog.open(this);
+            }
+        });
+    }
+
+    $.fn.dialog.open = function(target)
+    {
+        if ( !$(target).hasClass(target.options.dialogClass) )
+        {
+            $.fn.dialog.create(target);
+        }
+        $(target).detach().css({
+            display: 'block'
+        }).appendTo('body');
+    }     
+
+    $.fn.dialog.close = function(target)
+    {
+        $(target).css({
+            display: 'none'
+        });
+    }
+
+    $.fn.dialog.create = function(target)
+    {
+        var escape = function(event){
+            if (event.keyCode == 27) $.fn.dialog.close(target);
+            $(document).unbind('keydown', escape);
+        };
+        if( !$(target).hasClass(target.options.dialogClass) )
+        {
+            if ( target.options.escape )
+            {
+                $(document).bind('keydown', escape);
+            }
+            if ( target.options.closeButton )
+            {
+                var close = $('<a></a>')
+                    .attr('href','#')
+                    .text(target.options.closeText)
+                    .addClass(target.options.closeClass)
+                    .click(function(){
+                        $.fn.dialog.close(target);
+                    });
+                $(target).prepend(close);
+            }
+        }
+        $(target).css({
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            width: target.options.width,
+            heigth: target.options.heigth,
+            marginLeft: -1 * target.options.width/2,
+            marginTop: -1 * target.options.heigth/2,
+            padding: 0,
+            display: 'block'
+        }).addClass(target.options.dialogClass);
+    } 
+
+    $.fn.dialog.destroy = function(target)
+    {
+        $(target).remove();
+    }
 })(jQuery);
 
 /**
