@@ -1179,23 +1179,23 @@
                 dialogClass:    'dialog',
                 closeText:      'close',
                 closeClass:     'dialog-close-button',
-                onClose:        function(){ },
-                onOpen:         function(){ },
-                onCreate:       function(){ },
-                onDestroy:      function(){ }
+                onClose:        function() {},
+                onOpen:         function() {},
+                onCreate:       function() {},
+                onDestroy:      function() {}
             }, options);
-            switch(options)
+            switch ( options )
             {
-                case 'close': 
+                case 'close' : 
                     $.fn.dialog.close(this);
                     break;
-                case 'destroy':
+                case 'destroy' :
                     $.fn.dialog.destroy(this);
                     break;
-                case 'open':
+                case 'open' :
                     $.fn.dialog.open(this);
                     break;
-                case 'create':
+                case 'create' :
                     $.fn.dialog.create(this);
                     break;
                 default: 
@@ -1207,22 +1207,22 @@
     $.fn.dialog.open = function(target)
     {
         target.options.onOpen();
-        if ( !$(target).hasClass(target.options.dialogClass) )
+        if ( ! $(target).hasClass(target.options.dialogClass) )
         {
             $.fn.dialog.create(target);
         }
-        switch( target.options.effect )
+        switch ( target.options.effect )
         {
-            case 'fade':
+            case 'fade' :
                 $(target).fadeIn(target.options.speed);
                 break;
-            case 'slide':
+            case 'slide' :
                 $(target).slideDown(target.options.speed);
                 break;
-            case 'toggle':
+            case 'toggle' :
                 $(target).toggle(target.options.speed);
                 break;
-            case 'none':
+            case 'none' :
             default:
                 $(target).css({
                     display: 'block'
@@ -1233,18 +1233,18 @@
     $.fn.dialog.close = function(target)
     {
         target.options.onClose();
-        switch( target.options.effect )
+        switch ( target.options.effect )
         {
-            case 'fade':
+            case 'fade' :
                 $(target).fadeOut(target.options.speed);
                 break;
-            case 'slide':
+            case 'slide' :
                 $(target).slideUp(target.options.speed);
                 break;
-            case 'toggle':
+            case 'toggle' :
                 $(target).toggle(target.options.speed);
                 break;
-            case 'none':
+            case 'none' :
             default:
                 $(target).css({
                     display: 'none'
@@ -1257,9 +1257,9 @@
         target.options.onCreate();
         var escape = function(event)
         {
-            if (event.keyCode == 27) $.fn.dialog.close(target);
+            if ( event.keyCode == 27 ) $.fn.dialog.close(target);
         };
-        if( !$(target).hasClass(target.options.dialogClass) )
+        if ( ! $(target).hasClass(target.options.dialogClass) )
         {
             if ( target.options.escape )
             {
@@ -1319,11 +1319,11 @@
             closeOnClick:   true,
             closeOnEscape:  true,
             onBeforeShow:   function() { return true; },
-            onShow:         function() { return true; },
-            onAfterShow:    function() { return true; },
+            onShow:         function() {},
+            onAfterShow:    function() {},
             onBeforeHide:   function() { return true; },
-            onHide:         function() { return true; },
-            onAfterHide:    function() { return true; }
+            onHide:         function() {},
+            onAfterHide:    function() {}
         }, options);
 
         return $(this).each(function()
@@ -1407,11 +1407,11 @@
             keyToPrev:                  'p',
             keyToNext:                  'n',
             onBeforeShow:               function() { return true; },
-            onShow:                     function() { return true; },
-            onAfterShow:                function() { return true; },
+            onShow:                     function() {},
+            onAfterShow:                function() {},
             onBeforeHide:               function() { return true; },
-            onHide:                     function() { return true; },
-            onAfterHide:                function() { return true; }
+            onHide:                     function() {},
+            onAfterHide:                function() {}
         }, options);
 
         var active = 0;
@@ -1485,6 +1485,26 @@
                 });
                 lightboxLoadImage();
                 options.onAfterShow();
+            }
+            return false;
+        }
+
+        var lightboxPrev = function()
+        {
+            if ( active != 0 )
+            {
+                active -= 1;
+                lightboxLoadImage();
+            }
+            return false;
+        }
+
+        var lightboxNext = function()
+        {
+            if ( active != (images.length - 1) )
+            {
+                active += 1;
+                lightboxLoadImage();
             }
             return false;
         }
@@ -1611,26 +1631,6 @@
 
             lightboxEnableKeyboard();
         };
-
-        var lightboxPrev = function()
-        {
-            if ( active != 0 )
-            {
-                active -= 1;
-                lightboxLoadImage();
-            }
-            return false;
-        }
-
-        var lightboxNext = function()
-        {
-            if ( active != (images.length - 1) )
-            {
-                active += 1;
-                lightboxLoadImage();
-            }
-            return false;
-        }
 
         var lightboxEnableKeyboard = function()
         {
