@@ -1363,6 +1363,11 @@ ul#nculife-details
     width: 100%;
 }
 
+#mm-video .loading
+{
+    position: absolute;
+}
+
 #mm-video-frame
 {
     border: 0;
