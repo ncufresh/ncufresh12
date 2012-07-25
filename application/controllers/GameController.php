@@ -21,9 +21,13 @@ class GameController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('index', 'togetExp'),
-                'users'     => array('*')
+                'users'     => array('@')
             ),
+            // array(
+                // 'allow',
+                // 'actions'   => array('index', 'togetExp'),
+                // 'users'     => array('*')
+            // ),
             array(
                 'deny',
                 'users'     => array('*')
