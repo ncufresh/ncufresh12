@@ -29,6 +29,7 @@ class FriendsController extends Controller
         $departmentId = Profile::model()->findByPK($userID)->department_id;
         $grade = Profile::model()->findByPK($userID)->grade;
         $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+
         if ( isset($_POST['addgroup']) )
         {  
             $group = new Group();        
@@ -47,7 +48,7 @@ class FriendsController extends Controller
                 }
             }
         }
-        
+
         $this->setPageTitle(Yii::app()->name . ' - 好友專區');
         $this->render('friends', array(
             'profileFir'    => Profile::model()->getSameDepartmentSameGrade($departmentId, $grade),
@@ -158,7 +159,7 @@ class FriendsController extends Controller
             $this->redirect(array('friends/friends'));
         }
     }
-    
+
     public function actionDeleteFriends()
     {
         if ( isset($_POST['myfriends-cancel']) && isset($_POST['friends']) )
@@ -185,5 +186,4 @@ class FriendsController extends Controller
         }
         $this->redirect(array('friends/friends'));
     }
-
 }

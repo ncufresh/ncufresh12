@@ -101,6 +101,7 @@ jQuery(document).ready(function()
            <?}?>
 	<?php
     echo CHtml::link('修改', Yii::app()->createUrl('club/modify',array('id'=>$id))) . '<br />';
+    echo CHtml::link('上傳圖片', Yii::app()->createUrl('club/uploadpicture',array('id'=>$id))) . '<br />';
     ?>
     <h1><?php echo $data->name;?></h1>    
     <div id="club-title">簡介:</div>

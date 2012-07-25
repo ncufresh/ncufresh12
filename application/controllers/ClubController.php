@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 
 class ClubController extends Controller
 {
@@ -38,7 +38,6 @@ class ClubController extends Controller
         $id = (integer)$id; 
         $club = new Club();
         $club = $club->getClub($id);
-        //$data = $club->getClub($id); */
         if(isset($_POST['club']))
         {
             $club->introduction = $_POST['club']['introduction'];
@@ -58,9 +57,36 @@ class ClubController extends Controller
                 $this->redirect(array("club/content/$id"));
             } 
         }
-            
+    
         $this->_data['token'] = Yii::app()->security->getToken(); 
-        $this->render('modify',array('data'=>$club,'id'=>$id)); 
+        $this->render('modify',array(
+            'data'=>$club,
+            'id'=>$id
+        )); 
         
-	} 
+	}
+
+    public function actionUploadpicture($id)
+    {
+        $id = (integer)$id;
+        $model = new Club();
+        /* $userID = Yii::app()->user->id;
+        $model = $model->getClub($id); 
+        $manager = findAll( $model->manager_id AND $userID );*/
+        $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'club/' . $id;
+        if ( isset($_FILES['pictures']) )
+        {
+            for ( $index = 0 ; $index < 4 ; ++$index )
+            {
+                if ( empty($_FILES['pictures']['name'][$index]) ) continue;
+                $file = $path . DIRECTORY_SEPARATOR . ($index + 1) . '.jpg';
+                if ( file_exists($file) ) unlink($file);
+                move_uploaded_file($_FILES['pictures']['tmp_name'][$index], $file);
+            }
+            $this->redirect(array("club/content/$id"));
+        }
+        $this->render('uploadpicture', array(
+            'id'    => $id,
+        ));
+    } 
 }

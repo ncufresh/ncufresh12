@@ -2,11 +2,45 @@
 
 class ForumController extends Controller
 {
+    const ARTICLES_PER_PAGE = 10;
+
     public function init()
     {
         parent::init();
         Yii::import('application.models.Forum.*');
         return true;
+    }
+
+    public function filters()
+    {
+        return array(
+            'accessControl'
+        );
+    }
+
+    public function accessRules()
+    {
+        return array(
+            array(
+                'allow',
+                'actions'   => array('admin', 'create', 'delete'),
+                'roles'     => array('admin')
+            ),
+            array(
+                'allow',
+                'actions'   => array('create', 'comment', 'reply'),
+                'roles'     => array('member')
+            ),
+            array(
+                'allow',
+                'actions'   => array('index', 'view', 'forumlist', 'forum'),
+                'users'     => array('*')
+            ),
+            array(
+                'deny',
+                'users'     => array('*')
+            )
+        );
     }
 
     public function actionIndex()
@@ -26,17 +60,31 @@ class ForumController extends Controller
         ));
     }
 
-    public function actionForum($fid, $sort = 'create', $category = 0)
+    public function actionForum($fid, $sort = 'create', $category = 0, $page = 1)
     {
         $article = new Article();
         // content of each forum
         // [not yet] 傳入是否為admin 用於判斷是否顯示置頂checkbox及刪除文章選項
-        $this->render('forum', array(
-            'fid'       => $fid,
-            'sort'      => $sort,
-            //'model'     => $article->findAll('forum_id='.$fid)
-            'model'     => Article::model()->getArticlesSort($fid, $sort)
-        ));
+        if ( ! Yii::app()->request->getIsAjaxRequest() )
+        {
+            $this->render('forum', array(
+                'fid'       => $fid,
+                'sort'      => $sort,
+                'current_category'  => $category,
+                //'model'     => $article->findAll('forum_id='.$fid)
+                'model'     => Article::model()->getArticlesSort($fid, $sort, $category, $page, self::ARTICLES_PER_PAGE),
+                'category'  => Category::model()->findByPk($fid),
+                'page_status'   => $article->getPageStatus($page, self::ARTICLES_PER_PAGE)
+            ));
+        }
+        else
+        {
+            $this->_data['content'] = array();
+            foreach ( Article::model()->getArticlesSort($fid, $sort) as $article )
+            {
+                $this->_data['content'][$article->id] = $article->title;
+            }
+        }
     }
 
     public function actionAdmin()
@@ -70,7 +118,6 @@ class ForumController extends Controller
             'fid'       => $fid,
             'category'  => Category::model()->findByPk($fid)
         ));
-        
     }
 
     // public function actionTop(){
@@ -81,12 +128,13 @@ class ForumController extends Controller
         $article = Article::model()->findByPk($id);
         $comment = new Comment();
         $reply = new Reply();
-
+        $article->viewed_times++;
+        $article->save();
         $this->render('view', array(
             'article'   => $article,
             'comments'  => $comment,
             'reply'     => $reply
-        ));        
+        ));
     }
 
     public function actionComment(){
@@ -139,7 +187,7 @@ class ForumController extends Controller
             $article_to_be_del->visibility = 0;
             $article_to_be_del->save();
         }
-        
+
         $this->redirect(Yii::app()->createUrl('forum/forum', array(
             'fid'       => $article_to_be_del->forum->id
         )));

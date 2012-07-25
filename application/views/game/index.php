@@ -1,4 +1,50 @@
-﻿<?php
+﻿<style>
+div.mybody
+{
+    position:relative;
+    width: 450px;
+    height: 850px;
+    overflow: hidden;
+}
+div.mybody img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+</style>
+<?php
+        $user_value = array(
+            'login_times' => 24,
+            'spend_money' => 32452,
+            'total_money' => 13453,
+            'friend' => 51,
+            'reply' => 10,
+            'post' => 15,
+            'cloth' => 15,
+            'throw_other_garbage' => 37,
+            'clean_self_garbage' => 32,
+            'other_throw_garbage' => 123,
+            'clean_other_garbage' => 1345,
+            'body_price' => 55236
+            );
+            ?>
+
+<div class="mybody">
+<img src="../statics/game/skin/boyC1.png" >
+<img src="../statics/game/hair/hairN5.png" >
+<img src="../statics/game/shoes/shoeN10.png" >
+<img src="../statics/game/cloths/clothseN4.png" >
+<img src="../statics/game/pants/pantsN12.png" >
+<img src="../statics/game/eyes/e7.png" >
+
+
+
+
+</div>
+<?php
+        echo $user_value['login_times'].'<br/>';
+
         $level = array(
             array(
                 'name'  => '錯誤級',  //原則上不會跑到這
@@ -41,11 +87,47 @@
                 'exp'   => 30000
             ),
             array(
-                'name'  => '神手級',
+                'name'  => '等級十',
+                'exp'   => 48050
+            ),
+            array(
+                'name'  => '等級十一',
+                'exp'   => 63000
+            ),
+            array(
+                'name'  => '等級十二',
+                'exp'   => 85000
+            ),
+            array(
+                'name'  => '等級十三',
+                'exp'   => 110000
+            ),
+            array(
+                'name'  => '等級十四',
+                'exp'   => 165000
+            ),
+            array(
+                'name'  => '等級十五',
+                'exp'   => 250000
+            ),
+            array(
+                'name'  => '等級十六',
+                'exp'   => 360000
+            ),
+            array(
+                'name'  => '等級十七',
+                'exp'   => 520000
+            ),
+            array(
+                'name'  => '等級十八',
+                'exp'   => 750000
+            ),
+            array(
+                'name'  => '等級十九',
                 'exp'   => 1000000
             ),
             array(
-                'name'  => '駭客級',
+                'name'  => '等級二十',
                 'exp'   => 10000000000
             )
         );
@@ -62,8 +144,8 @@
 
           if ( $user->getExpValue() < $value['exp'] )
           {
-              echo '<h1 style="background-color:black;color:red;text-align:center;font-size:40px">'.$user->profile->nickname.' '.$count.'次淨化 '.$value['name'].'</h1>';
-              if($count>=10)
+              echo '<h1 style="background-color:black;color:red;text-align:center;font-size:40px">'.$user->profile->nickname.' LV'.$count.'.'.$value['name'].'</h1>';
+              if($count>=20)
               echo '<h1 style="background-color:black;color:red;text-align:center;font-size:40px">'.$user->getExpValue().' / ∞ (最高等級)</h1>';
               else
               echo '<h1 style="background-color:black;color:red;text-align:center;font-size:40px">'.$user->getExpValue().' / '.$value['exp'].' (下一等級)</h1>';
@@ -72,6 +154,7 @@
           }
           $count++;
         }
+        echo '<img src="../statics/game/sea.png" >';
         echo '<div style="color:navy;font-size:18px">';
         echo 'Id：';
         print_r($user->id);
@@ -87,8 +170,6 @@
         print_r($user->cloths->name);
         echo '<br/>褲子：';
         print_r($user->pants->name);
-        echo '<br/>手勢：';
-        print_r($user->hands->name);
         echo '<br/>鞋子：';
         print_r($user->shoes->name);
         echo '<br/>特殊寶物：';
@@ -109,9 +190,22 @@
             // echo $temp[1]->name.'<br/>';
             // echo $temp[2]->name.'<br/>';
             // echo $temp[3]->name.'<br/>';
+        echo '<table width="100%" border="1">';
+        echo '<th colspan="3">您目前的成就 </b></th>';
+        for ($count=1;$count<=6;$count++)
+        {
+            $achievement = Achievement::model()->findByPk($count);
+            if ($user_value['login_times'] >= $achievement->login_times 
+             && $user_value['spend_money'] >= $achievement->spend_money)
+            echo $achievement->name.'=>'.$achievement->description.'<br/>';
+            //echo $achievement->spend_money.'<br/>';
+        
+        }
+        echo '</table></br>';
+        
         
         echo '<table width="100%" border="1">';
-        echo '<th colspan="4">您目前的成就 <b> (' . sizeof($achievements_bag) . ')</b></th>';
+        echo '<th colspan="3">您目前的成就 <b> (' . sizeof($achievements_bag) . ')</b></th>';
         foreach ($achievements_bag as $row)
         {
             echo '<tr><td>';
@@ -119,7 +213,7 @@
             // echo '成就id：'.$row->achievement_id.'，名稱：'.$row->translation->name.'('.$row->translation->description.')   ('. $row->time.' 獲得)';
             echo '<td>成就id：'.$row->achievement_id.'</td><td>名稱：'.$row->translation->name;
             if($row->translation->description!='')
-            echo ' ( '.$row->translation->description.' )</td><td>'. $row->time.' 獲得</td>';
+            echo ' ( '.$row->translation->description.' )</td>';
             else
             echo ' ( 無此成就相關描述 )</td><td>'. $row->time.' 獲得</td>';
             $counter_one++;

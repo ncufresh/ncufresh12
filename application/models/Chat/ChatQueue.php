@@ -56,7 +56,8 @@ class ChatQueue extends CActiveRecord
             ':receiver' => Yii::app()->user->getId()
         );
 
-        $lasttime = $lasttime ?: Yii::app()->user->getLastLoginTimestamp();
+        $lasttime = $lasttime
+                 ?: Yii::app()->user->getUser()->getLastLoginTimestamp();
         if ( $lasttime < 0 ) $lasttime = 0;
 
         foreach ( $this->findAll($criteria) as $entry )

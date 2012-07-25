@@ -106,6 +106,11 @@ class User extends CActiveRecord
         return $this->is_admin;
     }
 
+    public function getOnlineCount()
+    {
+        return $this->online_count;
+    }
+
     public function getLastLoginTimestamp()
     {
         return $this->last_login_timestamp;
