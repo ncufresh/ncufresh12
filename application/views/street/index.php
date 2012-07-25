@@ -312,60 +312,74 @@
     <img src="<?php echo Yii::app()->baseUrl?>/statics/building/government/government-out.png" class="one-image government" showMe="government" style="top:290px;left:660px;">
     <img src="<?php echo Yii::app()->baseUrl?>/statics/building/click.png" class="one-image image6" style="top:350px;left:660px;">
     <!--窗簾-->
-    <div>
-    <img src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain.png" style=" position:absolute; z-index:2; top:0px;left:750px;" id="curtain">
-    <img src="<?php echo Yii::app()->baseUrl?>/statics/building/unclick.png" style=" position:absolute; z-index:2; top:372px;left:750px;" id="unclick">
+    
+    <div style="position:absolute; z-index:1; top:0px; left:750px; " id="curtain-div">
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain.png" style="position:absolute;" id="curtain">
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/unclick.png" style="position:absolute; top:372px; left:100px;" id="unclick">
+        
+        
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/college.png" class="one-image department-building two-image" showMe="department-building" style="top:0;left:0px;">
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/dormitory.png" class="one-image dormitory two-image" showMe="dormitory" style="top:50px;left:0px;">
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/government/government-out.png" class="one-image government two-image" showMe="government" style="top:100px;left:0px;">
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/food.png" class="one-image diet two-image" showMe="diet" style="top:150px;left:0px;">
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/landscape.png" class="one-image landscape two-image" showMe="landscape" style="top:200px;left:0px;">
+        
     </div>
     <!--<div style="position:absolute; z-index:6; height:150px; width:150px; background-color:red; top:0px; left:600px;">
     </div>-->
-</div>
-
-<div id="dialog-div-1"><!--第一層-->
-    <div id="dialog1-up-div">          
-        <p id="dialog1-up-content">
-        <div id="picture-main">
-        <img id="main">
-        <!--正視圖-->
-        </div>  
-        </p>
-    </div> 
     
-    <div id="dialog1-down-div">
-        <div id="picture-other-1">
-        <img id="other-1">
-        <!--其他圖 1-->
-        </div>    
-        <div id="picture-other-2">
-        <img id="other-2">
-        <!--其他圖 2-->
-        </div>
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg" id="little-man">      
-    </div>   
-</div>
-
-<div id="dialog-div-2"><!--第二層-->
-    <div id="dialog2-up-back"><!--2-1-->
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg" id="dialog2_main_picture">
+    <div id="dialog-div-1" style="z-index:2;"><!--第一層-->
+        <div id="dialog1-up-div">          
+            <p id="dialog1-up-content">
+            <div id="picture-main">
+            <img id="main">
+            <!--正視圖-->
+            </div>  
+            </p>
+        </div> 
+        
+        <div id="dialog1-down-div">
+        
+            <div id="picture-other-1">
+                <img id="other-1">
+                <!--其他圖 1-->
+            </div>    
+            <div id="picture-other-2">
+                <img id="other-2">
+                <!--其他圖 2-->
+            </div>
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg" id="little-man">    
+            
+        </div>   
     </div>
 
-    <div id="dialog2-down-back"><!--2-2-->
-        <button id="dialog2-button-left">left</button>
-
-        <div>
-            <img id="img1" src="<?php echo Yii::app()->baseUrl?>/statics/1.jpg">
-            <img id="img2" src="<?php echo Yii::app()->baseUrl?>/statics/2.png">
-            <img id="img3" src="<?php echo Yii::app()->baseUrl?>/statics/3.jpg">
+    <div id="dialog-div-2" style="z-index:2;"><!--第二層-->
+        <div id="dialog2-up-back"><!--2-1-->
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg" id="dialog2_main_picture">
         </div>
 
-        <button id="dialog2-button-right">right</button>
+        <div id="dialog2-down-back"><!--2-2-->
+            <button id="dialog2-button-left">left</button>
+
+            <div>
+                <img id="img1" src="<?php echo Yii::app()->baseUrl?>/statics/1.jpg">
+                <img id="img2" src="<?php echo Yii::app()->baseUrl?>/statics/2.png">
+                <img id="img3" src="<?php echo Yii::app()->baseUrl?>/statics/3.jpg">
+            </div>
+
+            <button id="dialog2-button-right">right</button>
+        </div>
     </div>
+
+    
 </div>
+
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
     $('#imageimage').mousedown(function()
     {
         $(document).mousemove(mousemove);
-    });    
+    });
     var mouseInId;
     var isInPicture = false;
     var mousemove = function(event)
@@ -384,7 +398,7 @@
         mouseInId = $(this).attr('id');       
     });    
     $('.picture').mouseleave(function()
-    {        
+    {
         isInPicture = false;
     });
     var mouseup = function()
@@ -410,23 +424,36 @@
     };
     $(document).mouseup(mouseup); 
 
-    $('.one-image, picture').click(function() // building icon show 
+    $('.one-image').click(function() // building icon show 
     {
         $('.picture').hide();
         $('.' + $(this).attr('showMe')).show();
     });
     
+    $('.two-image').click(function(){
+        alert();
+    });
+    
+    
     $('.image6').click(function()
-    {// 窗簾     
-        $('#curtain').animate({left:'600px'});
-        $('#unclick').animate({left:'700px'});        
+    { // 窗簾
+        $('#curtain-div').animate({left:'600px'});
     });
     $('#unclick').click(function()
-    {// 窗簾     
-        $('#curtain').animate({left:'750px'});
-        $('#unclick').animate({left:'750px'});        
-    });  
+    {// 窗簾
+        $('#curtain-div').animate({left:'750px'});
+    });
 
+    $('#little-man').click(function()
+    {
+        var dialog_div_2=$('div#dialog-div-2');
+        dialog_div_2.dialog({
+        width:500,
+        height:400,
+        modal:true,
+        draggable:false,
+    });
+    });
     
     // $('.arrow').eq(0).click(function()
     // {     
@@ -454,49 +481,26 @@
     // });
     
     $('.arrow').eq(6).click(function() // 親身體驗 back
-    {     
+    {
         $('#map-picture').attr('src', '<?php echo Yii::app()->request->baseUrl;?>/statics/pp.png');
         $('.arrow').hide();
         $('#map-picture').css(
         {
             zIndex:0,
         });
-    });   
-
-    var dialog_div_1 = $('#dialog-div-1');
-    dialog_div_1.dialog({
-        width: 999,
-        height: 700,
-        modal: true,
-        draggable: false,
-        buttons:{'button!!':function()
-        {
-        $('div#dialog-div-2').dialog('open');
-        }},
     });
-    dialog_div_1.dialog('close');//dialog_1 瞬間出現再結束
-    $('div.ui-dialog-buttonpane').css('background', 'yellow');// 第一層底下區域
-//---------------------------------------------------------------------------------------------
-    var dialog_div_2=$('div#dialog-div-2');
-        dialog_div_2.dialog({
-        width:500,
-        height:400,
-        modal:true,
-        draggable:false,
-    });
-    dialog_div_2.dialog('close'); // dialog_2 瞬間出現再結束       
-//----------------------------------------------------------------------------------------------  
 
     $('.picture').click(function()
-    {    
-        dialog_div_1.dialog('open'); // 打開第一層
-        $('span.ui-icon').text('關閉'); // 關閉鈕
-        $('.ui-dialog-titlebar-close').css({
-            right: 0,
-            position: 'absolute',
-            background:'gray'
+    {
+        var dialog_div_1 = $('#dialog-div-1');
+        dialog_div_1.dialog(
+        {            
+            width: 999,
+            height: 700,
+            modal: true,
+            draggable: false,
         });
-        
+       
         $('#map-picture').attr('src', '<?php echo Yii::app()->request->baseUrl;?>/statics/pp.png');
         $('.arrow').hide();
         $('#map-picture').css(
@@ -526,6 +530,11 @@
     $('#dialog2-button-right').click(function()
     {
         $('#img1').animate({left:'80px'});
+    });
+    
+    $('#dialog2-button-left').click(function()
+    {
+        $('#img1').animate({left:'0px'});
     });
 
     $('#img1').click(function()

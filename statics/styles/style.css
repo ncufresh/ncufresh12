@@ -19,7 +19,7 @@ body
 
 form
 {
-	margin: 0;
+    margin: 0;
 }
 
 form dt,
@@ -105,28 +105,17 @@ a:hover
 
 .ui-dialog
 {
-	position: absolute;
+    position: absolute;
 }
 
 .ui-widget-overlay {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: #000000;
-	opacity: 0.7;
-}
-
-.loading
-{
-    background: url('../images/loading.png');
-    height: 128px;
-    left: 50%;
-    margin: -64px 0 0 -64px;
-    position: relative;
-    top: 50%;
-    width: 128px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: 0.7;
 }
 
 .scroll-container
@@ -169,7 +158,19 @@ a:hover
     top: 0;
 }
 
-.overlay {
+.loading
+{
+    background: url('../images/loading.png');
+    height: 128px;
+    left: 50%;
+    margin: -64px 0 0 -64px;
+    position: relative;
+    top: 50%;
+    width: 128px;
+}
+
+.overlay
+{
     background: #000000;
     height: 100%;
     left: 0;
@@ -177,6 +178,116 @@ a:hover
     position: fixed;
     top: 0;
     width: 100%;
+}
+
+#lightbox
+{
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+#lightbox-box
+{
+    background: #FFFFFF;
+    height: 320px;
+    left: 0;
+    margin: 0 auto;
+    position: relative;
+    top: 0;
+    width: 320px;
+}
+
+#lightbox-loading
+{
+    position: absolute;
+}
+
+#lightbox-image
+{
+    position: absolute;
+    padding: 10px;
+}
+
+#lightbox-prev,
+#lightbox-next
+{
+    display: block;
+    height: 100%;
+    opacity: 0;
+    width: 50%;
+}
+
+#lightbox-prev
+{
+    background: url('../images/lightbox_prev.png') left center no-repeat;
+    left: 0;
+    float: left;
+}
+
+#lightbox-next
+{
+    background: url('../images/lightbox_next.png') right center no-repeat;
+    right: 0;
+    float: right;
+}
+
+#lightbox-prev:hover,
+#lightbox-next:hover
+{
+    opacity: 1;
+}
+
+#lightbox-navigation
+{
+    height: 100%;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+#lightbox-details
+{
+    background: #FFFFFF;
+    font-size: 0.8em;
+    line-height: 1.4em;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 0 10px 0;
+    width: 100%;
+}
+
+#lightbox-details
+{
+    color: #666666;
+    padding: 0 10px;
+    position: relative;
+}
+
+#lightbox-caption
+{
+    font-weight: bolder;
+}
+
+#lightbox-page
+{
+    display: block;
+    clear: left;
+    padding-bottom: 1.0em;
+}
+
+#lightbox-close
+{
+    background: url('../images/lightbox_close.png');
+    height: 22px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 66px;
 }
 
 /**
@@ -583,15 +694,15 @@ a:hover
 
 #chat-friend-list span
 {
-	-webkit-border-radius: 10px;
-	height: 20px;
-	color: white;
-	line-height: 20px;
-	border-radius: 10px;
-	background: #262a76;
-	text-align: center;
-	display: block;
-	cursor: pointer;
+    -webkit-border-radius: 10px;
+    height: 20px;
+    color: white;
+    line-height: 20px;
+    border-radius: 10px;
+    background: #262a76;
+    text-align: center;
+    display: block;
+    cursor: pointer;
 }
 
 #chat-friend-list img
@@ -610,13 +721,13 @@ a:hover
 
 #chat-friend-list-search
 {
-	border: 2px solid #d7d7d7;
-	margin: 5px 0;
-	outline: none;
-	width: 136px;
-	height: 20px;
-	padding: 0 0 0 20px;
-	background: url('../images/friend_list_search.png') no-repeat;
+    border: 2px solid #d7d7d7;
+    margin: 5px 0;
+    outline: none;
+    width: 136px;
+    height: 20px;
+    padding: 0 0 0 20px;
+    background: url('../images/friend_list_search.png') no-repeat;
 }
 
 #chat-friend-list .friend-list-entry
@@ -644,52 +755,52 @@ a:hover
 
 .chat-dialog .chat-title
 {
-	background: #7097f2;
-	cursor: pointer;
-	height: 30px;
-	width: 160px;
+    background: #7097f2;
+    cursor: pointer;
+    height: 30px;
+    width: 160px;
 }
 
 .chat-dialog .chat-title span
 {
-	background: url('../images/chat_online.png') no-repeat;
-	display: block;
-	float: left;
-	height: 16px;
-	margin: 6px;
-	width: 16px;
+    background: url('../images/chat_online.png') no-repeat;
+    display: block;
+    float: left;
+    height: 16px;
+    margin: 6px;
+    width: 16px;
 }
 
 .chat-dialog .chat-title span.offline
 {
-	background: url('../images/chat_offline.png') no-repeat;
+    background: url('../images/chat_offline.png') no-repeat;
 }
 
 .chat-dialog .chat-title p
 {
-	display: block;
-	float: left;
-	height: 16px;
-	line-height: 16px;
-	margin: 6px 0;
-	width: auto;
+    display: block;
+    float: left;
+    height: 16px;
+    line-height: 16px;
+    margin: 6px 0;
+    width: auto;
 }
 
 .chat-dialog .chat-title button
 {
-	background: url('../images/chat_close.png') 50% 50% no-repeat;
-	border: 0;
-	float: right;
-	height: 16px;
-	margin: 7px;
-	padding: 0;
-	width: 16px;
+    background: url('../images/chat_close.png') 50% 50% no-repeat;
+    border: 0;
+    float: right;
+    height: 16px;
+    margin: 7px;
+    padding: 0;
+    width: 16px;
 }
 
 .chat-dialog .chat-title button:hover
 {
-	background: white url('../images/chat_close.png') 50% 50% no-repeat;
-	cursor: pointer;
+    background: white url('../images/chat_close.png') 50% 50% no-repeat;
+    cursor: pointer;
 }
 
 .chat-dialog .scroll-container
@@ -705,7 +816,7 @@ a:hover
 
 .chat-dialog .chat-display
 {
-	padding: 0 5px;
+    padding: 0 5px;
     width: 150px;
 }
 
@@ -722,12 +833,12 @@ a:hover
 
 .chat-dialog .chat-input
 {
-	border-top: 1px solid black;
+    border-top: 1px solid black;
     border-radius: 0;
     height: 19px;
     margin: 0;
     outline: none;
-	padding: 0 5px;
+    padding: 0 5px;
     width: 150px;
 }
 
@@ -1254,11 +1365,7 @@ ul#nculife-details
 
 #mm-video .loading
 {
-    left: 50%;
-    margin: -64px 0 0 -64px;
-    overflow: auto;
     position: absolute;
-    top: 50%;
 }
 
 #mm-video-frame
@@ -1297,22 +1404,22 @@ ul#nculife-details
  */
 #nculife-dialog
 {
-	display: none;
-	height: 500px;
-	width: 200px;
+    display: none;
+    height: 500px;
+    width: 200px;
 }
 
 #nculife-dialog p
 {
-	margin: 0;
-	padding: 20px;
+    margin: 0;
+    padding: 20px;
 }
 
 .nculife-dialog
 {
-	background: white;
+    background: white;
     height: 620px;
-	width: 315px;
+    width: 315px;
     top: 200px;
     left: 145px;
     position: absolute;
@@ -1330,11 +1437,11 @@ ul#nculife-details
 
 .nculife-dialog .ui-dialog-title
 {
-	/* background: black;
+    /* background: black;
     width: 585px;
     height: 500px;
     color: red;
-	margin-right: 100px;
+    margin-right: 100px;
     font-size: 50px;
     background: url('../images/life_title.png'); */
     
@@ -1343,7 +1450,7 @@ ul#nculife-details
 
 .nculife-dialog .ui-icon-closethick
 {
-	background: black;
+    background: black;
     color: white;
     width: 40px;
     height: 40px;
@@ -1355,9 +1462,9 @@ ul#nculife-details
 
 #nculife-dh
 {
-	background: pink;
-	width: 612px;
-	height: 25px;
+    background: pink;
+    width: 612px;
+    height: 25px;
     left: 1px;
     position: absolute;
 }
@@ -1372,23 +1479,23 @@ ul#nculife-details
 {
     width: 620px;
     height: 315px;
-	border: solid;
+    border: solid;
 }
 
 #nculife-cv
 {
-	width: 400px;
-	height: 100px;
-	float: left;
-	background: green;
+    width: 400px;
+    height: 100px;
+    float: left;
+    background: green;
 }
 
 #nculife-ct
 {
-	width: 295px;
-	height: 100px;
-	/* float: left; */
-	background: gray;
+    width: 295px;
+    height: 100px;
+    /* float: left; */
+    background: gray;
     position: absolute;
     top: 212px;
     left: 120px;
@@ -1396,14 +1503,14 @@ ul#nculife-details
 
 #nculife-dh a
 {
-	width: 50px;
-	height: 50px;
+    width: 50px;
+    height: 50px;
 }
 
 #nculife-dh li
 {
     float: left;
-	list-style: none;
+    list-style: none;
 }
 
 
@@ -1430,7 +1537,7 @@ ul.life-index li
     height: 20px;
     text-align: center;
     background: black;      
-	color: white; 
+    color: white; 
     border: 1px solid red;
     padding: 0;
     display: block;
@@ -1618,28 +1725,28 @@ ul.life-indexs li.life-indexs-content:hover
 
 #club-title
 {
-	background-color: yellow;
-	font-weight: bold;
-}
-
-#club-all
-{
-	background-color: green;
+    background-color: yellow;
+    font-weight: bold;
 }
 
 #club-display
 {
 	float: right;
-	width: 600px;
+	width: 590px;
+}
+#club-display
+{
+    float: right;
+    width: 600px;
 }
 
 .club-picture1
 {
-	background: none;
-	border: 0px;
-	margin: 0px;
-	padding: 0px;
-	cursor: pointer;
+    background: none;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
     width: 150px;
     height: 100px;
     display: block;
@@ -1647,18 +1754,18 @@ ul.life-indexs li.life-indexs-content:hover
 
 .club-picture1 img
 {
-	border: 5px solid #FFFFFF;
-	width: 150px;
+    border: 5px solid #FFFFFF;
+    width: 150px;
     height: 100px;
 }
 
 .club-picture2
 {
-	background: none;
-	border: 0px;
-	margin: 0px;
-	padding: 0px;
-	cursor: pointer;
+    background: none;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
     width: 150px;
     height: 100px;
     display: block;
@@ -1666,18 +1773,18 @@ ul.life-indexs li.life-indexs-content:hover
 
 .club-picture2 img
 {
-	border: 5px solid #FFFFFF;
+    border: 5px solid #FFFFFF;
     height: 100px;
-	width: 150px;
+    width: 150px;
 }
 
 .club-picture3
 {
-	background: none;
-	border: 0px;
-	margin: 0px;
-	padding: 0px;
-	cursor: pointer;
+    background: none;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
     width: 150px;
     height: 100px;
     display: block;
@@ -1685,18 +1792,18 @@ ul.life-indexs li.life-indexs-content:hover
 
 .club-picture3 img
 {
-	border: 5px solid #FFFFFF;
+    border: 5px solid #FFFFFF;
     height: 100px;
-	width: 150px;
+    width: 150px;
 }
 
 .club-picture4
 {
-	background: none;
-	border: 0px;
-	margin: 0px;
-	padding: 0px;
-	cursor: pointer;
+    background: none;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
     width: 150px;
     height: 100px;
     display: block;
@@ -1704,33 +1811,36 @@ ul.life-indexs li.life-indexs-content:hover
 
 .club-picture4 img
 {
-	border: 5px solid #FFFFFF;
+    border: 5px solid #FFFFFF;
     height: 100px;
-	width: 150px;
+    width: 150px;
 }
 
 .club-picture-display1 img
 {
-	width: 800px;
+    width: 800px;
     height: 600px;
+    margin-left: 10px;
 }
 
 .club-picture-display2 img
 {
-	width: 800px;
+    width: 800px;
     height: 600px;
 }
 
 .club-picture-display3 img
 {
-	width: 800px;
+    width: 800px;
     height: 600px;
+    margin-left: 10px;
 }
 
 .club-picture-display4 img
 {
-	width: 800px;
+    width: 800px;
     height: 600px;
+    margin-left: 10px;
 }
 
 #club-picture-dialog1
@@ -1738,51 +1848,53 @@ ul.life-indexs li.life-indexs-content:hover
 	display: none; 	
 	background: white;
 	width: 850px;
-	height: 650px;
+	height: 800px;
 	position: relative;
+    overflow: visible;
 
 }
 
 #club-picture-dialog2
 {
-	display: none; 	
-	background: white;
-	width: 850px;
-	height: 650px;
-	position: relative;
+    display: none;     
+    background: white;
+    width: 850px;
+    height: 650px;
+    position: relative;
 
 }
 
 #club-picture-dialog3
 {
-	display: none; 	
-	background: white;
-	width: 850px;
-	height: 650px;
-	position: relative;
+    display: none;     
+    background: white;
+    width: 850px;
+    height: 650px;
+    position: relative;
 
 }
 
 #club-picture-dialog4
 {
-	display: none; 	
-	background: white;
-	width: 850px;
-	height: 650px;
-	position: relative;
+    display: none;     
+    background: white;
+    width: 850px;
+    height: 650px;
+    position: relative;
 
 }
 
 #club-underpicture
 {
+
 	float:left;
 	width:150px;
-	height:700px;
+	height:400px;
 }
 
 #club-picture-menu
 {
-	width: 150px;
+	width: 160px;
     height: 700px;
     background: skyblue;
     overflow: hidden;
@@ -1790,20 +1902,20 @@ ul.life-indexs li.life-indexs-content:hover
 
 #club-menu-items
 {
-	margin-top:5px;
-	width:150px;
-	height:500px;
+    margin-top:5px;
+    width:150px;
+    height:500px;
 }
 
 #club
 {
-	margin-center:auto;
+    margin-center:auto;
 }
 
 div.group-friends
 {
     background-color:yellow;
-	display: none;
+    display: none;
 }
 
 div.group-all-friends
