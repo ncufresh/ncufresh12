@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class GameController extends Controller
 {
@@ -35,9 +35,25 @@ class GameController extends Controller
         );
     }
 
-    public function actionIndex()
+    public function actionIndex($id = 0)
     {
-        $this->render('index');
+        if($id==0)
+        {
+            $id=Yii::app()->user->getId();
+        }
+        $this->setPageTitle(Yii::app()->name . ' - 遊戲專區');
+        $this->render('index', array('user_id' => $id));
+    }
+
+    public function actionAchievements($id = 0)
+    {
+        if($id==0)
+        {
+            $id=Yii::app()->user->getId();
+        }
+        $return = Achievement::model()->getAchievementsByUserId(Yii::app()->user->getId());
+        $this->setPageTitle(Yii::app()->name . ' - 成就系統');
+        $this->render('achievements', array('user_id' => $id,'achievements' => $return));
     }
 
     // public function actiontogetExp()

@@ -78,51 +78,6 @@ class Character extends CActiveRecord
         return $this->id;
     }
 
-    public function getUserNickName()
-    {
-        return $this->profile->nickname;
-    }
-
-    public function getHairName()
-    {
-        return $this->hair->name;
-    }
-
-    public function getEyesName()
-    {
-        return $this->eyes->name;
-    }
-
-    public function getClothsName()
-    {
-        return $this->cloths->name;
-    }
-
-    public function getPantsName()
-    {
-        return $this->pants->name;
-    }
-    
-    public function getShoesName()
-    {
-        return $this->shoes->name;
-    }
-
-    public function getOthersName()
-    {
-        return $this->others->name;
-    }
-
-    public function getExpValue()
-    {
-        return $this->exp;
-    }
-
-    public function getMoneyValue()
-    {
-        return $this->money;
-    }
-
     public function addExp($value)
     {
         $this->saveCounters(array('exp' => $value));

@@ -25,13 +25,13 @@
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 6));?>" title="禪學社">禪學社</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 7));?>" title="聖經真理研究社">聖經真理研究社</a>
             </li>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 8));?>" title="覺聲佛學社">覺聲佛學社</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 9));?>" title="演辯社">演辯社</a>
             </li>
             <li>
@@ -43,13 +43,13 @@
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 12));?>" title="RP顧問研習社">RP顧問研習社</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 13));?>" title="中醫社">中醫社</a>
             </li>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 14));?>" title="天文社">天文社</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 15));?>" title="手語社">手語社</a>
             </li>
             <li>
@@ -61,13 +61,13 @@
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 18));?>" title="福智青年社">福智青年社</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 19));?>" title="四輪動力社">四輪動力社</a>
             </li>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 20));?>" title="模擬聯合國">模擬聯合國</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 21));?>" title="中大美妝社">中大美妝社</a>
             </li>
             <li>
@@ -97,13 +97,13 @@
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 28));?>" title="柔道社">柔道社</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 29));?>" title="跆拳道社">跆拳道社</a>
             </li>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 30));?>" title="國術社">國術社</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 31));?>" title="太極社">太極社</a>
             </li>
             <li>
@@ -121,7 +121,7 @@
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 36));?>" title="地板舞蹈社">地板舞蹈社</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 37));?>" title="魔術社">魔術社</a>
             </li>
             <li>
@@ -133,13 +133,13 @@
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 40));?>" title="象棋社">象棋社</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 41));?>" title="熱門音樂社">熱門音樂社</a>
             </li>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 42));?>" title="國樂社">國樂社</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 43));?>" title="松韻口琴社">松韻口琴社</a>
             </li>
             <li>
@@ -148,7 +148,7 @@
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 45));?>" title="鋼琴社">鋼琴社</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 46));?>" title="現代舞蹈社">現代舞蹈社</a>
             </li>
             <li>
@@ -184,13 +184,13 @@
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 55));?>" title="台南校友會">台南校友會</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 56));?>" title="蘭陽校友會">蘭陽校友會</a>
             </li>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 57));?>" title="新竹校友會">新竹校友會</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 58));?>" title="桃園校友會">桃園校友會</a>
             </li>
             <li>
@@ -208,7 +208,7 @@
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 63));?>" title="轉學生聯誼會">轉學生聯誼會</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 64));?>" title="雄友會">雄友會</a>
             </li>
             <li>
@@ -229,7 +229,7 @@
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 69));?>" title="汪汪社">汪汪社</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 70));?>" title="真善美社">真善美社</a>
             </li>
             <li>
@@ -238,7 +238,7 @@
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 72));?>" title="原愛社">原愛社</a>
             </li>
-              <li>
+            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 73));?>" title="慈幼社">慈幼社</a>
             </li>
             <li>

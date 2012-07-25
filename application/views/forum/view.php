@@ -2,7 +2,10 @@
 <?php
 echo "title: ".$article->title.'<br/>';
 echo "content: ".$article->content.'<br/>';
-echo CHtml::link("回上一頁", Yii::app()->createUrl('forum/forum', array('fid'=>$_GET['fid']))) . '<br />';
+?>
+
+<a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid'=>$_GET['fid']));?>">回上一頁</a><br/>
+<?php
 $com = $comments->findAll('article_id='.$article->id);
 foreach($com as $each)
     echo $each -> content . '<br/>';
@@ -11,11 +14,11 @@ foreach($com as $each)
 <input type="text" name="comment[content]" />
 <input type="hidden" name="comment[aid]" value="<?php echo $_GET['id']; ?>" />
 <input type="submit" value="推文" />
+<input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
+</form>
 <br/>
 <br/>
-<?php
-echo CHtml::link("回覆文章", Yii::app()->createUrl('forum/reply', array('aid'=>$article->id))) . '<br />';
-?>
+<a href="<?php echo Yii::app()->createUrl('forum/reply', array('aid'=>$article->id));?>">回覆文章</a><br/>
 回文要做字數最低限制?<br/>
 <?php
 $rep = $reply->findAll('article_id='.$article->id);
