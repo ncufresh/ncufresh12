@@ -1257,12 +1257,12 @@
                     background: 'red',
                     height: 400,
                     margin: '-200px 0 0 -200px',
-                    position: 'absolute',
+                    position: 'fixed',
                     top: '50%',
                     left: '50%',
                     width: 400
                 })
-                .appendTo(back);
+                .appendTo('body');
                 $('<h4>！終極密碼！</h4>').css({
                     //background: 'yellow',
                     color: 'yellow',
@@ -1273,17 +1273,22 @@
                 var message = $('<p></p>').text('請輸入數字' + down + '到' + up +'之間').css({
                     color: 'black',
                     fontSize: 20,
-                    textAlign: 'left'
+                    position: 'absolute',
+                    top: 60,
+                    left: '25%',
                 })
                 .appendTo(box);
-                var input_text = $('<input type="text" />').attr('value', '123').css({
-                
+                var input_text = $('<input type="text" />').attr('value', '').css({
+                    left: 80,
+                    position: 'absolute',
                 })
                 .appendTo(box);
-                alert(input_text.val());
+                //alert(input_text.val());
                 $('<button>確定送出</button><br/>').css({
                     color: 'black',
-                    textAlign: 'left',
+                    left: 270,
+                    position: 'absolute',
+                    textAlign: 'center'
                 })
                 .click(function()
                 {
@@ -1293,6 +1298,7 @@
                         {
                             alert('恭喜你猜對了!!!');
                             back.remove();
+                            box.remove();   
                         }
                         else if( input > answer )
                         {
@@ -1311,10 +1317,15 @@
                         alert('要輸在範圍內喔!');
                     }
                     input = 0;
-                    input_text.text(input);
+                    input_index = 1;
+                    input_text.attr('value', input);
                 })
                 .appendTo(box);
-                var numberTable = $('<table></table>');
+                var numberTable = $('<table></table>').css({
+                    border: 5,
+                    left: 80,
+                    position: 'absolute'
+                });
                 var TableRow = [$('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>')];
                 for ( var i = 7; i > 0 ; i = i - 3 )
                 {
@@ -1324,65 +1335,93 @@
                         TableRow[ parseInt( i / 3 ) ].appendTo(numberTable);
                     }
                 }
-                numberTable.appendTo(box);
-                $('.tableBox').each.css({
-                    color: 'black',
-                    
-                    textAlign: 'left'
+                $('<td></td>').text('0').css({
+                    height: 50,
+                    width: 100,
+                    fontSize: 30    
                 })
-                .click(function()
-                {
-                    if ( input_index == 1 )
-                    {
-                        input += $(this).text();
-                        input_index = 0;
-                        input_text.text(input);
-                    }
-                    else if( input_index == 0 )
-                    {
-                        input = input * 10 + $(this).text();
-                        input_text.text(input);
-                        input_index = -1;
-                    }
+                .mouseenter(function(){
+                    $(this).css({
+                        color: 'blue',
+                        cursor: 'default'
+                    });
                 })
-                .appendTo(box);
-                $('<button>0</button>').css({
-                    color: 'black',
-                    textAlign: 'left',
+                .mouseleave(function(){
+                    $(this).css({
+                      color: 'black'
+                    });
                 })
                 .click(function()
                 {
                     if ( input_index == 1 )
                     {
                         input_index = 0;
-                        input_text.text(input);
                     }
                     else if( input_index == 0 )
                     {
                         input = input * 10;
-                        input_text.text(input);
                         input_index = -1;
                     }
+                    input_text.attr('value', input);
                 })
-                .appendTo(box);
-                $('<button>Clean</button>').css({
-                    color: 'black',
-                    textAlign: 'left',
+                .appendTo(numberTable);
+                $('<td></td>').text('Clean').css({
+                    colspan: 2, 
+                    height: 50,
+                    width: 100,
+                    fontSize: 30
+                })
+                .mouseenter(function(){
+                    $(this).css({
+                        color: 'blue',
+                        cursor: 'default'
+                    });
+                })
+                .mouseleave(function(){
+                    $(this).css({
+                        color: 'black'
+                    });
                 })
                 .click(function()
                 {
                     input_index = 1;
                     input = 0;
-                    input_text.text(input);
+                    input_text.attr('value', input);
                 })
-                .appendTo(box);
-                $('<p>沒猜到不能離開啦~~哇哈哈哈</p>').css({
-                    //background: 'yellow',
-                    color: 'yellow  ',
-                    fontSize: 30,
-                    textAlign: 'center'
+                .appendTo(numberTable);
+                numberTable.appendTo(box);
+                $('.tableBox').each(function(){
+                    $(this).css({
+                        height: 50,
+                        width: 100,
+                        fontSize: 30    
+                    })
+                    .mouseenter(function(){
+                        $(this).css({
+                            color: 'blue',
+                            cursor: 'default'
+                        });
+                    })
+                    .mouseleave(function(){
+                        $(this).css({
+                            color: 'black'
+                        });
+                    })
+                    .click(function()
+                    {
+                        if ( input_index == 1 )
+                        {
+                            input = $(this).text();
+                            input_index = 0;
+                        }
+                        else if( input_index == 0 )
+                        {
+                            input = input * 10 + parseInt( $(this).text() );
+                            input_index = -1;
+                        }
+                        input_text.attr('value', input);
+                    })
                 })
-                .appendTo(box);
             }
         });
 
