@@ -26,6 +26,51 @@ class Friend extends CActiveRecord
         ));
     }
 
+    /*protected function afterFind()
+    {
+        parent::afterFind();
+        //$this->created = Yii::app()->format->datetime($this->created);
+        //$this->updated = Yii::app()->format->datetime($this->updated);
+        $this->invisible = $this->invisible ? true : false;
+    }
+
+    protected function beforeSave()
+    {
+        if ( parent::beforeSave() )
+        {
+            if ( $this->getIsNewRecord() )
+            {
+                $this->created = TIMESTAMP;
+                $this->invisible = false;
+            }
+            else
+            {
+                $this->created = $this->getRawValue('created');
+            }
+            $this->updated = TIMESTAMP;
+            return true;
+        }
+        return false;
+    }
+
+    protected function afterSave()
+    {
+        parent::afterSave();
+
+        $counter = 0;
+        $data = $this->findAll(array(
+            'order'     => 'updated DESC',
+            'condition' => 'invisible = FALSE'
+        ));
+
+        foreach ( $data as $entry )
+        {
+            if ( $counter++ < 5 ) continue;
+            $entry->invisible = true;
+            $entry->save();
+        }
+    }*/
+
     public function FriendExist($userid, $friendid)
     {
         $_exist = false;
