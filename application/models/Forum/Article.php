@@ -98,23 +98,14 @@ class Article extends CActiveRecord
         return false;
     }
     
-    public function getPageStatus($current_page, $entries_per_page)
+    public function getPageStatus($page, $entries_per_page)
     {
-        $total_pages = ceil($this->count('visibility=1') / $entries_per_page);
-        if ( $current_page > $total_pages ) $current_page = $total_pages;
-        if ( $current_page < 1 ) $current_page = 1;
-        $next_page = $current_page == $total_pages ? null : ($current_page + 1);
-        $prev_page = $current_page == 1 ? null : ($current_page - 1);
-        $first_page = 1;
-        $last_page = $total_pages;
+        $pages = ceil($this->count('visibility = 1') / $entries_per_page);
         return array(
-           'total_pages'     => $total_pages,
-           'entries_per_page' => $entries_per_page,
-           'current_page'    => $current_page,
-           'next_page'       => $next_page,
-           'prev_page'       => $prev_page,
-           'first_page'      => $first_page,
-           'last_page'       => $last_page
+            'pages'         => $pages,
+            'current'       => $page,
+            'first'         => 1,
+            'last'          => $pages
         );
     }
 }
