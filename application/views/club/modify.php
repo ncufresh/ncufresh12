@@ -3,11 +3,11 @@
 	<li>
     <h4>簡介:  </h4>
     <textarea name="club[introduction]" style="width:600px;height:300px;" type="text" size="500">
-    <?php if ( empty($club['introduction']) ) echo $data->introduction; ?>
+    <?php echo empty($club['introduction']) ? '' : $data->introduction; ?>
     </textarea>
     </li>
     <br/>
-	<li>社長:  <input name="club[leader]" type="text" size="10" value="<?php if ( empty($club['leader']) ) echo $data->leader; ?>"/>
+	<li>社長:  <input name="club[leader]" type="text" value="<?php echo empty($club['leader']) ? '' : $data->leader ; ?>"/>
     </li>
     <br/>
     <li>手機:  <input name="club[leader_phone]" type="text" size="15" value="<?php if ( empty($club['leader_phone']) ) echo $data->leader_phone; ?>"/>

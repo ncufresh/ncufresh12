@@ -9,10 +9,12 @@
         <?php endforeach ?>
     </tbody>
 </table>
+
 <?php $this->widget('Pager', array(
     'url'       => 'news/index',
     'pager'     => $page_status
 )); ?>
+
 <?php if ( Yii::app()->user->getIsAdmin() ) : ?>
 <a href="<?php echo Yii::app()->createUrl('news/admin'); ?>" title="管理文章">管理文章</a>
 <?php endif; ?>
