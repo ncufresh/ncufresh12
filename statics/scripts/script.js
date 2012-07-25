@@ -299,9 +299,9 @@
             animationSpeed:         500,
             chatId:                 'chat',
             friendListId:           'chat-friend-list',
-			friendListEntriesWrapId:'chat-friend-list-entries-wrap',	
-			friendListSearchId:		'chat-friend-list-search',
-			chatTitleClass:			'chat-title',
+            friendListEntriesWrapId:'chat-friend-list-entries-wrap',    
+            friendListSearchId:        'chat-friend-list-search',
+            chatTitleClass:            'chat-title',
             chatDialogClass:        'chat-dialog',
             chatDisplayClass:       'chat-display',
             chatFormClass:          'chat-form',
@@ -320,22 +320,22 @@
         var list = $('#' + $.chat.options.friendListId);
         if ( list.length == 0 )
         {
-			var search = $('<input />')
-				.attr('type', 'text')
-				.attr('id', $.chat.options.friendListSearchId)
+            var search = $('<input />')
+                .attr('type', 'text')
+                .attr('id', $.chat.options.friendListSearchId)
             list = $('<div></div>')
                 .attr('id', $.chat.options.friendListId)
                 .appendTo($('body'));
-			title = $('<span></span>')
-				.text('Chat Room')
-				.click(function()
-				{
-					$.fn.chat.closeFriendList();
-				})
-				.appendTo(list);
-			display = $('<div></div>')
-				.attr('id', $.chat.options.friendListEntriesWrapId)
-				.appendTo(list);
+            title = $('<span></span>')
+                .text('Chat Room')
+                .click(function()
+                {
+                    $.fn.chat.closeFriendList();
+                })
+                .appendTo(list);
+            display = $('<div></div>')
+                .attr('id', $.chat.options.friendListEntriesWrapId)
+                .appendTo(list);
             search.appendTo(list);
         }
         return list;
@@ -354,7 +354,7 @@
     $.fn.chat.updateFriendList = function(response)
     {
         var list = $.fn.chat.createFriendList();
-		var wrap = list.children('#'+$.chat.options.friendListEntriesWrapId);
+        var wrap = list.children('#'+$.chat.options.friendListEntriesWrapId);
         for ( var key in response )
         {
             var data = response[key];
@@ -382,14 +382,14 @@
     $.fn.chat.closeFriendList = function()
     {
         var list = $.fn.chat.createFriendList();
-		$('#' + $.chat.options.chatId).fadeIn();
-		list.animate({
+        $('#' + $.chat.options.chatId).fadeIn();
+        list.animate({
             height: 0
         }, $.chat.options.animationSpeed);
     };
 
-	$.fn.chat.updateChatDialogsPosition = function()
-	{
+    $.fn.chat.updateChatDialogsPosition = function()
+    {
         var list = $.fn.chat.createFriendList();
         var left = list.position().left
                  + list.outerWidth(true)
@@ -400,7 +400,7 @@
                 left: left - $(this).outerWidth(true) * (index + 1)
             });
         });
-	}
+    }
 
     $.fn.chat.createChatDialog = function(id)
     {
@@ -419,24 +419,24 @@
             size++;
         });
         if ( ! dialog )
-        {	
-			var title = $('<div></div>')
-				.addClass($.chat.options.chatTitleClass)
-				.append('<span></span>')
-				.append('<p></p>')
-				.append('<button></button>')
-				.click(function()
-				{
-					if ( dialog.data('show') )
-					{
-						$.fn.chat.hideChatDialog(dialog.data('id'));
-					}
-					else
-					{
-						$.fn.chat.showChatDialog(dialog.data('id'));
-					}
-					
-				});
+        {    
+            var title = $('<div></div>')
+                .addClass($.chat.options.chatTitleClass)
+                .append('<span></span>')
+                .append('<p></p>')
+                .append('<button></button>')
+                .click(function()
+                {
+                    if ( dialog.data('show') )
+                    {
+                        $.fn.chat.hideChatDialog(dialog.data('id'));
+                    }
+                    else
+                    {
+                        $.fn.chat.showChatDialog(dialog.data('id'));
+                    }
+                    
+                });
             var display = $('<div></div>')
                 .addClass($.chat.options.chatDisplayClass);
             var input = $('<input />')
@@ -452,32 +452,32 @@
                 .append(input);
             dialog = $('<div></div>')
                 .data('id', id)
-				.data('show', true)
+                .data('show', true)
                 .addClass($.chat.options.chatDialogClass)
                 .scroll(function()
                 {
                     alert('!');
                 })
                 .append(title)
-				.append(display)
+                .append(display)
                 .append(form)
                 .insertBefore(list);
             dialog.css({
                 left: left - dialog.outerWidth(true) * size
             });
-			title.children('span').addClass('offline');
-			$('.friend-list-entry').each(function(index)
-			{
-				if ( $(this).data('id') == id )
-				{
-					title.children('p').text($(this).children('p').text());
-					title.children('span').removeClass('offline');
-				}
-			});
-			title.children('button').click(function()
-			{
-				$.fn.chat.closeChatDialog(dialog.data('id'));
-			});
+            title.children('span').addClass('offline');
+            $('.friend-list-entry').each(function(index)
+            {
+                if ( $(this).data('id') == id )
+                {
+                    title.children('p').text($(this).children('p').text());
+                    title.children('span').removeClass('offline');
+                }
+            });
+            title.children('button').click(function()
+            {
+                $.fn.chat.closeChatDialog(dialog.data('id'));
+            });
             display.scrollable();
         }
         return dialog;
@@ -486,10 +486,10 @@
     $.fn.chat.showChatDialog = function(id)
     {
         var dialog = $.fn.chat.createChatDialog(id);
-		dialog.animate({
-			bottom: 0
-		}, $.chat.options.animationSpeed).data('show', true);
-		$.fn.chat.updateChatDialogsPosition();
+        dialog.animate({
+            bottom: 0
+        }, $.chat.options.animationSpeed).data('show', true);
+        $.fn.chat.updateChatDialogsPosition();
         return dialog;
     };
 
@@ -520,17 +520,17 @@
     $.fn.chat.hideChatDialog = function(id)
     {
         var dialog = $.fn.chat.createChatDialog(id);
-		dialog.animate({
-			bottom: -172
-		}, $.chat.options.animationSpeed).data('show', false);
-		$.fn.chat.updateChatDialogsPosition();
+        dialog.animate({
+            bottom: -172
+        }, $.chat.options.animationSpeed).data('show', false);
+        $.fn.chat.updateChatDialogsPosition();
         return dialog;
     };
 
     $.fn.chat.closeChatDialog = function(id)
     {
         $.fn.chat.createChatDialog(id).remove();
-		$.fn.chat.updateChatDialogsPosition();
+        $.fn.chat.updateChatDialogsPosition();
     };
 
     $.fn.chat.sendMessage = function(id, message)
@@ -1149,6 +1149,64 @@
         ).appendTo(bottom);
         return this;
     };
+})(jQuery);
+
+/**
+ * Overlay
+ */
+(function($)
+{
+    $.overlay = function(options)
+    {
+        $('body').overlay(options);
+    };
+
+    $.fn.overlay = function(options)
+    {
+        return $(this).each(function()
+        {
+            var options = $.extend({
+                overlayClass:   'overlay',
+                speed:          'fast',
+                closeOnClick:   true,
+                closeOnEscape:  true,
+                onShow:         function() {},
+                onHide:         function() {}
+            }, options);
+            var closeOverlay = function(closeOnEscape)
+            {
+                overlay.fadeOut(options.speed, function()
+                {
+                    $(document).unbind('keyup', closeOverlay);
+                    options.onHide();
+                    overlay.remove();
+                });
+            };
+            var closeOnEscape = function(event)
+            {
+                if ( event.keyCode == 27 && options.closeOnEscape )
+                {
+                    close();
+                    return false;
+                }
+            }
+            var overlay = $('<div></div>')
+                .addClass(options.overlayClass)
+                .css({
+                    display:            'none'
+                })
+                .click(function()
+                {
+                    if ( options.closeOnClick ) return closeOverlay();
+                })
+                .fadeIn(options.speed, options.onShow)
+                .appendTo($(this));
+            $.extend(overlay.__proto__, {
+                close: closeOverlay
+            });
+            $(document).bind('keyup', closeOnEscape);
+        });
+    }
 })(jQuery);
 
 /**
