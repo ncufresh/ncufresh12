@@ -1684,322 +1684,322 @@
  */
 (function($)
 {
-    // $(document).ready(function()
-    // {
-        // $.configures.lasttime = 0;
+    $(document).ready(function()
+    {
+        $.configures.lasttime = 0;
 
-        // $.configures.sequence = $.random(0, 1000);
+        $.configures.sequence = $.random(0, 1000);
 
-        // $('#chat').chat();
+        $('#chat').chat();
 
-        // $('#header').star();
+        $('#header').star();
 
-        // $('#moon').moon();
+        $('#moon').moon();
 
-        // $('.loading').sprite();
+        $('.loading').sprite();
 
-        // $('#form-sidebar-register').click(function()
-        // {
-            // window.location.href = $.configures.registerUrl;
-            // return false;
-        // });
+        $('#form-sidebar-register').click(function()
+        {
+            window.location.href = $.configures.registerUrl;
+            return false;
+        });
 
-        // $('#sidebar-personal-toggle').click(function()
-        // {
-            // var button = $(this);
-            // if ( button.hasClass('active') )
-            // {
-                // $('#sidebar-personal').slideUp(300, function()
-                // {
-                    // button.removeClass('active');
-                // });
-            // }
-            // else
-            // {
-                // $('#sidebar-personal').slideDown(300, function()
-                // {
-                    // button.addClass('active');
-                // });
-            // }
-            // return false;
-        // });
+        $('#sidebar-personal-toggle').click(function()
+        {
+            var button = $(this);
+            if ( button.hasClass('active') )
+            {
+                $('#sidebar-personal').slideUp(300, function()
+                {
+                    button.removeClass('active');
+                });
+            }
+            else
+            {
+                $('#sidebar-personal').slideDown(300, function()
+                {
+                    button.addClass('active');
+                });
+            }
+            return false;
+        });
 
-        // $('form input, form textarea').each(function()
-        // {
-            // var input = $(this);
-            // var label = $('label[for="' + $(this).attr('id') + '"]');
-            // if ( label.length )
-            // {
-                // var update = function()
-                // {
-                    // if ( input.val() != '' )
-                    // {
-                        // label.css({
-                            // display: 'none'
-                        // });
-                    // } else
-                    // {
-                        // label.css({
-                            // display: 'block'
-                        // });
-                    // }
-                // };
-                // label.css({
-                    // cursor: 'text',
-                    // display: 'block'
-                // }).click(function()
-                // {
-                    // input.focus();
-                // });
-                // input.focusout(function()
-                // {
-                    // update();
-                // })
-                // update();  
-            // }
-        // });
+        $('form input, form textarea').each(function()
+        {
+            var input = $(this);
+            var label = $('label[for="' + $(this).attr('id') + '"]');
+            if ( label.length )
+            {
+                var update = function()
+                {
+                    if ( input.val() != '' )
+                    {
+                        label.css({
+                            display: 'none'
+                        });
+                    } else
+                    {
+                        label.css({
+                            display: 'block'
+                        });
+                    }
+                };
+                label.css({
+                    cursor: 'text',
+                    display: 'block'
+                }).click(function()
+                {
+                    input.focus();
+                });
+                input.focusout(function()
+                {
+                    update();
+                })
+                update();  
+            }
+        });
 
-        // $.konami({
-            // code:                   [38],
-            // complete:               function()
-            // {
-                // var input = 0;
-                // var input_index = 1;
-                // var up = 99;
-                // var down = 0;
-                // var answer = $.random(1, 99);
-                // if ( $('#secret').length ) return false;
-                // var back = $('<div></div>')
-                    // .attr('id', 'secret')
-                    // .css({
-                    // background: 'black',
-                    // height: '100%',
-                    // position: 'fixed',
-                    // top: 0,
-                    // opacity: 1,
-                    // left: 0,
-                    // width: '100%'
-                // })
-                // .appendTo('body');
-                // var box = $('<div></div>').css({
-                    // background: 'red',
-                    // height: 400,
-                    // margin: '-200px 0 0 -200px',
-                    // position: 'fixed',
-                    // top: '50%',
-                    // left: '50%',
-                    // width: 400
-                // })
-                // .appendTo('body');
-                // $('<h4>終極密碼</h4>').css({
-                    // color: 'yellow',
-                    // textAlign: 'center',
-                    // fontSize: 30
-                // })
-                // .appendTo(box);
-                // var message = $('<p></p>').text('請輸入數字' + down + '到' + up +'之間').css({
-                    // color: 'black',
-                    // fontSize: 20,
-                    // position: 'absolute',
-                    // top: 60,
-                    // left: '25%',
-                // })
-                // .appendTo(box);
-                // var input_text = $('<input type="text" />').attr('value', '').css({
-                    // left: 80,
-                    // position: 'absolute',
-                // })
-                // .appendTo(box);
-                // $('<button>確定送出</button>').css({
-                    // color: 'black',
-                    // left: 270,
-                    // position: 'absolute',
-                    // textAlign: 'center'
-                // })
-                // .click(function()
-                // {
-                    // input = input_text.val();
-                    // if( input < up && input >down )
-                    // {
-                        // if( input == answer )
-                        // {
-                            // alert('恭喜你猜對了!!!');
-                            // back.remove();
-                            // box.remove();   
-                        // }
-                        // else if( input > answer )
-                        // {
-                            // up = input;
-                        // }
-                        // else if( input < answer )
-                        // {
-                            // down = input;
-                        // }
-                        // message.text('請輸入數字' + down + '到' + up +'之間');
-                        // input_index = 1;
-                    // }
-                    // else
-                    // {
-                        // alert('要輸在範圍內喔!');
-                    // }
-                    // input = 0;
-                    // input_index = 1;
-                    // input_text.attr('value', input);
-                // })
-                // .appendTo(box);
-                // var numberTable = $('<table></table>').css({
-                    // border: 5,
-                    // left: 80,
-                    // top: 150,
-                    // position: 'absolute'
-                // });
-                // var TableRow = [$('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>')];
-                // for ( var i = 7; i > 0 ; i = i - 3 )
-                // {
-                    // for ( var j = 0; j <3 ; j++ )
-                    // {
-                        // $('<td></td>').text( i + j ).addClass('tableBox').appendTo(TableRow[ parseInt( i / 3) ]);
-                        // TableRow[ parseInt( i / 3 ) ].appendTo(numberTable);
-                    // }
-                // }
-                // $('<td></td>').text('0').css({
-                    // height: 50,
-                    // width: 100,
-                    // fontSize: 30    
-                // })
-                // .mouseenter(function(){
-                    // $(this).css({
-                        // color: 'blue',
-                        // cursor: 'default'
-                    // });
-                // })
-                // .mouseleave(function(){
-                    // $(this).css({
-                      // color: 'black'
-                    // });
-                // })
-                // .click(function()
-                // {
-                    // if ( input_index == 1 )
-                    // {
-                        // input_index = 0;
-                    // }
-                    // else if( input_index == 0 )
-                    // {
-                        // input = input * 10;
-                        // input_index = -1;
-                    // }
-                    // input_text.attr('value', input);
-                // })
-                // .appendTo(numberTable);
-                // $('<td></td>').text('Clean').css({
-                    // colspan: 2, 
-                    // height: 50,
-                    // width: 100,
-                    // fontSize: 30
-                // })
-                // .mouseenter(function(){
-                    // $(this).css({
-                        // color: 'blue',
-                        // cursor: 'default'
-                    // });
-                // })
-                // .mouseleave(function(){
-                    // $(this).css({
-                        // color: 'black'
-                    // });
-                // })
-                // .click(function()
-                // {
-                    // input_index = 1;
-                    // input = 0;
-                    // input_text.attr('value', input);
-                // })
-                // .appendTo(numberTable);
-                // numberTable.appendTo(box);
-                // $('.tableBox').each(function(){
-                    // $(this).css({
-                        // height: 50,
-                        // width: 100,
-                        // fontSize: 30    
-                    // })
-                    // .mouseenter(function(){
-                        // $(this).css({
-                            // color: 'blue',
-                            // cursor: 'default'
-                        // });
-                    // })
-                    // .mouseleave(function(){
-                        // $(this).css({
-                            // color: 'black'
-                        // });
-                    // })
-                    // .click(function()
-                    // {
-                        // if ( input_index == 1 )
-                        // {
-                            // input = $(this).text();
-                            // input_index = 0;
-                        // }
-                        // else if( input_index == 0 )
-                        // {
-                            // input = input * 10 + parseInt( $(this).text() );
-                            // input_index = -1;
-                        // }
-                        // input_text.attr('value', input);
-                    // })
-                // })
-            // }
-        // });
+        $.konami({
+            code:                   [38],
+            complete:               function()
+            {
+                var input = 0;
+                var input_index = 1;
+                var up = 99;
+                var down = 0;
+                var answer = $.random(1, 99);
+                if ( $('#secret').length ) return false;
+                var back = $('<div></div>')
+                    .attr('id', 'secret')
+                    .css({
+                    background: 'black',
+                    height: '100%',
+                    position: 'fixed',
+                    top: 0,
+                    opacity: 1,
+                    left: 0,
+                    width: '100%'
+                })
+                .appendTo('body');
+                var box = $('<div></div>').css({
+                    background: 'red',
+                    height: 400,
+                    margin: '-200px 0 0 -200px',
+                    position: 'fixed',
+                    top: '50%',
+                    left: '50%',
+                    width: 400
+                })
+                .appendTo('body');
+                $('<h4>終極密碼</h4>').css({
+                    color: 'yellow',
+                    textAlign: 'center',
+                    fontSize: 30
+                })
+                .appendTo(box);
+                var message = $('<p></p>').text('請輸入數字' + down + '到' + up +'之間').css({
+                    color: 'black',
+                    fontSize: 20,
+                    position: 'absolute',
+                    top: 60,
+                    left: '25%',
+                })
+                .appendTo(box);
+                var input_text = $('<input type="text" />').attr('value', '').css({
+                    left: 80,
+                    position: 'absolute',
+                })
+                .appendTo(box);
+                $('<button>確定送出</button>').css({
+                    color: 'black',
+                    left: 270,
+                    position: 'absolute',
+                    textAlign: 'center'
+                })
+                .click(function()
+                {
+                    input = input_text.val();
+                    if( input < up && input >down )
+                    {
+                        if( input == answer )
+                        {
+                            alert('恭喜你猜對了!!!');
+                            back.remove();
+                            box.remove();   
+                        }
+                        else if( input > answer )
+                        {
+                            up = input;
+                        }
+                        else if( input < answer )
+                        {
+                            down = input;
+                        }
+                        message.text('請輸入數字' + down + '到' + up +'之間');
+                        input_index = 1;
+                    }
+                    else
+                    {
+                        alert('要輸在範圍內喔!');
+                    }
+                    input = 0;
+                    input_index = 1;
+                    input_text.attr('value', input);
+                })
+                .appendTo(box);
+                var numberTable = $('<table></table>').css({
+                    border: 5,
+                    left: 80,
+                    top: 150,
+                    position: 'absolute'
+                });
+                var TableRow = [$('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>')];
+                for ( var i = 7; i > 0 ; i = i - 3 )
+                {
+                    for ( var j = 0; j <3 ; j++ )
+                    {
+                        $('<td></td>').text( i + j ).addClass('tableBox').appendTo(TableRow[ parseInt( i / 3) ]);
+                        TableRow[ parseInt( i / 3 ) ].appendTo(numberTable);
+                    }
+                }
+                $('<td></td>').text('0').css({
+                    height: 50,
+                    width: 100,
+                    fontSize: 30    
+                })
+                .mouseenter(function(){
+                    $(this).css({
+                        color: 'blue',
+                        cursor: 'default'
+                    });
+                })
+                .mouseleave(function(){
+                    $(this).css({
+                      color: 'black'
+                    });
+                })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input_index = 0;
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input = input * 10;
+                        input_index = -1;
+                    }
+                    input_text.attr('value', input);
+                })
+                .appendTo(numberTable);
+                $('<td></td>').text('Clean').css({
+                    colspan: 2, 
+                    height: 50,
+                    width: 100,
+                    fontSize: 30
+                })
+                .mouseenter(function(){
+                    $(this).css({
+                        color: 'blue',
+                        cursor: 'default'
+                    });
+                })
+                .mouseleave(function(){
+                    $(this).css({
+                        color: 'black'
+                    });
+                })
+                .click(function()
+                {
+                    input_index = 1;
+                    input = 0;
+                    input_text.attr('value', input);
+                })
+                .appendTo(numberTable);
+                numberTable.appendTo(box);
+                $('.tableBox').each(function(){
+                    $(this).css({
+                        height: 50,
+                        width: 100,
+                        fontSize: 30    
+                    })
+                    .mouseenter(function(){
+                        $(this).css({
+                            color: 'blue',
+                            cursor: 'default'
+                        });
+                    })
+                    .mouseleave(function(){
+                        $(this).css({
+                            color: 'black'
+                        });
+                    })
+                    .click(function()
+                    {
+                        if ( input_index == 1 )
+                        {
+                            input = $(this).text();
+                            input_index = 0;
+                        }
+                        else if( input_index == 0 )
+                        {
+                            input = input * 10 + parseInt( $(this).text() );
+                            input_index = -1;
+                        }
+                        input_text.attr('value', input);
+                    })
+                })
+            }
+        });
 
-        // $.pull.start({
-            // onlinecounter: $('#header .online'),
-            // browseredcounter: $('#header .browsered')
-        // });
-    // });
+        $.pull.start({
+            onlinecounter: $('#header .online'),
+            browseredcounter: $('#header .browsered')
+        });
+    });
 
-    // google.load('search', '1', {
-        // language: 'zh_TW'
-    // });
+    google.load('search', '1', {
+        language: 'zh_TW'
+    });
 
-    // google.setOnLoadCallback(function()
-    // {
-        // google.search.CustomSearchControl.attachAutoCompletion(
-            // $.configures.googleSearchAppId,
-            // document.getElementById('form-search-query'),
-            // 'search'
-        // );
-    // });
+    google.setOnLoadCallback(function()
+    {
+        google.search.CustomSearchControl.attachAutoCompletion(
+            $.configures.googleSearchAppId,
+            document.getElementById('form-search-query'),
+            'search'
+        );
+    });
 
-    // if ( $.configures.facebookEnable )
-    // {
-        // $('<script></script>')
-            // .attr('id', 'facebook-jssdk')
-            // .attr('async', 'async')
-            // .attr('type', 'text/javascript')
-            // .attr('src', '//connect.facebook.net/zh_TW/all.js')
-            // .insertBefore($('script').first());
+    if ( $.configures.facebookEnable )
+    {
+        $('<script></script>')
+            .attr('id', 'facebook-jssdk')
+            .attr('async', 'async')
+            .attr('type', 'text/javascript')
+            .attr('src', '//connect.facebook.net/zh_TW/all.js')
+            .insertBefore($('script').first());
 
-        // window.fbAsyncInit = function()
-        // {
-            // var like = $('<div></div>')
-                // .attr('id', 'fb-like')
-                // .appendTo($('#fb-root'));
+        window.fbAsyncInit = function()
+        {
+            var like = $('<div></div>')
+                .attr('id', 'fb-like')
+                .appendTo($('#fb-root'));
 
-            // $('<fb:like></fb:like>')
-                // .attr('href', window.location.href)
-                // .attr('data-send', 'false')
-                // .attr('data-layout', 'button_count')
-                // .attr('data-show-faces', 'false')
-                // .appendTo(like);
+            $('<fb:like></fb:like>')
+                .attr('href', window.location.href)
+                .attr('data-send', 'false')
+                .attr('data-layout', 'button_count')
+                .attr('data-show-faces', 'false')
+                .appendTo(like);
 
-            // FB.init({
-                // appId:      $.configures.facebookAppId,
-                // channelUrl: $.configures.facebookChannelUrl,
-                // status:     true,
-                // cookie:     true,
-                // xfbml:      true
-            // });
-        // };
-    // }
+            FB.init({
+                appId:      $.configures.facebookAppId,
+                channelUrl: $.configures.facebookChannelUrl,
+                status:     true,
+                cookie:     true,
+                xfbml:      true
+            });
+        };
+    }
 })(jQuery);
