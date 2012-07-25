@@ -1167,7 +1167,8 @@
 
     $.fn.dialog = function(options)
     {
-        return $(this).each(function(){
+        return $(this).each(function()
+        {
             this.options =  $.extend({
                 width:          $(this).width(),
                 heigth:         $(this).height(),
@@ -1175,15 +1176,25 @@
                 escape:         true,
                 closeButton:    true,
                 speed:          'fast',
-                effect:         'toggle',
+                effect:         'none',
                 dialogClass:    'dialog',
                 closeText:      'close',
                 closeClass:     'dialog-close-button',
+                openEffect:     function(speed)
+                {
+                    $(this).fadeIn(speed);
+                },
+                closeEffect:    function(speed)
+                {
+                    $(this).fadeOut(speed);
+                },
                 onClose:        function() {},
                 onOpen:         function() {},
                 onCreate:       function() {},
                 onDestroy:      function() {}
-            }, options);
+            }, options, this.options);
+            this.openEffect = this.options.openEffect;
+            this.closeEffect = this.options.closeEffect;
             switch ( options )
             {
                 case 'close' : 
@@ -1198,7 +1209,7 @@
                 case 'create' :
                     $.fn.dialog.create(this);
                     break;
-                default: 
+                default :
                     $.fn.dialog.open(this);
             }
         });
@@ -1207,76 +1218,47 @@
     $.fn.dialog.open = function(target)
     {
         target.options.onOpen();
+        target.overlay = $.overlay({
+            closeOnClick:   ! target.options.modal,
+            closeOnEscape:  target.options.escape,
+            onBeforeHide: function()
+            {
+                target.options.onClose();
+                target.closeEffect(target.options.speed);
+                return true;
+            }
+        });
         if ( ! $(target).hasClass(target.options.dialogClass) )
         {
             $.fn.dialog.create(target);
         }
-        switch ( target.options.effect )
-        {
-            case 'fade' :
-                $(target).fadeIn(target.options.speed);
-                break;
-            case 'slide' :
-                $(target).slideDown(target.options.speed);
-                break;
-            case 'toggle' :
-                $(target).toggle(target.options.speed);
-                break;
-            case 'none' :
-            default:
-                $(target).css({
-                    display: 'block'
-                });
-        }
+        target.openEffect(target.options.speed);
     }     
 
     $.fn.dialog.close = function(target)
     {
-        target.options.onClose();
-        switch ( target.options.effect )
-        {
-            case 'fade' :
-                $(target).fadeOut(target.options.speed);
-                break;
-            case 'slide' :
-                $(target).slideUp(target.options.speed);
-                break;
-            case 'toggle' :
-                $(target).toggle(target.options.speed);
-                break;
-            case 'none' :
-            default:
-                $(target).css({
-                    display: 'none'
-                });
-        }
+        target.overlay.close();
     }
 
     $.fn.dialog.create = function(target)
     {
-        target.options.onCreate();
-        var escape = function(event)
-        {
-            if ( event.keyCode == 27 ) $.fn.dialog.close(target);
-        };
         if ( ! $(target).hasClass(target.options.dialogClass) )
         {
-            if ( target.options.escape )
-            {
-                $(document).bind('keydown', escape);
-            }
             if ( target.options.closeButton )
             {
                 var close = $('<a></a>')
                     .attr('href','#')
                     .text(target.options.closeText)
                     .addClass(target.options.closeClass)
-                    .click(function(){
+                    .click(function()
+                    {
                         $.fn.dialog.close(target);
+                        return false;
                     });
                 $(target).prepend(close);
             }
         }
+        target.options.onCreate();
         $(target)
             .css({
                 position: 'absolute',
@@ -1284,10 +1266,11 @@
                 left: '50%',
                 width: target.options.width,
                 heigth: target.options.heigth,
-                marginLeft: -1 * target.options.width/2,
-                marginTop: -1 * target.options.heigth/2,
+                marginLeft: -1 * target.options.width / 2,
+                marginTop: -1 * target.options.heigth / 2,
                 padding: 0,
-                display: 'none'
+                display: 'none',
+                zIndex: 1000
             })
             .addClass(target.options.dialogClass)
             .detach()
@@ -1341,7 +1324,7 @@
                 {
                     overlay.fadeOut(options.speed, function()
                     {
-                        $(document).unbind('keyup', overlayClose);
+                        $(document).unbind('keyup', overlayCloseOnEscape);
                         options.onHide();
                         overlay.remove();
                         options.onAfterHide();
@@ -1353,7 +1336,7 @@
             {
                 if ( event.keyCode == 27 )
                 {
-                    if ( options.closeOnEscape ) return close();
+                    if ( options.closeOnEscape ) return overlayClose();
                 }
             }
             var overlay = $('<div></div>')
