@@ -11,7 +11,9 @@ class Article extends CActiveRecord
     {
         return '{{forum_articles}}';
     }
-
+    
+    //validate
+    
     public function relations()
     {
         return array(
@@ -96,9 +98,9 @@ class Article extends CActiveRecord
         return false;
     }
     
-    public function getPageStatus($current_page, $entries_per_page)
+    public function getPageStatus($current_page, $entries_per_page, $fid)
     {
-        $total_pages = ceil($this->count('visibility=1') / $entries_per_page);
+        $total_pages = ceil($this->count('forum_id='.$fid.' AND visibility=1') / $entries_per_page);
         if ( $current_page > $total_pages ) $current_page = $total_pages;
         if ( $current_page < 1 ) $current_page = 1;
         $next_page = $current_page == $total_pages ? null : ($current_page + 1);
