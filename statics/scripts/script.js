@@ -77,6 +77,14 @@
         integer: function(value)
         {
             return parseInt(value, 10);
+        },
+        pause: function(miliseconds)
+        {
+            var date = new Date(); 
+            var current = null;
+            do {
+                current = new Date();
+            } while ( current - date < miliseconds);
         }
     });
 })(jQuery);
@@ -299,9 +307,9 @@
             animationSpeed:         500,
             chatId:                 'chat',
             friendListId:           'chat-friend-list',
-			friendListEntriesWrapId:'chat-friend-list-entries-wrap',	
-			friendListSearchId:		'chat-friend-list-search',
-			chatTitleClass:			'chat-title',
+            friendListEntriesWrapId:'chat-friend-list-entries-wrap',    
+            friendListSearchId:        'chat-friend-list-search',
+            chatTitleClass:            'chat-title',
             chatDialogClass:        'chat-dialog',
             chatDisplayClass:       'chat-display',
             chatFormClass:          'chat-form',
@@ -320,22 +328,22 @@
         var list = $('#' + $.chat.options.friendListId);
         if ( list.length == 0 )
         {
-			var search = $('<input />')
-				.attr('type', 'text')
-				.attr('id', $.chat.options.friendListSearchId)
+            var search = $('<input />')
+                .attr('type', 'text')
+                .attr('id', $.chat.options.friendListSearchId)
             list = $('<div></div>')
                 .attr('id', $.chat.options.friendListId)
                 .appendTo($('body'));
-			title = $('<span></span>')
-				.text('Chat Room')
-				.click(function()
-				{
-					$.fn.chat.closeFriendList();
-				})
-				.appendTo(list);
-			display = $('<div></div>')
-				.attr('id', $.chat.options.friendListEntriesWrapId)
-				.appendTo(list);
+            title = $('<span></span>')
+                .text('Chat Room')
+                .click(function()
+                {
+                    $.fn.chat.closeFriendList();
+                })
+                .appendTo(list);
+            display = $('<div></div>')
+                .attr('id', $.chat.options.friendListEntriesWrapId)
+                .appendTo(list);
             search.appendTo(list);
         }
         return list;
@@ -354,7 +362,7 @@
     $.fn.chat.updateFriendList = function(response)
     {
         var list = $.fn.chat.createFriendList();
-		var wrap = list.children('#'+$.chat.options.friendListEntriesWrapId);
+        var wrap = list.children('#'+$.chat.options.friendListEntriesWrapId);
         for ( var key in response )
         {
             var data = response[key];
@@ -382,14 +390,14 @@
     $.fn.chat.closeFriendList = function()
     {
         var list = $.fn.chat.createFriendList();
-		$('#' + $.chat.options.chatId).fadeIn();
-		list.animate({
+        $('#' + $.chat.options.chatId).fadeIn();
+        list.animate({
             height: 0
         }, $.chat.options.animationSpeed);
     };
 
-	$.fn.chat.updateChatDialogsPosition = function()
-	{
+    $.fn.chat.updateChatDialogsPosition = function()
+    {
         var list = $.fn.chat.createFriendList();
         var left = list.position().left
                  + list.outerWidth(true)
@@ -400,7 +408,7 @@
                 left: left - $(this).outerWidth(true) * (index + 1)
             });
         });
-	}
+    }
 
     $.fn.chat.createChatDialog = function(id)
     {
@@ -419,24 +427,24 @@
             size++;
         });
         if ( ! dialog )
-        {	
-			var title = $('<div></div>')
-				.addClass($.chat.options.chatTitleClass)
-				.append('<span></span>')
-				.append('<p></p>')
-				.append('<button></button>')
-				.click(function()
-				{
-					if ( dialog.data('show') )
-					{
-						$.fn.chat.hideChatDialog(dialog.data('id'));
-					}
-					else
-					{
-						$.fn.chat.showChatDialog(dialog.data('id'));
-					}
-					
-				});
+        {    
+            var title = $('<div></div>')
+                .addClass($.chat.options.chatTitleClass)
+                .append('<span></span>')
+                .append('<p></p>')
+                .append('<button></button>')
+                .click(function()
+                {
+                    if ( dialog.data('show') )
+                    {
+                        $.fn.chat.hideChatDialog(dialog.data('id'));
+                    }
+                    else
+                    {
+                        $.fn.chat.showChatDialog(dialog.data('id'));
+                    }
+                    
+                });
             var display = $('<div></div>')
                 .addClass($.chat.options.chatDisplayClass);
             var input = $('<input />')
@@ -452,32 +460,32 @@
                 .append(input);
             dialog = $('<div></div>')
                 .data('id', id)
-				.data('show', true)
+                .data('show', true)
                 .addClass($.chat.options.chatDialogClass)
                 .scroll(function()
                 {
                     alert('!');
                 })
                 .append(title)
-				.append(display)
+                .append(display)
                 .append(form)
                 .insertBefore(list);
             dialog.css({
                 left: left - dialog.outerWidth(true) * size
             });
-			title.children('span').addClass('offline');
-			$('.friend-list-entry').each(function(index)
-			{
-				if ( $(this).data('id') == id )
-				{
-					title.children('p').text($(this).children('p').text());
-					title.children('span').removeClass('offline');
-				}
-			});
-			title.children('button').click(function()
-			{
-				$.fn.chat.closeChatDialog(dialog.data('id'));
-			});
+            title.children('span').addClass('offline');
+            $('.friend-list-entry').each(function(index)
+            {
+                if ( $(this).data('id') == id )
+                {
+                    title.children('p').text($(this).children('p').text());
+                    title.children('span').removeClass('offline');
+                }
+            });
+            title.children('button').click(function()
+            {
+                $.fn.chat.closeChatDialog(dialog.data('id'));
+            });
             display.scrollable();
         }
         return dialog;
@@ -486,10 +494,10 @@
     $.fn.chat.showChatDialog = function(id)
     {
         var dialog = $.fn.chat.createChatDialog(id);
-		dialog.animate({
-			bottom: 0
-		}, $.chat.options.animationSpeed).data('show', true);
-		$.fn.chat.updateChatDialogsPosition();
+        dialog.animate({
+            bottom: 0
+        }, $.chat.options.animationSpeed).data('show', true);
+        $.fn.chat.updateChatDialogsPosition();
         return dialog;
     };
 
@@ -520,17 +528,17 @@
     $.fn.chat.hideChatDialog = function(id)
     {
         var dialog = $.fn.chat.createChatDialog(id);
-		dialog.animate({
-			bottom: -172
-		}, $.chat.options.animationSpeed).data('show', false);
-		$.fn.chat.updateChatDialogsPosition();
+        dialog.animate({
+            bottom: -172
+        }, $.chat.options.animationSpeed).data('show', false);
+        $.fn.chat.updateChatDialogsPosition();
         return dialog;
     };
 
     $.fn.chat.closeChatDialog = function(id)
     {
         $.fn.chat.createChatDialog(id).remove();
-		$.fn.chat.updateChatDialogsPosition();
+        $.fn.chat.updateChatDialogsPosition();
     };
 
     $.fn.chat.sendMessage = function(id, message)
@@ -943,7 +951,7 @@
 })(jQuery);
 
 /**
- * indexCalendar
+ * Calendar
  */
 (function($)
 {
@@ -1152,6 +1160,512 @@
 })(jQuery);
 
 /**
+ * Dialog
+ */
+(function($){
+    $.dialog = {};
+
+    $.fn.dialog = function(options)
+    {
+        return $(this).each(function()
+        {
+            this.options =  $.extend({
+                width:          $(this).width(),
+                heigth:         $(this).height(),
+                modal:          true,
+                escape:         true,
+                closeButton:    true,
+                speed:          'fast',
+                effect:         'none',
+                dialogClass:    'dialog',
+                closeText:      'close',
+                closeClass:     'dialog-close-button',
+                openEffect:     function(speed)
+                {
+                    $(this).fadeIn(speed);
+                },
+                closeEffect:    function(speed)
+                {
+                    $(this).fadeOut(speed);
+                },
+                onClose:        function() {},
+                onOpen:         function() {},
+                onCreate:       function() {},
+                onDestroy:      function() {}
+            }, options, this.options);
+            this.openEffect = this.options.openEffect;
+            this.closeEffect = this.options.closeEffect;
+            switch ( options )
+            {
+                case 'close' : 
+                    $.fn.dialog.close(this);
+                    break;
+                case 'destroy' :
+                    $.fn.dialog.destroy(this);
+                    break;
+                case 'open' :
+                    $.fn.dialog.open(this);
+                    break;
+                case 'create' :
+                    $.fn.dialog.create(this);
+                    break;
+                default :
+                    $.fn.dialog.open(this);
+            }
+        });
+    }
+
+    $.fn.dialog.open = function(target)
+    {
+        target.options.onOpen();
+        target.overlay = $.overlay({
+            closeOnClick:   ! target.options.modal,
+            closeOnEscape:  target.options.escape,
+            onBeforeHide: function()
+            {
+                target.options.onClose();
+                target.closeEffect(target.options.speed);
+                return true;
+            }
+        });
+        if ( ! $(target).hasClass(target.options.dialogClass) )
+        {
+            $.fn.dialog.create(target);
+        }
+        target.openEffect(target.options.speed);
+    }     
+
+    $.fn.dialog.close = function(target)
+    {
+        target.overlay.close();
+    }
+
+    $.fn.dialog.create = function(target)
+    {
+        if ( ! $(target).hasClass(target.options.dialogClass) )
+        {
+            if ( target.options.closeButton )
+            {
+                var close = $('<a></a>')
+                    .attr('href','#')
+                    .text(target.options.closeText)
+                    .addClass(target.options.closeClass)
+                    .click(function()
+                    {
+                        $.fn.dialog.close(target);
+                        return false;
+                    });
+                $(target).prepend(close);
+            }
+        }
+        target.options.onCreate();
+        $(target)
+            .css({
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: target.options.width,
+                heigth: target.options.heigth,
+                marginLeft: -1 * target.options.width / 2,
+                marginTop: -1 * target.options.heigth / 2,
+                padding: 0,
+                display: 'none',
+                zIndex: 1000
+            })
+            .addClass(target.options.dialogClass)
+            .detach()
+            .appendTo('body');
+    } 
+
+    $.fn.dialog.destroy = function(target)
+    {
+        target.options.onDestroy();
+        $(target).remove();
+    }
+})(jQuery);
+
+/**
+ * Overlay
+ */
+(function($)
+{
+    var overlay;
+
+    $.overlay = function(options)
+    {
+        return overlay = $('body').overlay(options);
+    };
+
+    $.overlayClose = function()
+    {
+        overlay.close();
+    };
+
+    $.fn.overlay = function(options)
+    {
+        var options = $.extend({
+            overlayClass:   'overlay',
+            speed:          'fast',
+            closeOnClick:   true,
+            closeOnEscape:  true,
+            onBeforeShow:   function() { return true; },
+            onShow:         function() {},
+            onAfterShow:    function() {},
+            onBeforeHide:   function() { return true; },
+            onHide:         function() {},
+            onAfterHide:    function() {}
+        }, options);
+
+        return $(this).each(function()
+        {
+            var overlayClose = function()
+            {
+                if ( options.onBeforeHide() )
+                {
+                    overlay.fadeOut(options.speed, function()
+                    {
+                        $(document).unbind('keyup', overlayCloseOnEscape);
+                        options.onHide();
+                        overlay.remove();
+                        options.onAfterHide();
+                    });
+                }
+                return true;
+            };
+            var overlayCloseOnEscape = function(event)
+            {
+                if ( event.keyCode == 27 )
+                {
+                    if ( options.closeOnEscape ) return overlayClose();
+                }
+            }
+            var overlay = $('<div></div>')
+                .addClass(options.overlayClass)
+                .css({
+                    display:            'none'
+                })
+                .click(function()
+                {
+                    if ( options.closeOnClick ) return overlayClose();
+                })
+                .fadeIn(options.speed, function()
+                {
+                    if ( options.onBeforeShow() )
+                    {
+                        options.onShow();
+                        options.onAfterShow();
+                    }
+                    return true;
+                })
+                .appendTo($(this));
+
+            $.extend(overlay.__proto__, {
+                close: overlayClose
+            });
+            $(document).bind('keyup', overlayCloseOnEscape);
+            return overlay;
+        });
+    }
+})(jQuery);
+
+/**
+ * Lightbox
+ */
+(function($) {
+    $.fn.lightbox = function(options)
+    {
+        var options = $.extend({
+            lightboxId:                 'lightbox',
+            lightboxContainerId:        'lightbox-container',
+            lightboxBoxId:              'lightbox-box',
+            lightboxLoadingId:          'lightbox-loading',
+            lightboxImageId:            'lightbox-image',
+            lightboxNavigationId:       'lightbox-navigation',
+            lightboxPrevId:             'lightbox-prev',
+            lightboxNextId:             'lightbox-next',
+            lightboxCloseId:            'lightbox-close',
+            lightboxDetailsId:          'lightbox-details',
+            lightboxCaptionId:          'lightbox-caption',
+            lightboxPageId:             'lightbox-page',
+            fixedNavigation:            false,
+            containerBorderSize:        10,
+            containerResizeSpeed:       'slow',
+            detailsSlideSpeed:          'fast',
+            textImage:                  'Image',
+            textOf:                     '/',
+            keyToClose:                 'c',
+            keyToPrev:                  'p',
+            keyToNext:                  'n',
+            onBeforeShow:               function() { return true; },
+            onShow:                     function() {},
+            onAfterShow:                function() {},
+            onBeforeHide:               function() { return true; },
+            onHide:                     function() {},
+            onAfterHide:                function() {}
+        }, options);
+
+        var active = 0;
+
+        var images = [];
+
+        var objects = $(this);
+
+        var lightboxInitialize = function()
+        {
+            if ( options.onBeforeShow() )
+            {
+                var overlay = $.overlay({
+                    onBeforeHide: lightboxClose
+                });
+                var lightbox = $('<div></div>')
+                    .attr('id', options.lightboxId)
+                    .click(overlay.close)
+                    .appendTo($('body'));
+                var box = $('<div></div>')
+                    .attr('id', options.lightboxBoxId)
+                    .appendTo(lightbox);
+                var loading = $('<div></div>')
+                    .attr('id', options.lightboxLoadingId)
+                    .appendTo(box);
+                var image = $('<img />')
+                    .attr('id', options.lightboxImageId)
+                    .appendTo(box);
+                var navigation = $('<div></div>')
+                    .attr('id', options.lightboxNavigationId)
+                    .appendTo(box);
+                var prev = $('<a></a>')
+                    .attr('id', options.lightboxPrevId)
+                    .attr('href', '#')
+                    .appendTo(navigation);
+                var next = $('<a></a>')
+                    .attr('id', options.lightboxNextId)
+                    .attr('href', '#')
+                    .appendTo(navigation);
+                var details = $('<div></div>')
+                    .attr('id', options.lightboxDetailsId)
+                    .appendTo(lightbox);
+                var caption = $('<span></span>')
+                    .attr('id', options.lightboxCaptionId)
+                    .appendTo(details);
+                var page = $('<span></span>')
+                    .attr('id', options.lightboxPageId)
+                    .appendTo(details);
+                var close = $('<a></a>')
+                    .attr('id', options.lightboxCloseId)
+                    .attr('href', '#')
+                    .click(overlay.close)
+                    .appendTo(details);
+
+                active = 0;
+                images = [];
+                objects.each(function(index)
+                {
+                    var object = objects.eq(index);
+                    images.push(new Array(
+                        object.attr('title'),
+                        object.attr('href')
+                    ));
+                });
+                while ( images[active][1] != $(this).attr('href') ) active++;
+
+                options.onShow();
+                lightbox.css({
+                    marginTop: -1 * box.height() / 2,
+                    top: '50%'
+                });
+                lightboxLoadImage();
+                options.onAfterShow();
+            }
+            return false;
+        }
+
+        var lightboxPrev = function()
+        {
+            if ( active != 0 )
+            {
+                active -= 1;
+                lightboxLoadImage();
+            }
+            return false;
+        }
+
+        var lightboxNext = function()
+        {
+            if ( active != (images.length - 1) )
+            {
+                active += 1;
+                lightboxLoadImage();
+            }
+            return false;
+        }
+
+        var lightboxClose = function()
+        {
+            if ( options.onBeforeHide() )
+            {
+                options.onHide();
+                $('#' + options.lightboxId).remove();
+                options.onAfterHide();
+            }
+            return true;
+        }
+
+        var lightboxLoadImage = function()
+        {
+            var preloader = new Image();
+
+            if ( ! options.fixedNavigation )
+            {
+                $('#' + options.lightboxNavigationId + ', #' + options.lightboxPrevId + ', #' + options.lightboxNextId).hide();
+            }
+            $('#' + options.lightboxImageId + ', #' + options.lightboxDetailsId + ', #' + options.lightboxPageId).hide();
+
+            preloader.onload = function() {
+                $('#' + options.lightboxImageId).attr('src', images[active][1]);
+                lightboxResize(preloader.width, preloader.height);
+            };
+            preloader.src = images[active][1];
+        };
+
+        var lightboxResize = function(width, height)
+        {
+            var currentWidth = $('#' + options.lightboxBoxId).width();
+            var currentHeight = $('#' + options.lightboxBoxId).height();
+            var containerWidth = (width + (options.containerBorderSize * 2));
+            var containerHeight = (height + (options.containerBorderSize * 2));
+            var differenceWidth = currentWidth - containerWidth;
+            var differenceHeight = currentHeight - containerHeight;
+
+            $('#' + options.lightboxId).css({
+                marginTop: -1 * containerWidth / 2
+            });
+            $('#' + options.lightboxDetailsId).css({
+                width: width
+            });
+            $('#' + options.lightboxPrevId + ', #' + options.lightboxNextId).css({
+                height: containerHeight
+            });
+            $('#' + options.lightboxBoxId).animate({
+                height: containerHeight,
+                width: containerWidth
+            }, options.containerResizeSpeed, lightboxShowImage);
+
+            if ( ( differenceWidth == 0 ) && ( differenceHeight == 0 ) )
+            {
+                $.pause($.browser.msie ? 250 : 100);
+            }
+        }
+
+        var lightboxShowImage = function()
+        {
+            $('#' + options.lightboxImageId).fadeIn(function()
+            {
+                lightboxShowImageDetails();
+
+                $('#' + options.lightboxNavigationId).show();
+
+                if ( active != 0 )
+                {
+                    $('#' + options.lightboxPrevId)
+                        .unbind()
+                        .bind('click', lightboxPrev)
+                        .show();
+                }
+
+                if ( active != (images.length - 1) )
+                {
+                    $('#' + options.lightboxNextId)
+                        .unbind()
+                        .bind('click', lightboxNext)
+                        .show();
+                }
+            });
+
+            lightboxPreload();
+        };
+
+        var lightboxShowImageDetails = function()
+        {
+            $('#' + options.lightboxCaptionId).hide();
+            if ( images[active][0] )
+            {
+                $('#' + options.lightboxCaptionId).html(images[active][0]).show();
+            }
+
+            if ( images.length > 1 )
+            {
+                $('#' + options.lightboxPageId).html(
+                    options.textImage + ' '
+                  + ( active + 1 ) + ' '
+                  + options.textOf + ' '
+                  + images.length
+                ).show();
+            }
+
+            $('#' + options.lightboxDetailsId).slideDown(options.detailsSlideSpeed);
+        };
+
+        var lightboxPreload = function()
+        {
+            if ( active > 0 )
+            {
+                var objPrev = new Image();
+                objPrev.src = images[active - 1][1];
+            }
+
+            if ( (images.length - 1) > active )
+            {
+                var objNext = new Image();
+                objNext.src = images[active + 1][1];
+            }
+
+            lightboxEnableKeyboard();
+        };
+
+        var lightboxEnableKeyboard = function()
+        {
+            $(document).bind('keydown', lightboxKeyboard);
+        }
+
+        var lightboxDisableKeyboard = function()
+        {
+            $(document).unbind('keydown', lightboxKeyboard);
+        }
+
+        var lightboxKeyboard = function(event)
+        {
+            var key = String.fromCharCode(event.keyCode).toLowerCase();
+            if (
+                (key == options.keyToClose.toLowerCase())
+             || (key == 'x')
+             || (event.keyCode == 27)
+            )
+            {
+                lightboxClose();
+            }
+            if (
+                (key == options.keyToPrev.toLowerCase())
+             || (event.keyCode == 37)
+            )
+            {
+                lightboxPrev();
+                lightboxDisableKeyboard();
+            }
+            if (
+                (key == options.keyToNext.toLowerCase())
+             || (event.keyCode == 39)
+            )
+            {
+                lightboxNext();
+                lightboxDisableKeyboard();
+            }
+        }
+
+        return this.unbind('click').click(lightboxInitialize);
+    };
+})(jQuery);
+
+/**
  * Main
  */
 (function($)
@@ -1257,14 +1771,13 @@
                     background: 'red',
                     height: 400,
                     margin: '-200px 0 0 -200px',
-                    position: 'absolute',
+                    position: 'fixed',
                     top: '50%',
                     left: '50%',
                     width: 400
                 })
-                .appendTo(back);
-                $('<h4>！終極密碼！</h4>').css({
-                    //background: 'yellow',
+                .appendTo('body');
+                $('<h4>終極密碼</h4>').css({
                     color: 'yellow',
                     textAlign: 'center',
                     fontSize: 30
@@ -1273,37 +1786,42 @@
                 var message = $('<p></p>').text('請輸入數字' + down + '到' + up +'之間').css({
                     color: 'black',
                     fontSize: 20,
-                    textAlign: 'left'
+                    position: 'absolute',
+                    top: 60,
+                    left: '25%',
                 })
                 .appendTo(box);
-                var input_text = $('<input type="text" />').attr('value', '123').css({
-                
+                var input_text = $('<input type="text" />').attr('value', '').css({
+                    left: 80,
+                    position: 'absolute',
                 })
                 .appendTo(box);
-                alert(input_text.val());
-                $('<button>確定送出</button><br/>').css({
+                $('<button>確定送出</button>').css({
                     color: 'black',
-                    textAlign: 'left',
+                    left: 270,
+                    position: 'absolute',
+                    textAlign: 'center'
                 })
                 .click(function()
                 {
+                    input = input_text.val();
                     if( input < up && input >down )
                     {
                         if( input == answer )
                         {
                             alert('恭喜你猜對了!!!');
                             back.remove();
+                            box.remove();   
                         }
                         else if( input > answer )
                         {
                             up = input;
-                            message.text('請輸入數字' + down + '到' + up +'之間');
                         }
                         else if( input < answer )
                         {
                             down = input;
-                            message.text('請輸入數字' + down + '到' + up +'之間');
                         }
+                        message.text('請輸入數字' + down + '到' + up +'之間');
                         input_index = 1;
                     }
                     else
@@ -1311,10 +1829,16 @@
                         alert('要輸在範圍內喔!');
                     }
                     input = 0;
-                    input_text.text(input);
+                    input_index = 1;
+                    input_text.attr('value', input);
                 })
                 .appendTo(box);
-                var numberTable = $('<table></table>');
+                var numberTable = $('<table></table>').css({
+                    border: 5,
+                    left: 80,
+                    top: 150,
+                    position: 'absolute'
+                });
                 var TableRow = [$('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>')];
                 for ( var i = 7; i > 0 ; i = i - 3 )
                 {
@@ -1324,65 +1848,93 @@
                         TableRow[ parseInt( i / 3 ) ].appendTo(numberTable);
                     }
                 }
-                numberTable.appendTo(box);
-                $('.tableBox').each.css({
-                    color: 'black',
-                    
-                    textAlign: 'left'
+                $('<td></td>').text('0').css({
+                    height: 50,
+                    width: 100,
+                    fontSize: 30    
                 })
-                .click(function()
-                {
-                    if ( input_index == 1 )
-                    {
-                        input += $(this).text();
-                        input_index = 0;
-                        input_text.text(input);
-                    }
-                    else if( input_index == 0 )
-                    {
-                        input = input * 10 + $(this).text();
-                        input_text.text(input);
-                        input_index = -1;
-                    }
+                .mouseenter(function(){
+                    $(this).css({
+                        color: 'blue',
+                        cursor: 'default'
+                    });
                 })
-                .appendTo(box);
-                $('<button>0</button>').css({
-                    color: 'black',
-                    textAlign: 'left',
+                .mouseleave(function(){
+                    $(this).css({
+                      color: 'black'
+                    });
                 })
                 .click(function()
                 {
                     if ( input_index == 1 )
                     {
                         input_index = 0;
-                        input_text.text(input);
                     }
                     else if( input_index == 0 )
                     {
                         input = input * 10;
-                        input_text.text(input);
                         input_index = -1;
                     }
+                    input_text.attr('value', input);
                 })
-                .appendTo(box);
-                $('<button>Clean</button>').css({
-                    color: 'black',
-                    textAlign: 'left',
+                .appendTo(numberTable);
+                $('<td></td>').text('Clean').css({
+                    colspan: 2, 
+                    height: 50,
+                    width: 100,
+                    fontSize: 30
+                })
+                .mouseenter(function(){
+                    $(this).css({
+                        color: 'blue',
+                        cursor: 'default'
+                    });
+                })
+                .mouseleave(function(){
+                    $(this).css({
+                        color: 'black'
+                    });
                 })
                 .click(function()
                 {
                     input_index = 1;
                     input = 0;
-                    input_text.text(input);
+                    input_text.attr('value', input);
                 })
-                .appendTo(box);
-                $('<p>沒猜到不能離開啦~~哇哈哈哈</p>').css({
-                    //background: 'yellow',
-                    color: 'yellow  ',
-                    fontSize: 30,
-                    textAlign: 'center'
+                .appendTo(numberTable);
+                numberTable.appendTo(box);
+                $('.tableBox').each(function(){
+                    $(this).css({
+                        height: 50,
+                        width: 100,
+                        fontSize: 30    
+                    })
+                    .mouseenter(function(){
+                        $(this).css({
+                            color: 'blue',
+                            cursor: 'default'
+                        });
+                    })
+                    .mouseleave(function(){
+                        $(this).css({
+                            color: 'black'
+                        });
+                    })
+                    .click(function()
+                    {
+                        if ( input_index == 1 )
+                        {
+                            input = $(this).text();
+                            input_index = 0;
+                        }
+                        else if( input_index == 0 )
+                        {
+                            input = input * 10 + parseInt( $(this).text() );
+                            input_index = -1;
+                        }
+                        input_text.attr('value', input);
+                    })
                 })
-                .appendTo(box);
             }
         });
 
