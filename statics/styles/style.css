@@ -1611,15 +1611,10 @@ ul.life-indexs li.life-indexs-content:hover
 	font-weight: bold;
 }
 
-#club-all
-{
-	background-color: green;
-}
-
 #club-display
 {
 	float: right;
-	width: 600px;
+	width: 590px;
 }
 
 .club-picture1
@@ -1702,6 +1697,7 @@ ul.life-indexs li.life-indexs-content:hover
 {
 	width: 800px;
     height: 600px;
+    margin-left: 10px;
 }
 
 .club-picture-display2 img
@@ -1714,12 +1710,14 @@ ul.life-indexs li.life-indexs-content:hover
 {
 	width: 800px;
     height: 600px;
+    margin-left: 10px;
 }
 
 .club-picture-display4 img
 {
 	width: 800px;
     height: 600px;
+    margin-left: 10px;
 }
 
 #club-picture-dialog1
@@ -1727,8 +1725,9 @@ ul.life-indexs li.life-indexs-content:hover
 	display: none; 	
 	background: white;
 	width: 850px;
-	height: 650px;
+	height: 800px;
 	position: relative;
+    overflow: visible;
 
 }
 
@@ -1766,12 +1765,12 @@ ul.life-indexs li.life-indexs-content:hover
 {
 	float:left;
 	width:150px;
-	height:700px;
+	height:400px;
 }
 
 #club-picture-menu
 {
-	width: 150px;
+	width: 160px;
     height: 700px;
     background: skyblue;
     overflow: hidden;
