@@ -25,7 +25,7 @@ jQuery(document).ready(function()
             height: 517,
             width: 620,
             modal: true,
-            closeText: ' ',
+            // closeText: ' ',
             title: $(this).children('span').text(),
             show: 
             {
@@ -36,11 +36,11 @@ jQuery(document).ready(function()
         
         jQuery(this).children().children().each(function()
         {
-            $('<a></a>')
+            var title = $('<a></a>')
                 .text($(this).text())
                 .attr('href', '#')
-                .appendTo('#nculife-dh')
                 .click(getTabContent);
+            $('#nculife-dh').html(title);
         });
         
         jQuery('.ui-icon-closethick').click(function()
