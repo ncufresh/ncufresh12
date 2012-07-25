@@ -5,7 +5,7 @@
         <a href="<?php echo Yii::app()->createUrl('club/department');?>" title="系所">系所</a>
     </div>
     <div id="club-list">
-        <ul class="l1">
+        <ul>
             <h2>學生組織</h2>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 100));?>" title="親善大使團">親善大使團</a>

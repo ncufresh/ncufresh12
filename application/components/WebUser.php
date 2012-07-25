@@ -16,7 +16,7 @@ class WebUser extends CWebUser
 
     public function getIsAdmin()
     {
-        return $this->getIsMember() && $this->user()->getIsAdmin();
+        return $this->getIsMember() && $this->getUser()->getIsAdmin();
     }
 
     public function getName()
