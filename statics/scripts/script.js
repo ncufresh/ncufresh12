@@ -1306,9 +1306,16 @@
  */
 (function($)
 {
+    var overlay;
+
     $.overlay = function(options)
     {
-        return $('body').overlay(options);
+        return overlay = $('body').overlay(options);
+    };
+
+    $.overlayClose = function()
+    {
+        overlay.close();
     };
 
     $.fn.overlay = function(options)
