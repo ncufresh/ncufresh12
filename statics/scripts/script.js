@@ -1156,19 +1156,25 @@
  */
 (function($){
     $.dialog = {};
-    
+
     $.fn.dialog = function(options)
     {
         return $(this).each(function(){
-            this.options = $.extend({
-                dialogClass: 'dialog',
-                modal: true,
-                width: $(this).width(),
-                heigth: $(this).height(),
-                escape: true,
-                closeButton: true,
-                closeText: 'close',
-                closeClass: 'dialog-close-button'
+            this.options =  $.extend({
+                width:          $(this).width(),
+                heigth:         $(this).height(),
+                modal:          true,
+                escape:         true,
+                closeButton:    true,
+                speed:          'fast',
+                effect:         'toggle',
+                dialogClass:    'dialog',
+                closeText:      'close',
+                closeClass:     'dialog-close-button',
+                onClose:        function(){ },
+                onOpen:         function(){ },
+                onCreate:       function(){ },
+                onDestroy:      function(){ }
             }, options);
             switch(options)
             {
@@ -1192,24 +1198,55 @@
 
     $.fn.dialog.open = function(target)
     {
+        target.options.onOpen();
         if ( !$(target).hasClass(target.options.dialogClass) )
         {
             $.fn.dialog.create(target);
         }
-        $(target).detach().css({
-            display: 'block'
-        }).appendTo('body');
+        switch( target.options.effect )
+        {
+            case 'fade':
+                $(target).fadeIn(target.options.speed);
+                break;
+            case 'slide':
+                $(target).slideDown(target.options.speed);
+                break;
+            case 'toggle':
+                $(target).toggle(target.options.speed);
+                break;
+            case 'none':
+            default:
+                $(target).css({
+                    display: 'block'
+                });
+        }
     }     
 
     $.fn.dialog.close = function(target)
     {
-        $(target).css({
-            display: 'none'
-        });
+        target.options.onClose();
+        switch( target.options.effect )
+        {
+            case 'fade':
+                $(target).fadeOut(target.options.speed);
+                break;
+            case 'slide':
+                $(target).slideUp(target.options.speed);
+                break;
+            case 'toggle':
+                $(target).toggle(target.options.speed);
+                break;
+            case 'none':
+            default:
+                $(target).css({
+                    display: 'none'
+                });
+        }
     }
 
     $.fn.dialog.create = function(target)
     {
+        target.options.onCreate();
         var escape = function(event){
             if (event.keyCode == 27) $.fn.dialog.close(target);
             $(document).unbind('keydown', escape);
@@ -1232,21 +1269,26 @@
                 $(target).prepend(close);
             }
         }
-        $(target).css({
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            width: target.options.width,
-            heigth: target.options.heigth,
-            marginLeft: -1 * target.options.width/2,
-            marginTop: -1 * target.options.heigth/2,
-            padding: 0,
-            display: 'block'
-        }).addClass(target.options.dialogClass);
+        $(target)
+            .css({
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: target.options.width,
+                heigth: target.options.heigth,
+                marginLeft: -1 * target.options.width/2,
+                marginTop: -1 * target.options.heigth/2,
+                padding: 0,
+                display: 'none'
+            })
+            .addClass(target.options.dialogClass)
+            .detach()
+            .appendTo('body');
     } 
 
     $.fn.dialog.destroy = function(target)
     {
+        target.options.onDestroy();
         $(target).remove();
     }
 })(jQuery);
