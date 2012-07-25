@@ -1321,8 +1321,7 @@
                     width: 400
                 })
                 .appendTo('body');
-                $('<h4>！終極密碼！</h4>').css({
-                    //background: 'yellow',
+                $('<h4>終極密碼</h4>').css({
                     color: 'yellow',
                     textAlign: 'center',
                     fontSize: 30
@@ -1341,8 +1340,7 @@
                     position: 'absolute',
                 })
                 .appendTo(box);
-                //alert(input_text.val());
-                $('<button>確定送出</button><br/>').css({
+                $('<button>確定送出</button>').css({
                     color: 'black',
                     left: 270,
                     position: 'absolute',
@@ -1350,6 +1348,7 @@
                 })
                 .click(function()
                 {
+                    input = input_text.val();
                     if( input < up && input >down )
                     {
                         if( input == answer )
@@ -1361,13 +1360,12 @@
                         else if( input > answer )
                         {
                             up = input;
-                            message.text('請輸入數字' + down + '到' + up +'之間');
                         }
                         else if( input < answer )
                         {
                             down = input;
-                            message.text('請輸入數字' + down + '到' + up +'之間');
                         }
+                        message.text('請輸入數字' + down + '到' + up +'之間');
                         input_index = 1;
                     }
                     else
@@ -1382,6 +1380,7 @@
                 var numberTable = $('<table></table>').css({
                     border: 5,
                     left: 80,
+                    top: 150,
                     position: 'absolute'
                 });
                 var TableRow = [$('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>')];
