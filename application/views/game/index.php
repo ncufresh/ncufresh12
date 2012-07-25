@@ -32,11 +32,12 @@ div.mybody img
 
 <div class="mybody">
 <img src="../statics/game/skin/boyC1.png" >
+<img src="../statics/game/eyes/e7.png" >
 <img src="../statics/game/hair/hairN5.png" >
 <img src="../statics/game/shoes/shoeN10.png" >
 <img src="../statics/game/cloths/clothseN4.png" >
 <img src="../statics/game/pants/pantsN12.png" >
-<img src="../statics/game/eyes/e7.png" >
+
 
 
 
