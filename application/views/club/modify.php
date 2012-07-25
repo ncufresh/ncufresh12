@@ -41,9 +41,8 @@
     </li>
 </ul>
 <div>
+    <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
     <button name="save" type="submit" >儲存</button>
     <button name="cancel" type="submit" >取消</button>
 </div>
-<input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
 </form>
-
