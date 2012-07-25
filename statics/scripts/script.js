@@ -1247,9 +1247,9 @@
     $.fn.dialog.create = function(target)
     {
         target.options.onCreate();
-        var escape = function(event){
+        var escape = function(event)
+        {
             if (event.keyCode == 27) $.fn.dialog.close(target);
-            $(document).unbind('keydown', escape);
         };
         if( !$(target).hasClass(target.options.dialogClass) )
         {
