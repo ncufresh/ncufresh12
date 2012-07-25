@@ -185,7 +185,7 @@ a:hover
 
 #moon
 {
-    background: url('../images/moon.png') no-repeat;
+    background: url('../images/moon.png') -640px -800px no-repeat;
     margin-left: 15px;
     width: 160px;
 }
@@ -975,11 +975,12 @@ ul#nculife-details
 
 #index-calendar .calendar-bottom-wrap
 {
-    width: 204px;
-    height: 349px;
+    background: #FFEDB7;
+    border-radius: 0 0 15px 15px;
     float: left;
+    overflow: hidden;
     position: absolute;
-    background: url('../images/calendar_content2.png');
+    width: 204px;
 }
 
 #index-calendar .calendar-bottom-wrap table.calendar-table caption
@@ -1597,7 +1598,7 @@ ul.life-indexs li.life-indexs-content:hover
     overflow: hidden;
 }
 
-.l1
+#club-list ul
 {
     float: left;
     padding: 0;

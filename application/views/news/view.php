@@ -14,7 +14,7 @@
     <a href="<?php echo $url->link; ?>" title="<?php echo $url->name; ?>"><?php echo $url->name; ?></a>
 <?php endforeach; ?>
 
-<?php if( !empty($files) ):?>
+<?php if( ! empty($files) ) : ?>
 <p>附加檔案</p>
 <?php endif; ?>
 <?php foreach ( $files as $filename => $file_url ) : ?>

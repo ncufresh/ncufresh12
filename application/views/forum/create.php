@@ -13,9 +13,9 @@
 內容<textarea name="forum[content]" id="forum-form-content" cols="30" rows="10"></textarea>
 分類
 <select name="forum[category]">
-    <?php foreach ( $category->article_categories as $entry ) : ?>
-        <option value="<?php echo $entry->id; ?>"><?php echo $entry->name; ?></option>
-    <?php endforeach; ?>
+<?php foreach ( $category->article_categories as $entry ) : ?>
+    <option value="<?php echo $entry->id; ?>"><?php echo $entry->name; ?></option>
+<?php endforeach; ?>
 </select>
 <!--置頂-->
 <input type="checkbox" name="forum[is_top]" value="1">置頂<br>

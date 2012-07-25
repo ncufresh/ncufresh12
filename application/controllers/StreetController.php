@@ -15,7 +15,7 @@ class StreetController extends Controller
 	}
 
 	public function actionBuilding($id = 0) // dialog building information page
-    { 
+    {
         $url = $this->_path . DIRECTORY_SEPARATOR . 'building';
         switch ( $id )
         {

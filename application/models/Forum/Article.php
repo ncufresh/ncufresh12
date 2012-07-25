@@ -25,60 +25,53 @@ class Article extends CActiveRecord
                 'Reply',
                 'article_id',
             ),
+            'category_name'  => array(
+                self::BELONGS_TO,
+                'ArticleCategory',
+                'category',
+            ),
         );
     }
 
-    
-    public function getArticlesSort($fid, $sort){
+    public function getArticlesSort($fid, $sort, $category, $page, $entries_per_page){
         switch ($sort)
         {
-            case "create":
-                $sort='create_time';
+            case 'create':
+                $sort = 'create_time';
                 break;
-            case "update":
-                $sort='update_time';
+            case 'update':
+                $sort = 'update_time';
                 break;
-            case "reply":
-                $sort='replies_count';
+            case 'reply':
+                $sort = 'replies_count';
+                break;
+            case 'viewed':
+                $sort = 'viewed_times';
                 break;
             default:
                 throw new Exception('The sort column name does not exist.');
                 break;
         }
-        return $this->findAll(array(
-            'condition' => "forum_id='$fid' AND visibility=1",
-            'order' => "$sort DESC",
-        ));
+        if ( $category == 0 )
+        {
+            $count = $this->count();
+            $total_pages = ceil($count / $entries_per_page);
+            $current_page = ($page<$total_pages?$page:$total_pages);
+            return $this->findAll(array(
+                'condition' => 'forum_id='.$fid.' AND visibility=1',
+                'order'     => $sort . ' DESC',
+                'limit'     => $entries_per_page,
+                'offset'    => ($current_page - 1) * $entries_per_page
+            ));
+        }
+        else
+        {
+            return $this->findAll(array(
+                'condition' => 'forum_id = ' . $fid . ' AND visibility = 1 AND category = ' . $category,
+                'order'     => $sort . ' DESC'
+            ));
+        }
     }
-    
-    /*
-    public function getArticlesByForum($fid)
-    {
-        $criteria = new CDbCriteria();
-        $criteria->condition = "forum_id='$fid' AND visibility=1";
-        $criteria->order = 'create_time DESC';
-        return $this->findAll($criteria);
-    }
-    
-    public function getArticlesOrderByTime($fid)
-    {
-    
-        //throw new Exception('WHY...');
-        return $this->findAll(array(
-            'condition' => "forum_id='$fid' AND visibility=1",
-            'order' => 'update_time DESC',
-        ));
-    }
-    
-    public function getArticlesOrderByReplies($fid)
-    {
-        return $this->findAll(array(
-            'condition' => "forum_id='$fid' AND visibility=1",
-            'order' => 'replies_count DESC',
-        ));
-    }
-    */
-    
 
     public function getUrl()
     {
@@ -103,5 +96,16 @@ class Article extends CActiveRecord
             return true;
         }
         return false;
+    }
+    
+    public function getPageStatus($page, $entries_per_page)
+    {
+        $pages = ceil($this->count('visibility = 1') / $entries_per_page);
+        return array(
+            'pages'         => $pages,
+            'current'       => $page,
+            'first'         => 1,
+            'last'          => $pages
+        );
     }
 }

@@ -29,6 +29,7 @@ class FriendsController extends Controller
         $departmentId = Profile::model()->findByPK($userID)->department_id;
         $grade = Profile::model()->findByPK($userID)->grade;
         $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+
         if ( isset($_POST['addgroup']) )
         {  
             $group = new Group();        
@@ -119,28 +120,21 @@ class FriendsController extends Controller
 
     public function actionMakeFriends()
     {
-        if ( isset($_POST['friends']) || isset($_POST['friends'] ) || isset($_POST['ofriends']))
+        if ( isset($_POST['friends']) )
         {
             $userId = Yii::app()->user->id;
-            $model = new Friend();
-            $model->user_id = $userId;
-            $model->friend_id = $userId;
-            $model->save();
             foreach ( $_POST['friends'] as $friend )
             {   
-                if ( $userId<>$friend )
+                if ( !Friend::model()->FriendExist($userId, $friend) )
                 {
                     $model = new Friend();
-                     if ( $model->user_id<>$userId &&  $model->friend_id<>$friend )
-                     {
-                        $model->user_id = $userId;
-                        $model->friend_id = $friend;
-                        $model->save();
-                        $model = new Friend();
-                        $model->user_id = $friend;
-                        $model->friend_id = $userId;
-                        $model->save();
-                    }
+                    $model->user_id = $userId;
+                    $model->friend_id = $friend;
+                    $model->save();
+                    $model = new Friend();
+                    $model->user_id = $friend;
+                    $model->friend_id = $userId;
+                    $model->save();
                 }
             }
             $this->redirect(array('friends/myfriends'));
@@ -153,7 +147,7 @@ class FriendsController extends Controller
 
     public function actionDeleteFriends()
     {
-        if ( isset($_POST['myfriends-cancel']) && isset($_POST['friends']) )
+        if ( isset($_POST['friends']) )
         {
             foreach ( $_POST['friends'] as $cancelfriend )
             {   
@@ -172,10 +166,14 @@ class FriendsController extends Controller
                         ':friend_id'    => Yii::app()->user->id 
                     )
                 ));
-                Friend::model()->deleteByPk($data2->id); 
-            }   
+                Friend::model()->deleteByPk($data2->id);    
+            }
+            $this->redirect(array('friends/myfriends'));            
         }
-        $this->redirect(array('friends/friends'));
+        else
+        {
+            $this->redirect(array('friends/friends'));
+        }
     }
 
     public function actionMyGroups()
@@ -285,26 +283,9 @@ class FriendsController extends Controller
         $this->_data['token'] = Yii::app()->security->getToken();
         if( isset($_GET['id']) ) 
         {
-            /*$newmemebers = Array();
-            $amount=0;
-            $group = new UserGroup();
-            foreach ( $group->getMembers($_GET['id']) as $member )
-            {
-                foreach ( $user->friends as $friend )
-                if (  $member->user_id === $friend->profile->id )
-                {
-                    $_exist=true;  
-                }
-                if ( !$_exist )
-                {
-                    Array($amount) = $friend->profile->id;
-                    $amount++;
-                }
-            }*/
             $this->render('newmembers', array(                
                 'user'          => User::model()->findByPk($userID),
                 'id'            => $_GET['id'],
-                //'newmembers'     => newmemebers;
                 'target'        => $imgUrl
             ));
         }

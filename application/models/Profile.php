@@ -40,6 +40,13 @@ class Profile extends CActiveRecord
         ); 
     }
 
+    public function deleteProfile()
+    {
+        return $this->updateByPk($this->id, array(
+            'invisible' => true
+        ));
+    }
+
     public function getSameDepartmentSameGrade($id, $grade)
     {
         return $this->findAll(array(
@@ -78,5 +85,4 @@ class Profile extends CActiveRecord
             'order'  => 'id ASC' 
         ));
     }
-
 }

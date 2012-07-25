@@ -40,11 +40,6 @@ class Character extends CActiveRecord
                 'Item',
                 'pants_id'
             ),
-            'hands'    => array(
-                self::BELONGS_TO,
-                'Item',
-                'hands_id'
-            ),
             'shoes'    => array(
                 self::BELONGS_TO,
                 'Item',
@@ -107,12 +102,7 @@ class Character extends CActiveRecord
     {
         return $this->pants->name;
     }
-
-    public function getHandsName()
-    {
-        return $this->hands->name;
-    }
-
+    
     public function getShoesName()
     {
         return $this->shoes->name;

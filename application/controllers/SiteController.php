@@ -231,8 +231,7 @@ class SiteController extends Controller
         header('Pragma: public');
         header('Cache-Control: max-age=' . $expire);
         header('Expires: ' . gmdate('D, d M Y H:i:s', TIMESTAMP + $expire) . ' GMT');
-        echo '<script src="
-        "></script>';
+        echo '<script src="http://connect.facebook.net/zh_TW/all.js"></script>';
         $this->layout = false;
     }
 
@@ -268,6 +267,7 @@ class SiteController extends Controller
                 }
             }
         }
+
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('register', array(
             'departments'   => Department::model()->getDepartment()

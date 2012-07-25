@@ -34,5 +34,6 @@
     </tr>
 <?php endif;?>
 </table>
-<button id="form-otherdepartment-cancel" type="submit" name="myfriends-cancel">取消好友/BACK</button>
+<button type="submit">取消好友</button>
 </form>
+<button><a href="<?php echo Yii::app()->createUrl('friends/friends')  ?>">BACK</a></button>

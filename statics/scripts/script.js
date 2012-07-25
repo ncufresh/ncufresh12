@@ -189,7 +189,7 @@
         counterAnimationSpeed:  50,
         minimumAnimationTimes:  4,
         interval:               5000,
-        counterDigitElements:   '0123456789ABCDEFGHIJKMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*'
+        counterDigitElements:   '0123456789'
     };
 
     $.pull.start = function(options)
@@ -950,46 +950,92 @@
     $.fn.generateTodolist = function(events, options)
     {
         options = $.extend({
-            tableClass:  'todolist-table'
+            tableClass:  'todolist-table',
+            dateText:    '日期',
+            eventText:   '事件'
         }, options);
-        events = { '2012/8/6': '資訊網上線' };
         var table = $('<table></table>').addClass(options.tableClass);
         var thead = $('<thead></thead>');
         var tbody = $('<tbody></tbody>');
         var tr = $('<tr></tr>');
+        $('<td></td>').text(options.dateText).appendTo(tr);
+        $('<td></td>').text(options.eventText).appendTo(tr);
+        tr.appendTo(thead);
+        for(var key in events)
+        {
+            var tr = $('<tr></tr>');
+            var td = $('<td></td>').text(events[key][0]);
+            var td2 = $('<td></td>').text(events[key][1]);
+            tr.append(td).append(td2).appendTo(tbody);
+        }
         table.append(thead)
             .append(tbody);
         return table;
     }
+
     $.fn.generateCalendar = function(options)
     {
         options = $.extend({
             year:        0,
             month:       0,
-            tableClass:  'calendar-table',
-            month_tc:    ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
-            month_en:    ['January','February','March','April','May','June','July','August','September','October','November','December'],
-            dayOfWeek:   ['日','一','二','三','四','五','六']
+            tableClass:  'calendar-table', 
+            buttonClass: 'calendar-button',
+            month_tc:    ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'], 
+            month_en:    ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], 
+            dayOfWeek:   ['日', '一', '二', '三', '四', '五', '六'], 
+            today:       true,
+            left:        false,
+            right:       false,
+            linkClick:   function(){ return false; },
+            leftClick:   function(){ return false; },
+            rightClick:  function(){ return false; },
+            dayClick:    function(){}
         }, options);
-        var daysOfMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
+        options.month -= 1;
+        var daysInMonth = function(iMonth, iYear)
+        {
+            return 32 - new Date(iYear, iMonth, 32).getDate();
+        }
         var table = $('<table></table>').addClass(options.tableClass);
         var link = $('<a></a>')
             .attr('href', '#')
-            .text(options.month_en[options.month]+' '+options.month_tc[options.month]);
-        var caption = $('<caption></caption>')
-            .append(link);
+            .text(options.month_en[options.month]+' '+options.month_tc[options.month])
+            .click(options.linkClick);
+        var left = $('<a></a>')
+            .attr('href','#')
+            .text('<<')
+            .addClass(options.buttonClass)
+            .css({
+                left: 0,
+                position: 'absolute'
+            })
+            .click(options.leftClick);
+        var right = $('<a></a>')
+            .attr('href','#')
+            .text('>>')
+            .addClass(options.buttonClass)
+            .css({
+                position: 'absolute',
+                right: 0
+            })
+            .click(options.rightClick);
+        var caption = $('<caption></caption>').css({
+            position: 'relative'
+        }).append(link);
+        if ( options.left ) caption.prepend(left);
+        if ( options.right ) caption.append(right);
         var thead = $('<thead></thead>');
         var tbody = $('<tbody></tbody>');
         var tr = $('<tr></tr>');
         var date = new Date(options.year, options.month);
-        for(var key in options.dayOfWeek)
+        for( var key in options.dayOfWeek )
         {
             var td = $('<td></td>').text(options.dayOfWeek[key]);
             if ( key==0 || key==6 ) td.addClass('weekend');
             td.appendTo(tr);
         }
         tr.appendTo(thead);
-        for(var day=1, position=0; day<=31; position++)
+        for( var day = 1, position = 0; day <= daysInMonth(options.month, options.year); position++ )
         {
             if ( position%7 == 0 )
             {
@@ -999,7 +1045,13 @@
             var td = $('<td></td>');
             if ( position>=date.getDay() )
             {
-                td.text(day);
+                td.text(day).click(options.dayClick);
+                if( (new Date()).getDate() == day 
+                    && (new Date()).getMonth()==options.month
+                    && options.today)
+                {
+                    td.css({background: '#ace082'});
+                }
                 ++day;
             }
             td.appendTo(tr);
@@ -1027,7 +1079,9 @@
         {
             $(this).find('#calendar-personal').css('cursor', 'default');
         }
-
+        var september;
+        var august;
+        var todolist;
         this.children('.calendar-top')
             .children('a')
             .click(function()
@@ -1055,22 +1109,44 @@
             }
             return false;
         });
-        
-        $.fn.generateCalendar({
+        september = $.fn.generateCalendar({
             year: 2012,
-            month: 7
+            month: 8,
+            left: true,
+            leftClick: function()
+            {
+                september.detach();
+                august.prependTo(bottom);
+                $.fn.generateCalendar
+                return false;
+            }
+            
+        });
+        august = $.fn.generateCalendar({
+            year: 2012,
+            month: 7,
+            right: true,
+            rightClick: function()
+            {
+                august.detach();
+                september.prependTo(bottom);
+                $.fn.generateCalendar
+                return false;
+            },
+            dayClick: function()
+            {
+                $(this).css('border', '1px solid black');
+            }
         }).appendTo(bottom);
         bottom.appendTo(bottom_wrap);
-
-        bottom = $('<div></div>')
-            .attr('id', 'calendar-August')
-            .addClass('calendar-bottom')
-            .hide();
-        $.fn.generateCalendar({
-            year: 2012,
-            month: 8
-        }).appendTo(bottom);
-        bottom.appendTo(bottom_wrap);
+        todolist = $.fn.generateTodolist(
+            [
+                ['2012/8/6', '資訊網上線'],
+                ['2012/8/6', '資訊網上線'],
+                ['2012/8/6', '資訊網上線'],
+                ['2012/8/6', '資訊網上線']
+            ]
+        ).appendTo(bottom);
         return this;
     };
 })(jQuery);
@@ -1172,13 +1248,13 @@
                     height: '100%',
                     position: 'fixed',
                     top: 0,
-                    opacity: 0.8,
+                    opacity: 1,
                     left: 0,
                     width: '100%'
                 })
                 .appendTo('body');
                 var box = $('<div></div>').css({
-                    background: 'white',
+                    background: 'red',
                     height: 400,
                     margin: '-200px 0 0 -200px',
                     position: 'absolute',
@@ -1188,20 +1264,23 @@
                 })
                 .appendTo(back);
                 $('<h4>！終極密碼！</h4>').css({
-                    background: 'yellow',
-                    color: 'blue',
+                    //background: 'yellow',
+                    color: 'yellow',
                     textAlign: 'center',
+                    fontSize: 30
                 })
                 .appendTo(box);
                 var message = $('<p></p>').text('請輸入數字' + down + '到' + up +'之間').css({
                     color: 'black',
-                    textAlign: 'left',
+                    fontSize: 20,
+                    textAlign: 'left'
                 })
                 .appendTo(box);
-                var input_text = $('<p></p>').text('0').css({
+                var input_text = $('<input type="text" />').attr('value', '123').css({
                 
                 })
                 .appendTo(box);
+                alert(input_text.val());
                 $('<button>確定送出</button><br/>').css({
                     color: 'black',
                     textAlign: 'left',
@@ -1225,191 +1304,43 @@
                             down = input;
                             message.text('請輸入數字' + down + '到' + up +'之間');
                         }
-                        input = 0;
                         input_index = 1;
-                        input_text.text(input);
                     }
                     else
                     {
                         alert('要輸在範圍內喔!');
                     }
+                    input = 0;
+                    input_text.text(input);
                 })
                 .appendTo(box);
-                $('<button>7</button>').css({
+                var numberTable = $('<table></table>');
+                var TableRow = [$('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>')];
+                for ( var i = 7; i > 0 ; i = i - 3 )
+                {
+                    for ( var j = 0; j <3 ; j++ )
+                    {
+                        $('<td></td>').text( i + j ).addClass('tableBox').appendTo(TableRow[ parseInt( i / 3) ]);
+                        TableRow[ parseInt( i / 3 ) ].appendTo(numberTable);
+                    }
+                }
+                numberTable.appendTo(box);
+                $('.tableBox').each.css({
                     color: 'black',
+                    
                     textAlign: 'left'
                 })
                 .click(function()
                 {
                     if ( input_index == 1 )
                     {
-                        input += 7 * 10;
+                        input += $(this).text();
                         input_index = 0;
                         input_text.text(input);
                     }
                     else if( input_index == 0 )
                     {
-                        input += 7;
-                        input_text.text(input);
-                        input_index = -1;
-                    }
-                })
-                .appendTo(box);
-                $('<button>8</button>').css({
-                    color: 'black',
-                    textAlign: 'left',
-                })
-                .click(function()
-                {
-                    if ( input_index == 1 )
-                    {
-                        input += 8 * 10;
-                        input_index = 0;
-                        input_text.text(input);
-                    }
-                    else if( input_index == 0 )
-                    {
-                        input += 8;
-                        input_text.text(input);
-                        input_index = -1;
-                    }
-                })
-                .appendTo(box);
-                $('<button>9</button><br/>').css({
-                    color: 'black',
-                    textAlign: 'left',
-                })
-                .click(function()
-                {
-                    if ( input_index == 1 )
-                    {
-                        input += 9 * 10;
-                        input_index = 0;
-                        input_text.text(input);
-                    }
-                    else if( input_index == 0 )
-                    {
-                        input += 9;
-                        input_text.text(input);
-                        input_index = -1;
-                    }
-                })
-                .appendTo(box);
-                $('<button>4</button>').css({
-                    color: 'black',
-                    textAlign: 'left',
-                })
-                .click(function()
-                {
-                    if ( input_index == 1 )
-                    {
-                        input += 4 * 10;
-                        input_index = 0;
-                        input_text.text(input);
-                    }
-                    else if( input_index == 0 )
-                    {
-                        input += 4;
-                        input_text.text(input);
-                        input_index = -1;
-                    }
-                })
-                .appendTo(box);
-                $('<button>5</button>').css({
-                    color: 'black',
-                    textAlign: 'left',
-                })
-                .click(function()
-                {
-                    if ( input_index == 1 )
-                    {
-                        input += 5 * 10;
-                        input_index = 0;
-                        input_text.text(input);
-                    }
-                    else if( input_index == 0 )
-                    {
-                        input += 5;
-                        input_text.text(input);
-                        input_index = -1;
-                    }
-                })
-                .appendTo(box);
-                $('<button>6</button><br/>').css({
-                    color: 'black',
-                    textAlign: 'left',
-                })
-                .click(function()
-                {
-                    if ( input_index == 1 )
-                    {
-                        input += 6 * 10;
-                        input_index = 0;
-                        input_text.text(input);
-                    }
-                    else if( input_index == 0 )
-                    {
-                        input += 6;
-                        input_text.text(input);
-                        input_index = -1;
-                    }
-                })
-                .appendTo(box);
-                $('<button>1</button>').css({
-                    color: 'black',
-                    textAlign: 'left',
-                })
-                .click(function()
-                {
-                    if ( input_index == 1 )
-                    {
-                        input += 1 * 10;
-                        input_index = 0;
-                        input_text.text(input);
-                    }
-                    else if( input_index == 0 )
-                    {
-                        input += 1;
-                        input_text.text(input);
-                        input_index = -1;
-                    }
-                })
-                .appendTo(box);
-                $('<button>2</button>').css({
-                    color: 'black',
-                    textAlign: 'left',
-                })
-                .click(function()
-                {
-                    if ( input_index == 1 )
-                    {
-                        input += 2 * 10;
-                        input_index = 0;
-                        input_text.text(input);
-                    }
-                    else if( input_index == 0 )
-                    {
-                        input += 2;
-                        input_text.text(input);
-                        input_index = -1;
-                    }
-                })
-                .appendTo(box);
-                $('<button>3</button><br/>').css({
-                    color: 'black',
-                    textAlign: 'left',
-                })
-                .click(function()
-                {
-                    if ( input_index == 1 )
-                    {
-                        input += 3 * 10;
-                        input_index = 0;
-                        input_text.text(input);
-                    }
-                    else if( input_index == 0 )
-                    {
-                        input += 3;
+                        input = input * 10 + $(this).text();
                         input_text.text(input);
                         input_index = -1;
                     }
@@ -1419,31 +1350,37 @@
                     color: 'black',
                     textAlign: 'left',
                 })
+                .click(function()
+                {
+                    if ( input_index == 1 )
+                    {
+                        input_index = 0;
+                        input_text.text(input);
+                    }
+                    else if( input_index == 0 )
+                    {
+                        input = input * 10;
+                        input_text.text(input);
+                        input_index = -1;
+                    }
+                })
                 .appendTo(box);
-                $('<button>Back</button>').css({
+                $('<button>Clean</button>').css({
                     color: 'black',
                     textAlign: 'left',
                 })
                 .click(function()
                 {
-                    if ( input_index == -1 )
-                    {
-                        input_index = 0;
-                        input = parseInt(input / 10 ) * 10;
-                        input_text.text(input);
-                    }
-                    else if ( input_index == 0 )
-                    {
-                        input_index = 1;
-                        input = 0;
-                        input_text.text(input);
-                    }
+                    input_index = 1;
+                    input = 0;
+                    input_text.text(input);
                 })
                 .appendTo(box);
                 $('<p>沒猜到不能離開啦~~哇哈哈哈</p>').css({
-                    background: 'yellow',
-                    color: 'blue',
-                    textAlign: 'center',
+                    //background: 'yellow',
+                    color: 'yellow  ',
+                    fontSize: 30,
+                    textAlign: 'center'
                 })
                 .appendTo(box);
             }
