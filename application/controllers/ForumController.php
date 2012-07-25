@@ -6,21 +6,21 @@
 class ForumController extends Controller
 {
     const ARTICLES_PER_PAGE = 10;
-    
+
     public function init()
     {
         parent::init();
         Yii::import('application.models.Forum.*');
         return true;
     }
-    
+
     public function filters()
     {
         return array(
             'accessControl'
         );
     }
-    
+
     public function accessRules()
     {
         return array(
@@ -40,7 +40,7 @@ class ForumController extends Controller
             )
         );
     }
-    
+
     public function actionIndex()
     {
         // index page, list the three categories of forum
@@ -63,7 +63,8 @@ class ForumController extends Controller
         $article = new Article();
         
         // content of each forum
-        if ( !Yii::app()->request->getIsAjaxRequest() )
+        // [not yet] 傳入是否為admin 用於判斷是否顯示置頂checkbox及刪除文章選項
+        if ( ! Yii::app()->request->getIsAjaxRequest() )
         {
             $this->render('forum', array(
                 'fid'       => $fid,
@@ -79,7 +80,7 @@ class ForumController extends Controller
         else
         {
             $this->_data['content'] = array();
-            foreach( Article::model()->getArticlesSort($fid, $sort) as $article )
+            foreach ( Article::model()->getArticlesSort($fid, $sort) as $article )
             {
                 $this->_data['content'][$article->id] = $article->title;
             }

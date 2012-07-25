@@ -70,9 +70,9 @@
 <br/>
 分類
 <select name="forum[category]">
-    <?php foreach ( $category->article_categories as $entry ) : ?>
-        <option value="<?php echo $entry->id; ?>"><?php echo $entry->name; ?></option>
-    <?php endforeach; ?>
+<?php foreach ( $category->article_categories as $entry ) : ?>
+    <option value="<?php echo $entry->id; ?>"><?php echo $entry->name; ?></option>
+<?php endforeach; ?>
 </select>
 <!--置頂-->
 <?php

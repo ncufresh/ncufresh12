@@ -1,6 +1,5 @@
 <h2>基本資料</h2>
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('site/register'); ?>" method="POST">
-   <!-- <input type="hidden" name="MAX_FILE_SIZE" value="327680" />-->
     <dl>
         <dt>
             <label for="form-register-name">姓名</label>
@@ -30,13 +29,15 @@
             <input id="form-register-password" name="register[password]" type="password" />
         </dd>
     </dl>
-    <div> 
-        <label for="form-register-department">系級</label>
+    <dl>
+        <dt>
+            <label for="form-register-department">系級</label>
+        </dt>
+        <dd>
             <select name="profile[department]">
-                <?php foreach ( $departments as $department ) : ?>
-                    <option value="<?php echo $department->id; ?>"><?php echo $department->department; ?></option> <!--$department->content;   content是欄位名稱(成員)-->
-                <?php endforeach; ?>
-                
+<?php foreach ( $departments as $department ) : ?>
+                    <option value="<?php echo $department->id; ?>"><?php echo $department->department; ?></option>
+<?php endforeach; ?>
             </select>
             <select name="profile[grade]">
                 <option value="1">一年級</option>
@@ -45,7 +46,8 @@
                 <option value="4">四年級</option>
                 <option value="5">其它</option>
             </select>
-    </div>
+        </dd>
+    </dl>
     <dl>
         <dt>
             <label for="form-register-senior">畢業高中</label>

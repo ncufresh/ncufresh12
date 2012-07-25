@@ -13,50 +13,6 @@
     left:0px;
     top:0px;
 }
-#building-list
-{
-    z-index:3;
-    position:absolute;
-    top:0px;
-    left:0px;
-    width:100px;
-    color:white;
-    border-radius:5px;
-    background:gray;
-    text-align:center;     
-}
-#building-list-ul
-{
-    display:none;
-}
-#building-list-ul-department, #building-list-ul-landscape, #building-list-ul-diet, #building-list-ul-government, #building-list-ul-dormitory
-{
-    position:absolute;
-    display:none;
-    z-index:3;
-    top:20px;
-    width:100px;
-    left:100px;
-    color:white;
-    border-radius:5px;
-    background:blue;
-    text-align:center;  
-}
-#building-list-ul-diet
-{
-    position:absolute;
-    display:none;
-}
-#building-list-ul-government
-{
-    position:absolute;
-    display:none;
-}
-#building-list-ul-dormitory
-{
-    position:absolute;
-    display:none;
-}
 #boy-11
 {
     left:130px;
@@ -66,43 +22,6 @@
 {
     left:460px;
     top:180px;
-}
-#checkbox-1
-{
-    position:absolute;
-    z-index:2;
-    left:640px;
-    top:50px;
-}#checkbox-2
-{
-    position:absolute;
-    z-index:2;
-    left:640px;
-    top:70px;
-}#checkbox-3
-{
-    position:absolute;
-    z-index:2;
-    left:640px;
-    top:90px;
-}#checkbox-4
-{
-    position:absolute;
-    z-index:2;
-    left:640px;
-    top:110px;
-}#checkbox-5
-{
-    position:absolute;
-    z-index:2;
-    left:640px;
-    top:130px;
-}#checkbox-6
-{
-    position:absolute;
-    z-index:2;
-    left:640px;
-    top:150px;
 }
 #cake
 {
@@ -168,7 +87,7 @@
     left:160px;
     top:240px;
 }
-#electricity-4
+#electricity-3
 {
     left:100px;
     top:80px;
@@ -225,9 +144,7 @@
 }
 #map-picture
 {
-    position:relative;
-    height:622;
-    width:572;
+    position:relative;    
     margin-left:0;
     z-index:1;
 }
@@ -299,482 +216,299 @@
     width:50px;
 }
 
-
-
-.building-list-item li
+.one-image
 {
-    cursor: pointer;
-}
-.building-list-item li:hover
-{
-    color: black;
-    background: yellow;
-}
-.building-list2-item:hover
-{
-    color: black;
-    background: yellow;
-}
-
-#building-list-ul, #building-list-ul ul
-{
-    margin: 0;
-    padding: 0;
-}
-
-#building-list-ul li
-{
-    list-style: none;
+    position:absolute;
+    height:50px;
+    width:50px;
+    z-index:1;
 }
 </style>
-
     
-    <div>
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg" style="position:absolute; top:0px; left:0px; z-index:5" id="imageimage">
-    </div>
+    <img src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg" style="position:absolute; top:0px; left:0px; z-index:4" id="imageimage">
 <div id="back-div">
-    <img src="<?php echo Yii::app()->baseUrl?>/statics/pp.jpg" id="map-picture"><!--底圖-->
+               
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-up.png" class="arrow" style="position:absolute; z-index:4; left:260px; top:200px; display:none;">
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-down.png" class="arrow" style="position:absolute; z-index:4; left:260px; top:320px; display:none;">
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-left.png" class="arrow" style="position:absolute; z-index:4; left:160px; top:260px;display:none;">
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-right.png" class="arrow" style="position:absolute; z-index:4; left:360px; top:260px; display:none;">
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/right-turn.png" class="arrow" style="position:absolute; z-index:4; left:380px; top:350px;display:none;">
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/left-turn.png" class="arrow" style="position:absolute; z-index:4; left:140px; top:350px; display:none;">
+            
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/back.png" class="arrow" style="position:absolute; z-index:4; left:670px; top:0px; display:none;">
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/day.png" class="arrow" style="position:absolute; z-index:4; left:0px; top:0px; display:none;">
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/hide.png" class="arrow" style="position:absolute; z-index:4; left:0px; top:382px; display:none;">
+            <!--<img >
+            總寬:750px 總高:422px  窗簾:250px  地圖:寬500px高422px 
+            <img >-->
+   
+    
+    <img src="<?php echo Yii::app()->baseUrl?>/statics/pp.png" id="map-picture"><!--底圖-->
     <!--<a id="building" href="<?php //echo Yii::app()->createUrl('street/building', array('id' => 2));?>"><img src="<?php //echo Yii::app()->baseUrl?>/statics/marquee_star_icon.png" ></a>-->
     <!--系館-->
-    <a id="electricity-5" class="department-building picture" href="#1"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/555.png"></a>
-    <a id="electricity-1" class="department-building picture" href="#2"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/111.png"></a>
-    <a id="electricity-4" class="department-building picture" href="#3"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/444.png"></a>
+    <a id="electricity-5" class="department-building picture" showMe="department-building" href="#1"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/555.png"></a>
+    <a id="electricity-3" class="department-building picture" showMe="department-building" href="#3"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/444.png"></a>
+    <!--<a id="electricity-2" class="department-building picture" showMe="department-building"><img></a>-->
+    <a id="electricity-1" class="department-building picture" showMe="department-building" href="#2"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/111.png"></a>
+        
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
     <!--景觀-->
-    <a id="flower" class="landscape picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 4));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/flower.png"></a>
-    <a id="kon-fu" class="landscape picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 5));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/kon_fu.png"></a>
-    <a id="tree"class="landscape picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 6));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/tree.png"></a>
+    <a id="flower" class="landscape picture" showMe="landscape" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 4));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/flower.png"></a>
+    <a id="kon-fu" class="landscape picture" showMe="landscape" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 5));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/kon_fu.png"></a>
+    <a id="tree"class="landscape picture" showMe="landscape" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 6));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/tree.png"></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
     <!--飲食-->
-    <a id="cake"class="diet picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 7));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/cake.png" ></a>
-    <a id="mose" class="diet picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 8));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mose.png"></a>
-    <a id="street" class="diet picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 9));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/street.png"></a>
+    <a id="cake"class="diet picture" showMe="diet" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 7));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/cake.png" ></a>
+    <a id="mose" class="diet picture" showMe="diet" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 8));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mose.png"></a>
+    <a id="street" class="diet picture" showMe="diet" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 9));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/street.png"></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
     <!--行政-->
-    <a id="computer" class="government picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 10));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/government/computer.png"></a>
-    <a id="government" class="government picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 11));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/government/government.png"></a>
-    <a id="library" class="government picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 12));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/government/library.png"></a>
+    <a id="computer" class="government picture" showMe="government" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 10));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/government/computer.png"></a>
+    <a id="government" class="government picture" showMe="government" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 11));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/government/government.png"></a>
+    <a id="library" class="government picture" showMe="government" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 12));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/government/library.png"></a>
+    <a><img></a>
+    <a><img></a>
     <!--宿舍-->
-    <a id="boy-11" class="dormitory picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 13));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/boy_11.png"></a>
-    <a id="girl-14" class="dormitory picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 14));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/girl_14.png"></a>
-    <a id="new" class="dormitory picture" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 15));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/new.png"></a>
-    <!--綜觀-->
-    <input type="checkbox" id="checkbox-1" class="building-checkbox">
-    <input type="checkbox" id="checkbox-2" class="building-checkbox">
-    <input type="checkbox" id="checkbox-3" class="building-checkbox">
-    <input type="checkbox" id="checkbox-4" class="building-checkbox">
-    <input type="checkbox" id="checkbox-5" class="building-checkbox">
-    <input type="checkbox" id="checkbox-6" class="building-checkbox">
+    <a id="boy-11" class="dormitory picture" showMe="dormitory" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 13));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/boy_11.png"></a>
+    <a id="girl-14" class="dormitory picture" showMe="dormitory" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 14));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/girl_14.png"></a>
+    <a id="new" class="dormitory picture" showMe="dormitory" href="<?php echo Yii::app()->createUrl('street/building',array('id' => 15));?>"><img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/new.png"></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <a><img></a>
+    <!--選擇鈕-->
+    <img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/dormitory.png" class="one-image dormitory" showMe="dormitory" style="top:50px;left:660px;">
+    <img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/food.png" class="one-image diet" showMe="diet" style="top:110px;left:660px;">
+    <img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/college.png" class="one-image department-building" showMe="department-building" style="top:170px;left:660px;">
+    <img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/landscape.png" class="one-image landscape" showMe="landscape" style="top:230px;left:660px;">
+    <img src="<?php echo Yii::app()->baseUrl?>/statics/building/government/government-out.png" class="one-image government" showMe="government" style="top:290px;left:660px;">
+    <img src="<?php echo Yii::app()->baseUrl?>/statics/building/click.png" class="one-image image6" style="top:350px;left:660px;">
+    <!--窗簾-->
     
-    <div id="building-list">
-        <span>清單</span>
-        <ul id="building-list-ul">
-            <li class="building-list-item item1">
-                系館     
-                <ul id="building-list-ul-department">
-                    <li class="building-list2-item item2-1-1">
-                        工一                            
-                    </li>
-                    <li class="building-list2-item item2-1-2">
-                        工二                            
-                    </li>
-                    <li class="building-list2-item item2-1-3">
-                        工三                         
-                    </li>
-                    <li class="building-list2-item item2-1-4">
-                        工五                  
-                    </li>
-                    <li class="building-list2-item item2-1-5">
-                        國鼎光電大樓                         
-                    </li>
-                    <li class="building-list2-item item2-1-6">
-                        科學一館                         
-                    </li>
-                    <li class="building-list2-item item2-1-7">
-                        科學二館                    
-                    </li>
-                    <li class="building-list2-item item2-1-8">
-                        科學三館                       
-                    </li>
-                    <li class="building-list2-item item2-1-9">
-                        科學四館	                        
-                    </li>
-                    <li class="building-list2-item item2-1-10">
-                        科學五館                            
-                    </li>
-                    <li class="building-list2-item item2-1-11">
-                        理學院教學館                           
-                    </li>
-                    <li class="building-list2-item item2-1-12">
-                        鴻經館                           
-                    </li>
-                    <li class="building-list2-item item2-1-13">
-                        客家學院大樓                            
-                    </li>
-                    <li class="building-list2-item item2-1-14">
-                        文學院                         
-                    </li>
-                    <li class="building-list2-item item2-1-15">
-                        管學院                            
-                    </li>
-                    <li class="building-list2-item item2-1-16">
-                        綜教館                           
-                    </li>
-                    <li class="building-list2-item item2-1-17">
-                        綜合教學大樓                          
-                    </li>
-                </ul>
-            </li>
-            <li class="building-list-item item2">
-                景觀
-                <ul id="building-list-ul-landscape">
-                    <li class="building-list2-item item2-2-1">
-                        中大湖                        	
-                    </li>                        
-                    <li class="building-list2-item item2-2-2">
-                        烏龜池                       	  
-                    </li>
-                    <li class="building-list2-item item2-2-3">
-                        情人步道                       	   
-                    </li>
-                    <li class="building-list2-item item2-2-4">
-                        坐聽‧松風                       	   
-                    </li>
-                    <li class="building-list2-item item2-2-5">
-                        漫步雲端                       	    
-                    </li>
-                    <li class="building-list2-item item2-2-6">
-                        大象五行                        	    
-                    </li>
-                    <li class="building-list2-item item2-2-7">
-                        蘊‧行                       	    
-                    </li>
-                    <li class="building-list2-item item2-2-8">
-                        百花川                        	    
-                    </li>
-                    <li class="building-list2-item item2-2-9">
-                        國泰樹                       	    
-                    </li>
-                    <li class="building-list2-item item2-2-10">
-                        筆墨紙硯                       	    
-                    </li>
-                    <li class="building-list2-item item2-2-11">
-                        中大會館                       	    
-                    </li>
-                    <li class="building-list2-item item2-2-12">
-                        松濤書閣                       	    
-                    </li>
-                    <li class="building-list2-item item2-2-13">
-                        校園咖啡                      	    
-                    </li>                                 
-                </ul>
-            </li> 
-            <li class="building-list-item item3">
-                飲食
-                <ul id="building-list-ul-diet">
-                    <li class="building-list3-item item2-3-1">
-                        男七餐廳
-                    </li>
-                    <li class="building-list2-item item2-3-2">
-                        男九餐廳
-                    </li>
-                    <li class="building-list2-item item2-3-3">
-                        消夜街
-                    </li>
-                    <li class="building-list2-item item2-3-4">
-                        後門
-                    </li>
-                    <li class="building-list2-item item2-3-5">
-                        松濤小木屋區
-                    </li>
-                    <li class="building-list2-item item2-3-6">
-                        小木屋鬆餅
-                    </li>                       
-                </ul>
-            </li>
-            <li class="building-list-item item4">
-                行政
-                <ul id="building-list-ul-government">
-                    <li class="building-list2-item item2-4-1">
-                        行政大樓
-                    </li>
-                    <li class="building-list2-item item2-4-2">
-                        志希館 電算中心
-                    </li>
-                    <li class="building-list2-item item2-4-3">
-                        校史館
-                    </li>
-                    <li class="building-list2-item item2-4-4">
-                        育成中心
-                    </li>
-                    <li class="building-list2-item item2-4-5">
-                    	學生活動中心
-                    </li>
-                </ul>
-            </li>
-            <li class="building-list-item item5">
-                宿舍
-                <ul id="building-list-ul-dormitory">
-                    <li class="building-list2-item item2-5-1">  
-                        女一 ~ 四舍
-                    </li>
-                    <li class="building-list2-item item2-5-2">  
-                    	女五舍
-                    </li>
-                    <li class="building-list2-item item2-5-3">  
-                    	男三舍
-                    </li>
-                    <li class="building-list2-item item2-5-4">  
-                    	男五舍
-                    </li>
-                    <li class="building-list2-item item2-5-5">  
-                    	男六舍
-                    </li>
-                    <li class="building-list2-item item2-5-6">  
-                    	男七舍
-                    </li>
-                    <li class="building-list2-item item2-5-7">  
-                    	男九舍
-                    </li>
-                    <li class="building-list2-item item2-5-8">  
-                    	男11舍
-                    </li>
-                    <li class="building-list2-item item2-5-9">  
-                    	男12舍
-                    </li>
-                    <li class="building-list2-item item2-5-10">  
-                    	男13舍
-                    </li>
-                    <li class="building-list2-item item2-5-11">  
-                    	女14舍
-                    </li>
-                    <li class="building-list2-item item2-5-12">  
-                    	新研舍
-                    </li>                
-                </ul>
-            </li>
-            <li class="building-list-item item6">
-                綜觀                  
-            </li>
-        </ul>            
+    <div style="position:absolute; z-index:1; top:0px; left:750px; " id="curtain-div">
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain.png" style="position:absolute;" id="curtain">
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/unclick.png" style="position:absolute; top:372px; left:100px;" id="unclick">
+        
+        
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/college.png" class="one-image department-building two-image" showMe="department-building" style="top:0;left:0px;">
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/dormitory.png" class="one-image dormitory two-image" showMe="dormitory" style="top:50px;left:0px;">
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/government/government-out.png" class="one-image government two-image" showMe="government" style="top:100px;left:0px;">
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/food.png" class="one-image diet two-image" showMe="diet" style="top:150px;left:0px;">
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/landscape.png" class="one-image landscape two-image" showMe="landscape" style="top:200px;left:0px;">
+        
     </div>
-</div>
-
-<div id="dialog-div-1"><!--第一層-->
-    <div id="dialog1-up-div">          
-        <p id="dialog1-up-content">
-        <div id="picture-main">
-        <img id="main">
-        <!--正視圖-->
-        </div>  
-        </p>
-    </div> 
+    <!--<div style="position:absolute; z-index:6; height:150px; width:150px; background-color:red; top:0px; left:600px;">
+    </div>-->
     
-    <div id="dialog1-down-div">
-        <div id="picture-other-1">
-        <img id="other-1">
-        <!--其他圖 1-->
-        </div>    
-        <div id="picture-other-2">
-        <img id="other-2">
-        <!--其他圖 2-->
-        </div>
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg" id="little-man">      
-    </div>   
-</div>
-
-<div id="dialog-div-2"><!--第二層-->
-    <div id="dialog2-up-back"><!--2-1-->
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/logo.png" id="dialog2_main_picture">
+    <div id="dialog-div-1" style="z-index:2;"><!--第一層-->
+        <div id="dialog1-up-div">          
+            <p id="dialog1-up-content">
+            <div id="picture-main">
+            <img id="main">
+            <!--正視圖-->
+            </div>  
+            </p>
+        </div> 
+        
+        <div id="dialog1-down-div">
+        
+            <div id="picture-other-1">
+                <img id="other-1">
+                <!--其他圖 1-->
+            </div>    
+            <div id="picture-other-2">
+                <img id="other-2">
+                <!--其他圖 2-->
+            </div>
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg" id="little-man">    
+            
+        </div>   
     </div>
 
-    <div id="dialog2-down-back"><!--2-2-->
-        <button id="dialog2-button-left">left</button>
-
-        <div>
-            <img id="img1" src="<?php echo Yii::app()->baseUrl?>/statics/1.jpg">
-            <img id="img2" src="<?php echo Yii::app()->baseUrl?>/statics/2.png">
-            <img id="img3" src="<?php echo Yii::app()->baseUrl?>/statics/3.jpg">
+    <div id="dialog-div-2" style="z-index:2;"><!--第二層-->
+        <div id="dialog2-up-back"><!--2-1-->
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg" id="dialog2_main_picture">
         </div>
 
-        <button id="dialog2-button-right">right</button>
-    </div>
-</div>
+        <div id="dialog2-down-back"><!--2-2-->
+            <button id="dialog2-button-left">left</button>
 
+            <div>
+                <img id="img1" src="<?php echo Yii::app()->baseUrl?>/statics/1.jpg">
+                <img id="img2" src="<?php echo Yii::app()->baseUrl?>/statics/2.png">
+                <img id="img3" src="<?php echo Yii::app()->baseUrl?>/statics/3.jpg">
+            </div>
+
+            <button id="dialog2-button-right">right</button>
+        </div>
+    </div>
+
+    
+</div>
 
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
-<script type="text/javascript"> 
-// $(document).mousemove(function(e) {
-$(document).mousemove(function(event) { // 相對於 back-div 的座標
- // + document.documentElement.scrollLeft
-
-// console.log($('#back-div').offset().left);
-// x=$('#back-div').offset().left;
-// y=$('#back-div').offset().top;
-// x = event.clientX;
-// y = event.clientY;
-// x = event.screenX;
-// y = event.screenY;
-x = event.pageX;
-y = event.pageY;
-// alert('x: '+x+'~~y: '+y);
-$('#imageimage').css(
-{
-    top:y+'px',
-    left:x+'px',
-});
-});
-
-
-
-
-    $('.item1, .item2, .item3, .item4, .item5, .item6').attr('item:checked','checked');
-    $('#checkbox-1, .item1').click(function()
-    {//系館
-        $('.department-building, .landscape, .diet, .government, .dormitory').show();
-        $("#checkbox-2, #checkbox-3, #checkbox-4, #checkbox-5, #checkbox-6").removeAttr('checked');                
-        if($('#checkbox-1').prop('checked')||$('.item1').attr('item:checked')=='checked')
-        {
-            $('.landscape, .diet, .government, .dormitory').hide();
-        }
-        else
-        {        
-            $('.landscape, .diet, .government, .dormitory').show();
-        }
-    });
-    $('#checkbox-2, .item2').click(function()
-    {//景觀
-        $('.department-building, .landscape, .diet, .government, .dormitory').show();
-        $("#checkbox-1, #checkbox-3, #checkbox-4, #checkbox-5, #checkbox-6").removeAttr('checked');
-        if($('#checkbox-2').prop('checked')||$('.item2').attr('item:checked')=='checked')
-        {
-            $('.department-building, .diet, .government, .dormitory').hide(); 
-        }
-        else
-        {
-            $('.department-building, .diet, .government, .dormitory').show();
-        }
-    });
-    $('#checkbox-3, .item3').click(function()
-    {//飲食
-        $('.department-building, .landscape, .diet, .government, .dormitory').show();
-        $("#checkbox-1, #checkbox-2, #checkbox-4, #checkbox-5, #checkbox-6").removeAttr('checked');
-        if($('#checkbox-3').prop('checked')||$('.item3').attr('item:checked')=='checked')
-        {
-            $('.department-building, .landscape, .government, .dormitory').hide();
-        }
-        else
-        {
-            $('.department-building, .landscape, .government, .dormitory').show();
-        }
-    });
-    $('#checkbox-4, .item4').click(function()
-    {//行政
-        $('.department-building, .landscape, .diet, .government, .dormitory').show();
-        $("#checkbox-1 #checkbox-2, #checkbox-3, #checkbox-5, #checkbox-6").removeAttr('checked');
-        if($('#checkbox-4').prop('checked')||$('.item4').attr('item:checked')=='checked')
-        {
-            $('.department-building, .landscape, .diet, .dormitory').hide();
-        }
-        else
-        {
-            $('.department-building, .landscape, .diet, .dormitory').show();
-        }
-    });
-    $('#checkbox-5, .item5').click(function()
-    {//宿舍
-        $('.department-building, .landscape, .diet, .government, .dormitory').show();
-        $("#checkbox-1, #checkbox-2, #checkbox-3, #checkbox-4, #checkbox-6").removeAttr('checked');
-        if($('#checkbox-5').prop('checked')||$('.item5').attr('item:checked')=='checked')
-        {
-            $('.department-building, .landscape, .diet, .government').hide();
-        }
-        else
-        {
-            $('.department-building, .landscape, .diet, .government').show();
-        }
-    });  
-    $('#checkbox-6, .item6').click(function()
-    {//綜觀     
-        $('.department-building, .landscape, .diet, .government, .dormitory').show();
-        $("#checkbox-1, #checkbox-2, #checkbox-3, #checkbox-4, #checkbox-5").removeAttr('checked');
-    });
-    
-    $('#building-list').hover(function() // 第一層 ul
+<script type="text/javascript">
+    $('#imageimage').mousedown(function()
     {
-        if(!$('#building-list-ul').hasClass('active'))
+        $(document).mousemove(mousemove);
+    });
+    var mouseInId;
+    var isInPicture = false;
+    var mousemove = function(event)
+    {
+        x = event.pageX;
+        y = event.pageY;
+        $('#imageimage').css(
         {
-            $('#building-list-ul').slideDown(500, function(){
-                $('#building-list-ul').removeClass('active');
+        top:y+15+'px',
+        left:x+'px',
+        });        
+    };    
+    $('.picture').mouseenter(function()
+    {
+        isInPicture = true;
+        mouseInId = $(this).attr('id');       
+    });    
+    $('.picture').mouseleave(function()
+    {
+        isInPicture = false;
+    });
+    var mouseup = function()
+    {
+        // alert(isInPicture);
+        if( isInPicture == true)
+        {
+            // alert(mouseInId);        
+            $('#map-picture').attr('src','<?php echo Yii::app()->baseUrl?>/statics/building/college/555-big.png');
+            $('#map-picture').css({
+                zIndex:'3',
             });
-            $('#building-list-ul').addClass('active');
-        }
-    },function()
-    {
-        if(!$('#building-list-ul').hasClass('active'))
-        {
-            $('#building-list-ul').slideUp(500, function(){
-                $('#building-list-ul').removeClass('active');
+            $('.arrow').show();
+            isInPicture=false;
+        }   
+            $(document).unbind('mousemove', mousemove);
+            $('#imageimage').css(
+            {
+            top:0,
+            left:0,
             });
-            $('#building-list-ul').addClass('active');
-        }
+            isInPicture = false;
+    };
+    $(document).mouseup(mouseup); 
+
+    $('.one-image').click(function() // building icon show 
+    {
+        $('.picture').hide();
+        $('.' + $(this).attr('showMe')).show();
     });
     
-    $('#building-list-ul li').mouseenter(function() // 第二層 ul
-    {
-        $(this).children('ul').fadeIn(500);
+    $('.two-image').click(function(){
+        alert();
     });
-    $('#building-list-ul li').mouseleave(function()
-    {
-        $(this).children('ul').fadeOut(500);
+    
+    
+    $('.image6').click(function()
+    { // 窗簾
+        $('#curtain-div').animate({left:'600px'});
+    });
+    $('#unclick').click(function()
+    {// 窗簾
+        $('#curtain-div').animate({left:'750px'});
     });
 
-    
-    var dialog_div_1 = $('#dialog-div-1');
-    dialog_div_1.dialog({
-        width: 999,
-        height: 700,
-        modal: true,
-        draggable: false,
-        buttons:{'button!!':function()
-        {
-        $('div#dialog-div-2').dialog('open');
-        }},
-    });
-    dialog_div_1.dialog('close');//dialog_1 瞬間出現再結束
-    $('div.ui-dialog-buttonpane').css('background', 'yellow');// 第一層底下區域
-//---------------------------------------------------------------------------------------------
-    var dialog_div_2=$('div#dialog-div-2');
+    $('#little-man').click(function()
+    {
+        var dialog_div_2=$('div#dialog-div-2');
         dialog_div_2.dialog({
         width:500,
         height:400,
         modal:true,
         draggable:false,
     });
-    dialog_div_2.dialog('close'); // dialog_2 瞬間出現再結束       
-//----------------------------------------------------------------------------------------------  
-    // $('#building').mouseenter(function()
-    // {
-        // $('#building').attr('src','<?php echo Yii::app()->baseUrl?>/statics/chat.png');
-    // });
-    // $('#building').mouseleave(function()
-    // {
-        // $('#building').attr('src','<?php echo Yii::app()->baseUrl?>/statics/marquee_star_icon.png' );
-    // }); 
+    });
     
-    // $('#electricity-5, #electricity-1 ,#electricity-4, #flower,#kon-fu, #tree, #cake, #mose, #street, #computer, #government, #library, #boy-11, #girl-14, #new').click(function()
-    // {        
-        // $.getJSON($('#'+$(this).attr('id')).attr('href'), function(data)
-        // {
-            // $('#dialog1-up-content').text(data.content);
-        // });    
-
-    $('#electricity-5, #electricity-1 ,#electricity-4, #flower,#kon-fu, #tree, #cake, #mose, #street, #computer, #government, #library, #boy-11, #girl-14, #new').click(function()
-    {    
-        dialog_div_1.dialog('open'); // 打開第一層
-        $('span.ui-icon').text('關閉'); // 關閉鈕
-        $('.ui-dialog-titlebar-close').css({
-            right: 0,
-            position: 'absolute',
-            background:'gray'
+    // $('.arrow').eq(0).click(function()
+    // {     
+        // $('#map-picture').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/building/college/444-big.png');
+    // });
+    // $('.arrow').eq(1).click(function()
+    // {     
+        // $('#map-picture').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/building/college/111-big.png');
+    // });
+    // $('.arrow').eq(2).click(function()
+    // {     
+        // $('#map-picture').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/building/college/555-big.png');
+    // });
+    // $('.arrow').eq(3).click(function()
+    // {     
+        // $('#map-picture').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/building/college/444-big.png');
+    // });
+    // $('.arrow').eq(4).click(function()
+    // {     
+        // $('#map-picture').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/building/college/111-big.png');
+    // });
+    // $('.arrow').eq(5).click(function()
+    // {     
+        // $('#map-picture').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/building/college/555-big.png');
+    // });
+    
+    $('.arrow').eq(6).click(function() // 親身體驗 back
+    {
+        $('#map-picture').attr('src', '<?php echo Yii::app()->request->baseUrl;?>/statics/pp.png');
+        $('.arrow').hide();
+        $('#map-picture').css(
+        {
+            zIndex:0,
         });
+    });
+
+    $('.picture').click(function()
+    {
+        var dialog_div_1 = $('#dialog-div-1');
+        dialog_div_1.dialog(
+        {            
+            width: 999,
+            height: 700,
+            modal: true,
+            draggable: false,
+        });
+       
+        $('#map-picture').attr('src', '<?php echo Yii::app()->request->baseUrl;?>/statics/pp.png');
+        $('.arrow').hide();
+        $('#map-picture').css(
+        {
+            zIndex:0,
+        });
+        isInPicture = false;
+        
         var id = $(this).attr('href').replace('#','');        
          $.ajax(
         {
@@ -791,14 +525,16 @@ $('#imageimage').css(
         });
         return false;
     });
-
-    $('#dialog2-button-left').click(function()
-    {
-        $('#img1').animate({left:'0px'});
-    });
+//http://www.dotblogs.com.tw/shadow/archive/2012/04/17/71588.aspx
+     
     $('#dialog2-button-right').click(function()
     {
         $('#img1').animate({left:'80px'});
+    });
+    
+    $('#dialog2-button-left').click(function()
+    {
+        $('#img1').animate({left:'0px'});
     });
 
     $('#img1').click(function()
@@ -815,5 +551,4 @@ $('#imageimage').css(
     });
 </script>
 <?php $this->endWidget();?>
-
 </div>

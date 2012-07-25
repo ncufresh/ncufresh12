@@ -38,37 +38,39 @@ class Article extends CActiveRecord
     public function getArticlesSort($fid, $sort, $category, $page, $entries_per_page){
         switch ($sort)
         {
-            case "create":
-                $sort='create_time';
+            case 'create':
+                $sort = 'create_time';
                 break;
-            case "update":
-                $sort='update_time';
+            case 'update':
+                $sort = 'update_time';
                 break;
-            case "reply":
-                $sort='replies_count';
+            case 'reply':
+                $sort = 'replies_count';
                 break;
-            case "viewed":
-                $sort='viewed_times';
+            case 'viewed':
+                $sort = 'viewed_times';
                 break;
             default:
                 throw new Exception('The sort column name does not exist.');
                 break;
         }
-        if($category==0){
+        if ( $category == 0 )
+        {
             $count = $this->count();
             $total_pages = ceil($count / $entries_per_page);
             $current_page = ($page<$total_pages?$page:$total_pages);
             return $this->findAll(array(
                 'condition' => 'forum_id='.$fid.' AND visibility=1',
-                'order' => "$sort DESC",
-                'limit' => $entries_per_page,
-                'offset' => ($current_page-1) * $entries_per_page
+                'order'     => $sort . ' DESC',
+                'limit'     => $entries_per_page,
+                'offset'    => ($current_page - 1) * $entries_per_page
             ));
         }
-        else{
+        else
+        {
             return $this->findAll(array(
-                'condition' => 'forum_id='.$fid.' AND visibility=1 AND category='.$category,
-                'order' => "$sort DESC",
+                'condition' => 'forum_id = ' . $fid . ' AND visibility = 1 AND category = ' . $category,
+                'order'     => $sort . ' DESC'
             ));
         }
     }
@@ -98,23 +100,15 @@ class Article extends CActiveRecord
         return false;
     }
     
-    public function getPageStatus($current_page, $entries_per_page, $fid)
+    public function getPageStatus($page, $entries_per_page)
     {
-        $total_pages = ceil($this->count('forum_id='.$fid.' AND visibility=1') / $entries_per_page);
-        if ( $current_page > $total_pages ) $current_page = $total_pages;
-        if ( $current_page < 1 ) $current_page = 1;
-        $next_page = $current_page == $total_pages ? null : ($current_page + 1);
-        $prev_page = $current_page == 1 ? null : ($current_page - 1);
-        $first_page = 1;
-        $last_page = $total_pages;
+        $pages = ceil($this->count('visibility = 1') / $entries_per_page);
+
         return array(
-           'total_pages'     => $total_pages,
-           'entries_per_page' => $entries_per_page,
-           'current_page'    => $current_page,
-           'next_page'       => $next_page,
-           'prev_page'       => $prev_page,
-           'first_page'      => $first_page,
-           'last_page'       => $last_page
+            'pages'         => $pages,
+            'current'       => $page,
+            'first'         => 1,
+            'last'          => $pages
         );
     }
 }

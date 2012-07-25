@@ -85,6 +85,7 @@ class ProfileController extends Controller
                 }
             }
         }
+
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('editor', array(                
                 'user'          => $user, 
