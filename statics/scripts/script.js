@@ -1167,15 +1167,25 @@
                 escape:         true,
                 closeButton:    true,
                 speed:          'fast',
-                effect:         'toggle',
+                effect:         'none',
                 dialogClass:    'dialog',
                 closeText:      'close',
                 closeClass:     'dialog-close-button',
+                openEffect:     function(speed)
+                {
+                    $(this).fadeIn(speed);
+                },
+                closeEffect:    function(speed)
+                {
+                    $(this).fadeOut(speed);
+                },
                 onClose:        function(){ },
                 onOpen:         function(){ },
                 onCreate:       function(){ },
                 onDestroy:      function(){ }
-            }, options);
+            }, options, this.options);
+            this.openEffect = this.options.openEffect;
+            this.closeEffect = this.options.closeEffect;
             switch(options)
             {
                 case 'close': 
@@ -1203,45 +1213,13 @@
         {
             $.fn.dialog.create(target);
         }
-        switch( target.options.effect )
-        {
-            case 'fade':
-                $(target).fadeIn(target.options.speed);
-                break;
-            case 'slide':
-                $(target).slideDown(target.options.speed);
-                break;
-            case 'toggle':
-                $(target).toggle(target.options.speed);
-                break;
-            case 'none':
-            default:
-                $(target).css({
-                    display: 'block'
-                });
-        }
+        target.openEffect(target.options.speed);
     }     
 
     $.fn.dialog.close = function(target)
     {
         target.options.onClose();
-        switch( target.options.effect )
-        {
-            case 'fade':
-                $(target).fadeOut(target.options.speed);
-                break;
-            case 'slide':
-                $(target).slideUp(target.options.speed);
-                break;
-            case 'toggle':
-                $(target).toggle(target.options.speed);
-                break;
-            case 'none':
-            default:
-                $(target).css({
-                    display: 'none'
-                });
-        }
+        target.closeEffect(target.options.speed);
     }
 
     $.fn.dialog.create = function(target)
