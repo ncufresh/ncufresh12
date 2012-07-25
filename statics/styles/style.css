@@ -1800,13 +1800,13 @@ div.group-friends
 	display: none;
 }
 
-div.group-all-friends
+/*div.group-all-friends
 {
     width: 400px; 
     height: 400px;
     padding: 10px 20px;
     overflow: scroll;
-}
+}*/
 
 label.group-friends-name
 {

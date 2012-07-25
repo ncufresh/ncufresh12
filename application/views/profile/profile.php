@@ -1,63 +1,42 @@
 <h2>基本資料</h2>
-<form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('profile/profile'); ?>" method="POST">
-<input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
-   <!-- <input type="hidden" name="MAX_FILE_SIZE" value="327680" />-->    
-    <img  height="200" src="
-    <?php
-        if ( $user->profile->picture !='' )
-        {
-            echo $target.'/'.$user->profile->picture; 
-        }
-        else
-        { 
-            echo $target.'/image1.jpg';
-        }
-    ?>
-        " alt="Score image"/>  
+<?php if ( $user->profile->picture !='' ):?>
+    <img src="<?php echo $target . '/' . $user->profile->picture; ?>" alt="Score image" />
+<?php else:?>
+    <img src="<?php echo $target . '/image1.jpg'; ?>" alt="Score image" />
+<?php endif;?>
     <ul>
         </li>  
         <li>
-            <label class="form-profile-name">姓名:  </label>
-            <label class="form-profile-name"><?php echo $user->profile->name; ?></label>  
+            <span>姓名:</span><?php echo $user->profile->name; ?>
         </li>
         <li>
-            <label class="form-profile-nickname">暱稱:  </label>
-            <label class="form-register-nickname"><?php echo $user->profile->nickname; ?></label>
+            <span>暱稱:</span><?php echo $user->profile->nickname; ?>
         </li>
         <li>
-            <label class="form-profile-sex">性別:  </label>
-            <label class="form-register-department">
-            <?php if ( $user->profile->sex==0 ): ?>
+            <span>性別:</span>
+<?php if ( $user->profile->sex == 0 ): ?>
             男孩兒
-            <?php else:?>
+<?php else:?>
             女孩兒
-            <?php endif; ?>
-            </label>
-            </label> 
+<?php endif; ?>    
         </li>
         <li>
-            <label class="form-profile-username">帳號(email):  </label>
-            <label class="form-register-username"><?php echo $user->username; ?></label>         
+           <span>帳號(email):</span>><?php echo $user->username; ?>      
         </li>
         <li>
-            <label class="form-profile-department">系所:  </label>
-            <label class="form-register-department"><?php echo $user->profile->department->short_name; ?></label>
-            </label> 
+            <span>系所:</span><?php echo $user->profile->department->short_name; ?>
         </li>
         <li>
-            <label class="form-profile-grade">系級:  </label>
-            <label class="form-register-grade"><?php echo $user->profile->grade; ?>年級</label>    
+            <span>系級:</span><?php echo $user->profile->grade; ?><span>年級</span>
         </li>
         <li>
             <label class="form-profile-senior">畢業高中:  </label>
             <label class="form-register-senior"><?php echo $user->profile->senior; ?></label>      
         </li>
         <li>
-            <label class="form-profile-birthday">生日:  </label>
-            <label class="form-register-birthday"><?php echo $user->profile->birthday; ?></label> 
+            <span>生日:</span><?php echo $user->profile->birthday; ?>
         </li>   
     </ul>
-    <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
-    <button name="form-profile-editor" type="submit">編輯</button>
-    <button name="form-profile-back" type="submit">BACK</button>
+    <button><a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>">編輯</a></button>
+    <button><a href="<?php echo Yii::app()->createUrl('site/index'); ?>">BACK</a></button>
 </form>

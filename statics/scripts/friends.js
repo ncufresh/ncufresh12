@@ -1,4 +1,4 @@
-jQuery(document).ready(function()
+/*jQuery(document).ready(function()
 {
     jQuery('.form-friends-self-editor').click(function()
     {
@@ -18,7 +18,7 @@ jQuery(document).ready(function()
                         text: "關閉",
                         click: function() { $(this).dialog("close"); }
                 }] */
-            });
+         /*  });
             return false;            
     });
      jQuery('#mygroups-add-member').click(function()
@@ -38,4 +38,4 @@ jQuery(document).ready(function()
             return false;            
     });
     
-});
+});*/
