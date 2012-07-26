@@ -670,6 +670,7 @@
             };
             var scrollContainer = $('<div></div>')
                 .addClass('scroll-container')
+                .addClass($(this).attr('class'))
                 .mouseenter(function()
                 {
                     updateScrollDraggableHeight();
@@ -761,6 +762,13 @@
                     top: position * scale
                 });
             };
+            $.each($(this).attr('class').split(' '), (function(object)
+            {
+                return function(index, value)
+                {
+                    $(object).removeClass(value);
+                };
+            })(this));
             $.extend($(this).__proto__, {
                 scrollTo: updateScrollDragable
             });
