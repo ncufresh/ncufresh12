@@ -1,7 +1,7 @@
 ﻿<?php $watch_id = Yii::app()->user->getId() //正在觀看頁面的id ?>
 
-<div class="game_system">
-    <div class="user_body">
+<div class="game-system">
+    <div class="user-body">
     <?php 
         //////////////////// 暫時圖片變數名稱
         $skin = 'boyC1.png';
@@ -18,33 +18,33 @@
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/pants/<?php echo $pants;?>" >
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/cloths/<?php echo $cloths;?>" >
     </div>
-    <div class="function_body">
+    <div class="function-body">
         <ul class="game-button">
 <?php if ( $watch_id == $user_id ) : ?>
-            <li class="game_click_enabled">
+            <li class="enabled">
                 <a href="" title="任務">任務</a>
             </li>
 <?php else : ?>
-            <li class="game_click_disabled">
+            <li class="disabled">
                 任務
             </li>
 <?php endif; ?>
-            <li class="game_click_enabled">
+            <li class="enabled">
                 <a href="" title="成就">成就</a>
             </li>
-            <li class="game_click_enabled">
+            <li class="enabled">
                 <a href="" title="道具">道具</a>
             </li>
 <?php if ( $watch_id == $user_id ) : ?>
-            <li>
+            <li class="enabled">
                 <a href="" title="商城">商城</a>
             </li>
 <?php else : ?>
-            <li class="game_click_disabled">
+            <li class="disabled">
                 商城
             </li>
 <?php endif; ?>
-            <li class="game_click_enabled">
+            <li class="enabled">
                 <a href="" title="惡搞">惡搞</a>
             </li>
         </ul>
