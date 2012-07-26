@@ -6,6 +6,10 @@
         $('<div></div>')
             .attr('id', 'notsupport')
             .append(
+                $('h2')
+                    .text('您使用的瀏覽器過舊，為了順利瀏覽本網站，請升級或更換您的瀏覽器。')
+            )
+            .append(
                 $('<ul></ul>')
                     .append(
                         $('<li></li>')
@@ -38,14 +42,35 @@
                                             )
                                     )
                             )
+                            .append(
+                                $('<a></a>')
+                                    .addClass('portable')
+                                    .attr(
+                                        'href',
+                                        'http://downloads.sourceforge.net/portableapps/FirefoxPortable_14.0.1_TradChinese.paf.exe'
+                                    )
+                                    .attr(
+                                        'title',
+                                        'Mozilla Firefox 14 Portable'
+                                    )
+                                    .text('下載免安裝版的Mozilla Firefox 14')
+                                    .hide()
+                            )
+                            .hover(function()
+                            {
+                                $(this).children('a.portable').fadeIn();
+                            }, function()
+                            {
+                                $(this).children('a.portable').fadeOut();
+                            })
                     )
                     .append(
                         $('<li></li>')
                             .append(
                                 $('<a></a>')
                                     .attr('href', 'http://www.chrome.com')
-                                    .attr('title', 'Google  Chrome')
-                                    .text('Google  Chrome')
+                                    .attr('title', 'Google Chrome')
+                                    .text('Google Chrome')
                                     .prepend(
                                         $('<span></span>')
                                             .attr(
@@ -54,6 +79,27 @@
                                             )
                                     )
                             )
+                            .append(
+                                $('<a></a>')
+                                    .addClass('portable')
+                                    .attr(
+                                        'href',
+                                        'http://downloads.sourceforge.net/portableapps/GoogleChromePortable_20.0.1132.57_online.paf.exe'
+                                    )
+                                    .attr(
+                                        'title',
+                                        'Google Chrome 20 Portable'
+                                    )
+                                    .text('下載免安裝版的Google Chrome 20')
+                                    .hide()
+                            )
+                            .hover(function()
+                            {
+                                $(this).children('a.portable').fadeIn();
+                            }, function()
+                            {
+                                $(this).children('a.portable').fadeOut();
+                            })
                     )
                     .append(
                         $('<li></li>')
@@ -70,6 +116,27 @@
                                             )
                                     )
                             )
+                            .append(
+                                $('<a></a>')
+                                    .addClass('portable')
+                                    .attr(
+                                        'href',
+                                        'http://download.portableapps.com/portableapps/operaportable/OperaPortable_12.00.paf.exe'
+                                    )
+                                    .attr(
+                                        'title',
+                                        'Opera 12 Portable'
+                                    )
+                                    .text('下載免安裝版的Opera 12')
+                                    .hide()
+                            )
+                            .hover(function()
+                            {
+                                $(this).children('a.portable').fadeIn();
+                            }, function()
+                            {
+                                $(this).children('a.portable').fadeOut();
+                            })
                     )
                     .append(
                         $('<li></li>')
@@ -94,6 +161,21 @@
         {
             window.open($(this).attr('href'));
             return false;
+        });
+        $('a.portable').each(function()
+        {
+            var hint = $(this);
+            setInterval(function()
+            {
+                if ( hint.css('margin-top') !== '0px' )
+                {
+                    hint.css('margin-top', 0);
+                }
+                else
+                {
+                    hint.css('margin-top', 1);
+                }
+            }, 120);
         });
         for ( var index = 0, times = $.random(5, 30) ; index < times ; ++index)
         {
