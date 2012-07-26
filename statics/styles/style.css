@@ -1938,6 +1938,8 @@ ul.life-indexs li.life-indexs-content:hover
     margin-center:auto;
 }
 
+<<<<<<< HEAD
+=======
 div.group-friends
 {
     background-color:yellow;
@@ -1952,6 +1954,7 @@ div.group-all-friends
     overflow: scroll;
 }
 
+>>>>>>> feffc69e3ccfab617f6c22b3fa6ccbecf4b087ae
 label.group-friends-name
 {
     color:red;
@@ -1998,7 +2001,7 @@ th.form-friends-sort-title
     text-align: left;
 }
 
-th.form-friends-title
+.form-friends-title
 {
     border: 5px solid gray;
     color: yellow;
@@ -2006,13 +2009,21 @@ th.form-friends-title
     text-align: left;
 }
 
-th.friend-other-page
+.friend-other-page
 {
     color: green;
     font-size: 30px;
 }
 
-a.form-friends-title
+.mygroup-name
+{
+    border: 5px solid gray;
+    color: blue;
+    font-size: 20px;
+    text-align: center;
+}
+
+.friends-title
 {
     text-lign: left;
     color: DeepPink; /* NOTE */
