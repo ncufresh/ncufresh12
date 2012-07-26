@@ -3,15 +3,41 @@
  */
 (function($)
 {
+    var CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+
     String.prototype.replaceAt = function(index, string)
     {
         return this.substr(0, index) + string + this.substr(index + string.length);
-    }
+    };
 
     $.extend({
         random: function(min, max)
         {
             return Math.floor(Math.random() * (max - min + 1) + min);
+        },
+        generateUUID: function()
+        {
+            var uuid = new Array(36);
+            var rnd = 0
+            var r;
+            for ( var i = 0 ; i < 36 ; ++i)
+            {
+                if ( i == 8 || i == 13 ||  i == 18 || i == 23 )
+                {
+                    uuid[i] = '-';
+                } else if (i==14) {
+                    uuid[i] = '4';
+                } else {
+                    if ( rnd <= 0x02 )
+                    {
+                        rnd = 0x2000000 + (Math.random() * 0x1000000) | 0;
+                    }
+                    r = rnd & 0xf;
+                    rnd = rnd >> 4;
+                    uuid[i] = CHARS[(i == 19) ? (r & 0x3) | 0x8 : r];
+                }
+            }
+            return uuid.join('');
         },
         cookie: function(key, value, settings)
         {
@@ -1180,14 +1206,8 @@
                 dialogClass:    'dialog',
                 closeText:      'close',
                 closeClass:     'dialog-close-button',
-                openEffect:     function(speed)
-                {
-                    $(this).fadeIn(speed);
-                },
-                closeEffect:    function(speed)
-                {
-                    $(this).fadeOut(speed);
-                },
+                openEffect:     function(speed) { $(this).fadeIn(speed); },
+                closeEffect:    function(speed) { $(this).fadeOut(speed); },
                 onClose:        function() {},
                 onOpen:         function() {},
                 onCreate:       function() {},
@@ -1216,7 +1236,7 @@
     $.fn.dialog.open = function(target)
     {
         target.options.onOpen.call(target);
-        target.overlay = $('<div></div>').overlay({
+        target.overlay = $.overlay({
             closeOnClick:   ! target.options.modal,
             closeOnEscape:  target.options.escape,
             onBeforeHide:   function()
@@ -1225,7 +1245,7 @@
                 target.options.closeEffect.call(target, target.options.speed);
                 return true;
             }
-        }).appendTo($('body'));
+        });
         if ( ! $(target).hasClass(target.options.dialogClass) )
         {
             $.fn.dialog.create(target);
@@ -1236,7 +1256,6 @@
     $.fn.dialog.close = function(target)
     {
         target.overlay.close();
-        target.overlay.remove();
     }
 
     $.fn.dialog.create = function(target)
@@ -1288,96 +1307,98 @@
  */
 (function($)
 {
+    var elements = {};
+
+    var overlayClose = function(uuid)
+    {
+        var data = elements[uuid][elements[uuid].length - 1];
+        var overlay = data[0];
+        var options = data[1];
+        var escape = data[2];
+        if ( options.onBeforeHide() )
+        {
+            $(overlay).fadeOut(options.speed, function()
+            {
+                options.onHide();
+                $(overlay).remove();
+                $(document).off('keyup', escape);
+                elements[uuid].pop();
+            });
+            return true;
+        }
+        return false;
+    };
+
     $.overlay = function(options)
     {
-        return $('body').overlay(options);
+        return $(window).overlay(options);
     };
 
     $.fn.overlay = function(options)
     {
+        var options = $.extend({
+            overlayClass:   'overlay',
+            speed:          'fast',
+            closeOnClick:   true,
+            closeOnEscape:  true,
+            onBeforeShow:   function() { return true; },
+            onShow:         function() {},
+            onBeforeHide:   function() { return true; },
+            onHide:         function() {}
+        }, options);
+
         return this.each(function()
         {
-            this.options = $.extend({
-                overlayClass:   'overlay',
-                speed:          'fast',
-                closeOnClick:   true,
-                closeOnEscape:  true,
-                onBeforeShow:   function() { return true; },
-                onShow:         function() {},
-                onAfterShow:    function() {},
-                onBeforeHide:   function() { return true; },
-                onHide:         function() {},
-                onAfterHide:    function() {}
-            }, options);
+            var uuid = $(this).data('uuid');
 
-            var overlayClose = (function(object)
-            {
-                return function()
-                {
-                    if ( this.options.onBeforeHide.call(this.overlay) )
-                    {
-                        this.overlay.fadeOut(this.options.speed, function()
-                        {
-                            object.options.onHide.call(object.overlverlay);
-                            object.overlay.remove();
-                            object.options.onAfterHide.call(object.overlverlay);
-                            $(document).unbind('keyup', closeOnEscape);
-                        });
-                    }
-                    return true;
-                };
-            })(this);
-            var closeOnEscape = (function(object)
-            {
-                return function(event)
-                {
-                    if ( event.keyCode == 27 )
-                    {
-                        if ( object.options.closeOnEscape )
-                        {
-                            return overlayClose.call(object);
-                        }
-                    }
-                };
-            })(this);
-
-            this.overlay = $('<div></div>')
-                .addClass(this.options.overlayClass)
+            var overlay = $('<div></div>')
+                .addClass(options.overlayClass)
                 .css({
-                    display:            'none'
+                    display:            'none',
+                    height:             $(this).height(),
+                    width:              $(this).width()
                 })
-                .click(function(object)
+                .fadeIn(options.speed, function()
                 {
-                    return function()
-                    {
-                        if ( object.options.closeOnClick )
-                        {
-                            return overlayClose.call(object);
-                        }
-                    };
-                }(this))
-                .fadeIn(this.options.speed, (function(object)
-                {
-                    return function()
-                    {
-                        if ( object.options.onBeforeShow.call(object.overlay) )
-                        {
-                            object.options.onShow.call(object.overlay);
-                            object.options.onAfterShow.call(object.overlay);
-                        }
-                        return true;
-                    };
-                })(this))
-                .appendTo($(this));
+                    if ( options.onBeforeShow() ) return options.onShow();
+                    return false;
+                })
+                .appendTo($('body'));
 
-            $.extend(this.overlay.__proto__, {
-                close: function()
+            var escape = function(event)
+            {
+                if ( event.keyCode == 27 )
                 {
-                    return overlayClose.call(this.get(0));
+                    return overlayClose(uuid);
                 }
+                return true;
+            };
+
+            if ( ! uuid )
+            {
+                uuid = $.generateUUID();
+                elements[uuid] = [];
+                $(this).data('uuid', uuid);
+            }
+
+            if ( this !== window )
+            {
+                overlay.css({
+                    left:               $(this).offset().left,
+                    position:           $(this).css('position'),
+                    top:                $(this).offset().top,
+                });
+            }
+            if ( options.closeOnClick )
+            {
+                overlay.on('click', function() { return overlayClose(uuid); });
+            }
+            if ( options.closeOnEscape ) $(document).on('keyup', escape);
+            $.extend(overlay.__proto__, {
+                close: function() { return overlayClose($(this).data('uuid')); }
             });
-            $(document).bind('keyup', closeOnEscape);
-            return this.overlay;
+            elements[uuid].push([overlay, options, escape]);
+            return overlay;
         });
     }
 })(jQuery);
