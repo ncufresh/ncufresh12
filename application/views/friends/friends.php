@@ -47,7 +47,7 @@
 <?php endforeach; ?>
     </tr>
     <tr>
-        <th class="form-friends-title"><a href="<?php echo Yii::app()->createUrl('friends/otherdepartment'); ?>" title="其他科系" class="friends-title">其他科系</a></th> <!--重新導向一個自訂的網頁-->
+        <th class="form-friends-title"><a href="<?php echo Yii::app()->createUrl('friends/otherdepartment'); ?>" title="其他科系" class="friends-title">其他科系</a></th>
     </tr>
     <tr>
 <?php $account = 1 ; ?>
@@ -104,14 +104,14 @@ $account = 1;
 $row = (integer)($amonut / 6)+1;
 ?>
     <ul>
-<?php foreach($group->mygroups as $mygroup) : ?>
+<?php foreach ( $groups as $mygroup) : ?>
 <?php if ( $account % $row <> 0 ) : ?>
 <?php else : ?>
         </th>
         <th>
 <?php endif ; ?>
             <li>
-<a href="<?php echo Yii::app()->createUrl('friends/mygroups', array('id'=>$mygroup->id));?>"><?php echo $mygroup->name ; ?></a>
+            <a href="<?php echo Yii::app()->createUrl('friends/mygroups', array('id'=>$mygroup->id));?>"><?php echo $mygroup->name ; ?></a>
             </li>
 <?php $account++ ; ?>
 <?php endforeach ; ?>
@@ -122,6 +122,6 @@ $row = (integer)($amonut / 6)+1;
         </th>
     </tr>
     <tr>
-        <th class="form-friends-title"><a href="<?php echo Yii::app()->createUrl('friends/newgroup') ; ?>" title="自訂" class="form-friends-self-editor">自訂</a></th> 
+        <th class="form-friends-title"><a href="<?php echo Yii::app()->createUrl('friends/newgroup') ; ?>" title="自訂">自訂</a></th> 
     </tr>
 </table>

@@ -1938,23 +1938,12 @@ ul.life-indexs li.life-indexs-content:hover
     margin-center:auto;
 }
 
-<<<<<<< HEAD
-=======
 div.group-friends
 {
     background-color:yellow;
     display: none;
 }
 
-div.group-all-friends
-{
-    width: 400px; 
-    height: 400px;
-    padding: 10px 20px;
-    overflow: scroll;
-}
-
->>>>>>> feffc69e3ccfab617f6c22b3fa6ccbecf4b087ae
 label.group-friends-name
 {
     color:red;

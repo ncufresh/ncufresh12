@@ -696,6 +696,7 @@
             };
             var scrollContainer = $('<div></div>')
                 .addClass('scroll-container')
+                .addClass($(this).attr('class'))
                 .mouseenter(function()
                 {
                     updateScrollDraggableHeight();
@@ -787,6 +788,13 @@
                     top: position * scale
                 });
             };
+            $.each($(this).attr('class').split(' '), (function(object)
+            {
+                return function(index, value)
+                {
+                    $(object).removeClass(value);
+                };
+            })(this));
             $.extend($(this).__proto__, {
                 scrollTo: updateScrollDragable
             });
@@ -1258,7 +1266,7 @@
 
     $.fn.dialog.close = function(target)
     {
-        target.overlay.close();
+        target.overlay.close(target.overlay.index);
     }
 
     $.fn.dialog.create = function(target)
@@ -1312,24 +1320,39 @@
 {
     var elements = {};
 
-    var overlayClose = function(uuid)
+    var overlayCloseInternal = function(data)
     {
-        var data = elements[uuid][elements[uuid].length - 1];
         var overlay = data[0];
         var options = data[1];
         var escape = data[2];
-        if ( options.onBeforeHide() )
+        if ( ! options.onBeforeHide() ) return false;
+        $(overlay).fadeOut(options.speed, function()
         {
-            $(overlay).fadeOut(options.speed, function()
+            options.onHide();
+            $(overlay).remove();
+            $(document).off('keyup', escape);
+        });
+        return true;
+    };
+
+    var overlayClose = function(uuid, index)
+    {
+        if ( index === undefined )
+        {
+            for ( var index in elements[uuid] )
             {
-                options.onHide();
-                $(overlay).remove();
-                $(document).off('keyup', escape);
-                elements[uuid].pop();
-            });
-            return true;
+                var data = elements[uuid][index];
+                if ( ! overlayCloseInternal(data) ) return false;
+            }
+            elements[uuid] = [];
         }
-        return false;
+        else
+        {
+            var data = elements[uuid][index];
+            if ( ! overlayCloseInternal(data) ) return false;
+            delete elements[uuid][index];
+        }
+        return true;
     };
 
     $.overlay = function(options)
@@ -1339,6 +1362,7 @@
 
     $.fn.overlay = function(options)
     {
+        var index = $.generateUUID();
         var options = $.extend({
             overlayClass:   'overlay',
             speed:          'fast',
@@ -1349,6 +1373,8 @@
             onBeforeHide:   function() { return true; },
             onHide:         function() {}
         }, options);
+
+        this.index = index;
 
         return this.each(function()
         {
@@ -1398,10 +1424,12 @@
             }
             if ( options.closeOnEscape ) $(document).on('keyup', escape);
             $.extend(overlay.__proto__, {
-                close: function() { return overlayClose($(this).data('uuid')); }
+                close: function(index)
+                {
+                    return overlayClose($(this).data('uuid'), index);
+                }
             });
-            elements[uuid].push([overlay, options, escape]);
-            return overlay;
+            elements[uuid][index] = [overlay, options, escape];
         });
     }
 })(jQuery);
@@ -1436,10 +1464,8 @@
             keyToNext:                  'n',
             onBeforeShow:               function() { return true; },
             onShow:                     function() {},
-            onAfterShow:                function() {},
             onBeforeHide:               function() { return true; },
-            onHide:                     function() {},
-            onAfterHide:                function() {}
+            onHide:                     function() {}
         }, options);
 
         var active = 0;
@@ -1512,7 +1538,6 @@
                     top: '50%'
                 });
                 lightboxLoadImage();
-                options.onAfterShow();
             }
             return false;
         }
@@ -1543,7 +1568,6 @@
             {
                 options.onHide();
                 $('#' + options.lightboxId).remove();
-                options.onAfterHide();
             }
             return true;
         }

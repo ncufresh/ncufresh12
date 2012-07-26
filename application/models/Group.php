@@ -30,21 +30,31 @@ class  Group extends CActiveRecord
             'mygroups'     => array(
                 self::HAS_MANY,
                 'Group',
-                'user_id'
+                'user_id',
+                'condition' => 'invisible = 0'
             ),
             'group_members'     => array(
                 self::HAS_MANY,
                 'UserGroup',
-                'group_id'
+                'group_id',
+                'condition' => 'invisible = 0'
             )
         );
     }
 
-    public function deleteGroup()
+    public function deleteGroup($groupid)
     {
-        return $this->updateByPk($this->id, array(
+        $groupid = (integer)$groupid;  
+        $temp = $this->updateAll(array(
             'invisible' => 1
+        ), "id = :groupid", array(
+            ':groupid' => $groupid
         ));
+        if ( $temp == 1 )
+        {
+            return true;
+        }
+        return false;
     }
 
     public function getAllGroup()
@@ -56,7 +66,7 @@ class  Group extends CActiveRecord
 
     public function FindGroup($userid)
     {
-        return $this->find(array(
+        return $this->findAll(array(
             'condition' => 'user_id = :id',
             'params'    => array(
                 ':id' => $userid,
@@ -67,7 +77,7 @@ class  Group extends CActiveRecord
     public function getGroupAmount($userID)
     {
         $temp = $this->findAll(array(
-            'condition' => 'user_id = :id',
+            'condition' => 'user_id = :id AND invisible = 0',
             'params'    => array(
                 ':id' => $userID,
             )
