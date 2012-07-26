@@ -1,68 +1,4 @@
-﻿<style>
-div.game_system
-{
-    background:url('../statics/game/gamesystem.png');
-    width: 750px;
-    height: 450px;
-    display: inline-block;
-}
-div.user_body
-{
-    position:relative;
-    margin: 43px 0 0 22px;
-    overflow: hidden;
-    width:250px;
-    height:400px;
-    float: left;
-}
-div.user_body img
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width:250px;
-    height:400px;
-}
-div.function_body
-{
-    /* outline: 1px solid black; */
-    width: 407px;
-    height: 373px;
-    margin: 54px 0 0 29px;
-    float: left;
-}
-ul.game-button
-{
-    height: 31px;
-    padding: 0;
-    margin: 0;
-    display: block;
-}
-ul.game-button li
-{
-    width: 80px;
-    height: 31px;
-    display: block;
-    /* outline: 1px solid red; */
-    float: left;
-    margin-right: 1px;
-    font-family:微軟正黑體;
-    font-size: 24px;
-    text-align:center;
-}
-div.game-display
-{
-    width: 378px;
-    height: 312px;
-    /* outline: 1px solid blue; */
-    margin: 15px 0 0 15px;
-    overflow-y:hidden;  
-}
-
-
-</style>
-
-<?php $watch_id = Yii::app()->user->getId() //正在觀看頁面的id ?>
+﻿<?php $watch_id = Yii::app()->user->getId() //正在觀看頁面的id ?>
 
 <div class="game_system">
     <div class="user_body">
@@ -84,43 +20,49 @@ div.game-display
     </div>
     <div class="function_body">
         <ul class="game-button">
-<?php if($watch_id!=$user_id) 
-{
-    echo '<li><a style="color:#787878">任務</a></li>';
-    echo '<li><a style="color:#38077a"><b>成就</b></a></li>';
-    echo '<li><a style="color:#38077a"><b>道具</b></a></li>';
-    echo '<li><a style="color:#787878">商城</a></li>';
-    echo '<li><a style="color:#38077a"><b>惡搞</b></a></li>';
-} 
-else
-{
-    echo '<li><a style="color:#38077a"><b>任務</b></a></li>';
-    echo '<li><a style="color:#38077a"><b>成就</b></a></li>';
-    echo '<li><a style="color:#38077a"><b>道具</b></a></li>';
-    echo '<li><a style="color:#38077a"><b>商城</b></a></li>';
-    echo '<li><a style="color:#38077a"><b>惡搞</b></a></li>';
-}?>
+<?php if ( $watch_id == $user_id ) : ?>
+            <li class="game_click_enabled">
+                <a href="" title="任務">任務</a>
+            </li>
+<?php else : ?>
+            <li class="game_click_disabled">
+                任務
+            </li>
+<?php endif; ?>
+            <li class="game_click_enabled">
+                <a href="" title="成就">成就</a>
+            </li>
+            <li class="game_click_enabled">
+                <a href="" title="道具">道具</a>
+            </li>
+<?php if ( $watch_id == $user_id ) : ?>
+            <li>
+                <a href="" title="商城">商城</a>
+            </li>
+<?php else : ?>
+            <li class="game_click_disabled">
+                商城
+            </li>
+<?php endif; ?>
+            <li class="game_click_enabled">
+                <a href="" title="惡搞">惡搞</a>
+            </li>
         </ul>
         <div class="game-display">
 
             <h1>目前使用者ID => <?php echo $watch_id?> </h1>
             <h1>觀看使用者ID => <?php echo $user_id;?></h1>
-            <h1>acasc</h1>
-                        <h1>a</h1>
-                                    <h1>acasc</h1>
-                                                <h1>t</h1>
-                                                            <h1>t</h1>
-                                                            <h1>acasc</h1>
-                                                            <h1>acasc</h1>
-                                                            <h1>acasc</h1>
-                                                            <h1>acasc</h1>
-                                                            <h1>acasc</h1>
-                                                            <h1>acasc</h1>
-                                                            <h1>acasc</h1>
-                                                            <h1>acasc</h1>
-                                                            <h1>acasc</h1>
-                                                            <h1>acasc</h1>
-                                                            <h1>acasc</h1>
+            <?php echo $content ?>
+            <h1>TEST</h1>
+            <h1>TEST</h1>
+            <h1>TEST</h1>
+            <h1>TEST</h1>
+            <h1>TEST</h1>
+            <h1>TEST</h1>
+            <h1>TEST</h1>
+            <h1>TEST</h1>
+            <h1>TEST</h1>
+
 
         </div>
     </div>
