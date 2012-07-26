@@ -1195,9 +1195,7 @@
                 onOpen:         function() {},
                 onCreate:       function() {},
                 onDestroy:      function() {}
-            }, options, this.options);
-            this.openEffect = this.options.openEffect;
-            this.closeEffect = this.options.closeEffect;
+            }, this.options, options);
             switch ( options )
             {
                 case 'close' : 
@@ -1220,27 +1218,28 @@
 
     $.fn.dialog.open = function(target)
     {
-        target.options.onOpen();
-        target.overlay = $.overlay({
+        target.options.onOpen.call(target);
+        target.overlay = $('<div></div>').overlay({
             closeOnClick:   ! target.options.modal,
             closeOnEscape:  target.options.escape,
-            onBeforeHide: function()
+            onBeforeHide:   function()
             {
-                target.options.onClose();
-                target.closeEffect(target.options.speed);
+                target.options.onClose.call(target);
+                target.options.closeEffect.call(target, target.options.speed);
                 return true;
             }
-        });
+        }).appendTo($('body'));
         if ( ! $(target).hasClass(target.options.dialogClass) )
         {
             $.fn.dialog.create(target);
         }
-        target.openEffect(target.options.speed);
+        target.options.openEffect.call(target, target.options.speed);
     }     
 
     $.fn.dialog.close = function(target)
     {
         target.overlay.close();
+        target.overlay.remove();
     }
 
     $.fn.dialog.create = function(target)
@@ -1261,7 +1260,7 @@
                 $(target).prepend(close);
             }
         }
-        target.options.onCreate();
+        target.options.onCreate.call(target);
         $(target)
             .css({
                 position: 'absolute',
@@ -1282,7 +1281,7 @@
 
     $.fn.dialog.destroy = function(target)
     {
-        target.options.onDestroy();
+        target.options.onDestroy.call(target);
         $(target).remove();
     }
 })(jQuery);
@@ -1292,81 +1291,96 @@
  */
 (function($)
 {
-    var overlay;
-
     $.overlay = function(options)
     {
-        return overlay = $('body').overlay(options);
-    };
-
-    $.overlayClose = function()
-    {
-        overlay.close();
+        return $('body').overlay(options);
     };
 
     $.fn.overlay = function(options)
     {
-        var options = $.extend({
-            overlayClass:   'overlay',
-            speed:          'fast',
-            closeOnClick:   true,
-            closeOnEscape:  true,
-            onBeforeShow:   function() { return true; },
-            onShow:         function() {},
-            onAfterShow:    function() {},
-            onBeforeHide:   function() { return true; },
-            onHide:         function() {},
-            onAfterHide:    function() {}
-        }, options);
-
-        return $(this).each(function()
+        return this.each(function()
         {
-            var overlayClose = function()
+            this.options = $.extend({
+                overlayClass:   'overlay',
+                speed:          'fast',
+                closeOnClick:   true,
+                closeOnEscape:  true,
+                onBeforeShow:   function() { return true; },
+                onShow:         function() {},
+                onAfterShow:    function() {},
+                onBeforeHide:   function() { return true; },
+                onHide:         function() {},
+                onAfterHide:    function() {}
+            }, options);
+
+            var overlayClose = (function(object)
             {
-                if ( options.onBeforeHide() )
+                return function()
                 {
-                    overlay.fadeOut(options.speed, function()
+                    if ( this.options.onBeforeHide.call(this.overlay) )
                     {
-                        $(document).unbind('keyup', overlayCloseOnEscape);
-                        options.onHide();
-                        overlay.remove();
-                        options.onAfterHide();
-                    });
-                }
-                return true;
-            };
-            var overlayCloseOnEscape = function(event)
+                        this.overlay.fadeOut(this.options.speed, function()
+                        {
+                            object.options.onHide.call(object.overlverlay);
+                            object.overlay.remove();
+                            object.options.onAfterHide.call(object.overlverlay);
+                            $(document).unbind('keyup', closeOnEscape);
+                        });
+                    }
+                    return true;
+                };
+            })(this);
+            var closeOnEscape = (function(object)
             {
-                if ( event.keyCode == 27 )
+                return function(event)
                 {
-                    if ( options.closeOnEscape ) return overlayClose();
-                }
-            }
-            var overlay = $('<div></div>')
-                .addClass(options.overlayClass)
+                    if ( event.keyCode == 27 )
+                    {
+                        if ( object.options.closeOnEscape )
+                        {
+                            return overlayClose.call(object);
+                        }
+                    }
+                };
+            })(this);
+
+            this.overlay = $('<div></div>')
+                .addClass(this.options.overlayClass)
                 .css({
                     display:            'none'
                 })
-                .click(function()
+                .click(function(object)
                 {
-                    if ( options.closeOnClick ) return overlayClose();
-                })
-                .fadeIn(options.speed, function()
-                {
-                    if ( options.onBeforeShow() )
+                    return function()
                     {
-                        options.onShow();
-                        options.onAfterShow();
-                    }
-                    return true;
-                })
+                        if ( object.options.closeOnClick )
+                        {
+                            return overlayClose.call(object);
+                        }
+                    };
+                }(this))
+                .fadeIn(this.options.speed, (function(object)
+                {
+                    return function()
+                    {
+                        if ( object.options.onBeforeShow.call(object.overlay) )
+                        {
+                            object.options.onShow.call(object.overlay);
+                            object.options.onAfterShow.call(object.overlay);
+                        }
+                        return true;
+                    };
+                })(this))
                 .appendTo($(this));
 
-            $.extend(overlay.__proto__, {
-                close: overlayClose
+            $.extend(this.overlay.__proto__, {
+                close: function()
+                {
+                    return overlayClose.call(this.get(0));
+                }
             });
-            $(document).bind('keyup', overlayCloseOnEscape);
-            return overlay;
+            $(document).bind('keyup', closeOnEscape);
+            return this.overlay;
         });
     }
 })(jQuery);
