@@ -11,7 +11,21 @@ jQuery(document).ready(function()
 });
 </script>
 <?php $this->endWidget();?>
-
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery('.news-cancel-button').click(function()
+        {
+            var dialog = jQuery('.news-dialog');
+            if(confirm('確定取消編輯此篇文章？'))
+            {
+                window.location = '<?php echo Yii::app()->createUrl('news/admin')?>';
+            }
+            return false;
+        });
+    });
+</script>
+<?php $this->endWidget();?>
 <h1>編輯文章</h1>
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('news/update', array('id' => $news->id) ); ?>" method="POST" class="MultiFile-intercepted">
     <dl>
