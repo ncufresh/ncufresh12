@@ -668,16 +668,16 @@
 {
     $.fn.scrollable = function(options)
     {
+        var options = $.extend({
+            scrollableClass:        false,
+            fadeInDuration:         'slow',
+            fadeOutDuration:        'slow',
+            wheelSpeed:             6
+        }, options);
         return this.each(function()
         {
             var active = false;
             var inside = false;
-            var options = $.extend({
-                scrollableClass:        false,
-                fadeInDuration:         'slow',
-                fadeOutDuration:        'slow',
-                wheelSpeed:             6
-            }, options);
             var updateScrollDraggableHeight = function()
             {
                 var scrollAreaHeight = scrollArea.height();

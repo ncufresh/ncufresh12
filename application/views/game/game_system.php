@@ -54,13 +54,16 @@ div.game-display
 {
     width: 378px;
     height: 312px;
-    outline: 1px solid blue;
+    /* outline: 1px solid blue; */
     margin: 15px 0 0 15px;
     overflow-y:hidden;  
 }
 
 
 </style>
+
+<?php $watch_id = Yii::app()->user->getId() //正在觀看頁面的id ?>
+
 <div class="game_system">
     <div class="user_body">
     <?php 
@@ -72,23 +75,35 @@ div.game-display
         $cloths = 'clothseN4.png';
         $pants = 'pantsN3.png';
     ?>
-    <img src="../statics/game/skin/<?php echo $skin;?>" >
-    <img src="../statics/game/eyes/<?php echo $eyes;?>" >
-    <img src="../statics/game/hair/<?php echo $hair;?>" >
-    <img src="../statics/game/shoes/<?php echo $shoes;?>" >
-    <img src="../statics/game/cloths/<?php echo $cloths;?>" >
-    <img src="../statics/game/pants/<?php echo $pants;?>" >
+    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/skin/<?php echo $skin;?>" >
+    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/eyes/<?php echo $eyes;?>" >
+    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/hair/<?php echo $hair;?>" >
+    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/shoes/<?php echo $shoes;?>" >
+    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/pants/<?php echo $pants;?>" >
+    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/cloths/<?php echo $cloths;?>" >
     </div>
     <div class="function_body">
         <ul class="game-button">
-            <li url="123.html">任務</p></li>
-            <li>成就</li>
-            <li>道具</li>
-            <li>商城</li>
-            <li>惡搞</li>
+<?php if($watch_id!=$user_id) 
+{
+    echo '<li><a style="color:#787878">任務</a></li>';
+    echo '<li><a style="color:#38077a"><b>成就</b></a></li>';
+    echo '<li><a style="color:#38077a"><b>道具</b></a></li>';
+    echo '<li><a style="color:#787878">商城</a></li>';
+    echo '<li><a style="color:#38077a"><b>惡搞</b></a></li>';
+} 
+else
+{
+    echo '<li><a style="color:#38077a"><b>任務</b></a></li>';
+    echo '<li><a style="color:#38077a"><b>成就</b></a></li>';
+    echo '<li><a style="color:#38077a"><b>道具</b></a></li>';
+    echo '<li><a style="color:#38077a"><b>商城</b></a></li>';
+    echo '<li><a style="color:#38077a"><b>惡搞</b></a></li>';
+}?>
         </ul>
         <div class="game-display">
-            <h1>目前使用者ID => <?php echo Yii::app()->user->getId()?> </h1>
+
+            <h1>目前使用者ID => <?php echo $watch_id?> </h1>
             <h1>觀看使用者ID => <?php echo $user_id;?></h1>
             <h1>acasc</h1>
                         <h1>a</h1>
