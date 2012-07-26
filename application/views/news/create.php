@@ -1,3 +1,4 @@
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'style')); ?>
 <style type="text/css">
 .news-create #form-news-content
 {
@@ -6,6 +7,7 @@
     resize: none;
 }
 </style>
+<?php $this->endWidget();?>
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl . '/statics/scripts/jquery.multifile.js'; ?>"></script>
 <?php $this->endWidget();?>
