@@ -42,7 +42,8 @@ class User extends CActiveRecord
             'friends'     => array(
                 self::MANY_MANY,
                 'User',
-                'friends(user_id,friend_id)'
+                'friends(user_id,friend_id)',
+                'condition' => 'invisible = 0'
             ),
         );
     }

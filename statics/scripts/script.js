@@ -696,6 +696,7 @@
             };
             var scrollContainer = $('<div></div>')
                 .addClass('scroll-container')
+                .addClass($(this).attr('class'))
                 .mouseenter(function()
                 {
                     updateScrollDraggableHeight();
@@ -787,6 +788,13 @@
                     top: position * scale
                 });
             };
+            $.each($(this).attr('class').split(' '), (function(object)
+            {
+                return function(index, value)
+                {
+                    $(object).removeClass(value);
+                };
+            })(this));
             $.extend($(this).__proto__, {
                 scrollTo: updateScrollDragable
             });
@@ -1803,15 +1811,67 @@
             code:                   [38],
             complete:               function()
             {
-                var input = 0;
-                var input_index = 1;
-                var up = 99;
-                var down = 0;
-                var answer = $.random(1, 99);
                 if ( $('#secret').length ) return false;
+                var input = '';
+                var up = 99;
+                var intial_length = up.length - 1;
+                var input_index = intial_length;
+                var down = 0;
+                var answer = $.random(down + 1, up - 1);
+                var buttons = [$('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<p></p>'), $('<p></p>')];
+                var judgment = function(input_number)
+                {
+                    var number = input_number;
+                    if ( number == 0 )
+                    {
+                        input += '0';
+                        input_index--;
+                    }
+                    else if ( number > 0 && number < 10 )
+                    {
+                        input += number;
+                        input_index--;
+                    }
+                    else if ( number == 10 )
+                    {
+                        input_index = intial_length;
+                        input = '';
+                    }
+                    else if ( number == 11 )
+                    {
+                        input = parseInt( input_text.val() );
+                        if( input < up && input >down )
+                        {
+                            if( input == answer )
+                            {
+                                alert('恭喜你猜對了!!!');
+                                back.remove();
+                                box.remove();
+                                input_text.remove();
+                                return true;
+                            }
+                            else if( input > answer )
+                            {
+                                up = input;
+                            }
+                            else if( input < answer )
+                            {
+                                down = input;
+                            }
+                            message.text('請輸入數字' + down + '到' + up +'之間');
+                        }
+                        else
+                        {
+                            alert('要輸在範圍內喔!');
+                        }
+                        input = '';
+                        input_index = intial_length;
+                    }
+                    input_text.attr('value', input);
+                };
                 var back = $('<div></div>')
-                    .attr('id', 'secret')
-                    .css({
+                .attr('id', 'secret')
+                .css({
                     background: 'black',
                     height: '100%',
                     position: 'fixed',
@@ -1822,7 +1882,7 @@
                 })
                 .appendTo('body');
                 var box = $('<div></div>').css({
-                    background: 'red',
+                    background: '#e6cde3',
                     height: 400,
                     margin: '-200px 0 0 -200px',
                     position: 'fixed',
@@ -1831,82 +1891,59 @@
                     width: 400
                 })
                 .appendTo('body');
-                $('<h4>終極密碼</h4>').css({
-                    color: 'yellow',
+                $('<h4></h4>').text('終極密碼').css({
+                    color: '#1e50a2',
                     textAlign: 'center',
                     fontSize: 30
                 })
                 .appendTo(box);
                 var message = $('<p></p>').text('請輸入數字' + down + '到' + up +'之間').css({
-                    color: 'black',
+                    color: '#b44c97',
                     fontSize: 20,
                     position: 'absolute',
                     top: 60,
-                    left: '25%',
+                    left: '25%'
                 })
                 .appendTo(box);
-                var input_text = $('<input type="text" />').attr('value', '').css({
-                    left: 80,
-                    position: 'absolute',
-                })
-                .appendTo(box);
-                $('<button>確定送出</button>').css({
-                    color: 'black',
-                    left: 270,
-                    position: 'absolute',
-                    textAlign: 'center'
-                })
-                .click(function()
-                {
-                    input = input_text.val();
-                    if( input < up && input >down )
-                    {
-                        if( input == answer )
-                        {
-                            alert('恭喜你猜對了!!!');
-                            back.remove();
-                            box.remove();   
-                        }
-                        else if( input > answer )
-                        {
-                            up = input;
-                        }
-                        else if( input < answer )
-                        {
-                            down = input;
-                        }
-                        message.text('請輸入數字' + down + '到' + up +'之間');
-                        input_index = 1;
-                    }
-                    else
-                    {
-                        alert('要輸在範圍內喔!');
-                    }
-                    input = 0;
-                    input_index = 1;
-                    input_text.attr('value', input);
+                var input_text = $('<input type="text" readonly/>').attr('value', '').css({
+                    left: 84,
+                    width: 228,
+                    height: 31,
+                    textAlign: 'center',
+                    position: 'absolute'
                 })
                 .appendTo(box);
                 var numberTable = $('<table></table>').css({
                     border: 5,
-                    left: 80,
+                    left: 40,
                     top: 150,
                     position: 'absolute'
                 });
-                var TableRow = [$('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>')];
+                var TableRow = [$('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>')];
                 for ( var i = 7; i > 0 ; i = i - 3 )
                 {
                     for ( var j = 0; j <3 ; j++ )
                     {
-                        $('<td></td>').text( i + j ).addClass('tableBox').appendTo(TableRow[ parseInt( i / 3) ]);
-                        TableRow[ parseInt( i / 3 ) ].appendTo(numberTable);
+                        buttons[i + j].text( i + j ).addClass('tableBox').appendTo(TableRow[ parseInt( i / 3) ]);
                     }
                 }
-                $('<td></td>').text('0').css({
+                buttons[0].text('0').css({
+                    color: '#8d6449',
                     height: 50,
                     width: 100,
+                    textAlign: 'center',
                     fontSize: 30    
                 })
+                .addClass('tableBox')
+                .appendTo(TableRow[ 3 ]);
+                buttons[10].text('Clean').css({
+                    color: '#8d6449',
+                    top: 137,
+                    left: 119,
+                    position: 'absolute',
+                    fontSize: 30,
+                    textAlign: 'center'
+                })
                 .mouseenter(function(){
                     $(this).css({
                         color: 'blue',
@@ -1915,30 +1952,27 @@
                 })
                 .mouseleave(function(){
                     $(this).css({
-                      color: 'black'
+                        color: '#8d6449'
                     });
                 })
                 .click(function()
                 {
-                    if ( input_index == 1 )
-                    {
-                        input_index = 0;
-                    }
-                    else if( input_index == 0 )
-                    {
-                        input = input * 10;
-                        input_index = -1;
-                    }
-                    input_text.attr('value', input);
+                    $(this).css({
+                        color: 'yellow'
+                    });
+                    judgment(10);
                 })
-                .appendTo(numberTable);
-                $('<td></td>').text('Clean').css({
-                    colspan: 2, 
-                    height: 50,
-                    width: 100,
+                .appendTo(TableRow[ 3 ]);
+                buttons[11].text('Enter').css({
+                    color: '#8d6449',
+                    top: 137,
+                    left: 226,
+                    position: 'absolute',
+                    textAlign: 'center',
                     fontSize: 30
                 })
-                .mouseenter(function(){
+                .mouseenter(function()
+                {
                     $(this).css({
                         color: 'blue',
                         cursor: 'default'
@@ -1946,19 +1980,26 @@
                 })
                 .mouseleave(function(){
                     $(this).css({
-                        color: 'black'
+                      color: '#8d6449'
                     });
                 })
                 .click(function()
                 {
-                    input_index = 1;
-                    input = 0;
-                    input_text.attr('value', input);
+                    $(this).css({
+                        color: 'yellow'
+                    });
+                    judgment(11);
                 })
-                .appendTo(numberTable);
+                .appendTo(TableRow[ 3 ]);
+                for ( var k = 0; k < 4; k++ )
+                {
+                    TableRow[k].appendTo(numberTable);
+                }
                 numberTable.appendTo(box);
                 $('.tableBox').each(function(){
                     $(this).css({
+                        color: '#8d6449',
+                        textAlign: 'center',
                         height: 50,
                         width: 100,
                         fontSize: 30    
@@ -1971,24 +2012,62 @@
                     })
                     .mouseleave(function(){
                         $(this).css({
-                            color: 'black'
+                            color: '#8d6449'
                         });
                     })
                     .click(function()
                     {
-                        if ( input_index == 1 )
-                        {
-                            input = $(this).text();
-                            input_index = 0;
-                        }
-                        else if( input_index == 0 )
-                        {
-                            input = input * 10 + parseInt( $(this).text() );
-                            input_index = -1;
-                        }
-                        input_text.attr('value', input);
+                        $(this).css({
+                            color: 'yellow'
+                        });
+                        judgment( parseInt( $(this).text() ) );
                     })
                 })
+                $(document).keydown( function(event)
+                {
+                    if ( event.keyCode != 231 && event.keyCode > 95 && event.keyCode < 106)
+                    {
+                        buttons[ event.keyCode - 96 ].css({
+                            color: 'yellow'
+                        });
+                    }
+                    else if ( event.keyCode == 108 || event.keyCode == 13 )
+                    {
+                        buttons[11].css({
+                            color: 'yellow'
+                        });
+                    }
+                    else if ( event.keyCode == 27 )
+                    {
+                        buttons[10].css({
+                            color: 'yellow'
+                        });
+                    }
+                });
+                $(document).keyup(function(event)
+                {
+                    if ( event.keyCode != 231 && event.keyCode > 95 && event.keyCode < 106)
+                    {
+                        buttons[ event.keyCode - 96 ].css({
+                            color: '#8d6449'
+                        });
+                        judgment( event.keyCode - 96 );
+                    }
+                    else if ( event.keyCode == 108 || event.keyCode == 13 )
+                    {
+                        buttons[11].css({
+                            color: '#8d6449'
+                        });
+                        judgment(11);
+                    }
+                    else if ( event.keyCode == 27 )
+                    {
+                        buttons[10].css({
+                            color: '#8d6449'
+                        });
+                        judgment(10);
+                    }
+                });
             }
         });
 

@@ -1944,14 +1944,6 @@ div.group-friends
     display: none;
 }
 
-div.group-all-friends
-{
-    width: 400px; 
-    height: 400px;
-    padding: 10px 20px;
-    overflow: scroll;
-}
-
 label.group-friends-name
 {
     color:red;
@@ -1998,7 +1990,7 @@ th.form-friends-sort-title
     text-align: left;
 }
 
-th.form-friends-title
+.form-friends-title
 {
     border: 5px solid gray;
     color: yellow;
@@ -2006,13 +1998,21 @@ th.form-friends-title
     text-align: left;
 }
 
-th.friend-other-page
+.friend-other-page
 {
     color: green;
     font-size: 30px;
 }
 
-a.form-friends-title
+.mygroup-name
+{
+    border: 5px solid gray;
+    color: blue;
+    font-size: 20px;
+    text-align: center;
+}
+
+.friends-title
 {
     text-lign: left;
     color: DeepPink; /* NOTE */
