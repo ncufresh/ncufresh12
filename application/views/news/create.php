@@ -1,8 +1,7 @@
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl . '/statics/scripts/jquery.multifile.js'; ?>"></script>
 <?php $this->endWidget();?>
-
-<h1>新增文章</h1>
+<h2>新增文章</h2>
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('news/create')?>" method="POST" class="MultiFile-intercepted">
     <dl>
         <dt>
@@ -27,19 +26,6 @@
     </div>
     <div id="news-url-result">
     </div>
-    <?php /*$this->widget('CMultiFileUpload', array(
-        'name' => 'news_files',
-        'accept' => 'doc|pdf|docx|txt|xls|xlsx',
-        'duplicate' => '檔案重複',
-        'denied' => '不允許的格式',
-        'remove' => 'x',
-          'options'=>array(
-             'afterFileSelect'=>'function(e, v, m)
-             { 
-                checkFileSize("news_files");
-             }',
-          ),
-    )); */?>
     <input id="news_files" type="file" name="news_files[]" />
     <button type="submit">發佈</button>
     <button class="news-cancel-button">取消</button>

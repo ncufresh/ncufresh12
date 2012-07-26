@@ -1244,6 +1244,111 @@ ul#nculife-details
     background: url('../images/index_forums_icon.png') no-repeat;
 }
 
+#lastest-news-wrap
+{
+    width: 710px;
+    height: 410px;
+    -webkit-border-radius: 10px;
+    background: #CBD3E6;
+    border-radius: 10px;
+    padding: 20px;
+    display: inline-block;
+}
+
+#lastest-news-wrap .header
+{
+    width: 100%;
+    height: 25px;
+}
+
+#lastest-news-wrap .header h1
+{
+    width: 85px;
+    height: 0px;
+    padding: 25px 0 0 0;
+    margin: 0;
+    overflow: hidden;
+    display: block;
+    float: left;
+    background: url('../images/index_latest_icon.png') no-repeat;
+}
+
+#lastest-news-wrap .header ul.pager
+{
+    margin-top: 5px;
+}
+
+#lastest-news-wrap .footer ul.pager
+{
+    margin-bottom: 5px;
+}
+#lastest-news-wrap .indexes
+{
+    width: 100%;
+    height: 310px;
+    overflow: hidden;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+#lastest-news-wrap .indexes div.row
+{
+    width: 100%;
+    height: 23px;
+    position: relative;
+}
+
+#lastest-news-wrap .indexes div.row div.left
+{
+    left: 0;
+    background: #CBD3E6;
+    position: absolute;
+    padding-right: 10px;
+    padding-left: 20px;
+}
+
+#lastest-news-wrap .indexes div.row div.right
+{
+    right: 0;
+    background: #CBD3E6;
+    position: absolute;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#lastest-news-wrap .indexes div.row div.line
+{
+    width: 100%;
+    height: 0;
+    border-top: 2px dotted black;
+    position: absolute;
+    top: 8px;
+}
+
+#lastest-news-wrap .footer
+{
+    height: 65px;
+    overflow: hidden;
+    padding-top: 10px;
+}
+
+#lastest-news-wrap .footer a
+{
+    
+}
+
+#lastest-news-wrap .footer a.news-back-link
+{
+    float: right;
+    clear: both;
+}
+
+#lastest-news-wrap .footer a.news-admin-link
+{
+    float: right;
+    
+}
+
 .news-dialog-warp
 {
     background: white;
@@ -2081,4 +2186,90 @@ img.user_img
 #notfound a:hover
 {
     background: url('../images/back_hover.png');
+}
+
+/**
+ * Pager
+ */
+.pager
+{
+    padding: 0;
+    margin: 0;
+    display: block;
+    float: right;
+}
+
+.pager li
+{
+    float: left;
+    list-style: none;
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+.pager a
+{   
+    color: black;
+    display: block;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.pager .first, 
+.pager .last,
+.pager .prev, 
+.pager .next
+{
+    padding-top: 16px;
+    height: 0px;
+    
+}
+
+.pager .first
+{
+    background: url('../images/first_page.png');
+}
+
+.pager .last
+{
+    background: url('../images/last_page.png');
+}
+
+.pager .prev
+{
+    background: url('../images/prev_page.png');
+}
+
+.pager .next
+{
+    background: url('../images/next_page.png');
+}
+
+.pager .first-disabled
+{
+    background: url('../images/first_page_disabled.png');
+}
+
+.pager .last-disabled
+{
+    background: url('../images/last_page_disabled.png');
+}
+
+.pager .prev-disabled
+{
+    background: url('../images/prev_page_disabled.png');
+}
+
+.pager .next-disabled
+{
+    background: url('../images/next_page_disabled.png');
+}
+
+.pager .current
+{
+    color: blue;
+    cursor: default;
 }

@@ -6,7 +6,7 @@ class NewsController extends Controller
 	 * Configuration: 
 	 * the number how many pieces of news will be listed.
 	 */
-    const NEWS_PER_PAGE = 10;
+    const NEWS_PER_PAGE = 13;
 
 	/**
 	 * Configuration: 
