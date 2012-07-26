@@ -2009,6 +2009,17 @@ div.friend img
     border: 1px solid green;
 }
 
+div.other-department
+{
+    background-image:url('../profile/otherD.png');
+    width:740px;
+    height:416px;
+    padding:0px;
+    margin:10px;
+    overflow-y:hidden;  
+   /* overflow-y:none;*/
+}
+
 table.group
 {
     float:left;
