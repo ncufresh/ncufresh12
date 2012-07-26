@@ -15,7 +15,8 @@ class News extends CActiveRecord
     public function rules()
     {
         return array(
-            array('title, content', 'required')
+            array('title, content', 'required'),
+            array('title', 'length' , 'max' => 25),
         );
     }
 
@@ -40,6 +41,18 @@ class News extends CActiveRecord
                 'author_id'
             )
         );
+    }
+    
+    public function getNews($id)
+    {
+        return $this->findByPk((integer)$id);
+    }
+
+    public function getRawNews($id)
+    {
+        $news = $this->findByPk((integer)$id);
+        $news->content = $news->getRawValue('content');
+        return $news;
     }
 
     public function getPopularNews($num)
@@ -130,5 +143,6 @@ class News extends CActiveRecord
         parent::afterFind();
         $this->created = Yii::app()->format->datetime($this->created);
         $this->updated = Yii::app()->format->datetime($this->updated);
+        $this->content = nl2br(htmlspecialchars($this->content));
     }
 }
