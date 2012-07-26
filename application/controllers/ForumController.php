@@ -3,6 +3,9 @@
 //發文:>20字
 //回文:>20字
 //推文:<24字
+
+//ckeditor
+//next page . previous page
 class ForumController extends Controller
 {
     const ARTICLES_PER_PAGE = 10;

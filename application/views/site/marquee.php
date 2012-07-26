@@ -103,6 +103,7 @@
 }
 </style>
 <?php $this->endWidget();?>
+
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
 jQuery(document).ready(function()
@@ -166,29 +167,36 @@ jQuery(document).ready(function()
     {
         var id = jQuery(this).attr('href').replace('#', '');
         var element = jQuery(this).parent().parent();
-        if ( confirm('真的想要刪除這一筆跑馬燈消息？') )
-        {
-            jQuery.post(
-                window.location.href,
+
+        $.confirm({
+            message:            '您真的想要刪除這一筆跑馬燈消息？',
+            confirmed:          function(result)
+            {
+                if ( result )
                 {
-                    marquee:
-                    {
-                        id: '-' + id
-                    },
-                    token: $.configures.token
-                },
-                function(response)
-                {
-                    $.configures.token = response.token;
-                    if ( response.error )
-                    {
-                        alert('刪除失敗！請稍後再試一次！');
-                        return false;
-                    }
-                    element.remove();
+                    jQuery.post(
+                        window.location.href,
+                        {
+                            marquee:
+                            {
+                                id: '-' + id
+                            },
+                            token: $.configures.token
+                        },
+                        function(response)
+                        {
+                            $.configures.token = response.token;
+                            if ( response.error )
+                            {
+                                alert('刪除失敗！請稍後再試一次！');
+                                return false;
+                            }
+                            element.remove();
+                        }
+                    );
                 }
-            );
-        }
+            }
+        });
         return false;
     });
 

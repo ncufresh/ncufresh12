@@ -1199,7 +1199,8 @@
 /**
  * Dialog
  */
-(function($){
+(function($)
+{
     $.dialog = {};
 
     $.fn.dialog = function(options)
@@ -1208,7 +1209,7 @@
         {
             this.options =  $.extend({
                 width:          $(this).width(),
-                heigth:         $(this).height(),
+                height:         $(this).height(),
                 modal:          true,
                 escape:         true,
                 closeButton:    true,
@@ -1290,13 +1291,15 @@
         target.options.onCreate.call(target);
         $(target)
             .css({
-                position: 'absolute',
+                position: $(target).css('position') === 'static'
+                        ? $(target).css('position')
+                        : 'absolute',
                 top: '50%',
                 left: '50%',
                 width: target.options.width,
-                heigth: target.options.heigth,
+                height: target.options.height,
                 marginLeft: -1 * target.options.width / 2,
-                marginTop: -1 * target.options.heigth / 2,
+                marginTop: -1 * target.options.height / 2,
                 padding: 0,
                 display: 'none',
                 zIndex: 1000
@@ -1311,6 +1314,106 @@
         target.options.onDestroy.call(target);
         $(target).remove();
     }
+})(jQuery);
+
+/**
+ * Confirm
+ */
+(function($)
+{
+    $.confirm = function(options)
+    {
+        var options = $.extend({
+            confirmClass:       'confirm',
+            titleClass:         'confirm-title',
+            messageClass:       'confirm-message',
+            buttonsClass:       'confirm-buttons',
+            buttonClass:        'confirm-button',
+            title:              null,
+            message:            '',
+            buttons:            {
+                '確定':         function() { return true; },
+                '取消':         function() { return false; }
+            },
+            confirmed:          function(result) { return true; }
+        }, options);
+
+        var dialog = $('<div></div>')
+            .addClass(options.confirmClass)
+            .dialog({
+                modal:          true,
+                escape:         false,
+                closeButton:    false
+            });
+
+        var message = $('<p></p>')
+            .addClass(options.messageClass)
+            .text(options.message)
+            .appendTo(dialog);
+
+        var buttons = $('<div></div>')
+            .addClass(options.buttonsClass)
+            .appendTo(dialog);
+
+        if ( options.title )
+        {
+            var title = $('<h4></h4>')
+                .addClass(options.titleClass)
+                .text(options.title)
+                .prependTo(dialog);
+        }
+
+        for ( var button in options.buttons )
+        {
+            $('<button></button>')
+                .addClass(options.buttonClass)
+                .text(button)
+                .data('evaluation', options.buttons[button])
+                .click(function()
+                {
+                    var evaluation = $(this).data('evaluation');
+                    dialog.dialog('close');
+                    return options.confirmed(evaluation());
+                })
+                .appendTo(buttons);
+        }
+
+        return dialog;
+    };
+})(jQuery);
+
+/**
+ * Alert
+ */
+(function($)
+{
+    $.alert = function(settings)
+    {
+        var options = $.extend({
+            confirmClass:       'alert',
+            titleClass:         'alert-title',
+            messageClass:       'alert-message',
+            title:              null,
+            message:            '',
+            button:             '確定',
+            confirmed:          function(result) { return true; }
+        }, settings);
+
+        var buttons = {
+        };
+
+        buttons[options.button] = function() { return true; };
+
+        return $.confirm({
+            confirmClass:       'alert',
+            titleClass:         'alert-title',
+            messageClass:       'alert-message',
+            title:              null,
+            message:            options.message,
+            buttons:            buttons,
+            confirmed:          options.confirmed
+        });
+    };
 })(jQuery);
 
 /**
@@ -1383,9 +1486,7 @@
             var overlay = $('<div></div>')
                 .addClass(options.overlayClass)
                 .css({
-                    display:            'none',
-                    height:             $(this).height(),
-                    width:              $(this).width()
+                    display:            'none'
                 })
                 .fadeIn(options.speed, function()
                 {
@@ -1413,9 +1514,11 @@
             if ( this !== window )
             {
                 overlay.css({
+                    height:             $(this).height(),
                     left:               $(this).offset().left,
                     position:           $(this).css('position'),
                     top:                $(this).offset().top,
+                    width:              $(this).width()
                 });
             }
             if ( options.closeOnClick )
@@ -1808,7 +1911,7 @@
         });
 
         $.konami({
-            code:                   [38],
+            code:                   [65],
             complete:               function()
             {
                 if ( $('#secret').length ) return false;
@@ -1818,18 +1921,13 @@
                 var input_index = intial_length;
                 var down = 0;
                 var answer = $.random(down + 1, up - 1);
-                var buttons = [$('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<p></p>'), $('<p></p>')];
+                var buttons = [$('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>')];
                 var run = true;
                 var judgment = function(input_number)
                 {
                     if ( run == false ) return true;
                     var number = input_number;
-                    if ( number == 0 )
-                    {
-                        input += '0';
-                        input_index--;
-                    }
-                    else if ( number > 0 && number < 10 )
+                    if ( number >= 0 && number < 10 )
                     {
                         input += number;
                         input_index--;
@@ -1842,22 +1940,21 @@
                     else if ( number == 11 )
                     {
                         input = parseInt( input_text.val() );
-                        if( input < up && input >down )
+                        if ( input < up && input >down )
                         {
-                            if( input == answer )
+                            if ( input == answer )
                             {
                                 alert('恭喜你猜對了!!!');
                                 back.remove();
                                 box.remove();
-                                input_text.remove();
                                 run = false;
                                 return true;
                             }
-                            else if( input > answer )
+                            else if ( input > answer )
                             {
                                 up = input;
                             }
-                            else if( input < answer )
+                            else if ( input < answer )
                             {
                                 down = input;
                             }
@@ -1887,12 +1984,12 @@
                 .appendTo('body');
                 var box = $('<div></div>').css({
                     background: '#e6cde3',
-                    height: 400,
-                    margin: '-200px 0 0 -200px',
+                    height: 420,
+                    margin: '-210px 0 0 -150px',
                     position: 'fixed',
                     top: '50%',
                     left: '50%',
-                    width: 400
+                    width: 300
                 })
                 .appendTo('body');
                 $('<h4></h4>').text('終極密碼').css({
@@ -1904,102 +2001,38 @@
                 var message = $('<p></p>').text('請輸入數字' + down + '到' + up +'之間').css({
                     color: '#b44c97',
                     fontSize: 20,
-                    position: 'absolute',
-                    top: 60,
-                    left: '25%'
+                    textAlign: 'center'
                 })
                 .appendTo(box);
                 var input_text = $('<input type="text" readonly/>').attr('value', '').css({
-                    left: 84,
+                    display: 'block',
                     width: 228,
                     height: 31,
                     textAlign: 'center',
-                    position: 'absolute',
-                    fontSize: '2em'
+                    fontSize: '2em',
+                    margin: '0 auto'
                 })
                 .appendTo(box);
                 var numberTable = $('<table></table>').css({
-                    border: 5,
-                    left: 40,
-                    top: 150,
-                    position: 'absolute'
+                    margin: '0 auto',
+                    textAlign: 'center'
                 });
                 var TableRow = [$('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>')];
                 for ( var i = 7; i > 0 ; i = i - 3 )
                 {
-                    for ( var j = 0; j <3 ; j++ )
+                    for ( var j = 0; j < 3 ; j++ )
                     {
                         buttons[i + j].text( i + j ).addClass('tableBox').appendTo(TableRow[ parseInt( i / 3) ]);
                     }
                 }
-                buttons[0].text('0').css({
-                    color: '#8d6449',
-                    height: 50,
-                    width: 100,
-                    textAlign: 'center',
-                    fontSize: 30    
-                })
-                .addClass('tableBox')
-                .appendTo(TableRow[ 3 ]);
-                buttons[10].text('Clean').css({
-                    color: '#8d6449',
-                    top: 137,
-                    left: 119,
-                    position: 'absolute',
-                    fontSize: 30,
-                    textAlign: 'center'
-                })
-                .mouseenter(function(){
-                    $(this).css({
-                        color: 'blue',
-                        cursor: 'default'
-                    });
-                })
-                .mouseleave(function(){
-                    $(this).css({
-                        color: '#8d6449'
-                    });
-                })
-                .click(function()
-                {
-                    $(this).css({
-                        color: 'yellow'
-                    });
-                    judgment(10);
-                })
-                .appendTo(TableRow[ 3 ]);
-                buttons[11].text('Enter').css({
-                    color: '#8d6449',
-                    top: 137,
-                    left: 226,
-                    position: 'absolute',
-                    textAlign: 'center',
-                    fontSize: 30
-                })
-                .mouseenter(function()
-                {
-                    $(this).css({
-                        color: 'blue',
-                        cursor: 'default'
-                    });
-                })
-                .mouseleave(function(){
-                    $(this).css({
-                      color: '#8d6449'
-                    });
-                })
-                .click(function()
-                {
-                    $(this).css({
-                        color: 'yellow'
-                    });
-                    judgment(11);
-                })
-                .appendTo(TableRow[ 3 ]);
-                for ( var k = 0; k < 4; k++ )
+                buttons[0].text('0').addClass('tableBox').appendTo(TableRow[ 3 ]);
+                buttons[10].text('Clean').addClass('tableBox').appendTo(TableRow[ 3 ]);
+                buttons[11].text('Enter').addClass('tableBox').appendTo(TableRow[ 3 ]);
+                for ( var k = 2; k >= 0; k-- )
                 {
                     TableRow[k].appendTo(numberTable);
                 }
+                TableRow[3].appendTo(numberTable);
                 numberTable.appendTo(box);
                 $('.tableBox').each(function(){
                     $(this).css({
@@ -2025,7 +2058,18 @@
                         $(this).css({
                             color: 'yellow'
                         });
-                        judgment( parseInt( $(this).text() ) );
+                        if ( $(this).text() == 'Enter' )
+                        {
+                            judgment( 11 );
+                        }
+                        else if ( $(this).text() == 'Clean' )
+                        {
+                            judgment( 10 );
+                        }
+                        else
+                        {
+                            judgment( parseInt( $(this).text() ) );
+                        }
                     });
                 })
                 $(document).keydown(function(event)
