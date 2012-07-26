@@ -155,8 +155,8 @@ jQuery(document).ready(function()
     });
     
     $(function(){
-        if($('#news_files').length!=0){
-            $('#news_files').MultiFile({
+        if($('#news-files').length!=0){
+            $('#news-files').MultiFile({
                 accept:'doc|pdf|docx|txt|xls|xlsx',
                 STRING: {
                     remove:'x',
@@ -165,7 +165,7 @@ jQuery(document).ready(function()
                 },
                 afterFileSelect:function(e, v, m)
                 { 
-                    checkFileSize("news_files");
+                    checkFileSize("news-files");
                 },
             });
         }
