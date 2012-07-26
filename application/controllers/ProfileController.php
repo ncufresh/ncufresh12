@@ -86,7 +86,6 @@ class ProfileController extends Controller
                 }
             }
         }
-<<<<<<< HEAD
         else
         {
             $this->render('editor', array(                
@@ -95,14 +94,11 @@ class ProfileController extends Controller
                     'target'        => $img_url
             ));
         }
-=======
-
         $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('editor', array(                
                 'user'          => $user, 
                 'departments'   => Department::model()->getDepartment(), 
                 'target'        => $img_url
         ));
->>>>>>> 84f50f8f89bafca8908aefefd3d1d70280c9e6d6
     }
 }

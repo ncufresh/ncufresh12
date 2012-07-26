@@ -11,7 +11,7 @@
 ?>
 <?php  foreach ($members as $member ): ?>
 <?php $profile = Profile::model()->findByPK($member->user_id); ?>
-<?php if ( $row<=4 ) : ?> 
+<?php if ( $row <= 4 ) : ?> 
         <td>
 <?php if ( $profile->picture !='' ): ?>
         <img  height="70" src="<?php echo $target.'/'.$profile->picture; ?>" alt="Score image" />
@@ -22,15 +22,15 @@
 <?php echo $profile->name; ?>
 <?php echo $profile->department->short_name; ?>
         </td>
-<?php if ( $col%5==0 ): ?>
- <?php $row+=1;?>
+<?php if ( $col %5 == 0 ): ?>
+ <?php $row+=1; ?>
     </tr>
     <tr>
 <?php endif; ?>
 <?php endif; ?>
 <?php $col++; ?>
 <?php endforeach; ?>
-<?php if ( $col%5!=0 ): ?>
+<?php if ( $col %5 != 0 ): ?>
     </tr>
 <?php endif;?>
 </table>

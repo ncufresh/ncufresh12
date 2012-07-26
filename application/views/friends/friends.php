@@ -1,10 +1,10 @@
 <h2>好友專區</h2>
 <table class="sep-group">
-    <tr class="friends-title" >
-        <th colspan="4" class="form-friends-sort-title" >新增好友</a></th
+    <tr>
+        <th class="form-friends-sort-title" >新增好友</a></th
     </tr>
     <tr class="friends-title" >
-        <th colspan="4" class="form-friends-title"><a href="<?php echo Yii::app()->createUrl('friends/samedepartmentsamegrade'); ?>" title="同系同屆" class="form-friends-title">同系同屆</a></th> <!--重新導向一個自訂的網頁-->
+        <th class="form-friends-title"><a href="<?php echo Yii::app()->createUrl('friends/samedepartmentsamegrade'); ?>" title="同系同屆" class="friends-title">同系同屆</a></th> <!--重新導向一個自訂的網頁-->
     </tr>
     <tr>
 <?php $account = 1; ?>
@@ -25,7 +25,7 @@
 <?php endforeach; ?>
     </tr>
     <tr class="friends-title">
-        <th align="center";  colspan="4" class="form-friends-title" ><a href="<?php echo Yii::app()->createUrl('friends/samedepartmentdiffgrade'); ?>" title="同系不同屆" class="form-friends-title">同系不同屆</a></th> <!--重新導向一個自訂的網頁-->
+        <th class="form-friends-title"><a href="<?php echo Yii::app()->createUrl('friends/samedepartmentdiffgrade'); ?>" title="同系不同屆" class="friends-title">同系不同屆</a></th>
     </tr>
     <tr>
 <?php $account = 1;?>
@@ -46,13 +46,13 @@
 <?php endif; ?>
 <?php endforeach; ?>
     </tr>
-    <tr class="friends-title">
-        <th colspan="4" class="form-friends-title" ><a href="<?php echo Yii::app()->createUrl('friends/otherdepartment'); ?>" title="其他科系" class="form-friends-title">其他科系</a></th> <!--重新導向一個自訂的網頁-->
+    <tr>
+        <th class="form-friends-title"><a href="<?php echo Yii::app()->createUrl('friends/otherdepartment'); ?>" title="其他科系" class="friends-title">其他科系</a></th> <!--重新導向一個自訂的網頁-->
     </tr>
     <tr>
 <?php $account = 1 ; ?>
 <?php foreach ( $profileThir as $profilethir ) :?>
-<?php if ( $account<=4 ):?> 
+<?php if ( $account <= 4 ):?> 
 <td class="friends-samediff-ones">
 <?php if ( $profilethir->picture !='' ):?>
         <img  height="70" src=" <?php echo $target.'/'.$profilethir->picture ; ?>" alt="Score image"/>
@@ -68,17 +68,15 @@
 <?php endif ; ?>
 <?php endforeach ; ?>
     </tr>
-</table>
-<table class="close-group">
-    <tr class="friends-title" >
-        <th colspan="5" class="form-friends-sort-title" >好友分類</a></th>
+    <tr>
+        <th class="form-friends-sort-title">好友分類</a></th>
     </tr>
     <tr>
-        <th colspan="5" class="form-friends-title" ><a href="<?php echo Yii::app()->createUrl('friends/myfriends') ; ?>" title="朋友" class="form-friends-title">朋友</a></th> <!--重新導向一個自訂的網頁-->
+        <th class="form-friends-title"><a href="<?php echo Yii::app()->createUrl('friends/myfriends') ; ?>" title="朋友" class="friends-title">朋友</a></th> <!--重新導向一個自訂的網頁-->
     </tr>
     <tr>
 <?php  $account = 1;?>
-<?php foreach ( $profileFor->friends as $friend ) : ?>
+<?php foreach ( $user->friends as $friend ) : ?>
 <?php if ( $account<=5 ) : ?> 
 <td class="friends-close-ones">
 <?php if ( $friend->profile->picture !='' ) : ?>
@@ -97,10 +95,8 @@
 <?php endforeach ; ?>
     </tr>
     <tr>
-        <th colspan="5" class="form-friends-title" ><a href="<?php echo Yii::app()->createUrl('friends/mygroups') ; ?>" title="群組" class="form-friends-title">我的群組</a></th>
+        <th class="form-friends-title"><a href="#" title="我的群組" class="form-friends-self-editor">我的群組</a></th>
     </tr>
-</table>
-<table>
     <tr>
         <th>
 <?php
@@ -119,14 +115,12 @@ $row = (integer)($amonut / 6)+1;
             </li>
 <?php $account++ ; ?>
 <?php endforeach ; ?>
-<?php if ( $account%5==0 ) : ?>
+<?php if ( $account % 5 == 0 ) : ?>
         </th>
     </ul>
 <?php endif ; ?>
         </th>
     </tr>
-</table>
-<table>
     <tr>
         <th class="form-friends-title"><a href="<?php echo Yii::app()->createUrl('friends/newgroup') ; ?>" title="自訂" class="form-friends-self-editor">自訂</a></th> 
     </tr>

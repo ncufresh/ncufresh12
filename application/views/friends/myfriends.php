@@ -8,7 +8,7 @@
 <?php $row = 0;?>
 <?php $col = 1;?>
 <?php foreach ( $user->friends as $friend ) :?>
-<?php if ( $row<=4 ) :?>
+<?php if ( $row <= 4 ) :?>
         <td class="friends-close-ones">
 <?php if ( $friend->profile->picture !='' ) :?>
         <img  height="70" src="<?php echo $target.'/'.$friend->profile->picture; ?> " alt="Score image" />
@@ -22,7 +22,7 @@
 <?php echo $friend->profile->department->short_name ?>
         </td>
 
-<?php if ( $col%5==0 ) :?>
+<?php if ( $col %5 == 0 ) :?>
 <?php $row+=1;?>
     </tr>
     <tr>
@@ -30,7 +30,7 @@
 <?php endif;?>
 <?php $col++;?>
 <?php endforeach;?>
-<?php if ( $col%5!=0 ):?>
+<?php if ( $col % 5 != 0 ):?>
     </tr>
 <?php endif;?>
 </table>

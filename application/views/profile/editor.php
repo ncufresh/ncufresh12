@@ -28,18 +28,10 @@
             <br />
         </li>
         <li>
-<<<<<<< HEAD
             <span>系所:</span><?php echo $user->profile->department->short_name; ?>
             <select name="profile[department]" value="<?php echo $user->profile->department->short_name; ?>">
 <?php foreach ( $departments as $department ) : ?>
-                    <option value="<?php echo $department->id; ?>"><?php echo $department->department; ?></option>
-=======
-            <label class="form-profile-department">系所:  </label>
-            <label ><?php echo $user->profile->department->short_name; ?> </label>
-            <select name="profile[department]" value="<?php if ( empty($profile['department']) )  echo $user->profile->department->short_name; ?>">
-<?php foreach ( $departments as $department ) : ?>
-                <option value="<?php echo $department->id; ?>"><?php echo $department->department; ?></option> <!--$department->content;   content是欄位名稱(成員)-->
->>>>>>> 84f50f8f89bafca8908aefefd3d1d70280c9e6d6
+                <option value="<?php echo $department->id; ?>"><?php echo $department->department; ?></option>
 <?php endforeach; ?>       
             </select>
             <br />
@@ -77,6 +69,6 @@
         </li> 
     </ul>
     <button type="submit">確認</button>
-    <button><a href="<?php echo Yii::app()->createUrl('profile/editor')?>">取消</a></button>
-    <button><a href="<?php echo Yii::app()->createUrl('profile/profile')  ?>">BACK</a></button>
 </form>
+<button><a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>">取消</a></button>
+<button><a href="<?php echo Yii::app()->createUrl('profile/profile'); ?>">BACK</a></button>

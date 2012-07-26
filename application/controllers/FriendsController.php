@@ -29,13 +29,13 @@ class FriendsController extends Controller
         $departmentId = Profile::model()->findByPK($userID)->department_id;
         $grade = Profile::model()->findByPK($userID)->grade;
         $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+        //echo Friend::model()->isExist(41) ? '存在':'不存在';
+        //exit();
         $this->setPageTitle(Yii::app()->name . ' - 好友專區');
         $this->render('friends', array(
             'profileFir'    => Profile::model()->getSameDepartmentSameGrade($departmentId, $grade),
             'profileSec'    => Profile::model()->getSameDepartmentDiffGrade($departmentId, $grade),
-            'profileThir'   => Profile::model()->getOtherDepartment($departmentId, $grade),
-            'profileFor'    => User::model()->findByPk($userID),                   
-            'profiles'      => Profile::model()->getAllMember(), 
+            'profileThir'   => Profile::model()->getOtherDepartment($departmentId, $grade),    'profiles'      => Profile::model()->getAllMember(), 
             'user'          => User::model()->findByPk($userID),
             'group'         => Group::model()->findByPk($userID),
             'amonut'        => Group::model()->getGroupAmount($userID),
@@ -99,23 +99,17 @@ class FriendsController extends Controller
         ));
     }
 
-    public function actionMakeFriends()
+    public function actionMakeFriends() 
     {
+        $userId = Yii::app()->user->id;
         if ( isset($_POST['friends']) )
         {
-            $userId = Yii::app()->user->id;
             foreach ( $_POST['friends'] as $friend )
             {   
-                if ( !Friend::model()->FriendExist($userId, $friend) )
+                $save = Friend::model()->MakeFriend($userId, $friend);
+                if ( !$save )
                 {
-                    $model = new Friend();
-                    $model->user_id = $userId;
-                    $model->friend_id = $friend;
-                    $model->save();
-                    $model = new Friend();
-                    $model->user_id = $friend;
-                    $model->friend_id = $userId;
-                    $model->save();
+                    $this->redirect(array('friends/myfriends'));
                 }
             }
             $this->redirect(array('friends/myfriends'));
@@ -186,32 +180,15 @@ class FriendsController extends Controller
         $this->setPageTitle(Yii::app()->name . ' - 新增成員');
         if ( isset($_POST['friends'] ) && isset ( $_GET['id'] ) )
         {
-            foreach ( $_POST['friends'] as $friend )
-            {
-                $_exist=false;
-                $group = new UserGroup();
-                foreach ( $group->getMembers($_GET['id']) as $member )
-                {
-                    if (  $member->user_id === $friend )
-                    {
-                        $_exist=true;
-                    }
-                }
-                if ( !$_exist )
-                {
-                        $group->user_id = $friend;
-                        $group->group_id = $_GET['id'];
-                        $group->save();
-                }
-            }
-            if ( $group->save() )
+            if ( UserGroup::model()->AddNewMember($_GET['id'], $_POST['friends']) )
             {
                 $this->redirect(Yii::app()->createUrl('friends/mygroups', array('id'=>$_GET['id'])));
             }
+            $this->redirect(Yii::app()->createUrl('friends/mygroups', array('id'=>$_GET['id'])));
         }
         else
         {
-            $this->redirect(Yii::app()->createUrl('friends/mygroups', array('id'=>$_GET['id'])));
+            $this->redirect(Yii::app()->createUrl('friends/newmembers', array('id'=>$_GET['id'])));
         }
     }
 
@@ -245,27 +222,29 @@ class FriendsController extends Controller
         $grade = Profile::model()->findByPK($userID)->grade;
         $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         if ( isset($_POST['friends']) )
-        {  
-            $group = new Group();        
+        {
+            $group = new Group();
             $group->user_id = $userID;
             $group->name = $_POST['group-name'];
             $group->description = $_POST['group-description'];
-            $group->save(); 
-            if ( $group->save() ) 
+            $save = $group->save(); 
+            if ( isset($save) ) 
             {
                 foreach ( $_POST['friends'] as $friend )
                 {
                     $self_group = new UserGroup();
                     $self_group->user_id = $friend;
                     $self_group->group_id = $group->id;
-                    $self_group->save();
+                    $save = $self_group->save();
                 }
-                $this->redirect(array('friends/friends'));
+                if ( isset($save) )
+                {
+                    $this->render('newgroup', array(
+                        'user'          => User::model()->findByPk($userID),
+                        'target'        => $imgUrl
+                    ));
+                }
             }
-            $this->render('newgroup', array(
-                'user'          => User::model()->findByPk($userID),
-                'target'        => $imgUrl
-            ));
         }
         else
         {
@@ -312,8 +291,7 @@ class FriendsController extends Controller
         }
         else
         {
-            echo '沒有的到id';
-            exit();
+             $this->redirect(array('friends/myfriends'));
         }
    }
 }

@@ -40,6 +40,13 @@ class  Group extends CActiveRecord
         );
     }
 
+    public function deleteGroup()
+    {
+        return $this->updateByPk($this->id, array(
+            'invisible' => 1
+        ));
+    }
+
     public function getAllGroup()
     {
         return $this->findAll(array(
@@ -47,12 +54,12 @@ class  Group extends CActiveRecord
         ));
     }
 
-    public function FindGroup($groupId)
+    public function FindGroup($userid)
     {
-        return $this->findAll(array(
-            'condition' => 'id = :id',
+        return $this->find(array(
+            'condition' => 'user_id = :id',
             'params'    => array(
-                ':id' => $groupId,
+                ':id' => $userid,
             )
         ));
     }
@@ -71,5 +78,31 @@ class  Group extends CActiveRecord
             $group_amounts++;
         }
         return $group_amounts;
+    }
+
+    public function addNewGroup($userid, $groupname, $groupdescription, $friends)
+    {
+        $addnewmember = true;
+        $group = new Group();
+        $group->user_id = $userid;
+        $group->name = $groupname;
+        $group->description = $groupdescription;
+        $save = $group->save(); 
+        if ( isset($save) ) 
+        {
+            foreach ( $friends as $friend )
+            {
+                $self_group = new UserGroup();
+                $self_group->user_id = $friend;
+                $self_group->group_id = $group->id;
+                $_save = $self_group->save();
+                if ( !isset($_save) )
+                {
+                    $addnewmember = false;
+                    break;
+                }
+            }
+        }
+        return $addnewmember;
     }
 }    

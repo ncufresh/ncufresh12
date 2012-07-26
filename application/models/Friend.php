@@ -19,58 +19,43 @@ class Friend extends CActiveRecord
         );
     }
 
-    public function deleteFriend()
+    public function deleteFriend($userid,$friendid)
     {
         return $this->updateByPk($this->id, array(
-            'invisible' => true
+            'invisible' => 1
         ));
     }
 
-    /*protected function afterFind()
+    public function addFriend($userid,$friendid)
     {
-        parent::afterFind();
-        //$this->created = Yii::app()->format->datetime($this->created);
-        //$this->updated = Yii::app()->format->datetime($this->updated);
-        $this->invisible = $this->invisible ? true : false;
+        return $this->updateByPk($this->id, array(
+            'invisible' => 0
+        ));
     }
 
-    protected function beforeSave()
+    public function isExist($userid,$friendid) //一次兩筆資料
     {
-        if ( parent::beforeSave() )
+        $user1 = $this->find(array(
+            'condition' => 'user_id = :id1 AND friend_id = id2',
+            'params'    => array(
+                ':id1' => $userid,
+                ':id2' => $friendid
+            )
+        ));
+        $user2 = $this->find(array(
+            'condition' => 'user_id = :id1 AND friend_id = id2',
+            'params'    => array(
+                ':id1' => $friendid,
+                ':id2' => $userid
+            )
+        ));
+        if ( isset($user1) && isset($user2) )
         {
-            if ( $this->getIsNewRecord() )
-            {
-                $this->created = TIMESTAMP;
-                $this->invisible = false;
-            }
-            else
-            {
-                $this->created = $this->getRawValue('created');
-            }
-            $this->updated = TIMESTAMP;
             return true;
         }
         return false;
     }
-
-    protected function afterSave()
-    {
-        parent::afterSave();
-
-        $counter = 0;
-        $data = $this->findAll(array(
-            'order'     => 'updated DESC',
-            'condition' => 'invisible = FALSE'
-        ));
-
-        foreach ( $data as $entry )
-        {
-            if ( $counter++ < 5 ) continue;
-            $entry->invisible = true;
-            $entry->save();
-        }
-    }*/
-
+    
     public function FriendExist($userid, $friendid)
     {
         $_exist = false;
@@ -86,5 +71,26 @@ class Friend extends CActiveRecord
             $_exist = true;
         }
         return $_exist;
+    }
+
+    public function MakeFriend($user_id, $friend_id)
+    {
+        $makefriend = false;
+        $model = new Friend();
+        $model->user_id = $user_id;
+        $model->friend_id = $friend_id;
+        $save1 = $model->save();
+        if ( isset($save1) )
+        {
+            $model = new Friend();
+            $model->user_id = $friend_id;
+            $model->friend_id = $user_id;
+            $save2 = $model->save();
+            if ( isset($save2) )
+            {
+                $makefriend = true;
+            }
+        }
+        return $makefriend;
     }
 }
