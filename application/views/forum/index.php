@@ -1,4 +1,5 @@
-﻿論壇專區<br />
-<a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 1, 'sort' => 'create'));?>">綜合討論</a><br/>
-<a href="<?php echo Yii::app()->createUrl('forum/forumlist');?>">系所社團</a><br/>
-<a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 2, 'sort' => 'create'));?>">社團討論</a><br/>
+﻿<div id="forum-index">
+<a class="index-forum1" href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 1, 'sort' => 'create'));?>"></a>
+<a class="index-forum-list" href="<?php echo Yii::app()->createUrl('forum/forumlist');?>"></a>
+<a class="index-forum2" href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 2, 'sort' => 'create'));?>"></a>
+</div>

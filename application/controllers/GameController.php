@@ -55,7 +55,9 @@ class GameController extends Controller
         }
         $return = Achievement::model()->getAchievementsByUserId(Yii::app()->user->getId());
         $this->setPageTitle(Yii::app()->name . ' - 成就系統');
-        $this->render('index', array('user_id' => $id,'achievements' => $return));
+        $content = $this->renderPartial('achievements', array('achievements' => $return), true);
+        $this->render('game_system', array('content' => $content, 'user_id' => $id));
+        //$this->render('achievements', array('user_id' => $id,'achievements' => $return));
     }
 
     // public function actiontogetExp()
