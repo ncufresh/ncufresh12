@@ -19,19 +19,18 @@
 <?php echo $profile->name;?>
 <?php echo $user->profile->department->short_name; ?>
         </td>
-<?php if ( $col%5==0 ) :?>
-<?php $row+=1;?>
-<?php endif;?>
+<?php if ( $col%5==0 ) : ?>
+<?php $row+=1; ?>
     </tr>
     <tr>
-<?php endif;?>
-<?php $col++;?>
+<?php endif; ?>
+<?php endif; ?>
+<?php $col++; ?>
 <?php endforeach; ?>
-<?php if ( $col%5!=0 ):?>
+<?php if ( $col%5!=0 ) :?>
     </tr>
-<?php endif;?>
+<?php endif; ?>
 </table> 
-</table>
 <button type="submit">確定加為好友</button>
 </form>
 <button><a href="<?php echo Yii::app()->createUrl('friends/samedepartmentdiffgrade')  ?>">重選</a></button>

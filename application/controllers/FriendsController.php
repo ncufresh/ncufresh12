@@ -109,11 +109,9 @@ class FriendsController extends Controller
                 $exist = $friend->isExist($userId, $friendid);
                 if ( $exist && $friend->openFriend($userId, $friendid) )
                 {
-                   
                 }
                 else if ( !$exist && $friend->addFriend($userId, $friendid) )
                 {
-                
                 }
                 else
                 {
@@ -183,11 +181,9 @@ class FriendsController extends Controller
                 $exist = $usergroup->isExist($friendid,$_GET['id']);
                 if ( $exist && $usergroup->openMember($friendid, $_GET['id']) )
                 {
-                   
                 }
                 else if ( !$exist && $usergroup->AddNewMember($friendid, $_GET['id']) )
                 {
-                    
                 }
                 else
                 {
@@ -293,5 +289,13 @@ class FriendsController extends Controller
         {
              $this->redirect(array('friends/myfriends'));
         }
+   }
+
+   public function actionAllGroups()
+   {
+        $userID = Yii::app()->user->id;
+        $this->render('allgroups', array(
+            'groups'         => Group::model()->FindGroup($userID)
+        ));
    }
 }

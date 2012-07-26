@@ -1937,11 +1937,45 @@ ul.life-indexs li.life-indexs-content:hover
 {
     margin-center:auto;
 }
-
+.mygroup
+{
+    color:red;
+}
 div.group-friends
 {
     background-color:yellow;
     display: none;
+}
+
+div.friend
+{
+    background-image:url('../profile/friend.png');
+    background-repeat:no-repeat ;
+    width:700px;
+    height:430px;
+    padding:0px;
+    border:5px solid gray;
+    margin:10px;
+}
+
+div.add-friend
+{
+    display:inline-block;
+    width:700px;
+    height:230px;
+}
+
+div.friend img
+{
+    border: 1px solid green;
+}
+
+table.group
+{
+    float:left;
+    height:150px;
+    border-right-style:dotted;
+     margin:auto;
 }
 
 label.group-friends-name
@@ -1970,12 +2004,7 @@ table.other-page
 {
     border:0px;
     width:90%; 
-    height=:70%;
-}
-
-.sep-group
-{
-    float:left;
+    height:70%;
 }
 
 .close-group
@@ -1983,16 +2012,16 @@ table.other-page
     float:right;
 }
 
-th.form-friends-sort-title
+.form-friends-sort-title
 {
     color: yellow;
     font-size: 30px;
     text-align: left;
+    font-family:"Times New Roma";
 }
 
 .form-friends-title
 {
-    border: 5px solid gray;
     color: yellow;
     font-size: 20px;
     text-align: left;

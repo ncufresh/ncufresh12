@@ -2,7 +2,10 @@
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
 <table>
     <tr>
-    <th colspan="5" class="mygroup-name" ><?php echo $mygroup->name; ?></ th>
+    <th colspan="5" class="mygroup-name" ><span>群組名稱:</span><?php echo $mygroup->name; ?></ th>
+    </tr>
+    <tr>
+        <td colspan="5" class="mygroup-name"><span>群組簡介:</span><?php echo $mygroup->description; ?></td>
     </tr>
     <tr>
 <?php 

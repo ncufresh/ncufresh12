@@ -1,5 +1,6 @@
 <form enctype="multipart/form-data" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
+<div class="sameFsameG">
 <table class="other-page">
     <tr>
         <th colspan="5" class="friend-allsame-page">同屆同系</th>
@@ -31,6 +32,7 @@
     </tr>
 <?php endif;?>
 </table>
+</div>
 <button type="submit">確定加為好友</button>
 </form>
 <button><a href="<?php echo Yii::app()->createUrl('friends/samedepartmentsamegrade')  ?>">重選</a></button>
