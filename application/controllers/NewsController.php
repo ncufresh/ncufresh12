@@ -118,7 +118,6 @@ class NewsController extends Controller
                 ));
                 exit;
             }
-
             // saving urls
             if (
                 isset($_POST['news']['news_urls_alias'])
@@ -134,7 +133,6 @@ class NewsController extends Controller
                     $url_model->save();
                 }
             }
-
             // saving files
             $files = CUploadedFile::getInstancesByName('news_files');
             if ( $news->id != 0 && isset($files) && count($files) > 0 )
@@ -154,7 +152,6 @@ class NewsController extends Controller
             }
             $this->redirect($news->url);
         }
-
         $this->render('create', array(
 			'errors'    =>  array()
 		));
@@ -175,8 +172,6 @@ class NewsController extends Controller
             'news'          => $news,
             'files'         => $this->loadFiles(self::NEWS_FILE_DIR . DIRECTORY_SEPARATOR . $news->id)
         ));
-		
-		
     }
 
 	/**

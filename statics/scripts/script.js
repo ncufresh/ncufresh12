@@ -3,15 +3,41 @@
  */
 (function($)
 {
+    var CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+
     String.prototype.replaceAt = function(index, string)
     {
         return this.substr(0, index) + string + this.substr(index + string.length);
-    }
+    };
 
     $.extend({
         random: function(min, max)
         {
             return Math.floor(Math.random() * (max - min + 1) + min);
+        },
+        generateUUID: function()
+        {
+            var uuid = new Array(36);
+            var rnd = 0
+            var r;
+            for ( var i = 0 ; i < 36 ; ++i)
+            {
+                if ( i == 8 || i == 13 ||  i == 18 || i == 23 )
+                {
+                    uuid[i] = '-';
+                } else if (i==14) {
+                    uuid[i] = '4';
+                } else {
+                    if ( rnd <= 0x02 )
+                    {
+                        rnd = 0x2000000 + (Math.random() * 0x1000000) | 0;
+                    }
+                    r = rnd & 0xf;
+                    rnd = rnd >> 4;
+                    uuid[i] = CHARS[(i == 19) ? (r & 0x3) | 0x8 : r];
+                }
+            }
+            return uuid.join('');
         },
         cookie: function(key, value, settings)
         {
@@ -642,16 +668,16 @@
 {
     $.fn.scrollable = function(options)
     {
+        var options = $.extend({
+            scrollableClass:        false,
+            fadeInDuration:         'slow',
+            fadeOutDuration:        'slow',
+            wheelSpeed:             6
+        }, options);
         return this.each(function()
         {
             var active = false;
             var inside = false;
-            var options = $.extend({
-                scrollableClass:        false,
-                fadeInDuration:         'slow',
-                fadeOutDuration:        'slow',
-                wheelSpeed:             6
-            }, options);
             var updateScrollDraggableHeight = function()
             {
                 var scrollAreaHeight = scrollArea.height();
@@ -670,6 +696,7 @@
             };
             var scrollContainer = $('<div></div>')
                 .addClass('scroll-container')
+                .addClass($(this).attr('class'))
                 .mouseenter(function()
                 {
                     updateScrollDraggableHeight();
@@ -761,6 +788,13 @@
                     top: position * scale
                 });
             };
+            $.each($(this).attr('class').split(' '), (function(object)
+            {
+                return function(index, value)
+                {
+                    $(object).removeClass(value);
+                };
+            })(this));
             $.extend($(this).__proto__, {
                 scrollTo: updateScrollDragable
             });
@@ -1117,15 +1151,21 @@
             }
             return false;
         });
+        var tdClick = function()
+        {
+            $(this).parents('table').find('td').css('outline', '0');
+            $(this).css('outline', '1px solid black');
+        }
         september = $.fn.generateCalendar({
             year: 2012,
             month: 8,
+            dayClick: tdClick,
             left: true,
             leftClick: function()
             {
                 september.detach();
                 august.prependTo(bottom);
-                $.fn.generateCalendar
+                //$.fn.generateCalendar
                 return false;
             }
             
@@ -1138,13 +1178,10 @@
             {
                 august.detach();
                 september.prependTo(bottom);
-                $.fn.generateCalendar
+                // $.fn.generateCalendar
                 return false;
             },
-            dayClick: function()
-            {
-                $(this).css('border', '1px solid black');
-            }
+            dayClick: tdClick
         }).appendTo(bottom);
         bottom.appendTo(bottom_wrap);
         todolist = $.fn.generateTodolist(
@@ -1162,7 +1199,8 @@
 /**
  * Dialog
  */
-(function($){
+(function($)
+{
     $.dialog = {};
 
     $.fn.dialog = function(options)
@@ -1171,7 +1209,7 @@
         {
             this.options =  $.extend({
                 width:          $(this).width(),
-                heigth:         $(this).height(),
+                height:         $(this).height(),
                 modal:          true,
                 escape:         true,
                 closeButton:    true,
@@ -1180,14 +1218,8 @@
                 dialogClass:    'dialog',
                 closeText:      'close',
                 closeClass:     'dialog-close-button',
-                openEffect:     function(speed)
-                {
-                    $(this).fadeIn(speed);
-                },
-                closeEffect:    function(speed)
-                {
-                    $(this).fadeOut(speed);
-                },
+                openEffect:     function(speed) { $(this).fadeIn(speed); },
+                closeEffect:    function(speed) { $(this).fadeOut(speed); },
                 onClose:        function() {},
                 onOpen:         function() {},
                 onCreate:       function() {},
@@ -1216,7 +1248,7 @@
     $.fn.dialog.open = function(target)
     {
         target.options.onOpen.call(target);
-        target.overlay = $('<div></div>').overlay({
+        target.overlay = $.overlay({
             closeOnClick:   ! target.options.modal,
             closeOnEscape:  target.options.escape,
             onBeforeHide:   function()
@@ -1225,7 +1257,7 @@
                 target.options.closeEffect.call(target, target.options.speed);
                 return true;
             }
-        }).appendTo($('body'));
+        });
         if ( ! $(target).hasClass(target.options.dialogClass) )
         {
             $.fn.dialog.create(target);
@@ -1235,8 +1267,7 @@
 
     $.fn.dialog.close = function(target)
     {
-        target.overlay.close();
-        target.overlay.remove();
+        target.overlay.close(target.overlay.index);
     }
 
     $.fn.dialog.create = function(target)
@@ -1260,13 +1291,15 @@
         target.options.onCreate.call(target);
         $(target)
             .css({
-                position: 'absolute',
+                position: $(target).css('position') === 'static'
+                        ? $(target).css('position')
+                        : 'absolute',
                 top: '50%',
                 left: '50%',
                 width: target.options.width,
-                heigth: target.options.heigth,
+                height: target.options.height,
                 marginLeft: -1 * target.options.width / 2,
-                marginTop: -1 * target.options.heigth / 2,
+                marginTop: -1 * target.options.height / 2,
                 padding: 0,
                 display: 'none',
                 zIndex: 1000
@@ -1284,100 +1317,222 @@
 })(jQuery);
 
 /**
+ * Confirm
+ */
+(function($)
+{
+    $.confirm = function(options)
+    {
+        var options = $.extend({
+            confirmClass:       'confirm',
+            titleClass:         'confirm-title',
+            messageClass:       'confirm-message',
+            buttonsClass:       'confirm-buttons',
+            buttonClass:        'confirm-button',
+            title:              null,
+            message:            '',
+            buttons:            {
+                '確定':         function() { return true; },
+                '取消':         function() { return false; }
+            },
+            confirmed:          function(result) { return true; }
+        }, options);
+
+        var dialog = $('<div></div>')
+            .addClass(options.confirmClass)
+            .dialog({
+                modal:          true,
+                escape:         false,
+                closeButton:    false
+            });
+
+        var message = $('<p></p>')
+            .addClass(options.messageClass)
+            .text(options.message)
+            .appendTo(dialog);
+
+        var buttons = $('<div></div>')
+            .addClass(options.buttonsClass)
+            .appendTo(dialog);
+
+        if ( options.title )
+        {
+            var title = $('<h4></h4>')
+                .addClass(options.titleClass)
+                .text(options.title)
+                .prependTo(dialog);
+        }
+
+        for ( var button in options.buttons )
+        {
+            $('<button></button>')
+                .addClass(options.buttonClass)
+                .text(button)
+                .data('evaluation', options.buttons[button])
+                .click(function()
+                {
+                    var evaluation = $(this).data('evaluation');
+                    dialog.dialog('close');
+                    return options.confirmed(evaluation());
+                })
+                .appendTo(buttons);
+        }
+
+        return dialog;
+    };
+})(jQuery);
+
+/**
+ * Alert
+ */
+(function($)
+{
+    $.alert = function(settings)
+    {
+        var options = $.extend({
+            confirmClass:       'alert',
+            titleClass:         'alert-title',
+            messageClass:       'alert-message',
+            title:              null,
+            message:            '',
+            button:             '確定',
+            confirmed:          function(result) { return true; }
+        }, settings);
+
+        var buttons = {
+        };
+
+        buttons[options.button] = function() { return true; };
+
+        return $.confirm({
+            confirmClass:       'alert',
+            titleClass:         'alert-title',
+            messageClass:       'alert-message',
+            title:              null,
+            message:            options.message,
+            buttons:            buttons,
+            confirmed:          options.confirmed
+        });
+    };
+})(jQuery);
+
+/**
  * Overlay
  */
 (function($)
 {
+    var elements = {};
+
+    var overlayCloseInternal = function(data)
+    {
+        var overlay = data[0];
+        var options = data[1];
+        var escape = data[2];
+        if ( ! options.onBeforeHide() ) return false;
+        $(overlay).fadeOut(options.speed, function()
+        {
+            options.onHide();
+            $(overlay).remove();
+            $(document).off('keyup', escape);
+        });
+        return true;
+    };
+
+    var overlayClose = function(uuid, index)
+    {
+        if ( index === undefined )
+        {
+            for ( var index in elements[uuid] )
+            {
+                var data = elements[uuid][index];
+                if ( ! overlayCloseInternal(data) ) return false;
+            }
+            elements[uuid] = [];
+        }
+        else
+        {
+            var data = elements[uuid][index];
+            if ( ! overlayCloseInternal(data) ) return false;
+            delete elements[uuid][index];
+        }
+        return true;
+    };
+
     $.overlay = function(options)
     {
-        return $('body').overlay(options);
+        return $(window).overlay(options);
     };
 
     $.fn.overlay = function(options)
     {
+        var index = $.generateUUID();
+        var options = $.extend({
+            overlayClass:   'overlay',
+            speed:          'fast',
+            closeOnClick:   true,
+            closeOnEscape:  true,
+            onBeforeShow:   function() { return true; },
+            onShow:         function() {},
+            onBeforeHide:   function() { return true; },
+            onHide:         function() {}
+        }, options);
+
+        this.index = index;
+
         return this.each(function()
         {
-            this.options = $.extend({
-                overlayClass:   'overlay',
-                speed:          'fast',
-                closeOnClick:   true,
-                closeOnEscape:  true,
-                onBeforeShow:   function() { return true; },
-                onShow:         function() {},
-                onAfterShow:    function() {},
-                onBeforeHide:   function() { return true; },
-                onHide:         function() {},
-                onAfterHide:    function() {}
-            }, options);
+            var uuid = $(this).data('uuid');
 
-            var overlayClose = (function(object)
-            {
-                return function()
-                {
-                    if ( this.options.onBeforeHide.call(this.overlay) )
-                    {
-                        this.overlay.fadeOut(this.options.speed, function()
-                        {
-                            object.options.onHide.call(object.overlverlay);
-                            object.overlay.remove();
-                            object.options.onAfterHide.call(object.overlverlay);
-                            $(document).unbind('keyup', closeOnEscape);
-                        });
-                    }
-                    return true;
-                };
-            })(this);
-            var closeOnEscape = (function(object)
-            {
-                return function(event)
-                {
-                    if ( event.keyCode == 27 )
-                    {
-                        if ( object.options.closeOnEscape )
-                        {
-                            return overlayClose.call(object);
-                        }
-                    }
-                };
-            })(this);
-
-            this.overlay = $('<div></div>')
-                .addClass(this.options.overlayClass)
+            var overlay = $('<div></div>')
+                .addClass(options.overlayClass)
                 .css({
                     display:            'none'
                 })
-                .click(function(object)
+                .fadeIn(options.speed, function()
                 {
-                    return function()
-                    {
-                        if ( object.options.closeOnClick )
-                        {
-                            return overlayClose.call(object);
-                        }
-                    };
-                }(this))
-                .fadeIn(this.options.speed, (function(object)
-                {
-                    return function()
-                    {
-                        if ( object.options.onBeforeShow.call(object.overlay) )
-                        {
-                            object.options.onShow.call(object.overlay);
-                            object.options.onAfterShow.call(object.overlay);
-                        }
-                        return true;
-                    };
-                })(this))
-                .appendTo($(this));
+                    if ( options.onBeforeShow() ) return options.onShow();
+                    return false;
+                })
+                .appendTo($('body'));
 
-            $.extend(this.overlay.__proto__, {
-                close: function()
+            var escape = function(event)
+            {
+                if ( event.keyCode == 27 )
                 {
-                    return overlayClose.call(this.get(0));
+                    return overlayClose(uuid);
+                }
+                return true;
+            };
+
+            if ( ! uuid )
+            {
+                uuid = $.generateUUID();
+                elements[uuid] = [];
+                $(this).data('uuid', uuid);
+            }
+
+            if ( this !== window )
+            {
+                overlay.css({
+                    height:             $(this).height(),
+                    left:               $(this).offset().left,
+                    position:           $(this).css('position'),
+                    top:                $(this).offset().top,
+                    width:              $(this).width()
+                });
+            }
+            if ( options.closeOnClick )
+            {
+                overlay.on('click', function() { return overlayClose(uuid); });
+            }
+            if ( options.closeOnEscape ) $(document).on('keyup', escape);
+            $.extend(overlay.__proto__, {
+                close: function(index)
+                {
+                    return overlayClose($(this).data('uuid'), index);
                 }
             });
-            $(document).bind('keyup', closeOnEscape);
-            return this.overlay;
+            elements[uuid][index] = [overlay, options, escape];
         });
     }
 })(jQuery);
@@ -1412,10 +1567,8 @@
             keyToNext:                  'n',
             onBeforeShow:               function() { return true; },
             onShow:                     function() {},
-            onAfterShow:                function() {},
             onBeforeHide:               function() { return true; },
-            onHide:                     function() {},
-            onAfterHide:                function() {}
+            onHide:                     function() {}
         }, options);
 
         var active = 0;
@@ -1488,7 +1641,6 @@
                     top: '50%'
                 });
                 lightboxLoadImage();
-                options.onAfterShow();
             }
             return false;
         }
@@ -1519,7 +1671,6 @@
             {
                 options.onHide();
                 $('#' + options.lightboxId).remove();
-                options.onAfterHide();
             }
             return true;
         }
@@ -1760,18 +1911,68 @@
         });
 
         $.konami({
-            code:                   [38],
+            code:                   [65],
             complete:               function()
             {
-                var input = 0;
-                var input_index = 1;
-                var up = 99;
-                var down = 0;
-                var answer = $.random(1, 99);
                 if ( $('#secret').length ) return false;
+                var input = '';
+                var up = 99;
+                var intial_length = up.length - 1;
+                var input_index = intial_length;
+                var down = 0;
+                var answer = $.random(down + 1, up - 1);
+                var buttons = [$('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>')];
+                var run = true;
+                var judgment = function(input_number)
+                {
+                    if ( run == false ) return true;
+                    var number = input_number;
+                    if ( number >= 0 && number < 10 )
+                    {
+                        input += number;
+                        input_index--;
+                    }
+                    else if ( number == 10 )
+                    {
+                        input_index = intial_length;
+                        input = '';
+                    }
+                    else if ( number == 11 )
+                    {
+                        input = parseInt( input_text.val() );
+                        if ( input < up && input >down )
+                        {
+                            if ( input == answer )
+                            {
+                                alert('恭喜你猜對了!!!');
+                                back.remove();
+                                box.remove();
+                                run = false;
+                                return true;
+                            }
+                            else if ( input > answer )
+                            {
+                                up = input;
+                            }
+                            else if ( input < answer )
+                            {
+                                down = input;
+                            }
+                            message.text('請輸入數字' + down + '到' + up +'之間');
+                        }
+                        else
+                        {
+                            alert('要輸在範圍內喔!');
+                        }
+                        input = '';
+                        input_index = intial_length;
+                    }
+                    input_text.attr('value', input);
+                    return true;
+                };
                 var back = $('<div></div>')
-                    .attr('id', 'secret')
-                    .css({
+                .attr('id', 'secret')
+                .css({
                     background: 'black',
                     height: '100%',
                     position: 'fixed',
@@ -1782,143 +1983,61 @@
                 })
                 .appendTo('body');
                 var box = $('<div></div>').css({
-                    background: 'red',
-                    height: 400,
-                    margin: '-200px 0 0 -200px',
+                    background: '#e6cde3',
+                    height: 420,
+                    margin: '-210px 0 0 -150px',
                     position: 'fixed',
                     top: '50%',
                     left: '50%',
-                    width: 400
+                    width: 300
                 })
                 .appendTo('body');
-                $('<h4>終極密碼</h4>').css({
-                    color: 'yellow',
+                $('<h4></h4>').text('終極密碼').css({
+                    color: '#1e50a2',
                     textAlign: 'center',
                     fontSize: 30
                 })
                 .appendTo(box);
                 var message = $('<p></p>').text('請輸入數字' + down + '到' + up +'之間').css({
-                    color: 'black',
+                    color: '#b44c97',
                     fontSize: 20,
-                    position: 'absolute',
-                    top: 60,
-                    left: '25%',
-                })
-                .appendTo(box);
-                var input_text = $('<input type="text" />').attr('value', '').css({
-                    left: 80,
-                    position: 'absolute',
-                })
-                .appendTo(box);
-                $('<button>確定送出</button>').css({
-                    color: 'black',
-                    left: 270,
-                    position: 'absolute',
                     textAlign: 'center'
                 })
-                .click(function()
-                {
-                    input = input_text.val();
-                    if( input < up && input >down )
-                    {
-                        if( input == answer )
-                        {
-                            alert('恭喜你猜對了!!!');
-                            back.remove();
-                            box.remove();   
-                        }
-                        else if( input > answer )
-                        {
-                            up = input;
-                        }
-                        else if( input < answer )
-                        {
-                            down = input;
-                        }
-                        message.text('請輸入數字' + down + '到' + up +'之間');
-                        input_index = 1;
-                    }
-                    else
-                    {
-                        alert('要輸在範圍內喔!');
-                    }
-                    input = 0;
-                    input_index = 1;
-                    input_text.attr('value', input);
+                .appendTo(box);
+                var input_text = $('<input type="text" readonly/>').attr('value', '').css({
+                    display: 'block',
+                    width: 228,
+                    height: 31,
+                    textAlign: 'center',
+                    fontSize: '2em',
+                    margin: '0 auto'
                 })
                 .appendTo(box);
                 var numberTable = $('<table></table>').css({
-                    border: 5,
-                    left: 80,
-                    top: 150,
-                    position: 'absolute'
+                    margin: '0 auto',
+                    textAlign: 'center'
                 });
-                var TableRow = [$('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>')];
+                var TableRow = [$('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>')];
                 for ( var i = 7; i > 0 ; i = i - 3 )
                 {
-                    for ( var j = 0; j <3 ; j++ )
+                    for ( var j = 0; j < 3 ; j++ )
                     {
-                        $('<td></td>').text( i + j ).addClass('tableBox').appendTo(TableRow[ parseInt( i / 3) ]);
-                        TableRow[ parseInt( i / 3 ) ].appendTo(numberTable);
+                        buttons[i + j].text( i + j ).addClass('tableBox').appendTo(TableRow[ parseInt( i / 3) ]);
                     }
                 }
-                $('<td></td>').text('0').css({
-                    height: 50,
-                    width: 100,
-                    fontSize: 30    
-                })
-                .mouseenter(function(){
-                    $(this).css({
-                        color: 'blue',
-                        cursor: 'default'
-                    });
-                })
-                .mouseleave(function(){
-                    $(this).css({
-                      color: 'black'
-                    });
-                })
-                .click(function()
+                buttons[0].text('0').addClass('tableBox').appendTo(TableRow[ 3 ]);
+                buttons[10].text('Clean').addClass('tableBox').appendTo(TableRow[ 3 ]);
+                buttons[11].text('Enter').addClass('tableBox').appendTo(TableRow[ 3 ]);
+                for ( var k = 2; k >= 0; k-- )
                 {
-                    if ( input_index == 1 )
-                    {
-                        input_index = 0;
-                    }
-                    else if( input_index == 0 )
-                    {
-                        input = input * 10;
-                        input_index = -1;
-                    }
-                    input_text.attr('value', input);
-                })
-                .appendTo(numberTable);
-                $('<td></td>').text('Clean').css({
-                    colspan: 2, 
-                    height: 50,
-                    width: 100,
-                    fontSize: 30
-                })
-                .mouseenter(function(){
-                    $(this).css({
-                        color: 'blue',
-                        cursor: 'default'
-                    });
-                })
-                .mouseleave(function(){
-                    $(this).css({
-                        color: 'black'
-                    });
-                })
-                .click(function()
-                {
-                    input_index = 1;
-                    input = 0;
-                    input_text.attr('value', input);
-                })
-                .appendTo(numberTable);
+                    TableRow[k].appendTo(numberTable);
+                }
+                TableRow[3].appendTo(numberTable);
                 numberTable.appendTo(box);
                 $('.tableBox').each(function(){
                     $(this).css({
+                        color: '#8d6449',
+                        textAlign: 'center',
                         height: 50,
                         width: 100,
                         fontSize: 30    
@@ -1931,24 +2050,83 @@
                     })
                     .mouseleave(function(){
                         $(this).css({
-                            color: 'black'
+                            color: '#8d6449'
                         });
                     })
                     .click(function()
                     {
-                        if ( input_index == 1 )
+                        $(this).css({
+                            color: 'yellow'
+                        });
+                        if ( $(this).text() == 'Enter' )
                         {
-                            input = $(this).text();
-                            input_index = 0;
+                            judgment( 11 );
                         }
-                        else if( input_index == 0 )
+                        else if ( $(this).text() == 'Clean' )
                         {
-                            input = input * 10 + parseInt( $(this).text() );
-                            input_index = -1;
+                            judgment( 10 );
                         }
-                        input_text.attr('value', input);
-                    })
+                        else
+                        {
+                            judgment( parseInt( $(this).text() ) );
+                        }
+                    });
                 })
+                $(document).keydown(function(event)
+                {
+                    if ( event.keyCode != 231 && event.keyCode > 95 && event.keyCode < 106)
+                    {
+                        buttons[ event.keyCode - 96 ].css({
+                            color: 'yellow'
+                        });
+                    }
+                    else if ( event.keyCode == 108 || event.keyCode == 13 )
+                    {
+                        buttons[11].css({
+                            color: 'yellow'
+                        });
+                    }
+                    else if ( event.keyCode == 27 )
+                    {
+                        buttons[10].css({
+                            color: 'yellow'
+                        });
+                    }
+                    else if ( event.keyCode == 8 )
+                    {
+                        return false;
+                    }
+                    return true;
+                });
+                $(document).keyup(function(event)
+                {
+                    if ( event.keyCode != 231 && event.keyCode > 95 && event.keyCode < 106)
+                    {
+                        buttons[ event.keyCode - 96 ].css({
+                            color: '#8d6449'
+                        });
+                        judgment( event.keyCode - 96 );
+                    }
+                    else if ( event.keyCode == 108 || event.keyCode == 13 )
+                    {
+                        buttons[11].css({
+                            color: '#8d6449'
+                        });
+                        judgment(11);
+                    }
+                    else if ( event.keyCode == 27 )
+                    {
+                        buttons[10].css({
+                            color: '#8d6449'
+                        });
+                        judgment(10);
+                    }
+                    else if ( event.keyCode == 8 )
+                    {
+                        return false;
+                    }
+                    return true;
+                });
             }
         });
 

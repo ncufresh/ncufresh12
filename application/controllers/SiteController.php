@@ -249,6 +249,7 @@ class SiteController extends Controller
                 $profile->department_id = $_POST['profile']['department'];
                 $profile->grade = $_POST['profile']['grade'];
                 $profile->picture = $_FILES['picture']['name'];
+                $profile->sex = $_POST['sex'];
                 $target = $path . DIRECTORY_SEPARATOR . $profile->picture;
                 move_uploaded_file($_FILES['picture']['tmp_name'], $target);
                 $picture_size=$_FILES['picture']['size'];
