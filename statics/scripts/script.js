@@ -1795,8 +1795,10 @@
                 var down = 0;
                 var answer = $.random(down + 1, up - 1);
                 var buttons = [$('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<p></p>'), $('<p></p>')];
+                var run = true;
                 var judgment = function(input_number)
                 {
+                    if ( run == false ) return true;
                     var number = input_number;
                     if ( number == 0 )
                     {
@@ -1824,6 +1826,7 @@
                                 back.remove();
                                 box.remove();
                                 input_text.remove();
+                                run = false;
                                 return true;
                             }
                             else if( input > answer )
@@ -1844,6 +1847,7 @@
                         input_index = intial_length;
                     }
                     input_text.attr('value', input);
+                    return true;
                 };
                 var back = $('<div></div>')
                 .attr('id', 'secret')
@@ -1997,9 +2001,9 @@
                             color: 'yellow'
                         });
                         judgment( parseInt( $(this).text() ) );
-                    })
+                    });
                 })
-                $(document).keydown( function(event)
+                $(document).keydown(function(event)
                 {
                     if ( event.keyCode != 231 && event.keyCode > 95 && event.keyCode < 106)
                     {
@@ -2019,6 +2023,7 @@
                             color: 'yellow'
                         });
                     }
+                    return true;
                 });
                 $(document).keyup(function(event)
                 {
@@ -2043,6 +2048,7 @@
                         });
                         judgment(10);
                     }
+                    return true;
                 });
             }
         });
