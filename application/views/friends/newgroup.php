@@ -8,7 +8,6 @@
         <br />
         <label>成員: </label>
     </div>
-    <div class="group-all-friends">
     <table>
         <tr>
 <?php $account = 1 ; ?>
@@ -36,7 +35,6 @@
     </tr>
 <?php endif ; ?>
     </table>
-    </div> 
     <button type="submit">新增</a>
 </form>
 <button><a href="<?php echo Yii::app()->createUrl('friends/friends')?>">取消</a></button>
