@@ -1818,7 +1818,7 @@
                 var input_index = intial_length;
                 var down = 0;
                 var answer = $.random(down + 1, up - 1);
-                var buttons = [$('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<p></p>'), $('<p></p>')];
+                var buttons = [$('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>')];
                 var run = true;
                 var judgment = function(input_number)
                 {
@@ -1844,7 +1844,6 @@
                                 alert('恭喜你猜對了!!!');
                                 back.remove();
                                 box.remove();
-                                input_text.remove();
                                 run = false;
                                 return true;
                             }
@@ -1882,12 +1881,12 @@
                 .appendTo('body');
                 var box = $('<div></div>').css({
                     background: '#e6cde3',
-                    height: 400,
-                    margin: '-200px 0 0 -200px',
+                    height: 420,
+                    margin: '-210px 0 0 -150px',
                     position: 'fixed',
                     top: '50%',
                     left: '50%',
-                    width: 400
+                    width: 300
                 })
                 .appendTo('body');
                 $('<h4></h4>').text('終極密碼').css({
@@ -1899,63 +1898,33 @@
                 var message = $('<p></p>').text('請輸入數字' + down + '到' + up +'之間').css({
                     color: '#b44c97',
                     fontSize: 20,
-                    position: 'absolute',
-                    top: 60,
-                    left: '25%'
+                    textAlign: 'center'
                 })
                 .appendTo(box);
                 var input_text = $('<input type="text" readonly/>').attr('value', '').css({
-                    left: 84,
+                    display: 'block',
                     width: 228,
                     height: 31,
                     textAlign: 'center',
-                    position: 'absolute',
-                    fontSize: '2em'
+                    fontSize: '2em',
+                    margin: '0 auto'
                 })
                 .appendTo(box);
                 var numberTable = $('<table></table>').css({
-                    border: 5,
-                    left: 40,
-                    top: 150,
-                    position: 'absolute'
+                    margin: '0 auto',
+                    textAlign: 'center'
                 });
                 var TableRow = [$('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>')];
                 for ( var i = 7; i > 0 ; i = i - 3 )
                 {
-                    for ( var j = 0; j <3 ; j++ )
+                    for ( var j = 0; j < 3 ; j++ )
                     {
                         buttons[i + j].text( i + j ).addClass('tableBox').appendTo(TableRow[ parseInt( i / 3) ]);
                     }
                 }
-                buttons[0].text('0').css({
-                    color: '#8d6449',
-                    height: 50,
-                    width: 100,
-                    textAlign: 'center',
-                    fontSize: 30    
-                })
-                .addClass('tableBox')
-                .appendTo(TableRow[ 3 ]);
-                buttons[10].text('Clean').css({
-                    color: '#8d6449',
-                    top: 137,
-                    left: 119,
-                    position: 'absolute',
-                    fontSize: 30,
-                    textAlign: 'center'
-                })
-                .addClass('tableBox')
-                .appendTo(TableRow[ 3 ]);
-                buttons[11].text('Enter').css({
-                    color: '#8d6449',
-                    top: 137,
-                    left: 226,
-                    position: 'absolute',
-                    textAlign: 'center',
-                    fontSize: 30
-                })
-                .addClass('tableBox')
-                .appendTo(TableRow[ 3 ]);
+                buttons[0].text('0').addClass('tableBox').appendTo(TableRow[ 3 ]);
+                buttons[10].text('Clean').addClass('tableBox').appendTo(TableRow[ 3 ]);
+                buttons[11].text('Enter').addClass('tableBox').appendTo(TableRow[ 3 ]);
                 for ( var k = 2; k >= 0; k-- )
                 {
                     TableRow[k].appendTo(numberTable);
