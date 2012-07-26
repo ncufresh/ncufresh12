@@ -23,19 +23,19 @@ jQuery(document).ready(function()
                         <li class="life-indexs-content">
                             <span>衛保組</span>
                                 <ul class="life-indexs-inner">
-                                    <li>衛保組</li>
+                                    <li page="health" tab="1">衛保組</li>
                                 </ul>
                         </li>
                         <li class="life-indexs-content">
                             <span>特約醫院</span>
                                 <ul class="life-indexs-inner">
-                                    <li>特約醫院</li>
+                                    <li page="health" tab="2">特約醫院</li>
                                 </ul>
                         </li>
                         <li class="life-indexs-content">
                             <span>心理諮商</span>
                                 <ul class="life-indexs-inner">
-                                    <li>心理諮商</li>
+                                    <li page="health" tab="3">心理諮商</li>
                                 </ul>
                         </li>
                     </ul>
@@ -231,7 +231,10 @@ jQuery(document).ready(function()
     </div>
     <div id="life-bottom">
         <div id="life-dialog">
+            <div id="nculife-t">
+                </div>
             <div id="nculife-dh">
+                
             </div><!-- end nculife-dh -->
             <div id="nculife-db">
                 <div id="nculife-cv">
