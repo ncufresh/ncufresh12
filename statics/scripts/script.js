@@ -668,16 +668,16 @@
 {
     $.fn.scrollable = function(options)
     {
+        var options = $.extend({
+            scrollableClass:        false,
+            fadeInDuration:         'slow',
+            fadeOutDuration:        'slow',
+            wheelSpeed:             6
+        }, options);
         return this.each(function()
         {
             var active = false;
             var inside = false;
-            var options = $.extend({
-                scrollableClass:        false,
-                fadeInDuration:         'slow',
-                fadeOutDuration:        'slow',
-                wheelSpeed:             6
-            }, options);
             var updateScrollDraggableHeight = function()
             {
                 var scrollAreaHeight = scrollArea.height();
@@ -1911,7 +1911,7 @@
         });
 
         $.konami({
-            code:                   [38],
+            code:                   [65],
             complete:               function()
             {
                 if ( $('#secret').length ) return false;
@@ -1927,12 +1927,7 @@
                 {
                     if ( run == false ) return true;
                     var number = input_number;
-                    if ( number == 0 )
-                    {
-                        input += '0';
-                        input_index--;
-                    }
-                    else if ( number > 0 && number < 10 )
+                    if ( number >= 0 && number < 10 )
                     {
                         input += number;
                         input_index--;
@@ -1945,9 +1940,9 @@
                     else if ( number == 11 )
                     {
                         input = parseInt( input_text.val() );
-                        if( input < up && input >down )
+                        if ( input < up && input >down )
                         {
-                            if( input == answer )
+                            if ( input == answer )
                             {
                                 alert('恭喜你猜對了!!!');
                                 back.remove();
@@ -1956,11 +1951,11 @@
                                 run = false;
                                 return true;
                             }
-                            else if( input > answer )
+                            else if ( input > answer )
                             {
                                 up = input;
                             }
-                            else if( input < answer )
+                            else if ( input < answer )
                             {
                                 down = input;
                             }
@@ -2017,7 +2012,8 @@
                     width: 228,
                     height: 31,
                     textAlign: 'center',
-                    position: 'absolute'
+                    position: 'absolute',
+                    fontSize: '2em'
                 })
                 .appendTo(box);
                 var numberTable = $('<table></table>').css({
@@ -2051,24 +2047,7 @@
                     fontSize: 30,
                     textAlign: 'center'
                 })
-                .mouseenter(function(){
-                    $(this).css({
-                        color: 'blue',
-                        cursor: 'default'
-                    });
-                })
-                .mouseleave(function(){
-                    $(this).css({
-                        color: '#8d6449'
-                    });
-                })
-                .click(function()
-                {
-                    $(this).css({
-                        color: 'yellow'
-                    });
-                    judgment(10);
-                })
+                .addClass('tableBox')
                 .appendTo(TableRow[ 3 ]);
                 buttons[11].text('Enter').css({
                     color: '#8d6449',
@@ -2078,30 +2057,13 @@
                     textAlign: 'center',
                     fontSize: 30
                 })
-                .mouseenter(function()
-                {
-                    $(this).css({
-                        color: 'blue',
-                        cursor: 'default'
-                    });
-                })
-                .mouseleave(function(){
-                    $(this).css({
-                      color: '#8d6449'
-                    });
-                })
-                .click(function()
-                {
-                    $(this).css({
-                        color: 'yellow'
-                    });
-                    judgment(11);
-                })
+                .addClass('tableBox')
                 .appendTo(TableRow[ 3 ]);
-                for ( var k = 0; k < 4; k++ )
+                for ( var k = 2; k >= 0; k-- )
                 {
                     TableRow[k].appendTo(numberTable);
                 }
+                TableRow[3].appendTo(numberTable);
                 numberTable.appendTo(box);
                 $('.tableBox').each(function(){
                     $(this).css({
@@ -2127,7 +2089,18 @@
                         $(this).css({
                             color: 'yellow'
                         });
-                        judgment( parseInt( $(this).text() ) );
+                        if ( $(this).text() == 'Enter' )
+                        {
+                            judgment( 11 );
+                        }
+                        else if ( $(this).text() == 'Clean' )
+                        {
+                            judgment( 10 );
+                        }
+                        else
+                        {
+                            judgment( parseInt( $(this).text() ) );
+                        }
                     });
                 })
                 $(document).keydown(function(event)
@@ -2149,6 +2122,10 @@
                         buttons[10].css({
                             color: 'yellow'
                         });
+                    }
+                    else if ( event.keyCode == 8 )
+                    {
+                        return false;
                     }
                     return true;
                 });
@@ -2174,6 +2151,10 @@
                             color: '#8d6449'
                         });
                         judgment(10);
+                    }
+                    else if ( event.keyCode == 8 )
+                    {
+                        return false;
                     }
                     return true;
                 });
