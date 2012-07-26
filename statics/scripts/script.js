@@ -1117,15 +1117,21 @@
             }
             return false;
         });
+        var tdClick = function()
+        {
+            $(this).parents('table').find('td').css('outline', '0');
+            $(this).css('outline', '1px solid black');
+        }
         september = $.fn.generateCalendar({
             year: 2012,
             month: 8,
+            dayClick: tdClick,
             left: true,
             leftClick: function()
             {
                 september.detach();
                 august.prependTo(bottom);
-                $.fn.generateCalendar
+                //$.fn.generateCalendar
                 return false;
             }
             
@@ -1138,13 +1144,10 @@
             {
                 august.detach();
                 september.prependTo(bottom);
-                $.fn.generateCalendar
+                // $.fn.generateCalendar
                 return false;
             },
-            dayClick: function()
-            {
-                $(this).css('border', '1px solid black');
-            }
+            dayClick: tdClick
         }).appendTo(bottom);
         bottom.appendTo(bottom_wrap);
         todolist = $.fn.generateTodolist(

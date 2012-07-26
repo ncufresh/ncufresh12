@@ -1114,6 +1114,7 @@ ul#nculife-details
 {
     text-align: right;
     width: 28px;
+    cursor: pointer;
 }
 
 #index-calendar .calendar-bottom-wrap table.calendar-table thead
