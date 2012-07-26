@@ -77,6 +77,14 @@
         integer: function(value)
         {
             return parseInt(value, 10);
+        },
+        pause: function(miliseconds)
+        {
+            var date = new Date(); 
+            var current = null;
+            do {
+                current = new Date();
+            } while ( current - date < miliseconds);
         }
     });
 })(jQuery);
@@ -943,7 +951,7 @@
 })(jQuery);
 
 /**
- * indexCalendar
+ * Calendar
  */
 (function($)
 {
@@ -1152,61 +1160,523 @@
 })(jQuery);
 
 /**
+ * Dialog
+ */
+(function($){
+    $.dialog = {};
+
+    $.fn.dialog = function(options)
+    {
+        return $(this).each(function()
+        {
+            this.options =  $.extend({
+                width:          $(this).width(),
+                heigth:         $(this).height(),
+                modal:          true,
+                escape:         true,
+                closeButton:    true,
+                speed:          'fast',
+                effect:         'none',
+                dialogClass:    'dialog',
+                closeText:      'close',
+                closeClass:     'dialog-close-button',
+                openEffect:     function(speed)
+                {
+                    $(this).fadeIn(speed);
+                },
+                closeEffect:    function(speed)
+                {
+                    $(this).fadeOut(speed);
+                },
+                onClose:        function() {},
+                onOpen:         function() {},
+                onCreate:       function() {},
+                onDestroy:      function() {}
+            }, this.options, options);
+            switch ( options )
+            {
+                case 'close' : 
+                    $.fn.dialog.close(this);
+                    break;
+                case 'destroy' :
+                    $.fn.dialog.destroy(this);
+                    break;
+                case 'open' :
+                    $.fn.dialog.open(this);
+                    break;
+                case 'create' :
+                    $.fn.dialog.create(this);
+                    break;
+                default :
+                    $.fn.dialog.open(this);
+            }
+        });
+    }
+
+    $.fn.dialog.open = function(target)
+    {
+        target.options.onOpen.call(target);
+        target.overlay = $('<div></div>').overlay({
+            closeOnClick:   ! target.options.modal,
+            closeOnEscape:  target.options.escape,
+            onBeforeHide:   function()
+            {
+                target.options.onClose.call(target);
+                target.options.closeEffect.call(target, target.options.speed);
+                return true;
+            }
+        }).appendTo($('body'));
+        if ( ! $(target).hasClass(target.options.dialogClass) )
+        {
+            $.fn.dialog.create(target);
+        }
+        target.options.openEffect.call(target, target.options.speed);
+    }     
+
+    $.fn.dialog.close = function(target)
+    {
+        target.overlay.close();
+        target.overlay.remove();
+    }
+
+    $.fn.dialog.create = function(target)
+    {
+        if ( ! $(target).hasClass(target.options.dialogClass) )
+        {
+            if ( target.options.closeButton )
+            {
+                var close = $('<a></a>')
+                    .attr('href','#')
+                    .text(target.options.closeText)
+                    .addClass(target.options.closeClass)
+                    .click(function()
+                    {
+                        $.fn.dialog.close(target);
+                        return false;
+                    });
+                $(target).prepend(close);
+            }
+        }
+        target.options.onCreate.call(target);
+        $(target)
+            .css({
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: target.options.width,
+                heigth: target.options.heigth,
+                marginLeft: -1 * target.options.width / 2,
+                marginTop: -1 * target.options.heigth / 2,
+                padding: 0,
+                display: 'none',
+                zIndex: 1000
+            })
+            .addClass(target.options.dialogClass)
+            .detach()
+            .appendTo('body');
+    } 
+
+    $.fn.dialog.destroy = function(target)
+    {
+        target.options.onDestroy.call(target);
+        $(target).remove();
+    }
+})(jQuery);
+
+/**
  * Overlay
  */
 (function($)
 {
     $.overlay = function(options)
     {
-        $('body').overlay(options);
+        return $('body').overlay(options);
     };
 
     $.fn.overlay = function(options)
     {
-        return $(this).each(function()
+        return this.each(function()
         {
-            var options = $.extend({
+            this.options = $.extend({
                 overlayClass:   'overlay',
                 speed:          'fast',
                 closeOnClick:   true,
                 closeOnEscape:  true,
+                onBeforeShow:   function() { return true; },
                 onShow:         function() {},
-                onHide:         function() {}
+                onAfterShow:    function() {},
+                onBeforeHide:   function() { return true; },
+                onHide:         function() {},
+                onAfterHide:    function() {}
             }, options);
-            var closeOverlay = function(closeOnEscape)
+
+            var overlayClose = (function(object)
             {
-                overlay.fadeOut(options.speed, function()
+                return function()
                 {
-                    $(document).unbind('keyup', closeOverlay);
-                    options.onHide();
-                    overlay.remove();
-                });
-            };
-            var closeOnEscape = function(event)
+                    if ( this.options.onBeforeHide.call(this.overlay) )
+                    {
+                        this.overlay.fadeOut(this.options.speed, function()
+                        {
+                            object.options.onHide.call(object.overlverlay);
+                            object.overlay.remove();
+                            object.options.onAfterHide.call(object.overlverlay);
+                            $(document).unbind('keyup', closeOnEscape);
+                        });
+                    }
+                    return true;
+                };
+            })(this);
+            var closeOnEscape = (function(object)
             {
-                if ( event.keyCode == 27 && options.closeOnEscape )
+                return function(event)
                 {
-                    close();
-                    return false;
-                }
-            }
-            var overlay = $('<div></div>')
-                .addClass(options.overlayClass)
+                    if ( event.keyCode == 27 )
+                    {
+                        if ( object.options.closeOnEscape )
+                        {
+                            return overlayClose.call(object);
+                        }
+                    }
+                };
+            })(this);
+
+            this.overlay = $('<div></div>')
+                .addClass(this.options.overlayClass)
                 .css({
                     display:            'none'
                 })
-                .click(function()
+                .click(function(object)
                 {
-                    if ( options.closeOnClick ) return closeOverlay();
-                })
-                .fadeIn(options.speed, options.onShow)
+                    return function()
+                    {
+                        if ( object.options.closeOnClick )
+                        {
+                            return overlayClose.call(object);
+                        }
+                    };
+                }(this))
+                .fadeIn(this.options.speed, (function(object)
+                {
+                    return function()
+                    {
+                        if ( object.options.onBeforeShow.call(object.overlay) )
+                        {
+                            object.options.onShow.call(object.overlay);
+                            object.options.onAfterShow.call(object.overlay);
+                        }
+                        return true;
+                    };
+                })(this))
                 .appendTo($(this));
-            $.extend(overlay.__proto__, {
-                close: closeOverlay
+
+            $.extend(this.overlay.__proto__, {
+                close: function()
+                {
+                    return overlayClose.call(this.get(0));
+                }
             });
             $(document).bind('keyup', closeOnEscape);
+            return this.overlay;
         });
     }
+})(jQuery);
+
+/**
+ * Lightbox
+ */
+(function($) {
+    $.fn.lightbox = function(options)
+    {
+        var options = $.extend({
+            lightboxId:                 'lightbox',
+            lightboxContainerId:        'lightbox-container',
+            lightboxBoxId:              'lightbox-box',
+            lightboxLoadingId:          'lightbox-loading',
+            lightboxImageId:            'lightbox-image',
+            lightboxNavigationId:       'lightbox-navigation',
+            lightboxPrevId:             'lightbox-prev',
+            lightboxNextId:             'lightbox-next',
+            lightboxCloseId:            'lightbox-close',
+            lightboxDetailsId:          'lightbox-details',
+            lightboxCaptionId:          'lightbox-caption',
+            lightboxPageId:             'lightbox-page',
+            fixedNavigation:            false,
+            containerBorderSize:        10,
+            containerResizeSpeed:       'slow',
+            detailsSlideSpeed:          'fast',
+            textImage:                  'Image',
+            textOf:                     '/',
+            keyToClose:                 'c',
+            keyToPrev:                  'p',
+            keyToNext:                  'n',
+            onBeforeShow:               function() { return true; },
+            onShow:                     function() {},
+            onAfterShow:                function() {},
+            onBeforeHide:               function() { return true; },
+            onHide:                     function() {},
+            onAfterHide:                function() {}
+        }, options);
+
+        var active = 0;
+
+        var images = [];
+
+        var objects = $(this);
+
+        var lightboxInitialize = function()
+        {
+            if ( options.onBeforeShow() )
+            {
+                var overlay = $.overlay({
+                    onBeforeHide: lightboxClose
+                });
+                var lightbox = $('<div></div>')
+                    .attr('id', options.lightboxId)
+                    .click(overlay.close)
+                    .appendTo($('body'));
+                var box = $('<div></div>')
+                    .attr('id', options.lightboxBoxId)
+                    .appendTo(lightbox);
+                var loading = $('<div></div>')
+                    .attr('id', options.lightboxLoadingId)
+                    .appendTo(box);
+                var image = $('<img />')
+                    .attr('id', options.lightboxImageId)
+                    .appendTo(box);
+                var navigation = $('<div></div>')
+                    .attr('id', options.lightboxNavigationId)
+                    .appendTo(box);
+                var prev = $('<a></a>')
+                    .attr('id', options.lightboxPrevId)
+                    .attr('href', '#')
+                    .appendTo(navigation);
+                var next = $('<a></a>')
+                    .attr('id', options.lightboxNextId)
+                    .attr('href', '#')
+                    .appendTo(navigation);
+                var details = $('<div></div>')
+                    .attr('id', options.lightboxDetailsId)
+                    .appendTo(lightbox);
+                var caption = $('<span></span>')
+                    .attr('id', options.lightboxCaptionId)
+                    .appendTo(details);
+                var page = $('<span></span>')
+                    .attr('id', options.lightboxPageId)
+                    .appendTo(details);
+                var close = $('<a></a>')
+                    .attr('id', options.lightboxCloseId)
+                    .attr('href', '#')
+                    .click(overlay.close)
+                    .appendTo(details);
+
+                active = 0;
+                images = [];
+                objects.each(function(index)
+                {
+                    var object = objects.eq(index);
+                    images.push(new Array(
+                        object.attr('title'),
+                        object.attr('href')
+                    ));
+                });
+                while ( images[active][1] != $(this).attr('href') ) active++;
+
+                options.onShow();
+                lightbox.css({
+                    marginTop: -1 * box.height() / 2,
+                    top: '50%'
+                });
+                lightboxLoadImage();
+                options.onAfterShow();
+            }
+            return false;
+        }
+
+        var lightboxPrev = function()
+        {
+            if ( active != 0 )
+            {
+                active -= 1;
+                lightboxLoadImage();
+            }
+            return false;
+        }
+
+        var lightboxNext = function()
+        {
+            if ( active != (images.length - 1) )
+            {
+                active += 1;
+                lightboxLoadImage();
+            }
+            return false;
+        }
+
+        var lightboxClose = function()
+        {
+            if ( options.onBeforeHide() )
+            {
+                options.onHide();
+                $('#' + options.lightboxId).remove();
+                options.onAfterHide();
+            }
+            return true;
+        }
+
+        var lightboxLoadImage = function()
+        {
+            var preloader = new Image();
+
+            if ( ! options.fixedNavigation )
+            {
+                $('#' + options.lightboxNavigationId + ', #' + options.lightboxPrevId + ', #' + options.lightboxNextId).hide();
+            }
+            $('#' + options.lightboxImageId + ', #' + options.lightboxDetailsId + ', #' + options.lightboxPageId).hide();
+
+            preloader.onload = function() {
+                $('#' + options.lightboxImageId).attr('src', images[active][1]);
+                lightboxResize(preloader.width, preloader.height);
+            };
+            preloader.src = images[active][1];
+        };
+
+        var lightboxResize = function(width, height)
+        {
+            var currentWidth = $('#' + options.lightboxBoxId).width();
+            var currentHeight = $('#' + options.lightboxBoxId).height();
+            var containerWidth = (width + (options.containerBorderSize * 2));
+            var containerHeight = (height + (options.containerBorderSize * 2));
+            var differenceWidth = currentWidth - containerWidth;
+            var differenceHeight = currentHeight - containerHeight;
+
+            $('#' + options.lightboxId).css({
+                marginTop: -1 * containerWidth / 2
+            });
+            $('#' + options.lightboxDetailsId).css({
+                width: width
+            });
+            $('#' + options.lightboxPrevId + ', #' + options.lightboxNextId).css({
+                height: containerHeight
+            });
+            $('#' + options.lightboxBoxId).animate({
+                height: containerHeight,
+                width: containerWidth
+            }, options.containerResizeSpeed, lightboxShowImage);
+
+            if ( ( differenceWidth == 0 ) && ( differenceHeight == 0 ) )
+            {
+                $.pause($.browser.msie ? 250 : 100);
+            }
+        }
+
+        var lightboxShowImage = function()
+        {
+            $('#' + options.lightboxImageId).fadeIn(function()
+            {
+                lightboxShowImageDetails();
+
+                $('#' + options.lightboxNavigationId).show();
+
+                if ( active != 0 )
+                {
+                    $('#' + options.lightboxPrevId)
+                        .unbind()
+                        .bind('click', lightboxPrev)
+                        .show();
+                }
+
+                if ( active != (images.length - 1) )
+                {
+                    $('#' + options.lightboxNextId)
+                        .unbind()
+                        .bind('click', lightboxNext)
+                        .show();
+                }
+            });
+
+            lightboxPreload();
+        };
+
+        var lightboxShowImageDetails = function()
+        {
+            $('#' + options.lightboxCaptionId).hide();
+            if ( images[active][0] )
+            {
+                $('#' + options.lightboxCaptionId).html(images[active][0]).show();
+            }
+
+            if ( images.length > 1 )
+            {
+                $('#' + options.lightboxPageId).html(
+                    options.textImage + ' '
+                  + ( active + 1 ) + ' '
+                  + options.textOf + ' '
+                  + images.length
+                ).show();
+            }
+
+            $('#' + options.lightboxDetailsId).slideDown(options.detailsSlideSpeed);
+        };
+
+        var lightboxPreload = function()
+        {
+            if ( active > 0 )
+            {
+                var objPrev = new Image();
+                objPrev.src = images[active - 1][1];
+            }
+
+            if ( (images.length - 1) > active )
+            {
+                var objNext = new Image();
+                objNext.src = images[active + 1][1];
+            }
+
+            lightboxEnableKeyboard();
+        };
+
+        var lightboxEnableKeyboard = function()
+        {
+            $(document).bind('keydown', lightboxKeyboard);
+        }
+
+        var lightboxDisableKeyboard = function()
+        {
+            $(document).unbind('keydown', lightboxKeyboard);
+        }
+
+        var lightboxKeyboard = function(event)
+        {
+            var key = String.fromCharCode(event.keyCode).toLowerCase();
+            if (
+                (key == options.keyToClose.toLowerCase())
+             || (key == 'x')
+             || (event.keyCode == 27)
+            )
+            {
+                lightboxClose();
+            }
+            if (
+                (key == options.keyToPrev.toLowerCase())
+             || (event.keyCode == 37)
+            )
+            {
+                lightboxPrev();
+                lightboxDisableKeyboard();
+            }
+            if (
+                (key == options.keyToNext.toLowerCase())
+             || (event.keyCode == 39)
+            )
+            {
+                lightboxNext();
+                lightboxDisableKeyboard();
+            }
+        }
+
+        return this.unbind('click').click(lightboxInitialize);
+    };
 })(jQuery);
 
 /**

@@ -29,4 +29,12 @@ class Category extends CActiveRecord
             'fid'   => $this->id,
         ));
     }
+    
+    public function getIsMaster($fid)
+    {
+        if( (Yii::app()->user->getId() != 0 && $this->find('id='.$fid)->master_id == Yii::app()->user->getId()) || Yii::app()->user->getIsAdmin() )
+            return true;
+        else
+            return false;
+    }
 }
