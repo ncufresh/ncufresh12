@@ -11,9 +11,7 @@ class Article extends CActiveRecord
     {
         return '{{forum_articles}}';
     }
-    
-    //validate
-    
+        
     public function relations()
     {
         return array(
@@ -95,14 +93,15 @@ class Article extends CActiveRecord
                 $this->create_time = TIMESTAMP;
             }
             $this->update_time = TIMESTAMP;
+            //[not yet] §PÂ_$fid ¸ò category ¹ïÀ³
             return true;
         }
         return false;
     }
     
-    public function getPageStatus($page, $entries_per_page)
+    public function getPageStatus($page, $entries_per_page, $fid)
     {
-        $pages = ceil($this->count('visibility = 1') / $entries_per_page);
+        $pages = ceil($this->count('forum_id= '.$fid.' AND visibility = 1') / $entries_per_page);
 
         return array(
             'pages'         => $pages,

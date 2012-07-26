@@ -2,14 +2,13 @@
 <script>
 (function($){
     $(document).ready(function (){
+        /* title最多20字元 */
         var title_num = 20;
+        /* content最少10字元 */
         var content_num = 10;
-        //$("#text-number-check").append("You have  <strong>"+ characters+"</strong> characters remaining");
-        //var  remaining ;
-        //check_title=1;
         counter=[];
         function check_submit(){
-            $("#send").attr('disabled','');
+            $("#forum-create-submit").attr('disabled','');
             check=0;
             for(i=0;i<2;i++){
                 if(counter[i]!=1){
@@ -21,32 +20,34 @@
             if(check==1)
                 return true;
         }
-        $("#title").keydown(function(){
+        $("#forum-create-title").keydown(function(){
+            /* 若title字數超過20則將submit disable */
             if($(this).val().length > title_num){
                 counter[0]=0;
                 $(this).val($(this).val().substr(0, title_num));
                 if(check_submit()==false)
-                    $("#send").attr('disabled','');
+                    $("#forum-create-submit").attr('disabled','');
             }
             else if($(this).val().length < title_num && $(this).val().length > 0){
                 counter[0]=1;
-                $("#text-number-check").html("<strong>"+check_submit()+"</strong>");
+                $("#forum-create-text-number-check").html("<strong>"+check_submit()+"</strong>");
                 if(check_submit()==true)
-                    $("#send").removeAttr('disabled');
+                    $("#forum-create-submit").removeAttr('disabled');
             }
         });
-        $("#form-forum-content").keydown(function(){
+        $("#form-create-content").keydown(function(){
+            /* 若content字數小於10則將submit disable */
             if($(this).val().length < content_num){
                 counter[1]=0;
                 $(this).val($(this).val().substr(0, content_num));
                 if(check_submit()==false)
-                    $("#send").attr('disabled','');
+                    $("#forum-create-submit").attr('disabled','');
             }
             else{
                 counter[1]=1;
-                $("#text-number-check").html("<strong>"+check_submit()+"</strong>");
+                $("#forum-create-text-number-check").html("<strong>"+check_submit()+"</strong>");
                 if(check_submit()==true)
-                    $("#send").removeAttr('disabled');
+                    $("#forum-create-submit").removeAttr('disabled');
             }
         });
     });
@@ -54,7 +55,7 @@
 </script>
 <?php $this->endWidget();?>
 發表文章<br />
-<div id="text-number-check"></div>
+<div id="forum-create-text-number-check"></div>
 <?php
     echo $fid . '<br />';
     foreach ( $category->article_categories as $entry )
@@ -64,12 +65,12 @@
     }
 ?>
 
-<form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/create', array('fid' => $fid)); ?>" method="POST" class="MultiFile-intercepted">
-標題<input id="title" type="text" name="forum[title]" />
-內容<textarea id="form-forum-content" name="forum[content]" cols="30" rows="10"></textarea>
+<form enctype="multiprt/form-data" action="<?php echo Yii::app()->createUrl('forum/create', array('fid' => $fid)); ?>" method="POST" id="forum-create-form">
+標題<input id="forum-create-title" type="text" name="forum[title]" />
+內容<textarea id="form-create-content" name="forum[content]" cols="30" rows="10"></textarea>
 <br/>
 分類
-<select name="forum[category]">
+<select id="forum-create-category" name="forum[category]">
 <?php foreach ( $category->article_categories as $entry ) : ?>
     <option value="<?php echo $entry->id; ?>"><?php echo $entry->name; ?></option>
 <?php endforeach; ?>
@@ -84,7 +85,7 @@ if($is_master):
 endif;
 ?>
 <input type="hidden" name="forum[fid]" value="<?php echo $fid; ?>" />
-<button type="submit" id="send" disabled>發佈</button>
-<button class="article-cancel-button" type="reset">取消</button>
+<button id="forum-create-submit" disabled>發佈</button>
+<button class="forum-create-cancel-button" type="reset">取消</button>
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
 </form>
