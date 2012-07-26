@@ -1,5 +1,8 @@
 ﻿<?php
-
+//title:<20字
+//發文:>20字
+//回文:>20字
+//推文:<24字
 class ForumController extends Controller
 {
     const ARTICLES_PER_PAGE = 10;
@@ -23,12 +26,7 @@ class ForumController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('admin', 'create', 'delete'),
-                'roles'     => array('admin')
-            ),
-            array(
-                'allow',
-                'actions'   => array('create', 'comment', 'reply'),
+                'actions'   => array('create', 'comment', 'reply', 'delete'),
                 'roles'     => array('member')
             ),
             array(
@@ -63,6 +61,7 @@ class ForumController extends Controller
     public function actionForum($fid, $sort = 'create', $category = 0, $page = 1)
     {
         $article = new Article();
+        
         // content of each forum
         // [not yet] 傳入是否為admin 用於判斷是否顯示置頂checkbox及刪除文章選項
         if ( ! Yii::app()->request->getIsAjaxRequest() )
@@ -74,7 +73,8 @@ class ForumController extends Controller
                 //'model'     => $article->findAll('forum_id='.$fid)
                 'model'     => Article::model()->getArticlesSort($fid, $sort, $category, $page, self::ARTICLES_PER_PAGE),
                 'category'  => Category::model()->findByPk($fid),
-                'page_status'   => $article->getPageStatus($page, self::ARTICLES_PER_PAGE)
+                'page_status'   => $article->getPageStatus($page, self::ARTICLES_PER_PAGE, $fid),
+                'is_master' =>  Category::model()->getIsMaster($fid),
             ));
         }
         else
@@ -86,11 +86,8 @@ class ForumController extends Controller
             }
         }
     }
-
-    public function actionAdmin()
-    {
-    }
-
+    
+    //[not yet]限制欄位填寫完整. 字數判斷
     public function actionCreate($fid)
     {
         // add new article
@@ -109,19 +106,17 @@ class ForumController extends Controller
             $article->content = $_POST['forum']['content'];
             $article->forum_id = $_POST['forum']['fid'];
             $article->category = $_POST['forum']['category'];
-            $article->is_top = $_POST['forum']['is_top'];
+            if(Category::model()->getIsMaster($fid))
+                $article->is_top = $_POST['forum']['is_top'];
             $article->save();
             $this->redirect($article->url);
         }
-        // [not yet] 傳入是否為admin 用於判斷是否顯示置頂checkbox選項
         $this->render('create',array(
             'fid'       => $fid,
-            'category'  => Category::model()->findByPk($fid)
+            'category'  => Category::model()->findByPk($fid),
+            'is_master' =>  Category::model()->getIsMaster($fid),
         ));
     }
-
-    // public function actionTop(){
-    // }
 
     public function actionView($fid, $id)
     {
@@ -171,10 +166,6 @@ class ForumController extends Controller
         $this->render('reply');
     }
 
-    public function actionUpdate() // update article
-    {
-    }
-
     public function actionDelete() // delete article
     {
         $article = new Article();
@@ -183,9 +174,13 @@ class ForumController extends Controller
         if ( isset($_POST['delete']) )
         {
             $aid = $_POST['delete'];
-            $article_to_be_del = $article->findByPk('id = ' . $aid);
-            $article_to_be_del->visibility = 0;
-            $article_to_be_del->save();
+            $article_to_be_del = $article->findByPk($aid);
+            if(!empty($article_to_be_del)){
+                $article_to_be_del->visibility = 0;
+                $article_to_be_del->save();
+            }
+            else
+                throw new Exception('The article is not exist.');
         }
 
         $this->redirect(Yii::app()->createUrl('forum/forum', array(

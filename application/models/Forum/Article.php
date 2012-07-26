@@ -11,7 +11,9 @@ class Article extends CActiveRecord
     {
         return '{{forum_articles}}';
     }
-
+    
+    //validate
+    
     public function relations()
     {
         return array(
@@ -101,6 +103,7 @@ class Article extends CActiveRecord
     public function getPageStatus($page, $entries_per_page)
     {
         $pages = ceil($this->count('visibility = 1') / $entries_per_page);
+
         return array(
             'pages'         => $pages,
             'current'       => $page,
