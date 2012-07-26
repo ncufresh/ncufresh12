@@ -8,7 +8,8 @@
         <br />
         <label>成員: </label>
     </div>
-    <table>
+<div class="newgroup">
+<table>
         <tr>
 <?php $account = 1 ; ?>
 <?php foreach ( $user->friends as $friend ) : ?>
@@ -23,18 +24,24 @@
         <img  height="50" src="<?php echo $target.'/'.$friend->profile->picture ; ?>" alt="Score image" />
 <?php else : ?>
         <img  height="50" src="<?php echo $target.'/image1.jpg';?>" alt="Score image" />
-<?php endif ; ?>    
-        <input type="checkbox" name="friends[<?php echo $friend->profile->id;?>]" value="<?php echo $friend->profile->id ; ?>" />
+<?php endif ; ?>
+    <ul class="member-name-department">
+        <li><input type="checkbox" name="friends[<?php echo $friend->profile->id;?>]" value="<?php echo $friend->profile->id ; ?>" /></li>
+        <li>
 <?php echo $friend->profile->name ; ?>
-        <br />
+        </li>
+        <li>
 <?php echo $friend->profile->department->short_name ; ?>
+        </li>
+    </ul>
         </td>
 <?php $account++ ; ?>
 <?php endforeach ; ?>
 <?php if ( $account %5!= 0 ) : ?>
     </tr>
 <?php endif ; ?>
-    </table>
-    <button type="submit">新增</a>
+</table>
+</div>
+<button type="submit">新增</a>
 </form>
 <button><a href="<?php echo Yii::app()->createUrl('friends/friends')?>">取消</a></button>

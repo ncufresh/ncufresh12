@@ -2029,7 +2029,11 @@ ul.life-indexs li.life-indexs-content:hover
 }
 .mygroup
 {
+    font-size:30px;
     color:red;
+    margin-top:100px;
+    margin-left:50px;
+
 }
 div.group-friends
 {
@@ -2071,12 +2075,158 @@ div.other-department
    /* overflow-y:none;*/
 }
 
+div.sameDsameG
+{
+    background-image:url('../profile/sameDsameG.png');
+    width:740px;
+    height:416px;
+    padding:0px;
+    margin:10px;
+    overflow-y:hidden;  
+   /* overflow-y:none;*/
+}
+
+div.sameDdiffG
+{
+    background-image:url('../profile/sameDdiffG.png');
+    width:740px;
+    height:416px;
+    padding:0px;
+    margin:10px;
+    overflow-y:hidden;  
+   /* overflow-y:none;*/
+}
+
+div.myfriend
+{
+    background-image:url('../profile/sameDdiffG.png');
+    width:740px;
+    height:416px;
+    padding:0px;
+    margin:10px;
+    overflow-y:hidden;  
+   /* overflow-y:none;*/
+}
+
+div.myprofile
+{
+    background-image:url('../profile/profile.png');
+    width:740px;
+    height:416px;
+    padding:0px;
+    margin:10px;
+    overflow-y:hidden;  
+}
+
+div.mygroup
+{
+    background-image:url('../profile/sameDdiffG.png');
+    width:740px;
+    height:416px;
+    padding:0px;
+    margin:10px;
+    overflow-y:hidden;  
+}
+
+div.user-image
+{
+    float:left;
+}
+
+div.newgroup
+{
+    background-image:url('../profile/sameDsameG.png');
+    width:740px;
+    height:416px;
+    padding:0px;
+    margin:10px;
+    overflow-y:hidden;  
+}
+
+div.newmember
+{
+    background-image:url('../profile/sameDsameG.png');
+    width:740px;
+    height:416px;
+    padding:0px;
+    margin:10px;
+    overflow-y:hidden;  
+}
+
+div.allgroup
+{
+    background-image:url('../profile/otherD.png');
+    width:740px;
+    height:416px;
+    padding:0px;
+    margin:10px;
+    overflow-y:hidden;  
+}
+
+ul.member-name-department li
+{
+    width: 100px;
+    height: 20px;
+    display: block;
+    list-style-type:none;
+    font-family:微軟正黑體;
+    font-size: 15px;
+    text-align:left;
+    color:DarkViolet;
+}
+
+ul.user-profile li
+{
+    width: 700px;
+    height: 50px;
+    display: block;
+    list-style-type:none;
+    font-family:微軟正黑體;
+    font-size: 20px;
+    text-align:center;
+    color:Fuchsia;
+}
+
+ul.user-editor li
+{
+    width: 700px;
+    height: 50px;
+    display: block;
+    list-style-type:none;
+    font-family:微軟正黑體;
+    font-size: 20px;
+    text-align:center;
+    color:Indigo;
+}
+
+ul.introduce-group li
+{
+    width: 600px;
+    height: 100px;
+    display: block;
+    list-style-type:none;
+    font-family:微軟正黑體;
+    font-size: 20px;
+    text-align:center;
+    color:Indigo;
+}
+#introduce
+{
+    width: 600px;
+    height: 50px;
+    display: block;
+    font-family:微軟正黑體;
+    font-size: 30px;
+    text-align:left;
+    color:DarkMagenta ;
+}
 table.group
 {
     float:left;
     height:150px;
+    width:200px;
     border-right-style:dotted;
-     margin:auto;
+    margin:0px;
 }
 
 label.group-friends-name
@@ -2128,10 +2278,11 @@ table.other-page
     text-align: left;
 }
 
-.friend-other-page
+.friend-title
 {
     color: green;
-    font-size: 30px;
+    font-size: 20px;
+    text-align: center;
 }
 
 .mygroup-name

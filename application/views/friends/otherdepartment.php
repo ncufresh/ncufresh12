@@ -1,10 +1,8 @@
 <form enctype="multipart/form-data" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
+<h1 class="friend-title">其他科系</h1>
 <div class="other-department">
 <table class="other-page">
-    <tr>
-        <th colspan="5" class="friend-other-page">其他科系</th>
-    </tr>
 <tr>
 <?php $row = 0; ?>
 <?php $col = 1; ?>
@@ -17,8 +15,15 @@
 <?php else : ?>
     <img  height="70" src="<?php echo $target.'/image1.jpg'; ?>" alt="Score image"/>
 <?php endif; ?>
-    <input type="checkbox" name="friends[<?php echo $profile->id;?>]" value="<?php echo $profile->id;?>"  /><?php echo $profile->name;?>
+<ul class="member-name-department">
+    <li><input type="checkbox" name="friends[<?php echo $profile->id;?>]" value="<?php echo $profile->id;?>"  /></li>
+    <li>
+<?php echo $profile->name;?>
+    </li>
+    <li>
 <?php echo $profile->department->short_name; ?>
+    </li>
+</ul>
         </td>
 <?php if ( $col%5==0 ) : ?>
 <?php $row+=1; ?>
