@@ -1335,19 +1335,39 @@
                     left: '25%',
                 })
                 .appendTo(box);
-                var input_text = $('<input type="text" />').attr('value', '').css({
-                    left: 80,
+                var input_text = $('<input type="text" readonly/>').attr('value', '').css({
+                    left: 100,
+                    width: 200,
+                    height: 20,
+                    textAlign: 'center',
                     position: 'absolute',
                 })
                 .appendTo(box);
-                $('<button>確定送出</button>').css({
+                $('<p>確定送出</p>').css({
                     color: 'black',
-                    left: 270,
+                    top: 320,
+                    left: 140,
                     position: 'absolute',
-                    textAlign: 'center'
+                    textAlign: 'center',
+                    fontSize: 30,
+                    fontFamily: 'Microsoft YaHei Mono'
+                })
+                .mouseenter(function(){
+                    $(this).css({
+                        color: 'blue',
+                        cursor: 'default'
+                    });
+                })
+                .mouseleave(function(){
+                    $(this).css({
+                      color: 'black'
+                    });
                 })
                 .click(function()
                 {
+                    $(this).css({
+                        color: 'yellow',
+                    });
                     input = input_text.val();
                     if( input < up && input >down )
                     {
@@ -1379,7 +1399,7 @@
                 .appendTo(box);
                 var numberTable = $('<table></table>').css({
                     border: 5,
-                    left: 80,
+                    left: 40,
                     top: 150,
                     position: 'absolute'
                 });
@@ -1395,6 +1415,7 @@
                 $('<td></td>').text('0').css({
                     height: 50,
                     width: 100,
+                    textAlign: 'center',
                     fontSize: 30    
                 })
                 .mouseenter(function(){
@@ -1410,6 +1431,9 @@
                 })
                 .click(function()
                 {
+                    $(this).css({
+                        color: 'yellow',
+                    });
                     if ( input_index == 1 )
                     {
                         input_index = 0;
@@ -1426,7 +1450,8 @@
                     colspan: 2, 
                     height: 50,
                     width: 100,
-                    fontSize: 30
+                    fontSize: 30,
+                    textAlign: 'center'
                 })
                 .mouseenter(function(){
                     $(this).css({
@@ -1441,6 +1466,9 @@
                 })
                 .click(function()
                 {
+                    $(this).css({
+                        color: 'yellow',
+                    });
                     input_index = 1;
                     input = 0;
                     input_text.attr('value', input);
@@ -1449,6 +1477,7 @@
                 numberTable.appendTo(box);
                 $('.tableBox').each(function(){
                     $(this).css({
+                        textAlign: 'center',
                         height: 50,
                         width: 100,
                         fontSize: 30    
@@ -1466,6 +1495,9 @@
                     })
                     .click(function()
                     {
+                        $(this).css({
+                            color: 'yellow',
+                        });
                         if ( input_index == 1 )
                         {
                             input = $(this).text();
@@ -1479,6 +1511,20 @@
                         input_text.attr('value', input);
                     })
                 })
+                $(document).keyup(function(event)
+                {
+                    if ( event.keyCode != 231 && event.keyCode > 95 )
+                    {
+                        if ( event.keyCode == 96 )
+                        {
+                        }
+                        else
+                        {
+                        }
+                    }
+                    index = 0;
+                    return true;
+                });
             }
         });
 
