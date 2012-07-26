@@ -1,4 +1,4 @@
-/**
+ï»¿/**
  * Global style
  */
 body,
@@ -1994,7 +1994,7 @@ img.user_img
 /**
  * Game
  */
-div.game_system
+div.game-system
 {
     background: url('../game/gamesystem.png');
     width: 750px;
@@ -2002,7 +2002,7 @@ div.game_system
     display: inline-block;
 }
 
-div.user_body
+div.user-body
 {
     position:relative;
     margin: 43px 0 0 22px;
@@ -2012,7 +2012,7 @@ div.user_body
     float: left;
 }
 
-div.user_body img
+div.user-body img
 {
     position: absolute;
     top: 0;
@@ -2021,7 +2021,7 @@ div.user_body img
     height:400px;
 }
 
-div.function_body
+div.function-body
 {
     /* outline: 1px solid black; */
     width: 407px;
@@ -2046,9 +2046,10 @@ ul.game-button li
     /* outline: 1px solid red; */
     float: left;
     margin-right: 1px;
-    font-family:·L³n¥¿¶ÂÅé;
+    font-family:å¾®è»Ÿæ­£é»‘é«”;
     font-size: 24px;
     text-align:center;
+    color:#b9b9b9;
 }
 
 div.game-display
@@ -2058,6 +2059,13 @@ div.game-display
     /* outline: 1px solid blue; */
     margin: 15px 0 0 15px;
     overflow-y:hidden;  
+}
+
+li.enabled a
+{
+    color:#66007c;
+    font-weight: bold;
+}
 
 #forum-index
 {
