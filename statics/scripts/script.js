@@ -1914,7 +1914,8 @@
                     width: 228,
                     height: 31,
                     textAlign: 'center',
-                    position: 'absolute'
+                    position: 'absolute',
+                    fontSize: '2em'
                 })
                 .appendTo(box);
                 var numberTable = $('<table></table>').css({
@@ -2047,6 +2048,10 @@
                             color: 'yellow'
                         });
                     }
+                    else if ( event.keyCode == 8 )
+                    {
+                        return false;
+                    }
                     return true;
                 });
                 $(document).keyup(function(event)
@@ -2071,6 +2076,10 @@
                             color: '#8d6449'
                         });
                         judgment(10);
+                    }
+                    else if ( event.keyCode == 8 )
+                    {
+                        return false;
                     }
                     return true;
                 });
