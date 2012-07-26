@@ -5,4 +5,5 @@ echo $aid = $_GET['aid'];
 內容<textarea name="reply[content]" id="forum-form-content" cols="30" rows="10"></textarea>
 <input type="hidden" name="reply[$aid]" value="<?php echo $aid; ?>" />
 <input type="submit" value="回文" />
+<input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
 </form>

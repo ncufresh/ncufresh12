@@ -1363,6 +1363,11 @@ ul#nculife-details
     width: 100%;
 }
 
+#mm-video .loading
+{
+    position: absolute;
+}
+
 #mm-video-frame
 {
     border: 0;
@@ -1749,11 +1754,11 @@ ul.life-indexs li.life-indexs-content:hover
     font-weight: bold;
 }
 
-#club-all
+#club-display
 {
-    background-color: green;
+	float: right;
+	width: 590px;
 }
-
 #club-display
 {
     float: right;
@@ -1840,6 +1845,7 @@ ul.life-indexs li.life-indexs-content:hover
 {
     width: 800px;
     height: 600px;
+    margin-left: 10px;
 }
 
 .club-picture-display2 img
@@ -1852,21 +1858,24 @@ ul.life-indexs li.life-indexs-content:hover
 {
     width: 800px;
     height: 600px;
+    margin-left: 10px;
 }
 
 .club-picture-display4 img
 {
     width: 800px;
     height: 600px;
+    margin-left: 10px;
 }
 
 #club-picture-dialog1
 {
-    display: none;     
-    background: white;
-    width: 850px;
-    height: 650px;
-    position: relative;
+	display: none; 	
+	background: white;
+	width: 850px;
+	height: 800px;
+	position: relative;
+    overflow: visible;
 
 }
 
@@ -1902,14 +1911,15 @@ ul.life-indexs li.life-indexs-content:hover
 
 #club-underpicture
 {
-    float:left;
-    width:150px;
-    height:700px;
+
+	float:left;
+	width:150px;
+	height:400px;
 }
 
 #club-picture-menu
 {
-    width: 150px;
+	width: 160px;
     height: 700px;
     background: skyblue;
     overflow: hidden;

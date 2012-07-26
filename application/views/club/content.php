@@ -62,11 +62,7 @@ jQuery(document).ready(function()
 });
 </script>
 <?php $this->endWidget();?>
-
 <div id="club-underpicture">
-	<div id="club-picture-menu">
-        <button>UP</button>
-        <button>DOWN</button>
         <div id="club-menu-items">
             <div class="club-picture1">
                 <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/1.jpg'; ?>"/>
@@ -81,16 +77,15 @@ jQuery(document).ready(function()
                 <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/4.jpg'; ?>"/>
             </div>
         </div>
-	</div>
 </div>
 
 <div id="club-picture-dialog1">
-	<div class="club-picture1-display1">
+	<div class="club-picture-display1">
         <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/1.jpg'; ?>"/>
     </div>
 </div>
 <div id="club-picture-dialog2">
-	<div class="club-picture2-display2">
+	<div class="club-picture-display2">
         <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/2.jpg'; ?>"/>
     </div>
 </div>
@@ -110,12 +105,14 @@ jQuery(document).ready(function()
     <a href="<?php echo Yii::app()->createUrl('club/club');?>" title="社團">社團</a>
     <?php echo '→' . $data->name?>
 <?php endif; ?>
-<?php if ( ! $data->category ) : ?>
+<?php if ( $data->category ) : ?>
     <a href="<?php echo Yii::app()->createUrl('club/department');?>" title="系所">系所</a>
     <?php echo '→' . $data->name?>
 <?php endif; ?>
-    <a href="<?php echo Yii::app()->createUrl('club/modify', array('id' => $id)); ?>" title="修改">修改</a>
-    <a href="<?php echo Yii::app()->createUrl('club/uploadpicture', array('id' => $id)); ?>" title="上傳圖片">上傳圖片</a>
+<?php if ( $this->getIsAdmin($id) ) : ?>
+    <a href="<?php echo Yii::app()->createUrl('club/modify/' . $id);?>" title="修改">修改</a>
+    <a href="<?php echo Yii::app()->createUrl('club/uploadpicture/' . $id);?>" title="上傳圖片">上傳圖片</a>
+<?php endif;?>
     <h1><?php echo $data->name;?></h1>
     <div id="club-title">簡介:</div>
     <?php echo $data->introduction; ?>
