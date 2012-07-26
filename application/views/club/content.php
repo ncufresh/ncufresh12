@@ -2,104 +2,36 @@
 <script type="text/javascript">
 jQuery(document).ready(function()
 {
-    jQuery('.club-picture1').click(function()
-    {
-		jQuery('#club-picture-dialog1').dialog(
-        {
-            height: 620,
-            width: 820,
-            modal: true,
-            show: 
-            {
-                effect: 'flod',
-                direction: 'down'
-            }
-        });
-    });
-	jQuery('.club-picture2').click(function()
-    {
-		jQuery('#club-picture-dialog2').dialog(
-        {
-            height: 620,
-            width: 820,
-            modal: true,
-            show: 
-            {
-                effect: 'flod',
-                direction: 'down'
-            }
-        });
-    });
-	jQuery('.club-picture3').click(function()
-    {
-		jQuery('#club-picture-dialog3').dialog(
-        {
-            height: 620,
-            width: 820,
-            modal: true,
-            show: 
-            {
-                effect: 'flod',
-                direction: 'down'
-            }
-        });
-    });
-	jQuery('.club-picture4').click(function()
-    {
-		jQuery('#club-picture-dialog4').dialog(
-        {
-            height: 620,
-            width: 820,
-            modal: true,
-            show: 
-            {
-                effect: 'flod',
-                direction: 'down'
-            }
-        });
-    });
+    $('#club-menu-items a').lightbox();
 	
 });
 </script>
 <?php $this->endWidget();?>
 <div id="club-underpicture">
-        <div id="club-menu-items">
-            <div class="club-picture1">
-                <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/1.jpg'; ?>"/>
-            </div>
-            <div class="club-picture2">
+        <ul id="club-menu-items">
+            <li class="club-picture">
+                <?php if( file_exists( Yii::app()->basePath . '/../files/club/' . $id  . '/1.jpg' ) ):?>
+                <a href="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/1.jpg'; ?>" title="<?php echo $data->name;?> 照片1">
+                <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/1.jpg'; ?>" />
+                </a>
+                <?php endif;?>
+            </li>
+            <li class="club-picture">
+                <?php if( file_exists( Yii::app()->basePath . '/../files/club/' . $id  . '/2.jpg' ) ):?>
+                <a href="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/2.jpg'; ?>" title="<?php echo $data->name;?> 照片2">
                 <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/2.jpg'; ?>"/>
-            </div>
-            <div class="club-picture3">
+                </a>
+                <?php endif; ?>
+            </li>
+            <li class="club-picture">
+                <?php if( file_exists( Yii::app()->basePath . '/../files/club/' . $id  . '/3.jpg' ) ):?>
+                <a href="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/3.jpg'; ?>" title="<?php echo $data->name;?> 照片3">
                 <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/3.jpg'; ?>"/>
-            </div>
-            <div class="club-picture4">
-                <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/4.jpg'; ?>"/>
-            </div>
-        </div>
+                </a>
+                <?php endif; ?>
+            </li>
+        </ul>
 </div>
-
-<div id="club-picture-dialog1">
-	<div class="club-picture-display1">
-        <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/1.jpg'; ?>"/>
-    </div>
-</div>
-<div id="club-picture-dialog2">
-	<div class="club-picture-display2">
-        <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/2.jpg'; ?>"/>
-    </div>
-</div>
-<div id="club-picture-dialog3">
-	<div class="club-picture-display3">
-        <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/3.jpg'; ?>"/>
-    </div>
-</div>
-<div id="club-picture-dialog4">
-	<div class="club-picture-display4">
-        <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/4.jpg'; ?>"/>
-    </div>
-</div>
-
 <div id="club-display">
 <?php if ( ! $data->category ) : ?>
     <a href="<?php echo Yii::app()->createUrl('club/club');?>" title="社團">社團</a>
@@ -115,27 +47,54 @@ jQuery(document).ready(function()
 <?php endif;?>
     <h1><?php echo $data->name;?></h1>
     <div id="club-title">簡介:</div>
+    <div id="club-introduce">
     <?php echo $data->introduction; ?>
+    </div>
     <div id="club-title"><?php if ( ! $data->category ) : ?>社長<?php else : ?>系代<?php endif; ?></div>
+    <div class="club-item">
     <?php echo $data->leader; ?>
+    </div>
     <div id="club-title">手機:</div>
+    <div class="club-item">
     <?php echo $data->leader_phone; ?>
+    </div>
     <div id="club-title">E-mail:</div>
+    <div class="club-item">
     <?php echo $data->leader_e_mail; ?>
+    </div>
     <div id="club-title">二進位ID:</div>
+    <div class="club-item">
     <?php echo $data->leader_binary_id; ?>
+    </div>
     <div id="club-title">MSN:</div>
+    <div class="club-item">
     <?php echo $data->leader_msn; ?>
+    </div>
     <div id="club-title"><?php if ( ! $data->category ) : ?>副社長<?php else : ?>副系代<?php endif; ?></div>
+    <div class="club-item">
     <?php echo $data->viceleader; ?>
+    </div>
     <div id="club-title">手機:</div>
+    <div class="club-item">
     <?php echo $data->viceleader_phone; ?>
+    </div>
     <div id="club-title">E-mail:</div>
+    <div class="club-item">
     <?php echo $data->viceleader_e_mail; ?>
+    </div>
     <div id="club-title">二進位ID:</div>
+    <div class="club-item">
     <?php echo $data->viceleader_binaryid; ?>
+    </div>
     <div id="club-title">MSN:</div>
+    <div class="club-item">
     <?php echo $data->viceleader_msn; ?>
-    <div id="club-title">社站:</div>
-    <?php echo $data->club_web; ?>
+    </div>
+    <?php if ( $data->club_web != null ) :?>
+    <div id="club-title">網站:</div>
+    <div class="club-item">
+    <a href="<?php echo $data->club_web;?>"><?php echo $data->club_web;?></a>
+    </div>
+    <?php endif; ?>
+
 </div>

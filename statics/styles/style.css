@@ -1714,6 +1714,8 @@ ul.life-indexs li.life-indexs-content:hover
 {
     text-align: left;
     overflow: hidden;
+    margin-top: 85px;
+    margin-left: 80px;
 }
 
 #club-list ul
@@ -1728,188 +1730,54 @@ ul.life-indexs li.life-indexs-content:hover
     background-color: yellow;
     font-weight: bold;
 }
+.club-item
+{
+    height: 20px;
+    background-color: skyblue;
+}
+#club-introduce
+{
+    height: 400px;
+    background-color: skyblue;
+}
 
 #club-display
 {
 	float: right;
-	width: 590px;
+	width: 530px;
 }
-#club-display
-{
-    float: right;
-    width: 600px;
-}
-
-.club-picture1
+.club-picture
 {
     background: none;
     border: 0px;
-    margin: 0px;
+    margin: -5px;
     padding: 0px;
     cursor: pointer;
-    width: 150px;
-    height: 100px;
+    width: 204px;
+    height: 204px;
     display: block;
+    margin-left: -34px;
 }
 
-.club-picture1 img
+.club-picture img
 {
     border: 5px solid #FFFFFF;
-    width: 150px;
-    height: 100px;
-}
-
-.club-picture2
-{
-    background: none;
-    border: 0px;
-    margin: 0px;
-    padding: 0px;
-    cursor: pointer;
-    width: 150px;
-    height: 100px;
-    display: block;
-}
-
-.club-picture2 img
-{
-    border: 5px solid #FFFFFF;
-    height: 100px;
-    width: 150px;
-}
-
-.club-picture3
-{
-    background: none;
-    border: 0px;
-    margin: 0px;
-    padding: 0px;
-    cursor: pointer;
-    width: 150px;
-    height: 100px;
-    display: block;
-}
-
-.club-picture3 img
-{
-    border: 5px solid #FFFFFF;
-    height: 100px;
-    width: 150px;
-}
-
-.club-picture4
-{
-    background: none;
-    border: 0px;
-    margin: 0px;
-    padding: 0px;
-    cursor: pointer;
-    width: 150px;
-    height: 100px;
-    display: block;
-}
-
-.club-picture4 img
-{
-    border: 5px solid #FFFFFF;
-    height: 100px;
-    width: 150px;
-}
-
-.club-picture-display1 img
-{
-    width: 800px;
-    height: 600px;
-    margin-left: 10px;
-}
-
-.club-picture-display2 img
-{
-    width: 800px;
-    height: 600px;
-}
-
-.club-picture-display3 img
-{
-    width: 800px;
-    height: 600px;
-    margin-left: 10px;
-}
-
-.club-picture-display4 img
-{
-    width: 800px;
-    height: 600px;
-    margin-left: 10px;
-}
-
-#club-picture-dialog1
-{
-	display: none; 	
-	background: white;
-	width: 850px;
-	height: 800px;
-	position: relative;
-    overflow: visible;
-
-}
-
-#club-picture-dialog2
-{
-    display: none;     
-    background: white;
-    width: 850px;
-    height: 650px;
-    position: relative;
-
-}
-
-#club-picture-dialog3
-{
-    display: none;     
-    background: white;
-    width: 850px;
-    height: 650px;
-    position: relative;
-
-}
-
-#club-picture-dialog4
-{
-    display: none;     
-    background: white;
-    width: 850px;
-    height: 650px;
-    position: relative;
-
+    width: 194px;
+    height: 140px;
 }
 
 #club-underpicture
 {
 
 	float:left;
-	width:150px;
+	width:200px;
 	height:400px;
-}
-
-#club-picture-menu
-{
-	width: 160px;
-    height: 700px;
-    background: skyblue;
-    overflow: hidden;
-}
-
-#club-menu-items
-{
-    margin-top:5px;
-    width:150px;
-    height:500px;
 }
 
 #club
 {
-    margin-center:auto;
+    background: url('../club.png');
+    background-repeat: no-repeat; 
 }
 
 div.group-friends
@@ -1952,7 +1820,7 @@ table.other-page
 {
     border:0px;
     width:90%; 
-    height=:70%;
+    height:70%;
 }
 
 .sep-group
