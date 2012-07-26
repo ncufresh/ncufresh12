@@ -1199,7 +1199,8 @@
 /**
  * Dialog
  */
-(function($){
+(function($)
+{
     $.dialog = {};
 
     $.fn.dialog = function(options)
@@ -1208,7 +1209,7 @@
         {
             this.options =  $.extend({
                 width:          $(this).width(),
-                heigth:         $(this).height(),
+                height:         $(this).height(),
                 modal:          true,
                 escape:         true,
                 closeButton:    true,
@@ -1290,13 +1291,15 @@
         target.options.onCreate.call(target);
         $(target)
             .css({
-                position: 'absolute',
+                position: $(target).css('position') === 'static'
+                        ? $(target).css('position')
+                        : 'absolute',
                 top: '50%',
                 left: '50%',
                 width: target.options.width,
-                heigth: target.options.heigth,
+                height: target.options.height,
                 marginLeft: -1 * target.options.width / 2,
-                marginTop: -1 * target.options.heigth / 2,
+                marginTop: -1 * target.options.height / 2,
                 padding: 0,
                 display: 'none',
                 zIndex: 1000
@@ -1311,6 +1314,106 @@
         target.options.onDestroy.call(target);
         $(target).remove();
     }
+})(jQuery);
+
+/**
+ * Confirm
+ */
+(function($)
+{
+    $.confirm = function(options)
+    {
+        var options = $.extend({
+            confirmClass:       'confirm',
+            titleClass:         'confirm-title',
+            messageClass:       'confirm-message',
+            buttonsClass:       'confirm-buttons',
+            buttonClass:        'confirm-button',
+            title:              null,
+            message:            '',
+            buttons:            {
+                '確定':         function() { return true; },
+                '取消':         function() { return false; }
+            },
+            confirmed:          function(result) { return true; }
+        }, options);
+
+        var dialog = $('<div></div>')
+            .addClass(options.confirmClass)
+            .dialog({
+                modal:          true,
+                escape:         false,
+                closeButton:    false
+            });
+
+        var message = $('<p></p>')
+            .addClass(options.messageClass)
+            .text(options.message)
+            .appendTo(dialog);
+
+        var buttons = $('<div></div>')
+            .addClass(options.buttonsClass)
+            .appendTo(dialog);
+
+        if ( options.title )
+        {
+            var title = $('<h4></h4>')
+                .addClass(options.titleClass)
+                .text(options.title)
+                .prependTo(dialog);
+        }
+
+        for ( var button in options.buttons )
+        {
+            $('<button></button>')
+                .addClass(options.buttonClass)
+                .text(button)
+                .data('evaluation', options.buttons[button])
+                .click(function()
+                {
+                    var evaluation = $(this).data('evaluation');
+                    dialog.dialog('close');
+                    return options.confirmed(evaluation());
+                })
+                .appendTo(buttons);
+        }
+
+        return dialog;
+    };
+})(jQuery);
+
+/**
+ * Alert
+ */
+(function($)
+{
+    $.alert = function(settings)
+    {
+        var options = $.extend({
+            confirmClass:       'alert',
+            titleClass:         'alert-title',
+            messageClass:       'alert-message',
+            title:              null,
+            message:            '',
+            button:             '確定',
+            confirmed:          function(result) { return true; }
+        }, settings);
+
+        var buttons = {
+        };
+
+        buttons[options.button] = function() { return true; };
+
+        return $.confirm({
+            confirmClass:       'alert',
+            titleClass:         'alert-title',
+            messageClass:       'alert-message',
+            title:              null,
+            message:            options.message,
+            buttons:            buttons,
+            confirmed:          options.confirmed
+        });
+    };
 })(jQuery);
 
 /**
@@ -1383,9 +1486,7 @@
             var overlay = $('<div></div>')
                 .addClass(options.overlayClass)
                 .css({
-                    display:            'none',
-                    height:             $(this).height(),
-                    width:              $(this).width()
+                    display:            'none'
                 })
                 .fadeIn(options.speed, function()
                 {
@@ -1413,9 +1514,11 @@
             if ( this !== window )
             {
                 overlay.css({
+                    height:             $(this).height(),
                     left:               $(this).offset().left,
                     position:           $(this).css('position'),
                     top:                $(this).offset().top,
+                    width:              $(this).width()
                 });
             }
             if ( options.closeOnClick )
