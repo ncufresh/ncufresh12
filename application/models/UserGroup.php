@@ -14,54 +14,76 @@ class  UserGroup extends CActiveRecord
         return '{{user_groups}}';
     }
 
-    /*public function deleteUserGroup()
-    {
-        return $this->updateByPk($this->id, array(
-            'invisible' => 1
-        ));
-    }*/
-
     public function getMembers($groupID)
     {
         return $this->findAll(array(
-            'condition' => 'group_id = :id',
+            'condition' => 'group_id = :id AND invisible = 0',
             'params'    => array(
                 ':id' => $groupID
             )
         ));
     }
 
-    public function Member_isExist($group_id,$userid)
+    public function closeMember($userid,$groupid)
     {
-        $_exist = false;
-        foreach ( $this->getMembers($group_id) as $member )
+        $userid = (integer)$userid;
+        $groupid = (integer)$groupid;  
+        $temp = $this->updateAll(array(
+            'invisible' => 1
+        ), "user_id = :userid AND group_id = :groupid", array(
+            ':userid' => $userid,
+            ':groupid' => $groupid
+        ));
+        if ( $temp == 1 )
         {
-            if (  $member->user_id === $userid )
-            {
-                $_exist=true;
-            }
+            return true;
         }
-        return $_exist;
+        return false;
     }
 
-    public function AddNewMember($group_id, $friends)
+    public function openMember($userid,$groupid)
     {
-        $addmember = true;
-        foreach ( $friends as $friend )
+        $userid = (integer)$userid;
+        $groupid = (integer)$groupid;  
+        $temp = $this->updateAll(array(
+            'invisible' => 0
+        ), "user_id = :userid AND group_id = :groupid", array(
+            ':userid' => $userid,
+            ':groupid' => $groupid
+        ));
+        if ( $temp == 1 )
         {
-            $group = new UserGroup();
-            if ( !$this->Member_isExist($group_id, $friend) )
-            {
-                    $group->user_id = $friend;
-                    $group->group_id = $group_id;
-                    $save = $group->save();
-            }
-            if ( isset($save) )
-            {
-                $addmember = false;
-                break;
-            }
+            return true;
         }
-        return $addmember;
+        return false;
+    }
+
+    public function isExist($userid,$group_id)
+    {
+        $data1 = $this->find(array(
+            'condition' => 'user_id = :userid AND group_id = :groupid',
+            'params'    => array(
+                ':userid' => $userid,
+                ':groupid' => $group_id
+            )
+        ));
+        if ( isset($data1) )
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public function AddNewMember($member_id,$group_id)
+    {
+        $model = new UserGroup();
+        $model->user_id = $member_id;
+        $model->group_id = $group_id;
+        $save = $model->save();
+        if ( isset($save) )
+        {
+            return true;
+        }
+        return false;
     }
 }

@@ -29,8 +29,6 @@ class FriendsController extends Controller
         $departmentId = Profile::model()->findByPK($userID)->department_id;
         $grade = Profile::model()->findByPK($userID)->grade;
         $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
-        //echo Friend::model()->isExist(41) ? '存在':'不存在';
-        //exit();
         $this->setPageTitle(Yii::app()->name . ' - 好友專區');
         $this->render('friends', array(
             'profileFir'    => Profile::model()->getSameDepartmentSameGrade($departmentId, $grade),
@@ -93,6 +91,7 @@ class FriendsController extends Controller
         $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $this->setPageTitle(Yii::app()->name . ' - 我的好友');
         $this->_data['token'] = Yii::app()->security->getToken();
+        // Friend::model()->getMyFriend(1)
         $this->render('myfriends', array(                
             'user'          => User::model()->findByPk($userID),
             'target'        => $imgUrl
@@ -104,12 +103,21 @@ class FriendsController extends Controller
         $userId = Yii::app()->user->id;
         if ( isset($_POST['friends']) )
         {
-            foreach ( $_POST['friends'] as $friend )
+            foreach ( $_POST['friends'] as $friendid )
             {   
-                $save = Friend::model()->MakeFriend($userId, $friend);
-                if ( !$save )
+                $friend = new Friend();
+                $exist = $friend->isExist($userId, $friendid);
+                if ( $exist && $friend->openFriend($userId, $friendid) )
                 {
-                    $this->redirect(array('friends/myfriends'));
+                   echo '又是朋友咯';
+                }
+                else if ( !$exist && $friend->addFriend($userId, $friendid) )
+                {
+                    echo '存成功兩筆資料';
+                }
+                else
+                {
+                    break;
                 }
             }
             $this->redirect(array('friends/myfriends'));
@@ -122,29 +130,18 @@ class FriendsController extends Controller
 
     public function actionDeleteFriends()
     {
+        $userID = Yii::app()->user->id;
         if ( isset($_POST['friends']) )
         {
             foreach ( $_POST['friends'] as $cancelfriend )
             {   
-                $data1 = Friend::model()->find(array(
-                    'condition' => 'user_id = :user_id AND friend_id = :friend_id',
-                    'params'    => array(
-                        ':user_id'      => Yii::app()->user->id,
-                        ':friend_id'    => $cancelfriend 
-                    )
-                ));
-                //$data1->deleteFriend();
-                Friend::model()->deleteByPk($data1->id);
-                $data2 = Friend::model()->find(array(
-                    'condition' => 'user_id = :user_id AND friend_id = :friend_id',
-                    'params'    => array(
-                        ':user_id'      => $cancelfriend,
-                        ':friend_id'    => Yii::app()->user->id 
-                    )
-                ));
-                Friend::model()->deleteByPk($data2->id);
-                //$data2->deleteFriend();
-            }
+                $close = Friend::model()->closeFriend($userID,$cancelfriend);
+                if ( !$close )
+                {
+                    echo '沒有兩筆資料存在喔';
+                    break;
+                }
+             }
             $this->redirect(array('friends/myfriends'));            
         }
         else
@@ -178,11 +175,24 @@ class FriendsController extends Controller
         $userID = Yii::app()->user->id;
         $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';   
         $this->setPageTitle(Yii::app()->name . ' - 新增成員');
-        if ( isset($_POST['friends'] ) && isset ( $_GET['id'] ) )
+        if ( isset($_POST['friends'] ) && isset( $_GET['id'] ) )
         {
-            if ( UserGroup::model()->AddNewMember($_GET['id'], $_POST['friends']) )
-            {
-                $this->redirect(Yii::app()->createUrl('friends/mygroups', array('id'=>$_GET['id'])));
+            foreach ( $_POST['friends'] as $friendid )
+            {   
+                $usergroup = new UserGroup();
+                $exist = $usergroup->isExist($friendid,$_GET['id']);
+                if ( $exist && $usergroup->openMember($friendid, $_GET['id']) )
+                {
+                   echo '又是朋友咯';
+                }
+                else if ( !$exist && $usergroup->AddNewMember($friendid, $_GET['id']) )
+                {
+                    echo '存成功兩筆資料';
+                }
+                else
+                {
+                    break;
+                }
             }
             $this->redirect(Yii::app()->createUrl('friends/mygroups', array('id'=>$_GET['id'])));
         }
@@ -198,14 +208,12 @@ class FriendsController extends Controller
         {
             foreach ( $_POST['members'] as $cancelmember )
             {   
-                $data1 = UserGroup::model()->find(array(
-                    'condition' => 'user_id = :user_id AND group_id = :group_id',
-                    'params'    => array(
-                        ':user_id'      => $cancelmember,
-                        ':group_id'      => $_GET['id']
-                    )
-                ));
-                UserGroup::model()->deleteByPk($data1->id);  
+                $close = UserGroup::model()->closeMember($cancelmember,$_GET['id']);
+                if ( !$close )
+                {
+                    echo '沒有兩筆資料存在喔';
+                    break;
+                }
             } 
             $this->redirect(Yii::app()->createUrl('friends/mygroups', array('id'=>$_GET['id'])));
         }

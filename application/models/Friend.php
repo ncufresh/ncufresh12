@@ -19,61 +19,75 @@ class Friend extends CActiveRecord
         );
     }
 
-    public function deleteFriend($userid,$friendid)
+    public function relations()
     {
-        return $this->updateByPk($this->id, array(
+        return array(
+            'profile'  => array(
+                self::BELONGS_TO,
+                'Profile',
+                'friend_id'
+            ) 
+        );
+    }
+    
+    public function closeFriend($userid,$friendid)
+    {
+        $userid = (integer)$userid;
+        $friendid = (integer)$friendid;  
+        $temp = $this->updateAll(array(
             'invisible' => 1
+        ), "user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid", array(
+            ':userid' => $userid,
+            ':friendid' => $friendid
         ));
-    }
-
-    public function addFriend($userid,$friendid)
-    {
-        return $this->updateByPk($this->id, array(
-            'invisible' => 0
-        ));
-    }
-
-    public function isExist($userid,$friendid) //一次兩筆資料
-    {
-        $user1 = $this->find(array(
-            'condition' => 'user_id = :id1 AND friend_id = id2',
-            'params'    => array(
-                ':id1' => $userid,
-                ':id2' => $friendid
-            )
-        ));
-        $user2 = $this->find(array(
-            'condition' => 'user_id = :id1 AND friend_id = id2',
-            'params'    => array(
-                ':id1' => $friendid,
-                ':id2' => $userid
-            )
-        ));
-        if ( isset($user1) && isset($user2) )
+        if ( $temp == 2 )
         {
             return true;
         }
         return false;
     }
-    
-    public function FriendExist($userid, $friendid)
+
+    public function openFriend($userid,$friendid)
     {
-        $_exist = false;
-        $data = $this->find(array(
-            'condition' => 'friend_id = :friendid AND user_id = :userid',
-            'params'    => array(
-                ':friendid' => $friendid,
-                ':userid'   => $userid
-            )
+        $userid = (integer)$userid;
+        $friendid = (integer)$friendid;  
+        $temp = $this->updateAll(array(
+            'invisible' => 0
+        ), "user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid", array(
+            ':userid' => $userid,
+            ':friendid' => $friendid
         ));
-        if ( isset($data) )
+        /*if ( $temp == 2 )
         {
-            $_exist = true;
-        }
-        return $_exist;
+            return true;
+        }*/
+        return $temp;
     }
 
-    public function MakeFriend($user_id, $friend_id)
+    public function isExist($userid,$friendid) //一次兩筆資料
+    {
+        $data1 = $this->find(array(
+            'condition' => 'user_id = :userid AND friend_id = :friendid',
+            'params'    => array(
+                ':userid' => $userid,
+                ':friendid' => $friendid
+            )
+        ));
+        $data2 = $this->find(array(
+            'condition' => 'user_id = :userid AND friend_id = :friendid',
+            'params'    => array(
+                ':userid' => $friendid,
+                ':friendid' => $userid
+            )
+        ));
+        if ( isset($data1) && isset($data2) )
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public function addFriend($user_id, $friend_id)
     {
         $makefriend = false;
         $model = new Friend();
@@ -93,4 +107,5 @@ class Friend extends CActiveRecord
         }
         return $makefriend;
     }
+
 }
