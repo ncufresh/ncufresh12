@@ -1041,6 +1041,9 @@ table.gsc-completion-container
 {
     display: block;
     float: left;
+    width: 50px;
+    height: 50px;
+    background: url('../images/chat.png');
 }
 
 ul#nculife-details
@@ -1049,17 +1052,18 @@ ul#nculife-details
     padding: 0;
 }
 
-#readme-direct a
+#readme-direct
 {
     width: 50px;
     height: 50px;
+    display: block;
 }
 
-#readme-direct img
+/* #readme-direct img
 {
     width: 50px;
     height: 50px;
-}
+} */
 
 /**
  * Index style
@@ -1503,10 +1507,10 @@ ul#nculife-details
 #nculife-dh
 {
     background: pink;
-    width: 382px;
+   width: 498px;
     height: 25px;
-    left: 1px;
-    top: 40px;
+    left: 113px;
+    top: 75px;
     position: absolute;
 }
 .dialog-close-button
@@ -1519,14 +1523,20 @@ ul#nculife-details
     background: url('../images/life_exit.png');
 }
 
-#nculife-t
+#nculife-title
 {
-    width: 144px;
-    height: 33px;
-    /* top: -36px; */
+    width: 512px;
+    height: 111px;
     position: absolute;
-    background: red;
-    display: block;
+    background:url('../images/life_title.png');
+}
+
+#nculife-title h4
+{
+    font-size: 2em;
+    margin: 20px 0 0 10px;
+    text-align: center;
+    width: 120px;
 }
 
 #nculife-dh a
@@ -1547,24 +1557,24 @@ ul#nculife-details
 
 #nculife-cv
 {
-    width: 400px;
-    height: 100px;
-    float: left;
-    background: green;
+    width: 598px;
+    height: 190px;
+    /* background: green; */
     position: absolute;
-    top: 100px;
+    top: 110px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-#nculife-ct
+/* #nculife-ct
 {
     width: 295px;
     height: 100px;
-    /* float: left; */
     background: gray;
     position: absolute;
     top: 212px;
     left: 120px;
-}
+} */
 
 #nculife-dh a
 {
@@ -1632,21 +1642,62 @@ ul.life-indexs li.life-indexs-content:hover
     list-style: none;
 }
 
+#life-head
+{
+    width: 740px;
+    height: 270px;
+    margin-bottom: -20px;
+    background: url('../images/life_head.png');
+}
+
 #life-container
 {
     width: 750px;
-    height: 400px;
+    height: 1000px;
     position:relative;
     padding: 0;
-    background: url('../images/life_background.jpg');
+}
+
+#life-body
+{
+    height: 400px;
+    width: 740px;
+    background: url('../images/life_line.png') repeat-y;
+}
+
+#life-bottom
+{
+    width: 740px;
+    height: 40px;
+    background: url('../images/life_bottom.png');
 }
 
 #life-dialog
 {
     display: none;
-    width: 620px;
-    height: 315px;
+    width: 900px;
+    height: 1000px;
+    background: url('../images/life_dialog.png');
     
+    
+}
+
+#life-health a
+{
+    background: url('../images/life_health.png');
+}
+
+#life-live
+{
+    position: absolute;
+    width: 170px;
+    height: 200px;
+    top: 20px;
+    /* background: red; */
+}
+
+#life-live:hover
+{
     
 }
 
