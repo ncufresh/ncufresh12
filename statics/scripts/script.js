@@ -1433,7 +1433,10 @@
                 });
                 var lightbox = $('<div></div>')
                     .attr('id', options.lightboxId)
-                    .click(overlay.close)
+                    .click(function()
+                    {
+                        return overlay.close();
+                    })
                     .appendTo($('body'));
                 var box = $('<div></div>')
                     .attr('id', options.lightboxBoxId)
@@ -1467,7 +1470,10 @@
                 var close = $('<a></a>')
                     .attr('id', options.lightboxCloseId)
                     .attr('href', '#')
-                    .click(overlay.close)
+                    .click(function()
+                    {
+                        return overlay.close();
+                    })
                     .appendTo(details);
 
                 active = 0;
