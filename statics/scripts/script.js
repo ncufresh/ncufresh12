@@ -1795,8 +1795,9 @@
                 var down = 0;
                 var answer = $.random(down + 1, up - 1);
                 var buttons = [$('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<p></p>'), $('<p></p>')];
-                var judgment = function(number)
-                {                    
+                var judgment = function(input_number)
+                {
+                    var number = input_number;
                     if ( number == 0 )
                     {
                         input += '0';
@@ -1823,6 +1824,7 @@
                                 back.remove();
                                 box.remove();
                                 input_text.remove();
+                                return true;
                             }
                             else if( input > answer )
                             {
@@ -1997,7 +1999,7 @@
                         judgment( parseInt( $(this).text() ) );
                     })
                 })
-                var keyDown = $(document).keydown(function(event)
+                $(document).keydown( function(event)
                 {
                     if ( event.keyCode != 231 && event.keyCode > 95 && event.keyCode < 106)
                     {
@@ -2018,7 +2020,7 @@
                         });
                     }
                 });
-                var keyUp = $(document).keyup(function(event)
+                $(document).keyup(function(event)
                 {
                     if ( event.keyCode != 231 && event.keyCode > 95 && event.keyCode < 106)
                     {
