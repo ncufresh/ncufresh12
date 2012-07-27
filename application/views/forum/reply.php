@@ -5,6 +5,7 @@ $aid = $_GET['aid'];
 <dl>
         <dt>
             <label for="forum-form-content">內容</label>
+        </dt>
         <dd>
             <textarea name="reply[content]" id="forum-form-content" cols="30" rows="40"></textarea>
         </dd>

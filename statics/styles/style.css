@@ -2875,8 +2875,9 @@ li.enabled a
 {
     background: url('../forum/create/background.png');
     background-repeat:no-repeat;
-    width: 750px;
-    height: 400px;
+    padding: 40px;
+    width: 608px;
+    height: 311px;
     margin-left: 35px;
     
 }
@@ -2914,7 +2915,56 @@ li.enabled a
 #forum-reply-form
 {
     background: url('../forum/reply/background.png');
-    width: 688px;
-    height: 391px;
+    padding: 40px;
+    width: 608px;
+    height: 311px;
     margin-left: 35px;
+}
+
+#forum-view-top
+{
+    background: url('../forum/view/background_top.png');
+    width: 633px;
+    height: 32px;
+    margin-left:35px;
+    padding-top: 20px;
+    padding-left: 50px;
+}
+
+#forum-view-top2
+{
+    background: url('../forum/view/background_top2.png');
+    width: 683px;
+    height: 50px;
+    margin-left:35px;
+}
+
+#forum-view-top2 .pager
+{
+    padding-right: 35px;
+}
+
+#forum-view-top2 #forum-view-replylink
+{
+    width:101px;
+    height:30px;
+    display:block;
+    background: url('../forum/view/reply.png');
+    background-repeat:no-repeat;
+    margin-left:15px;
+}
+
+#forum-view-body
+{
+    background: url('../forum/view/background.png');
+    width: 683px;
+    margin-left:35px;
+}
+
+#forum-view-footer
+{
+    background: url('../forum/view/background_footer.png');
+    width: 683px;
+    height: 86px;
+    margin-left:35px;
 }
