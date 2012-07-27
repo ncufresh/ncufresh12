@@ -1,12 +1,23 @@
-<div>
-    <div id="club">
-        <a href="<?php echo Yii::app()->createUrl('club/club');?>" title="社團">社團</a>
-        <a href="<?php echo Yii::app()->createUrl('club/student');?>" title="學生組織">學生組織</a>
-        <a href="<?php echo Yii::app()->createUrl('club/department');?>" title="系所">系所</a>
+<div class ="alltag"> 
+    <div class = "department-head">
+    <a href="<?php echo Yii::app()->createUrl('club/department');?>" title="系所"></a>
     </div>
-    <div id="club-list">
+    <div class = "student-head">
+    </div>
+    <div class = "club-head">
+    </div>
+</div>
+<div class="department">
+    <div class="department-list">
         <ul>
-            <h2>資電學院</h2>
+            <li>
+            <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 97));?>" title="大氣系">大氣系</a>
+            </li>
+            <li>
+            <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 98));?>" title="地科系">地科系</a>
+            </li>
+        </ul>
+        <ul>            
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 78));?>" title="資工系">資工系</a>
             </li>
@@ -17,8 +28,7 @@
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 80));?>" title="通訊系">通訊系</a>
             </li>
         </ul>
-        <ul>
-            <h1>工學院</h1>
+        <ul>            
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 81));?>" title="土木系">土木系</a>
             </li>
@@ -29,8 +39,7 @@
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 83));?>" title="機械系">機械系</a>
             </li>
         </ul>
-        <ul>
-            <h1>理學院</h1>
+        <ul>            
             <li>
             <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 84));?>" title="生科系">生科系</a>
             </li>
@@ -50,20 +59,7 @@
             <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 89));?>" title="理學院學士班">理學院學士班</a>
             </li>
         </ul>
-        <ul>
-            <h1>文學院</h1>
-            <li>
-            <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 90));?>" title="中文系">中文系</a>
-            </li>
-            <li>
-            <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 91));?>" title="英文系">英文系</a>
-            </li>
-            <li>
-            <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 92));?>" title="法文系">法文系</a>
-            </li>
-        </ul>
-        <ul>
-            <h2>管理學院</h2>
+        <ul>           
             <li>
             <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 93));?>" title="資管系">資管系</a>
             </li>
@@ -77,13 +73,15 @@
             <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 96));?>" title="財經系">財經系</a>
             </li>
         </ul>
-        <ul>
-            <h2>地科學院</h2>
+        <ul>            
             <li>
-            <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 97));?>" title="大氣系">大氣系</a>
+            <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 90));?>" title="中文系">中文系</a>
             </li>
             <li>
-            <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 98));?>" title="地科系">地科系</a>
+            <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 91));?>" title="英文系">英文系</a>
+            </li>
+            <li>
+            <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 92));?>" title="法文系">法文系</a>
             </li>
         </ul>
     </div>

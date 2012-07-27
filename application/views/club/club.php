@@ -1,8 +1,13 @@
-<div id = "club">
-    <a href="<?php echo Yii::app()->createUrl('club/club');?>" title="社團">社團</a>
-    <a href="<?php echo Yii::app()->createUrl('club/student');?>" title="學生組織">學生組織</a>
-    <a href="<?php echo Yii::app()->createUrl('club/department');?>" title="系所">系所</a>
-    <div id="club-list">
+<div class ="alltag"> 
+    <div class = "department-head">
+    </div>
+    <div class = "student-head">
+    </div>
+    <div class = "club-head">
+    </div>
+</div>
+<div class = "club">
+    <div class="club-list">
         <ul>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 50));?>" title="延平校友會">延平校友會</a>
