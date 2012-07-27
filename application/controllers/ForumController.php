@@ -102,7 +102,8 @@ class ForumController extends Controller
         // {
             // echo $each->name;
         // }
-
+        echo count($article->getUserArticles(0));
+        exit();
         if ( isset($_POST['forum']) )
         {
             $article->title = $_POST['forum']['title'];

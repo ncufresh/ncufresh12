@@ -1,5 +1,4 @@
 <?php
-//一個user發表過的所有文章 => 當篇文章的所有回覆&推文
 class Article extends CActiveRecord
 {
     public static function model($className = __CLASS__)
@@ -32,7 +31,12 @@ class Article extends CActiveRecord
             ),
         );
     }
-
+    
+    // for popo
+    public function getUserArticles($author_id){
+        echo $this->findAll('author_id='.$author_id.' AND visibility=1');
+    }
+    
     public function getArticlesSort($fid, $sort, $category, $page, $entries_per_page){
         
         switch ($sort)
