@@ -62,6 +62,12 @@ form button
     padding: 4px 8px;
 }
 
+form input[type="radio"],
+form input[type="checkbox"]
+{
+    width: auto;
+}
+
 form textarea
 {
     height: 160px;
@@ -78,7 +84,7 @@ form textarea:focus
     z-index: 3000;
 }
 
-form label
+form dt label
 {
     color: #474747;
     display: block;
@@ -87,6 +93,24 @@ form label
     position: relative;
     width: 100%;
     z-index: 1000;
+}
+
+form dl.radio,
+form dl.checkbox,
+form dl.select
+{
+    background: #FFFFFF;
+    border-radius: 5px;
+    height: 28px;
+    padding: 0 8px;
+    width: 95%;
+}
+
+form dl.radio label,
+form dl.checkbox label,
+form dl.select label
+{
+    padding-left: 0;
 }
 
 form div

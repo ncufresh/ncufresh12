@@ -1879,6 +1879,8 @@
         {
             var input = $(this);
             var label = $('label[for="' + $(this).attr('id') + '"]');
+            var type = input.attr('type');
+            if ( type == 'radio' || type == 'checkbox' ) return true;
             if ( label.length )
             {
                 var update = function()

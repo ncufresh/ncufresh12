@@ -199,16 +199,16 @@
     <div id="sidebar-personal">
         <ul>
             <li>
-                <a href="#">個人行事曆</a>
+                <a href="#" title="個人行事曆">個人行事曆</a>
             </li>
             <li>
-                <a href="#">最新更新</a>
+                <a href="#" title="最新更新">最新更新</a>
             </li>
             <li>
-                <a href="#">個人資料</a>
+                <a href="#" title="個人資料">個人資料</a>
             </li>
             <li>
-                <a href="#">遊戲介面</a>
+                <a href="<?php echo Yii::app()->createUrl('game/index'); ?>" title="遊戲介面">遊戲介面</a>
             </li>
         </ul>
         <a id="sidebar-personal-button" href="#" title="個人專區">個人專區</a>

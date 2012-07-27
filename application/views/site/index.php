@@ -26,7 +26,9 @@ jQuery(document).ready(function()
 <?php foreach ( $marquees as $marquee ) : ?>
         <li><?php echo $marquee->message; ?></li> 
 <?php endforeach; ?>
+<?php if ( Yii::app()->user->getIsAdmin() ) : ?>
         <a href="<?php echo $this->createUrl('site/marquee'); ?>" title="編輯">編輯</a>
+<?php endif; ?>
     </ul>
 
     <div class="index-latest-box index-box">
