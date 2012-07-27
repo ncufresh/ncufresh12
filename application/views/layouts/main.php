@@ -31,7 +31,7 @@
         <p class="online">0</p>
         <p class="browsered">0</p>
     </div>
-    <form id="search" action="<?php echo Yii::app()->createUrl('site/search'); ?>" method="GET" autocomplete="off">
+    <form id="search" action="<?php echo Yii::app()->createUrl('site/search'); ?>" method="GET">
         <dl>
             <dt>
                 <label for="form-search-query">搜尋</label>
