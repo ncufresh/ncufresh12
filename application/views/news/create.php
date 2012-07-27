@@ -1,13 +1,116 @@
-<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'style')); ?>
 <style type="text/css">
-.news-create #form-news-content
+input, textarea
+{
+    margin: 0;
+    outline: 0;
+}
+#news-create #form-news-content
 {
     width: 80%;
     height: 250px;
     resize: none;
 }
+
+#news-create dl:not(.textarea) dt
+{
+    width: 171px;
+}
+
+input.MultiFile-applied
+{
+    height: 22px;
+    margin: 5px 0;
+}
+
+#news-url-button
+{
+    background: #fff url('<?php echo Yii::app()->baseUrl;?>/statics/images/news_add_url_button.png') no-repeat;
+    width: 20px;
+    height: 20px;
+    text-indent: -10000%;
+    padding: 0;
+    margin: 0 5px;
+}
+
+#news-url-button:hover
+{
+    background-color: #ffffcc;
+}
+
+.news-button
+{
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin: 5px;
+    padding: 0;
+}
+
+label.appendix
+{
+    color: #666666;
+    font-size: 14pt;
+    display: block;
+    height: 19px;
+    padding: 15px 0;
+}
+
+.news-commit-button
+{
+    margin-left: 600px;
+    color: red;
+}
+
+.news-cancel-button
+{
+    color: blue;
+}
+
+div#news-url-result, div.MultiFile-list
+{
+    width: 80%;
+    background-color: #ffffcc;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+div.news-url-row, div.MultiFile-label
+{
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 0 0 10px;
+}
+
+a.news-url-link,
+a.news-url-delete,
+a.MultiFile-remove
+{
+    display: block;
+    float: left;
+}
+
+a.news-url-link
+{
+
+}
+
+a.news-url-delete, a.MultiFile-remove
+{
+    padding: 16px  0 0;
+    margin: 7px 10px 0 0;
+    background: url('<?php echo Yii::app()->baseUrl;?>/statics/images/chat_close.png') no-repeat;
+    width: 16px;
+    height: 0;
+    overflow: hidden;
+}
+
+a.news-url-delete:hover, a.MultiFile-remove:hover
+{
+    background-color: #fff;
+}
 </style>
-<?php $this->endWidget();?>
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl . '/statics/scripts/jquery.multifile.js'; ?>"></script>
 <script type="text/javascript">
@@ -25,14 +128,17 @@
         if ( news_url=='' || news_url_alias == '' ) return false;
 
         var row = $('<div></div>')
-                    .attr('id', 'news-url-row-' + counter);
+                    .attr('id', 'news-url-row-' + counter)
+                    .addClass('news-url-row');
         var link = $('<a></a>')
                     .attr('id', 'news-url-link-' + counter )
                     .attr('href', news_url)
+                    .addClass('news-url-link')
                     .append(news_url_alias);
         var delete_link = $('<a></a>')
                     .attr('id', 'news-url-delete-' + counter )
                     .attr('href', '#')
+                    .addClass('news-url-delete')
                     .append('x');
         row.append(delete_link).append(link)
 
@@ -53,8 +159,8 @@
             deleteNewsUrl(counter);
             return false;
         });
-        $('#news-url-input').val('');
-        $('#news-url-alias-input').val('');
+        $('#news-url-input').val('').blur();
+        $('#news-url-alias-input').val('').blur();
         createNewsUrl.counter++;
     }
 
@@ -137,7 +243,7 @@
     });
 </script>
 <?php $this->endWidget();?>
-<div class="news-create">
+<div id="news-create">
     <h2 class="news-title">新增文章</h2>
     <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('news/create')?>" method="POST" class="MultiFile-intercepted">
         <dl>
@@ -148,7 +254,7 @@
                 <input id="form-news-title" type="text" name="news[title]" />
             </dd>
         </dl>
-        <dl>
+        <dl class="textarea">
             <dt>
                 <label for="form-news-content">內容</label>
             </dt>
@@ -156,17 +262,30 @@
                 <textarea id="form-news-content" name="news[content]" cols="30" rows="10"></textarea>
             </dd>
         </dl>
-        <p>附加連結與檔案</p>
-        <div id="news-url-warp">連結名稱:<input type="text" id="news-url-alias-input"/>URL:<input type="text" id="news-url-input"/><button id="news-url-button">v</button>
-            <div id="news-url-data-warp" style="display:none">
-            </div>
+        <label class="appendix" >附加連結與檔案</label>
+        <dl>
+            <dt>
+                <label for="news-url-alias-input">連結名稱</label>
+            </dt>
+            <dd>
+                <input type="text" id="news-url-alias-input"/>
+            </dd>
+        </dl>
+        <dl>
+            <dt>
+                <label for="news-url-input">URL</label>
+            </dt>
+            <dd>
+                <input type="text" id="news-url-input"/><button id="news-url-button">v</button>
+            </dd>
+        </dl>
+        <div id="news-url-data-warp" style="display:none;">
         </div>
         <div id="news-url-result">
         </div>
         <input id="news-files" type="file" name="news_files[]" />
-        <button class="news-button" type="submit">發佈</button>
+        <button class="news-commit-button news-button" type="submit">發佈</button>
         <button class="news-cancel-button news-button">取消</button>
         <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
     </form>
 </div>
-<div class="news-dialog"></div>
