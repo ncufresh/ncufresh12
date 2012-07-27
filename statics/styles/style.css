@@ -22,52 +22,54 @@ form
     margin: 0;
 }
 
-form dt,
-form dd
-{
-    width: 100%;
-}
-
 form dl
 {
     margin: 4px 0;
     overflow: hidden;
-    padding: 3px 0;
+    padding: 4px 0;
+    position: relative;
+}
+
+form dt,
+form dd
+{
+    height: 28px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
 }
 
 form dt
 {
     clear: left;
     float: left;
-    height: 24px;
-    margin-left: 6px;
-    width: 85%;
+    position: absolute;
 }
 
 form dd
 {
     clear: right;
     float: right;
-    margin-top: -26px;
-    overflow: hidden;
 }
 
 form input,
 form textarea
 {
     font-size: 0.85em;
+    position: relative;
+    width: 90%;
 }
 
 form input,
 form textarea,
 form button
 {
-    -webkit-border-radius: 5px;
     background: #FFFFFF;
     border: none;
     border-radius: 5px;
-    height: 16px;
-    padding: 4px 8px;
+    height: 20px;
+    padding: 4px 5%;
 }
 
 form textarea
@@ -83,13 +85,23 @@ form button
 form input:focus,
 form textarea:focus
 {
-    position: relative;
+    z-index: 10000;
 }
 
 form label
 {
     color: #474747;
+    height: 20px;
+    line-height: 20px;
+    padding: 4px 5%;
     position: relative;
+    width: 90%;
+    z-index: 1000;
+}
+
+form div
+{
+    margin-top: 4px;
 }
 
 a
@@ -149,7 +161,6 @@ a:hover
 
 .scroll-container .scroll-dragable
 {
-    -webkit-border-radius: 5px;
     background: #000000;
     border-radius: 5px;
     cursor: pointer;
@@ -395,7 +406,6 @@ a:hover
 
 #menu li
 {
-    -webkit-border-radius: 15px;
     background: #E1E5EE;
     border-radius: 15px;
     float: left;
@@ -443,7 +453,6 @@ a:hover
 
 #navigation ul
 {
-    -webkit-border-radius: 0 0 15px 15px;
     background: #DAE3EC;
     background: rgba(170, 190, 215, 0.7);
     border-radius: 0 0 15px 15px;
@@ -524,7 +533,6 @@ a:hover
 
 #sidebar div.profile
 {
-    -webkit-border-radius: 10px;
     background: #FFFFFF;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
@@ -550,12 +558,8 @@ a:hover
 
 #sidebar form.profile dl
 {
-    margin-left: 10px;
-}
-
-#sidebar form.profile input
-{
-    width: 160px;
+    margin: 0 5%;
+    width: 90%;
 }
 
 #sidebar form.profile div
@@ -576,7 +580,6 @@ a:hover
 
 #sidebar .sidebar-box
 {
-    -webkit-border-radius: 10px;
     background: #EEF2F6;
     border-radius: 10px;
     height: 185px;
@@ -586,7 +589,6 @@ a:hover
 
 #sidebar .sidebar-box h4
 {
-    -webkit-border-radius: 10px;
     background: #DCE4ED;
     border-radius: 10px;
     color: #210520;
@@ -621,7 +623,6 @@ a:hover
 
 #sidebar-personal
 {
-    -webkit-border-radius: 10px;
     background: #FFFFFF url('../images/personal.png') center top;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
@@ -718,7 +719,6 @@ a:hover
 
 #chat-friend-list
 {
-    -webkit-border-radius: 10px;
     background: #FFFFFF;
     border-radius: 10px;
     bottom: -10px;
@@ -733,7 +733,6 @@ a:hover
 
 #chat-friend-list span
 {
-    -webkit-border-radius: 10px;
     height: 20px;
     color: white;
     line-height: 20px;
@@ -910,7 +909,6 @@ tr.gsc-completion-selected
 
 table.gsc-completion-container
 {
-    -webkit-border-radius: 0 0 5px 5px;
     border: none;
     border-radius: 0 0 5px 5px;
     margin-top: -3px;
@@ -1070,7 +1068,6 @@ ul#nculife-details
  */
 #marquee
 {
-    -webkit-border-radius: 10px;
     background: #FEFFB2;
     border-radius: 10px;
     height: 30px;
@@ -1227,7 +1224,6 @@ ul#nculife-details
 
 .index-box
 {
-    -webkit-border-radius: 10px;
     background: #CBD3E6;
     border-radius: 10px;
     margin-left: 1%;
@@ -1290,7 +1286,6 @@ ul#nculife-details
 .news-view
 {
     background: #ccccff;
-    -webkit-border-radius: 10px;
     border-radius: 10px;
     padding: 15px;
     width: 720px;
@@ -1301,7 +1296,6 @@ ul#nculife-details
     width: 690px;
     height: 75px;
     background: #dce4ed;
-    -webkit-border-radius: 10px;
     border-radius: 10px;
     padding: 10px 15px;
     position: relative;
@@ -1327,7 +1321,6 @@ ul#nculife-details
     height: 35px;
     background: #fff;
     border-radius: 10px;
-    -webkit-border-radius: 10px;
     display: block;
     line-height: 35px;
     text-align: center;
@@ -1358,7 +1351,6 @@ ul#nculife-details
 {
     background: #f5f5ff;
     border-radius: 10px;
-    -webkit-border-radius: 10px;
     padding: 15px 10px;
     margin-top: 10px;
 }
@@ -1395,7 +1387,6 @@ ul#nculife-details
     height: 35px;
     background: #dce4ed;
     border-radius: 10px;
-    -webkit-border-radius: 10px;
     line-height: 35px;
     text-align: center;
     margin: 0 0 0 600px;
@@ -1410,7 +1401,6 @@ button.news-button
 {
     width: 710px;
     height: 410px;
-    -webkit-border-radius: 10px;
     background: #CBD3E6;
     border-radius: 10px;
     padding: 20px;
