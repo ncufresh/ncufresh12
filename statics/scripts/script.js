@@ -1272,6 +1272,8 @@
 
     $.fn.dialog.create = function(target)
     {
+        target.options.width = $.integer(target.options.width);
+        target.options.height = $.integer(target.options.height);
         if ( ! $(target).hasClass(target.options.dialogClass) )
         {
             if ( target.options.closeButton )
