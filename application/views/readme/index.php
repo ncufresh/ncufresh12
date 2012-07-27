@@ -25,7 +25,7 @@
                     <li>中大護照</li>
                     <li>課後輔導</li>
                 </ul>
-                <a href="#" id="readme-direct"><img src="<?php echo Yii::app()->baseUrl . "/statics/images/direction.jpg"?>"/></a>
+                <a href="#" id="readme-direct"></a>
             </div>
         </div>
     </div>

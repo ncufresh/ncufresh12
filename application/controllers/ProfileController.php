@@ -12,14 +12,14 @@ class ProfileController extends Controller
     public function accessRules()
     {
         return array(
-            array(
+            /*array(
                 'allow',
                 'actions'   => array(
                     'profile',
                     'editor'
                 ),
                 'users'     => array('*')
-            ),
+            ),*/
             array(
                 'allow',
                 'users'     => array('@')
@@ -94,11 +94,5 @@ class ProfileController extends Controller
                     'target'        => $img_url
             ));
         }
-        $this->_data['token'] = Yii::app()->security->getToken();
-        $this->render('editor', array(                
-                'user'          => $user, 
-                'departments'   => Department::model()->getDepartment(), 
-                'target'        => $img_url
-        ));
     }
 }
