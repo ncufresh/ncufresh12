@@ -17,19 +17,39 @@
         <th>內容:</th>
         <th>時間:</th>
     </tr>
-<?php foreach ($replys as $reply) : ?>
     <tr>
-        <td>
+        <td >
+        <ul id="reply">
+<?php foreach ($replys as $reply) : ?>
+            <li>
 <?php echo Profile::model()->findByPk($reply->author_id)->name; ?>
+            </li>
+<?php endforeach;?>
+        </ul>
         </td>
         <td>
+        <ul id="reply">
+<?php foreach ($replys as $reply) : ?>
+            <li> <a href="#">
+            <h3>按我吧^^</h3>
+            <sapn>
 <?php echo $reply->content; ?>
+            </span>
+            </a> 
+            </li>
+<?php endforeach;?>
+        </ul>
         </td>
         <td>
+        <ul id="reply">
+<?php foreach ($replys as $reply) : ?>
+            <li>
 <?php echo Yii::app()->format->datetime($reply->create_time); ?>
+            </li>
+<?php endforeach;?>
+        </ul>
         </td>
     </tr>
-<?php endforeach;?>
 </table>
 <span class="form-friends-sort-title" >推文</span>
 <table class="message-reply">
