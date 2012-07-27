@@ -1,12 +1,13 @@
 <form method="POST" action="<?php echo $this->createUrl('friends/deletemembers', array('id'=>$mygroup->id)); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
+<div>
+<ul class="introduce-group">
+<li><span id="introduce">群組名稱:</span><?php echo $mygroup->name; ?></li>
+<li><span id="introduce">群組簡介:</span><?php echo $mygroup->description; ?></li>
+<ul>
+</div>
+<div class="mygroup">
 <table>
-    <tr>
-    <th colspan="5" class="mygroup-name" ><span>群組名稱:</span><?php echo $mygroup->name; ?></ th>
-    </tr>
-    <tr>
-        <td colspan="5" class="mygroup-name"><span>群組簡介:</span><?php echo $mygroup->description; ?></td>
-    </tr>
     <tr>
 <?php 
     $row = 0;
@@ -21,9 +22,16 @@
 <?php else: ?>
         <img  height="70" src="<?php echo $target.'/image1.jpg'; ?>" alt="Score image" />
 <?php endif; ?>
-        <input type="checkbox" name="members[<?php echo $profile->id; ?>]" value="<?php echo $profile->id; ?>" />
+    <ul class="member-name-department">
+        <li><input type="checkbox" name="members[<?php echo $profile->id; ?>]" value="<?php echo $profile->id; ?>" />
+        </li>
+        <li>
 <?php echo $profile->name; ?>
+        </li>
+        <li>
 <?php echo $profile->department->short_name; ?>
+        </li>
+    </ul>
         </td>
 <?php if ( $col %5 == 0 ): ?>
  <?php $row+=1; ?>
@@ -37,6 +45,7 @@
     </tr>
 <?php endif;?>
 </table>
+</div>
 <button type="submit">刪除成員</button>
 </form>
 <button><a href="<?php echo Yii::app()->createUrl('friends/friends')  ?>">BACK</a></button>

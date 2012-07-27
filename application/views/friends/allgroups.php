@@ -1,27 +1,21 @@
+<h1>我的群組</h1>
+<div class="allgroup">
 <table>
     <tr>
-        <th colspan="5">我的群組</th>
+<?php $account = 1;?>
+<?php foreach ( $groups as $mygroup ) : ?>
+<?php if ( $account % 3 == 0 ) : ?>
     </tr>
     <tr>
-<?php $row = 0; ?>
-<?php $col = 1; ?>
-<?php foreach ( $groups as $mygroup ) : ?>
-<?php if ( $row<=4 ) : ?>
+<?php endif; ?>
         <td>
             <a href="<?php echo Yii::app()->createUrl('friends/mygroups', array('id'=>$mygroup->id));?>" class="mygroup"><?php echo $mygroup->name ; ?></a>
         </td>
-<?php if ( $col%5==0 ) : ?>
-<?php $row+=1;?>
-    </tr>
-    <tr>
-<?php endif; ?>
-<?php endif; ?>
-<?php $col++; ?>
+<?php $account++; ?>
 <?php endforeach; ?>
-<?php if ( $col%5!=0 ): ?>
+<?php if ( $account % 3 != 0 ) : ?>
     </tr>
-<?php endif;?>
+<?php endif; ?> 
 </table>
-<button>
-<a href="<?php echo Yii::app()->createUrl('friends/friends');?>">BACK</a>
-</button>
+</div>
+<button><a href="<?php echo Yii::app()->createUrl('friends/friends');?>">BACK</a></button>

@@ -1,42 +1,41 @@
-<h2>基本資料</h2>
+<h1>基本資料</h1>
+<div class="myprofile">
 <?php if ( $user->profile->picture !='' ):?>
-    <img src="<?php echo $target . '/' . $user->profile->picture; ?>" alt="Score image" />
+    <img height="400" src="<?php echo $target . '/' . $user->profile->picture; ?>" alt="Score image" />
 <?php else:?>
     <img src="<?php echo $target . '/image1.jpg'; ?>" alt="Score image" />
 <?php endif;?>
-    <ul>
-        </li>  
-        <li>
-            <span>姓名:</span><?php echo $user->profile->name; ?>
-        </li>
-        <li>
-            <span>暱稱:</span><?php echo $user->profile->nickname; ?>
-        </li>
-        <li>
-            <span>性別:</span>
+        <ul class="user-profile">  
+            <li>
+                姓名:<?php echo $user->profile->name; ?>
+            </li>
+            <li>
+                暱稱:<?php echo $user->profile->nickname; ?>
+            </li>
+            <li>
+                性別:
 <?php if ( $user->profile->sex == 0 ): ?>
-            男孩兒
+                男孩兒
 <?php else:?>
-            女孩兒
+                女孩兒
 <?php endif; ?>    
-        </li>
-        <li>
-           <span>帳號(email):</span>><?php echo $user->username; ?>      
-        </li>
-        <li>
-            <span>系所:</span><?php echo $user->profile->department->short_name; ?>
-        </li>
-        <li>
-            <span>系級:</span><?php echo $user->profile->grade; ?><span>年級</span>
-        </li>
-        <li>
-            <label class="form-profile-senior">畢業高中:  </label>
-            <label class="form-register-senior"><?php echo $user->profile->senior; ?></label>      
-        </li>
-        <li>
-            <span>生日:</span><?php echo $user->profile->birthday; ?>
-        </li>   
-    </ul>
-    <button><a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>">編輯</a></button>
-    <button><a href="<?php echo Yii::app()->createUrl('site/index'); ?>">BACK</a></button>
-</form>
+            </li>
+            <li>
+                帳號:<?php echo $user->username; ?>      
+            </li>
+            <li>
+                系所:<?php echo $user->profile->department->short_name; ?>
+            </li>
+            <li>
+                系級:<?php echo $user->profile->grade; ?>年級
+            </li>
+            <li>
+                畢業高中:<?php echo $user->profile->senior; ?>    
+            </li>
+            <li>
+                生日:<?php echo $user->profile->birthday; ?>
+            </li>   
+        </ul>
+</div>
+<button><a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>">編輯</a></button>
+<button><a href="<?php echo Yii::app()->createUrl('site/index'); ?>">BACK</a></button>
