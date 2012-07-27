@@ -4,16 +4,11 @@ input, textarea
     margin: 0;
     outline: 0;
 }
+
 #news-create #form-news-content
 {
-    width: 80%;
     height: 250px;
     resize: none;
-}
-
-#news-create dl:not(.textarea) dt
-{
-    width: 171px;
 }
 
 input.MultiFile-applied
@@ -47,13 +42,32 @@ input.MultiFile-applied
     padding: 0;
 }
 
-label.appendix
+p.appendix
 {
     color: #666666;
     font-size: 14pt;
     display: block;
     height: 19px;
     padding: 15px 0;
+}
+
+dl.appendix
+{
+    float: left;
+    width: 45%;
+}
+
+dl.appendix dt,
+dl.appendix dd
+{
+    width: 95%;
+}
+
+dl.appendix button
+{
+    position: absolute;
+    right: -30px;
+    top: 8px;
 }
 
 .news-commit-button
@@ -69,7 +83,7 @@ label.appendix
 
 div#news-url-result, div.MultiFile-list
 {
-    width: 80%;
+    clear: both;
     background-color: #ffffcc;
     -webkit-border-radius: 5px;
     border-radius: 5px;
@@ -210,11 +224,14 @@ a.news-url-delete:hover, a.MultiFile-remove:hover
     {
         jQuery('.news-cancel-button').click(function()
         {
-            var dialog = jQuery('.news-dialog');
-            if(confirm('確定取消編輯此篇文章？'))
-            {
-                window.location = '<?php echo Yii::app()->createUrl('news/admin')?>';
-            }
+            jQuery.confirm({
+                message: '確定取消編輯此篇文章？',
+                confirmed: function(result)
+                {
+                    if ( result ) window.location = '<?php echo Yii::app()->createUrl('news/admin')?>';
+                    return false;
+                }
+            });
             return false;
         });
 
@@ -262,8 +279,8 @@ a.news-url-delete:hover, a.MultiFile-remove:hover
                 <textarea id="form-news-content" name="news[content]" cols="30" rows="10"></textarea>
             </dd>
         </dl>
-        <label class="appendix" >附加連結與檔案</label>
-        <dl>
+        <p class="appendix">附加連結與檔案</p>
+        <dl class="appendix">
             <dt>
                 <label for="news-url-alias-input">連結名稱</label>
             </dt>
@@ -271,13 +288,14 @@ a.news-url-delete:hover, a.MultiFile-remove:hover
                 <input type="text" id="news-url-alias-input"/>
             </dd>
         </dl>
-        <dl>
+        <dl class="appendix">
             <dt>
                 <label for="news-url-input">URL</label>
             </dt>
             <dd>
-                <input type="text" id="news-url-input"/><button id="news-url-button">v</button>
+                <input type="text" id="news-url-input"/>
             </dd>
+            <button id="news-url-button">v</button>
         </dl>
         <div id="news-url-data-warp" style="display:none;">
         </div>
