@@ -2765,21 +2765,25 @@ li.enabled a
     width: 320px;
     height: 100px;
 }
+
 .index-forum1
 {
     margin-left: 185px;
     background: url('../forum/index/forum_01.png');
 }
+
 .index-forum-list
 {
     margin-left: 185px;
     background: url('../forum/index/forum_list.png');
 }
+
 .index-forum2
 {
     margin-left: 185px;
     background: url('../forum/index/forum_02.png');
 }
+
 #forum-forumlist
 {
     background: url('../forum/index/background_1.png');
@@ -2788,6 +2792,7 @@ li.enabled a
     padding-top: 10px;
     padding-left: 30px;
 }
+
 #forum-lists
 {
     width:600px;
@@ -2795,10 +2800,12 @@ li.enabled a
     margin-left:50px;
     margin-top:50px;
 }
+
 #forum-lists a
 {
     line-height: 24px;
 }
+
 #forum-lists .forum-list-1
 {
     background: url('../forum/forum_list/category_01.png');
@@ -2808,6 +2815,7 @@ li.enabled a
     padding-left:44px;
     padding-top:65px;
 }
+
 #forum-lists .forum-list-2
 {
     background: url('../forum/forum_list/category_02.png');
@@ -2817,6 +2825,7 @@ li.enabled a
     padding-top:65px;
     padding-left:44px;
 }
+
 #forum-lists .forum-list-3
 {
     background: url('../forum/forum_list/category_03.png');
@@ -2826,6 +2835,7 @@ li.enabled a
     padding-top:60px;
     padding-left:44px;
 }
+
 #forum-lists .forum-list-4
 {
     background: url('../forum/forum_list/category_04.png');
@@ -2836,6 +2846,7 @@ li.enabled a
     padding-top:65px;
     padding-left:44px;
 }
+
 #forum-lists .forum-list-5
 {
     background: url('../forum/forum_list/category_05.png');
@@ -2846,6 +2857,7 @@ li.enabled a
     padding-top:65px;
     padding-left:44px;
 }
+
 #forum-lists .forum-list-6
 {
     background: url('../forum/forum_list/category_06.png');
@@ -2857,3 +2869,42 @@ li.enabled a
     padding-left:44px;
 }
 
+#forum-create-form
+{
+    background: url('../forum/create/background.png');
+    background-repeat:no-repeat;
+    width: 750px;
+    height: 400px;
+    margin-left: 35px;
+    
+}
+
+#forum-create-text-title
+{
+    margin-top:6px;
+}
+
+#forum-create-title
+{
+    width:411px;
+    height:30px;
+}
+
+#forum-create-text-category
+{
+}
+
+#forum-create-category
+{
+    height:30px;
+    width:200px;
+    
+}
+
+#forum-create-text-content
+{
+}
+
+#forum-create-content
+{
+}
