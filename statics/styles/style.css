@@ -1278,13 +1278,13 @@ ul#nculife-details
 .index-box td
 {
     padding: 4px;
-    width: 85%;
+    width: 60%;
 }
 
 .index-box td.time
 {
     text-align: right;
-    width: 15%;
+    width: 40%;
 }
 
 .index-box tfoot
