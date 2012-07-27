@@ -1917,8 +1917,9 @@
                 if ( $('#secret').length ) return false;
                 var input = '';
                 var up = 99;
+                var uplength = 2;
                 var down = 0;
-                var answer = $.random(down + 1, up.length - 1);
+                var answer = $.random(down + 1, up - 1);
                 var buttons = [$('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>')];
                 var run = true;
                 var judgment = function(input_number)
@@ -1927,7 +1928,15 @@
                     var number = input_number;
                     if ( number >= 0 && number < 10 )
                     {
-                        input += number;
+                        if ( input.length < uplength )
+                        {
+                            input += number;
+                        }
+                        if ( parseInt(input) > up )
+                        {
+                            alert('要輸在範圍內喔!');
+                            input = '';
+                        }
                     }
                     else if ( number == 10 )
                     {
@@ -1936,7 +1945,7 @@
                     else if ( number == 11 )
                     {
                         input = parseInt( input_text.val() );
-                        if ( input < up && input >down )
+                        if ( input < up && input > down )
                         {
                             if ( input == answer )
                             {
@@ -1954,7 +1963,6 @@
                             {
                                 down = input;
                             }
-                            message.text('請輸入數字' + down + '到' + up +'之間');
                         }
                         else
                         {
@@ -1962,6 +1970,7 @@
                         }
                         input = '';
                     }
+                    message.text('請輸入數字' + down + '到' + up +'之間');
                     input_text.attr('value', input);
                     return true;
                 };
