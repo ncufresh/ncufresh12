@@ -6,6 +6,8 @@ class Pager extends CWidget
 
     public $parameter = 'page';
 
+    public $parameters = array();
+
     public $pager;
 
     public $url;

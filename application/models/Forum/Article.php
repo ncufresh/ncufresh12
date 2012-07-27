@@ -1,5 +1,5 @@
 <?php
-
+//一個user發表過的所有文章 => 當篇文章的所有回覆
 class Article extends CActiveRecord
 {
     public static function model($className = __CLASS__)
@@ -34,6 +34,7 @@ class Article extends CActiveRecord
     }
 
     public function getArticlesSort($fid, $sort, $category, $page, $entries_per_page){
+        echo $fid.' '.$sort.' '.$category.' '.$page.' '.$entries_per_page;
         switch ($sort)
         {
             case 'create':
@@ -99,9 +100,12 @@ class Article extends CActiveRecord
         return false;
     }
     
-    public function getPageStatus($page, $entries_per_page, $fid)
+    public function getPageStatus($page, $entries_per_page=10, $fid, $category)
     {
-        $pages = ceil($this->count('forum_id= '.$fid.' AND visibility = 1') / $entries_per_page);
+        if($category==0)
+            $pages = ceil($this->count('forum_id= '.$fid.' AND visibility = 1') / $entries_per_page);
+        else
+            $pages = ceil($this->count('forum_id= '.$fid.' AND visibility = 1 AND category='.$category) / $entries_per_page);
 
         return array(
             'pages'         => $pages,
