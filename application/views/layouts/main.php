@@ -199,16 +199,16 @@
     <div id="sidebar-personal">
         <ul>
             <li>
-                <a href="#">個人行事曆</a>
+                <a href="#" title="個人行事曆">個人行事曆</a>
             </li>
             <li>
-                <a href="#">最新更新</a>
+                <a href="#" title="最新更新">最新更新</a>
             </li>
             <li>
-                <a href="#">個人資料</a>
+                <a href="#" title="個人資料">個人資料</a>
             </li>
             <li>
-                <a href="#">遊戲介面</a>
+                <a href="<?php echo Yii::app()->createUrl('game/index'); ?>" title="遊戲介面">遊戲介面</a>
             </li>
         </ul>
         <a id="sidebar-personal-button" href="#" title="個人專區">個人專區</a>
@@ -231,12 +231,14 @@
     </div>
 </div>
 <div id="footer">
-    <p>
-        主辦單位：國立中央大學學務處　承辦單位：諮商中心　執行單位：2012大一生活知訊網工作團隊
-    </p>
-    <p>
-        地址：32001桃園縣中壢市五權里2鄰中大路300號 | 電話：(03)422-7151#57261 | 版權所有：2012大一生活知訊網工作團隊
-    </p>
+    <div id="footer-content">
+        <p>
+            主辦單位：國立中央大學學務處　承辦單位：諮商中心　執行單位：2012大一生活知訊網工作團隊
+        </p>
+        <p>
+            地址：32001桃園縣中壢市五權里2鄰中大路300號 | 電話：(03)422-7151#57261 | 版權所有：2012大一生活知訊網工作團隊
+        </p>
+    </div>
 </div>
 
 <div id="chat">
@@ -261,7 +263,7 @@
             staticsUrl: decodeURIComponent('<?php echo Yii::app()->request->baseUrl; ?>/statics'),
             registerUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>'),
             facebookEnable: <?php echo Yii::app()->facebook->enable ? 'true' : 'false'; ?>,
-            contentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building',array('id'=>':id'));?>'),
+            buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building',array('id'=>':id'));?>'),
             googleSearchAppId: '011017124764723419863:mdibrr3n-py',
             token: '<?php echo Yii::app()->security->getToken(); ?>'
         }
