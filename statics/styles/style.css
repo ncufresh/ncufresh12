@@ -25,7 +25,6 @@ form
 form dl
 {
     margin: 4px 0;
-    overflow: hidden;
     padding: 4px 0;
     position: relative;
 }
@@ -33,24 +32,15 @@ form dl
 form dt,
 form dd
 {
-    height: 28px;
     margin: 0;
-    overflow: hidden;
-    padding: 0;
-    width: 100%;
+    overflow: visible;
+    padding: 0 5% 0 0;
+    width: 95%;
 }
 
 form dt
 {
-    clear: left;
-    float: left;
     position: absolute;
-}
-
-form dd
-{
-    clear: right;
-    float: right;
 }
 
 form input,
@@ -58,7 +48,7 @@ form textarea
 {
     font-size: 0.85em;
     position: relative;
-    width: 90%;
+    width: 100%;
 }
 
 form input,
@@ -69,7 +59,7 @@ form button
     border: none;
     border-radius: 5px;
     height: 20px;
-    padding: 4px 5%;
+    padding: 4px 8px;
 }
 
 form textarea
@@ -91,11 +81,11 @@ form textarea:focus
 form label
 {
     color: #474747;
-    height: 20px;
+    display: block;
     line-height: 20px;
-    padding: 4px 5%;
+    padding: 4px 8px;
     position: relative;
-    width: 90%;
+    width: 100%;
     z-index: 1000;
 }
 
@@ -537,6 +527,7 @@ a:hover
 #sidebar .profile
 {
     margin: 15px 0;
+    padding: 5px 5%;
 }
 
 #sidebar div.profile
@@ -544,7 +535,6 @@ a:hover
     background: #FFFFFF;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
-    padding: 5px;
 }
 
 #sidebar .profile img
@@ -906,7 +896,6 @@ input.gsc-search-button:focus
     border-color: #2F5BB7;
     background-color: #357AE8;
     background-image: none;
-    filter: none;
 }
 
 tr.gsc-completion-selected
@@ -920,7 +909,7 @@ table.gsc-completion-container
     border: none;
     border-radius: 0 0 5px 5px;
     margin-top: -3px;
-    padding: 5px 0;
+    padding: 4px 0;
 }
 
 #search
@@ -934,7 +923,7 @@ table.gsc-completion-container
 #search input
 {
     padding-right: 30px;
-    width: 174px;
+    width: 178px;
 }
 
 #search button
@@ -1458,6 +1447,7 @@ button.news-button
     position: relative;
 }
 
+
 #lastest-news-wrap .indexes div.row div.left
 {
     left: 0;
@@ -1468,6 +1458,17 @@ button.news-button
     overflow: hidden;
 }
 
+#lastest-news-wrap .indexes div.row div.left a
+{
+    color: #000;
+}
+
+#lastest-news-wrap .indexes div.row div.left a:hover
+{
+    color: #7c7c7c;
+    text-decoration: underline;
+}
+
 #lastest-news-wrap .indexes div.row div.right
 {
     right: 0;
@@ -1475,6 +1476,7 @@ button.news-button
     position: absolute;
     padding-left: 10px;
     padding-right: 10px;
+    color: #7C7C7C;
 }
 
 #lastest-news-wrap .indexes div.row div.line
@@ -2907,4 +2909,12 @@ li.enabled a
 
 #forum-create-content
 {
+}
+
+#forum-reply-form
+{
+    background: url('../forum/reply/background.png');
+    width: 688px;
+    height: 391px;
+    margin-left: 35px;
 }

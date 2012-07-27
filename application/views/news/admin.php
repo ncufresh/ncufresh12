@@ -133,8 +133,15 @@
         jQuery('.news-delete-link').click(function()
         {
             var link = jQuery(this).attr('href');
-            var dialog = $('.news-dialog');
-            return confirm('確定刪除此篇文章？');
+            jQuery.confirm({ 
+                message: '確定刪除此篇文章？' ,
+                confirmed: function(result)
+                {
+                    if ( result ) window.location = link; 
+                    return false
+                }
+            });
+            return false;
         });
     });
 </script>
