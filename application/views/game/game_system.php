@@ -51,32 +51,8 @@
 <?php endif; ?>
         </ul>
         <div class="game-display">
-            <?php 
             
-            $ddd = Character::model()->findByPk($watch_id);
-            if($ddd == null)
-            echo '<h1>查無此人</h1>';
-            else
-            {
-                echo '<h1>有資料</h1>';
-            }
-            
-            
-            
-            ?>
-            <?php echo $content ?>
-            <?php // echo $user_level ?>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-
-
+            <?php echo $content; ?>
         </div>
     </div>
 </div>

@@ -2,7 +2,8 @@
     這裡是大一必讀唷<br />
     <div id="readme-list">
         <ul>
-            <li> 新生區
+            <li>
+                <a href="<?php echo Yii::app()->createUrl('readme/freshman');?>" title="新生區">新生區</a>
             </li>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('readme/schedule');?>" title="行事曆">行事曆</a>
