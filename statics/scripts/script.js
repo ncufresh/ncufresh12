@@ -1911,7 +1911,7 @@
         });
 
         $.konami({
-            code:                   [65],
+            code:                   [38, 38, 40, 40, 65, 66, 67],
             complete:               function()
             {
                 if ( $('#secret').length ) return false;
