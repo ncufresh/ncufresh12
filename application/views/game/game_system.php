@@ -1,6 +1,6 @@
-﻿<?php $watch_id = Yii::app()->user->getId() //正在觀看頁面的id ?>
-
-<div class="game-system">
+﻿<?php $user_id = Yii::app()->user->getId() //正在觀看頁面的id ?>
+    <h1>使用者ID => 登入帳號 / 觀看中 => <?php echo $user_id.' / '.$watch_id?> </h1>
+    <div class="game-system">
     <div class="user-body">
     <?php 
         //////////////////// 暫時圖片變數名稱
@@ -22,7 +22,7 @@
         <ul class="game-button">
 <?php if ( $watch_id == $user_id ) : ?>
             <li class="enabled">
-                <a href="" title="任務">任務</a>
+                <a href="<?php echo Yii::app()->createUrl('game/missions', array('id'=>$watch_id)) ?>" title="任務">任務</a>
             </li>
 <?php else : ?>
             <li class="disabled">
@@ -30,14 +30,14 @@
             </li>
 <?php endif; ?>
             <li class="enabled">
-                <a href="" title="成就">成就</a>
+                <a href="<?php echo Yii::app()->createUrl('game/achievements', array('id'=>$watch_id)) ?>" title="成就">成就</a>
             </li>
             <li class="enabled">
-                <a href="" title="道具">道具</a>
+                <a href="<?php echo Yii::app()->createUrl('game/items', array('id'=>$watch_id)) ?>" title="道具">道具</a>
             </li>
 <?php if ( $watch_id == $user_id ) : ?>
             <li class="enabled">
-                <a href="" title="商城">商城</a>
+                <a href="<?php echo Yii::app()->createUrl('game/shop', array('id'=>$watch_id)) ?>" title="商城">商城</a>
             </li>
 <?php else : ?>
             <li class="disabled">
@@ -45,13 +45,10 @@
             </li>
 <?php endif; ?>
             <li class="enabled">
-                <a href="" title="惡搞">惡搞</a>
+                <a href="<?php echo Yii::app()->createUrl('game/funny', array('id'=>$watch_id)) ?>" title="惡搞">惡搞</a>
             </li>
         </ul>
         <div class="game-display">
-
-            <h1>目前使用者ID => <?php echo $watch_id?> </h1>
-            <h1>觀看使用者ID => <?php echo $user_id;?></h1>
             <?php echo $content ?>
             <h1>TEST</h1>
             <h1>TEST</h1>

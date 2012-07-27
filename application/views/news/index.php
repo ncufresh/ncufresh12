@@ -21,7 +21,7 @@
             'url'       => 'news/index',
             'pager'     => $page_status
         )); ?>
-        <a class="news-back-link" href="#" title="返回">[返回]</a>
+        <a class="news-back-link" href="<?php echo Yii::app()->baseUrl;?>" title="回首頁">[回首頁]</a>
         <?php if ( Yii::app()->user->getIsAdmin() ) : ?>
         <a class="news-admin-link" href="<?php echo Yii::app()->createUrl('news/admin'); ?>" title="管理文章">[管理文章]</a>
         <?php endif; ?>
