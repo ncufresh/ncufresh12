@@ -73,7 +73,8 @@
 <br/>
 <?php $this->widget('Pager', array(
     'url'       => 'forum/forum',
-    'pager'     => $page_status
+    'pager'     => $page_status,
+    'parameters'=> array('fid' => $fid, 'sort' => $sort, 'category' => $current_category)
 )); ?>
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/delete'); ?>" method="POST" class="form-delete">
 <input type="hidden" name="delete" value=""/>

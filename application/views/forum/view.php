@@ -1,5 +1,8 @@
 ﻿文章<br />
 <?php
+
+//推文限制登入才可以
+
 echo "title: ".$article->title.'<br/>';
 echo "content: ".$article->content.'<br/>';
 ?>
