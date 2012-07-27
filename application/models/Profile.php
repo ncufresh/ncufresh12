@@ -85,4 +85,9 @@ class Profile extends CActiveRecord
             'order'  => 'id ASC' 
         ));
     }
+
+    public function addUser()
+    {
+        
+    }
 }

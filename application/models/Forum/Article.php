@@ -34,7 +34,7 @@ class Article extends CActiveRecord
     
     // for popo
     public function getUserArticles($author_id){
-        echo $this->findAll('author_id='.$author_id.' AND visibility=1');
+        return $this->findAll('author_id='.$author_id.' AND visibility=1');
     }
     
     public function getArticlesSort($fid, $sort, $category, $page, $entries_per_page){

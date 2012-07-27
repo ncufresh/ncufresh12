@@ -5,15 +5,17 @@
         <th>標題</th>
         <th>時間</th>
     </tr>
-
+<?php foreach ( $articles as $article ) : ?>
         <tr>
             <td>
-            <!--<a href=" echo Yii::app()->createUrl('profile/message_replay', array('id'=>'傳過去的文章ID'));?>" class="mymessage-title"> echo $mygroup->name ; ?></a>-->
+                <a href="<?php echo Yii::app()->createUrl('profile/messagereplay', array('id'=> $article->id)); ?>" class="mymessage-title">
+<?php echo $article->title ; ?>
+                </a>
             </td>
             <td>
-            <!--建立時間-->
+<?php echo $article->create_time; ?>
             </td>
         </tr>
-
+<?php endforeach; ?>
 </table>
 </div>

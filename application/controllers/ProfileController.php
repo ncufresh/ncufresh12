@@ -2,6 +2,12 @@
 
 class ProfileController extends Controller
 {
+    public function init()
+    {
+        parent::init();
+        Yii::import('application.models.Forum.*');
+        return true;
+    }
     public function filters()
     {
         return array(
@@ -91,8 +97,12 @@ class ProfileController extends Controller
     public function actionMessage()
     {
         $userID = Yii::app()->user->id;
-        $this->render('message', array(                
-            'user'      => User::model()->findByPk($userID)
+        $this->_data['token'] = Yii::app()->security->getToken();
+        // echo $userID;
+        // echo count(Article::model()->getUserArticles($userID));
+        // exit();
+        $this->render('message', array(
+            'articles'        => Article::model()->getUserArticles($userID)
         ));
     }
 
@@ -101,6 +111,7 @@ class ProfileController extends Controller
         $userID = Yii::app()->user->id;
         $this->render('messagereply', array(                
             'user'      => User::model()->findByPk($userID)
+            
         ));
     }
 }

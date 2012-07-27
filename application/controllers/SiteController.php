@@ -257,7 +257,7 @@ class SiteController extends Controller
                 $picture_type=$_FILES['picture']['type'];
                 if ( $profile->validate() )
                 {
-                    if ( $user->save() )
+                    if ( $user->save() && $user->beforeSave )
                     {
                         $profile->id = $user->id;
                         if ( $profile->save() )
