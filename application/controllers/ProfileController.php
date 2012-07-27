@@ -12,14 +12,14 @@ class ProfileController extends Controller
     public function accessRules()
     {
         return array(
-            array(
+            /*array(
                 'allow',
                 'actions'   => array(
                     'profile',
                     'editor'
                 ),
                 'users'     => array('*')
-            ),
+            ),*/
             array(
                 'allow',
                 'users'     => array('@')
@@ -58,7 +58,8 @@ class ProfileController extends Controller
         $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $user = User::model()->findByPk($userID);
-        if ( isset($_POST['form-editor-sure']) && isset($_POST['profile']) ) 
+        $this->_data['token'] = Yii::app()->security->getToken();
+        if ( isset($_POST['profile']) ) 
         {
             $user->attributes = $_POST['register'];
             if ( $user->validate() )
@@ -85,12 +86,13 @@ class ProfileController extends Controller
                 }
             }
         }
-
-        $this->_data['token'] = Yii::app()->security->getToken();
-        $this->render('editor', array(                
-                'user'          => $user, 
-                'departments'   => Department::model()->getDepartment(), 
-                'target'        => $img_url
-        ));
+        else
+        {
+            $this->render('editor', array(                
+                    'user'          => $user, 
+                    'departments'   => Department::model()->getDepartment(), 
+                    'target'        => $img_url
+            ));
+        }
     }
 }

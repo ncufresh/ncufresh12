@@ -43,10 +43,12 @@ class Activity extends CActiveRecord
             ':timestamp'  => TIMESTAMP - self::STATE_UPDATE_TIMEOUT - 5
         );
 
-        $data = self::getPersister()->load() ?: array(
-            'cleaned'   => 0,
-            'counter'   => 0
-        );
+        $data = self::getPersister()->load()
+             ?: self::getPersister()->load()
+             ?: array(
+                'cleaned'   => 0,
+                'counter'   => 0
+            );
 
         if ( TIMESTAMP - $data['cleaned'] > self::STATE_CLEAN_TIMEOUT )
         {

@@ -1,52 +1,42 @@
 <form method="POST" action="<?php echo $this->createUrl('friends/deletefriends'); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
+<h1 class="friend-title">我的好友</h1>
+<div class="myfriend">
 <table class="other-page">
-   <tr >
-    <th colspan="5" class="friend-close-page">我的好友</th>
+    <tr>
+<?php $row = 0;?>
+<?php $col = 1;?>
+<?php foreach ( $user->friends as $friend ) :?>
+<?php if ( $row <= 4 ) :?>
+        <td class="friends-close-ones">
+<?php if ( $friend->profile->picture !='' ) :?>
+        <img  height="70" src="<?php echo $target.'/'.$friend->profile->picture; ?> " alt="Score image" />
+<?php else :?>
+        <img  height="70" src="<?php echo $target.'/image1.jpg'; ?>" alt="Score image" />
+<?php endif;?>
+    <ul class="member-name-department">
+        <li><input type="checkbox" name="friends[<?php echo $friend->profile->id;?>]" value="<?php echo $friend->profile->id;?>" /></li>
+        <li>
+<?php echo $friend->profile->name;?>
+        </li>
+        <li>
+<?php echo $friend->profile->department->short_name ?>
+        </li>
+    </ul>
+        </td>
+<?php if ( $col %5 == 0 ) :?>
+<?php $row+=1;?>
     </tr>
     <tr>
-        <?php 
-        $row = 0;
-        $col = 1;
-        foreach ( $user->friends as $friend ) :
-            if ( $row<=4 )   //限顯現4行
-            { 
-        ?>
-                <td class="friends-close-ones"><img  height="70" src="
-        <?php
-                if ( $friend->profile->picture !='' )
-                {
-                    echo $target.'/'.$friend->profile->picture;             
-                }
-                else
-                {
-                    echo $target.'/image1.jpg'; 
-                }
-        ?>
-                " alt="Score image"/><br /><input type="checkbox" name="friends[]" value="<?php echo $friend->profile->id;?>" />
-                <?php echo $friend->profile->name;?>
-                <br />
-                <?php echo $friend->profile->department->short_name ?>
-                </td>
-                <?php
-                if ( $col%5==0 ) 
-                {
-                    $row+=1;
-                ?>
-                    </tr>
-                    <tr>
-        <?php
-                }
-            }
-            $col++;
-        endforeach; 
-        if ( $col%5!=0 )
-        {
-        ?>
-            </tr>
-        <?php
-        }
-        ?>
+<?php endif;?>
+<?php endif;?>
+<?php $col++;?>
+<?php endforeach;?>
+<?php if ( $col % 5 != 0 ):?>
+    </tr>
+<?php endif;?>
 </table>
-<button id="form-otherdepartment-cancel" type="submit" name="myfriends-cancel">取消好友/BACK</button>
+</div>
+<button type="submit">取消好友</button>
 </form>
+<button><a href="<?php echo Yii::app()->createUrl('friends/friends')  ?>">BACK</a></button>

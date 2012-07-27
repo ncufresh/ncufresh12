@@ -21,7 +21,13 @@ class Comment extends CActiveRecord
             )
         );
     }
-
+    
+    // for popo
+    public function getArticleComments($aid)
+    {
+        return $this->findAll('article_id='.$aid);
+    }
+    
     public function beforeSave()
     {
         // 尚未檢查是否所有資料都有填寫

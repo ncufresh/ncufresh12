@@ -6,7 +6,7 @@ class NewsController extends Controller
 	 * Configuration: 
 	 * the number how many pieces of news will be listed.
 	 */
-    const NEWS_PER_PAGE = 10;
+    const NEWS_PER_PAGE = 13;
 
 	/**
 	 * Configuration: 
@@ -118,7 +118,6 @@ class NewsController extends Controller
                 ));
                 exit;
             }
-
             // saving urls
             if (
                 isset($_POST['news']['news_urls_alias'])
@@ -134,7 +133,6 @@ class NewsController extends Controller
                     $url_model->save();
                 }
             }
-
             // saving files
             $files = CUploadedFile::getInstancesByName('news_files');
             if ( $news->id != 0 && isset($files) && count($files) > 0 )
@@ -154,7 +152,6 @@ class NewsController extends Controller
             }
             $this->redirect($news->url);
         }
-
         $this->render('create', array(
 			'errors'    =>  array()
 		));
@@ -165,18 +162,17 @@ class NewsController extends Controller
 	 */
     public function actionUpdate($id)
     {
-        $news = $this->loadModel($id);
+        $news = $this->loadModel($id, true);
         if ( isset($_POST['news']) )
         {
             $news->attributes = $_POST['news'];
             if ( $news->save() ) $this->redirect($news->url);
         }
+        $news->content = 
         $this->render('update', array(
             'news'          => $news,
             'files'         => $this->loadFiles(self::NEWS_FILE_DIR . DIRECTORY_SEPARATOR . $news->id)
         ));
-		
-		
     }
 
 	/**
@@ -192,9 +188,16 @@ class NewsController extends Controller
 	/**
 	 * Load a piece of news and validate if exists
 	 */
-    private function loadModel($id)
+    private function loadModel($id, $raw = false)
     {
-        $news = News::model()->findByPk($id);
+        if($raw)
+        {
+            $news = News::model()->getRawNews($id);
+        }
+        else
+        {
+            $news = News::model()->getNews($id);
+        }
         if ( $news === null ) throw new CHttpException(404);
         return $news;
     }

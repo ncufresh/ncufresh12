@@ -31,7 +31,7 @@
         <p class="online">0</p>
         <p class="browsered">0</p>
     </div>
-    <form id="search" action="<?php echo Yii::app()->createUrl('site/search'); ?>" method="GET" autocomplete="off">
+    <form id="search" action="<?php echo Yii::app()->createUrl('site/search'); ?>" method="GET">
         <dl>
             <dt>
                 <label for="form-search-query">搜尋</label>
@@ -56,7 +56,11 @@
         </li>
     </ul>
     <ul id="navigation">
+<?php if ( $this->getId() == 'readme' ) : ?>
+        <li class="active">
+<?php else : ?>
         <li>
+<?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" title="大一必讀">大一必讀</a>
             <ul>
                 <li>
@@ -76,7 +80,11 @@
                 </li>
             </ul>
         </li>
+<?php if ( $this->getId() == 'nculife' ) : ?>
+        <li class="active">
+<?php else : ?>
         <li>
+<?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>" title="中大生活">中大生活</a>
             <ul>
                 <li>
@@ -96,10 +104,18 @@
                 </li>
             </ul>
         </li>
+<?php if ( $this->getId() == 'street' ) : ?>
+        <li class="active">
+<?php else : ?>
         <li>
+<?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('street/index'); ?>" title="校園導覽">校園導覽</a>
         </li>
+<?php if ( $this->getId() == 'forum' ) : ?>
+        <li class="active">
+<?php else : ?>
         <li>
+<?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('forum/index'); ?>" title="論壇專區">論壇專區</a>
             <ul>
                 <li>
@@ -113,7 +129,11 @@
                 </li>
             </ul>
         </li>
+<?php if ( $this->getId() == 'club' ) : ?>
+        <li class="active">
+<?php else : ?>
         <li>
+<?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('club/index'); ?>" title="系所社團">系所社團</a>
             <ul>
                 <li>
@@ -127,10 +147,18 @@
                 </li>
             </ul>
         </li>
+<?php if ( $this->getId() == 'multimedia' ) : ?>
+        <li class="active">
+<?php else : ?>
         <li>
+<?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('multimedia/index'); ?>" title="影音專區">影音專區</a>
         </li>
+<?php if ( $this->getId() == 'about' ) : ?>
+        <li class="active">
+<?php else : ?>
         <li>
+<?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('about/index'); ?>" title="關於我們">關於我們</a>
         </li>
     </ul>
@@ -171,16 +199,16 @@
     <div id="sidebar-personal">
         <ul>
             <li>
-                <a href="#">個人行事曆</a>
+                <a href="#" title="個人行事曆">個人行事曆</a>
             </li>
             <li>
-                <a href="#">最新更新</a>
+                <a href="#" title="最新更新">最新更新</a>
             </li>
             <li>
-                <a href="#">個人資料</a>
+                <a href="#" title="個人資料">個人資料</a>
             </li>
             <li>
-                <a href="#">遊戲介面</a>
+                <a href="<?php echo Yii::app()->createUrl('game/index'); ?>" title="遊戲介面">遊戲介面</a>
             </li>
         </ul>
         <a id="sidebar-personal-button" href="#" title="個人專區">個人專區</a>
@@ -203,12 +231,14 @@
     </div>
 </div>
 <div id="footer">
-    <p>
-        主辦單位：國立中央大學學務處　承辦單位：諮商中心　執行單位：2012大一生活知訊網工作團隊
-    </p>
-    <p>
-        地址：32001桃園縣中壢市五權里2鄰中大路300號 | 電話：(03)422-7151#57261 | 版權所有：2012大一生活知訊網工作團隊
-    </p>
+    <div id="footer-content">
+        <p>
+            主辦單位：國立中央大學學務處　承辦單位：諮商中心　執行單位：2012大一生活知訊網工作團隊
+        </p>
+        <p>
+            地址：32001桃園縣中壢市五權里2鄰中大路300號 | 電話：(03)422-7151#57261 | 版權所有：2012大一生活知訊網工作團隊
+        </p>
+    </div>
 </div>
 
 <div id="chat">
@@ -239,8 +269,8 @@
         }
     });
 </script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/ckeditor.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/jquery.ckeditor.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/ckeditor/adapters/jquery.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/script.js"></script>
 <?php if ( file_exists(dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'statics' . DIRECTORY_SEPARATOR . 'scripts' . DIRECTORY_SEPARATOR . $this->getId() . '.js') ) : ?>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/<?php echo $this->getId(); ?>.js"></script>

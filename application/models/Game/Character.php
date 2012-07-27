@@ -72,55 +72,100 @@ class Character extends CActiveRecord
             )
          );
     }
+    
+    public function getLevel($user_id)
+    {
+        $level = array(
+            array(
+                'name'  => '岿粇',  //玥ぃ穦禲硂
+                'exp'   => 0
+            ),
+            array(
+                'name'  => '单',
+                'exp'   => 150
+            ),
+            array(
+                'name'  => '单',
+                'exp'   => 500
+            ),
+            array(
+                'name'  => '单',
+                'exp'   => 1200
+            ),
+            array(
+                'name'  => '单',
+                'exp'   => 2400
+            ),
+            array(
+                'name'  => '单き',
+                'exp'   => 5000
+            ),
+            array(
+                'name'  => '单せ',
+                'exp'   => 8050
+            ),
+            array(
+                'name'  => '单',
+                'exp'   => 13050
+            ),
+            array(
+                'name'  => '单',
+                'exp'   => 20000
+            ),
+            array(
+                'name'  => '单',
+                'exp'   => 30000
+            ),
+            array(
+                'name'  => '单',
+                'exp'   => 48050
+            ),
+            array(
+                'name'  => '单',
+                'exp'   => 63000
+            ),
+            array(
+                'name'  => '单',
+                'exp'   => 85000
+            ),
+            array(
+                'name'  => '单',
+                'exp'   => 110000
+            ),
+            array(
+                'name'  => '单',
+                'exp'   => 165000
+            ),
+            array(
+                'name'  => '单き',
+                'exp'   => 250000
+            ),
+            array(
+                'name'  => '单せ',
+                'exp'   => 360000
+            ),
+            array(
+                'name'  => '单',
+                'exp'   => 520000
+            ),
+            array(
+                'name'  => '单',
+                'exp'   => 750000
+            ),
+            array(
+                'name'  => '单',
+                'exp'   => 1000000
+            ),
+            array(
+                'name'  => '单',
+                'exp'   => 10000000000
+            )
+        );
+    }
 
     public function getId()
     {
         return $this->id;
-    }
-
-    public function getUserNickName()
-    {
-        return $this->profile->nickname;
-    }
-
-    public function getHairName()
-    {
-        return $this->hair->name;
-    }
-
-    public function getEyesName()
-    {
-        return $this->eyes->name;
-    }
-
-    public function getClothsName()
-    {
-        return $this->cloths->name;
-    }
-
-    public function getPantsName()
-    {
-        return $this->pants->name;
-    }
-    
-    public function getShoesName()
-    {
-        return $this->shoes->name;
-    }
-
-    public function getOthersName()
-    {
-        return $this->others->name;
-    }
-
-    public function getExpValue()
-    {
-        return $this->exp;
-    }
-
-    public function getMoneyValue()
-    {
-        return $this->money;
     }
 
     public function addExp($value)
