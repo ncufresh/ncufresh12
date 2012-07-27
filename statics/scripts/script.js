@@ -1340,11 +1340,7 @@
 
         var dialog = $('<div></div>')
             .addClass(options.confirmClass)
-            .dialog({
-                modal:          true,
-                escape:         false,
-                closeButton:    false
-            });
+            .appendTo($('body'));
 
         var message = $('<p></p>')
             .addClass(options.messageClass)
@@ -1378,7 +1374,11 @@
                 .appendTo(buttons);
         }
 
-        return dialog;
+        return dialog.dialog({
+            modal:          true,
+            escape:         false,
+            closeButton:    false
+        });
     };
 })(jQuery);
 
@@ -1911,16 +1911,14 @@
         });
 
         $.konami({
-            code:                   [65],
+            code:                   [38, 38, 40, 40, 65, 66, 67],
             complete:               function()
             {
                 if ( $('#secret').length ) return false;
                 var input = '';
                 var up = 99;
-                var intial_length = up.length - 1;
-                var input_index = intial_length;
                 var down = 0;
-                var answer = $.random(down + 1, up - 1);
+                var answer = $.random(down + 1, up.length - 1);
                 var buttons = [$('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>')];
                 var run = true;
                 var judgment = function(input_number)
@@ -1930,11 +1928,9 @@
                     if ( number >= 0 && number < 10 )
                     {
                         input += number;
-                        input_index--;
                     }
                     else if ( number == 10 )
                     {
-                        input_index = intial_length;
                         input = '';
                     }
                     else if ( number == 11 )
@@ -1965,7 +1961,6 @@
                             alert('要輸在範圍內喔!');
                         }
                         input = '';
-                        input_index = intial_length;
                     }
                     input_text.attr('value', input);
                     return true;
@@ -1977,7 +1972,6 @@
                     height: '100%',
                     position: 'fixed',
                     top: 0,
-                    opacity: 1,
                     left: 0,
                     width: '100%'
                 })

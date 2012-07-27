@@ -1,6 +1,7 @@
 ﻿<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script>
 (function($){
+    //$( '#form-create-content' ).ckeditor();
     $(document).ready(function (){
         /* title最多20字元 */
         var title_num = 20;
@@ -54,27 +55,34 @@
 })(jQuery);
 </script>
 <?php $this->endWidget();?>
-發表文章<br />
 <div id="forum-create-text-number-check"></div>
-<?php
-    echo $fid . '<br />';
-    foreach ( $category->article_categories as $entry )
-    {
-            echo $entry->name . ' ';
-            echo $entry->id . '<br />';
-    }
-?>
 
-<form enctype="multiprt/form-data" action="<?php echo Yii::app()->createUrl('forum/create', array('fid' => $fid)); ?>" method="POST" id="forum-create-form">
-標題<input id="forum-create-title" type="text" name="forum[title]" />
-內容<textarea id="form-create-content" name="forum[content]" cols="30" rows="10"></textarea>
-<br/>
-分類
-<select id="forum-create-category" name="forum[category]">
-<?php foreach ( $category->article_categories as $entry ) : ?>
-    <option value="<?php echo $entry->id; ?>"><?php echo $entry->name; ?></option>
-<?php endforeach; ?>
-</select>
+<form id="forum-create-form" enctype="multiprt/form-data" action="<?php echo Yii::app()->createUrl('forum/create', array('fid' => $fid)); ?>" method="POST">
+    <dl>
+        <dt>
+            <label id="forum-create-text-title" for="forum-create-title">標題</label>
+        <dd>
+            <input id="forum-create-title" type="text" name="forum[title]" />
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            <label for="forum-create-category"></label>
+        <dd>
+            <select id="forum-create-category" name="forum[category]">
+            <?php foreach ( $category->article_categories as $entry ) : ?>
+                <option value="<?php echo $entry->id; ?>"><?php echo $entry->name; ?></option>
+            <?php endforeach; ?>
+            </select>
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            <label for="form-create-content">內容</label>
+        <dd>
+            <textarea id="form-create-content" name="forum[content]" cols="70" rows="10"></textarea>
+        </dd>
+    </dl>
 <!--置頂-->
 <?php
 if($is_master):

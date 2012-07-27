@@ -34,7 +34,7 @@ class ForumController extends Controller
             ),
             array(
                 'allow',
-                'actions'   => array('index', 'view', 'forumlist', 'forum'),
+                'actions'   => array('index', 'view', 'forumlist', 'forum', 'comment'),
                 'users'     => array('*')
             ),
             array(
@@ -67,8 +67,8 @@ class ForumController extends Controller
         
         // content of each forum
         // [not yet] 傳入是否為admin 用於判斷是否顯示置頂checkbox及刪除文章選項
-        if ( ! Yii::app()->request->getIsAjaxRequest() )
-        {
+        // if ( ! Yii::app()->request->getIsAjaxRequest() )
+        // {
             $this->render('forum', array(
                 'fid'       => $fid,
                 'sort'      => $sort,
@@ -76,18 +76,18 @@ class ForumController extends Controller
                 //'model'     => $article->findAll('forum_id='.$fid)
                 'model'     => Article::model()->getArticlesSort($fid, $sort, $category, $page, self::ARTICLES_PER_PAGE),
                 'category'  => Category::model()->findByPk($fid),
-                'page_status'   => $article->getPageStatus($page, self::ARTICLES_PER_PAGE, $fid),
+                'page_status'   => $article->getPageStatus($page, self::ARTICLES_PER_PAGE, $fid, $category),
                 'is_master' =>  Category::model()->getIsMaster($fid),
             ));
-        }
-        else
-        {
-            $this->_data['content'] = array();
-            foreach ( Article::model()->getArticlesSort($fid, $sort) as $article )
-            {
-                $this->_data['content'][$article->id] = $article->title;
-            }
-        }
+        // }
+        // else
+        // {
+            // $this->_data['content'] = array();
+            // foreach ( Article::model()->getArticlesSort($fid, $sort) as $article )
+            // {
+                // $this->_data['content'][$article->id] = $article->title;
+            // }
+        // }
     }
     
     //[not yet]限制欄位填寫完整. 字數判斷
@@ -102,7 +102,6 @@ class ForumController extends Controller
         // {
             // echo $each->name;
         // }
-
         if ( isset($_POST['forum']) )
         {
             $article->title = $_POST['forum']['title'];

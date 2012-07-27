@@ -108,7 +108,7 @@
             .appendTo(picture);
         var block1_pic = $('<div></div>')
             .css({
-                height: 400,
+                height: 300,
                 width: 750,
                 position: 'relative'
             })
