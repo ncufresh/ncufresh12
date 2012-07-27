@@ -2944,3 +2944,11 @@ li.enabled a
 #forum-create-content
 {
 }
+
+#forum-reply-form
+{
+    background: url('../forum/reply/background.png');
+    width: 688px;
+    height: 391px;
+    margin-left: 35px;
+}

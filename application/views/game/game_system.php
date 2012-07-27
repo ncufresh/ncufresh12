@@ -22,6 +22,9 @@
     </div>
     <div class="function-body">
         <ul class="game-button">
+            <li class="enabled">
+                <a href="<?php echo Yii::app()->createUrl('game/index', array('id'=>$watch_id)) ?>" title="資訊">資訊</a>
+            </li>
 <?php if ( $watch_id == $user_id ) : ?>
             <li class="enabled">
                 <a href="<?php echo Yii::app()->createUrl('game/missions', array('id'=>$watch_id)) ?>" title="任務">任務</a>
@@ -46,20 +49,16 @@
                 商城
             </li>
 <?php endif; ?>
-            <li class="enabled">
-                <a href="<?php echo Yii::app()->createUrl('game/funny', array('id'=>$watch_id)) ?>" title="惡搞">惡搞</a>
-            </li>
         </ul>
         <div class="game-display">
             <?php 
             
-            $ddd = Character::model()->findByPk($user_id);
-            if($ddd === null)
-            echo '沒東西';
+            $ddd = Character::model()->findByPk($watch_id);
+            if($ddd == null)
+            echo '<h1>查無此人</h1>';
             else
             {
-                echo '有東西';
-                print_r($ddd);
+                echo '<h1>有資料</h1>';
             }
             
             

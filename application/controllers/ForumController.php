@@ -29,12 +29,12 @@ class ForumController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('create', 'comment', 'reply', 'delete'),
+                'actions'   => array('create', 'comment', 'reply', 'delete', 'comment'),
                 'roles'     => array('member')
             ),
             array(
                 'allow',
-                'actions'   => array('index', 'view', 'forumlist', 'forum', 'comment'),
+                'actions'   => array('index', 'view', 'forumlist', 'forum'),
                 'users'     => array('*')
             ),
             array(
@@ -135,17 +135,20 @@ class ForumController extends Controller
     }
 
     public function actionComment(){
-        $comment = new Comment();
+        
         if ( isset($_POST['comment']) )
         {
+            $comment = new Comment();
             $comment->content = $_POST['comment']['content'];
             $comment->article_id = $_POST['comment']['aid'];
             $comment->save();
+            
+            $this->redirect(Yii::app()->createUrl('forum/view', array(
+                'fid'       => $comment->article->forum->id,
+                'id'        => $comment->article_id
+            )));
         }
-        $this->redirect(Yii::app()->createUrl('forum/view', array(
-            'fid'       => $comment->article->forum->id,
-            'id'        => $comment->article_id
-        )));
+        throw new CHttpException(404);
     }
 
     public function actionReply($aid)
