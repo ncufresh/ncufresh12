@@ -25,7 +25,6 @@ form
 form dl
 {
     margin: 4px 0;
-    overflow: hidden;
     padding: 4px 0;
     position: relative;
 }
@@ -33,24 +32,15 @@ form dl
 form dt,
 form dd
 {
-    height: 28px;
     margin: 0;
-    overflow: hidden;
-    padding: 0;
-    width: 100%;
+    overflow: visible;
+    padding: 0 5% 0 0;
+    width: 95%;
 }
 
 form dt
 {
-    clear: left;
-    float: left;
     position: absolute;
-}
-
-form dd
-{
-    clear: right;
-    float: right;
 }
 
 form input,
@@ -58,7 +48,7 @@ form textarea
 {
     font-size: 0.85em;
     position: relative;
-    width: 90%;
+    width: 100%;
 }
 
 form input,
@@ -69,7 +59,7 @@ form button
     border: none;
     border-radius: 5px;
     height: 20px;
-    padding: 4px 5%;
+    padding: 4px 8px;
 }
 
 form textarea
@@ -91,11 +81,11 @@ form textarea:focus
 form label
 {
     color: #474747;
-    height: 20px;
+    display: block;
     line-height: 20px;
-    padding: 4px 5%;
+    padding: 4px 8px;
     position: relative;
-    width: 90%;
+    width: 100%;
     z-index: 1000;
 }
 
@@ -446,7 +436,13 @@ a:hover
     font-weight: bolder;
 }
 
-#navigation a:hover
+#navigation li.active a
+{
+    color: #EEFFCC;
+}
+
+#navigation a:hover,
+#navigation li.active a:hover
 {
     color: #FFFFFF;
 }
@@ -454,7 +450,7 @@ a:hover
 #navigation ul
 {
     background: #DAE3EC;
-    background: rgba(170, 190, 215, 0.7);
+    background: rgba(170, 190, 215, 0.9);
     border-radius: 0 0 15px 15px;
     list-style: none;
     margin: -16px 0 0 10px;
@@ -474,14 +470,16 @@ a:hover
     width: 100px;
 }
 
-#navigation ul a
+#navigation ul a,
+#navigation li.active ul a
 {
     color: #000A3C;
 }
 
-#navigation ul a:hover
+#navigation ul a:hover,
+#navigation li.active ul a:hover
 {
-    color: #000300;
+    color: #EEFFFF;
 }
 
 #navigation li:hover ul
@@ -529,6 +527,7 @@ a:hover
 #sidebar .profile
 {
     margin: 15px 0;
+    padding: 5px 5%;
 }
 
 #sidebar div.profile
@@ -536,7 +535,6 @@ a:hover
     background: #FFFFFF;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
-    padding: 5px;
 }
 
 #sidebar .profile img
@@ -898,7 +896,6 @@ input.gsc-search-button:focus
     border-color: #2F5BB7;
     background-color: #357AE8;
     background-image: none;
-    filter: none;
 }
 
 tr.gsc-completion-selected
@@ -912,7 +909,7 @@ table.gsc-completion-container
     border: none;
     border-radius: 0 0 5px 5px;
     margin-top: -3px;
-    padding: 5px 0;
+    padding: 4px 0;
 }
 
 #search
@@ -926,7 +923,7 @@ table.gsc-completion-container
 #search input
 {
     padding-right: 30px;
-    width: 174px;
+    width: 178px;
 }
 
 #search button

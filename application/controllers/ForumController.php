@@ -34,7 +34,7 @@ class ForumController extends Controller
             ),
             array(
                 'allow',
-                'actions'   => array('index', 'view', 'forumlist', 'forum'),
+                'actions'   => array('index', 'view', 'forumlist', 'forum', 'comment'),
                 'users'     => array('*')
             ),
             array(
@@ -102,7 +102,6 @@ class ForumController extends Controller
         // {
             // echo $each->name;
         // }
-
         if ( isset($_POST['forum']) )
         {
             $article->title = $_POST['forum']['title'];

@@ -1,7 +1,7 @@
 ﻿文章<br />
 <?php
 
-//推文限制登入才可以
+//推文限制字數、登入才可以推
 
 echo "title: ".$article->title.'<br/>';
 echo "content: ".$article->content.'<br/>';

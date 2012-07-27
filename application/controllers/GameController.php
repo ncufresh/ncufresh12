@@ -49,13 +49,30 @@ class GameController extends Controller
     
     public function actionMissions($id = 0)
     {
-        if($id==0)
+        $user_id = Yii::app()->user->getId();
+        if($id==0) //判斷是否有傳入id
         {
             $id=Yii::app()->user->getId();
         }
-        $this->setPageTitle(Yii::app()->name . ' - 任務列表');
-        $content = $this->renderPartial('missions', null, true);
-        $this->render('game_system', array('content' => $content, 'watch_id' => $id));
+        
+        if(Character::model()->findByPk($id)==null) //判斷使用者是否存在
+        {
+            $this->redirect(Yii::app()->createUrl('game/index', array('id'=>$user_id)));
+        }
+        
+        else
+        {
+            if($id==$user_id)
+            {
+                $this->setPageTitle(Yii::app()->name . ' - 任務列表');
+                $content = $this->renderPartial('missions', null, true);
+                $this->render('game_system', array('content' => $content, 'watch_id' => $id));
+            }
+            else
+            {
+                $this->redirect(Yii::app()->createUrl('game/index', array('id'=>$id)));
+            }
+        }
     }
 
     public function actionAchievements($id = 0)
@@ -85,13 +102,21 @@ class GameController extends Controller
     
     public function actionShop($id = 0)
     {
+        $user_id = Yii::app()->user->getId();
         if($id==0)
         {
             $id=Yii::app()->user->getId();
         }
-        $this->setPageTitle(Yii::app()->name . ' - 商城列表');
-        $content = $this->renderPartial('shop', null, true);
-        $this->render('game_system', array('content' => $content, 'watch_id' => $id));
+        if($id==$user_id)
+        {
+            $this->setPageTitle(Yii::app()->name . ' - 商城列表');
+            $content = $this->renderPartial('shop', null, true);
+            $this->render('game_system', array('content' => $content, 'watch_id' => $id));
+        }
+        else
+        {
+            $this->redirect(Yii::app()->createUrl('game/index', array('id'=>$id)));
+        }
     }
     
     public function actionFunny($id = 0)
