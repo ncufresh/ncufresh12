@@ -14,11 +14,11 @@
 <?php if ( $account<=4 ):  ?>
         <td class="friends-samediff-ones">
 <?php if ( $profilefir->picture !='' ):?>
-        <img  height="30" src=" <?php echo $target.'/'.$profilefir->picture; ?>" alt="Score image"/>
+        <img  height="30" src=" <?php echo $target.'/'.$profilefir->picture; ?>" alt="Score image" />
 <?php echo $profilefir->name; ?>
 <?php else: ?>
-        <img  height="30" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/>
-<?php echo $profilefir->name; ?> 
+        <img  height="30" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image" />
+<?php echo $profilefir->name; ?>
 <?php endif; ?>
         </td>
 <?php if ( $account == 2 ) :?>
