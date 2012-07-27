@@ -12,14 +12,6 @@ class ProfileController extends Controller
     public function accessRules()
     {
         return array(
-            /*array(
-                'allow',
-                'actions'   => array(
-                    'profile',
-                    'editor'
-                ),
-                'users'     => array('*')
-            ),*/
             array(
                 'allow',
                 'users'     => array('@')
@@ -94,5 +86,21 @@ class ProfileController extends Controller
                     'target'        => $img_url
             ));
         }
+    }
+
+    public function actionMessage()
+    {
+        $userID = Yii::app()->user->id;
+        $this->render('message', array(                
+            'user'      => User::model()->findByPk($userID)
+        ));
+    }
+
+    public function actionMessageReply()
+    {
+        $userID = Yii::app()->user->id;
+        $this->render('messagereply', array(                
+            'user'      => User::model()->findByPk($userID)
+        ));
     }
 }

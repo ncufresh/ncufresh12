@@ -2252,14 +2252,7 @@ ul.life-indexs li.life-indexs-content:hover
 {
     margin-center:auto;
 }
-.mygroup
-{
-    font-size:30px;
-    color:red;
-    margin-top:100px;
-    margin-left:50px;
 
-}
 div.group-friends
 {
     background-color:yellow;
@@ -2296,8 +2289,7 @@ div.other-department
     height:416px;
     padding:0px;
     margin:10px;
-    overflow-y:hidden;  
-   /* overflow-y:none;*/
+    overflow-y:hidden;
 }
 
 div.sameDsameG
@@ -2307,8 +2299,7 @@ div.sameDsameG
     height:416px;
     padding:0px;
     margin:10px;
-    overflow-y:hidden;  
-   /* overflow-y:none;*/
+    overflow-y:hidden;
 }
 
 div.sameDdiffG
@@ -2318,8 +2309,7 @@ div.sameDdiffG
     height:416px;
     padding:0px;
     margin:10px;
-    overflow-y:hidden;  
-   /* overflow-y:none;*/
+    overflow-y:hidden;
 }
 
 div.myfriend
@@ -2329,8 +2319,7 @@ div.myfriend
     height:416px;
     padding:0px;
     margin:10px;
-    overflow-y:hidden;  
-   /* overflow-y:none;*/
+    overflow-y:hidden;
 }
 
 div.myprofile
@@ -2378,14 +2367,40 @@ div.newmember
     overflow-y:hidden;  
 }
 
-div.allgroup
+div.allgroups
 {
-    background-image:url('../profile/otherD.png');
+    background-image:url('../profile/sameDsameG.png');
     width:740px;
     height:416px;
     padding:0px;
     margin:10px;
-    overflow-y:hidden;  
+    overflow-y:hidden;
+}
+
+div.profile-message-allmessages
+{
+    background-image:url('../profile/forum1.png');
+    width:740px;
+    height:416px;
+    padding:0px;
+    margin:10px;
+    overflow-y:hidden;
+}
+
+div.profile-message-reply
+{
+    background-image:url('../profile/forum2.png');
+    width:740px;
+    height:416px;
+    padding:0px;
+    margin:10px;
+    overflow-y:hidden;
+}
+
+h1
+{
+    font-family:timesroman;
+    text-align:center;
 }
 
 ul.member-name-department li
@@ -2445,9 +2460,19 @@ ul.introduce-group li
     text-align:left;
     color:DarkMagenta ;
 }
+
 table.group
 {
     float:left;
+    height:150px;
+    width:200px;
+    border-right-style:dotted;
+    margin:0px;
+}
+
+table.message-reply
+{
+    /*float:left;*/
     height:150px;
     width:200px;
     border-right-style:dotted;
@@ -2474,6 +2499,34 @@ label.group-friends-name
     width:300px;
     height:300px;
     display:block;
+}
+
+a.mygroup-name:link {color:Aqua;}
+
+a.mygroup-name:visited {background-color:#FFFF85;}
+
+a.mygroup-name:hover {text-decoration:underline;}
+
+a.mygroup-name:active {text-decoration:underline;}
+
+a.mygroup-name
+{
+    color: blue;
+    font-size: 30px;
+    text-align: center;
+    display: block;
+    margin-right: 10px;
+    font-family:微軟正黑體;
+}
+
+a.mymessage-title
+{
+    color: blue;
+    font-size: 30px;
+    text-align: center;
+    display: block;
+    margin-right: 10px;
+    font-family:微軟正黑體;
 }
 
 table.other-page
@@ -2506,14 +2559,6 @@ table.other-page
 .friend-title
 {
     color: green;
-    font-size: 20px;
-    text-align: center;
-}
-
-.mygroup-name
-{
-    border: 5px solid gray;
-    color: blue;
     font-size: 20px;
     text-align: center;
 }

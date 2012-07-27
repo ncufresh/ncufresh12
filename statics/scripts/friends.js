@@ -15,7 +15,7 @@
         $('.newgroup').scrollable({
             wheelSpeed: 90
         });
-        $('.allgroup').scrollable({
+        $('.allgroups').scrollable({
             wheelSpeed: 90
         });
         $('.mygroup').scrollable({
