@@ -1340,11 +1340,7 @@
 
         var dialog = $('<div></div>')
             .addClass(options.confirmClass)
-            .dialog({
-                modal:          true,
-                escape:         false,
-                closeButton:    false
-            });
+            .appendTo($('body'));
 
         var message = $('<p></p>')
             .addClass(options.messageClass)
@@ -1378,7 +1374,11 @@
                 .appendTo(buttons);
         }
 
-        return dialog;
+        return dialog.dialog({
+            modal:          true,
+            escape:         false,
+            closeButton:    false
+        });
     };
 })(jQuery);
 
