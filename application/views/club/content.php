@@ -32,7 +32,7 @@ jQuery(document).ready(function()
             </li>
         </ul>
 </div>
-<div class="club-display-head" id="club-head-<?php echo $data->category;?>>
+<div class="club-display-head" id="club-head-<?php echo $data->category;?>">
 <?php if ( $this->getIsAdmin($id) ) : ?>
     <a href="<?php echo Yii::app()->createUrl('club/modify/' . $id);?>" title="修改">修改</a>
     <a href="<?php echo Yii::app()->createUrl('club/uploadpicture/' . $id);?>" title="上傳圖片">上傳圖片</a>
@@ -91,5 +91,5 @@ jQuery(document).ready(function()
     </div>
     <? endif;?>
 </div>
-<div class="club-display-bottom" id="club-bottom-<?php echo $data->category;?>>
+<div class="club-display-bottom" id="club-bottom-<?php echo $data->category;?>">
 </div>
