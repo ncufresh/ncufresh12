@@ -2064,6 +2064,15 @@ button.news-button
     float: left;
     
 }
+.club-head:hover
+{
+    background: url('../club/club-head2.png');
+    width: 250px;
+    height: 66px;
+    background-repeat: no-repeat; 
+    float: left;
+    
+}
 .department
 {
     background: url('../club/department.png');
@@ -2077,6 +2086,14 @@ button.news-button
 .department-head
 {
     background: url('../club/department-head.png');
+    width: 250px;
+    height: 66px;
+    background-repeat: no-repeat; 
+    float: left;
+}
+.department-head:hover
+{
+    background: url('../club/department-head2.png');
     width: 250px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -2100,7 +2117,7 @@ button.news-button
     float: left;
 }
 
-.student-head hover
+.student-head:hover
 {
     background: url('../club/studnt-head2.png');
     width: 250px;
@@ -2234,14 +2251,17 @@ button.news-button
 #club-bottom-1
 {
     background: url('../club/5-3.png');
+    background-repeat: no-repeat;
 }
 #club-bottom-3
 {
     background: url('../club/6-3.png');
+    background-repeat: no-repeat;
 }
 #club-bottom-2
 {
     background: url('../club/4-3.png');
+    background-repeat: no-repeat;
 }
 .club-picture
 {

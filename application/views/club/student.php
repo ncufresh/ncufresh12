@@ -1,10 +1,7 @@
 <div class ="alltag"> 
-    <div class = "department-head">
-    </div>
-    <div class = "student-head">
-    </div>
-    <div class = "club-head">
-    </div>
+    <a href="<?php echo Yii::app()->createUrl('club/department');?>" title="系所"><div class = "department-head"></div></a>
+    <a href="<?php echo Yii::app()->createUrl('club/student');?>" title="學生組織"><div class = "student-head"></div></a>
+    <a href="<?php echo Yii::app()->createUrl('club/club');?>" title="社團"><div class = "club-head"></div></a>
 </div>
 <div class="student">
     <div class="student-list">
