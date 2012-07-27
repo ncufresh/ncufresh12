@@ -56,7 +56,11 @@
         </li>
     </ul>
     <ul id="navigation">
+<?php if ( $this->getId() == 'readme' ) : ?>
+        <li class="active">
+<?php else : ?>
         <li>
+<?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" title="大一必讀">大一必讀</a>
             <ul>
                 <li>
@@ -76,7 +80,11 @@
                 </li>
             </ul>
         </li>
+<?php if ( $this->getId() == 'nculife' ) : ?>
+        <li class="active">
+<?php else : ?>
         <li>
+<?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>" title="中大生活">中大生活</a>
             <ul>
                 <li>
@@ -96,10 +104,18 @@
                 </li>
             </ul>
         </li>
+<?php if ( $this->getId() == 'street' ) : ?>
+        <li class="active">
+<?php else : ?>
         <li>
+<?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('street/index'); ?>" title="校園導覽">校園導覽</a>
         </li>
+<?php if ( $this->getId() == 'forum' ) : ?>
+        <li class="active">
+<?php else : ?>
         <li>
+<?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('forum/index'); ?>" title="論壇專區">論壇專區</a>
             <ul>
                 <li>
@@ -113,7 +129,11 @@
                 </li>
             </ul>
         </li>
+<?php if ( $this->getId() == 'club' ) : ?>
+        <li class="active">
+<?php else : ?>
         <li>
+<?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('club/index'); ?>" title="系所社團">系所社團</a>
             <ul>
                 <li>
@@ -127,10 +147,18 @@
                 </li>
             </ul>
         </li>
+<?php if ( $this->getId() == 'multimedia' ) : ?>
+        <li class="active">
+<?php else : ?>
         <li>
+<?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('multimedia/index'); ?>" title="影音專區">影音專區</a>
         </li>
+<?php if ( $this->getId() == 'about' ) : ?>
+        <li class="active">
+<?php else : ?>
         <li>
+<?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('about/index'); ?>" title="關於我們">關於我們</a>
         </li>
     </ul>

@@ -446,7 +446,13 @@ a:hover
     font-weight: bolder;
 }
 
-#navigation a:hover
+#navigation li.active a
+{
+    color: #EEFFCC;
+}
+
+#navigation a:hover,
+#navigation li.active a:hover
 {
     color: #FFFFFF;
 }
@@ -454,7 +460,7 @@ a:hover
 #navigation ul
 {
     background: #DAE3EC;
-    background: rgba(170, 190, 215, 0.7);
+    background: rgba(170, 190, 215, 0.9);
     border-radius: 0 0 15px 15px;
     list-style: none;
     margin: -16px 0 0 10px;
@@ -474,14 +480,16 @@ a:hover
     width: 100px;
 }
 
-#navigation ul a
+#navigation ul a,
+#navigation li.active ul a
 {
     color: #000A3C;
 }
 
-#navigation ul a:hover
+#navigation ul a:hover,
+#navigation li.active ul a:hover
 {
-    color: #000300;
+    color: #EEFFFF;
 }
 
 #navigation li:hover ul
