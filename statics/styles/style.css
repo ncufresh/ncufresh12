@@ -2228,3 +2228,36 @@ img.user_img
     padding-top:65px;
     padding-left:44px;
 }
+#forum-create-form
+{
+    background: url('../forum/create/background.png');
+    background-repeat:no-repeat;
+    width: 750px;
+    height: 400px;
+    margin-left: 35px;
+    
+}
+#forum-create-text-title
+{
+    margin-top:6px;
+}
+#forum-create-title
+{
+    width:411px;
+    height:30px;
+}
+#forum-create-text-category
+{
+}
+#forum-create-category
+{
+    height:30px;
+    width:200px;
+    
+}
+#forum-create-text-content
+{
+}
+#forum-create-content
+{
+}
