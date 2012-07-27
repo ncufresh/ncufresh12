@@ -61,6 +61,7 @@
     <dl>
         <dt>
             <label id="forum-create-text-title" for="forum-create-title">標題</label>
+        </dt>
         <dd>
             <input id="forum-create-title" type="text" name="forum[title]" />
         </dd>
@@ -68,6 +69,7 @@
     <dl>
         <dt>
             <label for="forum-create-category"></label>
+        </dt>
         <dd>
             <select id="forum-create-category" name="forum[category]">
             <?php foreach ( $category->article_categories as $entry ) : ?>
@@ -79,6 +81,7 @@
     <dl>
         <dt>
             <label for="form-create-content">內容</label>
+        </dt>
         <dd>
             <textarea id="form-create-content" name="forum[content]" cols="70" rows="10"></textarea>
         </dd>
@@ -87,7 +90,15 @@
 <?php
 if($is_master):
 ?>
-<input type="checkbox" name="forum[is_top]" value="1">置頂<br>
+    <dl>
+        <dt>
+            <label for="form-create-top">置頂</label>
+        </dt>
+        <dd>
+            <input id="form-create-top" type="checkbox" name="forum[is_top]" value="1" />
+        </dd>
+    </dl>
+
 <input type="hidden" name="forum[is_top]" value="0"/>
 <?php
 endif;
