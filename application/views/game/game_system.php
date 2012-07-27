@@ -1,15 +1,17 @@
-﻿<?php $user_id = Yii::app()->user->getId() //正在觀看頁面的id ?>
+﻿<?php $user_id = Yii::app()->user->getId(); //使用者的id 
+       //$user_level = Character::model()->findByPk($watch_id)->exp;?>
     <h1>使用者ID => 登入帳號 / 觀看中 => <?php echo $user_id.' / '.$watch_id?> </h1>
     <div class="game-system">
     <div class="user-body">
-    <?php 
+    <?php //////////////////////////////////////////////////////////TEST
         //////////////////// 暫時圖片變數名稱
         $skin = 'boyC1.png';
         $eyes = 'e9.png';
         $hair = 'hairN5.png';
         $shoes = 'shoeN5.png';
         $cloths = 'clothseN4.png';
-        $pants = 'pantsN3.png';
+        $pants = 'pantsN10.png';
+        ///////////////////////////////////////////////////////////////TEST
     ?>
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/skin/<?php echo $skin;?>" >
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/eyes/<?php echo $eyes;?>" >
@@ -49,7 +51,22 @@
             </li>
         </ul>
         <div class="game-display">
+            <?php 
+            
+            $ddd = Character::model()->findByPk($user_id);
+            if($ddd === null)
+            echo '沒東西';
+            else
+            {
+                echo '有東西';
+                print_r($ddd);
+            }
+            
+            
+            
+            ?>
             <?php echo $content ?>
+            <?php // echo $user_level ?>
             <h1>TEST</h1>
             <h1>TEST</h1>
             <h1>TEST</h1>
