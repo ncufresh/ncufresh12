@@ -19,7 +19,7 @@
             <?php foreach ( $news->urls as $url ) : ?>
                 <a href="<?php echo $url->link; ?>" title="<?php echo $url->name; ?>"><?php echo $url->name; ?></a>
             <?php endforeach; ?>
-            <a class="news-back-link" href="#" title="返回">返回</a>
+            <a class="news-back-link" href="<?php echo Yii::app()->createUrl('news/index');?>" title="返回">返回</a>
         </div>
     </div>
    
