@@ -127,6 +127,25 @@
 ]
 </style>
 <?php $this->endWidget();?>
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery('.news-delete-link').click(function()
+        {
+            var link = jQuery(this).attr('href');
+            jQuery.confirm({ 
+                message: '確定刪除此篇文章？' ,
+                confirmed: function(result)
+                {
+                    if ( result ) window.location = link; 
+                    return false
+                }
+            });
+            return false;
+        });
+    });
+</script>
+<?php $this->endWidget();?>
 <div id="admin-news">
     <div class="header">
         <h2>管理最新消息</h2>
