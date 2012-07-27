@@ -75,7 +75,7 @@ form button
 form input:focus,
 form textarea:focus
 {
-    z-index: 10000;
+    z-index: 3000;
 }
 
 form label
@@ -458,7 +458,7 @@ a:hover
     position: relative;
     visibility: hidden;
     width: 100px;
-    z-index: 100;
+    z-index: 5000;
 }
 
 #navigation ul li
