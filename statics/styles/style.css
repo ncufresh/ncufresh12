@@ -62,6 +62,12 @@ form button
     padding: 4px 8px;
 }
 
+form input[type="radio"],
+form input[type="checkbox"]
+{
+    width: auto;
+}
+
 form textarea
 {
     height: 160px;
@@ -75,10 +81,10 @@ form button
 form input:focus,
 form textarea:focus
 {
-    z-index: 10000;
+    z-index: 3000;
 }
 
-form label
+form dt label
 {
     color: #474747;
     display: block;
@@ -87,6 +93,24 @@ form label
     position: relative;
     width: 100%;
     z-index: 1000;
+}
+
+form dl.radio,
+form dl.checkbox,
+form dl.select
+{
+    background: #FFFFFF;
+    border-radius: 5px;
+    height: 28px;
+    padding: 0 8px;
+    width: 95%;
+}
+
+form dl.radio label,
+form dl.checkbox label,
+form dl.select label
+{
+    padding-left: 0;
 }
 
 form div
@@ -458,7 +482,7 @@ a:hover
     position: relative;
     visibility: hidden;
     width: 100px;
-    z-index: 100;
+    z-index: 5000;
 }
 
 #navigation ul li
@@ -495,9 +519,19 @@ a:hover
 
 #footer
 {
-    background: url('../images/footer.png');
-    clear: both;
+    background: url('../images/footer.png') repeat-x center;
     height: 120px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+#footer-content
+{
+    background: url('../images/footer-content.png') no-repeat bottom;
+    height: 120px;
+    margin: 0 auto;
+    width: 800px;
 }
 
 #footer p
@@ -1244,13 +1278,13 @@ ul#nculife-details
 .index-box td
 {
     padding: 4px;
-    width: 85%;
+    width: 60%;
 }
 
 .index-box td.time
 {
     text-align: right;
-    width: 15%;
+    width: 40%;
 }
 
 .index-box tfoot
@@ -1329,7 +1363,6 @@ ul#nculife-details
 .news-view .header span
 {
     display: block;
-    font-size: 16pt;
     margin: 10px 0 0 0;
     color: #666666;
 }
