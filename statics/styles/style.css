@@ -1447,6 +1447,7 @@ button.news-button
     position: relative;
 }
 
+
 #lastest-news-wrap .indexes div.row div.left
 {
     left: 0;
@@ -1457,6 +1458,17 @@ button.news-button
     overflow: hidden;
 }
 
+#lastest-news-wrap .indexes div.row div.left a
+{
+    color: #000;
+}
+
+#lastest-news-wrap .indexes div.row div.left a:hover
+{
+    color: #7c7c7c;
+    text-decoration: underline;
+}
+
 #lastest-news-wrap .indexes div.row div.right
 {
     right: 0;
@@ -1464,6 +1476,7 @@ button.news-button
     position: absolute;
     padding-left: 10px;
     padding-right: 10px;
+    color: #7C7C7C;
 }
 
 #lastest-news-wrap .indexes div.row div.line
