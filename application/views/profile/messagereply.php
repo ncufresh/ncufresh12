@@ -1,32 +1,64 @@
 <h1>MyMessage_Reply</h1>
 <div class="profile-message-reply" >
-<table class="profile-message-reply">
+<table class="message-data">
     <tr>
-        <td class="form-friends-sort-title">標題</td>
-        <td><!--echo 該篇文章標題--></td>
+        <td class="article-title">標題:</td>
+        <td class="showarticle"><?php echo $article->title; ?></td>
     </tr>
     <tr>
-        <td class="form-friends-sort-title">內容</td>
-        <td><!--echo 該篇文章內容--></td>
+        <td class="article-title">內容:</td>
+        <td class="showarticle"><?php echo $article->content; ?></td>
     </tr>
 </table>
-<div>
-    <span class="form-friends-sort-title" >回覆</span>
+<span class="form-friends-sort-title">回覆</span>
+<table class="message-reply">
+    <tr>
+        <th>姓名:</th>
+        <th>內容:</th>
+        <th>時間:</th>
+    </tr>
+<?php foreach ($replys as $reply) : ?>
+    <tr>
+        <td>
+<?php echo Profile::model()->findByPk($reply->author_id)->name; ?>
+        </td>
+        <td>
+<?php echo $reply->content; ?>
+        </td>
+        <td>
+<?php echo Yii::app()->format->datetime($reply->create_time); ?>
+        </td>
+    </tr>
+<?php endforeach;?>
+</table>
+<span class="form-friends-sort-title" >推文</span>
+<table class="message-reply">
+    <tr>
+        <th>姓名:</th>
+        <th>內容:</th>
+        <th>時間:</th>
+    </tr>
+<?php foreach ($comments as $comment) : ?>
+    <tr>
+        <td>
+<?php echo Profile::model()->findByPk($comment->author_id)->name; ?>
+        </td>
+        <td>
+<?php echo $comment->content; ?>
+        </td>
+        <td>
+<?php echo Yii::app()->format->datetime($comment->create_time); ?>
+        </td>
+    </tr>
+<?php endforeach;?>
+</table>
+    <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/comment'); ?>" method="POST"> 
+        <input type="text" name="comment[content]" />
+        <input type="hidden" name="comment[aid]" value="<?php echo $comment->article_id; ?>" />
+        <input type="submit" value="推文" />
+        <input type="hidden" name="token" value="echo Yii::app()->security->getToken(); ?>" />
+    </form>
 </div>
-   <!-- <table class="profile-message-reply">
-
-    </table>
-<div>
-    <span class="form-friends-sort-title" >推文</span>
-</div>
-    <table class="profile-message-reply">
-
-    </table>
-    <form enctype="multipart/form-data" action=" echo Yii::app()->createUrl('forum/comment'); ?>" method="POST"> 
-    <input type="text" name="comment[content]" />
-    <input type="hidden" name="comment[aid]" value=" echo 該篇文章ID; ?>" />
-    <input type="submit" value="推文" />
-    <input type="hidden" name="token" value="echo Yii::app()->security->getToken(); ?>" />
-    </form>-->
-
-</div>
+<button>
+<a href="<?php echo Yii::app()->createUrl('profile/message') ; ?>" title="我的文章">BACK</a>
+</button>

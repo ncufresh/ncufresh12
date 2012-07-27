@@ -2397,7 +2397,6 @@ div.profile-message-reply
 
 h1
 {
-    font-family:timesroman;
     text-align:center;
 }
 
@@ -2407,7 +2406,6 @@ ul.member-name-department li
     height: 20px;
     display: block;
     list-style-type:none;
-    font-family:微軟正黑體;
     font-size: 15px;
     text-align:left;
     color:DarkViolet;
@@ -2419,7 +2417,6 @@ ul.user-profile li
     height: 50px;
     display: block;
     list-style-type:none;
-    font-family:微軟正黑體;
     font-size: 20px;
     text-align:center;
     color:Fuchsia;
@@ -2431,7 +2428,6 @@ ul.user-editor li
     height: 50px;
     display: block;
     list-style-type:none;
-    font-family:微軟正黑體;
     font-size: 20px;
     text-align:center;
     color:Indigo;
@@ -2443,7 +2439,6 @@ ul.introduce-group li
     height: 100px;
     display: block;
     list-style-type:none;
-    font-family:微軟正黑體;
     font-size: 20px;
     text-align:center;
     color:Indigo;
@@ -2453,7 +2448,6 @@ ul.introduce-group li
     width: 600px;
     height: 50px;
     display: block;
-    font-family:微軟正黑體;
     font-size: 30px;
     text-align:left;
     color:DarkMagenta ;
@@ -2468,13 +2462,19 @@ table.group
     margin:0px;
 }
 
+table.message-data
+{
+    height:200px;
+    width:700px;
+    margin:0px;
+}
+
 table.message-reply
 {
-    /*float:left;*/
-    height:150px;
-    width:200px;
-    border-right-style:dotted;
+    height:200px;
+    width:700px;
     margin:0px;
+    text-align:center;
 }
 
 label.group-friends-name
@@ -2544,7 +2544,6 @@ table.other-page
     color: yellow;
     font-size: 30px;
     text-align: left;
-    font-family:"Times New Roma";
 }
 
 .form-friends-title
@@ -2567,6 +2566,13 @@ table.other-page
     color: DeepPink; /* NOTE */
 }
 
+.article-title
+{
+    text-lign: left;
+    font-size: 20px;
+    color: DeepPink; /* NOTE */
+}
+
 tr.friends-title
 {
     margin: 0px;
@@ -2576,6 +2582,14 @@ td.friends-close-ones
 {
     height: 5%;
     width: 5%;
+    margin: 0px;
+}
+
+td.showarticle
+{
+    border: 1px solid blue;
+    height: 10%;
+    width: 80%;
     margin: 0px;
 }
 

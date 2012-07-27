@@ -98,9 +98,6 @@ class ProfileController extends Controller
     {
         $userID = Yii::app()->user->id;
         $this->_data['token'] = Yii::app()->security->getToken();
-        // echo $userID;
-        // echo count(Article::model()->getUserArticles($userID));
-        // exit();
         $this->render('message', array(
             'articles'        => Article::model()->getUserArticles($userID)
         ));
@@ -109,9 +106,17 @@ class ProfileController extends Controller
     public function actionMessageReply()
     {
         $userID = Yii::app()->user->id;
-        $this->render('messagereply', array(                
-            'user'      => User::model()->findByPk($userID)
-            
-        ));
+        if ( isset($_GET['aid']) )
+        {
+            $this->render('messagereply', array(
+                'article'       => Article::model()->findByPk($_GET['aid']),
+                'replys'      => Reply::model()->getArticleReplies($_GET['aid']),
+                'comments'       => Comment::model()->getArticleComments($_GET['aid'])
+            ));
+        }
+        else
+        {
+           $this->redirect(array('friends/friends'));
+        }
     }
 }
