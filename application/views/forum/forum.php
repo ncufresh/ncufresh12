@@ -10,7 +10,7 @@
             return false;
         });
         $("#sort_list").change(function() {
-            var url = decodeURIComponent('<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => ':sort'));?>');
+            var url = decodeURIComponent('<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => ':sort', 'category' => $_GET['category']));?>');
             window.location = url.replace(':sort', $(this).val());
         });
         /* Dimo大大貢獻的使用jquery替換資料

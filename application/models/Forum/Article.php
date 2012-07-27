@@ -1,5 +1,5 @@
 <?php
-//一個user發表過的所有文章 => 當篇文章的所有回覆
+//一個user發表過的所有文章 => 當篇文章的所有回覆&推文
 class Article extends CActiveRecord
 {
     public static function model($className = __CLASS__)
@@ -34,7 +34,7 @@ class Article extends CActiveRecord
     }
 
     public function getArticlesSort($fid, $sort, $category, $page, $entries_per_page){
-        echo $fid.' '.$sort.' '.$category.' '.$page.' '.$entries_per_page;
+        
         switch ($sort)
         {
             case 'create':
@@ -53,11 +53,13 @@ class Article extends CActiveRecord
                 throw new Exception('The sort column name does not exist.');
                 break;
         }
+        
+        $count = $this->count();
+        $total_pages = ceil($count / $entries_per_page);
+        $current_page = ($page<$total_pages?$page:$total_pages);
+        
         if ( $category == 0 )
         {
-            $count = $this->count();
-            $total_pages = ceil($count / $entries_per_page);
-            $current_page = ($page<$total_pages?$page:$total_pages);
             return $this->findAll(array(
                 'condition' => 'forum_id='.$fid.' AND visibility=1',
                 'order'     => $sort . ' DESC',
@@ -65,11 +67,14 @@ class Article extends CActiveRecord
                 'offset'    => ($current_page - 1) * $entries_per_page
             ));
         }
+        
         else
         {
             return $this->findAll(array(
                 'condition' => 'forum_id = ' . $fid . ' AND visibility = 1 AND category = ' . $category,
-                'order'     => $sort . ' DESC'
+                'order'     => $sort . ' DESC',
+                'limit'     => $entries_per_page,
+                'offset'    => ($current_page - 1) * $entries_per_page
             ));
         }
     }
