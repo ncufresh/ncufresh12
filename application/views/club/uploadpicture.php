@@ -6,8 +6,6 @@
     <input type="file" name="pictures[1]" />
     <p>圖片3</p>
     <input type="file" name="pictures[2]" />
-    <p>圖片4</p>
-    <input type="file" name="pictures[3]" />
     <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
     <button type="submit">上傳</button>
 </form>
