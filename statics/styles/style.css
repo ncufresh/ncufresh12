@@ -2281,13 +2281,28 @@ button.news-button
     border: 5px solid #FFFFFF;
     width: 194px;
     height: 140px;
+    position: relative;
 }
 
 .club-underpicture
 {
 	float: left;
 }
-
+#club-schedule-button
+{
+    cursor: pointer;
+    width: 204px;
+    height: 50px;
+    background: url('../images/calendar_top.png');
+    display: block;
+}
+#club-schedule-content
+{
+    background: skyblue;
+    display: block;
+    width: 204px;
+    height: 329px;
+}
 .mygroup
 {
     font-size:30px;
