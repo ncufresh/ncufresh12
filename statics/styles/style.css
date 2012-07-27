@@ -495,9 +495,19 @@ a:hover
 
 #footer
 {
-    background: url('../images/footer.png');
-    clear: both;
+    background: url('../images/footer.png') repeat-x center;
     height: 120px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+#footer-content
+{
+    background: url('../images/footer-content.png') no-repeat bottom;
+    height: 120px;
+    margin: 0 auto;
+    width: 800px;
 }
 
 #footer p
