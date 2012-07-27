@@ -11,7 +11,6 @@ jQuery(document).ready(function()
             function(data)
             { 
                 $('#nculife-cv').html(data.content);
-                $('#nculife-ct').html(data.image);
             }
         ); 
         return false;
@@ -34,7 +33,6 @@ jQuery(document).ready(function()
 
         $('#nculife-dh').text('');
         $('#nculife-cv').html('');
-        $('#nculife-ct').html('');
         $('#nculife-dh').html('');
         $('#nculife-t').html('');
         
@@ -43,13 +41,16 @@ jQuery(document).ready(function()
             var title = $('<a></a>')
                 .text($(this).text())
                 .attr('href', '#')
+                .attr('class', '')
                 .attr('tab', $(this).attr('tab'))
                 .attr('page', $(this).attr('page'))
                 .click(getTabContent);
             $('#nculife-dh').append(title);
         });
+        $('#nculife-dh > a').first().click();
     
-        $('#nculife-t').append($(this).children('span').text());
+        $('#nculife-title h4').text($(this).children('span').text());
+        // $('#nculife-cv').;
 
         // jQuery('.dialog-close-button').click(function()
         // {
