@@ -1292,8 +1292,8 @@
         $(target)
             .css({
                 position: $(target).css('position') === 'static'
-                        ? $(target).css('position')
-                        : 'absolute',
+                        ? 'absolute'
+                        : $(target).css('position'),
                 top: '50%',
                 left: '50%',
                 width: target.options.width,
