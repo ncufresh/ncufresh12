@@ -11,6 +11,18 @@
     )); ?>
 </div>
 <div id="forum-view-body">
+    <div class="forum-view-profile">
+        <div class="profile-pic"></div>
+        <div class="profile-name"></div>
+        <div class="profile-department"></div>
+    </div>
+    <div class="forum-view-title"></div>
+    <div id="forum-view-content"></div>
+    <div class="hululu"></div>
+    <div class="forum-view-comments"></div>
+</div>
+<div id="forum-view-footer">
+</div>
 <?php
 echo "title: ".$article->title.'<br/>';
 echo "content: ".$article->content.'<br/>';
@@ -43,6 +55,3 @@ foreach ($rep as $each)
     echo '作者: '.$each->author_id.' 內容: '.$each -> content. '<br/>';
 ?>
 <fb:comments xid="12345678"></fb:comments>
-</div>
-<div id="forum-view-footer">
-</div>

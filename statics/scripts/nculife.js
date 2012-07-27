@@ -16,7 +16,7 @@ jQuery(document).ready(function()
         return false;
     }
 
-    jQuery('.life-index li ul li').click(function()
+    jQuery('#life-index1 li').click(function()
     {
         jQuery('#life-dialog').dialog(
         {
@@ -50,16 +50,54 @@ jQuery(document).ready(function()
         $('#nculife-dh > a').first().click();
     
         $('#nculife-title h4').text($(this).children('span').text());
-        // $('#nculife-cv').;
-
-        // jQuery('.dialog-close-button').click(function()
-        // {
-            // $('#nculife-dh').text(' ');
-            // $('#nculife-cv').html(' ');
-            // $('#nculife-ct').html(' ');
-            // $('#nculife-dh').html(' ');
-            
-        // });
+    });
+    
+    jQuery('#life-play').mouseenter(function()
+    {
+        jQuery('#life-index1').stop().animate(
+        {
+            height: '130px'
+        },500);
+    });
+    
+    jQuery('#life-play').mouseleave(function()
+    {
+        jQuery('#life-index1').stop().animate(
+        {
+            height: '0px'
+        },500);
+    });
+    
+    jQuery('#life-traffic').mouseenter(function()
+    {
+        jQuery('#life-index2').stop().animate(
+        {
+            height: '120px'
+        },500);
+    });
+    
+    jQuery('#life-traffic').mouseleave(function()
+    {
+        jQuery('#life-index2').stop().animate(
+        {
+            height: '0px'
+        },500);
+    });
+    
+    jQuery('#life-school').mouseenter(function()
+    {
+        jQuery('#life-index3').stop().animate(
+        {
+            height: '370px'
+        },500);
+    });
+    
+    jQuery('#life-school').mouseleave(function()
+    {
+        jQuery('#life-index3').stop().animate(
+        {
+            height: '0px'
+        },500);
     });
 
 });

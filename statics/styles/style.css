@@ -1704,11 +1704,13 @@ button.news-button
 /**
  * Nculife style
  */
-#nculife-dialog
+#life-dialog
 {
     display: none;
+    width: 650px;
     height: 500px;
-    width: 200px;
+    position: absolute;
+    background: url('../images/life_purple.png');
 }
 
 #nculife-dialog p
@@ -1717,67 +1719,17 @@ button.news-button
     padding: 20px;
 }
 
-.nculife-dialog
-{
-    background: white;
-    height: 620px;
-    width: 315px;
-    top: 200px;
-    left: 145px;
-    position: absolute;
-    background: url('../images/life_background2.png');
-}
-
-#ui-dialog-title-life-dialog
-{
-    width: 550px;
-    height: 150px;
-    display: block;
-    padding: 0 0 0 0;
-    background: url('../images/life_title.png');
-}
-
-.nculife-dialog .ui-dialog-title
-{
-    /* background: black;
-    width: 585px;
-    height: 500px;
-    color: red;
-    margin-right: 100px;
-    font-size: 50px;
-    background: url('../images/life_title.png'); */
-    
-    
-}
-
-.nculife-dialog .ui-icon-closethick
-{
-    background: black;
-    color: white;
-    width: 40px;
-    height: 40px;
-    left: 620px;
-    top: 20px;
-    position: absolute;
-    background: url('../images/life_exit.png');
-}
-
 #nculife-dh
 {
     background: pink;
-   width: 498px;
+    width: 498px;
     height: 25px;
-    left: 113px;
-    top: 75px;
-    position: absolute;
 }
 .dialog-close-button
 {
     position: absolute;
     width: 40px;
-    height: 40px;   
-    top: 20px;
-    left: 550px;
+    height: 40px;
     background: url('../images/life_exit.png');
 }
 
@@ -1785,8 +1737,7 @@ button.news-button
 {
     width: 512px;
     height: 111px;
-    position: absolute;
-    background:url('../images/life_title.png');
+    background:url('../images/life_top1.png');
 }
 
 #nculife-title h4
@@ -1817,22 +1768,9 @@ button.news-button
 {
     width: 598px;
     height: 190px;
-    /* background: green; */
-    position: absolute;
-    top: 110px;
     overflow-x: hidden;
     overflow-y: auto;
 }
-
-/* #nculife-ct
-{
-    width: 295px;
-    height: 100px;
-    background: gray;
-    position: absolute;
-    top: 212px;
-    left: 120px;
-} */
 
 #nculife-dh a
 {
@@ -1846,64 +1784,68 @@ button.news-button
     list-style: none;
 }
 
-
-
-ul.life-index li:hover ul.life-indexs
+#life-index1
 {
-    display: block;
-    background: white;
-    color: black;
+    background: url('../images/life_rope.png') repeat-y;
+    width: 100px;
+    height: 0px;
+    left: 89px;
+    top: 150px;
+    padding: 0 0 0 16px;
+    position: absolute;
+    list-style: none;
 }
 
-ul.life-indexs 
+#life-index2
 {
-    margin: -1px;
-    padding: 0;
+    background: url('../images/life_rope.png') repeat-y;
+    width: 100px;
+    height: 0px;
+    left: 33px;
+    top: 138px;
+    padding: 0 0 0 16px;
+    position: absolute;
+    list-style: none;
+}
+
+#life-index3
+{
+    background: url('../images/life_rope.png') repeat-y;
+    width: 100px;
+    height: 0px;
+    left: 70px;
+    top: 165px;
+    padding: 0 0 0 16px;
+    position: absolute;
+    list-style: none;
+}
+
+.life-inner
+{
     display: none;
 }
 
-ul.life-index li
+.life-items
 {
-    list-style: none;
-    float: left;
-    width: 100px;
-    height: 20px;
-    text-align: center;
-    background: black;      
-    color: white; 
-    border: 1px solid red;
-    padding: 0;
-    display: block;
+    height: 0;
+    overflow: hidden;
+}
+
+.life-items li
+{
+    padding: 0 0 10px 20px;
     cursor: pointer;
 }
 
-ul.life-index li:hover
+.life-items li:hover
 {
-    background: white;
-    color: black;
-    border: 1px solid red;
-}
-
-ul.life-indexs-inner
-{
-    display: none;
-}
-
-ul.life-indexs li.life-indexs-content:hover
-{
-    background: red;
-    color: black;
-}
-
-.ncu-index
-{
-    list-style: none;
+    text-decoration: underline;
 }
 
 #life-head
 {
     width: 740px;
-    height: 270px;
+    height: 275px;
     margin-bottom: -20px;
     background: url('../images/life_head.png');
 }
@@ -1930,33 +1872,48 @@ ul.life-indexs li.life-indexs-content:hover
     background: url('../images/life_bottom.png');
 }
 
-#life-dialog
+#life-play
 {
-    display: none;
-    width: 900px;
-    height: 1000px;
-    background: url('../images/life_dialog.png');
-    
-    
+    position: absolute;
+    width: 170px;
+    height: 320px;
+    top: 20px;
 }
 
-#life-health a
+#life-traffic
 {
-    background: url('../images/life_health.png');
+    position: absolute;
+    width: 140px;
+    height: 300px;
+    top: 100px;
+    left: 170px;
+}
+
+#life-school
+{
+    position: absolute;
+    width: 150px;
+    height: 320px;
+    top: 30px;
+    left: 300px;
 }
 
 #life-live
 {
     position: absolute;
-    width: 170px;
-    height: 200px;
-    top: 20px;
-    /* background: red; */
+    width: 100px;
+    height: 300px;
+    top: 120px;
+    left: 450px;
 }
 
-#life-live:hover
+#life-health
 {
-    
+    position: absolute;
+    width: 170px;
+    height: 370px;
+    top: 0;
+    left: 540px;
 }
 
 #about ul
@@ -2084,207 +2041,233 @@ ul.life-indexs li.life-indexs-content:hover
 /**
  * Club style
  */
-#club-list
+ .alltag
+ {
+    height: 66px;
+ }
+ .club
+ {
+    background: url('../club/club.png');
+    background-repeat: no-repeat; 
+    height: 900px;
+    width: 750px;
+    position: relative;
+    display: inline-block;
+ }
+ 
+.club-head
+{
+    background: url('../club/club-head.png');
+    width: 250px;
+    height: 66px;
+    background-repeat: no-repeat; 
+    float: left;
+    
+}
+.department
+{
+    background: url('../club/department.png');
+    background-repeat: no-repeat; 
+    height: 900px;
+    width: 750px;
+    position: relative;
+    display: inline-block;
+    margin-top: -9px;
+}
+.department-head
+{
+    background: url('../club/department-head.png');
+    width: 250px;
+    height: 66px;
+    background-repeat: no-repeat; 
+    float: left;
+}
+.student
+{
+    background: url('../club/student.png');
+    background-repeat: no-repeat; 
+    height: 900px;
+    width: 750px;
+    position: relative;
+    display: inline-block;
+}
+.student-head
+{
+    background: url('../club/student-head.png');
+    width: 250px;
+    height: 66px;
+    background-repeat: no-repeat; 
+    float: left;
+}
+
+.student-head hover
+{
+    background: url('../club/studnt-head2.png');
+    width: 250px;
+    height: 66px;
+    background-repeat: no-repeat; 
+    float: left;
+}
+
+.club-list
 {
     text-align: left;
     overflow: hidden;
+    margin-top: 71px;
+    margin-left: 50px;
 }
 
-#club-list ul
+.club-list ul
 {
     float: left;
     padding: 0;
     width: 25%;
+    list-style: none;
 }
 
-#club-title
+.department-list
 {
-    background-color: yellow;
-    font-weight: bold;
+    text-align: left;
+    margin-top: 60px;
+    margin-left: 50px;
 }
 
-#club-display
+.department-list ul
+{
+    float: left;
+    padding: 0;
+    width: 16.5%;
+    list-style: none;
+}
+
+.student-list
+{
+    text-align: left;
+}
+
+.student-list ul
+{
+    float: left;
+    padding: 0;
+    width: 28%;
+    list-style: none;
+    margin-top: 69px;
+    margin-left: 143px;
+}
+
+.club-title
+{
+    font-weight: bold;
+    width: 90%;
+    margin-left: 27px;
+    height: 25px;
+}
+
+.club-item
+{
+    padding-top: 5px;
+    padding-bottom: 20px;
+    width: 85%;
+    margin-left: 43px;
+}
+
+.club-display
 {
 	float: right;
-	width: 590px;
+	width: 530px;
+    background: url('../club/4-2.png');
+    background-repeat: repeat-y; 
+    margin-top: 88px;
 }
-#club-display
+#club-1
+{
+    background: url('../club/5-2.png');
+}
+#club-3
+{
+    background: url('../club/6-2.png');
+}
+#club-2
+{
+    background: url('../club/4-2.png');
+}
+.club-display-head
+{
+    height: 88px;
+    width: 530px;
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 221px;
+}
+#club-head-1
+{
+    background: url('../club/5-1.png');
+}
+#club-head-3
+{
+    background: url('../club/6-1.png');
+}
+#club-head-2
+{
+    background: url('../club/4-1.png');
+}
+
+.club-display-head a
 {
     float: right;
-    width: 600px;
 }
 
-.club-picture1
+.club-display-head h1
+{
+    margin-top: 2px;
+    margin-left: 27px;
+}
+
+.club-display-bottom
+{
+    height: 182px;
+    width: 530px;
+    background-repeat: no-repeat;
+    float: left;
+    margin-left: 221px;
+}
+#club-bottom-1
+{
+    background: url('../club/5-3.png');
+}
+#club-bottom-3
+{
+    background: url('../club/6-3.png');
+}
+#club-bottom-2
+{
+    background: url('../club/4-3.png');
+}
+.club-picture
 {
     background: none;
     border: 0px;
-    margin: 0px;
+    margin: -5px;
     padding: 0px;
     cursor: pointer;
-    width: 150px;
-    height: 100px;
+    width: 204px;
+    height: 204px;
     display: block;
+    margin-left: -34px;
 }
 
-.club-picture1 img
+.club-picture img
 {
     border: 5px solid #FFFFFF;
-    width: 150px;
-    height: 100px;
+    width: 194px;
+    height: 140px;
 }
 
-.club-picture2
+.club-underpicture
 {
-    background: none;
-    border: 0px;
-    margin: 0px;
-    padding: 0px;
-    cursor: pointer;
-    width: 150px;
-    height: 100px;
-    display: block;
+	float: left;
 }
 
-.club-picture2 img
-{
-    border: 5px solid #FFFFFF;
-    height: 100px;
-    width: 150px;
-}
-
-.club-picture3
-{
-    background: none;
-    border: 0px;
-    margin: 0px;
-    padding: 0px;
-    cursor: pointer;
-    width: 150px;
-    height: 100px;
-    display: block;
-}
-
-.club-picture3 img
-{
-    border: 5px solid #FFFFFF;
-    height: 100px;
-    width: 150px;
-}
-
-.club-picture4
-{
-    background: none;
-    border: 0px;
-    margin: 0px;
-    padding: 0px;
-    cursor: pointer;
-    width: 150px;
-    height: 100px;
-    display: block;
-}
-
-.club-picture4 img
-{
-    border: 5px solid #FFFFFF;
-    height: 100px;
-    width: 150px;
-}
-
-.club-picture-display1 img
-{
-    width: 800px;
-    height: 600px;
-    margin-left: 10px;
-}
-
-.club-picture-display2 img
-{
-    width: 800px;
-    height: 600px;
-}
-
-.club-picture-display3 img
-{
-    width: 800px;
-    height: 600px;
-    margin-left: 10px;
-}
-
-.club-picture-display4 img
-{
-    width: 800px;
-    height: 600px;
-    margin-left: 10px;
-}
-
-#club-picture-dialog1
-{
-	display: none; 	
-	background: white;
-	width: 850px;
-	height: 800px;
-	position: relative;
-    overflow: visible;
-
-}
-
-#club-picture-dialog2
-{
-    display: none;     
-    background: white;
-    width: 850px;
-    height: 650px;
-    position: relative;
-
-}
-
-#club-picture-dialog3
-{
-    display: none;     
-    background: white;
-    width: 850px;
-    height: 650px;
-    position: relative;
-
-}
-
-#club-picture-dialog4
-{
-    display: none;     
-    background: white;
-    width: 850px;
-    height: 650px;
-    position: relative;
-
-}
-
-#club-underpicture
-{
-
-	float:left;
-	width:150px;
-	height:400px;
-}
-
-#club-picture-menu
-{
-	width: 160px;
-    height: 700px;
-    background: skyblue;
-    overflow: hidden;
-}
-
-#club-menu-items
-{
-    margin-top:5px;
-    width:150px;
-    height:500px;
-}
-
-#club
-{
-    margin-center:auto;
-}
 .mygroup
 {
     font-size:30px;
@@ -2514,6 +2497,11 @@ table.other-page
     border:0px;
     width:90%; 
     height:70%;
+}
+
+.sep-group
+{
+    float:left;
 }
 
 .close-group
@@ -2991,7 +2979,9 @@ li.enabled a
 {
     background: url('../forum/view/background.png');
     width: 683px;
+    min-height: 300px;
     margin-left:35px;
+    position: relative;
 }
 
 #forum-view-footer
@@ -3000,4 +2990,88 @@ li.enabled a
     width: 683px;
     height: 86px;
     margin-left:35px;
+}
+
+.forum-view-profile
+{
+    background: #97d2f3;
+    width: 165px;
+    height: 283px;
+    border-radius: 6px;
+    margin-left: 15px;
+    padding-top: 7px;
+    float: left;
+}
+
+.forum-view-profile .profile-pic
+{
+    width: 150px;
+    height: 180px;
+    background: #ffffff;
+    border-radius: 6px;
+    margin: 0 auto;
+}
+
+.forum-view-profile .profile-name
+{
+    width: 150px;
+    height: 30px;
+    border-radius: 6px;
+    margin: 5px auto;
+    background: #ffffff;
+}
+
+.forum-view-profile .profile-department
+{
+    width: 150px;
+    height: 30px;
+    border-radius: 6px;
+    margin: 5px auto;
+    background: #ffffff;
+}
+
+#forum-view-body .forum-view-title
+{
+    width: 400px;
+    height: 30px;
+    border-radius: 6px;
+    background: #97d2f3;
+    float: left;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    border: 1px solid #97d2f3;
+}
+
+#forum-view-body #forum-view-content
+{
+    width: 400px;
+    height: 200px;
+    border-radius: 6px;
+    background: #ffffff;
+    float: left;
+    margin-left: 20px;
+    border: 1px solid black;
+}
+
+#forum-view-body .hululu
+{
+    background: url('../forum/view/hululu.png');
+    width: 36px;
+    height: 30px;
+    position: absolute;
+    top: 75px;
+    left: 165px;
+}
+
+#forum-view-body .forum-view-comments
+{
+    width: 400px;
+    height: 30px;
+    border-radius: 6px;
+    background: #ffffff;
+    float: left;
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    border: 1px solid black;
 }
