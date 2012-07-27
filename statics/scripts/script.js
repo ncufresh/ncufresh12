@@ -1272,6 +1272,8 @@
 
     $.fn.dialog.create = function(target)
     {
+        target.options.width = $.integer(target.options.width);
+        target.options.height = $.integer(target.options.height);
         if ( ! $(target).hasClass(target.options.dialogClass) )
         {
             if ( target.options.closeButton )
@@ -1292,8 +1294,8 @@
         $(target)
             .css({
                 position: $(target).css('position') === 'static'
-                        ? $(target).css('position')
-                        : 'absolute',
+                        ? 'absolute'
+                        : $(target).css('position'),
                 top: '50%',
                 left: '50%',
                 width: target.options.width,
@@ -1340,11 +1342,7 @@
 
         var dialog = $('<div></div>')
             .addClass(options.confirmClass)
-            .dialog({
-                modal:          true,
-                escape:         false,
-                closeButton:    false
-            });
+            .appendTo($('body'));
 
         var message = $('<p></p>')
             .addClass(options.messageClass)
@@ -1378,7 +1376,11 @@
                 .appendTo(buttons);
         }
 
-        return dialog;
+        return dialog.dialog({
+            modal:          true,
+            escape:         false,
+            closeButton:    false
+        });
     };
 })(jQuery);
 
@@ -1879,6 +1881,8 @@
         {
             var input = $(this);
             var label = $('label[for="' + $(this).attr('id') + '"]');
+            var type = input.attr('type');
+            if ( type == 'radio' || type == 'checkbox' ) return true;
             if ( label.length )
             {
                 var update = function()
@@ -1911,14 +1915,13 @@
         });
 
         $.konami({
-            code:                   [65],
+            code:                   [38, 38, 40, 40, 65, 66, 67],
             complete:               function()
             {
                 if ( $('#secret').length ) return false;
                 var input = '';
                 var up = 99;
-                var intial_length = up.length - 1;
-                var input_index = intial_length;
+                var uplength = 2;
                 var down = 0;
                 var answer = $.random(down + 1, up - 1);
                 var buttons = [$('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>')];
@@ -1929,18 +1932,24 @@
                     var number = input_number;
                     if ( number >= 0 && number < 10 )
                     {
-                        input += number;
-                        input_index--;
+                        if ( input.length < uplength )
+                        {
+                            input += number;
+                        }
+                        if ( parseInt(input) > up )
+                        {
+                            alert('要輸在範圍內喔!');
+                            input = '';
+                        }
                     }
                     else if ( number == 10 )
                     {
-                        input_index = intial_length;
                         input = '';
                     }
                     else if ( number == 11 )
                     {
                         input = parseInt( input_text.val() );
-                        if ( input < up && input >down )
+                        if ( input < up && input > down )
                         {
                             if ( input == answer )
                             {
@@ -1958,15 +1967,14 @@
                             {
                                 down = input;
                             }
-                            message.text('請輸入數字' + down + '到' + up +'之間');
                         }
                         else
                         {
                             alert('要輸在範圍內喔!');
                         }
                         input = '';
-                        input_index = intial_length;
                     }
+                    message.text('請輸入數字' + down + '到' + up +'之間');
                     input_text.attr('value', input);
                     return true;
                 };
@@ -1977,7 +1985,6 @@
                     height: '100%',
                     position: 'fixed',
                     top: 0,
-                    opacity: 1,
                     left: 0,
                     width: '100%'
                 })

@@ -1,5 +1,4 @@
 <?php
-
 class Article extends CActiveRecord
 {
     public static function model($className = __CLASS__)
@@ -32,8 +31,14 @@ class Article extends CActiveRecord
             ),
         );
     }
-
+    
+    // for popo
+    public function getUserArticles($author_id){
+        echo $this->findAll('author_id='.$author_id.' AND visibility=1');
+    }
+    
     public function getArticlesSort($fid, $sort, $category, $page, $entries_per_page){
+        
         switch ($sort)
         {
             case 'create':
@@ -52,11 +57,13 @@ class Article extends CActiveRecord
                 throw new Exception('The sort column name does not exist.');
                 break;
         }
+        
+        $count = $this->count();
+        $total_pages = ceil($count / $entries_per_page);
+        $current_page = ($page<$total_pages?$page:$total_pages);
+        
         if ( $category == 0 )
         {
-            $count = $this->count();
-            $total_pages = ceil($count / $entries_per_page);
-            $current_page = ($page<$total_pages?$page:$total_pages);
             return $this->findAll(array(
                 'condition' => 'forum_id='.$fid.' AND visibility=1',
                 'order'     => $sort . ' DESC',
@@ -64,11 +71,14 @@ class Article extends CActiveRecord
                 'offset'    => ($current_page - 1) * $entries_per_page
             ));
         }
+        
         else
         {
             return $this->findAll(array(
                 'condition' => 'forum_id = ' . $fid . ' AND visibility = 1 AND category = ' . $category,
-                'order'     => $sort . ' DESC'
+                'order'     => $sort . ' DESC',
+                'limit'     => $entries_per_page,
+                'offset'    => ($current_page - 1) * $entries_per_page
             ));
         }
     }
@@ -99,9 +109,12 @@ class Article extends CActiveRecord
         return false;
     }
     
-    public function getPageStatus($page, $entries_per_page, $fid)
+    public function getPageStatus($page, $entries_per_page=10, $fid, $category)
     {
-        $pages = ceil($this->count('forum_id= '.$fid.' AND visibility = 1') / $entries_per_page);
+        if($category==0)
+            $pages = ceil($this->count('forum_id= '.$fid.' AND visibility = 1') / $entries_per_page);
+        else
+            $pages = ceil($this->count('forum_id= '.$fid.' AND visibility = 1 AND category='.$category) / $entries_per_page);
 
         return array(
             'pages'         => $pages,

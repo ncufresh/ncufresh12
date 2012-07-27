@@ -10,7 +10,7 @@
             return false;
         });
         $("#sort_list").change(function() {
-            var url = decodeURIComponent('<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => ':sort'));?>');
+            var url = decodeURIComponent('<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => ':sort', 'category' => isset($_GET['category'])?:0));?>');
             window.location = url.replace(':sort', $(this).val());
         });
         /* Dimo大大貢獻的使用jquery替換資料
@@ -73,7 +73,8 @@
 <br/>
 <?php $this->widget('Pager', array(
     'url'       => 'forum/forum',
-    'pager'     => $page_status
+    'pager'     => $page_status,
+    'parameters'=> array('fid' => $fid, 'sort' => $sort, 'category' => $current_category)
 )); ?>
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/delete'); ?>" method="POST" class="form-delete">
 <input type="hidden" name="delete" value=""/>

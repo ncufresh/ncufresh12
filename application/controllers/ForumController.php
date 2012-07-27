@@ -29,7 +29,7 @@ class ForumController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('create', 'comment', 'reply', 'delete'),
+                'actions'   => array('create', 'comment', 'reply', 'delete', 'comment'),
                 'roles'     => array('member')
             ),
             array(
@@ -67,8 +67,8 @@ class ForumController extends Controller
         
         // content of each forum
         // [not yet] 傳入是否為admin 用於判斷是否顯示置頂checkbox及刪除文章選項
-        if ( ! Yii::app()->request->getIsAjaxRequest() )
-        {
+        // if ( ! Yii::app()->request->getIsAjaxRequest() )
+        // {
             $this->render('forum', array(
                 'fid'       => $fid,
                 'sort'      => $sort,
@@ -76,18 +76,18 @@ class ForumController extends Controller
                 //'model'     => $article->findAll('forum_id='.$fid)
                 'model'     => Article::model()->getArticlesSort($fid, $sort, $category, $page, self::ARTICLES_PER_PAGE),
                 'category'  => Category::model()->findByPk($fid),
-                'page_status'   => $article->getPageStatus($page, self::ARTICLES_PER_PAGE, $fid),
+                'page_status'   => $article->getPageStatus($page, self::ARTICLES_PER_PAGE, $fid, $category),
                 'is_master' =>  Category::model()->getIsMaster($fid),
             ));
-        }
-        else
-        {
-            $this->_data['content'] = array();
-            foreach ( Article::model()->getArticlesSort($fid, $sort) as $article )
-            {
-                $this->_data['content'][$article->id] = $article->title;
-            }
-        }
+        // }
+        // else
+        // {
+            // $this->_data['content'] = array();
+            // foreach ( Article::model()->getArticlesSort($fid, $sort) as $article )
+            // {
+                // $this->_data['content'][$article->id] = $article->title;
+            // }
+        // }
     }
     
     //[not yet]限制欄位填寫完整. 字數判斷
@@ -102,7 +102,6 @@ class ForumController extends Controller
         // {
             // echo $each->name;
         // }
-
         if ( isset($_POST['forum']) )
         {
             $article->title = $_POST['forum']['title'];
@@ -136,17 +135,20 @@ class ForumController extends Controller
     }
 
     public function actionComment(){
-        $comment = new Comment();
+        
         if ( isset($_POST['comment']) )
         {
+            $comment = new Comment();
             $comment->content = $_POST['comment']['content'];
             $comment->article_id = $_POST['comment']['aid'];
             $comment->save();
+            
+            $this->redirect(Yii::app()->createUrl('forum/view', array(
+                'fid'       => $comment->article->forum->id,
+                'id'        => $comment->article_id
+            )));
         }
-        $this->redirect(Yii::app()->createUrl('forum/view', array(
-            'fid'       => $comment->article->forum->id,
-            'id'        => $comment->article_id
-        )));
+        throw new CHttpException(404);
     }
 
     public function actionReply($aid)

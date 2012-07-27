@@ -1,15 +1,17 @@
-﻿<?php $user_id = Yii::app()->user->getId() //正在觀看頁面的id ?>
+﻿<?php $user_id = Yii::app()->user->getId(); //使用者的id 
+       //$user_level = Character::model()->findByPk($watch_id)->exp;?>
     <h1>使用者ID => 登入帳號 / 觀看中 => <?php echo $user_id.' / '.$watch_id?> </h1>
     <div class="game-system">
     <div class="user-body">
-    <?php 
+    <?php //////////////////////////////////////////////////////////TEST
         //////////////////// 暫時圖片變數名稱
         $skin = 'boyC1.png';
         $eyes = 'e9.png';
         $hair = 'hairN5.png';
         $shoes = 'shoeN5.png';
         $cloths = 'clothseN4.png';
-        $pants = 'pantsN3.png';
+        $pants = 'pantsN10.png';
+        ///////////////////////////////////////////////////////////////TEST
     ?>
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/skin/<?php echo $skin;?>" >
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/eyes/<?php echo $eyes;?>" >
@@ -20,6 +22,9 @@
     </div>
     <div class="function-body">
         <ul class="game-button">
+            <li class="enabled">
+                <a href="<?php echo Yii::app()->createUrl('game/index', array('id'=>$watch_id)) ?>" title="資訊">資訊</a>
+            </li>
 <?php if ( $watch_id == $user_id ) : ?>
             <li class="enabled">
                 <a href="<?php echo Yii::app()->createUrl('game/missions', array('id'=>$watch_id)) ?>" title="任務">任務</a>
@@ -44,12 +49,23 @@
                 商城
             </li>
 <?php endif; ?>
-            <li class="enabled">
-                <a href="<?php echo Yii::app()->createUrl('game/funny', array('id'=>$watch_id)) ?>" title="惡搞">惡搞</a>
-            </li>
         </ul>
         <div class="game-display">
+            <?php 
+            
+            $ddd = Character::model()->findByPk($watch_id);
+            if($ddd == null)
+            echo '<h1>查無此人</h1>';
+            else
+            {
+                echo '<h1>有資料</h1>';
+            }
+            
+            
+            
+            ?>
             <?php echo $content ?>
+            <?php // echo $user_level ?>
             <h1>TEST</h1>
             <h1>TEST</h1>
             <h1>TEST</h1>
