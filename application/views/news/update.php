@@ -101,11 +101,14 @@ a.news-url-link
     jQuery(document).ready(function(){
         jQuery('.news-cancel-button').click(function()
         {
-            var dialog = jQuery('.news-dialog');
-            if(confirm('確定取消編輯此篇文章？'))
-            {
-                window.location = '<?php echo Yii::app()->createUrl('news/admin')?>';
-            }
+            jQuery.confirm({
+                message: '確定取消編輯此篇文章？',
+                confirmed: function(result)
+                {
+                    if ( result ) window.location = '<?php echo Yii::app()->createUrl('news/admin')?>';
+                    return false;
+                }
+            });
             return false;
         });
     });
