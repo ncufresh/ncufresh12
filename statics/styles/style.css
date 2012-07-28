@@ -1746,15 +1746,21 @@ button.news-button
 {
     width: 605px;
     height: 115px;
+    display: inline-block;
     background:url('../images/life_top1.png');
 }
 
 #nculife-title h4
 {
     font-size: 2em;
-    margin: 20px 0 0 10px;
     text-align: center;
-    width: 120px;
+    width: 215px;
+    height: 45px;
+    padding: 0;
+    margin: 55px 0 0 175px;
+    position: relative;
+    background: #181515;
+    color: white;
 }
 
 #nculife-dh a
@@ -1775,8 +1781,8 @@ button.news-button
 
 #nculife-cv
 {
-    width: 598px;
-    height: 190px;
+    width: 636px;
+    height: 330px;
     overflow-x: hidden;
     overflow-y: auto;
 }
