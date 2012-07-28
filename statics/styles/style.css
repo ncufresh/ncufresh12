@@ -3317,7 +3317,8 @@ li.enabled a
     margin-left: 35px;
 }
 
-#forum-view-top
+#forum-view-top,
+#forum-forum-top
 {
     background: url('../forum/view/background_top.png');
     width: 633px;
@@ -3336,7 +3337,9 @@ li.enabled a
     padding-top:5px
 }
 
-#forum-view-top2 .pager
+#forum-view-top2 .pager,
+#forum-forum-top2 .pager,
+#forum-forum-footer .pager
 {
     padding-right: 35px;
 }
@@ -3482,6 +3485,201 @@ li.enabled a
     margin-left: 20px;
     margin-top: 20px;
     border: 1px solid black;
+}
+
+#forum-forum-top2
+{
+    background: url('../forum/forum/background_top.png');
+    width: 683px;
+    height: 32px;
+    margin-left:35px;
+}
+
+#forum-forum-body
+{
+    background: url('../forum/forum/background.png');
+    width: 683px;
+    min-height: 183px;
+    margin-left:35px;
+}
+
+#forum-forum-body #create-article
+{
+    background: url('../forum/forum/eraser.png');
+    width:102px;
+    height:38px;
+    float:left;
+    margin-left: 36px;
+    margin-top: 4px;
+    padding: 14px 0px 4px 16px;
+}
+
+#forum-forum-body #create-article a
+{
+    color:#ffffff;
+}
+
+#forum-forum-body #labels
+{
+    background-image: none;
+    float: right;
+    margin: 20px 50px 0 0;
+    height:35px;
+    
+}
+
+#forum-forum-body #labels .un-selected
+{
+    float:left;
+    display: inline;
+    list-style-type: none;
+    width:40px;
+    height:26px;
+    background: #f8b1c5;
+    border-radius: 8px;
+    margin-right: 5px;
+    padding: 4px 4px 0 13px;
+    border: 2px solid #ffffff;
+}
+
+#forum-forum-body #labels .un-selected:hover
+{
+    background:#f48191;
+}
+
+#forum-forum-body #labels a
+{
+    display: inline;
+    color: #ffffff;
+    display:block;
+}
+
+#forum-forum-body #table-head
+{
+    background: url('../forum/forum/pencil.png');
+    width: 481px;
+    height: 41px;
+}
+
+#forum-forum-body #body-table
+{
+    width: 615px;
+    margin-left:20px;
+}
+
+#forum-forum-body #body-table .table-title th,
+#forum-forum-body #body-table .table-foot td
+{
+    background: #f48191;
+    height:40px;
+    color:#ffffff;
+}
+
+#forum-forum-body #body-table .table-title th.head,
+#forum-forum-body #body-table .table-foot td.head
+{
+    background: url('../forum/forum/pencil_head.png');
+    width: 24px;
+    height: 40px;
+}
+
+#forum-forum-body #body-table .table-title th.category,
+#forum-forum-body #body-table .table-foot td.category
+{
+    width: 84px;
+    background: url('../forum/forum/pencil_category.png');
+    color:#ffffff;
+}
+
+#forum-forum-body #body-table .table-title th.title,
+#forum-forum-body #body-table .table-foot td.title
+{
+    width: 190px;
+    color:#ffffff;
+}
+
+
+#forum-forum-body #body-table .table-title th.tail,
+#forum-forum-body #body-table .table-foot td.tail
+{
+    background: url('../forum/forum/pencil_tail.png');
+    height: 40px;
+    width: 12px;
+}
+
+#forum-forum-body #body-table .table-body
+{
+    width: 600px;
+    height: 40px;
+}
+
+#forum-forum-body #body-table .table-body td.head
+{
+    background-color:transparent;
+}
+
+#forum-forum-body #body-table .table-body td.category
+{
+    border-top-style:solid;
+    border-bottom-style:solid;
+    border-left-style:solid;
+    border-color:#f48191;
+    border-width:2px;
+    border-top-width:0.8px;
+    background-color:#ffffff;
+    text-align: center;
+}
+
+#forum-forum-body #body-table .table-body td.title,
+td.author,
+td.reply,
+td.popularity
+{
+    border-top-style:solid;
+    border-bottom-style:solid;
+    border-color:#f48191;
+    border-width:2px;
+    border-top-width:0.8px;
+    background-color:#ffffff;
+}
+
+#forum-forum-body #body-table .table-body td.author
+{
+    width:80px;
+    text-align: center;
+}
+
+#forum-forum-body #body-table .table-body td.reply span,
+#forum-forum-body #body-table .table-body td.popularity span
+{
+    padding-right:15px;
+    float:right;
+}
+
+#forum-forum-body #body-table .table-body td.title a:hover
+{
+    color: #f48191;
+    font-weight: bolder;
+}
+
+#forum-forum-body #body-table .table-body td.time
+{
+    border-top-style:solid;
+    border-bottom-style:solid;
+    border-right-style:solid;
+    border-color:#f48191;
+    border-width:2px;
+    border-top-width:0.8px;
+    background-color:#ffffff;
+}
+
+#forum-forum-footer
+{
+    background: url('../forum/forum/background_footer.png');
+    width: 683px;
+    height: 53px;
+    margin-left: 35px;
+    padding-top: 20px;
 }
 
 #ultimate-password
