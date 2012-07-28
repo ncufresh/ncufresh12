@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/styles/print.css" media="print" />
-    <style type="text/css"><?php echo $this->clips['style']; ?></style>
+    <?php echo $this->clips['style']; ?>
 
     <!--[if lt IE 8]>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/styles/ie.css" media="screen, projection" />
@@ -192,7 +192,9 @@
     </form>
 <?php else : ?>
     <div class="profile">
-        <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/sin.png"/>
+<?php $this->widget('Avatar', array(
+    'id'        => Yii::app()->user->getId()
+)); ?>
         <p><?php echo Yii::app()->user->getName(); ?></p>
         <a id="sidebar-personal-toggle" href="#" title="點此打開或關閉個人功能"></a>
     </div>

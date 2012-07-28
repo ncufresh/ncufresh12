@@ -256,7 +256,7 @@ class FriendsController extends Controller
                         echo '沒有刪除所有成員耶';
                     }
                 } 
-                $this->redirect(array('friends/friends'));
+                $this->redirect(array('friends/allgroups'));
             }
             else
             {

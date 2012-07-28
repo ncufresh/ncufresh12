@@ -1,4 +1,4 @@
-﻿<div id="forum-forumlist">
+<div id="forum-forumlist">
 <div id="forum-lists">
     <div class="forum-list-1">
         <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 3, 'sort' => 'create'));?>">中國文學系</a><br/>

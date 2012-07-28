@@ -7,6 +7,7 @@ class SiteController extends Controller
         parent::init();
         Yii::import('application.models.Chat.*');
         Yii::import('application.models.News.*');
+        Yii::import('application.models.Game.*');
         return true;
     }
 
@@ -238,6 +239,7 @@ class SiteController extends Controller
     public function actionRegister()
     {
         $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+        $this->_data['token'] = Yii::app()->security->getToken();
         if ( isset($_POST['register']) && isset($_POST['profile']) ) 
         {
             $user = new User();
@@ -258,19 +260,39 @@ class SiteController extends Controller
                 {
                     if ( $user->save() )
                     {
-                        $profile->id = $user->id;
-                        if ( $profile->save() )
+                        $character = new Character(); //Character Model
+                        $character->id = $user->id;//同步寫入user的id至遊戲資料列表
+                        $character->exp = 1; //一開始使用者經驗設為1
+                        $character->money = 25000; //一開始使用者金錢設為25000
+                        $character->total_money = 25000; //一開始使用者總金錢設為25000
+                        if($_POST['sex'] == 0)
                         {
-                            $this->redirect(array('site/index'));
+                            $character->skin_id = 81; //男生 皮膚預設id=81
+                        }
+                        else
+                        {
+                            $character->skin_id = 85; //女生 皮膚預設id=85
+                        }
+                        $item = new ItemBag(); //ItemBag Model
+                        $item->user_id = $user->id; //同步寫入user的id至道具列表
+                        $item->items_id = $character->skin_id; //寫入獲得道具的id
+                        $item->equip = 1; //寫入裝備狀態
+                        $item->acquire_time = TIMESTAMP; //寫入獲得時間
+                        
+                        $profile->id = $user->id;
+                        if ( $profile->save() && $character->save() && $item->save())
+                        {
+                            $this->redirect(array('profile/profile'));
                         }
                     }
                 }
             }
         }
-
-        $this->_data['token'] = Yii::app()->security->getToken();
-        $this->render('register', array(
-            'departments'   => Department::model()->getDepartment()
-        ));
+        else
+        {
+            $this->render('register', array(
+                'departments'   => Department::model()->getDepartment()
+            ));
+        }
     }
 }

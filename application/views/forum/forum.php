@@ -1,4 +1,4 @@
-﻿<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script>
 (function($){
     $(document).ready(function (){
@@ -32,28 +32,105 @@
 })(jQuery);
 </script>
 <?php $this->endWidget();?>
-文章列表<br />
-<select id="sort_list">
-  <option value="create" <?php if($sort=='create') echo 'SELECTED';?>>依發表時間</option>
-  <option value="update" <?php if($sort=='update') echo 'SELECTED';?>>依最新回覆</option>
-  <option value="reply"  <?php if($sort=='reply') echo 'SELECTED';?>>依回應數量</option>
-  <option value="viewed" <?php if($sort=='viewed') echo 'SELECTED';?>>依點閱人氣</option>
-</select>
+<div id="forum-forum-top">
+    <a id="forum-forum-backlink"href="#">回上一頁</a>
+</div>
+<div id="forum-forum-top2">
+    
+    <?php $this->widget('Pager', array(
+        'url'       => 'forum/forum',
+        'pager'     => $page_status,
+        'parameters'=> array('fid' => $fid, 'sort' => $sort, 'category' => $current_category)
+    )); 
+    ?>
+    <select id="sort_list">
+      <option value="create" <?php if($sort=='create') echo 'SELECTED';?>>依發表時間</option>
+      <option value="update" <?php if($sort=='update') echo 'SELECTED';?>>依最新回覆</option>
+      <option value="reply"  <?php if($sort=='reply') echo 'SELECTED';?>>依回應數量</option>
+      <option value="viewed" <?php if($sort=='viewed') echo 'SELECTED';?>>依點閱人氣</option>
+    </select>
+</div>
+<div id="forum-forum-body">
+    <div id="create-article">
+        <a href="<?php echo Yii::app()->createUrl('forum/create', array('fid' => $fid));?>">發表文章</a>
+    </div>
+    <ul id="labels">
+        <li class="un-selected">
+            <a class="change-category" href='<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => $sort, 'category' => 0));?>'>全部</a>
+        </li>
+        <?php
+        foreach ( $category->article_categories as $each ) : 
+        ?>
+            <li class="un-selected">
+                <a class="change-category" href='<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => $sort, 'category' => $each->id));?>'><?php echo $each->name;?></a>
+            </li>
+        <?php
+        endforeach;
+        ?>
+    </ul>
+    <table id="body-table" cellpadding="0" cellspacing="0">
+        <thead>
+            <tr class="table-title">
+                <th class="head"></th>
+                <th class="category">分類</th>
+                <th class="title">標題</th>
+                <th class="author">作者</th>
+                <th class="reply">回應</th>
+                <th class="popularity">人氣</th>
+                <th class="time">發表時間</th>
+                <th class="tail"></th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <?php
+            foreach($model as $each):
+                
+            ?>
+            <tr class="table-body">
+                <td class="head"></td>
+                <td class="category"><?php echo $each->category_name->name.' '; ?></td>
+                <td class="title"><a href="<?php echo $each->url?>"><?php echo $each->title; ?></a></td>
+                <td class="author"></td>
+                <td class="reply"><span><?php echo $each->replies_count.' ';?></span></td>
+                <td class="popularity"><span><?php echo $each->viewed_times;?></span></td>
+                <td class="time"></td>
+            </tr>
+            <?php
+            endforeach;
+            ?>
+        </tbody>
+        <tfoot class="table-foot">
+            <tr>
+                <td class="head"></td>
+                <td class="category"></td>
+                <td class="title"></td>
+                <td class="author"></td>
+                <td class="reply"></td>
+                <td class="popularity"></td>
+                <td class="time"></td>
+                <td class="tail"></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<div id="forum-forum-footer">
+    <?php $this->widget('Pager', array(
+        'url'       => 'forum/forum',
+        'pager'     => $page_status,
+        'parameters'=> array('fid' => $fid, 'sort' => $sort, 'category' => $current_category)
+    )); 
+    ?>
+</div>
 <br/>
-<a class="change-category" href='<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => $sort, 'category' => 0));?>'>全部</a>
-    <?php
-    foreach ( $category->article_categories as $each ) : 
-    ?>
-        <a class="change-category" href='<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => $sort, 'category' => $each->id));?>'><?php echo $each->name;?></a>
-    <?php
-    endforeach;
-    echo $fid . '<br />';
-    ?>
-    <a href="<?php echo Yii::app()->createUrl('forum/create', array('fid' => $fid));?>">發表文章</a><br/>
+
+    
+    
     <?php
     foreach($model as $each):
         echo $each->category_name->name.' '; 
     ?>
+        
         <a href="<?php echo $each->url?>"><?php echo $each->title; ?></a>
         <?php
         echo $each->id.' ';

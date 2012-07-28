@@ -1,13 +1,45 @@
-﻿<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
 jQuery(document).ready(function()
 {
     $('#club-menu-items a').lightbox();
+    
+    $('#club-schedule-button').click(function()
+        {
+            var button = $(this);
+            if ( button.hasClass('active') )
+            {
+                $('#club-schedule-content').slideUp(300, function()
+                {
+                    button.removeClass('active');
+                });
+            }
+            else
+            {
+                $('#club-schedule-content').slideDown(300, function()
+                {
+                    button.addClass('active');
+                });
+            }
+            return false;
+        });
+    jQuery('.back').click(function()
+        {
+            window.history.back()
+        });
 	
 });
 </script>
 <?php $this->endWidget();?>
 <div class="club-underpicture">
+    <div class="schedule">
+        <div id="club-schedule-button">
+        
+        </div>
+        <div id="club-schedule-content">
+        
+        </div>
+    </div>
         <ul id="club-menu-items">
             <li class="club-picture">
                 <?php if( file_exists( Yii::app()->basePath . '/../files/club/' . $id  . '/1.jpg' ) ):?>
@@ -36,15 +68,15 @@ jQuery(document).ready(function()
 <?php if ( $this->getIsAdmin($id) ) : ?>
     <a href="<?php echo Yii::app()->createUrl('club/modify/' . $id);?>" title="修改">修改</a>
     <a href="<?php echo Yii::app()->createUrl('club/uploadpicture/' . $id);?>" title="上傳圖片">上傳圖片</a>
-    <h1><?php echo $data->name;?></h1>
 <?php endif;?>
+<h1><?php echo $data->name;?></h1>    
 </div>    
 <div class="club-display" id="club-<?php echo $data->category;?>">
     <div class="club-title">簡介:</div>
     <div class="club-item">
     <?php echo $data->introduction; ?>
     </div>
-    <div class="club-title"><?php if ( ! $data->category ) : ?>社長:<?php else : ?>系代:<?php endif; ?></div>
+    <div class="club-title"><?php if ( $data->category !=2 ) : ?>社長:<?php else : ?>系代:<?php endif; ?></div>
     <div class="club-item">
     <?php echo $data->leader; ?>
     </div>
@@ -64,7 +96,7 @@ jQuery(document).ready(function()
     <div class="club-item">
     <?php echo $data->leader_msn; ?>
     </div>
-    <div class="club-title"><?php if ( ! $data->category ) : ?>副社長:<?php else : ?>副系代:<?php endif; ?></div>
+    <div class="club-title"><?php if ( $data->category !=2 ) : ?>副社長:<?php else : ?>副系代:<?php endif; ?></div>
     <div class="club-item">
     <?php echo $data->viceleader; ?>
     </div>
@@ -92,4 +124,5 @@ jQuery(document).ready(function()
     <? endif;?>
 </div>
 <div class="club-display-bottom" id="club-bottom-<?php echo $data->category;?>">
+<a class="back">回上一頁</a>
 </div>

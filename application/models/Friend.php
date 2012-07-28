@@ -64,7 +64,7 @@ class Friend extends CActiveRecord
         return $temp;
     }
 
-    public function isExist($userid,$friendid) //¤@¦¸¨âµ§¸ê®Æ
+    public function isExist($userid,$friendid) //ä¸€æ¬¡å…©ç­†è³‡æ–™
     {
         $data1 = $this->find(array(
             'condition' => 'user_id = :userid AND friend_id = :friendid',

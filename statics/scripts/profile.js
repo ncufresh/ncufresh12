@@ -1,9 +1,6 @@
 (function($){
     $(document).ready(function(){
-        $('.myprofile').scrollable({
-            wheelSpeed: 90
-        });
-        $('.editor').scrollable({
+        $('.allmessages').scrollable({
             wheelSpeed: 90
         });
     });

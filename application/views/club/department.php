@@ -1,11 +1,7 @@
 <div class ="alltag"> 
-    <div class = "department-head">
-    <a href="<?php echo Yii::app()->createUrl('club/department');?>" title="系所"></a>
-    </div>
-    <div class = "student-head">
-    </div>
-    <div class = "club-head">
-    </div>
+    <a href="<?php echo Yii::app()->createUrl('club/department');?>" title="系所"><div class = "department-head"></div></a>
+    <a href="<?php echo Yii::app()->createUrl('club/student');?>" title="學生組織"><div class = "student-head"></div></a>
+    <a href="<?php echo Yii::app()->createUrl('club/club');?>" title="社團"><div class = "club-head"></div></a>
 </div>
 <div class="department">
     <div class="department-list">
@@ -15,17 +11,6 @@
             </li>
             <li>
             <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 98));?>" title="地科系">地科系</a>
-            </li>
-        </ul>
-        <ul>            
-            <li>
-                <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 78));?>" title="資工系">資工系</a>
-            </li>
-            <li>
-                <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 79));?>" title="電機系">電機系</a>
-            </li>
-            <li>
-                <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 80));?>" title="通訊系">通訊系</a>
             </li>
         </ul>
         <ul>            
@@ -57,6 +42,17 @@
             </li>
             <li>
             <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 89));?>" title="理學院學士班">理學院學士班</a>
+            </li>
+        </ul>
+        <ul>            
+            <li>
+                <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 78));?>" title="資工系">資工系</a>
+            </li>
+            <li>
+                <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 79));?>" title="電機系">電機系</a>
+            </li>
+            <li>
+                <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 80));?>" title="通訊系">通訊系</a>
             </li>
         </ul>
         <ul>           
