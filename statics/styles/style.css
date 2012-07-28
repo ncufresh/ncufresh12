@@ -2422,6 +2422,38 @@ ul.friend-other-sort
     list-style-type:circle;
 }
 
+.friends-part3 img
+{
+    margin-left:45px;
+    margin-top:25px;
+}
+
+.user-editor
+{
+    width:400px; 
+    height:350px;
+    padding:0px;
+    margin-top:-175px;
+    margin-left:280px;
+}
+
+.user-editor li
+{
+    width: 700px;
+    height: 50px;
+    display: block;
+    list-style-type:none;
+    font-size: 20px;
+    text-align:left;
+    color:Indigo;
+}
+
+.user-editor input
+{
+    width: 100px;
+    height: 30px;
+}
+
 div.friends h4
 {
     color: yellow;
@@ -2491,6 +2523,14 @@ div.friends-part2
     margin:0px;
 }
 
+div.friends-part3
+{
+    width:675px;
+    height:370px;
+    margin:0px;
+    padding:5px;
+}
+
 div.friends-addfriend
 {
     display:inline-block;
@@ -2519,11 +2559,11 @@ div.myfriend
 div.myprofile
 {
     background-image:url('../profile/profile.png');
-    width:740px;
-    height:416px;
-    padding:0px;
-    margin:10px;
-    overflow-y:hidden;  
+    background-repeat:no-repeat ;
+    width:690px;
+    height:370px;
+    padding:25px;
+    margin:0px;
 }
 
 div.mygroup
@@ -2600,17 +2640,6 @@ ul.user-profile li
     font-size: 20px;
     text-align:center;
     color:Fuchsia;
-}
-
-ul.user-editor li
-{
-    width: 700px;
-    height: 50px;
-    display: block;
-    list-style-type:none;
-    font-size: 20px;
-    text-align:center;
-    color:Indigo;
 }
 
 ul.introduce-group li

@@ -1,6 +1,6 @@
 (function($){
     $(document).ready(function(){
-        $('.friends-part2').scrollable({
+        $('.friends-part3').scrollable({
             wheelSpeed: 90
         });
     });
