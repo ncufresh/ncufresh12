@@ -98,11 +98,17 @@ class Friend extends CActiveRecord
         $model->user_id = $user_id;
         $model->friend_id = $friend_id;
         $save = $model->save();
-        if ( isset($save) )
-        {
-            return true;
-        }
-        return false;
+    }
+
+    public function Request($userid)
+    {
+        return  $this->findAll(array(
+                    'condition' => 'friend_id = :userid AND invisible = 1',
+                    'params'    => array(
+                        ':userid' => $userid,
+                        ':friendid' => $friendid
+                    )
+                ));
     }
 
 }
