@@ -1,5 +1,9 @@
-<h2>基本資料</h2>
+
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('site/register'); ?>" method="POST">
+<input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
+<h2>基本資料</h2>
+<div class="register">    
+    <div class="user-register">
     <dl>
         <dt>
             <label for="form-register-name">姓名</label>
@@ -38,7 +42,7 @@
             <label for="form-register-password">密碼</label>
         </dt>
         <dd>
-            <input  name="register[password]" type="password" />
+            <input id="form-register-password" name="register[password]" type="password" />
         </dd>
     </dl>
     <dl class="select">
@@ -77,7 +81,9 @@
             <input id="form-register-birthday" name="profile[birthday]" type="text" />
         </dd>
     </dl>
-        <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
-        <input type="file" name="picture" />
+       <!-- <input type="file" name="picture" />-->
         <button type="submit">註冊</button>
+
+    </div>
+</div>
 </form>
