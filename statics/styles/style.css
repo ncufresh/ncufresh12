@@ -1716,7 +1716,7 @@ button.news-button
 {
     display: none;
     width: 649px;
-    height: 500px;
+    height: 449px;
     background: url('../images/life_purple.png');
 }
 
@@ -1734,18 +1734,18 @@ button.news-button
 }
 .dialog-close-button
 {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    top: 40px;
-    left: 620px;
+    width: 42px;
+    height: 42px;
+    margin: -15px 0px 0px 620px;
+    display: inline-block;
     background: url('../images/life_exit.png');
 }
 
 #nculife-title
 {
     width: 605px;
-    height: 115px;
+    height: 125px;
+    margin: -72px 0 0 10px;
     display: inline-block;
     background:url('../images/life_top1.png');
 }
@@ -1781,10 +1781,12 @@ button.news-button
 
 #nculife-cv
 {
-    width: 636px;
-    height: 330px;
+    width: 620px;
+    height: 320px;
     overflow-x: hidden;
     overflow-y: auto;
+    margin-left: 10px;
+
 }
 
 #nculife-dh a
