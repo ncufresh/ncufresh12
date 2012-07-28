@@ -1,11 +1,12 @@
 <h1>基本資料</h1>
 <div class="myprofile">
+    <div class="friends-part3">
 <?php if ( $user->profile->picture !='' ):?>
-    <img height="400" src="<?php echo $target . '/' . $user->profile->picture; ?>" alt="Score image" />
+        <img width="170" height="160" src="<?php echo $target . '/' . $user->profile->picture; ?>" alt="Score image" />
 <?php else:?>
-    <img src="<?php echo $target . '/image1.jpg'; ?>" alt="Score image" />
+        <img width="170" height="160" src="<?php echo $target . '/image1.jpg'; ?>" alt="Score image" />
 <?php endif;?>
-        <ul class="user-profile">  
+        <ul class="user-editor">  
             <li>
                 姓名:<?php echo $user->profile->name; ?>
             </li>
@@ -36,6 +37,7 @@
                 生日:<?php echo $user->profile->birthday; ?>
             </li>   
         </ul>
+    </div>
 </div>
 <button><a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>">編輯</a></button>
 <button><a href="<?php echo Yii::app()->createUrl('site/index'); ?>">BACK</a></button>

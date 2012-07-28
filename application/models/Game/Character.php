@@ -116,10 +116,10 @@ class Character extends CActiveRecord
                 'Item',
                 'eyes_id'
             ),
-            'cloths'    => array(
+            'clothes'    => array(
                 self::BELONGS_TO,
                 'Item',
-                'cloths_id'
+                'clothes_id'
             ),
             'pants'    => array(
                 self::BELONGS_TO,
@@ -130,6 +130,11 @@ class Character extends CActiveRecord
                 self::BELONGS_TO,
                 'Item',
                 'shoes_id'
+            ),
+            'skin'    => array(
+                self::BELONGS_TO,
+                'Item',
+                'skin_id'
             ),
             'others'    => array(
                 self::BELONGS_TO,
@@ -220,7 +225,7 @@ class Character extends CActiveRecord
         return $this->achievements;
     }
 
-    public static function getAvatar()
+    public static function getAvatar($id)
     {
         return array(
             '身體皮膚名稱'    => 'skin/7e46ccbac1a2ea2bf59f649ea279ff18.png',
@@ -232,5 +237,14 @@ class Character extends CActiveRecord
             '衣服衣物名稱'    => 'cloths/0fed7f93d5460bdbb2014393bd865d28.png',
             '其他部位名稱'    => 'others/045950659588c9aac4708a31966636dc.png'
         );
+    }
+    
+    public static function createCharacter($id,$sex)
+    {
+        $character = new Character();
+        $character->id = $id;
+        $character->exp = 1;
+        $character->skin_id = 81;
+        $character->save();
     }
 }

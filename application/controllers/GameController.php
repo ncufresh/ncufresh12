@@ -51,13 +51,16 @@ class GameController extends Controller
         {
             $this->setPageTitle(Yii::app()->name . ' - 遊戲專區');
             // $this->render('index', array('user_id' => $id));
-            $exp = Character::model()->findByPk($id)->exp;
-            $level = Character::model()->getLevel($id);
-            $level_exp = Character::model()->getLevelExp($level);
-            $nickname = Profile::model()->findByPk($id)->nickname;
-            $username = User::model()->findByPk($id)->username;
-            $content = $this->renderPartial('index', array('exp' => $exp,'level' => $level, 'level_exp' => $level_exp,
-            'nickname' => $nickname, 'username' => $username, 'watch_id' => $id), true);
+            $character_data = Character::model()->findByPk($id);
+            $user_data = User::model()->findByPk($id);
+            $profile_data = Profile::model()->findByPk($id);
+            $level = Character::model()->getLevel($id); //傳入id 查詢等級
+            $level_exp = Character::model()->getLevelExp($level); //傳入等級 查詢等級經驗
+            $nickname = $profile_data->nickname;
+            $username = $user_data->username;
+            $content = $this->renderPartial('index', array('exp' => $character_data->exp, 'level' => $level, 'level_exp' => $level_exp,
+            'character_data' => $character_data, 'user_data' => $user_data, 'profile_data' => $profile_data,
+            'money' => $character_data->money,'nickname' => $nickname, 'username' => $username, 'watch_id' => $id), true);
             $this->render('game_system', array('content' => $content, 'watch_id' => $id));
         }
     }
@@ -125,7 +128,8 @@ class GameController extends Controller
         {
             $this->setPageTitle(Yii::app()->name . ' - 道具列表');
             // $this->render('index', array('user_id' => $id));
-            $content = $this->renderPartial('items',null, true);
+            $items_bag = Character::model()->findByPk($id)->items_bag;
+            $content = $this->renderPartial('items',array('items_bag' => $items_bag), true);
             $this->render('game_system', array('content' => $content, 'watch_id' => $id));
         }
     }

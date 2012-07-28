@@ -67,7 +67,7 @@ class  Group extends CActiveRecord
     public function FindGroup($userid)
     {
         return $this->findAll(array(
-            'condition' => 'user_id = :id',
+            'condition' => 'user_id = :id AND invisible = 0',
             'params'    => array(
                 ':id' => $userid,
             )
