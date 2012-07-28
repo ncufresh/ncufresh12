@@ -1,4 +1,4 @@
-﻿<?php $user_id = Yii::app()->user->getId(); //使用者的id 
+<?php $user_id = Yii::app()->user->getId(); //使用者的id 
        //$user_level = Character::model()->findByPk($watch_id)->exp;?>
     <h1>使用者ID => 登入帳號 / 觀看中 => <?php echo $user_id.' / '.$watch_id?> </h1>
     <div class="game-system">
@@ -51,32 +51,8 @@
 <?php endif; ?>
         </ul>
         <div class="game-display">
-            <?php 
             
-            $ddd = Character::model()->findByPk($watch_id);
-            if($ddd == null)
-            echo '<h1>查無此人</h1>';
-            else
-            {
-                echo '<h1>有資料</h1>';
-            }
-            
-            
-            
-            ?>
-            <?php echo $content ?>
-            <?php // echo $user_level ?>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-
-
+            <?php echo $content; ?>
         </div>
     </div>
 </div>
