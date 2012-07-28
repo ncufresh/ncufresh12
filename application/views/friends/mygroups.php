@@ -1,4 +1,4 @@
-<form method="POST" action="<?php echo $this->createUrl('friends/deletemembers', array('id'=>$mygroup->id)); ?>">
+<form method="POST" action="<?php echo $this->createUrl('friends/deletegroup', array('id'=>$mygroup->id)); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
 <div>
 <ul class="introduce-group">
@@ -7,44 +7,27 @@
 <ul>
 </div>
 <div class="mygroup">
-<table>
-    <tr>
-<?php 
-    $row = 0;
-    $col = 1;
-?>
-<?php  foreach ($members as $member ): ?>
+    <div class="friends-part2">
+        <ul class="other-department">
+<?php foreach ($members as $member ): ?>
+            <li>
 <?php $profile = Profile::model()->findByPK($member->user_id); ?>
-<?php if ( $row <= 4 ) : ?> 
-        <td>
 <?php if ( $profile->picture !='' ): ?>
-        <img  height="70" src="<?php echo $target.'/'.$profile->picture; ?>" alt="Score image" />
+                <img  width="100" height="120" src="<?php echo $target.'/'.$profile->picture; ?>" alt="Score image" />
 <?php else: ?>
-        <img  height="70" src="<?php echo $target.'/image1.jpg'; ?>" alt="Score image" />
+                <img  width="100" height="120" src="<?php echo $target.'/image1.jpg'; ?>" alt="Score image" />
 <?php endif; ?>
-    <ul class="member-name-department">
-        <li><input type="checkbox" name="members[<?php echo $profile->id; ?>]" value="<?php echo $profile->id; ?>" />
-        </li>
-        <li>
+                <input type="checkbox" name="members[<?php echo $profile->id; ?>]" value="<?php echo $profile->id; ?>" />
+                <h3>
 <?php echo $profile->name; ?>
-        </li>
-        <li>
+                </h3>
+                <h4>
 <?php echo $profile->department->short_name; ?>
-        </li>
-    </ul>
-        </td>
-<?php if ( $col %5 == 0 ): ?>
- <?php $row+=1; ?>
-    </tr>
-    <tr>
-<?php endif; ?>
-<?php endif; ?>
-<?php $col++; ?>
+                </h4>
+            </li>
 <?php endforeach; ?>
-<?php if ( $col %5 != 0 ): ?>
-    </tr>
-<?php endif;?>
-</table>
+        </ul>
+     </div>
 </div>
 <button type="submit">刪除成員</button>
 </form>

@@ -2,40 +2,26 @@
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
 <h1>成員</h1>
 <div class="newmember">
-<table>
-    <tr>
-<?php $row = 0; ?>
-<?php $col = 1; ?>
+    <div class="friends-part2">
+        <ul class="other-department">
 <?php foreach ( $user->friends as $friend ) : ?>
-<?php if ( $row <= 4 ) :?>
-        <td class="friends-allsame-ones">
+            <li>
 <?php if ( $friend->profile->picture !='' ) : ?>
-        <img  height="70" src="<?php echo $target.'/'.$friend->profile->picture; ?>" alt="Score image"/>
+                <img  height="70" src="<?php echo $target.'/'.$friend->profile->picture; ?>" alt="Score image"/>
 <?php else : ?>
-        <img  height="70" src="<?php echo $target.'/image1.jpg';?>" alt="Score image"/>
+                <img  height="70" src="<?php echo $target.'/image1.jpg';?>" alt="Score image"/>
 <?php endif; ?>
-    <ul class="member-name-department">
-        <li><input type="checkbox" name="friends[<?php echo $friend->profile->id; ?>]" value="<?php echo $friend->profile->id; ?>"  /></li>
-        <li>
+                <input type="checkbox" name="friends[<?php echo $friend->profile->id; ?>]" value="<?php echo $friend->profile->id; ?>"  />
+                <h3>
 <?php echo $friend->profile->name; ?>
-        </li>
-        <li>
+                </h3>
+                <h4>
 <?php echo $friend->profile->department->short_name; ?>
-        </li>
-    </ul>
-        </td>
-<?php if ( $col %5 == 0 ) : ?>
-<?php $row+=1; ?>
-    </tr>
-    <tr>
-<?php endif; ?>
-<?php endif; ?>
-<?php $col++; ?>
+                </h4>
+           </li>
 <?php endforeach; ?>
-<?php if ( $col %5 != 0 ): ?>
-    </tr>
-<?php endif; ?>
-</table>
+        </ul>
+    </div>
 </div>
 <button type="submit">新增</button>
 </form>

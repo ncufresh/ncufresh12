@@ -1,16 +1,18 @@
 <?php $user_id = Yii::app()->user->getId(); //使用者的id 
        //$user_level = Character::model()->findByPk($watch_id)->exp;?>
     <h1>使用者ID => 登入帳號 / 觀看中 => <?php echo $user_id.' / '.$watch_id?> </h1>
+    <h1> <?php echo $url=Character::model()->findByPk($watch_id)->skin->url.'<br/>'; ?></h1>
     <div class="game-system">
     <div class="user-body">
     <?php //////////////////////////////////////////////////////////TEST
         //////////////////// 暫時圖片變數名稱
-        $skin = 'girlN4.png';
-        $eyes = 'faceN15.png';
-        $hair = 'hairN15.png';
-        $shoes = 'shoeN11.png';
-        $cloths = 'clothesN12.png';
-        $pants = 'pantsN12.png';
+        $skin = Character::model()->findByPk($watch_id)->skin->url.'.png';
+        $eyes = '24b6ae55f40bdbbb4fdb32a841270b3f.png';
+        $hair = '7460295c7cc2e01624a84975d11b3bd3.png';
+        $shoes = '1557dbd15c83e88ba07a5bb64ce49e29.png';
+        $cloths = '8d2080d0d821a89d7f3b02322db50b7b.png';
+        $pants = '83d966b27da098dc0b19671943a9902d.png';
+        $others = '5a9d0b4a51332cbcdd5f49c83c53f1d4.png';
         ///////////////////////////////////////////////////////////////TEST
     ?>
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/skin/<?php echo $skin;?>" >
@@ -19,6 +21,7 @@
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/shoes/<?php echo $shoes;?>" >
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/pants/<?php echo $pants;?>" >
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/clothes/<?php echo $cloths;?>" >
+    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/others/<?php echo $others;?>" >
     </div>
     <div class="function-body">
         <ul class="game-button">
