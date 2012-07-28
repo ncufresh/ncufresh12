@@ -2075,19 +2075,21 @@ button.news-button
 .club-head
 {
     background: url('../club/club-head.png');
-    width: 250px;
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
-    float: left;
+    float: right;
+    margin-right: 21px;
     
 }
 .club-head:hover
 {
     background: url('../club/club-head2.png');
-    width: 250px;
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
-    float: left;
+    float: right;
+    margin-right: 21px;
     
 }
 .department
@@ -2098,12 +2100,11 @@ button.news-button
     width: 750px;
     position: relative;
     display: inline-block;
-    margin-top: -9px;
 }
 .department-head
 {
     background: url('../club/department-head.png');
-    width: 250px;
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
     float: left;
@@ -2111,7 +2112,7 @@ button.news-button
 .department-head:hover
 {
     background: url('../club/department-head2.png');
-    width: 250px;
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
     float: left;
@@ -2128,49 +2129,52 @@ button.news-button
 .student-head
 {
     background: url('../club/student-head.png');
-    width: 250px;
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
     float: left;
+    margin-left: 23px;
 }
 
 .student-head:hover
 {
-    background: url('../club/studnt-head2.png');
-    width: 250px;
+    background: url('../club/student-head2.png');
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
     float: left;
+    margin-left: 23px;
 }
 
 .club-list
 {
     text-align: left;
     overflow: hidden;
-    margin-top: 71px;
-    margin-left: 50px;
+    margin-top: 56px;
+    margin-left: 30px;
 }
 
 .club-list ul
 {
     float: left;
     padding: 0;
-    width: 25%;
+    width: 24%;
     list-style: none;
 }
 
 .department-list
 {
     text-align: left;
-    margin-top: 60px;
-    margin-left: 50px;
+    margin-top: 98px;
+    margin-left: 91px;
 }
 
 .department-list ul
 {
     float: left;
     padding: 0;
-    width: 16.5%;
+    width: 30%;
+    height: 320px;
     list-style: none;
 }
 
@@ -2225,10 +2229,11 @@ button.news-button
 }
 .club-display-head
 {
-    height: 88px;
+    height: 105px;
     width: 530px;
     position: relative;
     float: right;
+    background-repeat: no-repeat;
 }
 #club-head-1
 {
@@ -2246,12 +2251,6 @@ button.news-button
 .club-display-head a
 {
     float: right;
-}
-
-.club-display-head h1
-{
-    margin-top: 2px;
-    margin-left: 27px;
 }
 
 .club-display-bottom
@@ -2312,11 +2311,30 @@ button.news-button
 #club-schedule-content
 {
     background: skyblue;
-    display: block;
+    display: none;
     width: 204px;
     height: 329px;
 }
-
+.modify-table
+{
+    padding: 0 5% 5% 0;
+    position: relative;
+    width: 45%;
+    float: left;
+}
+.club-web
+{
+    height: 55px;
+    float: left;
+    position: relative;
+}
+.club-modify-table
+{
+    padding: 5px;
+    height: 600px;
+    width: 750px;
+    background: url('../club/background.png');
+}
 div.friends h4
 {
     color: yellow;
