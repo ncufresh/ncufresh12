@@ -514,7 +514,9 @@
             {
                 $.fn.chat.closeChatDialog(dialog.data('id'));
             });
-            display.scrollable();
+            display.scrollable({
+                scrollableClass:    false
+            });
         }
         return dialog;
     };
@@ -674,25 +676,34 @@
     $.fn.scrollable = function(options)
     {
         var options = $.extend({
-            scrollableClass:        false,
+            scrollableClass:        null,
             fadeInDuration:         'slow',
             fadeOutDuration:        'slow',
-            wheelSpeed:             6
+            wheelSpeed:             48
         }, options);
         return this.each(function()
         {
             var active = false;
             var inside = false;
+            var scrollHeight = 0;
             var updateScrollDraggableHeight = function()
             {
-                var scrollAreaHeight = scrollArea.height();
+                var originalHeight = $.integer(scrollDragable.css('height'));
+                var scrollContentHeight = scrollContent.height();
                 var scrollContainerHeight = scrollContainer.height();
                 var height = 0;
-                if ( scrollAreaHeight > scrollContainerHeight )
+                if ( scrollContentHeight > scrollContainerHeight )
                 {
                     height = scrollContainerHeight
                            * scrollContainerHeight
-                           / scrollAreaHeight;
+                           / scrollContentHeight;
+                }
+                if ( height != originalHeight )
+                {
+                    var position = scrollArea.scrollTop();
+                    scrollArea.scrollTop(scrollArea.prop('scrollHeight'));
+                    scrollHeight = scrollArea.scrollTop();
+                    scrollArea.scrollTop(position);
                 }
                 scrollDragable.css({
                     height: height
@@ -701,13 +712,17 @@
             };
             var scrollContainer = $('<div></div>')
                 .addClass('scroll-container')
-                .addClass($(this).attr('class'))
+                .css({
+                    overflow: 'hidden'
+                })
                 .mouseenter(function()
                 {
-                    updateScrollDraggableHeight();
-                    scrollBar
-                        .stop(true, true)
-                        .fadeIn(options.fadeInDuration);
+                    if ( updateScrollDraggableHeight() )
+                    {
+                        scrollBar
+                            .stop(true, true)
+                            .fadeIn(options.fadeInDuration);
+                    }
                     inside = true;
                 })
                 .mouseleave(function()
@@ -723,6 +738,15 @@
                 .insertAfter($(this));
             var scrollArea = $('<div></div>')
                 .addClass('scroll-area')
+                .css({
+                    height: '100%',
+                    overflowX: 'hidden',
+                    overflowY: 'scroll',
+                    width: '100%'
+                })
+                .appendTo(scrollContainer);
+            var scrollContent = $('<div></div>')
+                .addClass('scroll-content')
                 .mousewheel(function(event, delta)
                 {
                     var top = $.integer(scrollDragable.css('top'));
@@ -734,38 +758,65 @@
                     updateScrollDragable(top - delta * multiplier);
                     return false;
                 })
+                .mousedown(function()
+                {
+                    var timer = setInterval(function()
+                    {
+                        scrollDragable.css({
+                            top: (scrollTrack.height()
+                               - updateScrollDraggableHeight())
+                               * scrollArea.scrollTop()
+                               / scrollHeight
+                        });
+                    }, 1);
+                    var revert = function()
+                    {
+                        active = false;
+                        $(document).off('mouseup', revert);
+                        clearInterval(timer);
+                    };
+                    $(document).on('mouseup', revert);
+                    active = true;
+                })
                 .wrapInner($(this))
-                .appendTo(scrollContainer);
+                .appendTo(scrollArea);
             var scrollBar = $('<div></div>')
                 .addClass('scroll-bar')
-                .insertAfter(scrollArea);
+                .insertAfter(scrollContent);
             var scrollTrack = $('<div></div>')
                 .addClass('scroll-track')
+                .mousedown(function(event)
+                {
+                    var y = event.pageY;
+                    var top = $(this).offset().top;
+                    var height = updateScrollDraggableHeight();
+                    updateScrollDragable(y - top - height / 2);
+                    return false;
+                })
                 .appendTo(scrollBar);
             var scrollDragable = $('<div></div>')
                 .addClass('scroll-dragable')
                 .mousedown(function(event)
                 {
-                    var y = event.screenY;
-                    var scroll = $(this);
-                    var top = $.integer(scroll.css('top'));
+                    var origin = scrollArea.scrollTop() - event.pageY;
                     var stop = function()
                     {
-                        $('html')
+                        $(document)
                             .unbind('mouseup', stop)
                             .unbind('mousemove', update);
                         if ( ! inside )
                         {
-                            scrollBar.stop(true, true)
+                            scrollBar
+                                .stop(true, true)
                                 .fadeOut(options.fadeInDuration);
                         }
                         active = false;
                     };
                     var update = function(event)
                     {
-                        updateScrollDragable(top + event.screenY - y);
+                        updateScrollDragable(origin + event.pageY);
                     };
-                    $('html')
+                    $(document)
                         .bind('mouseup', stop)
                         .bind('mouseleave', stop)
                         .bind('mousemove', update);
@@ -775,38 +826,42 @@
                 .appendTo(scrollTrack);
             var updateScrollDragable = function(position)
             {
-                var height = updateScrollDraggableHeight();
-                var maximun = scrollContainer.height() - height;
-                var scale = (
-                        scrollArea.height()
-                      - scrollContainer.height()
-                    ) / (
-                        scrollContainer.height()
-                      - height
-                    ) * -1;
+                var scrollDraggableHeight = updateScrollDraggableHeight();
+                var maximum = scrollTrack.height() - scrollDraggableHeight;
                 if ( position <= 0 ) position = 0;
-                if ( position >= maximun ) position = maximun;
+                if ( position >= maximum ) position = maximum;
                 scrollDragable.css({
                     top: position
                 });
-                scrollArea.css({
-                    top: position * scale
-                });
+                scrollArea.scrollTop(scrollArea.prop('scrollHeight'));
+                scrollArea.scrollTop(
+                    scrollArea.scrollTop()
+                  * position
+                  / maximum
+                );
             };
-            $.each($(this).attr('class').split(' '), (function(object)
-            {
-                return function(index, value)
-                {
-                    $(object).removeClass(value);
-                };
-            })(this));
-            $.extend($(this).__proto__, {
-                scrollTo: updateScrollDragable
+            scrollArea.css({
+                width: 2 * scrollArea.width() - scrollContent.width()
             });
             if ( options.scrollableClass )
             {
+                if ( options.scrollableClass === null )
+                {
+                    var classes = $(this).attr('class') ? $(this).attr('class') : '';
+                    $.each(classes.split(' '), (function(object)
+                    {
+                        return function(index, value)
+                        {
+                            $(object).removeClass(value);
+                        };
+                    })(this));
+                    scrollContainer.addClass(classes);
+                }
                 scrollContainer.addClass(options.scrollableClass);
             }
+            $.extend($(this).__proto__, {
+                scrollTo: updateScrollDragable
+            });
         });
     };
 })(jQuery);

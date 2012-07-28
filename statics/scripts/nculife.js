@@ -16,14 +16,13 @@ jQuery(document).ready(function()
         return false;
     }
 
-    jQuery('#life-index1 li').click(function()
+    jQuery('.life-items li').click(function()
     {
         jQuery('#life-dialog').dialog(
         {
             dialogClass: 'nculife-dialog',
             modal: true,
             closeText: ' ',
-            title: $(this).children('span').text(),
             show: 
             {
                 effect: 'explode',
@@ -35,8 +34,41 @@ jQuery(document).ready(function()
         $('#nculife-cv').html('');
         $('#nculife-dh').html('');
         $('#nculife-t').html('');
-
-        jQuery(this).children().children().each(function()
+        
+        var button = $(this)
+        if(button.hasClass('life-bar'))
+        {
+            jQuery(this).children().children().each(function()
+            {
+                var title = $('<a></a>')
+                    .text($(this).text())
+                    .attr('href', '#')
+                    .attr('class', '')
+                    .attr('tab', $(this).attr('tab'))
+                    .attr('page', $(this).attr('page'))
+                    .click(getTabContent);
+                $('#nculife-dh').append(title);
+            });
+            $('#nculife-title h4').text($(this).children('span').text());
+        }
+        
+        else
+        {
+            jQuery(this).each(function()
+            {
+                var title = $('<a></a>')
+                    .text($(this).text())
+                    .attr('href', '#')
+                    .attr('class', '')
+                    .attr('tab', $(this).attr('tab'))
+                    .attr('page', $(this).attr('page'))
+                    .click(getTabContent);
+                $('#nculife-dh').append(title);
+            });
+            $('#nculife-title h4').text($(this).text());
+        }
+        
+        /* jQuery(this).children().each(function()
         {
             var title = $('<a></a>')
                 .text($(this).text())
@@ -46,11 +78,12 @@ jQuery(document).ready(function()
                 .attr('page', $(this).attr('page'))
                 .click(getTabContent);
             $('#nculife-dh').append(title);
-        });
+        }); */
         $('#nculife-dh > a').first().click();
-        $('#nculife-title h4').text($(this).children('span').text());
+    
+       
     });
-
+    
     jQuery('#life-play').mouseenter(function()
     {
         jQuery('#life-index1').stop().animate(
@@ -58,7 +91,15 @@ jQuery(document).ready(function()
             height: '130px'
         },500);
     });
-
+    
+    jQuery('#life-play').mouseleave(function()
+    {
+        jQuery('.life-items').stop().animate(
+        {
+            height: '0px'
+        },500);
+    });
+    
     jQuery('#life-traffic').mouseenter(function()
     {
         jQuery('#life-index2').stop().animate(
@@ -66,7 +107,15 @@ jQuery(document).ready(function()
             height: '130px'
         },500);
     });
-
+    
+    jQuery('#life-traffic').mouseleave(function()
+    {
+        jQuery('#life-index2').stop().animate(
+        {
+            height: '0px'
+        },500);
+    });
+    
     jQuery('#life-school').mouseenter(function()
     {
         jQuery('#life-index3').stop().animate(
@@ -74,7 +123,15 @@ jQuery(document).ready(function()
             height: '335px'
         },500);
     });
-
+    
+    jQuery('#life-school').mouseleave(function()
+    {
+        jQuery('#life-index3').stop().animate(
+        {
+            height: '0px'
+        },500);
+    });
+    
     jQuery('#life-live').mouseenter(function()
     {
         jQuery('#life-index4').stop().animate(
@@ -82,7 +139,15 @@ jQuery(document).ready(function()
             height: '165px'
         },500);
     });
-
+    
+    jQuery('#life-live').mouseleave(function()
+    {
+        jQuery('#life-index4').stop().animate(
+        {
+            height: '0px'
+        },500);
+    });
+    
     jQuery('#life-health').mouseenter(function()
     {
         jQuery('#life-index5').stop().animate(
@@ -90,10 +155,10 @@ jQuery(document).ready(function()
             height: '105px'
         },500);
     });
-
-    jQuery('#life-play').mouseleave(function()
+    
+    jQuery('#life-health').mouseleave(function()
     {
-        jQuery('.life-items').stop().animate(
+        jQuery('#life-index5').stop().animate(
         {
             height: '0px'
         },500);
