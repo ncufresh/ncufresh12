@@ -548,8 +548,8 @@
                         .data('uuid', data.uuid)
                         .text(data.sender + ':' + data.message)
                         .appendTo($(this));
+                    $(this).scrollTo($(this).height());
                 }
-                $(this).scrollTo($(this).height());
             }
         );
         return dialog;
@@ -798,7 +798,7 @@
                 .addClass('scroll-dragable')
                 .mousedown(function(event)
                 {
-                    var origin = scrollArea.scrollTop() - event.pageY;
+                    var origin = $.integer(scrollDragable.css('top')) - event.pageY;
                     var stop = function()
                     {
                         $(document)
@@ -828,6 +828,8 @@
             {
                 var scrollDraggableHeight = updateScrollDraggableHeight();
                 var maximum = scrollTrack.height() - scrollDraggableHeight;
+                console.log(scrollTrack);
+                console.log(scrollTrack.height());
                 if ( position <= 0 ) position = 0;
                 if ( position >= maximum ) position = maximum;
                 scrollDragable.css({
@@ -839,6 +841,7 @@
                   * position
                   / maximum
                 );
+                return $(this);
             };
             scrollArea.css({
                 width: 2 * scrollArea.width() - scrollContent.width()
@@ -857,9 +860,21 @@
                     };
                 })(this));
                 scrollContainer.addClass(classes);
-            } 
+            }
             $.extend($(this).__proto__, {
-                scrollTo: updateScrollDragable
+                scrollTo: function(position)
+                {
+                    var scrollDraggableHeight = updateScrollDraggableHeight();
+                    scrollArea.scrollTop(position);
+                    if ( scrollHeight )
+                    {
+                        scrollContainer.mouseenter().mouseleave();
+                        updateScrollDragable((scrollTrack.height()
+                                            - scrollDraggableHeight)
+                                            * position
+                                            / scrollHeight);
+                    }
+                }
             });
         });
     };
