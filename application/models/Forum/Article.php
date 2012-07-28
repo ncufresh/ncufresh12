@@ -34,7 +34,7 @@ class Article extends CActiveRecord
     
     // for popo
     public function getUserArticles($author_id){
-        echo $this->findAll('author_id='.$author_id.' AND visibility=1');
+        return $this->findAll('author_id='.$author_id.' AND visibility=1');
     }
     
     public function getArticlesSort($fid, $sort, $category, $page, $entries_per_page){
@@ -93,17 +93,17 @@ class Article extends CActiveRecord
 
     public function beforeSave()
     {
-        // ©|¥¼ÀË¬d¬O§_©Ò¦³¸ê®Æ³£¦³¶ñ¼g
+        // å°šæœªæª¢æŸ¥æ˜¯å¦æ‰€æœ‰è³‡æ–™éƒ½æœ‰å¡«å¯«
         if ( parent::beforeSave() )
         {
             if ( $this->getIsNewRecord() )
             {
-                // ¦pªG¥¼µn¤Jauthor_id=0 ; ÀË¬dµn¤J»P§_
+                // å¦‚æœæœªç™»å…¥author_id=0 ; æª¢æŸ¥ç™»å…¥èˆ‡å¦
                 $this->author_id = Yii::app()->user->getId();
                 $this->create_time = TIMESTAMP;
             }
             $this->update_time = TIMESTAMP;
-            //[not yet] §PÂ_$fid ¸ò category ¹ïÀ³
+            //[not yet] åˆ¤æ–·$fid è·Ÿ category å°æ‡‰
             return true;
         }
         return false;

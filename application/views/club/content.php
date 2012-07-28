@@ -1,13 +1,27 @@
-﻿<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
 jQuery(document).ready(function()
 {
     $('#club-menu-items a').lightbox();
+    
+    $(document).ready(function(){
+        $("#club-schedule-button").click(function(){
+        $("#club-schedule-content").slideToggle();
+        });
+    });
 	
 });
 </script>
 <?php $this->endWidget();?>
 <div class="club-underpicture">
+    <div class="schedule">
+        <div id="club-schedule-button">
+        
+        </div>
+        <div id="club-schedule-content">
+        
+        </div>
+    </div>
         <ul id="club-menu-items">
             <li class="club-picture">
                 <?php if( file_exists( Yii::app()->basePath . '/../files/club/' . $id  . '/1.jpg' ) ):?>
@@ -44,7 +58,7 @@ jQuery(document).ready(function()
     <div class="club-item">
     <?php echo $data->introduction; ?>
     </div>
-    <div class="club-title"><?php if ( ! $data->category ) : ?>社長:<?php else : ?>系代:<?php endif; ?></div>
+    <div class="club-title"><?php if ( $data->category !=2 ) : ?>社長:<?php else : ?>系代:<?php endif; ?></div>
     <div class="club-item">
     <?php echo $data->leader; ?>
     </div>
@@ -64,7 +78,7 @@ jQuery(document).ready(function()
     <div class="club-item">
     <?php echo $data->leader_msn; ?>
     </div>
-    <div class="club-title"><?php if ( ! $data->category ) : ?>副社長:<?php else : ?>副系代:<?php endif; ?></div>
+    <div class="club-title"><?php if ( $data->category !=2 ) : ?>副社長:<?php else : ?>副系代:<?php endif; ?></div>
     <div class="club-item">
     <?php echo $data->viceleader; ?>
     </div>

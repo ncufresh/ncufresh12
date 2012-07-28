@@ -2,6 +2,12 @@
 
 class ProfileController extends Controller
 {
+    public function init()
+    {
+        parent::init();
+        Yii::import('application.models.Forum.*');
+        return true;
+    }
     public function filters()
     {
         return array(
@@ -12,14 +18,6 @@ class ProfileController extends Controller
     public function accessRules()
     {
         return array(
-            /*array(
-                'allow',
-                'actions'   => array(
-                    'profile',
-                    'editor'
-                ),
-                'users'     => array('*')
-            ),*/
             array(
                 'allow',
                 'users'     => array('@')
@@ -93,6 +91,32 @@ class ProfileController extends Controller
                     'departments'   => Department::model()->getDepartment(), 
                     'target'        => $img_url
             ));
+        }
+    }
+
+    public function actionMessage()
+    {
+        $userID = Yii::app()->user->id;
+        $this->_data['token'] = Yii::app()->security->getToken();
+        $this->render('message', array(
+            'articles'        => Article::model()->getUserArticles($userID)
+        ));
+    }
+
+    public function actionMessageReply()
+    {
+        $userID = Yii::app()->user->id;
+        if ( isset($_GET['aid']) )
+        {
+            $this->render('messagereply', array(
+                'article'       => Article::model()->findByPk($_GET['aid']),
+                'replys'      => Reply::model()->getArticleReplies($_GET['aid']),
+                'comments'       => Comment::model()->getArticleComments($_GET['aid'])
+            ));
+        }
+        else
+        {
+           $this->redirect(array('friends/friends'));
         }
     }
 }

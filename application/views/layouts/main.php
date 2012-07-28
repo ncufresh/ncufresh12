@@ -192,7 +192,9 @@
     </form>
 <?php else : ?>
     <div class="profile">
-        <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/sin.png"/>
+<?php $this->widget('Avatar', array(
+    'id'        => Yii::app()->user->getId()
+)); ?>
         <p><?php echo Yii::app()->user->getName(); ?></p>
         <a id="sidebar-personal-toggle" href="#" title="點此打開或關閉個人功能"></a>
     </div>
