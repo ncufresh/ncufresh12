@@ -3188,7 +3188,12 @@ div.game-display
     height: 312px;
     /* outline: 1px solid blue; */
     margin: 15px 0 0 15px;
-    overflow-y:hidden;  
+    overflow-y:hidden;
+}
+
+div.game-display span
+{
+    display:block;
 }
 
 li.enabled a
