@@ -2,9 +2,17 @@
 <div class="friends">
 <div class="friends-part1">
 <h4>新增好友</h4>
-<a href="<?php echo Yii::app()->createUrl('friends/samedepartmentsamegrade'); ?>" title="同系同屆" class="friends-title">同系同屆</a>
-<a href="<?php echo Yii::app()->createUrl('friends/samedepartmentdiffgrade'); ?>" title="同系不同屆" class="friends-title">同系不同屆</a>
-<a href="<?php echo Yii::app()->createUrl('friends/otherdepartment'); ?>" title="其他科系" class="friends-title">其他科系</a>
+<ul id="friends-title">
+    <li>
+        <a href="<?php echo Yii::app()->createUrl('friends/samedepartmentsamegrade'); ?>" title="同系同屆" class="friends-title">同系同屆</a>
+    </li>
+    <li>
+        <a href="<?php echo Yii::app()->createUrl('friends/samedepartmentdiffgrade'); ?>" title="同系不同屆" class="friends-title">同系不同屆</a>
+    </li>
+    <li>
+        <a href="<?php echo Yii::app()->createUrl('friends/otherdepartment'); ?>" title="其他科系" class="friends-title">其他科系</a>
+    </li>
+</ul>
 <div class="friends-addfriend">
 <ul id="friends-sort" >
 <?php $account = 1; ?>

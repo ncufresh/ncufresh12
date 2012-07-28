@@ -2386,6 +2386,22 @@ div.friends
     height:20px;
 }
 
+#friends-title
+{
+    width:690px;
+    height:30px;
+    margin:0px;
+    padding:0px;
+}
+
+#friends-title li
+{
+    width:210px;
+    height:30px;
+    float:left;
+    list-style-type:none;
+}
+
 div.friends-part1
 {
     width:690px;
