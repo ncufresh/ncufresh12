@@ -20,6 +20,12 @@
     <div id="forum-view-content"></div>
     <div class="hululu"></div>
     <div class="forum-view-comments"></div>
+    <div class="forum-view-comments"></div>
+    <div class="forum-view-comments"></div>
+    <div class="forum-view-comments"></div>
+    <div class="forum-view-comments"></div>
+    <div class="forum-view-comments"></div>
+    
 </div>
 <div id="forum-view-footer">
 </div>
