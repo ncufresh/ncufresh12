@@ -2228,8 +2228,7 @@ button.news-button
     height: 88px;
     width: 530px;
     position: relative;
-    margin-top: 0px;
-    margin-left: 221px;
+    float: right;
 }
 #club-head-1
 {
