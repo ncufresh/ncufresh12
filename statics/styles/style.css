@@ -1789,9 +1789,9 @@ button.news-button
     background: url('../images/life_rope.png') repeat-y;
     width: 100px;
     height: 0px;
-    left: 89px;
-    top: 150px;
-    padding: 0 0 0 16px;
+    left: 50px;
+    top: 169px;
+    padding: 0 0 0 20px;
     position: absolute;
     list-style: none;
 }
@@ -1799,10 +1799,10 @@ button.news-button
 #life-index2
 {
     background: url('../images/life_rope.png') repeat-y;
-    width: 100px;
+    width: 130px;
     height: 0px;
-    left: 33px;
-    top: 138px;
+    left: -4px;
+    top: 157px;
     padding: 0 0 0 16px;
     position: absolute;
     list-style: none;
@@ -1811,10 +1811,34 @@ button.news-button
 #life-index3
 {
     background: url('../images/life_rope.png') repeat-y;
-    width: 100px;
+    width: 150px;
     height: 0px;
-    left: 70px;
-    top: 165px;
+    left: 38px;
+    top: 185px;
+    padding: 0 0 0 16px;
+    position: absolute;
+    list-style: none;
+}
+
+#life-index4
+{
+    background: url('../images/life_rope.png') repeat-y;
+    width: 150px;
+    height: 0px;
+    left: -15px;
+    top: 118px;
+    padding: 0 0 0 16px;
+    position: absolute;
+    list-style: none;
+}
+
+#life-index5
+{
+    background: url('../images/life_rope.png') repeat-y;
+    width: 150px;
+    height: 0px;
+    left: 32px;
+    top: 180px;
     padding: 0 0 0 16px;
     position: absolute;
     list-style: none;
@@ -1833,7 +1857,7 @@ button.news-button
 
 .life-items li
 {
-    padding: 0 0 10px 20px;
+    padding: 0 0 10px 50px;
     cursor: pointer;
 }
 
@@ -1842,34 +1866,19 @@ button.news-button
     text-decoration: underline;
 }
 
-#life-head
-{
-    width: 740px;
-    height: 275px;
-    margin-bottom: -20px;
-    background: url('../images/life_head.png');
-}
-
 #life-container
 {
-    width: 750px;
-    height: 1000px;
+    width: 740px;
+    height: 600px;
     position:relative;
     padding: 0;
 }
 
 #life-body
 {
-    height: 400px;
+    height: 600px;
     width: 740px;
-    background: url('../images/life_line.png') repeat-y;
-}
-
-#life-bottom
-{
-    width: 740px;
-    height: 40px;
-    background: url('../images/life_bottom.png');
+    background: url('../images/life_background.png') repeat-y;
 }
 
 #life-play
@@ -1904,15 +1913,15 @@ button.news-button
     width: 100px;
     height: 300px;
     top: 120px;
-    left: 450px;
+    left: 460px;
 }
 
 #life-health
 {
     position: absolute;
     width: 170px;
-    height: 370px;
-    top: 0;
+    height: 330px;
+    top: 20px;
     left: 540px;
 }
 
