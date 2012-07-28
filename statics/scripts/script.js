@@ -514,7 +514,9 @@
             {
                 $.fn.chat.closeChatDialog(dialog.data('id'));
             });
-            display.scrollable();
+            display.scrollable({
+                scrollableClass:    false
+            });
         }
         return dialog;
     };
@@ -674,7 +676,7 @@
     $.fn.scrollable = function(options)
     {
         var options = $.extend({
-            scrollableClass:        false,
+            scrollableClass:        null,
             fadeInDuration:         'slow',
             fadeOutDuration:        'slow',
             wheelSpeed:             48
@@ -708,10 +710,8 @@
                 });
                 return height;
             };
-            var classes = $(this).attr('class') ? $(this).attr('class') : '';
             var scrollContainer = $('<div></div>')
                 .addClass('scroll-container')
-                .addClass(classes)
                 .css({
                     overflow: 'hidden'
                 })
@@ -843,20 +843,25 @@
             scrollArea.css({
                 width: 2 * scrollArea.width() - scrollContent.width()
             });
-            $.each(classes.split(' '), (function(object)
+            if ( options.scrollableClass )
             {
-                return function(index, value)
+                if ( options.scrollableClass === null )
                 {
-                    $(object).removeClass(value);
-                };
-            })(this));
+                    var classes = $(this).attr('class') ? $(this).attr('class') : '';
+                    $.each(classes.split(' '), (function(object)
+                    {
+                        return function(index, value)
+                        {
+                            $(object).removeClass(value);
+                        };
+                    })(this));
+                    scrollContainer.addClass(classes);
+                }
+                scrollContainer.addClass(options.scrollableClass);
+            }
             $.extend($(this).__proto__, {
                 scrollTo: updateScrollDragable
             });
-            if ( options.scrollableClass )
-            {
-                scrollContainer.addClass(options.scrollableClass);
-            }
         });
     };
 })(jQuery);
