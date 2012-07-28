@@ -16,14 +16,13 @@ jQuery(document).ready(function()
         return false;
     }
 
-    jQuery('#life-index1 li').click(function()
+    jQuery('.life-items li').click(function()
     {
         jQuery('#life-dialog').dialog(
         {
             dialogClass: 'nculife-dialog',
             modal: true,
             closeText: ' ',
-            title: $(this).children('span').text(),
             show: 
             {
                 effect: 'explode',
@@ -36,7 +35,40 @@ jQuery(document).ready(function()
         $('#nculife-dh').html('');
         $('#nculife-t').html('');
         
-        jQuery(this).children().children().each(function()
+        var button = $(this)
+        if(button.hasClass('life-bar'))
+        {
+            jQuery(this).children().children().each(function()
+            {
+                var title = $('<a></a>')
+                    .text($(this).text())
+                    .attr('href', '#')
+                    .attr('class', '')
+                    .attr('tab', $(this).attr('tab'))
+                    .attr('page', $(this).attr('page'))
+                    .click(getTabContent);
+                $('#nculife-dh').append(title);
+            });
+            $('#nculife-title h4').text($(this).children('span').text());
+        }
+        
+        else
+        {
+            jQuery(this).each(function()
+            {
+                var title = $('<a></a>')
+                    .text($(this).text())
+                    .attr('href', '#')
+                    .attr('class', '')
+                    .attr('tab', $(this).attr('tab'))
+                    .attr('page', $(this).attr('page'))
+                    .click(getTabContent);
+                $('#nculife-dh').append(title);
+            });
+            $('#nculife-title h4').text($(this).text());
+        }
+        
+        /* jQuery(this).children().each(function()
         {
             var title = $('<a></a>')
                 .text($(this).text())
@@ -46,10 +78,10 @@ jQuery(document).ready(function()
                 .attr('page', $(this).attr('page'))
                 .click(getTabContent);
             $('#nculife-dh').append(title);
-        });
+        }); */
         $('#nculife-dh > a').first().click();
     
-        $('#nculife-title h4').text($(this).children('span').text());
+       
     });
     
     jQuery('#life-play').mouseenter(function()
@@ -62,7 +94,7 @@ jQuery(document).ready(function()
     
     jQuery('#life-play').mouseleave(function()
     {
-        jQuery('#life-index1').stop().animate(
+        jQuery('.life-items').stop().animate(
         {
             height: '0px'
         },500);

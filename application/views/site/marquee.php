@@ -64,6 +64,7 @@
 
 #admin-marquee td
 {
+    /*background: #FFFFFF;*/
     height: 20px;
     line-height: 20px;
     padding: 10px 0;
