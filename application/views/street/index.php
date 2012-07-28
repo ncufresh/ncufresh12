@@ -1,8 +1,8 @@
 <style>
 #allPictureContainer
 {
+    background: yellow;
     display:none;
-    position:absolute;
 }
 #administration
 {
@@ -51,14 +51,13 @@
 }
 #curtainDiv
 {
+    background:url('../statics/building/curtain.png');
     position:absolute;
     z-index:1;
     top:0px;
     left:750px;
-}
-#curtain
-{
-    position:absolute;
+    height:422px;
+    width:150px;
 }
 #ComputerCenter
 {
@@ -319,12 +318,12 @@
 }
 #selectPictureContainer
 {
-    height:50px;
+    height:100px;
     width:500px;
     background-color:white;
     position:absolute;
-    left:0px;
-    bottom:0px;
+    margin-left:100px;  
+    bottom:20px;
 }
 #selectLeftButton
 {
@@ -360,7 +359,9 @@
 #viewPictureContainer
 {
     height:350px;
-    width:500px;
+    width:550px;
+    margin-top:20px;
+    margin-left:75px;
     background-color:black;
 }
 #Yun-Step
@@ -420,6 +421,11 @@
 {
     left:0px;
     top:382px
+}
+.departmentBuildingText
+{
+    position:relative;
+    float:left;
 }
 .one-image
 {
@@ -535,8 +541,8 @@
         <img id="AllTeach" class="department-building picture" showMe="department-building" href="#15" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/AllTeach.png">
         <img id="Hakka" class="department-building picture" showMe="department-building" href="#16" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/Hakka.png">
         
-        <!--路徑設定(main)  座標設定  催圖(1.建築餘圖(飲食, 零星) 2.照片(路線規劃))-->
-        
+        <!--座標設定  催圖(1.建築餘圖(飲食, 零星) 2.照片(路線規劃) 加工程n館 )-->
+         
         <!--景觀-->
         <img id="ncuLake"class="landscape picture" showMe="landscape" href="#17" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/ncuLake.png">
         <img id="turtlePond" class="landscape picture" showMe="landscape" href="#18" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/turtlePond.png">
@@ -587,16 +593,35 @@
         <!--窗簾-->
 
         <div id="curtainDiv">
-            <img id="curtain"src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain.png">
-            <img id="curtainclose" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtainClose.png">            
-
-            <!--選擇鈕2-->
-            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/college.png" class="two-image department-building" showMe="department-building">
-            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/dormitory.png" class="two-image dormitory" showMe="dormitory">
-            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/government/government-out.png" class="two-image government" showMe="government">
-            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/food.png" class="two-image diet" showMe="diet">
-            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/landscape.png" class="two-image landscape" showMe="landscape">
-
+        <!--選擇鈕2-->
+            <div style="float:left; width:50px; height:422px; background:green;">
+                <img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/college.png" class="two-image department-building" showMe="department-building">
+                <img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/dormitory.png" class="two-image dormitory" showMe="dormitory">
+                <img src="<?php echo Yii::app()->baseUrl?>/statics/building/government/government-out.png" class="two-image government" showMe="government">
+                <img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/food.png" class="two-image diet" showMe="diet">
+                <img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/landscape.png" class="two-image landscape" showMe="landscape">
+            </div>
+            <div style="float:right; width:100px; height:422px; background:red; ">
+                <a class="departmentBuildingText">工程五館</a>
+                <a class="departmentBuildingText">工程四館</a>
+                <a class="departmentBuildingText">工程三館</a>
+                <a class="departmentBuildingText">工程二館</a>                
+                <a class="departmentBuildingText">工程一館</a>              
+                <a class="departmentBuildingText">國鼎光電大樓</a>
+                <a class="departmentBuildingText">科學五館</a>
+                <a class="departmentBuildingText">科學四館</a>
+                <a class="departmentBuildingText">科學三館</a>
+                <a class="departmentBuildingText">科學二館</a>
+                <a class="departmentBuildingText">科學一館</a>            
+                <a class="departmentBuildingText">理學院教學館</a>            
+                <a class="departmentBuildingText">鴻經館</a>            
+                <a class="departmentBuildingText">客家學院大樓</a>            
+                <a class="departmentBuildingText">文學院</a>            
+                <a class="departmentBuildingText">管學院</a>            
+                <a class="departmentBuildingText">綜教館</a>            
+   
+                <img id="curtainclose" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtainClose.png">            
+            </div>            
         </div>
         <div id="textContainer"><!--第一層-->
             <div id="textRegion">
@@ -627,16 +652,10 @@
             </div>
 
             <div id="selectPictureContainer"><!--2-2-->
-                <button id="selectLeftButton">left</button>
-
-                <div>
-                    <div >
-                        <img id="img1" src="<?php echo Yii::app()->baseUrl?>/statics/1.jpg">
-                        <img id="img2" src="<?php echo Yii::app()->baseUrl?>/statics/2.png">
-                        <img id="img3" src="<?php echo Yii::app()->baseUrl?>/statics/3.jpg">
-                    </div>
-                </div>
-
+                <button id="selectLeftButton">left</button>               
+                <img id="img1" src="<?php echo Yii::app()->baseUrl?>/statics/1.jpg">
+                <img id="img2" src="<?php echo Yii::app()->baseUrl?>/statics/2.png">
+                <img id="img3" src="<?php echo Yii::app()->baseUrl?>/statics/3.jpg">               
                 <button id="selectRightButton">right</button>
             </div>
         </div>
@@ -684,8 +703,7 @@ $(document).ready(function()
                 dataType:'json',
                 success:function(data)
                 {
-                    $('#mapPicture').attr('src',data.photo);
-                    // alert(data.content);
+                    $('#mapPicture').attr('src',data.photo);                    
                 },
             });
             
@@ -715,8 +733,7 @@ $(document).ready(function()
     $('.two-image').click(function(){
         //工程 n 館出現
         //........
-    });
-    
+    });    
     
     $('.curtainOpen').click(function()
     { // 窗簾
@@ -728,43 +745,24 @@ $(document).ready(function()
     });
 
     $('#otherPictureContainer img').click(function()
-    {
-        var dialog_div_2=$('div#allPictureContainer');
-        dialog_div_2.dialog({        
-        width:'600px',
-        height:'600px',
-        modal:true,
-        draggable:false,
-    });
+    { 
+        $('div#allPictureContainer').dialog(
+        {
+            width:'700px',
+            height:'500px',
+            modal:true,
+            draggable:false,
+        });
+            position[1] = 0;
+            position[2] = 50;
+            position[3] = 100;    
     });
     
     // $('.arrow').eq(0).click(function()
     // {     
         // $('#mapPicture').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/building/college/444-big.png');
     // });
-    // $('.arrow').eq(1).click(function()
-    // {     
-        // $('#mapPicture').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/building/college/111-big.png');
-    // });
-    // $('.arrow').eq(2).click(function()
-    // {     
-        // $('#mapPicture').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/building/college/555-big.png');
-    // });
-    // $('.arrow').eq(3).click(function()
-    // {     
-        // $('#mapPicture').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/building/college/444-big.png');
-    // });
-    // $('.arrow').eq(4).click(function()
-    // {     
-        // $('#mapPicture').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/building/college/111-big.png');
-    // });
-    // $('.arrow').eq(5).click(function()
-    // {     
-        // $('#mapPicture').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/building/college/555-big.png');
-    // });
-    
-    
-    // buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building',array('id'=>':id'));?>'),
+
     $('.arrow').eq(6).click(function() // 親身體驗 back
     {
         $('#mapPicture').attr('src', '<?php echo Yii::app()->request->baseUrl;?>/statics/pp.png');
@@ -801,43 +799,59 @@ $(document).ready(function()
         {
             type: 'GET',
             url: jQuery.configures.buildingContentUrl.replace(':id', id),
-            // /ncufresh12/street/building/'+id+'.html'
             dataType:'json',
             success:function(data)
             {
                 $('#buildingText').text(data.content);
                 $('#mainPicture img').attr('src',data.picture_main);
                 
-                $('#buildingPicture>li>img').each(function(index){
+                $('#buildingPicture>li>img').each(function(index)
+                {
                     $(this).attr('src',data.picture_other[index]);
+                });
+                
+                $('#selectPictureContainer>img').each(function(index)
+                {
+                    $(this).attr('src',data.pictureLayerTwo[index]);
                 });
             },
         });
     });
-//http://www.dotblogs.com.tw/shadow/archive/2012/04/17/71588.aspx
-     
+    
+    var position = new Array(3);
+    position[1] = 0; 
+    position[2] = 50;
+    position[3] = 100;
     $('#selectRightButton').click(function()
     {
-        $('#img1').animate({left:'80px'});
+        for( i=1; i<=3; i++)
+        {
+            position[i] = position[i] + 80;
+            $('#img'+i).animate({left:position[i]+'px'});
+        };    
     });
     
     $('#selectLeftButton').click(function()
     {
-        $('#img1').animate({left:'0px'});
+        for( i=1; i<=3; i++)
+        {
+            position[i] = position[i] - 80;
+            $('#img'+i).animate({left:position[i]+'px'});
+        };        
     });
     
-    $('#img1').click(function()
-    {
-        $('#viewPictureContainer img').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/1.jpg');
-    });
-    $('#img2').click(function()
-    {
-        $('#viewPictureContainer img').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/2.png');
-    });
-    $('#img3').click(function()
-    {
-        $('#viewPictureContainer img').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/3.jpg');
-    });
+    // $('#img1').click(function()
+    // {
+        // $('#viewPictureContainer img').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/1.jpg');
+    // });
+    // $('#img2').click(function()
+    // {
+        // $('#viewPictureContainer img').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/2.png');
+    // });
+    // $('#img3').click(function()
+    // {
+        // $('#viewPictureContainer img').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/3.jpg');
+    // });
 });
 </script>
 <?php $this->endWidget();?>
