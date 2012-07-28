@@ -2526,8 +2526,16 @@ div.friends-part2
 div.friends-part3
 {
     width:675px;
-    height:370px;
+    height:350px;
     margin:0px;
+    padding:5px;
+}
+
+div.allmessages
+{
+    width:675px;
+    height:310px;
+    margin-top:55px;
     padding:5px;
 }
 
@@ -2617,21 +2625,46 @@ div.allgroups
 div.profile-message-allmessages
 {
     background-image:url('../profile/forum1.png');
-    width:740px;
-    height:416px;
+    background-repeat:no-repeat ;
+    width:690px;
+    height:370px;
+    padding:25px;
+    margin:0px;
+}
+
+div.profile-message-allmessages table
+{
+    width:600px;
     padding:0px;
-    margin:10px;
-    overflow-y:hidden;
+    margin-left:70px;
+}
+
+div.profile-message-allmessages tr th
+{
+    width:400px;
+    height:100px;
+    padding:0px;
+    margin:0px;
+    text-align:center;
+}
+
+div.profile-message-allmessages tr td
+{
+    width:400px;
+    height:100px;
+    padding:0px;
+    margin:0px;
+    text-align:center;
 }
 
 div.profile-message-reply
 {
     background-image:url('../profile/forum2.png');
-    width:740px;
-    height:416px;
-    padding:0px;
-    margin:10px;
-    overflow-x:hidden;
+    background-repeat:no-repeat ;
+    width:690px;
+    height:370px;
+    padding:25px;
+    margin:0px;
 }
 
 div.register
@@ -2676,7 +2709,7 @@ ul#reply
 
 ul#reply li 
 {
-	width: 200px;
+	width: 100px;
     height: 20px;
     display: block;
     text-align:center;
@@ -2687,7 +2720,7 @@ ul#reply li a
 {
 	display: block;
 	overflow: hidden;
-	width: 200px;
+	width: 100px;
 	height: 30px;
 	text-decoration: none;
 	color: CornflowerBlue;
@@ -2696,7 +2729,7 @@ ul#reply li a
 ul#reply li a span
 { 
     color:#000;
-    width: 250px;
+    width: 100px;
 	height: 500px;
 }
 
@@ -2718,6 +2751,47 @@ ul#reply b
 	color: #600;
 }
 
+ul#self-message
+{
+    width: 220px;
+	height: 300px;
+    padding:0px;
+    margin:0px;
+    outline:1px solid red;
+}
+
+li.article-title
+{
+    text-lign: left;
+    color: DeepPink; /* NOTE */
+    width: 200px;
+	height: 40px;
+    margin-top:5px;
+}
+
+li#article-content-title
+{
+    outline:5px solid yellow;
+    width: 155px;
+	height: 60px;
+    list-style-type:none;
+}
+
+li#article-content
+{
+    outline:5px solid yellow;
+    width: 200px;
+	height: 100px;
+    list-style-type:none;
+}
+
+/*.article-title
+{
+    text-lign: left;
+    font-size: 20px;
+    color: DeepPink; /* NOTE 
+}*/
+
 #introduce
 {
     width: 600px;
@@ -2737,17 +2811,35 @@ table.group
     margin:0px;
 }
 
-table.message-data
+/*table.message-data
 {
     height:200px;
     width:700px;
     margin:0px;
+}*/
+
+div.profile-message-reply table
+{
+    width:300px;
+    margin:0px;
+    text-align:center;
+    padding:0px;
 }
 
-table.message-reply
+div.profile-message-reply tr th
 {
-    height:200px;
-    width:700px;
+    width:100px;
+    height:100px;
+    padding:0px;
+    margin:0px;
+    text-align:center;
+}
+
+div.profile-message-reply tr td
+{
+    width:100px;
+    height:100px;
+    padding:0px;
     margin:0px;
     text-align:center;
 }
@@ -2789,7 +2881,6 @@ a.mygroup-name
     text-align: center;
     display: block;
     margin-right: 10px;
-    font-family:微軟正黑體;
 }
 
 a.mymessage-title
@@ -2799,7 +2890,6 @@ a.mymessage-title
     text-align: center;
     display: block;
     margin-right: 10px;
-    font-family:微軟正黑體;
 }
 
 .sep-group
@@ -2840,12 +2930,7 @@ a.mymessage-title
     color: DeepPink; /* NOTE */
 }
 
-.article-title
-{
-    text-lign: left;
-    font-size: 20px;
-    color: DeepPink; /* NOTE */
-}
+
 
 tr.friends-title
 {

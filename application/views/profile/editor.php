@@ -6,7 +6,7 @@
         <img width="170" height="160" src="<?php echo $target . '/' . $user->profile->picture; ?>" alt="Score image" />  
 <?php else : ?>
         <img  width="170" height="160" src="<?php echo $target.'/image1.jpg'; ?>" alt="Score image" />
-<?php endif; ?>        
+<?php endif; ?>
          <ul class="user-editor">
             <li>
                 <span>姓名:</span>
