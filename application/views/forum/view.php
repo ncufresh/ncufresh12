@@ -2,30 +2,37 @@
     <a id="forum-view-backlink"href="<?php echo Yii::app()->createUrl('forum/forum', array('fid'=>$_GET['fid']));?>">回上一頁</a>
 </div>
 <div id="forum-view-top2">
-    <a id="forum-view-replylink" href="<?php echo Yii::app()->createUrl('forum/reply', array('aid'=>$article->id));?>"></a>
+    
     <?php 
     //[not yet]
     $this->widget('Pager', array(
         'url'       => 'forum/forum',
         'pager'     => 1,
     )); ?>
+    <a id="forum-view-replylink" href="<?php echo Yii::app()->createUrl('forum/reply', array('aid'=>$article->id));?>"></a>
 </div>
 <div id="forum-view-body">
     <div class="forum-view-profile">
         <div class="profile-pic"></div>
         <div class="profile-name"></div>
+        <div class="profile-id"></div>
         <div class="profile-department"></div>
     </div>
     <div class="forum-view-title"></div>
     <div id="forum-view-content"></div>
     <div class="hululu"></div>
     <div class="forum-view-comments"></div>
-    <div class="forum-view-comments"></div>
-    <div class="forum-view-comments"></div>
-    <div class="forum-view-comments"></div>
-    <div class="forum-view-comments"></div>
-    <div class="forum-view-comments"></div>
-    
+</div>
+<div id="forum-view-replies">
+    <div class="forum-view-profile">
+        <div class="profile-pic"></div>
+        <div class="profile-name"></div>
+        <div class="profile-id"></div>
+        <div class="profile-department"></div>
+    </div>
+    <div class="reply-content">
+        <div class="hululu"></div>
+    </div>
 </div>
 <div id="forum-view-footer">
 </div>

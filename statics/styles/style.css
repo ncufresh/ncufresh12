@@ -3190,8 +3190,9 @@ li.enabled a
 {
     background: url('../forum/view/background_top2.png');
     width: 683px;
-    height: 50px;
+    height: 45px;
     margin-left:35px;
+    padding-top:5px
 }
 
 #forum-view-top2 .pager
@@ -3233,7 +3234,7 @@ li.enabled a
     width: 165px;
     height: 283px;
     border-radius: 6px;
-    margin-left: 15px;
+    margin-left: 45px;
     padding-top: 7px;
     float: left;
 }
@@ -3250,30 +3251,40 @@ li.enabled a
 .forum-view-profile .profile-name
 {
     width: 150px;
-    height: 30px;
-    border-radius: 6px;
-    margin: 5px auto;
+    height: 25px;
+    margin: 1px auto;
+    background: #ffffff;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+}
+
+.forum-view-profile .profile-id
+{
+    width: 150px;
+    height: 25px;
+    margin: 1px auto;
     background: #ffffff;
 }
 
 .forum-view-profile .profile-department
 {
     width: 150px;
-    height: 30px;
-    border-radius: 6px;
-    margin: 5px auto;
+    height: 25px;
+    margin: 1px auto;
     background: #ffffff;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
 }
 
 #forum-view-body .forum-view-title
 {
     width: 400px;
-    height: 30px;
+    height: 40px;
     border-radius: 6px;
     background: #97d2f3;
     float: left;
     margin-left: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     border: 1px solid #97d2f3;
 }
 
@@ -3288,14 +3299,14 @@ li.enabled a
     border: 1px solid black;
 }
 
-#forum-view-body .hululu
+.hululu
 {
     background: url('../forum/view/hululu.png');
     width: 36px;
     height: 30px;
     position: absolute;
     top: 75px;
-    left: 165px;
+    left: 195px;
 }
 
 #forum-view-body .forum-view-comments
@@ -3306,7 +3317,28 @@ li.enabled a
     background: #ffffff;
     float: right;
     margin-top: 2px;
+    margin-right: 51px;
+    border: 2px solid #97d2f3;
+}
+
+#forum-view-replies
+{
+    background: url('../forum/view/background.png');
+    width: 683px;
+    min-height: 300px;
+    margin-left:35px;
+    position: relative;
+    overflow: hidden;
+}
+
+#forum-view-replies .reply-content
+{
+    width: 400px;
+    height: 250px;
+    border-radius: 6px;
+    background: #ffffff;
+    float: left;
     margin-left: 20px;
-    margin-right: 81px;
-    border: 1px solid #97d2f3;
+    margin-top: 20px;
+    border: 1px solid black;
 }
