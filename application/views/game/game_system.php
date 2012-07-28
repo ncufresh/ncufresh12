@@ -5,12 +5,13 @@
     <div class="user-body">
     <?php //////////////////////////////////////////////////////////TEST
         //////////////////// 暫時圖片變數名稱
-        $skin = 'girlN4.png';
-        $eyes = 'faceN15.png';
-        $hair = 'hairN15.png';
-        $shoes = 'shoeN11.png';
-        $cloths = 'clothesN12.png';
-        $pants = 'pantsN12.png';
+        $skin = 'dabd2c330e4a579318957466be2fc94d.png';
+        $eyes = 'ab8f56301214e55e906e68da171391f6.png';
+        $hair = '8f8a84c4223c13a8dfa275f6d7d9676b.png';
+        $shoes = '90f4dfcd8cc45edad70c06997973a4b0.png';
+        $cloths = '6c95a392dbd908f05b1401e857cd343b.png';
+        $pants = '64a9c4b82d554df4d60b558bb689d902.png';
+        $others = '5a9d0b4a51332cbcdd5f49c83c53f1d4.png';
         ///////////////////////////////////////////////////////////////TEST
     ?>
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/skin/<?php echo $skin;?>" >
@@ -19,6 +20,7 @@
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/shoes/<?php echo $shoes;?>" >
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/pants/<?php echo $pants;?>" >
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/clothes/<?php echo $cloths;?>" >
+    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/others/<?php echo $others;?>" >
     </div>
     <div class="function-body">
         <ul class="game-button">
