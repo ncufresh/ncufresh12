@@ -4,87 +4,87 @@ class Character extends CActiveRecord
 {
     public $exp_level = array(
         array(
-            'name'  => '¿ù»~¯Å',  //­ì«h¤W¤£·|¶]¨ì³o
+            'name'  => 'éŒ¯èª¤ç´š',  //åŽŸå‰‡ä¸Šä¸æœƒè·‘åˆ°é€™
             'exp'   => 0
         ),
         array(
-            'name'  => 'µ¥¯Å¤@',
+            'name'  => 'ç­‰ç´šä¸€',
             'exp'   => 150
         ),
         array(
-            'name'  => 'µ¥¯Å¤G',
+            'name'  => 'ç­‰ç´šäºŒ',
             'exp'   => 405
         ),
         array(
-            'name'  => 'µ¥¯Å¤T',
+            'name'  => 'ç­‰ç´šä¸‰',
             'exp'   => 837
         ),
         array(
-            'name'  => 'µ¥¯Å¥|',
+            'name'  => 'ç­‰ç´šå››',
             'exp'   => 1571
         ),
         array(
-            'name'  => 'µ¥¯Å¤­',
+            'name'  => 'ç­‰ç´šäº”',
             'exp'   => 2817
         ),
         array(
-            'name'  => 'µ¥¯Å¤»',
+            'name'  => 'ç­‰ç´šå…­',
             'exp'   => 4933
         ),
         array(
-            'name'  => 'µ¥¯Å¤C',
+            'name'  => 'ç­‰ç´šä¸ƒ',
             'exp'   => 8526
         ),
         array(
-            'name'  => 'µ¥¯Å¤K',
+            'name'  => 'ç­‰ç´šå…«',
             'exp'   => 14625
         ),
         array(
-            'name'  => 'µ¥¯Å¤E',
+            'name'  => 'ç­‰ç´šä¹',
             'exp'   => 24981
         ),
         array(
-            'name'  => 'µ¥¯Å¤Q',
+            'name'  => 'ç­‰ç´šå',
             'exp'   => 42562
         ),
         array(
-            'name'  => 'µ¥¯Å¤Q¤@',
+            'name'  => 'ç­‰ç´šåä¸€',
             'exp'   => 72412
         ),
         array(
-            'name'  => 'µ¥¯Å¤Q¤G',
+            'name'  => 'ç­‰ç´šåäºŒ',
             'exp'   => 123090
         ),
         array(
-            'name'  => 'µ¥¯Å¤Q¤T',
+            'name'  => 'ç­‰ç´šåä¸‰',
             'exp'   => 209132
         ),
         array(
-            'name'  => 'µ¥¯Å¤Q¥|',
+            'name'  => 'ç­‰ç´šåå››',
             'exp'   => 355212
         ),
         array(
-            'name'  => 'µ¥¯Å¤Q¤­',
+            'name'  => 'ç­‰ç´šåäº”',
             'exp'   => 603227
         ),
         array(
-            'name'  => 'µ¥¯Å¤Q¤»',
+            'name'  => 'ç­‰ç´šåå…­',
             'exp'   => 1024304
         ),
         array(
-            'name'  => 'µ¥¯Å¤Q¤C',
+            'name'  => 'ç­‰ç´šåä¸ƒ',
             'exp'   => 1739206
         ),
         array(
-            'name'  => 'µ¥¯Å¤Q¤K',
+            'name'  => 'ç­‰ç´šåå…«',
             'exp'   => 2952962
         ),
         array(
-            'name'  => 'µ¥¯Å¤Q¤E',
+            'name'  => 'ç­‰ç´šåä¹',
             'exp'   => 5100000
         ),
         array(
-            'name'  => 'µ¥¯Å¤G¤Q',
+            'name'  => 'ç­‰ç´šäºŒå',
             'exp'   => 10000000000
         )
     );
@@ -106,7 +106,7 @@ class Character extends CActiveRecord
                 'Profile',
                 'id'
             ),
-            'hair'    => array(  // hair¬°Itemªºhair_id row
+            'hair'    => array(  // hairç‚ºItemçš„hair_id row
                 self::BELONGS_TO,
                 'Item',
                 'hair_id'
@@ -218,5 +218,17 @@ class Character extends CActiveRecord
     public function Owner()
     {
         return $this->achievements;
+    }
+
+    public static function getAvatar()
+    {
+        return array(
+            'èº«é«”çš®è†šåç¨±'    => 'skin/boyC1.png',
+            'çœ¼ç›éƒ¨ä½åç¨±'    => 'eyes/e9.png',
+            'é ­é«®é«®åž‹åç¨±'    => 'hair/hairN5.png',
+            'éž‹å­ç‰©å“åç¨±'    => 'shoes/shoeN5.png',
+            'è¤²å­éƒ¨ä½åç¨±'    => 'pants/pantsN10.png',
+            'è¡£æœè¡£ç‰©åç¨±'    => 'cloths/clothseN4.png'
+        );
     }
 }

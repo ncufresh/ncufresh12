@@ -571,12 +571,20 @@ a:hover
     border-radius: 10px;
 }
 
-#sidebar .profile img
+#sidebar .profile .avatar
 {
     float: left;
     height: 48px;
     margin: 3px;
     width: 48px;
+}
+
+#sidebar .avatar img
+{
+    left: 120%;
+    margin-left: -180%;
+    top: -30%;
+    width: 240%;
 }
 
 #sidebar .profile p
@@ -2719,6 +2727,25 @@ img.user_img
 /**
  * Game
  */
+.avatar
+{
+    height: 800px;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    max-height: 800px;
+    max-width: 450px;
+    width: 450px;
+}
+
+.avatar img
+{
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
 div.game-system
 {
     background: url('../game/gamesystem.png');
