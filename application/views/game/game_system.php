@@ -1,16 +1,16 @@
-﻿<?php $user_id = Yii::app()->user->getId(); //使用者的id 
+<?php $user_id = Yii::app()->user->getId(); //使用者的id 
        //$user_level = Character::model()->findByPk($watch_id)->exp;?>
     <h1>使用者ID => 登入帳號 / 觀看中 => <?php echo $user_id.' / '.$watch_id?> </h1>
     <div class="game-system">
     <div class="user-body">
     <?php //////////////////////////////////////////////////////////TEST
         //////////////////// 暫時圖片變數名稱
-        $skin = 'boyC1.png';
-        $eyes = 'e9.png';
-        $hair = 'hairN5.png';
-        $shoes = 'shoeN5.png';
-        $cloths = 'clothseN4.png';
-        $pants = 'pantsN10.png';
+        $skin = 'girlN4.png';
+        $eyes = 'faceN15.png';
+        $hair = 'hairN15.png';
+        $shoes = 'shoeN11.png';
+        $cloths = 'clothesN12.png';
+        $pants = 'pantsN12.png';
         ///////////////////////////////////////////////////////////////TEST
     ?>
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/skin/<?php echo $skin;?>" >
@@ -18,7 +18,7 @@
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/hair/<?php echo $hair;?>" >
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/shoes/<?php echo $shoes;?>" >
     <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/pants/<?php echo $pants;?>" >
-    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/cloths/<?php echo $cloths;?>" >
+    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/clothes/<?php echo $cloths;?>" >
     </div>
     <div class="function-body">
         <ul class="game-button">
@@ -51,32 +51,8 @@
 <?php endif; ?>
         </ul>
         <div class="game-display">
-            <?php 
             
-            $ddd = Character::model()->findByPk($watch_id);
-            if($ddd == null)
-            echo '<h1>查無此人</h1>';
-            else
-            {
-                echo '<h1>有資料</h1>';
-            }
-            
-            
-            
-            ?>
-            <?php echo $content ?>
-            <?php // echo $user_level ?>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
-
-
+            <?php echo $content; ?>
         </div>
     </div>
 </div>

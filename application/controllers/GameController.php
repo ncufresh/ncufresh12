@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class GameController extends Controller
 {
@@ -51,7 +51,13 @@ class GameController extends Controller
         {
             $this->setPageTitle(Yii::app()->name . ' - 遊戲專區');
             // $this->render('index', array('user_id' => $id));
-            $content = $this->renderPartial('index', null, true);
+            $exp = Character::model()->findByPk($id)->exp;
+            $level = Character::model()->getLevel($id);
+            $level_exp = Character::model()->getLevelExp($level);
+            $nickname = Profile::model()->findByPk($id)->nickname;
+            $username = User::model()->findByPk($id)->username;
+            $content = $this->renderPartial('index', array('exp' => $exp,'level' => $level, 'level_exp' => $level_exp,
+            'nickname' => $nickname, 'username' => $username, 'watch_id' => $id), true);
             $this->render('game_system', array('content' => $content, 'watch_id' => $id));
         }
     }
@@ -119,7 +125,7 @@ class GameController extends Controller
         {
             $this->setPageTitle(Yii::app()->name . ' - 道具列表');
             // $this->render('index', array('user_id' => $id));
-            $content = $this->renderPartial('items', null, true);
+            $content = $this->renderPartial('items',null, true);
             $this->render('game_system', array('content' => $content, 'watch_id' => $id));
         }
     }

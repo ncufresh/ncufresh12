@@ -30,12 +30,12 @@ class Reply extends CActiveRecord
     
     public function beforeSave()
     {
-        // ©|¥¼ÀË¬d¬O§_©Ò¦³¸ê®Æ³£¦³¶ñ¼g
+        // å°šæœªæª¢æŸ¥æ˜¯å¦æ‰€æœ‰è³‡æ–™éƒ½æœ‰å¡«å¯«
         if ( parent::beforeSave() )
         {
             if ( $this->getIsNewRecord() )
             {
-                // ¦pªG¥¼µn¤Jauthor_id=0 ; ÀË¬dµn¤J»P§_
+                // å¦‚æžœæœªç™»å…¥author_id=0 ; æª¢æŸ¥ç™»å…¥èˆ‡å¦
                 $this->author_id = Yii::app()->user->getId();
                 $this->create_time = TIMESTAMP;
             }

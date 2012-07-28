@@ -1,4 +1,4 @@
-﻿<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script>
 (function($){
     //$( '#form-create-content' ).ckeditor();

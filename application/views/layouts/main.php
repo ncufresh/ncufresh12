@@ -192,7 +192,9 @@
     </form>
 <?php else : ?>
     <div class="profile">
-        <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/sin.png"/>
+<?php $this->widget('Avatar', array(
+    'id'        => Yii::app()->user->getId()
+)); ?>
         <p><?php echo Yii::app()->user->getName(); ?></p>
         <a id="sidebar-personal-toggle" href="#" title="點此打開或關閉個人功能"></a>
     </div>
@@ -263,7 +265,7 @@
             staticsUrl: decodeURIComponent('<?php echo Yii::app()->request->baseUrl; ?>/statics'),
             registerUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>'),
             facebookEnable: <?php echo Yii::app()->facebook->enable ? 'true' : 'false'; ?>,
-            buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building',array('id'=>':id'));?>'),
+            buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building',array('id'=>':id'));?>'),            
             googleSearchAppId: '011017124764723419863:mdibrr3n-py',
             token: '<?php echo Yii::app()->security->getToken(); ?>'
         }

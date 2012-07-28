@@ -100,7 +100,7 @@ class ClubController extends Controller
         $this->_data['token'] = Yii::app()->security->getToken(); 
         $this->render('modify',array(
             'data'=>$club,
-            'id'=>$id
+            'id'=>$id,
         )); 
         
 	}
@@ -113,7 +113,7 @@ class ClubController extends Controller
 
         if ( isset($_FILES['pictures']) )
         {
-            for ( $index = 0 ; $index < 4 ; ++$index )
+            for ( $index = 0 ; $index < 3 ; ++$index )
             {
                 if ( empty($_FILES['pictures']['name'][$index]) ) continue;
                 $file = $path . DIRECTORY_SEPARATOR . ($index + 1) . '.jpg';

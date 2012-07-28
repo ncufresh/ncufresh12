@@ -238,6 +238,7 @@ class SiteController extends Controller
     public function actionRegister()
     {
         $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+        $this->_data['token'] = Yii::app()->security->getToken();
         if ( isset($_POST['register']) && isset($_POST['profile']) ) 
         {
             $user = new User();
@@ -256,21 +257,22 @@ class SiteController extends Controller
                 $picture_type=$_FILES['picture']['type'];
                 if ( $profile->validate() )
                 {
-                    if ( $user->save() )
+                    if ( $user->save() && $user->beforeSave )
                     {
                         $profile->id = $user->id;
                         if ( $profile->save() )
                         {
-                            $this->redirect(array('site/index'));
+                            $this->redirect(array('profile/profile'));
                         }
                     }
                 }
             }
         }
-
-        $this->_data['token'] = Yii::app()->security->getToken();
-        $this->render('register', array(
-            'departments'   => Department::model()->getDepartment()
-        ));
+        else
+        {
+            $this->render('register', array(
+                'departments'   => Department::model()->getDepartment()
+            ));
+        }
     }
 }

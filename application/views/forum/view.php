@@ -1,4 +1,4 @@
-﻿<div id="forum-view-top">
+<div id="forum-view-top">
     <a id="forum-view-backlink"href="<?php echo Yii::app()->createUrl('forum/forum', array('fid'=>$_GET['fid']));?>">回上一頁</a>
 </div>
 <div id="forum-view-top2">
@@ -20,6 +20,12 @@
     <div id="forum-view-content"></div>
     <div class="hululu"></div>
     <div class="forum-view-comments"></div>
+    <div class="forum-view-comments"></div>
+    <div class="forum-view-comments"></div>
+    <div class="forum-view-comments"></div>
+    <div class="forum-view-comments"></div>
+    <div class="forum-view-comments"></div>
+    
 </div>
 <div id="forum-view-footer">
 </div>
