@@ -72,7 +72,7 @@ jQuery(document).ready(function()
     {
         jQuery('#life-index2').stop().animate(
         {
-            height: '120px'
+            height: '130px'
         },500);
     });
     
@@ -88,13 +88,45 @@ jQuery(document).ready(function()
     {
         jQuery('#life-index3').stop().animate(
         {
-            height: '370px'
+            height: '335px'
         },500);
     });
     
     jQuery('#life-school').mouseleave(function()
     {
         jQuery('#life-index3').stop().animate(
+        {
+            height: '0px'
+        },500);
+    });
+    
+    jQuery('#life-live').mouseenter(function()
+    {
+        jQuery('#life-index4').stop().animate(
+        {
+            height: '165px'
+        },500);
+    });
+    
+    jQuery('#life-live').mouseleave(function()
+    {
+        jQuery('#life-index4').stop().animate(
+        {
+            height: '0px'
+        },500);
+    });
+    
+    jQuery('#life-health').mouseenter(function()
+    {
+        jQuery('#life-index5').stop().animate(
+        {
+            height: '105px'
+        },500);
+    });
+    
+    jQuery('#life-health').mouseleave(function()
+    {
+        jQuery('#life-index5').stop().animate(
         {
             height: '0px'
         },500);

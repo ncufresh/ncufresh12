@@ -223,12 +223,14 @@ class Character extends CActiveRecord
     public static function getAvatar()
     {
         return array(
-            '身體皮膚名稱'    => 'skin/boyC1.png',
-            '眼睛部位名稱'    => 'eyes/e9.png',
-            '頭髮髮型名稱'    => 'hair/hairN5.png',
-            '鞋子物品名稱'    => 'shoes/shoeN5.png',
-            '褲子部位名稱'    => 'pants/pantsN10.png',
-            '衣服衣物名稱'    => 'cloths/clothseN4.png'
+            '身體皮膚名稱'    => 'skin/7e46ccbac1a2ea2bf59f649ea279ff18.png',
+            '眼睛部位名稱'    => 'eyes/7d51284d2cdad516bc348104a1d1805e.png',
+            '頭髮髮型名稱'    => 'hair/95728fcabcc6cdeafac6d2bd951804be.png',
+            '鞋子物品名稱'    => 'shoes/90f4dfcd8cc45edad70c06997973a4b0.png',
+            '褲子部位名稱'    => 'pants/414dcd369e5d60aa94cf80d0f0c49792.png',
+            '褲子部位名稱'    => 'pants/414dcd369e5d60aa94cf80d0f0c49792.png',
+            '衣服衣物名稱'    => 'cloths/0fed7f93d5460bdbb2014393bd865d28.png',
+            '其他部位名稱'    => 'others/045950659588c9aac4708a31966636dc.png'
         );
     }
 }
