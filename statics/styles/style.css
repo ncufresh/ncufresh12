@@ -2200,9 +2200,7 @@ button.news-button
 {
 	float: right;
 	width: 530px;
-    background: url('../club/4-2.png');
     background-repeat: repeat-y; 
-    margin-top: 88px;
 }
 #club-1
 {
@@ -2220,8 +2218,8 @@ button.news-button
 {
     height: 88px;
     width: 530px;
-    position: absolute;
-    margin-top: -20px;
+    position: relative;
+    margin-top: 0px;
     margin-left: 221px;
 }
 #club-head-1
@@ -2253,8 +2251,7 @@ button.news-button
     height: 182px;
     width: 530px;
     background-repeat: no-repeat;
-    float: left;
-    margin-left: 221px;
+    float: right;
 }
 #club-bottom-1
 {
