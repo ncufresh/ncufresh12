@@ -1,11 +1,12 @@
 <?php $user_id = Yii::app()->user->getId(); //使用者的id 
        //$user_level = Character::model()->findByPk($watch_id)->exp;?>
     <h1>使用者ID => 登入帳號 / 觀看中 => <?php echo $user_id.' / '.$watch_id?> </h1>
+    <h1> <?php echo $url=Character::model()->findByPk($watch_id)->skin->url.'<br/>'; ?></h1>
     <div class="game-system">
     <div class="user-body">
     <?php //////////////////////////////////////////////////////////TEST
         //////////////////// 暫時圖片變數名稱
-        $skin = 'dabd2c330e4a579318957466be2fc94d.png';
+        $skin = Character::model()->findByPk($watch_id)->skin->url.'.png';
         $eyes = '24b6ae55f40bdbbb4fdb32a841270b3f.png';
         $hair = '7460295c7cc2e01624a84975d11b3bd3.png';
         $shoes = '1557dbd15c83e88ba07a5bb64ce49e29.png';
