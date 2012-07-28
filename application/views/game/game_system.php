@@ -6,11 +6,11 @@
     <?php //////////////////////////////////////////////////////////TEST
         //////////////////// 暫時圖片變數名稱
         $skin = 'dabd2c330e4a579318957466be2fc94d.png';
-        $eyes = 'ab8f56301214e55e906e68da171391f6.png';
-        $hair = '8f8a84c4223c13a8dfa275f6d7d9676b.png';
-        $shoes = '90f4dfcd8cc45edad70c06997973a4b0.png';
-        $cloths = '6c95a392dbd908f05b1401e857cd343b.png';
-        $pants = '64a9c4b82d554df4d60b558bb689d902.png';
+        $eyes = '24b6ae55f40bdbbb4fdb32a841270b3f.png';
+        $hair = '7460295c7cc2e01624a84975d11b3bd3.png';
+        $shoes = '1557dbd15c83e88ba07a5bb64ce49e29.png';
+        $cloths = '8d2080d0d821a89d7f3b02322db50b7b.png';
+        $pants = '83d966b27da098dc0b19671943a9902d.png';
         $others = '5a9d0b4a51332cbcdd5f49c83c53f1d4.png';
         ///////////////////////////////////////////////////////////////TEST
     ?>

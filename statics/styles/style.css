@@ -3001,7 +3001,7 @@ div.game-display
 {
     width: 378px;
     height: 312px;
-    outline: 1px solid blue;
+    /* outline: 1px solid blue; */
     margin: 15px 0 0 15px;
     overflow-y:hidden;  
 }
