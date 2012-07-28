@@ -845,20 +845,19 @@
             });
             if ( options.scrollableClass )
             {
-                if ( options.scrollableClass === null )
-                {
-                    var classes = $(this).attr('class') ? $(this).attr('class') : '';
-                    $.each(classes.split(' '), (function(object)
-                    {
-                        return function(index, value)
-                        {
-                            $(object).removeClass(value);
-                        };
-                    })(this));
-                    scrollContainer.addClass(classes);
-                }
                 scrollContainer.addClass(options.scrollableClass);
-            }
+            } else if ( options.scrollableClass === null )
+            {
+                var classes = $(this).attr('class') ? $(this).attr('class') : '';
+                $.each(classes.split(' '), (function(object)
+                {
+                    return function(index, value)
+                    {
+                        $(object).removeClass(value);
+                    };
+                })(this));
+                scrollContainer.addClass(classes);
+            } 
             $.extend($(this).__proto__, {
                 scrollTo: updateScrollDragable
             });
