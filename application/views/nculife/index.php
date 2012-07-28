@@ -11,8 +11,6 @@ jQuery(document).ready(function()
 <?php $this->endWidget();?>
 
 <div id="life-container">
-    <div id="life-head">
-    </div>
     <div id="life-body">
         <div id="life-play">
             <ul id="life-index1" class="life-items">
@@ -78,7 +76,7 @@ jQuery(document).ready(function()
             </ul>
         </div>
         <div id="life-live">
-            <ul class="life-indexs">
+            <ul id="life-index4" class="life-items">
                 <li page="live" tab="1">所需用品</li>
                 <li page="live" tab="2">郵件招領</li>
                 <li>新生宿舍</li>
@@ -96,14 +94,16 @@ jQuery(document).ready(function()
                         <li page="live" tab="10">郵件快遞</li>
                         <li page="live" tab="11">郵局</li>
                     </ul>
-                </li>
             </ul>
         </div>
         <div id="life-health">
+            <ul id="life-index5" class="life-items">
+                <li page="health" tab="1">衛保組</li>
+                <li page="health" tab="2">特約醫院</li>
+                <li page="health" tab="3">心理諮商</li>
+            </ul>
         </div>
 
-    </div>
-    <div id="life-bottom">
     </div>
     <div id="life-dialog">
             <div id="nculife-title">
