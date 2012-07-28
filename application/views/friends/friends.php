@@ -2,7 +2,7 @@
 <div class="friends">
 <div class="friends-part1">
 <h4>新增好友</h4>
-<ul id="friends-title">
+<ul class="friends-title">
     <li>
         <a href="<?php echo Yii::app()->createUrl('friends/samedepartmentsamegrade'); ?>" title="同系同屆" class="friends-title">同系同屆</a>
     </li>
@@ -14,7 +14,7 @@
     </li>
 </ul>
 <div class="friends-addfriend">
-<ul id="friends-sort" >
+<ul class="friends-sort" >
 <?php $account = 1; ?>
 <?php foreach ( $profileFir as $profilefir ) : ?>
 <?php if ( $account<=4 ):  ?>
@@ -25,14 +25,13 @@
 <?php else: ?>
         <img  width="90" height="40" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image" />
 <?php echo $profilefir->name; ?>
-</ul>
 <?php endif; ?>     
 <?php $account++;?>
 <?php endif; ?>
      </li>
 <?php endforeach; ?>
 </ul>
-<ul id="friends-sort" >
+<ul class="friends-sort" >
 <?php $account = 1;?>
 <?php foreach ( $profileSec as $profilesec ) : ?>
 <?php if ( $account<=4 ) :?>
@@ -46,10 +45,10 @@
 <?php endif; ?>
 <?php $account++;?>
 <?php endif; ?>
-    <li>
+    </li>
 <?php endforeach; ?>
 </ul>
-<ul id="friends-sort">
+<ul class="friends-sort">
 <?php $account = 1 ; ?>
 <?php foreach ( $profileThir as $profilethir ) :?>
 <?php if ( $account <= 4 ):?> 
@@ -69,7 +68,7 @@
 </div>
 <h4>好友分類</h4>
 <div class="friends-sortfriend">
-<ul id="friends-self">
+<ul class="friends-self">
     <li>
         <a href="<?php echo Yii::app()->createUrl('friends/myfriends') ; ?>" title="朋友" class="friends-title">朋友</a>
     </li>
@@ -89,7 +88,7 @@
     </li>
 <?php endforeach ; ?>
 </ul>
-<ul id="friend-other-sort">
+<ul class="friend-other-sort">
     <li>
         <a href="<?php echo Yii::app()->createUrl('friends/allgroups')  ?>" title="我的群組" class="friends-title">我的群組</a>
     </li>
