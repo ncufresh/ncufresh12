@@ -201,7 +201,7 @@
     <div id="sidebar-personal">
         <ul>
             <li>
-                <a href="#" title="個人行事曆">個人行事曆</a>
+                <a href="<?php echo Yii::app()->createUrl('calendar/view'); ?>" title="個人行事曆">個人行事曆</a>
             </li>
             <li>
                 <a href="#" title="最新更新">最新更新</a>
