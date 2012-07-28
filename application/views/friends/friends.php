@@ -20,10 +20,10 @@
 <?php if ( $account<=4 ):  ?>
     <li>
 <?php if ( $profilefir->picture !='' ):?>
-        <img  width="90" height="45" src=" <?php echo $target.'/'.$profilefir->picture; ?>" alt="Score image" />
+        <img  width="90" height="40" src=" <?php echo $target.'/'.$profilefir->picture; ?>" alt="Score image" />
 <?php echo $profilefir->name; ?>
 <?php else: ?>
-        <img  width="90" height="45" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image" />
+        <img  width="90" height="40" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image" />
 <?php echo $profilefir->name; ?>
 </ul>
 <?php endif; ?>     
@@ -38,10 +38,10 @@
 <?php if ( $account<=4 ) :?>
     <li>
 <?php if ( $profilesec->picture !='' ): ?> 
-        <img  width="90" height="45"src=" <?php echo $target.'/'.$profilesec->picture; ?>" alt="Score image"/>
+        <img  width="90" height="40"src=" <?php echo $target.'/'.$profilesec->picture; ?>" alt="Score image"/>
 <?php echo $profilesec->name;?>   
 <?php else: ?>
-        <img  width="90" height="45" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/>
+        <img  width="90" height="40" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/>
 <?php echo $profilesec->name; ?> 
 <?php endif; ?>
 <?php $account++;?>
@@ -55,10 +55,10 @@
 <?php if ( $account <= 4 ):?> 
     <li>
 <?php if ( $profilethir->picture !='' ):?>
-        <img  width="90" height="45" src=" <?php echo $target.'/'.$profilethir->picture ; ?>" alt="Score image"/>
+        <img  width="90" height="40" src=" <?php echo $target.'/'.$profilethir->picture ; ?>" alt="Score image"/>
 <?php echo $profilethir->name ; ?>
 <?php else : ?>
-        <img  width="90" height="45" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/>
+        <img  width="90" height="40" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/>
 <?php echo $profilethir->name ; ?>s    
 <?php endif; ?>     
 <?php $account++;?>
