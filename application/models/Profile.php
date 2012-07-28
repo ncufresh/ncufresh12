@@ -85,4 +85,12 @@ class Profile extends CActiveRecord
             'order'  => 'id ASC' 
         ));
     }
+
+    public function getProfile()
+    {
+        return $this->findAll(array(
+            'order'  => 'id ASC' 
+        ));
+    }
+
 }
