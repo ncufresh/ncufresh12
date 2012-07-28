@@ -146,29 +146,26 @@ a:hover
 
 .scroll-container
 {
-    overflow: hidden;
     position: relative;
-}
-
-.scroll-container .scroll-area
-{
-    position: absolute;
-    top: 0;
-    width: 100%;
 }
 
 .scroll-container .scroll-bar
 {
     display: none;
-    height: 100%;
+    height: 98%;
     right: 2px;
+    margin-top: -1px;
     position: absolute;
-    top: 0;
-    width: 8px;
+    top: 1%;
+    width: 6px;
 }
 
 .scroll-container .scroll-track
 {
+    background: #646464;
+    background: rgba(100, 100, 100, 0.7);
+    border: 1px solid #646464;
+    border-radius: 5px;
     position: relative;
     height: 100%;
 }
