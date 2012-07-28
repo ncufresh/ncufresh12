@@ -2315,43 +2315,40 @@ button.news-button
 div.friends h4
 {
     color: yellow;
-    font-size: 10px;
+    font-size: 20px;
     text-align: center;
-    outline:1px solid black;
-    
+    margin:0px;
 }
 
 div.group-friends
 {
     background-color:yellow;
     display: none;
-    outline:1px solid black;
 }
 
 div.friends
 {
     background-image:url('../profile/friend.png');
     background-repeat:no-repeat ;
-    width:730px;
+    width:740px;
     height:410px;
-    padding:0px;
+    padding:5px;
     margin:0px;
-    outline:1px solid black;
 }
 
 #friends-sort 
 {
-    width:170px;
+    width:210px;
     height:140px;
     float:left;
-    margin-top:0px;
-    outline:1px solid black;
+    margin:0px;
+    padding:0px;
 }
 
 #friends-sort li
 {
-    width:80px;
-    height:60px;
+    width:100px;
+    height:65px;
     float:left;
     list-style-type:none;
 }
@@ -2359,31 +2356,41 @@ div.friends
 #friends-self 
 {
     width:600px;
-    height:60px;
+    height:100px;
     float:left;
-    margin-top:0px;
-    outline:1px solid black;
+    margin:0px;
+    padding:0px;
 }
 
 #friends-self li
 {
-    width:80px;
-    height:60px;
+    width:100px;
+    height:100px;
     float:left;
     list-style-type:none;
+}
+
+#friend-other-sort
+{
+    width:100px;
+    height:40px;
+    float:left;
+    margin:0px;
+    padding:0px;
 }
 
 #friend-other-sort li
 {
     list-style-type:none;
+    width:100px;
+    height:20px;
 }
 
 div.friends-part1
 {
-    width:650px;
-    height:330px;
-    padding:25px;
-    margin:25px 25px 210px 25px;
+    width:690px;
+    height:370px;
+    margin:25px 25px 25px 25px;
 }
 
 div.friends-addfriend
