@@ -4,11 +4,29 @@ jQuery(document).ready(function()
 {
     $('#club-menu-items a').lightbox();
     
-    $(document).ready(function(){
-        $("#club-schedule-button").click(function(){
-        $("#club-schedule-content").slideToggle();
+    $('#club-schedule-button').click(function()
+        {
+            var button = $(this);
+            if ( button.hasClass('active') )
+            {
+                $('#club-schedule-content').slideUp(300, function()
+                {
+                    button.removeClass('active');
+                });
+            }
+            else
+            {
+                $('#club-schedule-content').slideDown(300, function()
+                {
+                    button.addClass('active');
+                });
+            }
+            return false;
         });
-    });
+    jQuery('.back').click(function()
+        {
+            window.history.back()
+        });
 	
 });
 </script>
@@ -50,8 +68,8 @@ jQuery(document).ready(function()
 <?php if ( $this->getIsAdmin($id) ) : ?>
     <a href="<?php echo Yii::app()->createUrl('club/modify/' . $id);?>" title="修改">修改</a>
     <a href="<?php echo Yii::app()->createUrl('club/uploadpicture/' . $id);?>" title="上傳圖片">上傳圖片</a>
-    <h1><?php echo $data->name;?></h1>
 <?php endif;?>
+<h1><?php echo $data->name;?></h1>    
 </div>    
 <div class="club-display" id="club-<?php echo $data->category;?>">
     <div class="club-title">簡介:</div>
@@ -106,4 +124,5 @@ jQuery(document).ready(function()
     <? endif;?>
 </div>
 <div class="club-display-bottom" id="club-bottom-<?php echo $data->category;?>">
+<a class="back">回上一頁</a>
 </div>
