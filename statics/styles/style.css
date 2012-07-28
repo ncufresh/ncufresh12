@@ -1944,91 +1944,32 @@ button.news-button
     list-style-type: none;
 }
 
-#about h4
+#about .title1
 {
-    float: top;
-    background: black;
-    color: white;
-    border-radius: 10px;
-    text-align: left;
-    margin-left: 10px;
-    font-family: 'Microsoft YaHei Mono';
-    font-size:40px;
+    background: url('../about/what.png') #385281 no-repeat;
+    width: 750px;
+    height: 75px;
+}
+
+#about .title2
+{
+    background: url('../about/who_with_stars.png') #385281 no-repeat;
+    width: 750px;
+    height: 85px;
 }
 
 #about .block1
 {
-    background: url('../pp.jpg');
+    background: #385281;
+    height: 500px;    
+    width: 750px;
 }
 
 #about .block2
 {
-    background: url('../images/');
-}
-
-#about .block3
-{
-    background: url('../images/');
-}
-
-#about .back
-{
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 0;
-    width: 750;
-    height: 400;
-}
-
-#about .art
-{
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 0px;
-    width: 50;
-    height: 40;
-}
-
-#about .pro
-{
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 50px;
-    width: 50;
-    height: 40;
-}
-
-#about .vdo
-{
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 0;
-    width: 50;
-    height: 40;
-}
-
-#about .des
-{
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 0;
-    width: 50;
-    height: 40;
-}
-
-#about .boss
-{
-    background: url('');
-    margin: 0 0 0 0;
-    top: 0;
-    left: 0;
-    width: 50;
-    height: 40;
+    background: #8ca86c;
+    height: 900px;    
+    width: 750px;
 }
 
 #about .information
@@ -2036,10 +1977,14 @@ button.news-button
     
 }
 
-#about .tagbar
+#about .tag
 {
+    background: url('../about/wood_plate_for_photo.png') no-repeat #8ca86c;
+    left: 43px;
+    height: 508px;
+    width: 750px;
+    position: relative;
 }
-
 /**
  * Facebook style
  */
@@ -2081,19 +2026,21 @@ button.news-button
 .club-head
 {
     background: url('../club/club-head.png');
-    width: 250px;
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
-    float: left;
+    float: right;
+    margin-right: 21px;
     
 }
 .club-head:hover
 {
     background: url('../club/club-head2.png');
-    width: 250px;
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
-    float: left;
+    float: right;
+    margin-right: 21px;
     
 }
 .department
@@ -2104,12 +2051,11 @@ button.news-button
     width: 750px;
     position: relative;
     display: inline-block;
-    margin-top: -9px;
 }
 .department-head
 {
     background: url('../club/department-head.png');
-    width: 250px;
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
     float: left;
@@ -2117,7 +2063,7 @@ button.news-button
 .department-head:hover
 {
     background: url('../club/department-head2.png');
-    width: 250px;
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
     float: left;
@@ -2134,49 +2080,52 @@ button.news-button
 .student-head
 {
     background: url('../club/student-head.png');
-    width: 250px;
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
     float: left;
+    margin-left: 23px;
 }
 
 .student-head:hover
 {
-    background: url('../club/studnt-head2.png');
-    width: 250px;
+    background: url('../club/student-head2.png');
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
     float: left;
+    margin-left: 23px;
 }
 
 .club-list
 {
     text-align: left;
     overflow: hidden;
-    margin-top: 71px;
-    margin-left: 50px;
+    margin-top: 56px;
+    margin-left: 30px;
 }
 
 .club-list ul
 {
     float: left;
     padding: 0;
-    width: 25%;
+    width: 24%;
     list-style: none;
 }
 
 .department-list
 {
     text-align: left;
-    margin-top: 60px;
-    margin-left: 50px;
+    margin-top: 98px;
+    margin-left: 91px;
 }
 
 .department-list ul
 {
     float: left;
     padding: 0;
-    width: 16.5%;
+    width: 30%;
+    height: 320px;
     list-style: none;
 }
 
@@ -2231,10 +2180,11 @@ button.news-button
 }
 .club-display-head
 {
-    height: 88px;
+    height: 105px;
     width: 530px;
     position: relative;
     float: right;
+    background-repeat: no-repeat;
 }
 #club-head-1
 {
@@ -2252,12 +2202,6 @@ button.news-button
 .club-display-head a
 {
     float: right;
-}
-
-.club-display-head h1
-{
-    margin-top: 2px;
-    margin-left: 27px;
 }
 
 .club-display-bottom
@@ -2318,12 +2262,39 @@ button.news-button
 #club-schedule-content
 {
     background: skyblue;
-    display: block;
+    display: none;
     width: 204px;
     height: 329px;
 }
 
+.modify-table
+{
+    padding: 0 5% 5% 0;
+    position: relative;
+    width: 45%;
+    float: left;
+}
+
+.club-web
+{
+    height: 55px;
+    float: left;
+    position: relative;
+}
+
+.club-modify-table
+{
+    padding: 5px;
+    height: 600px;
+    width: 750px;
+    background: url('../club/background.png');
+}
+
+div.friends h4
+{
+}
 .friends-sort 
+
 {
     width:210px;
     height:120px;
@@ -3186,9 +3157,14 @@ div.game-display
 {
     width: 378px;
     height: 312px;
-    outline: 1px solid blue;
+    /* outline: 1px solid blue; */
     margin: 15px 0 0 15px;
-    overflow-y:hidden;  
+    overflow-y:hidden;
+}
+
+div.game-display span
+{
+    display:block;
 }
 
 li.enabled a
@@ -3367,7 +3343,8 @@ li.enabled a
     margin-left: 35px;
 }
 
-#forum-view-top
+#forum-view-top,
+#forum-forum-top
 {
     background: url('../forum/view/background_top.png');
     width: 633px;
@@ -3386,7 +3363,9 @@ li.enabled a
     padding-top:5px
 }
 
-#forum-view-top2 .pager
+#forum-view-top2 .pager,
+#forum-forum-top2 .pager,
+#forum-forum-footer .pager
 {
     padding-right: 35px;
 }
@@ -3532,4 +3511,261 @@ li.enabled a
     margin-left: 20px;
     margin-top: 20px;
     border: 1px solid black;
+}
+
+#forum-forum-top2
+{
+    background: url('../forum/forum/background_top.png');
+    width: 683px;
+    height: 32px;
+    margin-left:35px;
+}
+
+#forum-forum-body
+{
+    background: url('../forum/forum/background.png');
+    width: 683px;
+    min-height: 183px;
+    margin-left:35px;
+}
+
+#forum-forum-body #create-article
+{
+    background: url('../forum/forum/eraser.png');
+    width:102px;
+    height:38px;
+    float:left;
+    margin-left: 36px;
+    margin-top: 4px;
+    padding: 14px 0px 4px 16px;
+}
+
+#forum-forum-body #create-article a
+{
+    color:#ffffff;
+}
+
+#forum-forum-body #labels
+{
+    background-image: none;
+    float: right;
+    margin: 20px 50px 0 0;
+    height:35px;
+    
+}
+
+#forum-forum-body #labels .un-selected
+{
+    float:left;
+    display: inline;
+    list-style-type: none;
+    width:40px;
+    height:26px;
+    background: #f8b1c5;
+    border-radius: 8px;
+    margin-right: 5px;
+    padding: 4px 4px 0 13px;
+    border: 2px solid #ffffff;
+}
+
+#forum-forum-body #labels .un-selected:hover
+{
+    background:#f48191;
+}
+
+#forum-forum-body #labels a
+{
+    display: inline;
+    color: #ffffff;
+    display:block;
+}
+
+#forum-forum-body #table-head
+{
+    background: url('../forum/forum/pencil.png');
+    width: 481px;
+    height: 41px;
+}
+
+#forum-forum-body #body-table
+{
+    width: 615px;
+    margin-left:20px;
+}
+
+#forum-forum-body #body-table .table-title th,
+#forum-forum-body #body-table .table-foot td
+{
+    background: #f48191;
+    height:40px;
+    color:#ffffff;
+}
+
+#forum-forum-body #body-table .table-title th.head,
+#forum-forum-body #body-table .table-foot td.head
+{
+    background: url('../forum/forum/pencil_head.png');
+    width: 24px;
+    height: 40px;
+}
+
+#forum-forum-body #body-table .table-title th.category,
+#forum-forum-body #body-table .table-foot td.category
+{
+    width: 84px;
+    background: url('../forum/forum/pencil_category.png');
+    color:#ffffff;
+}
+
+#forum-forum-body #body-table .table-title th.title,
+#forum-forum-body #body-table .table-foot td.title
+{
+    width: 190px;
+    color:#ffffff;
+}
+
+
+#forum-forum-body #body-table .table-title th.tail,
+#forum-forum-body #body-table .table-foot td.tail
+{
+    background: url('../forum/forum/pencil_tail.png');
+    height: 40px;
+    width: 12px;
+}
+
+#forum-forum-body #body-table .table-body
+{
+    width: 600px;
+    height: 40px;
+}
+
+#forum-forum-body #body-table .table-body td.head
+{
+    background-color:transparent;
+}
+
+#forum-forum-body #body-table .table-body td.category
+{
+    border-top-style:solid;
+    border-bottom-style:solid;
+    border-left-style:solid;
+    border-color:#f48191;
+    border-width:2px;
+    border-top-width:0.8px;
+    background-color:#ffffff;
+    text-align: center;
+}
+
+#forum-forum-body #body-table .table-body td.title,
+td.author,
+td.reply,
+td.popularity
+{
+    border-top-style:solid;
+    border-bottom-style:solid;
+    border-color:#f48191;
+    border-width:2px;
+    border-top-width:0.8px;
+    background-color:#ffffff;
+}
+
+#forum-forum-body #body-table .table-body td.author
+{
+    width:80px;
+    text-align: center;
+}
+
+#forum-forum-body #body-table .table-body td.reply span,
+#forum-forum-body #body-table .table-body td.popularity span
+{
+    padding-right:15px;
+    float:right;
+}
+
+#forum-forum-body #body-table .table-body td.title a:hover
+{
+    color: #f48191;
+    font-weight: bolder;
+}
+
+#forum-forum-body #body-table .table-body td.time
+{
+    border-top-style:solid;
+    border-bottom-style:solid;
+    border-right-style:solid;
+    border-color:#f48191;
+    border-width:2px;
+    border-top-width:0.8px;
+    background-color:#ffffff;
+}
+
+#forum-forum-footer
+{
+    background: url('../forum/forum/background_footer.png');
+    width: 683px;
+    height: 53px;
+    margin-left: 35px;
+    padding-top: 20px;
+}
+
+#ultimate-password
+{
+    background: #E6CDE3;
+    height: 460px;
+    margin: -230px 0 0 -150px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+}
+
+#ultimate-password .title
+{    
+    color: #1E50A2;
+    text-align: center;
+    font-size: 30px;
+}
+
+#ultimate-password .message
+{    
+    color: #B44C97;
+    text-align: center;
+    font-size: 20px;
+}
+
+#ultimate-password .input
+{    
+    display: block;
+    width: 228px;
+    height: 31px;
+    text-align: center;
+    font-size: 2em;
+    margin: 0 auto;
+}
+
+#ultimate-password .table-box
+{    
+    color: #8D6449;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    font-size: 30px;
+}
+
+#ultimate-password .error
+{    
+    color: red;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 0;
+}
+
+#ultimate-password .enter
+{    
+    color: blue;    
+}
+
+#ultimate-password .click
+{    
+    color: yellow;    
 }
