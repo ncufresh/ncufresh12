@@ -154,7 +154,7 @@ class Character extends CActiveRecord
             // 'items'    => array(
                 // self::MANY_MANY,
                 // 'Item',
-                // 'game_items_bag(user_id, items_id)'
+                // 'game_items_bag(user_id, item_id)'
             // ),
             'items_bag'    => array(
                 self::HAS_MANY,
