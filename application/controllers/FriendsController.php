@@ -285,4 +285,36 @@ class FriendsController extends Controller
             'groups'         => Group::model()->FindGroup($userID)
         ));
    }
+
+   public function actionRequest() //確認好友關係
+   {
+        $userID = Yii::app()->user->id;
+        $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+        if ( isset($_POST['friends']) && isset($_POST['agree']) )
+        {
+            foreach ( $_POST['friends'] as $friendid )
+            {   
+                $friend = new Friend();
+                $exist = $friend->isExist($userID,$friendid);
+                if ( $userID <> $friendid && !$exist )
+                {
+                    $friend->addFriend($userID, $friendid);
+                    $friend->makeFriend($userID, $friendid);
+                }
+            }
+            $this->redirect(array('friends/myfriends'));
+        }
+        else if ( isset($_POST['friends']) && isset($_POST['cancel']) )
+        {
+            foreach ( $_POST['friends'] as $cancelfriend )
+            {
+                Friend::model()->deleteFriend($userID, $cancelfriend);
+            }
+            $this->redirect(array('friends/myfriends'));      
+        }
+        $this->render('request', array(
+            'friends'         => Friend::model()->getRequests($userID),
+            'target'        => $imgUrl
+        ));
+   }
 }

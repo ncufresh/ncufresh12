@@ -66,7 +66,11 @@
 <?php endforeach; ?>
 </ul>
 </div>
-<h4>好友分類</h4>
+<h4>
+好友分類
+<a href="<?php echo Yii::app()->createUrl('friends/request'); ?>" title="好友確認" class="friends-title">好友確認</a>
+</h4>
+
 <div class="friends-sortfriend">
 <ul class="friends-self">
     <li>
