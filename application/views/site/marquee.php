@@ -228,7 +228,7 @@ jQuery(document).ready(function()
             </tr>
         </thead>
         <tbody>
-    <?php foreach ( $marquees as $marquee ) : ?>
+<?php foreach ( $marquees as $marquee ) : ?>
             <tr>
                 <td id="marquee-message-<?php echo $marquee->id; ?>" class="marquee-message-text"><?php echo $marquee->message; ?></td>
                 <td>
@@ -239,7 +239,7 @@ jQuery(document).ready(function()
                 </td>
                 <td><?php echo $marquee->updated; ?></td>
             </tr>
-    <?php endforeach; ?>
+<?php endforeach; ?>
         </tbody>
     </table>
 </div>
