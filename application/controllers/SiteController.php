@@ -262,7 +262,7 @@ class SiteController extends Controller
                         $character->id = $user->id;//同步寫入user的id至遊戲資料列表
                         $character->exp = 1; //一開始使用者經驗設為1
                         $character->money = 25000; //一開始使用者金錢設為25000
-                        $character->total_money = 25000; //一開始使用者總金錢設為25000
+                        $character->total_money = 35000; //一開始使用者總金錢設為25000
                         if($_POST['sex'] == 0)
                         {
                             $character->skin_id = 81; //男生 皮膚預設id=81
