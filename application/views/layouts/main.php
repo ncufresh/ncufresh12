@@ -166,7 +166,6 @@
 <div id="content"><?php echo $content; ?></div>
 <div id="sidebar">
 <?php if ( Yii::app()->user->getIsGuest() ) : ?>
-    <a id="fb-login-button" href="<?php echo Yii::app()->createUrl('site/login', array('facebook' => true)); ?>" title="使用Facebook帳號登入">使用Facebook帳號登入</a>
     <form class="profile" action="<?php echo Yii::app()->createUrl('site/login'); ?>" method="POST">
         <dl>
             <dt>
@@ -207,13 +206,13 @@
                 <a href="#" title="最新更新">最新更新</a>
             </li>
             <li>
-                <a href="#" title="個人資料">個人資料</a>
+                <a href="<?php echo Yii::app()->createUrl('profile/profile'); ?>" title="個人資料">個人資料</a>
             </li>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('game/index'); ?>" title="遊戲介面">遊戲介面</a>
             </li>
         </ul>
-        <a id="sidebar-personal-button" href="#" title="個人專區">個人專區</a>
+        <a id="sidebar-personal-button" href="<?php echo Yii::app()->createUrl('friend/friend'); ?>" title="個人專區">個人專區</a>
         <a id="sidebar-logout-button" href="<?php echo Yii::app()->createUrl('site/logout'); ?>" title="登出">登出</a>
     </div>
 <?php endif; ?>
@@ -243,11 +242,13 @@
     </div>
 </div>
 
+<?php if ( Yii::app()->user->getIsMember() ) : ?>
 <div id="chat">
     <p class="online-friends">
         線上好友<span class="friendcounts"><?php echo 999; // $this->getOnlineFriendsCount(); ?></span>人
     </p>
 </div>
+<?php endif; ?>
 <div id="fb-root"></div>
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -256,16 +257,22 @@
     jQuery.extend({
         configures: {
             pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
-            facebookAppId: '<?php echo Yii::app()->facebook->getAppId(); ?>',
             facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
-            chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
+            chatOpenUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/open', array('id' => ':id')); ?>'),
+            chatSendUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
+            chatCloseUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/close'); ?>'),
+            chatAvatarUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/avatar'); ?>'),
             ncuLifeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('nculife/content', array('tab' => ':tab', 'page' => ':page'));?>'),
             multimediaYoutubeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('multimedia/watch', array('v' => ':v')); ?>'),
             newsIndexUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>'),
-            staticsUrl: decodeURIComponent('<?php echo Yii::app()->request->baseUrl; ?>/statics'),
             registerUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>'),
+<<<<<<< HEAD
             facebookEnable: <?php echo Yii::app()->facebook->enable ? 'true' : 'false'; ?>,
             buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id'=>':id'));?>'),            
+=======
+            buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),
+            facebookAppId: '<?php global $ncufreshfb; echo $ncufreshfb['appId']; ?>',
+>>>>>>> 4085f462c2988fc64bbb7ebc3d2d50bd4b73b38e
             googleSearchAppId: '011017124764723419863:mdibrr3n-py',
             token: '<?php echo Yii::app()->security->getToken(); ?>'
         }

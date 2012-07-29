@@ -1,10 +1,5 @@
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'style')); ?>
 <style type="text/css">
-#admin-marquee
-{
-    background: black;
-}
-
 #admin-marquee form input
 {
     height: 30px;
@@ -130,7 +125,9 @@ jQuery(document).ready(function()
                     $.configures.token = response.token;
                     if ( response.error )
                     {
-                        alert('更新失敗！請稍後再試一次！');
+                        $.alert({
+                            message: '更新失敗！請稍後再試一次！'
+                        });
                         return false;
                     }
                     var text = jQuery('<td></td>')
@@ -189,7 +186,9 @@ jQuery(document).ready(function()
                             $.configures.token = response.token;
                             if ( response.error )
                             {
-                                alert('刪除失敗！請稍後再試一次！');
+                                $.alert({
+                                    message: '刪除失敗！請稍後再試一次！'
+                                });
                                 return false;
                             }
                             element.remove();
@@ -229,7 +228,7 @@ jQuery(document).ready(function()
             </tr>
         </thead>
         <tbody>
-    <?php foreach ( $marquees as $marquee ) : ?>
+<?php foreach ( $marquees as $marquee ) : ?>
             <tr>
                 <td id="marquee-message-<?php echo $marquee->id; ?>" class="marquee-message-text"><?php echo $marquee->message; ?></td>
                 <td>
@@ -240,7 +239,7 @@ jQuery(document).ready(function()
                 </td>
                 <td><?php echo $marquee->updated; ?></td>
             </tr>
-    <?php endforeach; ?>
+<?php endforeach; ?>
         </tbody>
     </table>
 </div>

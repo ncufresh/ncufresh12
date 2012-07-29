@@ -1,2 +1,3 @@
-復學區
-<a href="index.html">上一頁</a>
+<div id="readme-reschool">
+    <a href="index.html" id="reschool-back" class="readme-back"></a>
+</div>

@@ -62,12 +62,6 @@ form button
     padding: 4px 8px;
 }
 
-form input[type="radio"],
-form input[type="checkbox"]
-{
-    width: auto;
-}
-
 form textarea
 {
     height: 160px;
@@ -106,11 +100,18 @@ form dl.select
     width: 95%;
 }
 
-form dl.radio label,
-form dl.checkbox label,
-form dl.select label
+form dl.radio dt,
+form dl.checkbox dt,
+form dl.select dt
 {
-    padding-left: 0;
+    display: none;
+}
+
+form dl.radio input,
+form dl.checkbox input
+form dl.select input
+{
+    width: auto;
 }
 
 form div
@@ -570,25 +571,25 @@ a:hover
 
 #sidebar .profile .avatar
 {
-    float: left;
-    height: 48px;
-    margin: 3px;
-    width: 48px;
+    background: #FFFFFF;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    height: 120px;
+    margin: 5px 0;
+    width: 180px;
 }
 
 #sidebar .avatar img
 {
-    left: 120%;
-    margin-left: -180%;
-    top: -30%;
-    width: 240%;
+    margin: 0 10px;
+    width: 160px;
 }
 
 #sidebar .profile p
 {
     height: 42px;
     line-height: 42px;
-    margin: 3px 0 3px 55px;
+    margin: 3px 0;
     padding: 3px;
     text-align: center;
 }
@@ -878,15 +879,43 @@ a:hover
     cursor: pointer;
 }
 
-.chat-dialog .scroll-container
+.chat-dialog .chat-icon
 {
-    height: 150px;
+    position: relative;
 }
 
-.chat-dialog .scroll-area
+.chat-dialog .chat-icon .avatar
 {
-    margin: -3px 0;
-    width: 160px;
+    float: left;
+    height: 32px;
+    margin: 4px 8px 4px 0;
+    width: 32px;
+}
+
+.chat-dialog .chat-icon .avatar img
+{
+    margin-left: -8px;
+    width: 48px;
+}
+
+.chat-dialog .chat-messages .chat-icon p
+{
+    background: #333333;
+    border-radius: 5px 5px 5px 0;
+    color: #FFFFFF;
+    display: none;
+    height: 16px;
+    line-height: 16px;
+    left: 28px;
+    margin: 0;
+    padding: 2px 8px;
+    position: absolute;
+    top: 2px;
+}
+
+.chat-dialog .chat-messages .chat-icon:hover p
+{
+    display: block;
 }
 
 .chat-dialog .chat-display
@@ -895,10 +924,19 @@ a:hover
     width: 150px;
 }
 
-.chat-dialog .chat-display p
+.chat-dialog .chat-messages
 {
-    margin: 0;
+    border-top: 1px solid #EEEEEE;
+    clear: both;
+    font-size: 0.85em;
+    margin-top: 3px;
+}
+
+.chat-dialog .chat-messages p
+{
+    margin: 0 0 0 42px;
     padding: 0;
+    word-break: break-all;
 }
 
 .chat-dialog .chat-form
@@ -915,6 +953,22 @@ a:hover
     outline: none;
     padding: 0 5px;
     width: 150px;
+}
+
+.chat-dialog .scroll-container
+{
+    height: 150px;
+}
+
+.chat-dialog .scroll-area
+{
+    margin: -3px 0;
+    width: 160px;
+}
+
+.scroll-content
+{
+    overflow: hidden;
 }
 
 /**
@@ -1036,68 +1090,11 @@ table.gsc-completion-container
     border: 3px solid #7C7C7C;
 }
 
-#readme-list ul li
-{
-    list-style: none;
-}
-
-#readme-menu
-{
-    margin: 0;
-    padding: 0;
-    width: 500px;
-    height: 500px;
-    position: relative;
-    overflow: hidden;
-}
-
-#nculife-wrapper
-{
-     position: relative;
-}
-
-#caption
-{
-    position: absolute;
-    top: 0;
-    left: -300px;
-}
-
-#caption ul
-{
-    background: url('../images/background.png') repeat;
-    width: 300px;
-    height: 200px;
-    float: left;
-}
-
-#caption a
-{
-    display: block;
-    float: left;
-    width: 50px;
-    height: 50px;
-    background: url('../images/chat.png');
-}
-
 ul#nculife-details
 {  
     margin: 0;
     padding: 0;
 }
-
-#readme-direct
-{
-    width: 50px;
-    height: 50px;
-    display: block;
-}
-
-/* #readme-direct img
-{
-    width: 50px;
-    height: 50px;
-} */
 
 /**
  * Index style
@@ -1714,7 +1711,32 @@ button.news-button
     display: none;
     width: 649px;
     height: 449px;
+    
+}
+
+.nculife-style1
+{
+    background: url('../images/life_yellow.png');
+}
+
+.nculife-style2
+{
+    background: url('../images/life_green.png');
+}
+
+.nculife-style3
+{
+    background: url('../images/life_pink.png');
+}
+
+.nculife-style4
+{
     background: url('../images/life_purple.png');
+}
+
+.nculife-style5
+{
+    background: url('../images/life_blue.png');
 }
 
 #nculife-dialog p
@@ -1734,8 +1756,33 @@ button.news-button
     width: 42px;
     height: 42px;
     margin: -15px 0px 0px 620px;
-    display: inline-block;
+    display: block;
     background: url('../images/life_exit.png');
+}
+
+.life-top1
+{
+    background:url('../images/life_top1.png');
+}
+
+.life-top2
+{
+    background:url('../images/life_top2.png');
+}
+
+.life-top3
+{
+    background:url('../images/life_top3.png');
+}
+
+.life-top4
+{
+    background:url('../images/life_top4.png');
+}
+
+.life-top5
+{
+    background:url('../images/life_top5.png');
 }
 
 #nculife-title
@@ -1744,7 +1791,6 @@ button.news-button
     height: 125px;
     margin: -72px 0 0 10px;
     display: inline-block;
-    background:url('../images/life_top1.png');
 }
 
 #nculife-title h4
@@ -1839,7 +1885,7 @@ button.news-button
     background: url('../images/life_rope.png') repeat-y;
     width: 150px;
     height: 0px;
-    left: -15px;
+    left: -16px;
     top: 118px;
     padding: 0 0 0 16px;
     position: absolute;
@@ -1851,7 +1897,7 @@ button.news-button
     background: url('../images/life_rope.png') repeat-y;
     width: 150px;
     height: 0px;
-    left: 32px;
+    left: 35px;
     top: 180px;
     padding: 0 0 0 16px;
     position: absolute;
@@ -1937,6 +1983,306 @@ button.news-button
     height: 330px;
     top: 20px;
     left: 540px;
+}
+
+.readme-back
+{
+    width: 70px;
+    height: 85px;
+    position: absolute;
+    top: 360px;
+    left: 660px;
+}
+
+#readme-fresh
+{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+    background: url('../readme/freshman_background.png');
+}
+
+#fresh_back
+{
+    background: url('../readme/fresh_back.png');
+}
+
+#fresh_back:hover
+{
+    background: url('../readme/fresh_back_hover.png');
+}
+
+#readme-notice
+{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    background: url('../readme/notice_background.png');
+}
+
+#notice-back
+{
+    background: url('../readme/notice_back.png');
+}
+
+#notice-back:hover
+{
+    background: url('../readme/notice_back_hover.png');
+}
+
+#readme-reschool
+{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    background: url('../readme/reschool_background.png');
+}
+
+#reschool-back
+{
+    background: url('../readme/reschool_back.png');
+}
+
+#reschool-back:hover
+{
+    background: url('../readme/reschool_back_hover.png');
+}
+
+#readme-download
+{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    background: url('../readme/download_background.png');
+}
+
+#download_back
+{
+    background: url('../readme/download_back.png');
+}
+
+#download_back:hover
+{
+    background: url('../readme/download_back_hover.png');
+}
+
+
+#readme-body
+{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    background: url('../readme/readme_background.png');
+}
+
+#freshman-1
+{
+    width: 129px;
+    height: 91px;
+    left: 393px;
+    top: 194px;
+    background: url('../readme/freshman_1_word.png');
+}
+
+#freshman-2
+{
+    width: 127px;
+    height: 100px;
+    left: 325px;
+    top: 249px;
+    background: url('../readme/freshman_2_word.png');
+}
+
+#freshman-3
+{
+    width: 105px;
+    height: 128px;
+    left: 272px;
+    top: 262px;
+    background: url('../readme/freshman_3_word.png');
+}
+
+#freshman-4
+{
+    width: 119px;
+    height: 141px;
+    left: 194px;
+    top: 271px;
+    background: url('../readme/freshman_4_word.png');
+}
+
+.fresh-inner
+{
+    display: none;
+    position: absolute;
+}
+
+#reschool-1
+{
+    width: 126px;
+    height: 76px;
+    left: 530px;
+    top: 160px;
+    background: url('../readme/reschool_1_word.png');
+}
+
+#reschool-2
+{
+    width: 100px;
+    height: 89px;
+    left: 500px;
+    top: 220px;
+    background: url('../readme/reschool_2_word.png');
+}
+
+#reschool-3
+{
+    width: 98px;
+    height: 96px;
+    left: 450px;
+    top: 274px;
+    background: url('../readme/reschool_3_word.png');
+}
+
+#reschool-4
+{
+    width: 63px;
+    height: 140px;
+    left: 399px;
+    top: 303px;
+    background: url('../readme/reschool_4_word.png');
+}
+
+.reschool-inner
+{
+    display: none;
+    position: absolute;
+}
+
+#notice-1
+{
+    width: 96px;
+    height: 152px;
+    left: 529px;
+    top: 239px;
+    position: absolute;
+    background: url('../readme/notice_1_word.png');
+}
+
+#notice-2
+{
+    width: 73px;
+    height: 167px;
+    left: 469px;
+    top: 257px;
+    position: absolute;
+    background: url('../readme/notice_2_word.png');
+}
+
+#notice-3
+{
+    width: 72px;
+    height: 160px;
+    left: 399px;
+    top: 266px;
+    position: absolute;
+    background: url('../readme/notice_3_word.png');
+}
+
+#notice-4
+{
+    width: 133px;
+    height: 145px;
+    left: 263px;
+    top: 280px;
+    position: absolute;
+    background: url('../readme/notice_4_word.png');
+}
+
+.notice-inner
+{
+    display: none;
+    position: absolute;
+}
+
+#readme-logo1
+{
+    width: 124px;
+    height: 122px;
+    left: 356px;
+    top: 74px;
+    position: absolute;
+}
+
+#readme-logo1:active
+{
+    display: block;
+    background: url('../readme/freshman.png');
+}
+
+#readme-logo2
+{
+    width: 140px;
+    height: 135px;
+    left: 491px;
+    top: 31px;
+    position: absolute;
+}
+
+#readme-logo2:active
+{
+    display: block;
+    background: url('../readme/reschool.png');
+}
+
+#readme-logo3
+{
+    width: 193px;
+    height: 194px;
+    left: 536px;
+    top: 34px;
+    /* background: url('../readme/notice.png'); */
+}
+
+#readme-logo4
+{
+     width: 126px;
+    height: 107px;
+    position: absolute;
+    top: 210px;
+    left: 603px;
+}
+
+#readme-logo4:active
+{
+    display: block;
+    background: url('../readme/download.png');
+}
+
+#read-fresh-menu
+{
+    width: 200px;
+    height: 300px;
+    top: 50px;
+    left: -215px;
+    border-radius: 10px;
+    position: absolute;
+    display: block;
+    background: orange;
+    list-style: none;
+    font-size: 1.5em;
+}
+
+.fresh-menu li
+{
+    padding: 5px;
+    margin-top: 15px;
+}
+
+.fresh-menu
+{
+    cursor: pointer;
 }
 
 #about ul
@@ -2030,7 +2376,7 @@ button.news-button
     height: 66px;
     background-repeat: no-repeat; 
     float: right;
-    margin-right: 21px;
+    margin-right: 20px;
     
 }
 .club-head:hover
@@ -2040,7 +2386,7 @@ button.news-button
     height: 66px;
     background-repeat: no-repeat; 
     float: right;
-    margin-right: 21px;
+    margin-right: 19px;
     
 }
 .department
@@ -2290,9 +2636,6 @@ button.news-button
     background: url('../club/background.png');
 }
 
-div.friends h4
-{
-}
 .friends-sort 
 
 {
@@ -2308,6 +2651,7 @@ div.friends h4
     width:100px;
     height:60px;
     float:left;
+    color:DarkBlue;
     list-style-type:none;
 }
 
@@ -2379,7 +2723,7 @@ ul.friend-other-sort
 
 .other-department li h3
 {
-    color:blue;
+    color:DarkBlue;
 }
 
 .other-department li h4
@@ -2401,13 +2745,17 @@ ul.friend-other-sort
     padding:0px;
     margin:0px;
     float:left;
-    list-style-type:circle;
+    list-style-type:none;
 }
 
-.friends-part3 img
+.friends-part3 div.avatar
 {
-    margin-left:45px;
-    margin-top:25px;
+    margin-left:40px;
+    margin-top:20px;
+    width:180px; 
+    height:310px;
+    padding:0px;
+    float:left;
 }
 
 .user-editor
@@ -2415,7 +2763,7 @@ ul.friend-other-sort
     width:400px; 
     height:350px;
     padding:0px;
-    margin-top:-175px;
+    margin-top:20px;
     margin-left:280px;
 }
 
@@ -2427,7 +2775,6 @@ ul.friend-other-sort
     list-style-type:none;
     font-size: 20px;
     text-align:left;
-    color:Indigo;
 }
 
 .user-editor input
@@ -2438,8 +2785,6 @@ ul.friend-other-sort
 
 div.friends h4
 {
-    color: yellow;
-    font-size: 20px;
     text-align: center;
     margin:0px;
 }
@@ -2519,14 +2864,6 @@ div.allmessages
     height:310px;
     margin-top:55px;
     padding:5px;
-}
-
-div.user-register
-{
-    width:675px;
-    height:370px;
-    margin-left:20px;
-    padding:0px;
 }
 
 div.friends-addfriend
@@ -2616,24 +2953,25 @@ div.profile-message-allmessages
 
 div.profile-message-allmessages table
 {
-    width:600px;
+    width:530px;
     padding:0px;
     margin-left:70px;
 }
 
 div.profile-message-allmessages tr th
 {
-    width:400px;
-    height:100px;
+    width:530px;
+    height:60px;
     padding:0px;
     margin:0px;
+    font-size:2em;
     text-align:center;
 }
 
 div.profile-message-allmessages tr td
 {
-    width:400px;
-    height:100px;
+    width:530px;
+    height:60px;
     padding:0px;
     margin:0px;
     text-align:center;
@@ -2659,15 +2997,19 @@ div.register
     margin:0px;
 }
 
-div.user-register dd
+div.register form 
 {
-    width: 488px;
-    height: 30px;
+    width:330px;
+    height:290px;
+    margin-left:30px;
+    margin-top:20px;
+    padding:0px;
 }
 
 h1
 {
     text-align:center;
+    color:green;
 }
 /*
 ul.introduce-group li
@@ -2745,7 +3087,7 @@ ul#self-message
 li.article-title
 {
     text-lign: left;
-    color: DeepPink; /* NOTE */
+    color: DarkGray;
     width: 200px;
 	height: 40px;
     margin-top:5px;
@@ -2767,13 +3109,6 @@ li#article-content
     list-style-type:none;
 }
 
-/*.article-title
-{
-    text-lign: left;
-    font-size: 20px;
-    color: DeepPink; /* NOTE 
-}*/
-
 #introduce
 {
     width: 600px;
@@ -2792,13 +3127,6 @@ table.group
     border-right-style:dotted;
     margin:0px;
 }
-
-/*table.message-data
-{
-    height:200px;
-    width:700px;
-    margin:0px;
-}*/
 
 div.profile-message-reply table
 {
@@ -2847,19 +3175,9 @@ label.group-friends-name
     height:300px;
     display:block;
 }
-
-a.mygroup-name:link {color:Aqua;}
-
-a.mygroup-name:visited {background-color:#FFFF85;}
-
-a.mygroup-name:hover {text-decoration:underline;}
-
-a.mygroup-name:active {text-decoration:underline;}
-
 a.mygroup-name
 {
-    color: blue;
-    font-size: 30px;
+    font-size: 2em;
     text-align: center;
     display: block;
     margin-right: 10px;
@@ -2872,7 +3190,7 @@ a.mymessage-title
     text-align: center;
     display: block;
     margin-right: 10px;
-}
+}*/
 
 .sep-group
 {
@@ -2902,36 +3220,13 @@ a.mymessage-title
 .friend-title
 {
     color: green;
-    font-size: 20px;
     text-align: center;
 }
 
 .friends-title
 {
-    text-lign: left;
-    color: DeepPink; /* NOTE */
-}
-
-
-
-tr.friends-title
-{
-    margin: 0px;
-}
-
-td.friends-close-ones
-{
-    height: 5%;
-    width: 5%;
-    margin: 0px;
-}
-
-td.showarticle
-{
-    border: 1px solid blue;
-    height: 10%;
-    width: 80%;
-    margin: 0px;
+    text-align:center;
+    color:DarkSlateGray;
 }
 
 img.user_img
@@ -3293,15 +3588,92 @@ li.enabled a
     padding-left:44px;
 }
 
-#forum-create-form
+#forum-create-form .form-top
 {
-    background: url('../forum/create/background.png');
-    background-repeat:no-repeat;
-    padding: 40px;
-    width: 608px;
-    height: 311px;
-    margin-left: 35px;
-    
+    background-image: url('../forum/create/background_top.png');
+    background-repeat: no-repeat;
+    margin-left:35px;
+    width:656px;
+    height:81px;
+    padding:41px 0 0 32px;
+}
+
+#forum-create-form .form-top p
+{
+    margin: 0px;
+    width: 280px;
+    height: 20px;
+    padding: 5px;
+    padding-left: 8px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    background-color: rgba(175,191,232,0.5);
+    color: #1042ba;
+    visibility: visible;
+}
+
+#forum-create-form .form-top dl
+{
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+#forum-create-form .form-body
+{
+    background-image: url('../forum/create/background_body.png');
+    margin-left:35px;
+    margin-top:0px;
+    width:656px;
+    min-height:155px;
+    padding:10px 0 0 32px;
+}
+
+#forum-create-form .form-body dl,
+#forum-create-form .form-body input
+{
+    margin:0 0 10px 0;
+    padding:0px;
+}
+
+#forum-create-form .form-body .article-is-top
+{
+    margin: 0px;
+}
+
+#forum-create-form .form-body p
+{
+    height: 40px;
+    width: 600px;
+    visibility:hidden;
+}
+
+#forum-create-form .form-body #form-create-top
+{
+    margin-top: 5px;
+}
+
+#forum-create-form .form-foot
+{
+    background-image: url('../forum/create/background_foot.png');
+    background-repeat: no-repeat;
+    margin-left:35px;
+    margin-top:0px;
+    width:656px;
+    height:94px;
+    padding:20px 0 0 32px;
+}
+
+#forum-create-form .form-foot input,
+#forum-create-form .form-foot button
+{
+    padding-top:0px;
+}
+
+#forum-create-form .top-checkbox
+{
+    margin-left: 15px;
+    padding: 0px;
+    margin-top: 5px;
 }
 
 #forum-create-text-title
@@ -3404,6 +3776,7 @@ li.enabled a
     width: 165px;
     height: 283px;
     border-radius: 6px;
+    border: 2px solid #ffffff;
     margin-left: 45px;
     padding-top: 7px;
     float: left;
@@ -3448,25 +3821,27 @@ li.enabled a
 
 #forum-view-body .forum-view-title
 {
-    width: 400px;
-    height: 40px;
+    width: 389px;
+    height: 31px;
     border-radius: 6px;
     background: #97d2f3;
     float: left;
     margin-left: 20px;
     margin-bottom: 3px;
-    border: 1px solid #97d2f3;
+    border: 2px solid #ffffff;
+    padding: 9px 0 0 11px;
 }
 
 #forum-view-body #forum-view-content
 {
-    width: 400px;
-    height: 200px;
+    width: 389px;
+    height: 191px;
     border-radius: 6px;
     background: #ffffff;
     float: left;
     margin-left: 20px;
     border: 1px solid black;
+    padding: 9px 0 0 11px;
 }
 
 .hululu
@@ -3476,7 +3851,7 @@ li.enabled a
     height: 30px;
     position: absolute;
     top: 75px;
-    left: 195px;
+    left: 199px;
 }
 
 #forum-view-body .forum-view-comments
@@ -3487,7 +3862,7 @@ li.enabled a
     background: #ffffff;
     float: right;
     margin-top: 2px;
-    margin-right: 51px;
+    margin-right: 46px;
     border: 2px solid #97d2f3;
 }
 
@@ -3503,14 +3878,15 @@ li.enabled a
 
 #forum-view-replies .reply-content
 {
-    width: 400px;
-    height: 250px;
+    width: 389px;
+    height: 241px;
     border-radius: 6px;
     background: #ffffff;
     float: left;
     margin-left: 20px;
     margin-top: 20px;
     border: 1px solid black;
+    padding: 9px 0 0 11px;
 }
 
 #forum-forum-top2
@@ -3532,6 +3908,7 @@ li.enabled a
 #forum-forum-body #create-article
 {
     background: url('../forum/forum/eraser.png');
+    background-repeat: no-repeat;
     width:102px;
     height:38px;
     float:left;
@@ -3591,6 +3968,7 @@ li.enabled a
 {
     width: 615px;
     margin-left:20px;
+    border-spacing: 0px;
 }
 
 #forum-forum-body #body-table .table-title th,
@@ -3629,8 +4007,14 @@ li.enabled a
 #forum-forum-body #body-table .table-foot td.tail
 {
     background: url('../forum/forum/pencil_tail.png');
+    background-repeat: no-repeat;
     height: 40px;
     width: 12px;
+}
+
+#forum-forum-body #body-table tfoot td
+{
+    border: none;
 }
 
 #forum-forum-body #body-table .table-body

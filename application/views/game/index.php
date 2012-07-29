@@ -2,7 +2,8 @@
 <h2> <<?php echo $nickname; ?> - <?php echo $username ?>></h2>
 <span>等級：LV.<?php echo $level;?> [ <?php echo $exp;?> / <?php if($level<20) echo $level_exp.' (下一等級)'; else echo '∞ (最高等級)';?> ]</br></span>
 <span>金錢：<?php echo $money; ?> 金幣 [ <?php echo $money; ?> / <?php echo $character_data->total_money; ?> (總獲得) ]</span>
-
+<span>花費：<?php echo $character_data->total_money-$money; ?> 金幣
+<span>身價：<?php echo $character_data->getBodyPrice($watch_id); ?> 金幣
 <span>登入：<?php echo $online_count; ?> 次</span>
 
 <?php if ( $character_data->hair === null ) : ?>
