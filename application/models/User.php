@@ -135,6 +135,7 @@ class User extends CActiveRecord
         $this->is_admin = $this->is_admin ? true : false;
         $this->register_ip = $this->long2ip($this->register_ip);
         $this->last_login_ip = $this->long2ip($this->last_login_ip);
+        $this->last_login_timestamp = (integer)$this->last_login_timestamp;
         $this->created = Yii::app()->format->datetime($this->created);
         $this->updated = Yii::app()->format->datetime($this->updated);
     }

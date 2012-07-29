@@ -38,4 +38,4 @@
     </div>
 </div>
 <button><a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>">編輯</a></button>
-<button><a href="<?php echo Yii::app()->createUrl('site/index'); ?>">BACK</a></button>
+<button onClick= "history.back()" >BACK</button>

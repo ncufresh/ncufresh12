@@ -1,6 +1,6 @@
 <h1>MyMessage</h1>
 <div class="profile-message-allmessages">
-    <div class="allmessages">
+    <div class="my-all-messages">
         <table>
             <tr>
                 <th>標題</th>
@@ -21,4 +21,4 @@
         </table>
     </div>
 </div>
-<button><a href="<?php echo Yii::app()->createUrl('profile/profile'); ?>">回到個人檔案</a></button>
+<button onClick= "history.back()" >BACK</button>
