@@ -2,13 +2,6 @@
 
 class ChatController extends Controller
 {
-    public function init()
-    {
-        parent::init();
-        Yii::import('application.models.Chat.*');
-        return true;
-    }
-
     public function filters()
     {
         return array(
@@ -81,7 +74,8 @@ class ChatController extends Controller
 
     public function actionAvatar($id)
     {
-        $this->_data = $this->widget('Avatar', array(
+        $this->_data['id'] = $id;
+        $this->_data['avatar'] = $this->widget('Avatar', array(
             'id'        => $id
         ), true);
     }

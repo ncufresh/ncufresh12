@@ -88,7 +88,7 @@ class Chat extends CActiveRecord
                                  ? $entry['receiver_id']
                                  : $entry['sender_id'],
                     'name'      => User::model()->findByPk($entry['sender_id'])->username,
-                    'icon'      => $entry['sender_id'],
+                    'avatar'    => $entry['sender_id'],
                     'message'   => $entry['message']
                 );
             }
@@ -105,7 +105,7 @@ class Chat extends CActiveRecord
                 'name'      => $entry->sender
                              ? $entry->sender->username
                              : 'Unknown',
-                'icon'      => $entry->sender_id,
+                'avatar'    => $entry->sender_id,
                 'message'   => $entry->message
             );
         }
@@ -154,7 +154,7 @@ class Chat extends CActiveRecord
                 'name'      => $entry->sender
                              ? $entry->sender->username
                              : 'Unknown',
-                'icon'      => $entry->sender_id,
+                'avatar'    => $entry->sender_id,
                 'message'   => $entry->message
             );
         }
@@ -216,7 +216,7 @@ class Chat extends CActiveRecord
                 'name'      => $entry->sender
                              ? $entry->sender->username
                              : 'Unknown',
-                'icon'      => $entry->sender_id,
+                'avatar'    => $entry->sender_id,
                 'message'   => $entry->message
             );
         }

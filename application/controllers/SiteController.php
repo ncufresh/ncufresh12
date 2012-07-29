@@ -5,7 +5,6 @@ class SiteController extends Controller
     public function init()
     {
         parent::init();
-        Yii::import('application.models.Chat.*');
         Yii::import('application.models.News.*');
         Yii::import('application.models.Game.*');
         return true;
@@ -135,19 +134,16 @@ class SiteController extends Controller
                 array(
                     'id'        => 1,
                     'name'      => 'Test 1',
-                    'icon'      => Yii::app()->request->baseUrl . '/statics/images/unknown.png',
                     'active'    => true
                 ),
                 array(
                     'id'        => 2,
                     'name'      => 'Demodemo',
-                    'icon'      => Yii::app()->request->baseUrl . '/statics/images/unknown.png',
                     'active'    => true
                 ),
                 array(
                     'id'        => 3,
                     'name'      => 'Adminadmin',
-                    'icon'      => Yii::app()->request->baseUrl . '/statics/images/unknown.png',
                     'active'    => true
                 )
             );

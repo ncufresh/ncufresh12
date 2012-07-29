@@ -366,7 +366,7 @@
             chatFormClass:          'chat-form',
             chatInputClass:         'chat-input',
             chatMessagesClass:      'chat-messages',
-            chatIconClass:          'chat-icon',
+            chatAvatarClass:        'chat-avatar',
             unknownIcon:            'unknown.png'
         }, options);
         return $(this).click(function()
@@ -388,7 +388,7 @@
                 .attr('id', $.chat.options.friendListId)
                 .appendTo($('body'));
             title = $('<span></span>')
-                .text('Chat Room')
+                .text('談天說地')
                 .click(function()
                 {
                     $.fn.chat.closeFriendList();
@@ -427,15 +427,22 @@
                     $.fn.chat.showChatDialog($(this).data('id'));
                 })
                 .appendTo(wrap);
-            var icon = $('<img />')
-                .attr(
-                    'src',
-                    data.icon ? data.icon : $.chat.options.unknownIcon
-                )
+            var avatar = $('<div></div>')
+                .attr('id', 'friend-list-avatar-' + data.id)
                 .appendTo(entry);
             var name = $('<p>')
                 .text(data.name)
                 .appendTo(entry);
+            $.get(
+                $.configures.chatAvatarUrl,
+                {
+                    id: data.id
+                },
+                function(response)
+                {
+                    $('#friend-list-avatar-' + response.id).replaceWith(response.avatar);
+                }
+            );
         }
         return list;
     };
@@ -589,20 +596,21 @@
                         var entry = $('<div></div>')
                             .addClass($.chat.options.chatMessagesClass)
                             .appendTo($(this));
-                        var icon = $('<div></div>')
-                            .addClass($.chat.options.chatIconClass)
+                        var avatar = $('<div></div>')
+                            .addClass('chat-avatar-' + data.id)
+                            .addClass($.chat.options.chatAvatarClass)
                             .appendTo(entry);
                         var name = $('<p></p>')
                             .text(data.name)
-                            .appendTo(icon);
+                            .appendTo(avatar);
                         $.get(
                             $.configures.chatAvatarUrl,
                             {
-                                id: data.icon
+                                id: data.avatar
                             },
                             function(response)
                             {
-                                icon.prepend(response);
+                                $('.chat-avatar-' + response.id).prepend(response.avatar);
                             }
                         );
                     }
