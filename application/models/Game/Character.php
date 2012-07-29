@@ -163,6 +163,20 @@ class Character extends CActiveRecord
             )
          );
     }
+
+    public function getItemsByCategory($category)
+    {   
+        $category = (integer)$category;
+        $array = array();
+        foreach ($this->items_bag as $item)
+        {
+            if ( $item->translation->items_category == $category )
+            {
+                $array[] = $item;
+            }
+        }
+        return $array;
+    }
     
     public function getLevel($id)
     {   
@@ -227,16 +241,100 @@ class Character extends CActiveRecord
 
     public static function getAvatar($id)
     {
+        $character = Character::model()->findByPk($id);
+        $skin = 'skin/'.$character->skin->url.'.png';
+        //echo $skin;
+        if( $character->eyes === null)
+        {
+            $eyes = '../images/unknown.png';
+        }
+        else
+        {
+            $eyes = 'eyes/'.$character->eyes->url.'.png';
+        }
+        
+        if( $character->hair === null)
+        {
+            $hair = '../images/unknown.png';
+        }
+        else
+        {
+            $hair = 'hair/'.$character->hair->url.'.png';
+        }
+        
+        if( $character->shoes === null)
+        {
+            $shoes = '../images/unknown.png';
+        }
+        else
+        {
+            $shoes = 'shoes/'.$character->shoes->url.'.png';
+        }
+        
+        if( $character->pants === null)
+        {
+            $pants = '../images/unknown.png';
+        }
+        else
+        {
+            $pants = 'pants/'.$character->pants->url.'.png';
+        }
+        
+        if( $character->clothes === null)
+        {
+            $clothes = '../images/unknown.png';
+        }
+        else
+        {
+            $clothes = 'clothes/'.$character->clothes->url.'.png';
+        }
+        
+        if( $character->others === null)
+        {
+            $others = '../images/unknown.png';
+        }
+        else
+        {
+            $others = 'others/'.$character->others->url.'.png';
+        }
+        
         return array(
-            '身體皮膚名稱'    => 'skin/7e46ccbac1a2ea2bf59f649ea279ff18.png',
-            '眼睛部位名稱'    => 'eyes/7d51284d2cdad516bc348104a1d1805e.png',
-            '頭髮髮型名稱'    => 'hair/95728fcabcc6cdeafac6d2bd951804be.png',
-            '鞋子物品名稱'    => 'shoes/90f4dfcd8cc45edad70c06997973a4b0.png',
-            '褲子部位名稱'    => 'pants/414dcd369e5d60aa94cf80d0f0c49792.png',
-            '褲子部位名稱'    => 'pants/414dcd369e5d60aa94cf80d0f0c49792.png',
-            '衣服衣物名稱'    => 'cloths/0fed7f93d5460bdbb2014393bd865d28.png',
-            '其他部位名稱'    => 'others/045950659588c9aac4708a31966636dc.png'
+            '身體皮膚名稱'    => $skin,
+            '眼睛部位名稱'    => $eyes,
+            '頭髮髮型名稱'    => $hair,
+            '鞋子物品名稱'    => $shoes,
+            '褲子部位名稱'    => $pants,
+            '衣服衣物名稱'    => $clothes,
+            '其他部位名稱'    => $others
         );
+    }
+    
+    public static function getBodyPrice($id)
+    {
+        $character = Character::model()->findByPk($id);
+        $price = 0;
+        if( $character->skin !== null)
+            $price = $price + $character->skin->price;
+            
+        if( $character->eyes !== null)
+            $price = $price + $character->eyes->price;
+        
+        if( $character->hair !== null)
+            $price = $price + $character->hair->price;
+        
+        if( $character->shoes !== null)
+            $price = $price + $character->shoes->price;
+        
+        if( $character->pants !== null)
+            $price = $price + $character->pants->price;
+        
+        if( $character->clothes !== null)
+            $price = $price + $character->clothes->price;
+        
+        if( $character->others !== null)
+            $price = $price + $character->others->price;
+        
+        return $price;
     }
     
     public static function createCharacter($id,$sex)

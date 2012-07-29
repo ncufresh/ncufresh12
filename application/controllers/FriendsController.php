@@ -100,22 +100,17 @@ class FriendsController extends Controller
     public function actionMakeFriends() 
     {
         $userId = Yii::app()->user->id;
+        $this->_data['token'] = Yii::app()->security->getToken();
         if ( isset($_POST['friends']) )
         {
-            
             foreach ( $_POST['friends'] as $friendid )
             {   
                 $friend = new Friend();
-                $exist = $friend->isExist($userId, $friendid);
-                if ( $exist && $friend->openFriend($userId, $friendid) )
+                $exist = $friend->isExist($userId,$friendid);
+                if ( $userId <> $friendid && !$exist )
                 {
-                }
-                else if ( !$exist && $friend->addFriend($userId, $friendid) )
-                {
-                }
-                else
-                {
-                    echo '交友失敗了= =';
+                    $friend->addFriend($userId, $friendid);
+                    $friend->makeFriend($userId, $friendid);
                 }
             }
             $this->redirect(array('friends/myfriends'));
@@ -132,20 +127,12 @@ class FriendsController extends Controller
         if ( isset($_POST['friends']) )
         {
             foreach ( $_POST['friends'] as $cancelfriend )
-            {   
-                $close = Friend::model()->closeFriend($userID,$cancelfriend);
-                if ( !$close )
-                {
-                    echo '沒有兩筆資料存在喔';
-                    break;
-                }
-             }
+            {
+                Friend::model()->deleteFriend($userID, $cancelfriend);
+            }
             $this->redirect(array('friends/myfriends'));            
         }
-        else
-        {
-            $this->redirect(array('friends/myfriends'));
-        }
+        $this->redirect(array('friends/myfriends'));
     }
 
     public function actionMyGroups()
@@ -296,6 +283,38 @@ class FriendsController extends Controller
         $userID = Yii::app()->user->id;
         $this->render('allgroups', array(
             'groups'         => Group::model()->FindGroup($userID)
+        ));
+   }
+
+   public function actionRequest() //確認好友關係
+   {
+        $userID = Yii::app()->user->id;
+        $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
+        if ( isset($_POST['friends']) && isset($_POST['agree']) )
+        {
+            foreach ( $_POST['friends'] as $friendid )
+            {   
+                $friend = new Friend();
+                $exist = $friend->isExist($userID,$friendid);
+                if ( $userID <> $friendid && !$exist )
+                {
+                    $friend->addFriend($userID, $friendid);
+                    $friend->makeFriend($userID, $friendid);
+                }
+            }
+            $this->redirect(array('friends/myfriends'));
+        }
+        else if ( isset($_POST['friends']) && isset($_POST['cancel']) )
+        {
+            foreach ( $_POST['friends'] as $cancelfriend )
+            {
+                Friend::model()->deleteFriend($userID, $cancelfriend);
+            }
+            $this->redirect(array('friends/myfriends'));      
+        }
+        $this->render('request', array(
+            'friends'         => Friend::model()->getRequests($userID),
+            'target'        => $imgUrl
         ));
    }
 }

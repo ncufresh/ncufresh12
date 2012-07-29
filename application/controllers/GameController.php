@@ -57,9 +57,10 @@ class GameController extends Controller
             $level = Character::model()->getLevel($id); //傳入id 查詢等級
             $level_exp = Character::model()->getLevelExp($level); //傳入等級 查詢等級經驗
             $nickname = $profile_data->nickname;
+            $online_count = $user_data->online_count;
             $username = $user_data->username;
             $content = $this->renderPartial('index', array('exp' => $character_data->exp, 'level' => $level, 'level_exp' => $level_exp,
-            'character_data' => $character_data, 'user_data' => $user_data, 'profile_data' => $profile_data,
+            'character_data' => $character_data, 'user_data' => $user_data, 'profile_data' => $profile_data, 'online_count' => $online_count,
             'money' => $character_data->money,'nickname' => $nickname, 'username' => $username, 'watch_id' => $id), true);
             $this->render('game_system', array('content' => $content, 'watch_id' => $id));
         }
@@ -127,9 +128,10 @@ class GameController extends Controller
         else
         {
             $this->setPageTitle(Yii::app()->name . ' - 道具列表');
+            $character_data = Character::model()->findByPk($id);
             // $this->render('index', array('user_id' => $id));
-            $items_bag = Character::model()->findByPk($id)->items_bag;
-            $content = $this->renderPartial('items',array('items_bag' => $items_bag), true);
+            $items_bag = $character_data->items_bag;
+            $content = $this->renderPartial('items',array('character_data' => $character_data), true);
             $this->render('game_system', array('content' => $content, 'watch_id' => $id));
         }
     }

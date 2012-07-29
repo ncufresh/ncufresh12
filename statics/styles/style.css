@@ -62,12 +62,6 @@ form button
     padding: 4px 8px;
 }
 
-form input[type="radio"],
-form input[type="checkbox"]
-{
-    width: auto;
-}
-
 form textarea
 {
     height: 160px;
@@ -106,11 +100,18 @@ form dl.select
     width: 95%;
 }
 
-form dl.radio label,
-form dl.checkbox label,
-form dl.select label
+form dl.radio dt,
+form dl.checkbox dt,
+form dl.select dt
 {
-    padding-left: 0;
+    display: none;
+}
+
+form dl.radio input,
+form dl.checkbox input
+form dl.select input
+{
+    width: auto;
 }
 
 form div
@@ -570,25 +571,25 @@ a:hover
 
 #sidebar .profile .avatar
 {
-    float: left;
-    height: 48px;
-    margin: 3px;
-    width: 48px;
+    background: #FFFFFF;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    height: 120px;
+    margin: 5px 0;
+    width: 180px;
 }
 
 #sidebar .avatar img
 {
-    left: 120%;
-    margin-left: -180%;
-    top: -30%;
-    width: 240%;
+    margin: 0 10px;
+    width: 160px;
 }
 
 #sidebar .profile p
 {
     height: 42px;
     line-height: 42px;
-    margin: 3px 0 3px 55px;
+    margin: 3px 0;
     padding: 3px;
     text-align: center;
 }
@@ -887,6 +888,11 @@ a:hover
 {
     margin: -3px 0;
     width: 160px;
+}
+
+.scroll-content
+{
+    overflow: hidden;
 }
 
 .chat-dialog .chat-display
@@ -1714,8 +1720,34 @@ button.news-button
     display: none;
     width: 649px;
     height: 449px;
+    
+}
+
+.nculife-style1
+{
+    background: url('../images/life_yellow.png');
+}
+
+.nculife-style2
+{
+    background: url('../images/life_green.png');
+}
+
+.nculife-style3
+{
+    background: url('../images/life_pink.png');
+}
+
+.nculife-style4
+{
     background: url('../images/life_purple.png');
 }
+
+.nculife-style5
+{
+    background: url('../images/life_blue.png');
+}
+
 
 #nculife-dialog p
 {
@@ -1734,8 +1766,33 @@ button.news-button
     width: 42px;
     height: 42px;
     margin: -15px 0px 0px 620px;
-    display: inline-block;
+    display: block;
     background: url('../images/life_exit.png');
+}
+
+.life-top1
+{
+    background:url('../images/life_top1.png');
+}
+
+.life-top2
+{
+    background:url('../images/life_top2.png');
+}
+
+.life-top3
+{
+    background:url('../images/life_top3.png');
+}
+
+.life-top4
+{
+    background:url('../images/life_top4.png');
+}
+
+.life-top5
+{
+    background:url('../images/life_top5.png');
 }
 
 #nculife-title
@@ -1744,7 +1801,6 @@ button.news-button
     height: 125px;
     margin: -72px 0 0 10px;
     display: inline-block;
-    background:url('../images/life_top1.png');
 }
 
 #nculife-title h4
@@ -1839,7 +1895,7 @@ button.news-button
     background: url('../images/life_rope.png') repeat-y;
     width: 150px;
     height: 0px;
-    left: -15px;
+    left: -16px;
     top: 118px;
     padding: 0 0 0 16px;
     position: absolute;
@@ -1851,7 +1907,7 @@ button.news-button
     background: url('../images/life_rope.png') repeat-y;
     width: 150px;
     height: 0px;
-    left: 32px;
+    left: 35px;
     top: 180px;
     padding: 0 0 0 16px;
     position: absolute;
@@ -1937,6 +1993,192 @@ button.news-button
     height: 330px;
     top: 20px;
     left: 540px;
+}
+
+#readme-body
+{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    background: url('../readme/readme_background.png');
+    
+}
+
+#freshman-1
+{
+    width: 129px;
+    height: 91px;
+    display: none;
+    left: 393px;
+    top: 194px;
+    position: absolute;
+    background: url('../readme/freshman_1_word.png');
+}
+
+#freshman-2
+{
+    width: 127px;
+    height: 100px;
+    display: none;
+    left: 325px;
+    top: 249px;
+    position: absolute;
+    background: url('../readme/freshman_2_word.png');
+}
+
+#freshman-3
+{
+    width: 105px;
+    height: 128px;
+    left: 272px;
+    top: 262px;
+    display: none;
+    position: absolute;
+    background: url('../readme/freshman_3_word.png');
+}
+
+#freshman-4
+{
+    width: 119px;
+    height: 141px;
+    display: none;
+    left: 194px;
+    top: 271px;
+    position: absolute;
+    background: url('../readme/freshman_4_word.png');
+}
+
+#reschool-1
+{
+    width: 126px;
+    height: 76px;
+    display: none;
+    left: 530px;
+    top: 160px;
+    position: absolute;
+    background: url('../readme/reschool_1_word.png');
+}
+
+#reschool-2
+{
+    width: 100px;
+    height: 89px;
+    display: none;
+    left: 500px;
+    top: 220px;
+    position: absolute;
+    background: url('../readme/reschool_2_word.png');
+}
+
+#reschool-3
+{
+    width: 98px;
+    height: 96px;
+    display: none;
+    left: 450px;
+    top: 274px;
+    position: absolute;
+    background: url('../readme/reschool_3_word.png');
+}
+
+#reschool-4
+{
+    width: 63px;
+    height: 140px;
+    display: none;
+    left: 399px;
+    top: 303px;
+    position: absolute;
+    background: url('../readme/reschool_4_word.png');
+}
+
+#notice-1
+{
+    width: 96px;
+    height: 152px;
+    display: block;
+    left: 529px;
+    top: 239px;
+    position: absolute;
+    background: url('../readme/notice_1_word.png');
+}
+
+#notice-2
+{
+    width: 73px;
+    height: 167px;
+    display: block;
+    left: 469px;
+    top: 257px;
+    position: absolute;
+    background: url('../readme/notice_2_word.png');
+}
+
+#notice-3
+{
+    width: 72px;
+    height: 160px;
+    display: block;
+    left: 399px;
+    top: 266px;
+    position: absolute;
+    background: url('../readme/notice_3_word.png');
+}
+
+#notice-4
+{
+    width: 133px;
+    height: 145px;
+    display: block;
+    left: 263px;
+    top: 280px;
+    position: absolute;
+    background: url('../readme/notice_4_word.png');
+}
+
+#readme-logo1
+{
+    width: 124px;
+    height: 122px;
+    display: block;
+    opacity: 0;
+    left: 357px;
+    top: 75px;
+    position: absolute;
+    background: url('../readme/freshman.png');
+}
+
+#readme-logo2
+{
+     width: 140px;
+    height: 135px;
+    display: block;
+    left: 492px;
+    top: 32px;
+    position: absolute;
+    background: url('../readme/reschool.png');
+}
+
+#readme-logo3
+{
+     width: 193px;
+    height: 194px;
+    display: block;
+    position: absolute;
+    left: 536px;
+    top: 34px;
+    background: url('../readme/notice.png');
+}
+
+#readme-logo4
+{
+     width: 126px;
+    height: 107px;
+    display: block;
+    position: absolute;
+    top: 210px;
+    left: 603px;
+    background: url('../readme/download.png');
 }
 
 #about ul
@@ -2026,19 +2268,21 @@ button.news-button
 .club-head
 {
     background: url('../club/club-head.png');
-    width: 250px;
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
-    float: left;
+    float: right;
+    margin-right: 21px;
     
 }
 .club-head:hover
 {
     background: url('../club/club-head2.png');
-    width: 250px;
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
-    float: left;
+    float: right;
+    margin-right: 21px;
     
 }
 .department
@@ -2049,12 +2293,11 @@ button.news-button
     width: 750px;
     position: relative;
     display: inline-block;
-    margin-top: -9px;
 }
 .department-head
 {
     background: url('../club/department-head.png');
-    width: 250px;
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
     float: left;
@@ -2062,7 +2305,7 @@ button.news-button
 .department-head:hover
 {
     background: url('../club/department-head2.png');
-    width: 250px;
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
     float: left;
@@ -2079,49 +2322,52 @@ button.news-button
 .student-head
 {
     background: url('../club/student-head.png');
-    width: 250px;
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
     float: left;
+    margin-left: 23px;
 }
 
 .student-head:hover
 {
-    background: url('../club/studnt-head2.png');
-    width: 250px;
+    background: url('../club/student-head2.png');
+    width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
     float: left;
+    margin-left: 23px;
 }
 
 .club-list
 {
     text-align: left;
     overflow: hidden;
-    margin-top: 71px;
-    margin-left: 50px;
+    margin-top: 56px;
+    margin-left: 30px;
 }
 
 .club-list ul
 {
     float: left;
     padding: 0;
-    width: 25%;
+    width: 24%;
     list-style: none;
 }
 
 .department-list
 {
     text-align: left;
-    margin-top: 60px;
-    margin-left: 50px;
+    margin-top: 98px;
+    margin-left: 91px;
 }
 
 .department-list ul
 {
     float: left;
     padding: 0;
-    width: 16.5%;
+    width: 30%;
+    height: 320px;
     list-style: none;
 }
 
@@ -2176,10 +2422,11 @@ button.news-button
 }
 .club-display-head
 {
-    height: 88px;
+    height: 105px;
     width: 530px;
     position: relative;
     float: right;
+    background-repeat: no-repeat;
 }
 #club-head-1
 {
@@ -2197,12 +2444,6 @@ button.news-button
 .club-display-head a
 {
     float: right;
-}
-
-.club-display-head h1
-{
-    margin-top: 2px;
-    margin-left: 27px;
 }
 
 .club-display-bottom
@@ -2263,12 +2504,36 @@ button.news-button
 #club-schedule-content
 {
     background: skyblue;
-    display: block;
+    display: none;
     width: 204px;
     height: 329px;
 }
 
+.modify-table
+{
+    padding: 0 5% 5% 0;
+    position: relative;
+    width: 45%;
+    float: left;
+}
+
+.club-web
+{
+    height: 55px;
+    float: left;
+    position: relative;
+}
+
+.club-modify-table
+{
+    padding: 5px;
+    height: 600px;
+    width: 750px;
+    background: url('../club/background.png');
+}
+
 .friends-sort 
+
 {
     width:210px;
     height:120px;
@@ -2282,6 +2547,7 @@ button.news-button
     width:100px;
     height:60px;
     float:left;
+    color:DarkBlue;
     list-style-type:none;
 }
 
@@ -2353,7 +2619,7 @@ ul.friend-other-sort
 
 .other-department li h3
 {
-    color:blue;
+    color:DarkBlue;
 }
 
 .other-department li h4
@@ -2375,13 +2641,17 @@ ul.friend-other-sort
     padding:0px;
     margin:0px;
     float:left;
-    list-style-type:circle;
+    list-style-type:none;
 }
 
-.friends-part3 img
+.friends-part3 div.avatar
 {
-    margin-left:45px;
-    margin-top:25px;
+    margin-left:40px;
+    margin-top:20px;
+    width:180px; 
+    height:310px;
+    padding:0px;
+    float:left;
 }
 
 .user-editor
@@ -2389,7 +2659,7 @@ ul.friend-other-sort
     width:400px; 
     height:350px;
     padding:0px;
-    margin-top:-175px;
+    margin-top:20px;
     margin-left:280px;
 }
 
@@ -2401,7 +2671,6 @@ ul.friend-other-sort
     list-style-type:none;
     font-size: 20px;
     text-align:left;
-    color:Indigo;
 }
 
 .user-editor input
@@ -2412,8 +2681,6 @@ ul.friend-other-sort
 
 div.friends h4
 {
-    color: yellow;
-    font-size: 20px;
     text-align: center;
     margin:0px;
 }
@@ -2493,14 +2760,6 @@ div.allmessages
     height:310px;
     margin-top:55px;
     padding:5px;
-}
-
-div.user-register
-{
-    width:675px;
-    height:370px;
-    margin-left:20px;
-    padding:0px;
 }
 
 div.friends-addfriend
@@ -2590,24 +2849,25 @@ div.profile-message-allmessages
 
 div.profile-message-allmessages table
 {
-    width:600px;
+    width:530px;
     padding:0px;
     margin-left:70px;
 }
 
 div.profile-message-allmessages tr th
 {
-    width:400px;
-    height:100px;
+    width:530px;
+    height:60px;
     padding:0px;
     margin:0px;
+    font-size:2em;
     text-align:center;
 }
 
 div.profile-message-allmessages tr td
 {
-    width:400px;
-    height:100px;
+    width:530px;
+    height:60px;
     padding:0px;
     margin:0px;
     text-align:center;
@@ -2633,15 +2893,19 @@ div.register
     margin:0px;
 }
 
-div.user-register dd
+div.register form 
 {
-    width: 488px;
-    height: 30px;
+    width:330px;
+    height:290px;
+    margin-left:30px;
+    margin-top:20px;
+    padding:0px;
 }
 
 h1
 {
     text-align:center;
+    color:green;
 }
 /*
 ul.introduce-group li
@@ -2719,7 +2983,7 @@ ul#self-message
 li.article-title
 {
     text-lign: left;
-    color: DeepPink; /* NOTE */
+    color: DarkGray;
     width: 200px;
 	height: 40px;
     margin-top:5px;
@@ -2741,13 +3005,6 @@ li#article-content
     list-style-type:none;
 }
 
-/*.article-title
-{
-    text-lign: left;
-    font-size: 20px;
-    color: DeepPink; /* NOTE 
-}*/
-
 #introduce
 {
     width: 600px;
@@ -2766,13 +3023,6 @@ table.group
     border-right-style:dotted;
     margin:0px;
 }
-
-/*table.message-data
-{
-    height:200px;
-    width:700px;
-    margin:0px;
-}*/
 
 div.profile-message-reply table
 {
@@ -2821,19 +3071,9 @@ label.group-friends-name
     height:300px;
     display:block;
 }
-
-a.mygroup-name:link {color:Aqua;}
-
-a.mygroup-name:visited {background-color:#FFFF85;}
-
-a.mygroup-name:hover {text-decoration:underline;}
-
-a.mygroup-name:active {text-decoration:underline;}
-
 a.mygroup-name
 {
-    color: blue;
-    font-size: 30px;
+    font-size: 2em;
     text-align: center;
     display: block;
     margin-right: 10px;
@@ -2846,7 +3086,7 @@ a.mymessage-title
     text-align: center;
     display: block;
     margin-right: 10px;
-}
+}*/
 
 .sep-group
 {
@@ -2876,36 +3116,13 @@ a.mymessage-title
 .friend-title
 {
     color: green;
-    font-size: 20px;
     text-align: center;
 }
 
 .friends-title
 {
-    text-lign: left;
-    color: DeepPink; /* NOTE */
-}
-
-
-
-tr.friends-title
-{
-    margin: 0px;
-}
-
-td.friends-close-ones
-{
-    height: 5%;
-    width: 5%;
-    margin: 0px;
-}
-
-td.showarticle
-{
-    border: 1px solid blue;
-    height: 10%;
-    width: 80%;
-    margin: 0px;
+    text-align:center;
+    color:DarkSlateGray;
 }
 
 img.user_img
