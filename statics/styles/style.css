@@ -1042,68 +1042,11 @@ table.gsc-completion-container
     border: 3px solid #7C7C7C;
 }
 
-#readme-list ul li
-{
-    list-style: none;
-}
-
-#readme-menu
-{
-    margin: 0;
-    padding: 0;
-    width: 500px;
-    height: 500px;
-    position: relative;
-    overflow: hidden;
-}
-
-#nculife-wrapper
-{
-     position: relative;
-}
-
-#caption
-{
-    position: absolute;
-    top: 0;
-    left: -300px;
-}
-
-#caption ul
-{
-    background: url('../images/background.png') repeat;
-    width: 300px;
-    height: 200px;
-    float: left;
-}
-
-#caption a
-{
-    display: block;
-    float: left;
-    width: 50px;
-    height: 50px;
-    background: url('../images/chat.png');
-}
-
 ul#nculife-details
 {  
     margin: 0;
     padding: 0;
 }
-
-#readme-direct
-{
-    width: 50px;
-    height: 50px;
-    display: block;
-}
-
-/* #readme-direct img
-{
-    width: 50px;
-    height: 50px;
-} */
 
 /**
  * Index style
@@ -1748,7 +1691,6 @@ button.news-button
     background: url('../images/life_blue.png');
 }
 
-
 #nculife-dialog p
 {
     margin: 0;
@@ -1995,13 +1937,20 @@ button.news-button
     left: 540px;
 }
 
+#readme-fresh
+{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    background: url('../readme/freshman_background.png');
+}
+
 #readme-body
 {
     width: 750px;
     height: 450px;
     position: relative;
     background: url('../readme/readme_background.png');
-    
 }
 
 #freshman-1
@@ -2150,7 +2099,7 @@ button.news-button
 
 #readme-logo2
 {
-     width: 140px;
+    width: 140px;
     height: 135px;
     display: block;
     left: 492px;
@@ -2159,7 +2108,7 @@ button.news-button
     background: url('../readme/reschool.png');
 }
 
-#readme-logo3
+/* #readme-logo3
 {
      width: 193px;
     height: 194px;
@@ -2168,7 +2117,7 @@ button.news-button
     left: 536px;
     top: 34px;
     background: url('../readme/notice.png');
-}
+} */
 
 #readme-logo4
 {
@@ -3484,15 +3433,92 @@ li.enabled a
     padding-left:44px;
 }
 
-#forum-create-form
+#forum-create-form .form-top
 {
-    background: url('../forum/create/background.png');
-    background-repeat:no-repeat;
-    padding: 40px;
-    width: 608px;
-    height: 311px;
-    margin-left: 35px;
-    
+    background-image: url('../forum/create/background_top.png');
+    background-repeat: no-repeat;
+    margin-left:35px;
+    width:656px;
+    height:81px;
+    padding:41px 0 0 32px;
+}
+
+#forum-create-form .form-top p
+{
+    margin: 0px;
+    width: 280px;
+    height: 20px;
+    padding: 5px;
+    padding-left: 8px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    background-color: rgba(175,191,232,0.5);
+    color: #1042ba;
+    visibility: visible;
+}
+
+#forum-create-form .form-top dl
+{
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+#forum-create-form .form-body
+{
+    background-image: url('../forum/create/background_body.png');
+    margin-left:35px;
+    margin-top:0px;
+    width:656px;
+    min-height:155px;
+    padding:10px 0 0 32px;
+}
+
+#forum-create-form .form-body dl,
+#forum-create-form .form-body input
+{
+    margin:0 0 10px 0;
+    padding:0px;
+}
+
+#forum-create-form .form-body .article-is-top
+{
+    margin: 0px;
+}
+
+#forum-create-form .form-body p
+{
+    height: 40px;
+    width: 600px;
+    visibility:hidden;
+}
+
+#forum-create-form .form-body #form-create-top
+{
+    margin-top: 5px;
+}
+
+#forum-create-form .form-foot
+{
+    background-image: url('../forum/create/background_foot.png');
+    background-repeat: no-repeat;
+    margin-left:35px;
+    margin-top:0px;
+    width:656px;
+    height:94px;
+    padding:20px 0 0 32px;
+}
+
+#forum-create-form .form-foot input,
+#forum-create-form .form-foot button
+{
+    padding-top:0px;
+}
+
+#forum-create-form .top-checkbox
+{
+    margin-left: 15px;
+    padding: 0px;
+    margin-top: 5px;
 }
 
 #forum-create-text-title
@@ -3595,6 +3621,7 @@ li.enabled a
     width: 165px;
     height: 283px;
     border-radius: 6px;
+    border: 2px solid #ffffff;
     margin-left: 45px;
     padding-top: 7px;
     float: left;
@@ -3639,25 +3666,27 @@ li.enabled a
 
 #forum-view-body .forum-view-title
 {
-    width: 400px;
-    height: 40px;
+    width: 389px;
+    height: 31px;
     border-radius: 6px;
     background: #97d2f3;
     float: left;
     margin-left: 20px;
     margin-bottom: 3px;
-    border: 1px solid #97d2f3;
+    border: 2px solid #ffffff;
+    padding: 9px 0 0 11px;
 }
 
 #forum-view-body #forum-view-content
 {
-    width: 400px;
-    height: 200px;
+    width: 389px;
+    height: 191px;
     border-radius: 6px;
     background: #ffffff;
     float: left;
     margin-left: 20px;
     border: 1px solid black;
+    padding: 9px 0 0 11px;
 }
 
 .hululu
@@ -3667,7 +3696,7 @@ li.enabled a
     height: 30px;
     position: absolute;
     top: 75px;
-    left: 195px;
+    left: 199px;
 }
 
 #forum-view-body .forum-view-comments
@@ -3678,7 +3707,7 @@ li.enabled a
     background: #ffffff;
     float: right;
     margin-top: 2px;
-    margin-right: 51px;
+    margin-right: 46px;
     border: 2px solid #97d2f3;
 }
 
@@ -3694,14 +3723,15 @@ li.enabled a
 
 #forum-view-replies .reply-content
 {
-    width: 400px;
-    height: 250px;
+    width: 389px;
+    height: 241px;
     border-radius: 6px;
     background: #ffffff;
     float: left;
     margin-left: 20px;
     margin-top: 20px;
     border: 1px solid black;
+    padding: 9px 0 0 11px;
 }
 
 #forum-forum-top2
@@ -3723,6 +3753,7 @@ li.enabled a
 #forum-forum-body #create-article
 {
     background: url('../forum/forum/eraser.png');
+    background-repeat: no-repeat;
     width:102px;
     height:38px;
     float:left;
@@ -3782,6 +3813,7 @@ li.enabled a
 {
     width: 615px;
     margin-left:20px;
+    border-spacing: 0px;
 }
 
 #forum-forum-body #body-table .table-title th,
@@ -3820,8 +3852,14 @@ li.enabled a
 #forum-forum-body #body-table .table-foot td.tail
 {
     background: url('../forum/forum/pencil_tail.png');
+    background-repeat: no-repeat;
     height: 40px;
     width: 12px;
+}
+
+#forum-forum-body #body-table tfoot td
+{
+    border: none;
 }
 
 #forum-forum-body #body-table .table-body
