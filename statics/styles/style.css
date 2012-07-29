@@ -879,20 +879,43 @@ a:hover
     cursor: pointer;
 }
 
-.chat-dialog .scroll-container
+.chat-dialog .chat-icon
 {
-    height: 150px;
+    position: relative;
 }
 
-.chat-dialog .scroll-area
+.chat-dialog .chat-icon .avatar
 {
-    margin: -3px 0;
-    width: 160px;
+    float: left;
+    height: 32px;
+    margin: 4px 8px 4px 0;
+    width: 32px;
 }
 
-.scroll-content
+.chat-dialog .chat-icon .avatar img
 {
-    overflow: hidden;
+    margin-left: -8px;
+    width: 48px;
+}
+
+.chat-dialog .chat-messages .chat-icon p
+{
+    background: #333333;
+    border-radius: 5px 5px 5px 0;
+    color: #FFFFFF;
+    display: none;
+    height: 16px;
+    line-height: 16px;
+    left: 28px;
+    margin: 0;
+    padding: 2px 8px;
+    position: absolute;
+    top: 2px;
+}
+
+.chat-dialog .chat-messages .chat-icon:hover p
+{
+    display: block;
 }
 
 .chat-dialog .chat-display
@@ -901,10 +924,19 @@ a:hover
     width: 150px;
 }
 
-.chat-dialog .chat-display p
+.chat-dialog .chat-messages
 {
-    margin: 0;
+    border-top: 1px solid #EEEEEE;
+    clear: both;
+    font-size: 0.85em;
+    margin-top: 3px;
+}
+
+.chat-dialog .chat-messages p
+{
+    margin: 0 0 0 42px;
     padding: 0;
+    word-break: break-all;
 }
 
 .chat-dialog .chat-form
@@ -921,6 +953,22 @@ a:hover
     outline: none;
     padding: 0 5px;
     width: 150px;
+}
+
+.chat-dialog .scroll-container
+{
+    height: 150px;
+}
+
+.chat-dialog .scroll-area
+{
+    margin: -3px 0;
+    width: 160px;
+}
+
+.scroll-content
+{
+    overflow: hidden;
 }
 
 /**
@@ -1042,68 +1090,11 @@ table.gsc-completion-container
     border: 3px solid #7C7C7C;
 }
 
-#readme-list ul li
-{
-    list-style: none;
-}
-
-#readme-menu
-{
-    margin: 0;
-    padding: 0;
-    width: 500px;
-    height: 500px;
-    position: relative;
-    overflow: hidden;
-}
-
-#nculife-wrapper
-{
-     position: relative;
-}
-
-#caption
-{
-    position: absolute;
-    top: 0;
-    left: -300px;
-}
-
-#caption ul
-{
-    background: url('../images/background.png') repeat;
-    width: 300px;
-    height: 200px;
-    float: left;
-}
-
-#caption a
-{
-    display: block;
-    float: left;
-    width: 50px;
-    height: 50px;
-    background: url('../images/chat.png');
-}
-
 ul#nculife-details
 {  
     margin: 0;
     padding: 0;
 }
-
-#readme-direct
-{
-    width: 50px;
-    height: 50px;
-    display: block;
-}
-
-/* #readme-direct img
-{
-    width: 50px;
-    height: 50px;
-} */
 
 /**
  * Index style
@@ -1748,7 +1739,6 @@ button.news-button
     background: url('../images/life_blue.png');
 }
 
-
 #nculife-dialog p
 {
     margin: 0;
@@ -1995,23 +1985,103 @@ button.news-button
     left: 540px;
 }
 
+.readme-back
+{
+    width: 70px;
+    height: 85px;
+    position: absolute;
+    top: 360px;
+    left: 660px;
+}
+
+#readme-fresh
+{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+    background: url('../readme/freshman_background.png');
+}
+
+#fresh_back
+{
+    background: url('../readme/fresh_back.png');
+}
+
+#fresh_back:hover
+{
+    background: url('../readme/fresh_back_hover.png');
+}
+
+#readme-notice
+{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    background: url('../readme/notice_background.png');
+}
+
+#notice-back
+{
+    background: url('../readme/notice_back.png');
+}
+
+#notice-back:hover
+{
+    background: url('../readme/notice_back_hover.png');
+}
+
+#readme-reschool
+{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    background: url('../readme/reschool_background.png');
+}
+
+#reschool-back
+{
+    background: url('../readme/reschool_back.png');
+}
+
+#reschool-back:hover
+{
+    background: url('../readme/reschool_back_hover.png');
+}
+
+#readme-download
+{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    background: url('../readme/download_background.png');
+}
+
+#download_back
+{
+    background: url('../readme/download_back.png');
+}
+
+#download_back:hover
+{
+    background: url('../readme/download_back_hover.png');
+}
+
+
 #readme-body
 {
     width: 750px;
     height: 450px;
     position: relative;
     background: url('../readme/readme_background.png');
-    
 }
 
 #freshman-1
 {
     width: 129px;
     height: 91px;
-    display: none;
     left: 393px;
     top: 194px;
-    position: absolute;
     background: url('../readme/freshman_1_word.png');
 }
 
@@ -2019,10 +2089,8 @@ button.news-button
 {
     width: 127px;
     height: 100px;
-    display: none;
     left: 325px;
     top: 249px;
-    position: absolute;
     background: url('../readme/freshman_2_word.png');
 }
 
@@ -2032,8 +2100,6 @@ button.news-button
     height: 128px;
     left: 272px;
     top: 262px;
-    display: none;
-    position: absolute;
     background: url('../readme/freshman_3_word.png');
 }
 
@@ -2041,21 +2107,23 @@ button.news-button
 {
     width: 119px;
     height: 141px;
-    display: none;
     left: 194px;
     top: 271px;
-    position: absolute;
     background: url('../readme/freshman_4_word.png');
+}
+
+.fresh-inner
+{
+    display: none;
+    position: absolute;
 }
 
 #reschool-1
 {
     width: 126px;
     height: 76px;
-    display: none;
     left: 530px;
     top: 160px;
-    position: absolute;
     background: url('../readme/reschool_1_word.png');
 }
 
@@ -2063,10 +2131,8 @@ button.news-button
 {
     width: 100px;
     height: 89px;
-    display: none;
     left: 500px;
     top: 220px;
-    position: absolute;
     background: url('../readme/reschool_2_word.png');
 }
 
@@ -2074,10 +2140,8 @@ button.news-button
 {
     width: 98px;
     height: 96px;
-    display: none;
     left: 450px;
     top: 274px;
-    position: absolute;
     background: url('../readme/reschool_3_word.png');
 }
 
@@ -2085,18 +2149,21 @@ button.news-button
 {
     width: 63px;
     height: 140px;
-    display: none;
     left: 399px;
     top: 303px;
-    position: absolute;
     background: url('../readme/reschool_4_word.png');
+}
+
+.reschool-inner
+{
+    display: none;
+    position: absolute;
 }
 
 #notice-1
 {
     width: 96px;
     height: 152px;
-    display: block;
     left: 529px;
     top: 239px;
     position: absolute;
@@ -2107,7 +2174,6 @@ button.news-button
 {
     width: 73px;
     height: 167px;
-    display: block;
     left: 469px;
     top: 257px;
     position: absolute;
@@ -2118,7 +2184,6 @@ button.news-button
 {
     width: 72px;
     height: 160px;
-    display: block;
     left: 399px;
     top: 266px;
     position: absolute;
@@ -2129,56 +2194,95 @@ button.news-button
 {
     width: 133px;
     height: 145px;
-    display: block;
     left: 263px;
     top: 280px;
     position: absolute;
     background: url('../readme/notice_4_word.png');
 }
 
+.notice-inner
+{
+    display: none;
+    position: absolute;
+}
+
 #readme-logo1
 {
     width: 124px;
     height: 122px;
-    display: block;
-    opacity: 0;
-    left: 357px;
-    top: 75px;
+    left: 356px;
+    top: 74px;
     position: absolute;
+}
+
+#readme-logo1:active
+{
+    display: block;
     background: url('../readme/freshman.png');
 }
 
 #readme-logo2
 {
-     width: 140px;
+    width: 140px;
     height: 135px;
-    display: block;
-    left: 492px;
-    top: 32px;
+    left: 491px;
+    top: 31px;
     position: absolute;
+}
+
+#readme-logo2:active
+{
+    display: block;
     background: url('../readme/reschool.png');
 }
 
 #readme-logo3
 {
-     width: 193px;
+    width: 193px;
     height: 194px;
-    display: block;
-    position: absolute;
     left: 536px;
     top: 34px;
-    background: url('../readme/notice.png');
+    /* background: url('../readme/notice.png'); */
 }
 
 #readme-logo4
 {
      width: 126px;
     height: 107px;
-    display: block;
     position: absolute;
     top: 210px;
     left: 603px;
+}
+
+#readme-logo4:active
+{
+    display: block;
     background: url('../readme/download.png');
+}
+
+#read-fresh-menu
+{
+    width: 200px;
+    height: 300px;
+    top: 50px;
+    left: -215px;
+    border-radius: 10px;
+    position: absolute;
+    display: block;
+    background: orange;
+    list-style: none;
+    font-size: 1.5em;
+}
+
+.fresh-menu li
+{
+    padding: 5px;
+    margin-top: 15px;
+}
+
+.fresh-menu
+{
+    cursor: pointer;
 }
 
 #about ul
@@ -2272,7 +2376,7 @@ button.news-button
     height: 66px;
     background-repeat: no-repeat; 
     float: right;
-    margin-right: 21px;
+    margin-right: 20px;
     
 }
 .club-head:hover
@@ -2282,7 +2386,7 @@ button.news-button
     height: 66px;
     background-repeat: no-repeat; 
     float: right;
-    margin-right: 21px;
+    margin-right: 19px;
     
 }
 .department
@@ -3519,15 +3623,92 @@ li.enabled a
     padding-left:44px;
 }
 
-#forum-create-form
+#forum-create-form .form-top
 {
-    background: url('../forum/create/background.png');
-    background-repeat:no-repeat;
-    padding: 40px;
-    width: 608px;
-    height: 311px;
-    margin-left: 35px;
-    
+    background-image: url('../forum/create/background_top.png');
+    background-repeat: no-repeat;
+    margin-left:35px;
+    width:656px;
+    height:81px;
+    padding:41px 0 0 32px;
+}
+
+#forum-create-form .form-top p
+{
+    margin: 0px;
+    width: 280px;
+    height: 20px;
+    padding: 5px;
+    padding-left: 8px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    background-color: rgba(175,191,232,0.5);
+    color: #1042ba;
+    visibility: visible;
+}
+
+#forum-create-form .form-top dl
+{
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+#forum-create-form .form-body
+{
+    background-image: url('../forum/create/background_body.png');
+    margin-left:35px;
+    margin-top:0px;
+    width:656px;
+    min-height:155px;
+    padding:10px 0 0 32px;
+}
+
+#forum-create-form .form-body dl,
+#forum-create-form .form-body input
+{
+    margin:0 0 10px 0;
+    padding:0px;
+}
+
+#forum-create-form .form-body .article-is-top
+{
+    margin: 0px;
+}
+
+#forum-create-form .form-body p
+{
+    height: 40px;
+    width: 600px;
+    visibility:hidden;
+}
+
+#forum-create-form .form-body #form-create-top
+{
+    margin-top: 5px;
+}
+
+#forum-create-form .form-foot
+{
+    background-image: url('../forum/create/background_foot.png');
+    background-repeat: no-repeat;
+    margin-left:35px;
+    margin-top:0px;
+    width:656px;
+    height:94px;
+    padding:20px 0 0 32px;
+}
+
+#forum-create-form .form-foot input,
+#forum-create-form .form-foot button
+{
+    padding-top:0px;
+}
+
+#forum-create-form .top-checkbox
+{
+    margin-left: 15px;
+    padding: 0px;
+    margin-top: 5px;
 }
 
 #forum-create-text-title
@@ -3630,6 +3811,7 @@ li.enabled a
     width: 165px;
     height: 283px;
     border-radius: 6px;
+    border: 2px solid #ffffff;
     margin-left: 45px;
     padding-top: 7px;
     float: left;
@@ -3674,25 +3856,27 @@ li.enabled a
 
 #forum-view-body .forum-view-title
 {
-    width: 400px;
-    height: 40px;
+    width: 389px;
+    height: 31px;
     border-radius: 6px;
     background: #97d2f3;
     float: left;
     margin-left: 20px;
     margin-bottom: 3px;
-    border: 1px solid #97d2f3;
+    border: 2px solid #ffffff;
+    padding: 9px 0 0 11px;
 }
 
 #forum-view-body #forum-view-content
 {
-    width: 400px;
-    height: 200px;
+    width: 389px;
+    height: 191px;
     border-radius: 6px;
     background: #ffffff;
     float: left;
     margin-left: 20px;
     border: 1px solid black;
+    padding: 9px 0 0 11px;
 }
 
 .hululu
@@ -3702,7 +3886,7 @@ li.enabled a
     height: 30px;
     position: absolute;
     top: 75px;
-    left: 195px;
+    left: 199px;
 }
 
 #forum-view-body .forum-view-comments
@@ -3713,7 +3897,7 @@ li.enabled a
     background: #ffffff;
     float: right;
     margin-top: 2px;
-    margin-right: 51px;
+    margin-right: 46px;
     border: 2px solid #97d2f3;
 }
 
@@ -3729,14 +3913,15 @@ li.enabled a
 
 #forum-view-replies .reply-content
 {
-    width: 400px;
-    height: 250px;
+    width: 389px;
+    height: 241px;
     border-radius: 6px;
     background: #ffffff;
     float: left;
     margin-left: 20px;
     margin-top: 20px;
     border: 1px solid black;
+    padding: 9px 0 0 11px;
 }
 
 #forum-forum-top2
@@ -3758,6 +3943,7 @@ li.enabled a
 #forum-forum-body #create-article
 {
     background: url('../forum/forum/eraser.png');
+    background-repeat: no-repeat;
     width:102px;
     height:38px;
     float:left;
@@ -3817,6 +4003,7 @@ li.enabled a
 {
     width: 615px;
     margin-left:20px;
+    border-spacing: 0px;
 }
 
 #forum-forum-body #body-table .table-title th,
@@ -3855,8 +4042,14 @@ li.enabled a
 #forum-forum-body #body-table .table-foot td.tail
 {
     background: url('../forum/forum/pencil_tail.png');
+    background-repeat: no-repeat;
     height: 40px;
     width: 12px;
+}
+
+#forum-forum-body #body-table tfoot td
+{
+    border: none;
 }
 
 #forum-forum-body #body-table .table-body

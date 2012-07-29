@@ -153,21 +153,6 @@
     height:50px;
     width:50px;
 }
-#img1
-{
-    position:absolute;
-    left:0px;
-}
-#img2
-{
-    position:absolute;
-    left:50px;
-}
-#img3
-{
-    position:absolute;
-    left:100px;
-}
 #liberal-arts
 {
     left:400px;
@@ -422,10 +407,6 @@
     left:0px;
     top:382px
 }
-.button-text
-{
-    float:left;
-}
 .departmentBuildingText
 {
     position:relative;
@@ -520,10 +501,44 @@
 }
 .two-image.exercise
 {
-    top:250px;
-    left:0px;
+    top: 250px;
+    left: 0px;
+}
+.text-ul
+{
+    cursor: pointer;
+    list-style-type: none;
+    margin-top: 0px;
+    padding: 0px;"
+}
+#all-selected-pic-ul
+{
+    margin-left: 0px;
+}
+.lili
+{
+    float: left;
+    margin-left: 10px;
 }
 </style>
+<?php
+    $file_path = array();
+    $index = 0;
+    if(empty($files))
+    {
+        echo 'no files';
+    }
+    else
+    {
+        foreach ( $files as $key => $path )
+        {
+            // echo 'key: '.$key.' ';
+            // echo 'value: '.$path;
+            $file_path[$index] = $path;
+            $index = $index + 1;
+        }
+    }
+?>
 <div id="street-div">   
     <img id="experience-personally" src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg">
     <div id="back-div">               
@@ -541,7 +556,7 @@
         總寬:750px 總高:422px  窗簾:250px  地圖:寬500px高422px 
         <img >-->
 
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/pp.png" id="mapPicture" path="<?php echo Yii::app()->request->baseUrl;?>/statics/pp.png"><!--底圖-->    
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/pp.png" id="mapPicture" path="<?php echo Yii::app()->request->baseUrl;?>/statics/building/pp.png"><!--底圖-->    
         <!--系館-->
         <img id="engineering-5" class="department-building picture" show="department-building" href="#1" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-5.png">
         <img id="engineering-3" class="department-building picture" show="department-building" href="#2" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-3.png">
@@ -623,6 +638,9 @@
         
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/curtainOpen.png" class="one-image curtainOpen">
         <!--窗簾-->
+                <p>
+                
+                </p> 
 
         <div id="curtainDiv">
         <!--選擇鈕2-->
@@ -635,73 +653,79 @@
                 <img src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/exercise.png" class="two-image exercise" show="exercise" detailItem="sport">           
 
             </div>
-            <div style="float:right; width:100px; height:422px; background:red; ">
-                <a class="department-button-text button-text" detailItem="department" href="#1">工程五館</a>
-                <a class="department-button-text button-text" detailItem="department" href="#2">工程三館</a>
-                <a class="department-button-text button-text" detailItem="department" href="#3">工程二館</a>
-                <a class="department-button-text button-text" detailItem="department" href="#4">工程一館</a>
-                <a class="department-button-text button-text" detailItem="department" href="#5">國鼎光電大樓</a>
-                <a class="department-button-text button-text" detailItem="department" href="#6">科學五館</a>
-                <a class="department-button-text button-text" detailItem="department" href="#7">科學四館</a>
-                <a class="department-button-text button-text" detailItem="department" href="#8">科學三館</a>
-                <a class="department-button-text button-text" detailItem="department" href="#9">科學二館</a>
-                <a class="department-button-text button-text" detailItem="department" href="#10">科學一館</a>
-                <a class="department-button-text button-text" detailItem="department" href="#11">理學院教學館</a>
-                <a class="department-button-text button-text" detailItem="department" href="#12">鴻經館</a>                
-                <a class="department-button-text button-text" detailItem="department" href="#13">文學院</a>
-                <a class="department-button-text button-text" detailItem="department" href="#14">管學院</a>
-                <a class="department-button-text button-text" detailItem="department" href="#15">綜教館</a>
-                <a class="department-button-text button-text" detailItem="department" href="#16">客家學院大樓</a>
-
-                <a class="landscape-text button-text" detailItem="landscape" href="#17">中大湖</a>
-                <a class="landscape-text button-text" detailItem="landscape" href="#18">烏龜池</a>
-                <a class="landscape-text button-text" detailItem="landscape" href="#19">情人步道</a>
-                <a class="landscape-text button-text" detailItem="landscape" href="#20">坐聽‧松風</a>
-                <a class="landscape-text button-text" detailItem="landscape" href="#21">漫步雲端</a>
-                <a class="landscape-text button-text" detailItem="landscape" href="#22">大象五行</a>
-                <a class="landscape-text button-text" detailItem="landscape" href="#23">蘊‧行</a>
-                <a class="landscape-text button-text" detailItem="landscape" href="#24">百花川</a>
-                <a class="landscape-text button-text" detailItem="landscape" href="#25">國泰樹</a>
-                <a class="landscape-text button-text" detailItem="landscape" href="#26">筆墨紙硯</a>
-                <a class="landscape-text button-text" detailItem="landscape" href="#27">松濤書閣</a>
-
-                <a class="food-text button-text" detailItem="meal" href="#28">男七餐廳</a>
-                <a class="food-text button-text" detailItem="meal" href="#29">男九餐廳</a>
-                <a class="food-text button-text" detailItem="meal" href="#30">消夜街</a>
-                <a class="food-text button-text" detailItem="meal" href="#31">後門</a>
-                <a class="food-text button-text" detailItem="meal" href="#32">松濤小木屋區</a>
-                <a class="food-text button-text" detailItem="meal" href="#33">小木屋鬆餅</a>
-
-                <a class="government-text button-text" detailItem="govern" href="#34">行政大樓</a>
-                <a class="government-text button-text" detailItem="govern" href="#35">志希館 電算中心</a>
-                <a class="government-text button-text" detailItem="govern" href="#36">校史館</a>
-                <a class="government-text button-text" detailItem="govern" href="#37">育成中心</a>
-                <a class="government-text button-text" detailItem="govern" href="#38">學生活動中心</a>
-
-                <a class="dormitory-text button-text" detailItem="dorm" href="#39">女一 ~ 四舍</a>
-                <a class="dormitory-text button-text" detailItem="dorm" href="#40">女五舍</a>
-                <a class="dormitory-text button-text" detailItem="dorm" href="#41">男三舍</a>
-                <a class="dormitory-text button-text" detailItem="dorm" href="#42">男五舍</a>
-                <a class="dormitory-text button-text" detailItem="dorm" href="#43">男六舍</a>
-                <a class="dormitory-text button-text" detailItem="dorm" href="#44">男七舍</a>
-                <a class="dormitory-text button-text" detailItem="dorm" href="#45">男九舍</a>
-                <a class="dormitory-text button-text" detailItem="dorm" href="#46">男11舍</a>
-                <a class="dormitory-text button-text" detailItem="dorm" href="#47">男12舍</a>
-                <a class="dormitory-text button-text" detailItem="dorm" href="#48">男13舍</a>
-                <a class="dormitory-text button-text" detailItem="dorm" href="#49">女十四舍</a>
-                <a class="dormitory-text button-text" detailItem="dorm" href="#50">新研舍</a>
-                <a class="dormitory-text button-text" detailItem="dorm" href="#51">國際學生宿舍</a>
-                
-                <a class="exercise-text button-text" detailItem="sport" href="#52">游泳池</a>
-                <a class="exercise-text button-text" detailItem="sport" href="#53">操場</a>
-                <a class="exercise-text button-text" detailItem="sport" href="#54">依仁堂</a>
-                <a class="exercise-text button-text" detailItem="sport" href="#55">羽球館</a>
-                <a class="exercise-text button-text" detailItem="sport" href="#56">網球場</a>
-                <a class="exercise-text button-text" detailItem="sport" href="#57">攀岩場</a>
-                <a class="exercise-text button-text" detailItem="sport" href="#58">棒壘球場</a>
-                <a class="exercise-text button-text" detailItem="sport" href="#59">溜冰場</a>
-                <a class="exercise-text button-text" detailItem="sport" href="#60">健身房</a>
-
+            <div style="float:right; width:100px; height:422px; background:red;">
+                <ul class="text-ul">
+                    <li class="department-button-text button-text" detailItem="department" href="#1">工程五館</li>
+                    <li class="department-button-text button-text" detailItem="department" href="#2">工程三館</li>
+                    <li class="department-button-text button-text" detailItem="department" href="#3">工程二館</li>
+                    <li class="department-button-text button-text" detailItem="department" href="#4">工程一館</li>
+                    <li class="department-button-text button-text" detailItem="department" href="#5">國鼎光電大樓</li>
+                    <li class="department-button-text button-text" detailItem="department" href="#6">科學五館</li>
+                    <li class="department-button-text button-text" detailItem="department" href="#7">科學四館</li>
+                    <li class="department-button-text button-text" detailItem="department" href="#8">科學三館</li>
+                    <li class="department-button-text button-text" detailItem="department" href="#9">科學二館</li>
+                    <li class="department-button-text button-text" detailItem="department" href="#10">科學一館</li>
+                    <li class="department-button-text button-text" detailItem="department" href="#11">理學院教學館</li>
+                    <li class="department-button-text button-text" detailItem="department" href="#12">鴻經館</li>
+                    <li class="department-button-text button-text" detailItem="department" href="#13">文學院</li>
+                    <li class="department-button-text button-text" detailItem="department" href="#14">管學院</li>
+                    <li class="department-button-text button-text" detailItem="department" href="#15">綜教館</li>
+                    <li class="department-button-text button-text" detailItem="department" href="#16">客家學院大樓</li>
+                </ul>
+                <ul class="text-ul">
+                    <li class="landscape-text button-text" detailItem="landscape" href="#17">中大湖</li>
+                    <li class="landscape-text button-text" detailItem="landscape" href="#18">烏龜池</li>
+                    <li class="landscape-text button-text" detailItem="landscape" href="#19">情人步道</li>
+                    <li class="landscape-text button-text" detailItem="landscape" href="#20">坐聽‧松風</li>
+                    <li class="landscape-text button-text" detailItem="landscape" href="#21">漫步雲端</li>
+                    <li class="landscape-text button-text" detailItem="landscape" href="#22">大象五行</li>
+                    <li class="landscape-text button-text" detailItem="landscape" href="#23">蘊‧行</li>
+                    <li class="landscape-text button-text" detailItem="landscape" href="#24">百花川</li>
+                    <li class="landscape-text button-text" detailItem="landscape" href="#25">國泰樹</li>
+                    <li class="landscape-text button-text" detailItem="landscape" href="#26">筆墨紙硯</li>
+                    <li class="landscape-text button-text" detailItem="landscape" href="#27">松濤書閣</li>
+                </ul>
+                <ul style="list-style-type:none; margin-top:0px; padding:0px;" class="text-ul">
+                    <li class="food-text button-text" detailItem="meal" href="#28">男七餐廳</li>
+                    <li class="food-text button-text" detailItem="meal" href="#29">男九餐廳</li>
+                    <li class="food-text button-text" detailItem="meal" href="#30">消夜街</li>
+                    <li class="food-text button-text" detailItem="meal" href="#31">後門</li>
+                    <li class="food-text button-text" detailItem="meal" href="#32">松濤小木屋區</li>
+                    <li class="food-text button-text" detailItem="meal" href="#33">小木屋鬆餅</li>
+                </ul>
+                <ul class="text-ul">
+                    <li class="government-text button-text" detailItem="govern" href="#34">行政大樓</li>
+                    <li class="government-text button-text" detailItem="govern" href="#35">志希館 電算中心</li>
+                    <li class="government-text button-text" detailItem="govern" href="#36">校史館</li>
+                    <li class="government-text button-text" detailItem="govern" href="#37">育成中心</li>
+                    <li class="government-text button-text" detailItem="govern" href="#38">學生活動中心</li>
+                </ul>
+                <ul class="text-ul">
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#39">女一 ~ 四舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#40">女五舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#41">男三舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#42">男五舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#43">男六舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#44">男七舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#45">男九舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#46">男11舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#47">男12舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#48">男13舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#49">女十四舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#50">新研舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#51">國際學生宿舍</li>
+                </ul>
+                <ul class="text-ul">
+                    <li class="exercise-text button-text" detailItem="sport" href="#52">游泳池</li>
+                    <li class="exercise-text button-text" detailItem="sport" href="#53">操場</li>
+                    <li class="exercise-text button-text" detailItem="sport" href="#54">依仁堂</li>
+                    <li class="exercise-text button-text" detailItem="sport" href="#55">羽球館</li>
+                    <li class="exercise-text button-text" detailItem="sport" href="#56">網球場</li>
+                    <li class="exercise-text button-text" detailItem="sport" href="#57">攀岩場</li>
+                    <li class="exercise-text button-text" detailItem="sport" href="#58">棒壘球場</li>
+                    <li class="exercise-text button-text" detailItem="sport" href="#59">溜冰場</li>
+                    <li class="exercise-text button-text" detailItem="sport" href="#60">健身房</li>
+                </ul>
                 <img id="curtainclose" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtainClose.png">            
             </div>            
         </div>
@@ -724,7 +748,7 @@
                         <img>
                     </li>
                 </ul>
-                <img src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg" id="親身體驗">            
+                <img src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg" id="親身體驗">               
             </div>
         </div>
 
@@ -733,18 +757,45 @@
                 <img src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg">
             </div>
 
-            <div id="select-picture-container"><!--2-2-->
-                <button id="select-left-button">left</button>               
-                <img id="img1" src="<?php echo Yii::app()->baseUrl?>/statics/1.jpg">
-                <img id="img2" src="<?php echo Yii::app()->baseUrl?>/statics/2.png">
-                <img id="img3" src="<?php echo Yii::app()->baseUrl?>/statics/3.jpg">               
-                <button id="select-right-button">right</button>
+            <div id="select-picture-container" style="overflow: hidden;"><!--2-2-->
+
+                    <button id="select-left-button">left</button>
+                        <ul class="text-ul" id="all-selected-pic-ul" style="position: relative;">
+                            <li class="lili">
+                                <img id="img0" src="<?php echo Yii::app()->baseUrl?>/statics/1.jpg">
+                            </li>
+                            <li class="lili">
+                                <img id="img1" src="<?php echo Yii::app()->baseUrl?>/statics/2.png">
+                            </li>
+                            <li class="lili">
+                                <img id="img2" src="<?php echo Yii::app()->baseUrl?>/statics/3.jpg">
+                            </li>
+                            <li class="lili">
+                                <img id="img3" src="<?php echo Yii::app()->baseUrl?>/statics/1.jpg">
+                            </li>
+                            <li class="lili">
+                                <img id="img4" src="<?php echo Yii::app()->baseUrl?>/statics/1.jpg">
+                            </li>
+                            <li class="lili">
+                                <img id="img5" src="<?php echo Yii::app()->baseUrl?>/statics/1.jpg">
+                            </li>
+                            <li class="lili">
+                                <img id="img6" src="<?php echo Yii::app()->baseUrl?>/statics/1.jpg">
+                            </li>
+                            <li class="lili">
+                                <img id="img7" src="<?php echo Yii::app()->baseUrl?>/statics/1.jpg">
+                            </li>
+                            
+                        </ul>
+                    <button id="select-right-button">right</button>                
             </div>
         </div>
     </div>
 </div>
+
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
+    // alert($('#all-selected-pic-ul > li').length);
 $(document).ready(function()
 {
     $('#experience-personally').mousedown(function()
@@ -775,31 +826,34 @@ $(document).ready(function()
     });
     var mouseup = function()
     {
-        if( isInPicture == true)
+        if( isInPicture == true )
         {
-            var id = $('#'+mouseInId).attr('href').replace('#','');
+            var id = $( '#' + mouseInId ).attr( 'href' ).replace( '#', '' );
             $.ajax(
             {
                 type: 'GET',
-                url: jQuery.configures.buildingContentUrl.replace(':id',id),
+                url: jQuery.configures.buildingContentUrl.replace( ':id', id ),
                 dataType: 'json',
-                success: function(data)
+                success: function( data )
                 {
-                    $('#mapPicture').attr('src',data.photo);
+                    console.log( data.photo );
+                    alert( data.photo );
+                    // $('#mapPicture').attr('src',data.photo);
                 },
             });
 
-            $('#mapPicture').css({
+            $( '#mapPicture' ).css(
+            {
                 zIndex: '3',
             });
-            $('.arrow').show();
+            $( '.arrow' ).show();
             isInPicture = false;
         }
-            $(document).unbind('mousemove', mousemove);
-            $('#experience-personally').css(
+            $( document ).unbind( 'mousemove', mousemove );
+            $( '#experience-personally' ).css(
             {
-            top: 0,
-            left: 0,
+                top: 0,
+                left: 0,
             });
             isInPicture = false;
     };
@@ -839,18 +893,13 @@ $(document).ready(function()
             modal: true,
             draggable: false,
         });
-        
-        for ( var i = 1 ; i <= 3 ; ++i )
-        {
-            position[i] = leftPosition;
-            $('#img' + i).css({left: leftPosition + 'px'});
-            leftPosition = leftPosition + 50;
-        };   
+            $('#all-selected-pic-ul').css({left: 0,});
+            position = 0;
     });
 
     $('.arrow').eq(6).click(function() // 親身體驗 back
     {
-        $('#mapPicture').attr('src', '<?php echo Yii::app()->request->baseUrl;?>/statics/pp.png');
+        $('#mapPicture').attr('src', '<?php echo Yii::app()->request->baseUrl;?>/statics/building/pp.png');
         $('.arrow').hide();
         $('#mapPicture').css(
         {
@@ -858,7 +907,7 @@ $(document).ready(function()
         });
     });
 
-    $('.picture, .button-text').click(function()/////////////////////////////////
+    $('.picture, .button-text').click(function()
     {
         $('#text-container').dialog(
         {
@@ -868,7 +917,7 @@ $(document).ready(function()
             draggable: false,
             onClose: function()
             {
-                $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
+                $('#mapPicture').attr('src', $('#mapPicture').attr('src'));
             }
         });
 
@@ -903,40 +952,43 @@ $(document).ready(function()
         });
     });
 
-    var position = [0, 0, 50, 100];
+    var position = 0;
+    $('#all-selected-pic-ul > li')
     $('#select-right-button').click(function()
     {
-        for ( var i = 1 ; i <= 3 ; ++i )
+        if( position > 100 )
         {
-            position[i] = position[i] + 80;
-            $('#img' + i).animate(
-            {
-                left: position[i] + 'px'
-            });
-        };
-
+            return;
+        }
+        else
+        {
+            position = position + 60;
+            $('#all-selected-pic-ul').animate({left: position + 'px'});
+        }
     });
 
     $('#select-left-button').click(function()
     {
-        for ( var i = 1 ; i <= 3 ; ++i )
+        if( position < (-50) )
         {
-            position[i] = position[i] - 80;
-            $('#img' + i).animate(
-            {
-                left: position[i] + 'px'
-            });
-        };
+            return
+        }
+        else
+        {
+            position = position - 60;
+            $('#all-selected-pic-ul').animate({left: position + 'px'});
+        }
+    
     });
-    // $('#img1').click(function()
+    // $('#img0').click(function()
     // {
         // $('#view-picture-container img').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/1.jpg');
     // });
-    // $('#img2').click(function()
+    // $('#img1').click(function()
     // {
         // $('#view-picture-container img').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/2.png');
     // });
-    // $('#img3').click(function()
+    // $('#img2').click(function()
     // {
         // $('#view-picture-container img').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/3.jpg');
     // });
