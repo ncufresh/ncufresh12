@@ -1,8 +1,8 @@
-<div id="readme-body">
-    <a href="<?php Yii:app()->createUrl('readme/fresh')?>" id="readme-logo1" class="readme-view"></a>
-    <a href="#" id="readme-logo2"></a>
-    <a href="#" id="readme-logo3"></a>
-    <a href="#" id="readme-logo4"></a>
+﻿<div id="readme-body">
+    <a href="<?php echo Yii::app()->createUrl('readme/freshman'); ?>" id="readme-logo1" title="新生區" class="readme-view"></a>
+    <a href="<?php echo Yii::app()->createUrl('readme/reschool'); ?>" id="readme-logo2" title="復學區"></a>
+    <a href="<?php echo Yii::app()->createUrl('readme/notice'); ?>" id="readme-logo3" title="相關須知"></a>
+    <a href="<?php echo Yii::app()->createUrl('readme/download'); ?>" id="readme-logo4" title="文件下載"></a>
     
     <a href="#" id="freshman-1" class="fresh-inner"></a>
     <a href="#" id="freshman-2" class="fresh-inner"></a>

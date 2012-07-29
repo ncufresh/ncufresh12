@@ -1042,63 +1042,11 @@ table.gsc-completion-container
     border: 3px solid #7C7C7C;
 }
 
-#readme-list ul li
-{
-    list-style: none;
-}
-
-#readme-menu
-{
-    margin: 0;
-    padding: 0;
-    width: 500px;
-    height: 500px;
-    position: relative;
-    overflow: hidden;
-}
-
-#caption
-{
-    position: absolute;
-    top: 0;
-    left: -300px;
-}
-
-#caption ul
-{
-    background: url('../images/background.png') repeat;
-    width: 300px;
-    height: 200px;
-    float: left;
-}
-
-#caption a
-{
-    display: block;
-    float: left;
-    width: 50px;
-    height: 50px;
-    background: url('../images/chat.png');
-}
-
 ul#nculife-details
 {  
     margin: 0;
     padding: 0;
 }
-
-#readme-direct
-{
-    width: 50px;
-    height: 50px;
-    display: block;
-}
-
-/* #readme-direct img
-{
-    width: 50px;
-    height: 50px;
-} */
 
 /**
  * Index style
@@ -1989,6 +1937,14 @@ button.news-button
     left: 540px;
 }
 
+#readme-fresh
+{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    background: url('../readme/freshman_background.png');
+}
+
 #readme-body
 {
     width: 750px;
@@ -2143,7 +2099,7 @@ button.news-button
 
 #readme-logo2
 {
-     width: 140px;
+    width: 140px;
     height: 135px;
     display: block;
     left: 492px;
@@ -2152,7 +2108,7 @@ button.news-button
     background: url('../readme/reschool.png');
 }
 
-#readme-logo3
+/* #readme-logo3
 {
      width: 193px;
     height: 194px;
@@ -2161,7 +2117,7 @@ button.news-button
     left: 536px;
     top: 34px;
     background: url('../readme/notice.png');
-}
+} */
 
 #readme-logo4
 {
