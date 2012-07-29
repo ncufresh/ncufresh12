@@ -1717,8 +1717,34 @@ button.news-button
     display: none;
     width: 649px;
     height: 449px;
+    
+}
+
+.nculife-style1
+{
+    background: url('../images/life_yellow.png');
+}
+
+.nculife-style2
+{
+    background: url('../images/life_green.png');
+}
+
+.nculife-style3
+{
+    background: url('../images/life_pink.png');
+}
+
+.nculife-style4
+{
     background: url('../images/life_purple.png');
 }
+
+.nculife-style5
+{
+    background: url('../images/life_blue.png');
+}
+
 
 #nculife-dialog p
 {
@@ -1737,8 +1763,33 @@ button.news-button
     width: 42px;
     height: 42px;
     margin: -15px 0px 0px 620px;
-    display: inline-block;
+    display: block;
     background: url('../images/life_exit.png');
+}
+
+.life-top1
+{
+    background:url('../images/life_top1.png');
+}
+
+.life-top2
+{
+    background:url('../images/life_top2.png');
+}
+
+.life-top3
+{
+    background:url('../images/life_top3.png');
+}
+
+.life-top4
+{
+    background:url('../images/life_top4.png');
+}
+
+.life-top5
+{
+    background:url('../images/life_top5.png');
 }
 
 #nculife-title
@@ -1747,7 +1798,6 @@ button.news-button
     height: 125px;
     margin: -72px 0 0 10px;
     display: inline-block;
-    background:url('../images/life_top1.png');
 }
 
 #nculife-title h4
@@ -1842,7 +1892,7 @@ button.news-button
     background: url('../images/life_rope.png') repeat-y;
     width: 150px;
     height: 0px;
-    left: -15px;
+    left: -16px;
     top: 118px;
     padding: 0 0 0 16px;
     position: absolute;
@@ -1854,7 +1904,7 @@ button.news-button
     background: url('../images/life_rope.png') repeat-y;
     width: 150px;
     height: 0px;
-    left: 32px;
+    left: 35px;
     top: 180px;
     padding: 0 0 0 16px;
     position: absolute;
@@ -1940,6 +1990,192 @@ button.news-button
     height: 330px;
     top: 20px;
     left: 540px;
+}
+
+#readme-body
+{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    background: url('../readme/readme_background.png');
+    
+}
+
+#freshman-1
+{
+    width: 129px;
+    height: 91px;
+    display: none;
+    left: 393px;
+    top: 194px;
+    position: absolute;
+    background: url('../readme/freshman_1_word.png');
+}
+
+#freshman-2
+{
+    width: 127px;
+    height: 100px;
+    display: none;
+    left: 325px;
+    top: 249px;
+    position: absolute;
+    background: url('../readme/freshman_2_word.png');
+}
+
+#freshman-3
+{
+    width: 105px;
+    height: 128px;
+    left: 272px;
+    top: 262px;
+    display: none;
+    position: absolute;
+    background: url('../readme/freshman_3_word.png');
+}
+
+#freshman-4
+{
+    width: 119px;
+    height: 141px;
+    display: none;
+    left: 194px;
+    top: 271px;
+    position: absolute;
+    background: url('../readme/freshman_4_word.png');
+}
+
+#reschool-1
+{
+    width: 126px;
+    height: 76px;
+    display: none;
+    left: 530px;
+    top: 160px;
+    position: absolute;
+    background: url('../readme/reschool_1_word.png');
+}
+
+#reschool-2
+{
+    width: 100px;
+    height: 89px;
+    display: none;
+    left: 500px;
+    top: 220px;
+    position: absolute;
+    background: url('../readme/reschool_2_word.png');
+}
+
+#reschool-3
+{
+    width: 98px;
+    height: 96px;
+    display: none;
+    left: 450px;
+    top: 274px;
+    position: absolute;
+    background: url('../readme/reschool_3_word.png');
+}
+
+#reschool-4
+{
+    width: 63px;
+    height: 140px;
+    display: none;
+    left: 399px;
+    top: 303px;
+    position: absolute;
+    background: url('../readme/reschool_4_word.png');
+}
+
+#notice-1
+{
+    width: 96px;
+    height: 152px;
+    display: block;
+    left: 529px;
+    top: 239px;
+    position: absolute;
+    background: url('../readme/notice_1_word.png');
+}
+
+#notice-2
+{
+    width: 73px;
+    height: 167px;
+    display: block;
+    left: 469px;
+    top: 257px;
+    position: absolute;
+    background: url('../readme/notice_2_word.png');
+}
+
+#notice-3
+{
+    width: 72px;
+    height: 160px;
+    display: block;
+    left: 399px;
+    top: 266px;
+    position: absolute;
+    background: url('../readme/notice_3_word.png');
+}
+
+#notice-4
+{
+    width: 133px;
+    height: 145px;
+    display: block;
+    left: 263px;
+    top: 280px;
+    position: absolute;
+    background: url('../readme/notice_4_word.png');
+}
+
+#readme-logo1
+{
+    width: 124px;
+    height: 122px;
+    display: block;
+    opacity: 0;
+    left: 357px;
+    top: 75px;
+    position: absolute;
+    background: url('../readme/freshman.png');
+}
+
+#readme-logo2
+{
+     width: 140px;
+    height: 135px;
+    display: block;
+    left: 492px;
+    top: 32px;
+    position: absolute;
+    background: url('../readme/reschool.png');
+}
+
+#readme-logo3
+{
+     width: 193px;
+    height: 194px;
+    display: block;
+    position: absolute;
+    left: 536px;
+    top: 34px;
+    background: url('../readme/notice.png');
+}
+
+#readme-logo4
+{
+     width: 126px;
+    height: 107px;
+    display: block;
+    position: absolute;
+    top: 210px;
+    left: 603px;
+    background: url('../readme/download.png');
 }
 
 #about ul
