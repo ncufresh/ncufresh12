@@ -1,10 +1,5 @@
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'style')); ?>
 <style type="text/css">
-#admin-marquee
-{
-    background: black;
-}
-
 #admin-marquee form input
 {
     height: 30px;
