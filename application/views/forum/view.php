@@ -18,11 +18,15 @@
         <div class="profile-id"></div>
         <div class="profile-department"></div>
     </div>
-    <div class="forum-view-title"></div>
-    <div id="forum-view-content"></div>
+    <div class="forum-view-title"><?php echo $article->title; ?></div>
+    <div id="forum-view-content"><?php echo $article->content; ?></div>
     <div class="hululu"></div>
     <div class="forum-view-comments"></div>
 </div>
+<?php
+$rep = $reply->findAll('article_id='.$article->id);
+foreach ($rep as $each):
+?>
 <div id="forum-view-replies">
     <div class="forum-view-profile">
         <div class="profile-pic"></div>
@@ -31,9 +35,14 @@
         <div class="profile-department"></div>
     </div>
     <div class="reply-content">
+        <?php echo $each -> content;?>
         <div class="hululu"></div>
+        
     </div>
 </div>
+<?php
+endforeach;
+?>
 <div id="forum-view-footer">
 </div>
 <?php
