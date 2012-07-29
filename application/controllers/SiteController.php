@@ -7,6 +7,7 @@ class SiteController extends Controller
         parent::init();
         Yii::import('application.models.Chat.*');
         Yii::import('application.models.News.*');
+        Yii::import('application.models.Game.*');
         return true;
     }
 
@@ -199,9 +200,8 @@ class SiteController extends Controller
     /**
      * Displays the login page
      */
-    public function actionLogin($facebook = false)
+    public function actionLogin()
     {
-        if ( $facebook ) Yii::app()->facebook->login();
         if ( isset($_POST['login']) )
         {
             $model = new User();
@@ -218,9 +218,8 @@ class SiteController extends Controller
     /**
      * Logs out the current user and redirect to homepage.
      */
-    public function actionLogout($facebook = false)
+    public function actionLogout()
     {
-        if ( ! $facebook ) Yii::app()->facebook->logout();
         Yii::app()->user->logout(false);
         $this->redirect(Yii::app()->homeUrl);
     }
@@ -249,18 +248,37 @@ class SiteController extends Controller
                 $profile->attributes = $_POST['profile'];
                 $profile->department_id = $_POST['profile']['department'];
                 $profile->grade = $_POST['profile']['grade'];
-                $profile->picture = $_FILES['picture']['name'];
+                // $profile->picture = $_FILES['picture']['name'];
                 $profile->sex = $_POST['sex'];
-                $target = $path . DIRECTORY_SEPARATOR . $profile->picture;
-                move_uploaded_file($_FILES['picture']['tmp_name'], $target);
-                $picture_size=$_FILES['picture']['size'];
-                $picture_type=$_FILES['picture']['type'];
+                // $target = $path . DIRECTORY_SEPARATOR . $profile->picture;
+                // move_uploaded_file($_FILES['picture']['tmp_name'], $target);
+                // $picture_size=$_FILES['picture']['size'];
+                // $picture_type=$_FILES['picture']['type']; 
                 if ( $profile->validate() )
                 {
-                    if ( $user->save() && $user->beforeSave )
+                    if ( $user->save() )
                     {
+                        $character = new Character(); //Character Model
+                        $character->id = $user->id;//同步寫入user的id至遊戲資料列表
+                        $character->exp = 1; //一開始使用者經驗設為1
+                        $character->money = 25000; //一開始使用者金錢設為25000
+                        $character->total_money = 35000; //一開始使用者總金錢設為25000
+                        if($_POST['sex'] == 0)
+                        {
+                            $character->skin_id = 81; //男生 皮膚預設id=81
+                        }
+                        else
+                        {
+                            $character->skin_id = 85; //女生 皮膚預設id=85
+                        }
+                        $item = new ItemBag(); //ItemBag Model
+                        $item->user_id = $user->id; //同步寫入user的id至道具列表
+                        $item->items_id = $character->skin_id; //寫入獲得道具的id
+                        $item->equip = 1; //寫入裝備狀態
+                        $item->acquire_time = TIMESTAMP; //寫入獲得時間
+                        
                         $profile->id = $user->id;
-                        if ( $profile->save() )
+                        if ( $profile->save() && $character->save() && $item->save())
                         {
                             $this->redirect(array('profile/profile'));
                         }
@@ -268,11 +286,8 @@ class SiteController extends Controller
                 }
             }
         }
-        else
-        {
-            $this->render('register', array(
+        $this->render('register', array(
                 'departments'   => Department::model()->getDepartment()
-            ));
-        }
+        ));
     }
 }

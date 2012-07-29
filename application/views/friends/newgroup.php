@@ -9,38 +9,26 @@
         <label>成員: </label>
     </div>
 <div class="newgroup">
-<table>
-        <tr>
-<?php $account = 1 ; ?>
+    <div class="friends-part2">
+        <ul class="other-department">
 <?php foreach ( $user->friends as $friend ) : ?>
-<?php if ( $account %5!= 0 ) : ?>
-<?php else : ?> 
-        </tr>
-    <tr>
-<?php $account ++ ; ?>
-<?php endif ; ?>
-        <td>
+            <li>
 <?php if ( $friend->profile->picture !='' ) : ?>
-        <img  height="50" src="<?php echo $target.'/'.$friend->profile->picture ; ?>" alt="Score image" />
+                <img  width="100" height="120" src="<?php echo $target.'/'.$friend->profile->picture ; ?>" alt="Score image" />
 <?php else : ?>
-        <img  height="50" src="<?php echo $target.'/image1.jpg';?>" alt="Score image" />
+                <img  width="100" height="120" src="<?php echo $target.'/image1.jpg';?>" alt="Score image" />
 <?php endif ; ?>
-    <ul class="member-name-department">
-        <li><input type="checkbox" name="friends[<?php echo $friend->profile->id;?>]" value="<?php echo $friend->profile->id ; ?>" /></li>
-        <li>
+                <input type="checkbox" name="friends[<?php echo $friend->profile->id;?>]" value="<?php echo $friend->profile->id ; ?>" />
+                <h3>
 <?php echo $friend->profile->name ; ?>
-        </li>
-        <li>
+                </h3>
+                <h4>
 <?php echo $friend->profile->department->short_name ; ?>
-        </li>
-    </ul>
-        </td>
-<?php $account++ ; ?>
+                </h4>
+            </li>
 <?php endforeach ; ?>
-<?php if ( $account %5!= 0 ) : ?>
-    </tr>
-<?php endif ; ?>
-</table>
+        </ul>
+    </div>
 </div>
 <button type="submit">新增</a>
 </form>

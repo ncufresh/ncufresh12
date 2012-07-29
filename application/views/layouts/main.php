@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/styles/print.css" media="print" />
-    <style type="text/css"><?php echo $this->clips['style']; ?></style>
+    <?php echo $this->clips['style']; ?>
 
     <!--[if lt IE 8]>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/styles/ie.css" media="screen, projection" />
@@ -163,7 +163,6 @@
 <div id="content"><?php echo $content; ?></div>
 <div id="sidebar">
 <?php if ( Yii::app()->user->getIsGuest() ) : ?>
-    <a id="fb-login-button" href="<?php echo Yii::app()->createUrl('site/login', array('facebook' => true)); ?>" title="使用Facebook帳號登入">使用Facebook帳號登入</a>
     <form class="profile" action="<?php echo Yii::app()->createUrl('site/login'); ?>" method="POST">
         <dl>
             <dt>
@@ -253,7 +252,6 @@
     jQuery.extend({
         configures: {
             pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
-            facebookAppId: '<?php echo Yii::app()->facebook->getAppId(); ?>',
             facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
             chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
             ncuLifeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('nculife/content', array('tab' => ':tab', 'page' => ':page'));?>'),
@@ -263,8 +261,8 @@
             registerUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>'),
             calendarEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvent', array('id'=> ':id')); ?>'),
             calendarEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvents'); ?>'),
-            facebookEnable: <?php echo Yii::app()->facebook->enable ? 'true' : 'false'; ?>,
-            buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building',array('id'=>':id'));?>'),            
+            buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),
+            facebookAppId: '<?php global $ncufreshfb; echo $ncufreshfb['appId']; ?>',
             googleSearchAppId: '011017124764723419863:mdibrr3n-py',
             token: '<?php echo Yii::app()->security->getToken(); ?>'
         }

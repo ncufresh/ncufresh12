@@ -1,40 +1,5 @@
 (function($)
 {
-    $.konami = function(options)
-    {
-        var options = $.extend({
-            code:                   [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
-            interval:               10,
-            complete:               function()
-            {
-                alert('You complete the konami code!');
-            }
-        }, options);
-        var index = 0;
-        var interval = options.interval;
-        var timer = setInterval(function()
-        {
-            if ( interval-- <= 0 ) index = 0;
-        }, 50);
-        $(document).keyup(function(event)
-        {
-            if (
-                event.keyCode != 231
-             && event.keyCode == options.code[index]
-            )
-            {
-                interval = options.interval;
-                if ( index++ == options.code.length - 1 ) options.complete();
-                return true;
-            }
-            index = 0;
-            return true;
-        });
-    };
-})(jQuery);
-
-(function($)
-{
     $.about = function(options)
     {
         var options = $.extend({
@@ -46,36 +11,47 @@
             block1InfClass:                  'information',
             picBarSpeed:                     1000,
             picAutoSpeed:                    3000,
-            tagBarSpeed:                     500
+            tagBarSpeed:                     10000
         }, options);
-        var photo_index = 0;
+        var photoIndex = 0;
         var photos = $('#' + options.aboutId + ' img');
-        var tagbar_index = 0;
+        var tagbarIndex = 0;
         var tagbar = $('.' + options.tagBar + ' img');
+        var tagbarPerson = $('.' + options.tagBar + ' div');
+        var personName = $('<p></p>').hide();
+        var personGrade = $('<p></p>').hide();
+        var jumpTo = function()
+        {
+            block1Inf.each(function(){
+                $(this).hide();
+            });
+            tagbar.each(function(){
+                $(this).hide();
+            });
+            block1Inf.eq(tagbarIndex).show();
+            tagbar.eq(tagbarIndex).show();
+            tagbarPerson.each(function(){
+                $(this).hide();
+            });
+            
+            for (var p = 0; p < 8; p++)
+            {
+                tagbarPerson.eq(tagbarIndex * 8 + p).show();
+                if ( tagbarIndex == 4 && p == 1 )
+                {
+                    break;
+                }
+            }
+        };
         var blocks = [
             $('<div></div>')
-                .addClass('block1')
-                .css({
-                    height: 500,    
-                    width: 750
-                }),
+                .addClass('block1'),
             $('<div></div>')
                 .addClass('block2')
-                .css({
-                    height: 700,
-                    width:  750
-                }),
-            $('<div></div>')
-                .addClass('block3')
-                .css({
-                    height: 600,
-                    position: 'relative',
-                    width:  750
-                })
         ]
         var picture = $('<div></div>')
             .css({
-                background: 'url(\'' + photos.eq(photo_index).attr('photo') + '\')',
+                background: 'url(\'' + photos.eq(photoIndex).attr('photo') + '\')',
                 float: 'right',
                 height: 300,
                 position: 'relative',
@@ -106,69 +82,185 @@
                 width: 400
             })
             .appendTo(picture);
-        var block1_pic = $('<div></div>')
+        var block1Pic = $('<div></div>')
             .css({
                 height: 300,
                 width: 750,
                 position: 'relative'
             })
             .appendTo(blocks[1]);
-        var block1_txt = $('<div></div>')
+        var block1Tag = $('<div></div>')
+            .addClass('tag')
+            .appendTo(blocks[1]);
+        var block1Txt = $('<div></div>')
             .css({
-                height: 300,
+                background: '#8ca86c',
+                height: 150,
                 width: 750,
                 position: 'relative'
             })
             .appendTo(blocks[1]);
-        var block1_inf = $('#' + options.aboutId + ' .' + options.block1InfClass);
-        block1_inf.each(function()
+        var block1Inf = $('#' + options.aboutId + ' .' + options.block1InfClass);
+        block1Inf.each(function()
         {
             $(this).css({
                 position: 'absolute'
             })
             .hide()
-            .appendTo(block1_txt);
+            .appendTo(block1Txt);
+        });
+        tagbar.each(function(index)
+        {
+            $(this).css({
+                float: 'left',
+                position: 'relative',
+                height: '0%',
+                width: '0%'
+            })
+            .hide()
+            .appendTo(block1Tag);
         });
         $('#' + options.aboutId + ' .' + options.animationClass).each(function(index)
         {
+            switch ( index )
+            {
+                case 0:
+                    $(this).css({
+                        position: 'absolute'
+                    });
+                    break;
+                case 1:
+                    $(this).css({
+                        position: 'absolute',
+                        top: 7,
+                        left: 42,
+                        height: 132,
+                        width: 122
+                    });
+                    break;
+                case 2:
+                    $(this).css({
+                        position: 'absolute',
+                        top: 168,
+                        left: 168,
+                        height: 132,
+                        width: 122
+                    });
+                    break;
+                case 3:
+                    $(this).css({
+                        position: 'absolute',
+                        top: 163,
+                        left: 408,
+                        height: 132,
+                        width: 122
+                    });
+                    break;
+                case 4:
+                    $(this).css({
+                        position: 'absolute',
+                        top: 161,
+                        left: 627,
+                        height: 132,
+                        width: 122
+                    });
+                    break;
+                case 5:
+                    $(this).css({
+                        position: 'absolute',
+                        top: 22,
+                        left: 625,
+                        height: 132,
+                        width: 122
+                    });
+                    break;
+                 default:
+                    break;
+            }
+            $(this).click(function()
+            {
+                for ( var i = 0; i < 4; i++)
+                {
+                    block1Inf.eq(i).hide();
+                }
+                tagbarIndex = index - 1;
+                jumpTo();
+            })
+            .appendTo(block1Pic);
+        });
+        tagbarPerson.each(function(){
             $(this).css({
-                position: 'absolute'
+                position: 'absolute',
+                top: $(this).attr('top'),
+                left: $(this).attr('left'),
+                height: $(this).attr('height'),
+                width: $(this).attr('width')
             })
             .mouseenter(function()
             {
+                var tempObject = $(this);
                 $(this).css({
-                    background: 'url(\'' + tagbar.eq(index).attr('photo') + '\')'
+                    background: 'url(\'' + tagbar.eq(5).attr('src') + '\')'
                 });
+                personName.text(tempObject.attr('name')).css({
+                    Button: '20%',
+                    left: 0,
+                    height: '10%',
+                    width: '100%'
+                })
+                .show()
+                .appendTo(tempObject);
+                personGrade.text(tempObject.attr('grade')).css({
+                    Button: '10%',
+                    left: 0,
+                    height: '10%',
+                    width: '100%'
+                })
+                .show()
+                .appendTo(tempObject);
             })
             .mouseleave(function()
             {
                 $(this).css({
-                    background: 'url(\'' + tagbar.eq(index).attr('src') + '\')'
+                    background: ''
                 });
+                personName.hide();
+                personGrade.hide();
             })
-            .click(function()
-            {
-                block1_inf.eq(index - 1).show();
-            })
-            .appendTo(block1_pic);
+            .hide()
+            .appendTo(block1Tag);
         });
-       
+        jumpTo();
         setInterval(function()
         {
-            if ( photo_index < 7 )
+            if ( photoIndex < 7 )
             {
-                photo_index++;
+                photoIndex++;
             }
             else
             {
-                photo_index = 0;
+                photoIndex = 0;
             }
-            picture.css('background-image', 'url(\'' + photos.eq(photo_index).attr('photo') + '\')');
+            picture.css('background-image', 'url(\'' + photos.eq(photoIndex).attr('photo') + '\')');
         },options.picAutoSpeed);
+        setInterval(function()
+        {
+            if ( tagbarIndex < 4 )
+            {
+                tagbarIndex++;
+            }
+            else
+            {
+                tagbarIndex = 0;
+            }
+            jumpTo();
+        },options.tagBarSpeed);
         $('#' + options.aboutId + ' .' + options.titleClass)
             .appendTo($('#' + options.aboutId))
             .each(function(index)
             {
+                if ( index == 0 ) $(this).addClass('title1');
+                if ( index == 1 ) $(this).addClass('title2');
                 blocks[index].insertAfter($(this));
             });
         photos.each(function(index)
@@ -181,7 +273,7 @@
                 })
                 .click(function()
                 {
-                    photo_index = index;
+                    photoIndex = index;
                     picture.css({
                        background: 'url(\'' + photos.eq(index).attr('photo') + '\')'
                     });
@@ -189,273 +281,14 @@
                 .appendTo(display);
             }
         });
-        $('<div></div>')
-            .css({
-                float: 'left',
-                height: 500,
-                width: 350
-            })
-            .appendTo(blocks[0])
-            .append($('#' + options.introduceId));
-        tagbar.eq(0).css({
-            left: 225,
-            top: 0,
-            height: 400,
-            width: 300
+        $('<div></div>').css({
+            background: '#385281',
+            float: 'left',
+            height: 300,
+            width: 350
         })
-        .show();
-        tagbar.eq(1).css({
-            left: 550,
-            top: 100,
-            height: 200,
-            width: 150
-        })
-        .show();
-        tagbar.eq(2).hide();
-        tagbar.eq(3).hide();
-        tagbar.eq(4).hide();
-        tagbar.each(function(index)
-        {
-            if ( index < 5 )
-            {
-                $(this).css({
-                    backgroundColor: 'yellow',
-                    float: 'left',
-                    position: 'absolute'
-                })
-                .mouseenter(function()
-                {
-                    $(this).css({
-                        backgroundColor: 'red'
-                    });
-                })
-                .mouseleave(function()
-                {    
-                    $(this).css({
-                        backgroundColor: 'yellow'
-                    });
-                })
-                .appendTo(blocks[2]);
-            }
-            else if ( index == 5 )
-            {
-                $(this).css({
-                    backgroundColor: 'yellow',
-                    float: 'left',
-                    left: 0,
-                    top: 160,
-                    height: 40,
-                    position: 'absolute',
-                    width: 40
-                })
-                .mouseenter(function()
-                {
-                    $(this).css({
-                        background: 'url(\'' + tagbar.eq(index).attr('photo') + '\')',
-                        backgroundColor: 'red'
-                    });
-                })
-                .mouseleave(function()
-                {    
-                    $(this).css({
-                        background: 'url(\'' + tagbar.eq(index).attr('src') + '\')',
-                        backgroundColor: 'yellow'
-                    });
-                })
-                .click(function()
-                {
-                    if ( tagbar_index > 0 )
-                    {
-                        tagbar_index--;
-                        tagbar.eq(0).hide();
-                        tagbar.eq(1).hide();
-                        tagbar.eq(2).hide();
-                        tagbar.eq(3).hide();
-                        tagbar.eq(4).hide();
-                        if ( tagbar_index == 0 )
-                        {
-                            tagbar.eq(0).stop().animate({
-                                left: 225,
-                                top: 0,
-                                height: 400,
-                                width: 300
-                            }, options.tagBarSpeed)
-                            .show();
-                            tagbar.eq(1).stop().animate({
-                                left: 550,
-                                top: 100,
-                                height: 200,
-                                width: 150
-                            }, options.tagBarSpeed)
-                            .show();
-                            tagbar.eq(2).hide();
-                            tagbar.eq(3).hide();
-                            tagbar.eq(4).hide();
-                        }
-                        else
-                        {
-                            tagbar.eq( tagbar_index - 1).css({
-                                left: -100,
-                                top: 100,
-                                height: 200,
-                                width: 150
-                            }, options.tagBarSpeed)
-                            .stop()
-                            .animate({
-                                left: 50,
-                                top: 100,
-                                height: 200,
-                                width: 150
-                            }, options.tagBarSpeed)
-                            .show();
-                            tagbar.eq( tagbar_index ).stop().animate({
-                                left: 225,
-                                top: 0,
-                                height: 400,
-                                width: 300
-                            }, options.tagBarSpeed)
-                            .show();
-                            tagbar.eq( tagbar_index + 1 ).stop().animate({
-                                left: 550,
-                                top: 100,
-                                height: 200,
-                                width: 150
-                            }, options.tagBarSpeed)
-                            .show();
-                        }
-                        for ( var i = 7 ; i < 12 ; i++ )
-                        {
-                            tagbar.eq(i).css({
-                                backgroundColor: 'yellow'
-                            });
-                        }
-                        tagbar.eq( tagbar_index + 7 ).css({
-                            background: 'url(\'' + tagbar.eq(index).attr('photo') + '\')',
-                            backgroundColor: 'red'
-                        });
-                    }
-                        
-                })
-                .appendTo(blocks[2]);
-            }
-            else if ( index == 6 )  
-            {
-                $(this).css({
-                    backgroundColor: 'yellow',
-                    float: 'left',
-                    left: 710,
-                    top: 160,
-                    height: 40,
-                    position: 'absolute',
-                    width: 40
-                })
-                .mouseenter(function()
-                {
-                    $(this).css({
-                        background: 'url(\'' + tagbar.eq(index).attr('photo') + '\')',
-                        backgroundColor: 'red'
-                    });
-                })
-                .mouseleave(function()
-                {    
-                    $(this).css({
-                        background: 'url(\'' + tagbar.eq(index).attr('src') + '\')',
-                        backgroundColor: 'yellow'
-                    });
-                })
-                .click(function()
-                {
-                    
-                    if ( tagbar_index < 4 )
-                    {
-                        tagbar_index++;
-                        tagbar.eq(0).hide();
-                        tagbar.eq(1).hide();
-                        tagbar.eq(2).hide();
-                        tagbar.eq(3).hide();
-                        tagbar.eq(4).hide();
-                        if ( tagbar_index == 4 )
-                        {
-                            tagbar.eq(3).stop().animate({
-                                left: 50,
-                                top: 100,
-                                height: 200,
-                                width: 150
-                            }, options.tagBarSpeed)
-                            .show();
-                            tagbar.eq(4).stop().animate({
-                                left: 225,
-                                top: 0,
-                                height: 400,
-                                width: 300
-                            }, options.tagBarSpeed)
-                            .show();
-                        }
-                        else
-                        {
-                            tagbar.eq( tagbar_index - 1 ).stop().animate({
-                                left: 50,
-                                top: 100,
-                                height: 200,
-                                width: 150
-                            }, options.tagBarSpeed)
-                            .show();
-                            tagbar.eq( tagbar_index ).stop().animate({
-                                left: 225,
-                                top: 0,
-                                height: 400,
-                                width: 300
-                            }, options.tagBarSpeed)
-                            .show();
-                            tagbar.eq( tagbar_index + 1 ).css({
-                                left: 700,
-                                top: 100,
-                                height: 200,
-                                width: 150
-                            }, options.tagBarSpeed)
-                            .stop()
-                            .animate({
-                                left: 550,
-                                top: 100,
-                                height: 200,
-                                width: 150
-                            }, options.tagBarSpeed)
-                            .show();
-                        }
-                        for ( var i = 7 ; i < 12 ; i++ )
-                        {
-                            tagbar.eq(i).css({
-                                backgroundColor: 'yellow'
-                            });
-                        }
-                        tagbar.eq( tagbar_index + 7 ).css({
-                            background: 'url(\'' + tagbar.eq(index).attr('photo') + '\')',
-                            backgroundColor: 'red'
-                        });
-                    }
-                })
-                .appendTo(blocks[2]);
-            }
-            else
-            {
-                $(this).css({
-                    background: 'url(\'' + tagbar.eq(index).attr('src') + '\')',
-                    backgroundColor: 'yellow',
-                    float: 'left',
-                    left: 305 + ( index - 7 ) * 30,
-                    top: 420,
-                    height: 20,
-                    position: 'absolute',
-                    width: 20
-                })
-                .appendTo(blocks[2]);
-                tagbar.eq(7).css({
-                    background: 'url(\'' + tagbar.eq(index).attr('src') + '\')',
-                    backgroundColor: 'red'
-                });
-            }
-        });
-        
+        .appendTo(blocks[0])
+        .append($('#' + options.introduceId));
     };
     $.konami({
         code:                   [38, 38, 40, 40, 37, 39, 37, 39, 65, 66],

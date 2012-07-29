@@ -21,12 +21,6 @@ return array(
             'class'             => 'WebUser',
             'allowAutoLogin'    => true
         ),
-        'facebook'      => array(
-            'class'             => 'application.extensions.facebook.NFWFacebook',
-            'enable'            => false,
-            'appId'             => $ncufreshfb['appId'],
-            'secret'            => $ncufreshfb['secret']
-        ),
         'session'       => array(
             'autoStart'         => true,
             'sessionName'       => 'NcuFresh2012'
