@@ -134,7 +134,7 @@ class SiteController extends Controller
                 array(
                     'id'        => 1,
                     'name'      => 'Test 1',
-                    'active'    => true
+                    'active'    => false
                 ),
                 array(
                     'id'        => 2,
@@ -145,6 +145,11 @@ class SiteController extends Controller
                     'id'        => 3,
                     'name'      => 'Adminadmin',
                     'active'    => true
+                ),
+                array(
+                    'id'        => 4,
+                    'name'      => 'WhoAmI',
+                    'active'    => false
                 )
             );
         }

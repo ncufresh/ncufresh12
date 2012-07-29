@@ -358,7 +358,7 @@
             animationSpeed:         500,
             chatId:                 'chat',
             friendListId:           'chat-friend-list',
-            friendListEntriesWrapId:'chat-friend-list-entries-wrap',    
+            friendListContainerId:  'chat-friend-list-container',
             friendListSearchId:     'chat-friend-list-search',
             chatTitleClass:         'chat-title',
             chatDialogClass:        'chat-dialog',
@@ -395,9 +395,10 @@
                 })
                 .appendTo(list);
             display = $('<div></div>')
-                .attr('id', $.chat.options.friendListEntriesWrapId)
+                .attr('id', $.chat.options.friendListContainerId)
                 .appendTo(list);
             search.appendTo(list);
+            display.scrollable()
         }
         return list;
     };
@@ -415,7 +416,6 @@
     $.fn.chat.updateFriendList = function(response)
     {
         var list = $.fn.chat.createFriendList();
-        var wrap = list.children('#' + $.chat.options.friendListEntriesWrapId);
         for ( var key in response )
         {
             var data = response[key];
@@ -426,7 +426,7 @@
                 {
                     $.fn.chat.showChatDialog($(this).data('id'));
                 })
-                .appendTo(wrap);
+                .appendTo($('#' + $.chat.options.friendListContainerId));
             var avatar = $('<div></div>')
                 .attr('id', 'friend-list-avatar-' + data.id)
                 .appendTo(entry);
