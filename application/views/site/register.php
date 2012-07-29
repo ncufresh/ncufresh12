@@ -1,5 +1,5 @@
+<h1>基本資料</h1>
 <div class="register">
-<!--<h5>基本資料</h5>-->
     <form  enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('site/register'); ?>" method="POST">
     <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
         <dl>
@@ -79,7 +79,7 @@
                 <input id="form-register-birthday" name="profile[birthday]" type="text" />
             </dd>
         </dl>
-            <input type="file" name="picture" />
+           <!-- <input type="file" name="picture" />-->
             <button type="submit">註冊</button>
     </form>
 </div>
