@@ -27,13 +27,13 @@ class Club extends CActiveRecord
         return $this->findByPk($clubid);
     }
     
-    // public function getClubByManagerrId($manager_id)
-    // {
-        // return $this->find(array(
-            // 'condition' => 'manager_id = :manager_id',
-            // 'parmas' => array(
-                // ':manager_id' => $manager_id
-            // )
-        // ));
-    // }
+    public function getClubByManagerrId($manager_id)
+    {
+        return $this->find(array(
+            'condition' => 'manager_id = :manager_id',
+            'parmas' => array(
+                ':manager_id' => $manager_id
+            )
+        ));
+    }
 }

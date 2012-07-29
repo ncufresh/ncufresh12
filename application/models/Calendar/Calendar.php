@@ -73,12 +73,12 @@ class Calendar extends CActiveRecord
 
     public function getClubName()
     {
-        // if ( $this->category = 'club' )
-        // {
-            // $club = Club::model->findByManagerId($this->author);
-            // return $club->name;
-        // }
-        // return false;
+        if ( $this->category = 'club' )
+        {
+            $club = Club::model()->findByManagerId($this->author);
+            return $club->name;
+        }
+        return false;
     }
     
     public static function getCurrentMonth()
