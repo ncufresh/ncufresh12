@@ -571,25 +571,25 @@ a:hover
 
 #sidebar .profile .avatar
 {
-    float: left;
-    height: 48px;
-    margin: 3px;
-    width: 48px;
+    background: #FFFFFF;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    height: 120px;
+    margin: 5px 0;
+    width: 180px;
 }
 
 #sidebar .avatar img
 {
-    left: 120%;
-    margin-left: -180%;
-    top: -30%;
-    width: 240%;
+    margin: 0 10px;
+    width: 160px;
 }
 
 #sidebar .profile p
 {
     height: 42px;
     line-height: 42px;
-    margin: 3px 0 3px 55px;
+    margin: 3px 0;
     padding: 3px;
     text-align: center;
 }
