@@ -19,6 +19,7 @@ jQuery(document).ready(function()
         jQuery('#life-dialog').dialog(
         {
             dialogClass: 'nculife-dialog',
+            closeText: ' ',
             onClose: function()
             {
                 $('#life-dialog').removeClass();
