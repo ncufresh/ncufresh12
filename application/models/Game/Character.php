@@ -254,7 +254,7 @@ class Character extends CActiveRecord
         }
         else
         {
-            $hair = 'shoes/'.$character->shoes->url.'.png';
+            $shoes = 'shoes/'.$character->shoes->url.'.png';
         }
         
         if( $character->pants === null)
@@ -263,7 +263,7 @@ class Character extends CActiveRecord
         }
         else
         {
-            $pants = 'shoes/'.$character->pants->url.'.png';
+            $pants = 'pants/'.$character->pants->url.'.png';
         }
         
         if( $character->clothes === null)
@@ -272,7 +272,7 @@ class Character extends CActiveRecord
         }
         else
         {
-            $clothes = 'shoes/'.$character->clothes->url.'.png';
+            $clothes = 'clothes/'.$character->clothes->url.'.png';
         }
         
         if( $character->others === null)
@@ -281,7 +281,7 @@ class Character extends CActiveRecord
         }
         else
         {
-            $others = 'shoes/'.$character->others->url.'.png';
+            $others = 'others/'.$character->others->url.'.png';
         }
         
         return array(
