@@ -19,9 +19,11 @@
 <?php foreach ( $profileFir as $profilefir ) : ?>
 <?php if ( $account<=4 ):  ?>
     <li>
+<a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $profilefir->id));  ?>">
 <?php $this->widget('Avatar', array(
     'id'        => Yii::app()->user->id
-)); ?>     
+)); ?>
+</a>    
 <?php echo $profilefir->name;?> 
 <?php $account++;?>
 <?php endif; ?>
@@ -33,9 +35,11 @@
 <?php foreach ( $profileSec as $profilesec ) : ?>
 <?php if ( $account<=4 ) :?>
     <li>
+<a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $profilesec->id));  ?>">
 <?php $this->widget('Avatar', array(
     'id'        => Yii::app()->user->id
 )); ?>
+</a>
 <?php echo $profilesec->name; ?>
 <?php $account++;?>
 <?php endif; ?>
@@ -47,9 +51,11 @@
 <?php foreach ( $profileThir as $profilethir ) :?>
 <?php if ( $account <= 4 ):?> 
     <li>
+<a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $profilethir->id));  ?>">
 <?php $this->widget('Avatar', array(
     'id'        => Yii::app()->user->id
 )); ?>
+</a>
 <?php echo $profilethir->name ; ?>
 <?php $account++;?>
 <?php endif; ?>
@@ -70,9 +76,11 @@
 <?php foreach ( $user->friends as $friend ) : ?>
 <?php if ( $account<=5 ) : ?> 
     <li>
+<a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $friend->profile->id));  ?>">
 <?php $this->widget('Avatar', array(
     'id'        => Yii::app()->user->id
 )); ?>
+</a>
 <?php echo $friend->profile->name ; ?>     
 <?php $account++ ; ?>
 <?php endif ; ?>

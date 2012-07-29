@@ -6,9 +6,11 @@
         <ul class="other-department">
 <?php foreach ( $friends as $friend ) : ?>
             <li>
+<a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $friend->friend_request->id));  ?>">
 <?php $this->widget('Avatar', array(
     'id'        => Yii::app()->user->id
 )); ?>
+</a>
                 <input type="checkbox" name="friends[<?php echo $friend->friend_request->id;?>]" value="<?php echo $friend->friend_request->id;?>"  />
                 <h3>
 <?php echo $friend->friend_request->name;?>

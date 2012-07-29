@@ -6,7 +6,7 @@
         <ul class="other-department">
 <?php foreach ( $profiles as $profile ) : ?>
             <li>
-<a href="<?php echo Yii::app()->createUrl('friends/samedepartmentdiffgrade');  ?>">
+<a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $profile->id));  ?>">
 <?php $this->widget('Avatar', array(
     'id'        => Yii::app()->user->id
 )); ?>

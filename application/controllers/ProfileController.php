@@ -119,4 +119,15 @@ class ProfileController extends Controller
            $this->redirect(array('friends/friends'));
         }
     }
+
+    public function actionOtherProfile()
+    {
+        if ( isset($_GET['friend_id']) )
+            $userID = Yii::app()->user->id;
+            $this->render('otherprofile', array(
+                'user'       => User::model()->findByPk($_GET['friend_id'])
+                
+                
+            ));
+    }
 }
