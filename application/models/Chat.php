@@ -2,6 +2,10 @@
 
 class Chat extends CActiveRecord
 {
+    const QUEUE_RELEASE_TIMEOUT = 10;
+
+    const STATE_RELEASE_TIMEOUT = 15;
+
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
@@ -44,13 +48,15 @@ class Chat extends CActiveRecord
 
     public static function getAllMessages($id)
     {
-        $data = Yii::app()->db->createCommand('
+        $user = Yii::app()->user->getId();
+
+        $message = Yii::app()->db->createCommand('
             SELECT `uuid`, `sender_id`, `receiver_id`, `message`, `timestamp`
             FROM `{{chat_messages}}`
             WHERE `sender_id` = :sender AND `receiver_id` = :receiver
             ORDER BY `timestamp` ASC
         ')->queryAll(true, array(  
-            ':sender'   => Yii::app()->user->getId(),
+            ':sender'   => $user,
             ':receiver' => $id
         ));
 
@@ -61,22 +67,38 @@ class Chat extends CActiveRecord
             `sender_id` = :sender AND `receiver_id` = :receiver AND `timestamp` > :timestamp
         ';
         $criteria->params = array(
-            ':sender'   => Yii::app()->user->getId(),
+            ':sender'   => $user,
             ':receiver' => $id,
-            ':timestamp'=> count($data) ? $data[count($data) - 1]['timestamp'] : 0
+            ':timestamp'=> count($message) ? $message[count($message) - 1]['timestamp'] : 0
         );
 
         $uuids = array_map(function($entry)
         {
             return $entry['uuid'];
-        }, array_values($data));
+        }, array_values($message));
+
+        $data = array();
+        if ( count($message) )
+        {
+            foreach ( $message as $entry )
+            {
+                $data[] = array(
+                    'uuid'      => $entry['uuid'],
+                    'id'        => $entry['sender_id'] == $user
+                                 ? $entry['receiver_id']
+                                 : $entry['sender_id'],
+                    'sender'    => User::model()->findByPk($entry['sender_id'])->username,
+                    'message'   => $entry['message']
+                );
+            }
+        }
 
         foreach ( self::model()->findAll($criteria) as $entry )
         {
             if ( in_array($entry->uuid, $uuids) ) continue;
             $data[] = array(
                 'uuid'      => $entry->uuid,
-                'id'        => $entry->sender_id == Yii::app()->user->getId()
+                'id'        => $entry->sender_id == $user
                              ? $entry->receiver_id
                              : $entry->sender_id,
                 'sender'    => $entry->sender
@@ -240,6 +262,76 @@ class Chat extends CActiveRecord
             }
         }
         return false;
+    }
+
+    public static function storeMessages()
+    {
+        $timestamp = time();
+
+        // Moves all the data in chat_queues to chat_messages, and release the
+        // memory used by deleted records.
+        $messages = Yii::app()->db->createCommand('
+            SELECT `uuid`, `sender_id`, `receiver_id`, `message`, `timestamp`
+            FROM `{{chat_queues}}`
+            WHERE `timestamp` < :timestamp
+        ;')->queryAll(true, array(
+            ':timestamp'    => $timestamp - self::QUEUE_RELEASE_TIMEOUT
+        ));
+
+        foreach ( $messages as $message )
+        {
+            if (
+                ! Yii::app()->db->createCommand('
+                    INSERT INTO `{{chat_messages}}`
+                    (`uuid`, `sender_id`, `receiver_id`, `message`, `timestamp`)
+                    VALUES
+                    (:uuid, :sender, :receiver, :message, :timestamp)
+                ;')->execute(array(
+                    ':uuid'         => $message['uuid'],
+                    ':sender'       => $message['sender_id'],
+                    ':receiver'     => $message['receiver_id'],
+                    ':message'      => $message['message'],
+                    ':timestamp'    => $message['timestamp']
+                ))
+            )
+            {
+                echo '[FAILURE] Moves records from "chat_queues" to "chat_messages" fail.' . chr(10);
+                return false;
+            }
+            if (
+                ! Yii::app()->db->createCommand('
+                    DELETE FROM `{{chat_queues}}`
+                    WHERE `uuid` = :uuid
+                ;')->execute(array(
+                    ':uuid'         => $message['uuid']
+                ))
+            )
+            {
+                echo '[FAILURE] Delete records from "chat_queues" fail.' . chr(10);
+                return false;
+            }
+        }
+
+        Yii::app()->db->createCommand('
+            ALTER TABLE `{{chat_queues}}` ENGINE = MEMORY
+        ;')->execute();
+        echo '[SUCCESS] Optimized "chat_queues" table.' . chr(10);
+
+        // Removes the data which are out of date, also release memory.
+        Yii::app()->db->createCommand('
+            DELETE FROM `{{chat_states}}`
+            WHERE `start` <= :timestamp AND `end` <= :timestamp
+        ;')->execute(array(
+            ':timestamp'    => $timestamp - self::STATE_RELEASE_TIMEOUT
+        ));
+
+        Yii::app()->db->createCommand('
+            ALTER TABLE `{{chat_states}}` ENGINE = MEMORY
+        ;')->execute();
+        echo '[SUCCESS] Optimized "chat_states" table.' . chr(10);
+
+        echo '[SUCCESS] Optimized tables!';
+        return true;
     }
 
     protected function afterFind()
