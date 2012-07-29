@@ -1,7 +1,7 @@
 <?php 
         $counter_two=1;
         echo '<table width="100%" border="1">';
-        echo '<th colspan="4">您目前的道具 <b> (' . sizeof($items_bag) . ')</b></th>';
+        echo '<th colspan="3">您目前的道具 <b> (' . sizeof($items_bag) . ')</b></th>';
 
         foreach ($items_bag as $row)
         {
@@ -9,9 +9,9 @@
             echo $counter_two;
             echo '<td>道具id：'.$row->items_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
             if($row->translation->description!='')
-            echo ''.$row->translation->description.'</td><td>'. $row->time.' 獲得</td>';
+            echo ''.$row->translation->description.'</td>';
             else
-            echo ' ( 無此道具相關描述 )</td><td>'. $row->time.' 獲得</td>';
+            echo ' ( 無此道具相關描述 )</td><td>';
             $counter_two++;
             echo '</td></tr>';
         }

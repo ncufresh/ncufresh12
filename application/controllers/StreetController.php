@@ -26,9 +26,7 @@ class StreetController extends Controller
                 $this->_data['picture_main'] = $url . '/555.png';
                 $this->_data['picture_other'][0] = $url . '/555.png';
                 $this->_data['picture_other'][1] = $url . '/555.png';
-                
-                //http://www.inote.tw/2009/04/php_13.html
-                //讀取資料夾內所有資料
+
                 $this->_data['pictureLayerTwo'][0] = $url . '/555.png';
                 $this->_data['pictureLayerTwo'][1] = $url . '/444.png';
                 $this->_data['pictureLayerTwo'][2] = $url . '/111.png';

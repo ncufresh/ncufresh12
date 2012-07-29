@@ -100,22 +100,17 @@ class FriendsController extends Controller
     public function actionMakeFriends() 
     {
         $userId = Yii::app()->user->id;
+        $this->_data['token'] = Yii::app()->security->getToken();
         if ( isset($_POST['friends']) )
         {
-            
             foreach ( $_POST['friends'] as $friendid )
             {   
                 $friend = new Friend();
-                $exist = $friend->isExist($userId, $friendid);
-                if ( $exist && $friend->openFriend($userId, $friendid) )
+                $exist = $friend->isExist($userId,$friendid);
+                if ( $userId <> $friendid && !$exist )
                 {
-                }
-                else if ( !$exist && $friend->addFriend($userId, $friendid) )
-                {
-                }
-                else
-                {
-                    echo '交友失敗了= =';
+                    $friend->addFriend($userId, $friendid);
+                    $friend->makeFriend($userId, $friendid);
                 }
             }
             $this->redirect(array('friends/myfriends'));
@@ -132,20 +127,12 @@ class FriendsController extends Controller
         if ( isset($_POST['friends']) )
         {
             foreach ( $_POST['friends'] as $cancelfriend )
-            {   
-                $close = Friend::model()->closeFriend($userID,$cancelfriend);
-                if ( !$close )
-                {
-                    echo '沒有兩筆資料存在喔';
-                    break;
-                }
-             }
+            {
+                Friend::model()->deleteFriend($userID, $cancelfriend);
+            }
             $this->redirect(array('friends/myfriends'));            
         }
-        else
-        {
-            $this->redirect(array('friends/myfriends'));
-        }
+        $this->redirect(array('friends/myfriends'));
     }
 
     public function actionMyGroups()
@@ -256,7 +243,7 @@ class FriendsController extends Controller
                         echo '沒有刪除所有成員耶';
                     }
                 } 
-                $this->redirect(array('friends/friends'));
+                $this->redirect(array('friends/allgroups'));
             }
             else
             {

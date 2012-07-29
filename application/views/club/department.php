@@ -15,17 +15,6 @@
         </ul>
         <ul>            
             <li>
-                <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 78));?>" title="資工系">資工系</a>
-            </li>
-            <li>
-                <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 79));?>" title="電機系">電機系</a>
-            </li>
-            <li>
-                <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 80));?>" title="通訊系">通訊系</a>
-            </li>
-        </ul>
-        <ul>            
-            <li>
                 <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 81));?>" title="土木系">土木系</a>
             </li>
             <li>
@@ -53,6 +42,17 @@
             </li>
             <li>
             <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 89));?>" title="理學院學士班">理學院學士班</a>
+            </li>
+        </ul>
+        <ul>            
+            <li>
+                <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 78));?>" title="資工系">資工系</a>
+            </li>
+            <li>
+                <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 79));?>" title="電機系">電機系</a>
+            </li>
+            <li>
+                <a href="<?php echo Yii::app()->createUrl('club/content', array('id' => 80));?>" title="通訊系">通訊系</a>
             </li>
         </ul>
         <ul>           
