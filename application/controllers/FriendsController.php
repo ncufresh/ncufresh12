@@ -115,10 +115,17 @@ class FriendsController extends Controller
             }
             $this->redirect(array('friends/myfriends'));
         }
-        else
+        else if( isset($_GET['friend_id']) )
         {
-            $this->redirect(array('friends/friends'));
+            $friend = new Friend();
+            $exist = $friend->isExist($userId, $_GET['friend_id']);
+            if ( $userId <> $_GET['friend_id']&& !$exist )
+            {
+                $friend->addFriend($userId, $_GET['friend_id']);
+                $friend->makeFriend($userId, $_GET['friend_id']);
+            }
         }
+        $this->redirect(array('friends/friends'));
     }
 
     public function actionDeleteFriends()

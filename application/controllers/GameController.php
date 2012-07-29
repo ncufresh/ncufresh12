@@ -75,8 +75,11 @@ class GameController extends Controller
         {
             if($id==$user_id)
             {
+                $character_data = Character::model()->findByPk($id);
+                $mission_count = $character_data->missions;
+                $missions = Mission::model()->getMissions($mission_count);
                 $this->setPageTitle(Yii::app()->name . ' - 任務列表');
-                $content = $this->renderPartial('missions', null, true);
+                $content = $this->renderPartial('missions', array('mission_count' => $mission_count, 'missions' => $missions), true);
                 $this->render('game_system', array('content' => $content, 'watch_id' => $id));
             }
             else
@@ -143,6 +146,32 @@ class GameController extends Controller
         else
         {
             if($id==$user_id)
+            {
+                $this->setPageTitle(Yii::app()->name . ' - 商城列表');
+                $content = $this->renderPartial('shop', null, true);
+                $this->render('game_system', array('content' => $content, 'watch_id' => $id));
+            }
+            else
+            {
+                $this->redirect(Yii::app()->createUrl('game/index', array('id'=>$id)));
+            }
+        }
+    }
+    
+    public function actionBuy($item_id = 0)
+    {
+        $user_id = Yii::app()->user->getId();
+        $character = Character::model()->findByPk($user_id);
+        $item_price = Item::model()->findByPk($item_id)->price;
+        $user_money = $character->money;
+
+        if($item_id==0)
+        {
+            $this->redirect(Yii::app()->createUrl('game/shop', array('id'=>$user_id)));
+        }
+        else
+        {
+            if($user_money >= $item_price)
             {
                 $this->setPageTitle(Yii::app()->name . ' - 商城列表');
                 $content = $this->renderPartial('shop', null, true);

@@ -29,7 +29,7 @@
         </dl>
         <dl>
             <dt>
-                <label for="form-register-username">帳號(e-mail)</label>
+                <label for="form-register-username">帳號</label>
             </dt>
             <dd>
                 <input id="form-register-username" name="register[username]" type="text" />
@@ -41,6 +41,12 @@
             </dt>
             <dd>
                 <input id="form-register-password" name="register[password]" type="password" />
+            </dd>
+            <dt>
+                <label for="form-register-confirm">再輸入一次</label>
+            </dt>
+            <dd>
+                <input id="form-register-confirm" name="confirm" type="password" />
             </dd>
         </dl>
         <dl class="select">
@@ -79,7 +85,6 @@
                 <input id="form-register-birthday" name="profile[birthday]" type="text" />
             </dd>
         </dl>
-           <!-- <input type="file" name="picture" />-->
             <button type="submit">註冊</button>
     </form>
 </div>

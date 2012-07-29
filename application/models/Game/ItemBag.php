@@ -18,7 +18,7 @@ class ItemBag extends CActiveRecord
             'translation'    => array(
                 self::BELONGS_TO,
                 'Item',
-                'items_id'
+                'item_id'
             )
         );
     }

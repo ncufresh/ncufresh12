@@ -5,6 +5,13 @@ class Club extends CActiveRecord
     {
         return parent::model($className);
     }
+    
+    public function behaviors()
+    {
+        return array(
+            'RawDataBehavior'
+        );
+    }
 
     public function tableName()
     {
@@ -21,12 +28,19 @@ class Club extends CActiveRecord
             )
         );
     }
+    
+    public function getRawClub($clubid)
+    {
+        $club = $this->findByPk($clubid);
+        $club->introduction = $club->getRawValue('introduction');
+        return $club;
+    }
 
     public function getClub($clubid)
     {
         return $this->findByPk($clubid);
     }
-    
+
     public function getClubByManagerrId($manager_id)
     {
         return $this->find(array(
@@ -35,5 +49,11 @@ class Club extends CActiveRecord
                 ':manager_id' => $manager_id
             )
         ));
+    }
+
+    public function afterFind()
+    {
+        parent::afterFind();
+        $this->introduction = nl2br(htmlspecialchars($this->introduction));
     }
 }
