@@ -2521,14 +2521,6 @@ div.allmessages
     padding:5px;
 }
 
-div.user-register
-{
-    width:675px;
-    height:370px;
-    margin-left:20px;
-    padding:0px;
-}
-
 div.friends-addfriend
 {
     display:inline-block;
@@ -2659,10 +2651,20 @@ div.register
     margin:0px;
 }
 
-div.user-register dd
+div.register form
 {
-    width: 488px;
-    height: 30px;
+    width:330px;
+    height:290px;
+    margin-left:0px;
+    padding:0px;
+}
+
+div.register form 
+{
+    width:330px;
+    height:290px;
+    margin-left:0px;
+    padding:0px;
 }
 
 h1

@@ -285,4 +285,10 @@ class FriendsController extends Controller
             'groups'         => Group::model()->FindGroup($userID)
         ));
    }
+
+   public function actionRequest()
+   {
+        $userID = Yii::app()->user->id;
+        $this->redirect(array('friends/myfriends'));
+   }
 }

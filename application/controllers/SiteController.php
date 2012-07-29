@@ -255,7 +255,7 @@ class SiteController extends Controller
                 $target = $path . DIRECTORY_SEPARATOR . $profile->picture;
                 move_uploaded_file($_FILES['picture']['tmp_name'], $target);
                 $picture_size=$_FILES['picture']['size'];
-                $picture_type=$_FILES['picture']['type'];
+                $picture_type=$_FILES['picture']['type']; 
                 if ( $profile->validate() )
                 {
                     if ( $user->save() )

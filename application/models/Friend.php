@@ -100,7 +100,7 @@ class Friend extends CActiveRecord
         $save = $model->save();
     }
 
-    public function Request($userid)
+    public function Request($userid) //好友確認
     {
         return  $this->findAll(array(
                     'condition' => 'friend_id = :userid AND invisible = 1',

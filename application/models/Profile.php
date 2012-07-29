@@ -53,7 +53,7 @@ class Profile extends CActiveRecord
             'condition' => 'department_id = :id AND grade = :grade',
             'params'    => array(
                 ':id' => $id,
-                ':grade' => $grade 
+                ':grade' => $grade,
             )
         ));
     }
