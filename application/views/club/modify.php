@@ -1,21 +1,3 @@
-<script type="text/javascript">
-jQuery(document).ready(function()
-    {
-        jQuery('.news-cancel-button').click(function()
-        {
-            jQuery.confirm({
-                message: '確定取消編輯此篇文章？',
-                confirmed: function(result)
-                {
-                    if ( result ) window.location = '<?php echo Yii::app()->createUrl('news/admin')?>';
-                    return false;
-                }
-            });
-            return false;
-        });
-        
-    }
-</script>
 <h1>社團資料修改</h1>
 <form action="<?php echo Yii::app()->createUrl('club/modify',array('id'=>$id))?>" method="post">
       <div class = "club-modify-table">   
@@ -24,9 +6,7 @@ jQuery(document).ready(function()
                 <label for="introduction" >簡介:</label>
             </dt>
             <dd>
-                <textarea id="introduction" name="club[introduction]" type="text" cols="50" rows="10">
-                <?php if ( empty($club['introduction']) ) echo $data->introduction; ?>
-                </textarea>
+                <textarea id="introduction" name="club[introduction]" type="text" cols="50" rows="10"><?php if ( empty($club['introduction']) ) echo $data->introduction; ?></textarea>
             </dd>
         </dl>
         <div class="modify-table">
@@ -129,6 +109,6 @@ jQuery(document).ready(function()
         </dl>
         <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
     </div>
-        <button name="save" type="submit" >儲存</button>
-        <button name="cancel" type="submit" >取消</button>
+        <button type="submit" >儲存</button>
+        <button class="back" >回上一頁</button>
 </form>
