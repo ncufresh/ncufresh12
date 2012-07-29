@@ -62,12 +62,6 @@ form button
     padding: 4px 8px;
 }
 
-form input[type="radio"],
-form input[type="checkbox"]
-{
-    width: auto;
-}
-
 form textarea
 {
     height: 160px;
@@ -106,11 +100,18 @@ form dl.select
     width: 95%;
 }
 
-form dl.radio label,
-form dl.checkbox label,
-form dl.select label
+form dl.radio dt,
+form dl.checkbox dt,
+form dl.select dt
 {
-    padding-left: 0;
+    display: none;
+}
+
+form dl.radio input,
+form dl.checkbox input
+form dl.select input
+{
+    width: auto;
 }
 
 form div
