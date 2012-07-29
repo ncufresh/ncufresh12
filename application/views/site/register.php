@@ -79,7 +79,6 @@
                 <input id="form-register-birthday" name="profile[birthday]" type="text" />
             </dd>
         </dl>
-           <!-- <input type="file" name="picture" />-->
             <button type="submit">註冊</button>
     </form>
 </div>

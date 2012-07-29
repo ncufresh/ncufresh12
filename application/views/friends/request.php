@@ -6,11 +6,9 @@
         <ul class="other-department">
 <?php foreach ( $friends as $friend ) : ?>
             <li>
-<?php if ( $friend->friend_request->picture !='' ) : ?>
-                <img width="100" height="120" src="<?php echo $target.'/'.$friend->friend_request->picture; ?>" alt="Score image"/>
-<?php else : ?>
-                <img width="100" height="120" src="<?php echo $target.'/image1.jpg'; ?>" alt="Score image"/>
-<?php endif; ?>
+<?php $this->widget('Avatar', array(
+    'id'        => Yii::app()->user->id
+)); ?>
                 <input type="checkbox" name="friends[<?php echo $friend->friend_request->id;?>]" value="<?php echo $friend->friend_request->id;?>"  />
                 <h3>
 <?php echo $friend->friend_request->name;?>

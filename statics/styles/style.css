@@ -2565,6 +2565,7 @@ button.news-button
     width:100px;
     height:100px;
     float:left;
+    color:DarkBlue;
     list-style-type:none;
 }
 
@@ -2620,11 +2621,21 @@ ul.friend-other-sort
 .other-department li h3
 {
     color:DarkBlue;
+    width:132px; 
+    height:25px;
+    padding:0px;
+    margin:0px;
+    text-align:center;
 }
 
 .other-department li h4
 {
     color:red;
+    width:132px; 
+    height:18px;
+    padding:0px;
+    margin:0px;
+    text-align:center;
 }
 
 .all-groups
@@ -2746,6 +2757,16 @@ div.friends-part2
     margin:0px;
 }
 
+div.friends-part2 div.avatar
+{
+    margin-left:28px;
+    margin-top:0px;
+    width:87px; 
+    height:145px;
+    padding:0px;
+    float:left;
+}
+
 div.friends-part3
 {
     width:675px;
@@ -2769,6 +2790,17 @@ div.friends-addfriend
     height:140px;
 }
 
+div.friends-addfriend div.avatar
+{
+    margin-left:0px;
+    margin-top:0px;
+    width:35px; 
+    height:45px;
+    padding:0px;
+    float:left;
+}
+
+
 div.friends-sortfriend
 {
     display:inline-block;
@@ -2776,6 +2808,15 @@ div.friends-sortfriend
     height:140px;
 }
 
+div.friends-sortfriend div.avatar
+{
+    margin-left:0px;
+    margin-top:0px;
+    width:35px; 
+    height:45px;
+    padding:0px;
+    float:left;
+}
 
 div.myfriend
 {

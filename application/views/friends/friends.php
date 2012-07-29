@@ -19,13 +19,10 @@
 <?php foreach ( $profileFir as $profilefir ) : ?>
 <?php if ( $account<=4 ):  ?>
     <li>
-<?php if ( $profilefir->picture !='' ):?>
-        <img  width="90" height="40" src=" <?php echo $target.'/'.$profilefir->picture; ?>" alt="Score image" />
-<?php echo $profilefir->name; ?>
-<?php else: ?>
-        <img  width="90" height="40" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image" />
-<?php echo $profilefir->name; ?>
-<?php endif; ?>     
+<?php $this->widget('Avatar', array(
+    'id'        => Yii::app()->user->id
+)); ?>     
+<?php echo $profilefir->name;?> 
 <?php $account++;?>
 <?php endif; ?>
      </li>
@@ -36,13 +33,10 @@
 <?php foreach ( $profileSec as $profilesec ) : ?>
 <?php if ( $account<=4 ) :?>
     <li>
-<?php if ( $profilesec->picture !='' ): ?> 
-        <img  width="90" height="40"src=" <?php echo $target.'/'.$profilesec->picture; ?>" alt="Score image"/>
-<?php echo $profilesec->name;?>   
-<?php else: ?>
-        <img  width="90" height="40" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/>
-<?php echo $profilesec->name; ?> 
-<?php endif; ?>
+<?php $this->widget('Avatar', array(
+    'id'        => Yii::app()->user->id
+)); ?>
+<?php echo $profilesec->name; ?>
 <?php $account++;?>
 <?php endif; ?>
     </li>
@@ -53,13 +47,10 @@
 <?php foreach ( $profileThir as $profilethir ) :?>
 <?php if ( $account <= 4 ):?> 
     <li>
-<?php if ( $profilethir->picture !='' ):?>
-        <img  width="90" height="40" src=" <?php echo $target.'/'.$profilethir->picture ; ?>" alt="Score image"/>
+<?php $this->widget('Avatar', array(
+    'id'        => Yii::app()->user->id
+)); ?>
 <?php echo $profilethir->name ; ?>
-<?php else : ?>
-        <img  width="90" height="40" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/>
-<?php echo $profilethir->name ; ?>s    
-<?php endif; ?>     
 <?php $account++;?>
 <?php endif; ?>
      </li>
@@ -70,7 +61,6 @@
 好友分類
 <a href="<?php echo Yii::app()->createUrl('friends/request'); ?>" title="好友確認" class="friends-title">好友確認</a>
 </h4>
-
 <div class="friends-sortfriend">
 <ul class="friends-self">
     <li>
@@ -80,13 +70,10 @@
 <?php foreach ( $user->friends as $friend ) : ?>
 <?php if ( $account<=5 ) : ?> 
     <li>
-<?php if ( $friend->profile->picture !='' ) : ?>
-        <img width="90" height="60" src=" <?php echo $target.'/'.$friend->profile->picture; ?>" alt="Score image"/>
-<?php echo $friend->profile->name ; ?>
-<?php else : ?>
-        <img width="90" height="60" src=" <?php echo $target.'/image1.jpg'; ?>" alt="Score image"/>
+<?php $this->widget('Avatar', array(
+    'id'        => Yii::app()->user->id
+)); ?>
 <?php echo $friend->profile->name ; ?>     
-<?php endif ; ?>
 <?php $account++ ; ?>
 <?php endif ; ?>
     </li>

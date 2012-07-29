@@ -2,11 +2,9 @@
 <h1>編輯基本資料</h1>
 <div class="myprofile">
     <div class="friends-part3">
-<?php if ( $user->profile->picture !=' ' ) : ?>
-        <img width="170" height="160" src="<?php echo $target . '/' . $user->profile->picture; ?>" alt="Score image" />  
-<?php else : ?>
-        <img  width="170" height="160" src="<?php echo $target.'/image1.jpg'; ?>" alt="Score image" />
-<?php endif; ?>
+<?php $this->widget('Avatar', array(
+    'id'        => Yii::app()->user->id
+)); ?>
          <ul class="user-editor">
             <li>
                 <span>姓名:</span>
