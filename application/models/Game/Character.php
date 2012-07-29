@@ -154,7 +154,7 @@ class Character extends CActiveRecord
             // 'items'    => array(
                 // self::MANY_MANY,
                 // 'Item',
-                // 'game_items_bag(user_id, items_id)'
+                // 'game_items_bag(user_id, item_id)'
             // ),
             'items_bag'    => array(
                 self::HAS_MANY,
@@ -301,10 +301,10 @@ class Character extends CActiveRecord
         return array(
             '身體皮膚名稱'    => $skin,
             '眼睛部位名稱'    => $eyes,
-            '頭髮髮型名稱'    => $hair,
             '鞋子物品名稱'    => $shoes,
             '褲子部位名稱'    => $pants,
             '衣服衣物名稱'    => $clothes,
+            '頭髮髮型名稱'    => $hair,
             '其他部位名稱'    => $others
         );
     }

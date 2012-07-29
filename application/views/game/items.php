@@ -1,3 +1,4 @@
+<h1>道具列表</h1>
 <?php 
         $counter_two=1;
         $items_bag = $character_data->getItemsByCategory(1);
@@ -8,7 +9,7 @@
         {
             echo '<tr><td>';
             echo $counter_two;
-            echo '<td>道具id：'.$row->items_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
+            echo '<td>道具id：'.$row->item_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
             if($row->translation->description!='')
             echo ''.$row->translation->description.'</td>';
             else
@@ -29,7 +30,7 @@
         {
             echo '<tr><td>';
             echo $counter_two;
-            echo '<td>道具id：'.$row->items_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
+            echo '<td>道具id：'.$row->item_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
             if($row->translation->description!='')
             echo ''.$row->translation->description.'</td>';
             else
@@ -50,7 +51,7 @@
         {
             echo '<tr><td>';
             echo $counter_two;
-            echo '<td>道具id：'.$row->items_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
+            echo '<td>道具id：'.$row->item_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
             if($row->translation->description!='')
             echo ''.$row->translation->description.'</td>';
             else
@@ -71,7 +72,7 @@
         {
             echo '<tr><td>';
             echo $counter_two;
-            echo '<td>道具id：'.$row->items_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
+            echo '<td>道具id：'.$row->item_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
             if($row->translation->description!='')
             echo ''.$row->translation->description.'</td>';
             else
@@ -92,7 +93,7 @@
         {
             echo '<tr><td>';
             echo $counter_two;
-            echo '<td>道具id：'.$row->items_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
+            echo '<td>道具id：'.$row->item_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
             if($row->translation->description!='')
             echo ''.$row->translation->description.'</td>';
             else
@@ -113,7 +114,7 @@
         {
             echo '<tr><td>';
             echo $counter_two;
-            echo '<td>道具id：'.$row->items_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
+            echo '<td>道具id：'.$row->item_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
             if($row->translation->description!='')
             echo ''.$row->translation->description.'</td>';
             else
@@ -134,7 +135,7 @@
         {
             echo '<tr><td>';
             echo $counter_two;
-            echo '<td>道具id：'.$row->items_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
+            echo '<td>道具id：'.$row->item_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
             if($row->translation->description!='')
             echo ''.$row->translation->description.'</td>';
             else
