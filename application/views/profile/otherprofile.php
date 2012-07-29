@@ -2,7 +2,7 @@
 <div class="myprofile">
     <div class="friends-part3">
 <?php $this->widget('Avatar', array(
-    'id'        => Yii::app()->user->id
+    'id'        => $user->id //得到profile的id---觀看他人基本資料
 )); ?>
         <ul class="user-editor">  
             <li>
@@ -37,5 +37,5 @@
         </ul>
     </div>
 </div>
-<button><a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>">編輯</a></button>
+<button><a href="<?php echo Yii::app()->createUrl('friends/makefriends', array('friend_id'=>$_GET['friend_id'])); ?>">加為好友</a></button>
 <button onClick= "history.back()" >BACK</button>

@@ -10,4 +10,4 @@
         </ul>
     </div>
 </div>
-<button><a href="<?php echo Yii::app()->createUrl('friends/friends');?>">BACK</a></button>
+<button onClick= "history.back()" >BACK</button>

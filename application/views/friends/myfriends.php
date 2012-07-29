@@ -6,11 +6,11 @@
         <ul class="other-department">
 <?php foreach ( $user->friends as $friend ) :?>
             <li>
-<?php if ( $friend->profile->picture !='' ) :?>
-                <img  width="100" height="120" src="<?php echo $target.'/'.$friend->profile->picture; ?> " alt="Score image" />
-<?php else :?>
-                <img  width="100" height="120"" src="<?php echo $target.'/image1.jpg'; ?>" alt="Score image" />
-<?php endif;?>
+<a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $friend->profile->id));  ?>">
+<?php $this->widget('Avatar', array(
+    'id'        => $friend->profile->id
+)); ?>
+</a>
                 <input type="checkbox" name="friends[<?php echo $friend->profile->id;?>]" value="<?php echo $friend->profile->id;?>" />
                 <h3>
 <?php echo $friend->profile->name;?>
@@ -25,4 +25,4 @@
 </div>
 <button type="submit">取消好友</button>
 </form>
-<button><a href="<?php echo Yii::app()->createUrl('friends/friends')  ?>">BACK</a></button>
+<button onClick= "history.back()" >BACK</button>
