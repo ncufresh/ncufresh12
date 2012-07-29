@@ -21,7 +21,7 @@ class ChatController extends Controller
         return array(
             array(
                 'allow',
-                'actions'   => array('open', 'send', 'close'),
+                'actions'   => array('open', 'send', 'close', 'avatar'),
                 'users'     => array('@')
             ),
             array(
@@ -77,5 +77,12 @@ class ChatController extends Controller
             return true;
         }
         $this->_data['errors'][] = '發生錯誤！';
+    }
+
+    public function actionAvatar($id)
+    {
+        $this->_data = $this->widget('Avatar', array(
+            'id'        => $id
+        ), true);
     }
 }

@@ -879,20 +879,43 @@ a:hover
     cursor: pointer;
 }
 
-.chat-dialog .scroll-container
+.chat-dialog .chat-icon
 {
-    height: 150px;
+    position: relative;
 }
 
-.chat-dialog .scroll-area
+.chat-dialog .chat-icon .avatar
 {
-    margin: -3px 0;
-    width: 160px;
+    float: left;
+    height: 32px;
+    margin: 4px 8px 4px 0;
+    width: 32px;
 }
 
-.scroll-content
+.chat-dialog .chat-icon .avatar img
 {
-    overflow: hidden;
+    margin-left: -8px;
+    width: 48px;
+}
+
+.chat-dialog .chat-messages .chat-icon p
+{
+    background: #333333;
+    border-radius: 5px 5px 5px 0;
+    color: #FFFFFF;
+    display: none;
+    height: 16px;
+    line-height: 16px;
+    left: 28px;
+    margin: 0;
+    padding: 2px 8px;
+    position: absolute;
+    top: 2px;
+}
+
+.chat-dialog .chat-messages .chat-icon:hover p
+{
+    display: block;
 }
 
 .chat-dialog .chat-display
@@ -901,10 +924,19 @@ a:hover
     width: 150px;
 }
 
-.chat-dialog .chat-display p
+.chat-dialog .chat-messages
 {
-    margin: 0;
+    border-top: 1px solid #EEEEEE;
+    clear: both;
+    font-size: 0.85em;
+    margin-top: 3px;
+}
+
+.chat-dialog .chat-messages p
+{
+    margin: 0 0 0 42px;
     padding: 0;
+    word-break: break-all;
 }
 
 .chat-dialog .chat-form
@@ -921,6 +953,22 @@ a:hover
     outline: none;
     padding: 0 5px;
     width: 150px;
+}
+
+.chat-dialog .scroll-container
+{
+    height: 150px;
+}
+
+.chat-dialog .scroll-area
+{
+    margin: -3px 0;
+    width: 160px;
+}
+
+.scroll-content
+{
+    overflow: hidden;
 }
 
 /**

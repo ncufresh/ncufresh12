@@ -87,7 +87,8 @@ class Chat extends CActiveRecord
                     'id'        => $entry['sender_id'] == $user
                                  ? $entry['receiver_id']
                                  : $entry['sender_id'],
-                    'sender'    => User::model()->findByPk($entry['sender_id'])->username,
+                    'name'      => User::model()->findByPk($entry['sender_id'])->username,
+                    'icon'      => $entry['sender_id'],
                     'message'   => $entry['message']
                 );
             }
@@ -101,9 +102,10 @@ class Chat extends CActiveRecord
                 'id'        => $entry->sender_id == $user
                              ? $entry->receiver_id
                              : $entry->sender_id,
-                'sender'    => $entry->sender
+                'name'      => $entry->sender
                              ? $entry->sender->username
                              : 'Unknown',
+                'icon'      => $entry->sender_id,
                 'message'   => $entry->message
             );
         }
@@ -149,9 +151,10 @@ class Chat extends CActiveRecord
                 'id'        => $entry->sender_id == Yii::app()->user->getId()
                              ? $entry->receiver_id
                              : $entry->sender_id,
-                'sender'    => $entry->sender
+                'name'      => $entry->sender
                              ? $entry->sender->username
                              : 'Unknown',
+                'icon'      => $entry->sender_id,
                 'message'   => $entry->message
             );
         }
@@ -210,9 +213,10 @@ class Chat extends CActiveRecord
             $data[] = array(
                 'uuid'      => $entry->uuid,
                 'id'        => $key,
-                'sender'    => $entry->sender
+                'name'      => $entry->sender
                              ? $entry->sender->username
                              : 'Unknown',
+                'icon'      => $entry->sender_id,
                 'message'   => $entry->message
             );
         }

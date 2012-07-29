@@ -365,6 +365,8 @@
             chatDisplayClass:       'chat-display',
             chatFormClass:          'chat-form',
             chatInputClass:         'chat-input',
+            chatMessagesClass:      'chat-messages',
+            chatIconClass:          'chat-icon',
             unknownIcon:            'unknown.png'
         }, options);
         return $(this).click(function()
@@ -566,21 +568,46 @@
 
     $.fn.chat.updateChatDialog = function(id, data)
     {
+        var name;
         var exists;
         var dialog = $.fn.chat.createChatDialog(id);
         dialog.find('.' + $.chat.options.chatDisplayClass)
             .each(function()
             {
-                $(this).children('p').each(function()
+                $(this).find('p').each(function()
                 {
                     if ( $(this).data('uuid') == data.uuid ) exists = true;
+                    name = $(this).data('name');
                 });
                 if ( ! exists )
                 {
-                    $('<p></p>')
+                    var message = $('<p></p>')
                         .data('uuid', data.uuid)
-                        .text(data.sender + ':' + data.message)
-                        .appendTo($(this));
+                        .data('name', data.name);
+                    if ( name != data.name )
+                    {
+                        var entry = $('<div></div>')
+                            .addClass($.chat.options.chatMessagesClass)
+                            .appendTo($(this));
+                        var icon = $('<div></div>')
+                            .addClass($.chat.options.chatIconClass)
+                            .appendTo(entry);
+                        var name = $('<p></p>')
+                            .text(data.name)
+                            .appendTo(icon);
+                        $.get(
+                            $.configures.chatAvatarUrl,
+                            {
+                                id: data.icon
+                            },
+                            function(response)
+                            {
+                                icon.prepend(response);
+                            }
+                        );
+                    }
+                    message.text(data.message);
+                    message.appendTo($(this).children('div').last());
                     $(this).scrollTo($(this).height());
                 }
             }

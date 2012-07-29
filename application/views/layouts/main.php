@@ -261,6 +261,7 @@
             chatOpenUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/open', array('id' => ':id')); ?>'),
             chatSendUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
             chatCloseUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/close'); ?>'),
+            chatAvatarUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/avatar'); ?>'),
             ncuLifeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('nculife/content', array('tab' => ':tab', 'page' => ':page'));?>'),
             multimediaYoutubeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('multimedia/watch', array('v' => ':v')); ?>'),
             newsIndexUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>'),
