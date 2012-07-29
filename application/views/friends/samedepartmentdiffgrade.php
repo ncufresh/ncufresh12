@@ -8,7 +8,7 @@
             <li>
 <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $profile->id));  ?>">
 <?php $this->widget('Avatar', array(
-    'id'        => Yii::app()->user->id
+    'id'        => $profile->id
 )); ?>
 </a>
                 <input type="checkbox" name="friends[<?php echo $profile->id;?>]" value="<?php echo $profile->id;?>"  />
@@ -26,4 +26,4 @@
 <button type="submit">確定加為好友</button>
 </form>
 <button><a href="<?php echo Yii::app()->createUrl('friends/samedepartmentdiffgrade');  ?>">重選</a></button>
-<button><a href="<?php echo Yii::app()->createUrl('friends/friends');  ?>">BACK</a></button>
+<button onClick= "history.back()" >BACK</button><button onClick= "history.back()" >BACK</button>

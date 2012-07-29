@@ -14,7 +14,7 @@
 <?php $profile = Profile::model()->findByPK($member->user_id); ?>
 <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $profile->id));  ?>">
 <?php $this->widget('Avatar', array(
-    'id'        => Yii::app()->user->id
+    'id'        => $profile->id
 )); ?>
 </a>
                 <input type="checkbox" name="members[<?php echo $profile->id; ?>]" value="<?php echo $profile->id; ?>" />
@@ -31,6 +31,6 @@
 </div>
 <button type="submit">刪除成員</button>
 </form>
-<button><a href="<?php echo Yii::app()->createUrl('friends/friends')  ?>">BACK</a></button>
+<button onClick= "history.back()" >BACK</button>
 <button><a href="<?php echo Yii::app()->createUrl('friends/deletegroup', array('id'=>$mygroup->id))  ?>">刪除群組</a></button>
 <button><a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$mygroup->id))  ?>">+新成員</a></button>

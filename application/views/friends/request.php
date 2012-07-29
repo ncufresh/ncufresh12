@@ -8,7 +8,7 @@
             <li>
 <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $friend->friend_request->id));  ?>">
 <?php $this->widget('Avatar', array(
-    'id'        => Yii::app()->user->id
+    'id'        => $friend->friend_request->id
 )); ?>
 </a>
                 <input type="checkbox" name="friends[<?php echo $friend->friend_request->id;?>]" value="<?php echo $friend->friend_request->id;?>"  />
@@ -26,4 +26,4 @@
 <button type="submit" name="agree">確認</button>
 <button type="submit" name="cancel">取消</button>
 </form>
-<button><a href="<?php echo Yii::app()->createUrl('friends/friends')  ?>">BACK</a></button>
+<button onClick= "history.back()" >BACK</button>

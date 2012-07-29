@@ -38,4 +38,4 @@
     </div>
 </div>
 <button><a href="<?php echo Yii::app()->createUrl('friends/makefriends', array('friend_id'=>$_GET['friend_id'])); ?>">加為好友</a></button>
-<button><a href="<?php echo Yii::app()->createUrl('site/index'); ?>">BACK</a></button>
+<button onClick= "history.back()" >BACK</button>

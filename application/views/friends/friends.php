@@ -21,7 +21,7 @@
     <li>
 <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $profilefir->id));  ?>">
 <?php $this->widget('Avatar', array(
-    'id'        => Yii::app()->user->id
+    'id'        => $profilefir->id
 )); ?>
 </a>    
 <?php echo $profilefir->name;?> 
@@ -37,7 +37,7 @@
     <li>
 <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $profilesec->id));  ?>">
 <?php $this->widget('Avatar', array(
-    'id'        => Yii::app()->user->id
+    'id'        => $profilesec->id
 )); ?>
 </a>
 <?php echo $profilesec->name; ?>
@@ -53,7 +53,7 @@
     <li>
 <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $profilethir->id));  ?>">
 <?php $this->widget('Avatar', array(
-    'id'        => Yii::app()->user->id
+    'id'        => $profilethir->id
 )); ?>
 </a>
 <?php echo $profilethir->name ; ?>
@@ -78,7 +78,7 @@
     <li>
 <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $friend->profile->id));  ?>">
 <?php $this->widget('Avatar', array(
-    'id'        => Yii::app()->user->id
+    'id'        => $friend->profile->id
 )); ?>
 </a>
 <?php echo $friend->profile->name ; ?>     
