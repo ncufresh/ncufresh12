@@ -125,7 +125,9 @@ jQuery(document).ready(function()
                     $.configures.token = response.token;
                     if ( response.error )
                     {
-                        alert('更新失敗！請稍後再試一次！');
+                        $.alert({
+                            message: '更新失敗！請稍後再試一次！'
+                        });
                         return false;
                     }
                     var text = jQuery('<td></td>')
@@ -184,7 +186,9 @@ jQuery(document).ready(function()
                             $.configures.token = response.token;
                             if ( response.error )
                             {
-                                alert('刪除失敗！請稍後再試一次！');
+                                $.alert({
+                                    message: '刪除失敗！請稍後再試一次！'
+                                });
                                 return false;
                             }
                             element.remove();
