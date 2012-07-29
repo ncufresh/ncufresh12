@@ -1,6 +1,6 @@
 jQuery(document).ready(function()
 {
-    jQuery('#readme-direct').mouseenter(function()
+    /* jQuery('#readme-direct').mouseenter(function()
     {
         jQuery('#caption').animate(
         {
@@ -15,5 +15,10 @@ jQuery(document).ready(function()
         {
             left: '-300px'
         },500);
+    }); */
+    
+    jQuery('.fresh-inner').click(function()
+    {
+        $('.fresh-inner:hidden').fadeIn('fast');
     });
 });

@@ -163,6 +163,20 @@ class Character extends CActiveRecord
             )
          );
     }
+
+    public function getItemsByCategory($category)
+    {   
+        $category = (integer)$category;
+        $array = array();
+        foreach ($this->items_bag as $item)
+        {
+            if ( $item->translation->items_category == $category )
+            {
+                $array[] = $item;
+            }
+        }
+        return $array;
+    }
     
     public function getLevel($id)
     {   
@@ -293,6 +307,34 @@ class Character extends CActiveRecord
             '衣服衣物名稱'    => $clothes,
             '其他部位名稱'    => $others
         );
+    }
+    
+    public static function getBodyPrice($id)
+    {
+        $character = Character::model()->findByPk($id);
+        $price = 0;
+        if( $character->skin !== null)
+            $price = $price + $character->skin->price;
+            
+        if( $character->eyes !== null)
+            $price = $price + $character->eyes->price;
+        
+        if( $character->hair !== null)
+            $price = $price + $character->hair->price;
+        
+        if( $character->shoes !== null)
+            $price = $price + $character->shoes->price;
+        
+        if( $character->pants !== null)
+            $price = $price + $character->pants->price;
+        
+        if( $character->clothes !== null)
+            $price = $price + $character->clothes->price;
+        
+        if( $character->others !== null)
+            $price = $price + $character->others->price;
+        
+        return $price;
     }
     
     public static function createCharacter($id,$sex)

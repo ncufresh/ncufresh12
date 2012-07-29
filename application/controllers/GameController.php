@@ -128,9 +128,10 @@ class GameController extends Controller
         else
         {
             $this->setPageTitle(Yii::app()->name . ' - 道具列表');
+            $character_data = Character::model()->findByPk($id);
             // $this->render('index', array('user_id' => $id));
-            $items_bag = Character::model()->findByPk($id)->items_bag;
-            $content = $this->renderPartial('items',array('items_bag' => $items_bag), true);
+            $items_bag = $character_data->items_bag;
+            $content = $this->renderPartial('items',array('character_data' => $character_data), true);
             $this->render('game_system', array('content' => $content, 'watch_id' => $id));
         }
     }

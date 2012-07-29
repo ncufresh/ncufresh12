@@ -876,6 +876,7 @@
                     }
                 }
             });
+            updateScrollDraggableHeight();
         });
     };
 })(jQuery);
