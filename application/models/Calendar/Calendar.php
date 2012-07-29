@@ -12,12 +12,12 @@ class Calendar extends CActiveRecord
     const GENERAL_CALENDAR_USER_ID = 0;
     const CATEGORY_CLUB = 0;
     const CATEGORY_PERSONAL = 1;
-     
+
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
-     
+
     public function tableName()
     {
         return '{{calendars}}';
@@ -30,6 +30,11 @@ class Calendar extends CActiveRecord
                 self::HAS_MANY,
                 'Event',
                 'calendar_id'
+            ),
+            'author' => array(
+                self::BELONGS_TO,
+                'User',
+                'user_id'
             )
         );
     }
@@ -66,8 +71,35 @@ class Calendar extends CActiveRecord
         ));
     }
 
+    public function getClubName()
+    {
+        // if ( $this->category = 'club' )
+        // {
+            // $club = Club::model->findByManagerId($this->author);
+            // return $club->name;
+        // }
+        // return false;
+    }
+    
     public static function getCurrentMonth()
     {
         return date('m', TIMESTAMP);
+    }
+
+    public function afterFind()
+    {
+        parent::afterFind();
+        if( $this->user_id == 0 )
+        {
+            $this->category = 'general';
+        }
+        else if( $this->category == 0 )
+        {
+            $this->category = 'club';
+        }
+        else
+        {
+            $this->category = 'personal';
+        }
     }
 }

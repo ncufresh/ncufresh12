@@ -62,17 +62,36 @@ class CalendarController extends Controller
         $this->_data['event']['id'] = $event->id;
         $this->_data['event']['start'] = $event->start;
         $this->_data['event']['end'] = $event->end;
+        $this->_data['event']['name'] = $event->name;
+        $this->_data['event']['description'] = $event->description;
     }
 
     public function actionAjaxEvents()
     {
-        $this->_data['events'] = array();
         $user = User::model()->findByPk(Yii::app()->user->id);
-        foreach ( $user->calendar->events as $key => $event )
+        $this->_data['events'] = array();
+        if( isset($_POST['event_ids']) )
         {
-            $this->_data['events'][$key]['id'] = $event->id;
-            $this->_data['events'][$key]['start'] = $event->start;
-            $this->_data['events'][$key]['end'] = $event->end;
+            $events = Event::model()->getEventsByIds($_POST['event_ids']);
+            foreach( $events as $key => $event )
+            {
+                $this->_data['events'][$key]['id'] = $event->id;
+                $this->_data['events'][$key]['category'] = $event->calendar->category;
+                $this->_data['events'][$key]['start'] = $event->start;
+                $this->_data['events'][$key]['end'] = $event->end;
+                $this->_data['events'][$key]['name'] = $event->name;
+                $this->_data['events'][$key]['description'] = $event->description;
+            }
+            $this->_data['token'] = Yii::app()->security->getToken();
+        }
+        else
+        {
+            foreach ( $user->calendar->events as $key => $event )
+            {
+                $this->_data['events'][$key]['id'] = $event->id;
+                $this->_data['events'][$key]['start'] = $event->start;
+                $this->_data['events'][$key]['end'] = $event->end;
+            }
         }
     }
 }
