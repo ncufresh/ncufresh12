@@ -200,9 +200,8 @@ class SiteController extends Controller
     /**
      * Displays the login page
      */
-    public function actionLogin($facebook = false)
+    public function actionLogin()
     {
-        if ( $facebook ) Yii::app()->facebook->login();
         if ( isset($_POST['login']) )
         {
             $model = new User();
@@ -219,9 +218,8 @@ class SiteController extends Controller
     /**
      * Logs out the current user and redirect to homepage.
      */
-    public function actionLogout($facebook = false)
+    public function actionLogout()
     {
-        if ( ! $facebook ) Yii::app()->facebook->logout();
         Yii::app()->user->logout(false);
         $this->redirect(Yii::app()->homeUrl);
     }
