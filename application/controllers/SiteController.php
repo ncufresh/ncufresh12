@@ -154,7 +154,7 @@ class SiteController extends Controller
         }
         if ( Yii::app()->user->getIsMember() )
         {
-            $this->_data['messages'] = Chat::model()->getMessages($lasttime);
+            $this->_data['messages'] = Chat::getMessages($lasttime);
         }
         $this->_data['lasttime'] = TIMESTAMP;
     }

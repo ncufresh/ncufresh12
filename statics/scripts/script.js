@@ -323,6 +323,29 @@
 })(jQuery);
 
 /**
+ * Errors
+ */
+(function($)
+{
+    $.errors = function(errors)
+    {
+        if ( errors )
+        {
+            var messages = '';
+            for ( var key in errors )
+            {
+                messages += errors[key];
+            }
+            $.alert({
+                message: messages
+            });
+            return false;
+        }
+        return true;
+    };
+})(jQuery);
+
+/**
  * Chat
  */
 (function($)
@@ -336,8 +359,8 @@
             chatId:                 'chat',
             friendListId:           'chat-friend-list',
             friendListEntriesWrapId:'chat-friend-list-entries-wrap',    
-            friendListSearchId:        'chat-friend-list-search',
-            chatTitleClass:            'chat-title',
+            friendListSearchId:     'chat-friend-list-search',
+            chatTitleClass:         'chat-title',
             chatDialogClass:        'chat-dialog',
             chatDisplayClass:       'chat-display',
             chatFormClass:          'chat-form',
@@ -390,7 +413,7 @@
     $.fn.chat.updateFriendList = function(response)
     {
         var list = $.fn.chat.createFriendList();
-        var wrap = list.children('#'+$.chat.options.friendListEntriesWrapId);
+        var wrap = list.children('#' + $.chat.options.friendListEntriesWrapId);
         for ( var key in response )
         {
             var data = response[key];
@@ -490,10 +513,6 @@
                 .data('id', id)
                 .data('show', true)
                 .addClass($.chat.options.chatDialogClass)
-                .scroll(function()
-                {
-                    alert('!');
-                })
                 .append(title)
                 .append(display)
                 .append(form)
@@ -517,6 +536,20 @@
             display.scrollable({
                 scrollableClass:    false
             });
+            $.get(
+                $.configures.chatOpenUrl.replace(':id', id),
+                function(response)
+                {
+                    if ( $.errors(response.errors) )
+                    {
+                        for ( var key in response.messages )
+                        {
+                            var data = response.messages[key];
+                            $.fn.chat.updateChatDialog(data.id, data);
+                        }
+                    }
+                }
+            );
         }
         return dialog;
     };
@@ -567,6 +600,22 @@
 
     $.fn.chat.closeChatDialog = function(id)
     {
+        $.post(
+            $.configures.chatCloseUrl,
+            {
+                receiver: id,
+                lasttime: $.configures.lasttime,
+                token: $.configures.token
+            },
+            function(response)
+            {
+                $.pull.pause();
+                $.configures.token = response.token;
+                $.configures.lasttime = response.lasttime;
+                $.errors(response.errors);
+                $.pull.restart();
+            }
+        );
         $.fn.chat.createChatDialog(id).remove();
         $.fn.chat.updateChatDialogsPosition();
     };
@@ -574,12 +623,10 @@
     $.fn.chat.sendMessage = function(id, message)
     {
         $.post(
-            $.configures.chatSendMessageUrl,
+            $.configures.chatSendUrl,
             {
-                chat: {
-                    receiver_id: id,
-                    message: message
-                },
+                receiver: id,
+                message: message,
                 token: $.configures.token,
                 lasttime: $.configures.lasttime,
                 sequence: $.configures.sequence++
@@ -589,10 +636,13 @@
                 $.pull.pause();
                 $.configures.token = response.token;
                 $.configures.lasttime = response.lasttime;
-                for ( var key in response.messages )
+                if ( $.errors(response.errors) )
                 {
-                    var data = response.messages[key];
-                    $.fn.chat.updateChatDialog(data.id, data);
+                    for ( var key in response.messages )
+                    {
+                        var data = response.messages[key];
+                        $.fn.chat.updateChatDialog(data.id, data);
+                    }
                 }
                 $.pull.restart();
             }
@@ -828,8 +878,6 @@
             {
                 var scrollDraggableHeight = updateScrollDraggableHeight();
                 var maximum = scrollTrack.height() - scrollDraggableHeight;
-                console.log(scrollTrack);
-                console.log(scrollTrack.height());
                 if ( position <= 0 ) position = 0;
                 if ( position >= maximum ) position = maximum;
                 scrollDragable.css({
