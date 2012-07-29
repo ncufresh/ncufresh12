@@ -1,24 +1,14 @@
 <?php $user_id = Yii::app()->user->getId(); //使用者的id 
        //$user_level = Character::model()->findByPk($watch_id)->exp;?>
     <h1>使用者ID => 登入帳號 / 觀看中 => <?php echo $user_id.' / '.$watch_id?> </h1>
+    <h1> <?php echo $url=Character::model()->findByPk($watch_id)->skin->url.'<br/>'; ?></h1>
     <div class="game-system">
     <div class="user-body">
-    <?php //////////////////////////////////////////////////////////TEST
-        //////////////////// 暫時圖片變數名稱
-        $skin = 'boyC1.png';
-        $eyes = 'e9.png';
-        $hair = 'hairN5.png';
-        $shoes = 'shoeN5.png';
-        $cloths = 'clothseN4.png';
-        $pants = 'pantsN10.png';
-        ///////////////////////////////////////////////////////////////TEST
-    ?>
-    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/skin/<?php echo $skin;?>" >
-    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/eyes/<?php echo $eyes;?>" >
-    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/hair/<?php echo $hair;?>" >
-    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/shoes/<?php echo $shoes;?>" >
-    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/pants/<?php echo $pants;?>" >
-    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/cloths/<?php echo $cloths;?>" >
+
+<?php $this->widget('Avatar', array(
+    'id'        => $watch_id
+)); ?>
+    
     </div>
     <div class="function-body">
         <ul class="game-button">

@@ -1,6 +1,8 @@
 /**
  * Utilities
  */
+(function(o,d){var k='backgroundColor borderBottomColor borderLeftColor borderRightColor borderTopColor color columnRuleColor outlineColor textDecorationColor textEmphasisColor'.split(' '),h=/^([\-+])=\s*(\d+\.?\d*)/,g=[{re:/rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)/,parse:function(p){return[p[1],p[2],p[3],p[4]]}},{re:/rgba?\(\s*(\d+(?:\.\d+)?)\%\s*,\s*(\d+(?:\.\d+)?)\%\s*,\s*(\d+(?:\.\d+)?)\%\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)/,parse:function(p){return[p[1]*2.55,p[2]*2.55,p[3]*2.55,p[4]]}},{re:/#([a-f0-9]{2})([a-f0-9]{2})([a-f0-9]{2})/,parse:function(p){return[parseInt(p[1],16),parseInt(p[2],16),parseInt(p[3],16)]}},{re:/#([a-f0-9])([a-f0-9])([a-f0-9])/,parse:function(p){return[parseInt(p[1]+p[1],16),parseInt(p[2]+p[2],16),parseInt(p[3]+p[3],16)]}},{re:/hsla?\(\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)\%\s*,\s*(\d+(?:\.\d+)?)\%\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)/,space:'hsla',parse:function(p){return[p[1],p[2]/100,p[3]/100,p[4]]}}],e=o.Color=function(q,r,p,s){return new o.Color.fn.parse(q,r,p,s)},j={rgba:{props:{red:{idx:0,type:'byte'},green:{idx:1,type:'byte'},blue:{idx:2,type:'byte'}}},hsla:{props:{hue:{idx:0,type:'degrees'},saturation:{idx:1,type:'percent'},lightness:{idx:2,type:'percent'}}}},n={'byte':{floor:true,max:255},percent:{max:1},degrees:{mod:360,floor:true}},m=e.support={},b=o('<p>')[0],a,l=o.each;b.style.cssText='background-color:rgba(1,1,1,.5)';m.rgba=b.style.backgroundColor.indexOf('rgba')>-1;l(j,function(p,q){q.cache='_'+p;q.props.alpha={idx:3,type:'percent',def:1}});function i(q,s,r){var p=n[s.type]||{};if(q==null){return(r||!s.def)?null:s.def}q=p.floor?~~q:parseFloat(q);if(isNaN(q)){return s.def}if(p.mod){return(q+p.mod)%p.mod}return 0>q?0:p.max<q?p.max:q}function f(p){var r=e(),q=r._rgba=[];p=p.toLowerCase();l(g,function(w,x){var u,v=x.re.exec(p),t=v&&x.parse(v),s=x.space||'rgba';if(t){u=r[s](t);r[j[s].cache]=u[j[s].cache];q=r._rgba=u._rgba;return false}});if(q.length){if(q.join()==='0,0,0,0'){o.extend(q,a.transparent)}return r}return a[p]}e.fn=o.extend(e.prototype,{parse:function(w,u,p,v){if(w===d){this._rgba=[null,null,null,null];return this}if(w.jquery||w.nodeType){w=o(w).css(u);u=d}var t=this,r=o.type(w),q=this._rgba=[],s;if(u!==d){w=[w,u,p,v];r='array'}if(r==='string'){return this.parse(f(w)||a._default)}if(r==='array'){l(j.rgba.props,function(x,y){q[y.idx]=i(w[y.idx],y)});return this}if(r==='object'){if(w instanceof e){l(j,function(x,y){if(w[y.cache]){t[y.cache]=w[y.cache].slice()}})}else{l(j,function(x,y){l(y.props,function(A,B){var z=y.cache;if(!t[z]&&y.to){if(A==='alpha'||w[A]==null){return}t[z]=y.to(t._rgba)}t[z][B.idx]=i(w[A],B,true)})})}return this}},is:function(r){var p=e(r),s=true,q=this;l(j,function(t,v){var w,u=p[v.cache];if(u){w=q[v.cache]||v.to&&v.to(q._rgba)||[];l(v.props,function(x,y){if(u[y.idx]!=null){s=(u[y.idx]===w[y.idx]);return s}})}return s});return s},_space:function(){var p=[],q=this;l(j,function(r,s){if(q[s.cache]){p.push(r)}});return p.pop()},transition:function(q,w){var r=e(q),s=r._space(),t=j[s],u=this.alpha()===0?e('transparent'):this,v=u[t.cache]||t.to(u._rgba),p=v.slice();r=r[t.cache];l(t.props,function(A,C){var z=C.idx,y=v[z],x=r[z],B=n[C.type]||{};if(x===null){return}if(y===null){p[z]=x}else{if(B.mod){if(x-y>B.mod/2){y+=B.mod}else{if(y-x>B.mod/2){y-=B.mod}}}p[z]=i((x-y)*w+y,C)}});return this[s](p)},blend:function(s){if(this._rgba[3]===1){return this}var r=this._rgba.slice(),q=r.pop(),p=e(s)._rgba;return e(o.map(r,function(t,u){return(1-q)*p[u]+q*t}))},toRgbaString:function(){var q='rgba(',p=o.map(this._rgba,function(r,s){return r==null?(s>2?1:0):r});if(p[3]===1){p.pop();q='rgb('}return q+p.join()+')'},toHslaString:function(){var q='hsla(',p=o.map(this.hsla(),function(r,s){if(r==null){r=s>2?1:0}if(s&&s<3){r=Math.round(r*100)+'%'}return r});if(p[3]===1){p.pop();q='hsl('}return q+p.join()+')'},toHexString:function(p){var q=this._rgba.slice(),r=q.pop();if(p){q.push(~~(r*255))}return'#'+o.map(q,function(s,t){s=(s||0).toString(16);return s.length===1?'0'+s:s}).join('')},toString:function(){return this._rgba[3]===0?'transparent':this.toRgbaString()}});e.fn.parse.prototype=e.fn;function c(t,s,r){r=(r+1)%1;if(r*6<1){return t+(s-t)*r*6}if(r*2<1){return s}if(r*3<2){return t+(s-t)*((2/3)-r)*6}return t}j.hsla.to=function(t){if(t[0]==null||t[1]==null||t[2]==null){return[null,null,null,t[3]]}var p=t[0]/255,w=t[1]/255,x=t[2]/255,z=t[3],y=Math.max(p,w,x),u=Math.min(p,w,x),A=y-u,B=y+u,q=B*0.5,v,C;if(u===y){v=0}else{if(p===y){v=(60*(w-x)/A)+360}else{if(w===y){v=(60*(x-p)/A)+120}else{v=(60*(p-w)/A)+240}}}if(q===0||q===1){C=q}else{if(q<=0.5){C=A/B}else{C=A/(2-B)}}return[Math.round(v)%360,C,q,z==null?1:z]};j.hsla.from=function(v){if(v[0]==null||v[1]==null||v[2]==null){return[null,null,null,v[3]]}var y=v[0]/360,C=v[1],x=v[2],B=v[3],u=x<=0.5?x*(1+C):x+C-x*C,w=2*x-u,t,z,A;return[Math.round(c(w,u,y+(1/3))*255),Math.round(c(w,u,y)*255),Math.round(c(w,u,y-(1/3))*255),B]};l(j,function(q,s){var r=s.props,p=s.cache,u=s.to,t=s.from;e.fn[q]=function(z){if(u&&!this[p]){this[p]=u(this._rgba)}if(z===d){return this[p].slice()}var w,y=o.type(z),v=(y==='array'||y==='object')?z:arguments,x=this[p].slice();l(r,function(A,C){var B=v[y==='object'?A:C.idx];if(B==null){B=x[C.idx]}x[C.idx]=i(B,C)});if(t){w=e(t(x));w[p]=x;return w}else{return e(x)}};l(r,function(v,w){if(e.fn[v]){return}e.fn[v]=function(A){var C=o.type(A),z=(v==='alpha'?(this._hsla?'hsla':'rgba'):q),y=this[z](),B=y[w.idx],x;if(C==='undefined'){return B}if(C==='function'){A=A.call(this,B);C=o.type(A)}if(A==null&&w.empty){return this}if(C==='string'){x=h.exec(A);if(x){A=B+parseFloat(x[2])*(x[1]==='+'?1:-1)}}y[w.idx]=A;return this[z](y)}})});l(k,function(p,q){o.cssHooks[q]={set:function(u,v){var s,r,t;if(o.type(v)!=='string'||(s=f(v))){v=e(s||v);if(!m.rgba&&v._rgba[3]!==1){t=q==='backgroundColor'?u.parentNode:u;do{r=o.css(t,'backgroundColor')}while((r===''||r==='transparent')&&(t=t.parentNode)&&t.style);v=v.blend(r&&r!=='transparent'?r:'_default')}v=v.toRgbaString()}try{u.style[q]=v}catch(v){}}};o.fx.step[q]=function(r){if(!r.colorInit){r.start=e(r.elem,q);r.end=e(r.end);r.colorInit=true}o.cssHooks[q].set(r.elem,r.start.transition(r.end,r.pos))}});a=o.Color.names={aqua:'#00FFFF',black:'#000000',blue:'#0000FF',fuchsia:'#FF00FF',gray:'#808080',green:'#008000',lime:'#00FF00',maroon:'#800000',navy:'#000080',olive:'#808000',purple:'#800080',red:'#FF0000',silver:'#C0C0C0',teal:'#008080',white:'#FFFFFF',yellow:'#FFFFFF',transparent:[null,null,null,0],_default:'#FFFFFF'}})(jQuery);
+
 (function($)
 {
     var CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
@@ -512,7 +514,9 @@
             {
                 $.fn.chat.closeChatDialog(dialog.data('id'));
             });
-            display.scrollable();
+            display.scrollable({
+                scrollableClass:    false
+            });
         }
         return dialog;
     };
@@ -544,8 +548,8 @@
                         .data('uuid', data.uuid)
                         .text(data.sender + ':' + data.message)
                         .appendTo($(this));
+                    $(this).scrollTo($(this).height());
                 }
-                $(this).scrollTo($(this).height());
             }
         );
         return dialog;
@@ -654,10 +658,13 @@
 {
     $.fn.highlight = function(color, duration)
     {
-        var original = this.css('background-color');
-        this.stop().css("background-color", color || '#FFFF9C').animate({
-            backgroundColor: original
-        }, duration || 1000);
+        return $(this).each(function()
+        {
+            var original = $(this).css('background-color');
+            $(this).stop().css('background-color', color || '#FFFF9C').animate({
+                backgroundColor: original
+            }, duration || 600);
+        });
     };
 })(jQuery);
 
@@ -669,25 +676,34 @@
     $.fn.scrollable = function(options)
     {
         var options = $.extend({
-            scrollableClass:        false,
+            scrollableClass:        null,
             fadeInDuration:         'slow',
             fadeOutDuration:        'slow',
-            wheelSpeed:             6
+            wheelSpeed:             48
         }, options);
         return this.each(function()
         {
             var active = false;
             var inside = false;
+            var scrollHeight = 0;
             var updateScrollDraggableHeight = function()
             {
-                var scrollAreaHeight = scrollArea.height();
+                var originalHeight = $.integer(scrollDragable.css('height'));
+                var scrollContentHeight = scrollContent.height();
                 var scrollContainerHeight = scrollContainer.height();
                 var height = 0;
-                if ( scrollAreaHeight > scrollContainerHeight )
+                if ( scrollContentHeight > scrollContainerHeight )
                 {
                     height = scrollContainerHeight
                            * scrollContainerHeight
-                           / scrollAreaHeight;
+                           / scrollContentHeight;
+                }
+                if ( height != originalHeight )
+                {
+                    var position = scrollArea.scrollTop();
+                    scrollArea.scrollTop(scrollArea.prop('scrollHeight'));
+                    scrollHeight = scrollArea.scrollTop();
+                    scrollArea.scrollTop(position);
                 }
                 scrollDragable.css({
                     height: height
@@ -696,13 +712,17 @@
             };
             var scrollContainer = $('<div></div>')
                 .addClass('scroll-container')
-                .addClass($(this).attr('class'))
+                .css({
+                    overflow: 'hidden'
+                })
                 .mouseenter(function()
                 {
-                    updateScrollDraggableHeight();
-                    scrollBar
-                        .stop(true, true)
-                        .fadeIn(options.fadeInDuration);
+                    if ( updateScrollDraggableHeight() )
+                    {
+                        scrollBar
+                            .stop(true, true)
+                            .fadeIn(options.fadeInDuration);
+                    }
                     inside = true;
                 })
                 .mouseleave(function()
@@ -718,6 +738,15 @@
                 .insertAfter($(this));
             var scrollArea = $('<div></div>')
                 .addClass('scroll-area')
+                .css({
+                    height: '100%',
+                    overflowX: 'hidden',
+                    overflowY: 'scroll',
+                    width: '100%'
+                })
+                .appendTo(scrollContainer);
+            var scrollContent = $('<div></div>')
+                .addClass('scroll-content')
                 .mousewheel(function(event, delta)
                 {
                     var top = $.integer(scrollDragable.css('top'));
@@ -729,38 +758,65 @@
                     updateScrollDragable(top - delta * multiplier);
                     return false;
                 })
+                .mousedown(function()
+                {
+                    var timer = setInterval(function()
+                    {
+                        scrollDragable.css({
+                            top: (scrollTrack.height()
+                               - updateScrollDraggableHeight())
+                               * scrollArea.scrollTop()
+                               / scrollHeight
+                        });
+                    }, 1);
+                    var revert = function()
+                    {
+                        active = false;
+                        $(document).off('mouseup', revert);
+                        clearInterval(timer);
+                    };
+                    $(document).on('mouseup', revert);
+                    active = true;
+                })
                 .wrapInner($(this))
-                .appendTo(scrollContainer);
+                .appendTo(scrollArea);
             var scrollBar = $('<div></div>')
                 .addClass('scroll-bar')
-                .insertAfter(scrollArea);
+                .insertAfter(scrollContent);
             var scrollTrack = $('<div></div>')
                 .addClass('scroll-track')
+                .mousedown(function(event)
+                {
+                    var y = event.pageY;
+                    var top = $(this).offset().top;
+                    var height = updateScrollDraggableHeight();
+                    updateScrollDragable(y - top - height / 2);
+                    return false;
+                })
                 .appendTo(scrollBar);
             var scrollDragable = $('<div></div>')
                 .addClass('scroll-dragable')
                 .mousedown(function(event)
                 {
-                    var y = event.screenY;
-                    var scroll = $(this);
-                    var top = $.integer(scroll.css('top'));
+                    var origin = $.integer(scrollDragable.css('top')) - event.pageY;
                     var stop = function()
                     {
-                        $('html')
+                        $(document)
                             .unbind('mouseup', stop)
                             .unbind('mousemove', update);
                         if ( ! inside )
                         {
-                            scrollBar.stop(true, true)
+                            scrollBar
+                                .stop(true, true)
                                 .fadeOut(options.fadeInDuration);
                         }
                         active = false;
                     };
                     var update = function(event)
                     {
-                        updateScrollDragable(top + event.screenY - y);
+                        updateScrollDragable(origin + event.pageY);
                     };
-                    $('html')
+                    $(document)
                         .bind('mouseup', stop)
                         .bind('mouseleave', stop)
                         .bind('mousemove', update);
@@ -770,38 +826,57 @@
                 .appendTo(scrollTrack);
             var updateScrollDragable = function(position)
             {
-                var height = updateScrollDraggableHeight();
-                var maximun = scrollContainer.height() - height;
-                var scale = (
-                        scrollArea.height()
-                      - scrollContainer.height()
-                    ) / (
-                        scrollContainer.height()
-                      - height
-                    ) * -1;
+                var scrollDraggableHeight = updateScrollDraggableHeight();
+                var maximum = scrollTrack.height() - scrollDraggableHeight;
+                console.log(scrollTrack);
+                console.log(scrollTrack.height());
                 if ( position <= 0 ) position = 0;
-                if ( position >= maximun ) position = maximun;
+                if ( position >= maximum ) position = maximum;
                 scrollDragable.css({
                     top: position
                 });
-                scrollArea.css({
-                    top: position * scale
-                });
+                scrollArea.scrollTop(scrollArea.prop('scrollHeight'));
+                scrollArea.scrollTop(
+                    scrollArea.scrollTop()
+                  * position
+                  / maximum
+                );
+                return $(this);
             };
-            $.each($(this).attr('class').split(' '), (function(object)
-            {
-                return function(index, value)
-                {
-                    $(object).removeClass(value);
-                };
-            })(this));
-            $.extend($(this).__proto__, {
-                scrollTo: updateScrollDragable
+            scrollArea.css({
+                width: 2 * scrollArea.width() - scrollContent.width()
             });
             if ( options.scrollableClass )
             {
                 scrollContainer.addClass(options.scrollableClass);
+            } else if ( options.scrollableClass === null )
+            {
+                var classes = $(this).attr('class') ? $(this).attr('class') : '';
+                $.each(classes.split(' '), (function(object)
+                {
+                    return function(index, value)
+                    {
+                        $(object).removeClass(value);
+                    };
+                })(this));
+                scrollContainer.addClass(classes);
             }
+            $.extend($(this).__proto__, {
+                scrollTo: function(position)
+                {
+                    var scrollDraggableHeight = updateScrollDraggableHeight();
+                    scrollArea.scrollTop(position);
+                    if ( scrollHeight )
+                    {
+                        scrollContainer.mouseenter().mouseleave();
+                        updateScrollDragable((scrollTrack.height()
+                                            - scrollDraggableHeight)
+                                            * position
+                                            / scrollHeight);
+                    }
+                }
+            });
+            updateScrollDraggableHeight();
         });
     };
 })(jQuery);
@@ -1540,6 +1615,186 @@
 })(jQuery);
 
 /**
+ * UltimatePassword
+ */
+(function($)
+{
+    $.ultimatePassword = function()
+    {
+        if ( $('#ultimate-password').length ) return false;
+        var input = '';
+        var up = 99;
+        var uplength = up.toString().length;
+        var down = 0;
+        var answer = $.random(down + 1, up - 1);
+        var run = true;
+        var judgment = function(number)
+        {
+            if ( run == false ) return true;
+            errorMessage.text('');
+            if ( number >= 0 && number < 10 )
+            {
+                if ( input.length < uplength ) input += number;
+                if ( parseInt(input) > up )
+                {
+                    errorMessage.text('要輸在範圍內喔!');
+                    input = '';
+                }
+            }
+            else if ( number == 10 )
+            {
+                input = input.substr(0, input.length - 1);
+                inputText.attr('value', input);
+            }
+            else if ( number == 11 )
+            {
+                input = parseInt( inputText.val() );
+                if ( input < up && input > down )
+                {
+                    if ( input == answer )
+                    {
+                        back.close();
+                        $.alert({
+                            message: '恭喜你猜對了!!!'
+                        });
+                        return true;
+                    }
+                    else if ( input > answer )
+                    {
+                        up = input;
+                    }
+                    else if ( input < answer )
+                    {
+                        down = input;
+                    }
+                }
+                else
+                {
+                    errorMessage.text('要輸在範圍內喔!');
+                }
+                input = '';
+            }
+            message.text('請輸入數字' + down + '到' + up +'之間');
+            inputText.attr('value', input);
+            return true;
+        };
+        var back = $.overlay({
+            onBeforeHide: function()
+            {
+                box.remove();
+                run = false;
+                return true;
+            }
+        });
+        var box = $('<div></div>').attr('id', 'ultimate-password').appendTo('body');
+        var message;
+        var inputText;
+        var numberTable = $('<table></table>').css({
+            margin: '0 auto',
+            textAlign: 'center'
+        });
+        var TableRow = [$('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>')];
+        var buttons = [];
+        $('<h4></h4>').text('終極密碼').addClass('title').appendTo(box);
+        message = $('<p></p>').text('請輸入數字' + down + '到' + up +'之間').addClass('message').appendTo(box);
+        inputText = $('<input type="text" readonly="readonly" />').attr('value', '').addClass('input').appendTo(box);
+        for ( var i = 7; i > 0 ; i = i - 3 )
+        {
+            for ( var j = 0; j < 3 ; j++ )
+            {
+                buttons[i + j] = $('<td></td>').text(i + j).addClass('table-box').appendTo(TableRow[ parseInt( i / 3) ]);
+            }
+        }
+        buttons[0] = $('<td></td>').text('0').addClass('table-box').appendTo(TableRow[ 3 ]);
+        buttons[10] = $('<td></td>').text('倒退').addClass('table-box').appendTo(TableRow[ 3 ]);
+        buttons[11] = $('<td></td>').text('送出').addClass('table-box').appendTo(TableRow[ 3 ]);
+        for ( var k = 2; k >= 0; k-- )
+        {
+            TableRow[k].appendTo(numberTable);
+        }
+        TableRow[3].appendTo(numberTable);
+        numberTable.appendTo(box);
+        $('.table-box').each(function(){
+            $(this).mouseenter(function(){
+                $(this).addClass('enter');
+            })
+            .mouseleave(function(){
+                $(this).removeClass('enter');
+                $(this).removeClass('click');
+            })
+            .click(function()
+            {
+                $(this).addClass('click');
+                if ( $(this).text() == '送出' )
+                {
+                    judgment(11);
+                }
+                else if ( $(this).text() == '倒退' )
+                {
+                    judgment(10);
+                }
+                else
+                {
+                    judgment(parseInt($(this).text()));
+                }
+            });
+        })
+        $(document).keydown(function(event)
+        {
+            if ( event.keyCode != 231 && event.keyCode > 95 && event.keyCode < 106 )
+            {
+                buttons[event.keyCode - 96].addClass('click');
+            }
+            else if ( event.keyCode != 231 && event.keyCode > 47 && event.keyCode < 58 )
+            {
+                buttons[event.keyCode - 48].addClass('click');
+                judgment(event.keyCode - 48);
+            }
+            else if ( event.keyCode > 36 && event.keyCode < 41 )
+            {
+                return false;
+            }
+            else if ( event.keyCode == 108 || event.keyCode == 13 )
+            {
+                buttons[11].addClass('click');
+            }
+            else if ( event.keyCode == 8 )
+            {
+                buttons[10].addClass('click');
+                return false;
+            }
+            return true;
+        });
+        $(document).keyup(function(event)
+        {
+            if ( event.keyCode != 231 && event.keyCode > 95 && event.keyCode < 106)
+            {
+                buttons[event.keyCode - 96].removeClass('click');
+                judgment(event.keyCode - 96);
+            }
+            else if ( event.keyCode != 231 && event.keyCode > 47 && event.keyCode < 58)
+            {
+                buttons[event.keyCode - 48].removeClass('click');
+                judgment(event.keyCode - 48);
+            }
+            else if ( event.keyCode == 108 || event.keyCode == 13 )
+            {
+                buttons[11].removeClass('click');
+                judgment(11);
+            }
+            else if ( event.keyCode == 8 )
+            {
+                buttons[10].removeClass('click');
+                judgment(10);
+                return false;
+            }
+            return true;
+        });
+        var errorMessage = $('<p></p>').text('').addClass('error').appendTo(box);
+    };
+})(jQuery);
+
+/**
  * Lightbox
  */
 (function($) {
@@ -1917,229 +2172,6 @@
                     update();
                 })
                 update();  
-            }
-        });
-
-        $.konami({
-            code:                   [38, 38, 40, 40, 65, 66, 67],
-            complete:               function()
-            {
-                if ( $('#secret').length ) return false;
-                var input = '';
-                var up = 99;
-                var uplength = 2;
-                var down = 0;
-                var answer = $.random(down + 1, up - 1);
-                var buttons = [$('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>'), $('<td></td>')];
-                var run = true;
-                var judgment = function(input_number)
-                {
-                    if ( run == false ) return true;
-                    var number = input_number;
-                    if ( number >= 0 && number < 10 )
-                    {
-                        if ( input.length < uplength )
-                        {
-                            input += number;
-                        }
-                        if ( parseInt(input) > up )
-                        {
-                            alert('要輸在範圍內喔!');
-                            input = '';
-                        }
-                    }
-                    else if ( number == 10 )
-                    {
-                        input = '';
-                    }
-                    else if ( number == 11 )
-                    {
-                        input = parseInt( input_text.val() );
-                        if ( input < up && input > down )
-                        {
-                            if ( input == answer )
-                            {
-                                alert('恭喜你猜對了!!!');
-                                back.remove();
-                                box.remove();
-                                run = false;
-                                return true;
-                            }
-                            else if ( input > answer )
-                            {
-                                up = input;
-                            }
-                            else if ( input < answer )
-                            {
-                                down = input;
-                            }
-                        }
-                        else
-                        {
-                            alert('要輸在範圍內喔!');
-                        }
-                        input = '';
-                    }
-                    message.text('請輸入數字' + down + '到' + up +'之間');
-                    input_text.attr('value', input);
-                    return true;
-                };
-                var back = $('<div></div>')
-                .attr('id', 'secret')
-                .css({
-                    background: 'black',
-                    height: '100%',
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    width: '100%'
-                })
-                .appendTo('body');
-                var box = $('<div></div>').css({
-                    background: '#e6cde3',
-                    height: 420,
-                    margin: '-210px 0 0 -150px',
-                    position: 'fixed',
-                    top: '50%',
-                    left: '50%',
-                    width: 300
-                })
-                .appendTo('body');
-                $('<h4></h4>').text('終極密碼').css({
-                    color: '#1e50a2',
-                    textAlign: 'center',
-                    fontSize: 30
-                })
-                .appendTo(box);
-                var message = $('<p></p>').text('請輸入數字' + down + '到' + up +'之間').css({
-                    color: '#b44c97',
-                    fontSize: 20,
-                    textAlign: 'center'
-                })
-                .appendTo(box);
-                var input_text = $('<input type="text" readonly/>').attr('value', '').css({
-                    display: 'block',
-                    width: 228,
-                    height: 31,
-                    textAlign: 'center',
-                    fontSize: '2em',
-                    margin: '0 auto'
-                })
-                .appendTo(box);
-                var numberTable = $('<table></table>').css({
-                    margin: '0 auto',
-                    textAlign: 'center'
-                });
-                var TableRow = [$('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>'), $('<tr></tr>')];
-                for ( var i = 7; i > 0 ; i = i - 3 )
-                {
-                    for ( var j = 0; j < 3 ; j++ )
-                    {
-                        buttons[i + j].text( i + j ).addClass('tableBox').appendTo(TableRow[ parseInt( i / 3) ]);
-                    }
-                }
-                buttons[0].text('0').addClass('tableBox').appendTo(TableRow[ 3 ]);
-                buttons[10].text('Clean').addClass('tableBox').appendTo(TableRow[ 3 ]);
-                buttons[11].text('Enter').addClass('tableBox').appendTo(TableRow[ 3 ]);
-                for ( var k = 2; k >= 0; k-- )
-                {
-                    TableRow[k].appendTo(numberTable);
-                }
-                TableRow[3].appendTo(numberTable);
-                numberTable.appendTo(box);
-                $('.tableBox').each(function(){
-                    $(this).css({
-                        color: '#8d6449',
-                        textAlign: 'center',
-                        height: 50,
-                        width: 100,
-                        fontSize: 30    
-                    })
-                    .mouseenter(function(){
-                        $(this).css({
-                            color: 'blue',
-                            cursor: 'default'
-                        });
-                    })
-                    .mouseleave(function(){
-                        $(this).css({
-                            color: '#8d6449'
-                        });
-                    })
-                    .click(function()
-                    {
-                        $(this).css({
-                            color: 'yellow'
-                        });
-                        if ( $(this).text() == 'Enter' )
-                        {
-                            judgment( 11 );
-                        }
-                        else if ( $(this).text() == 'Clean' )
-                        {
-                            judgment( 10 );
-                        }
-                        else
-                        {
-                            judgment( parseInt( $(this).text() ) );
-                        }
-                    });
-                })
-                $(document).keydown(function(event)
-                {
-                    if ( event.keyCode != 231 && event.keyCode > 95 && event.keyCode < 106)
-                    {
-                        buttons[ event.keyCode - 96 ].css({
-                            color: 'yellow'
-                        });
-                    }
-                    else if ( event.keyCode == 108 || event.keyCode == 13 )
-                    {
-                        buttons[11].css({
-                            color: 'yellow'
-                        });
-                    }
-                    else if ( event.keyCode == 27 )
-                    {
-                        buttons[10].css({
-                            color: 'yellow'
-                        });
-                    }
-                    else if ( event.keyCode == 8 )
-                    {
-                        return false;
-                    }
-                    return true;
-                });
-                $(document).keyup(function(event)
-                {
-                    if ( event.keyCode != 231 && event.keyCode > 95 && event.keyCode < 106)
-                    {
-                        buttons[ event.keyCode - 96 ].css({
-                            color: '#8d6449'
-                        });
-                        judgment( event.keyCode - 96 );
-                    }
-                    else if ( event.keyCode == 108 || event.keyCode == 13 )
-                    {
-                        buttons[11].css({
-                            color: '#8d6449'
-                        });
-                        judgment(11);
-                    }
-                    else if ( event.keyCode == 27 )
-                    {
-                        buttons[10].css({
-                            color: '#8d6449'
-                        });
-                        judgment(10);
-                    }
-                    else if ( event.keyCode == 8 )
-                    {
-                        return false;
-                    }
-                    return true;
-                });
             }
         });
 

@@ -1,10 +1,5 @@
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'style')); ?>
 <style type="text/css">
-#admin-news
-{
-    background: black;
-}
-
 #admin-news .header
 {
     height: 35px;

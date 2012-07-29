@@ -66,11 +66,11 @@ class ProfileController extends Controller
                 $profile->attributes = $_POST['profile'];
                 $profile->department_id = $_POST['profile']['department'];
                 $profile->grade = $_POST['profile']['grade'];
-                $profile->picture = $_FILES['picture']['name'];
-                $target = $path . DIRECTORY_SEPARATOR . $profile->picture;
-                move_uploaded_file($_FILES['picture']['tmp_name'], $target);
-                $picture_size = $_FILES['picture']['size'];
-                $picture_type = $_FILES['picture']['type'];
+                // $profile->picture = $_FILES['picture']['name'];
+                // $target = $path . DIRECTORY_SEPARATOR . $profile->picture;
+                // move_uploaded_file($_FILES['picture']['tmp_name'], $target);
+                // $picture_size = $_FILES['picture']['size'];
+                // $picture_type = $_FILES['picture']['type'];
                 if ( $profile->validate() )
                 {
                     if ( $user->save() )
