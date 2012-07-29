@@ -1,19 +1,40 @@
 jQuery(document).ready(function()
 {
-    jQuery('#readme-direct').mouseenter(function()
+    jQuery('#readme-logo1').click(function()
     {
-        jQuery('#caption').animate(
-        {
-            left: '0px'
-        },500);
-        jQuery('#caption a').css('background', 'url(../statics/images/chat.png)');
+        $('.fresh-inner:hidden').fadeIn('slow');
+        $('.reschool-inner:visible').fadeOut('slow');
+        $('.notice-inner:visible').fadeOut('slow');
     });
     
-    jQuery('#readme-direct').click(function()
+    jQuery('#readme-logo2').click(function()
     {
-        jQuery('#caption').animate(
+        $('.reschool-inner:hidden').fadeIn('slow');
+        $('.notice-inner:visible').fadeOut('fast');
+        $('.fresh-inner:visible').fadeOut('fast');
+    });
+    
+    jQuery('#readme-logo3').click(function()
+    {
+        $('.notice-inner:hidden').fadeIn('slow');
+        $('.reschool-inner:visible').fadeOut('fast');
+        $('.fresh-inner:visible').fadeOut('fast');
+    });
+    
+    jQuery('#read-fresh-menu').mouseenter(function()
+    {
+        $(this).stop().animate(
         {
-            left: '-300px'
+            left : '0px'
         },500);
     });
+    
+    jQuery('#read-fresh-menu').mouseleave(function()
+    {
+        $(this).stop().animate(
+        {
+            left : '-215px'
+        },500);
+    });
+    
 });
