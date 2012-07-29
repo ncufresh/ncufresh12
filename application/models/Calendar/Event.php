@@ -18,4 +18,21 @@ class Event extends CActiveRecord
     {
         return '{{calendar_events}}';
     }
+
+	public static function model($className=__CLASS__)
+	{
+		return parent::model($className);
+	}
+
+    public function getEventById($id)
+    {
+        return $this->findByPk($id);
+    }
+    
+    public function afterFind()
+    {
+        parent::afterFind();
+        $this->start -= date('Z', $this->start);
+        $this->end   -= date('Z', $this->end);
+    }
 }

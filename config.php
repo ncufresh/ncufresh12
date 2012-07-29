@@ -10,6 +10,8 @@ return array(
     'preload'   => array('log', 'security'),
     'import'    => array(
         'application.models.*',
+        'application.models.Game.*',
+        'application.models.Calendar.*',
         'application.components.*'
     ),
     'modules'   => array(

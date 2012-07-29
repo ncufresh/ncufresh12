@@ -45,6 +45,23 @@ class User extends CActiveRecord
                 'friends(user_id,friend_id)',
                 'condition' => 'invisible = 0'
             ),
+            'calendar' => array(
+                self::HAS_ONE,
+                'Calendar',
+                'user_id',
+                'condition' => 'category = :category',
+                'params' => array(':category'=>Calendar::CATEGORY_PERSONAL)
+            ),
+            'subscriptions' => array(
+                self::MANY_MANY,
+                'Calendar',
+                'calendar_subscriptions(user_id,calendar_id)'
+            ),
+            'events_status' => array(
+                self::MANY_MANY,
+                'Events',
+                'calendar_status(user_id,event_id)'
+            ),
         );
     }
 

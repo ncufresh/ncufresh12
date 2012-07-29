@@ -9,8 +9,65 @@ class Calendar extends CActiveRecord
      * @var integer category
      */
 
+    const GENERAL_CALENDAR_USER_ID = 0;
+    const CATEGORY_CLUB = 0;
+    const CATEGORY_PERSONAL = 1;
+     
+	public static function model($className=__CLASS__)
+	{
+		return parent::model($className);
+	}
+     
     public function tableName()
     {
         return '{{calendars}}';
+    }
+
+    public function relations()
+    {
+        return array(
+            'events' => array(
+                self::HAS_MANY,
+                'Event',
+                'calendar_id'
+            )
+        );
+    }
+
+    public function getPersonalCalendar()
+    {
+        return $this->find(array(
+            'condition' => 'user_id = :user_id AND category = :category',
+            'params' => array(
+                ':user_id' => Yii::app()->user->id,
+                ':category' => self::CATEGORY_PERSONAL,
+            )
+        ));
+    }
+
+    public function getClubCalendar()
+    {
+        return $this->find(array(
+            'condition' => 'user_id = :user_id AND category = :category',
+            'params' => array(
+                ':user_id' => Yii::app()->user->id,
+                ':category' => self::CATEGORY_CLUB,
+            )
+        ));
+    }
+
+    public function getGeneralCalendar()
+    {
+        return $this->with('events')->find(array(
+            'condition' => 'user_id = :user_id',
+            'params' => array(
+                ':user_id' => self::GENERAL_CALENDAR_USER_ID
+            )
+        ));
+    }
+
+    public static function getCurrentMonth()
+    {
+        return date('m', TIMESTAMP);
     }
 }

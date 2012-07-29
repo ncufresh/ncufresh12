@@ -64,9 +64,6 @@
             <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" title="大一必讀">大一必讀</a>
             <ul>
                 <li>
-                    <a href="#" title="行事曆">行事曆</a>
-                </li>
-                <li>
                     <a href="#" title="新生區">新生區</a>
                 </li>
                 <li>
@@ -140,7 +137,7 @@
                     <a href="#" title="學生組織">學生組織</a>
                 </li>
                 <li>
-                    <a href="#" title="系學會">系學會</a>
+                    <a href="#" title="系所">系所</a>
                 </li>
                 <li>
                     <a href="#" title="社團">社團</a>
@@ -264,6 +261,8 @@
             newsIndexUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>'),
             staticsUrl: decodeURIComponent('<?php echo Yii::app()->request->baseUrl; ?>/statics'),
             registerUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>'),
+            calendarEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvent', array('id'=> ':id')); ?>'),
+            calendarEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvents'); ?>'),
             facebookEnable: <?php echo Yii::app()->facebook->enable ? 'true' : 'false'; ?>,
             buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building',array('id'=>':id'));?>'),            
             googleSearchAppId: '011017124764723419863:mdibrr3n-py',
