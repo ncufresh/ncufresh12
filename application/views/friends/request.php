@@ -1,7 +1,7 @@
 <h1 class="friend-title">好友確認</h1>
 <form enctype="multipart/form-data" method="POST" action="<?php echo $this->createUrl('friends/request'); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
-<div class="other-department">  
+<div class="request">  
     <div class="friends-part2">
         <ul class="other-department">
 <?php foreach ( $friends as $friend ) : ?>

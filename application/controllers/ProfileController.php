@@ -66,11 +66,6 @@ class ProfileController extends Controller
                 $profile->attributes = $_POST['profile'];
                 $profile->department_id = $_POST['profile']['department'];
                 $profile->grade = $_POST['profile']['grade'];
-                // $profile->picture = $_FILES['picture']['name'];
-                // $target = $path . DIRECTORY_SEPARATOR . $profile->picture;
-                // move_uploaded_file($_FILES['picture']['tmp_name'], $target);
-                // $picture_size = $_FILES['picture']['size'];
-                // $picture_type = $_FILES['picture']['type'];
                 if ( $profile->validate() )
                 {
                     if ( $user->save() )
@@ -108,7 +103,7 @@ class ProfileController extends Controller
         $userID = Yii::app()->user->id;
         if ( isset($_GET['aid']) )
         {
-            $this->render('messagereply', array(
+            $this->render('messagereply', array( //還要再判斷是否有推文或回復---不然回是空值耶
                 'article'       => Article::model()->findByPk($_GET['aid']),
                 'replys'      => Reply::model()->getArticleReplies($_GET['aid']),
                 'comments'       => Comment::model()->getArticleComments($_GET['aid'])

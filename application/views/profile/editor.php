@@ -40,4 +40,4 @@
 <button type="submit">確認</button>
 </form>
 <button><a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>">取消</a></button>
-<button><a href="<?php echo Yii::app()->createUrl('profile/profile'); ?>">BACK</a></button>
+<button onClick= "history.back()" >BACK</button>
