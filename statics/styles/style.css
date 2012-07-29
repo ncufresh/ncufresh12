@@ -890,6 +890,11 @@ a:hover
     width: 160px;
 }
 
+.scroll-content
+{
+    overflow: hidden;
+}
+
 .chat-dialog .chat-display
 {
     padding: 0 5px;
