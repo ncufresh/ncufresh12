@@ -25,5 +25,5 @@
 </div>
 <button type="submit">確定加為好友</button>
 </form>
-<button><a href="<?php echo Yii::app()->createUrl('friends/otherdepartment')  ?>">重選</a></button>
+<button><a href="<?php echo Yii::app()->createUrl('friends/otherdepartment')  ?>">取消</a></button>
 <button><a href="<?php echo Yii::app()->createUrl('friends/friends')  ?>">BACK</a></button>

@@ -163,6 +163,20 @@ class Character extends CActiveRecord
             )
          );
     }
+
+    public function getItemsByCategory($category)
+    {   
+        $category = (integer)$category;
+        $array = array();
+        foreach ($this->items_bag as $item)
+        {
+            if ( $item->translation->items_category == $category )
+            {
+                $array[] = $item;
+            }
+        }
+        return $array;
+    }
     
     public function getLevel($id)
     {   

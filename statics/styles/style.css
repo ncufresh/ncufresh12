@@ -2525,9 +2525,6 @@ button.news-button
     background: url('../club/background.png');
 }
 
-div.friends h4
-{
-}
 .friends-sort 
 
 {
@@ -2543,6 +2540,7 @@ div.friends h4
     width:100px;
     height:60px;
     float:left;
+    color:DarkBlue;
     list-style-type:none;
 }
 
@@ -2614,7 +2612,7 @@ ul.friend-other-sort
 
 .other-department li h3
 {
-    color:blue;
+    color:DarkBlue;
 }
 
 .other-department li h4
@@ -2636,7 +2634,7 @@ ul.friend-other-sort
     padding:0px;
     margin:0px;
     float:left;
-    list-style-type:circle;
+    list-style-type:none;
 }
 
 .friends-part3 img
@@ -2662,7 +2660,6 @@ ul.friend-other-sort
     list-style-type:none;
     font-size: 20px;
     text-align:left;
-    color:Indigo;
 }
 
 .user-editor input
@@ -2673,8 +2670,6 @@ ul.friend-other-sort
 
 div.friends h4
 {
-    color: yellow;
-    font-size: 20px;
     text-align: center;
     margin:0px;
 }
@@ -2754,14 +2749,6 @@ div.allmessages
     height:310px;
     margin-top:55px;
     padding:5px;
-}
-
-div.user-register
-{
-    width:675px;
-    height:370px;
-    margin-left:20px;
-    padding:0px;
 }
 
 div.friends-addfriend
@@ -2851,24 +2838,25 @@ div.profile-message-allmessages
 
 div.profile-message-allmessages table
 {
-    width:600px;
+    width:530px;
     padding:0px;
     margin-left:70px;
 }
 
 div.profile-message-allmessages tr th
 {
-    width:400px;
-    height:100px;
+    width:530px;
+    height:60px;
     padding:0px;
     margin:0px;
+    font-size:2em;
     text-align:center;
 }
 
 div.profile-message-allmessages tr td
 {
-    width:400px;
-    height:100px;
+    width:530px;
+    height:60px;
     padding:0px;
     margin:0px;
     text-align:center;
@@ -2894,15 +2882,26 @@ div.register
     margin:0px;
 }
 
-div.user-register dd
+div.register form
 {
-    width: 488px;
-    height: 30px;
+    width:330px;
+    height:290px;
+    margin-left:0px;
+    padding:0px;
+}
+
+div.register form 
+{
+    width:330px;
+    height:290px;
+    margin-left:0px;
+    padding:0px;
 }
 
 h1
 {
     text-align:center;
+    color:green;
 }
 /*
 ul.introduce-group li
@@ -2980,7 +2979,7 @@ ul#self-message
 li.article-title
 {
     text-lign: left;
-    color: DeepPink; /* NOTE */
+    color: DarkGray;
     width: 200px;
 	height: 40px;
     margin-top:5px;
@@ -3002,13 +3001,6 @@ li#article-content
     list-style-type:none;
 }
 
-/*.article-title
-{
-    text-lign: left;
-    font-size: 20px;
-    color: DeepPink; /* NOTE 
-}*/
-
 #introduce
 {
     width: 600px;
@@ -3027,13 +3019,6 @@ table.group
     border-right-style:dotted;
     margin:0px;
 }
-
-/*table.message-data
-{
-    height:200px;
-    width:700px;
-    margin:0px;
-}*/
 
 div.profile-message-reply table
 {
@@ -3082,19 +3067,9 @@ label.group-friends-name
     height:300px;
     display:block;
 }
-
-a.mygroup-name:link {color:Aqua;}
-
-a.mygroup-name:visited {background-color:#FFFF85;}
-
-a.mygroup-name:hover {text-decoration:underline;}
-
-a.mygroup-name:active {text-decoration:underline;}
-
 a.mygroup-name
 {
-    color: blue;
-    font-size: 30px;
+    font-size: 2em;
     text-align: center;
     display: block;
     margin-right: 10px;
@@ -3107,7 +3082,7 @@ a.mymessage-title
     text-align: center;
     display: block;
     margin-right: 10px;
-}
+}*/
 
 .sep-group
 {
@@ -3137,36 +3112,13 @@ a.mymessage-title
 .friend-title
 {
     color: green;
-    font-size: 20px;
     text-align: center;
 }
 
 .friends-title
 {
-    text-lign: left;
-    color: DeepPink; /* NOTE */
-}
-
-
-
-tr.friends-title
-{
-    margin: 0px;
-}
-
-td.friends-close-ones
-{
-    height: 5%;
-    width: 5%;
-    margin: 0px;
-}
-
-td.showarticle
-{
-    border: 1px solid blue;
-    height: 10%;
-    width: 80%;
-    margin: 0px;
+    text-align:center;
+    color:DarkSlateGray;
 }
 
 img.user_img
