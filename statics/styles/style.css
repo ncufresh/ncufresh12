@@ -2644,10 +2644,14 @@ ul.friend-other-sort
     list-style-type:none;
 }
 
-.friends-part3 img
+.friends-part3 div.avatar
 {
-    margin-left:45px;
-    margin-top:25px;
+    margin-left:40px;
+    margin-top:20px;
+    width:180px; 
+    height:310px;
+    padding:0px;
+    float:left;
 }
 
 .user-editor
@@ -2655,7 +2659,7 @@ ul.friend-other-sort
     width:400px; 
     height:350px;
     padding:0px;
-    margin-top:-175px;
+    margin-top:20px;
     margin-left:280px;
 }
 
@@ -2889,19 +2893,12 @@ div.register
     margin:0px;
 }
 
-div.register form
-{
-    width:330px;
-    height:290px;
-    margin-left:0px;
-    padding:0px;
-}
-
 div.register form 
 {
     width:330px;
     height:290px;
-    margin-left:0px;
+    margin-left:30px;
+    margin-top:20px;
     padding:0px;
 }
 
