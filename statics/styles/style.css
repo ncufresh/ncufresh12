@@ -1057,11 +1057,6 @@ table.gsc-completion-container
     overflow: hidden;
 }
 
-#nculife-wrapper
-{
-     position: relative;
-}
-
 #caption
 {
     position: absolute;
@@ -1748,7 +1743,6 @@ button.news-button
     background: url('../images/life_blue.png');
 }
 
-
 #nculife-dialog p
 {
     margin: 0;
@@ -2001,7 +1995,6 @@ button.news-button
     height: 450px;
     position: relative;
     background: url('../readme/readme_background.png');
-    
 }
 
 #freshman-1

@@ -1,5 +1,5 @@
 <div id="readme-body">
-    <a href="#" id="readme-logo1" class="readme-view"></a>
+    <a href="<?php Yii:app()->createUrl('readme/fresh')?>" id="readme-logo1" class="readme-view"></a>
     <a href="#" id="readme-logo2"></a>
     <a href="#" id="readme-logo3"></a>
     <a href="#" id="readme-logo4"></a>
