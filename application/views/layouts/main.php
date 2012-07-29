@@ -255,7 +255,6 @@
     jQuery.extend({
         configures: {
             pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
-            facebookAppId: '<?php echo Yii::app()->facebook->getAppId(); ?>',
             facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
             chatSendMessageUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
             ncuLifeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('nculife/content', array('tab' => ':tab', 'page' => ':page'));?>'),
@@ -263,7 +262,8 @@
             newsIndexUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>'),
             staticsUrl: decodeURIComponent('<?php echo Yii::app()->request->baseUrl; ?>/statics'),
             registerUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>'),
-            buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building',array('id'=>':id'));?>'),            
+            buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),
+            facebookAppId: '<?php global $ncufreshfb; echo $ncufreshfb['appId']; ?>',
             googleSearchAppId: '011017124764723419863:mdibrr3n-py',
             token: '<?php echo Yii::app()->security->getToken(); ?>'
         }

@@ -6,6 +6,7 @@ class WebUser extends CWebUser
 
     public function getIsGuest()
     {
+        if ( ! $this->getUser() ) return true;
         return parent::getIsGuest();
     }
 
@@ -36,7 +37,7 @@ class WebUser extends CWebUser
     protected function afterLogin($fromCookie)
     {
         parent::afterLogin($fromCookie);
-        $this->getUser()->updateOnlineState();
+        if ( $this->getIsMember() ) $this->getUser()->updateOnlineState();
     }
 
     public function getUser()
