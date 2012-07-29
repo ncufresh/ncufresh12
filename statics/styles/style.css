@@ -2401,7 +2401,7 @@ ul.friend-other-sort
     padding:0px;
     margin:0px;
     float:left;
-    list-style-type:circle;
+    list-style-type:none;
 }
 
 .friends-part3 img
@@ -2769,13 +2769,6 @@ li#article-content
     list-style-type:none;
 }
 
-/*.article-title
-{
-    text-lign: left;
-    font-size: 20px;
-    color: DeepPink; /* NOTE 
-}*/
-
 #introduce
 {
     width: 600px;
@@ -2794,13 +2787,6 @@ table.group
     border-right-style:dotted;
     margin:0px;
 }
-
-/*table.message-data
-{
-    height:200px;
-    width:700px;
-    margin:0px;
-}*/
 
 div.profile-message-reply table
 {
@@ -2910,13 +2896,13 @@ a.mymessage-title
 
 .friends-title
 {
-    text-lign: left;
+    text-align:center;
     color: DeepPink; /* NOTE */
 }
 
 
 
-tr.friends-title
+/*tr.friends-title
 {
     margin: 0px;
 }
@@ -2935,7 +2921,7 @@ td.showarticle
     width: 80%;
     margin: 0px;
 }
-
+*/
 img.user_img
 {
     height:50%;
