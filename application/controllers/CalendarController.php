@@ -25,7 +25,22 @@ class CalendarController extends Controller
 
     public function actionRecycle()
     {
-        $this->render('recycle');
+        if ( Yii::app()->request->getIsAjaxRequest() )
+        {
+            if ( isset($_POST['calendar']) )
+            {
+                $id = (integer)$_POST['calendar']['id'];
+                $event = Event::model()->findByPk($id);
+                $event->invisible = true;
+                if ( $event->save() ) return true;
+            }
+            $this->_data['errors'][] = '發生錯誤！';
+            return true;
+        }
+
+        $this->render('recycle', array(
+            'events'    => Event::model()->getRecycledEvents()
+        ));
     }
 
     public function actionEventDetail()
@@ -93,7 +108,18 @@ class CalendarController extends Controller
             foreach( $events as $key => $event )
             {
                 $this->_data['events'][$key]['id'] = $event->id;
-                $this->_data['events'][$key]['category'] = $event->calendar->category;
+                if ( $event->calendar->getIsPersonal() )
+                {
+                    $this->_data['events'][$key]['category'] = 'PERSONAL';
+                }
+                else if ( $event->calendar->getIsClub() )
+                {
+                    $this->_data['events'][$key]['category'] = 'CLUB';
+                }
+                else
+                {
+                    $this->_data['events'][$key]['category'] = 'GENERAL';
+                }
                 $this->_data['events'][$key]['start'] = $event->start;
                 $this->_data['events'][$key]['end'] = $event->end;
                 $this->_data['events'][$key]['name'] = $event->name;

@@ -16,7 +16,7 @@ class Profile extends CActiveRecord
     {   
         return array(
             array(
-                'name, nickname, department_id, grade,senior, birthday,sex', 
+                'name, nickname, department_id, grade,senior, birthday,gender', 
                 'required'
             ),
             array('department_id', 'numerical', 'integerOnly'=>true), //範圍1-21
