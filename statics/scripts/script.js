@@ -350,6 +350,8 @@
  */
 (function($)
 {
+    var avatars = [];
+
     $.chat = {};
 
     $.fn.chat = function(options)
@@ -360,14 +362,14 @@
             friendListId:           'chat-friend-list',
             friendListContainerId:  'chat-friend-list-container',
             friendListSearchId:     'chat-friend-list-search',
+            chatNotifyId:           'chat-notify',
             chatTitleClass:         'chat-title',
             chatDialogClass:        'chat-dialog',
             chatDisplayClass:       'chat-display',
             chatFormClass:          'chat-form',
             chatInputClass:         'chat-input',
             chatMessagesClass:      'chat-messages',
-            chatAvatarClass:        'chat-avatar',
-            unknownIcon:            'unknown.png'
+            chatAvatarClass:        'chat-avatar'
         }, options);
         return $(this).click(function()
         {
@@ -376,29 +378,84 @@
         });
     };
 
+    $.fn.chat.showAvatar = function(id)
+    {
+        if ( avatars[id] )
+        {
+            $('.chat-avatar-' + id).replaceWith(avatars[id]);
+        }
+        else if ( avatars[id] === undefined )
+        {
+            avatars[id] = false;
+            $.get(
+                $.configures.chatAvatarUrl,
+                {
+                    id: id
+                },
+                function(response)
+                {
+                    var id = response.id;
+                    avatars[id] = response.avatar;
+                    $('.chat-avatar-' + id).replaceWith(avatars[id]);
+                }
+            );
+        }
+    };
+
+    $.fn.chat.notify = function(dialog)
+    {
+        $('#' + $.chat.options.chatNotifyId).get(0).play();
+        dialog.data('timer', setInterval(function()
+        {
+            dialog.children('.' + $.chat.options.chatTitleClass).highlight();
+        }, 1000)).children('.' + $.chat.options.chatTitleClass).one('click', function()
+        {
+            clearInterval($(this).parent().data('timer'));
+        });
+    }
+
     $.fn.chat.createFriendList = function()
     {
         var list = $('#' + $.chat.options.friendListId);
         if ( list.length == 0 )
         {
-            var search = $('<input />')
-                .attr('type', 'text')
-                .attr('id', $.chat.options.friendListSearchId)
-            list = $('<div></div>')
-                .attr('id', $.chat.options.friendListId)
-                .appendTo($('body'));
-            title = $('<span></span>')
+            var title = $('<span></span>')
                 .text('談天說地')
                 .click(function()
                 {
                     $.fn.chat.closeFriendList();
-                })
-                .appendTo(list);
-            display = $('<div></div>')
-                .attr('id', $.chat.options.friendListContainerId)
-                .appendTo(list);
-            search.appendTo(list);
-            display.scrollable()
+                });
+            var display = $('<div></div>')
+                .attr('id', $.chat.options.friendListContainerId);
+            var search = $('<input />')
+                .attr('type', 'text')
+                .attr('id', $.chat.options.friendListSearchId);
+            var source = $('#' + $.chat.options.chatId).attr('notify');
+            var notify = $('<audio></audio>')
+                .append(
+                    $('<source></source>')
+                        .attr('src', source + '.ogg')
+                        .attr('type', 'audio/ogg')
+                )
+                .append(
+                    $('<source></source>')
+                        .attr('src', source + '.mp3')
+                        .attr('type', 'audio/mp3')
+                )
+                .append(
+                    $('<source></source>')
+                        .attr('src', source + '.wav')
+                        .attr('type', 'audio/wav')
+                )
+                .attr('id', $.chat.options.chatNotifyId);
+            list = $('<div></div>')
+                .attr('id', $.chat.options.friendListId)
+                .append(title)
+                .append(display)
+                .append(search)
+                .append(notify)
+                .appendTo($('body'));
+            display.scrollable();
         }
         return list;
     };
@@ -427,22 +484,13 @@
                     $.fn.chat.showChatDialog($(this).data('id'));
                 })
                 .appendTo($('#' + $.chat.options.friendListContainerId));
-            var avatar = $('<div></div>')
-                .attr('id', 'friend-list-avatar-' + data.id)
+            var placehold = $('<div></div>')
+                .addClass('chat-avatar-' + data.id)
                 .appendTo(entry);
             var name = $('<p>')
                 .text(data.name)
                 .appendTo(entry);
-            $.get(
-                $.configures.chatAvatarUrl,
-                {
-                    id: data.id
-                },
-                function(response)
-                {
-                    $('#friend-list-avatar-' + response.id).replaceWith(response.avatar);
-                }
-            );
+            $.fn.chat.showAvatar(data.id);
         }
         return list;
     };
@@ -487,7 +535,7 @@
             size++;
         });
         if ( ! dialog )
-        {    
+        {
             var title = $('<div></div>')
                 .addClass($.chat.options.chatTitleClass)
                 .append('<span></span>')
@@ -503,7 +551,6 @@
                     {
                         $.fn.chat.showChatDialog(dialog.data('id'));
                     }
-                    
                 });
             var display = $('<div></div>')
                 .addClass($.chat.options.chatDisplayClass);
@@ -575,8 +622,8 @@
 
     $.fn.chat.updateChatDialog = function(id, data)
     {
-        var name;
-        var exists;
+        var name = '';
+        var exists = false;
         var dialog = $.fn.chat.createChatDialog(id);
         dialog.find('.' + $.chat.options.chatDisplayClass)
             .each(function()
@@ -597,23 +644,17 @@
                             .addClass($.chat.options.chatMessagesClass)
                             .appendTo($(this));
                         var avatar = $('<div></div>')
-                            .addClass('chat-avatar-' + data.id)
                             .addClass($.chat.options.chatAvatarClass)
                             .appendTo(entry);
+                        var placehold = $('<div></div>')
+                            .addClass('chat-avatar-' + data.avatar)
+                            .appendTo(avatar);
                         var name = $('<p></p>')
                             .text(data.name)
                             .appendTo(avatar);
-                        $.get(
-                            $.configures.chatAvatarUrl,
-                            {
-                                id: data.avatar
-                            },
-                            function(response)
-                            {
-                                $('.chat-avatar-' + response.id).prepend(response.avatar);
-                            }
-                        );
+                        $.fn.chat.showAvatar(data.avatar);
                     }
+                    if ( ! dialog.data('show') ) $.fn.chat.notify(dialog);
                     message.text(data.message);
                     message.appendTo($(this).children('div').last());
                     $(this).scrollTo($(this).height());
@@ -627,7 +668,7 @@
     {
         var dialog = $.fn.chat.createChatDialog(id);
         dialog.animate({
-            bottom: -172
+            bottom: -1 * dialog.height() + dialog.children('.chat-title').height()
         }, $.chat.options.animationSpeed).data('show', false);
         $.fn.chat.updateChatDialogsPosition();
         return dialog;
@@ -639,14 +680,12 @@
             $.configures.chatCloseUrl,
             {
                 receiver: id,
-                lasttime: $.configures.lasttime,
                 token: $.configures.token
             },
             function(response)
             {
                 $.pull.pause();
                 $.configures.token = response.token;
-                $.configures.lasttime = response.lasttime;
                 $.errors(response.errors);
                 $.pull.restart();
             }
@@ -2438,35 +2477,32 @@
         );
     });
 
-    if ( $.configures.facebookEnable )
+    $('<script></script>')
+        .attr('id', 'facebook-jssdk')
+        .attr('async', 'async')
+        .attr('type', 'text/javascript')
+        .attr('src', '//connect.facebook.net/zh_TW/all.js')
+        .insertBefore($('script').first());
+
+    window.fbAsyncInit = function()
     {
-        $('<script></script>')
-            .attr('id', 'facebook-jssdk')
-            .attr('async', 'async')
-            .attr('type', 'text/javascript')
-            .attr('src', '//connect.facebook.net/zh_TW/all.js')
-            .insertBefore($('script').first());
+        var like = $('<div></div>')
+            .attr('id', 'fb-like')
+            .appendTo($('#fb-root'));
 
-        window.fbAsyncInit = function()
-        {
-            var like = $('<div></div>')
-                .attr('id', 'fb-like')
-                .appendTo($('#fb-root'));
+        $('<fb:like></fb:like>')
+            .attr('href', window.location.href)
+            .attr('data-send', 'false')
+            .attr('data-layout', 'button_count')
+            .attr('data-show-faces', 'false')
+            .appendTo(like);
 
-            $('<fb:like></fb:like>')
-                .attr('href', window.location.href)
-                .attr('data-send', 'false')
-                .attr('data-layout', 'button_count')
-                .attr('data-show-faces', 'false')
-                .appendTo(like);
-
-            FB.init({
-                appId:      $.configures.facebookAppId,
-                channelUrl: $.configures.facebookChannelUrl,
-                status:     true,
-                cookie:     true,
-                xfbml:      true
-            });
-        };
-    }
+        FB.init({
+            appId:      $.configures.facebookAppId,
+            channelUrl: $.configures.facebookChannelUrl,
+            status:     true,
+            cookie:     true,
+            xfbml:      true
+        });
+    };
 })(jQuery);

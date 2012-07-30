@@ -56,7 +56,6 @@ class ProfileController extends Controller
         $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $user = User::model()->findByPk($userID);
-        $this->_data['token'] = Yii::app()->security->getToken();
         if ( isset($_POST['profile']) ) 
         {
             $user->attributes = $_POST['register'];
@@ -92,7 +91,6 @@ class ProfileController extends Controller
     public function actionMessage()
     {
         $userID = Yii::app()->user->id;
-        $this->_data['token'] = Yii::app()->security->getToken();
         $this->render('message', array(
             'articles'        => Article::model()->getUserArticles($userID)
         ));

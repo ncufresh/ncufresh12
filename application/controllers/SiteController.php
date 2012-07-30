@@ -110,7 +110,6 @@ class SiteController extends Controller
             {
                 $this->_data['error'] = true;
             }
-            $this->_data['token'] = Yii::app()->security->getToken();
 
             if ( Yii::app()->request->getIsAjaxRequest() ) return true;
             $this->redirect(Yii::app()->user->returnUrl);
@@ -238,7 +237,6 @@ class SiteController extends Controller
     public function actionRegister()
     {
         $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
-        $this->_data['token'] = Yii::app()->security->getToken();
         if ( isset($_POST['register']) && isset($_POST['profile']) )
         {
             if ( $_POST['register']['password'] === $_POST['confirm'] ) 
@@ -271,7 +269,7 @@ class SiteController extends Controller
                             }
                             $item = new ItemBag(); //ItemBag Model
                             $item->user_id = $user->id; //同步寫入user的id至道具列表
-                            $item->items_id = $character->skin_id; //寫入獲得道具的id
+                            $item->item_id = $character->skin_id; //寫入獲得道具的id
                             $item->equip = 1; //寫入裝備狀態
                             $item->acquire_time = TIMESTAMP; //寫入獲得時間
                             

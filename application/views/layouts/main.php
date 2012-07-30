@@ -240,7 +240,7 @@
 </div>
 
 <?php if ( Yii::app()->user->getIsMember() ) : ?>
-<div id="chat">
+<div id="chat" notify="<?php echo Yii::app()->request->baseUrl; ?>/statics/notify">
     <p class="online-friends">
         線上好友<span class="friendcounts"><?php echo 999; // $this->getOnlineFriendsCount(); ?></span>人
     </p>
@@ -254,7 +254,6 @@
     jQuery.extend({
         configures: {
             pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
-            facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
             chatOpenUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/open', array('id' => ':id')); ?>'),
             chatSendUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
             chatCloseUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/close'); ?>'),
@@ -266,6 +265,7 @@
             calendarEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvent', array('id'=> ':id')); ?>'),
             calendarEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvents'); ?>'),
             buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),
+            facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
             facebookAppId: '<?php global $ncufreshfb; echo $ncufreshfb['appId']; ?>',
             googleSearchAppId: '011017124764723419863:mdibrr3n-py',
             token: '<?php echo Yii::app()->security->getToken(); ?>'

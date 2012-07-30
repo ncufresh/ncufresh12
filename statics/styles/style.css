@@ -2009,6 +2009,14 @@ button.news-button
     left: 660px;
 }
 
+#about #introduce
+{
+    font-family: 微軟正黑體;
+    font-size: 18px;
+}
+
+#about .title1
+
 #readme-fresh
 {
     width: 750px;
@@ -2025,11 +2033,18 @@ button.news-button
 
 #fresh_back:hover
 {
+    position: relative;
+    background: #385281;
+    height: 550px;    
+    width: 750px;
+    margin-top: -18px;
     background: url('../readme/fresh_back_hover.png');
 }
 
 #readme-notice
 {
+    background: #385281;
+    height: 900px;    
     width: 750px;
     height: 450px;
     position: relative;
@@ -2048,13 +2063,33 @@ button.news-button
 
 #readme-reschool
 {
+    background: url('../about/wood_plate_for_photo.png') no-repeat #8ca86c center;
+    left: 25px;
+    height: 508px;
+    width: 700px;
     width: 750px;
     height: 450px;
     position: relative;
     background: url('../readme/reschool_background.png');
 }
 
+#about .tag-txt
+{
+    background: url('../about/small_wood_plate.png') no-repeat #8ca86c center; #8ca86c;
+    left: 25px;
+    height: 122px;
+    width: 700px;
+    position: relative;
+    margin-top: -0px;
+}
+
+/**
+ * Facebook style
+ */
+#fb-like
+=======
 #reschool-back
+>>>>>>> 1d4ece5ca74fc5cbef711da5a12142ead86fbb5c
 {
     background: url('../readme/reschool_back.png');
 }
