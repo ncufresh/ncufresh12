@@ -34,6 +34,23 @@ class CalendarController extends Controller
     
     public function actionCreateEvent()
     {
+        $event = new Event();
+        if ( isset($_POST['event']) )
+        {
+            $event->name = $_POST['event']['name'];
+            $event->description = $_POST['event']['description'];
+            $event->visible = 1;
+            $event->start = strtotime($_POST['event']['start']);
+            $event->end = strtotime($_POST['event']['end']);
+            //user
+            if(!Club::Model()->getIsAdmin(Yii::app()->user->getId())){
+                $event->calendar_id = Calendar::Model()->find('user_id='.Yii::app()->user->getId().' AND category=1')->id;
+            }
+            //club
+            else  
+                $event->calendar_id = Calendar::Model()->find('user_id='.Yii::app()->user->getId().' AND category=0')->id;
+            $event->save();
+        }
         $this->render('create_event');
     }
 
@@ -90,11 +107,23 @@ class CalendarController extends Controller
         }
         else
         {
-            foreach ( $user->calendar->events as $key => $event )
+            $counter = 0;
+            foreach ( $user->calendar->events as $event )
             {
-                $this->_data['events'][$key]['id'] = $event->id;
-                $this->_data['events'][$key]['start'] = $event->start;
-                $this->_data['events'][$key]['end'] = $event->end;
+                $this->_data['events'][$counter]['id'] = $event->id;
+                $this->_data['events'][$counter]['start'] = $event->start;
+                $this->_data['events'][$counter]['end'] = $event->end;
+                $counter++;
+            }
+            foreach ( $user->subscriptions as $calendar )
+            {
+                foreach( $calendar->events as $event )
+                {
+                    $this->_data['events'][$counter]['id'] = $event->id;
+                    $this->_data['events'][$counter]['start'] = $event->start;
+                    $this->_data['events'][$counter]['end'] = $event->end;
+                    $counter++;
+                }
             }
         }
     }

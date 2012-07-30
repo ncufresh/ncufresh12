@@ -34,7 +34,7 @@
         </ul>
 </div>
 <div class="club-display-head" id="club-head-<?php echo $data->category;?>">
-<?php if ( $this->getIsAdmin($id) ) : ?>
+<?php if ( Club::model()->getIsAdmin($id) ) : ?>
     <a href="<?php echo Yii::app()->createUrl('club/modify/' . $id);?>" title="修改">修改</a>
     <a href="<?php echo Yii::app()->createUrl('club/uploadpicture/' . $id);?>" title="上傳圖片">上傳圖片</a>
 <?php endif;?>

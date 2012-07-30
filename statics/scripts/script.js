@@ -1269,7 +1269,6 @@
                 }
                 if ( !found )
                 {
-                    console.log(event, cal_events);
                     cal_events[cal_events.length] = event;
                     $(this).data('cal_events', cal_events);
                 }

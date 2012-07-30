@@ -98,4 +98,17 @@ class Event extends CActiveRecord
         $this->start -= date('Z', $this->start);
         $this->end   -= date('Z', $this->end);
     }
+    
+    public function beforeSave()
+    {
+        if ( parent::beforeSave() )
+        {
+            if ( $this->getIsNewRecord() )
+            {
+                $this->created = TIMESTAMP;
+            }
+            return true;
+        }
+        return false;
+    }
 }
