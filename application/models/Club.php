@@ -55,7 +55,7 @@ class Club extends CActiveRecord
     {
         if ( Yii::app()->user->getid() ) 
         {
-            $isAdmin = count('id = ' . $clubid . ' AND manager_id = ' . Yii::app()->user->getid()) > 0 ? true : false;
+            $isAdmin = $this->count('id = ' . $clubid . ' AND manager_id = ' . Yii::app()->user->getid()) > 0 ? true : false;
             $isAdmin = $isAdmin || Yii::app()->user->getIsAdmin();
         }
         else
