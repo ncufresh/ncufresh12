@@ -31,7 +31,8 @@ class SiteController extends Controller
                     'login',
                     'channel',
                     'profile',
-                    'editor'
+                    'editor',
+                    'sitemap'
                 ),
                 'users'     => array('*')
             ),
@@ -236,7 +237,6 @@ class SiteController extends Controller
 
     public function actionRegister()
     {
-        $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         if ( isset($_POST['register']) && isset($_POST['profile']) )
         {
             if ( $_POST['register']['password'] === $_POST['confirm'] ) 
@@ -249,17 +249,17 @@ class SiteController extends Controller
                     $profile->attributes = $_POST['profile'];
                     $profile->department_id = $_POST['profile']['department'];
                     $profile->grade = $_POST['profile']['grade'];
-                    $profile->sex = $_POST['sex'];
+                    $profile->gender = $_POST['gender'];
                     if ( $profile->validate() )
                     {
                         if ( $user->save() )
                         {
                             $character = new Character(); //Character Model
                             $character->id = $user->id;//同步寫入user的id至遊戲資料列表
-                            $character->exp = 1; //一開始使用者經驗設為1
+                            $character->experience = 1; //一開始使用者經驗設為1
                             $character->money = 25000; //一開始使用者金錢設為25000
                             $character->total_money = 35000; //一開始使用者總金錢設為25000
-                            if($_POST['sex'] == 0)
+                            if($_POST['gender'] == 0)
                             {
                                 $character->skin_id = 81; //男生 皮膚預設id=81
                             }
@@ -270,8 +270,8 @@ class SiteController extends Controller
                             $item = new ItemBag(); //ItemBag Model
                             $item->user_id = $user->id; //同步寫入user的id至道具列表
                             $item->item_id = $character->skin_id; //寫入獲得道具的id
-                            $item->equip = 1; //寫入裝備狀態
-                            $item->acquire_time = TIMESTAMP; //寫入獲得時間
+                            $item->equipped = true; //寫入裝備狀態
+                            $item->created = TIMESTAMP; //寫入獲得時間
                             
                             $profile->id = $user->id;
                             if ( $profile->save() && $character->save() && $item->save())
@@ -284,7 +284,103 @@ class SiteController extends Controller
             }
         }
         $this->render('register', array(
-                'departments'   => Department::model()->getDepartment()
+            'departments'   => Department::model()->getDepartment()
+        ));
+    }
+
+    public function actionSitemap()
+    {
+        $path = Yii::app()->basePath . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'sitemap.xml';
+        $pages = array(
+            array(
+                'level'         => 1,
+                'name'          => '首頁',
+                'location'      => $this->createAbsoluteUrl('site/index'),
+                'modified'      => date('Y-m-d\TH:i:s+08:00'),
+                'frequency'     => 'always',
+                'priority'      => 1
+            ),
+            array(
+                'level'         => 1,
+                'name'          => '首頁2',
+                'location'      => $this->createAbsoluteUrl('site/index')
+            ),
+            array(
+                'level'         => 2,
+                'name'          => '首頁2-1',
+                'location'      => $this->createAbsoluteUrl('site/index')
+            ),
+            array(
+                'level'         => 2,
+                'name'          => '首頁2-2',
+                'location'      => $this->createAbsoluteUrl('site/index')
+            ),
+            array(
+                'level'         => 1,
+                'name'          => '首頁3',
+                'location'      => $this->createAbsoluteUrl('site/index')
+            )
+        );
+
+        if ( ! file_exists($path) )
+        {
+            $sitemap = new DOMDocument('1.0', 'UTF-8');
+            $urlset = $sitemap->createElement('urlset');
+            $urlset->setAttribute(
+                'xmlns',
+                'http://www.sitemaps.org/schemas/sitemap/0.9'
+            );
+            $urlset->setAttribute(
+                'xmlns:image',
+                'http://www.sitemaps.org/schemas/sitemap-image/1.1'
+            );
+            $urlset->setAttribute(
+                'xmlns:video',
+                'http://www.sitemaps.org/schemas/sitemap-video/1.1'
+            );
+            foreach ( $pages as $page )
+            {
+                $url = $sitemap->createElement('url');
+
+                $loc = $sitemap->createElement('loc');
+                $loc->appendChild($sitemap->createTextNode($page['location']));
+                $url->appendChild($loc);
+
+                if ( isset($page['modified']) )
+                {
+                    $lastmod = $sitemap->createElement('lastmod');
+                    $lastmod->appendChild(
+                        $sitemap->createTextNode($page['modified'])
+                    );
+                    $url->appendChild($lastmod);
+                }
+
+                if ( isset($page['frequency']) )
+                {
+                    $changefreq = $sitemap->createElement('changefreq');
+                    $changefreq->appendChild(
+                        $sitemap->createTextNode($page['frequency'])
+                    );
+                    $url->appendChild($changefreq);
+                }
+
+                if ( isset($page['priority']) )
+                {
+                    $priority = $sitemap->createElement('priority');
+                    $priority->appendChild(
+                        $sitemap->createTextNode($page['priority'])
+                    );
+                    $url->appendChild($priority);
+                }
+
+                $urlset->appendChild($url);
+            }
+            $sitemap->appendChild($urlset);
+            $sitemap->save($path);
+        }
+
+        $this->render('sitemap', array(
+            'pages'         => $pages
         ));
     }
 }

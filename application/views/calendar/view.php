@@ -25,4 +25,7 @@ tbody td
         <span>社團</span>
         <div class="clubs"></div>
     </div>
+    <a href="<?php echo Yii::app()->createUrl('calendar/createevent');?>">新增</a>
+    <a href="<?php echo Yii::app()->createUrl('calendar/subscript');?>">訂閱</a>
+    <a href="<?php echo Yii::app()->createUrl('calendar/recycle');?>">垃圾桶</a>
 </div>

@@ -25,6 +25,22 @@ class CalendarController extends Controller
 
     public function actionRecycle()
     {
+        if ( Yii::app()->request->getIsAjaxRequest() )
+        {
+            if ( isset($_POST['calendar']) )
+            {
+                $id = (integer)$_POST['calendar']['id'];
+                $event = Event::model()->findByPk($id);
+                $event->invisible = true;
+                if ( $event->save() ) return true;
+            }
+            $this->_data['errors'][] = '發生錯誤！';
+            return true;
+        }
+
+        $this->render('recycle', array(
+            'events'    => Event::model()->getRecycledEvents()
+        ));
     }
 
     public function actionEventDetail()
@@ -33,6 +49,18 @@ class CalendarController extends Controller
     
     public function actionCreateEvent()
     {
+        $event = new Event();
+        if ( isset($_POST['event']) )
+        {
+            $event->name = $_POST['event']['name'];
+            $event->description = $_POST['event']['description'];
+            $event->visible = 1;
+            $event->start = strtotime($_POST['event']['start']);
+            $event->end = strtotime($_POST['event']['end']);
+            $event->calendar_id = Calendar::Model()->find('user_id='.Yii::app()->user->getId().' AND category=1')->id;
+            $event->save();
+        }
+        $this->render('create_event');
     }
 
     public function actionHideEvent()
@@ -49,6 +77,10 @@ class CalendarController extends Controller
 
     public function actionSubscript()
     {
+        $club_calendars = Calendar::Model()->findAll('category=0');
+        $this->render('subscript', array(
+            'club_calendars' => $club_calendars
+        ));
     }
 
     public function actionUnsubsciprt()
@@ -76,7 +108,18 @@ class CalendarController extends Controller
             foreach( $events as $key => $event )
             {
                 $this->_data['events'][$key]['id'] = $event->id;
-                $this->_data['events'][$key]['category'] = $event->calendar->category;
+                if ( $event->calendar->getIsPersonal() )
+                {
+                    $this->_data['events'][$key]['category'] = 'PERSONAL';
+                }
+                else if ( $event->calendar->getIsClub() )
+                {
+                    $this->_data['events'][$key]['category'] = 'CLUB';
+                }
+                else
+                {
+                    $this->_data['events'][$key]['category'] = 'GENERAL';
+                }
                 $this->_data['events'][$key]['start'] = $event->start;
                 $this->_data['events'][$key]['end'] = $event->end;
                 $this->_data['events'][$key]['name'] = $event->name;

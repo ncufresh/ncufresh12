@@ -12,14 +12,14 @@ class Item extends CActiveRecord
         return '{{game_items}}';
     }
     
-    public function getBuyItems($level, $items_category)
+    public function getBuyItems($level, $category)
     {
         return $this->findAll(array(
-            'condition' => 'level <= :level AND items_category = :items_category',
+            'condition' => 'level <= :level AND category = :category',
             'order'     => 'price ASC',
             'params'    => array(
                 ':level' => $level,
-                ':items_category' => $items_category
+                ':category' => $category
             )
         ));
     }
