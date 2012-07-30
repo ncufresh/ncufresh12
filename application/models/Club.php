@@ -45,7 +45,7 @@ class Club extends CActiveRecord
     {
         return $this->find(array(
             'condition' => 'manager_id = :manager_id',
-            'parmas' => array(
+            'params' => array(
                 ':manager_id' => $manager_id
             )
         ));
