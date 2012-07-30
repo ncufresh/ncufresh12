@@ -1,5 +1,4 @@
 <?php
-
 class Character extends CActiveRecord
 {
     public $exp_level = array(
