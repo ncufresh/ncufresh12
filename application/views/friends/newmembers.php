@@ -25,5 +25,5 @@
 </div>
 <button type="submit">新增</button>
 </form>
-<button><a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$id)); ?>">取消</a></button>
+<a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$id)); ?>">取消</a>
 <button onClick= "history.back()" >BACK</button>

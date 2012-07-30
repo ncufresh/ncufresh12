@@ -3078,6 +3078,26 @@ div.register
     margin:0px;
 }
 
+div.register button
+{
+    background-image:url('../profile/button_register.png');
+    background-repeat:no-repeat ;
+    width:45px;
+    height:22px;
+    padding:0px;
+    margin-left:25px;
+}
+
+div.register #rewrite
+{
+    background-image:url('../profile/button_register.png');
+    background-repeat:no-repeat ;
+    width:45px;
+    height:22px;
+    padding:0px;
+    margin-left:180px;
+}
+
 div.login
 {
     background-image:url('../profile/login.png');
@@ -3130,6 +3150,11 @@ div.register form
     margin-left:30px;
     margin-top:10px;
     padding:0px;
+}
+
+div.register #nickname-exist
+{
+    outline:1px solid red;
 }
 
 h1

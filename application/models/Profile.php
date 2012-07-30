@@ -93,4 +93,19 @@ class Profile extends CActiveRecord
         ));
     }
 
+    public function isNickNameExist($nickname)
+    {
+        $data = $this->find(array(
+                    'condition' => 'nickname = :nickname',
+                        'params' => array(
+                            ':nickname' =>$nickname
+                    )
+                ));
+        if ( isset($data) )
+        {
+            return true;
+        }
+        return false;
+    }
+
 }

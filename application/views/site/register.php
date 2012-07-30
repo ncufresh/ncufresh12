@@ -10,6 +10,7 @@
                 <input id="form-register-name" name="profile[name]" type="text" />
             </dd>
         </dl>
+<?php if ( !$nickname_isExist ) :?>
         <dl>
             <dt>
                 <label for="form-register-nickname">暱稱</label>
@@ -18,6 +19,16 @@
                 <input id="form-register-nickname" name="profile[nickname]" type="text" />
             </dd>
         </dl>
+<?php else : ?>
+         <dl>
+            <dt>
+                <label for="form-register-nickname" id="nickname-exist">***暱稱被人捷足先登喇***</label>
+            </dt>
+            <dd>
+                <input id="form-register-nickname" name="profile[nickname]" type="text" />
+            </dd>
+        </dl>
+<?php endif; ?>
         <dl class="radio">
             <dt>
                 <label for="form-register-sex">性別</label>
@@ -85,6 +96,7 @@
                 <input id="form-register-birthday" name="profile[birthday]" type="text" />
             </dd>
         </dl>
+            <button id="rewrite"><a href="<?php echo Yii::app()->createUrl('site/register'); ?>">重填</a></button>
             <button type="submit">註冊</button>
     </form>
 </div>
