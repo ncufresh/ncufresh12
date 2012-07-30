@@ -6,7 +6,7 @@
         $('.my-all-messages').scrollable({
             wheelSpeed: 90
         });
-        $('#reply-content').scrollable({
+        $('.user-reply-content').scrollable({
             wheelSpeed: 90
         });
         $('.self-messages').scrollable({

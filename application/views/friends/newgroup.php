@@ -1,13 +1,10 @@
-<form method="POST" action="<?php echo Yii::app()->createUrl('friends/newgroup');  ?>">
+<form method="POST" action="<?php echo Yii::app()->createUrl('friends/newgroup');  ?>" class="group-description">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
-    <div>
-        <label>名稱: </label>
-    <input type="text" name="group-name" required="true" />
-        <label>描述: </label>
-    <input type="text" name="group-description" />
-        <br />
-        <label>成員: </label>
-    </div>
+    <label>名稱: </label>
+<input type="text" name="group-name" required="true" />
+    <label>描述: </label>
+<input type="text" name="group-description" />
+    <label>成員: </label>
 <div class="newgroup">
     <div class="friends-part2">
         <ul class="other-department">
