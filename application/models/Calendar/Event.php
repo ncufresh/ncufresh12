@@ -122,6 +122,21 @@ class Event extends CActiveRecord
         ));
     }
 
+    public function hide($id)
+    {
+        $event = $this->with('status')->findByPk($id);
+        if ( $event )
+        {
+            $status = $this->status;
+            if ( ! $status ) $status = new Status();
+            $status->event_id = $id;
+            $status->user_id = Yii::app()->user->getId();
+            $status->done = true;
+            if ( $status->save() ) return true;
+        }
+        return false;
+    }
+
     public function afterFind()
     {
         parent::afterFind();

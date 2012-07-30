@@ -54,7 +54,7 @@ class CalendarController extends Controller
         {
             $event->name = $_POST['event']['name'];
             $event->description = $_POST['event']['description'];
-            $event->visible = 1;
+            $event->invisible = 0;
             $event->start = strtotime($_POST['event']['start']);
             $event->end = strtotime($_POST['event']['end']);
             $event->calendar_id = Calendar::Model()->find('user_id='.Yii::app()->user->getId().' AND category=1')->id;
@@ -65,6 +65,16 @@ class CalendarController extends Controller
 
     public function actionHideEvent()
     {
+        if ( Yii::app()->request->getIsAjaxRequest() )
+        {
+            if ( isset($_POST['calendar']) )
+            {
+                $id = (integer)$_POST['calendar']['id'];
+                if ( Event::model()->hide($id) ) return true;
+            }
+            $this->_data['errors'][] = '發生錯誤！';
+            return true;
+        }
     }
 
     public function actionShowEvent()
