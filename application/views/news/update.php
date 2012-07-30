@@ -6,14 +6,8 @@ input, textarea
 }
 #news-update #form-news-content
 {
-    width: 80%;
     height: 250px;
     resize: none;
-}
-
-#news-update dl:not(.textarea) dt
-{
-    width: 171px;
 }
 
 input.MultiFile-applied
@@ -69,7 +63,6 @@ label.appendix
 
 div#news-url-result, div.MultiFile-list
 {
-    width: 80%;
     background-color: #ffffcc;
     -webkit-border-radius: 5px;
     border-radius: 5px;

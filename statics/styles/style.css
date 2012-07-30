@@ -1188,6 +1188,11 @@ ul#nculife-details
     height: 355px;
 }
 
+#index-calendar .calendar-bottom-wrap table.calendar-table
+{
+    border-collapse: collapse;
+}
+
 #index-calendar .calendar-bottom-wrap table.calendar-table caption
 {
     margin:  15px 0 10px 0 ;

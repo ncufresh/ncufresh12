@@ -2,13 +2,6 @@
 
 class GameController extends Controller
 {
-    public function init()
-    {
-        parent::init();
-        Yii::import('application.models.Game.*');
-        return true;
-    }
-
     public function filters()
     {
         return array(
