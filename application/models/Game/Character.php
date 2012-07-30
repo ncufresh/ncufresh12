@@ -170,7 +170,7 @@ class Character extends CActiveRecord
         $array = array();
         foreach ($this->items_bag as $item)
         {
-            if ( $item->translation->items_category == $category )
+            if ( $item->translation->category == $category )
             {
                 $array[] = $item;
             }
@@ -183,7 +183,7 @@ class Character extends CActiveRecord
         $counter = 0;
         foreach ($this->exp_level as $value)
         {
-            if ( Character::model()->findByPk($id)->exp < $value['exp'] )
+            if ( Character::model()->findByPk($id)->experience < $value['exp'] )
             {
                 return $counter;
                 break;
