@@ -50,7 +50,21 @@ class Club extends CActiveRecord
             )
         ));
     }
-
+    
+    public function getIsAdmin($clubid)
+    {
+        if ( Yii::app()->user->getid() ) 
+        {
+            $isAdmin = $this->count('id = ' . $clubid . ' AND manager_id = ' . Yii::app()->user->getid()) > 0 ? true : false;
+            $isAdmin = $isAdmin || Yii::app()->user->getIsAdmin();
+        }
+        else
+        {
+           $isAdmin=false;
+        }
+        return $isAdmin;
+    }
+    
     public function afterFind()
     {
         parent::afterFind();
