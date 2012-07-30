@@ -241,72 +241,28 @@ class Character extends CActiveRecord
 
     public static function getAvatar($id)
     {
-        $character = Character::model()->findByPk($id);
-        $skin = 'skin/'.$character->skin->url.'.png';
-        //echo $skin;
-        if( $character->eyes === null)
-        {
-            $eyes = '../images/unknown.png';
-        }
-        else
-        {
-            $eyes = 'eyes/'.$character->eyes->url.'.png';
-        }
-        
-        if( $character->hair === null)
-        {
-            $hair = '../images/unknown.png';
-        }
-        else
-        {
-            $hair = 'hair/'.$character->hair->url.'.png';
-        }
-        
-        if( $character->shoes === null)
-        {
-            $shoes = '../images/unknown.png';
-        }
-        else
-        {
-            $shoes = 'shoes/'.$character->shoes->url.'.png';
-        }
-        
-        if( $character->pants === null)
-        {
-            $pants = '../images/unknown.png';
-        }
-        else
-        {
-            $pants = 'pants/'.$character->pants->url.'.png';
-        }
-        
-        if( $character->clothes === null)
-        {
-            $clothes = '../images/unknown.png';
-        }
-        else
-        {
-            $clothes = 'clothes/'.$character->clothes->url.'.png';
-        }
-        
-        if( $character->others === null)
-        {
-            $others = '../images/unknown.png';
-        }
-        else
-        {
-            $others = 'others/'.$character->others->url.'.png';
-        }
-        
-        return array(
-            '身體皮膚名稱'    => $skin,
-            '眼睛部位名稱'    => $eyes,
-            '鞋子物品名稱'    => $shoes,
-            '褲子部位名稱'    => $pants,
-            '衣服衣物名稱'    => $clothes,
-            '頭髮髮型名稱'    => $hair,
-            '其他部位名稱'    => $others
+        $parts = array(
+            '皮膚'    => 'skin',
+            '眼睛'    => 'eyes',
+            '頭髮'    => 'hair',
+            '鞋子'    => 'shoes',
+            '褲子'    => 'pants',
+            '衣服'    => 'clothes',
+            '其他'    => 'others'
         );
+        $avatar = array_fill_keys(array_keys($parts), '../images/unknown.png');
+        $character = Character::model()->findByPk($id);
+        if ( $character )
+        {
+            foreach ( $parts as $name => $part )
+            {
+                if ( $character->{$part} )
+                {
+                    $avatar[$name] = $part . '/' . $character->{$part}->url . '.png';
+                }
+            }
+        }
+        return $avatar;
     }
     
     public static function getBodyPrice($id)

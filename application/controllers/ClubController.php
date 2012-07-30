@@ -96,8 +96,7 @@ class ClubController extends Controller
         {
              throw new CHttpException(404);
         }
-    
-        $this->_data['token'] = Yii::app()->security->getToken(); 
+
         $this->render('modify',array(
             'data'=>$club,
             'id'=>$id
