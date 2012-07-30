@@ -10,6 +10,11 @@ class Subscription extends CActiveRecord
      * @var boolean $invisible
      */
 
+    public static function model($className=__CLASS__)
+	{
+		return parent::model($className);
+	}
+    
     public function tableName()
     {
         return '{{calendar_subscriptions}}';
