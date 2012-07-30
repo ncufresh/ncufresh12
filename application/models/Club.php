@@ -44,9 +44,9 @@ class Club extends CActiveRecord
     public function getClubByManagerrId($manager_id)
     {
         return $this->find(array(
-            'condition' => 'manager_id = :manager_id',
+            'condition' => 'master_id = :master_id',
             'params' => array(
-                ':manager_id' => $manager_id
+                ':master_id' => $manager_id
             )
         ));
     }
