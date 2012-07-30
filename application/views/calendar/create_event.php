@@ -13,6 +13,22 @@
 <div class="form-body">
     <dl class="content">
         <dt>
+            <label for="calendar-create-start">起始日 (ex:2012/07/30)</label>
+        </dt>
+        <dd>
+            <input id="calendar-create-start" type="text" name="event[start]" maxLength="10"/>
+        </dd>
+    </dl>
+    <dl class="content">
+        <dt>
+            <label for="calendar-create-end">結束日 (ex:2012/07/30)</label>
+        </dt>
+        <dd>
+            <input id="calendar-create-end" type="text" name="event[end]" maxLength="10"/>
+        </dd>
+    </dl>
+    <dl class="content">
+        <dt>
             <label for="form-create-content">內容</label>
         </dt>
         <dd>
