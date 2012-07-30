@@ -207,56 +207,9 @@ class GameController extends Controller
                 $this->render('game_system', array('content' => $content, 'watch_id' => $user_id));
             }
         }
-        
-    public function actionEquip($id = 0)
-    {
-        $user_id = Yii::app()->user->getId();
-        
-        if($id == 0)
-        {
-            $this->redirect(Yii::app()->createUrl('game/shop', array('id'=>$user_id)));
-        }
-        else
-        {
-            $status = ItemBag::model()->buyNewItem($id);
-            if($status == 0)
-            {
-                // $this->redirect(Yii::app()->createUrl('game/items', array('id'=>$user_id)));
-                $reason = '恭喜您：購買成功！';
-                $content = $this->renderPartial('reason', array('reason' => $reason, 'watch_id' => $user_id), true);
-                $this->render('game_system', array('content' => $content, 'watch_id' => $user_id));
-            }
-            else if(ItemBag::model()->buyNewItem($id) == 3)
-            {
-                $reason = '已經擁有此道具！';
-                $content = $this->renderPartial('reason', array('reason' => $reason, 'watch_id' => $user_id), true);
-                $this->render('game_system', array('content' => $content, 'watch_id' => $user_id));
-            }
-            else if($status == 1)
-            {
-                $reason = '金幣不足！';
-                $content = $this->renderPartial('reason', array('reason' => $reason, 'watch_id' => $user_id), true);
-                $this->render('game_system', array('content' => $content, 'watch_id' => $user_id));
-                //$this->redirect(Yii::app()->createUrl('game/shop', array('id'=>$user_id)));
-                // $this->setPageTitle(Yii::app()->name . ' - 商城列表');
-                // $content = $this->renderPartial('shop', null, true);
-                // $this->render('game_system', array('content' => $content, 'watch_id' => $id));
-            }
-            else if(ItemBag::model()->buyNewItem($id) == 2)
-            {
-                $reason = '等級不足！';
-                $content = $this->renderPartial('reason', array('reason' => $reason, 'watch_id' => $user_id), true);
-                $this->render('game_system', array('content' => $content, 'watch_id' => $user_id));
-            }
-            else
-            {
-                $reason = '資料庫寫入錯誤！';
-                $content = $this->renderPartial('reason', array('reason' => $reason, 'watch_id' => $user_id), true);
-                $this->render('game_system', array('content' => $content, 'watch_id' => $user_id));
-            }
         }
         
-    }
+
     
     // public function actionFunny($id = 0)
     // {
