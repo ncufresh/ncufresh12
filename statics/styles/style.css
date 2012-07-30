@@ -2982,7 +2982,7 @@ div.myprofile
     margin:0px;
 }
 
-div.mygroups
+/*div.mygroups
 {
     background-image:url('../profile/mygroups.png');
     background-repeat:no-repeat ;
@@ -2990,11 +2990,11 @@ div.mygroups
     height:370px;
     padding:25px;
     margin:0px;
-}
+}*/
 
 div.newgroup
 {
-    background-image:url('../profile/groups.png');
+    background-image:url('../profile/mygroup.png');
     background-repeat:no-repeat ;
     width:690px;
     height:370px;

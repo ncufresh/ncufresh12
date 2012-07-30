@@ -259,7 +259,7 @@ class FriendsController extends Controller
         }
     }
 
-   public function actionNewMembers()
+   public function actionNewMembers() //新增成員的頁面
    {
         $userID = Yii::app()->user->id;
         $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';

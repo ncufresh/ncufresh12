@@ -7,6 +7,7 @@ class SiteController extends Controller
         parent::init();
         Yii::import('application.models.News.*');
         Yii::import('application.models.Game.*');
+        Yii::import('application.models.Calendar.*');
         return true;
     }
 

@@ -86,4 +86,12 @@ class  UserGroup extends CActiveRecord
         }
         return false;
     }
+
+   /* public function getNewMember($userid,$groupid) //當該朋友尚未待在該群組
+    {
+        return $this->findAll(array(
+                    'condition' => ''
+        
+                ));
+    }*/
 }
