@@ -1147,6 +1147,130 @@
  */
 (function($)
 {
+    var markToday = function()
+    {
+        var date = new Date();
+        var self = this;
+        return $(this).children('tbody').find('td').each(function()
+        { 
+            if ( $(this).data('day') == date.getDate() && self.data('options').month == date.getMonth() )
+            {
+                $(this).css('color', 'red');
+            }
+        });
+    }
+    
+    /**
+     * Marks an event on calendar with specified css
+     * params var event    {event_id, start, end}
+     */
+    var markEvent = function(event, css, clean)
+    {
+        css = $.extend({}, css);
+        event = $.extend({
+            id: 0,
+            start: 0,
+            end: 0
+        }, event);
+        var id      = event.id;
+        var start   = event.start - (new Date()).getTimezoneOffset()*60;
+        var end     = event.end - (new Date()).getTimezoneOffset()*60;
+        var days    = [];
+        var date    = function( timestamp )
+        {
+            return (new Date(timestamp * 1000));
+        }
+        for( var time = start; time <= end; time+=86400 )
+        {
+            if( this.data('options').month ==  date(time).getMonth() )
+            {
+                days[days.length] = date(time).getDate();
+            }
+        }
+        $(this).children('tbody').find('td').each(function(index, element){
+            if ( clean ) $(this).removeAttr('style');
+            if( days.indexOf($(this).data('day')) != -1)
+            {
+                $(this).css(css);
+                var cal_events = $(this).data('cal_events')?$(this).data('cal_events'):[];
+                if ( $.inArray(event, cal_events) == -1 )
+                {
+                    cal_events[cal_events.length] = event;
+                }
+                $(this).data('cal_events', cal_events);
+            }
+        });
+        return this;
+    }
+
+    var cleanUpMark = function()
+    {
+        return $(this).children('tbody').find('td').each(function(){
+            $(this).removeAttr('style');
+        });
+    }
+    
+    /**
+     * Update the list of events
+     */
+    var updateEventsList = function(cal_events)
+    {
+        var self = this;
+        var date    = function(timestamp)
+        {
+            return (new Date(timestamp * 1000));
+        }
+        if ( cal_events && cal_events.length )
+        {
+            var event_ids = [];
+            for( var key in cal_events )
+            {
+                event_ids[key] = cal_events[key].id;
+            }
+            $.post($.configures.calendarEventsUrl, { 
+                event_ids : event_ids,
+                token : $.configures.token
+            }, function(data){
+                var general = $('#personal-calendar .right .general').empty();
+                var personal = $('#personal-calendar .right .personal').empty();
+                var clubs = $('#personal-calendar .right .clubs').empty();
+                for( var key in data.events )
+                {
+                    var result = $('<div></div>')
+                        .append($('<p></p>').text(data.events[key].name))
+                        .css('background', 'gray')
+                        .data('event', data.events[key])
+                        .mouseenter(function(){
+                            $('.calendar-table').markEvent($(this).data('event'), {
+                                background : 'green'
+                            }, true);
+                        })
+                        .mouseleave(function(){
+                            self.cleanUpMark();
+                            for( var key in self.data('all_events') )
+                            {
+                                self.markEvent(self.data('all_events')[key], { textDecoration: 'underline'});
+                            }
+                            self.markToday();
+                        });
+                    if ( data.events[key].category == 'general' )
+                    {
+                        result.appendTo(general);
+                    }
+                    else if ( data.events[key].category == 'personal' )
+                    {
+                        result.appendTo(personal);
+                    }
+                    else 
+                    {
+                        result.appendTo(clubs);
+                    }
+                }
+                $.configures.token = data.token;
+            });
+        }
+    }
+    
     $.generateTodolist = function(events, options)
     {
         options = $.extend({
@@ -1191,7 +1315,7 @@
             rightClick:  function(){ return false; },
             dayClick:    function(){}
         }, options);
-        
+
         options.month -= 1;
         var daysInMonth = function(iMonth, iYear)
         {
@@ -1259,51 +1383,15 @@
             }
             td.appendTo(tr);
         }
+        $.extend( table.__proto__,{
+            markToday: markToday,
+            markEvent: markEvent,
+            cleanUpMark: cleanUpMark,
+            updateEventsList: updateEventsList
+        });
         return table.append(caption)
             .append(thead)
             .append(tbody);
-    }
-
-    /**
-     * var event    [event_id, start, end]
-     */
-    $.fn.markCalendarEvent = function(event, css, clean)
-    {
-        css = $.extend({}, css);
-        event = $.extend({
-            id: 0,
-            start: 0,
-            end: 0
-        }, event);
-        var id      = event.id;
-        var start   = event.start - (new Date()).getTimezoneOffset()*60;
-        var end     = event.end - (new Date()).getTimezoneOffset()*60;
-        var days    = [];
-        var date    = function( timestamp )
-        {
-            return (new Date(timestamp * 1000));
-        }
-        for( var time = start; time <= end; time+=86400 )
-        {
-            if( this.data('options').month ==  date(time).getMonth() )
-            {
-                days[days.length] = date(time).getDate();
-            }
-        }
-        $(this).children('tbody').find('td').each(function(index, element){
-            if ( clean ) $(this).removeAttr('style');
-            if( days.indexOf($(this).data('day')) != -1)
-            {
-                $(this).css(css);
-                var cal_events = $(this).data('cal_events')?$(this).data('cal_events'):[];
-                if ( $.inArray(event, cal_events) == -1 )
-                {
-                    cal_events[cal_events.length] = event;
-                }
-                $(this).data('cal_events', cal_events);
-            }
-        });
-        return this;
     }
 
     $.fn.indexCalendar = function(options)
@@ -1398,7 +1486,10 @@
         ).appendTo(bottom);
         return this;
     };
-    
+
+    /**
+     * Initialize the personal calendar
+     */
     $.fn.calendar = function()
     {
         var calendar = jQuery.generateCalendar({
@@ -1410,75 +1501,17 @@
                     + $(calendar).data('options').month + '.'
                     + $(this).text()
                 );
-                $(calendar).calendarEvents($(this).data('cal_events'));
+                $(calendar).updateEventsList($(this).data('cal_events'));
             }
         });
         calendar.appendTo(this);
         $.getJSON($.configures.calendarEventsUrl, function(data){
             for(var key in data.events)
             {
-                calendar.markCalendarEvent(data.events[key], { textDecoration: 'underline'});
+                calendar.markEvent(data.events[key], { textDecoration: 'underline'});
             }
             calendar.data('all_events', data.events);
         });
-    }
-
-    $.fn.calendarEvents = function(cal_events)
-    {
-        var self = this;
-        var date    = function( timestamp )
-        {
-            return (new Date(timestamp * 1000));
-        }
-        if ( cal_events && cal_events.length )
-        {
-            var event_ids = [];
-            for( var key in cal_events )
-            {
-                event_ids[key] = cal_events[key].id;
-            }
-            $.post($.configures.calendarEventsUrl, { 
-                event_ids : event_ids,
-                token : $.configures.token
-            }, function(data){
-                var general = $('#personal-calendar .right .general').empty();
-                var personal = $('#personal-calendar .right .personal').empty();
-                var clubs = $('#personal-calendar .right .clubs').empty();
-                for( var key in data.events )
-                {
-                    var result = $('<div></div>')
-                        .append($('<p></p>').text(data.events[key].name))
-                        .css('background', 'gray')
-                        .data('event', data.events[key])
-                        .mouseenter(function(){
-                            $('.calendar-table').markCalendarEvent($(this).data('event'), {
-                                background : 'green'
-                            }, true);
-                        })
-                        .mouseleave(function(){
-                            var table = $('.calendar-table');
-                            table.markCalendarEvent({}, {}, true);
-                            for( var key in table.data('all_events') )
-                            {
-                                table.markCalendarEvent(table.data('all_events')[key], { textDecoration: 'underline'});
-                            }
-                        });
-                    if ( data.events[key].category == 'general' )
-                    {
-                        result.appendTo(general);
-                    }
-                    else if ( data.events[key].category == 'personal' )
-                    {
-                        result.appendTo(personal);
-                    }
-                    else 
-                    {
-                        result.appendTo(clubs);
-                    }
-                }
-                $.configures.token = data.token;
-            });
-        }
     }
 })(jQuery);
 
