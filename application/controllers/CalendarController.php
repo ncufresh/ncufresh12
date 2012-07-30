@@ -34,6 +34,21 @@ class CalendarController extends Controller
     
     public function actionCreateEvent()
     {
+        $event = new Event();
+        if ( isset($_POST['event']) )
+        {
+            $event->name = $_POST['event']['name'];
+            $event->description = $_POST['event']['description'];
+            $event->visible = 1;
+            //user
+            if(!Club::Model()->getIsAdmin(Yii::app()->user->getId()))
+                $event->calendar_id = $event->getCalendarId(Yii::app()->user->getId(), 1);
+            //club
+            else  
+                $event->calendar_id = $event->getCalendarId(Yii::app()->user->getId(), 0);
+            $event->save();
+            $this->redirect($event->url);
+        }
         $this->render('create_event');
     }
 
