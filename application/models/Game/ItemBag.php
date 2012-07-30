@@ -48,8 +48,8 @@ class ItemBag extends CActiveRecord
                     $item = new ItemBag(); //ItemBag Model
                     $item->user_id = $user_id; //同步寫入user的id至道具列表
                     $item->item_id = $item_data->id; //寫入獲得道具的id
-                    $item->equip = 0; //寫入裝備狀態
-                    $item->acquire_time = TIMESTAMP; //寫入獲得時間
+                    $item->equipped = 0; //寫入裝備狀態
+                    $item->created = TIMESTAMP; //寫入獲得時間
                     if ($item->save() && Character::model()->findByPk($user_id)->addMoney(0-($item_data->price)))
                     return 0;
                     else

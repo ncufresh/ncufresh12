@@ -32,7 +32,7 @@
                     <label for="leader_email" >E-mail:</label>
                 </dt>
                 <dd>
-                    <input id="leader_email" name="club[leader_email]" type="text" size="30" value="<?php if ( empty($club['leader_email']) ) echo $data->leader_e_mail; ?>"/>
+                    <input id="leader_email" name="club[leader_email]" type="text" size="30" value="<?php if ( empty($club['leader_email']) ) echo $data->leader_email; ?>"/>
                 </dd>
                 <dd>(e-mail)</dd>
             </dl>
@@ -41,7 +41,7 @@
                     <label for="leader_ID" >二進位ID:</label>
                 </dt>
                 <dd>
-                    <input id="leader_ID" name="club[leader_ID]" type="text" size="15" value="<?php if ( empty($club['leader_ID']) ) echo $data->leader_binary_id; ?>"/>
+                    <input id="leader_ID" name="club[leader_ID]" type="text" size="15" value="<?php if ( empty($club['leader_ID']) ) echo $data->leader_binary; ?>"/>
                 </dd>
             </dl>
             <dl>
@@ -77,7 +77,7 @@
                     <label for="viceleader_email" >E-mail:</label>
                 </dt>
                 <dd>
-                    <input id="viceleader_email" name="club[viceleader_email]" type="text" size="30" value="<?php if ( empty($club['viceleader_email']) ) echo $data->viceleader_e_mail; ?>"/>
+                    <input id="viceleader_email" name="club[viceleader_email]" type="text" size="30" value="<?php if ( empty($club['viceleader_email']) ) echo $data->viceleader_email; ?>"/>
                 </dd>
                 <dd>(e-mail)</dd>
             </dl>
@@ -86,7 +86,7 @@
                     <label for="viceleader_ID" >二進位ID:</label>
                 </dt>
                 <dd>
-                    <input id="viceleader_ID" name="club[viceleader_ID]" type="text" size="15" value="<?php if ( empty($club['viceleader_ID']) ) echo $data->viceleader_binaryid; ?>"/>
+                    <input id="viceleader_ID" name="club[viceleader_ID]" type="text" size="15" value="<?php if ( empty($club['viceleader_ID']) ) echo $data->viceleader_binary; ?>"/>
                 </dd>
             </dl>
             <dl>
@@ -104,7 +104,7 @@
                 <label for="web" >網站:</label>
             </dt>
             <dd>
-                <input id="web" name="club[web]" type="text" size="100" value="<?php if ( empty($club['web']) ) echo $data->club_web; ?>"/>
+                <input id="web" name="club[web]" type="text" size="100" value="<?php if ( empty($club['web']) ) echo $data->website; ?>"/>
             </dd>
         </dl>
         <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />

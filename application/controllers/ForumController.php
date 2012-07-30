@@ -108,9 +108,9 @@ class ForumController extends Controller
             $article->title = $_POST['forum']['title'];
             $article->content = $_POST['forum']['content'];
             $article->forum_id = $_POST['forum']['fid'];
-            $article->category = $_POST['forum']['category'];
+            $article->category_id = $_POST['forum']['category'];
             if(Category::model()->getIsMaster($fid))
-                $article->is_top = $_POST['forum']['is_top'];
+                $article->sticky = $_POST['forum']['is_top'];
             $article->save();
             $this->redirect($article->url);
         }
@@ -126,7 +126,7 @@ class ForumController extends Controller
         $article = Article::model()->findByPk($id);
         $comment = new Comment();
         $reply = new Reply();
-        $article->viewed_times++;
+        $article->viewed++;
         $article->save();
         $this->render('view', array(
             'article'   => $article,
@@ -182,7 +182,7 @@ class ForumController extends Controller
             $aid = $_POST['delete'];
             $article_to_be_del = $article->findByPk($aid);
             if(!empty($article_to_be_del)){
-                $article_to_be_del->visibility = 0;
+                $article_to_be_del->invisible = 1;
                 $article_to_be_del->save();
             }
             else
