@@ -207,11 +207,13 @@ class Character extends CActiveRecord
     public function addExp($value)
     {
         $this->saveCounters(array('exp' => $value));
+        return true;
     }
 
     public function addMoney($value)
     {
         $this->saveCounters(array('money' => $value));
+        return true;
     }
 
     public function AchievementsBag()
@@ -258,7 +260,7 @@ class Character extends CActiveRecord
             {
                 if ( $character->{$part} )
                 {
-                    $avatar[$name] = $part . '/' . $character->{$part}->url . '.png';
+                    $avatar[$name] = $part . '/' . $character->{$part}->filename . '.png';
                 }
             }
         }
