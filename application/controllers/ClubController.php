@@ -1,8 +1,7 @@
 <?php 
 
 class ClubController extends Controller
-{
-    
+{   
     public function filters()
     {
         return array(
@@ -69,8 +68,8 @@ class ClubController extends Controller
         $id = (integer)$id; 
         $club = new Club();
         $club = $club->getRawClub($id);
-        if ( ! $this->getIsAdmin($id) ) throw new CHttpException(404);
-        if( $this->getIsAdmin($id) )
+        if ( ! $club->getIsAdmin($id) ) throw new CHttpException(404);
+        if( $club->getIsAdmin($id) )
         {
             if(isset($_POST['club']))
             {
@@ -100,45 +99,37 @@ class ClubController extends Controller
         $this->render('modify',array(
             'data'=>$club,
             'id'=>$id
-        )); 
-        
+        ));
 	}
 
     public function actionUploadpicture($id)
     {
+        $uptypes = array('image/jpg',
+                        'image/jpeg',
+                        'image/gif',
+                        'image/png'
+        );
         $id = (integer)$id;
         $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'club/' . $id;
-        if ( ! $this->getIsAdmin($id) ) throw new CHttpException(404);
-        
+        if ( ! Club::model()->getIsAdmin($id) ) throw new CHttpException(404);
         if ( isset($_FILES['pictures']) )
         {
-            
             for ( $index = 0 ; $index < 3 ; ++$index )
             {
-                if ( empty($_FILES['pictures']['name'][$index]) ) continue;
-                $file = $path . DIRECTORY_SEPARATOR . ($index + 1) . '.jpg';
-                if ( file_exists($file) ) unlink($file);
-                move_uploaded_file($_FILES['pictures']['tmp_name'][$index], $file);
+                $filetype[$index] =  $_FILES['pictures']['type'][$index] ;
+                if( in_array($filetype[$index] , $uptypes) )
+                {
+                    if ( empty($_FILES['pictures']['name'][$index]) ) continue;
+                    $file = $path . DIRECTORY_SEPARATOR . ($index + 1) . '.jpg';
+                    if ( file_exists($file) ) unlink($file);
+                    move_uploaded_file($_FILES['pictures']['tmp_name'][$index], $file);
+                }
+                else break;
             }
             $this->redirect(array('club/content/' . $id));
         }
         $this->render('uploadpicture', array(
-            'id'    => $id
+            'id'    => $id,
         ));
-    }
-
-    public function getIsAdmin($id)
-    {
-        $model = new Club();
-        if ( Yii::app()->user->getid() ) 
-        {
-            $isAdmin = $model->count('id = ' . $id . ' AND manager_id = ' . Yii::app()->user->getid()) > 0 ? true : false;
-            $isAdmin = $isAdmin || Yii::app()->user->getIsAdmin();
-        }
-        else
-        {
-           $isAdmin=false;
-        }
-        return $isAdmin;
     }
 }
