@@ -258,7 +258,7 @@ class Character extends CActiveRecord
             {
                 if ( $character->{$part} )
                 {
-                    $avatar[$name] = $part . '/' . $character->{$part}->url . '.png';
+                    $avatar[$name] = $part . '/' . $character->{$part}->filename . '.png';
                 }
             }
         }
