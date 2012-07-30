@@ -11,7 +11,7 @@ class Event extends CActiveRecord
      * @var integer $start
      * @var integer $end
      * @var integer $created
-     * @var boolean $visible
+     * @var boolean $invisible
      */
     public function tableName()
     {
