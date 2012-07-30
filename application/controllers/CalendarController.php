@@ -77,9 +77,55 @@ class CalendarController extends Controller
 
     public function actionSubscript()
     {
-        $club_calendars = Calendar::Model()->findAll('category=0');
+        $club_calendars = Calendar::Model()->findAll('category=0 AND id!=1');
+        $subscripted_calendars = Subscription::Model()->findAll('user_id='.Yii::app()->user->getId().' AND invisible=0');
+        $clubs_category = array();
+        $clubs_name = array();
+        $calendar_id = array();
+        $check = array();
+        
+        $i = 0;
+        foreach($club_calendars as $each)
+        {
+            $clubs_category[$i] = Club::Model()->getClubByManagerrId($each->user_id)->category;
+            $clubs_name[$i] = Club::Model()->getClubByManagerrId($each->user_id)->name;
+            $calendar_id[$i] = $each->id;
+            foreach($subscripted_calendars as $subscripted):
+                if($subscripted->calendar_id == $each->id){
+                    $check[$i] = 1;
+                    break;
+                }
+                else
+                    $check[$i] = 0;
+            endforeach;
+            $i++;
+        }
+        
+        if(isset($_POST['subscript'])){
+            for($i=0;$i<count($club_calendars);$i++){
+                if(isset($_POST['subscript'][$i]) && $_POST['subscript'][$i]==1){
+                    $subscription = new Subscription();
+                    $subscription->user_id = Yii::app()->user->getId();
+                    $subscription->calendar_id = Calendar::Model()->find('user_id='.$i.' AND category=0')->id;
+                    $subscription->invisible = 0;
+                    $subscription->save();
+                }
+            }
+        }
+        // for($i=0;$i<count($club_calendars);$i++)
+            // echo $check[$i];
+        // exit();
+        /*
+        calendar id
+        club category
+        club name
+        IsChecked
+        */
         $this->render('subscript', array(
-            'club_calendars' => $club_calendars
+            'clubs_category' => $clubs_category,
+            'clubs_name' => $clubs_name,
+            'calendar_id' => $calendar_id,
+            'check' => $check,
         ));
     }
 
@@ -139,6 +185,7 @@ class CalendarController extends Controller
                 $this->_data['events'][$counter]['end'] = $event->end;
                 $counter++;
             }
+
             foreach ( $user->subscriptions as $calendar )
             {
                 foreach( $calendar->events as $event )
