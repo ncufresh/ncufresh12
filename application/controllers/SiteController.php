@@ -240,7 +240,7 @@ class SiteController extends Controller
         $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         if ( isset($_POST['register']) && isset($_POST['profile']) )
         {
-            if ( $_POST['register']['password'] === $_POST['confirm'] ) 
+            if ( $_POST['register']['password'] === $_POST['confirm'] ) //驗證密碼
             {
                 $user = new User();
                 $user->attributes = $_POST['register'];
@@ -273,7 +273,15 @@ class SiteController extends Controller
                             $item->items_id = $character->skin_id; //寫入獲得道具的id
                             $item->equip = 1; //寫入裝備狀態
                             $item->acquire_time = TIMESTAMP; //寫入獲得時間
-                            if ( $profile->save() && $character->save() && $item->save())
+                            //行事曆的部分
+                            $calendar = new Calendar();
+                            $calendar->user_id = $user->id;
+                            $calendar->category = 1;
+                            $calendar_subscriptions = new Subscription();
+                            $calendar_subscriptions->user_id = $user->id;
+                            $calendar_subscriptions->calendar_id = 1;
+                            $calendar_subscriptions->visible = 1;
+                            if ( $profile->save() && $character->save() && $item->save() && $calendar->save() && $calendar_subscriptions->save() )
                             {
                                 $this->redirect(array('profile/profile'));
                             }
