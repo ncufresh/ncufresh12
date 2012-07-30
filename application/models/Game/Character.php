@@ -337,12 +337,12 @@ class Character extends CActiveRecord
         return $price;
     }
     
-    public static function createCharacter($id,$sex)
-    {
-        $character = new Character();
-        $character->id = $id;
-        $character->exp = 1;
-        $character->skin_id = 81;
-        $character->save();
-    }
+    // public static function createCharacter($id,$sex)
+    // {
+        // $character = new Character();
+        // $character->id = $id;
+        // $character->exp = 1;
+        // $character->skin_id = 81;
+        // $character->save();
+    // }
 }

@@ -165,28 +165,31 @@ class GameController extends Controller
         }
     }
     
-    public function actionBuy($item_id = 0)
+    public function actionBuy($id = 0)
     {
         $user_id = Yii::app()->user->getId();
-        $character = Character::model()->findByPk($user_id);
-        $item_price = Item::model()->findByPk($item_id)->price;
-        $user_money = $character->money;
 
-        if($item_id==0)
+        if($id == 0)
         {
-            $this->redirect(Yii::app()->createUrl('game/shop', array('id'=>$user_id)));
+            $this->redirect(Yii::app()->createUrl('game/index', array('id'=>$user_id)));
         }
         else
         {
+
+            $character = Character::model()->findByPk($user_id);
+            $item_price = Item::model()->findByPk($id)->price;
+            $user_money = $character->money;
             if($user_money >= $item_price)
             {
-                $this->setPageTitle(Yii::app()->name . ' - 商城列表');
-                $content = $this->renderPartial('shop', null, true);
-                $this->render('game_system', array('content' => $content, 'watch_id' => $id));
+                ItemBag::model()->buyNewItem($id);
+                $this->redirect(Yii::app()->createUrl('game/shop', array('id'=>$user_id)));
+                // $this->setPageTitle(Yii::app()->name . ' - 商城列表');
+                // $content = $this->renderPartial('shop', null, true);
+                // $this->render('game_system', array('content' => $content, 'watch_id' => $id));
             }
             else
             {
-                $this->redirect(Yii::app()->createUrl('game/index', array('id'=>$id)));
+                $this->redirect(Yii::app()->createUrl('game/mission', array('id'=>$user_id)));
             }
         }
     }

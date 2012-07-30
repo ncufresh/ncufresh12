@@ -22,4 +22,16 @@ class ItemBag extends CActiveRecord
             )
         );
     }
+    
+    public function buyNewItem($item_id)
+    {
+        $item_data = Item::model()->findByPk($item_id);
+        $item = new ItemBag(); //ItemBag Model
+        $item->user_id = Yii::app()->user->getId(); //同步寫入user的id至道具列表
+        $item->item_id = $item_data->id; //寫入獲得道具的id
+        $item->equip = 0; //寫入裝備狀態
+        $item->acquire_time = TIMESTAMP; //寫入獲得時間
+        $item->save();
+        Character::model()->addMoney(5000);
+    }
 }
