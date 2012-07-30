@@ -23,6 +23,6 @@ jQuery(document).ready(function()
         });
     jQuery('.back').click(function()
         {
-            window.history.back()
+            window.history.back();
         });      
 });
