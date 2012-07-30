@@ -15,7 +15,7 @@
             else
             echo ' ( 無此道具相關描述 )</td><td>';
             $counter_two++;
-            echo '<td>時間：'.Yii::app()->format->datetime($row->acquire_time).'</td>';
+            echo '<td>時間：'.Yii::app()->format->datetime($row->created).'</td>';
             echo '</td></tr>';
         }
         echo '</table>';
@@ -36,7 +36,7 @@
             else
             echo ' ( 無此道具相關描述 )</td><td>';
             $counter_two++;
-            echo '<td>時間：'.Yii::app()->format->datetime($row->acquire_time).'</td>';
+            echo '<td>時間：'.Yii::app()->format->datetime($row->created).'</td>';
             echo '</td></tr>';
         }
         echo '</table>';
@@ -57,7 +57,7 @@
             else
             echo ' ( 無此道具相關描述 )</td><td>';
             $counter_two++;
-            echo '<td>時間：'.Yii::app()->format->datetime($row->acquire_time).'</td>';
+            echo '<td>時間：'.Yii::app()->format->datetime($row->created).'</td>';
             echo '</td></tr>';
         }
         echo '</table>';
@@ -78,7 +78,7 @@
             else
             echo ' ( 無此道具相關描述 )</td><td>';
             $counter_two++;
-            echo '<td>時間：'.Yii::app()->format->datetime($row->acquire_time).'</td>';
+            echo '<td>時間：'.Yii::app()->format->datetime($row->created).'</td>';
             echo '</td></tr>';
         }
         echo '</table>';
@@ -99,7 +99,7 @@
             else
             echo ' ( 無此道具相關描述 )</td><td>';
             $counter_two++;
-            echo '<td>時間：'.Yii::app()->format->datetime($row->acquire_time).'</td>';
+            echo '<td>時間：'.Yii::app()->format->datetime($row->created).'</td>';
             echo '</td></tr>';
         }
         echo '</table>';
@@ -120,7 +120,7 @@
             else
             echo ' ( 無此道具相關描述 )</td><td>';
             $counter_two++;
-            echo '<td>時間：'.Yii::app()->format->datetime($row->acquire_time).'</td>';
+            echo '<td>時間：'.Yii::app()->format->datetime($row->created).'</td>';
             echo '</td></tr>';
         }
         echo '</table>';
@@ -141,7 +141,7 @@
             else
             echo ' ( 無此道具相關描述 )</td><td>';
             $counter_two++;
-            echo '<td>時間：'.Yii::app()->format->datetime($row->acquire_time).'</td>';
+            echo '<td>時間：'.Yii::app()->format->datetime($row->created).'</td>';
             echo '</td></tr>';
         }
         echo '</table>';

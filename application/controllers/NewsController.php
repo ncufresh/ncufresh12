@@ -106,55 +106,62 @@ class NewsController extends Controller
     {
         if ( isset( $_POST['news'] ) )
         {
-            // saving one record of news
             $news = new News();
             $news->title = $_POST['news']['title'];
             $news->content = $_POST['news']['content'];
-            $news->author_id = 0;
-            if ( ! $news->save() )
+            $news->author_id = Yii::app()->user->id;
+            if ( ! $news->validate() )
             { 
                 $this->render('create', array(
                     'errors'    => $news->errors ?: array()
                 ));
-                exit;
             }
-            // saving urls
-            if (
-                isset($_POST['news']['news_urls_alias'])
-             && isset($_POST['news']['news_urls'])
-            )
+            else
             {
-                foreach ( $_POST['news']['news_urls'] as $key => $url )
+                // saves news
+                $news->save();
+                // saving urls
+                if (
+                    isset($_POST['news']['news_urls_alias'])
+                 && isset($_POST['news']['news_urls'])
+                )
                 {
-                    $url_model = new Link();
-                    $url_model->name = $_POST['news']['news_urls_alias'][$key];
-                    $url_model->link = $_POST['news']['news_urls'][$key];
-                    $url_model->news_id = $news->id;
-                    $url_model->save();
+                    foreach ( $_POST['news']['news_urls'] as $key => $url )
+                    {
+                        $url_model = new Link();
+                        $url_model->name = $_POST['news']['news_urls_alias'][$key];
+                        $url_model->link = $_POST['news']['news_urls'][$key];
+                        $url_model->news_id = $news->id;
+                        $url_model->save();
+                        if ( $url_model->validate() )
+                        {
+                            $url_model->save();
+                        }
+                    }
                 }
-            }
-            // saving files
-            $files = CUploadedFile::getInstancesByName('news_files');
-            if ( $news->id != 0 && isset($files) && count($files) > 0 )
-            {
-                $dir = Yii::getPathOfAlias('webroot') . DIRECTORY_SEPARATOR . self::NEWS_FILE_DIR . DIRECTORY_SEPARATOR . $news->id;
-                if ( ! is_dir($dir) )
+                // saving files
+                $files = CUploadedFile::getInstancesByName('news_files');
+                if ( $news->id != 0 && isset($files) && count($files) > 0 )
                 {
-                   mkdir($dir);
-                   chmod($dir, 0755);
-                }
+                    $dir = Yii::getPathOfAlias('webroot') . DIRECTORY_SEPARATOR . self::NEWS_FILE_DIR . DIRECTORY_SEPARATOR . $news->id;
+                    if ( ! is_dir($dir) )
+                    {
+                       mkdir($dir);
+                       chmod($dir, 0755);
+                    }
 
-                foreach ( $files as $key => $file )
-                {
-                    $filename = $this->isWindows() ? iconv('UTF-8', 'big5', $file->name) : $file->name;
-                    $file->saveAs($dir . DIRECTORY_SEPARATOR . $filename);
+                    foreach ( $files as $key => $file )
+                    {
+                        $filename = $this->isWindows() ? iconv('UTF-8', 'big5', $file->name) : $file->name;
+                        $file->saveAs($dir . DIRECTORY_SEPARATOR . $filename);
+                    }
                 }
+                $this->redirect($news->url);
             }
-            $this->redirect($news->url);
         }
         $this->render('create', array(
-			'errors'    =>  array()
-		));
+            'errors'    =>  array()
+        ));
     }
 
 	/**
@@ -166,9 +173,12 @@ class NewsController extends Controller
         if ( isset($_POST['news']) )
         {
             $news->attributes = $_POST['news'];
-            if ( $news->save() ) $this->redirect($news->url);
+            if ( $news->validate() )
+            {
+                $news->save();
+                $this->redirect($news->url);
+            }
         }
-        $news->content = 
         $this->render('update', array(
             'news'          => $news,
             'files'         => $this->loadFiles(self::NEWS_FILE_DIR . DIRECTORY_SEPARATOR . $news->id)
@@ -190,7 +200,7 @@ class NewsController extends Controller
 	 */
     private function loadModel($id, $raw = false)
     {
-        if($raw)
+        if ( $raw )
         {
             $news = News::model()->getRawNews($id);
         }
@@ -202,6 +212,7 @@ class NewsController extends Controller
         return $news;
     }
 
+    
 	/**
 	 * Return the boolean if the user is using Windows OS
 	 */
@@ -216,7 +227,7 @@ class NewsController extends Controller
     private function loadFiles($directory)
     {
         $files = array();
-        if ( is_dir( $directory ) )
+        if ( is_dir($directory) )
         {
             $dir = dir($directory);
             while ( $entry = $dir->read() )
