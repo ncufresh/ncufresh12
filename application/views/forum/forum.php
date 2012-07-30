@@ -54,6 +54,7 @@
     <div id="create-article">
         <a href="<?php echo Yii::app()->createUrl('forum/create', array('fid' => $fid));?>">發表文章</a>
     </div>
+    <div class="category-lists">
     <ul id="labels">
         <li class="un-selected">
             <a class="change-category" href='<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => $sort, 'category' => 0));?>'>全部</a>
@@ -68,6 +69,8 @@
         endforeach;
         ?>
     </ul>
+    </div>
+    <div >
     <table id="body-table" cellpadding="0" cellspacing="0">
         <thead>
             <tr class="table-title">
@@ -113,6 +116,7 @@
             </tr>
         </tfoot>
     </table>
+    </div>
 </div>
 <div id="forum-forum-footer">
     <?php $this->widget('Pager', array(

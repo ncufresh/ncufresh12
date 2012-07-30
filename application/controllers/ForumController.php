@@ -47,23 +47,24 @@ class ForumController extends Controller
     public function actionIndex()
     {
         // index page, list the three categories of forum
-        $category = new ArticleCategory();
+        // to be delete $category = new ArticleCategory();
         $this->render('index');
     }
 
     public function actionForumList()
     {
         // list of departments
-        $model = new Category();
+        // to be delete $model = new Category();
         // $list = ForumCategory::model()->findAllBySql("SELECT * FROM  `forum_category` ", ' ');
         $this->render('forumlist', array(
-            'list'      => $model->findAll('id != 1 AND id != 2')
+            'list'      => Category::Model()->findAll('id != 1 AND id != 2')
         ));
     }
 
     public function actionForum($fid, $sort = 'create', $category = 0, $page = 1)
     {
         $article = new Article();
+        $forum = Category::model()->findByPk($fid);
         
         // content of each forum
         // [not yet] 傳入是否為admin 用於判斷是否顯示置頂checkbox及刪除文章選項
@@ -74,10 +75,10 @@ class ForumController extends Controller
                 'sort'      => $sort,
                 'current_category'  => $category,
                 //'model'     => $article->findAll('forum_id='.$fid)
-                'model'     => Article::model()->getArticlesSort($fid, $sort, $category, $page, self::ARTICLES_PER_PAGE),
-                'category'  => Category::model()->findByPk($fid),
+                'model'     => $article->getArticlesSort($fid, $sort, $category, $page, self::ARTICLES_PER_PAGE),
+                'category'  => $forum,
                 'page_status'   => $article->getPageStatus($page, self::ARTICLES_PER_PAGE, $fid, $category),
-                'is_master' =>  Category::model()->getIsMaster($fid),
+                'is_master' =>  $forum->getIsMaster(),
             ));
         // }
         // else

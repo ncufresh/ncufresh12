@@ -3984,6 +3984,11 @@ li.enabled a
     margin-left:35px;
 }
 
+#forum-forum-body .category-lists
+{
+    min-height: 70px;
+}
+
 #forum-forum-body #create-article
 {
     background: url('../forum/forum/eraser.png');
@@ -4053,8 +4058,11 @@ li.enabled a
 #forum-forum-body #body-table .table-title th,
 #forum-forum-body #body-table .table-foot td
 {
+    overflow:auto;
     background: #f48191;
+    min-height:40px;
     height:40px;
+    
     color:#ffffff;
 }
 
