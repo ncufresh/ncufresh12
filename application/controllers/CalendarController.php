@@ -25,6 +25,7 @@ class CalendarController extends Controller
 
     public function actionRecycle()
     {
+        $this->render('recycle');
     }
 
     public function actionEventDetail()
@@ -33,6 +34,7 @@ class CalendarController extends Controller
     
     public function actionCreateEvent()
     {
+        $this->render('create_event');
     }
 
     public function actionHideEvent()
@@ -49,6 +51,7 @@ class CalendarController extends Controller
 
     public function actionSubscript()
     {
+        $this->render('subscript');
     }
 
     public function actionUnsubsciprt()
