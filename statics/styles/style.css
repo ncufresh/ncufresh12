@@ -1945,6 +1945,12 @@ button.news-button
     list-style-type: none;
 }
 
+#about #introduce
+{
+    font-family: 微軟正黑體;
+    font-size: 18px;
+}
+
 #about .title1
 {
     background: url('../about/what.png') #385281 no-repeat;
@@ -1961,14 +1967,16 @@ button.news-button
 
 #about .block1
 {
+    position: relative;
     background: #385281;
-    height: 500px;    
+    height: 550px;    
     width: 750px;
+    margin-top: -18px;
 }
 
 #about .block2
 {
-    background: #8ca86c;
+    background: #385281;
     height: 900px;    
     width: 750px;
 }
@@ -1980,12 +1988,23 @@ button.news-button
 
 #about .tag
 {
-    background: url('../about/wood_plate_for_photo.png') no-repeat #8ca86c;
-    left: 43px;
+    background: url('../about/wood_plate_for_photo.png') no-repeat #8ca86c center;
+    left: 25px;
     height: 508px;
-    width: 750px;
+    width: 700px;
     position: relative;
 }
+
+#about .tag-txt
+{
+    background: url('../about/small_wood_plate.png') no-repeat #8ca86c center; #8ca86c;
+    left: 25px;
+    height: 122px;
+    width: 700px;
+    position: relative;
+    margin-top: -0px;
+}
+
 /**
  * Facebook style
  */
