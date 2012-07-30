@@ -100,7 +100,7 @@ class ClubController extends Controller
         $this->_data['token'] = Yii::app()->security->getToken(); 
         $this->render('modify',array(
             'data'=>$club,
-            'id'=>$id,
+            'id'=>$id
         )); 
         
 	}
@@ -124,7 +124,7 @@ class ClubController extends Controller
             $this->redirect(array('club/content/' . $id));
         }
         $this->render('uploadpicture', array(
-            'id'    => $id,
+            'id'    => $id
         ));
     }
 
