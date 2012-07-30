@@ -141,21 +141,11 @@ class Character extends CActiveRecord
                 'Item',
                 'others_id'
             ),
-            // 'achievements'    => array(
-                // self::MANY_MANY,
-                // 'Achievement',
-                // 'game_achievements_bag(user_id, achievement_id)'
-            // ),
             'achievements_bag'    => array(
                 self::HAS_MANY,
                 'AchievementBag',
                 'user_id'
             ),
-            // 'items'    => array(
-                // self::MANY_MANY,
-                // 'Item',
-                // 'game_items_bag(user_id, item_id)'
-            // ),
             'items_bag'    => array(
                 self::HAS_MANY,
                 'ItemBag',
@@ -199,11 +189,6 @@ class Character extends CActiveRecord
         return $exp['exp'];
     }
 
-    public function getId()
-    {
-        return $this->id;
-    }
-
     public function addExp($value)
     {
         $this->saveCounters(array('exp' => $value));
@@ -216,36 +201,11 @@ class Character extends CActiveRecord
         return true;
     }
 
-    public function AchievementsBag()
-    {
-        return $this->achievements_bag;
-    }
-
-    // public function GetAchievementsTime()
-    // {
-        // return $this->achievements_bag;
-    // }
-
-    public function ItemsBag()
-    {
-        return $this->items;
-    }
-
-    public function GetItemsTime()
-    {
-        return $this->items_bag;
-    }
-
-    public function Owner()
-    {
-        return $this->achievements;
-    }
-
     public static function getAvatar($id)
     {
         $parts = array(
             '皮膚'    => 'skin',
-            '眼睛'    => 'eyes',
+            '臉部'    => 'eyes',
             '頭髮'    => 'hair',
             '鞋子'    => 'shoes',
             '褲子'    => 'pants',
@@ -273,34 +233,18 @@ class Character extends CActiveRecord
         $price = 0;
         if( $character->skin !== null)
             $price = $price + $character->skin->price;
-            
         if( $character->eyes !== null)
             $price = $price + $character->eyes->price;
-        
         if( $character->hair !== null)
             $price = $price + $character->hair->price;
-        
         if( $character->shoes !== null)
             $price = $price + $character->shoes->price;
-        
         if( $character->pants !== null)
             $price = $price + $character->pants->price;
-        
         if( $character->clothes !== null)
             $price = $price + $character->clothes->price;
-        
         if( $character->others !== null)
             $price = $price + $character->others->price;
-        
         return $price;
     }
-    
-    // public static function createCharacter($id,$sex)
-    // {
-        // $character = new Character();
-        // $character->id = $id;
-        // $character->exp = 1;
-        // $character->skin_id = 81;
-        // $character->save();
-    // }
 }
