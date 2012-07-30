@@ -56,7 +56,7 @@ class Calendar extends CActiveRecord
 
     public function getClub($user_id)
     {
-        return Club::Model()->find('manager_id='.$user_id);
+        return Club::Model()->getClubByManagerrId($user_id);
     }
 
     public function getPersonalCalendar()
@@ -93,14 +93,15 @@ class Calendar extends CActiveRecord
 
     public function getClubName()
     {
+        // if ( $this->category == 'club' )
         if ( $this->getIsClub() )
         {
-            $club = Club::model()->findByManagerId($this->author);
-            return $club->name;
+            $club = Club::model()->getClubByManagerrId($this->author->id);
+            return $club?$club->name:'unknown';
         }
         return false;
     }
-    
+
     public static function getCurrentMonth()
     {
         return date('m', TIMESTAMP);

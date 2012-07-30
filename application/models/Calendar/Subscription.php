@@ -7,7 +7,7 @@ class Subscription extends CActiveRecord
      * @var integer $id
      * @var integer $user_id
      * @var integer $calendar_id
-     * @var boolean $visible
+     * @var boolean $invisible
      */
 
     public function tableName()

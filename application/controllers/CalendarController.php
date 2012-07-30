@@ -108,6 +108,8 @@ class CalendarController extends Controller
             foreach( $events as $key => $event )
             {
                 $this->_data['events'][$key]['id'] = $event->id;
+                $this->_data['events'][$key]['category'] = $event->calendar->category;
+                $this->_data['events'][$key]['clubname'] = $event->calendar->getClubName();
                 if ( $event->calendar->getIsPersonal() )
                 {
                     $this->_data['events'][$key]['category'] = 'PERSONAL';
@@ -123,17 +125,29 @@ class CalendarController extends Controller
                 $this->_data['events'][$key]['start'] = $event->start;
                 $this->_data['events'][$key]['end'] = $event->end;
                 $this->_data['events'][$key]['name'] = $event->name;
-                $this->_data['events'][$key]['description'] = $event->description;
+                // $this->_data['events'][$key]['description'] = $event->description;
             }
             $this->_data['token'] = Yii::app()->security->getToken();
         }
         else
         {
-            foreach ( $user->calendar->events as $key => $event )
+            $counter = 0;
+            foreach ( $user->calendar->events as $event )
             {
-                $this->_data['events'][$key]['id'] = $event->id;
-                $this->_data['events'][$key]['start'] = $event->start;
-                $this->_data['events'][$key]['end'] = $event->end;
+                $this->_data['events'][$counter]['id'] = $event->id;
+                $this->_data['events'][$counter]['start'] = $event->start;
+                $this->_data['events'][$counter]['end'] = $event->end;
+                $counter++;
+            }
+            foreach ( $user->subscriptions as $calendar )
+            {
+                foreach( $calendar->events as $event )
+                {
+                    $this->_data['events'][$counter]['id'] = $event->id;
+                    $this->_data['events'][$counter]['start'] = $event->start;
+                    $this->_data['events'][$counter]['end'] = $event->end;
+                    $counter++;
+                }
             }
         }
     }
