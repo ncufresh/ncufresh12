@@ -80,10 +80,11 @@ class CalendarController extends Controller
             {
                 $this->_data['events'][$key]['id'] = $event->id;
                 $this->_data['events'][$key]['category'] = $event->calendar->category;
+                $this->_data['events'][$key]['clubname'] = $event->calendar->getClubName();
                 $this->_data['events'][$key]['start'] = $event->start;
                 $this->_data['events'][$key]['end'] = $event->end;
                 $this->_data['events'][$key]['name'] = $event->name;
-                $this->_data['events'][$key]['description'] = $event->description;
+                // $this->_data['events'][$key]['description'] = $event->description;
             }
             $this->_data['token'] = Yii::app()->security->getToken();
         }

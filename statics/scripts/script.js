@@ -1185,20 +1185,46 @@
  * Calendar
  */
 (function($)
-{
-    var markToday = function()
+{   
+    var getToday = function()
     {
         var date = new Date();
-        var self = this;
-        return $(this).children('tbody').find('td').each(function()
-        { 
-            if ( $(this).data('day') == date.getDate() && self.data('options').month == date.getMonth() )
+        var current_day = date.getDate();
+        var current_month = date.getMonth();
+        var calendar_month = $(this).data('options').month;
+        if ( current_month == calendar_month )
+        {
+            var tds = $(this).children('tbody').find('td');
+            for( var key in tds )
             {
-                $(this).css('color', 'red');
+                if ( $(tds[key]).data('day') == current_day ) return $(tds[key]);
+            }
+        }
+        return false;
+    }
+
+    var updateData = function(updateEventsList)
+    {
+        var self = this;
+        $.getJSON($.configures.calendarEventsUrl, function(data){
+            for(var key in data.events)
+            {
+                self.markEvent(data.events[key], { textDecoration: 'underline'});
+            }
+            self.data('all_events', data.events);
+            if (updateEventsList)
+            {
+                $(self).updateEventsList($(self).getToday().data('cal_events'));
             }
         });
+        return this;
     }
-    
+
+    var markToday = function()
+    {
+        this.getToday().css('color', 'red');
+    }
+
     /**
      * Marks an event on calendar with specified css
      * params var event    {event_id, start, end}
@@ -1232,11 +1258,21 @@
             {
                 $(this).css(css);
                 var cal_events = $(this).data('cal_events')?$(this).data('cal_events'):[];
-                if ( $.inArray(event, cal_events) == -1 )
+                var found = false;
+                for( var key in cal_events )
                 {
-                    cal_events[cal_events.length] = event;
+                    if( cal_events[key].id == event.id )
+                    {
+                        found = true; 
+                        break;
+                    }
                 }
-                $(this).data('cal_events', cal_events);
+                if ( !found )
+                {
+                    console.log(event, cal_events);
+                    cal_events[cal_events.length] = event;
+                    $(this).data('cal_events', cal_events);
+                }
             }
         });
         return this;
@@ -1248,7 +1284,7 @@
             $(this).removeAttr('style');
         });
     }
-    
+
     /**
      * Update the list of events
      */
@@ -1426,7 +1462,9 @@
             markToday: markToday,
             markEvent: markEvent,
             cleanUpMark: cleanUpMark,
-            updateEventsList: updateEventsList
+            updateEventsList: updateEventsList,
+            updateData: updateData,
+            getToday: getToday
         });
         return table.append(caption)
             .append(thead)
@@ -1544,13 +1582,8 @@
             }
         });
         calendar.appendTo(this);
-        $.getJSON($.configures.calendarEventsUrl, function(data){
-            for(var key in data.events)
-            {
-                calendar.markEvent(data.events[key], { textDecoration: 'underline'});
-            }
-            calendar.data('all_events', data.events);
-        });
+        calendar.updateData(true);
+        // calendar.updateEventsList($(this).getToday().data('cal_events'));
     }
 })(jQuery);
 
