@@ -135,57 +135,81 @@ class GameController extends Controller
     public function actionShop($id = 0)
     {
         $user_id = Yii::app()->user->getId();
-        if($id==0)
+        // if($id==0)
+        // {
+            // $id=Yii::app()->user->getId();
+        // }
+        // if(Character::model()->findByPk($id) === null) //判斷使用者是否存在
+        // {
+            // $this->redirect(Yii::app()->createUrl('game/index', array('id'=>$user_id)));
+        // }
+        // else
+        // {
+        if($id == $user_id) //使用者只能看到屬於自己的商城
         {
-            $id=Yii::app()->user->getId();
-        }
-        if(Character::model()->findByPk($id)==null) //判斷使用者是否存在
-        {
-            $this->redirect(Yii::app()->createUrl('game/index', array('id'=>$user_id)));
+            $character_data = Character::model()->findByPk($user_id);
+            $level = Character::model()->getLevel($user_id); //傳入id 查詢等級
+            $this->setPageTitle(Yii::app()->name . ' - 商城列表');
+            $content = $this->renderPartial('shop', array('level' => $level, 'money' => $character_data->money), true);
+            $this->render('game_system', array('content' => $content, 'watch_id' => $user_id));
         }
         else
         {
-            if($id==$user_id)
-            {
-                $this->setPageTitle(Yii::app()->name . ' - 商城列表');
-                $content = $this->renderPartial('shop', null, true);
-                $this->render('game_system', array('content' => $content, 'watch_id' => $id));
-            }
-            else
-            {
-                $this->redirect(Yii::app()->createUrl('game/index', array('id'=>$id)));
-            }
+            $this->redirect(Yii::app()->createUrl('game/index', array('id'=>$user_id)));
         }
+        // }
     }
     
     public function actionBuy($id = 0)
     {
         $user_id = Yii::app()->user->getId();
-
+        
         if($id == 0)
         {
-            $this->redirect(Yii::app()->createUrl('game/index', array('id'=>$user_id)));
+            $this->redirect(Yii::app()->createUrl('game/shop', array('id'=>$user_id)));
         }
         else
         {
-
-            $character = Character::model()->findByPk($user_id);
-            $item_price = Item::model()->findByPk($id)->price;
-            $user_money = $character->money;
-            if($user_money >= $item_price)
+            $status = ItemBag::model()->buyNewItem($id);
+            if($status == 0)
             {
-                ItemBag::model()->buyNewItem($id);
-                $this->redirect(Yii::app()->createUrl('game/shop', array('id'=>$user_id)));
+                // $this->redirect(Yii::app()->createUrl('game/items', array('id'=>$user_id)));
+                $reason = '恭喜您：購買成功！';
+                $content = $this->renderPartial('reason', array('reason' => $reason, 'watch_id' => $user_id), true);
+                $this->render('game_system', array('content' => $content, 'watch_id' => $user_id));
+            }
+            else if(ItemBag::model()->buyNewItem($id) == 3)
+            {
+                $reason = '已經擁有此道具！';
+                $content = $this->renderPartial('reason', array('reason' => $reason, 'watch_id' => $user_id), true);
+                $this->render('game_system', array('content' => $content, 'watch_id' => $user_id));
+            }
+            else if($status == 1)
+            {
+                $reason = '金幣不足！';
+                $content = $this->renderPartial('reason', array('reason' => $reason, 'watch_id' => $user_id), true);
+                $this->render('game_system', array('content' => $content, 'watch_id' => $user_id));
+                //$this->redirect(Yii::app()->createUrl('game/shop', array('id'=>$user_id)));
                 // $this->setPageTitle(Yii::app()->name . ' - 商城列表');
                 // $content = $this->renderPartial('shop', null, true);
                 // $this->render('game_system', array('content' => $content, 'watch_id' => $id));
             }
+            else if(ItemBag::model()->buyNewItem($id) == 2)
+            {
+                $reason = '等級不足！';
+                $content = $this->renderPartial('reason', array('reason' => $reason, 'watch_id' => $user_id), true);
+                $this->render('game_system', array('content' => $content, 'watch_id' => $user_id));
+            }
             else
             {
-                $this->redirect(Yii::app()->createUrl('game/mission', array('id'=>$user_id)));
+                $reason = '資料庫寫入錯誤！';
+                $content = $this->renderPartial('reason', array('reason' => $reason, 'watch_id' => $user_id), true);
+                $this->render('game_system', array('content' => $content, 'watch_id' => $user_id));
             }
         }
-    }
+        }
+        
+
     
     // public function actionFunny($id = 0)
     // {

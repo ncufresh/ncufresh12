@@ -64,10 +64,6 @@ class Achievement extends CActiveRecord
                 $user_reply >= $achievement->reply &&
                 $user_post >= $achievement->post &&
                 $user_cloth >= $achievement->cloth &&
-                $user_throw_other_garbage >= $achievement->throw_other_garbage &&
-                $user_clean_self_garbage >= $achievement->clean_self_garbage &&
-                $user_other_throw_garbage >= $achievement->other_throw_garbage &&
-                $usre_clean_other_garbage >= $achievement->clean_other_garbage &&
                 $user_body_price >= $achievement->body_price )
             {
                 $return[] = array('name' => $achievement->name, 'description' => $achievement->description);
