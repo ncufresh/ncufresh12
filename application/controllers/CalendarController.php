@@ -49,6 +49,17 @@ class CalendarController extends Controller
     
     public function actionCreateEvent()
     {
+        $event = new Event();
+        if ( isset($_POST['event']) )
+        {
+            $event->name = $_POST['event']['name'];
+            $event->description = $_POST['event']['description'];
+            $event->visible = 1;
+            $event->start = strtotime($_POST['event']['start']);
+            $event->end = strtotime($_POST['event']['end']);
+            $event->calendar_id = Calendar::Model()->find('user_id='.Yii::app()->user->getId().' AND category=1')->id;
+            $event->save();
+        }
         $this->render('create_event');
     }
 
@@ -66,7 +77,10 @@ class CalendarController extends Controller
 
     public function actionSubscript()
     {
-        $this->render('subscript');
+        $club_calendars = Calendar::Model()->findAll('category=0');
+        $this->render('subscript', array(
+            'club_calendars' => $club_calendars
+        ));
     }
 
     public function actionUnsubsciprt()

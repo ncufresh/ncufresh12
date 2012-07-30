@@ -25,28 +25,28 @@
 招募資訊，屆時將有更完整的資訊，請大家敬請期待！</PRE>
     <ul>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo0.png" alt="" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_left.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo" alt="" />
         </li>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo1.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo1.png" alt="" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo" small="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo" alt="" />
         </li>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo2.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo2.png" alt="" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo1.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo" small="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo" alt="" />
         </li>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo3.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo3.png" alt="" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo2.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo" small="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo" alt="" />
         </li>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo4.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo4.png" alt="" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo3.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo" small="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo" alt="" />
         </li>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo5.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo5.png" alt="" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo4.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo" small="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo" alt="" />
         </li>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo6.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo6.png" alt="" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo5.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo" small="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo" alt="" />
         </li>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo7.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo7.png" alt="" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_right.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo" alt="" />
         </li>
         
     </ul>
