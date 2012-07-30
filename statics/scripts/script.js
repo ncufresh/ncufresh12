@@ -1327,17 +1327,17 @@
                             }
                             self.markToday();
                         });
-                    if ( data.events[key].category == 'general' )
+                    if ( data.events[key].category == 'GENERAL' )
                     {
                         result.appendTo(general);
                     }
-                    else if ( data.events[key].category == 'personal' )
+                    else if ( data.events[key].category == 'PERSONAL' )
                     {
                         result.appendTo(personal);
                     }
                     else 
                     {
-                        result.appendTo(clubs);
+                        result.appendTo(clubs).prepend($('<span></span>').text(data.events[key].clubname));
                     }
                 }
                 $.configures.token = data.token;

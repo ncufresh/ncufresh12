@@ -57,12 +57,20 @@ class User extends CActiveRecord
             'subscriptions' => array(
                 self::MANY_MANY,
                 'Calendar',
-                'calendar_subscriptions(user_id, calendar_id)'
+                'calendar_subscriptions(user_id, calendar_id)',
+                'condition' => 'invisible = :invisible',
+                'params' => array(
+                    ':invisible' => 0
+                )
             ),
             'events' => array(
                 self::MANY_MANY,
                 'Event',
-                'calendar_status(user_id, event_id)'
+                'calendar_status(user_id, event_id)',
+                'condition' => 'invisible = :invisible',
+                'params' => array(
+                    ':invisible' => 0
+                )
             )
         );
     }

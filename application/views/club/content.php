@@ -55,11 +55,11 @@
     </div>
     <div class="club-title">E-mail:</div>
     <div class="club-item">
-    <?php echo $data->leader_e_mail; ?>
+    <?php echo $data->leader_email; ?>
     </div>
     <div class="club-title">二進位ID:</div>
     <div class="club-item">
-    <?php echo $data->leader_binary_id; ?>
+    <?php echo $data->leader_binary; ?>
     </div>
     <div class="club-title">MSN:</div>
     <div class="club-item">
@@ -75,20 +75,20 @@
     </div>
     <div class="club-title">E-mail:</div>
     <div class="club-item">
-    <?php echo $data->viceleader_e_mail; ?>
+    <?php echo $data->viceleader_email; ?>
     </div>
     <div class="club-title">二進位ID:</div>
     <div class="club-item">
-    <?php echo $data->viceleader_binaryid; ?>
+    <?php echo $data->viceleader_binary; ?>
     </div>
     <div class="club-title">MSN:</div>
     <div class="club-item">
     <?php echo $data->viceleader_msn; ?>
     </div>
-    <?php if ( $data->club_web != null ):?>
+    <?php if ( $data->website != null ):?>
     <div class="club-title">網站:</div>
     <div class="club-item">
-    <a href="<?php echo $data->club_web;?>"><?php echo $data->club_web;?></a>
+    <a href="<?php echo $data->website;?>"><?php echo $data->website;?></a>
     </div>
     <? endif;?>
 </div>
