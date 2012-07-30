@@ -65,4 +65,79 @@ class ItemBag extends CActiveRecord
         return 1;
 
     }
+    public function equipItem($item_id)
+    {
+        $user_id = Yii::app()->user->getId();
+        $character = Character::model()->findByPk($user_id);
+        $item_data = Item::model()->findByPk($item_id);
+        $item_exist = $this->findAll(array(
+            'condition' => 'user_id = :user_id AND item_id = :item_id',
+            'params'    => array(
+                ':user_id' => $user_id,
+                ':item_id' => $item_id)
+            ));
+        $other_item_equip = $this->findAll(array(
+            'condition' => 'user_id = :user_id AND item_id = :item_id',
+            'params'    => array(
+                ':user_id' => $user_id,
+                ':item_id' => $item_id)
+            ));
+        if($item_exist != null)
+        {
+            $which_to_equip = $item_exist[0]->id; //需要裝備物品在清單的位置
+            $equip_status = $item_exist[0]->equipped; //需要裝備物品的裝備狀態
+            $item_category = $item_exist[0]->translation->category; //需要裝備物品的物品分類
+            $modify = new ItemBag();
+            $item_to_equip = $modify->findByPk($which_to_equip);
+            if($equip_status == 0)
+                $item_to_equip->equipped = 1; //未裝備狀態改成已經裝備
+            else
+                $item_to_equip->equipped = 0; //已裝備狀態改成未裝備
+            $item_to_equip->save();
+            echo $item_category;
+            
+            
+            $change = new Character();
+            $character_to_equip = $change->findByPk($user_id);
+            if($equip_status == 0)
+            {
+                if($item_category == 1)
+                    $character_to_equip->hair_id = $item_exist[0]->item_id;
+                else if($item_category == 2)
+                    $character_to_equip->eyes_id = $item_exist[0]->item_id;
+                else if($item_category == 3)
+                    $character_to_equip->clothes_id = $item_exist[0]->item_id;
+                else if($item_category == 4)
+                    $character_to_equip->pants_id = $item_exist[0]->item_id;
+                else if($item_category == 5)
+                    $character_to_equip->shoes_id = $item_exist[0]->item_id;
+                else if($item_category == 6)
+                    $character_to_equip->skin_id = $item_exist[0]->item_id;
+                else
+                    $character_to_equip->others_id = $item_exist[0]->item_id;
+            }
+            else
+            {
+                if($item_category == 1)
+                    $character_to_equip->hair_id = 0;
+                else if($item_category == 2)
+                    $character_to_equip->eyes_id = 0;
+                else if($item_category == 3)
+                    $character_to_equip->clothes_id = 0;
+                else if($item_category == 4)
+                    $character_to_equip->pants_id = 0;
+                else if($item_category == 5)
+                    $character_to_equip->shoes_id = 0;
+                else if($item_category == 6)
+                    $character_to_equip->skin_id = $character_to_equip->skin_id;
+                else
+                    $character_to_equip->others_id = 0;
+            }
+            $character_to_equip->save();
+            return true;
+        }
+        else
+        return false; //找不到此物品 無法裝備
+
+    }
 }
