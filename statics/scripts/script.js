@@ -362,6 +362,7 @@
             friendListId:           'chat-friend-list',
             friendListContainerId:  'chat-friend-list-container',
             friendListSearchId:     'chat-friend-list-search',
+            chatNotifyId:           'chat-notify',
             chatTitleClass:         'chat-title',
             chatDialogClass:        'chat-dialog',
             chatDisplayClass:       'chat-display',
@@ -403,11 +404,11 @@
 
     $.fn.chat.notify = function(dialog)
     {
+        $('#' + $.chat.options.chatNotifyId).get(0).play();
         dialog.data('timer', setInterval(function()
         {
             dialog.children('.' + $.chat.options.chatTitleClass).highlight();
-        }, 1000));
-        dialog.children('.' + $.chat.options.chatTitleClass).one('click', function()
+        }, 1000)).children('.' + $.chat.options.chatTitleClass).one('click', function()
         {
             clearInterval($(this).parent().data('timer'));
         });
@@ -418,24 +419,43 @@
         var list = $('#' + $.chat.options.friendListId);
         if ( list.length == 0 )
         {
-            var search = $('<input />')
-                .attr('type', 'text')
-                .attr('id', $.chat.options.friendListSearchId)
-            list = $('<div></div>')
-                .attr('id', $.chat.options.friendListId)
-                .appendTo($('body'));
-            title = $('<span></span>')
+            var title = $('<span></span>')
                 .text('談天說地')
                 .click(function()
                 {
                     $.fn.chat.closeFriendList();
-                })
-                .appendTo(list);
-            display = $('<div></div>')
-                .attr('id', $.chat.options.friendListContainerId)
-                .appendTo(list);
-            search.appendTo(list);
-            display.scrollable()
+                });
+            var display = $('<div></div>')
+                .attr('id', $.chat.options.friendListContainerId);
+            var search = $('<input />')
+                .attr('type', 'text')
+                .attr('id', $.chat.options.friendListSearchId);
+            var source = $('#' + $.chat.options.chatId).attr('notify');
+            var notify = $('<audio></audio>')
+                .append(
+                    $('<source></source>')
+                        .attr('src', source + '.ogg')
+                        .attr('type', 'audio/ogg')
+                )
+                .append(
+                    $('<source></source>')
+                        .attr('src', source + '.mp3')
+                        .attr('type', 'audio/mp3')
+                )
+                .append(
+                    $('<source></source>')
+                        .attr('src', source + '.wav')
+                        .attr('type', 'audio/wav')
+                )
+                .attr('id', $.chat.options.chatNotifyId);
+            list = $('<div></div>')
+                .attr('id', $.chat.options.friendListId)
+                .append(title)
+                .append(display)
+                .append(search)
+                .append(notify)
+                .appendTo($('body'));
+            display.scrollable();
         }
         return list;
     };
