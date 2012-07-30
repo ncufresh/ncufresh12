@@ -94,7 +94,18 @@ class CalendarController extends Controller
             foreach( $events as $key => $event )
             {
                 $this->_data['events'][$key]['id'] = $event->id;
-                $this->_data['events'][$key]['category'] = $event->calendar->category;
+                if ( $event->calendar->getIsPersonal() )
+                {
+                    $this->_data['events'][$key]['category'] = 'PERSONAL';
+                }
+                else if ( $event->calendar->getIsClub() )
+                {
+                    $this->_data['events'][$key]['category'] = 'CLUB';
+                }
+                else
+                {
+                    $this->_data['events'][$key]['category'] = 'GENERAL';
+                }
                 $this->_data['events'][$key]['start'] = $event->start;
                 $this->_data['events'][$key]['end'] = $event->end;
                 $this->_data['events'][$key]['name'] = $event->name;
