@@ -6,7 +6,7 @@
                 <label for="introduction" >簡介:</label>
             </dt>
             <dd>
-                <textarea id="introduction" name="club[introduction]" type="text" cols="50" rows="10"><?php if ( empty($club['introduction']) ) echo $data->introduction; ?></textarea>
+                <textarea id="introduction" name="club[introduction]" type="text" cols="50" rows="15"><?php if ( empty($club['introduction']) ) echo $data->introduction; ?></textarea>
             </dd>
         </dl>
         <div class="modify-table">

@@ -44,6 +44,10 @@ class Controller extends CController
         parent::afterAction($action);
         if ( Yii::app()->request->getIsAjaxRequest() && $this->_data !== false )
         {
+            if ( Yii::app()->request->getIsPostRequest() )
+            {
+                $this->_data['token'] = Yii::app()->security->getToken();
+            }
             echo json_encode($this->_data);
         }
     }

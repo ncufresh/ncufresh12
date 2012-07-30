@@ -45,6 +45,23 @@ class User extends CActiveRecord
                 'friends(user_id,friend_id)',
                 'condition' => 'invisible = 0'
             ),
+            'calendar' => array(
+                self::HAS_ONE,
+                'Calendar',
+                'user_id',
+                'condition' => 'category = :category',
+                'params' => array(':category'=>Calendar::CATEGORY_PERSONAL)
+            ),
+            'subscriptions' => array(
+                self::MANY_MANY,
+                'Calendar',
+                'calendar_subscriptions(user_id,calendar_id)'
+            ),
+            'events_status' => array(
+                self::MANY_MANY,
+                'Events',
+                'calendar_status(user_id,event_id)'
+            ),
         );
     }
 
@@ -135,6 +152,7 @@ class User extends CActiveRecord
         $this->is_admin = $this->is_admin ? true : false;
         $this->register_ip = $this->long2ip($this->register_ip);
         $this->last_login_ip = $this->long2ip($this->last_login_ip);
+        $this->last_login_timestamp = (integer)$this->last_login_timestamp;
         $this->created = Yii::app()->format->datetime($this->created);
         $this->updated = Yii::app()->format->datetime($this->updated);
     }

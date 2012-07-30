@@ -1,16 +1,16 @@
 <h1 class="friend-title">好友確認</h1>
 <form enctype="multipart/form-data" method="POST" action="<?php echo $this->createUrl('friends/request'); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
-<div class="other-department">  
+<div class="request">  
     <div class="friends-part2">
         <ul class="other-department">
 <?php foreach ( $friends as $friend ) : ?>
             <li>
-<?php if ( $friend->friend_request->picture !='' ) : ?>
-                <img width="100" height="120" src="<?php echo $target.'/'.$friend->friend_request->picture; ?>" alt="Score image"/>
-<?php else : ?>
-                <img width="100" height="120" src="<?php echo $target.'/image1.jpg'; ?>" alt="Score image"/>
-<?php endif; ?>
+<a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $friend->friend_request->id));  ?>">
+<?php $this->widget('Avatar', array(
+    'id'        => $friend->friend_request->id
+)); ?>
+</a>
                 <input type="checkbox" name="friends[<?php echo $friend->friend_request->id;?>]" value="<?php echo $friend->friend_request->id;?>"  />
                 <h3>
 <?php echo $friend->friend_request->name;?>
@@ -26,4 +26,4 @@
 <button type="submit" name="agree">確認</button>
 <button type="submit" name="cancel">取消</button>
 </form>
-<button><a href="<?php echo Yii::app()->createUrl('friends/friends')  ?>">BACK</a></button>
+<button onClick= "history.back()" >BACK</button>

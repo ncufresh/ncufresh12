@@ -1,9 +1,7 @@
 ﻿/**
  * Global style
  */
-body,
-input,
-textarea
+body
 {
     font-size: 16px;
     font-family: '微軟正黑體', 'Microsoft JhengHei', '微软雅黑', 'Microsoft YaHei', 'WenQuanYi ZenHei', Arial, sans-serif;
@@ -781,41 +779,53 @@ a:hover
     cursor: pointer;
 }
 
-#chat-friend-list img
+#chat-friend-list .scroll-container,
+#chat-friend-list-container
 {
-    border: 2px solid #000000;
-    height: 35px;
-    float: left;
-    margin: 3px;
-    width: 35px;
-}
-
-#chat-friend-list p
-{
-    margin-left: 50px;
-}
-
-#chat-friend-list-search
-{
-    border: 2px solid #d7d7d7;
-    margin: 5px 0;
-    outline: none;
-    width: 136px;
-    height: 20px;
-    padding: 0 0 0 20px;
-    background: url('../images/friend_list_search.png') no-repeat;
+    height: 180px;
 }
 
 #chat-friend-list .friend-list-entry
 {
-    height: 45px;
-    line-height: 45px;
+    height: 48px;
+    line-height: 48px;
+    padding: 3px;
 }
 
 #chat-friend-list .friend-list-entry:hover
 {
     background: #EEEEEE;
     cursor: pointer;
+}
+
+#chat-friend-list .avatar
+{
+    border: 2px solid #000000;
+    height: 44px;
+    float: left;
+    width: 44px;
+}
+
+#chat-friend-list .avatar img
+{
+    margin-left: -10px;
+    width: 64px;
+}
+
+#chat-friend-list p
+{
+    margin: 0 0 0 48px;
+    padding: 2px 0 2px 4px;
+}
+
+#chat-friend-list-search
+{
+    background: url('../images/friend_list_search.png') no-repeat;
+    border: 3px solid #D7D7D7;
+    height: 20px;
+    margin: 5px 0;
+    padding: 0 0 0 20px;
+    width: 136px;
 }
 
 .chat-dialog
@@ -831,7 +841,7 @@ a:hover
 
 .chat-dialog .chat-title
 {
-    background: #7097f2;
+    background: #7097F2;
     cursor: pointer;
     height: 30px;
     width: 160px;
@@ -879,20 +889,43 @@ a:hover
     cursor: pointer;
 }
 
-.chat-dialog .scroll-container
+.chat-dialog .chat-avatar
 {
-    height: 150px;
+    position: relative;
 }
 
-.chat-dialog .scroll-area
+.chat-dialog .chat-avatar .avatar
 {
-    margin: -3px 0;
-    width: 160px;
+    float: left;
+    height: 32px;
+    margin: 4px 8px 4px 0;
+    width: 32px;
 }
 
-.scroll-content
+.chat-dialog .chat-avatar .avatar img
 {
-    overflow: hidden;
+    margin-left: -8px;
+    width: 48px;
+}
+
+.chat-dialog .chat-messages .chat-avatar p
+{
+    background: #333333;
+    border-radius: 5px 5px 5px 0;
+    color: #FFFFFF;
+    display: none;
+    height: 16px;
+    line-height: 16px;
+    left: 28px;
+    margin: 0;
+    padding: 2px 8px;
+    position: absolute;
+    top: 2px;
+}
+
+.chat-dialog .chat-messages .chat-avatar:hover p
+{
+    display: block;
 }
 
 .chat-dialog .chat-display
@@ -901,10 +934,19 @@ a:hover
     width: 150px;
 }
 
-.chat-dialog .chat-display p
+.chat-dialog .chat-messages
 {
-    margin: 0;
+    border-top: 1px solid #EEEEEE;
+    clear: both;
+    font-size: 0.85em;
+    margin-top: 3px;
+}
+
+.chat-dialog .chat-messages p
+{
+    margin: 0 0 0 42px;
     padding: 0;
+    word-break: break-all;
 }
 
 .chat-dialog .chat-form
@@ -921,6 +963,22 @@ a:hover
     outline: none;
     padding: 0 5px;
     width: 150px;
+}
+
+.chat-dialog .scroll-container
+{
+    height: 150px;
+}
+
+.chat-dialog .scroll-area
+{
+    margin: -3px 0;
+    width: 160px;
+}
+
+.scroll-content
+{
+    overflow: hidden;
 }
 
 /**
@@ -1128,6 +1186,11 @@ ul#nculife-details
     position: absolute;
     width: 204px;
     height: 355px;
+}
+
+#index-calendar .calendar-bottom-wrap table.calendar-table
+{
+    border-collapse: collapse;
 }
 
 #index-calendar .calendar-bottom-wrap table.calendar-table caption
@@ -1937,13 +2000,88 @@ button.news-button
     left: 540px;
 }
 
+.readme-back
+{
+    width: 70px;
+    height: 85px;
+    position: absolute;
+    top: 360px;
+    left: 660px;
+}
+
 #readme-fresh
 {
     width: 750px;
     height: 450px;
     position: relative;
+    overflow: hidden;
     background: url('../readme/freshman_background.png');
 }
+
+#fresh_back
+{
+    background: url('../readme/fresh_back.png');
+}
+
+#fresh_back:hover
+{
+    background: url('../readme/fresh_back_hover.png');
+}
+
+#readme-notice
+{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    background: url('../readme/notice_background.png');
+}
+
+#notice-back
+{
+    background: url('../readme/notice_back.png');
+}
+
+#notice-back:hover
+{
+    background: url('../readme/notice_back_hover.png');
+}
+
+#readme-reschool
+{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    background: url('../readme/reschool_background.png');
+}
+
+#reschool-back
+{
+    background: url('../readme/reschool_back.png');
+}
+
+#reschool-back:hover
+{
+    background: url('../readme/reschool_back_hover.png');
+}
+
+#readme-download
+{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    background: url('../readme/download_background.png');
+}
+
+#download_back
+{
+    background: url('../readme/download_back.png');
+}
+
+#download_back:hover
+{
+    background: url('../readme/download_back_hover.png');
+}
+
 
 #readme-body
 {
@@ -1957,10 +2095,8 @@ button.news-button
 {
     width: 129px;
     height: 91px;
-    display: none;
     left: 393px;
     top: 194px;
-    position: absolute;
     background: url('../readme/freshman_1_word.png');
 }
 
@@ -1968,10 +2104,8 @@ button.news-button
 {
     width: 127px;
     height: 100px;
-    display: none;
     left: 325px;
     top: 249px;
-    position: absolute;
     background: url('../readme/freshman_2_word.png');
 }
 
@@ -1981,8 +2115,6 @@ button.news-button
     height: 128px;
     left: 272px;
     top: 262px;
-    display: none;
-    position: absolute;
     background: url('../readme/freshman_3_word.png');
 }
 
@@ -1990,21 +2122,23 @@ button.news-button
 {
     width: 119px;
     height: 141px;
-    display: none;
     left: 194px;
     top: 271px;
-    position: absolute;
     background: url('../readme/freshman_4_word.png');
+}
+
+.fresh-inner
+{
+    display: none;
+    position: absolute;
 }
 
 #reschool-1
 {
     width: 126px;
     height: 76px;
-    display: none;
     left: 530px;
     top: 160px;
-    position: absolute;
     background: url('../readme/reschool_1_word.png');
 }
 
@@ -2012,10 +2146,8 @@ button.news-button
 {
     width: 100px;
     height: 89px;
-    display: none;
     left: 500px;
     top: 220px;
-    position: absolute;
     background: url('../readme/reschool_2_word.png');
 }
 
@@ -2023,10 +2155,8 @@ button.news-button
 {
     width: 98px;
     height: 96px;
-    display: none;
     left: 450px;
     top: 274px;
-    position: absolute;
     background: url('../readme/reschool_3_word.png');
 }
 
@@ -2034,18 +2164,21 @@ button.news-button
 {
     width: 63px;
     height: 140px;
-    display: none;
     left: 399px;
     top: 303px;
-    position: absolute;
     background: url('../readme/reschool_4_word.png');
+}
+
+.reschool-inner
+{
+    display: none;
+    position: absolute;
 }
 
 #notice-1
 {
     width: 96px;
     height: 152px;
-    display: block;
     left: 529px;
     top: 239px;
     position: absolute;
@@ -2056,7 +2189,6 @@ button.news-button
 {
     width: 73px;
     height: 167px;
-    display: block;
     left: 469px;
     top: 257px;
     position: absolute;
@@ -2067,7 +2199,6 @@ button.news-button
 {
     width: 72px;
     height: 160px;
-    display: block;
     left: 399px;
     top: 266px;
     position: absolute;
@@ -2078,22 +2209,30 @@ button.news-button
 {
     width: 133px;
     height: 145px;
-    display: block;
     left: 263px;
     top: 280px;
     position: absolute;
     background: url('../readme/notice_4_word.png');
 }
 
+.notice-inner
+{
+    display: none;
+    position: absolute;
+}
+
 #readme-logo1
 {
     width: 124px;
     height: 122px;
-    display: block;
-    opacity: 0;
-    left: 357px;
-    top: 75px;
+    left: 356px;
+    top: 74px;
     position: absolute;
+}
+
+#readme-logo1:active
+{
+    display: block;
     background: url('../readme/freshman.png');
 }
 
@@ -2101,33 +2240,64 @@ button.news-button
 {
     width: 140px;
     height: 135px;
-    display: block;
-    left: 492px;
-    top: 32px;
+    left: 491px;
+    top: 31px;
     position: absolute;
+}
+
+#readme-logo2:active
+{
+    display: block;
     background: url('../readme/reschool.png');
 }
 
-/* #readme-logo3
+#readme-logo3
 {
-     width: 193px;
+    width: 193px;
     height: 194px;
-    display: block;
-    position: absolute;
     left: 536px;
     top: 34px;
-    background: url('../readme/notice.png');
-} */
+    /* background: url('../readme/notice.png'); */
+}
 
 #readme-logo4
 {
      width: 126px;
     height: 107px;
-    display: block;
     position: absolute;
     top: 210px;
     left: 603px;
+}
+
+#readme-logo4:active
+{
+    display: block;
     background: url('../readme/download.png');
+}
+
+#read-fresh-menu
+{
+    width: 200px;
+    height: 300px;
+    top: 50px;
+    left: -215px;
+    border-radius: 10px;
+    position: absolute;
+    display: block;
+    background: orange;
+    list-style: none;
+    font-size: 1.5em;
+}
+
+.fresh-menu li
+{
+    padding: 5px;
+    margin-top: 15px;
+}
+
+.fresh-menu
+{
+    cursor: pointer;
 }
 
 #about ul
@@ -2514,6 +2684,7 @@ button.news-button
     width:100px;
     height:100px;
     float:left;
+    color:DarkBlue;
     list-style-type:none;
 }
 
@@ -2559,7 +2730,7 @@ ul.friend-other-sort
 .other-department li
 {
     width:132px; 
-    height:210px;
+    height:220px;
     padding:0px;
     margin:0px;
     float:left;
@@ -2569,11 +2740,21 @@ ul.friend-other-sort
 .other-department li h3
 {
     color:DarkBlue;
+    width:132px; 
+    height:25px;
+    padding:0px;
+    margin:0px;
+    text-align:center;
 }
 
 .other-department li h4
 {
     color:red;
+    width:132px; 
+    height:18px;
+    padding:0px;
+    margin:0px;
+    text-align:center;
 }
 
 .all-groups
@@ -2681,6 +2862,16 @@ div.other-department
     margin:0px;
 }
 
+div.request
+{
+    background-image:url('../profile/request.png');
+    background-repeat:no-repeat ;
+    width:690px;
+    height:370px;
+    padding:25px;
+    margin:0px;
+}
+
 div.friends-part1
 {
     width:690px;
@@ -2695,6 +2886,16 @@ div.friends-part2
     margin:0px;
 }
 
+div.friends-part2 div.avatar
+{
+    margin-left:28px;
+    margin-top:0px;
+    width:87px; 
+    height:145px;
+    padding:0px;
+    float:left;
+}
+
 div.friends-part3
 {
     width:675px;
@@ -2703,12 +2904,27 @@ div.friends-part3
     padding:5px;
 }
 
-div.allmessages
+div.my-all-messages
 {
-    width:675px;
-    height:310px;
+    width:620px;
+    height:290px;
     margin-top:55px;
     padding:5px;
+}
+
+div.allmessages
+{
+    width:470px;
+    height:290px;
+    margin-top:55px;
+    padding:5px;
+}
+
+div.allmessages form
+{
+    width:430px;
+    height:50px;
+    padding:0px;
 }
 
 div.friends-addfriend
@@ -2718,6 +2934,17 @@ div.friends-addfriend
     height:140px;
 }
 
+div.friends-addfriend div.avatar
+{
+    margin-left:0px;
+    margin-top:0px;
+    width:35px; 
+    height:45px;
+    padding:0px;
+    float:left;
+}
+
+
 div.friends-sortfriend
 {
     display:inline-block;
@@ -2725,6 +2952,15 @@ div.friends-sortfriend
     height:140px;
 }
 
+div.friends-sortfriend div.avatar
+{
+    margin-left:0px;
+    margin-top:0px;
+    width:35px; 
+    height:45px;
+    padding:0px;
+    float:left;
+}
 
 div.myfriend
 {
@@ -2746,9 +2982,9 @@ div.myprofile
     margin:0px;
 }
 
-div.mygroup
+div.mygroups
 {
-    background-image:url('../profile/sameDdiffG.png');
+    background-image:url('../profile/mygroups.png');
     background-repeat:no-repeat ;
     width:690px;
     height:370px;
@@ -2758,7 +2994,7 @@ div.mygroup
 
 div.newgroup
 {
-    background-image:url('../profile/sameDsameG.png');
+    background-image:url('../profile/groups.png');
     background-repeat:no-repeat ;
     width:690px;
     height:370px;
@@ -2842,6 +3078,15 @@ div.register
     margin:0px;
 }
 
+div.self-messages
+{
+    width:165px;
+    height:125px;
+    padding:0px;
+    margin:0px;
+    float:left;
+}
+
 div.register form 
 {
     width:330px;
@@ -2856,101 +3101,61 @@ h1
     text-align:center;
     color:green;
 }
-/*
-ul.introduce-group li
+
+td.reply-content
 {
-    width: 600px;
-    height: 100px;
+    position: relative;
+}
+
+td.reply-content span
+{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    word-break: break-word;
+    background: skyblue;
+    z-index: 500;
+}
+
+td.reply-content:hover span
+{
     display: block;
-    list-style-type:none;
-    font-size: 20px;
-    text-align:center;
-    color:Indigo;
-}*/
-
-ul#reply  
-{
-    margin: 0;
-	padding: 0;
-	list-style: none;
-	width: 200px;
-}
-
-ul#reply li 
-{
-	width: 100px;
-    height: 20px;
-    display: block;
-    text-align:center;
-    color:DarkBlue;
-}
-
-ul#reply li a 
-{
-	display: block;
-	overflow: hidden;
-	width: 100px;
-	height: 30px;
-	text-decoration: none;
-	color: CornflowerBlue;
-}
-
-ul#reply li a span
-{ 
-    color:#000;
-    width: 100px;
-	height: 500px;
-}
-
-ul#reply li a:hover 
-{
-	background-color: LightBlue;
-	height: 500px;
-	color: Indigo ;
-}
-
-ul#reply h3 
-{
-	text-transform: uppercase;
-	font: 13px "Arial Black", Arial, Helvetica, sans-serif;
-}
-
-ul#reply b 
-{
-	color: #600;
+    z-index: 1000;
 }
 
 ul#self-message
 {
-    width: 220px;
-	height: 300px;
+    width: 165px;
+	height: 285px;
     padding:0px;
-    margin:0px;
-    outline:1px solid red;
+    margin-left:10px;
+    float:left;
+    list-style-type:none;
 }
 
 li.article-title
 {
-    text-lign: left;
-    color: DarkGray;
-    width: 200px;
-	height: 40px;
+    text-align: left;
+    width: 65px;
+	height: 25px;
     margin-top:5px;
 }
 
 li#article-content-title
 {
-    outline:5px solid yellow;
-    width: 155px;
+    outline: 1px solid black;
+    width: 130px;
 	height: 60px;
     list-style-type:none;
 }
 
 li#article-content
 {
-    outline:5px solid yellow;
-    width: 200px;
-	height: 100px;
+    outline: 1px solid black;
+    width: 165px;
+	height: 125px;
     list-style-type:none;
 }
 
@@ -2973,30 +3178,38 @@ table.group
     margin:0px;
 }
 
-div.profile-message-reply table
+div.allmessages table
 {
-    width:300px;
+    width:460px;
     margin:0px;
     text-align:center;
     padding:0px;
 }
 
-div.profile-message-reply tr th
+div.allmessages tr th
 {
     width:100px;
-    height:100px;
+    height:20px;
     padding:0px;
     margin:0px;
     text-align:center;
 }
 
-div.profile-message-reply tr td
+div.allmessages tr td
 {
     width:100px;
-    height:100px;
     padding:0px;
     margin:0px;
     text-align:center;
+}
+
+span.reply-title
+{
+    text-align: center;
+    height:30px;
+    width:100px;
+    height:100px;
+    margin-left:15px;
 }
 
 label.group-friends-name
@@ -3035,7 +3248,7 @@ a.mymessage-title
     text-align: center;
     display: block;
     margin-right: 10px;
-}*/
+}
 
 .sep-group
 {
@@ -3045,14 +3258,6 @@ a.mymessage-title
 .close-group
 {
     float:right;
-}
-
-.form-friends-sort-title
-{
-    color: yellow;
-    font-size: 20px;
-    text-align: center;
-    height:30px;
 }
 
 .form-friends-title

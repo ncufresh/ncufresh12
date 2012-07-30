@@ -94,10 +94,9 @@ class ClubController extends Controller
         }
         else
         {
-             $this->redirect(array('club/content/' . $id));
+             throw new CHttpException(404);
         }
-    
-        $this->_data['token'] = Yii::app()->security->getToken(); 
+
         $this->render('modify',array(
             'data'=>$club,
             'id'=>$id,
@@ -110,9 +109,10 @@ class ClubController extends Controller
         $id = (integer)$id;
         $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'club/' . $id;
         if ( ! $this->getIsAdmin($id) ) throw new CHttpException(404);
-
+        
         if ( isset($_FILES['pictures']) )
         {
+            
             for ( $index = 0 ; $index < 3 ; ++$index )
             {
                 if ( empty($_FILES['pictures']['name'][$index]) ) continue;

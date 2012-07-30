@@ -11,11 +11,36 @@ class StreetController extends Controller
 
     public function actionIndex() // main page
     {
-        $this->render('index');
+        // $this->render('index');
+        $files = $this->loadFiles('statics/building/pictureLayerTwo/');
+        // echo empty($files) ? 1:0;
+        $this->render('index' , array( 'files' => $files ));
 	}
+    
+    private function loadFiles($directory)
+    {
+        $files = array();
+        if ( is_dir( $directory ) ) // directory 是資料夾
+        {
+            $dir = dir($directory);
+            while ( $entry = $dir->read() )
+            {
+                if ( $entry != '.' && $entry != '..' ) // 不是上一層及上上一層 
+                {
+                    $files[$entry] = Yii::app()->baseUrl . '/' . $dir->path . $entry;
+                }
+            }
+        }
+        return $files;
+    }
 
 	public function actionBuilding($id = 0) // dialog building information page
     {
+        // $files = $this->loadFiles('statics/building/pictureLayerTwo/');
+        // echo empty($files) ? 1:0;
+        // $this->render('index' , array( 'files' => $files ));
+        // exit;
+
         $url = $this->_path . '/building';
         switch ( $id )
         {
@@ -24,7 +49,7 @@ class StreetController extends Controller
                 $this->_data['content'] = $this->renderPartial('department-building/content1', null, true, false);
                 $this->_data['photo']=$url . '/555-big.png';
                 $this->_data['picture_main'] = $url . '/555.png';
-                $this->_data['picture_other'][0] = $url . '/555.png';
+                $this->_data['picture_other'][0] = $url . '/555.png';                
                 $this->_data['picture_other'][1] = $url . '/555.png';
 
                 $this->_data['pictureLayerTwo'][0] = $url . '/555.png';
