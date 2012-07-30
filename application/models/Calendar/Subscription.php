@@ -10,6 +10,18 @@ class Subscription extends CActiveRecord
      * @var boolean $invisible
      */
 
+
+    public function relations()
+    {
+        return array(
+            'calendar'  => array(
+                self::BELONGS_TO,
+                'Calendar',
+                'calendar_id',
+            )
+        );
+    }
+     
     public function tableName()
     {
         return '{{calendar_subscriptions}}';

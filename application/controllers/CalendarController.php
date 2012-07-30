@@ -139,6 +139,7 @@ class CalendarController extends Controller
                 $this->_data['events'][$counter]['end'] = $event->end;
                 $counter++;
             }
+
             foreach ( $user->subscriptions as $calendar )
             {
                 foreach( $calendar->events as $event )
