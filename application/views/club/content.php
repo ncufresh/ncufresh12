@@ -38,7 +38,7 @@
     <a href="<?php echo Yii::app()->createUrl('club/modify/' . $id);?>" title="修改">修改</a>
     <a href="<?php echo Yii::app()->createUrl('club/uploadpicture/' . $id);?>" title="上傳圖片">上傳圖片</a>
 <?php endif;?>
-<h1><?php echo $data->name;?></h1>    
+<h4><?php echo $data->name;?></h4>    
 </div>    
 <div class="club-display" id="club-<?php echo $data->category;?>">
     <div class="club-title">簡介:</div>
@@ -90,7 +90,7 @@
     <div class="club-item">
     <a href="<?php echo $data->website;?>"><?php echo $data->website;?></a>
     </div>
-    <? endif;?>
+    <?php endif;?>
 </div>
 <div class="club-display-bottom" id="club-bottom-<?php echo $data->category;?>">
 <a class="back">回上一頁</a>

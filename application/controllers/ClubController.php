@@ -85,7 +85,10 @@ class ClubController extends Controller
                 $club->website = $_POST['club']['web'];
                 if ( $club->save() )
                 {
-                    $this->redirect(array('club/content/',$id));
+                    $this->redirect(array(
+                        'content',
+                        'id'    =>  $id
+                    ));
                 } 
             }
         }
@@ -107,9 +110,9 @@ class ClubController extends Controller
                        'image/jpeg',
                        'image/gif',
                        'image/png'
-                    );
+                   );
         $id = (integer)$id;
-        $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'club_' . $id;
+        $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'club'. DIRECTORY_SEPARATOR . $id;
         if ( ! Club::model()->getIsAdmin($id) ) throw new CHttpException(404);
         if ( isset($_FILES['pictures']) )
         {
@@ -123,12 +126,11 @@ class ClubController extends Controller
                     if ( file_exists($file) ) unlink($file);
                     move_uploaded_file($_FILES['pictures']['tmp_name'][$index], $file);
                 }
-                else
-                {
-                    break;
-                }
             }
-            $this->redirect(array('club/content',$id));
+            $this->redirect(array(
+                        'content',
+                        'id'    => $id
+                    ));
         }
         $this->render('uploadpicture', array(
             'id'    => $id

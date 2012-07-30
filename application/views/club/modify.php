@@ -1,4 +1,4 @@
-<h1>社團資料修改</h1>
+<h4>社團資料修改</h4>
 <form action="<?php echo Yii::app()->createUrl('club/modify',array('id'=>$id))?>" method="post">
       <div class = "club-modify-table">   
        <dl>
