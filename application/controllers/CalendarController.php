@@ -25,7 +25,22 @@ class CalendarController extends Controller
 
     public function actionRecycle()
     {
-        $this->render('recycle');
+        if ( Yii::app()->request->getIsAjaxRequest() )
+        {
+            if ( isset($_POST['calendar']) )
+            {
+                $id = (integer)$_POST['calendar']['id'];
+                $event = Event::model()->findByPk($id);
+                $event->invisible = true;
+                if ( $event->save() ) return true;
+            }
+            $this->_data['errors'][] = '發生錯誤！';
+            return true;
+        }
+
+        $this->render('recycle', array(
+            'events'    => Event::model()->getRecycledEvents()
+        ));
     }
 
     public function actionEventDetail()

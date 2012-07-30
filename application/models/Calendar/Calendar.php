@@ -10,7 +10,7 @@ class Calendar extends CActiveRecord
      */
 
     const GENERAL_CALENDAR_USER_ID = 0;
-    const CATEGORY_CLUB = 0;
+    const CATEGORY_PUBLIC = 0;
     const CATEGORY_PERSONAL = 1;
 
 	public static function model($className=__CLASS__)
@@ -39,6 +39,21 @@ class Calendar extends CActiveRecord
         );
     }
 
+    public function getIsGeneral()
+    {
+        return $this->category === self::CATEGORY_PUBLIC && $this->user_id === self::GENERAL_CALENDAR_USER_ID;
+    }
+
+    public function getIsClub()
+    {
+        return $this->category === self::CATEGORY_PUBLIC && $this->user_id !== self::GENERAL_CALENDAR_USER_ID;
+    }
+
+    public function getIsPersonal()
+    {
+        return $this->category === self::CATEGORY_PERSONAL;
+    }
+
     public function getPersonalCalendar()
     {
         return $this->find(array(
@@ -56,7 +71,7 @@ class Calendar extends CActiveRecord
             'condition' => 'user_id = :user_id AND category = :category',
             'params' => array(
                 ':user_id' => Yii::app()->user->id,
-                ':category' => self::CATEGORY_CLUB,
+                ':category' => self::CATEGORY_PUBLIC,
             )
         ));
     }
@@ -73,7 +88,7 @@ class Calendar extends CActiveRecord
 
     public function getClubName()
     {
-        if ( $this->category = 'club' )
+        if ( $this->getIsClub() )
         {
             $club = Club::model()->findByManagerId($this->author);
             return $club->name;
@@ -89,17 +104,19 @@ class Calendar extends CActiveRecord
     public function afterFind()
     {
         parent::afterFind();
-        if( $this->user_id == 0 )
-        {
-            $this->category = 'general';
-        }
-        else if( $this->category == 0 )
-        {
-            $this->category = 'club';
-        }
-        else
-        {
-            $this->category = 'personal';
-        }
+        $this->user_id = (integer)$this->user_id;
+        $this->category = (integer)$this->category;
+        // if( $this->user_id == 0 )
+        // {
+            // $this->category = 'general';
+        // }
+        // else if( $this->category == 0 )
+        // {
+            // $this->category = 'club';
+        // }
+        // else
+        // {
+            // $this->category = 'personal';
+        // }
     }
 }
