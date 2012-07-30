@@ -1311,7 +1311,15 @@
                 for( var key in data.events )
                 {
                     var result = $('<div></div>')
-                        .append($('<p></p>').text(data.events[key].name))
+                        .append($('<p></p>')
+                            .text(data.events[key].name)
+                            .append($('<a></a>')
+                                .addClass('calendar-hide-event')
+                                .attr('title', '丟進回收桶')
+                                .attr('href', '#' + data.events[key].id)
+                                .text('把我丟掉')
+                            )
+                        )
                         .css('background', 'gray')
                         .data('event', data.events[key])
                         .mouseenter(function(){
