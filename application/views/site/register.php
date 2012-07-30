@@ -20,11 +20,11 @@
         </dl>
         <dl class="radio">
             <dt>
-                <label for="form-register-sex-male">性別</label>
+                <label for="form-register-gender-male">性別</label>
             </dt>
             <dd>
-                <input id="form-register-sex-male" name="sex" type="radio" value="0" /><label for="form-register-sex-male">Male</label>
-                <input id="form-register-sex-female" name="sex" type="radio" value="1" /><label for="form-register-sex-female">Female</label>
+                <input id="form-register-gender-male" name="gender" type="radio" value="0" /><label for="form-register-gender-male">Male</label>
+                <input id="form-register-gender-female" name="gender" type="radio" value="1" /><label for="form-register-gender-female">Female</label>
             </dd>
         </dl>
         <dl>
@@ -55,16 +55,16 @@
                     <select name="profile[department]">
 <?php foreach ( $departments as $department ) : ?>
                         <option value="<?php echo $department->id; ?>">
-                        <?php echo $department->department; ?>
+<?php echo $department->name; ?>
                         </option>
 <?php endforeach; ?>
                     </select>
                     <select name="profile[grade]">
+                        <option value="0">其它</option>
                         <option value="1">一年級</option>
                         <option value="2">二年級</option>
                         <option value="3">三年級</option>
                         <option value="4">四年級</option>
-                        <option value="5">其它</option>
                     </select>
                 </dd>
             </dt>
