@@ -2886,6 +2886,22 @@ div.friends-part2
     margin:0px;
 }
 
+div.friends-part4
+{
+    width:330px;
+    height:315px;
+    margin:0px;
+    padding:25px;
+}
+
+/*div.friends-part4 form
+{
+    width:300px;
+    height:315px;
+    margin-left:5px;
+    padding:0px;
+}*/
+
 div.friends-part2 div.avatar
 {
     margin-left:28px;
@@ -3141,15 +3157,6 @@ div.self-messages
     padding:0px;
     margin:0px;
     float:left;
-}
-
-div.register form 
-{
-    width:330px;
-    height:290px;
-    margin-left:30px;
-    margin-top:5px;
-    padding:0px;
 }
 
 div.register .is_exist

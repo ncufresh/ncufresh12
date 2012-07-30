@@ -244,8 +244,8 @@ class SiteController extends Controller
         {
             $user->attributes = $_POST['register'];
             $profile->attributes = $_POST['profile'];
-            var_dump($profile->validate());
-            
+            // var_dump($profile->department);
+            // exit;
             if ( $user->validate() && $profile->validate() )
             {
                 if ( $user->save() )
@@ -283,7 +283,6 @@ class SiteController extends Controller
                 }
                 else
                 {
-                    var_dump($profile->getErrors());
                     $this->render('register', array(
                             'departments'   => Department::model()->getDepartment(),
                             'nickname_isExist'      => false,

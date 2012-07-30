@@ -3,7 +3,13 @@
 class Profile extends CActiveRecord
 {
     public $department;
-
+    
+    public $year;
+    
+    public $month;
+    
+    public $day;
+    
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
@@ -18,13 +24,18 @@ class Profile extends CActiveRecord
     {   
         return array(
             array(
-                'name, nickname, department, grade,senior, birthday,sex', 
+                'name, nickname, department, grade, senior, year, month, day ,sex', 
                 'required'
             ),
+            array('department', 'length','min' => 1, 'max' => 21),
+            array('grade', 'length','min' => 1, 'max' => 5),
             array('nickname', 'unique', 'className' => 'Profile'),
-            array('department', 'numerical', 'integerOnly'=>true), //範圍1-21
-            array('grade', 'numerical', 'integerOnly'=>true), //範圍1-5
-           
+            array('year', 'numerical', 'integerOnly'=>true),
+            array('month', 'numerical', 'integerOnly'=>true), 
+            array('day', 'numerical', 'integerOnly'=>true),
+            //array('year', 'length' => 4),
+            array('month', 'length', 'min' => 1, 'max' => 2),
+            array('day', 'length', 'min' => 1, 'max' => 2),
         );
     }
 
@@ -117,6 +128,7 @@ class Profile extends CActiveRecord
         if ( parent::beforeSave() )
         {
             $this->department_id = $department;
+            $this->birthday = $year.'/'.$month.'/'.$day;
             return true;
         }
         return false;

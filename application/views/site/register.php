@@ -1,6 +1,7 @@
 <h1>基本資料</h1>
 <div class="register">
-    <form  enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('site/register'); ?>" method="POST">
+<div class="friends-part4">
+<form  enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('site/register'); ?>" method="POST">
     <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
         <dl>
             <dt>
@@ -123,13 +124,30 @@
         </dl>
         <dl>
             <dt>
-                <label for="form-register-birthday">生日</label>
+                <label for="form-register-year" <?php if (isset($profile_errors['birthday'])) : ?>class="is_exist"<?php endif; ?>>西元</label>
             </dt>
             <dd>
-                <input id="form-register-birthday" name="profile[birthday]" type="text" />
+                <input id="form-register-year" name="profile[year]" type="text"  />
+            </dd>
+        </dl>
+        <dl>
+            <dt>
+                <label for="form-register-month" <?php if (isset($profile_errors['birthday'])) : ?>class="is_exist"<?php endif; ?>>月</label>
+            </dt>
+            <dd>
+                <input id="form-register-month" name="profile[month]" type="text" />
+            </dd>
+        </dl>
+        <dl>
+            <dt>
+                <label for="form-register-day" <?php if (isset($profile_errors['birthday'])) : ?>class="is_exist"<?php endif; ?>>日</label>
+            </dt>
+            <dd>
+                <input id="form-register-day" name="profile[day]" type="text" />
             </dd>
         </dl>
             <button id="rewrite"><a href="<?php echo Yii::app()->createUrl('site/register'); ?>">重填</a></button>
             <button type="submit">註冊</button>
-    </form>
+</form>
+</div>
 </div>
