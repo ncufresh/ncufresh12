@@ -2009,7 +2009,6 @@ button.news-button
     left: 660px;
 }
 
-<<<<<<< HEAD
 #about #introduce
 {
     font-family: 微軟正黑體;
@@ -2017,9 +2016,8 @@ button.news-button
 }
 
 #about .title1
-=======
+
 #readme-fresh
->>>>>>> 1d4ece5ca74fc5cbef711da5a12142ead86fbb5c
 {
     width: 750px;
     height: 450px;
@@ -2035,24 +2033,18 @@ button.news-button
 
 #fresh_back:hover
 {
-<<<<<<< HEAD
     position: relative;
     background: #385281;
     height: 550px;    
     width: 750px;
     margin-top: -18px;
-=======
     background: url('../readme/fresh_back_hover.png');
->>>>>>> 1d4ece5ca74fc5cbef711da5a12142ead86fbb5c
 }
 
 #readme-notice
 {
-<<<<<<< HEAD
     background: #385281;
     height: 900px;    
-=======
->>>>>>> 1d4ece5ca74fc5cbef711da5a12142ead86fbb5c
     width: 750px;
     height: 450px;
     position: relative;
@@ -2071,20 +2063,16 @@ button.news-button
 
 #readme-reschool
 {
-<<<<<<< HEAD
     background: url('../about/wood_plate_for_photo.png') no-repeat #8ca86c center;
     left: 25px;
     height: 508px;
     width: 700px;
-=======
     width: 750px;
     height: 450px;
->>>>>>> 1d4ece5ca74fc5cbef711da5a12142ead86fbb5c
     position: relative;
     background: url('../readme/reschool_background.png');
 }
 
-<<<<<<< HEAD
 #about .tag-txt
 {
     background: url('../about/small_wood_plate.png') no-repeat #8ca86c center; #8ca86c;
