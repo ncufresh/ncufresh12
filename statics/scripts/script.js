@@ -350,6 +350,8 @@
  */
 (function($)
 {
+    var avatars = [];
+
     $.chat = {};
 
     $.fn.chat = function(options)
@@ -358,7 +360,7 @@
             animationSpeed:         500,
             chatId:                 'chat',
             friendListId:           'chat-friend-list',
-            friendListEntriesWrapId:'chat-friend-list-entries-wrap',    
+            friendListContainerId:  'chat-friend-list-container',
             friendListSearchId:     'chat-friend-list-search',
             chatTitleClass:         'chat-title',
             chatDialogClass:        'chat-dialog',
@@ -366,8 +368,7 @@
             chatFormClass:          'chat-form',
             chatInputClass:         'chat-input',
             chatMessagesClass:      'chat-messages',
-            chatIconClass:          'chat-icon',
-            unknownIcon:            'unknown.png'
+            chatAvatarClass:        'chat-avatar'
         }, options);
         return $(this).click(function()
         {
@@ -375,6 +376,42 @@
             return true;
         });
     };
+
+    $.fn.chat.showAvatar = function(id)
+    {
+        if ( avatars[id] )
+        {
+            $('.chat-avatar-' + id).replaceWith(avatars[id]);
+        }
+        else if ( avatars[id] === undefined )
+        {
+            avatars[id] = false;
+            $.get(
+                $.configures.chatAvatarUrl,
+                {
+                    id: id
+                },
+                function(response)
+                {
+                    var id = response.id;
+                    avatars[id] = response.avatar;
+                    $('.chat-avatar-' + id).replaceWith(avatars[id]);
+                }
+            );
+        }
+    };
+
+    $.fn.chat.notify = function(dialog)
+    {
+        dialog.data('timer', setInterval(function()
+        {
+            dialog.children('.' + $.chat.options.chatTitleClass).highlight();
+        }, 1000));
+        dialog.children('.' + $.chat.options.chatTitleClass).one('click', function()
+        {
+            clearInterval($(this).parent().data('timer'));
+        });
+    }
 
     $.fn.chat.createFriendList = function()
     {
@@ -388,16 +425,17 @@
                 .attr('id', $.chat.options.friendListId)
                 .appendTo($('body'));
             title = $('<span></span>')
-                .text('Chat Room')
+                .text('談天說地')
                 .click(function()
                 {
                     $.fn.chat.closeFriendList();
                 })
                 .appendTo(list);
             display = $('<div></div>')
-                .attr('id', $.chat.options.friendListEntriesWrapId)
+                .attr('id', $.chat.options.friendListContainerId)
                 .appendTo(list);
             search.appendTo(list);
+            display.scrollable()
         }
         return list;
     };
@@ -415,7 +453,6 @@
     $.fn.chat.updateFriendList = function(response)
     {
         var list = $.fn.chat.createFriendList();
-        var wrap = list.children('#' + $.chat.options.friendListEntriesWrapId);
         for ( var key in response )
         {
             var data = response[key];
@@ -426,16 +463,14 @@
                 {
                     $.fn.chat.showChatDialog($(this).data('id'));
                 })
-                .appendTo(wrap);
-            var icon = $('<img />')
-                .attr(
-                    'src',
-                    data.icon ? data.icon : $.chat.options.unknownIcon
-                )
+                .appendTo($('#' + $.chat.options.friendListContainerId));
+            var placehold = $('<div></div>')
+                .addClass('chat-avatar-' + data.id)
                 .appendTo(entry);
             var name = $('<p>')
                 .text(data.name)
                 .appendTo(entry);
+            $.fn.chat.showAvatar(data.id);
         }
         return list;
     };
@@ -480,7 +515,7 @@
             size++;
         });
         if ( ! dialog )
-        {    
+        {
             var title = $('<div></div>')
                 .addClass($.chat.options.chatTitleClass)
                 .append('<span></span>')
@@ -496,7 +531,6 @@
                     {
                         $.fn.chat.showChatDialog(dialog.data('id'));
                     }
-                    
                 });
             var display = $('<div></div>')
                 .addClass($.chat.options.chatDisplayClass);
@@ -568,8 +602,8 @@
 
     $.fn.chat.updateChatDialog = function(id, data)
     {
-        var name;
-        var exists;
+        var name = '';
+        var exists = false;
         var dialog = $.fn.chat.createChatDialog(id);
         dialog.find('.' + $.chat.options.chatDisplayClass)
             .each(function()
@@ -589,23 +623,18 @@
                         var entry = $('<div></div>')
                             .addClass($.chat.options.chatMessagesClass)
                             .appendTo($(this));
-                        var icon = $('<div></div>')
-                            .addClass($.chat.options.chatIconClass)
+                        var avatar = $('<div></div>')
+                            .addClass($.chat.options.chatAvatarClass)
                             .appendTo(entry);
+                        var placehold = $('<div></div>')
+                            .addClass('chat-avatar-' + data.avatar)
+                            .appendTo(avatar);
                         var name = $('<p></p>')
                             .text(data.name)
-                            .appendTo(icon);
-                        $.get(
-                            $.configures.chatAvatarUrl,
-                            {
-                                id: data.icon
-                            },
-                            function(response)
-                            {
-                                icon.prepend(response);
-                            }
-                        );
+                            .appendTo(avatar);
+                        $.fn.chat.showAvatar(data.avatar);
                     }
+                    if ( ! dialog.data('show') ) $.fn.chat.notify(dialog);
                     message.text(data.message);
                     message.appendTo($(this).children('div').last());
                     $(this).scrollTo($(this).height());
@@ -619,7 +648,7 @@
     {
         var dialog = $.fn.chat.createChatDialog(id);
         dialog.animate({
-            bottom: -172
+            bottom: -1 * dialog.height() + dialog.children('.chat-title').height()
         }, $.chat.options.animationSpeed).data('show', false);
         $.fn.chat.updateChatDialogsPosition();
         return dialog;
@@ -631,14 +660,12 @@
             $.configures.chatCloseUrl,
             {
                 receiver: id,
-                lasttime: $.configures.lasttime,
                 token: $.configures.token
             },
             function(response)
             {
                 $.pull.pause();
                 $.configures.token = response.token;
-                $.configures.lasttime = response.lasttime;
                 $.errors(response.errors);
                 $.pull.restart();
             }
@@ -1139,7 +1166,7 @@
  */
 (function($)
 {
-    $.fn.generateTodolist = function(events, options)
+    $.generateTodolist = function(events, options)
     {
         options = $.extend({
             tableClass:  'todolist-table',
@@ -1165,11 +1192,11 @@
         return table;
     }
 
-    $.fn.generateCalendar = function(options)
+    $.generateCalendar = function(options)
     {
         options = $.extend({
-            year:        0,
-            month:       0,
+            year:        2000,
+            month:       1,
             tableClass:  'calendar-table', 
             buttonClass: 'calendar-button',
             month_tc:    ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'], 
@@ -1183,12 +1210,15 @@
             rightClick:  function(){ return false; },
             dayClick:    function(){}
         }, options);
+        
         options.month -= 1;
         var daysInMonth = function(iMonth, iYear)
         {
             return 32 - new Date(iYear, iMonth, 32).getDate();
         }
-        var table = $('<table></table>').addClass(options.tableClass);
+        var table = $('<table></table>')
+            .addClass(options.tableClass);
+        table.data('options', options);
         var link = $('<a></a>')
             .attr('href', '#')
             .text(options.month_en[options.month]+' '+options.month_tc[options.month])
@@ -1237,12 +1267,12 @@
             var td = $('<td></td>');
             if ( position>=date.getDay() )
             {
-                td.text(day).click(options.dayClick);
+                td.text(day).click(options.dayClick).data('day', day);
                 if( (new Date()).getDate() == day 
-                    && (new Date()).getMonth()==options.month
+                    && (new Date()).getMonth() == options.month
                     && options.today)
                 {
-                    td.css({background: '#ace082'});
+                    td.css({color: 'red'});
                 }
                 ++day;
             }
@@ -1251,6 +1281,48 @@
         return table.append(caption)
             .append(thead)
             .append(tbody);
+    }
+
+    /**
+     * var event    [event_id, start, end]
+     */
+    $.fn.markCalendarEvent = function(event, css, clean)
+    {
+        css = $.extend({}, css);
+        event = $.extend({
+            id: 0,
+            start: 0,
+            end: 0
+        }, event);
+        var id      = event.id;
+        var start   = event.start - (new Date()).getTimezoneOffset()*60;
+        var end     = event.end - (new Date()).getTimezoneOffset()*60;
+        var days    = [];
+        var date    = function( timestamp )
+        {
+            return (new Date(timestamp * 1000));
+        }
+        for( var time = start; time <= end; time+=86400 )
+        {
+            if( this.data('options').month ==  date(time).getMonth() )
+            {
+                days[days.length] = date(time).getDate();
+            }
+        }
+        $(this).children('tbody').find('td').each(function(index, element){
+            if ( clean ) $(this).removeAttr('style');
+            if( days.indexOf($(this).data('day')) != -1)
+            {
+                $(this).css(css);
+                var cal_events = $(this).data('cal_events')?$(this).data('cal_events'):[];
+                if ( $.inArray(event, cal_events) == -1 )
+                {
+                    cal_events[cal_events.length] = event;
+                }
+                $(this).data('cal_events', cal_events);
+            }
+        });
+        return this;
     }
 
     $.fn.indexCalendar = function(options)
@@ -1306,7 +1378,7 @@
             $(this).parents('table').find('td').css('outline', '0');
             $(this).css('outline', '1px solid black');
         }
-        september = $.fn.generateCalendar({
+        september = $.generateCalendar({
             year: 2012,
             month: 8,
             dayClick: tdClick,
@@ -1315,12 +1387,11 @@
             {
                 september.detach();
                 august.prependTo(bottom);
-                //$.fn.generateCalendar
                 return false;
             }
             
         });
-        august = $.fn.generateCalendar({
+        august = $.generateCalendar({
             year: 2012,
             month: 7,
             right: true,
@@ -1328,13 +1399,15 @@
             {
                 august.detach();
                 september.prependTo(bottom);
-                // $.fn.generateCalendar
+                // $.generateCalendar
                 return false;
             },
             dayClick: tdClick
-        }).appendTo(bottom);
+        });
+        august.markCalendarEvent([0,1343004622,1343868622]).markCalendarEvent([1,1342097622,1342097622], { textDecoration: 'underline' });
+        bottom.append(august);
         bottom.appendTo(bottom_wrap);
-        todolist = $.fn.generateTodolist(
+        todolist = $.generateTodolist(
             [
                 ['2012/8/6', '資訊網上線'],
                 ['2012/8/6', '資訊網上線'],
@@ -1344,6 +1417,88 @@
         ).appendTo(bottom);
         return this;
     };
+    
+    $.fn.calendar = function()
+    {
+        var calendar = jQuery.generateCalendar({
+            year: 2012,
+            month: 7,
+            dayClick: function(){
+                $('#personal-calendar .date').text(
+                    $(calendar).data('options').year + '.'
+                    + $(calendar).data('options').month + '.'
+                    + $(this).text()
+                );
+                $(calendar).calendarEvents($(this).data('cal_events'));
+            }
+        });
+        calendar.appendTo(this);
+        $.getJSON($.configures.calendarEventsUrl, function(data){
+            for(var key in data.events)
+            {
+                calendar.markCalendarEvent(data.events[key], { textDecoration: 'underline'});
+            }
+            calendar.data('all_events', data.events);
+        });
+    }
+
+    $.fn.calendarEvents = function(cal_events)
+    {
+        var self = this;
+        var date    = function( timestamp )
+        {
+            return (new Date(timestamp * 1000));
+        }
+        if ( cal_events && cal_events.length )
+        {
+            var event_ids = [];
+            for( var key in cal_events )
+            {
+                event_ids[key] = cal_events[key].id;
+            }
+            $.post($.configures.calendarEventsUrl, { 
+                event_ids : event_ids,
+                token : $.configures.token
+            }, function(data){
+                var general = $('#personal-calendar .right .general').empty();
+                var personal = $('#personal-calendar .right .personal').empty();
+                var clubs = $('#personal-calendar .right .clubs').empty();
+                for( var key in data.events )
+                {
+                    var result = $('<div></div>')
+                        .append($('<p></p>').text(data.events[key].name))
+                        .css('background', 'gray')
+                        .data('event', data.events[key])
+                        .mouseenter(function(){
+                            $('.calendar-table').markCalendarEvent($(this).data('event'), {
+                                background : 'green'
+                            }, true);
+                        })
+                        .mouseleave(function(){
+                            var table = $('.calendar-table');
+                            table.markCalendarEvent({}, {}, true);
+                            for( var key in table.data('all_events') )
+                            {
+                                table.markCalendarEvent(table.data('all_events')[key], { textDecoration: 'underline'});
+                            }
+                        });
+                    if ( data.events[key].category == 'general' )
+                    {
+                        result.appendTo(general);
+                    }
+                    else if ( data.events[key].category == 'personal' )
+                    {
+                        result.appendTo(personal);
+                    }
+                    else 
+                    {
+                        result.appendTo(clubs);
+                    }
+                }
+                $.configures.token = data.token;
+            });
+        }
+    }
 })(jQuery);
 
 /**
@@ -2269,35 +2424,32 @@
         );
     });
 
-    if ( $.configures.facebookEnable )
+    $('<script></script>')
+        .attr('id', 'facebook-jssdk')
+        .attr('async', 'async')
+        .attr('type', 'text/javascript')
+        .attr('src', '//connect.facebook.net/zh_TW/all.js')
+        .insertBefore($('script').first());
+
+    window.fbAsyncInit = function()
     {
-        $('<script></script>')
-            .attr('id', 'facebook-jssdk')
-            .attr('async', 'async')
-            .attr('type', 'text/javascript')
-            .attr('src', '//connect.facebook.net/zh_TW/all.js')
-            .insertBefore($('script').first());
+        var like = $('<div></div>')
+            .attr('id', 'fb-like')
+            .appendTo($('#fb-root'));
 
-        window.fbAsyncInit = function()
-        {
-            var like = $('<div></div>')
-                .attr('id', 'fb-like')
-                .appendTo($('#fb-root'));
+        $('<fb:like></fb:like>')
+            .attr('href', window.location.href)
+            .attr('data-send', 'false')
+            .attr('data-layout', 'button_count')
+            .attr('data-show-faces', 'false')
+            .appendTo(like);
 
-            $('<fb:like></fb:like>')
-                .attr('href', window.location.href)
-                .attr('data-send', 'false')
-                .attr('data-layout', 'button_count')
-                .attr('data-show-faces', 'false')
-                .appendTo(like);
-
-            FB.init({
-                appId:      $.configures.facebookAppId,
-                channelUrl: $.configures.facebookChannelUrl,
-                status:     true,
-                cookie:     true,
-                xfbml:      true
-            });
-        };
-    }
+        FB.init({
+            appId:      $.configures.facebookAppId,
+            channelUrl: $.configures.facebookChannelUrl,
+            status:     true,
+            cookie:     true,
+            xfbml:      true
+        });
+    };
 })(jQuery);

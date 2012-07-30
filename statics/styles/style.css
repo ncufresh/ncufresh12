@@ -1,9 +1,7 @@
 ﻿/**
  * Global style
  */
-body,
-input,
-textarea
+body
 {
     font-size: 16px;
     font-family: '微軟正黑體', 'Microsoft JhengHei', '微软雅黑', 'Microsoft YaHei', 'WenQuanYi ZenHei', Arial, sans-serif;
@@ -781,41 +779,53 @@ a:hover
     cursor: pointer;
 }
 
-#chat-friend-list img
+#chat-friend-list .scroll-container,
+#chat-friend-list-container
 {
-    border: 2px solid #000000;
-    height: 35px;
-    float: left;
-    margin: 3px;
-    width: 35px;
-}
-
-#chat-friend-list p
-{
-    margin-left: 50px;
-}
-
-#chat-friend-list-search
-{
-    border: 2px solid #d7d7d7;
-    margin: 5px 0;
-    outline: none;
-    width: 136px;
-    height: 20px;
-    padding: 0 0 0 20px;
-    background: url('../images/friend_list_search.png') no-repeat;
+    height: 180px;
 }
 
 #chat-friend-list .friend-list-entry
 {
-    height: 45px;
-    line-height: 45px;
+    height: 48px;
+    line-height: 48px;
+    padding: 3px;
 }
 
 #chat-friend-list .friend-list-entry:hover
 {
     background: #EEEEEE;
     cursor: pointer;
+}
+
+#chat-friend-list .avatar
+{
+    border: 2px solid #000000;
+    height: 44px;
+    float: left;
+    width: 44px;
+}
+
+#chat-friend-list .avatar img
+{
+    margin-left: -10px;
+    width: 64px;
+}
+
+#chat-friend-list p
+{
+    margin: 0 0 0 48px;
+    padding: 2px 0 2px 4px;
+}
+
+#chat-friend-list-search
+{
+    background: url('../images/friend_list_search.png') no-repeat;
+    border: 3px solid #D7D7D7;
+    height: 20px;
+    margin: 5px 0;
+    padding: 0 0 0 20px;
+    width: 136px;
 }
 
 .chat-dialog
@@ -831,7 +841,7 @@ a:hover
 
 .chat-dialog .chat-title
 {
-    background: #7097f2;
+    background: #7097F2;
     cursor: pointer;
     height: 30px;
     width: 160px;
@@ -879,12 +889,12 @@ a:hover
     cursor: pointer;
 }
 
-.chat-dialog .chat-icon
+.chat-dialog .chat-avatar
 {
     position: relative;
 }
 
-.chat-dialog .chat-icon .avatar
+.chat-dialog .chat-avatar .avatar
 {
     float: left;
     height: 32px;
@@ -892,13 +902,13 @@ a:hover
     width: 32px;
 }
 
-.chat-dialog .chat-icon .avatar img
+.chat-dialog .chat-avatar .avatar img
 {
     margin-left: -8px;
     width: 48px;
 }
 
-.chat-dialog .chat-messages .chat-icon p
+.chat-dialog .chat-messages .chat-avatar p
 {
     background: #333333;
     border-radius: 5px 5px 5px 0;
@@ -913,7 +923,7 @@ a:hover
     top: 2px;
 }
 
-.chat-dialog .chat-messages .chat-icon:hover p
+.chat-dialog .chat-messages .chat-avatar:hover p
 {
     display: block;
 }
@@ -1176,6 +1186,11 @@ ul#nculife-details
     position: absolute;
     width: 204px;
     height: 355px;
+}
+
+#index-calendar .calendar-bottom-wrap table.calendar-table
+{
+    border-collapse: collapse;
 }
 
 #index-calendar .calendar-bottom-wrap table.calendar-table caption

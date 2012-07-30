@@ -64,9 +64,6 @@
             <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" title="大一必讀">大一必讀</a>
             <ul>
                 <li>
-                    <a href="#" title="行事曆">行事曆</a>
-                </li>
-                <li>
                     <a href="#" title="新生區">新生區</a>
                 </li>
                 <li>
@@ -140,7 +137,7 @@
                     <a href="#" title="學生組織">學生組織</a>
                 </li>
                 <li>
-                    <a href="#" title="系學會">系學會</a>
+                    <a href="#" title="系所">系所</a>
                 </li>
                 <li>
                     <a href="#" title="社團">社團</a>
@@ -200,7 +197,7 @@
     <div id="sidebar-personal">
         <ul>
             <li>
-                <a href="#" title="個人行事曆">個人行事曆</a>
+                <a href="<?php echo Yii::app()->createUrl('calendar/view'); ?>" title="個人行事曆">個人行事曆</a>
             </li>
             <li>
                 <a href="#" title="最新更新">最新更新</a>
@@ -257,7 +254,6 @@
     jQuery.extend({
         configures: {
             pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
-            facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
             chatOpenUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/open', array('id' => ':id')); ?>'),
             chatSendUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
             chatCloseUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/close'); ?>'),
@@ -266,13 +262,11 @@
             multimediaYoutubeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('multimedia/watch', array('v' => ':v')); ?>'),
             newsIndexUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>'),
             registerUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>'),
-<<<<<<< HEAD
-            facebookEnable: <?php echo Yii::app()->facebook->enable ? 'true' : 'false'; ?>,
-            buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id'=>':id'));?>'),            
-=======
+            calendarEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvent', array('id'=> ':id')); ?>'),
+            calendarEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvents'); ?>'),
             buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),
+            facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
             facebookAppId: '<?php global $ncufreshfb; echo $ncufreshfb['appId']; ?>',
->>>>>>> 4085f462c2988fc64bbb7ebc3d2d50bd4b73b38e
             googleSearchAppId: '011017124764723419863:mdibrr3n-py',
             token: '<?php echo Yii::app()->security->getToken(); ?>'
         }

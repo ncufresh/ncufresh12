@@ -2,13 +2,6 @@
 
 class ChatController extends Controller
 {
-    public function init()
-    {
-        parent::init();
-        Yii::import('application.models.Chat.*');
-        return true;
-    }
-
     public function filters()
     {
         return array(
@@ -42,6 +35,8 @@ class ChatController extends Controller
 
     public function actionSend()
     {
+        $this->_data['lasttime'] = TIMESTAMP;
+
         if ( Yii::app()->request->getIsPostRequest() )
         {
             if ( Yii::app()->user->getId() != $_POST['receiver'] )
@@ -56,11 +51,10 @@ class ChatController extends Controller
                         $_POST['lasttime']
                     );
                 }
-                $this->_data['token'] = Yii::app()->security->getToken();
-                $this->_data['lasttime'] = TIMESTAMP;
                 return true;
             }
         }
+
         $this->_data['errors'][] = '發生錯誤！';
     }
 
@@ -72,17 +66,17 @@ class ChatController extends Controller
             {
                 $this->_data['errors'][] = '發生錯誤！';
             }
-            $this->_data['token'] = Yii::app()->security->getToken();
-            $this->_data['lasttime'] = TIMESTAMP;
             return true;
         }
+
         $this->_data['errors'][] = '發生錯誤！';
     }
 
     public function actionAvatar($id)
     {
-        $this->_data = $this->widget('Avatar', array(
-            'id'        => $id
+        $this->_data['id'] = (integer)$id;
+        $this->_data['avatar'] = $this->widget('Avatar', array(
+            'id'        => $this->_data['id']
         ), true);
     }
 }
