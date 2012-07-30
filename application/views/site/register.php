@@ -20,11 +20,11 @@
         </dl>
         <dl class="radio">
             <dt>
-                <label for="form-register-sex-male">性別</label>
+                <label for="form-register-sex">性別</label>
             </dt>
             <dd>
-                <input id="form-register-sex-male" name="sex" type="radio" value="0" /><label for="form-register-sex-male">Male</label>
-                <input id="form-register-sex-female" name="sex" type="radio" value="1" /><label for="form-register-sex-female">Female</label>
+                <input id="form-register-sex" name="sex" type="radio" value="0" />Male
+                <input id="form-register-sex" name="sex" type="radio" value="1" />Female
             </dd>
         </dl>
         <dl>

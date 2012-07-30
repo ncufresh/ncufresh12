@@ -273,8 +273,6 @@ class SiteController extends Controller
                             $item->items_id = $character->skin_id; //寫入獲得道具的id
                             $item->equip = 1; //寫入裝備狀態
                             $item->acquire_time = TIMESTAMP; //寫入獲得時間
-                            
-                            $profile->id = $user->id;
                             if ( $profile->save() && $character->save() && $item->save())
                             {
                                 $this->redirect(array('profile/profile'));
