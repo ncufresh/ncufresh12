@@ -38,7 +38,12 @@ class Calendar extends CActiveRecord
             )
         );
     }
-
+    
+    public function getClub($user_id)
+    {
+        return Club::Model()->find('manager_id='.$user_id);
+    }
+    
     public function getPersonalCalendar()
     {
         return $this->find(array(
