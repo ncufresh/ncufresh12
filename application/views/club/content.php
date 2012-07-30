@@ -34,11 +34,11 @@
         </ul>
 </div>
 <div class="club-display-head" id="club-head-<?php echo $data->category;?>">
-<?php if ( $this->getIsAdmin($id) ) : ?>
+<?php if ( Club::model()->getIsAdmin($id) ) : ?>
     <a href="<?php echo Yii::app()->createUrl('club/modify/' . $id);?>" title="修改">修改</a>
     <a href="<?php echo Yii::app()->createUrl('club/uploadpicture/' . $id);?>" title="上傳圖片">上傳圖片</a>
 <?php endif;?>
-<h1><?php echo $data->name;?></h1>    
+<h4><?php echo $data->name;?></h4>    
 </div>    
 <div class="club-display" id="club-<?php echo $data->category;?>">
     <div class="club-title">簡介:</div>
@@ -55,11 +55,11 @@
     </div>
     <div class="club-title">E-mail:</div>
     <div class="club-item">
-    <?php echo $data->leader_e_mail; ?>
+    <?php echo $data->leader_email; ?>
     </div>
     <div class="club-title">二進位ID:</div>
     <div class="club-item">
-    <?php echo $data->leader_binary_id; ?>
+    <?php echo $data->leader_binary; ?>
     </div>
     <div class="club-title">MSN:</div>
     <div class="club-item">
@@ -75,22 +75,22 @@
     </div>
     <div class="club-title">E-mail:</div>
     <div class="club-item">
-    <?php echo $data->viceleader_e_mail; ?>
+    <?php echo $data->viceleader_email; ?>
     </div>
     <div class="club-title">二進位ID:</div>
     <div class="club-item">
-    <?php echo $data->viceleader_binaryid; ?>
+    <?php echo $data->viceleader_binary; ?>
     </div>
     <div class="club-title">MSN:</div>
     <div class="club-item">
     <?php echo $data->viceleader_msn; ?>
     </div>
-    <?php if ( $data->club_web != null ):?>
+    <?php if ( $data->website != null ):?>
     <div class="club-title">網站:</div>
     <div class="club-item">
-    <a href="<?php echo $data->club_web;?>"><?php echo $data->club_web;?></a>
+    <a href="<?php echo $data->website;?>"><?php echo $data->website;?></a>
     </div>
-    <? endif;?>
+    <?php endif;?>
 </div>
 <div class="club-display-bottom" id="club-bottom-<?php echo $data->category;?>">
 <a class="back">回上一頁</a>

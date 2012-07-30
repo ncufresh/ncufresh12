@@ -1,5 +1,4 @@
 <?php
-
 class Character extends CActiveRecord
 {
     public $exp_level = array(
@@ -141,21 +140,11 @@ class Character extends CActiveRecord
                 'Item',
                 'others_id'
             ),
-            // 'achievements'    => array(
-                // self::MANY_MANY,
-                // 'Achievement',
-                // 'game_achievements_bag(user_id, achievement_id)'
-            // ),
             'achievements_bag'    => array(
                 self::HAS_MANY,
                 'AchievementBag',
                 'user_id'
             ),
-            // 'items'    => array(
-                // self::MANY_MANY,
-                // 'Item',
-                // 'game_items_bag(user_id, item_id)'
-            // ),
             'items_bag'    => array(
                 self::HAS_MANY,
                 'ItemBag',
@@ -170,7 +159,7 @@ class Character extends CActiveRecord
         $array = array();
         foreach ($this->items_bag as $item)
         {
-            if ( $item->translation->items_category == $category )
+            if ( $item->translation->category == $category )
             {
                 $array[] = $item;
             }
@@ -183,7 +172,7 @@ class Character extends CActiveRecord
         $counter = 0;
         foreach ($this->exp_level as $value)
         {
-            if ( Character::model()->findByPk($id)->exp < $value['exp'] )
+            if ( Character::model()->findByPk($id)->experience < $value['exp'] )
             {
                 return $counter;
                 break;
@@ -199,114 +188,42 @@ class Character extends CActiveRecord
         return $exp['exp'];
     }
 
-    public function getId()
-    {
-        return $this->id;
-    }
-
     public function addExp($value)
     {
         $this->saveCounters(array('exp' => $value));
+        return true;
     }
 
     public function addMoney($value)
     {
         $this->saveCounters(array('money' => $value));
-    }
-
-    public function AchievementsBag()
-    {
-        return $this->achievements_bag;
-    }
-
-    // public function GetAchievementsTime()
-    // {
-        // return $this->achievements_bag;
-    // }
-
-    public function ItemsBag()
-    {
-        return $this->items;
-    }
-
-    public function GetItemsTime()
-    {
-        return $this->items_bag;
-    }
-
-    public function Owner()
-    {
-        return $this->achievements;
+        return true;
     }
 
     public static function getAvatar($id)
     {
-        $character = Character::model()->findByPk($id);
-        $skin = 'skin/'.$character->skin->url.'.png';
-        //echo $skin;
-        if( $character->eyes === null)
-        {
-            $eyes = '../images/unknown.png';
-        }
-        else
-        {
-            $eyes = 'eyes/'.$character->eyes->url.'.png';
-        }
-        
-        if( $character->hair === null)
-        {
-            $hair = '../images/unknown.png';
-        }
-        else
-        {
-            $hair = 'hair/'.$character->hair->url.'.png';
-        }
-        
-        if( $character->shoes === null)
-        {
-            $shoes = '../images/unknown.png';
-        }
-        else
-        {
-            $shoes = 'shoes/'.$character->shoes->url.'.png';
-        }
-        
-        if( $character->pants === null)
-        {
-            $pants = '../images/unknown.png';
-        }
-        else
-        {
-            $pants = 'pants/'.$character->pants->url.'.png';
-        }
-        
-        if( $character->clothes === null)
-        {
-            $clothes = '../images/unknown.png';
-        }
-        else
-        {
-            $clothes = 'clothes/'.$character->clothes->url.'.png';
-        }
-        
-        if( $character->others === null)
-        {
-            $others = '../images/unknown.png';
-        }
-        else
-        {
-            $others = 'others/'.$character->others->url.'.png';
-        }
-        
-        return array(
-            '身體皮膚名稱'    => $skin,
-            '眼睛部位名稱'    => $eyes,
-            '鞋子物品名稱'    => $shoes,
-            '褲子部位名稱'    => $pants,
-            '衣服衣物名稱'    => $clothes,
-            '頭髮髮型名稱'    => $hair,
-            '其他部位名稱'    => $others
+        $parts = array(
+            '皮膚'    => 'skin',
+            '臉部'    => 'eyes',
+            '頭髮'    => 'hair',
+            '鞋子'    => 'shoes',
+            '褲子'    => 'pants',
+            '衣服'    => 'clothes',
+            '其他'    => 'others'
         );
+        $avatar = array_fill_keys(array_keys($parts), '../images/unknown.png');
+        $character = Character::model()->findByPk($id);
+        if ( $character )
+        {
+            foreach ( $parts as $name => $part )
+            {
+                if ( $character->{$part} )
+                {
+                    $avatar[$name] = $part . '/' . $character->{$part}->filename . '.png';
+                }
+            }
+        }
+        return $avatar;
     }
     
     public static function getBodyPrice($id)
@@ -315,34 +232,18 @@ class Character extends CActiveRecord
         $price = 0;
         if( $character->skin !== null)
             $price = $price + $character->skin->price;
-            
         if( $character->eyes !== null)
             $price = $price + $character->eyes->price;
-        
         if( $character->hair !== null)
             $price = $price + $character->hair->price;
-        
         if( $character->shoes !== null)
             $price = $price + $character->shoes->price;
-        
         if( $character->pants !== null)
             $price = $price + $character->pants->price;
-        
         if( $character->clothes !== null)
             $price = $price + $character->clothes->price;
-        
         if( $character->others !== null)
             $price = $price + $character->others->price;
-        
         return $price;
-    }
-    
-    public static function createCharacter($id,$sex)
-    {
-        $character = new Character();
-        $character->id = $id;
-        $character->exp = 1;
-        $character->skin_id = 81;
-        $character->save();
     }
 }

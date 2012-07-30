@@ -47,23 +47,24 @@ class ForumController extends Controller
     public function actionIndex()
     {
         // index page, list the three categories of forum
-        $category = new ArticleCategory();
+        // to be delete $category = new ArticleCategory();
         $this->render('index');
     }
 
     public function actionForumList()
     {
         // list of departments
-        $model = new Category();
+        // to be delete $model = new Category();
         // $list = ForumCategory::model()->findAllBySql("SELECT * FROM  `forum_category` ", ' ');
         $this->render('forumlist', array(
-            'list'      => $model->findAll('id != 1 AND id != 2')
+            'list'      => Category::Model()->findAll('id != 1 AND id != 2')
         ));
     }
 
     public function actionForum($fid, $sort = 'create', $category = 0, $page = 1)
     {
         $article = new Article();
+        $forum = Category::model()->findByPk($fid);
         
         // content of each forum
         // [not yet] 傳入是否為admin 用於判斷是否顯示置頂checkbox及刪除文章選項
@@ -74,10 +75,10 @@ class ForumController extends Controller
                 'sort'      => $sort,
                 'current_category'  => $category,
                 //'model'     => $article->findAll('forum_id='.$fid)
-                'model'     => Article::model()->getArticlesSort($fid, $sort, $category, $page, self::ARTICLES_PER_PAGE),
-                'category'  => Category::model()->findByPk($fid),
+                'model'     => $article->getArticlesSort($fid, $sort, $category, $page, self::ARTICLES_PER_PAGE),
+                'category'  => $forum,
                 'page_status'   => $article->getPageStatus($page, self::ARTICLES_PER_PAGE, $fid, $category),
-                'is_master' =>  Category::model()->getIsMaster($fid),
+                'is_master' =>  $forum->getIsMaster(),
             ));
         // }
         // else
@@ -107,9 +108,9 @@ class ForumController extends Controller
             $article->title = $_POST['forum']['title'];
             $article->content = $_POST['forum']['content'];
             $article->forum_id = $_POST['forum']['fid'];
-            $article->category = $_POST['forum']['category'];
+            $article->category_id = $_POST['forum']['category'];
             if(Category::model()->getIsMaster($fid))
-                $article->is_top = $_POST['forum']['is_top'];
+                $article->sticky = $_POST['forum']['is_top'];
             $article->save();
             $this->redirect($article->url);
         }
@@ -125,7 +126,7 @@ class ForumController extends Controller
         $article = Article::model()->findByPk($id);
         $comment = new Comment();
         $reply = new Reply();
-        $article->viewed_times++;
+        $article->viewed++;
         $article->save();
         $this->render('view', array(
             'article'   => $article,
@@ -181,7 +182,7 @@ class ForumController extends Controller
             $aid = $_POST['delete'];
             $article_to_be_del = $article->findByPk($aid);
             if(!empty($article_to_be_del)){
-                $article_to_be_del->visibility = 0;
+                $article_to_be_del->invisible = 1;
                 $article_to_be_del->save();
             }
             else

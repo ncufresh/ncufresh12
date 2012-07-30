@@ -35,10 +35,29 @@ class Club extends CActiveRecord
         $club->introduction = $club->getRawValue('introduction');
         return $club;
     }
-
-    public function getClub($clubid)
+    
+    public function getClubByMasterId($master_id)
     {
-        return $this->findByPk($clubid);
+        return $this->find(array(
+            'condition' => 'master_id = :master_id',
+            'params' => array(
+                ':master_id' => $master_id
+            )
+        ));
+    }
+    
+    public function getIsAdmin($clubid)
+    {
+        if ( Yii::app()->user->getid() ) 
+        {
+            $isAdmin = $this->count('id = ' . $clubid . ' AND master_id = ' . Yii::app()->user->getid()) > 0 ? true : false;
+            $isAdmin = $isAdmin || Yii::app()->user->getIsAdmin();
+        }
+        else
+        {
+           $isAdmin=false;
+        }
+        return $isAdmin;
     }
     
     public function afterFind()
