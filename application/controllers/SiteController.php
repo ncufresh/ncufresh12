@@ -242,69 +242,71 @@ class SiteController extends Controller
         $user = new User();
         if ( isset($_POST['register']) && isset($_POST['profile']) )
         {
-            if ( $_POST['register']['password'] === $_POST['confirm']) //驗證密碼
+            $user->attributes = $_POST['register'];
+            $profile->attributes = $_POST['profile'];
+            var_dump($profile->validate());
+            
+            if ( $user->validate() && $profile->validate() )
             {
-                $user->attributes = $_POST['register'];
-                if ( $user->validate() )
+                if ( $user->save() )
                 {
-                    if ( $profile->isNickNameExist($_POST['profile']['nickname']) ) //暱稱重複
+                    $character = new Character(); //Character Model
+                    $character->id = $user->id;//同步寫入user的id至遊戲資料列表
+                    $character->exp = 1; //一開始使用者經驗設為1
+                    $character->money = 25000; //一開始使用者金錢設為25000
+                    $character->total_money = 35000; //一開始使用者總金錢設為25000
+                    if($_POST['profile']['sex'] == 0)
                     {
-                        $this->render('register', array(
-                                'departments'   => Department::model()->getDepartment(),
-                                'nickname_isExist'       => true
-                        ));
+                        $character->skin_id = 81; //男生 皮膚預設id=81
                     }
                     else
                     {
-                        $profile->attributes = $_POST['profile'];
-                        $profile->department_id = $_POST['profile']['department'];
-                        $profile->grade = $_POST['profile']['grade'];
-                        $profile->sex = $_POST['sex'];
-                        if ( $profile->validate() )
-                        {
-                            if ( $user->save() )
-                            {
-                                $character = new Character(); //Character Model
-                                $character->id = $user->id;//同步寫入user的id至遊戲資料列表
-                                $character->exp = 1; //一開始使用者經驗設為1
-                                $character->money = 25000; //一開始使用者金錢設為25000
-                                $character->total_money = 35000; //一開始使用者總金錢設為25000
-                                if($_POST['sex'] == 0)
-                                {
-                                    $character->skin_id = 81; //男生 皮膚預設id=81
-                                }
-                                else
-                                {
-                                    $character->skin_id = 85; //女生 皮膚預設id=85
-                                }
-                                $item = new ItemBag(); //ItemBag Model
-                                $item->user_id = $user->id; //同步寫入user的id至道具列表
-                                $item->items_id = $character->skin_id; //寫入獲得道具的id
-                                $item->equip = 1; //寫入裝備狀態
-                                $item->acquire_time = TIMESTAMP; //寫入獲得時間
-                                //行事曆的部分
-                                $calendar = new Calendar();
-                                $calendar->user_id = $user->id;
-                                $calendar->category = 1;
-                                $calendar_subscriptions = new Subscription();
-                                $calendar_subscriptions->user_id = $user->id;
-                                $calendar_subscriptions->calendar_id = 1;
-                                $calendar_subscriptions->visible = 1;
-                                if ( $profile->save() && $character->save() && $item->save() && $calendar->save() && $calendar_subscriptions->save() )
-                                {
-                                    $this->redirect(array('profile/profile'));
-                                }
-                            }
-                        }
+                        $character->skin_id = 85; //女生 皮膚預設id=85
+                    }
+                    $item = new ItemBag(); //ItemBag Model
+                    $item->user_id = $user->id; //同步寫入user的id至道具列表
+                    $item->items_id = $character->skin_id; //寫入獲得道具的id
+                    $item->equip = 1; //寫入裝備狀態
+                    $item->acquire_time = TIMESTAMP; //寫入獲得時間
+                    //行事曆的部分
+                    $calendar = new Calendar();
+                    $calendar->user_id = $user->id;
+                    $calendar->category = 1;
+                    $calendar_subscriptions = new Subscription();
+                    $calendar_subscriptions->user_id = $user->id;
+                    $calendar_subscriptions->calendar_id = 1;
+                    $calendar_subscriptions->visible = 1;
+                    if ( $profile->save() && $character->save() && $item->save() && $calendar->save() && $calendar_subscriptions->save() )
+                    {
+                        $this->redirect(array('profile/profile'));
                     }
                 }
+                else
+                {
+                    var_dump($profile->getErrors());
+                    $this->render('register', array(
+                            'departments'   => Department::model()->getDepartment(),
+                            'nickname_isExist'      => false,
+                            'username_errors'        => $user->getErrors(),
+                            'profile_errors'        => $profile->getErrors()
+                    ));
+                }
+            }
+            else
+            {
+                $this->render('register', array(
+                        'departments'   => Department::model()->getDepartment(),
+                        'username_errors'        => $user->getErrors(),
+                        'profile_errors'        => $profile->getErrors()
+                ));
             }
         }
         else
         {
             $this->render('register', array(
                     'departments'   => Department::model()->getDepartment(),
-                    'nickname_isExist'       => false
+                    'username_errors'        => $user->getErrors(),
+                    'profile_errors'        => $profile->getErrors()
             ));
         }
     }

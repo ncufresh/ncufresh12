@@ -10,7 +10,7 @@
                 <input id="form-register-name" name="profile[name]" type="text" />
             </dd>
         </dl>
-<?php if ( !$nickname_isExist ) :?>
+<?php if ( !isset($profile_errors['nickname']) ) :?>
         <dl>
             <dt>
                 <label for="form-register-nickname">暱稱</label>
@@ -22,7 +22,7 @@
 <?php else : ?>
          <dl>
             <dt>
-                <label for="form-register-nickname" id="nickname-exist">***暱稱被人捷足先登喇***</label>
+                <label for="form-register-nickname" class="is_exist">***暱稱被人捷足先登喇***</label>
             </dt>
             <dd>
                 <input id="form-register-nickname" name="profile[nickname]" type="text" />
@@ -31,21 +31,34 @@
 <?php endif; ?>
         <dl class="radio">
             <dt>
-                <label for="form-register-sex">性別</label>
+                <label for="form-register-sex-male">性別</label>
             </dt>
             <dd>
-                <input id="form-register-sex" name="sex" type="radio" value="0" />Male
-                <input id="form-register-sex" name="sex" type="radio" value="1" />Female
+                <input id="form-register-sex-male" name="profile[sex]" type="radio" value="0" /><label for="form-register-sex-male">Male</label>
+                <input id="form-register-sex-female" name="profile[sex]" type="radio" value="1" /><label for="form-register-sex-female">Female</label>
             </dd>
         </dl>
+<?php if ( !isset($username_errors['username']) ) :?>
         <dl>
             <dt>
                 <label for="form-register-username">帳號</label>
             </dt>
             <dd>
                 <input id="form-register-username" name="register[username]" type="text" />
+                <?php echo isset($username_errors['username'][0])?$username_errors['username'][0]:''; ?>
             </dd>
         </dl>
+<?php else : ?>
+        <dl>
+            <dt>
+                <label for="form-register-username" class="is_exist">帳號有人用搶了喔/須大於8碼</label>
+            </dt>
+            <dd>
+                <input id="form-register-username" name="register[username]" type="text" />
+            </dd>
+        </dl>
+<?php endif; ?>
+<?php if ( !isset($username_errors['password']) ) : ?>
         <dl>
             <dt>
                 <label for="form-register-password">密碼</label>
@@ -53,13 +66,33 @@
             <dd>
                 <input id="form-register-password" name="register[password]" type="password" />
             </dd>
+        </dl>
+        <dl>
             <dt>
                 <label for="form-register-confirm">再輸入一次</label>
             </dt>
             <dd>
-                <input id="form-register-confirm" name="confirm" type="password" />
+                <input id="form-register-confirm" name="register[confirm]" type="password" />
             </dd>
         </dl>
+<?php else : ?>
+        <dl>
+            <dt>
+                <label for="form-register-password" class="is_exist">密碼輸入不正確/須大於8碼</label>
+            </dt>
+            <dd>
+                <input id="form-register-password" name="register[password]" type="password" />
+            </dd>
+        </dl>
+        <dl>
+            <dt>
+                <label for="form-register-confirm" class="is_exist">再輸入一次</label>
+            </dt>
+            <dd>
+                <input id="form-register-confirm" name="register[confirm]" type="password" />
+            </dd>
+        </dl>
+<?php endif; ?>
         <dl class="select">
             <dt>
                 <dd>

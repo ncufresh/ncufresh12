@@ -3148,11 +3148,11 @@ div.register form
     width:330px;
     height:290px;
     margin-left:30px;
-    margin-top:10px;
+    margin-top:5px;
     padding:0px;
 }
 
-div.register #nickname-exist
+div.register .is_exist
 {
     outline:1px solid red;
 }

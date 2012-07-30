@@ -2,6 +2,8 @@
 
 class Profile extends CActiveRecord
 {
+    public $department;
+
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
@@ -16,11 +18,13 @@ class Profile extends CActiveRecord
     {   
         return array(
             array(
-                'name, nickname, department_id, grade,senior, birthday,sex', 
+                'name, nickname, department, grade,senior, birthday,sex', 
                 'required'
             ),
-            array('department_id', 'numerical', 'integerOnly'=>true), //範圍1-21
-            array('grade', 'numerical', 'integerOnly'=>true) //範圍1-5
+            array('nickname', 'unique', 'className' => 'Profile'),
+            array('department', 'numerical', 'integerOnly'=>true), //範圍1-21
+            array('grade', 'numerical', 'integerOnly'=>true), //範圍1-5
+           
         );
     }
 
@@ -108,4 +112,13 @@ class Profile extends CActiveRecord
         return false;
     }
 
+    public function beforeSave()
+    {
+        if ( parent::beforeSave() )
+        {
+            $this->department_id = $department;
+            return true;
+        }
+        return false;
+    }
 }
