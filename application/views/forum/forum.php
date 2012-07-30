@@ -40,7 +40,7 @@
     <?php $this->widget('Pager', array(
         'url'       => 'forum/forum',
         'pager'     => $page_status,
-        'parameters'=> array('fid' => $fid, 'sort' => $sort, 'category' => $current_category)
+        'parameters'=> array('fid' => $fid, 'sort' => $sort, 'category_id' => $current_category)
     )); 
     ?>
     <select id="sort_list">
@@ -57,7 +57,7 @@
     <div class="category-lists">
     <ul id="labels">
         <li class="un-selected">
-            <a class="change-category" href='<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => $sort, 'category' => 0));?>'>全部</a>
+            <a class="change-category" href='<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => $sort, 'category_id' => 0));?>'>全部</a>
         </li>
         <?php
         foreach ( $category->article_categories as $each ) : 
@@ -96,7 +96,7 @@
                 <td class="title"><a href="<?php echo $each->url?>"><?php echo $each->title; ?></a></td>
                 <td class="author"></td>
                 <td class="reply"><span><?php echo $each->replies_count.' ';?></span></td>
-                <td class="popularity"><span><?php echo $each->viewed_times;?></span></td>
+                <td class="popularity"><span><?php echo $each->viewed;?></span></td>
                 <td class="time"></td>
             </tr>
             <?php
@@ -139,7 +139,7 @@
         <?php
         echo $each->id.' ';
         echo $each->replies_count.' ';
-        echo $each->viewed_times;
+        echo $each->viewed;
         if($is_master):
         ?>
         <a href="#<?php echo $each->id;?>" class="article-delete" >刪除</a>
