@@ -2312,6 +2312,8 @@ button.news-button
 
 #about #introduce
 {
+    border-radius: 3px;
+    color: black;
     font-family: 微軟正黑體;
     font-size: 18px;
 }
@@ -2333,7 +2335,7 @@ button.news-button
 
 #about .title1
 {
-    background: url('../about/what.png') #385281 no-repeat;
+    background: url('../about/what.png') no-repeat;
     width: 750px;
     height: 75px;
 }
@@ -2348,7 +2350,6 @@ button.news-button
 #about .block1
 {
     background: #385281;
-    margin-top: -18px;
     height: 560px;    
     width: 750px;
 }

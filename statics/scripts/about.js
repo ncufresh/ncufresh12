@@ -20,6 +20,8 @@
         var tagbarPerson = $('.' + options.tagBar + ' div');
         var personName = $('<p></p>').hide();
         var personGrade = $('<p></p>').hide();
+        var photoNumber = 8;
+        var smallPhotoIndex = 0;
         var jumpTo = function()
         {   
             block1Inf.each(function(){
@@ -50,6 +52,8 @@
                 .addClass('block2')
         ]
         var itr = $('<div></div>').css({
+            padding: 5,
+            borderRadius: 10,
             background: '#fffce0',
             position: 'relative',
             float: 'top',
@@ -61,7 +65,7 @@
         .append($('#' + options.introduceId));
         var picture = $('<div></div>')
             .css({
-                background: 'url(\'' + photos.eq(photoIndex).attr('photo') + '\')',
+                background: 'url(\'' + photos.eq(photoIndex).attr('photo') + '0.png' + '\')',
                 float: 'right',
                 height: 300,
                 top: -68,
@@ -245,7 +249,7 @@
         jumpTo();
         setInterval(function()
         {
-            if ( photoIndex < 7 )
+            if ( photoIndex < photoNumber - 1 )
             {
                 photoIndex++;
             }
@@ -253,7 +257,7 @@
             {
                 photoIndex = 0;
             }
-            picture.css('background-image', 'url(\'' + photos.eq(photoIndex).attr('photo') + '\')');
+            picture.css('background-image', 'url(\'' + photos.eq(photoIndex).attr('photo') + photoIndex + '.png' + '\')');
         },options.picAutoSpeed);
         setInterval(function()
         {
@@ -280,15 +284,38 @@
             if ( index < 8 )
             {
                 $(this).css({
+                    height: 40,
                     float: 'left',
-                    margin: 5
+                    margin: 5,
+                    width: 40
                 })
                 .click(function()
                 {
-                    photoIndex = index;
-                    picture.css({
-                       background: 'url(\'' + photos.eq(index).attr('photo') + '\')'
-                    });
+                    if ( index == 0 )
+                    {
+                        if ( smallPhotoIndex > 0 )
+                        {
+                            smallPhotoIndex--;
+                        }
+                    }
+                    else if ( index == 7 )
+                    {
+                        if( smallPhotoIndex + 6 < photoNumber )
+                        {
+                            smallPhotoIndex++;
+                        }
+                    }
+                    else
+                    {
+                        photoIndex = index;
+                        picture.css({
+                            background: 'url(\'' + photos.eq(index).attr('photo') + (smallPhotoIndex + index - 1) + '.png' + '\')'
+                        });
+                    }
+                    for ( var i = 1; i < 7; i++)
+                    {
+                        photos.eq(i).attr('src',  photos.eq(i).attr('small') + (smallPhotoIndex + i - 1) + '.png');
+                    }
                 })
                 .appendTo(display);
             }
