@@ -105,6 +105,8 @@ class Event extends CActiveRecord
         {
             if ( $this->getIsNewRecord() )
             {
+                $this->start = TIMESTAMP;
+                $this->end = TIMESTAMP;
                 $this->created = TIMESTAMP;
             }
             return true;

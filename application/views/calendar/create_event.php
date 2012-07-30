@@ -1,29 +1,28 @@
-<form id="calendar-create-form" enctype="multiprt/form-data" action="<?php echo Yii::app()->createUrl('calendar/create'); ?>" method="POST">
+Ôªø<form id="calendar-create-form" enctype="multiprt/form-data" action="<?php echo Yii::app()->createUrl('calendar/createevent'); ?>" method="POST">
 <div class="form-top">
-    <p id="calendar-create-text-number-check">∑sºW®∆•Û</p>
+    <p id="calendar-create-text-number-check">Êñ∞Â¢û‰∫ã‰ª∂</p>
     <dl>
         <dt>
-            <label id="calendar-create-text-title" for="calendar-create-title">º–√D</label>
+            <label id="calendar-create-text-title" for="calendar-create-title">Ê®ôÈ°å</label>
         </dt>
         <dd>
-            <input id="calendar-create-title" type="text" name="event[title]" maxLength="20"/>
+            <input id="calendar-create-title" type="text" name="event[name]" maxLength="20"/>
         </dd>
     </dl>
 </div>
 <div class="form-body">
     <dl class="content">
         <dt>
-            <label for="form-create-content">§∫Æe</label>
+            <label for="form-create-content">ÂÖßÂÆπ</label>
         </dt>
         <dd>
-            <textarea id="form-create-content" name="event[content]" cols="70" rows="10"></textarea>
+            <textarea id="form-create-content" name="event[description]" cols="70" rows="10"></textarea>
         </dd>
     </dl>
 </div>
 <div class="form-foot">
-    <input type="hidden" name="event[fid]" value="<?php echo $fid; ?>" />
-    <button id="calendar-create-submit" disabled>µoßG</button>
-    <button class="calendar-cancel-button" type="reset">®˙Æ¯</button>
+    <button id="calendar-create-submit">Áôº‰Ωà</button>
+    <button class="calendar-cancel-button" type="reset">ÂèñÊ∂à</button>
 </div>
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
 </form>

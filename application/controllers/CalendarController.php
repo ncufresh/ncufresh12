@@ -41,13 +41,13 @@ class CalendarController extends Controller
             $event->description = $_POST['event']['description'];
             $event->visible = 1;
             //user
-            if(!Club::Model()->getIsAdmin(Yii::app()->user->getId()))
-                $event->calendar_id = $event->getCalendarId(Yii::app()->user->getId(), 1);
+            if(!Club::Model()->getIsAdmin(Yii::app()->user->getId())){
+                $event->calendar_id = Calendar::Model()->find('user_id='.Yii::app()->user->getId().' AND category=1')->id;
+            }
             //club
             else  
-                $event->calendar_id = $event->getCalendarId(Yii::app()->user->getId(), 0);
+                $event->calendar_id = Calendar::Model()->find('user_id='.Yii::app()->user->getId().' AND category=0')->id;
             $event->save();
-            $this->redirect($event->url);
         }
         $this->render('create_event');
     }
