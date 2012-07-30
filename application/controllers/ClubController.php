@@ -61,20 +61,20 @@ class ClubController extends Controller
         $data = $club->getClub($id);
         $this->render('content', array(
             'data'      => $data,
-			'id'		=> $id,
+			'id'		=> $id
         )); 
     }
  	public function actionModify($id)
 	{
         $id = (integer)$id; 
         $club = new Club();
-        $club = $club->getClub($id);
+        $club = $club->getRawClub($id);
         if ( ! $this->getIsAdmin($id) ) throw new CHttpException(404);
         if( $this->getIsAdmin($id) )
         {
             if(isset($_POST['club']))
             {
-                $club->introduction = nl2br($_POST['club']['introduction']);
+                $club->introduction = $_POST['club']['introduction'];
                 $club->leader = $_POST['club']['leader'];
                 $club->leader_phone = $_POST['club']['leader_phone'];
                 $club->leader_e_mail = $_POST['club']['leader_email'];
@@ -94,10 +94,9 @@ class ClubController extends Controller
         }
         else
         {
-             $this->redirect(array('club/content/' . $id));
+             throw new CHttpException(404);
         }
-    
-        $this->_data['token'] = Yii::app()->security->getToken(); 
+
         $this->render('modify',array(
             'data'=>$club,
             'id'=>$id,
@@ -110,9 +109,10 @@ class ClubController extends Controller
         $id = (integer)$id;
         $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'club/' . $id;
         if ( ! $this->getIsAdmin($id) ) throw new CHttpException(404);
-
+        
         if ( isset($_FILES['pictures']) )
         {
+            
             for ( $index = 0 ; $index < 3 ; ++$index )
             {
                 if ( empty($_FILES['pictures']['name'][$index]) ) continue;

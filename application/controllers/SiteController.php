@@ -5,7 +5,6 @@ class SiteController extends Controller
     public function init()
     {
         parent::init();
-        Yii::import('application.models.Chat.*');
         Yii::import('application.models.News.*');
         Yii::import('application.models.Game.*');
         return true;
@@ -111,7 +110,6 @@ class SiteController extends Controller
             {
                 $this->_data['error'] = true;
             }
-            $this->_data['token'] = Yii::app()->security->getToken();
 
             if ( Yii::app()->request->getIsAjaxRequest() ) return true;
             $this->redirect(Yii::app()->user->returnUrl);
@@ -135,26 +133,28 @@ class SiteController extends Controller
                 array(
                     'id'        => 1,
                     'name'      => 'Test 1',
-                    'icon'      => Yii::app()->request->baseUrl . '/statics/images/unknown.png',
-                    'active'    => true
+                    'active'    => false
                 ),
                 array(
                     'id'        => 2,
                     'name'      => 'Demodemo',
-                    'icon'      => Yii::app()->request->baseUrl . '/statics/images/unknown.png',
                     'active'    => true
                 ),
                 array(
                     'id'        => 3,
                     'name'      => 'Adminadmin',
-                    'icon'      => Yii::app()->request->baseUrl . '/statics/images/unknown.png',
                     'active'    => true
+                ),
+                array(
+                    'id'        => 4,
+                    'name'      => 'WhoAmI',
+                    'active'    => false
                 )
             );
         }
         if ( Yii::app()->user->getIsMember() )
         {
-            $this->_data['messages'] = Chat::model()->getMessages($lasttime);
+            $this->_data['messages'] = Chat::getMessages($lasttime);
         }
         $this->_data['lasttime'] = TIMESTAMP;
     }
@@ -237,60 +237,54 @@ class SiteController extends Controller
     public function actionRegister()
     {
         $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
-        $this->_data['token'] = Yii::app()->security->getToken();
-        if ( isset($_POST['register']) && isset($_POST['profile']) ) 
+        if ( isset($_POST['register']) && isset($_POST['profile']) )
         {
-            $user = new User();
-            $user->attributes = $_POST['register'];
-            if ( $user->validate() )
+            if ( $_POST['register']['password'] === $_POST['confirm'] ) 
             {
-                $profile = new Profile();
-                $profile->attributes = $_POST['profile'];
-                $profile->department_id = $_POST['profile']['department'];
-                $profile->grade = $_POST['profile']['grade'];
-                $profile->picture = $_FILES['picture']['name'];
-                $profile->sex = $_POST['sex'];
-                $target = $path . DIRECTORY_SEPARATOR . $profile->picture;
-                move_uploaded_file($_FILES['picture']['tmp_name'], $target);
-                $picture_size=$_FILES['picture']['size'];
-                $picture_type=$_FILES['picture']['type'];
-                if ( $profile->validate() )
+                $user = new User();
+                $user->attributes = $_POST['register'];
+                if ( $user->validate() )
                 {
-                    if ( $user->save() )
+                    $profile = new Profile();
+                    $profile->attributes = $_POST['profile'];
+                    $profile->department_id = $_POST['profile']['department'];
+                    $profile->grade = $_POST['profile']['grade'];
+                    $profile->sex = $_POST['sex'];
+                    if ( $profile->validate() )
                     {
-                        $character = new Character(); //Character Model
-                        $character->id = $user->id;//同步寫入user的id至遊戲資料列表
-                        $character->exp = 1; //一開始使用者經驗設為1
-                        $character->money = 25000; //一開始使用者金錢設為25000
-                        $character->total_money = 25000; //一開始使用者總金錢設為25000
-                        if($_POST['sex'] == 0)
+                        if ( $user->save() )
                         {
-                            $character->skin_id = 81; //男生 皮膚預設id=81
-                        }
-                        else
-                        {
-                            $character->skin_id = 85; //女生 皮膚預設id=85
-                        }
-                        $item = new ItemBag(); //ItemBag Model
-                        $item->user_id = $user->id; //同步寫入user的id至道具列表
-                        $item->items_id = $character->skin_id; //寫入獲得道具的id
-                        $item->equip = 1; //寫入裝備狀態
-                        $item->acquire_time = TIMESTAMP; //寫入獲得時間
-                        
-                        $profile->id = $user->id;
-                        if ( $profile->save() && $character->save() && $item->save())
-                        {
-                            $this->redirect(array('profile/profile'));
+                            $character = new Character(); //Character Model
+                            $character->id = $user->id;//同步寫入user的id至遊戲資料列表
+                            $character->exp = 1; //一開始使用者經驗設為1
+                            $character->money = 25000; //一開始使用者金錢設為25000
+                            $character->total_money = 35000; //一開始使用者總金錢設為25000
+                            if($_POST['sex'] == 0)
+                            {
+                                $character->skin_id = 81; //男生 皮膚預設id=81
+                            }
+                            else
+                            {
+                                $character->skin_id = 85; //女生 皮膚預設id=85
+                            }
+                            $item = new ItemBag(); //ItemBag Model
+                            $item->user_id = $user->id; //同步寫入user的id至道具列表
+                            $item->items_id = $character->skin_id; //寫入獲得道具的id
+                            $item->equip = 1; //寫入裝備狀態
+                            $item->acquire_time = TIMESTAMP; //寫入獲得時間
+                            
+                            $profile->id = $user->id;
+                            if ( $profile->save() && $character->save() && $item->save())
+                            {
+                                $this->redirect(array('profile/profile'));
+                            }
                         }
                     }
                 }
             }
         }
-        else
-        {
-            $this->render('register', array(
+        $this->render('register', array(
                 'departments'   => Department::model()->getDepartment()
-            ));
-        }
+        ));
     }
 }

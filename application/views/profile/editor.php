@@ -1,12 +1,10 @@
 <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('profile/editor'); ?>" method="POST">
-<h2>編輯基本資料</h2>
+<h1>編輯基本資料</h1>
 <div class="myprofile">
     <div class="friends-part3">
-<?php if ( $user->profile->picture !=' ' ) : ?>
-        <img width="170" height="160" src="<?php echo $target . '/' . $user->profile->picture; ?>" alt="Score image" />  
-<?php else : ?>
-        <img  width="170" height="160" src="<?php echo $target.'/image1.jpg'; ?>" alt="Score image" />
-<?php endif; ?>
+<?php $this->widget('Avatar', array(
+    'id'        => Yii::app()->user->id
+)); ?>
          <ul class="user-editor">
             <li>
                 <span>姓名:</span>
@@ -23,21 +21,9 @@
             </li>
             <li>
                 <span>系所:</span><?php echo $user->profile->department->short_name; ?>
-                <select name="profile[department]" value="<?php echo $user->profile->department->short_name; ?>">
-    <?php foreach ( $departments as $department ) : ?>
-                    <option value="<?php echo $department->id; ?>"><?php echo $department->department; ?></option>
-    <?php endforeach; ?>       
-                </select>
             </li>
             <li>
                 <span>系級:</span><?php echo $user->profile->grade; ?>年級
-                    <select name="profile[grade]" value="<?php echo $user->profile->grade; ?>">
-                        <option value="1">一年級</option>
-                        <option value="2">二年級</option>
-                        <option value="3">三年級</option>
-                        <option value="4">四年級</option>
-                        <option value="5">其它</option>
-                    </select>
             </li>
             <li>
                 <span>畢業高中:</span>
@@ -54,4 +40,4 @@
 <button type="submit">確認</button>
 </form>
 <button><a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>">取消</a></button>
-<button><a href="<?php echo Yii::app()->createUrl('profile/profile'); ?>">BACK</a></button>
+<button onClick= "history.back()" >BACK</button>

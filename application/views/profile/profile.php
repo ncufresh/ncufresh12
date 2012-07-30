@@ -1,11 +1,9 @@
 <h1>基本資料</h1>
 <div class="myprofile">
     <div class="friends-part3">
-<?php if ( $user->profile->picture !='' ):?>
-        <img width="170" height="160" src="<?php echo $target . '/' . $user->profile->picture; ?>" alt="Score image" />
-<?php else:?>
-        <img width="170" height="160" src="<?php echo $target . '/image1.jpg'; ?>" alt="Score image" />
-<?php endif;?>
+<?php $this->widget('Avatar', array(
+    'id'        => Yii::app()->user->id
+)); ?>
         <ul class="user-editor">  
             <li>
                 姓名:<?php echo $user->profile->name; ?>
@@ -40,4 +38,4 @@
     </div>
 </div>
 <button><a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>">編輯</a></button>
-<button><a href="<?php echo Yii::app()->createUrl('site/index'); ?>">BACK</a></button>
+<button onClick= "history.back()" >BACK</button>

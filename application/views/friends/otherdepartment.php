@@ -6,11 +6,11 @@
         <ul class="other-department">
 <?php foreach ( $profiles as $profile ) : ?>
             <li>
-<?php if ( $profile->picture !='' ) : ?>
-                <img width="100" height="120" src="<?php echo $target.'/'.$profile->picture; ?>" alt="Score image"/>
-<?php else : ?>
-                <img width="100" height="120" src="<?php echo $target.'/image1.jpg'; ?>" alt="Score image"/>
-<?php endif; ?>
+<a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $profile->id));  ?>">
+<?php $this->widget('Avatar', array(
+    'id'        => $profile->id
+)); ?>
+</a>
                 <input type="checkbox" name="friends[<?php echo $profile->id;?>]" value="<?php echo $profile->id;?>"  />
                 <h3>
 <?php echo $profile->name;?>
@@ -25,5 +25,5 @@
 </div>
 <button type="submit">確定加為好友</button>
 </form>
-<button><a href="<?php echo Yii::app()->createUrl('friends/otherdepartment')  ?>">重選</a></button>
-<button><a href="<?php echo Yii::app()->createUrl('friends/friends')  ?>">BACK</a></button>
+<button><a href="<?php echo Yii::app()->createUrl('friends/otherdepartment'); ?>">取消</a></button>
+<button onClick= "history.back()" >BACK</button>

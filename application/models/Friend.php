@@ -26,6 +26,11 @@ class Friend extends CActiveRecord
                 self::BELONGS_TO,
                 'Profile',
                 'friend_id'
+            ),
+            'friend_request'  => array(
+                self::BELONGS_TO,
+                'Profile',
+                'user_id'
             ) 
         );
     }
@@ -100,13 +105,12 @@ class Friend extends CActiveRecord
         $save = $model->save();
     }
 
-    public function Request($userid)
+    public function getRequests($userid) //好友確認
     {
         return  $this->findAll(array(
                     'condition' => 'friend_id = :userid AND invisible = 1',
                     'params'    => array(
-                        ':userid' => $userid,
-                        ':friendid' => $friendid
+                        ':userid' => $userid
                     )
                 ));
     }
