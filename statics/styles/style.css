@@ -2018,25 +2018,18 @@ button.news-button
     background: url('../readme/freshman_background.png');
 }
 
-#fresh_back
+#fresh-back
 {
     background: url('../readme/fresh_back.png');
 }
 
-#fresh_back:hover
+#fresh-back:hover
 {
-    position: relative;
-    background: #385281;
-    height: 550px;    
-    width: 750px;
-    margin-top: -18px;
     background: url('../readme/fresh_back_hover.png');
 }
 
 #readme-notice
 {
-    background: #385281;
-    height: 900px;    
     width: 750px;
     height: 450px;
     position: relative;
@@ -2055,9 +2048,6 @@ button.news-button
 
 #readme-reschool
 {
-    left: 25px;
-    height: 508px;
-    width: 700px;
     width: 750px;
     height: 450px;
     position: relative;
@@ -2082,12 +2072,13 @@ button.news-button
     background: url('../readme/download_background.png');
 }
 
-#download_back
+#download-back
 {
+    
     background: url('../readme/download_back.png');
 }
 
-#download_back:hover
+#download-back:hover
 {
     background: url('../readme/download_back_hover.png');
 }
@@ -2323,7 +2314,7 @@ button.news-button
 
 .readme-menu-index
 {
-    display: none;
+    display: block;
 }
 
 .fresh-menu li
