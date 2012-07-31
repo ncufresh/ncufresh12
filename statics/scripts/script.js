@@ -1340,7 +1340,16 @@
                     for ( var key2 in data.events[key] )
                     {
                         $('<li></li>')
-                            .text(data.events[key][key2].name)
+                            .append(
+                                $('<a></a>')
+                                    .text(data.events[key][key2].name)
+                                    .attr(
+                                        'href', 
+                                        $.configures
+                                            .calendarEventUrl
+                                            .replace(':id', data.events[key][key2].id)
+                                    )
+                            )
                             .append(
                                 $('<a></a>')
                                     .addClass('calendar-hide-event')
@@ -1596,6 +1605,7 @@
             .addClass('calendar-prompt')
             .css({
                 position: 'absolute',
+                display:  'none'
             }).appendTo('body');
         var mousemove
         var geneator = function(year, month)
