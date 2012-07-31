@@ -178,10 +178,7 @@ class FriendsController extends Controller
             } 
             $this->redirect(array('friends/mygroups', 'id'=> $id));
         }
-        else
-        {
-            $this->redirect(array('friends/mygroups', 'id'=> $id));
-        }
+        $this->redirect(array('friends/mygroups', 'id'=> $id));
     }
 
     public function actionNewGroup()
@@ -194,12 +191,9 @@ class FriendsController extends Controller
             }
             $this->redirect(array('friends/friends'));
         }
-        else
-        {
-            $this->render('newgroup', array(
-                'user'          => $this->user
-            ));
-        }
+        $this->render('newgroup', array(
+            'user'          => $this->user
+        ));
     }
 
     public function actionDeleteGroup($id)
