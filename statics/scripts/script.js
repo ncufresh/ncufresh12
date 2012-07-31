@@ -837,7 +837,6 @@
             var scrollContainer = $('<div></div>')
                 .addClass('scroll-container')
                 .css({
-                    height: '100%',
                     overflow: 'hidden'
                 })
                 .mouseenter(function()
