@@ -43,19 +43,19 @@ class StreetController extends Controller
         {
             $url .= '/college';
         }
-        else if( 17 <= $id && $id <= 27 )
+        else if( $id <= 27 )
         {
             $url .= '/landscape';
         }
-        else if( 28 <= $id && $id <= 33 )
+        else if( $id <= 33 )
         {
             $url .= '/food';
         }
-        else if( 34 <= $id && $id <= 38 )
+        else if( $id <= 38 )
         {
             $url .= '/government';
         }
-        else if( 39 <= $id && $id <= 51 )
+        else if( $id <= 51 )
         {
             $url .= '/dormitory';
         }
