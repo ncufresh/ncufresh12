@@ -156,7 +156,7 @@
         echo $each->id.' ';
         echo $each->replies_count.' ';
         echo $each->viewed;
-        if($is_master):
+        if ( $category->getIsMaster() ):
         ?>
         <a href="#<?php echo $each->id;?>" class="article-delete" >刪除</a>
         <br/>

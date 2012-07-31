@@ -52,8 +52,6 @@ class ItemBag extends CActiveRecord
                     $item->created = TIMESTAMP; //寫入獲得時間
                     if ($item->save() && Character::model()->findByPk($user_id)->addMoney(0-($item_data->price)))
                     return 0;
-                    else
-                    return 4;
                 }
                 else
                 return 3;

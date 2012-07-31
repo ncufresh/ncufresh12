@@ -205,10 +205,10 @@ class Character extends CActiveRecord
         $parts = array(
             '皮膚'    => 'skin',
             '臉部'    => 'eyes',
-            '頭髮'    => 'hair',
             '鞋子'    => 'shoes',
             '褲子'    => 'pants',
             '衣服'    => 'clothes',
+            '頭髮'    => 'hair',
             '其他'    => 'others'
         );
         $avatar = array_fill_keys(array_keys($parts), '../images/unknown.png');
