@@ -96,7 +96,7 @@ class ItemBag extends CActiveRecord
                 $character_current_item_id = $character_data->shoes->id;
             else if($item_category == 6 && $character_data->skin != null)
                 $character_current_item_id = $character_data->skin->id;
-            else if($item_category == 7 && $character_data->skin != null)
+            else if($item_category == 7 && $character_data->others != null)
                 $character_current_item_id = $character_data->others->id;
                 
             if($character_current_item_id != 0) //原本有穿裝備才會到這
