@@ -1,18 +1,117 @@
-<?php $level = 1; ?>
-<ul id="sitemap">
-<?php foreach ( $pages as $page ) : ?>
-<?php if ( $page['level'] < $level ) : ?>
-<?php $level--; ?>
-</ul>
-</li>
-<?php endif; ?>
-<?php if ( $page['level'] > $level ) : ?>
-<?php $level++; ?>
-<li>
-<ul>
-<?php endif; ?>
-    <li>
-        <a href="<?php echo $page['location']; ?>" title="<?php echo $page['name']; ?>"><?php echo $page['name']; ?></a>
-    </li>
-<?php endforeach; ?>
-</ul>
+<div id="sitemap">
+    <div>
+        <h4>新生須知</h4>
+        <ul>
+            <li>
+                <h5>大一必讀</h5>
+                <ul>
+                    <li>新生專區</li>
+                    <li>復學專區</li>
+                    <li>相關須知</li>
+                    <li>文件下載</li>
+                </ul>
+            </li>
+            <li>
+                <h5>系所社團</h5>
+                <ul>
+                    <li>學生組織</li>
+                    <li>各系系所</li>
+                    <li>全校社團</li>
+                </ul>
+            </li>
+            <li>
+                <h5>中大生活</h5>
+                <ul>
+                    <li>住校生活</li>
+                    <li>交通資訊</li>
+                    <li>校內店家</li>
+                    <li>營養保健</li>
+                    <li>校外活動</li>
+                </ul>
+            </li>
+            <li>
+                <h5>校園導覽</h5>
+                <ul>
+                    <li>學生宿舍</li>
+                    <li>校內外餐廳</li>
+                    <li>各系系館</li>
+                    <li>建築物</li>
+                    <li>景點介紹</li>
+                    <li>運動場所</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h4>討論交流</h4>
+        <ul>
+            <li>
+                <h5>論壇專區</h5>
+                <ul>
+                    <li>綜合論壇</li>
+                    <li>系所論壇</li>
+                    <li>社團論壇</li>
+                </ul>
+            </li>
+            <li>
+                <h5>影音專區</h5>
+                <ul>
+                    <li>微電影</li>
+                    <li>校園景觀</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h4>個人專區</h4>
+        <ul>
+            <li>
+                <h5>好友專區</h5>
+                <ul>
+                    <li>同屆同系</li>
+                    <li>不同屆同系</li>
+                    <li>同系不同屆</li>
+                </ul>
+            </li>
+            <li>
+                <h5>個人行事曆</h5>
+                <ul>
+                    <li>瀏覽行事曆</li>
+                    <li>訂閱社團</li>
+                    <li>回收桶</li>
+                </ul>
+            </li>
+            <li>
+                <h5>遊戲介面</h5>
+                <ul>
+                    <li>人物資訊</li>
+                    <li>道具欄</li>
+                    <li>任務列表</li>
+                    <li>商城購物</li>
+                    <li>成就達成</li>
+                </ul>
+            </li>
+            <li>
+                <h5>最新更新</h5>
+                <ul>
+                    <li>人物資訊</li>
+                    <li>道具欄</li>
+                    <li>任務列表</li>
+                    <li>商城購物</li>
+                    <li>成就達成</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h4>網站資訊</h4>
+        <ul>
+            <li>
+                <h5>關於我們</h5>
+            </li>
+            <li>
+                <h5>聯絡我們</h5>
+            </li>
+        </ul>
+    </div>
+</div>

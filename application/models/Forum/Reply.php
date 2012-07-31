@@ -52,4 +52,9 @@ class Reply extends CActiveRecord
         }
         return false;
     }
+    
+    public function getRepliesNumOfUser($author_id)
+    {
+        return count($this->findAll('author_id='.$author_id));
+    }
 }

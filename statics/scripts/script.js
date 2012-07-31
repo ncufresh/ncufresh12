@@ -837,6 +837,7 @@
             var scrollContainer = $('<div></div>')
                 .addClass('scroll-container')
                 .css({
+                    height: '100%',
                     overflow: 'hidden'
                 })
                 .mouseenter(function()
@@ -2507,7 +2508,7 @@
 
         $.configures.sequence = $.random(0, 1000);
 
-        $('#chat').chat();
+        if ( $('#chat').length ) $('#chat').chat();
 
         $('#header').star();
 
