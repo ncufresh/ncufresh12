@@ -1041,302 +1041,301 @@ $(document).ready(function()
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 2
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 3
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 4
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 5
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 6
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 7
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 8
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 9
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 10
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 11
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 12
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 13
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 14
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 15
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 16
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 17
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 18
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }        
+        }   ,     
         { // 19
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 20
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 21
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 22
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 23
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 24
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 25
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 26
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 27
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 28
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 29
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 30
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 31
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 32
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 33
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 34
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 35
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 36
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 37
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 38
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 39
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 40
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 41
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 42
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 43
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 44
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 45
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 46
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 47
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 48
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 49
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
+        },
         { // 50
             N:{ photo: '', nextPoint: 5 },
             E:{ photo: '', nextPoint: 6 },
             S:{ photo: '', nextPoint: 8 },
             W:{ photo: '', nextPoint: 7 }            
-        }
-        
+        }        
     ];
     
     // console.log(streetPoints);
