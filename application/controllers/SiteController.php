@@ -129,33 +129,33 @@ class SiteController extends Controller
             'online'    => Activity::getOnlineCount(),
             'browsered' => Activity::getTotalCount()
         );
-        if ( $lasttime == 0 ) // Debug only
-        {
-            $this->_data['friends'] = array(
-                array(
-                    'id'        => 1,
-                    'name'      => 'Test 1',
-                    'active'    => false
-                ),
-                array(
-                    'id'        => 2,
-                    'name'      => 'Demodemo',
-                    'active'    => true
-                ),
-                array(
-                    'id'        => 3,
-                    'name'      => 'Adminadmin',
-                    'active'    => true
-                ),
-                array(
-                    'id'        => 4,
-                    'name'      => 'WhoAmI',
-                    'active'    => false
-                )
-            );
-        }
         if ( Yii::app()->user->getIsMember() )
         {
+            if ( $lasttime == 0 ) // Debug only
+            {
+                $this->_data['friends'] = array(
+                    array(
+                        'id'        => 1,
+                        'name'      => 'Test 1',
+                        'active'    => false
+                    ),
+                    array(
+                        'id'        => 2,
+                        'name'      => 'Demodemo',
+                        'active'    => true
+                    ),
+                    array(
+                        'id'        => 3,
+                        'name'      => 'Adminadmin',
+                        'active'    => true
+                    ),
+                    array(
+                        'id'        => 4,
+                        'name'      => 'WhoAmI',
+                        'active'    => false
+                    )
+                );
+            }
             $this->_data['messages'] = Chat::getMessages($lasttime);
         }
         $this->_data['lasttime'] = TIMESTAMP;
@@ -309,97 +309,6 @@ class SiteController extends Controller
 
     public function actionSitemap()
     {
-        $path = Yii::app()->basePath . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'sitemap.xml';
-        $pages = array(
-            array(
-                'level'         => 1,
-                'name'          => '首頁',
-                'location'      => $this->createAbsoluteUrl('site/index'),
-                'modified'      => date('Y-m-d\TH:i:s+08:00'),
-                'frequency'     => 'always',
-                'priority'      => 1
-            ),
-            array(
-                'level'         => 1,
-                'name'          => '首頁2',
-                'location'      => $this->createAbsoluteUrl('site/index')
-            ),
-            array(
-                'level'         => 2,
-                'name'          => '首頁2-1',
-                'location'      => $this->createAbsoluteUrl('site/index')
-            ),
-            array(
-                'level'         => 2,
-                'name'          => '首頁2-2',
-                'location'      => $this->createAbsoluteUrl('site/index')
-            ),
-            array(
-                'level'         => 1,
-                'name'          => '首頁3',
-                'location'      => $this->createAbsoluteUrl('site/index')
-            )
-        );
-
-        if ( ! file_exists($path) )
-        {
-            $sitemap = new DOMDocument('1.0', 'UTF-8');
-            $urlset = $sitemap->createElement('urlset');
-            $urlset->setAttribute(
-                'xmlns',
-                'http://www.sitemaps.org/schemas/sitemap/0.9'
-            );
-            $urlset->setAttribute(
-                'xmlns:image',
-                'http://www.sitemaps.org/schemas/sitemap-image/1.1'
-            );
-            $urlset->setAttribute(
-                'xmlns:video',
-                'http://www.sitemaps.org/schemas/sitemap-video/1.1'
-            );
-            foreach ( $pages as $page )
-            {
-                $url = $sitemap->createElement('url');
-
-                $loc = $sitemap->createElement('loc');
-                $loc->appendChild($sitemap->createTextNode($page['location']));
-                $url->appendChild($loc);
-
-                if ( isset($page['modified']) )
-                {
-                    $lastmod = $sitemap->createElement('lastmod');
-                    $lastmod->appendChild(
-                        $sitemap->createTextNode($page['modified'])
-                    );
-                    $url->appendChild($lastmod);
-                }
-
-                if ( isset($page['frequency']) )
-                {
-                    $changefreq = $sitemap->createElement('changefreq');
-                    $changefreq->appendChild(
-                        $sitemap->createTextNode($page['frequency'])
-                    );
-                    $url->appendChild($changefreq);
-                }
-
-                if ( isset($page['priority']) )
-                {
-                    $priority = $sitemap->createElement('priority');
-                    $priority->appendChild(
-                        $sitemap->createTextNode($page['priority'])
-                    );
-                    $url->appendChild($priority);
-                }
-
-                $urlset->appendChild($url);
-            }
-            $sitemap->appendChild($urlset);
-            $sitemap->save($path);
-        }
-
-        $this->render('sitemap', array(
-            'pages'         => $pages
-        ));
+        $this->render('sitemap');
     }
 }

@@ -15,6 +15,12 @@ body
     width: 1000px;
 }
 
+h4
+{
+    padding: 0;
+    margin: 0;
+}
+
 form
 {
     margin: 0;
@@ -3167,24 +3173,51 @@ div.profile-message-reply
     margin:0px;
 }
 
-div.register
+/**
+ * Sitemap
+ */
+#sitemap ul
 {
-    background-image:url('../profile/register.png');
-    background-repeat:no-repeat ;
-    width:690px;
-    height:370px;
-    padding:25px;
-    margin:0px;
+    list-style: none;
+    padding: 0;
 }
 
-div.register button
+#sitemap div
 {
-    background-image:url('../profile/button_register.png');
-    background-repeat:no-repeat ;
-    width:45px;
-    height:22px;
-    padding:0px;
-    margin-left:25px;
+    min-height: 240px;
+    overflow: hidden;
+}
+
+#sitemap div > ul > li
+{
+    float: left;
+    width: 25%;
+}
+
+/**
+ * Register
+ */
+#register
+{
+    background: url('../profile/register.png') no-repeat;
+    height: 335px;
+    margin: 0px;
+    padding: 40px;
+    width: 660px;
+}
+
+#register button
+{
+    background: url('../profile/button_register.png');
+    height: 22px;
+    margin-left: 25px;
+    padding: 0px;
+    width: 45px;
+}
+
+#register h4
+{
+    margin: -10px 0 -5px;
 }
 
 div.register #rewrite
