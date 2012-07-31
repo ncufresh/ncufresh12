@@ -27,12 +27,13 @@ class CalendarController extends Controller
             // var_dump($qq->clubs->name);
             // var_dump($qq->subscriptions ? 1 : 0);
         // }
+        // var_dump(Event::model()->findByPk(1)->status)
         
-        var_dump( array_diff(array(
-            10,2,3
-        ),array(
-            2,3,4
-        )) );
+        // var_dump( array_diff(array(
+            // 10,2,3
+        // ),array(
+            // 2,3,4
+        // )) );
     }
 
     public function actionRecycle()
@@ -43,8 +44,11 @@ class CalendarController extends Controller
             {
                 $id = (integer)$_POST['calendar']['id'];
                 $event = Event::model()->findByPk($id);
-                $event->invisible = true;
-                if ( $event->save() ) return true;
+                if ( $event->calendar->getIsPersonal() && $event->calendar->getIsOwner() )
+                {
+                    $event->invisible = true;
+                    if ( $event->save() ) return true;
+                }
             }
             $this->_data['errors'][] = '發生錯誤！';
             return true;

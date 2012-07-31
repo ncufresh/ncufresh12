@@ -77,6 +77,11 @@ class Calendar extends CActiveRecord
         return $this->category === self::CATEGORY_PERSONAL;
     }
 
+    public function getIsOwner()
+    {
+        return $this->user_id !== 0 && $this->user_id == Yii::app()->user->getId();
+    }
+
     public function getClub($user_id)
     {
         return Club::Model()->getClubByMasterId($user_id);
