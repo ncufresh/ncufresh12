@@ -54,7 +54,7 @@ class CalendarController extends Controller
         {
             $event->name = $_POST['event']['name'];
             $event->description = $_POST['event']['description'];
-            $event->visible = 1;
+            $event->invisible = 0;
             $event->start = strtotime($_POST['event']['start']);
             $event->end = strtotime($_POST['event']['end']);
             $event->calendar_id = Calendar::Model()->find('user_id='.Yii::app()->user->getId().' AND category=1')->id;
@@ -65,6 +65,16 @@ class CalendarController extends Controller
 
     public function actionHideEvent()
     {
+        if ( Yii::app()->request->getIsAjaxRequest() )
+        {
+            if ( isset($_POST['calendar']) )
+            {
+                $id = (integer)$_POST['calendar']['id'];
+                if ( Event::model()->hide($id) ) return true;
+            }
+            $this->_data['errors'][] = '發生錯誤！';
+            return true;
+        }
     }
 
     public function actionShowEvent()
@@ -153,24 +163,33 @@ class CalendarController extends Controller
             $events = Event::model()->getEventsByIds($_POST['event_ids']);
             foreach( $events as $key => $event )
             {
-                $this->_data['events'][$key]['id'] = $event->id;
-                $this->_data['events'][$key]['category'] = $event->calendar->category;
-                $this->_data['events'][$key]['clubname'] = $event->calendar->getClubName();
                 if ( $event->calendar->getIsPersonal() )
                 {
-                    $this->_data['events'][$key]['category'] = 'PERSONAL';
+                    $this->_data['events']['個人'][] = array(
+                        'id'        => $event->id,
+                        'start'     => $event->start,
+                        'end'       => $event->end,
+                        'name'      => $event->name
+                    );
                 }
                 else if ( $event->calendar->getIsClub() )
                 {
-                    $this->_data['events'][$key]['category'] = 'CLUB';
+                    $this->_data['events'][$event->calendar->getClubName()][] = array(
+                        'id'        => $event->id,
+                        'start'     => $event->start,
+                        'end'       => $event->end,
+                        'name'      => $event->name
+                    );
                 }
                 else
                 {
-                    $this->_data['events'][$key]['category'] = 'GENERAL';
+                    $this->_data['events']['全校'][] = array(
+                        'id'        => $event->id,
+                        'start'     => $event->start,
+                        'end'       => $event->end,
+                        'name'      => $event->name
+                    );
                 }
-                $this->_data['events'][$key]['start'] = $event->start;
-                $this->_data['events'][$key]['end'] = $event->end;
-                $this->_data['events'][$key]['name'] = $event->name;
                 // $this->_data['events'][$key]['description'] = $event->description;
             }
             $this->_data['token'] = Yii::app()->security->getToken();
@@ -185,7 +204,6 @@ class CalendarController extends Controller
                 $this->_data['events'][$counter]['end'] = $event->end;
                 $counter++;
             }
-
             foreach ( $user->subscriptions as $calendar )
             {
                 foreach( $calendar->events as $event )

@@ -44,9 +44,10 @@ class Event extends CActiveRecord
                 'calendar_id'
             ),
             'status'    => array(
-                self::BELONGS_TO,
+                self::HAS_ONE,
                 'Status',
-                'id'
+                'event_id',
+                'on' => 'status.user_id IS NULL OR status.user_id=' . Yii::app()->user->id
             )
         );
     }
@@ -120,6 +121,21 @@ class Event extends CActiveRecord
         ))->findAll(array(
             'condition' => 'invisible = 0'
         ));
+    }
+
+    public function hide($id)
+    {
+        $event = $this->with('status')->findByPk($id);
+        if ( $event )
+        {
+            $status = $this->status;
+            if ( ! $status ) $status = new Status();
+            $status->event_id = $id;
+            $status->user_id = Yii::app()->user->getId();
+            $status->done = true;
+            if ( $status->save() ) return true;
+        }
+        return false;
     }
 
     public function afterFind()
