@@ -22,7 +22,7 @@ jQuery(document).ready(function()
                 $.configures.token = response.token;
                 if ( $.errors(response.errors) )
                 {
-                    $(self).parents('ul').remove();
+                    $(self).parents('li').remove();
                 }
             }
         );
