@@ -5,6 +5,7 @@
 <?php foreach ( $missions as $mission ) : ?>
     <li>
         <a href="#<?php echo $mission->id; ?>"><?php echo $mission->name; ?></a>
+        <span> <?php echo $mission->content; ?></span>
     </li>
 <?php endforeach; ?>
 <ul>
