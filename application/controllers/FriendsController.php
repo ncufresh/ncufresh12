@@ -148,10 +148,10 @@ class FriendsController extends Controller
             {   
                 $usergroup = new UserGroup();
                 $exist = $usergroup->isExist($friendid, $id);
-                if ( $exist && $usergroup->openMember($friendid, $id))
+                if ( $exist && $usergroup->openMember($friendid, $id) )
                 {
                 }
-                else if ( ! $exist && $usergroup->AddNewMember($friendid, $id))
+                else if ( ! $exist && $usergroup->AddNewMember($friendid, $id) )
                 {
                 }
                 else
@@ -191,7 +191,6 @@ class FriendsController extends Controller
         {
             if ( ! Group::model()->addNewGroup($this->userid, $_POST['group-name'], $_POST['group-description'], $_POST['friends']) )
             {
-                echo '群組沒有存成功喔';
             }
             $this->redirect(array('friends/friends'));
         }
