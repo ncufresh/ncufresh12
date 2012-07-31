@@ -1189,10 +1189,12 @@
     var getToday = function()
     {
         var date = new Date();
+        var current_year = date.getFullYear();
         var current_day = date.getDate();
         var current_month = date.getMonth();
+        var calendar_year = $(this).data('options').year;
         var calendar_month = $(this).data('options').month;
-        if ( current_month == calendar_month )
+        if ( current_month == calendar_month && current_year ==  calendar_year )
         {
             var tds = $(this).children('tbody').find('td');
             for( var key in tds )
@@ -1255,7 +1257,8 @@
         }
         for( var time = start; time <= end; time+=86400 )
         {
-            if( this.data('options').month ==  date(time).getMonth() )
+            if( this.data('options').month ==  date(time).getMonth() 
+                && this.data('options').year == date(time).getFullYear() )
             {
                 days[days.length] = date(time).getDate();
             }
@@ -1337,7 +1340,16 @@
                     for ( var key2 in data.events[key] )
                     {
                         $('<li></li>')
-                            .text(data.events[key][key2].name)
+                            .append(
+                                $('<a></a>')
+                                    .text(data.events[key][key2].name)
+                                    .attr(
+                                        'href', 
+                                        $.configures
+                                            .calendarEventUrl
+                                            .replace(':id', data.events[key][key2].id)
+                                    )
+                            )
                             .append(
                                 $('<a></a>')
                                     .addClass('calendar-hide-event')
@@ -1399,7 +1411,9 @@
             linkClick:   function(){ return false; },
             leftClick:   function(){ return false; },
             rightClick:  function(){ return false; },
-            dayClick:    function(){}
+            dayClick:    function(event){},
+            dayEnter:    function(event){},
+            dayLeave:    function(event){}
         }, options);
 
         options.month -= 1;
@@ -1458,7 +1472,12 @@
             var td = $('<td></td>');
             if ( position>=date.getDay() )
             {
-                td.text(day).click(options.dayClick).data('day', day);
+                td
+                    .text(day)
+                    .click(options.dayClick)
+                    .mouseenter(options.dayEnter)
+                    .mouseleave(options.dayLeave)
+                    .data('day', day);
                 if( (new Date()).getDate() == day 
                     && (new Date()).getMonth() == options.month
                     && options.today)
@@ -1582,6 +1601,13 @@
         var current_year = (new Date()).getFullYear();
         var current_month = (new Date()).getMonth() + 1;
         var container = $('<div></div>').appendTo(this);
+        var prompt = $('<ul></ul>')
+            .addClass('calendar-prompt')
+            .css({
+                position: 'absolute',
+                display:  'none'
+            }).appendTo('body');
+        var mousemove
         var geneator = function(year, month)
         {
             if ( calendar ) calendar.remove();
@@ -1589,6 +1615,7 @@
                 year: year,
                 month: month,
                 left: true,
+                right: true,
                 leftClick: function()
                 {
                     if ( --month < 1 )
@@ -1598,7 +1625,6 @@
                     }
                     geneator(year, month);
                 },
-                right: true,
                 rightClick: function()
                 {
                     if ( ++month > 12 )
@@ -1608,13 +1634,33 @@
                     }
                     geneator(year, month);
                 },
-                dayClick: function(){
+                dayClick: function()
+                {
                     $('#personal-calendar .date').text(
                         $(calendar).data('options').year + '.'
                         + ($(calendar).data('options').month+1) + '.'
                         + $(this).text()
                     );
                     $(calendar).updateEventsList($(this).data('cal_events'));
+                },
+                dayEnter: function(event)
+                {
+                    var events = $(this).data('cal_events');
+                    if( events.length > 0 )
+                    {
+                        for( var key in $(this).data('cal_events') )
+                        {
+                            $('<li></li>').text(events[key].name).appendTo(prompt);
+                        }
+                        prompt.css({
+                            top: event.pageY,
+                            left: event.pageX
+                        }).show();
+                    }
+                },
+                dayLeave: function()
+                {
+                    prompt.empty().hide();
                 }
             });
             calendar.appendTo(container);
@@ -2461,7 +2507,7 @@
 
         $.configures.sequence = $.random(0, 1000);
 
-        $('#chat').chat();
+        if ( $('#chat').length ) $('#chat').chat();
 
         $('#header').star();
 

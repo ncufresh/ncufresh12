@@ -118,8 +118,6 @@ class ItemBag extends CActiveRecord
             else
                 $item_to_equip->equipped = 0; //已裝備狀態改成未裝備
             $item_to_equip->save();
-            echo $item_category;
-            
             
             $change = new Character();
             $character_to_equip = $change->findByPk($user_id);
@@ -162,6 +160,17 @@ class ItemBag extends CActiveRecord
         }
         else
         return false; //找不到此物品 無法裝備
-
+    }
+    protected function beforeSave()
+    {
+        if ( parent::beforeSave() )
+        {
+            if ( $this->getIsNewRecord() )
+            {
+                $this->created = TIMESTAMP; //寫入獲得時間
+            }
+            return true;
+        }
+        return false;
     }
 }

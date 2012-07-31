@@ -1,4 +1,25 @@
-﻿<form id="calendar-create-form" enctype="multiprt/form-data" action="<?php echo Yii::app()->createUrl('calendar/createevent'); ?>" method="POST">
+﻿<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
+<script>
+(function($){
+    //$( '#form-create-content' ).ckeditor();
+    $(document).ready(function (){
+        $('.calendar-cancel-button').click(function()
+        {
+            $.confirm({
+                message: '確定取消編輯此篇文章？',
+                confirmed: function(result)
+                {
+                    if ( result ) window.location = '<?php echo Yii::app()->createUrl('calendar/view');?>';
+                    return false;
+                }
+            });
+            return false;
+        });
+    })
+})(jQuery);
+</script>
+<?php $this->endWidget();?>
+<form id="calendar-create-form" enctype="multiprt/form-data" action="<?php echo Yii::app()->createUrl('calendar/createevent'); ?>" method="POST">
 <div class="form-top">
     <p id="calendar-create-text-number-check">新增事件</p>
     <dl>

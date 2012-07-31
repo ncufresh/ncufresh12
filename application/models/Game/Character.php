@@ -205,10 +205,10 @@ class Character extends CActiveRecord
         $parts = array(
             '皮膚'    => 'skin',
             '臉部'    => 'eyes',
-            '頭髮'    => 'hair',
             '鞋子'    => 'shoes',
             '褲子'    => 'pants',
             '衣服'    => 'clothes',
+            '頭髮'    => 'hair',
             '其他'    => 'others'
         );
         $avatar = array_fill_keys(array_keys($parts), '../images/unknown.png');
@@ -245,5 +245,20 @@ class Character extends CActiveRecord
         if( $character->others !== null)
             $price = $price + $character->others->price;
         return $price;
+    }
+
+    protected function beforeSave()
+    {
+        if ( parent::beforeSave() )
+        {
+            if ( $this->getIsNewRecord() )
+            {
+                $this->experience = 1; //一開始使用者經驗設為1
+                $this->money = 25000; //一開始使用者金錢設為25000
+                $this->total_money = 35000; //一開始使用者總金錢設為35000
+            }
+            return true;
+        }
+        return false;
     }
 }

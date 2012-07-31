@@ -6,28 +6,28 @@
 }
 #administration
 {
-    left: 360px;
-    top: 230px;
+    left: 315px;
+    top: 288px;
 }
 #all-teach
 {
-    left: 400px;
-    top: 400px;
+    left: 345px;
+    top: 100px;
 }
 #baseball-softball
 {
-    left: 450px;
-    top: 170px;
+    left: 268px;
+    top: 140px;
 }
 #badminton
 {
-    left:200px;
-    top: 50px;
+    left: 210px;
+    top: 72px;
 }
 #big-tree
 {
-    left: 200px;
-    top: 180px;
+    left: 184px;
+    top: 268px;
 }
 #back-div
 {
@@ -38,23 +38,23 @@
 }
 #backdoor
 {
-    left: 100px;
-    top: 200px;
+    left: -18px;
+    top: 184px;
 }
 #boy-dormitory-3
 {
-    left: 100px;
-    top: 200px;
+    left: 0px;
+    top: 262px;
 }
 #boy-dormitory-5
 {
-    left: 200px;
-    top: 200px;
+    left: 181px;
+    top: 383px;
 }
 #boy-dormitory-6
 {
-    left: 30px;
-    top: 250px;
+    left: 200px;
+    top: 462px;
 }
 #boy-dormitory-9
 {
@@ -63,13 +63,13 @@
 }
 #boy-dormitory-11
 {
-    left: 300px;
-    top: 30px;
+    left: 35px;
+    top: 354px;
 }
 #boy-dormitory-12
 {
-    left: 260px;
-    top: 120px;
+    left: 489px;
+    top: 127px;
 }
 #boy-dormitory-1
 {
@@ -107,8 +107,8 @@
 }
 #computer-center
 {
-    left: 450px;
-    top: 110px;
+    left: 428px;
+    top: 132px;
 }
 #CottageMuffin
 {
@@ -124,33 +124,33 @@
 }
 #calligraphy
 {
-    left: 330px;
-    top: 230px;
+    left: 317px;
+    top: 283px;
 }
 #elephant-element
 {
-    left: 430px;
-    top: 200px;
+    left: 435px;
+    top: 257px;
 }
 #engineering-1
 {
-    left: 160px;
-    top: 140px;
+    left: 140px;
+    top: 214px;
 }
 #engineering-2
 {
-    left: 120px;
-    top: 100px;
+    left: 111px;
+    top: 174px;
 }
 #engineering-3
 {
     left: 75px;
-    top: 60px;
+    top: 105px;
 }
 #engineering-5
 {
     left: 0px;
-    top: 50px;
+    top: 75px;
 }
 #experience-personally
 {
@@ -161,43 +161,43 @@
 }
 #flower-brook
 {
-    left: 180px;
-    top: 100px;
+    left: 153px;
+    top: 175px;
 }
 #girl-dormitory-1234
 {
-    left: 100px;
-    top: 390px;
+    left: 59px;
+    top: 180px;
 }
 #girl-dormitory-5
 {
-    left: 200px;
-    top: 390px;
+    left: 76px;
+    top: 230px;
 }
 #gymnasium
 {
-    left: 100px;
-    top: 238px;
+    left: 167px;
+    top: 165px;
 }
 #history-gallery
 {
-    left: 200px;
-    top: 300px;
+    left: 255px;
+    top: 413px;
 }
 #hakka
 {
-    left: 350px;
-    top: 350px;
+    left: 310px;
+    top: 4px;
 }
 #international-dormitory
 {
-    left: 20px;
-    top: 100px;
+    left: 133px;
+    top: 311px;
 }
 #liberal-arts
 {
-    left: 400px;
-    top: 150px;
+    left: 381px;
+    top: 229px;
 }
 #lover-trail
 {
@@ -214,17 +214,17 @@
 #mathematics
 {
     left: 400px;
-    top: 60px;
+    top: 100px;
 }
 #management
 {
-    left: 350px;
-    top: 300px;
+    left: 410px;
+    top: 135px;
 }
 #midnight-food
 {
-    left: 50px;
-    top: 340px;
+    left: 12px;
+    top: 291px;
 }
 #mapPicture
 {
@@ -235,12 +235,12 @@
 }
 #new-postgraduate
 {
-    left: 470px;
-    top: 180px;
+    left: 433px;
+    top: 162px;
 }
 #ncu-lake
 {
-    left: 310px;
+    left: 292px;
     top: 60px;
 }
 #other-picture-container
@@ -251,23 +251,23 @@
 }
 #playground
 {
-    left: 300px;
-    top: 150px;
+    left: 50px;
+    top: 74px;
 }
 #pine-bookcourt
 {
-    left: 460px;
-    top: 150px;
+    left: 441px;
+    top: 161px;
 }
 #pine-bookcourt2
 {
-    left: 270px;
-    top: 170px;
+    left: 242px;
+    top: 214px;
 }
 #pine-wind
 {
-    left: 40px;
-    top: 160px;
+    left: 34px;
+    top: 205px;
 }
 #playground
 {
@@ -276,8 +276,8 @@
 }
 #photonics
 {
-    left: 280px;
-    top: 400px;
+    left: 241px;
+    top: 36px;
 }
 #picture-other-2
 {
@@ -288,38 +288,38 @@
 }
 #rock-climbing
 {
-    left:300px;
-    top: 260px;
+    left: 165px;
+    top: 0px;
 }
 #skating
 {
-    left: 140px;
-    top: 350px;
+    left: 245px;
+    top: 100px;
 }
 #swimming-pool
 {
-    left: 0px;
+    left: 252px;
     top: 0px;
 }
 #stadium
 {
-    left: 300px;
-    top: 10px;
+    left: 153px;
+    top: 84px;
 }
 #science-1
 {
-    left: 220px;
-    top: 220px;
+    left: 216px;
+    top: 312px;
 }
 #science-2
 {
-    left: 330px;
-    top: 60px;
+    left: 307px;
+    top: 72px;
 }
 #science-3
 {
-    left: 360px;
-    top: 30px;
+    left: 362px;
+    top: 65px;
 }
 #science-4
 {
@@ -329,17 +329,17 @@
 #science-5
 {
     left: 450px;
-    top: 50px;
+    top: 67px;
 }
 #stepping-cloud
 {
-    left: 150px;
-    top: 230px;
+    left: 135px;
+    top: 289px;
 }
 #science-teach
 {
-    left:20px;
-    top: 360px;
+    left: 411px;
+    top: 0px;
 }
 #select-picture-container
 {
@@ -364,8 +364,8 @@
 }
 #tennis
 {
-    left: 420px;
-    top: 300px;
+    left: 186px;
+    top: 20px;
 }
 #text-container
 {
@@ -375,8 +375,8 @@
 }
 #turtle-pond
 {
-    left: 0px;
-    top: 0px;
+    left: 500px;
+    top: 238px;
 }
 /* #text-region
 {
@@ -394,8 +394,8 @@
 }
 #yun-step
 {
-    left: 0px;
-    top: 180px;
+    left: 207px;
+    top: 258px;
 }
 .arrow
 {
@@ -816,6 +816,7 @@
 
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
+alert('運動放 藝人堂(健身房、羽球館、溜冰場) 游泳池 操場(攀岩) 棒壘球場  4個 然後網球文檔不放');
 $(document).ready(function()
 {
     $( '#experience-personally' ).mousedown(function()

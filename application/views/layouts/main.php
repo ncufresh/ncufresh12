@@ -64,16 +64,16 @@
             <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" title="大一必讀">大一必讀</a>
             <ul>
                 <li>
-                    <a href="#" title="新生區">新生區</a>
+                    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>#freshman" title="新生區">新生區</a>
                 </li>
                 <li>
-                    <a href="#" title="復學區">復學區</a>
+                    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>#reschool" title="復學區">復學區</a>
                 </li>
                 <li>
-                    <a href="#" title="相關須知">相關須知</a>
+                    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>#notice" title="相關須知">相關須知</a>
                 </li>
                 <li>
-                    <a href="#" title="文件下載">文件下載</a>
+                    <a href="<?php echo Yii::app()->createUrl('readme/download'); ?>" title="文件下載">文件下載</a>
                 </li>
             </ul>
         </li>
@@ -85,19 +85,19 @@
             <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>" title="中大生活">中大生活</a>
             <ul>
                 <li>
-                    <a href="#" title="住在中大">住在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/live'); ?>#live" title="住在中大">住在中大</a>
                 </li>
                 <li>
-                    <a href="#" title="健康中大">健康中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/health'); ?>#health" title="健康中大">健康中大</a>
                 </li>
                 <li>
-                    <a href="#" title="行在中大">行在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/traffic'); ?>#traffic" title="行在中大">行在中大</a>
                 </li>
                 <li>
-                    <a href="#" title="玩在中大">玩在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/play'); ?>#play" title="玩在中大">玩在中大</a>
                 </li>
                 <li>
-                    <a href="#" title="活在中大">活在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/school'); ?>#school" title="活在中大">活在中大</a>
                 </li>
             </ul>
         </li>
@@ -116,13 +116,13 @@
             <a href="<?php echo Yii::app()->createUrl('forum/index'); ?>" title="論壇專區">論壇專區</a>
             <ul>
                 <li>
-                    <a href="#" title="綜合論壇">綜合論壇</a>
+                    <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 1));?>" title="綜合論壇">綜合論壇</a>
                 </li>
                 <li>
-                    <a href="#" title="系所論壇">系所論壇</a>
+                    <a href="<?php echo Yii::app()->createUrl('forum/forumlist');?>" title="系所論壇">系所論壇</a>
                 </li>
                 <li>
-                    <a href="#" title="社團論壇">社團論壇</a>
+                    <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 2));?>" title="社團論壇">社團論壇</a>
                 </li>
             </ul>
         </li>
@@ -134,13 +134,13 @@
             <a href="<?php echo Yii::app()->createUrl('club/index'); ?>" title="系所社團">系所社團</a>
             <ul>
                 <li>
-                    <a href="#" title="學生組織">學生組織</a>
+                    <a href="<?php echo Yii::app()->createUrl('club/student'); ?>" title="學生組織">學生組織</a>
                 </li>
                 <li>
-                    <a href="#" title="系所">系所</a>
+                    <a href="<?php echo Yii::app()->createUrl('club/department'); ?>" title="系所">系所</a>
                 </li>
                 <li>
-                    <a href="#" title="社團">社團</a>
+                    <a href="<?php echo Yii::app()->createUrl('club/club'); ?>" title="社團">社團</a>
                 </li>
             </ul>
         </li>
@@ -263,7 +263,7 @@
             multimediaYoutubeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('multimedia/watch', array('v' => ':v')); ?>'),
             newsIndexUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>'),
             registerUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>'),
-            calendarEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvent', array('id'=> ':id')); ?>'),
+            calendarEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/event', array('id'=> ':id')); ?>'),
             calendarEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvents'); ?>'),
             calendarHideEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/hideEvent'); ?>'),
             buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),

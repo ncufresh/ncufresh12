@@ -41,6 +41,23 @@ class Calendar extends CActiveRecord
                 self::BELONGS_TO,
                 'User',
                 'user_id'
+            ),
+            'clubs' => array(
+                self::HAS_ONE,
+                'Club',
+                '',
+                'on' => 'clubs.master_id = user_id',
+                'condition' => 't.category=0'
+            ),
+            'subscriptions' => array(
+                self::HAS_ONE,
+                'Subscription',
+                'calendar_id',
+                'on' => 'subscriptions.user_id = :id',
+                'params'    => array(
+                    ':id'   => Yii::app()->user->getId()
+                ),
+                
             )
         );
     }
@@ -60,9 +77,29 @@ class Calendar extends CActiveRecord
         return $this->category === self::CATEGORY_PERSONAL;
     }
 
+    public function getIsOwner()
+    {
+        return $this->user_id !== 0 && $this->user_id == Yii::app()->user->getId();
+    }
+
     public function getClub($user_id)
     {
         return Club::Model()->getClubByMasterId($user_id);
+    }
+
+    public function getClubs()
+    {
+        return $this->with(array(
+            'clubs' => array(
+                'select'    => 'name',
+                'condition' => 'clubs.master_id != 0'
+            ),
+            'subscriptions' => array(
+                'select'    => 'invisible'
+            )
+        ))->findAll(array(
+            'select'    => 'id',
+        ));
     }
 
     public function getPersonalCalendar()
@@ -87,6 +124,22 @@ class Calendar extends CActiveRecord
         ));
     }
 
+    public function getClubCalendarByUserId($user_id)
+    {
+        return $this->find(array(
+            'condition' => 'user_id = :user_id AND category = :category',
+            'params' => array(
+                ':user_id' => $user_id,
+                ':category' => self::CATEGORY_PUBLIC,
+            )
+        ));
+    }
+    
+    public function getClubCalendarsSubscriptionStatus()
+    {
+        
+    }
+    
     public function getGeneralCalendar()
     {
         return $this->with('events')->find(array(

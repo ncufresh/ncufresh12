@@ -60,51 +60,50 @@ class ForumController extends Controller
             'list'      => Category::Model()->getForumLists(),
         ));
     }
-    
+
     public function actionForum($fid, $sort = 'create', $category = 0, $page = 1)
     {
         $forum = Category::model()->findByPk($fid);
         // content of each forum
-        // [not yet] 傳入是否為admin 用於判斷是否顯示置頂checkbox及刪除文章選項
-        // if ( ! Yii::app()->request->getIsAjaxRequest() )
-        // {
-            $this->render('forum', array(
-                'fid'               => $fid,
-                'sort'              => $sort,
-                'current_category'  => $category,
-                'model'             => Article::getArticlesSort($fid, $sort, $category, $page, self::ARTICLES_PER_PAGE),
-                'category'          => $forum,
-                'page_status'       => Article::getPageStatus($page, self::ARTICLES_PER_PAGE, $fid, $category),
-                'is_master'         => $forum->getIsMaster(),
-            ));
+        $this->render('forum', array(
+            'fid'               => $fid,
+            'sort'              => $sort,
+            'current_category'  => $category,
+            'model'             => Article::getArticlesSort($fid, $sort, $category, $page, self::ARTICLES_PER_PAGE),
+            'category'          => $forum,
+            'page_status'       => Article::getPageStatus($page, self::ARTICLES_PER_PAGE, $fid, $category)
+        ));
     }
-    
+
     public function actionCreate($fid)
     {
         // add new article
-        
         if ( isset($_POST['forum']) )
         {
             $article = new Article();
             $article->attributes = $_POST['forum'];
-            if(Category::model()->findByPk($fid)->getIsMaster())
+            if ( Category::model()->findByPk($fid)->getIsMaster() )
+            {
                 $article->sticky = $_POST['forum']['sticky'];
+            }
             if ( $article->validate() && $article->save() )
             {
                 $this->redirect($article->url);
             }
         }
-        
-        if(Category::model()->findByPk($fid) != NULL)
+
+        if ( Category::model()->findByPk($fid) )
         {
             $forum = Category::model()->findByPk($fid);
             $this->render('create',array(
                 'fid'       => $fid,
-                'category'  => $forum,
-                'is_master' =>  $forum->getIsMaster(),
+                'category'  => $forum
             ));
         }
-        else throw new Exception('The forum is not exist.');
+        else
+        {
+            throw new Exception('The forum is not exist.');
+        }
     }
 
     public function actionView($fid, $id)
@@ -162,7 +161,7 @@ class ForumController extends Controller
         {
             $aid = $_POST['delete'];
             $article_to_be_del = Article::Model()->findByPk($aid);
-            if ( !empty($article_to_be_del) )
+            if ( ! empty($article_to_be_del) )
             {
                 $article_to_be_del->invisible = 1;
                 $article_to_be_del->save();

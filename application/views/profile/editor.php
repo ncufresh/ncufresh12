@@ -15,15 +15,27 @@
                 <input type="text" name="profile[nickname]" value="<?php echo $user->profile->nickname; ?>" />
             </li>
             <li>
+                性別:
+<?php if ( $user->profile->gender == 0 ): ?>
+                男孩兒
+<?php else:?>
+                女孩兒
+<?php endif; ?>    
+                <input type="hidden" name="profile[gender]" value="<?php echo $user->profile->gender; ?>"  />
+            </li>
+            <li>
                 <span>帳號:</span>
                 <input type="text" name="register[username]" value="<?php echo $user->username; ?>" />
                 <input type="hidden" name="register[password]" value="<?php echo $user->password; ?>"  />
+                <input type="hidden" name="register[confirm]" value="<?php echo $user->password; ?>"  />
             </li>
             <li>
-                <span>系所:</span><?php echo $user->profile->department->abbreviation; ?>
+                <span>系所:</span><?php echo $user->profile->mydepartment->abbreviation; ?>
+                <input type="hidden" name="profile[department]" value="<?php echo $user->profile->mydepartment->abbreviation; ?>"  />
             </li>
             <li>
                 <span>系級:</span><?php echo $user->profile->grade; ?>年級
+                <input type="hidden" name="profile[grade]" value="<?php echo $user->profile->grade; ?>"  />
             </li>
             <li>
                 <span>畢業高中:</span>

@@ -30,4 +30,22 @@ class Subscription extends CActiveRecord
     {
         return '{{calendar_subscriptions}}';
     }
+    
+    public function beforesave()
+    {
+        if ( parent::beforeSave() )
+        {
+            if ( $this->getIsNewRecord() )
+            {
+                $this->user_id = Yii::app()->user->getId();
+            }
+            return true;
+        }
+        return false;
+    }
+    
+    public function getSubscribedCalendars()
+    {
+        return $this->findAll('invisible=0 AND user_id='.Yii::app()->user->getId());
+    }
 }

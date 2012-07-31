@@ -13,46 +13,46 @@ jQuery(document).ready(function()
         ); 
         return false;
     }
-    
-    jQuery('.fresh-menu').mouseenter(function()
+
+    if( $('.readme-menu p').length == 1 )
     {
-        if( $('#read-fresh-menu a').length == 0 )
+        jQuery('.readme-menu-index li').each(function()
         {
-            jQuery('#readme-index1 li').each(function()
-            {
-                var title = $('<a></a>')
-                        .text($(this).text())
-                        .attr('href', '#')
-                        .attr('tab', $(this).attr('tab'))
-                        .attr('page', $(this).attr('page'))
-                        .click(getTabContent);
-                $('#read-fresh-menu').append(title);
-            });
-            $('#read-fresh-menu > a').first().click();
-        }
-    });
-    
+            var title = $('<p></p>')
+                    .text($(this).text())
+                    .attr('href', '#')
+                    .attr('tab', $(this).attr('tab'))
+                    .attr('page', $(this).attr('page'))
+                    .click(getTabContent);
+            $('.readme-menu').append(title);
+        });
+        $('.readme-menu > p').eq(1).click();
+    }
+
     jQuery('#readme-logo1').click(function()
     {
         $('.fresh-inner:hidden').fadeIn('slow');
         $('.reschool-inner:visible').fadeOut('fast');
         $('.notice-inner:visible').fadeOut('fast');
+        return false;
     });
-    
+
     jQuery('#readme-logo2').click(function()
     {
         $('.reschool-inner:hidden').fadeIn('slow');
         $('.notice-inner:visible').fadeOut('fast');
         $('.fresh-inner:visible').fadeOut('fast');
+        return false;
     });
-    
+
     jQuery('#readme-logo3').click(function()
     {
         $('.notice-inner:hidden').fadeIn('slow');
         $('.reschool-inner:visible').fadeOut('fast');
         $('.fresh-inner:visible').fadeOut('fast');
+        return false;
     });
-    
+
     jQuery('.readme-menu').mouseenter(function()
     {
         $(this).stop().animate(
@@ -60,7 +60,7 @@ jQuery(document).ready(function()
             left : '0px'
         },500);
     });
-    
+
     jQuery('.readme-menu').mouseleave(function()
     {
         $(this).stop().animate(
@@ -68,5 +68,20 @@ jQuery(document).ready(function()
             left : '-187px'
         },500);
     });
-    
+
+        switch(window.location.hash.replace('#', ''))
+    {
+        case 'freshman' :
+            jQuery('#readme-logo1').click();
+        break;
+
+        case 'reschool' :
+            jQuery('#readme-logo2').click();
+        break;
+
+        case 'notice' :
+            jQuery('#readme-logo3').click();
+        break;
+    }
+
 });
