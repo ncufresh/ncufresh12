@@ -1189,10 +1189,12 @@
     var getToday = function()
     {
         var date = new Date();
+        var current_year = date.getFullYear();
         var current_day = date.getDate();
         var current_month = date.getMonth();
+        var calendar_year = $(this).data('options').year;
         var calendar_month = $(this).data('options').month;
-        if ( current_month == calendar_month )
+        if ( current_month == calendar_month && current_year ==  calendar_year )
         {
             var tds = $(this).children('tbody').find('td');
             for( var key in tds )
@@ -1255,7 +1257,8 @@
         }
         for( var time = start; time <= end; time+=86400 )
         {
-            if( this.data('options').month ==  date(time).getMonth() )
+            if( this.data('options').month ==  date(time).getMonth() 
+                && this.data('options').year == date(time).getFullYear() )
             {
                 days[days.length] = date(time).getDate();
             }
