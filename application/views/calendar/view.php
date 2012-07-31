@@ -1,13 +1,3 @@
-<style type="text/css">
-table
-{
-    border-collapse: collapse;
-}
-tbody td
-{
-    cursor: pointer;
-}
-</style>
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
     $('#personal-calendar .left').calendar();
@@ -16,14 +6,20 @@ tbody td
 <?php $this->endWidget();?>
 <div id="personal-calendar">
     <div class="left"></div>
-    <div class="date"></div>
+    <h3 class="date"></h3>
     <div class="right">
-        <span>全校</span>
-        <div class="general"></div>
-        <span>個人</span>
-        <div class="personal"></div>
-        <span>社團</span>
-        <div class="clubs"></div>
+        <div>
+            <h4>全校</h4>
+            <ul class="general"></ul>
+        </div>
+        <div>
+            <h4>個人</h4>
+            <ul class="personal"></ul>
+        </div>
+        <div>
+            <h4>社團</h4>
+            <ul class="clubs"></ul>
+        </div>
     </div>
     <a href="<?php echo Yii::app()->createUrl('calendar/createevent');?>">新增</a>
     <a href="<?php echo Yii::app()->createUrl('calendar/subscript');?>">訂閱</a>
