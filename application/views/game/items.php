@@ -118,22 +118,5 @@
         }
         echo '</table>';
         echo '</br>';
-        
-        $counter_two=1;
-        $items_bag = $character_data->getItemsByCategory(1);
-        echo '<table width="100%" border="1">';
-        echo '<th colspan="1">您目前的頭髮 <b> (' . sizeof($items_bag) . ')</b></th>';
-
-        foreach ($items_bag as $row)
-        {
-            echo '<tr><td>';
-            echo $counter_two.'>';
-            echo $row->item_id.'><a href="'.Yii::app()->createUrl('game/equip', array('id'=>$row->item_id)).'">'.$row->translation->name.'</a>>'.Yii::app()->format->datetime($row->created);
-            $counter_two++;
-            // echo '<td>'.Yii::app()->format->datetime($row->created).'</td>';
-            echo '</td></tr>';
-        }
-        echo '</table>';
-        echo '</br>';
 
 ?>

@@ -29,7 +29,13 @@ class Calendar extends CActiveRecord
             'events' => array(
                 self::HAS_MANY,
                 'Event',
-                'calendar_id'
+                'calendar_id',
+                'condition' => 'status.done IS NULL OR status.done = 0',
+                'with' => array(
+                    'status' => array(
+                        'joinType'  => 'LEFT JOIN'
+                    )
+                )
             ),
             'author' => array(
                 self::BELONGS_TO,
