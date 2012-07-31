@@ -177,5 +177,28 @@ jQuery(document).ready(function()
             height: '0px'
         },500);
     });
+    
+    switch(window.location.hash.replace('#', ''))
+    {
+        case 'play' :
+            jQuery('#life-play').mouseenter();
+        break;
+
+        case 'traffic' :
+            jQuery('#life-traffic').mouseenter();
+        break;
+
+        case 'school' :
+            jQuery('#life-school').mouseenter();
+        break;
+
+        case 'live' :
+            jQuery('#life-live').mouseenter();
+        break;
+
+        case 'health' :
+            jQuery('#life-health').mouseenter();
+        break;
+    }
 
 });

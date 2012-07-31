@@ -64,16 +64,16 @@
             <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" title="大一必讀">大一必讀</a>
             <ul>
                 <li>
-                    <a href="#" title="新生區">新生區</a>
+                    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>#freshman" title="新生區">新生區</a>
                 </li>
                 <li>
-                    <a href="#" title="復學區">復學區</a>
+                    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>#reschool" title="復學區">復學區</a>
                 </li>
                 <li>
-                    <a href="#" title="相關須知">相關須知</a>
+                    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>#notice" title="相關須知">相關須知</a>
                 </li>
                 <li>
-                    <a href="#" title="文件下載">文件下載</a>
+                    <a href="<?php echo Yii::app()->createUrl('readme/download'); ?>" title="文件下載">文件下載</a>
                 </li>
             </ul>
         </li>
@@ -85,19 +85,19 @@
             <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>" title="中大生活">中大生活</a>
             <ul>
                 <li>
-                    <a href="#" title="住在中大">住在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/live'); ?>#live" title="住在中大">住在中大</a>
                 </li>
                 <li>
-                    <a href="#" title="健康中大">健康中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/health'); ?>#health" title="健康中大">健康中大</a>
                 </li>
                 <li>
-                    <a href="#" title="行在中大">行在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/traffic'); ?>#traffic" title="行在中大">行在中大</a>
                 </li>
                 <li>
-                    <a href="#" title="玩在中大">玩在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/play'); ?>#play" title="玩在中大">玩在中大</a>
                 </li>
                 <li>
-                    <a href="#" title="活在中大">活在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/school'); ?>#school" title="活在中大">活在中大</a>
                 </li>
             </ul>
         </li>
