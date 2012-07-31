@@ -21,12 +21,13 @@ class CalendarController extends Controller
 
     public function actionClub()
     {
-        foreach ( Calendar::model()->getClubs() as $qq )
-        {
-            var_dump($qq->id);
-            var_dump($qq->clubs->name);
-            var_dump($qq->subscriptions ? 1 : 0);
-        }
+        // foreach ( Calendar::model()->getClubs() as $qq )
+        // {
+            // var_dump($qq->id);
+            // var_dump($qq->clubs->name);
+            // var_dump($qq->subscriptions ? 1 : 0);
+        // }
+        // var_dump(Event::model()->findByPk(1)->status)
     }
 
     public function actionRecycle()
