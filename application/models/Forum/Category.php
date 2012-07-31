@@ -18,7 +18,7 @@ class Category extends CActiveRecord
             'article_categories' => array(
                 self::MANY_MANY,
                 'ArticleCategory',
-                'forum_forum2category(fid, cid)'
+                'forum_category_relations(forum_id, category_id)'
             ),
         );
     }
@@ -30,9 +30,9 @@ class Category extends CActiveRecord
         ));
     }
     
-    public function getIsMaster($fid)
+    public function getIsMaster()
     {
-        if( (Yii::app()->user->getId() != 0 && $this->find('id='.$fid)->master_id == Yii::app()->user->getId()) || Yii::app()->user->getIsAdmin() )
+        if( (Yii::app()->user->getId() != 0 && $this->master_id == Yii::app()->user->getId()) || Yii::app()->user->getIsAdmin() )
             return true;
         else
             return false;

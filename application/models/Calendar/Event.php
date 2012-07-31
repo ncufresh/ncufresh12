@@ -11,9 +11,8 @@ class Event extends CActiveRecord
      * @var integer $start
      * @var integer $end
      * @var integer $created
-     * @var boolean $visible
+     * @var boolean $invisible
      */
-
     public function tableName()
     {
         return '{{calendar_events}}';
@@ -34,14 +33,24 @@ class Event extends CActiveRecord
     public function relations()
     {
         return array(
-            'calendar' => array(
+            'users' => array(
+                self::MANY_MANY,
+                'User',
+                'calendar_status(event_id, user_id)'
+            ),
+            'calendar'  => array(
                 self::BELONGS_TO,
                 'Calendar',
                 'calendar_id'
             ),
+            'status'    => array(
+                self::BELONGS_TO,
+                'Status',
+                'id'
+            )
         );
     }
-    
+
     public function getEventById($id)
     {
         $event = $this->findByPk($id);
@@ -51,7 +60,7 @@ class Event extends CActiveRecord
         $event->end = Yii::app()->format->datetime($event->end);
         return $event;
     }
-    
+
     public function getEventsByIds($ids)
     {
         $criteria = new CDbCriteria();
@@ -66,12 +75,12 @@ class Event extends CActiveRecord
         // }
         return $events;
     }
-    
+
     public function getEventsByCalendarId($calendar_id)
     {
         
     }
-    
+
     // public function getEventsByDate($date, $calendar_id = 0)
     // {
         // $date = strtotime($date);
@@ -91,7 +100,43 @@ class Event extends CActiveRecord
         // }
         // return $events;
     // }
-    
+
+    public function getRecycledEvents()
+    {
+        return $this->with(array(
+            'users'     => array(
+                'select'    => false,
+                'joinType'  => 'INNER JOIN',
+                'condition' => 'users_users.user_id = :id',
+                'params'    => array(
+                    ':id'   => Yii::app()->user->getId()
+                )
+            ),
+            'status'    => array(
+                'select'    => false,
+                'joinType'  => 'INNER JOIN',
+                'condition' => 'status.done = 1'
+            )
+        ))->findAll(array(
+            'condition' => 'invisible = 0'
+        ));
+    }
+
+    public function hide($id)
+    {
+        $event = $this->with('status')->findByPk($id);
+        if ( $event )
+        {
+            $status = $this->status;
+            if ( ! $status ) $status = new Status();
+            $status->event_id = $id;
+            $status->user_id = Yii::app()->user->getId();
+            $status->done = true;
+            if ( $status->save() ) return true;
+        }
+        return false;
+    }
+
     public function afterFind()
     {
         parent::afterFind();

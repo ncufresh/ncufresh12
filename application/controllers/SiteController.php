@@ -237,7 +237,6 @@ class SiteController extends Controller
 
     public function actionRegister()
     {
-        $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         if ( isset($_POST['register']) && isset($_POST['profile']) )
         {
             if ( $_POST['register']['password'] === $_POST['confirm'] ) 
@@ -250,17 +249,17 @@ class SiteController extends Controller
                     $profile->attributes = $_POST['profile'];
                     $profile->department_id = $_POST['profile']['department'];
                     $profile->grade = $_POST['profile']['grade'];
-                    $profile->sex = $_POST['sex'];
+                    $profile->gender = $_POST['gender'];
                     if ( $profile->validate() )
                     {
                         if ( $user->save() )
                         {
                             $character = new Character(); //Character Model
                             $character->id = $user->id;//同步寫入user的id至遊戲資料列表
-                            $character->exp = 1; //一開始使用者經驗設為1
+                            $character->experience = 1; //一開始使用者經驗設為1
                             $character->money = 25000; //一開始使用者金錢設為25000
                             $character->total_money = 35000; //一開始使用者總金錢設為25000
-                            if($_POST['sex'] == 0)
+                            if($_POST['gender'] == 0)
                             {
                                 $character->skin_id = 81; //男生 皮膚預設id=81
                             }
@@ -271,8 +270,8 @@ class SiteController extends Controller
                             $item = new ItemBag(); //ItemBag Model
                             $item->user_id = $user->id; //同步寫入user的id至道具列表
                             $item->item_id = $character->skin_id; //寫入獲得道具的id
-                            $item->equip = 1; //寫入裝備狀態
-                            $item->acquire_time = TIMESTAMP; //寫入獲得時間
+                            $item->equipped = true; //寫入裝備狀態
+                            $item->created = TIMESTAMP; //寫入獲得時間
                             
                             $profile->id = $user->id;
                             if ( $profile->save() && $character->save() && $item->save())

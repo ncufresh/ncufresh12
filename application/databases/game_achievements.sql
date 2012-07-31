@@ -1,0 +1,38 @@
+CREATE TABLE IF NOT EXISTS `game_achievements` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) NOT NULL,
+  `description` text NOT NULL,
+  `login_times` int(10) unsigned NOT NULL DEFAULT 0,
+  `spend_money` int(10) unsigned NOT NULL DEFAULT 0,
+  `total_money` int(10) unsigned NOT NULL DEFAULT 0,
+  `friend` int(10) unsigned NOT NULL DEFAULT 0,
+  `reply` int(10) unsigned NOT NULL DEFAULT 0,
+  `post` int(10) unsigned NOT NULL DEFAULT 0,
+  `cloth` int(10) unsigned NOT NULL DEFAULT 0,
+  `body_price` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=1 ;
+
+INSERT INTO `game_achievements` (`id`, `name`, `description`, `login_times`, `spend_money`, `total_money`, `friend`, `reply`, `post`, `cloth`, `body_price`) VALUES
+(1, '中大新鮮人', '成功登入「2012大一生活知訊網」三次', 3, 0, 0, 0, 0, 0, 0, 0),
+(2, '成年登大人', '成功登入「2012大一生活知訊網」二十次', 20, 0, 0, 0, 0, 0, 0, 0),
+(3, '登登登登人', '成功登入「2012大一生活知訊網」五十次', 50, 0, 0, 0, 0, 0, 0, 0),
+(4, '平民老百姓', '花費 5,000 金幣', 0, 5000, 0, 0, 0, 0, 0, 0),
+(5, '花錢如流水', '花費 20,000 金幣', 0, 20000, 0, 0, 0, 0, 0, 0),
+(6, '一江錢水一直流', '花費 50,000 金幣', 0, 50000, 0, 0, 0, 0, 0, 0),
+(7, '你是好人', '好友 5 人', 0, 0, 0, 5, 0, 0, 0, 0),
+(8, '交友甚廣', '好友 20 人', 0, 0, 0, 20, 0, 0, 0, 0),
+(9, '外交粗手腕', '好友 50 人', 0, 0, 0, 50, 0, 0, 0, 0),
+(10, '革命先驅者', '好友 100 人', 0, 0, 0, 100, 0, 0, 0, 0),
+(11, '你來我往', '回復 3 次', 0, 0, 0, 0, 3, 0, 0, 0),
+(12, '答腔達人', '回復 15 次', 0, 0, 0, 0, 15, 0, 0, 0),
+(13, '專業裝熟神人', '回復 30 次', 0, 0, 0, 0, 30, 0, 0, 0),
+(14, '一言九鼎', '發表文章 1 篇', 0, 0, 0, 0, 0, 1, 0, 0),
+(15, '如詩如畫', '發表文章 5 篇', 0, 0, 0, 0, 0, 5, 0, 0),
+(16, '新世代文學家', '發表文章 10 篇', 0, 0, 0, 0, 0, 10, 0, 0),
+(17, '不愁吃穿', '衣服 3 件', 0, 0, 0, 0, 0, 0, 3, 0),
+(18, '派對焦點', '衣服 5 件', 0, 0, 0, 0, 0, 0, 5, 0),
+(19, '工藤一堆新衣', '衣服 10 件', 0, 0, 0, 0, 0, 0, 10, 0),
+(20, '一二三四五', '身價 12,345 金幣', 0, 0, 0, 0, 0, 0, 0, 12345),
+(21, '窮到只剩錢', '身價 55,555 金幣', 0, 0, 0, 0, 0, 0, 0, 55555),
+(22, '阿里巴巴八八八', '身價 88,888 金幣', 0, 0, 0, 0, 0, 0, 0, 88888);

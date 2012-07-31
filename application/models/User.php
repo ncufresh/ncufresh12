@@ -50,18 +50,28 @@ class User extends CActiveRecord
                 'Calendar',
                 'user_id',
                 'condition' => 'category = :category',
-                'params' => array(':category'=>Calendar::CATEGORY_PERSONAL)
+                'params' => array(
+                    ':category' => Calendar::CATEGORY_PERSONAL
+                )
             ),
             'subscriptions' => array(
                 self::MANY_MANY,
                 'Calendar',
-                'calendar_subscriptions(user_id,calendar_id)'
+                'calendar_subscriptions(user_id, calendar_id)',
+                'condition' => 'invisible = :invisible',
+                'params' => array(
+                    ':invisible' => 0
+                )
             ),
-            'events_status' => array(
+            'events' => array(
                 self::MANY_MANY,
-                'Events',
-                'calendar_status(user_id,event_id)'
-            ),
+                'Event',
+                'calendar_status(user_id, event_id)',
+                'condition' => 'invisible = :invisible',
+                'params' => array(
+                    ':invisible' => 0
+                )
+            )
         );
     }
 

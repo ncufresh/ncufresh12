@@ -2,502 +2,542 @@
 #all-picture-container
 {
     background: yellow;
-    display:none;
+    display: none;
 }
 #administration
 {
-    left:360px;
-    top:230px;
-    height:50px;
-    width:50px;
+    left: 360px;
+    top: 230px;
 }
 #all-teach
 {
-    left:400px;
-    top:90px;
-    height:50px;
-    width:50px;
+    left: 400px;
+    top: 400px;
+}
+#baseball-softball
+{
+    left: 450px;
+    top: 170px;
+}
+#badminton
+{
+    left:200px;
+    top: 50px;
 }
 #big-tree
 {
-    left:200px;
-    top:180px;
-    height:50px;
-    width:50px;
+    left: 200px;
+    top: 180px;
 }
 #back-div
 {
-    background-color:yellow;
-    position:relative;
+    background-color: yellow;
+    position: relative;
+    height: 551px;
+    width: 750px;
+}
+#backdoor
+{
+    left: 100px;
+    top: 200px;
+}
+#boy-dormitory-3
+{
+    left: 100px;
+    top: 200px;
+}
+#boy-dormitory-5
+{
+    left: 200px;
+    top: 200px;
+}
+#boy-dormitory-6
+{
+    left: 30px;
+    top: 250px;
+}
+#boy-dormitory-9
+{
+    left: 400px;
+    top: 30px;
+}
+#boy-dormitory-11
+{
+    left: 300px;
+    top: 30px;
+}
+#boy-dormitory-12
+{
+    left: 260px;
+    top: 120px;
+}
+#boy-dormitory-1
+{
+    left: 90px;
+    top: 200px;
 }
 #building-picture
 {
-    float:left;
-    margin-right:20px;
-    height:150px;
-    width:250px;
-    background-color:gray;
+    float: left;
+    margin-right: 20px;
+    height: 150px;
+    width: 250px;
+    background-color: gray;
 }
 #building-picture li
 {
-    float:left;
-    margin-right:20px;
-    list-style-type:none;
+    float: left;
+    margin-right: 20px;
+    list-style-type: none;
 }
 #boyDormitory11
 {
-    left:130px;
-    top:420px;
+    left: 130px;
+    top: 420px;
 }
 #curtainDiv
 {
-    background:url('../statics/building/curtain.png');
-    position:absolute;
-    z-index:1;
-    top:0px;
-    left:750px;
-    height:422px;
-    width:150px;
+    background: url('../statics/building/curtain2.png') no-repeat;
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    left: 750px;
+    height: 551px;
+    width: 150px;
 }
 #computer-center
 {
-    left:450px;
-    top:110px;
-    height:50px;
-    width:50px;
+    left: 450px;
+    top: 110px;
 }
 #CottageMuffin
 {
-    left:400px;
-    top:180px;
+    left: 400px;
+    top: 180px;
 }
 #curtainclose
 {
-    cursor:pointer;
-    position:absolute;
-    top:372px;
-    left:100px;
+    cursor: pointer;
+    position: absolute;
+    top: 372px;
+    left: 100px;
 }
 #calligraphy
 {
-    left:330px;
-    top:230px;
-    height:50px;
-    width:50px;
+    left: 330px;
+    top: 230px;
 }
 #elephant-element
 {
-    left:430px;
-    top:200px;
-    height:50px;
-    width:50px;
+    left: 430px;
+    top: 200px;
 }
 #engineering-1
 {
-    left:160px;
-    top:140px;
-    height:50px;
-    width:50px;
+    left: 160px;
+    top: 140px;
 }
 #engineering-2
 {
-    left:120px;
-    top:100px;
-    height:50px;
-    width:50px;
+    left: 120px;
+    top: 100px;
 }
 #engineering-3
 {
-    left:75px;
-    top:60px;
-    height:50px;
-    width:50px;
+    left: 75px;
+    top: 60px;
 }
 #engineering-5
 {
-    left:0px;
-    top:50px;
-    height:50px;
-    width:50px;
+    left: 0px;
+    top: 50px;
 }
 #experience-personally
 {
-    position:absolute;
-    top:0px;
-    left:0px;
-    z-index:4
+    position: absolute;
+    top: 410px;
+    left: 530px;
+    z-index: 4;
 }
 #flower-brook
 {
-    left:180px;
-    top:100px;
-/*     height:50px;
-    width:50px; */
+    left: 180px;
+    top: 100px;
 }
-#girlDormitory14
+#girl-dormitory-1234
 {
-    left:100px;
-    top:390px;
+    left: 100px;
+    top: 390px;
+}
+#girl-dormitory-5
+{
+    left: 200px;
+    top: 390px;
+}
+#gymnasium
+{
+    left: 100px;
+    top: 238px;
 }
 #history-gallery
 {
-    left:350px;
-    top:280px;
-    height:50px;
-    width:50px;
+    left: 200px;
+    top: 300px;
 }
 #hakka
 {
-    left:350px;
-    top:10px;
-    height:50px;
-    width:50px;
+    left: 350px;
+    top: 350px;
+}
+#international-dormitory
+{
+    left: 20px;
+    top: 100px;
 }
 #liberal-arts
 {
-    left:400px;
-    top:150px;
-    height:50px;
-    width:50px;
+    left: 400px;
+    top: 150px;
 }
 #lover-trail
 {
-    left:130px;
-    top:130px;
-   /*  height:50px;
-    width:50px */
+    left: 130px;
+    top: 130px;
 }
-#main-picture
+/* #main-picture
 {
-    float:right;
-    height:200px;
-    width:300px;
-    background-color:gray;
-}
+    float: right;
+    height: 200px;
+    width: 300px;
+    background-color: gray;
+} */
 #mathematics
 {
-    left:400px;
-    top:60px;
-    height:50px;
-    width:50px;
+    left: 400px;
+    top: 60px;
 }
 #management
 {
-    left:450px;
-    top:100px;
-    height:50px;
-    width:50px;
+    left: 350px;
+    top: 300px;
 }
-#midNightFood
+#midnight-food
 {
-    left:50px;
-    top:340px;
+    left: 50px;
+    top: 340px;
 }
 #mapPicture
 {
-    position:relative;
-    margin-left:0;
-    z-index:1;
+    position: relative;
+    margin-bottom: 0px;
+    width: 601px
+    height: 551px;
 }
-#newPostgraduate
+#new-postgraduate
 {
-    left:540px;
-    top:180px;
+    left: 470px;
+    top: 180px;
 }
 #ncu-lake
 {
-    left:310px;
-    top:60px;
-    height:50px;
-    width:50px;
+    left: 310px;
+    top: 60px;
 }
 #other-picture-container
 {
-    overflow:auto;
-    background-color:green;
-    height:250px;
+    overflow: auto;
+    background-color: green;
+    height: 250px;
+}
+#playground
+{
+    left: 300px;
+    top: 150px;
 }
 #pine-bookcourt
 {
-    left:460px;
-    top:150px;
-    height:50px;
-    width:50px;
+    left: 460px;
+    top: 150px;
 }
 #pine-bookcourt2
 {
-    left:27 0px;
-    top:170px;
-    height:50px;
-    width:50px;
+    left: 270px;
+    top: 170px;
 }
 #pine-wind
 {
-    left:40px;
-    top:160px;
-    height:50px;
-    width:50px;
+    left: 40px;
+    top: 160px;
+}
+#playground
+{
+    left: 50px;
+    top: 300px;
 }
 #photonics
 {
-    left:280px;
-    top:20px;
-    height:50px;
-    width:50px;
+    left: 280px;
+    top: 400px;
 }
 #picture-other-2
 {
-    float:left;
-    height:150px;
-    width:250px;
-    background-color:gray;
+    float: left;
+    height: 150px;
+    width: 250px;
+    background-color: gray;
+}
+#rock-climbing
+{
+    left:300px;
+    top: 260px;
+}
+#skating
+{
+    left: 140px;
+    top: 350px;
+}
+#swimming-pool
+{
+    left: 0px;
+    top: 0px;
+}
+#stadium
+{
+    left: 300px;
+    top: 10px;
 }
 #science-1
 {
-    left:220px;
-    top:220px;
-    height:50px;
-    width:50px;
+    left: 220px;
+    top: 220px;
 }
 #science-2
 {
-    left:330px;
-    top:60px;
-    height:50px;
-    width:50px;
+    left: 330px;
+    top: 60px;
 }
 #science-3
 {
-    left:360px;
-    top:30px;
-    height:50px;
-    width:50px;
+    left: 360px;
+    top: 30px;
 }
 #science-4
 {
-    left:380px;
-    top:10px;
-    height:50px;
-    width:50px;
+    left: 380px;
+    top: 10px;
 }
 #science-5
 {
-    left:450px;
-    top:50px;
-    height:50px;
-    width:50px;
+    left: 450px;
+    top: 50px;
 }
 #stepping-cloud
 {
-    left:150px;
-    top:230px;
-    height:50px;
-    width:50px;
+    left: 150px;
+    top: 230px;
 }
 #science-teach
 {
-    left:420px;
-    top:20px;
-    height:50px;
-    width:50px;
+    left:20px;
+    top: 360px;
 }
 #select-picture-container
 {
-    height:100px;
-    width:500px;
-    background-color:white;
-    position:absolute;
-    margin-left:100px;  
-    bottom:20px;
+    height: 100px;
+    width: 500px;
+    background-color: white;
+    position: absolute;
+    margin-left: 100px;  
+    bottom: 20px;
 }
 #select-left-button
 {
-    position:absolute;
-    left:0px;
-    bottom:0px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
 }
 #select-right-button
 {
-    position:absolute;
-    right:0px;
-    bottom:0px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+#tennis
+{
+    left: 420px;
+    top: 300px;
 }
 #text-container
 {
-    z-index:2;
-    display:none;
-    background:white;
+    z-index: 2;
+    display: none;
+    background: white;
 }
 #turtle-pond
 {
-    left:490px;
-    top:180px;
-    height:50px;
-    width:50px
+    left: 0px;
+    top: 0px;
 }
-#text-region
+/* #text-region
 {
-    overflow:auto;
-    background-color:red;
-    height:400px;
-}
+    overflow: auto;
+    background-color: red;
+    height: 400px;
+} */
 #view-picture-container
 {
-    height:350px;
-    width:550px;
-    margin-top:20px;
-    margin-left:75px;
-    background-color:black;
+    height: 350px;
+    width: 550px;
+    margin-top: 20px;
+    margin-left: 75px;
+    background-color: black;
 }
 #yun-step
 {
-    left:220px;
-    top:180px;
-    height:50px;
-    width:50px;
+    left: 0px;
+    top: 180px;
 }
 .arrow
 {
-    position:absolute;
-    z-index:4;
-    display:none;
+    position: absolute;
+    z-index: 4;
+    display: none;
 }
 .arrow.up
 {
-    left:260px;
-    top:200px;
+    left: 260px;
+    top: 200px;
 }
 .arrow.down
 {
-    left:260px;
-    top:320px;
+    left: 260px;
+    top: 320px;
 }
 .arrow.left
 {
-     left:160px;
-     top:260px;
+     left: 160px;
+     top: 260px;
 }
 .arrow.right
 {
-     left:360px;
-     top:260px;
+     left: 360px;
+     top: 260px;
 }
 .arrow.rightTurn
 {
-     left:380px;
-     top:350px;
+     left: 380px;
+     top: 350px;
 }
 .arrow.leftTurn
 {
-     left:140px;
-     top:350px; 
+     left: 140px;
+     top: 350px; 
 }
 .arrow.back
 {
-     left:670px;
-     top:0px;
+     left: 670px;
+     top: 0px;
 }
 .arrow.dayAndNight
 {
-    left:0px;
-    top:0px;
+    left: 0px;
+    top: 0px;
 }
 .arrow.hideAndShow
 {
-    left:0px;
-    top:382px
+    left: 0px;
+    top: 382px
 }
 .departmentBuildingText
 {
-    position:relative;
-    float:left;
+    position: relative;
+    float: left;
 }
 .dormitory-text
 {
-    position:relative;
-    float:left;
+    position: relative;
+    float: left;
 }
 .one-image
 {
-    cursor:pointer;
-    position:absolute;
-    height:50px;
-    width:50px;
-    z-index:1;
+    cursor: pointer;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    z-index: 1;
 }
 .one-image.dormitory
 {
-    top:10px;
-    left:660px;
+    top: 10px;
+    left: 660px;
 }
 .one-image.diet
 {
-    top:70px;
-    left:660px;
+    top: 70px;
+    left: 660px;
 }
 .one-image.department-building
 {
-    top:130px;
-    left:660px; 
+    top: 130px;
+    left: 660px; 
 }
 .one-image.landscape
 {
-    top:190px;
-    left:660px;
+    top: 190px;
+    left: 660px;
 }
 .one-image.government
 {
-    top:250px;
-    left:660px;
+    top: 250px;
+    left: 660px;
 }
 .one-image.exercise
 {
-    top:310px;
-    left:660px;
+    top: 310px;
+    left: 660px;
 }
 .one-image.curtainOpen
 {
-    top:370px;
-    left:660px;
+    top: 370px;
+    left: 660px;
 }
 .picture
 {
-    position:absolute;
-    z-index:2;
+    position: absolute;
+    z-index: 2;
     cursor: pointer;
 }
 .two-image
 {
-    cursor:pointer;
-    position:absolute;
-    height:50px;
-    width:50px;
-    z-index:1;
+    cursor: pointer;
+    position: absolute;
+    height 50px;
+    z-index: 1;
 }
 .two-image.department-building
 {
-    top:0;
-    left:0px;
+    top: 0px;
+    left: 0px;
 }
 .two-image.dormitory
 {
-    top:50px;
-    left:0px;
+    top: 50px;
+    left: 0px;
 }
 .two-image.government
 {
-    top:100px;
-    left:0px;
+    top: 100px;
+    left: 0px;
 }
 .two-image.diet
 {
-    top:150px;
-    left:0px;
+    top: 150px;
+    left: 0px;
 }
 .two-image.landscape
 {
-    top:200px;
-    left:0px;
+    top: 200px;
+    left: 0px;
 }
 .two-image.exercise
 {
@@ -520,6 +560,11 @@
     float: left;
     margin-left: 10px;
 }
+#aaa
+{
+    position:absolute;
+    left: 601px;
+}
 </style>
 <?php
     $file_path = array();
@@ -539,9 +584,9 @@
         }
     }
 ?>
-<div id="street-div">   
-    <img id="experience-personally" src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg">
-    <div id="back-div">               
+<div id="street-div">    
+    <div id="back-div">
+        <img id="experience-personally" src="<?php echo Yii::app()->baseUrl?>/statics/building/little_man.png">
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-up.png" class="arrow up">
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-down.png" class="arrow down">
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-left.png" class="arrow left">
@@ -550,13 +595,12 @@
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/left-turn.png" class="arrow leftTurn">
 
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/back.png" class="arrow back">
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/day.png" class="arrow dayAndNight">
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/hide.png" class="arrow hideAndShow">
         <!--<img >
-        總寬:750px 總高:422px  窗簾:250px  地圖:寬500px高422px 
+        總寬:750px 總高:601px  窗簾:249px  地圖:寬601px高551px  相片原圖:2256*1496
         <img >-->
 
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/pp.png" id="mapPicture" path="<?php echo Yii::app()->request->baseUrl;?>/statics/building/pp.png"><!--底圖-->    
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/pp.png" id="mapPicture" path="<?php echo Yii::app()->request->baseUrl;?>/statics/building/pp.png"><!--底圖-->
+        <img id="aaa" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain.png" >
         <!--系館-->
         <img id="engineering-5" class="department-building picture" show="department-building" href="#1" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-5.png">
         <img id="engineering-3" class="department-building picture" show="department-building" href="#2" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-3.png">
@@ -591,12 +635,12 @@
         <img id="pine-bookcourt" class="landscape picture" show="landscape" href="#27" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/pine-bookcourt.png">
         <img id="pine-bookcourt2" class="landscape picture" show="landscape" href="#27" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/pine-bookcourt2.png">
         <!--飲食(目前無圖)-->
-        <img id="restaurant-7" class="diet picture" show="diet" href="#28" src="" >
-        <img id="restaurant-9"-lass="diet picture" show="diet" href="#29" src="" >
-        <img id="midnight-food" class="diet picture" show="diet" href="#30" src="">
-        <img id="backdoor" class="diet picture" show="diet" href="#31" src="">
-        <img id="cottage-region" class="diet picture" show="diet" href="#32" src="">
-        <img id="cottage-muffin" class="diet picture" show="diet" href="#33" src="">
+        <img id="restaurant-7" class="diet picture" show="diet" href="#28" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/restaurant-7.png" >
+        <img id="restaurant-9"-lass="diet picture" show="diet" href="#29" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/restaurant-9.png" >
+        <img id="midnight-food" class="diet picture" show="diet" href="#30" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/midnight-food.png">
+        <img id="backdoor" class="diet picture" show="diet" href="#31" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/backdoor.png">
+        <img id="cottage-region" class="diet picture" show="diet" href="#32" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/cottage-region.png">
+        <img id="cottage-muffin" class="diet picture" show="diet" href="#33" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/cottage-muffin.png">
         <!--行政--><!--後2無圖-->
         <img id="administration" class="government picture" show="government" href="#34" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/administration.png">
         <img id="computer-center" class="government picture" show="government" href="#35" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/computer-center.png">
@@ -604,29 +648,29 @@
         <img id="incubation-center" class="government picture" show="government" href="#37" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/incubation-center.png" >
         <img id="activity-center" class="government picture" show="government" href="#38" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/activity-center.png">
         <!--宿舍(目前無圖)-->
-        <img id="girl-dormitory-1234" class="dormitory picture" show="dormitory" href="#39" src="">
-        <img id="girl-dormitory-5" class="dormitory picture" show="dormitory" href="#40" src="">
-        <img id="boy-dormitory-3" class="dormitory picture" show="dormitory" href="#41" src="">
-        <img id="boy-dormitory-5" class="dormitory picture" show="dormitory" href="#42" src="">
-        <img id="boy-dormitory-6" class="dormitory picture" show="dormitory" href="#43" src="">
-        <img id="boy-dormitory-7" class="dormitory picture" show="dormitory" href="#44" src="">
-        <img id="boydormitory-9" class="dormitory picture" show="dormitory" href="#45" src="">
-        <img id="boy-dormitory-11" class="dormitory picture" show="dormitory" href="#46" src="">
-        <img id="boy-dormitory-12" class="dormitory picture" show="dormitory" href="#47" src="">
-        <img id="boy-dormitory-13" class="dormitory picture" show="dormitory" href="#48" src="">
-        <img id="girl-dormitory-14" class="dormitory picture" show="dormitory" href="#49" src="">
-        <img id="new-postgraduate" class="dormitory picture" show="dormitory" href="#50" src="">
-        <img id="international-dormitory" class="dormitory picture" show="dormitory" href="#51" src="">        
+        <img id="girl-dormitory-1234" class="dormitory picture" show="dormitory" href="#39" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/girl-dormitory-1234.png">
+        <img id="girl-dormitory-5" class="dormitory picture" show="dormitory" href="#40" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/girl-dormitory-5.png">
+        <img id="boy-dormitory-3" class="dormitory picture" show="dormitory" href="#41" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-3.png">
+        <img id="boy-dormitory-5" class="dormitory picture" show="dormitory" href="#42" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-5.png">
+        <img id="boy-dormitory-6" class="dormitory picture" show="dormitory" href="#43" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-6.png">
+        <img id="boy-dormitory-7" class="dormitory picture" show="dormitory" href="#44" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-7.png">
+        <img id="boydormitory-9" class="dormitory picture" show="dormitory" href="#45" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-9.png">
+        <img id="boy-dormitory-11" class="dormitory picture" show="dormitory" href="#46" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-11.png">
+        <img id="boy-dormitory-12" class="dormitory picture" show="dormitory" href="#47" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-12.png">
+        <img id="boy-dormitory-13" class="dormitory picture" show="dormitory" href="#48" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-13.png">
+        <img id="girl-dormitory-14" class="dormitory picture" show="dormitory" href="#49" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/girl-dormitory-14.png">
+        <img id="new-postgraduate" class="dormitory picture" show="dormitory" href="#50" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/new-postgraduate.png">
+        <img id="international-dormitory" class="dormitory picture" show="dormitory" href="#51" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/international-dormitory.png">        
         <!--運動-->
-        <img id="swimming-pool" class="exercise picture" show="exercise" href="#52" src="">
-        <img id="playground" class="exercise picture" show="exercise" href="#53" src="">
-        <img id="stadium" class="exercise picture" show="exercise" href="#54" src="">
-        <img id="badminton" class="exercise picture" show="exercise" href="#55" src="">
-        <img id="tennis" class="exercise picture" show="exercise" href="#56" src="">
-        <img id="rock-climbing" class="exercise picture" show="exercise" href="#57" src="">
-        <img id="baseball-softball" class="exercise picture" show="exercise" href="#58" src="">
-        <img id="skating" class="exercise picture" show="exercise" href="#59" src="">
-        <img id="gymnasium" class="exercise picture" show="exercise" href="#60" src="">
+        <img id="swimming-pool" class="exercise picture" show="exercise" href="#52" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/swimming-pool.png">
+        <img id="playground" class="exercise picture" show="exercise" href="#53" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/playground.png">
+        <img id="stadium" class="exercise picture" show="exercise" href="#54" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/stadium.png">
+        <img id="badminton" class="exercise picture" show="exercise" href="#55" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/badminton.png">
+        <img id="tennis" class="exercise picture" show="exercise" href="#56" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/tennis.png">
+        <img id="rock-climbing" class="exercise picture" show="exercise" href="#57" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/rock-climbing.png">
+        <img id="baseball-softball" class="exercise picture" show="exercise" href="#58" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/baseball-softball.png">
+        <img id="skating" class="exercise picture" show="exercise" href="#59" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/skating.png">
+        <img id="gymnasium" class="exercise picture" show="exercise" href="#60" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/gymnasium.png">
 
         <!--選擇鈕-->
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/dormitory.png" class="one-image dormitory" show="dormitory">
@@ -638,13 +682,10 @@
         
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/curtainOpen.png" class="one-image curtainOpen">
         <!--窗簾-->
-                <p>
-                
-                </p> 
 
         <div id="curtainDiv">
         <!--選擇鈕2-->
-            <div style="float:left; width:50px; height:422px; background:green;">
+            <div style="float:left; width:50px; height:422px;">
                 <img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/college.png" class="two-image department-building" show="department-building" detailItem="department">
                 <img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/landscape.png" class="two-image landscape" show="landscape" detailItem="landscape">
                 <img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/food.png" class="two-image diet" show="diet" detailItem="meal">
@@ -653,7 +694,7 @@
                 <img src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/exercise.png" class="two-image exercise" show="exercise" detailItem="sport">           
 
             </div>
-            <div style="float:right; width:100px; height:422px; background:red;">
+            <div style="float:right; width:100px; height:422px;">
                 <ul class="text-ul">
                     <li class="department-button-text button-text" detailItem="department" href="#1">工程五館</li>
                     <li class="department-button-text button-text" detailItem="department" href="#2">工程三館</li>
@@ -727,29 +768,11 @@
                     <li class="exercise-text button-text" detailItem="sport" href="#60">健身房</li>
                 </ul>
                 <img id="curtainclose" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtainClose.png">            
-            </div>            
+            </div>
         </div>
-        <div id="text-container"><!--第一層-->
-            <div id="text-region">
-                <p id="building-text">
-                <div id="main-picture">
-                    <img><!--正視圖-->
+        <div id="text-container" style="overflow: scroll; background: url('../statics/building/introduction.png') no-repeat;"><!--第一層-->
+                <div id="building-text">
                 </div>
-                </p>
-            </div>
-
-            <div id="other-picture-container">
-
-                <ul id="building-picture">
-                    <li>
-                        <img>
-                    </li>
-                    <li>
-                        <img>
-                    </li>
-                </ul>
-                <img src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg" id="親身體驗">               
-            </div>
         </div>
 
         <div id="all-picture-container"><!--第二層-->
@@ -795,32 +818,31 @@
 
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
-    // alert($('#all-selected-pic-ul > li').length);
-$(document).ready(function()
+$( document ).ready(function()
 {
-    $('#experience-personally').mousedown(function()
+    $( '#experience-personally' ).mousedown(function()
     {
-        $(document).mousemove(mousemove);
+        $( document ).mousemove( mousemove );
         return false;
     });
     var mouseInId;
     var isInPicture = false;
-    var mousemove = function(event)
+    var mousemove = function( event )
     {
         x = event.pageX;
         y = event.pageY;
-        $('#experience-personally').css(
+        $( '#experience-personally' ).css(
         {
-        top: y + 15 + 'px',
-        left: x + 'px',
+        top: y - 250 + 'px',
+        left: x - 200 + 'px',
         });
     };
-    $('.picture').mouseenter(function()
+    $( '.picture' ).mouseenter(function()
     {
         isInPicture = true;
-        mouseInId = $(this).attr('id');
+        mouseInId = $( this ).attr( 'id' );
     });
-    $('.picture').mouseleave(function()
+    $( '.picture' ).mouseleave(function()
     {
         isInPicture = false;
     });
@@ -828,7 +850,7 @@ $(document).ready(function()
     {
         if( isInPicture == true )
         {
-            var id = $( '#' + mouseInId ).attr( 'href' ).replace( '#', '' );
+            var id = $( '#' + mouseInId ).attr('href').replace( '#', '' );
             $.ajax(
             {
                 type: 'GET',
@@ -836,15 +858,19 @@ $(document).ready(function()
                 dataType: 'json',
                 success: function( data )
                 {
-                    console.log( data.photo );
-                    alert( data.photo );
-                    // $('#mapPicture').attr('src',data.photo);
+                    $('#mapPicture').attr('src', data.photo);
                 },
+            });
+            $('#back-div').css(
+            {
+                height: 498,
             });
 
             $( '#mapPicture' ).css(
             {
                 zIndex: '3',
+                width: 750,
+                height: 498,
             });
             $( '.arrow' ).show();
             isInPicture = false;
@@ -852,109 +878,119 @@ $(document).ready(function()
             $( document ).unbind( 'mousemove', mousemove );
             $( '#experience-personally' ).css(
             {
-                top: 0,
-                left: 0,
+                top: 410,
+                left: 530,
             });
             isInPicture = false;
     };
-    $(document).mouseup(mouseup);
+    $( document ).mouseup( mouseup );
 
-    $('.picture').hide();
-    $('.one-image, .two-image').click(function() // building icon show
+    $( '.picture' ).hide();
+    $( '.one-image, .two-image' ).click(function() // building icon show
     {
-        $('.picture').hide();
-        $('.' + $(this).attr('show')).show();
+        $( '.picture' ).hide();
+        $( '.' + $( this ).attr( 'show' )).show();
     });
 
-    $('.two-image').click(function(){
-        $('.button-text').hide();
-        $('.button-text[detailItem = ' + $(this).attr('detailItem') + ']' ).show();
+    $( '.two-image' ).click(function(){
+        $( '.button-text' ).hide();
+        $( '.button-text[ detailItem = ' + $( this ).attr( 'detailItem' ) + ']' ).show();
     });
 
-    $('.curtainOpen').click(function()
+    $( '.curtainOpen' ).click(function()
     { // 窗簾
-        $('#curtainDiv').animate({left: '600px'});
-        $('.button-text').hide();
-        $('.button-text[detailItem = "department"]' ).show();
+        $( '#curtainDiv' ).animate({left: '600px'});
+        $( '.button-text' ).hide();
+        $( '.button-text[ detailItem = "department" ]' ).show();
     });
-    $('#curtainclose').click(function()
+    $( '#curtainclose' ).click(function()
     {// 窗簾
-        $('#curtainDiv').animate({left: '750px'});
+        $( '#curtainDiv' ).animate({left: '750px'});
     });
 
-    $('#other-picture-container img').click(function()
-    {
-        var leftPosition = 0;
-
-        $('div#all-picture-container').dialog(
+    $( '.arrow' ).eq( 6 ).click(function() // 親身體驗 back
+    {    
+        $( '#mapPicture' ).attr( 'src', $('#mapPicture').attr('path') );
+        $( '.arrow' ).hide();
+        
+        $('#back-div').css(
         {
-            width: '700px',
-            height: '500px',
-            modal: true,
-            draggable: false,
+            height: 552,
         });
-            $('#all-selected-pic-ul').css({left: 0,});
-            position = 0;
-    });
-
-    $('.arrow').eq(6).click(function() // 親身體驗 back
-    {
-        $('#mapPicture').attr('src', '<?php echo Yii::app()->request->baseUrl;?>/statics/building/pp.png');
-        $('.arrow').hide();
-        $('#mapPicture').css(
+        $( '#mapPicture' ).css(
         {
+            width: 601,
+            height: 552,  
             zIndex: 0,
         });
     });
 
-    $('.picture, .button-text').click(function()
+    $( '.picture, .button-text' ).click(function()
     {
-        $('#text-container').dialog(
+         isInPicture = false;
+         $('#back-div').css(
+         {
+            height: 552,
+         });
+        $( '#text-container' ).dialog(
         {
-            width: 999,
-            height: 700,
+            width: 680,
+            height: 400,
             modal: true,
             draggable: false,
             onClose: function()
             {
-                $('#mapPicture').attr('src', $('#mapPicture').attr('src'));
+                $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
             }
         });
 
-        $('.arrow').hide();
-        $('#mapPicture').css(
+        $( '.arrow' ).hide();
+        $( '#mapPicture' ).css(
         {
+            width: 601,
+            height: 552,
             zIndex: 0,
         });
-        isInPicture = false;
 
-        var id = $(this).attr('href').replace('#','');
+        var id = $( this ).attr( 'href' ).replace( '#', '' );
         $.ajax(
         {
             type: 'GET',
-            url: jQuery.configures.buildingContentUrl.replace(':id', id),
+            url: jQuery.configures.buildingContentUrl.replace( ':id', id ),
             dataType: 'json',
-            success: function(data)
+            success: function( data )
             {
-                $('#building-text').text(data.content);
-                $('#main-picture img').attr('src',data.picture_main);
+                $( '#building-text' ).html(data.content);
 
-                $('#building-picture > li > img').each(function(index)
+                $( '#building-picture > li > img' ).each(function(index)
                 {
-                    $(this).attr('src',data.picture_other[index]);
+                    $( this ).attr( 'src', data.picture_other[index] );
                 });
 
-                $('#select-picture-container > img').each(function(index)
+                $( '#select-picture-container > img' ).each(function( index )
                 {
-                    $(this).attr('src',data.pictureLayerTwo[index]);
+                    $( this ).attr('src', data.pictureLayerTwo[index]);
+                });
+
+                $( '#building-text img' ).click(function()
+                {
+                    $( 'div#all-picture-container' ).dialog(
+                        {
+                            width: '700px',
+                            height: '500px',
+                            modal: true,
+                            draggable: false,
+                        });
+                        $( '#all-selected-pic-ul' ).css({left: 0,});
+                        position = 0;
                 });
             },
         });
     });
 
     var position = 0;
-    $('#all-selected-pic-ul > li')
-    $('#select-right-button').click(function()
+    $( '#all-selected-pic-ul > li' )
+    $( '#select-right-button' ).click(function()
     {
         if( position > 100 )
         {
@@ -963,11 +999,11 @@ $(document).ready(function()
         else
         {
             position = position + 60;
-            $('#all-selected-pic-ul').animate({left: position + 'px'});
+            $( '#all-selected-pic-ul' ).animate({left: position + 'px'});
         }
     });
 
-    $('#select-left-button').click(function()
+    $( '#select-left-button' ).click(function()
     {
         if( position < (-50) )
         {
@@ -976,7 +1012,7 @@ $(document).ready(function()
         else
         {
             position = position - 60;
-            $('#all-selected-pic-ul').animate({left: position + 'px'});
+            $( '#all-selected-pic-ul' ).animate({left: position + 'px'});
         }
     
     });

@@ -10,8 +10,35 @@ tbody td
 </style>
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
+jQuery(document).ready(function()
+{
     $('#personal-calendar .left').calendar();
     // $('#personal-calendar .right').calendarEvents(3);
+
+    $('a.calendar-hide-event').live('click', function()
+    {
+        var id = $(this).attr('href').replace('#', '');
+        $.post(
+            $.configures.calendarHideEventUrl,
+            {
+                calendar:
+                {
+                    id: id
+                },
+                token: $.configures.token
+            },
+            function(response)
+            {
+                $.configures.token = response.token;
+                if ( $.errors(response.errors) )
+                {
+                    window.location.reload();
+                }
+            }
+        );
+        return false;
+    });
+});
 </script>
 <?php $this->endWidget();?>
 <div id="personal-calendar">
