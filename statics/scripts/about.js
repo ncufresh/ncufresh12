@@ -5,7 +5,7 @@
         var options = $.extend({
             aboutId:                         'about',
             titleClass:                      'title',
-            introduceId:                     'introduce',
+            introduceId:                     'introdution',
             tagBar:                          'tagBar',
             animationClass:                  'animation',
             block1InfClass:                  'information',
@@ -18,8 +18,8 @@
         var tagbarIndex = 0;
         var tagbar = $('.' + options.tagBar + ' img');
         var tagbarPerson = $('.' + options.tagBar + ' div');
-        var personName = $('<p></p>').hide();
-        var personGrade = $('<p></p>').hide();
+        var personName = $('<p></p>').addClass('tag-Box-name').hide();
+        var personGrade = $('<p></p>').addClass('tag-Box-grade').hide();
         var photoNumber = 8;
         var smallPhotoIndex = 0;
         var jumpTo = function()
@@ -52,23 +52,26 @@
                 .addClass('block2')
         ]
         var itr = $('<div></div>').css({
-            padding: 5,
+            paddingLeft: 15,
+            paddingBottom: 10,
+            paddingRight: 10,
+            paddingTop: 1,
             borderRadius: 10,
             background: '#fffce0',
             position: 'relative',
             float: 'top',
             left: 25,
-            height: 550,
-            width: 700,
+            height: 739,
+            width: 675,
         })
         .appendTo(blocks[0])
-        .append($('#' + options.introduceId));
+        .append($('.' + options.introduceId));
         var picture = $('<div></div>')
             .css({
                 background: 'url(\'' + photos.eq(photoIndex).attr('photo') + '0.png' + '\')',
                 float: 'right',
                 height: 300,
-                top: -68,
+                top: -722,
                 position: 'relative',
                 width:  400
             })
@@ -193,7 +196,13 @@
                  default:
                     break;
             }
-            $(this).click(function()
+            $(this).mouseenter(function()
+            {
+                $(this).css({
+                    cursor: 'pointer'
+                })
+            })
+            .click(function()
             {
                 for ( var i = 0; i < 4; i++)
                 {
@@ -216,29 +225,15 @@
             {
                 var tempObject = $(this);
                 $(this).css({
-                    background: 'url(\'' + tagbar.eq(5).attr('src') + '\')'
+                    border: '5px solid white'
                 });
-                personName.text(tempObject.attr('name')).css({
-                    Button: '20%',
-                    left: 0,
-                    height: '10%',
-                    width: '100%'
-                })
-                .show()
-                .appendTo(tempObject);
-                personGrade.text(tempObject.attr('grade')).css({
-                    Button: '10%',
-                    left: 0,
-                    height: '10%',
-                    width: '100%'
-                })
-                .show()
-                .appendTo(tempObject);
+                personName.text(tempObject.attr('name')).show().appendTo(tempObject);
+                personGrade.text(tempObject.attr('grade')).show().appendTo(tempObject);
             })
             .mouseleave(function()
             {
                 $(this).css({
-                    background: ''
+                    border: ''
                 });
                 personName.hide();
                 personGrade.hide();

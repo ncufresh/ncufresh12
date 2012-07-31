@@ -18,13 +18,13 @@ class NculifeController extends Controller
                 $this->live($tab);
                 break;
             case 'traffic' :
-                $this->house($tab);
+                $this->traffic($tab);
                 break;
             case 'play' :
-                $this->sport($tab);
+                $this->play($tab);
                 break;
-            case 'shool' :
-                $this->health($tab);
+            case 'school' :
+                $this->school($tab);
                 break;
         }
     }

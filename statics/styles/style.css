@@ -1766,7 +1766,7 @@ button.news-button
 
 #nculife-dh
 {
-    background: pink;
+    font-size: 1.4em;
     width: 637px;
     height: 25px;
 }
@@ -1821,8 +1821,7 @@ button.news-button
     padding: 0;
     margin: 55px 0 0 175px;
     position: relative;
-    background: #181515;
-    color: white;
+    color: black;
 }
 
 #nculife-dh a
@@ -2018,7 +2017,8 @@ button.news-button
     width: 750px;
     height: 450px;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     background: url('../readme/freshman_background.png');
 }
 
@@ -2267,16 +2267,23 @@ button.news-button
 
 #readme-logo3
 {
-    width: 193px;
+    width: 121px;
     height: 194px;
-    left: 536px;
+    left: 608px;
     top: 34px;
-    /* background: url('../readme/notice.png'); */
+    position: absolute;
+}
+
+#readme-logo3:active
+{
+    display: block;
+    background: url('../readme/notice.png');
+    
 }
 
 #readme-logo4
 {
-     width: 126px;
+    width: 126px;
     height: 107px;
     position: absolute;
     top: 210px;
@@ -2291,16 +2298,36 @@ button.news-button
 
 #read-fresh-menu
 {
+    background: orange;
+}
+
+#read-reschool-menu
+{
+    background: green;
+}
+
+#read-fresh-menu a
+{
+    width: 30px;
+}
+
+.readme-menu
+{
     width: 200px;
     height: 300px;
     top: 50px;
-    left: -215px;
+    left: -187px;
     border-radius: 10px;
     position: absolute;
     display: block;
-    background: orange;
     list-style: none;
     font-size: 1.5em;
+    opacity: 0.9;
+}
+
+.readme-menu-index
+{
+    display: none;
 }
 
 .fresh-menu li
@@ -2309,24 +2336,38 @@ button.news-button
     margin-top: 15px;
 }
 
+.fresh-menu li:hover
+{
+    text-decoration: underline;
+}
+
 .fresh-menu
 {
     cursor: pointer;
+    text-align: center;
 }
 
-#about #introduce
+#readme-view
+{
+    width: 750px;
+    height: 450px;
+}
+
+#about .introdution
 {
     border-radius: 3px;
     color: black;
     font-family: 微軟正黑體;
     font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 3px;
 }
 
 #about .tag-txt
 {
-    background: url('../about/small_wood_plate.png') no-repeat #8ca86c center;
+    background: url('../about/small_wood_plate.png') no-repeat;
     left: 25px;
-    height: 122px;
+    height: 140px;
     width: 700px;
     position: relative;
     margin-top: -0px;
@@ -2346,7 +2387,7 @@ button.news-button
 
 #about .title2
 {
-    background: url('../about/who_with_stars.png') #385281 no-repeat;
+    background: url('../about/who_with_stars.png') #385281  no-repeat;
     width: 750px;
     height: 85px;
 }
@@ -2354,14 +2395,14 @@ button.news-button
 #about .block1
 {
     background: #385281;
-    height: 560px;    
+    height: 750px;    
     width: 750px;
 }
 
 #about .block2
 {
     background: #385281;
-    height: 900px;    
+    height: 950px;    
     width: 750px;
 }
 
@@ -2377,6 +2418,24 @@ button.news-button
     height: 508px;
     width: 700px;
     position: relative;
+}
+
+#about .tag-Box-name
+{
+    top: 95%;
+    position: absolute;
+    text-align: center;
+    height: 10%;
+    width: 100%;
+}
+
+#about .tag-Box-grade
+{
+    top: 120%;
+    position: absolute;
+    text-align: center;
+    height: 10%;
+    width: 100%;
 }
 
 /**
