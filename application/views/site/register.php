@@ -35,13 +35,8 @@
                 <label for="form-register-gender-male">性別</label>
             </dt>
             <dd>
-<<<<<<< HEAD
-                <input id="form-register-sex-male" name="profile[sex]" type="radio" value="0" /><label for="form-register-sex-male">Male</label>
-                <input id="form-register-sex-female" name="profile[sex]" type="radio" value="1" /><label for="form-register-sex-female">Female</label>
-=======
-                <input id="form-register-gender-male" name="gender" type="radio" value="0" /><label for="form-register-gender-male">Male</label>
-                <input id="form-register-gender-female" name="gender" type="radio" value="1" /><label for="form-register-gender-female">Female</label>
->>>>>>> e70cd4569799b550b2d5d2770c0626c889805a2e
+                <input id="form-register-gender-male" name="profile[gender]" type="radio" value="0" /><label for="form-register-gender-male">Male</label>
+                <input id="form-register-gender-female" name="profile[gender]" type="radio" value="1" /><label for="form-register-gender-female">Female</label>
             </dd>
         </dl>
 <?php if ( !isset($username_errors['username']) ) :?>
@@ -51,7 +46,6 @@
             </dt>
             <dd>
                 <input id="form-register-username" name="register[username]" type="text" />
-                <?php echo isset($username_errors['username'][0])?$username_errors['username'][0]:''; ?>
             </dd>
         </dl>
 <?php else : ?>

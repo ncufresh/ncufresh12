@@ -23,14 +23,7 @@ class Profile extends CActiveRecord
     public function rules()
     {   
         return array(
-            array(
-<<<<<<< HEAD
-                'name, nickname, department, grade, senior, year, month, day ,sex', 
-=======
-                'name, nickname, department_id, grade,senior, birthday,gender', 
->>>>>>> e70cd4569799b550b2d5d2770c0626c889805a2e
-                'required'
-            ),
+            array('name, nickname, department, grade, senior, year, month, day ,gender','required'),
             array('department', 'length','min' => 1, 'max' => 21),
             array('grade', 'length','min' => 1, 'max' => 5),
             array('nickname', 'unique', 'className' => 'Profile'),

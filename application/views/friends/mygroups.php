@@ -22,7 +22,7 @@
 <?php echo $profile->name; ?>
                 </h3>
                 <h4>
-<?php echo $profile->mydepartment->short_name; ?>
+<?php echo $profile->mydepartment->abbreviation; ?>
                 </h4>
             </li>
 <?php endforeach; ?>

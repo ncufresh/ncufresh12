@@ -238,69 +238,24 @@ class SiteController extends Controller
 
     public function actionRegister()
     {
-<<<<<<< HEAD
-        $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $profile = new Profile();
         $user = new User();
-=======
->>>>>>> e70cd4569799b550b2d5d2770c0626c889805a2e
         if ( isset($_POST['register']) && isset($_POST['profile']) )
         {
             $user->attributes = $_POST['register'];
             $profile->attributes = $_POST['profile'];
-            // var_dump($user->validate());
-            // echo '<br />';
-            // var_dump($profile->validate());
-            // exit;
             if ( $user->validate() && $profile->validate() )
             {
-                if ( $user->save() )
+                if ( $user->save() && $profile->save() )
                 {
-<<<<<<< HEAD
                     $character = new Character(); //Character Model
                     $character->id = $user->id;//同步寫入user的id至遊戲資料列表
-                    $character->exp = 1; //一開始使用者經驗設為1
+                    $character->experience = 1; //一開始使用者經驗設為1
                     $character->money = 25000; //一開始使用者金錢設為25000
                     $character->total_money = 35000; //一開始使用者總金錢設為25000
-                    if($_POST['profile']['sex'] == 0)
+                    if($_POST['profile']['gender'] == 0)
                     {
                         $character->skin_id = 81; //男生 皮膚預設id=81
-=======
-                    $profile = new Profile();
-                    $profile->attributes = $_POST['profile'];
-                    $profile->department_id = $_POST['profile']['department'];
-                    $profile->grade = $_POST['profile']['grade'];
-                    $profile->gender = $_POST['gender'];
-                    if ( $profile->validate() )
-                    {
-                        if ( $user->save() )
-                        {
-                            $character = new Character(); //Character Model
-                            $character->id = $user->id;//同步寫入user的id至遊戲資料列表
-                            $character->experience = 1; //一開始使用者經驗設為1
-                            $character->money = 25000; //一開始使用者金錢設為25000
-                            $character->total_money = 35000; //一開始使用者總金錢設為25000
-                            if($_POST['gender'] == 0)
-                            {
-                                $character->skin_id = 81; //男生 皮膚預設id=81
-                            }
-                            else
-                            {
-                                $character->skin_id = 85; //女生 皮膚預設id=85
-                            }
-                            $item = new ItemBag(); //ItemBag Model
-                            $item->user_id = $user->id; //同步寫入user的id至道具列表
-                            $item->item_id = $character->skin_id; //寫入獲得道具的id
-                            $item->equipped = true; //寫入裝備狀態
-                            $item->created = TIMESTAMP; //寫入獲得時間
-                            
-                            $profile->id = $user->id;
-                            if ( $profile->save() && $character->save() && $item->save())
-                            {
-                                $this->redirect(array('profile/profile'));
-                            }
-                        }
->>>>>>> e70cd4569799b550b2d5d2770c0626c889805a2e
                     }
                     else
                     {
@@ -308,9 +263,9 @@ class SiteController extends Controller
                     }
                     $item = new ItemBag(); //ItemBag Model
                     $item->user_id = $user->id; //同步寫入user的id至道具列表
-                    $item->items_id = $character->skin_id; //寫入獲得道具的id
-                    $item->equip = 1; //寫入裝備狀態
-                    $item->acquire_time = TIMESTAMP; //寫入獲得時間
+                    $item->item_id = $character->skin_id; //寫入獲得道具的id
+                    $item->equipped = true; //寫入裝備狀態
+                    $item->created = TIMESTAMP; //寫入獲得時間
                     //行事曆的部分
                     $calendar = new Calendar();
                     $calendar->user_id = $user->id;
@@ -318,8 +273,8 @@ class SiteController extends Controller
                     $calendar_subscriptions = new Subscription();
                     $calendar_subscriptions->user_id = $user->id;
                     $calendar_subscriptions->calendar_id = 1;
-                    $calendar_subscriptions->visible = 1;
-                    if ( $profile->save() && $character->save() && $item->save() && $calendar->save() && $calendar_subscriptions->save() )
+                    $calendar_subscriptions->invisible = 1;
+                    if ( $character->save() && $item->save() && $calendar->save() && $calendar_subscriptions->save() )
                     {
                         $this->redirect(array('profile/profile'));
                     }
@@ -327,19 +282,14 @@ class SiteController extends Controller
                 else
                 {
                     $this->render('register', array(
-                            'departments'   => Department::model()->getDepartment(),
-                            'nickname_isExist'      => false,
-                            'username_errors'        => $user->getErrors(),
-                            'profile_errors'        => $profile->getErrors()
+                        'departments'   => Department::model()->getDepartment(),
+                        'username_errors'        => $user->getErrors(),
+                        'profile_errors'        => $profile->getErrors()
                     ));
                 }
             }
             else
             {
-                var_dump($user->getErrors());
-                echo '<br />';
-                var_dump($profile->getErrors());
-                exit;
                 $this->render('register', array(
                         'departments'   => Department::model()->getDepartment(),
                         'username_errors'        => $user->getErrors(),
@@ -355,11 +305,6 @@ class SiteController extends Controller
                     'profile_errors'        => $profile->getErrors()
             ));
         }
-<<<<<<< HEAD
-=======
-        $this->render('register', array(
-            'departments'   => Department::model()->getDepartment()
-        ));
     }
 
     public function actionSitemap()
@@ -456,6 +401,5 @@ class SiteController extends Controller
         $this->render('sitemap', array(
             'pages'         => $pages
         ));
->>>>>>> e70cd4569799b550b2d5d2770c0626c889805a2e
     }
 }

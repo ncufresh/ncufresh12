@@ -16,7 +16,7 @@
 <?php echo $friend->friend_request->name;?>
                 </h3>
                 <h4>
-<?php echo $friend->friend_request->mydepartment->short_name; ?>
+<?php echo $friend->friend_request->mydepartment->abbreviation; ?>
                 </h4>
             </li>
 <?php endforeach; ?>
