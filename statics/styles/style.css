@@ -3572,6 +3572,14 @@ img.user_img
 /**
  * Game
  */
+#game-mission-dialog
+{
+    width: 750px;
+    height: 450px;
+    display: none;
+    background: url('../game/mission.png');
+}
+
 .avatar
 {
     height: 800px;
