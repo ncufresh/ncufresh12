@@ -162,6 +162,18 @@ class ItemBag extends CActiveRecord
         }
         else
         return false; //找不到此物品 無法裝備
-
+    }
+    protected function beforeSave()
+    {
+        if ( parent::beforeSave() )
+        {
+            if ( $this->getIsNewRecord() )
+            {
+                $this->equipped = true; //寫入裝備狀態
+                $this->created = TIMESTAMP; //寫入獲得時間
+            }
+            return true;
+        }
+        return false;
     }
 }

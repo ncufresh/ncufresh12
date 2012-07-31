@@ -55,8 +55,20 @@ class CalendarController extends Controller
         ));
     }
 
-    public function actionEventDetail()
+    public function actionEvent($id)
     {
+        $id = (integer)$id;
+        $event = Event::model()->getEventById($id);
+        if( $event )
+        {
+            $this->render('event', array(
+                'event' => $event
+            ));
+        }
+        else
+        {
+            throw new CHttpException(404);
+        }
     }
     
     public function actionCreateEvent()
@@ -246,6 +258,7 @@ class CalendarController extends Controller
             {
                 $this->_data['events'][$counter]['id'] = $event->id;
                 $this->_data['events'][$counter]['start'] = $event->start;
+                $this->_data['events'][$counter]['name'] = $event->name;
                 $this->_data['events'][$counter]['end'] = $event->end;
                 $counter++;
             }
@@ -255,6 +268,7 @@ class CalendarController extends Controller
                 {
                     $this->_data['events'][$counter]['id'] = $event->id;
                     $this->_data['events'][$counter]['start'] = $event->start;
+                    $this->_data['events'][$counter]['name'] = $event->name;
                     $this->_data['events'][$counter]['end'] = $event->end;
                     $counter++;
                 }

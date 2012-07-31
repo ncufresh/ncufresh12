@@ -1266,6 +1266,19 @@ ul#nculife-details
 
 #personal-calendar
 {
+    
+}
+
+#personal-calendar .calendar-table tbody td
+{
+    cursor: pointer;
+}
+
+.calendar-prompt
+{
+    background: gray;
+    list-style: none;
+    padding: 5px;
 }
 
 #index-container
@@ -1770,7 +1783,7 @@ button.news-button
     width: 637px;
     height: 25px;
 }
-.dialog-close-button
+.nculife-dialog .dialog-close-button
 {
     width: 42px;
     height: 42px;
@@ -2230,8 +2243,8 @@ button.news-button
 {
     width: 124px;
     height: 122px;
-    left: 356px;
-    top: 74px;
+    left: 357px;
+    top: 75px;
     position: absolute;
 }
 
@@ -2245,8 +2258,8 @@ button.news-button
 {
     width: 140px;
     height: 135px;
-    left: 491px;
-    top: 31px;
+    left: 492px;
+    top: 32px;
     position: absolute;
 }
 
@@ -2260,8 +2273,8 @@ button.news-button
 {
     width: 121px;
     height: 194px;
-    left: 608px;
-    top: 34px;
+    left: 607px;
+    top: 33px;
     position: absolute;
 }
 
@@ -2277,7 +2290,7 @@ button.news-button
     width: 126px;
     height: 107px;
     position: absolute;
-    top: 210px;
+    top: 212px;
     left: 603px;
 }
 
@@ -2289,17 +2302,17 @@ button.news-button
 
 #read-fresh-menu
 {
-    background: orange;
+    background: #FFD589;
 }
 
 #read-reschool-menu
 {
-    background: green;
+    background: #A1FF90;
 }
 
-#read-fresh-menu a
+#read-notice-menu 
 {
-    width: 30px;
+    background: #F7AAF7;
 }
 
 .readme-menu
@@ -2313,12 +2326,22 @@ button.news-button
     display: block;
     list-style: none;
     font-size: 1.5em;
-    opacity: 0.9;
+    opacity: 0.75;
+}
+
+.readme-menu p
+{
+    text-align: center;
+}
+
+.readme-menu span
+{
+    text-align: center;
 }
 
 .readme-menu-index
 {
-    display: block;
+    display: none;
 }
 
 .fresh-menu li
@@ -3572,6 +3595,15 @@ img.user_img
 /**
  * Game
  */
+#game-mission-dialog
+{
+    width: 750px;
+    height: 450px;
+    display: none;
+    background: url('../game/mission.png');
+    position: fixed;
+}
+
 .avatar
 {
     height: 800px;
