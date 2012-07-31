@@ -4,35 +4,36 @@
     <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
         <dl>
             <dt>
-                <label for="form-register-name">姓名</label>
+                <label for="form-register-name">
+<?php if ( isset($profile_errors['name']) ) : ?>
+<?php foreach ( $profile_errors['name'] as $error ) : ?>
+<?php echo $error; ?>
+<?php endforeach; ?>
+<?php else: ?>
+                 姓名
+<?php endif; ?>                
+                </label>
             </dt>
             <dd>
                 <input id="form-register-name" name="profile[name]" type="text" />
             </dd>
         </dl>
-<?php if ( !isset($profile_errors['nickname']) ) :?>
         <dl>
             <dt>
-                <label for="form-register-nickname">暱稱</label>
-            </dt>
-            <dd>
-                <input id="form-register-nickname" name="profile[nickname]" type="text" />
-            </dd>
-        </dl>
-<?php else : ?>
-         <dl>
-            <dt>
-                <label for="form-register-nickname" class="is_exist">
+                <label for="form-register-nickname">
+<?php if ( isset($profile_errors['nickname']) ) : ?>
 <?php foreach ( $profile_errors['nickname'] as $error ) : ?>
 <?php echo $error; ?>
 <?php endforeach; ?>
+<?php else: ?>
+                 暱稱
+<?php endif; ?>
                 </label>
             </dt>
             <dd>
                 <input id="form-register-nickname" name="profile[nickname]" type="text" />
             </dd>
         </dl>
-<?php endif; ?>
         <dl class="radio">
             <dt>
                 <label for="form-register-gender-male">性別</label>
@@ -42,33 +43,33 @@
                 <input id="form-register-gender-female" name="profile[gender]" type="radio" value="1" /><label for="form-register-gender-female">Female</label>
             </dd>
         </dl>
-<?php if ( !isset($username_errors['username']) ) :?>
         <dl>
             <dt>
-                <label for="form-register-username">帳號</label>
-            </dt>
-            <dd>
-                <input id="form-register-username" name="register[username]" type="text" />
-            </dd>
-        </dl>
-<?php else : ?>
-        <dl>
-            <dt>
-                <label for="form-register-username" class="is_exist">
+                <label for="form-register-username">
+<?php if ( isset($username_errors['username']) ) :?>
 <?php foreach ( $username_errors['username'] as $error ) : ?>
 <?php echo $error; ?>
 <?php endforeach; ?>
+<?php else: ?>
+                 帳號
+<?php endif; ?>
                 </label>
             </dt>
             <dd>
                 <input id="form-register-username" name="register[username]" type="text" />
             </dd>
         </dl>
-<?php endif; ?>
-<?php if ( !isset($username_errors['password']) ) : ?>
         <dl>
             <dt>
-                <label for="form-register-password">密碼</label>
+                <label for="form-register-password">
+<?php if ( isset($username_errors['password']) ) : ?>
+<?php foreach ( $username_errors['password'] as $error ) : ?>
+<?php echo $error; ?>
+<?php endforeach; ?>
+<?php else: ?>
+                 密碼
+<?php endif; ?>
+                </label>
             </dt>
             <dd>
                 <input id="form-register-password" name="register[password]" type="password" />
@@ -82,28 +83,6 @@
                 <input id="form-register-confirm" name="register[confirm]" type="password" />
             </dd>
         </dl>
-<?php else : ?>
-        <dl>
-            <dt>
-                <label for="form-register-password" class="is_exist">
-<?php foreach ( $username_errors['password'] as $error ) : ?>
-<?php echo $error; ?>
-<?php endforeach; ?>
-                </label>
-            </dt>
-            <dd>
-                <input id="form-register-password" name="register[password]" type="password" />
-            </dd>
-        </dl>
-        <dl>
-            <dt>
-                <label for="form-register-confirm" class="is_exist">再輸入一次</label>
-            </dt>
-            <dd>
-                <input id="form-register-confirm" name="register[confirm]" type="password" />
-            </dd>
-        </dl>
-<?php endif; ?>
         <dl class="select">
             <dt>
                 <dd>
@@ -126,7 +105,15 @@
         </dl>
         <dl>
             <dt>
-                <label for="form-register-senior">畢業高中</label>
+                <label for="form-register-senior">
+<?php if ( isset($profile_errors['senior']) ) :?>
+<?php foreach ( $profile_errors['senior'] as $error ) : ?>
+<?php echo $error; ?>
+<?php endforeach; ?>
+<?php else: ?>
+                 畢業高中
+<?php endif; ?>
+                </label>
             </dt>
             <dd>
                 <input id="form-register-senior" name="profile[senior]" type="text" />

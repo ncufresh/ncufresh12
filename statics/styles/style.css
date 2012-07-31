@@ -3242,17 +3242,6 @@ div.self-messages
     float:left;
 }
 
-div.register .is_exist
-{
-    color: red;
-}
-
-/*h1
-{
-    text-align:center;
-    color:green;
-}*/
-
 td.reply-content
 {
     position: relative;
