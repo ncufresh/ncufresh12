@@ -52,23 +52,26 @@
             </li>
             <li>
                 <span>生日:<?php echo $user->profile->birthday; ?></span>
+                <span>年:<?php echo date('Y', $user->profile->getrawValue('birthday')); ?></span>
+                <span>月:<?php echo date('m', $user->profile->getrawValue('birthday')); ?></span>
+                <span>日:<?php echo date('d', $user->profile->getrawValue('birthday')); ?></span>
                     <select name="profile[year]" class="year">
 <?php for ( $year = 2000 ; $year >= 1990 ; $year-- ) : ?>
-                        <option value="<?php echo $year; ?>">
+                        <option value="<?php echo date('Y', $user->profile->getrawValue('birthday')); ?>">
 <?php echo $year; ?>                        
                         </option>
 <?php endfor; ?>
                     </select>
                     <select name="profile[month]" class="month">
 <?php for ( $month = 1 ; $month <= 12 ; $month++ ) : ?>
-                        <option value="<?php echo $month; ?>">
+                        <option value="<?php echo date('m', $user->profile->getrawValue('birthday')); ?>">
 <?php echo $month; ?>                        
                         </option>
 <?php endfor; ?>
                     </select>
                     <select name="profile[day]" class="day">
 <?php for ( $day = 1 ; $day <= 31 ; $day++ ) : ?>
-                        <option value="<?php echo $day; ?>">
+                        <option value="<?php echo date('d', $user->profile->getrawValue('birthday')); ?>">
 <?php echo $day; ?>                        
                         </option>
 <?php endfor; ?>
