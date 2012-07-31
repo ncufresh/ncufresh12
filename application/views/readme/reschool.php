@@ -1,13 +1,12 @@
 <div id="readme-reschool">
     <div id="readme-view"></div>
     <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" id="reschool-back" class="readme-back"></a>
-        <div id="read-reschool-menu" class="readme-menu">
-        	<h4>復學區</h4>
-        </div>
-        
+    <div id="read-reschool-menu" class="readme-menu">
+        <p>復學區</p>
         <ul id="readme-index2" class="readme-menu-index">
-            <li tab="1" page="reschool">中央</li>
-            <li tab="2" page="reschool">大學</li>
-            <li tab="3" page="reschool">ncu</li>
+<?php for ( $x = 0 ; $x < $size ; ++$x ) : ?>
+            <li tab="<?php echo $tab[$x]; ?>" page="reschool"><?php echo $index[$x]; ?></li>
+<?php endfor; ?>
         </ul>
+    </div>
 </div>

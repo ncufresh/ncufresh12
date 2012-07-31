@@ -95,6 +95,7 @@ class CalendarController extends Controller
     {
         $club_calendars = Calendar::Model()->findAll('category=0 AND id!=1');
         $subscripted_calendars = Subscription::Model()->findAll('user_id='.Yii::app()->user->getId().' AND invisible=0');
+        
         $clubs_category = array();
         $clubs_name = array();
         $calendar_id = array();
@@ -102,13 +103,10 @@ class CalendarController extends Controller
         
         foreach ( $club_calendars as $key => $each )
         {
-            $clubs_category[$key] = Club::Model()->getClubByMasterId($each->user_id)
-                                ?   Club::Model()->getClubByMasterId($each->user_id)->category
-                                :   'unknown';
-            $clubs_name[$key] = Club::Model()->getClubByMasterId($each->user_id)
-                                ?   Club::Model()->getClubByMasterId($each->user_id)->name
-                                :   'unknown';
-            $calendar_id[$key] = $each->id;
+            $clubs_category[$i] = Club::Model()->getClubByMasterId($each->user_id)->category;
+            $clubs_name[$i] = Club::Model()->getClubByMasterId($each->user_id)->name;
+            $calendar_id[$i] = $each->id;
+            $check[$i] = 0;
             foreach($subscripted_calendars as $subscripted)
             {
                 if($subscripted->calendar_id == $each->id)
@@ -122,7 +120,6 @@ class CalendarController extends Controller
                 }
             }
         }
-        
         if(isset($_POST['subscript'])){
             for ( $i=0; $i<count($club_calendars); $i++ ){
                 if( isset($_POST['subscript'][$i]) && $_POST['subscript'][$i] == 1 ){
