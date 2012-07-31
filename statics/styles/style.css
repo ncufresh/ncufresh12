@@ -3174,7 +3174,7 @@ div.register form
     width:330px;
     height:315px;
     margin:0px;
-    padding:25px;
+    padding:15px;
 }
 
 div.register button
@@ -3242,9 +3242,9 @@ div.self-messages
     float:left;
 }
 
-div.friends-part4 .is_exist
+div.register .is_exist
 {
-    outline:1px solid red;
+    color: red;
 }
 
 /*h1
