@@ -38,7 +38,7 @@ class ProfileController extends Controller
     public function actionProfile() 
     {
         $this->render('profile', array(
-            'user'      => $user
+            'user'      => $this->user
         ));
         
     }
@@ -47,30 +47,35 @@ class ProfileController extends Controller
     {
         if ( isset($_POST['profile']) ) 
         {
-            $user->attributes = $_POST['register'];
+            $this->user->attributes = $_POST['register'];
             $profile = $this->user->profile;
             $profile->attributes = $_POST['profile'];
-            if ( $user->validate() && $profile->validate() )
+            if ( $this->user->validate() && $profile->validate() )
             {
+                
                 if ( $profile->save() )
                 {
                     $this->redirect(array('profile/profile'));
                 }
             }
+            else
+            {
+                $this->render('editor', array(                
+                        'user'          => $this->user, 
+                        'departments'   => Department::model()->getDepartment()
+                ));
+            }
         }
-        else
-        {
-            $this->render('editor', array(                
-                    'user'          => $this->user, 
-                    'departments'   => Department::model()->getDepartment()
-            ));
-        }
+        $this->render('editor', array(                
+            'user'          => $this->user, 
+            'departments'   => Department::model()->getDepartment()
+        ));
     }
 
     public function actionMessage()
     {
         $this->render('message', array(
-            'articles'        => Article::model()->getUserArticles($this->id)
+            'articles'       => Article::model()->getUserArticles($this->id)
         ));
     }
 
@@ -78,15 +83,15 @@ class ProfileController extends Controller
     {
         $this->render('messagereply', array( //還要再判斷是否有推文或回復---不然回是空值耶
             'article'       => Article::model()->findByPk($aid),
-            'replys'      => Reply::model()->getArticleReplies($aid),
-            'comments'       => Comment::model()->getArticleComments($aid)
+            'replys'        => Reply::model()->getArticleReplies($aid),
+            'comments'      => Comment::model()->getArticleComments($aid)
         ));
     }
 
     public function actionOtherProfile($friend_id)
     {
         $this->render('otherprofile', array(
-            'user'       => User::model()->findByPk($friend_id)
+            'user'          => User::model()->findByPk($friend_id)
         ));
         
     }
