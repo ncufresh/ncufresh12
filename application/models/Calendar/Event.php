@@ -54,11 +54,22 @@ class Event extends CActiveRecord
 
     public function getEventById($id)
     {
-        $event = $this->findByPk($id);
-        $event->start = $event->getRawValue('start');
-        $event->end = $event->getRawValue('end');
-        $event->start = Yii::app()->format->datetime($event->start);
-        $event->end = Yii::app()->format->datetime($event->end);
+        $event = $this->with(array(
+            'calendar' => array(
+                'select'    => false,
+                'condition' => 'user_id = :user_id OR category = 0',
+                'params'    => array(
+                    ':user_id' => Yii::app()->user->id
+                )
+            )
+        ))->findByPk($id);
+        if ( $event )
+        {
+            $event->start = $event->getRawValue('start');
+            $event->end = $event->getRawValue('end');
+            $event->start = Yii::app()->format->date($event->start);
+            $event->end = Yii::app()->format->date($event->end);
+        }
         return $event;
     }
 

@@ -21,6 +21,18 @@ class CalendarController extends Controller
 
     public function actionClub()
     {
+        // foreach ( Calendar::model()->getClubs() as $qq )
+        // {
+            // var_dump($qq->id);
+            // var_dump($qq->clubs->name);
+            // var_dump($qq->subscriptions ? 1 : 0);
+        // }
+        
+        var_dump( array_diff(array(
+            10,2,3
+        ),array(
+            2,3,4
+        )) );
     }
 
     public function actionRecycle()
@@ -43,8 +55,20 @@ class CalendarController extends Controller
         ));
     }
 
-    public function actionEventDetail()
+    public function actionEvent($id)
     {
+        $id = (integer)$id;
+        $event = Event::model()->getEventById($id);
+        if( $event )
+        {
+            $this->render('event', array(
+                'event' => $event
+            ));
+        }
+        else
+        {
+            throw new CHttpException(404);
+        }
     }
     
     public function actionCreateEvent()
@@ -87,58 +111,91 @@ class CalendarController extends Controller
 
     public function actionSubscript()
     {
-        $club_calendars = Calendar::Model()->findAll('category=0 AND id!=1');
-        $subscripted_calendars = Subscription::Model()->findAll('user_id='.Yii::app()->user->getId().' AND invisible=0');
-        $clubs_category = array();
-        $clubs_name = array();
-        $calendar_id = array();
-        $check = array();
-        
-        $i = 0;
-        foreach($club_calendars as $each)
+        if ( isset($_POST['token']) )
         {
-            $clubs_category[$i] = Club::Model()->getClubByMasterId($each->user_id)->category;
-            $clubs_name[$i] = Club::Model()->getClubByMasterId($each->user_id)->name;
-            $calendar_id[$i] = $each->id;
-            foreach($subscripted_calendars as $subscripted):
-                if($subscripted->calendar_id == $each->id){
-                    $check[$i] = 1;
-                    break;
+            if( !isset($_POST['subscript']) ) $_POST['subscript'] = array();
+            echo '0';
+            $subscript = new Subscription();
+            $array = array();
+            $i =0;
+            foreach( $_POST['subscript'] as $key => $value)
+            {
+                $array[$i++] = $key;
+            }
+            
+            //var_dump($array);
+            //var_dump(self::getSubscribedCalendars());
+            //var_dump(array_diff($array, self::getSubscribedCalendars()));
+            // var_dump(array_diff(self::getSubscribedCalendars(), $array));
+            // exit();
+            //here
+            
+            //新傳入的值比原有的多出 => 新增訂閱
+            if ( count(array_diff($array, self::getSubscribedCalendars()))!=0 )
+            {
+                echo '1';
+                foreach(array_diff($array, self::getSubscribedCalendars()) as $value)
+                {
+                    if ( Subscription::Model()->find('calendar_id='.$value.' AND invisible=1 AND user_id='.Yii::app()->user->getId()) )
+                    {
+                        $subscript = Subscription::model()->find('calendar_id='.$value.' AND invisible = 1 AND user_id='.Yii::app()->user->getId());
+                        $subscript->invisible = 0;
+                        $subscript->save();
+                        continue;
+                    }
+                    $subscript = new Subscription();
+                    $subscript->calendar_id = $value;
+                    $subscript->invisible = 0;
+                    $subscript->save();
                 }
-                else
-                    $check[$i] = 0;
-            endforeach;
-            $i++;
-        }
-        
-        if(isset($_POST['subscript'])){
-            for($i=0;$i<count($club_calendars);$i++){
-                if(isset($_POST['subscript'][$i]) && $_POST['subscript'][$i]==1){
-                    $subscription = new Subscription();
-                    $subscription->user_id = Yii::app()->user->getId();
-                    $subscription->calendar_id = Calendar::Model()->find('user_id='.$i.' AND category=0')->id;
-                    $subscription->invisible = 0;
-                    $subscription->save();
+            }
+            
+            //原有的比新傳入多出的部分 => 取消訂閱
+            if ( count(array_diff(self::getSubscribedCalendars(), $array))!=0 )
+            {
+                echo '2';
+                var_dump(array_diff(self::getSubscribedCalendars(), $array));
+                echo '<br/>';
+                foreach(array_diff(self::getSubscribedCalendars(), $array) as $value)
+                {
+                    echo 'abc ';
+                    // var_dump(self::getSubscribedCalendars());
+                    // echo '<br/>';
+                    // var_dump($array);
+                    // echo '<br/>';
+                    // var_dump(array_diff(self::getSubscribedCalendars(), $array));
+                    
+                    if ( $subscript->find('calendar_id='.$value.' AND invisible = 0 AND user_id='.Yii::app()->user->getId()) )
+                    {
+                        echo $subscript->find('calendar_id='.$value.' AND invisible = 0 AND user_id='.Yii::app()->user->getId())->calendar_id;
+                        
+                        $subscript = Subscription::model()->find('calendar_id='.$value.' AND invisible = 0 AND user_id='.Yii::app()->user->getId());
+                        $subscript->invisible = 1;
+                        $subscript->save();
+                    }
+                    
+                    // echo '<br/><br/>';
                 }
             }
         }
-        // for($i=0;$i<count($club_calendars);$i++)
-            // echo $check[$i];
-        // exit();
-        /*
-        calendar id
-        club category
-        club name
-        IsChecked
-        */
         $this->render('subscript', array(
-            'clubs_category' => $clubs_category,
-            'clubs_name' => $clubs_name,
-            'calendar_id' => $calendar_id,
-            'check' => $check,
+            'clubs' => Calendar::model()->getClubs()
         ));
     }
 
+    private function getSubscribedCalendars()
+    {
+        $subscript = new Subscription();
+        $subscribed_calendar_id = $subscript->getSubscribedCalendars();
+        $result = array();
+        $i = 0;
+        foreach( $subscribed_calendar_id as $each )
+        {
+            $result[$i++] = $each->calendar_id;
+        }
+        return $result;
+    }
+    
     public function actionUnsubsciprt()
     {
         
@@ -201,6 +258,7 @@ class CalendarController extends Controller
             {
                 $this->_data['events'][$counter]['id'] = $event->id;
                 $this->_data['events'][$counter]['start'] = $event->start;
+                $this->_data['events'][$counter]['name'] = $event->name;
                 $this->_data['events'][$counter]['end'] = $event->end;
                 $counter++;
             }
@@ -210,6 +268,7 @@ class CalendarController extends Controller
                 {
                     $this->_data['events'][$counter]['id'] = $event->id;
                     $this->_data['events'][$counter]['start'] = $event->start;
+                    $this->_data['events'][$counter]['name'] = $event->name;
                     $this->_data['events'][$counter]['end'] = $event->end;
                     $counter++;
                 }
