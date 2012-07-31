@@ -13,7 +13,7 @@
             </li>
             <li>
                 性別:
-<?php if ( $user->profile->sex == 0 ): ?>
+<?php if ( $user->profile->gender == 0 ): ?>
                 男孩兒
 <?php else:?>
                 女孩兒

@@ -12,6 +12,6 @@ class Status extends CActiveRecord
 
     public function tableName()
     {
-        return '{{calendar_events}}';
+        return '{{calendar_status}}';
     }
 }
