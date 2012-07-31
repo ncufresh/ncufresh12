@@ -260,6 +260,7 @@ class SiteController extends Controller
                     }
                     $item = new ItemBag(); //ItemBag Model
                     $item->user_id = $user->id; //同步寫入user的id至道具列表
+                    $item->equipped = true; //寫入裝備狀態
                     $item->item_id = $character->skin_id; //寫入獲得道具的id
                     //行事曆的部分
                     $calendar = new Calendar();
