@@ -362,6 +362,7 @@
             friendListId:           'chat-friend-list',
             friendListContainerId:  'chat-friend-list-container',
             friendListSearchId:     'chat-friend-list-search',
+            chatNotifyId:           'chat-notify',
             chatTitleClass:         'chat-title',
             chatDialogClass:        'chat-dialog',
             chatDisplayClass:       'chat-display',
@@ -403,11 +404,11 @@
 
     $.fn.chat.notify = function(dialog)
     {
+        $('#' + $.chat.options.chatNotifyId).get(0).play();
         dialog.data('timer', setInterval(function()
         {
             dialog.children('.' + $.chat.options.chatTitleClass).highlight();
-        }, 1000));
-        dialog.children('.' + $.chat.options.chatTitleClass).one('click', function()
+        }, 1000)).children('.' + $.chat.options.chatTitleClass).one('click', function()
         {
             clearInterval($(this).parent().data('timer'));
         });
@@ -418,24 +419,43 @@
         var list = $('#' + $.chat.options.friendListId);
         if ( list.length == 0 )
         {
-            var search = $('<input />')
-                .attr('type', 'text')
-                .attr('id', $.chat.options.friendListSearchId)
-            list = $('<div></div>')
-                .attr('id', $.chat.options.friendListId)
-                .appendTo($('body'));
-            title = $('<span></span>')
+            var title = $('<span></span>')
                 .text('談天說地')
                 .click(function()
                 {
                     $.fn.chat.closeFriendList();
-                })
-                .appendTo(list);
-            display = $('<div></div>')
-                .attr('id', $.chat.options.friendListContainerId)
-                .appendTo(list);
-            search.appendTo(list);
-            display.scrollable()
+                });
+            var display = $('<div></div>')
+                .attr('id', $.chat.options.friendListContainerId);
+            var search = $('<input />')
+                .attr('type', 'text')
+                .attr('id', $.chat.options.friendListSearchId);
+            var source = $('#' + $.chat.options.chatId).attr('notify');
+            var notify = $('<audio></audio>')
+                .append(
+                    $('<source></source>')
+                        .attr('src', source + '.ogg')
+                        .attr('type', 'audio/ogg')
+                )
+                .append(
+                    $('<source></source>')
+                        .attr('src', source + '.mp3')
+                        .attr('type', 'audio/mp3')
+                )
+                .append(
+                    $('<source></source>')
+                        .attr('src', source + '.wav')
+                        .attr('type', 'audio/wav')
+                )
+                .attr('id', $.chat.options.chatNotifyId);
+            list = $('<div></div>')
+                .attr('id', $.chat.options.friendListId)
+                .append(title)
+                .append(display)
+                .append(search)
+                .append(notify)
+                .appendTo($('body'));
+            display.scrollable();
         }
         return list;
     };
@@ -1165,7 +1185,174 @@
  * Calendar
  */
 (function($)
-{
+{   
+    var getToday = function()
+    {
+        var date = new Date();
+        var current_day = date.getDate();
+        var current_month = date.getMonth();
+        var calendar_month = $(this).data('options').month;
+        if ( current_month == calendar_month )
+        {
+            var tds = $(this).children('tbody').find('td');
+            for( var key in tds )
+            {
+                if ( $(tds[key]).data('day') == current_day ) return $(tds[key]);
+            }
+        }
+        return false;
+    }
+
+    var updateData = function(updateEventsList)
+    {
+        var self = this;
+        $.getJSON($.configures.calendarEventsUrl, function(data){
+            for(var key in data.events)
+            {
+                self.markEvent(data.events[key], { textDecoration: 'underline'});
+            }
+            self.data('all_events', data.events);
+            if (updateEventsList)
+            {
+                $(self).updateEventsList($(self).getToday().data('cal_events'));
+            }
+        });
+        return this;
+    }
+
+    var markToday = function()
+    {
+        this.getToday().css('color', 'red');
+    }
+
+    /**
+     * Marks an event on calendar with specified css
+     * params var event    {event_id, start, end}
+     */
+    var markEvent = function(event, css, clean)
+    {
+        css = $.extend({}, css);
+        event = $.extend({
+            id: 0,
+            start: 0,
+            end: 0
+        }, event);
+        var id      = event.id;
+        var start   = event.start - (new Date()).getTimezoneOffset()*60;
+        var end     = event.end - (new Date()).getTimezoneOffset()*60;
+        var days    = [];
+        var date    = function( timestamp )
+        {
+            return (new Date(timestamp * 1000));
+        }
+        for( var time = start; time <= end; time+=86400 )
+        {
+            if( this.data('options').month ==  date(time).getMonth() )
+            {
+                days[days.length] = date(time).getDate();
+            }
+        }
+        $(this).children('tbody').find('td').each(function(index, element){
+            if ( clean ) $(this).removeAttr('style');
+            if( days.indexOf($(this).data('day')) != -1)
+            {
+                $(this).css(css);
+                var cal_events = $(this).data('cal_events')?$(this).data('cal_events'):[];
+                var found = false;
+                for( var key in cal_events )
+                {
+                    if( cal_events[key].id == event.id )
+                    {
+                        found = true; 
+                        break;
+                    }
+                }
+                if ( !found )
+                {
+                    cal_events[cal_events.length] = event;
+                    $(this).data('cal_events', cal_events);
+                }
+            }
+        });
+        return this;
+    }
+
+    var cleanUpMark = function()
+    {
+        return $(this).children('tbody').find('td').each(function(){
+            $(this).removeAttr('style');
+        });
+    }
+
+    /**
+     * Update the list of events
+     */
+    var updateEventsList = function(cal_events)
+    {
+        var self = this;
+        var date    = function(timestamp)
+        {
+            return (new Date(timestamp * 1000));
+        }
+        if ( cal_events && cal_events.length )
+        {
+            var event_ids = [];
+            for( var key in cal_events )
+            {
+                event_ids[key] = cal_events[key].id;
+            }
+            $.post($.configures.calendarEventsUrl, { 
+                event_ids : event_ids,
+                token : $.configures.token
+            }, function(data){
+                var general = $('#personal-calendar .right .general').empty();
+                var personal = $('#personal-calendar .right .personal').empty();
+                var clubs = $('#personal-calendar .right .clubs').empty();
+                for( var key in data.events )
+                {
+                    var result = $('<div></div>')
+                        .append($('<p></p>')
+                            .text(data.events[key].name)
+                            .append($('<a></a>')
+                                .addClass('calendar-hide-event')
+                                .attr('title', '丟進回收桶')
+                                .attr('href', '#' + data.events[key].id)
+                                .text('把我丟掉')
+                            )
+                        )
+                        .css('background', 'gray')
+                        .data('event', data.events[key])
+                        .mouseenter(function(){
+                            $('.calendar-table').markEvent($(this).data('event'), {
+                                background : 'green'
+                            }, true);
+                        })
+                        .mouseleave(function(){
+                            self.cleanUpMark();
+                            for( var key in self.data('all_events') )
+                            {
+                                self.markEvent(self.data('all_events')[key], { textDecoration: 'underline'});
+                            }
+                            self.markToday();
+                        });
+                    if ( data.events[key].category == 'GENERAL' )
+                    {
+                        result.appendTo(general);
+                    }
+                    else if ( data.events[key].category == 'PERSONAL' )
+                    {
+                        result.appendTo(personal);
+                    }
+                    else 
+                    {
+                        result.appendTo(clubs).prepend($('<span></span>').text(data.events[key].clubname));
+                    }
+                }
+                $.configures.token = data.token;
+            });
+        }
+    }
+    
     $.generateTodolist = function(events, options)
     {
         options = $.extend({
@@ -1210,7 +1397,7 @@
             rightClick:  function(){ return false; },
             dayClick:    function(){}
         }, options);
-        
+
         options.month -= 1;
         var daysInMonth = function(iMonth, iYear)
         {
@@ -1278,51 +1465,17 @@
             }
             td.appendTo(tr);
         }
+        $.extend( table.__proto__,{
+            markToday: markToday,
+            markEvent: markEvent,
+            cleanUpMark: cleanUpMark,
+            updateEventsList: updateEventsList,
+            updateData: updateData,
+            getToday: getToday
+        });
         return table.append(caption)
             .append(thead)
             .append(tbody);
-    }
-
-    /**
-     * var event    [event_id, start, end]
-     */
-    $.fn.markCalendarEvent = function(event, css, clean)
-    {
-        css = $.extend({}, css);
-        event = $.extend({
-            id: 0,
-            start: 0,
-            end: 0
-        }, event);
-        var id      = event.id;
-        var start   = event.start - (new Date()).getTimezoneOffset()*60;
-        var end     = event.end - (new Date()).getTimezoneOffset()*60;
-        var days    = [];
-        var date    = function( timestamp )
-        {
-            return (new Date(timestamp * 1000));
-        }
-        for( var time = start; time <= end; time+=86400 )
-        {
-            if( this.data('options').month ==  date(time).getMonth() )
-            {
-                days[days.length] = date(time).getDate();
-            }
-        }
-        $(this).children('tbody').find('td').each(function(index, element){
-            if ( clean ) $(this).removeAttr('style');
-            if( days.indexOf($(this).data('day')) != -1)
-            {
-                $(this).css(css);
-                var cal_events = $(this).data('cal_events')?$(this).data('cal_events'):[];
-                if ( $.inArray(event, cal_events) == -1 )
-                {
-                    cal_events[cal_events.length] = event;
-                }
-                $(this).data('cal_events', cal_events);
-            }
-        });
-        return this;
     }
 
     $.fn.indexCalendar = function(options)
@@ -1417,7 +1570,10 @@
         ).appendTo(bottom);
         return this;
     };
-    
+
+    /**
+     * Initialize the personal calendar
+     */
     $.fn.calendar = function()
     {
         var calendar = jQuery.generateCalendar({
@@ -1429,75 +1585,12 @@
                     + $(calendar).data('options').month + '.'
                     + $(this).text()
                 );
-                $(calendar).calendarEvents($(this).data('cal_events'));
+                $(calendar).updateEventsList($(this).data('cal_events'));
             }
         });
         calendar.appendTo(this);
-        $.getJSON($.configures.calendarEventsUrl, function(data){
-            for(var key in data.events)
-            {
-                calendar.markCalendarEvent(data.events[key], { textDecoration: 'underline'});
-            }
-            calendar.data('all_events', data.events);
-        });
-    }
-
-    $.fn.calendarEvents = function(cal_events)
-    {
-        var self = this;
-        var date    = function( timestamp )
-        {
-            return (new Date(timestamp * 1000));
-        }
-        if ( cal_events && cal_events.length )
-        {
-            var event_ids = [];
-            for( var key in cal_events )
-            {
-                event_ids[key] = cal_events[key].id;
-            }
-            $.post($.configures.calendarEventsUrl, { 
-                event_ids : event_ids,
-                token : $.configures.token
-            }, function(data){
-                var general = $('#personal-calendar .right .general').empty();
-                var personal = $('#personal-calendar .right .personal').empty();
-                var clubs = $('#personal-calendar .right .clubs').empty();
-                for( var key in data.events )
-                {
-                    var result = $('<div></div>')
-                        .append($('<p></p>').text(data.events[key].name))
-                        .css('background', 'gray')
-                        .data('event', data.events[key])
-                        .mouseenter(function(){
-                            $('.calendar-table').markCalendarEvent($(this).data('event'), {
-                                background : 'green'
-                            }, true);
-                        })
-                        .mouseleave(function(){
-                            var table = $('.calendar-table');
-                            table.markCalendarEvent({}, {}, true);
-                            for( var key in table.data('all_events') )
-                            {
-                                table.markCalendarEvent(table.data('all_events')[key], { textDecoration: 'underline'});
-                            }
-                        });
-                    if ( data.events[key].category == 'general' )
-                    {
-                        result.appendTo(general);
-                    }
-                    else if ( data.events[key].category == 'personal' )
-                    {
-                        result.appendTo(personal);
-                    }
-                    else 
-                    {
-                        result.appendTo(clubs);
-                    }
-                }
-                $.configures.token = data.token;
-            });
-        }
+        calendar.updateData(true);
+        // calendar.updateEventsList($(this).getToday().data('cal_events'));
     }
 })(jQuery);
 

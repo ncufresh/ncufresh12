@@ -13,7 +13,7 @@
             </li>
             <li>
                 性別:
-<?php if ( $user->profile->sex == 0 ): ?>
+<?php if ( $user->profile->gender == 0 ): ?>
                 男孩兒
 <?php else:?>
                 女孩兒
@@ -23,7 +23,7 @@
                 帳號:<?php echo $user->username; ?>      
             </li>
             <li>
-                系所:<?php echo $user->profile->department->short_name; ?>
+                系所:<?php echo $user->profile->department->abbreviation; ?>
             </li>
             <li>
                 系級:<?php echo $user->profile->grade; ?>年級

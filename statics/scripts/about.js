@@ -20,8 +20,10 @@
         var tagbarPerson = $('.' + options.tagBar + ' div');
         var personName = $('<p></p>').hide();
         var personGrade = $('<p></p>').hide();
+        var photoNumber = 8;
+        var smallPhotoIndex = 0;
         var jumpTo = function()
-        {
+        {   
             block1Inf.each(function(){
                 $(this).hide();
             });
@@ -49,11 +51,24 @@
             $('<div></div>')
                 .addClass('block2')
         ]
+        var itr = $('<div></div>').css({
+            padding: 5,
+            borderRadius: 10,
+            background: '#fffce0',
+            position: 'relative',
+            float: 'top',
+            left: 25,
+            height: 550,
+            width: 700,
+        })
+        .appendTo(blocks[0])
+        .append($('#' + options.introduceId));
         var picture = $('<div></div>')
             .css({
-                background: 'url(\'' + photos.eq(photoIndex).attr('photo') + '\')',
+                background: 'url(\'' + photos.eq(photoIndex).attr('photo') + '0.png' + '\')',
                 float: 'right',
                 height: 300,
+                top: -68,
                 position: 'relative',
                 width:  400
             })
@@ -71,7 +86,7 @@
                     opacity: 0
                 }, options.picBarSpeed);
             })
-            .appendTo(blocks[0]);
+            .appendTo(itr);
         var display = $('<div></div>')
             .css({
                 background: 'black',
@@ -84,8 +99,9 @@
             .appendTo(picture);
         var block1Pic = $('<div></div>')
             .css({
-                height: 300,
-                width: 750,
+                left: 25,
+                height: 280,
+                width: 700,
                 position: 'relative'
             })
             .appendTo(blocks[1]);
@@ -93,18 +109,15 @@
             .addClass('tag')
             .appendTo(blocks[1]);
         var block1Txt = $('<div></div>')
-            .css({
-                background: '#8ca86c',
-                height: 150,
-                width: 750,
-                position: 'relative'
-            })
+            .addClass('tag-txt')
             .appendTo(blocks[1]);
         var block1Inf = $('#' + options.aboutId + ' .' + options.block1InfClass);
         block1Inf.each(function()
         {
             $(this).css({
-                position: 'absolute'
+                position: 'absolute',
+                top: 40,
+                left: 40
             })
             .hide()
             .appendTo(block1Txt);
@@ -112,10 +125,11 @@
         tagbar.each(function(index)
         {
             $(this).css({
-                float: 'left',
+                top: '10%',
+                left: '10%',
                 position: 'relative',
-                height: '0%',
-                width: '0%'
+                height: '80%',
+                width: '80%'
             })
             .hide()
             .appendTo(block1Tag);
@@ -126,14 +140,16 @@
             {
                 case 0:
                     $(this).css({
-                        position: 'absolute'
+                        position: 'absolute',
+                        width: 700,
+                        height: 280
                     });
                     break;
                 case 1:
                     $(this).css({
                         position: 'absolute',
-                        top: 7,
-                        left: 42,
+                        top: 12,
+                        left: 36,
                         height: 132,
                         width: 122
                     });
@@ -141,8 +157,8 @@
                 case 2:
                     $(this).css({
                         position: 'absolute',
-                        top: 168,
-                        left: 168,
+                        top: 145,
+                        left: 150,
                         height: 132,
                         width: 122
                     });
@@ -150,8 +166,8 @@
                 case 3:
                     $(this).css({
                         position: 'absolute',
-                        top: 163,
-                        left: 408,
+                        top: 146,
+                        left: 379,
                         height: 132,
                         width: 122
                     });
@@ -159,8 +175,8 @@
                 case 4:
                     $(this).css({
                         position: 'absolute',
-                        top: 161,
-                        left: 627,
+                        top: 142,
+                        left: 576,
                         height: 132,
                         width: 122
                     });
@@ -168,8 +184,8 @@
                 case 5:
                     $(this).css({
                         position: 'absolute',
-                        top: 22,
-                        left: 625,
+                        top: 11,
+                        left: 573,
                         height: 132,
                         width: 122
                     });
@@ -233,7 +249,7 @@
         jumpTo();
         setInterval(function()
         {
-            if ( photoIndex < 7 )
+            if ( photoIndex < photoNumber - 1 )
             {
                 photoIndex++;
             }
@@ -241,7 +257,7 @@
             {
                 photoIndex = 0;
             }
-            picture.css('background-image', 'url(\'' + photos.eq(photoIndex).attr('photo') + '\')');
+            picture.css('background-image', 'url(\'' + photos.eq(photoIndex).attr('photo') + photoIndex + '.png' + '\')');
         },options.picAutoSpeed);
         setInterval(function()
         {
@@ -268,27 +284,42 @@
             if ( index < 8 )
             {
                 $(this).css({
+                    height: 40,
                     float: 'left',
-                    margin: 5
+                    margin: 5,
+                    width: 40
                 })
                 .click(function()
                 {
-                    photoIndex = index;
-                    picture.css({
-                       background: 'url(\'' + photos.eq(index).attr('photo') + '\')'
-                    });
+                    if ( index == 0 )
+                    {
+                        if ( smallPhotoIndex > 0 )
+                        {
+                            smallPhotoIndex--;
+                        }
+                    }
+                    else if ( index == 7 )
+                    {
+                        if( smallPhotoIndex + 6 < photoNumber )
+                        {
+                            smallPhotoIndex++;
+                        }
+                    }
+                    else
+                    {
+                        photoIndex = index;
+                        picture.css({
+                            background: 'url(\'' + photos.eq(index).attr('photo') + (smallPhotoIndex + index - 1) + '.png' + '\')'
+                        });
+                    }
+                    for ( var i = 1; i < 7; i++)
+                    {
+                        photos.eq(i).attr('src',  photos.eq(i).attr('small') + (smallPhotoIndex + i - 1) + '.png');
+                    }
                 })
                 .appendTo(display);
             }
         });
-        $('<div></div>').css({
-            background: '#385281',
-            float: 'left',
-            height: 300,
-            width: 350
-        })
-        .appendTo(blocks[0])
-        .append($('#' + options.introduceId));
     };
     $.konami({
         code:                   [38, 38, 40, 40, 37, 39, 37, 39, 65, 66],

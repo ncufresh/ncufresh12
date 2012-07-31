@@ -1,4 +1,4 @@
-<h1>道具列表</h1>
+
 <?php 
         $counter_two=1;
         $items_bag = $character_data->getItemsByCategory(1);
@@ -9,13 +9,13 @@
         {
             echo '<tr><td>';
             echo $counter_two;
-            echo '<td>道具id：'.$row->item_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
+            echo '<td>id.'.$row->item_id.'</td><td><h2><a href="'.Yii::app()->createUrl('game/equip', array('id'=>$row->item_id)).'">'.$row->translation->name.'</a></h2>';
             if($row->translation->description!='')
-            echo ''.$row->translation->description.'</td>';
+            echo '</td>';
             else
             echo ' ( 無此道具相關描述 )</td><td>';
             $counter_two++;
-            echo '<td>時間：'.Yii::app()->format->datetime($row->acquire_time).'</td>';
+            echo '<td>'.Yii::app()->format->datetime($row->created).'</td>';
             echo '</td></tr>';
         }
         echo '</table>';
@@ -30,13 +30,13 @@
         {
             echo '<tr><td>';
             echo $counter_two;
-            echo '<td>道具id：'.$row->item_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
+            echo '<td>id.'.$row->item_id.'</td><td><h2>'.$row->translation->name.'</h2>';
             if($row->translation->description!='')
-            echo ''.$row->translation->description.'</td>';
+            echo '</td>';
             else
             echo ' ( 無此道具相關描述 )</td><td>';
             $counter_two++;
-            echo '<td>時間：'.Yii::app()->format->datetime($row->acquire_time).'</td>';
+            echo '<td>'.Yii::app()->format->datetime($row->created).'</td>';
             echo '</td></tr>';
         }
         echo '</table>';
@@ -51,13 +51,13 @@
         {
             echo '<tr><td>';
             echo $counter_two;
-            echo '<td>道具id：'.$row->item_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
+            echo '<td>id.'.$row->item_id.'</td><td><h2>'.$row->translation->name.'</h2>';
             if($row->translation->description!='')
-            echo ''.$row->translation->description.'</td>';
+            echo '</td>';
             else
             echo ' ( 無此道具相關描述 )</td><td>';
             $counter_two++;
-            echo '<td>時間：'.Yii::app()->format->datetime($row->acquire_time).'</td>';
+            echo '<td>'.Yii::app()->format->datetime($row->created).'</td>';
             echo '</td></tr>';
         }
         echo '</table>';
@@ -72,13 +72,13 @@
         {
             echo '<tr><td>';
             echo $counter_two;
-            echo '<td>道具id：'.$row->item_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
+            echo '<td>id.'.$row->item_id.'</td><td><h2>'.$row->translation->name.'</h2>';
             if($row->translation->description!='')
-            echo ''.$row->translation->description.'</td>';
+            echo '</td>';
             else
             echo ' ( 無此道具相關描述 )</td><td>';
             $counter_two++;
-            echo '<td>時間：'.Yii::app()->format->datetime($row->acquire_time).'</td>';
+            echo '<td>'.Yii::app()->format->datetime($row->created).'</td>';
             echo '</td></tr>';
         }
         echo '</table>';
@@ -93,13 +93,13 @@
         {
             echo '<tr><td>';
             echo $counter_two;
-            echo '<td>道具id：'.$row->item_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
+            echo '<td>id.'.$row->item_id.'</td><td><h2>'.$row->translation->name.'</h2>';
             if($row->translation->description!='')
-            echo ''.$row->translation->description.'</td>';
+            echo '</td>';
             else
             echo ' ( 無此道具相關描述 )</td><td>';
             $counter_two++;
-            echo '<td>時間：'.Yii::app()->format->datetime($row->acquire_time).'</td>';
+            echo '<td>'.Yii::app()->format->datetime($row->created).'</td>';
             echo '</td></tr>';
         }
         echo '</table>';
@@ -114,13 +114,13 @@
         {
             echo '<tr><td>';
             echo $counter_two;
-            echo '<td>道具id：'.$row->item_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
+            echo '<td>id.'.$row->item_id.'</td><td><h2>'.$row->translation->name.'</h2>';
             if($row->translation->description!='')
-            echo ''.$row->translation->description.'</td>';
+            echo '</td>';
             else
             echo ' ( 無此道具相關描述 )</td><td>';
             $counter_two++;
-            echo '<td>時間：'.Yii::app()->format->datetime($row->acquire_time).'</td>';
+            echo '<td>'.Yii::app()->format->datetime($row->created).'</td>';
             echo '</td></tr>';
         }
         echo '</table>';
@@ -135,13 +135,13 @@
         {
             echo '<tr><td>';
             echo $counter_two;
-            echo '<td>道具id：'.$row->item_id.'</td><td><h2>名稱：'.$row->translation->name.'</h2>';
+            echo '<td>id.'.$row->item_id.'</td><td><h2>'.$row->translation->name.'</h2>';
             if($row->translation->description!='')
-            echo ''.$row->translation->description.'</td>';
+            echo '</td>';
             else
             echo ' ( 無此道具相關描述 )</td><td>';
             $counter_two++;
-            echo '<td>時間：'.Yii::app()->format->datetime($row->acquire_time).'</td>';
+            echo '<td>'.Yii::app()->format->datetime($row->created).'</td>';
             echo '</td></tr>';
         }
         echo '</table>';
