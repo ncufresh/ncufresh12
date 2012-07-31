@@ -35,12 +35,12 @@ class Friend extends CActiveRecord
         );
     }
 
-    public function isExist($userid,$friendid)
+    public function isExist($friendid)
     {
         $data = $this->find(array(
             'condition' => 'user_id = :userid AND friend_id = :friendid',
             'params'    => array(
-                ':userid' => $userid,
+                ':userid' => Yii::app()->user->getId(),
                 ':friendid' => $friendid
             )
         ));
@@ -51,27 +51,25 @@ class Friend extends CActiveRecord
         return false;
     }
 
-    public function deleteFriend($userid,$friendid) //刪除好友關係
+    public function deleteFriend($friendid) //刪除好友關係
     {
-        $userid = (integer)$userid;
         $friendid = (integer)$friendid;  
         $this->deleteAll(array(
             'condition' => 'user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid',
             'params'    => array(
-                ':userid' => $userid,
+                ':userid' => Yii::app()->user->getId(),
                 ':friendid' => $friendid
             )
         ));
     }
     
-    public function makeFriend($userid,$friendid) //當兩筆資料都存在
+    public function makeFriend($friendid) //當兩筆資料都存在
     {
-        $userid = (integer)$userid;
         $friendid = (integer)$friendid;  
         $data = $this->findAll(array(
             'condition' => 'user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid',
             'params'    => array(
-                ':userid' => $userid,
+                ':userid' => Yii::app()->user->getId(),
                 ':friendid' => $friendid
             )
         ));
@@ -80,36 +78,36 @@ class Friend extends CActiveRecord
             $this->updateAll(array(
                 'invisible' => 0
             ), "user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid", array(
-                ':userid' => $userid,
+                ':userid' => Yii::app()->user->getId(),
                 ':friendid' => $friendid
             ));
         }
     }
 
-    public function addFriend($user_id, $friend_id)// 一次新增一筆資料
+    public function addFriend($friend_id)// 一次新增一筆資料
     {
         $model = new Friend();
-        $model->user_id = $user_id;
+        $model->user_id = Yii::app()->user->getId();
         $model->friend_id = $friend_id;
         $save = $model->save();
     }
 
-    public function getRequests($userid) //好友確認
+    public function getRequests() //好友確認
     {
         return  $this->findAll(array(
                     'condition' => 'friend_id = :userid AND invisible = 1',
                     'params'    => array(
-                        ':userid' => $userid
+                        ':userid' => Yii::app()->user->getId()
                     )
                 ));
     }
 
-    public function getAmount($userid)
+    public function getAmount()
     {
         $data = $this->findAll(array(
                     'condition' => 'user_id = :userid AND invisible = 0',
                     'params'    => array(
-                        ':userid'   => $userid
+                        ':userid'   => Yii::app()->user->getId()
                     )
                 ));
         return count($data);

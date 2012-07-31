@@ -2,13 +2,16 @@
 
 class ProfileController extends Controller
 {
-    public $userid;
+    public $id;
+
+    public $user;
 
     public function init()
     {
         parent::init();
         Yii::import('application.models.Forum.*');
-        $this->userid = Yii::app()->user->getId();
+        $this->id = Yii::app()->user->getId();
+        $this->user = User::model()->findByPk($this->id);
         return true;
     }
     public function filters()
@@ -35,18 +38,17 @@ class ProfileController extends Controller
     public function actionProfile() 
     {
         $this->render('profile', array(
-            'user'      => User::model()->findByPk($this->userid),
+            'user'      => $user
         ));
         
     }
 
     public function actionEditor() 
     {
-        $user = User::model()->findByPk($this->userid);
         if ( isset($_POST['profile']) ) 
         {
             $user->attributes = $_POST['register'];
-            $profile = $user->profile;
+            $profile = $this->user->profile;
             $profile->attributes = $_POST['profile'];
             if ( $user->validate() && $profile->validate() )
             {
@@ -59,7 +61,7 @@ class ProfileController extends Controller
         else
         {
             $this->render('editor', array(                
-                    'user'          => $user, 
+                    'user'          => $this->user, 
                     'departments'   => Department::model()->getDepartment()
             ));
         }
@@ -68,34 +70,24 @@ class ProfileController extends Controller
     public function actionMessage()
     {
         $this->render('message', array(
-            'articles'        => Article::model()->getUserArticles($this->userid)
+            'articles'        => Article::model()->getUserArticles($this->id)
         ));
     }
 
-    public function actionMessageReply()
+    public function actionMessageReply($aid)
     {
-        if ( isset($_GET['aid']) )
-        {
-            $this->render('messagereply', array( //還要再判斷是否有推文或回復---不然回是空值耶
-                'article'       => Article::model()->findByPk($_GET['aid']),
-                'replys'      => Reply::model()->getArticleReplies($_GET['aid']),
-                'comments'       => Comment::model()->getArticleComments($_GET['aid'])
-            ));
-        }
-        else
-        {
-           $this->redirect(array('friends/friends'));
-        }
+        $this->render('messagereply', array( //還要再判斷是否有推文或回復---不然回是空值耶
+            'article'       => Article::model()->findByPk($aid),
+            'replys'      => Reply::model()->getArticleReplies($aid),
+            'comments'       => Comment::model()->getArticleComments($aid)
+        ));
     }
 
-    public function actionOtherProfile()
+    public function actionOtherProfile($friend_id)
     {
-        if ( isset($_GET['friend_id']) )
-        {
-            $userID = Yii::app()->user->id;
-            $this->render('otherprofile', array(
-                'user'       => User::model()->findByPk($_GET['friend_id'])
-            ));
-        }
+        $this->render('otherprofile', array(
+            'user'       => User::model()->findByPk($friend_id)
+        ));
+        
     }
 }
