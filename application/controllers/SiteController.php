@@ -253,7 +253,7 @@ class SiteController extends Controller
                     $character->experience = 1; //一開始使用者經驗設為1
                     $character->money = 25000; //一開始使用者金錢設為25000
                     $character->total_money = 35000; //一開始使用者總金錢設為25000
-                    if($_POST['profile']['gender'] == 0)
+                    if( $_POST['profile']['gender'] == 0 )
                     {
                         $character->skin_id = 81; //男生 皮膚預設id=81
                     }

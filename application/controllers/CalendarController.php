@@ -21,6 +21,12 @@ class CalendarController extends Controller
 
     public function actionClub()
     {
+        foreach ( Calendar::model()->getClubs() as $qq )
+        {
+            var_dump($qq->id);
+            var_dump($qq->clubs->name);
+            var_dump($qq->subscriptions ? 1 : 0);
+        }
     }
 
     public function actionRecycle()
@@ -89,34 +95,37 @@ class CalendarController extends Controller
     {
         $club_calendars = Calendar::Model()->findAll('category=0 AND id!=1');
         $subscripted_calendars = Subscription::Model()->findAll('user_id='.Yii::app()->user->getId().' AND invisible=0');
+        
         $clubs_category = array();
         $clubs_name = array();
         $calendar_id = array();
         $check = array();
         
-        $i = 0;
-        foreach($club_calendars as $each)
+        foreach ( $club_calendars as $key => $each )
         {
-            $clubs_category[$i] = Club::Model()->getClubByManagerrId($each->user_id)->category;
-            $clubs_name[$i] = Club::Model()->getClubByManagerrId($each->user_id)->name;
+            $clubs_category[$i] = Club::Model()->getClubByMasterId($each->user_id)->category;
+            $clubs_name[$i] = Club::Model()->getClubByMasterId($each->user_id)->name;
             $calendar_id[$i] = $each->id;
-            foreach($subscripted_calendars as $subscripted):
-                if($subscripted->calendar_id == $each->id){
-                    $check[$i] = 1;
+            $check[$i] = 0;
+            foreach($subscripted_calendars as $subscripted)
+            {
+                if($subscripted->calendar_id == $each->id)
+                {
+                    $check[$key] = 1;
                     break;
                 }
                 else
-                    $check[$i] = 0;
-            endforeach;
-            $i++;
+                {
+                    $check[$key] = 0;
+                }
+            }
         }
-        
         if(isset($_POST['subscript'])){
-            for($i=0;$i<count($club_calendars);$i++){
-                if(isset($_POST['subscript'][$i]) && $_POST['subscript'][$i]==1){
+            for ( $i=0; $i<count($club_calendars); $i++ ){
+                if( isset($_POST['subscript'][$i]) && $_POST['subscript'][$i] == 1 ){
                     $subscription = new Subscription();
                     $subscription->user_id = Yii::app()->user->getId();
-                    $subscription->calendar_id = Calendar::Model()->find('user_id='.$i.' AND category=0')->id;
+                    $subscription->calendar_id = Calendar::Model()->getClubCalendarByUserId($i)->id;
                     $subscription->invisible = 0;
                     $subscription->save();
                 }

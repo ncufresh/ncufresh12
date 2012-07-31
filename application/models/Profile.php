@@ -54,19 +54,19 @@ class Profile extends CActiveRecord
 
     public function deleteProfile()
     {
-        return $this->updateByPk($this->id, array(
+        return $this->updateByPk(Yii::app()->user->getId(), array(
             'invisible' => true
         ));
     }
 
-    public function getSameDepartmentSameGrade($Depid, $grade, $userid)
+    public function getSameDepartmentSameGrade($Depid, $grade)
     {
         return $this->findAll(array(
             'condition' => 'department_id = :id AND grade = :grade AND id <> :userid',
             'params'    => array(
                 ':id' => $Depid,
                 ':grade' => $grade,
-                ':userid' => $userid
+                ':userid' => Yii::app()->user->getId()
             )
         ));
     }

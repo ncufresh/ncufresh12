@@ -539,7 +539,7 @@
     top: 200px;
     left: 0px;
 }
-.two-image.exercise
+. .exercise
 {
     top: 250px;
     left: 0px;
@@ -818,31 +818,31 @@
 
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
-$( document ).ready(function()
+$(document).ready(function()
 {
     $( '#experience-personally' ).mousedown(function()
     {
-        $( document ).mousemove( mousemove );
+        $(document).mousemove(mousemove);
         return false;
     });
     var mouseInId;
     var isInPicture = false;
-    var mousemove = function( event )
+    var mousemove = function(event)
     {
         x = event.pageX;
         y = event.pageY;
-        $( '#experience-personally' ).css(
+        $('#experience-personally').css(
         {
         top: y - 250 + 'px',
         left: x - 200 + 'px',
         });
     };
-    $( '.picture' ).mouseenter(function()
+    $('.picture').mouseenter(function()
     {
         isInPicture = true;
-        mouseInId = $( this ).attr( 'id' );
+        mouseInId = $(this).attr('id');
     });
-    $( '.picture' ).mouseleave(function()
+    $('.picture').mouseleave(function()
     {
         isInPicture = false;
     });
@@ -1028,6 +1028,10 @@ $( document ).ready(function()
     // {
         // $('#view-picture-container img').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/3.jpg');
     // });
+    var streetPoint = new Array();
+    // streetPoint[0,1,2,3];
+    streetPoint[0,1,2,3];
+    alert(streetPoint[1]);
 });
 </script>
 <?php $this->endWidget();?>
