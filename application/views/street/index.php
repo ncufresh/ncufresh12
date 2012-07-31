@@ -818,6 +818,7 @@
 
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
+alert('運動放 藝人堂(健身房、羽球館、溜冰場) 游泳池 操場(攀岩) 棒壘球場  4個 然後網球文檔不放');
 $(document).ready(function()
 {
     $( '#experience-personally' ).mousedown(function()
