@@ -44,8 +44,11 @@ class CalendarController extends Controller
             {
                 $id = (integer)$_POST['calendar']['id'];
                 $event = Event::model()->findByPk($id);
-                $event->invisible = true;
-                if ( $event->save() ) return true;
+                if ( $event->calendar->getIsPersonal() && $event->calendar->getIsOwner() )
+                {
+                    $event->invisible = true;
+                    if ( $event->save() ) return true;
+                }
             }
             $this->_data['errors'][] = '發生錯誤！';
             return true;
