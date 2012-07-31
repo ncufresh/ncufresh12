@@ -252,9 +252,6 @@ class SiteController extends Controller
                 {
                     $character = new Character(); //Character Model
                     $character->id = $user->id;//同步寫入user的id至遊戲資料列表
-                    $character->experience = 1; //一開始使用者經驗設為1
-                    $character->money = 25000; //一開始使用者金錢設為25000
-                    $character->total_money = 35000; //一開始使用者總金錢設為25000
                     if( $_POST['profile']['gender'] == 0 )
                     {
                         $character->skin_id = 81; //男生 皮膚預設id=81
@@ -266,8 +263,6 @@ class SiteController extends Controller
                     $item = new ItemBag(); //ItemBag Model
                     $item->user_id = $user->id; //同步寫入user的id至道具列表
                     $item->item_id = $character->skin_id; //寫入獲得道具的id
-                    $item->equipped = true; //寫入裝備狀態
-                    $item->created = TIMESTAMP; //寫入獲得時間
                     //行事曆的部分
                     $calendar = new Calendar();
                     $calendar->user_id = $user->id;
