@@ -1402,7 +1402,9 @@
             linkClick:   function(){ return false; },
             leftClick:   function(){ return false; },
             rightClick:  function(){ return false; },
-            dayClick:    function(){}
+            dayClick:    function(event){},
+            dayEnter:    function(event){},
+            dayLeave:    function(event){}
         }, options);
 
         options.month -= 1;
@@ -1461,7 +1463,12 @@
             var td = $('<td></td>');
             if ( position>=date.getDay() )
             {
-                td.text(day).click(options.dayClick).data('day', day);
+                td
+                    .text(day)
+                    .click(options.dayClick)
+                    .mouseenter(options.dayEnter)
+                    .mouseleave(options.dayLeave)
+                    .data('day', day);
                 if( (new Date()).getDate() == day 
                     && (new Date()).getMonth() == options.month
                     && options.today)
@@ -1585,6 +1592,12 @@
         var current_year = (new Date()).getFullYear();
         var current_month = (new Date()).getMonth() + 1;
         var container = $('<div></div>').appendTo(this);
+        var prompt = $('<ul></ul>')
+            .addClass('calendar-prompt')
+            .css({
+                position: 'absolute',
+            }).appendTo('body');
+        var mousemove
         var geneator = function(year, month)
         {
             if ( calendar ) calendar.remove();
@@ -1592,6 +1605,7 @@
                 year: year,
                 month: month,
                 left: true,
+                right: true,
                 leftClick: function()
                 {
                     if ( --month < 1 )
@@ -1601,7 +1615,6 @@
                     }
                     geneator(year, month);
                 },
-                right: true,
                 rightClick: function()
                 {
                     if ( ++month > 12 )
@@ -1611,13 +1624,33 @@
                     }
                     geneator(year, month);
                 },
-                dayClick: function(){
+                dayClick: function()
+                {
                     $('#personal-calendar .date').text(
                         $(calendar).data('options').year + '.'
                         + ($(calendar).data('options').month+1) + '.'
                         + $(this).text()
                     );
                     $(calendar).updateEventsList($(this).data('cal_events'));
+                },
+                dayEnter: function(event)
+                {
+                    var events = $(this).data('cal_events');
+                    if( events.length > 0 )
+                    {
+                        for( var key in $(this).data('cal_events') )
+                        {
+                            $('<li></li>').text(events[key].name).appendTo(prompt);
+                        }
+                        prompt.css({
+                            top: event.pageY,
+                            left: event.pageX
+                        }).show();
+                    }
+                },
+                dayLeave: function()
+                {
+                    prompt.empty().hide();
                 }
             });
             calendar.appendTo(container);
