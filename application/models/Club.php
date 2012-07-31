@@ -17,11 +17,11 @@ class Club extends CActiveRecord
     {   
         return array(
             array(
-                'introduction, leader, leader_phone, leader_email,leader_binary, leader_msn, viceleader,viceleader_phone, viceleader_email, viceleader_binary, viceleader_msn, website', 
-                'required'
+                'introduction, leader, leader_phone, leader_email,leader_binary, leader_msn, viceleader,viceleader_phone, viceleader_email, viceleader_binary, viceleader_msn, website',
+                'safe'
             ),
         );
-    }
+    }   
 
     public function tableName()
     {
