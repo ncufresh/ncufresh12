@@ -8,6 +8,7 @@ jQuery(document).ready(function()
     $('a.calendar-hide-event').live('click', function()
     {
         var id = $(this).attr('href').replace('#', '');
+        var self = this;
         $.post(
             $.configures.calendarHideEventUrl,
             {
@@ -22,7 +23,7 @@ jQuery(document).ready(function()
                 $.configures.token = response.token;
                 if ( $.errors(response.errors) )
                 {
-                    window.location.reload();
+                    $(self).parents('ul').remove();
                 }
             }
         );

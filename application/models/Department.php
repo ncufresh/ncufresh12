@@ -15,7 +15,7 @@ class Department extends CActiveRecord
     public function rules()
     {
         return array(
-            array('department , id', 'required')
+            array('name , id', 'required')
         );
     }
 

@@ -10,7 +10,18 @@ class Article extends CActiveRecord
     {
         return '{{forum_articles}}';
     }
-        
+
+    public function rules()
+    {
+        return array(
+            array('forum_id, category_id, title, content', 'required'),
+            array('forum_id, category_id', 'numerical'),
+            array('title', 'length', 'max' => 20),
+            array('content', 'length', 'min' => 20),
+            // array('invisible', 'boolean')
+        );
+    }
+    
     public function relations()
     {
         return array(
@@ -22,6 +33,11 @@ class Article extends CActiveRecord
             'replies'    => array(
                 self::HAS_MANY,
                 'Reply',
+                'article_id',
+            ),
+            'comments'    => array(
+                self::HAS_MANY,
+                'Comment',
                 'article_id',
             ),
             'category_name'  => array(
@@ -37,7 +53,7 @@ class Article extends CActiveRecord
         return $this->findAll('author_id='.$author_id.' AND invisible = 0');
     }
     
-    public function getArticlesSort($fid, $sort, $category, $page, $entries_per_page){
+    public static function getArticlesSort($fid, $sort, $category, $page, $entries_per_page){
         
         switch ($sort)
         {
@@ -57,14 +73,13 @@ class Article extends CActiveRecord
                 throw new Exception('The sort column name does not exist.');
                 break;
         }
-        
-        $count = $this->count();
+        $count = self::model()->count();
         $total_pages = ceil($count / $entries_per_page);
         $current_page = ($page<$total_pages?$page:$total_pages);
         
         if ( $category == 0 )
         {
-            return $this->findAll(array(
+            return self::model()->findAll(array(
                 'condition' => 'forum_id='.$fid.' AND invisible=0',
                 'order'     => $sort . ' DESC',
                 'limit'     => $entries_per_page,
@@ -74,7 +89,7 @@ class Article extends CActiveRecord
         
         else
         {
-            return $this->findAll(array(
+            return self::model()->findAll(array(
                 'condition' => 'forum_id = ' . $fid . ' AND invisible = 0 AND category_id = ' . $category,
                 'order'     => $sort . ' DESC',
                 'limit'     => $entries_per_page,
@@ -101,20 +116,24 @@ class Article extends CActiveRecord
                 // 如果未登入author_id=0 ; 檢查登入與否
                 $this->author_id = Yii::app()->user->getId();
                 $this->created = TIMESTAMP;
+                $this->invisible = 0;
+                if($this->sticky==1)
+                {
+                    if(Category::Model()->getIsMaster()==false) $this->sticky = 0;
+                }
             }
-            $this->updated = TIMESTAMP;
             //[not yet] 判斷$fid 跟 category 對應
             return true;
         }
         return false;
     }
     
-    public function getPageStatus($page, $entries_per_page=10, $fid, $category)
+    public static function getPageStatus($page, $entries_per_page=10, $fid, $category)
     {
         if($category==0)
-            $pages = ceil($this->count('forum_id= '.$fid.' AND invisible = 0') / $entries_per_page);
+            $pages = ceil(self::model()->count('forum_id= '.$fid.' AND invisible = 0') / $entries_per_page);
         else
-            $pages = ceil($this->count('forum_id= '.$fid.' AND invisible = 0 AND category_id='.$category) / $entries_per_page);
+            $pages = ceil(self::model()->count('forum_id= '.$fid.' AND invisible = 0 AND category_id='.$category) / $entries_per_page);
 
         return array(
             'pages'         => $pages,
