@@ -19,7 +19,7 @@ class StreetController extends Controller
             {
                 if ( $entry != '.' && $entry != '..' ) // 不是上一層及上上一層 
                 {
-                    $files[$entry] = Yii::app()->baseUrl . '/' . $dir->path . $entry;
+                    $files[$entry] = Yii::app()->baseUrl . '/' . $dir->path . '/' . $entry;
                 }
             }
         }
@@ -28,20 +28,15 @@ class StreetController extends Controller
 
     public function actionIndex() // main page
     {
-        // $this->render( 'index' );
-        $files = $this->loadFiles( 'statics/building/pictureLayerTwo/' );
-        // echo empty($files) ? 1:0;
-        $this->render( 'index' , array( 'files' => $files ));
+        $files = $this->loadFiles('statics/building/pictureLayerTwo');
+        $this->render('index' , array(
+            'files'           => $files 
+        ));
 	}
 
 
 	public function actionBuilding( $id = 0 ) // dialog building information page
     {
-        // $files = $this->loadFiles('statics/building/pictureLayerTwo/');
-        // echo empty($files) ? 1:0;
-        // $this->render('index' , array( 'files' => $files ));
-        // exit;
-        // $this->render('index');
         $url = $this->_path . '/building';
         
         if( 1 <= $id && $id <= 16 )
