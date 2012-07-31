@@ -1,6 +1,6 @@
 <h1>基本資料</h1>
 <div class="register">
-<form  enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('site/register'); ?>" method="POST">
+    <form  enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('site/register'); ?>" method="POST">
     <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
         <dl>
             <dt>

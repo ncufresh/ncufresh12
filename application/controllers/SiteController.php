@@ -238,7 +238,7 @@ class SiteController extends Controller
 
     public function actionRegister()
     {
-        $profile = new Profile();
+        $profile = new Profile('register');
         $user = new User();
         if ( isset($_POST['register']) && isset($_POST['profile']) )
         {
@@ -270,7 +270,7 @@ class SiteController extends Controller
                     $calendar_subscriptions = new Subscription();
                     $calendar_subscriptions->user_id = $user->id;
                     $calendar_subscriptions->calendar_id = 1;
-                    $calendar_subscriptions->invisible = 1;
+                    $calendar_subscriptions->invisible = 0;
                     if ( $character->save() && $item->save() && $calendar->save() && $calendar_subscriptions->save() )
                     {
                         $this->redirect(array('profile/profile'));

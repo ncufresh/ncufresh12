@@ -1,7 +1,8 @@
-<form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('profile/editor'); ?>" method="POST">
 <h1>編輯基本資料</h1>
 <div class="myprofile">
     <div class="friends-part3">
+    <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('profile/editor'); ?>" method="POST">
+    <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
 <?php $this->widget('Avatar', array(
     'id'        => Yii::app()->user->id
 )); ?>
@@ -11,8 +12,16 @@
                 <input type="text" name="profile[name]"  value="<?php echo $user->profile->name ; ?>" />
             </li>
             <li>
-                <span>暱稱:</span>
-                <input type="text" name="profile[nickname]" value="<?php echo $user->profile->nickname; ?>" />
+                <span> 暱稱:</span>
+                <input type="text" name="profile[nickname]" value="
+<?php if ( isset($profile_errors['nickname']) ) : ?>
+<?php foreach ( $profile_errors['nickname'] as $error ) : ?>
+<?php echo $error; ?>
+<?php endforeach; ?>
+<?php else: ?>
+<?php echo $user->profile->nickname; ?>
+<?php endif; ?>
+                " />
             </li>
             <li>
                 性別:
@@ -24,8 +33,8 @@
                 <input type="hidden" name="profile[gender]" value="<?php echo $user->profile->gender; ?>"  />
             </li>
             <li>
-                <span>帳號:</span>
-                <input type="text" name="register[username]" value="<?php echo $user->username; ?>" />
+                <span>帳號:<?php echo $user->username; ?></span>
+                <input type="hidden" name="register[username]" value="<?php echo $user->username; ?>" />
                 <input type="hidden" name="register[password]" value="<?php echo $user->password; ?>"  />
                 <input type="hidden" name="register[confirm]" value="<?php echo $user->password; ?>"  />
             </li>
@@ -42,14 +51,33 @@
                 <input type="text" name="profile[senior]" value="<?php echo $user->profile->senior; ?>" />
             </li>
             <li>
-                <span>生日:</span>
-                <input type="text" name="profile[birthday]" value="<?php echo $user->profile->birthday; ?>" />
+                <span>生日:<?php echo $user->profile->birthday; ?></span>
+                    <select name="profile[year]" class="year">
+<?php for ( $year = 2000 ; $year >= 1990 ; $year-- ) : ?>
+                        <option value="<?php echo $year; ?>">
+<?php echo $year; ?>                        
+                        </option>
+<?php endfor; ?>
+                    </select>
+                    <select name="profile[month]" class="month">
+<?php for ( $month = 1 ; $month <= 12 ; $month++ ) : ?>
+                        <option value="<?php echo $month; ?>">
+<?php echo $month; ?>                        
+                        </option>
+<?php endfor; ?>
+                    </select>
+                    <select name="profile[day]" class="day">
+<?php for ( $day = 1 ; $day <= 31 ; $day++ ) : ?>
+                        <option value="<?php echo $day; ?>">
+<?php echo $day; ?>                        
+                        </option>
+<?php endfor; ?>
+                    </select>
             </li> 
+            <button type="submit">確認</button>
         </ul>
+    </form>
     </div>
 </div>
-<input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
-<button type="submit">確認</button>
-</form>
 <button><a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>">取消</a></button>
 <button onClick= "history.back()" >BACK</button>

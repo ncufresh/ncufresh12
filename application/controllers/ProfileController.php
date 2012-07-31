@@ -6,12 +6,15 @@ class ProfileController extends Controller
 
     public $user;
 
+    public $profile;
+    
     public function init()
     {
         parent::init();
         Yii::import('application.models.Forum.*');
         $this->id = Yii::app()->user->getId();
         $this->user = User::model()->findByPk($this->id);
+        $this->profile = Profile::model()->findByPk($this->id);
         return true;
     }
     public function filters()
@@ -45,32 +48,43 @@ class ProfileController extends Controller
 
     public function actionEditor() 
     {
+        
         if ( isset($_POST['profile']) ) 
         {
             $this->user->attributes = $_POST['register'];
-            echo $this->user->isNewRecord() ? 1: 0; exit;
-            $profile = $this->user->profile;
-            $profile->attributes = $_POST['profile'];
-            if ( $this->user->validate() && $profile->validate() )
+            $this->profile->attributes = $_POST['profile'];
+            $user_validate = $this->user->validate();
+            $profile_validate = $this->profile->validate();
+            print_r($profile_validate);
+            exit;
+            if ( $user_validate && $profile_validate )
             {
-                
-                if ( $profile->save() )
+                echo 456;
+                exit;
+                if ( $this->profile->save() )
                 {
+                    echo 123;
+                    exit;
                     $this->redirect(array('profile/profile'));
                 }
             }
             else
             {
                 $this->render('editor', array(                
-                        'user'          => $this->user, 
-                        'departments'   => Department::model()->getDepartment()
+                        'user'                   => $this->user, 
+                        'departments'            => Department::model()->getDepartment(),
+                        'profile_errors'         => $this->profile->getErrors()
                 ));
             }
         }
-        $this->render('editor', array(                
-            'user'          => $this->user, 
-            'departments'   => Department::model()->getDepartment()
-        ));
+        else
+        {
+            $this->render('editor', array(                
+                'user'                   => $this->user, 
+                'departments'            => Department::model()->getDepartment(),
+                'profile_errors'         => $this->profile->getErrors()
+            ));
+        }
     }
 
     public function actionMessage()

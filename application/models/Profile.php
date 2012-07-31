@@ -26,13 +26,10 @@ class Profile extends CActiveRecord
             array('name, nickname, department, grade, senior, year, month, day ,gender','required'),
             array('department', 'length','min' => 1, 'max' => 2),
             array('grade', 'length','min' => 1, 'max' => 1),
-            array('nickname', 'unique', 'className' => 'Profile'),
+            array('nickname', 'unique', 'className' => 'Profile', 'on' => 'register'),
             array('year', 'numerical', 'min' => 1990, 'max' => 2000),
             array('month', 'numerical', 'min' => 1, 'max' => 12), 
             array('day', 'numerical', 'min' => 1, 'max' => 31),
-            // array('year', 'length',  'min' => 4, 'max' => 4),
-            // array('month', 'length', 'min' => 1, 'max' => 2),
-            // array('day', 'length', 'min' => 1, 'max' => 2),
         );
     }
 
@@ -162,4 +159,5 @@ class Profile extends CActiveRecord
         }
         return false;
     }
+
 }
