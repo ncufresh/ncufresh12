@@ -348,12 +348,16 @@ class Chat extends CActiveRecord
 
     protected function beforeSave()
     {
-        if ( $this->getIsNewRecord() )
+        if ( parent::beforeSave() )
         {
-            $this->uuid = $this->uuid();
-            $this->sender_id = Yii::app()->user->getId();
-            $this->timestamp = TIMESTAMP;
+            if ( $this->getIsNewRecord() )
+            {
+                $this->uuid = $this->uuid();
+                $this->sender_id = Yii::app()->user->getId();
+                $this->timestamp = TIMESTAMP;
+            }
+            return true;
         }
-        return parent::beforeSave();
+        return false;
     }
 }
