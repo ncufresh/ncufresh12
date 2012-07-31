@@ -5,7 +5,7 @@
     <a href="<?php echo Yii::app()->createUrl('readme/download'); ?>" id="readme-logo4" title="文件下載"></a>
     
     <a href="<?php echo Yii::app()->createUrl('readme/freshman',array('id'=>1)); ?>" id="freshman-1" class="fresh-inner"></a>
-    <a href="<?php echo Yii::app()->createUrl('readme/freshman'); ?>" id="freshman-2" class="fresh-inner"></a>
+    <a href="<?php echo Yii::app()->createUrl('readme/freshman',array('id'=>2)); ?>" id="freshman-2" class="fresh-inner"></a>
     <a href="<?php echo Yii::app()->createUrl('readme/freshman'); ?>" id="freshman-3" class="fresh-inner"></a>
     <a href="<?php echo Yii::app()->createUrl('readme/freshman'); ?>" id="freshman-4" class="fresh-inner"></a>
     

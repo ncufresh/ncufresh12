@@ -2,6 +2,8 @@
 
 class User extends CActiveRecord
 {
+    public $confirm;
+
     private $_identity;
 
     public static function model($className = __CLASS__)
@@ -17,9 +19,11 @@ class User extends CActiveRecord
     public function rules()
     {
         return array(
-            array('username, password', 'required'),
+            array('username', 'unique', 'className' => 'User'),
+            array('username, password, confirm', 'required'),
             array('username', 'length', 'min' => 8, 'max' => 256),
-            array('password', 'length', 'max' => 128)
+            array('password, confirm', 'length', 'max' => 128),
+            array('password', 'compare', 'compareAttribute'=>'confirm'),
         );
     }
 

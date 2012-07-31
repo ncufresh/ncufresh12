@@ -15,12 +15,12 @@
                 <input type="text" name="profile[nickname]" value="<?php echo $user->profile->nickname; ?>" />
             </li>
             <li>
-                <span>帳號(email):</span>
+                <span>帳號:</span>
                 <input type="text" name="register[username]" value="<?php echo $user->username; ?>" />
                 <input type="hidden" name="register[password]" value="<?php echo $user->password; ?>"  />
             </li>
             <li>
-                <span>系所:</span><?php echo $user->profile->department->short_name; ?>
+                <span>系所:</span><?php echo $user->profile->department->abbreviation; ?>
             </li>
             <li>
                 <span>系級:</span><?php echo $user->profile->grade; ?>年級

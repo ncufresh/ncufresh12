@@ -97,8 +97,8 @@ class CalendarController extends Controller
         $i = 0;
         foreach($club_calendars as $each)
         {
-            $clubs_category[$i] = Club::Model()->getClubByManagerrId($each->user_id)->category;
-            $clubs_name[$i] = Club::Model()->getClubByManagerrId($each->user_id)->name;
+            $clubs_category[$i] = Club::Model()->getClubByMasterId($each->user_id)->category;
+            $clubs_name[$i] = Club::Model()->getClubByMasterId($each->user_id)->name;
             $calendar_id[$i] = $each->id;
             foreach($subscripted_calendars as $subscripted):
                 if($subscripted->calendar_id == $each->id){
