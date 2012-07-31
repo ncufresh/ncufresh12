@@ -48,7 +48,9 @@ return array(
             'username'          => $ncufreshdb['username'],
             'password'          => $ncufreshdb['password'],
             'charset'           => 'utf8',
-            'tablePrefix'       => ''
+            'tablePrefix'       => '',
+            'enableParamLogging'=> true,
+            'enableProfiling'   => true
         ),
         'errorHandler'  => array(
             'errorAction'       => 'site/error'
@@ -61,7 +63,7 @@ return array(
             'routes'            => array(
                 array(
                     'class'     => 'CFileLogRoute',
-                    'levels'    => 'error, warning',
+                    'levels'    => 'trace, info, error, warning',
                 )
             )
         )
