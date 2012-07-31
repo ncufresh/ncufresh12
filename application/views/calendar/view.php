@@ -1,13 +1,3 @@
-<style type="text/css">
-table
-{
-    border-collapse: collapse;
-}
-tbody td
-{
-    cursor: pointer;
-}
-</style>
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
 jQuery(document).ready(function()
@@ -18,6 +8,7 @@ jQuery(document).ready(function()
     $('a.calendar-hide-event').live('click', function()
     {
         var id = $(this).attr('href').replace('#', '');
+        var self = this;
         $.post(
             $.configures.calendarHideEventUrl,
             {
@@ -32,7 +23,7 @@ jQuery(document).ready(function()
                 $.configures.token = response.token;
                 if ( $.errors(response.errors) )
                 {
-                    window.location.reload();
+                    $(self).parents('ul').remove();
                 }
             }
         );
@@ -43,14 +34,9 @@ jQuery(document).ready(function()
 <?php $this->endWidget();?>
 <div id="personal-calendar">
     <div class="left"></div>
-    <div class="date"></div>
+    <h3 class="date"></h3>
     <div class="right">
-        <span>全校</span>
-        <div class="general"></div>
-        <span>個人</span>
-        <div class="personal"></div>
-        <span>社團</span>
-        <div class="clubs"></div>
+
     </div>
     <a href="<?php echo Yii::app()->createUrl('calendar/createevent');?>">新增</a>
     <a href="<?php echo Yii::app()->createUrl('calendar/subscript');?>">訂閱</a>

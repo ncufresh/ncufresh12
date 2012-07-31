@@ -5,7 +5,7 @@
 <ul>
 </div>
 <form method="POST" action="<?php echo $this->createUrl('friends/deletegroup', array('id'=>$mygroup->id)); ?>">
-<div class="mygroups">
+<div class="newgroup">
    <div class="friends-part2">
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
         <ul class="other-department">
@@ -22,7 +22,7 @@
 <?php echo $profile->name; ?>
                 </h3>
                 <h4>
-<?php echo $profile->department->short_name; ?>
+<?php echo $profile->mydepartment->abbreviation; ?>
                 </h4>
             </li>
 <?php endforeach; ?>
@@ -32,5 +32,5 @@
 <button type="submit">刪除成員</button>
 </form>
 <button onClick= "history.back()" >BACK</button>
-<button><a href="<?php echo Yii::app()->createUrl('friends/deletegroup', array('id'=>$mygroup->id))  ?>">刪除群組</a></button>
-<button><a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$mygroup->id))  ?>">+新成員</a></button>
+<a href="<?php echo Yii::app()->createUrl('friends/deletegroup', array('id'=>$mygroup->id))  ?>">刪除群組</a>
+<a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$mygroup->id))  ?>">+新成員</a>

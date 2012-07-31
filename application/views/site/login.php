@@ -1,5 +1,5 @@
 <h1>登入</h1>
-
+<div class="login">
 <form method="POST">
     <dl>
         <dt>
@@ -22,3 +22,4 @@
         <button id="form-login-button" type="submit">登入</button>
     </div>
 </form>
+</div>

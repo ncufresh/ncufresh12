@@ -44,9 +44,10 @@ class Event extends CActiveRecord
                 'calendar_id'
             ),
             'status'    => array(
-                self::BELONGS_TO,
+                self::HAS_ONE,
                 'Status',
-                'id'
+                'event_id',
+                'on' => 'status.user_id IS NULL OR status.user_id=' . Yii::app()->user->id
             )
         );
     }

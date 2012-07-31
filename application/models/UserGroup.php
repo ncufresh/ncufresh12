@@ -11,7 +11,7 @@ class  UserGroup extends CActiveRecord
 
     public function tableName()
     {
-        return '{{user_groups}}';
+        return '{{user_group_relations}}';
     }
 
     public function getMembers($groupID)

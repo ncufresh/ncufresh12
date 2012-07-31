@@ -32,9 +32,17 @@ class Category extends CActiveRecord
     
     public function getIsMaster()
     {
-        if( (Yii::app()->user->getId() != 0 && $this->master_id == Yii::app()->user->getId()) || Yii::app()->user->getIsAdmin() )
-            return true;
-        else
-            return false;
+        if ( Yii::app()->user->getIsMember() )
+        {
+            if( (Yii::app()->user->getId() != 0 && $this->master_id == Yii::app()->user->getId()) || Yii::app()->user->getIsAdmin() )
+                return true;
+            else return false;
+        }
+        return false;
+    }
+    
+    private function getForumLists()
+    {
+        return $this->findAll('id != 1 AND id != 2');
     }
 }
