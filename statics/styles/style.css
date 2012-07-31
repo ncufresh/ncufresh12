@@ -1264,6 +1264,10 @@ ul#nculife-details
 {
 }
 
+#personal-calendar
+{
+}
+
 #index-container
 {
     float: right;
@@ -2349,19 +2353,21 @@ button.news-button
     height: 450px;
 }
 
-#about #introduce
+#about .introdution
 {
     border-radius: 3px;
     color: black;
     font-family: 微軟正黑體;
     font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 3px;
 }
 
 #about .tag-txt
 {
-    background: url('../about/small_wood_plate.png') no-repeat #8ca86c center;
+    background: url('../about/small_wood_plate.png') no-repeat;
     left: 25px;
-    height: 122px;
+    height: 140px;
     width: 700px;
     position: relative;
     margin-top: -0px;
@@ -2381,7 +2387,7 @@ button.news-button
 
 #about .title2
 {
-    background: url('../about/who_with_stars.png') #385281 no-repeat;
+    background: url('../about/who_with_stars.png') #385281  no-repeat;
     width: 750px;
     height: 85px;
 }
@@ -2389,14 +2395,14 @@ button.news-button
 #about .block1
 {
     background: #385281;
-    height: 560px;    
+    height: 750px;    
     width: 750px;
 }
 
 #about .block2
 {
     background: #385281;
-    height: 900px;    
+    height: 950px;    
     width: 750px;
 }
 
@@ -2412,6 +2418,24 @@ button.news-button
     height: 508px;
     width: 700px;
     position: relative;
+}
+
+#about .tag-Box-name
+{
+    top: 95%;
+    position: absolute;
+    text-align: center;
+    height: 10%;
+    width: 100%;
+}
+
+#about .tag-Box-grade
+{
+    top: 120%;
+    position: absolute;
+    text-align: center;
+    height: 10%;
+    width: 100%;
 }
 
 /**

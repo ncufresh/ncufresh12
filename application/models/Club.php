@@ -12,28 +12,20 @@ class Club extends CActiveRecord
             'RawDataBehavior'
         );
     }
+    
+    public function rules()
+    {   
+        return array(
+            array(
+                'introduction, leader, leader_phone, leader_email,leader_binary, leader_msn, viceleader,viceleader_phone, viceleader_email, viceleader_binary, viceleader_msn, website',
+                'safe'
+            ),
+        );
+    }   
 
     public function tableName()
     {
         return '{{clubs}}';
-    }
-
-    public function relations()
-    {
-        return array(
-            'manager'   => array(
-                self::BELONGS_TO,
-                'users',
-                'username'
-            )
-        );
-    }
-    
-    public function getRawClub($clubid)
-    {
-        $club = $this->findByPk($clubid);
-        $club->introduction = $club->getRawValue('introduction');
-        return $club;
     }
     
     public function getClubByMasterId($master_id)

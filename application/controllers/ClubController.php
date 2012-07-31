@@ -55,9 +55,8 @@ class ClubController extends Controller
     public function actionContent($id)
     {
         $id = (integer)$id;
-        $data = Club::model()->findByPk($id);
         $this->render('content', array(
-            'data'      => $data,
+            'data'      => Club::model()->findByPk($id),
 			'id'		=> $id
         )); 
     }
@@ -65,39 +64,21 @@ class ClubController extends Controller
 	{
         $id = (integer)$id; 
         $club = new Club();
-        $club = $club->getRawClub($id);
+        $club = $club->findByPk($id);
+        $club->introduction = $club->getRawValue('introduction');
         if ( ! $club->getIsAdmin($id) ) throw new CHttpException(404);
-        if ( $club->getIsAdmin($id) )
+        if ( isset($_POST['club']) )
         {
-            if ( isset($_POST['club']))
+            $club->attributes = $_POST['club'];
+            if ( $club->save() )
             {
-                $club->introduction = $_POST['club']['introduction'];
-                $club->leader = $_POST['club']['leader'];
-                $club->leader_phone = $_POST['club']['leader_phone'];
-                $club->leader_email = $_POST['club']['leader_email'];
-                $club->leader_binary = $_POST['club']['leader_ID'];
-                $club->leader_msn = $_POST['club']['leader_msn'];
-                $club->viceleader = $_POST['club']['viceleader'];
-                $club->viceleader_phone = $_POST['club']['viceleader_phone'];
-                $club->viceleader_email = $_POST['club']['viceleader_email'];
-                $club->viceleader_binary = $_POST['club']['viceleader_ID'];
-                $club->viceleader_msn = $_POST['club']['viceleader_msn'];
-                $club->website = $_POST['club']['web'];
-                if ( $club->save() )
-                {
-                    $this->redirect(array(
-                        'content',
-                        'id'    =>  $id
-                    ));
-                } 
-            }
+                $this->redirect(array(
+                    'content',
+                    'id'    =>  $id
+                ));
+            } 
         }
-        else
-        {
-             throw new CHttpException(404);
-        }
-
-        $this->render('modify',array(
+        $this->render('modify', array(
             'data'      => $club,
             'id'        => $id
         ));
@@ -106,20 +87,20 @@ class ClubController extends Controller
     public function actionUploadpicture($id)
     {
         $uptypes = array(
-                       'image/jpg',
-                       'image/jpeg',
-                       'image/gif',
-                       'image/png'
-                   );
+            'image/jpg',
+            'image/jpeg',
+            'image/gif',
+            'image/png'
+       );
         $id = (integer)$id;
-        $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'club'. DIRECTORY_SEPARATOR . $id;
+        $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'clubs'. DIRECTORY_SEPARATOR . $id;
         if ( ! Club::model()->getIsAdmin($id) ) throw new CHttpException(404);
         if ( isset($_FILES['pictures']) )
         {
             for ( $index = 0 ; $index < 3 ; ++$index )
             {
-                $filetype[$index] =  $_FILES['pictures']['type'][$index] ;
-                if ( in_array($filetype[$index] , $uptypes) )
+                $filetype[$index] =  $_FILES['pictures']['type'][$index];
+                if ( in_array($filetype[$index], $uptypes) )
                 {
                     if ( empty($_FILES['pictures']['name'][$index]) ) continue;
                     $file = $path . DIRECTORY_SEPARATOR . ($index + 1) . '.jpg';
@@ -128,9 +109,9 @@ class ClubController extends Controller
                 }
             }
             $this->redirect(array(
-                        'content',
-                        'id'    => $id
-                    ));
+                'content',
+                'id'    => $id
+            ));
         }
         $this->render('uploadpicture', array(
             'id'    => $id
