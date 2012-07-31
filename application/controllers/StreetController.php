@@ -8,21 +8,13 @@ class StreetController extends Controller
     {
         $this->_path =  Yii::app()->baseUrl . '/statics';
     }
-
-    public function actionIndex() // main page
-    {
-        // $this->render('index');
-        $files = $this->loadFiles('statics/building/pictureLayerTwo/');
-        // echo empty($files) ? 1:0;
-        $this->render('index' , array( 'files' => $files ));
-	}
-    
+        
     private function loadFiles($directory)
     {
         $files = array();
         if ( is_dir( $directory ) ) // directory 是資料夾
         {
-            $dir = dir($directory);
+            $dir = dir( $directory );
             while ( $entry = $dir->read() )
             {
                 if ( $entry != '.' && $entry != '..' ) // 不是上一層及上上一層 
@@ -34,44 +26,59 @@ class StreetController extends Controller
         return $files;
     }
 
-	public function actionBuilding($id = 0) // dialog building information page
+    public function actionIndex() // main page
+    {
+        // $this->render( 'index' );
+        $files = $this->loadFiles( 'statics/building/pictureLayerTwo/' );
+        // echo empty($files) ? 1:0;
+        $this->render( 'index' , array( 'files' => $files ));
+	}
+
+
+	public function actionBuilding( $id = 0 ) // dialog building information page
     {
         // $files = $this->loadFiles('statics/building/pictureLayerTwo/');
         // echo empty($files) ? 1:0;
         // $this->render('index' , array( 'files' => $files ));
         // exit;
-
+        // $this->render('index');
         $url = $this->_path . '/building';
-        switch ( $id )
+        
+        if( 1 <= $id && $id <= 16 )
         {
-            case 1 :
-                $url .= '/college';
-                $this->_data['content'] = $this->renderPartial('department-building/content1', null, true, false);
-                $this->_data['photo']=$url . '/555-big.png';
-                $this->_data['picture_main'] = $url . '/555.png';
-                $this->_data['picture_other'][0] = $url . '/555.png';                
-                $this->_data['picture_other'][1] = $url . '/555.png';
-
-                $this->_data['pictureLayerTwo'][0] = $url . '/555.png';
-                $this->_data['pictureLayerTwo'][1] = $url . '/444.png';
-                $this->_data['pictureLayerTwo'][2] = $url . '/111.png';
-                break;
-            case 2 :
-                $url .= '/college';
-                $this->_data['content'] = $this->renderPartial('department-building/content2', null, true, false);
-                $this->_data['photo']=$url . '/444-big.png';
-                $this->_data['picture_main'] = $url . '/444.png';
-                $this->_data['picture_other_1'] = $url . '/444.png';
-                $this->_data['picture_other_2'] = $url . '/444.png';
-                break;
-            case 3:
-                $this->_data['content'] = $this->renderPartial('department-building/content3', null, true, false);
-                $this->_data['photo']=$url . '/111-big.png';
-                $this->_data['picture_main'] = $url . '/111.png';
-                $this->_data['picture_other_1'] = $url . '/111.png';
-                $this->_data['picture_other_2'] = $url . '/111.png';
-                break;
+            $url .= '/college';
         }
+        else if( 17 <= $id && $id <= 27 )
+        {
+            $url .= '/landscape';
+        }
+        else if( 28 <= $id && $id <= 33 )
+        {
+            $url .= '/food';
+        }
+        else if( 34 <= $id && $id <= 38 )
+        {
+            $url .= '/government';
+        }
+        else if( 39 <= $id && $id <= 51 )
+        {
+            $url .= '/dormitory';
+        }
+        else
+        {
+            $url .= '/exercise';
+        }
+
+        $this->_data['content'] = $this->renderPartial('department-building/content'.$id , null, true, false);
+        // $this->_data['photo']=$url . '/'.$id.'-big.png';
+        $this->_data['photo']=$url . '/'.$id.'-big.jpg';
+        $this->_data['picture_main'] = $url . '/'.$id.'.png';
+        $this->_data['picture_other'][0] = $url . '/'.$id.'.png';                
+        $this->_data['picture_other'][1] = $url . '/'.$id.'.png';
+
+        $this->_data['pictureLayerTwo'][0] = $url . '/5.png';
+        $this->_data['pictureLayerTwo'][1] = $url . '/4.png';
+        $this->_data['pictureLayerTwo'][2] = $url . '/1.png';
     }
 
     public function actionStreet() // 街景服務頁

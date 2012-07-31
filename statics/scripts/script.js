@@ -1327,17 +1327,15 @@
                 {
                     var result = $('<li></li>')
                         .append(data.events[key].name)
+                        .append($('<a></a>')
+                            .addClass('calendar-hide-event')
+                            .attr('title', '丟進回收桶')
+                            .attr('href', '#' + data.events[key].id)
+                            .text('把我丟掉')
+                        )
                         .data('event', data.events[key])
                         .mouseenter(eventMouseEnter)
                         .mouseleave(eventMouseLeave);
-                    var recycle = $('<a></a>')
-                        .text('x')
-                        .attr('href', '#' + data.events[key].id )
-                        .click(function(){
-                            confirm('你!確!定!');
-                            return false;
-                        });
-                    result.append(recycle);
                     if ( data.events[key].category == 'GENERAL' )
                     {
                         result.appendTo(general);
