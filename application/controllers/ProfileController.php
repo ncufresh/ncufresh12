@@ -2,10 +2,16 @@
 
 class ProfileController extends Controller
 {
+    public $id;
+
+    public $user;
+
     public function init()
     {
         parent::init();
         Yii::import('application.models.Forum.*');
+        $this->id = Yii::app()->user->getId();
+        $this->user = User::model()->findByPk($this->id);
         return true;
     }
     public function filters()
@@ -31,75 +37,62 @@ class ProfileController extends Controller
 
     public function actionProfile() 
     {
-        $id = Yii::app()->user->id;
         $this->render('profile', array(
-            'user'      => User::model()->findByPk($id),
+            'user'      => $this->user
         ));
         
     }
 
     public function actionEditor() 
     {
-        $userID = Yii::app()->user->id;
-        $user = User::model()->findByPk($userID);
         if ( isset($_POST['profile']) ) 
         {
-            $user->attributes = $_POST['register'];
-            $profile = $user->profile;
+            $this->user->attributes = $_POST['register'];
+            $profile = $this->user->profile;
             $profile->attributes = $_POST['profile'];
-            if ( $user->validate() && $profile->validate() )
+            if ( $this->user->validate() && $profile->validate() )
             {
+                
                 if ( $profile->save() )
                 {
                     $this->redirect(array('profile/profile'));
                 }
             }
+            else
+            {
+                $this->render('editor', array(                
+                        'user'          => $this->user, 
+                        'departments'   => Department::model()->getDepartment()
+                ));
+            }
         }
-        else
-        {
-            $this->render('editor', array(                
-                    'user'          => $user, 
-                    'departments'   => Department::model()->getDepartment(), 
-                    'target'        => $img_url
-            ));
-        }
+        $this->render('editor', array(                
+            'user'          => $this->user, 
+            'departments'   => Department::model()->getDepartment()
+        ));
     }
 
     public function actionMessage()
     {
-        $userID = Yii::app()->user->id;
         $this->render('message', array(
-            'articles'        => Article::model()->getUserArticles($userID)
+            'articles'       => Article::model()->getUserArticles($this->id)
         ));
     }
 
-    public function actionMessageReply()
+    public function actionMessageReply($aid)
     {
-        $userID = Yii::app()->user->id;
-        if ( isset($_GET['aid']) )
-        {
-            $this->render('messagereply', array( //還要再判斷是否有推文或回復---不然回是空值耶
-                'article'       => Article::model()->findByPk($_GET['aid']),
-                'replys'      => Reply::model()->getArticleReplies($_GET['aid']),
-                'comments'       => Comment::model()->getArticleComments($_GET['aid'])
-            ));
-        }
-        else
-        {
-           $this->redirect(array('friends/friends'));
-        }
+        $this->render('messagereply', array( //還要再判斷是否有推文或回復---不然回是空值耶
+            'article'       => Article::model()->findByPk($aid),
+            'replys'        => Reply::model()->getArticleReplies($aid),
+            'comments'      => Comment::model()->getArticleComments($aid)
+        ));
     }
 
-    public function actionOtherProfile()
+    public function actionOtherProfile($friend_id)
     {
-        if ( isset($_GET['friend_id']) )
-        {
-            $userID = Yii::app()->user->id;
-            $this->render('otherprofile', array(
-                'user'       => User::model()->findByPk($_GET['friend_id'])
-                
-                
-            ));
-        }
+        $this->render('otherprofile', array(
+            'user'          => User::model()->findByPk($friend_id)
+        ));
+        
     }
 }

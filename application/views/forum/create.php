@@ -96,9 +96,9 @@
         </dt>
         <dd>
             <select id="forum-create-category" name="forum[category_id]">
-            <?php foreach ( $category->article_categories as $entry ) : ?>
+<?php foreach ( $category->article_categories as $entry ) : ?>
                 <option value="<?php echo $entry->id; ?>"><?php echo $entry->name; ?></option>
-            <?php endforeach; ?>
+<?php endforeach; ?>
             </select>
         </dd>
     </dl>
@@ -112,7 +112,7 @@
     </dl>
     <!--置頂-->
     <?php
-    if($is_master):
+    if ( $category->getIsMaster() ) :
     ?>
         <dl class="article-is-top">
             <dt>

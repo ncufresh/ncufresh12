@@ -66,7 +66,9 @@ class ClubController extends Controller
         $club = new Club();
         $club = $club->findByPk($id);
         $club->introduction = $club->getRawValue('introduction');
+
         if ( ! $club->getIsAdmin($id) ) throw new CHttpException(404);
+
         if ( isset($_POST['club']) )
         {
             $club->attributes = $_POST['club'];
@@ -86,15 +88,17 @@ class ClubController extends Controller
 
     public function actionUploadpicture($id)
     {
+        $id = (integer)$id;
         $uptypes = array(
             'image/jpg',
             'image/jpeg',
             'image/gif',
             'image/png'
-       );
-        $id = (integer)$id;
+        );
         $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'clubs'. DIRECTORY_SEPARATOR . $id;
+
         if ( ! Club::model()->getIsAdmin($id) ) throw new CHttpException(404);
+
         if ( isset($_FILES['pictures']) )
         {
             for ( $index = 0 ; $index < 3 ; ++$index )
