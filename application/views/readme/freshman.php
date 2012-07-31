@@ -8,7 +8,10 @@
             
             
             <ul id="readme-index1" class="readme-menu-index">
-                <li tab="1" page="freshman">林林</li>
+                <li tab="1" page="freshman"><?php foreach($index as $each){
+                    echo $each ; echo $index[0];
+                } ?></li>
+                
                 <li tab="2" page="freshman">信信</li>
                 <li tab="3" page="freshman">兒兒</li>
             </ul>
