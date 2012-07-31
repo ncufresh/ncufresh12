@@ -3588,6 +3588,7 @@ img.user_img
     height: 450px;
     display: none;
     background: url('../game/mission.png');
+    position: fixed;
 }
 
 .avatar

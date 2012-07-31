@@ -8,7 +8,7 @@
         {
             var id = $(this).attr('href').replace('#', '');
             $('#game-mission-dialog').dialog({
-                dialogClass: ''
+                dialogClass: 'game-mission'
             });
             return false;
         });
