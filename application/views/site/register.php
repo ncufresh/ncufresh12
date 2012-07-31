@@ -135,23 +135,23 @@
         <dl>
             <dt>
                 <dd>
-                    <select name="profile[year]">
+                    <select name="profile[year]" class="year">
 <?php for ( $year = 2000 ; $year >= 1990 ; $year-- ) : ?>
-                        <option value="<?php echo $year; ?>">
+                        <option value="<?php echo $year; ?>" id="Year">
 <?php echo $year; ?>                        
                         </option>
 <?php endfor; ?>
                     </select>
-                    <select name="profile[month]">
+                    <select name="profile[month]" class="month">
 <?php for ( $month = 1 ; $month <= 12 ; $month++ ) : ?>
-                        <option value="<?php echo $month; ?>">
+                        <option value="<?php echo $month; ?>" id="Month">
 <?php echo $month; ?>                        
                         </option>
 <?php endfor; ?>
                     </select>
-                    <select name="profile[day]">
+                    <select name="profile[day]" class="day">
 <?php for ( $day = 1 ; $day <= 31 ; $day++ ) : ?>
-                        <option value="<?php echo $day; ?>">
+                        <option value="<?php echo $day; ?>" id="Day">
 <?php echo $day; ?>                        
                         </option>
 <?php endfor; ?>

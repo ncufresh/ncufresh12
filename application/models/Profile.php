@@ -142,7 +142,7 @@ class Profile extends CActiveRecord
     protected function afterFind()
     {
         parent::afterFind();
-        $this->birthday = Yii::app()->format->formatText($this->birthday);
+        $this->birthday = Yii::app()->format->date($this->birthday);
     }
 
     protected function beforeSave()
