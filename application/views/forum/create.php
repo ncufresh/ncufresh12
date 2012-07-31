@@ -95,10 +95,10 @@
             <label for="forum-create-category"></label>
         </dt>
         <dd>
-            <select id="forum-create-category" name="forum[category]">
-            <?php foreach ( $category->article_categories as $entry ) : ?>
+            <select id="forum-create-category" name="forum[category_id]">
+<?php foreach ( $category->article_categories as $entry ) : ?>
                 <option value="<?php echo $entry->id; ?>"><?php echo $entry->name; ?></option>
-            <?php endforeach; ?>
+<?php endforeach; ?>
             </select>
         </dd>
     </dl>
@@ -112,24 +112,24 @@
     </dl>
     <!--置頂-->
     <?php
-    if($is_master):
+    if ( $category->getIsMaster() ) :
     ?>
         <dl class="article-is-top">
             <dt>
                 <label class="top-checkbox" for="form-create-top">置頂</label>
             </dt>
             <dd>
-                <input id="form-create-top" type="checkbox" name="forum[is_top]" value="1" />
+                <input id="form-create-top" type="checkbox" name="forum[sticky]" value="1" />
             </dd>
         </dl>
         
-    <input type="hidden" name="forum[is_top]" value="0"/>
+    <input type="hidden" name="forum[sticky]" value="0"/>
     <?php
     endif;
     ?>
 </div>
 <div class="form-foot">
-    <input type="hidden" name="forum[fid]" value="<?php echo $fid; ?>" />
+    <input type="hidden" name="forum[forum_id]" value="<?php echo $fid; ?>" />
     <button id="forum-create-submit" disabled>發佈</button>
     <button class="forum-cancel-button" type="reset">取消</button>
 </div>
