@@ -34,18 +34,7 @@ class Friend extends CActiveRecord
             ) 
         );
     }
-    
-    /*public function isFriend($userid,$friendid) //刪除好友...把自己的invisible變1
-    {
-        $userid = (integer)$userid;
-        $friendid = (integer)$friendid;  
-        $this->updateAll(array(
-            'invisible' => 1
-        ), "user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid", array(
-            ':userid' => $userid,
-            ':friendid' => $friendid
-        ));
-    }*/
+
     public function isExist($userid,$friendid)
     {
         $data = $this->find(array(
@@ -113,6 +102,17 @@ class Friend extends CActiveRecord
                         ':userid' => $userid
                     )
                 ));
+    }
+
+    public function getAmount($userid)
+    {
+        $data = $this->findAll(array(
+                    'condition' => 'user_id = :userid AND invisible = 0',
+                    'params'    => array(
+                        ':userid'   => $userid
+                    )
+                ));
+        return count($data);
     }
 
 }

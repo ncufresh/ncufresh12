@@ -70,7 +70,11 @@
 <div class="friends-sortfriend">
 <ul class="friends-self">
     <li>
-        <a href="<?php echo Yii::app()->createUrl('friends/myfriends') ; ?>" title="朋友" class="friends-title">朋友</a>
+        <a href="<?php echo Yii::app()->createUrl('friends/myfriends') ; ?>" title="朋友" class="friends-title">
+        朋友(
+<?php echo $friend_amount; ?> 
+        人)
+        </a>
     </li>
 <?php  $account = 1;?>
 <?php foreach ( $user->friends as $friend ) : ?>

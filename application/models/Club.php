@@ -12,6 +12,16 @@ class Club extends CActiveRecord
             'RawDataBehavior'
         );
     }
+    
+    public function rules()
+    {   
+        return array(
+            array(
+                'introduction, leader, leader_phone, leader_email,leader_binary, leader_msn, viceleader,viceleader_phone, viceleader_email, viceleader_binary, viceleader_msn, website',
+                'safe'
+            ),
+        );
+    }   
 
     public function tableName()
     {

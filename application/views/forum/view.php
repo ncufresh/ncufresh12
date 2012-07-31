@@ -24,7 +24,7 @@
     <div class="forum-view-comments"></div>
 </div>
 <?php
-$rep = $reply->findAll('article_id='.$article->id);
+$rep = $article->replies;
 foreach ($rep as $each):
 ?>
 <div id="forum-view-replies">
@@ -51,7 +51,7 @@ echo "content: ".$article->content.'<br/>';
 ?>
 
 <?php
-$com = $comments->findAll('article_id='.$article->id);
+$com = $article->comments;
 foreach($com as $each)
     echo $each -> content . '<br/>';
 /*登入才可以推文*/
@@ -59,7 +59,7 @@ if(Yii::app()->user->getIsMember()):
 ?>
 <form id="forum-comment" enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/comment'); ?>" method="POST"> 
 <input id="forum-comment-text" type="text" maxlength="30" name="comment[content]" />
-<input type="hidden" name="comment[aid]" value="<?php echo $_GET['id']; ?>" />
+<input type="hidden" name="comment[article_id]" value="<?php echo $_GET['id']; ?>" />
 <input type="submit" value="推文" />
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
 </form>
@@ -72,7 +72,7 @@ endif;
 
 
 <?php
-$rep = $reply->findAll('article_id='.$article->id);
+$rep = $article->replies;
 foreach ($rep as $each)
     echo '作者: '.$each->author_id.' 內容: '.$each -> content. '<br/>';
 ?>

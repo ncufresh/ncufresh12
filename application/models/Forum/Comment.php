@@ -12,6 +12,14 @@ class Comment extends CActiveRecord
         return '{{forum_comments}}';
     }
 
+    public function rules()
+    {
+        return array(
+            array('content, article_id', 'required'),
+            array('content', 'length', 'max' => 20),
+        );
+    }
+    
     public function relations(){
         return array(
             'article'   => array(
