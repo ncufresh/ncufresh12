@@ -1320,34 +1320,39 @@
                 event_ids : event_ids,
                 token : $.configures.token
             }, function(data){
-                var general = $('#personal-calendar .right .general').empty();
-                var personal = $('#personal-calendar .right .personal').empty();
-                var clubs = $('#personal-calendar .right .clubs').empty();
                 for( var key in data.events )
                 {
-                    var result = $('<li></li>')
-                        .append(data.events[key].name)
-                        .append($('<a></a>')
-                            .addClass('calendar-hide-event')
-                            .attr('title', '丟進回收桶')
-                            .attr('href', '#' + data.events[key].id)
-                            .text('把我丟掉')
-                        )
-                        .data('event', data.events[key])
-                        .mouseenter(eventMouseEnter)
-                        .mouseleave(eventMouseLeave);
-                    if ( data.events[key].category == 'GENERAL' )
+                    var div = $('<div></div>');
+                    var header = $('<h4></h4>').text(key);
+                    var ul = $('<ul></ul>');
+                    for ( var key2 in data.events[key] )
                     {
-                        result.appendTo(general);
+                        $('<li></li>')
+                            .text(data.events[key][key2].name)
+                            .append(
+                                $('<a></a>')
+                                    .addClass('calendar-hide-event')
+                                    .attr('title', '丟進回收桶')
+                                    .attr('href', '#' + data.events[key][key2].id)
+                                    .text('把我丟掉')
+                            )
+                            .data('event', data.events[key][key2])
+                            .mouseenter(eventMouseEnter)
+                            .mouseleave(eventMouseLeave)
+                            .appendTo(ul);
                     }
-                    else if ( data.events[key].category == 'PERSONAL' )
-                    {
-                        result.appendTo(personal);
-                    }
-                    else 
-                    {
-                        result.appendTo(clubs).prepend($('<span></span>').text(data.events[key].clubname));
-                    }
+                    div.append(header).append(ul).appendTo('#personal-calendar .right');
+                    // var result = $('<li></li>')
+                        // .append(data.events[key].name)
+                        // .append($('<a></a>')
+                            // .addClass('calendar-hide-event')
+                            // .attr('title', '丟進回收桶')
+                            // .attr('href', '#' + data.events[key].id)
+                            // .text('把我丟掉')
+                        // )
+                        // .data('event', data.events[key])
+                        // .mouseenter(eventMouseEnter)
+                        // .mouseleave(eventMouseLeave);
                 }
                 $.configures.token = data.token;
             });
