@@ -75,8 +75,4 @@ class StreetController extends Controller
         $this->_data['pictureLayerTwo'][1] = $url . '/4.png';
         $this->_data['pictureLayerTwo'][2] = $url . '/1.png';
     }
-
-    public function actionStreet() // 街景服務頁
-    {
-    }
 }
