@@ -1266,6 +1266,19 @@ ul#nculife-details
 
 #personal-calendar
 {
+    
+}
+
+#personal-calendar .calendar-table tbody td
+{
+    cursor: pointer;
+}
+
+.calendar-prompt
+{
+    background: gray;
+    list-style: none;
+    padding: 5px;
 }
 
 #index-container
@@ -2640,6 +2653,11 @@ button.news-button
     float: right;
     background-repeat: no-repeat;
 }
+.club-display-head h4
+{
+    font-size: 30px;
+    text-align: center;
+}
 #club-head-1
 {
     background: url('../club/5-1.png');
@@ -3582,6 +3600,15 @@ img.user_img
 /**
  * Game
  */
+#game-mission-dialog
+{
+    width: 750px;
+    height: 450px;
+    display: none;
+    background: url('../game/mission.png');
+    position: fixed;
+}
+
 .avatar
 {
     height: 800px;
