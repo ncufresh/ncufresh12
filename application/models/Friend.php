@@ -102,12 +102,16 @@ class Friend extends CActiveRecord
                 ));
     }
 
-    public function getAmount()
+    public function getAmount($id = 0)
     {
+        $id = (integer)$id;
+        $user_id = (integer)Yii::app()->user->getId();
+        if ( $id === 0 )
+             $id = $user_id;
         $data = $this->findAll(array(
                     'condition' => 'user_id = :userid AND invisible = 0',
                     'params'    => array(
-                        ':userid'   => Yii::app()->user->getId()
+                        ':userid'   => $id
                     )
                 ));
         return count($data);
