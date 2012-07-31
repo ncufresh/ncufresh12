@@ -1320,6 +1320,7 @@
                 event_ids : event_ids,
                 token : $.configures.token
             }, function(data){
+                $('#personal-calendar .right').empty();
                 for( var key in data.events )
                 {
                     var div = $('<div></div>');
@@ -1342,17 +1343,6 @@
                             .appendTo(ul);
                     }
                     div.append(header).append(ul).appendTo('#personal-calendar .right');
-                    // var result = $('<li></li>')
-                        // .append(data.events[key].name)
-                        // .append($('<a></a>')
-                            // .addClass('calendar-hide-event')
-                            // .attr('title', '丟進回收桶')
-                            // .attr('href', '#' + data.events[key].id)
-                            // .text('把我丟掉')
-                        // )
-                        // .data('event', data.events[key])
-                        // .mouseenter(eventMouseEnter)
-                        // .mouseleave(eventMouseLeave);
                 }
                 $.configures.token = data.token;
             });
