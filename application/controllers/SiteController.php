@@ -244,7 +244,9 @@ class SiteController extends Controller
         {
             $user->attributes = $_POST['register'];
             $profile->attributes = $_POST['profile'];
-            // var_dump($profile->department);
+            // var_dump($user->validate());
+            // echo '<br />';
+            // var_dump($profile->validate());
             // exit;
             if ( $user->validate() && $profile->validate() )
             {
@@ -293,6 +295,10 @@ class SiteController extends Controller
             }
             else
             {
+                var_dump($user->getErrors());
+                echo '<br />';
+                var_dump($profile->getErrors());
+                exit;
                 $this->render('register', array(
                         'departments'   => Department::model()->getDepartment(),
                         'username_errors'        => $user->getErrors(),

@@ -42,7 +42,7 @@ class Profile extends CActiveRecord
     public function relations()
     {
         return array(
-            'department'    => array(
+            'mydepartment'    => array(
                 self::BELONGS_TO,
                 'Department', 
                 'department_id' 
@@ -62,34 +62,35 @@ class Profile extends CActiveRecord
         ));
     }
 
-    public function getSameDepartmentSameGrade($id, $grade)
+    public function getSameDepartmentSameGrade($Depid, $grade, $userid)
     {
         return $this->findAll(array(
-            'condition' => 'department_id = :id AND grade = :grade',
+            'condition' => 'department_id = :id AND grade = :grade AND id <> :userid',
             'params'    => array(
-                ':id' => $id,
+                ':id' => $Depid,
                 ':grade' => $grade,
+                ':userid' => $userid
             )
         ));
     }
 
-    public function getSameDepartmentDiffGrade($id, $grade)
+    public function getSameDepartmentDiffGrade($Depid, $grade)
     {
         return $this->findAll(array(
             'condition' => 'department_id = :id AND grade <> :grade',
             'params'    => array(
-                ':id' => $id,
+                ':id' => $Depid,
                 ':grade' => $grade
             )
         ));
     }
 
-    public function getOtherDepartment($id)
+    public function getOtherDepartment($Depid)
     {
         return $this->findAll(array(
             'condition' => 'department_id <> :id',
             'params'    => array(
-                ':id' => $id
+                ':id' => $Depid
             )
         ));
     }
@@ -123,12 +124,43 @@ class Profile extends CActiveRecord
         return false;
     }
 
-    public function beforeSave()
+    public function behaviors()
+    {
+        return array(
+            'RawDataBehavior'
+        );
+    }
+
+    protected function beforeValidate()
+    {
+        if ( parent::beforeValidate() )
+        {
+            $this->birthday = mktime(0, 0, 0, $this->month, $this->day, $this->year);
+            return true;
+        }
+        return false; 
+        
+    }
+    
+    protected function afterFind()
+    {
+        parent::afterFind();
+        $this->birthday = Yii::app()->format->formatText($this->birthday);
+    }
+
+    protected function beforeSave()
     {
         if ( parent::beforeSave() )
         {
-            $this->department_id = $department;
-            $this->birthday = $year.'/'.$month.'/'.$day;
+            if ( $this->getIsNewRecord() )
+            {
+                $this->birthday = $this->birthday;
+            }
+            else
+            {
+                $this->birthday = $this->getRawValue('birthday');//先複製一份資料庫那欄中的資料
+            }
+            $this->department_id = $this->department;
             return true;
         }
         return false;
