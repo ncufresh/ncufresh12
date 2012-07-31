@@ -1646,16 +1646,21 @@
                 dayEnter: function(event)
                 {
                     var events = $(this).data('cal_events');
-                    if( events.length > 0 )
+                    if( events && events.length > 0 )
                     {
                         for( var key in $(this).data('cal_events') )
                         {
                             $('<li></li>').text(events[key].name).appendTo(prompt);
                         }
+                        var left = $(this).parents('table').offset().left + event.currentTarget.offsetLeft;
+                        var top = $(this).parents('table').offset().top + event.currentTarget.offsetTop;
                         prompt.css({
-                            top: event.pageY,
-                            left: event.pageX
+                            // top: event.pageY,
+                            // left: event.pageX
+                            top: top,
+                            left: left
                         }).show();
+                        console.log(event.currentTarget.offsetLeft, event.currentTarget.offsetTop);
                     }
                 },
                 dayLeave: function()
