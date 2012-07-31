@@ -38,30 +38,31 @@ class StreetController extends Controller
     {
         $url = $this->_path . '/building';
 
-        if ( 1 <= $id && $id <= 16 )
-        {
-            $url .= '/college';
-        }
-        else if ( 17 <= $id && $id <= 27 )
-        {
-            $url .= '/landscape';
-        }
-        else if ( 28 <= $id && $id <= 33 )
-        {
-            $url .= '/food';
-        }
-        else if ( 34 <= $id && $id <= 38 )
-        {
-            $url .= '/government';
-        }
-        else if ( 39 <= $id && $id <= 51 )
-        {
-            $url .= '/dormitory';
-        }
-        else
-        {
-            $url .= '/exercise';
-        }
+        // Is the condition correct?
+        // if ( 1 <= $id && $id <= 16 )
+        // {
+            // $url .= '/college';
+        // }
+        // else if ( 17 <= $id && $id <= 27 )
+        // {
+            // $url .= '/landscape';
+        // }
+        // else if ( 28 <= $id && $id <= 33 )
+        // {
+            // $url .= '/food';
+        // }
+        // else if ( 34 <= $id && $id <= 38 )
+        // {
+            // $url .= '/government';
+        // }
+        // else if ( 39 <= $id && $id <= 51 )
+        // {
+            // $url .= '/dormitory';
+        // }
+        // else
+        // {
+            // $url .= '/exercise';
+        // }
 
         $this->_data['content'] = $this->renderPartial('department-building/content' . $id, null, true, false);
         $this->_data['photo'] = $url . '/' . $id . '-big.jpg';
