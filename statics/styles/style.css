@@ -1266,6 +1266,19 @@ ul#nculife-details
 
 #personal-calendar
 {
+    
+}
+
+#personal-calendar .calendar-table tbody td
+{
+    cursor: pointer;
+}
+
+.calendar-prompt
+{
+    background: gray;
+    list-style: none;
+    padding: 5px;
 }
 
 #index-container
@@ -3588,6 +3601,7 @@ img.user_img
     height: 450px;
     display: none;
     background: url('../game/mission.png');
+    position: fixed;
 }
 
 .avatar
