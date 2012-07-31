@@ -2969,14 +2969,6 @@ div.friends-part2
     margin:0px;
 }
 
-div.friends-part4
-{
-    width:330px;
-    height:315px;
-    margin:0px;
-    padding:25px;
-}
-
 /*div.friends-part4 form
 {
     width:300px;
@@ -3177,6 +3169,14 @@ div.register
     margin:0px;
 }
 
+div.register form
+{
+    width:330px;
+    height:315px;
+    margin:0px;
+    padding:25px;
+}
+
 div.register button
 {
     background-image:url('../profile/button_register.png');
@@ -3242,7 +3242,7 @@ div.self-messages
     float:left;
 }
 
-div.register .is_exist
+div.friends-part4 .is_exist
 {
     outline:1px solid red;
 }

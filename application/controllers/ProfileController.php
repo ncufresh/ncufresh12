@@ -48,6 +48,7 @@ class ProfileController extends Controller
         if ( isset($_POST['profile']) ) 
         {
             $this->user->attributes = $_POST['register'];
+            echo $this->user->isNewRecord() ? 1: 0; exit;
             $profile = $this->user->profile;
             $profile->attributes = $_POST['profile'];
             if ( $this->user->validate() && $profile->validate() )

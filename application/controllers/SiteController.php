@@ -244,7 +244,9 @@ class SiteController extends Controller
         {
             $user->attributes = $_POST['register'];
             $profile->attributes = $_POST['profile'];
-            if ( $user->validate() && $profile->validate() )
+            $user_validate = $user->validate();
+            $profile_validate = $profile->validate();
+            if ( $user_validate && $profile_validate )
             {
                 if ( $user->save() && $profile->save() )
                 {
@@ -284,24 +286,28 @@ class SiteController extends Controller
                     $this->render('register', array(
                         'departments'   => Department::model()->getDepartment(),
                         'username_errors'        => $user->getErrors(),
-                        'profile_errors'        => $profile->getErrors()
+                        'profile_errors'         => $profile->getErrors()
                     ));
                 }
             }
             else
             {
+                // var_dump($user->getErrors());
+                // echo '<br />';
+                // var_dump($profile->getErrors());
+                // exit;
                 $this->render('register', array(
                         'departments'   => Department::model()->getDepartment(),
                         'username_errors'        => $user->getErrors(),
-                        'profile_errors'        => $profile->getErrors()
+                        'profile_errors'         => $profile->getErrors()
                 ));
             }
         }
         else
         {
             $this->render('register', array(
-                    'departments'   => Department::model()->getDepartment(),
-                    'username_errors'        => $user->getErrors(),
+                    'departments'           => Department::model()->getDepartment(),
+                    'username_errors'       => $user->getErrors(),
                     'profile_errors'        => $profile->getErrors()
             ));
         }

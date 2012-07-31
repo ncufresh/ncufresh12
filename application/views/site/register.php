@@ -1,6 +1,5 @@
 <h1>基本資料</h1>
 <div class="register">
-<div class="friends-part4">
 <form  enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('site/register'); ?>" method="POST">
     <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
         <dl>
@@ -23,7 +22,11 @@
 <?php else : ?>
          <dl>
             <dt>
-                <label for="form-register-nickname" class="is_exist">***暱稱被人捷足先登喇***</label>
+                <label for="form-register-nickname" class="is_exist">
+<?php foreach ( $profile_errors['nickname'] as $error ) : ?>
+<?php echo $error; ?>
+<?php endforeach; ?>
+                </label>
             </dt>
             <dd>
                 <input id="form-register-nickname" name="profile[nickname]" type="text" />
@@ -51,7 +54,11 @@
 <?php else : ?>
         <dl>
             <dt>
-                <label for="form-register-username" class="is_exist">帳號有人用搶了喔/須大於8碼</label>
+                <label for="form-register-username" class="is_exist">
+<?php foreach ( $username_errors['username'] as $error ) : ?>
+<?php echo $error; ?>
+<?php endforeach; ?>
+                </label>
             </dt>
             <dd>
                 <input id="form-register-username" name="register[username]" type="text" />
@@ -78,7 +85,11 @@
 <?php else : ?>
         <dl>
             <dt>
-                <label for="form-register-password" class="is_exist">密碼輸入不正確/須大於8碼</label>
+                <label for="form-register-password" class="is_exist">
+<?php foreach ( $username_errors['password'] as $error ) : ?>
+<?php echo $error; ?>
+<?php endforeach; ?>
+                </label>
             </dt>
             <dd>
                 <input id="form-register-password" name="register[password]" type="password" />
@@ -123,30 +134,32 @@
         </dl>
         <dl>
             <dt>
-                <label for="form-register-year" <?php if (isset($profile_errors['birthday'])) : ?>class="is_exist"<?php endif; ?>>西元</label>
+                <dd>
+                    <select name="profile[year]">
+<?php for ( $year = 2000 ; $year >= 1990 ; $year-- ) : ?>
+                        <option value="<?php echo $year; ?>">
+<?php echo $year; ?>                        
+                        </option>
+<?php endfor; ?>
+                    </select>
+                    <select name="profile[month]">
+<?php for ( $month = 1 ; $month <= 12 ; $month++ ) : ?>
+                        <option value="<?php echo $month; ?>">
+<?php echo $month; ?>                        
+                        </option>
+<?php endfor; ?>
+                    </select>
+                    <select name="profile[day]">
+<?php for ( $day = 1 ; $day <= 31 ; $day++ ) : ?>
+                        <option value="<?php echo $day; ?>">
+<?php echo $day; ?>                        
+                        </option>
+<?php endfor; ?>
+                    </select>
+                </dd>
             </dt>
-            <dd>
-                <input id="form-register-year" name="profile[year]" type="text"  />
-            </dd>
         </dl>
-        <dl>
-            <dt>
-                <label for="form-register-month" <?php if (isset($profile_errors['birthday'])) : ?>class="is_exist"<?php endif; ?>>月</label>
-            </dt>
-            <dd>
-                <input id="form-register-month" name="profile[month]" type="text" />
-            </dd>
-        </dl>
-        <dl>
-            <dt>
-                <label for="form-register-day" <?php if (isset($profile_errors['birthday'])) : ?>class="is_exist"<?php endif; ?>>日</label>
-            </dt>
-            <dd>
-                <input id="form-register-day" name="profile[day]" type="text" />
-            </dd>
-        </dl>
-            <button id="rewrite"><a href="<?php echo Yii::app()->createUrl('site/register'); ?>">重填</a></button>
-            <button type="submit">註冊</button>
+        <button id="rewrite"><a href="<?php echo Yii::app()->createUrl('site/register'); ?>">重填</a></button>
+        <button type="submit">註冊</button>
 </form>
-</div>
 </div>
