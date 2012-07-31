@@ -132,7 +132,6 @@ class NewsController extends Controller
                         $url_model->name = $_POST['news']['news_urls_alias'][$key];
                         $url_model->link = $_POST['news']['news_urls'][$key];
                         $url_model->news_id = $news->id;
-                        $url_model->save();
                         if ( $url_model->validate() )
                         {
                             $url_model->save();

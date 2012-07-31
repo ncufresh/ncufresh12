@@ -1308,7 +1308,7 @@
             }
             self.markToday();
         }
-        
+
         if ( cal_events && cal_events.length )
         {
             var event_ids = [];
@@ -1350,13 +1350,12 @@
                     {
                         result.appendTo(clubs).prepend($('<span></span>').text(data.events[key].clubname));
                     }
-                    
                 }
                 $.configures.token = data.token;
             });
         }
     }
-    
+
     $.generateTodolist = function(events, options)
     {
         options = $.extend({
