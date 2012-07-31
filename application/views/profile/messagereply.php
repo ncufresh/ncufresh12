@@ -1,4 +1,4 @@
-<h1>MyMessage_Reply</h1>
+<h1>論壇回覆</h1>
 <div class="profile-message-reply" >
     <ul id="self-message">
         <li class="article-title">標題:<li >
@@ -25,12 +25,14 @@
                 <td><?php echo Profile::model()->findByPk($reply->author_id)->name; ?></td>
                 <td class="reply-content">
                     <a href="#">Hehey</a>
-                    <span><div id="reply-content"><?php echo $reply->content; ?></div></span>
+                    <span><?php echo $reply->content; ?></span>
                 </td>
                 <td><?php echo Yii::app()->format->datetime($reply->create_time); ?></td>
             </tr>
 <?php endforeach;?>
         </tbody>
+        <div>
+        </div>
     </table>
     <span class="reply-title">推文</span>
     <table>

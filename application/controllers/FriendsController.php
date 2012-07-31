@@ -28,16 +28,16 @@ class FriendsController extends Controller
         $userID = Yii::app()->user->id;
         $departmentId = Profile::model()->findByPK($userID)->department_id;
         $grade = Profile::model()->findByPK($userID)->grade;
-        $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $this->setPageTitle(Yii::app()->name . ' - 好友專區');
         $this->render('friends', array(
-            'profileFir'    => Profile::model()->getSameDepartmentSameGrade($departmentId, $grade),
+            'profileFir'    => Profile::model()->getSameDepartmentSameGrade($departmentId, $grade, $userID),
             'profileSec'    => Profile::model()->getSameDepartmentDiffGrade($departmentId, $grade),
-            'profileThir'   => Profile::model()->getOtherDepartment($departmentId, $grade),    'profiles'      => Profile::model()->getAllMember(), 
+            'profileThir'   => Profile::model()->getOtherDepartment($departmentId, $grade),    
+            'profiles'      => Profile::model()->getAllMember(), 
             'user'          => User::model()->findByPk($userID),
             'groups'         => Group::model()->FindGroup($userID),
             'amonut'        => Group::model()->getGroupAmount($userID),
-            'target'        => $imgUrl
+            'friend_amount'        => Friend::model()->getAmount($userID)
         ));
     }
 
@@ -46,12 +46,9 @@ class FriendsController extends Controller
         $userID = Yii::app()->user->id;
         $departmentId = Profile::model()->findByPK($userID)->department_id;
         $grade = Profile::model()->findByPK($userID)->grade;
-        $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $this->setPageTitle(Yii::app()->name . ' - 同系同屆');
         $this->render('samedepartmentsamegrade', array(
-            'profiles'      => Profile::model()->getSameDepartmentSameGrade($departmentId, $grade),
-            'user'          => User::model()->findByPk($userID),
-            'target'        => $imgUrl
+            'profiles'      => Profile::model()->getSameDepartmentSameGrade($departmentId, $grade, $userID),
         ));
     }
 
@@ -60,12 +57,9 @@ class FriendsController extends Controller
         $userID = Yii::app()->user->id;
         $departmentId = Profile::model()->findByPK($userID)->department_id;
         $grade = Profile::model()->findByPK($userID)->grade;
-        $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $this->setPageTitle(Yii::app()->name . ' - 同系不同屆');
         $this->render('samedepartmentdiffgrade', array(
-            'profiles'      => Profile::model()->getSameDepartmentDiffGrade($departmentId, $grade),
-            'user'          => User::model()->findByPk($userID),
-            'target'        => $imgUrl
+            'profiles'      => Profile::model()->getSameDepartmentDiffGrade($departmentId, $grade)
         ));
     }
 
@@ -73,23 +67,18 @@ class FriendsController extends Controller
     {
         $userID = Yii::app()->user->id;
         $departmentId  = Profile::model()->findByPK($userID)->department_id;
-        $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $this->setPageTitle(Yii::app()->name . ' - 其他科系');
         $this->render('otherdepartment', array(
-            'profiles'      => Profile::model()->getOtherDepartment($departmentId),
-            'user'          => User::model()->findByPk($userID),
-            'target'        => $imgUrl
+            'profiles'      => Profile::model()->getOtherDepartment($departmentId)
         ));
     }
 
     public function actionMyFriends()
     {
         $userID = Yii::app()->user->id;
-        $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $this->setPageTitle(Yii::app()->name . ' - 我的好友');
         $this->render('myfriends', array(                
-            'user'          => User::model()->findByPk($userID),
-            'target'        => $imgUrl
+            'user'          => User::model()->findByPk($userID)
         ));
     }
 
@@ -139,16 +128,14 @@ class FriendsController extends Controller
 
     public function actionMyGroups()
     {
-        $userID = Yii::app()->user->id;
-        $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';   
+        $userID = Yii::app()->user->id;   
         $this->setPageTitle(Yii::app()->name . ' - 我的群組');
         if ( isset($_GET['id']) )
         {
             $this->render('mygroups', array(
                 'user'          => User::model()->findByPk($userID),
-                'members'         => UserGroup::model()->getMembers($_GET['id']), //得到社團ID
-                'mygroup'       =>Group::model()->findByPK($_GET['id']),
-                'target'        => $imgUrl
+                'members'         => UserGroup::model()->getMembers($_GET['id']), 
+                'mygroup'       =>Group::model()->findByPK($_GET['id'])
             ));
         }
         else
@@ -160,7 +147,6 @@ class FriendsController extends Controller
     public function actionAddNewMembers()
     {
         $userID = Yii::app()->user->id;
-        $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';   
         $this->setPageTitle(Yii::app()->name . ' - 新增成員');
         if ( isset($_POST['friends'] ) && isset( $_GET['id'] ) )
         {
@@ -212,7 +198,6 @@ class FriendsController extends Controller
         $userID = Yii::app()->user->id;
         $departmentId = Profile::model()->findByPK($userID)->department_id;
         $grade = Profile::model()->findByPK($userID)->grade;
-        $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         if ( isset($_POST['friends']) )
         {
             if ( !Group::model()->addNewGroup($userID, $_POST['group-name'], $_POST['group-description'], $_POST['friends']) )
@@ -224,8 +209,7 @@ class FriendsController extends Controller
         else
         {
             $this->render('newgroup', array(
-                'user'          => User::model()->findByPk($userID),
-                'target'        => $imgUrl
+                'user'          => User::model()->findByPk($userID)
             ));
         }
     }
@@ -259,18 +243,16 @@ class FriendsController extends Controller
         }
     }
 
-   public function actionNewMembers()
+   public function actionNewMembers() //新增成員的頁面
    {
         $userID = Yii::app()->user->id;
-        $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $this->setPageTitle(Yii::app()->name . ' - 我的好友');
         $user = User::model()->findByPk($userID);
         if( isset($_GET['id']) ) 
         {
             $this->render('newmembers', array(                
                 'user'          => User::model()->findByPk($userID),
-                'id'            => $_GET['id'],
-                'target'        => $imgUrl
+                'id'            => $_GET['id']
             ));
         }
         else
@@ -290,7 +272,6 @@ class FriendsController extends Controller
    public function actionRequest() //確認好友關係
    {
         $userID = Yii::app()->user->id;
-        $imgUrl = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         if ( isset($_POST['friends']) && isset($_POST['agree']) )
         {
             foreach ( $_POST['friends'] as $friendid )
@@ -314,8 +295,7 @@ class FriendsController extends Controller
             $this->redirect(array('friends/myfriends'));      
         }
         $this->render('request', array(
-            'friends'         => Friend::model()->getRequests($userID),
-            'target'        => $imgUrl
+            'friends'         => Friend::model()->getRequests($userID)
         ));
    }
 }

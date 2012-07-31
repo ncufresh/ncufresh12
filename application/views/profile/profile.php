@@ -23,7 +23,7 @@
                 帳號:<?php echo $user->username; ?>      
             </li>
             <li>
-                系所:<?php echo $user->profile->department->abbreviation; ?>
+                系所:<?php echo $user->profile->mydepartment->abbreviation; ?>
             </li>
             <li>
                 系級:<?php echo $user->profile->grade; ?>年級

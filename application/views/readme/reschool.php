@@ -1,6 +1,6 @@
 <div id="readme-reschool">
     <div id="readme-view"></div>
-    <a href="index.html" id="reschool-back" class="readme-back"></a>
+    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" id="reschool-back" class="readme-back"></a>
         <div id="read-reschool-menu" class="readme-menu">
         	<h4>復學區</h4>
         </div>

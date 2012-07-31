@@ -32,49 +32,26 @@ class ProfileController extends Controller
     public function actionProfile() 
     {
         $id = Yii::app()->user->id;
-        $url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
-        if ( isset($_POST['form-profile-editor']) )
-        {
-            $this->redirect(array('profile/editor'));
-        }
-        else if ( isset($_POST['form-profile-back']) )
-        {
-            $this->redirect(array('friends/friends'));
-        }
-        else
-        {
-            $this->render('profile', array(
-                'user'      => User::model()->findByPk($id), 
-                'target'    => $url
-            ));
-        }
+        $this->render('profile', array(
+            'user'      => User::model()->findByPk($id),
+        ));
+        
     }
 
     public function actionEditor() 
     {
         $userID = Yii::app()->user->id;
-        $img_url = Yii::app()->baseUrl . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
-        $path = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'avatars';
         $user = User::model()->findByPk($userID);
         if ( isset($_POST['profile']) ) 
         {
             $user->attributes = $_POST['register'];
-            if ( $user->validate() )
+            $profile = $user->profile;
+            $profile->attributes = $_POST['profile'];
+            if ( $user->validate() && $profile->validate() )
             {
-                $profile = $user->profile;
-                $profile->attributes = $_POST['profile'];
-                $profile->department_id = $_POST['profile']['department'];
-                $profile->grade = $_POST['profile']['grade'];
-                if ( $profile->validate() )
+                if ( $profile->save() )
                 {
-                    if ( $user->save() )
-                    {
-                        $profile->id = $user->id;
-                        if ( $profile->save() )
-                        {
-                            $this->redirect(array('profile/profile'));
-                        }
-                    }
+                    $this->redirect(array('profile/profile'));
                 }
             }
         }
@@ -116,11 +93,13 @@ class ProfileController extends Controller
     public function actionOtherProfile()
     {
         if ( isset($_GET['friend_id']) )
+        {
             $userID = Yii::app()->user->id;
             $this->render('otherprofile', array(
                 'user'       => User::model()->findByPk($_GET['friend_id'])
                 
                 
             ));
+        }
     }
 }

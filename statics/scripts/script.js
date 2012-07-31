@@ -1214,7 +1214,15 @@
             self.data('all_events', data.events);
             if ( updateEventList )
             {
-                self.updateEventsList($(self).getToday().data('cal_events'));
+                if( $(self).getToday() )
+                {
+                    self.updateEventsList($(self).getToday().data('cal_events'));
+                    $('#personal-calendar .date').text(
+                        $(self).data('options').year + '.'
+                        + ($(self).data('options').month+1) + '.'
+                        + $(self).getToday().text()
+                    );
+                }
             }
         });
         return this;
@@ -1308,7 +1316,7 @@
             }
             self.markToday();
         }
-
+        $('#personal-calendar .right').empty();
         if ( cal_events && cal_events.length )
         {
             var event_ids = [];
@@ -1320,6 +1328,7 @@
                 event_ids : event_ids,
                 token : $.configures.token
             }, function(data){
+                
                 for( var key in data.events )
                 {
                     var div = $('<div></div>');
@@ -1342,17 +1351,6 @@
                             .appendTo(ul);
                     }
                     div.append(header).append(ul).appendTo('#personal-calendar .right');
-                    // var result = $('<li></li>')
-                        // .append(data.events[key].name)
-                        // .append($('<a></a>')
-                            // .addClass('calendar-hide-event')
-                            // .attr('title', '丟進回收桶')
-                            // .attr('href', '#' + data.events[key].id)
-                            // .text('把我丟掉')
-                        // )
-                        // .data('event', data.events[key])
-                        // .mouseenter(eventMouseEnter)
-                        // .mouseleave(eventMouseLeave);
                 }
                 $.configures.token = data.token;
             });
@@ -1583,25 +1581,50 @@
     {
         var current_year = (new Date()).getFullYear();
         var current_month = (new Date()).getMonth() + 1;
-        var calendar = jQuery.generateCalendar({
-            year: current_year,
-            month: current_month,
-            dayClick: function(){
-                $('#personal-calendar .date').text(
-                    $(calendar).data('options').year + '.'
-                    + ($(calendar).data('options').month+1) + '.'
-                    + $(this).text()
-                );
-                $(calendar).updateEventsList($(this).data('cal_events'));
-            }
-        });
-        calendar.appendTo(this);
-        calendar.updateData(true);
-        $('#personal-calendar .date').text(
-            $(calendar).data('options').year + '.'
-            + ($(calendar).data('options').month+1) + '.'
-            + $(calendar).getToday().text()
-        );
+        var container = $('<div></div>').appendTo(this);
+        var geneator = function(year, month)
+        {
+            if ( calendar ) calendar.remove();
+            calendar = jQuery.generateCalendar({
+                year: year,
+                month: month,
+                left: true,
+                leftClick: function()
+                {
+                    if ( --month < 1 )
+                    {
+                        month = 12;
+                        year -= 1;
+                    }
+                    geneator(year, month);
+                },
+                right: true,
+                rightClick: function()
+                {
+                    if ( ++month > 12 )
+                    {
+                        month = 1;
+                        year += 1;
+                    }
+                    geneator(year, month);
+                },
+                dayClick: function(){
+                    $('#personal-calendar .date').text(
+                        $(calendar).data('options').year + '.'
+                        + ($(calendar).data('options').month+1) + '.'
+                        + $(this).text()
+                    );
+                    $(calendar).updateEventsList($(this).data('cal_events'));
+                }
+            });
+            calendar.appendTo(container);
+            calendar.updateData(true);
+            return calendar;
+        };
+        var calendar = geneator(current_year, current_month);
+        // var calendar = geneator(current_year, current_month);
+        // calendar.appendTo(this);
+        // calendar.updateData(true);
     }
 })(jQuery);
 

@@ -1,4 +1,4 @@
-<h1>MyMessage</h1>
+<h1>論壇回覆</h1>
 <div class="profile-message-allmessages">
     <div class="my-all-messages">
         <table>

@@ -2022,25 +2022,18 @@ button.news-button
     background: url('../readme/freshman_background.png');
 }
 
-#fresh_back
+#fresh-back
 {
     background: url('../readme/fresh_back.png');
 }
 
-#fresh_back:hover
+#fresh-back:hover
 {
-    position: relative;
-    background: #385281;
-    height: 550px;    
-    width: 750px;
-    margin-top: -18px;
     background: url('../readme/fresh_back_hover.png');
 }
 
 #readme-notice
 {
-    background: #385281;
-    height: 900px;    
     width: 750px;
     height: 450px;
     position: relative;
@@ -2059,9 +2052,6 @@ button.news-button
 
 #readme-reschool
 {
-    left: 25px;
-    height: 508px;
-    width: 700px;
     width: 750px;
     height: 450px;
     position: relative;
@@ -2086,12 +2076,13 @@ button.news-button
     background: url('../readme/download_background.png');
 }
 
-#download_back
+#download-back
 {
+    
     background: url('../readme/download_back.png');
 }
 
-#download_back:hover
+#download-back:hover
 {
     background: url('../readme/download_back_hover.png');
 }
@@ -2327,7 +2318,7 @@ button.news-button
 
 .readme-menu-index
 {
-    display: none;
+    display: block;
 }
 
 .fresh-menu li
@@ -2742,7 +2733,7 @@ button.news-button
     width: 750px;
     background: url('../club/background.png');
 }
-
+/* profile... */
 .friends-sort 
 
 {
@@ -2978,6 +2969,22 @@ div.friends-part2
     margin:0px;
 }
 
+div.friends-part4
+{
+    width:330px;
+    height:315px;
+    margin:0px;
+    padding:25px;
+}
+
+/*div.friends-part4 form
+{
+    width:300px;
+    height:315px;
+    margin-left:5px;
+    padding:0px;
+}*/
+
 div.friends-part2 div.avatar
 {
     margin-left:28px;
@@ -3074,7 +3081,7 @@ div.myprofile
     margin:0px;
 }
 
-div.mygroups
+/*div.mygroups
 {
     background-image:url('../profile/mygroups.png');
     background-repeat:no-repeat ;
@@ -3082,11 +3089,11 @@ div.mygroups
     height:370px;
     padding:25px;
     margin:0px;
-}
+}*/
 
 div.newgroup
 {
-    background-image:url('../profile/groups.png');
+    background-image:url('../profile/mygroup.png');
     background-repeat:no-repeat ;
     width:690px;
     height:370px;
@@ -3170,6 +3177,62 @@ div.register
     margin:0px;
 }
 
+div.register button
+{
+    background-image:url('../profile/button_register.png');
+    background-repeat:no-repeat ;
+    width:45px;
+    height:22px;
+    padding:0px;
+    margin-left:25px;
+}
+
+div.register #rewrite
+{
+    background-image:url('../profile/button_register.png');
+    background-repeat:no-repeat ;
+    width:45px;
+    height:22px;
+    padding:0px;
+    margin-left:180px;
+}
+
+div.login
+{
+    background-image:url('../profile/login.png');
+    background-repeat:no-repeat ;
+    width:690px;
+    height:370px;
+    padding:25px;
+    margin:0px;
+}
+
+div.delete-group
+{
+    background-image:url('../profile/deletegroup.png');
+    background-repeat:no-repeat ;
+    width:50px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+
+div.login form
+{
+    width:350px;
+    height:110px;
+    margin-left:150px;
+    margin-top:160px;
+    padding:0px;
+}
+
+form.group-description
+{
+    width:500px;
+    height:560px;
+}
+
 div.self-messages
 {
     width:165px;
@@ -3179,20 +3242,16 @@ div.self-messages
     float:left;
 }
 
-div.register form 
+div.register .is_exist
 {
-    width:330px;
-    height:290px;
-    margin-left:30px;
-    margin-top:20px;
-    padding:0px;
+    outline:1px solid red;
 }
 
-h1
+/*h1
 {
     text-align:center;
     color:green;
-}
+}*/
 
 td.reply-content
 {
@@ -3207,7 +3266,7 @@ td.reply-content span
     left: 0;
     width: 100%;
     word-break: break-word;
-    background: skyblue;
+    background: AntiqueWhite ;
     z-index: 500;
 }
 
@@ -3351,7 +3410,7 @@ a.mymessage-title
 {
     float:right;
 }
-
+/*
 .form-friends-title
 {
     color: yellow;
@@ -3369,7 +3428,7 @@ a.mymessage-title
 {
     text-align:center;
     color:DarkSlateGray;
-}
+}*/
 
 img.user_img
 {
