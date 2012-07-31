@@ -27,12 +27,13 @@ class CalendarController extends Controller
             // var_dump($qq->clubs->name);
             // var_dump($qq->subscriptions ? 1 : 0);
         // }
+        // var_dump(Event::model()->findByPk(1)->status)
         
-        var_dump( array_diff(array(
-            10,2,3
-        ),array(
-            2,3,4
-        )) );
+        // var_dump( array_diff(array(
+            // 10,2,3
+        // ),array(
+            // 2,3,4
+        // )) );
     }
 
     public function actionRecycle()
@@ -85,7 +86,10 @@ class CalendarController extends Controller
             $event->start = strtotime($_POST['event']['start']);
             $event->end = strtotime($_POST['event']['end']);
             $event->calendar_id = Calendar::Model()->find('user_id='.Yii::app()->user->getId().' AND category=1')->id;
-            $event->save();
+            if ( $event->save() )
+            {
+                $this->redirect(Yii::app()->createUrl('calendar/view'));
+            }
         }
         $this->render('create_event');
     }
@@ -149,7 +153,7 @@ class CalendarController extends Controller
                     $subscript = new Subscription();
                     $subscript->calendar_id = $value;
                     $subscript->invisible = 0;
-                    $subscript->save();
+                    if ( $subscript->save() ) $this->redirect(Yii::app()->createUrl('calendar/view'));
                 }
             }
             
@@ -174,7 +178,7 @@ class CalendarController extends Controller
                         
                         $subscript = Subscription::model()->find('calendar_id='.$value.' AND invisible = 0 AND user_id='.Yii::app()->user->getId());
                         $subscript->invisible = 1;
-                        $subscript->save();
+                        if ( $subscript->save() ) $this->redirect(Yii::app()->createUrl('calendar/view'));
                     }
                     
                     // echo '<br/><br/>';

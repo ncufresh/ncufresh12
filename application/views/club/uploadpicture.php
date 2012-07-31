@@ -1,4 +1,4 @@
-<form method="POST" enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('club/uploadpicture', array('id' => $id))?>" >
+<form method="POST" enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('club/uploadpicture', array('id' => $id)); ?>" >
     <h3>上傳圖片</h3>
     <p>圖片1</p>
     <input type="file" name="pictures[0]" />
