@@ -2640,6 +2640,11 @@ button.news-button
     float: right;
     background-repeat: no-repeat;
 }
+.club-display-head h4
+{
+    font-size: 30px;
+    text-align: center;
+}
 #club-head-1
 {
     background: url('../club/5-1.png');
