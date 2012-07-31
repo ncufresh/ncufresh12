@@ -2,6 +2,15 @@
 
 class FriendsController extends Controller
 {
+    public $userid;
+
+    public function init()
+    {
+        parent::init();
+        $this->userid = Yii::app()->user->getId();
+        return true;
+    }
+
     public function filters()
     {
         return array(
@@ -25,38 +34,35 @@ class FriendsController extends Controller
 
     public function actionFriends() 
     {
-        $userID = Yii::app()->user->id;
-        $departmentId = Profile::model()->findByPK($userID)->department_id;
-        $grade = Profile::model()->findByPK($userID)->grade;
+        $departmentId = Profile::model()->findByPK($this->userid)->department_id;
+        $grade = Profile::model()->findByPK($this->userid)->grade;
         $this->setPageTitle(Yii::app()->name . ' - 好友專區');
         $this->render('friends', array(
-            'profileFir'    => Profile::model()->getSameDepartmentSameGrade($departmentId, $grade, $userID),
+            'profileFir'    => Profile::model()->getSameDepartmentSameGrade($departmentId, $grade, $this->userid),
             'profileSec'    => Profile::model()->getSameDepartmentDiffGrade($departmentId, $grade),
             'profileThir'   => Profile::model()->getOtherDepartment($departmentId, $grade),    
             'profiles'      => Profile::model()->getAllMember(), 
-            'user'          => User::model()->findByPk($userID),
-            'groups'         => Group::model()->FindGroup($userID),
-            'amonut'        => Group::model()->getGroupAmount($userID),
-            'friend_amount'        => Friend::model()->getAmount($userID)
+            'user'          => User::model()->findByPk($this->userid),
+            'groups'         => Group::model()->FindGroup($this->userid),
+            'amonut'        => Group::model()->getGroupAmount($this->userid),
+            'friend_amount'        => Friend::model()->getAmount($this->userid)
         ));
     }
 
     public function actionSameDepartmentSameGrade() 
     {
-        $userID = Yii::app()->user->id;
-        $departmentId = Profile::model()->findByPK($userID)->department_id;
-        $grade = Profile::model()->findByPK($userID)->grade;
+        $departmentId = Profile::model()->findByPK($this->userid)->department_id;
+        $grade = Profile::model()->findByPK($this->userid)->grade;
         $this->setPageTitle(Yii::app()->name . ' - 同系同屆');
         $this->render('samedepartmentsamegrade', array(
-            'profiles'      => Profile::model()->getSameDepartmentSameGrade($departmentId, $grade, $userID),
+            'profiles'      => Profile::model()->getSameDepartmentSameGrade($departmentId, $grade, $this->userid),
         ));
     }
 
     public function actionSameDepartmentDiffGrade() 
     {
-        $userID = Yii::app()->user->id;
-        $departmentId = Profile::model()->findByPK($userID)->department_id;
-        $grade = Profile::model()->findByPK($userID)->grade;
+        $departmentId = Profile::model()->findByPK($this->userid)->department_id;
+        $grade = Profile::model()->findByPK($this->userid)->grade;
         $this->setPageTitle(Yii::app()->name . ' - 同系不同屆');
         $this->render('samedepartmentdiffgrade', array(
             'profiles'      => Profile::model()->getSameDepartmentDiffGrade($departmentId, $grade)
@@ -65,8 +71,7 @@ class FriendsController extends Controller
 
     public function actionOtherDepartment() 
     {
-        $userID = Yii::app()->user->id;
-        $departmentId  = Profile::model()->findByPK($userID)->department_id;
+        $departmentId  = Profile::model()->findByPK($this->userid)->department_id;
         $this->setPageTitle(Yii::app()->name . ' - 其他科系');
         $this->render('otherdepartment', array(
             'profiles'      => Profile::model()->getOtherDepartment($departmentId)
@@ -75,26 +80,24 @@ class FriendsController extends Controller
 
     public function actionMyFriends()
     {
-        $userID = Yii::app()->user->id;
         $this->setPageTitle(Yii::app()->name . ' - 我的好友');
         $this->render('myfriends', array(                
-            'user'          => User::model()->findByPk($userID)
+            'user'          => User::model()->findByPk($this->userid)
         ));
     }
 
     public function actionMakeFriends() 
     {
-        $userId = Yii::app()->user->id;
         if ( isset($_POST['friends']) )
         {
             foreach ( $_POST['friends'] as $friendid )
             {   
                 $friend = new Friend();
-                $exist = $friend->isExist($userId,$friendid);
-                if ( $userId <> $friendid && !$exist )
+                $exist = $friend->isExist($this->userid,$friendid);
+                if ( $this->userid <> $friendid && !$exist )
                 {
-                    $friend->addFriend($userId, $friendid);
-                    $friend->makeFriend($userId, $friendid);
+                    $friend->addFriend($this->userid, $friendid);
+                    $friend->makeFriend($this->userid, $friendid);
                 }
             }
             $this->redirect(array('friends/myfriends'));
@@ -102,11 +105,11 @@ class FriendsController extends Controller
         else if( isset($_GET['friend_id']) )
         {
             $friend = new Friend();
-            $exist = $friend->isExist($userId, $_GET['friend_id']);
-            if ( $userId <> $_GET['friend_id']&& !$exist )
+            $exist = $friend->isExist($this->userid, $_GET['friend_id']);
+            if ( $this->userid <> $_GET['friend_id']&& !$exist )
             {
-                $friend->addFriend($userId, $_GET['friend_id']);
-                $friend->makeFriend($userId, $_GET['friend_id']);
+                $friend->addFriend($this->userid, $_GET['friend_id']);
+                $friend->makeFriend($this->userid, $_GET['friend_id']);
             }
         }
         $this->redirect(array('friends/friends'));
@@ -114,12 +117,11 @@ class FriendsController extends Controller
 
     public function actionDeleteFriends()
     {
-        $userID = Yii::app()->user->id;
         if ( isset($_POST['friends']) )
         {
             foreach ( $_POST['friends'] as $cancelfriend )
             {
-                Friend::model()->deleteFriend($userID, $cancelfriend);
+                Friend::model()->deleteFriend($this->userid, $cancelfriend);
             }
             $this->redirect(array('friends/myfriends'));            
         }
@@ -127,13 +129,12 @@ class FriendsController extends Controller
     }
 
     public function actionMyGroups()
-    {
-        $userID = Yii::app()->user->id;   
+    {   
         $this->setPageTitle(Yii::app()->name . ' - 我的群組');
         if ( isset($_GET['id']) )
         {
             $this->render('mygroups', array(
-                'user'          => User::model()->findByPk($userID),
+                'user'          => User::model()->findByPk($this->userid),
                 'members'         => UserGroup::model()->getMembers($_GET['id']), 
                 'mygroup'       =>Group::model()->findByPK($_GET['id'])
             ));
@@ -146,7 +147,6 @@ class FriendsController extends Controller
 
     public function actionAddNewMembers()
     {
-        $userID = Yii::app()->user->id;
         $this->setPageTitle(Yii::app()->name . ' - 新增成員');
         if ( isset($_POST['friends'] ) && isset( $_GET['id'] ) )
         {
@@ -195,12 +195,11 @@ class FriendsController extends Controller
 
     public function actionNewGroup()
     {
-        $userID = Yii::app()->user->id;
-        $departmentId = Profile::model()->findByPK($userID)->department_id;
-        $grade = Profile::model()->findByPK($userID)->grade;
+        $departmentId = Profile::model()->findByPK($this->userid)->department_id;
+        $grade = Profile::model()->findByPK($this->userid)->grade;
         if ( isset($_POST['friends']) )
         {
-            if ( !Group::model()->addNewGroup($userID, $_POST['group-name'], $_POST['group-description'], $_POST['friends']) )
+            if ( !Group::model()->addNewGroup($this->userid, $_POST['group-name'], $_POST['group-description'], $_POST['friends']) )
             {
                 echo '群組沒有存成功喔';
             }
@@ -209,7 +208,7 @@ class FriendsController extends Controller
         else
         {
             $this->render('newgroup', array(
-                'user'          => User::model()->findByPk($userID)
+                'user'          => User::model()->findByPk($this->userid)
             ));
         }
     }
@@ -245,13 +244,12 @@ class FriendsController extends Controller
 
    public function actionNewMembers() //新增成員的頁面
    {
-        $userID = Yii::app()->user->id;
         $this->setPageTitle(Yii::app()->name . ' - 我的好友');
-        $user = User::model()->findByPk($userID);
+        $user = User::model()->findByPk($this->userid);
         if( isset($_GET['id']) ) 
         {
             $this->render('newmembers', array(                
-                'user'          => User::model()->findByPk($userID),
+                'user'          => User::model()->findByPk($this->userid),
                 'id'            => $_GET['id']
             ));
         }
@@ -263,25 +261,23 @@ class FriendsController extends Controller
 
    public function actionAllGroups()
    {
-        $userID = Yii::app()->user->id;
         $this->render('allgroups', array(
-            'groups'         => Group::model()->FindGroup($userID)
+            'groups'         => Group::model()->FindGroup($this->userid)
         ));
    }
 
    public function actionRequest() //確認好友關係
    {
-        $userID = Yii::app()->user->id;
         if ( isset($_POST['friends']) && isset($_POST['agree']) )
         {
             foreach ( $_POST['friends'] as $friendid )
             {   
                 $friend = new Friend();
-                $exist = $friend->isExist($userID,$friendid);
-                if ( $userID <> $friendid && !$exist )
+                $exist = $friend->isExist($this->userid, $friendid);
+                if ( $this->userid <> $friendid && !$exist )
                 {
-                    $friend->addFriend($userID, $friendid);
-                    $friend->makeFriend($userID, $friendid);
+                    $friend->addFriend($this->userid, $friendid);
+                    $friend->makeFriend($this->userid, $friendid);
                 }
             }
             $this->redirect(array('friends/myfriends'));
@@ -290,12 +286,12 @@ class FriendsController extends Controller
         {
             foreach ( $_POST['friends'] as $cancelfriend )
             {
-                Friend::model()->deleteFriend($userID, $cancelfriend);
+                Friend::model()->deleteFriend($this->userid, $cancelfriend);
             }
             $this->redirect(array('friends/myfriends'));      
         }
         $this->render('request', array(
-            'friends'         => Friend::model()->getRequests($userID)
+            'friends'         => Friend::model()->getRequests($this->userid)
         ));
    }
 }

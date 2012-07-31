@@ -2,10 +2,13 @@
 
 class ProfileController extends Controller
 {
+    public $userid;
+
     public function init()
     {
         parent::init();
         Yii::import('application.models.Forum.*');
+        $this->userid = Yii::app()->user->getId();
         return true;
     }
     public function filters()
@@ -31,17 +34,15 @@ class ProfileController extends Controller
 
     public function actionProfile() 
     {
-        $id = Yii::app()->user->id;
         $this->render('profile', array(
-            'user'      => User::model()->findByPk($id),
+            'user'      => User::model()->findByPk($this->userid),
         ));
         
     }
 
     public function actionEditor() 
     {
-        $userID = Yii::app()->user->id;
-        $user = User::model()->findByPk($userID);
+        $user = User::model()->findByPk($this->userid);
         if ( isset($_POST['profile']) ) 
         {
             $user->attributes = $_POST['register'];
@@ -59,23 +60,20 @@ class ProfileController extends Controller
         {
             $this->render('editor', array(                
                     'user'          => $user, 
-                    'departments'   => Department::model()->getDepartment(), 
-                    'target'        => $img_url
+                    'departments'   => Department::model()->getDepartment()
             ));
         }
     }
 
     public function actionMessage()
     {
-        $userID = Yii::app()->user->id;
         $this->render('message', array(
-            'articles'        => Article::model()->getUserArticles($userID)
+            'articles'        => Article::model()->getUserArticles($this->userid)
         ));
     }
 
     public function actionMessageReply()
     {
-        $userID = Yii::app()->user->id;
         if ( isset($_GET['aid']) )
         {
             $this->render('messagereply', array( //還要再判斷是否有推文或回復---不然回是空值耶
@@ -97,8 +95,6 @@ class ProfileController extends Controller
             $userID = Yii::app()->user->id;
             $this->render('otherprofile', array(
                 'user'       => User::model()->findByPk($_GET['friend_id'])
-                
-                
             ));
         }
     }
