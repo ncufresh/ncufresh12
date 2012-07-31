@@ -142,4 +142,9 @@ class Article extends CActiveRecord
             'last'          => $pages
         );
     }
+    
+    public function getArticlesNumOfUser($author_id)
+    {
+        return count($this->findAll('author_id='.$author_id.' AND invisible=0'));
+    }
 }

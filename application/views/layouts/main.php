@@ -116,13 +116,13 @@
             <a href="<?php echo Yii::app()->createUrl('forum/index'); ?>" title="論壇專區">論壇專區</a>
             <ul>
                 <li>
-                    <a href="#" title="綜合論壇">綜合論壇</a>
+                    <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 1));?>" title="綜合論壇">綜合論壇</a>
                 </li>
                 <li>
-                    <a href="#" title="系所論壇">系所論壇</a>
+                    <a href="<?php echo Yii::app()->createUrl('forum/forumlist');?>" title="系所論壇">系所論壇</a>
                 </li>
                 <li>
-                    <a href="#" title="社團論壇">社團論壇</a>
+                    <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 2));?>" title="社團論壇">社團論壇</a>
                 </li>
             </ul>
         </li>
@@ -134,13 +134,13 @@
             <a href="<?php echo Yii::app()->createUrl('club/index'); ?>" title="系所社團">系所社團</a>
             <ul>
                 <li>
-                    <a href="#" title="學生組織">學生組織</a>
+                    <a href="<?php echo Yii::app()->createUrl('club/student'); ?>" title="學生組織">學生組織</a>
                 </li>
                 <li>
-                    <a href="#" title="系所">系所</a>
+                    <a href="<?php echo Yii::app()->createUrl('club/department'); ?>" title="系所">系所</a>
                 </li>
                 <li>
-                    <a href="#" title="社團">社團</a>
+                    <a href="<?php echo Yii::app()->createUrl('club/club'); ?>" title="社團">社團</a>
                 </li>
             </ul>
         </li>
@@ -263,7 +263,7 @@
             multimediaYoutubeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('multimedia/watch', array('v' => ':v')); ?>'),
             newsIndexUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>'),
             registerUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>'),
-            calendarEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvent', array('id'=> ':id')); ?>'),
+            calendarEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/event', array('id'=> ':id')); ?>'),
             calendarEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvents'); ?>'),
             calendarHideEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/hideEvent'); ?>'),
             buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),
