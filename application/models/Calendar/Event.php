@@ -78,13 +78,6 @@ class Event extends CActiveRecord
         $criteria = new CDbCriteria();
         $criteria->addInCondition('id' ,$ids , 'OR');
         $events = $this->findAll( $criteria );
-        // foreach ( $events as $event )
-        // {
-            // $event->start = $event->getRawValue('start');
-            // $event->end = $event->getRawValue('end');
-            // $event->start = Yii::app()->format->date($event->start);
-            // $event->end = Yii::app()->format->date($event->end);
-        // }
         return $events;
     }
 
@@ -93,40 +86,11 @@ class Event extends CActiveRecord
         
     }
 
-    // public function getEventsByDate($date, $calendar_id = 0)
-    // {
-        // $date = strtotime($date);
-        // $criteria = new CDbCriteria();
-        // $criteria->condition = 'start => :date AND end <= :date AND calendar_id = :calendar_id';
-        // $criteria->params = array(
-            // ':date' => $date,
-            // ':calendar_id' => $calendar_id
-        // );
-        // $events = $this->findAll( $criteria );
-        // foreach ( $events as $event )
-        // {
-            // $event->start = $event->getRawValue('start');
-            // $event->end = $event->getRawValue('end');
-            // $event->start = Yii::app()->format->datetime($event->start);
-            // $event->end = Yii::app()->format->datetime($event->end);
-        // }
-        // return $events;
-    // }
-
     public function getRecycledEvents()
     {
         return $this->with(array(
-            'users'     => array(
-                'select'    => false,
-                'joinType'  => 'INNER JOIN',
-                'condition' => 'users_users.user_id = :id',
-                'params'    => array(
-                    ':id'   => Yii::app()->user->getId()
-                )
-            ),
             'status'    => array(
                 'select'    => false,
-                'joinType'  => 'INNER JOIN',
                 'condition' => 'status.done = 1'
             )
         ))->findAll(array(
@@ -136,10 +100,10 @@ class Event extends CActiveRecord
 
     public function show($id)
     {
-        $event = $this->with('status')->findByPk($id);
+        $event = $this->findByPk($id);
         if ( $event )
         {
-            $status = $this->status;
+            $status = $event->status;
             if ( ! $status ) $status = new Status();
             $status->event_id = $id;
             $status->user_id = Yii::app()->user->getId();
@@ -151,10 +115,10 @@ class Event extends CActiveRecord
 
     public function hide($id)
     {
-        $event = $this->with('status')->findByPk($id);
+        $event = $this->findByPk($id);
         if ( $event )
         {
-            $status = $this->status;
+            $status = $event->status;
             if ( ! $status ) $status = new Status();
             $status->event_id = $id;
             $status->user_id = Yii::app()->user->getId();

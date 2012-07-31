@@ -40,10 +40,10 @@ jQuery(document).ready(function()
 <ul>
 <?php foreach ( $events as $event ) : ?>
     <li>
-<?php if ( $event->calendar->getIsGeneral() ) : ?>
-        <?php echo $event->name; ?>
-<?php else : ?>
+<?php if ( $event->calendar->getIsPersonal() && $event->calendar->getIsOwner() ) : ?>
         <a class="calendar-hide-event" href="#<?php echo $event->id; ?>" title="隱藏事件"><?php echo $event->name; ?></a>
+<?php else : ?>
+        <?php echo $event->name; ?>
 <?php endif; ?>
     </li>
 <?php endforeach; ?>
