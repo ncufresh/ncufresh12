@@ -52,8 +52,6 @@ class ItemBag extends CActiveRecord
                     $item->created = TIMESTAMP; //寫入獲得時間
                     if ($item->save() && Character::model()->findByPk($user_id)->addMoney(0-($item_data->price)))
                     return 0;
-                    else
-                    return 4;
                 }
                 else
                 return 3;
@@ -68,7 +66,7 @@ class ItemBag extends CActiveRecord
     public function equipItem($item_id)
     {
         $user_id = Yii::app()->user->getId();
-        $character = Character::model()->findByPk($user_id);
+        $character_data = Character::model()->findByPk($user_id);
         $item_data = Item::model()->findByPk($item_id);
         $item_exist = $this->findAll(array(
             'condition' => 'user_id = :user_id AND item_id = :item_id',
@@ -76,17 +74,43 @@ class ItemBag extends CActiveRecord
                 ':user_id' => $user_id,
                 ':item_id' => $item_id)
             ));
-        $other_item_equip = $this->findAll(array(
-            'condition' => 'user_id = :user_id AND item_id = :item_id',
-            'params'    => array(
-                ':user_id' => $user_id,
-                ':item_id' => $item_id)
-            ));
         if($item_exist != null)
         {
-            $which_to_equip = $item_exist[0]->id; //需要裝備物品在清單的位置
-            $equip_status = $item_exist[0]->equipped; //需要裝備物品的裝備狀態
-            $item_category = $item_exist[0]->translation->category; //需要裝備物品的物品分類
+            $which_to_equip = $item_exist[0]->id; //欲裝備物品在清單的位置
+            $equip_status = $item_exist[0]->equipped; //欲裝備物品的裝備狀態
+            $item_category = $item_exist[0]->translation->category; //欲裝備物品的物品分類
+            
+            $character_current_item_id = 0; // 檢查是否有穿裝備用
+            
+            if($item_category == 1 && $character_data->hair != null)    //穿裝備前先檢查有沒有穿
+                $character_current_item_id = $character_data->hair->id;
+            else if($item_category == 2 && $character_data->eyes != null)
+                $character_current_item_id = $character_data->eyes->id;
+            else if($item_category == 3 && $character_data->clothes != null)
+                $character_current_item_id = $character_data->clothes->id;
+            else if($item_category == 4 && $character_data->pants != null)
+                $character_current_item_id = $character_data->pants->id;
+            else if($item_category == 5 && $character_data->shoes != null)
+                $character_current_item_id = $character_data->shoes->id;
+            else if($item_category == 6 && $character_data->skin != null)
+                $character_current_item_id = $character_data->skin->id;
+            else if($item_category == 7 && $character_data->others != null)
+                $character_current_item_id = $character_data->others->id;
+                
+            if($character_current_item_id != 0) //原本有穿裝備才會到這
+            {
+                $other_item_equip = $this->findAll(array(
+                'condition' => 'user_id = :user_id AND item_id = :item_id',
+                'params'    => array(
+                ':user_id' => $user_id,
+                ':item_id' => $character_current_item_id)
+                ));
+                $take_off = new ItemBag();
+                $item_to_take_off = $take_off->findByPk($other_item_equip[0]->id);
+                $item_to_take_off->equipped = 0;
+                $item_to_take_off->save();
+            }
+            
             $modify = new ItemBag();
             $item_to_equip = $modify->findByPk($which_to_equip);
             if($equip_status == 0)

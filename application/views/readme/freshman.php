@@ -1,8 +1,17 @@
 <div id="readme-fresh">
-    <a href="index.html" id="fresh_back" class="readme-back"></a>
-        <ul id="read-fresh-menu" class="fresh-menu">
-            <li>信感</li>
-            <li>信感兒</li>
-            <li>信感兒兒</li>
-        </ul>
+    <div id="readme-view">
+    </div>
+    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" id="fresh-back" class="readme-back"></a>
+            <div id="read-fresh-menu" class="readme-menu">
+                <h4>新生區</h4>
+                <ul id="readme-index1" class="readme-menu-index">
+<?php for ( $x = 0 ; $x < $size ; ++$x ) : ?>
+                    <li tab="<?php echo $tab[$x]; ?>" page="freshman"><?php echo $index[$x]; ?></li>
+<?php endfor; ?>
+                </ul>
+            </div>
+            
+            
+            
+            
 </div>

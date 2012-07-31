@@ -11,7 +11,15 @@ class Reply extends CActiveRecord
     {
         return '{{forum_replies}}';
     }
-
+    
+    public function rules()
+    {
+        return array(
+            array('content', 'required'),
+            array('content', 'length', 'min' => 20),
+        );
+    }
+    
     public function relations(){
         return array(
             'article'   => array(
@@ -37,7 +45,7 @@ class Reply extends CActiveRecord
             {
                 // 如果未登入author_id=0 ; 檢查登入與否
                 $this->author_id = Yii::app()->user->getId();
-                $this->create_time = TIMESTAMP;
+                $this->created = TIMESTAMP;
             }
             // $this->update_time = TIMESTAMP;
             return true;

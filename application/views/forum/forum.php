@@ -44,10 +44,26 @@
     )); 
     ?>
     <select id="sort_list">
-      <option value="create" <?php if($sort=='create') echo 'SELECTED';?>>依發表時間</option>
-      <option value="update" <?php if($sort=='update') echo 'SELECTED';?>>依最新回覆</option>
-      <option value="reply"  <?php if($sort=='reply') echo 'SELECTED';?>>依回應數量</option>
-      <option value="viewed" <?php if($sort=='viewed') echo 'SELECTED';?>>依點閱人氣</option>
+<?php if ( $sort == 'create' ) : ?>
+      <option value="create" selected="selected">依發表時間</option>
+<?php else : ?>
+      <option value="create">依發表時間</option>
+<?php endif; ?>
+<?php if ( $sort == 'update' ) : ?>
+      <option value="update" selected="selected">依最新回覆</option>
+<?php else : ?>
+      <option value="update">依最新回覆</option>
+<?php endif; ?>
+<?php if ( $sort == 'reply' ) : ?>
+      <option value="reply" selected="selected">依回應數量</option>
+<?php else : ?>
+      <option value="reply">依回應數量</option>
+<?php endif; ?>
+<?php if ( $sort == 'viewed' ) : ?>
+      <option value="viewed" selected="selected">依點閱人氣</option>
+<?php else : ?>
+      <option value="viewed">依點閱人氣</option>
+<?php endif; ?>
     </select>
 </div>
 <div id="forum-forum-body">
