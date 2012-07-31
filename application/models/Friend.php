@@ -89,6 +89,7 @@ class Friend extends CActiveRecord
         $model = new Friend();
         $model->user_id = Yii::app()->user->getId();
         $model->friend_id = $friend_id;
+        $model->invisible = 1;
         $save = $model->save();
     }
 

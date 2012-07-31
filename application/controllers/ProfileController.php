@@ -55,7 +55,7 @@ class ProfileController extends Controller
             $this->profile->attributes = $_POST['profile'];
             $user_validate = $this->user->validate();
             $profile_validate = $this->profile->validate();
-            print_r($profile_validate);
+            print_r($_POST['profile']['nickname']);
             exit;
             if ( $user_validate && $profile_validate )
             {
