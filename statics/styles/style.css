@@ -87,6 +87,8 @@ form button
 {
     cursor: pointer;
     height: 40px;
+    float: right;
+    margin-left: 20px;
     padding: 4px 16px;
 }
 
@@ -196,6 +198,13 @@ form dd .arrow
 form div
 {
     margin-top: 4px;
+    width: 50%;
+}
+
+form div:after
+{
+    content: '\A';
+    white-space: pre;
 }
 
 a
@@ -683,7 +692,7 @@ a:hover
 
 #sidebar form.profile dl
 {
-    margin: 0 5%;
+    margin: 0;
     width: 90%;
 }
 
@@ -697,12 +706,14 @@ a:hover
 #sidebar form.profile div
 {
     text-align: center;
+    width: auto;
 }
 
 #sidebar form.profile button
 {
     border: none;
     box-shadow: none;
+    float: none;
     height: 25px;
     margin: 0 10px;
     text-indent: -100000px;
@@ -1171,6 +1182,11 @@ table.gsc-completion-container
     height: 20px;
     padding-right: 30px;
     width: 178px;
+}
+
+#search div
+{
+    width: auto;
 }
 
 #search button
@@ -1863,26 +1879,39 @@ button.news-button
 /**
  * Multimedia style
  */
-
-#mm-container
+#multimedia
 {
-}
-
-#mm-sidebar
-{
-    width: 25%;
-    float: left;
-}
-
-#mm-menu
-{
-    width: 100%;
-    height: 400px;
-    background: skyblue;
+    background: #18244E url('../images/multimedia_background.png');
+    border-radius: 5px;
     overflow: hidden;
+    padding-top: 90px;
 }
 
-#mm-menu button
+#multimedia .sidebar
+{
+    float: left;
+    width: 25%;
+}
+
+#multimedia .content
+{
+    float: left;
+    width: 75%;
+}
+
+#multimedia .menu
+{
+    height: 400px;
+    overflow: hidden;
+    width: 100%;
+}
+
+#multimedia .items
+{
+    margin-top: 0;
+}
+
+#multimedia button
 {
     border: 0;
     margin: 0;
@@ -1897,23 +1926,18 @@ button.news-button
     z-index: 100;
 }
 
-#mm-menu #mm-menu-items
-{
-    margin-top: 0;
-}
-
-#mm-menu button:hover
+#multimedia button:hover
 {
     opacity: 0.9;
     cursor: pointer;
 }
 
-#mm-menu button.mm-menu-down
+#multimedia button.down
 {
     margin-top: 350px;
 }
 
-#mm-menu a
+#multimedia a
 {
     display: block;
     width: 100%;
@@ -1923,12 +1947,12 @@ button.news-button
     opacity: 1;
 }
 
-#mm-menu a:hover
+#multimedia a:hover
 {
     opacity: 0.8;
 }
 
-#mm-menu a span
+#multimedia a span
 {
     color: white;
     position: relative;
@@ -1943,67 +1967,46 @@ button.news-button
     padding: 0 8px 0 0;
 }
 
-#mm-menu a img
+#multimedia a img
 {
     width: 100%;
     height: 100%;
 }
 
-#mm-player
+#multimedia .player
 {
-    width: 100%;
-    height: 200px;
-    background: blue;
-}
-
-#mm-content
-{
-    width: 75%;
-    float: left;
-}
-
-#mm-video
-{
-    background: #000000;
     height: 400px;
     position: relative;
     width: 100%;
 }
 
-#mm-video .loading
+#multimedia .projector
+{
+    background: url('../images/multimedia_projector.png') 15px 0 no-repeat;
+    height: 200px;
+    width: 100%;
+}
+
+#multimedia .loading
 {
     position: absolute;
 }
 
-#mm-video-frame
+#multimedia .introduction
+{
+    background: url('../images/multimedia_introduction.png') 0 5px no-repeat;
+    color: #FFFFFF;
+    height: 150px;
+    padding: 25px 55px;
+    width: 100%;
+}
+
+#multimedia-frame
 {
     border: 0;
     margin: 0;
     padding: 0;
     position: relative;
-}
-
-#mm-introduction
-{
-    width: 100%;
-    height: 200px;
-    background: gray;
-}
-
-#mm-introduction .text
-{
-    width: 65%;
-    height: 100%;
-    background: red;
-    float: left;
-}
-
-#mm-introduction .pic
-{
-    background: yellow;
-    width: 35%;    
-    height: 100%;
-    float: left;
 }
 
 /**
@@ -3398,16 +3401,6 @@ div.myprofile form button
     float:right;
 }
 
-/*div.mygroups
-{
-    background-image:url('../profile/mygroups.png');
-    background-repeat:no-repeat ;
-    width:690px;
-    height:370px;
-    padding:25px;
-    margin:0px;
-}*/
-
 div.newgroup
 {
     background-image:url('../profile/mygroup.png');
@@ -3500,8 +3493,8 @@ div.profile-message-reply
 {
     background-image:url('../profile/button/cancel.png');
     background-repeat:no-repeat ;
-    width:91px;
-    height:50px;
+    width:62px;
+    height:34px;
     padding:0px;
     margin:0px;
 }
@@ -3575,8 +3568,8 @@ div.profile-message-reply
 {
     background-image:url('../profile/button/makefriend.png');
     background-repeat:no-repeat ;
-    width:188px;
-    height:50px;
+    width:120px;
+    height:34px;
     padding:0px;
     margin:0px;
 }
@@ -3621,27 +3614,6 @@ div.profile-message-reply
     margin:0px;
     display: block;
     float:left;
-}
-
-.button-register
-{
-    background-image:url('../profile/button/register.png');
-    background-repeat:no-repeat ;
-    width:95px;
-    height:32px;
-    padding:0px;
-    margin:0px;
-    float:left;
-}
-
-.button-rewrite
-{
-    background-image:url('../profile/button/rewrite.png');
-    background-repeat:no-repeat ;
-    width:95px;
-    height:32px;
-    padding:0px;
-    margin:0px;
 }
 
 .button-flower
@@ -4113,6 +4085,7 @@ img.user_img
     height: 600px;
     background: url('../game/mission.png');
     position: fixed;
+    /*display: inline-block;*/
     display: none;
 }
 
@@ -4146,8 +4119,8 @@ img.user_img
     width: 324px;
     /*outline: 1px solid red;*/
     position: absolute;
-    top: 91px;
-    left: -37px;
+    top: 86px;
+    left: -32px;
 }
 #game-mission-dialog .avatar
 {
