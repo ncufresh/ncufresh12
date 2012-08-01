@@ -98,24 +98,24 @@
         </dl>
         <dl class="select">
             <dt>
-                <dd>
-                    <select name="profile[department]">
-<?php foreach ( $departments as $department ) : ?>
-                        <option value="<?php echo $department->id; ?>">
-<?php echo $department->name; ?>
-                        </option>
-<?php endforeach; ?>
-                    </select>
-                    <select name="profile[grade]">
-                        <option value="0">其它</option>
-                        <option value="1">一年級</option>
-                        <option value="2">二年級</option>
-                        <option value="3">三年級</option>
-                        <option value="4">四年級</option>
-                    </select>
-                    <span>系級</span>
-                </dd>
             </dt>
+            <dd>
+                <select name="profile[department]">
+<?php foreach ( $departments as $department ) : ?>
+                    <option value="<?php echo $department->id; ?>">
+<?php echo $department->name; ?>
+                    </option>
+<?php endforeach; ?>
+                </select>
+                <select name="profile[grade]">
+                    <option value="0">其它</option>
+                    <option value="1">一年級</option>
+                    <option value="2">二年級</option>
+                    <option value="3">三年級</option>
+                    <option value="4">四年級</option>
+                </select>
+                <span>系級</span>
+            </dd>
         </dl>
         <dl>
             <dt>
@@ -134,37 +134,38 @@
                 </span>
             </dd>
         </dl>
-        <dl>
+        <dl class="select">
             <dt>
-                <dd>生日
-                    <select name="profile[year]" class="year">
-<?php for ( $year = 2000 ; $year >= 1990 ; $year-- ) : ?>
-                        <option value="<?php echo $year; ?>">
-<?php echo $year; ?>                        
-                        </option>
-<?php endfor; ?>
-                    </select>
-                    <select name="profile[month]" class="month">
-<?php for ( $month = 1 ; $month <= 12 ; $month++ ) : ?>
-                        <option value="<?php echo $month; ?>">
-<?php echo $month; ?>                        
-                        </option>
-<?php endfor; ?>
-                    </select>
-                    <select name="profile[day]" class="day">
-<?php for ( $day = 1 ; $day <= 31 ; $day++ ) : ?>
-                        <option value="<?php echo $day; ?>">
-<?php echo $day; ?>                        
-                        </option>
-<?php endfor; ?>
-                    </select>
-                </dd>
+                <label for="form-register-birthday">生日</label>
             </dt>
+            <dd>
+                <select name="profile[year]" class="year">
+<?php for ( $year = 2000 ; $year >= 1990 ; $year-- ) : ?>
+                    <option value="<?php echo $year; ?>">
+<?php echo $year; ?>                        
+                    </option>
+<?php endfor; ?>
+                </select>
+                <select name="profile[month]" class="month">
+<?php for ( $month = 1 ; $month <= 12 ; $month++ ) : ?>
+                    <option value="<?php echo $month; ?>">
+<?php echo $month; ?>                        
+                    </option>
+<?php endfor; ?>
+                </select>
+                <select name="profile[day]" class="day">
+<?php for ( $day = 1 ; $day <= 31 ; $day++ ) : ?>
+                    <option value="<?php echo $day; ?>">
+<?php echo $day; ?>                        
+                    </option>
+<?php endfor; ?>
+                </select>
+            </dd>
         </dl>
         <div>
             <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
-            <button class="button-rewrite"><a href="<?php echo Yii::app()->createUrl('site/register'); ?>" ></a></button>
-            <button type="submit" class="button-register"></button>
+            <button type="submit">註冊</button>
+            <button type="reset">重填</button>
         </div>
     </form>
 </div>

@@ -87,6 +87,8 @@ form button
 {
     cursor: pointer;
     height: 40px;
+    float: right;
+    margin-left: 20px;
     padding: 4px 16px;
 }
 
@@ -196,6 +198,13 @@ form dd .arrow
 form div
 {
     margin-top: 4px;
+    width: 50%;
+}
+
+form div:after
+{
+    content: '\A';
+    white-space: pre;
 }
 
 a
@@ -683,7 +692,7 @@ a:hover
 
 #sidebar form.profile dl
 {
-    margin: 0 5%;
+    margin: 0;
     width: 90%;
 }
 
@@ -697,12 +706,14 @@ a:hover
 #sidebar form.profile div
 {
     text-align: center;
+    width: auto;
 }
 
 #sidebar form.profile button
 {
     border: none;
     box-shadow: none;
+    float: none;
     height: 25px;
     margin: 0 10px;
     text-indent: -100000px;
@@ -1171,6 +1182,11 @@ table.gsc-completion-container
     height: 20px;
     padding-right: 30px;
     width: 178px;
+}
+
+#search div
+{
+    width: auto;
 }
 
 #search button
@@ -3463,27 +3479,6 @@ div.profile-message-reply
     background-repeat:no-repeat ;
     width:50px;
     height:50px;
-    padding:0px;
-    margin:0px;
-}
-
-.button-register
-{
-    background-image:url('../profile/button/register.png');
-    background-repeat:no-repeat ;
-    width:159px;
-    height:57px;
-    padding:0px;
-    margin:0px;
-    float:left;
-}
-
-.button-rewrite
-{
-    background-image:url('../profile/button/rewrite.png');
-    background-repeat:no-repeat ;
-    width:146px;
-    height:57px;
     padding:0px;
     margin:0px;
 }
