@@ -3,7 +3,6 @@
 jQuery(document).ready(function()
 {
     var calendar = $('#personal-calendar .left').calendar();
-
     $('a.calendar-hide-event').live('click', function()
     {
         var id = $(this).attr('href').replace('#', '');

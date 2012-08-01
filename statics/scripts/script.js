@@ -1222,10 +1222,12 @@
     {
         var self = this;
         $.getJSON($.configures.calendarEventsUrl, function(data){
-            for(var key in data.events)
+            self.cleanUpMark(true);
+            for ( var key in data.events )
             {
                 self.markEvent(data.events[key], { textDecoration: 'underline'});
             }
+            self.markToday();
             self.data('all_events', data.events);
             if ( callback ) 
             {
@@ -1292,10 +1294,11 @@
         return this;
     }
 
-    var cleanUpMark = function()
+    var cleanUpMark = function(isRemoveData)
     {
         return $(this).children('tbody').find('td').each(function(){
             $(this).removeAttr('style');
+            if ( isRemoveData ) $(this).removeData('cal_events');
         });
     }
 
