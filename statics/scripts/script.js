@@ -2426,6 +2426,37 @@
     };
 })(jQuery);
 
+(function($) {
+    $.clubs = function()
+    {
+        $('#club-menu-items a').lightbox();
+
+        $('#club-schedule-button').click(function()
+        {
+            var button = $(this);
+            if ( button.hasClass('active') )
+            {
+                $('#club-schedule-content').slideUp(300, function()
+                {
+                    button.removeClass('active');
+                });
+            }
+            else
+            {
+                $('#club-schedule-content').slideDown(300, function()
+                {
+                    button.addClass('active');
+                });
+            }
+            return false;
+        });
+        $('.back').click(function()
+        {
+            window.history.back();
+        });      
+    };
+})(jQuery);
+
 /**
  * Lightbox
  */
@@ -2737,12 +2768,14 @@
         $.configures.sequence = $.random(0, 1000);
 
         if ( $('#chat').length ) $('#chat').chat();
-
+        
         $('#header').star();
 
         $('#moon').moon();
 
         $('.loading').sprite();
+        
+        if ( $('#club').length ) $.clubs();
 
         $('#form-sidebar-register').click(function()
         {
