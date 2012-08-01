@@ -41,7 +41,7 @@ class Category extends CActiveRecord
         return false;
     }
     
-    private function getForumLists()
+    public function getForumLists()
     {
         return $this->findAll('id != 1 AND id != 2');
     }

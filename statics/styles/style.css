@@ -4370,7 +4370,7 @@ li.enabled a
     background: url('../forum/forum/eraser.png');
     background-repeat: no-repeat;
     width:102px;
-    height:38px;
+    height:36px;
     float:left;
     margin-left: 36px;
     margin-top: 4px;
@@ -4568,6 +4568,386 @@ td.popularity
     margin-left: 35px;
     padding-top: 20px;
 }
+
+/*blue forum CSS*/
+#forum-forum-body.blue #create-article
+{
+    background: url('../forum/forum/blue/eraser.png');
+}
+
+#forum-forum-body.blue #labels .un-selected
+{
+    background: #c8e5f4;
+}
+
+#forum-forum-body.blue #labels .un-selected:hover
+{
+    background: #69c1f2;
+}
+
+#forum-forum-body.blue #labels .selected
+{
+    background: #69c1f2;
+}
+
+#forum-forum-body.blue #table-head
+{
+    background: url('../forum/forum/blue/pencil.png');
+}
+
+#forum-forum-body.blue #body-table .table-title th,
+#forum-forum-body.blue #body-table .table-foot td
+{
+    background: #69c1f2;
+}
+
+#forum-forum-body.blue #body-table .table-title th.head,
+#forum-forum-body.blue #body-table .table-foot td.head
+{
+    background: url('../forum/forum/blue/pencil_head.png');
+}
+
+#forum-forum-body.blue #body-table .table-title th.category,
+#forum-forum-body.blue #body-table .table-foot td.category
+{
+    width: 84px;
+    background: url('../forum/forum/blue/pencil_category.png');
+    color:#ffffff;
+}
+
+#forum-forum-body.blue #body-table .table-title th.tail,
+#forum-forum-body.blue #body-table .table-foot td.tail
+{
+    background: url('../forum/forum/blue/pencil_tail.png');
+}
+
+#forum-forum-body.blue #body-table .table-body td.category
+{
+    border-color:#97d2f3;
+}
+
+#forum-forum-body.blue #body-table .table-body td.title,
+td.author,
+td.reply,
+td.popularity
+{
+    border-color:#97d2f3;
+}
+
+#forum-forum-body.blue #body-table .table-body td.title a:hover
+{
+    color: #97d2f3;
+}
+
+#forum-forum-body.blue #body-table .table-body td.time
+{
+    border-color:#97d2f3;
+}
+/*end of blue CSS*/
+
+/*green forum CSS*/
+#forum-forum-body.green #create-article
+{
+    background: url('../forum/forum/green/eraser.png');
+}
+
+#forum-forum-body.green #labels .un-selected
+{
+    background: #aae1a6;
+}
+
+#forum-forum-body.green #labels .un-selected:hover
+{
+    background: #72c774;
+}
+
+#forum-forum-body.green #labels .selected
+{
+    background: #72c774;
+}
+
+#forum-forum-body.green #table-head
+{
+    background: url('../forum/forum/green/pencil.png');
+}
+
+#forum-forum-body.green #body-table .table-title th,
+#forum-forum-body.green #body-table .table-foot td
+{
+    background: #72c774;
+}
+
+#forum-forum-body.green #body-table .table-title th.head,
+#forum-forum-body.green #body-table .table-foot td.head
+{
+    background: url('../forum/forum/green/pencil_head.png');
+}
+
+#forum-forum-body.green #body-table .table-title th.category,
+#forum-forum-body.green #body-table .table-foot td.category
+{
+    width: 84px;
+    background: url('../forum/forum/green/pencil_category.png');
+    color:#ffffff;
+}
+
+#forum-forum-body.green #body-table .table-title th.tail,
+#forum-forum-body.green #body-table .table-foot td.tail
+{
+    background: url('../forum/forum/green/pencil_tail.png');
+}
+
+#forum-forum-body.green #body-table .table-body td.category
+{
+    border-color:#72c774;
+}
+
+#forum-forum-body.green #body-table .table-body td.title,
+td.author,
+td.reply,
+td.popularity
+{
+    border-color:#72c774;
+}
+
+#forum-forum-body.green #body-table .table-body td.title a:hover
+{
+    color: #72c774;
+}
+
+#forum-forum-body.green #body-table .table-body td.time
+{
+    border-color:#72c774;
+}
+/*end of green CSS*/
+
+/*purle forum CSS*/
+#forum-forum-body.purple #create-article
+{
+    background: url('../forum/forum/purple/eraser.png');
+}
+
+#forum-forum-body.purple #labels .un-selected
+{
+    background: #efc6df;
+}
+
+#forum-forum-body.purple #labels .un-selected:hover
+{
+    background: #dd94c0;
+}
+
+#forum-forum-body.purple #labels .selected
+{
+    background: #dd94c0;
+}
+
+#forum-forum-body.purple #table-head
+{
+    background: url('../forum/forum/purple/pencil.png');
+}
+
+#forum-forum-body.purple #body-table .table-title th,
+#forum-forum-body.purple #body-table .table-foot td
+{
+    background: #dd94c0;
+}
+
+#forum-forum-body.purple #body-table .table-title th.head,
+#forum-forum-body.purple #body-table .table-foot td.head
+{
+    background: url('../forum/forum/purple/pencil_head.png');
+}
+
+#forum-forum-body.purple #body-table .table-title th.category,
+#forum-forum-body.purple #body-table .table-foot td.category
+{
+    width: 84px;
+    background: url('../forum/forum/purple/pencil_category.png');
+    color:#ffffff;
+}
+
+#forum-forum-body.purple #body-table .table-title th.tail,
+#forum-forum-body.purple #body-table .table-foot td.tail
+{
+    background: url('../forum/forum/purple/pencil_tail.png');
+}
+
+#forum-forum-body.purple #body-table .table-body td.category
+{
+    border-color:#dd94c0;
+}
+
+#forum-forum-body.purple #body-table .table-body td.title,
+td.author,
+td.reply,
+td.popularity
+{
+    border-color:#dd94c0;
+}
+
+#forum-forum-body.purple #body-table .table-body td.title a:hover
+{
+    color: #dd94c0;
+}
+
+#forum-forum-body.purple #body-table .table-body td.time
+{
+    border-color:#dd94c0;
+}
+/*end of purple CSS*/
+
+/*orange forum CSS*/
+#forum-forum-body.orange #create-article
+{
+    background: url('../forum/forum/orange/eraser.png');
+}
+
+#forum-forum-body.orange #labels .un-selected
+{
+    background: #f9bca9;
+}
+
+#forum-forum-body.orange #labels .un-selected:hover
+{
+    background: #f68764;
+}
+
+#forum-forum-body.orange #labels .selected
+{
+    background: #f68764;
+}
+
+#forum-forum-body.orange #table-head
+{
+    background: url('../forum/forum/orange/pencil.png');
+}
+
+#forum-forum-body.orange #body-table .table-title th,
+#forum-forum-body.orange #body-table .table-foot td
+{
+    background: #f68764;
+}
+
+#forum-forum-body.orange #body-table .table-title th.head,
+#forum-forum-body.orange #body-table .table-foot td.head
+{
+    background: url('../forum/forum/orange/pencil_head.png');
+}
+
+#forum-forum-body.orange #body-table .table-title th.category,
+#forum-forum-body.orange #body-table .table-foot td.category
+{
+    width: 84px;
+    background: url('../forum/forum/orange/pencil_category.png');
+    color:#ffffff;
+}
+
+#forum-forum-body.orange #body-table .table-title th.tail,
+#forum-forum-body.orange #body-table .table-foot td.tail
+{
+    background: url('../forum/forum/orange/pencil_tail.png');
+}
+
+#forum-forum-body.orange #body-table .table-body td.category
+{
+    border-color:#f68764;
+}
+
+#forum-forum-body.orange #body-table .table-body td.title,
+td.author,
+td.reply,
+td.popularity
+{
+    border-color:#f68764;
+}
+
+#forum-forum-body.orange #body-table .table-body td.title a:hover
+{
+    color: #f68764;
+}
+
+#forum-forum-body.orange #body-table .table-body td.time
+{
+    border-color:#f68764;
+}
+/*end of orange CSS*/
+
+/*yellow forum CSS*/
+#forum-forum-body.yellow #create-article
+{
+    background: url('../forum/forum/Yellow/eraser.png');
+}
+
+#forum-forum-body.yellow #labels .un-selected
+{
+    background: #f3e9bb;
+}
+
+#forum-forum-body.yellow #labels .un-selected:hover
+{
+    background:#fdbc59;
+}
+
+#forum-forum-body.yellow #labels .selected
+{
+    background: #fdbc59;
+}
+
+#forum-forum-body.yellow #table-head
+{
+    background: url('../forum/forum/Yellow/pencil.png');
+}
+
+#forum-forum-body.yellow #body-table .table-title th,
+#forum-forum-body.yellow #body-table .table-foot td
+{
+    background: #fdbc59;
+}
+
+#forum-forum-body.yellow #body-table .table-title th.head,
+#forum-forum-body.yellow #body-table .table-foot td.head
+{
+    background: url('../forum/forum/Yellow/pencil_head.png');
+}
+
+#forum-forum-body.yellow #body-table .table-title th.category,
+#forum-forum-body.yellow #body-table .table-foot td.category
+{
+    width: 84px;
+    background: url('../forum/forum/yellow/pencil_category.png');
+    color:#ffffff;
+}
+
+#forum-forum-body.yellow #body-table .table-title th.tail,
+#forum-forum-body.yellow #body-table .table-foot td.tail
+{
+    background: url('../forum/forum/Yellow/pencil_tail.png');
+}
+
+#forum-forum-body.yellow #body-table .table-body td.category
+{
+    border-color:#fdbc59;
+}
+
+#forum-forum-body.yellow #body-table .table-body td.title,
+td.author,
+td.reply,
+td.popularity
+{
+    border-color:#fdbc59;
+}
+
+#forum-forum-body.yellow #body-table .table-body td.title a:hover
+{
+    color: #fdbc59;
+}
+
+#forum-forum-body.yellow #body-table .table-body td.time
+{
+    border-color:#fdbc59;
+}
+/*end of yellow CSS*/
 
 #ultimate-password
 {

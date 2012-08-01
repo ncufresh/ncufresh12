@@ -66,7 +66,39 @@
 <?php endif; ?>
     </select>
 </div>
-<div id="forum-forum-body">
+<?php
+/*綜合討論 + 管理學院*/
+if ( $fid == 1 || $fid == 18 || $fid == 19 || $fid == 20 || $fid == 21)
+{
+    $forum_color = '';
+}
+/*社團討論 + 文學院*/
+else if ( $fid == 2 || $fid == 3 || $fid == 4 || $fid == 5 )
+{
+    $forum_color = 'purple';
+}
+/*工學院*/
+else if ( $fid == 6 || $fid == 7 || $fid == 8 )
+{
+    $forum_color = 'green';
+}
+/*資電院*/
+else if ( $fid == 9 || $fid == 10 || $fid == 11 )
+{
+    $forum_color = 'yellow';
+}
+/*理學院*/
+else if ( $fid == 12 || $fid == 13 || $fid == 14 || $fid == 15 || $fid == 16 || $fid == 17 )
+{
+    $forum_color = 'blue';
+}
+/*地科學院*/
+else if ( $fid == 22 || $fid == 23 )
+{
+    $forum_color = 'orange';
+}
+?>
+<div id="forum-forum-body" class="<?php echo $forum_color; ?>">
     <div id="create-article">
         <a href="<?php echo Yii::app()->createUrl('forum/create', array('fid' => $fid));?>">發表文章</a>
     </div>
