@@ -12,11 +12,7 @@ jQuery(document).ready(function()
 <?php $this->endWidget();?>
 
 <div id="index-calendar">
-    <div class="calendar-top calendar-top-all-nologin">
-        <a href="#" id="calendar-all"></a>
-        <a href="#" id="calendar-personal"></a>
-    </div>
-    <div class="calendar-bottom-wrap">
+    <div class="calendar-bottom-wrapper">
     </div>
 </div>
 

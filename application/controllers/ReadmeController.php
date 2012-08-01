@@ -145,40 +145,10 @@ class ReadmeController extends Controller
         ));
     }
 
-    public function actionNotice($id = 0)
+    public function actionNotice()
     {
-        if($id == 1)
-        {
-            $index = array("我要","注意", "水唷");
-            $tab = array(1,2,3);
-            $size = 3;
-        }
-        else if($id == 2)
-        {
-            $index = array("水唷", "機車", "可惡");
-            $tab = array(4,5,6);
-            $size = 3;
-        }
-        
-        else if($id == 3)
-        {
-            $index = array("棒唷", "機車", "可惡");
-            $tab = array(7,8,9);
-            $size = 3;
-        }
-        
-        else if($id == 4)
-        {
-            $index = array("GO唷", "機車", "可惡");
-            $tab = array(10,11,12);
-            $size = 3;
-        }
         $this->setPageTitle(Yii::app()->name . ' - 注意事項');
-        $this->render('notice', array(
-                'index'         => $index,
-                'tab'           => $tab,
-                'size'          => $size
-        ));
+        $this->render('notice');
     }
 
     public function actionDownload()
