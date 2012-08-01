@@ -217,7 +217,7 @@
     </div>
 <?php endif; ?>
     <div class="links sidebar-box">
-        <h4>連結區</h4>
+        <h4>常用連結</h4>
         <ul>
             <li>
                 <a href="http://www.ncu.edu.tw" title="中大首頁">中大首頁</a>
@@ -226,7 +226,39 @@
                 <a href="http://portal.ncu.edu.tw" title="Portal入口">Portal入口</a>
             </li>
             <li>
-                <a href="http://www.cc.ncu.edu.tw" title="電算中心">電算中心</a>
+                <a href="http://course.ncu.edu.tw" title="選課系統">選課系統</a>
+            </li>
+            <li>
+                <a href="http://bb.ncu.edu.tw" title="BlackBoard">BlackBoard</a>
+            </li>
+            <li>
+                <a href="https://uncia.cc.ncu.edu.tw/dormnet/" title="宿網系統">宿網系統</a>
+            </li>
+            <li>
+                <a href="http://volley.cc.ncu.edu.tw:8080/RepairSystem" title="宿舍修繕">宿舍修繕</a>
+            </li>
+            <li>
+                <a href="http://www.lib.ncu.edu.tw" title="圖書館首頁">圖書館首頁</a>
+            </li>
+        </ul>
+    </div>
+    <div class="links sidebar-box">
+        <h4>推薦連結</h4>
+        <ul>
+            <li>
+                <a href="http://radio.pinewave.tw" title="松濤電台">松濤電台</a>
+            </li>
+            <li>
+                <a href="http://www4.is.ncu.edu.tw/register/check/stdno_check.php" title="學號查詢">學號查詢</a>
+            </li>
+            <li>
+                <a href="http://www.uac.edu.tw" title="線上查榜">線上查榜</a>
+            </li>
+            <li>
+                <a href="http://ncugrad.pixnet.net/blog" title="研究生部落">研究生部落</a>
+            </li>
+            <li>
+                <a href="http://www.facebook.com/groups/282591371819838" title="什麼！">什麼！</a>
             </li>
         </ul>
     </div>
