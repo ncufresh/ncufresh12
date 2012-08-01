@@ -106,7 +106,7 @@ class Character extends CActiveRecord
                 'Profile',
                 'id'
             ),
-            'hair'    => array( // hair為Item的hair_id row
+            'hairs'    => array( // hair為Item的hair_id row
                 self::BELONGS_TO,
                 'Item',
                 'hair_id'
@@ -131,7 +131,7 @@ class Character extends CActiveRecord
                 'Item',
                 'shoes_id'
             ),
-            'skin'    => array(
+            'skins'    => array(
                 self::BELONGS_TO,
                 'Item',
                 'skin_id'
