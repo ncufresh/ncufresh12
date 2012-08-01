@@ -19,7 +19,9 @@
         });
         
         
-        $('#game-mission-dialog form').submit(function(){
+        $('#game-mission-dialog form').submit(function()
+        {
+            $('#game-mission-dialog form input, #game-mission-dialog form button').prop('disabled', true);
             $.post($.configures.gameSolveUrl.replace(':id',id), {
                 answer: $(this).find('input[name=answer]').val(),
                 token: $.configures.token
@@ -28,6 +30,7 @@
                     message: data.result ? '恭喜您～答對囉！獲取了金幣與經驗值' : '答錯囉～請再接再厲',
                     confirmed: function()
                     {
+                        $('#game-mission-dialog form input, #game-mission-dialog form button').prop('disabled', false);
                         if ( data.result ) window.location.reload();
                     }
                 });

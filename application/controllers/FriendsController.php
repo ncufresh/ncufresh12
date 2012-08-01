@@ -13,7 +13,7 @@ class FriendsController extends Controller
         parent::init();
         $this->userId = Yii::app()->user->getId();
         $this->user = User::model()->findByPk($this->userId);
-        $this->departmentId = Profile::model()->findByPK($this->userId)->department_id;
+        $this->departmentId = Profile::model()->findByPK($this->userId);
         return true;
     }
 
@@ -43,9 +43,9 @@ class FriendsController extends Controller
         $grade = Profile::model()->findByPK($this->userId)->grade;
         $this->setPageTitle(Yii::app()->name . ' - 好友專區');
         $this->render('friends', array(
-            'profileFir'    => Profile::model()->getSameDepartmentSameGrade($this->departmentId, $grade),
-            'profileSec'    => Profile::model()->getSameDepartmentDiffGrade($this->departmentId, $grade),
-            'profileThir'   => Profile::model()->getOtherDepartment($this->departmentId, $grade),    
+            'profileFir'    => Profile::model()->getSameDepartmentSameGrade($this->departmentId->department_id, $grade),
+            'profileSec'    => Profile::model()->getSameDepartmentDiffGrade($this->departmentId->department_id, $grade),
+            'profileThir'   => Profile::model()->getOtherDepartment($this->departmentId->department_id, $grade),    
             'profiles'      => Profile::model()->getAllMember(), 
             'user'          => User::model()->findByPk($this->userId),
             'groups'        => Group::model()->FindGroup($this->userId),
@@ -59,7 +59,7 @@ class FriendsController extends Controller
         $grade = Profile::model()->findByPK($this->userId)->grade;
         $this->setPageTitle(Yii::app()->name . ' - 同系同屆');
         $this->render('samedepartmentsamegrade', array(
-            'profiles'      => Profile::model()->getSameDepartmentSameGrade($this->departmentId, $grade),
+            'profiles'      => Profile::model()->getSameDepartmentSameGrade($this->departmentId->department_id, $grade),
         ));
     }
 
@@ -68,7 +68,7 @@ class FriendsController extends Controller
         $grade = Profile::model()->findByPK($this->userId)->grade;
         $this->setPageTitle(Yii::app()->name . ' - 同系不同屆');
         $this->render('samedepartmentdiffgrade', array(
-            'profiles'      => Profile::model()->getSameDepartmentDiffGrade($this->departmentId, $grade)
+            'profiles'      => Profile::model()->getSameDepartmentDiffGrade($this->departmentId->department_id, $grade)
         ));
     }
 
@@ -76,7 +76,7 @@ class FriendsController extends Controller
     {
         $this->setPageTitle(Yii::app()->name . ' - 其他科系');
         $this->render('otherdepartment', array(
-            'profiles'      => Profile::model()->getOtherDepartment($this->departmentId)
+            'profiles'      => Profile::model()->getOtherDepartment($this->departmentId->department_id)
         ));
     }
 

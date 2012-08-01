@@ -161,6 +161,12 @@ class ItemBag extends CActiveRecord
         else
         return false; //找不到此物品 無法裝備
     }
+
+    public function getClothesNum($id)
+    {
+        return count($this->findAll('user_id='.$id));
+    }
+    
     protected function beforeSave()
     {
         if ( parent::beforeSave() )

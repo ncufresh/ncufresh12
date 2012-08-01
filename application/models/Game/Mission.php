@@ -16,6 +16,7 @@ class Mission extends CActiveRecord
     {
         return $this->findAll(array(
             'condition' => 'id <= :id',
+            'order'  => 'id DESC',
             'params'    => array(
                 ':id' => $number+1
             )

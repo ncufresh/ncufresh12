@@ -1,5 +1,5 @@
 ﻿<?php
-    
+
 class ReadmeController extends Controller
 {
     public function actionIndex()
@@ -7,7 +7,7 @@ class ReadmeController extends Controller
         $this->setPageTitle(Yii::app()->name . ' - 大一必讀');
         $this->render('index');
     }
-    
+
     public function actionContent($page, $tab)
     {
         switch( strtolower($page) )
@@ -17,9 +17,6 @@ class ReadmeController extends Controller
                 break;
             case 'reschool' :
                 $this->reschool($tab);
-                break;
-            case 'notice' :
-                $this->notice($tab);
                 break;
         }
     }
@@ -37,9 +34,57 @@ class ReadmeController extends Controller
             case 3 :
                 $this->_data['content'] = $this->renderPartial('freshman/3', null, true, false);
                 break;
+            case 4 :
+                $this->_data['content'] = $this->renderPartial('freshman/4', null, true, false);
+                break;
+            case 5 :
+                $this->_data['content'] = $this->renderPartial('freshman/5', null, true, false);
+                break;
+            case 6 :
+                $this->_data['content'] = $this->renderPartial('freshman/6', null, true, false);
+                break;
+            case 7 :
+                $this->_data['content'] = $this->renderPartial('freshman/7', null, true, false);
+                break;
+            case 8 :
+                $this->_data['content'] = $this->renderPartial('freshman/8', null, true, false);
+                break;
+            case 9 :
+                $this->_data['content'] = $this->renderPartial('freshman/9', null, true, false);
+                break;
+            case 10 :
+                $this->_data['content'] = $this->renderPartial('freshman/10', null, true, false);
+                break;
+            case 11 :
+                $this->_data['content'] = $this->renderPartial('freshman/11', null, true, false);
+                break;
+            case 12 :
+                $this->_data['content'] = $this->renderPartial('freshman/12', null, true, false);
+                break;
+            case 13 :
+                $this->_data['content'] = $this->renderPartial('freshman/13', null, true, false);
+                break;
+            case 15 :
+                $this->_data['content'] = $this->renderPartial('freshman/15', null, true, false);
+                break;
+            case 16 :
+                $this->_data['content'] = $this->renderPartial('freshman/16', null, true, false);
+                break;
+            case 17 :
+                $this->_data['content'] = $this->renderPartial('freshman/17', null, true, false);
+                break;
+            case 18 :
+                $this->_data['content'] = $this->renderPartial('freshman/18', null, true, false);
+                break;
+            case 19 :
+                $this->_data['content'] = $this->renderPartial('freshman/19', null, true, false);
+                break;
+            case 20 :
+                $this->_data['content'] = $this->renderPartial('freshman/20', null, true, false);
+                break;
         }
     }
-    
+
     public function reschool($tab)
     {
         switch ( $tab )
@@ -53,25 +98,42 @@ class ReadmeController extends Controller
             case 3 :
                 $this->_data['content'] = $this->renderPartial('reschool/3', null, true, false);
                 break;
+            case 4 :
+                $this->_data['content'] = $this->renderPartial('reschool/4', null, true, false);
+                break;
+            case 5 :
+                $this->_data['content'] = $this->renderPartial('reschool/5', null, true, false);
+                break;
+            case 6 :
+                $this->_data['content'] = $this->renderPartial('reschool/6', null, true, false);
+                break;
+            case 7 :
+                $this->_data['content'] = $this->renderPartial('reschool/7', null, true, false);
+                break;
+            case 8 :
+                $this->_data['content'] = $this->renderPartial('reschool/8', null, true, false);
+                break;
+            case 9 :
+                $this->_data['content'] = $this->renderPartial('reschool/9', null, true, false);
+                break;
+            case 10 :
+                $this->_data['content'] = $this->renderPartial('reschool/10', null, true, false);
+                break;
+            case 11 :
+                $this->_data['content'] = $this->renderPartial('reschool/11', null, true, false);
+                break;
+            case 12 :
+                $this->_data['content'] = $this->renderPartial('reschool/12', null, true, false);
+                break;
+            case 13 :
+                $this->_data['content'] = $this->renderPartial('reschool/13', null, true, false);
+                break;
+            case 14 :
+                $this->_data['content'] = $this->renderPartial('reschool/14', null, true, false);
+                break;
         }
     }
-    
-    public function notice($tab)
-    {
-        switch ( $tab )
-        {
-            case 1 :
-                $this->_data['content'] = $this->renderPartial('notice/1', null, true, false);
-                break;
-            case 2 :
-                $this->_data['content'] = $this->renderPartial('notice/2', null, true, false);
-                break;
-            case 3 :
-                $this->_data['content'] = $this->renderPartial('notice/3', null, true, false);
-                break;
-        }
-    }
-    
+
     public function actionFreshman($id = 0)
     {   
         if ( $id == 1 )
@@ -102,15 +164,14 @@ class ReadmeController extends Controller
             $index = array(
                 '註冊開學',
                 '繳交學雜費',
-                '註冊日程',
                 '學籍登入',
                 '大一新生宿舍',
                 '2012中大新生宿舍',
             );
-            $tab = array(9, 10, 11, 12, 13, 14);
-            $size = 6;
+            $tab = array(9, 10, 11, 12, 13);
+            $size = 5;
         }
-        
+
         else if ( $id == 4 )
         {
             $index = array(
@@ -120,11 +181,11 @@ class ReadmeController extends Controller
                 '選課',
                 '新生大一英文修課規定',
                 '申請就學貸款須知'
-                );
+            );
             $tab = array(15, 16, 17, 18, 19, 20);
             $size = 6;
         }
-        
+
         $this->setPageTitle(Yii::app()->name . ' - 新生區');
         $this->render('freshman', array(
                 'index'         => $index,
@@ -141,24 +202,33 @@ class ReadmeController extends Controller
                 '健康檢查流程及注意事項',
                 '大一國文寫作檢定',
                 '僑生大一中文能力分級測驗'
-                );
-            $tab = array(21,22,23);
+            );
+            $tab = array(1, 2, 3);
             $size = 3;
         }
+
         else if( $id == 2 )
         {
-            $index = array('新生輔導需求調查', '導師輔導資源系統');
-            $tab = array(24,25);
+            $index = array(
+                '新生輔導需求調查',
+                '導師輔導資源系統'
+            );
+            $tab = array(4, 5);
             $size = 2;
         }
-        
+
         else if( $id == 3 )
         {
-            $index = array('註冊開學', '線上登錄學籍', '繳交學雜費', '2012中大新生營');
-            $tab = array(27,28,29);
+            $index = array(
+                '註冊開學',
+                '線上登錄學籍',
+                '繳交學雜費',
+                '2012中大新生營'
+            );
+            $tab = array(6, 7, 8, 9);
             $size = 4;
         }
-        
+
         else if( $id == 4 )
         {
             $index = array(
@@ -167,8 +237,8 @@ class ReadmeController extends Controller
                 '復學生大一英文修課規定',
                 '申請學雜費減免',
                 '申請就學貸款須知',
-                );
-            $tab = array(30, 31, 32, 33, 34, 35);
+            );
+            $tab = array(10, 11, 12, 13, 14);
             $size = 5;
         }
         $this->setPageTitle(Yii::app()->name . ' - 復學區');
@@ -190,6 +260,4 @@ class ReadmeController extends Controller
         $this->setPageTitle(Yii::app()->name . ' - 文件下載');
         $this->render('download');
     }
-    
-    
 }

@@ -252,10 +252,6 @@ class GameController extends Controller
             $answer = $mission->answer;
             $get_money = $mission->money;
             $get_experience = $mission->experience;
-            // $this->_data['name'] = $mission->name;
-            // $this->_data['content'] = $mission->content;
-            // echo "輸入的答案".$_POST['answer'].'</br>';
-            // echo "正確的答案".$answer.'</br>';
             if( $_POST['answer'] == $answer )
             {
                 $this->_data['result'] = true;
@@ -268,6 +264,7 @@ class GameController extends Controller
                 else
                 {
                     $this->characterData->addMoney($get_money*0.05);
+                    $this->characterData->addexp($get_experience*0.02);
                 }
             }
             else
