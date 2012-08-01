@@ -37,6 +37,57 @@ class ReadmeController extends Controller
             case 3 :
                 $this->_data['content'] = $this->renderPartial('freshman/3', null, true, false);
                 break;
+            case 4 :
+                $this->_data['content'] = $this->renderPartial('freshman/4', null, true, false);
+                break;
+            case 5 :
+                $this->_data['content'] = $this->renderPartial('freshman/5', null, true, false);
+                break;
+            case 6 :
+                $this->_data['content'] = $this->renderPartial('freshman/6', null, true, false);
+                break;
+            case 7 :
+                $this->_data['content'] = $this->renderPartial('freshman/7', null, true, false);
+                break;
+            case 8 :
+                $this->_data['content'] = $this->renderPartial('freshman/8', null, true, false);
+                break;
+            case 9 :
+                $this->_data['content'] = $this->renderPartial('freshman/9', null, true, false);
+                break;
+            case 10 :
+                $this->_data['content'] = $this->renderPartial('freshman/10', null, true, false);
+                break;
+            case 11 :
+                $this->_data['content'] = $this->renderPartial('freshman/11', null, true, false);
+                break;
+            case 12 :
+                $this->_data['content'] = $this->renderPartial('freshman/12', null, true, false);
+                break;
+            case 13 :
+                $this->_data['content'] = $this->renderPartial('freshman/13', null, true, false);
+                break;
+            case 14 :
+                $this->_data['content'] = $this->renderPartial('freshman/14', null, true, false);
+                break;
+            case 15 :
+                $this->_data['content'] = $this->renderPartial('freshman/15', null, true, false);
+                break;
+            case 16 :
+                $this->_data['content'] = $this->renderPartial('freshman/16', null, true, false);
+                break;
+            case 17 :
+                $this->_data['content'] = $this->renderPartial('freshman/17', null, true, false);
+                break;
+            case 18 :
+                $this->_data['content'] = $this->renderPartial('freshman/18', null, true, false);
+                break;
+            case 19 :
+                $this->_data['content'] = $this->renderPartial('freshman/19', null, true, false);
+                break;
+            case 20 :
+                $this->_data['content'] = $this->renderPartial('freshman/20', null, true, false);
+                break;
         }
     }
     
@@ -53,25 +104,99 @@ class ReadmeController extends Controller
             case 3 :
                 $this->_data['content'] = $this->renderPartial('reschool/3', null, true, false);
                 break;
+            case 4 :
+                $this->_data['content'] = $this->renderPartial('reschool/4', null, true, false);
+                break;
+            case 5 :
+                $this->_data['content'] = $this->renderPartial('reschool/5', null, true, false);
+                break;
+            case 6 :
+                $this->_data['content'] = $this->renderPartial('reschool/6', null, true, false);
+                break;
+            case 7 :
+                $this->_data['content'] = $this->renderPartial('reschool/7', null, true, false);
+                break;
+            case 8 :
+                $this->_data['content'] = $this->renderPartial('reschool/8', null, true, false);
+                break;
+            case 9 :
+                $this->_data['content'] = $this->renderPartial('reschool/9', null, true, false);
+                break;
+            case 10 :
+                $this->_data['content'] = $this->renderPartial('reschool/10', null, true, false);
+                break;
+            case 11 :
+                $this->_data['content'] = $this->renderPartial('reschool/11', null, true, false);
+                break;
+            case 12 :
+                $this->_data['content'] = $this->renderPartial('reschool/12', null, true, false);
+                break;
+            case 13 :
+                $this->_data['content'] = $this->renderPartial('reschool/13', null, true, false);
+                break;
+            case 14 :
+                $this->_data['content'] = $this->renderPartial('reschool/14', null, true, false);
+                break;
+            case 15 :
+                $this->_data['content'] = $this->renderPartial('reschool/15', null, true, false);
+                break;
+            case 16 :
+                $this->_data['content'] = $this->renderPartial('reschool/16', null, true, false);
+                break;
+            case 17 :
+                $this->_data['content'] = $this->renderPartial('reschool/17', null, true, false);
+                break;
+            case 18 :
+                $this->_data['content'] = $this->renderPartial('reschool/18', null, true, false);
+                break;
+            case 19 :
+                $this->_data['content'] = $this->renderPartial('reschool/19', null, true, false);
+                break;
+            case 20 :
+                $this->_data['content'] = $this->renderPartial('reschool/20', null, true, false);
+                break;
+            case 21 :
+                $this->_data['content'] = $this->renderPartial('reschool/21', null, true, false);
+                break;
+            case 22 :
+                $this->_data['content'] = $this->renderPartial('reschool/22', null, true, false);
+                break;
+            case 23 :
+                $this->_data['content'] = $this->renderPartial('reschool/23', null, true, false);
+                break;
+            case 24 :
+                $this->_data['content'] = $this->renderPartial('reschool/24', null, true, false);
+                break;
+            case 25 :
+                $this->_data['content'] = $this->renderPartial('reschool/25', null, true, false);
+                break;
+            case 26 :
+                $this->_data['content'] = $this->renderPartial('reschool/26', null, true, false);
+                break;
+            case 27 :
+                $this->_data['content'] = $this->renderPartial('reschool/27', null, true, false);
+                break;
+            case 28 :
+                $this->_data['content'] = $this->renderPartial('reschool/28', null, true, false);
+                break;
+            case 29 :
+                $this->_data['content'] = $this->renderPartial('reschool/29', null, true, false);
+                break;
+            case 30 :
+                $this->_data['content'] = $this->renderPartial('reschool/30', null, true, false);
+                break;
+            case 31 :
+                $this->_data['content'] = $this->renderPartial('reschool/31', null, true, false);
+                break;
+            case 32 :
+                $this->_data['content'] = $this->renderPartial('reschool/32', null, true, false);
+                break;
+            case 33 :
+                $this->_data['content'] = $this->renderPartial('reschool/33', null, true, false);
+                break;
         }
     }
-    
-    public function notice($tab)
-    {
-        switch ( $tab )
-        {
-            case 1 :
-                $this->_data['content'] = $this->renderPartial('notice/1', null, true, false);
-                break;
-            case 2 :
-                $this->_data['content'] = $this->renderPartial('notice/2', null, true, false);
-                break;
-            case 3 :
-                $this->_data['content'] = $this->renderPartial('notice/3', null, true, false);
-                break;
-        }
-    }
-    
+
     public function actionFreshman($id = 0)
     {   
         if ( $id == 1 )
@@ -120,7 +245,7 @@ class ReadmeController extends Controller
                 '選課',
                 '新生大一英文修課規定',
                 '申請就學貸款須知'
-                );
+            );
             $tab = array(15, 16, 17, 18, 19, 20);
             $size = 6;
         }
@@ -141,21 +266,29 @@ class ReadmeController extends Controller
                 '健康檢查流程及注意事項',
                 '大一國文寫作檢定',
                 '僑生大一中文能力分級測驗'
-                );
-            $tab = array(21,22,23);
+            );
+            $tab = array(21, 22, 23);
             $size = 3;
         }
         else if( $id == 2 )
         {
-            $index = array('新生輔導需求調查', '導師輔導資源系統');
-            $tab = array(24,25);
+            $index = array(
+                '新生輔導需求調查',
+                '導師輔導資源系統'
+            );
+            $tab = array(24, 25);
             $size = 2;
         }
         
         else if( $id == 3 )
         {
-            $index = array('註冊開學', '線上登錄學籍', '繳交學雜費', '2012中大新生營');
-            $tab = array(27,28,29);
+            $index = array(
+                '註冊開學',
+                '線上登錄學籍',
+                '繳交學雜費',
+                '2012中大新生營'
+            );
+            $tab = array(27, 28, 29);
             $size = 4;
         }
         
