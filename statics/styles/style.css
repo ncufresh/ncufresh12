@@ -3790,11 +3790,18 @@ img.user_img
     height: 600px;
     background: url('../game/mission.png');
     position: fixed;
+    display: inline-block;
 }
 
 #game-mission-dialog .dialog-close-button
 {
-    
+    width: 89px;
+    height: 90px;
+    background: url('../game/exit.png');
+    position: absolute;
+    top: 10px;
+    left : 800px;
+    display: block;
 }
 
 #game-mission-dialog .display
@@ -3803,35 +3810,51 @@ img.user_img
     height: 246px;
     font-size: 22px;
     font-weight: bold;
-    margin: 34px 0px 0px 279px;
     outline: 1px solid black;
     position: absolute;
+    top: 56px;
+    left: 279px;
 }
 
 #game-mission-dialog .npc
 {
     width: 324px;
     outline: 1px solid red;
-    margin: 91px 0px 0px -77px;
     position: absolute;
+    top: 91px;
+    left: -37px;
 }
 #game-mission-dialog .avatar
 {
     width: 270px;
     height: 451px;
     font-size: 18px;
-    margin: 24px 0px 0px 628px;
     outline: 1px solid black;
     position: absolute;
+    top: 43px;
+    left: 629px;
 }
 
 #game-mission-dialog h4
 {
-    margin: 18px 0px 0px 30px;
+    font-weight: bold;
+    font-size: 31px;
+    /*outline: 1px black solid;*/
+    position: absolute;
+    top: 39px;
+    left: 30px;
+}
+
+#game-mission-dialog form
+{
+    width: 320px;
+    height: 136px;
     font-weight: bold;
     font-size: 31px;
     outline: 1px black solid;
     position: absolute;
+    top: 356px;
+    left: 279px;
 }
 
 .avatar
