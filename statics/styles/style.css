@@ -3352,13 +3352,8 @@ div.profile-message-reply
 {
     background-image: url('../profile/button/back.png');
     background-repeat: no-repeat ;
-<<<<<<< HEAD
     width: 82px;
     height: 35px;
-=======
-    width: 141px;
-    height: 61px;
->>>>>>> 7219e1866fe7cc1cc00c2deb9302eb15dcd71358
     padding: 0px;
     margin: 0px;
     float:left;
@@ -3473,13 +3468,8 @@ div.profile-message-reply
 {
     background-image:url('../profile/button/addfriend.png');
     background-repeat:no-repeat ;
-<<<<<<< HEAD
     width:96px;
     height:35px;
-=======
-    width:50px;
-    height:50px;
->>>>>>> 7219e1866fe7cc1cc00c2deb9302eb15dcd71358
     padding:0px;
     margin:0px;
 }
