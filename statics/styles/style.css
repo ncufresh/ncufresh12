@@ -2468,7 +2468,9 @@ button.news-button
 
 .readme-menu p
 {
+    font-size: 0.7em;
     text-align: center;
+    cursor: pointer;
 }
 
 .readme-menu span
@@ -2500,8 +2502,11 @@ button.news-button
 
 #readme-view
 {
-    width: 750px;
-    height: 450px;
+    width: 570px;
+    height: 410px;
+    position: absolute;
+    top: 25px;
+    left: 60px;
 }
 
 #about .introdution
