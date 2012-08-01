@@ -11,17 +11,17 @@
         <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 8, 'sort' => 'create'));?>">化工與材料學系</a>
     </div>
     <div class="forum-list-3">
-        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 9, 'sort' => 'create'));?>">理學院學士班</a><br/>
-        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 10, 'sort' => 'create'));?>">光電科學系</a><br/>
-        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 11, 'sort' => 'create'));?>">生命科學系</a><br/>
-        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 12, 'sort' => 'create'));?>">物理學系</a><br/>
-        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 13, 'sort' => 'create'));?>">數學系</a><br/>
-        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 14, 'sort' => 'create'));?>">化學系</a>
+        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 16, 'sort' => 'create'));?>">理學院學士班</a><br/>
+        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 17, 'sort' => 'create'));?>">光電科學系</a><br/>
+        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 15, 'sort' => 'create'));?>">生命科學系</a><br/>
+        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 14, 'sort' => 'create'));?>">物理學系</a><br/>
+        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 12, 'sort' => 'create'));?>">數學系</a><br/>
+        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 13, 'sort' => 'create'));?>">化學系</a>
     </div>
     <div class="forum-list-4">
-        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 15, 'sort' => 'create'));?>">資訊工程系</a><br/>
-        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 16, 'sort' => 'create'));?>">電機工程系</a><br/>
-        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 17, 'sort' => 'create'));?>">通訊工程系</a>
+        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 9, 'sort' => 'create'));?>">資訊工程系</a><br/>
+        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 10, 'sort' => 'create'));?>">電機工程系</a><br/>
+        <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 11, 'sort' => 'create'));?>">通訊工程系</a>
     </div>
     <div class="forum-list-5">
         <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 18, 'sort' => 'create'));?>">經濟學系</a><br/>
