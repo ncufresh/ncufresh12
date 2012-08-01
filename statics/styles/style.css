@@ -154,18 +154,6 @@ form dl.select dd label
     padding: 4px 8px;
 }
 
-form dd span
-{
-    background: #646464;
-    background: rgba(100, 100, 100, 0.7);
-    border-radius: 15px 15px 15px 0;
-    height: 28px;
-    line-height: 28px;
-    padding: 12px 16px;
-    position: absolute;
-    z-index: 10000;
-}
-
 form div
 {
     margin-top: 4px;
@@ -3745,11 +3733,18 @@ img.user_img
 {
     height: 800px;
     overflow: hidden;
-    position: relative;
     margin: 0;
     max-height: 800px;
     max-width: 450px;
     width: 450px;
+}
+
+.avatar a
+{
+    display: block;
+    height: 100%;
+    position: relative;
+    width: 100%;
 }
 
 .avatar img
