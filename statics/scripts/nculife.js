@@ -22,55 +22,17 @@ jQuery(document).ready(function()
             closeText: ' ',
         });
 
-        if($(this).parent().parent('div').attr('id') == 'life-play')
-        {
-            $('#life-dialog').removeClass();
-            $('#life-dialog').addClass('nculife-dialog');
-            $('#nculife-title').removeClass();
-            $('#life-dialog').addClass('nculife-style1');
-            $('#nculife-title').addClass('life-top1');
-        }
 
-        if($(this).parent().parent('div').attr('id') == 'life-traffic')
-        {
-            $('#life-dialog').removeClass();
-            $('#life-dialog').addClass('nculife-dialog');
-            $('#nculife-title').removeClass();
-            $('#life-dialog').addClass('nculife-style2');
-            $('#nculife-title').addClass('life-top2');
-        }
+        $('#life-dialog').removeClass();
+        $('#life-dialog').addClass('nculife-dialog');
+        $('#life-dialog').addClass($(this).parents('ul').attr('pattern'));
+        $('#nculife-title').removeClass();
+        $('#nculife-title').addClass($(this).parents('ul').attr('bar'));
 
-        if($(this).parent().parent('div').attr('id') == 'life-school')
-        {
-            $('#life-dialog').removeClass();
-            $('#life-dialog').addClass('nculife-dialog');
-            $('#nculife-title').removeClass();
-            $('#life-dialog').addClass('nculife-style3');
-            $('#nculife-title').addClass('life-top3');
-        }
-
-        if($(this).parent().parent('div').attr('id') == 'life-live')
-        {
-            $('#life-dialog').removeClass();
-            $('#life-dialog').addClass('nculife-dialog');
-            $('#nculife-title').removeClass();
-            $('#life-dialog').addClass('nculife-style4');
-            $('#nculife-title').addClass('life-top4');
-        }
-
-        if($(this).parent().parent('div').attr('id') == 'life-health')
-        {
-            $('#life-dialog').removeClass();
-            $('#life-dialog').addClass('nculife-dialog');
-            $('#nculife-title').removeClass();
-            $('#life-dialog').addClass('nculife-style5');
-            $('#nculife-title').addClass('life-top5');
-        }
-
-        $('#nculife-dh').text('');
-        $('#nculife-cv').html('');
-        $('#nculife-dh').html('');
-        $('#nculife-t').html('');
+        $('#nculife-dh').empty();
+        $('#nculife-cv').empty();
+        $('#nculife-dh').empty();
+        $('#nculife-t').empty();
 
         var button = $(this)
         if(button.hasClass('life-bar'))
