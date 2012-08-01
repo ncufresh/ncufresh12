@@ -48,6 +48,11 @@ form dt
     position: absolute;
 }
 
+form dt label
+{
+    curosr: text;
+}
+
 form input,
 form textarea
 {
@@ -86,12 +91,6 @@ form textarea
 form button
 {
     height: 24px;
-}
-
-form input:focus,
-form textarea:focus
-{
-    z-index: 3000;
 }
 
 form dt label
