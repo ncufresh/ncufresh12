@@ -3053,10 +3053,10 @@ ul.friend-other-sort
     color:red;
 }
 
-.user-editor input
+ul.user-editor input
 {
-    width: 240px;
-    height: 30px;
+    width: 135px;
+    height: 20px;
 }
 
 div.friends h4
@@ -3340,19 +3340,6 @@ div.profile-message-reply
     padding: 0;
 }
 
-<<<<<<< HEAD
-div.register form
-{
-    width:330px;
-    height:315px;
-    margin:0px;
-    padding:15px;
-}
-
-div.register button
-=======
-#sitemap div
->>>>>>> 992d9414b0888f5fee76fd33cad9b3a075203723
 {
     min-height: 240px;
     overflow: hidden;
