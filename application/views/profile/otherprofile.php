@@ -1,6 +1,14 @@
 <h1>基本資料</h1>
 <div class="myprofile">
     <div class="friends-part3">
+<script type="text/javascript">
+    jQuery.extend({
+        configures: {
+            friendIDrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('friends/makefriends', array('id' => $user->id)); ?>'),
+            token: '<?php echo Yii::app()->security->getToken(); ?>'
+        }
+    });
+</script>
 <?php $this->widget('Avatar', array(
     'id'        => $user->id //得到profile的id---觀看他人基本資料
 )); ?>
@@ -37,5 +45,5 @@
         </ul>
     </div>
 </div>
-<button><a href="<?php echo Yii::app()->createUrl('friends/makefriends', array('friend_id'=>$_GET['friend_id'])); ?>">加為好友</a></button>
+<button type="button"><a href="<?php echo Yii::app()->createUrl('friends/myfriends'); ?>">加為好友</a></button>
 <button type="button" class="button-back" ></button>
