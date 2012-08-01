@@ -67,6 +67,27 @@ class Activity extends CActiveRecord
         return self::model()->deleteAll($criteria);
     }
 
+    public static function getUserActivity($id)
+    {
+        return self::model()->count(array(
+            'condition'     => '`user_id` = :id AND timestamp > :timestamp',
+            'params'        => array(
+                ':id'       => $id,
+                ':timestamp'=> TIMESTAMP - 60
+            )
+        )) > 0;
+    }
+
+    public static function getFriendCount()
+    {
+        $count = 0;
+        foreach ( Yii::app()->user->getUser()->friends as $friend )
+        {
+            if ( self::getUserActivity($friend->id) ) $count++;
+        }
+        return $count;
+    }
+
     public static function getOnlineCount()
     {
         return self::model()->count();

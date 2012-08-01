@@ -45,7 +45,7 @@ class ProfileController extends Controller
 
     public function actionEditor() 
     {
-        $profile = new Profile();
+        $profile = $this->user->profile;
         if ( isset($_POST['profile']) ) 
         {
             $this->user->attributes = $_POST['register'];

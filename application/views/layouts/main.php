@@ -160,7 +160,9 @@
         </li>
     </ul>
 </div>
-<div id="content"><?php echo $content; ?></div>
+<div id="content">
+    <div id="<?php echo $this->getId(); ?>"><?php echo $content; ?></div>
+</div>
 <div id="sidebar">
 <?php if ( Yii::app()->user->getIsGuest() ) : ?>
     <form class="profile" action="<?php echo Yii::app()->createUrl('site/login'); ?>" method="POST">
@@ -189,7 +191,8 @@
 <?php else : ?>
     <div class="profile">
 <?php $this->widget('Avatar', array(
-    'id'        => Yii::app()->user->getId()
+    'id'        => Yii::app()->user->getId(),
+    'link'      => true
 )); ?>
         <p><?php echo Yii::app()->user->getName(); ?></p>
         <a id="sidebar-personal-toggle" href="#" title="點此打開或關閉個人功能"></a>
@@ -242,7 +245,7 @@
 <?php if ( Yii::app()->user->getIsMember() ) : ?>
 <div id="chat" notify="<?php echo Yii::app()->request->baseUrl; ?>/statics/notify">
     <p class="online-friends">
-        線上好友<span class="friendcounts"><?php echo 999; // $this->getOnlineFriendsCount(); ?></span>人
+        線上好友<span class="friendcounts">0</span>人
     </p>
 </div>
 <?php endif; ?>
