@@ -31,6 +31,7 @@ form dl
     margin: 4px 0;
     padding: 4px 0;
     position: relative;
+    width: 50%;
 }
 
 form dt,
@@ -60,10 +61,21 @@ form textarea,
 form button
 {
     background: #FFFFFF;
-    border: none;
+    border: 1px solid #B0B0B0;
+    box-shadow: 0 0 0 #000000, 0 3px 3px #D3D3D3 inset;
     border-radius: 5px;
-    height: 20px;
+    height: 30px;
     padding: 4px 8px;
+}
+
+form input:hover,
+form textarea:hover,
+form button:hover,
+form input:focus,
+form textarea:focus,
+form button:focus
+{
+    border: 1px solid #909090;
 }
 
 form textarea
@@ -86,11 +98,16 @@ form dt label
 {
     color: #474747;
     display: block;
-    line-height: 20px;
+    line-height: 30px;
     padding: 4px 8px;
     position: relative;
     width: 100%;
     z-index: 1000;
+}
+
+form dl.textarea
+{
+    width: 100%;
 }
 
 form dl.radio,
@@ -98,10 +115,18 @@ form dl.checkbox,
 form dl.select
 {
     background: #FFFFFF;
+    border: 1px solid #B0B0B0;
     border-radius: 5px;
-    height: 28px;
+    height: 38px;
     padding: 0 8px;
-    width: 95%;
+    width: 47.5%;
+}
+
+form dl.radio:hover,
+form dl.checkbox:hover,
+form dl.select:hover
+{
+    border: 1px solid #909090;
 }
 
 form dl.radio dt,
@@ -115,7 +140,18 @@ form dl.radio input,
 form dl.checkbox input
 form dl.select input
 {
+    float: left;
     width: auto;
+}
+
+form dl.radio dd label,
+form dl.checkbox dd label,
+form dl.select dd label
+{
+    color: #474747;
+    float: left;
+    line-height: 30px;
+    padding: 4px 8px;
 }
 
 form div
@@ -183,6 +219,11 @@ a:hover
     opacity: 0.7;
     position: relative;
     top: 0;
+}
+
+.scroll-content
+{
+    overflow: hidden;
 }
 
 .loading
@@ -516,6 +557,7 @@ a:hover
 #content
 {
     margin: 0 225px 0 25px;
+    min-height: 300px;
     overflow: hidden;
 }
 
@@ -602,6 +644,18 @@ a:hover
 {
     margin: 0 5%;
     width: 90%;
+}
+
+#sidebar form.profile input,
+#sidebar form.profile label
+{
+    height: 20px;
+    line-height: 20px;
+}
+
+#sidebar form.profile button
+{
+    box-shadow: none;
 }
 
 #sidebar form.profile div
@@ -895,38 +949,19 @@ a:hover
     cursor: pointer;
 }
 
-.chat-dialog .chat-avatar
-{
-    position: relative;
-}
-
-.chat-dialog .chat-avatar .avatar
+.chat-dialog .avatar
 {
     float: left;
     height: 32px;
     margin: 4px 8px 4px 0;
+    position: relative;
     width: 32px;
 }
 
-.chat-dialog .chat-avatar .avatar img
+.chat-dialog .avatar img
 {
     margin-left: -8px;
     width: 48px;
-}
-
-.chat-dialog .chat-messages .chat-avatar p
-{
-    background: #333333;
-    border-radius: 5px 5px 5px 0;
-    color: #FFFFFF;
-    display: none;
-    height: 16px;
-    line-height: 16px;
-    left: 28px;
-    margin: 0;
-    padding: 2px 8px;
-    position: absolute;
-    top: 2px;
 }
 
 .chat-dialog .chat-messages .chat-avatar:hover p
@@ -962,8 +997,11 @@ a:hover
 
 .chat-dialog .chat-input
 {
-    border-top: 1px solid black;
+    border: none;
+    border-top: 1px solid #000000;
     border-radius: 0;
+    bottom: 3px;
+    box-shadow: none;
     height: 19px;
     margin: 0;
     outline: none;
@@ -982,9 +1020,35 @@ a:hover
     width: 160px;
 }
 
-.scroll-content
+#chat-name
 {
-    overflow: hidden;
+    background: #333333;
+    border-radius: 5px;
+    color: #FFFFFF;
+    height: 16px;
+    left: -200px;
+    line-height: 16px;
+    margin: 12px 0 0 -132px;
+    padding: 4px 8px;
+    position: fixed;
+}
+
+#chat-name p
+{
+    margin: 0;
+    padding: 0;
+}
+
+#chat-name .arrow
+{
+    border-color: transparent transparent transparent #333333;
+    border-style: dashed dashed dashed solid;
+    border-width: 8px;
+    height: 0;
+    position: absolute;
+    right: -16px;
+    top: 4px;
+    width: 0;
 }
 
 /**
@@ -1009,16 +1073,37 @@ input.gsc-search-button:focus
 
 tr.gsc-completion-selected
 {
-    background: #B4C8C8;
-    background: rgba(180, 200, 200, 0.7);
+    background: transparent;
+}
+
+tr .gsq_a
+{
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    cursor: pointer;
+    padding-left: 0.6em;
+}
+
+tr.gsc-completion-selected .gsq_a
+{
+    background: #DBEBFA;
+    background: -webkit-gradient(linear, top left, bottom left, from(#DBEBFA), to(#CDE4F9));
+    background: -webkit-linear-gradient(top, #DBEBFA, #CDE4F9);
+    background: -moz-linear-gradient(top, #DBEBFA, #CDE4F9);
+    background: -ms-linear-gradient(top, #DBEBFA, #CDE4F9);
+    background: -o-linear-gradient(top, #DBEBFA, #CDE4F9);
+    border: 1px solid #AEC9E5;
 }
 
 table.gsc-completion-container
 {
     border: none;
+    border: 1px solid #909090;
+    border-top: none;
     border-radius: 0 0 5px 5px;
+    box-shadow: 0 0 0 #000000, 0 -3px 3px #D3D3D3 inset;
     margin-top: -3px;
-    padding: 4px 0;
+    padding: 5px 0;
 }
 
 #search
@@ -1029,8 +1114,17 @@ table.gsc-completion-container
     width: 220px;
 }
 
+#search label
+{
+    height: 20px;
+    line-height: 20px;
+}
+
 #search input
 {
+    /*border: none;
+    box-shadow: none;*/
+    height: 20px;
     padding-right: 30px;
     width: 178px;
 }
@@ -1039,6 +1133,7 @@ table.gsc-completion-container
 {
     background: url('../images/search_box_icon.png') no-repeat;
     border: none;
+    box-shadow: none;
     cursor: pointer;
     float: right;
     height: 20px;
@@ -3234,6 +3329,13 @@ div.profile-message-reply
     width: 660px;
 }
 
+#register > form,
+#register .scroll-container
+{
+    height: 330px;
+    overflow: hidden;
+}
+
 #register button
 {
     background: url('../profile/button_register.png');
@@ -3685,11 +3787,18 @@ img.user_img
 {
     height: 800px;
     overflow: hidden;
-    position: relative;
     margin: 0;
     max-height: 800px;
     max-width: 450px;
     width: 450px;
+}
+
+.avatar a
+{
+    display: block;
+    height: 100%;
+    position: relative;
+    width: 100%;
 }
 
 .avatar img

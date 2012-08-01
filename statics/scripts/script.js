@@ -644,13 +644,26 @@
                             .addClass($.chat.options.chatMessagesClass)
                             .appendTo($(this));
                         var avatar = $('<div></div>')
+                            .data('name', data.name)
                             .addClass($.chat.options.chatAvatarClass)
+                            .hover(function()
+                            {
+                                $('<div></div>')
+                                    .attr('id', 'chat-name')
+                                    .css({
+                                        left: entry.offset().left - $(window).scrollLeft(),
+                                        top: entry.offset().top - $(window).scrollTop()
+                                    })
+                                    .append($('<p></p>').text(data.name))
+                                    .append($('<span></span>').addClass('arrow'))
+                                    .appendTo($('body'));
+                            }, function()
+                            {
+                                $('#chat-name').remove();
+                            })
                             .appendTo(entry);
                         var placehold = $('<div></div>')
                             .addClass('chat-avatar-' + data.avatar)
-                            .appendTo(avatar);
-                        var name = $('<p></p>')
-                            .text(data.name)
                             .appendTo(avatar);
                         $.fn.chat.showAvatar(data.avatar);
                     }
@@ -837,7 +850,6 @@
             var scrollContainer = $('<div></div>')
                 .addClass('scroll-container')
                 .css({
-                    height: '100%',
                     overflow: 'hidden'
                 })
                 .mouseenter(function()
@@ -2575,7 +2587,7 @@
                 {
                     update();
                 })
-                update();  
+                update();
             }
         });
 

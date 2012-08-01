@@ -12,6 +12,7 @@ class Avatar extends CWidget
     public function run()
     {
         $this->render('avatar', array(
+            'id'            => $this->id,
             'components'    => Character::getAvatar($this->id)
         ));
     }
