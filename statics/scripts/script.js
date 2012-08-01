@@ -2698,6 +2698,35 @@
         });
 
         $('form dt label').infield();
+        $('form dd > span').each(function()
+        {
+            var tooltip = $(this);
+            tooltip.prepend($('<span></span>').addClass('arrow'));
+            if ( $(tooltip).css('display') === 'none' )
+            {
+                $(tooltip).parent().parent().hover(function()
+                {
+                    if ( $(this).find('input:focus').length === 0 )
+                    {
+                        $(tooltip).stop(true, true).fadeIn();
+                    }
+                }, function()
+                {
+                    if ( $(this).find('input:focus').length === 0 )
+                    {
+                        $(tooltip).stop(true, true).fadeOut();
+                    }
+                })
+                .find('input').focus(function()
+                {
+                    $(tooltip).stop(true, true).fadeIn();
+                })
+                .blur(function()
+                {
+                    $(tooltip).stop(true, true).fadeOut();
+                });
+            }
+        });
 
         $.pull.start({
             onlinecounter: $('#header .online'),
