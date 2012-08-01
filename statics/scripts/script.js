@@ -363,6 +363,8 @@
 {
     var avatars = [];
 
+    var friends = [];
+
     $.chat = {};
 
     $.fn.chat = function(options)
@@ -473,7 +475,23 @@
                 .attr('id', $.chat.options.friendListContainerId);
             var search = $('<input />')
                 .attr('type', 'text')
-                .attr('id', $.chat.options.friendListSearchId);
+                .attr('id', $.chat.options.friendListSearchId)
+                .keyup(function(event)
+                {
+                    var name = $(this).val().toLowerCase();
+                    for ( var key in friends )
+                    {
+                        var data = friends[key];
+                        if ( data[1].toLowerCase().search(name) == 0 )
+                        {
+                            data[2].show();
+                        }
+                        else
+                        {
+                            data[2].hide();
+                        }
+                    }
+                });
             var source = $('#' + $.chat.options.chatId).attr('notify');
             var notify = $('<audio></audio>')
                 .append(
@@ -543,6 +561,7 @@
                     .append(placehold)
                     .append(name)
                     .appendTo($('#' + $.chat.options.friendListContainerId));
+                friends[friends.length] = [data.id, data.name, entry];
                 $.fn.chat.showAvatar(data.id);
             }
             entry.data('online', data.active);
