@@ -73,8 +73,8 @@
 <?php endfor; ?>
                     </select>
             </li> 
-            <button type="submit" class="button-sure">確認</button>
-            <button><a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>" class="button-cancel">取消</a></button>
+            <button type="submit" class="button-sure"></button>
+            <a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>" class="button-cancel"></a>
             <button type="button" class="button-back" ></button>
         </ul>
     </form>

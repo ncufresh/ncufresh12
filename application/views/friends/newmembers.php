@@ -23,8 +23,8 @@
         </ul>
     </div>
 </div>
-<button type="submit">新增</button>
+<button type="submit" class="button-sure"></button>
 <a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$id)); ?>" class="cancel">取消</a>
-<button type="button" class="button-back" ></button>
+<button type="button" class="button-back"></button>
 </form>
 

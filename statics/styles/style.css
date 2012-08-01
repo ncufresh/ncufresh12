@@ -13,7 +13,9 @@ body
 {
     background: #DCE4ED url('../images/header.png') repeat-x;
     margin: 0 auto;
+    overflow-x: hidden;
     overflow-y: scroll;
+    padding: 0;
     width: 1000px;
 }
 
@@ -76,6 +78,18 @@ form button
     padding: 4px 8px;
 }
 
+form textarea
+{
+    height: 160px;
+}
+
+form button
+{
+    cursor: pointer;
+    height: 40px;
+    padding: 4px 16px;
+}
+
 form input:hover,
 form textarea:hover,
 form button:hover,
@@ -84,16 +98,6 @@ form textarea:focus,
 form button:focus
 {
     border: 1px solid #909090;
-}
-
-form textarea
-{
-    height: 160px;
-}
-
-form button
-{
-    height: 24px;
 }
 
 form dt label
@@ -591,12 +595,17 @@ a:hover
 
 #content
 {
-    margin: 0 225px 0 25px;
-    min-height: 300px;
-    overflow: hidden;
+    float: left;
+    padding: 0 25px;
+    width: 750px;
 }
 
 #footer
+{
+    clear: both;
+}
+
+#footer-background
 {
     background: url('../images/footer.png') repeat-x center;
     height: 120px;
@@ -629,11 +638,8 @@ a:hover
  */
 #sidebar
 {
-    height: 100%;
-    margin-left: 800px;
-    padding-left: 15px;
-    position: absolute;
-    top: 0;
+    float: right;
+    margin: -240px -15px 0 15px;
     width: 200px;
 }
 
@@ -688,11 +694,6 @@ a:hover
     line-height: 20px;
 }
 
-#sidebar form.profile button
-{
-    box-shadow: none;
-}
-
 #sidebar form.profile div
 {
     text-align: center;
@@ -701,9 +702,8 @@ a:hover
 #sidebar form.profile button
 {
     border: none;
-    cursor: pointer;
+    box-shadow: none;
     height: 25px;
-    line-heigth: 25px;
     margin: 0 10px;
     text-indent: -100000px;
     width: 55px;
@@ -1494,6 +1494,7 @@ a.calendar-hide-event:hover
     display: none;
 }
 
+
 .calendar .prompt i
 {
     border: 5px solid;
@@ -1505,6 +1506,7 @@ a.calendar-hide-event:hover
     width: 0;
     height: 0;
 }
+
 
 .calendar .prompt ul
 {
@@ -2284,14 +2286,19 @@ button.news-button
     left: 660px;
 }
 
+#readme .scroll-container
+{
+    height: 420px;
+    width: 630px;
+}
+
 #readme-fresh
 {
-    width: 750px;
-    height: 450px;
-    position: relative;
-    overflow-x: hidden;
-    overflow-y: auto;
     background: url('../readme/freshman_background.png');
+    padding: 15px 25px;
+    height: 420px;
+    position: relative;
+    width: 700px;
 }
 
 #fresh-back
@@ -2324,9 +2331,10 @@ button.news-button
 
 #readme-reschool
 {
-    width: 750px;
-    height: 450px;
+    padding: 15px 25px;
+    height: 420px;
     position: relative;
+    width: 700px;
     background: url('../readme/reschool_background.png');
 }
 
@@ -2388,7 +2396,7 @@ button.news-button
 
 #freshman-3
 {
-    width: 105px;
+    width: 79px;
     height: 128px;
     left: 272px;
     top: 262px;
@@ -2397,7 +2405,7 @@ button.news-button
 
 #freshman-4
 {
-    width: 119px;
+    width: 54px;
     height: 141px;
     left: 194px;
     top: 271px;
@@ -2498,12 +2506,23 @@ button.news-button
     position: absolute;
 }
 
+#readme .readme-view
+{
+    padding-right: 10px;
+}
+
+#readme .scroll-bar
+{
+    top: 33%;
+    height: 65%;
+}
+
 #readme-logo1
 {
     width: 124px;
     height: 122px;
     left: 357px;
-    top: 75px;
+    top: 74px;
     position: absolute;
 }
 
@@ -2517,8 +2536,8 @@ button.news-button
 {
     width: 140px;
     height: 135px;
-    left: 492px;
-    top: 32px;
+    left: 491px;
+    top: 31px;
     position: absolute;
 }
 
@@ -2533,7 +2552,7 @@ button.news-button
     width: 121px;
     height: 194px;
     left: 607px;
-    top: 33px;
+    top: 32px;
     position: absolute;
 }
 
@@ -2549,7 +2568,7 @@ button.news-button
     width: 126px;
     height: 107px;
     position: absolute;
-    top: 212px;
+    top: 211px;
     left: 603px;
 }
 
@@ -2580,17 +2599,23 @@ button.news-button
     height: 300px;
     top: 50px;
     left: -187px;
-    border-radius: 10px;
+    border-radius: 0 10px 10px 0;
     position: absolute;
     display: block;
     list-style: none;
-    font-size: 1.5em;
-    opacity: 0.75;
+    opacity: 0.95;
 }
 
 .readme-menu p
 {
     text-align: center;
+}
+
+.readme-menu p:hover
+{
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 .readme-menu span
@@ -2618,12 +2643,6 @@ button.news-button
 {
     cursor: pointer;
     text-align: center;
-}
-
-#readme-view
-{
-    width: 750px;
-    height: 450px;
 }
 
 #about .introdution
@@ -3463,10 +3482,11 @@ div.profile-message-reply
 {
     background-image: url('../profile/button/back.png');
     background-repeat: no-repeat ;
-    width: 141px;
-    height: 61px;
+    width: 82px;
+    height: 35px;
     padding: 0px;
     margin: 0px;
+    float:left;
 }
 
 .button-cancel
@@ -3493,8 +3513,8 @@ div.profile-message-reply
 {
     background-image:url('../profile/button/sure.png');
     background-repeat:no-repeat ;
-    width:91px;
-    height:50px;
+    width:62px;
+    height:34px;
     padding:0px;
     margin:0px;
 }
@@ -3509,36 +3529,39 @@ div.profile-message-reply
     margin:0px;
 }
 
-.button-deletegroup
+#button-deletegroup
 {
     background-image:url('../profile/button/delete-group.png');
     background-repeat:no-repeat ;
-    width:213px;
-    height:58px;
+    width:120px;
+    height:33px;
     padding:0px;
     margin:0px;
     float:left;
+    display:block;
 }
 
-.button-addmember
+#button-addmember
 {
     background-image:url('../profile/button/add-member.png');
     background-repeat:no-repeat ;
-    width:213px;
-    height:59px;
+    width:123px;
+    height:35px;
     padding:0px;
     margin:0px;
     float:left;
+    display:block;
 }
 
-.button-deletemember
+#button-deletemember
 {
     background-image:url('../profile/button/delete-member.png');
     background-repeat:no-repeat ;
-    width:213px;
-    height:58px;
+    width:121px;
+    height:34px;
     padding:0px;
     margin:0px;
+    float:left;
 }
 
 .button-makefriend
@@ -3555,8 +3578,8 @@ div.profile-message-reply
 {
     background-image:url('../profile/button/delete-friend.png');
     background-repeat:no-repeat ;
-    width:188px;
-    height:50px;
+    width:122px;
+    height:35px;
     padding:0px;
     margin:0px;
 }
@@ -3575,28 +3598,30 @@ div.profile-message-reply
 {
     background-image:url('../profile/button/addfriend.png');
     background-repeat:no-repeat ;
-    width:50px;
-    height:50px;
+    width:96px;
+    height:35px;
     padding:0px;
     margin:0px;
 }
 
-.button-editor
+#button-editor
 {
     background-image:url('../profile/button/editor.png');
     background-repeat:no-repeat ;
-    width:50px;
-    height:50px;
+    width:158px;
+    height:57px;
     padding:0px;
     margin:0px;
+    display: block;
+    float:left;
 }
 
 .button-register
 {
     background-image:url('../profile/button/register.png');
     background-repeat:no-repeat ;
-    width:159px;
-    height:57px;
+    width:95px;
+    height:32px;
     padding:0px;
     margin:0px;
     float:left;
@@ -3606,10 +3631,25 @@ div.profile-message-reply
 {
     background-image:url('../profile/button/rewrite.png');
     background-repeat:no-repeat ;
+    width:95px;
+    height:32px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-flower
+{
+    background-image:url('../profile/button/flower.png');
+    background-repeat:no-repeat ;
     width:146px;
     height:57px;
     padding:0px;
     margin:0px;
+}
+
+.is_exist
+{
+    color:red;
 }
 
 /**
@@ -3670,21 +3710,37 @@ div#success a
     margin-top:207px;
 }
 
-div.login
+#login
 {
-    background-image:url('../profile/login.png');
-    background-repeat:no-repeat ;
-    width:690px;
-    height:370px;
-    padding:25px;
-    margin:0px;
+    background: url('../profile/login.png');
+    width: 690px;
+    height: 365px;
+    padding: 25px;
+    margin: 0px;
 }
 
-div.login ul
-{ 
-    padding:0px;
-    margin-left:225px;
-    margin-top:45px;
+#login h2
+{
+    display: none;
+}
+
+#login p
+{
+    margin: 50px 0 0 100px;
+}
+
+#login ul
+{
+    padding: 0;
+    margin-left: 160px;
+}
+
+#login form
+{
+    height: 110px;
+    margin: 25px 0 0 160px;
+    padding: 0;
+    width: 640px;
 }
 
 div.delete-group
@@ -3695,16 +3751,6 @@ div.delete-group
     height:50px;
     padding:0px;
     margin:0px;
-}
-
-
-div.login form
-{
-    width:350px;
-    height:110px;
-    margin-left:200px;
-    margin-top:90px;
-    padding:0px;
 }
 
 form.group-description
@@ -4060,38 +4106,38 @@ img.user_img
     height: 600px;
     background: url('../game/mission.png');
     position: fixed;
-    display: inline-block;
+    display: none;
 }
 
 #game-mission-dialog .dialog-close-button
 {
-    width: 89px;
-    height: 90px;
+    width: 117px;
+    height: 119px;
     background: url('../game/exit.png');
     text-indent: -1000%;
     position: absolute;
-    top: -10px;
-    left: 822px;
+    top: -16px;
+    left: 806px;
     display: block;
     z-index: 1;
 }
 
 #game-mission-dialog .display
 {
-    width: 320px;
+    width: 325px;
     height: 246px;
-    font-size: 22px;
+    font-size: 25px;
     font-weight: bold;
-    outline: 1px solid black;
+    /*outline: 1px solid black;*/
     position: absolute;
     top: 56px;
-    left: 279px;
+    left: 277px;
 }
 
 #game-mission-dialog .npc
 {
     width: 324px;
-    outline: 1px solid red;
+    /*outline: 1px solid red;*/
     position: absolute;
     top: 91px;
     left: -37px;
@@ -4101,7 +4147,7 @@ img.user_img
     width: 270px;
     height: 451px;
     font-size: 18px;
-    outline: 1px solid black;
+    /*outline: 1px solid black;*/
     position: absolute;
     top: 43px;
     left: 629px;
@@ -4934,25 +4980,25 @@ td.popularity
 
 #forum-forum-body.blue #body-table .table-body td.category
 {
-    border-color:#69c1f2;
+    border-color:#97d2f3;
 }
 
 #forum-forum-body.blue #body-table .table-body td.title,
-#forum-forum-body.blue #body-table .table-body td.author,
-#forum-forum-body.blue #body-table .table-body td.reply,
-#forum-forum-body.blue #body-table .table-body td.popularity
+td.author,
+td.reply,
+td.popularity
 {
-    border-color:#69c1f2;
+    border-color:#97d2f3;
 }
 
 #forum-forum-body.blue #body-table .table-body td.title a:hover
 {
-    color: #69c1f2;
+    color: #97d2f3;
 }
 
 #forum-forum-body.blue #body-table .table-body td.time
 {
-    border-color:#69c1f2;
+    border-color:#97d2f3;
 }
 /*end of blue CSS*/
 
@@ -5014,9 +5060,9 @@ td.popularity
 }
 
 #forum-forum-body.green #body-table .table-body td.title,
-#forum-forum-body.green #body-table .table-body td.author,
-#forum-forum-body.green #body-table .table-body td.reply,
-#forum-forum-body.green #body-table .table-body td.popularity
+td.author,
+td.reply,
+td.popularity
 {
     border-color:#72c774;
 }
@@ -5090,9 +5136,9 @@ td.popularity
 }
 
 #forum-forum-body.purple #body-table .table-body td.title,
-#forum-forum-body.purple #body-table .table-body td.author,
-#forum-forum-body.purple #body-table .table-body td.reply,
-#forum-forum-body.purple #body-table .table-body td.popularity
+td.author,
+td.reply,
+td.popularity
 {
     border-color:#dd94c0;
 }
@@ -5166,9 +5212,9 @@ td.popularity
 }
 
 #forum-forum-body.orange #body-table .table-body td.title,
-#forum-forum-body.orange #body-table .table-body td.author,
-#forum-forum-body.orange #body-table .table-body td.reply,
-#forum-forum-body.orange #body-table .table-body td.popularity
+td.author,
+td.reply,
+td.popularity
 {
     border-color:#f68764;
 }
@@ -5242,9 +5288,9 @@ td.popularity
 }
 
 #forum-forum-body.yellow #body-table .table-body td.title,
-#forum-forum-body.yellow #body-table .table-body td.author,
-#forum-forum-body.yellow #body-table .table-body td.reply,
-#forum-forum-body.yellow #body-table .table-body td.popularity
+td.author,
+td.reply,
+td.popularity
 {
     border-color:#fdbc59;
 }

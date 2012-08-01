@@ -1,7 +1,5 @@
 <?php $user_id = Yii::app()->user->getId(); //使用者的id 
        //$user_level = Character::model()->findByPk($watch_id)->exp;?>
-    <h1>使用者ID => 登入帳號 / 觀看中 => <?php echo $user_id.' / '.$watch_id?> </h1>
-    <h1> <?php echo $filename=Character::model()->findByPk($watch_id)->skin->filename.'<br/>'; ?></h1>
     <div class="game-system">
     <div class="user-body">
 <?php $this->widget('Avatar', array(
@@ -44,15 +42,19 @@
     </div>
 </div>
 <div id="game-mission-dialog">
-    <h4>Mission：<span></span></h4>
-        <img src="http://localhost/ncufresh12/statics/game/npc/NPC_N1C.png" alt="npc" class="npc"/>
+    <h4>Mission：<span class="MissionName"></span></h4>
+        <img src="http://localhost/ncufresh12/statics/game/npcs/0.png" alt="npc" class="npc"/>
     <div class="display">
         
     </div>
-    <form action="post">
-        123
+    <form action="#" method="post" >
+    <span>解答：</span>
+    <input type="text" name="answer" />
+    <button type="submit">送啦~!!!</button>
     </form>
         <?php $this->widget('Avatar', array(
             'id'        => $watch_id
         )); ?>
 </div>
+    <h1>使用者ID => 登入帳號 / 觀看中 => <?php echo $user_id.' / '.$watch_id?> </h1>
+    <h1> <?php echo $filename=Character::model()->findByPk($watch_id)->skin->filename.'<br/>'; ?></h1>

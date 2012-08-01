@@ -33,9 +33,10 @@
             </li>
             <li>
                 生日:<?php echo $user->profile->birthday; ?>
-            </li>   
+            </li> 
+            <a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>" id="button-editor"></a>
+            <button type="button" class="button-back"></button>
         </ul>
+        
     </div>
 </div>
-<button><a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>">編輯</a></button>
-<button type="button" class="button-back"></button>

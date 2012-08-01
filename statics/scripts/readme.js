@@ -8,11 +8,15 @@ jQuery(document).ready(function()
             jQuery.configures.readMeUrl.replace(':tab', tab).replace(':page', page),
             function(data)
             { 
-                $('#readme-view').html(data.content);
+                $('.readme-view').html(data.content);
             }
         ); 
         return false;
     }
+
+    $('.readme-view').scrollable({
+        scrollableClass: false
+    });
 
     if( $('.readme-menu p').length == 1 )
     {
@@ -75,5 +79,4 @@ jQuery(document).ready(function()
             jQuery('#readme-logo3').click();
         break;
     }
-
 });

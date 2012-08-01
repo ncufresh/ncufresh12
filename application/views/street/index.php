@@ -31,7 +31,7 @@
 }
 #back-div
 {
-    background-color: yellow;
+    background-color: url('../statics/building/bottom.png') no-repeat;
     position: relative;
     height: 551px;
     width: 750px;
@@ -103,7 +103,7 @@
     top: 0px;
     left: 750px;
     height: 551px;
-    width: 150px;
+    width: 380px;
 }
 #computer-center
 {
@@ -120,7 +120,7 @@
     cursor: pointer;
     position: absolute;
     top: 372px;
-    left: 100px;
+    left: 330px;
 }
 #calligraphy
 {
@@ -462,44 +462,44 @@
 {
     cursor: pointer;
     position: absolute;
-    height: 50px;
-    width: 50px;
-    z-index: 1;
+    height: 70px;
+    width: 70px;
+    z-index: 2;
 }
 .one-image.dormitory
 {
     top: 10px;
-    left: 660px;
+    left: 20px;
 }
 .one-image.diet
 {
-    top: 70px;
-    left: 660px;
+    top: 10px;
+    left: 460px;
 }
 .one-image.department-building
 {
-    top: 130px;
-    left: 660px; 
+    top: 10px;
+    left: 310px; 
 }
 .one-image.landscape
 {
-    top: 190px;
-    left: 660px;
+    top: 10px;
+    left: 150px;
 }
 .one-image.government
 {
-    top: 250px;
-    left: 660px;
+    top: 10px;
+    left: 590px;
 }
 .one-image.exercise
 {
-    top: 310px;
-    left: 660px;
+    top: 10px;
+    left: 680px;
 }
 .one-image.curtainOpen
 {
-    top: 370px;
-    left: 660px;
+    top: 230px;
+    left: 680px;
 }
 .picture
 {
@@ -511,37 +511,38 @@
 {
     cursor: pointer;
     position: absolute;
-    height 50px;
+    height 70px;
+    width: 70px;
     z-index: 1;
 }
 .two-image.department-building
 {
-    top: 0px;
+    top: 210px;
     left: 0px;
 }
 .two-image.dormitory
 {
-    top: 50px;
+    top: 70px;
     left: 0px;
 }
 .two-image.government
 {
-    top: 100px;
+    top: 360px;
     left: 0px;
 }
 .two-image.diet
 {
-    top: 150px;
+    top: 280px;
     left: 0px;
 }
 .two-image.landscape
 {
-    top: 200px;
+    top: 140px;
     left: 0px;
 }
-. .exercise
+.exercise
 {
-    top: 250px;
+    top: 440px;
     left: 0px;
 }
 .text-ul
@@ -560,10 +561,16 @@
     float: left;
     margin-left: 10px;
 }
-#aaa
+#curtain
 {
     position:absolute;
     left: 601px;
+}
+#curtain-up
+{
+    position:absolute;
+    top: 0px;
+    z-index: 2;
 }
 </style>
 <?php
@@ -584,11 +591,11 @@
         }
     }
 ?>
-<div id="street-div">    
+<div id="street-div">
     <div id="back-div">
+        <img id="curtain-up" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain_up.png"> 
         <img id="experience-personally" src="<?php echo Yii::app()->baseUrl?>/statics/building/little_man.png">
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-up.png" class="arrow up">
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-down.png" class="arrow down">
+        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-up.png" class="arrow up">        
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-left.png" class="arrow left">
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-right.png" class="arrow right">
 
@@ -598,31 +605,32 @@
         <img >-->
 
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/pp.png" id="mapPicture" path="<?php echo Yii::app()->request->baseUrl;?>/statics/building/pp.png"><!--底圖-->
-        <img id="aaa" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain.png" >
+        <img id="curtain" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain.png">
+        
         <!--系館-->
-        <img id="engineering-5" class="department-building picture" show="department-building" href="#1" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-5.png">
-        <img id="engineering-3" class="department-building picture" show="department-building" href="#2" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-3.png">
-        <img id="engineering-2" class="department-building picture" show="department-building" href="#3" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-2.png">
-        <img id="engineering-1" class="department-building picture" show="department-building" href="#4" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-1.png">
-        <img id="photonics" class="department-building picture" show="department-building" href="#5" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/photonics.png">
-        <img id="science-5" class="department-building picture" show="department-building" href="#6" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-5.png">
-        <img id="science-4" class="department-building picture" show="department-building" href="#7" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-4.png">
-        <img id="science-3" class="department-building picture" show="department-building" href="#8" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-3.png">
-        <img id="science-2" class="department-building picture" show="department-building" href="#9" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-2.png">
-        <img id="science-1" class="department-building picture" show="department-building" href="#10" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-1.png">       
-        <img id="science-teach" class="department-building picture" show="department-building" href="#11" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-teach.png">
-        <img id="mathematics" class="department-building picture" show="department-building" href="#12" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/mathematics.png">
-        <img id="liberal-arts" class="department-building picture" show="department-building" href="#13" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/liberal-arts.png">
-        <img id="management" class="department-building picture" show="department-building" href="#14" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/management.png">
-        <img id="all-teach" class="department-building picture" show="department-building" href="#15" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/all-teach.png">
-        <img id="hakka" class="department-building picture" show="department-building" href="#16" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/hakka.png">
+        <img id="engineering-5" class="department-building picture" streetPoints="0" faceto="N" show="department-building" href="#1" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-5.png">
+        <img id="engineering-3" class="department-building picture" streetPoints="2"show="department-building" href="#2" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-3.png">
+        <img id="engineering-2" class="department-building picture" streetPoints="51"show="department-building" href="#3" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-2.png">
+        <img id="engineering-1" class="department-building picture" streetPoints="10" show="department-building" href="#4" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-1.png">
+        <img id="photonics" class="department-building picture" streetPoints="-1" show="department-building" href="#5" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/photonics.png">
+        <img id="science-5" class="department-building picture" streetPoints="-1" show="department-building" href="#6" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-5.png">
+        <img id="science-4" class="department-building picture" streetPoints="-1" show="department-building" href="#7" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-4.png">
+        <img id="science-3" class="department-building picture" streetPoints="-1" show="department-building" href="#8" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-3.png">
+        <img id="science-2" class="department-building picture" streetPoints="-1" show="department-building" href="#9" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-2.png">
+        <img id="science-1" class="department-building picture" streetPoints="-1" show="department-building" href="#10" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-1.png">       
+        <img id="science-teach" class="department-building picture" streetPoints="-1" show="department-building" href="#11" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-teach.png">
+        <img id="mathematics" class="department-building picture" streetPoints="45" show="department-building" href="#12" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/mathematics.png">
+        <img id="liberal-arts" class="department-building picture" streetPoints="24" show="department-building" href="#13" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/liberal-arts.png">
+        <img id="management" class="department-building picture" streetPoints="-1" show="department-building" href="#14" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/management.png">
+        <img id="all-teach" class="department-building picture" streetPoints="44" show="department-building" href="#15" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/all-teach.png">
+        <img id="hakka" class="department-building picture" streetPoints="-1" show="department-building" href="#16" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/hakka.png">
         
         <!--座標設定  催圖(1.建築餘圖(飲食, 零星) 2.照片(路線規劃))-->
          
         <!--景觀-->
-        <img id="ncu-lake"class="landscape picture" show="landscape" href="#17" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/ncu-lake.png">
-        <img id="turtle-pond" class="landscape picture" show="landscape" href="#18" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/turtle-pond.png">
-        <img id="lover-trail" class="landscape picture" show="landscape" href="#19" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/lover-trail.png">
+        <img id="ncu-lake"class="landscape picture"  streetPoints="-1" show="landscape" href="#17" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/ncu-lake.png">
+        <img id="turtle-pond" class="landscape picture" streetPoints="29" show="landscape" href="#18" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/turtle-pond.png">
+        <!--<img id="lover-trail" class="landscape picture" show="landscape" href="#19" src="<?php //echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/lover-trail.png">-->
         <img id="pine-wind" class="landscape picture" show="landscape" href="#20" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/pine-wind.png">
         <img id="stepping-cloud" class="landscape picture" show="landscape" href="#21" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/stepping-cloud.png">
         <img id="elephant-element" class="landscape picture" show="landscape" href="#22" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/elephant-element.png">
@@ -683,7 +691,7 @@
 
         <div id="curtainDiv">
         <!--選擇鈕2-->
-            <div style="float:left; width:50px; height:422px;">
+            <div style="float:left; width:190px; height:422px;">
                 <img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/college.png" class="two-image department-building" show="department-building" detailItem="department">
                 <img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/landscape.png" class="two-image landscape" show="landscape" detailItem="landscape">
                 <img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/food.png" class="two-image diet" show="diet" detailItem="meal">
@@ -692,7 +700,7 @@
                 <img src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/exercise.png" class="two-image exercise" show="exercise" detailItem="sport">           
 
             </div>
-            <div style="float:right; width:100px; height:422px;">
+            <div style="float:right; width:190px; height:422px; margin-top: 100px;">
                 <ul class="text-ul">
                     <li class="department-button-text button-text" detailItem="department" href="#1">工程五館</li>
                     <li class="department-button-text button-text" detailItem="department" href="#2">工程三館</li>
@@ -816,7 +824,7 @@
 
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
-alert('運動放 藝人堂(健身房、羽球館、溜冰場) 游泳池 操場(攀岩) 棒壘球場  4個 然後網球文檔不放');
+// alert('運動放 藝人堂(健身房、羽球館、溜冰場) 游泳池 操場(攀岩) 棒壘球場  4個 然後網球文檔不放');
 $(document).ready(function()
 {
     $( '#experience-personally' ).mousedown(function()
@@ -849,17 +857,107 @@ $(document).ready(function()
     {
         if( isInPicture == true )
         {
-            var id = $( '#' + mouseInId ).attr('href').replace( '#', '' );
-            $.ajax(
+            var id = $('#' + mouseInId).attr('href').replace( '#', '' );
+            $('#mapPicture').attr('src', url + streetPoints[$('#' + mouseInId).attr('streetPoints')][$('#' + mouseInId).attr('faceto')].photo);
+            
+            nowfaceto = $('#' + mouseInId).attr('faceto');
+            nowpointat = [$('#' + mouseInId).attr('streetPoints')];
+            nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
+
+            console.log('一開始');
+            console.log('nowpointat: ' + nowpointat);
+            console.log('nowfaceto: ' + nowfaceto);
+            console.log('nextpointat: ' + nextpointat); 
+            console.log('--------------------------');
+            $( '.arrow' ).eq( 0 ).click(function() //前進nextDirection
             {
-                type: 'GET',
-                url: jQuery.configures.buildingContentUrl.replace( ':id', id ),
-                dataType: 'json',
-                success: function( data )
+                if( nextpointat == (-1) )
                 {
-                    $('#mapPicture').attr('src', data.photo);
-                },
+                    alert('這裡不能走!!!');
+                }
+                else if( nextpointat != (-1))
+                {
+                    nowpointat = nextpointat;
+                    nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
+                    $('#mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
+                }
+                console.log('按前進');
+                console.log('nowpointat: ' + nowpointat);
+                console.log('nowfaceto: ' + nowfaceto);
+                console.log('nextpointat: ' + nextpointat);            
+                console.log('--------------------------');
             });
+            $( '.arrow' ).eq( 1 ).click(function() // 左旋
+            {                        
+                turnLeft();
+                $('#mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
+                nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
+                console.log('按左旋');
+                console.log('nowpointat: ' + nowpointat);
+                console.log('nowfaceto: ' + nowfaceto);
+                console.log('nextpointat: ' + nextpointat);
+                console.log('--------------------------');
+            });
+            $( '.arrow' ).eq( 2 ).click(function() // 右旋
+            {
+                turnRight();
+                $('#mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
+                nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
+                console.log('按右旋');
+                console.log('nowpointat: ' + nowpointat);
+                console.log('nowfaceto: ' + nowfaceto);
+                console.log('nextpointat: ' + nextpointat);                        
+                console.log('--------------------------');
+            });
+//-------------------------------------------------------------------------------------------------
+            function turnLeft()
+            {
+                if( nowfaceto == 'N')
+                {
+                    nowfaceto = 'W';
+                }
+                else if( nowfaceto == 'E')
+                {
+                    nowfaceto = 'N';
+                }
+                else if( nowfaceto == 'S')
+                {
+                    nowfaceto = 'E';
+                }
+                else if( nowfaceto == 'W')
+                {
+                    nowfaceto = 'S';
+                }
+                else
+                {
+                    return;
+                }
+            };
+            function turnRight()
+            {
+
+                if( nowfaceto == 'N')
+                {
+                    nowfaceto = 'E';
+                }
+                else if( nowfaceto == 'E')
+                {
+                    nowfaceto = 'S';
+                }
+                else if( nowfaceto == 'S')
+                {
+                    nowfaceto = 'W';
+                }
+                else if( nowfaceto == 'W')
+                {
+                    nowfaceto = 'N';
+                }
+                else
+                {
+                    return;
+                }
+            };
+                
             $('#back-div').css(
             {
                 height: 498,
@@ -898,7 +996,7 @@ $(document).ready(function()
 
     $( '.curtainOpen' ).click(function()
     { // 窗簾
-        $( '#curtainDiv' ).animate({left: '600px'});
+        $( '#curtainDiv' ).animate({left: '370px'});
         $( '.button-text' ).hide();
         $( '.button-text[ detailItem = "department" ]' ).show();
     });
@@ -907,7 +1005,7 @@ $(document).ready(function()
         $( '#curtainDiv' ).animate({left: '750px'});
     });
 
-    $( '.arrow' ).eq( 4 ).click(function() // 親身體驗 back
+    $( '.arrow' ).eq( 3 ).click(function() // 親身體驗 back
     {    
         $( '#mapPicture' ).attr( 'src', $('#mapPicture').attr('path') );
         $( '.arrow' ).hide();
@@ -1027,38 +1125,43 @@ $(document).ready(function()
     // {
         // $('#view-picture-container img').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/3.jpg');
     // });
-    // var streetPoints = new Array( 0, 1, 2, 3 );
+
+
+    var url = '../../street-view/';
+    // $('#curtain').attr('src', url);  Day 1 (1)
+    var nowfaceto;
+    var nowpointat;
     var streetPoints = 
     [
         { // 0 (工5)
-            N:{ photo: '', nextPoint: 3 },
-            E:{ photo: '', nextPoint: 4 },
-            S:{ photo: '', nextPoint: 6 },
-            W:{ photo: '', nextPoint: 5 }            
+            N:{ photo: 'Day 1 (4).jpg', nextPoint: 2 },
+            E:{ photo: 'Day 1 (3).jpg', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (2).jpg', nextPoint: (-1) },
+            W:{ photo: 'Day 1 (1).jpg', nextPoint: 1 }            
         },
         { // 1 (環工)
-            N:{ photo: '', nextPoint: 5 },
-            E:{ photo: '', nextPoint: 6 },
-            S:{ photo: '', nextPoint: 8 },
-            W:{ photo: '', nextPoint: 7 }            
+            N:{ photo: 'Day 3 (3).jpg', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (2).jpg', nextPoint: 0 },
+            S:{ photo: 'Day 3 (1).jpg', nextPoint: (-1) },
+            W:{ photo: 'Day 3 (4).jpg', nextPoint: 48 }            
         },
-        { // 2
-            N:{ photo: '', nextPoint: 5 },
-            E:{ photo: '', nextPoint: 6 },
-            S:{ photo: '', nextPoint: 8 },
-            W:{ photo: '', nextPoint: 7 }            
+        { // 2 (工3)
+            N:{ photo: 'Day 1 (6).jpg', nextPoint: 3 },
+            E:{ photo: 'Day 1 (7).jpg', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (8).jpg', nextPoint: 0 },
+            W:{ photo: 'Day 1 (5).jpg', nextPoint: (-1) }            
         },
-        { // 3
-            N:{ photo: '', nextPoint: 5 },
-            E:{ photo: '', nextPoint: 6 },
-            S:{ photo: '', nextPoint: 8 },
-            W:{ photo: '', nextPoint: 7 }            
+        { // 3 (操場前)
+            N:{ photo: 'Day 1 (10).jpg', nextPoint: 4 },
+            E:{ photo: 'Day 1 (9).jpg', nextPoint: (-1) },
+            S:{ photo: '', nextPoint: 2 },
+            W:{ photo: 'Day 1 (11).jpg', nextPoint: (-1) }            
         },
-        { // 4
-            N:{ photo: '', nextPoint: 5 },
-            E:{ photo: '', nextPoint: 6 },
-            S:{ photo: '', nextPoint: 8 },
-            W:{ photo: '', nextPoint: 7 }            
+        { // 4 (操場)
+            N:{ photo: 'Day 1 (13).jpg', nextPoint: 5 },
+            E:{ photo: 'Day 1 (14).jpg', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (15).jpg', nextPoint: 3 },
+            W:{ photo: 'Day 1 (12).jpg', nextPoint: (-1) }            
         },
         { // 5
             N:{ photo: '', nextPoint: 5 },
@@ -1337,26 +1440,6 @@ $(document).ready(function()
             W:{ photo: '', nextPoint: 7 }            
         }        
     ];
-    
-    // console.log(streetPoints);
-    // alert(streetPoints[1].E.photo);
-    
-    $( '.arrow' ).eq( 0 ).click(function() // up
-    {
-        
-    });
-    $( '.arrow' ).eq( 1 ).click(function() // down
-    {
-        
-    });
-    $( '.arrow' ).eq( 2 ).click(function() // left
-    {
-        
-    });
-    $( '.arrow' ).eq( 3 ).click(function() // right
-    {
-        
-    });
 });
 </script>
 <?php $this->endWidget();?>
