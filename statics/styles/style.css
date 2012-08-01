@@ -48,6 +48,11 @@ form dt
     position: absolute;
 }
 
+form dt label
+{
+    curosr: text;
+}
+
 form input,
 form textarea
 {
@@ -86,12 +91,6 @@ form textarea
 form button
 {
     height: 24px;
-}
-
-form input:focus,
-form textarea:focus
-{
-    z-index: 3000;
 }
 
 form dt label
@@ -152,6 +151,39 @@ form dl.select dd label
     float: left;
     line-height: 30px;
     padding: 4px 8px;
+}
+
+form dd > span
+{
+    background: #646464;
+    background: rgba(100, 100, 100, 0.7);
+    border-radius: 5px;
+    color: #FFFFFF;
+    display: none;
+    left: 103%;
+    line-height: 20px;
+    margin: 6px -4px;
+    min-height: 20px;
+    position: absolute;
+    padding: 8px;
+    top: 0;
+    width: 85%;
+    word-break: break-all;
+}
+
+form dd .arrow
+{
+    border-color: transparent #646464 transparent transparent;
+    border-color: transparent rgba(100, 100, 100, 0.7) transparent transparent;
+    border-style: dashed solid dashed dashed;
+    border-width: 12px;
+    display: block;
+    left: -32px;
+    height: 0;
+    margin-bottom: -24px;
+    position: relative;
+    top: -2px;
+    width: 0;
 }
 
 form div
@@ -3008,17 +3040,22 @@ ul.friend-other-sort
 
 .user-editor li
 {
-    width: 700px;
-    height: 40px;
+    width: 410px;
+    height: 35px;
     display: block;
     list-style-type:none;
     font-size: 20px;
     text-align:left;
 }
 
+.is_exist
+{
+    color:red;
+}
+
 .user-editor input
 {
-    width: 100px;
+    width: 240px;
     height: 30px;
 }
 
@@ -3097,14 +3134,6 @@ div.friends-part2
     width:680px;
     height:370px;
     margin:0px;
-}
-
-div.friends-part4
-{
-    width:330px;
-    height:315px;
-    margin:0px;
-    padding:25px;
 }
 
 /*div.friends-part4 form
@@ -3211,6 +3240,11 @@ div.myprofile
     margin:0px;
 }
 
+div.myprofile form button
+{
+    float:right;
+}
+
 /*div.mygroups
 {
     background-image:url('../profile/mygroups.png');
@@ -3306,7 +3340,19 @@ div.profile-message-reply
     padding: 0;
 }
 
+<<<<<<< HEAD
+div.register form
+{
+    width:330px;
+    height:315px;
+    margin:0px;
+    padding:15px;
+}
+
+div.register button
+=======
 #sitemap div
+>>>>>>> 992d9414b0888f5fee76fd33cad9b3a075203723
 {
     min-height: 240px;
     overflow: hidden;
@@ -3405,17 +3451,6 @@ div.self-messages
     margin:0px;
     float:left;
 }
-
-div.register .is_exist
-{
-    outline:1px solid red;
-}
-
-/*h1
-{
-    text-align:center;
-    color:green;
-}*/
 
 td.reply-content
 {
@@ -4375,6 +4410,20 @@ li.enabled a
 #forum-forum-body #labels .un-selected:hover
 {
     background:#f48191;
+}
+
+#forum-forum-body #labels .selected
+{
+    float:left;
+    display: inline;
+    list-style-type: none;
+    width:40px;
+    height:26px;
+    background: #f48191;
+    border-radius: 8px;
+    margin-right: 5px;
+    padding: 4px 4px 0 13px;
+    border: 2px solid #ffffff;
 }
 
 #forum-forum-body #labels a
