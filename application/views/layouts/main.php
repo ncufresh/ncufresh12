@@ -64,16 +64,16 @@
             <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" title="大一必讀">大一必讀</a>
             <ul>
                 <li>
-                    <a href="#" title="新生區">新生區</a>
+                    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>#freshman" title="新生區">新生區</a>
                 </li>
                 <li>
-                    <a href="#" title="復學區">復學區</a>
+                    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>#reschool" title="復學區">復學區</a>
                 </li>
                 <li>
-                    <a href="#" title="相關須知">相關須知</a>
+                    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>#notice" title="相關須知">相關須知</a>
                 </li>
                 <li>
-                    <a href="#" title="文件下載">文件下載</a>
+                    <a href="<?php echo Yii::app()->createUrl('readme/download'); ?>" title="文件下載">文件下載</a>
                 </li>
             </ul>
         </li>
@@ -85,19 +85,19 @@
             <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>" title="中大生活">中大生活</a>
             <ul>
                 <li>
-                    <a href="#" title="住在中大">住在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/live'); ?>#live" title="住在中大">住在中大</a>
                 </li>
                 <li>
-                    <a href="#" title="健康中大">健康中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/health'); ?>#health" title="健康中大">健康中大</a>
                 </li>
                 <li>
-                    <a href="#" title="行在中大">行在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/traffic'); ?>#traffic" title="行在中大">行在中大</a>
                 </li>
                 <li>
-                    <a href="#" title="玩在中大">玩在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/play'); ?>#play" title="玩在中大">玩在中大</a>
                 </li>
                 <li>
-                    <a href="#" title="活在中大">活在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/school'); ?>#school" title="活在中大">活在中大</a>
                 </li>
             </ul>
         </li>
@@ -231,7 +231,7 @@
 <div id="footer">
     <div id="footer-content">
         <p>
-            主辦單位：國立中央大學學務處　承辦單位：諮商中心　執行單位：2012大一生活知訊網工作團隊
+            主辦單位：國立中央大學學務處　承辦單位：<a href="http://love.adm.ncu.edu.tw" title="國立中央大學 諮商中心">諮商中心</a>　執行單位：2012大一生活知訊網工作團隊
         </p>
         <p>
             地址：32001桃園縣中壢市五權里2鄰中大路300號 | 電話：(03)422-7151#57261 | 版權所有：2012大一生活知訊網工作團隊
@@ -267,6 +267,7 @@
             calendarEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvents'); ?>'),
             calendarHideEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/hideEvent'); ?>'),
             buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),
+            gameMissionUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/solve', array('id' => ':id'));?>'),
             facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
             facebookAppId: '<?php global $ncufreshfb; echo $ncufreshfb['appId']; ?>',
             googleSearchAppId: '011017124764723419863:mdibrr3n-py',

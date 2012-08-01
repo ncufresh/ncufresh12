@@ -34,6 +34,7 @@ jQuery(document).ready(function()
         $('.fresh-inner:hidden').fadeIn('slow');
         $('.reschool-inner:visible').fadeOut('fast');
         $('.notice-inner:visible').fadeOut('fast');
+        return false;
     });
 
     jQuery('#readme-logo2').click(function()
@@ -41,6 +42,7 @@ jQuery(document).ready(function()
         $('.reschool-inner:hidden').fadeIn('slow');
         $('.notice-inner:visible').fadeOut('fast');
         $('.fresh-inner:visible').fadeOut('fast');
+        return false;
     });
 
     jQuery('#readme-logo3').click(function()
@@ -48,6 +50,7 @@ jQuery(document).ready(function()
         $('.notice-inner:hidden').fadeIn('slow');
         $('.reschool-inner:visible').fadeOut('fast');
         $('.fresh-inner:visible').fadeOut('fast');
+        return false;
     });
 
     jQuery('.readme-menu').mouseenter(function()
@@ -65,5 +68,20 @@ jQuery(document).ready(function()
             left : '-187px'
         },500);
     });
+
+        switch(window.location.hash.replace('#', ''))
+    {
+        case 'freshman' :
+            jQuery('#readme-logo1').click();
+        break;
+
+        case 'reschool' :
+            jQuery('#readme-logo2').click();
+        break;
+
+        case 'notice' :
+            jQuery('#readme-logo3').click();
+        break;
+    }
 
 });

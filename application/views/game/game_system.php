@@ -4,11 +4,9 @@
     <h1> <?php echo $filename=Character::model()->findByPk($watch_id)->skin->filename.'<br/>'; ?></h1>
     <div class="game-system">
     <div class="user-body">
-
 <?php $this->widget('Avatar', array(
     'id'        => $watch_id
 )); ?>
-    
     </div>
     <div class="function-body">
         <ul class="game-button">
@@ -41,9 +39,19 @@
 <?php endif; ?>
         </ul>
         <div class="game-display">
-            
             <?php echo $content; ?>
         </div>
     </div>
 </div>
-
+<div id="game-mission-dialog">
+    <h4>Mission：<span></span></h4>
+    <div class="npc">
+        
+    </div>
+    <div class="display">
+        
+    </div>
+        <?php $this->widget('Avatar', array(
+            'id'        => $watch_id
+        )); ?>
+</div>
