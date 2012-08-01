@@ -2706,8 +2706,22 @@
             {
                 $(tooltip).parent().parent().hover(function()
                 {
-                    $(tooltip).stop(true, true).fadeIn();
+                    if ( $(this).find('input:focus').length === 0 )
+                    {
+                        $(tooltip).stop(true, true).fadeIn();
+                    }
                 }, function()
+                {
+                    if ( $(this).find('input:focus').length === 0 )
+                    {
+                        $(tooltip).stop(true, true).fadeOut();
+                    }
+                })
+                .find('input').focus(function()
+                {
+                    $(tooltip).stop(true, true).fadeIn();
+                })
+                .blur(function()
                 {
                     $(tooltip).stop(true, true).fadeOut();
                 });
