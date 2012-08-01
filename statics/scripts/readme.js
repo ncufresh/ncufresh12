@@ -9,6 +9,9 @@ jQuery(document).ready(function()
             function(data)
             { 
                 $('#readme-view').html(data.content);
+                $('#readme-view').scrollable({
+                    scrollableClass: false
+                });
             }
         ); 
         return false;
@@ -75,5 +78,4 @@ jQuery(document).ready(function()
             jQuery('#readme-logo3').click();
         break;
     }
-
 });
