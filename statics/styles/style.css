@@ -153,6 +153,39 @@ form dl.select dd label
     padding: 4px 8px;
 }
 
+form dd > span
+{
+    background: #646464;
+    background: rgba(100, 100, 100, 0.7);
+    border-radius: 5px;
+    color: #FFFFFF;
+    display: none;
+    left: 103%;
+    line-height: 20px;
+    margin: 6px -4px;
+    min-height: 20px;
+    position: absolute;
+    padding: 8px;
+    top: 0;
+    width: 85%;
+    word-break: break-all;
+}
+
+form dd .arrow
+{
+    border-color: transparent #646464 transparent transparent;
+    border-color: transparent rgba(100, 100, 100, 0.7) transparent transparent;
+    border-style: dashed solid dashed dashed;
+    border-width: 12px;
+    display: block;
+    left: -32px;
+    height: 0;
+    margin-bottom: -24px;
+    position: relative;
+    top: -2px;
+    width: 0;
+}
+
 form div
 {
     margin-top: 4px;
