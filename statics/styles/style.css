@@ -2202,9 +2202,10 @@ button.news-button
 
 #readme-reschool
 {
-    width: 750px;
-    height: 450px;
+    padding: 15px 25px;
+    height: 420px;
     position: relative;
+    width: 700px;
     background: url('../readme/reschool_background.png');
 }
 
@@ -2462,13 +2463,19 @@ button.news-button
     position: absolute;
     display: block;
     list-style: none;
-    font-size: 1.5em;
     opacity: 0.95;
 }
 
 .readme-menu p
 {
     text-align: center;
+}
+
+.readme-menu p:hover
+{
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 .readme-menu span

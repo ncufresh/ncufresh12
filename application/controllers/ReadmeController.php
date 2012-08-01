@@ -137,63 +137,6 @@ class ReadmeController extends Controller
             case 14 :
                 $this->_data['content'] = $this->renderPartial('reschool/14', null, true, false);
                 break;
-            case 15 :
-                $this->_data['content'] = $this->renderPartial('reschool/15', null, true, false);
-                break;
-            case 16 :
-                $this->_data['content'] = $this->renderPartial('reschool/16', null, true, false);
-                break;
-            case 17 :
-                $this->_data['content'] = $this->renderPartial('reschool/17', null, true, false);
-                break;
-            case 18 :
-                $this->_data['content'] = $this->renderPartial('reschool/18', null, true, false);
-                break;
-            case 19 :
-                $this->_data['content'] = $this->renderPartial('reschool/19', null, true, false);
-                break;
-            case 20 :
-                $this->_data['content'] = $this->renderPartial('reschool/20', null, true, false);
-                break;
-            case 21 :
-                $this->_data['content'] = $this->renderPartial('reschool/21', null, true, false);
-                break;
-            case 22 :
-                $this->_data['content'] = $this->renderPartial('reschool/22', null, true, false);
-                break;
-            case 23 :
-                $this->_data['content'] = $this->renderPartial('reschool/23', null, true, false);
-                break;
-            case 24 :
-                $this->_data['content'] = $this->renderPartial('reschool/24', null, true, false);
-                break;
-            case 25 :
-                $this->_data['content'] = $this->renderPartial('reschool/25', null, true, false);
-                break;
-            case 26 :
-                $this->_data['content'] = $this->renderPartial('reschool/26', null, true, false);
-                break;
-            case 27 :
-                $this->_data['content'] = $this->renderPartial('reschool/27', null, true, false);
-                break;
-            case 28 :
-                $this->_data['content'] = $this->renderPartial('reschool/28', null, true, false);
-                break;
-            case 29 :
-                $this->_data['content'] = $this->renderPartial('reschool/29', null, true, false);
-                break;
-            case 30 :
-                $this->_data['content'] = $this->renderPartial('reschool/30', null, true, false);
-                break;
-            case 31 :
-                $this->_data['content'] = $this->renderPartial('reschool/31', null, true, false);
-                break;
-            case 32 :
-                $this->_data['content'] = $this->renderPartial('reschool/32', null, true, false);
-                break;
-            case 33 :
-                $this->_data['content'] = $this->renderPartial('reschool/33', null, true, false);
-                break;
         }
     }
 
@@ -267,7 +210,7 @@ class ReadmeController extends Controller
                 '大一國文寫作檢定',
                 '僑生大一中文能力分級測驗'
             );
-            $tab = array(21, 22, 23);
+            $tab = array(1, 2, 3);
             $size = 3;
         }
         else if( $id == 2 )
@@ -276,7 +219,7 @@ class ReadmeController extends Controller
                 '新生輔導需求調查',
                 '導師輔導資源系統'
             );
-            $tab = array(24, 25);
+            $tab = array(4, 5);
             $size = 2;
         }
         
@@ -288,7 +231,7 @@ class ReadmeController extends Controller
                 '繳交學雜費',
                 '2012中大新生營'
             );
-            $tab = array(27, 28, 29);
+            $tab = array(6, 7, 8);
             $size = 4;
         }
         
@@ -301,7 +244,7 @@ class ReadmeController extends Controller
                 '申請學雜費減免',
                 '申請就學貸款須知',
                 );
-            $tab = array(30, 31, 32, 33, 34, 35);
+            $tab = array(9, 10, 11, 12, 13, 14);
             $size = 5;
         }
         $this->setPageTitle(Yii::app()->name . ' - 復學區');

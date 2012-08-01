@@ -8,8 +8,8 @@ jQuery(document).ready(function()
             jQuery.configures.readMeUrl.replace(':tab', tab).replace(':page', page),
             function(data)
             { 
-                $('#readme-view').html(data.content);
-                $('#readme-view').scrollable({
+                $('.readme-view').html(data.content);
+                $('.readme-view').scrollable({
                     scrollableClass: false
                 });
             }
