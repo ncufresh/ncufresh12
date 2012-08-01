@@ -60,14 +60,6 @@ class ProfileController extends Controller
             $profile->attributes = $_POST['profile'];
             $user_validate = $this->user->validate();
             $profile_validate = $profile->validate();
-            // print_r($profile_validate);
-            // echo '<br />';
-            // print_r($_POST['profile']['year']);
-            // echo '<br />';
-            // print_r($_POST['profile']['month']);
-            // echo '<br />';
-            // print_r($_POST['profile']['day']);
-            // exit;
             if ( $user_validate && $profile_validate )
             {
                 if ( $profile->save() )
