@@ -2888,17 +2888,22 @@ ul.friend-other-sort
 
 .user-editor li
 {
-    width: 700px;
-    height: 40px;
+    width: 410px;
+    height: 35px;
     display: block;
     list-style-type:none;
     font-size: 20px;
     text-align:left;
 }
 
+.is_exist
+{
+    color:red;
+}
+
 .user-editor input
 {
-    width: 100px;
+    width: 240px;
     height: 30px;
 }
 
@@ -3081,6 +3086,11 @@ div.myprofile
     height:370px;
     padding:25px;
     margin:0px;
+}
+
+div.myprofile form button
+{
+    float:right;
 }
 
 /*div.mygroups

@@ -5,8 +5,6 @@ class ProfileController extends Controller
     public $id;
 
     public $user;
-
-    public $profile;
     
     public function init()
     {
@@ -14,7 +12,6 @@ class ProfileController extends Controller
         Yii::import('application.models.Forum.*');
         $this->id = Yii::app()->user->getId();
         $this->user = User::model()->findByPk($this->id);
-        $this->profile = Profile::model()->findByPk($this->id);
         return true;
     }
     public function filters()
@@ -48,23 +45,25 @@ class ProfileController extends Controller
 
     public function actionEditor() 
     {
-        
+        $profile = new Profile();
         if ( isset($_POST['profile']) ) 
         {
             $this->user->attributes = $_POST['register'];
-            $this->profile->attributes = $_POST['profile'];
+            $profile->find(array(
+                'condition' => 'id = :userid AND nickname != :myNickName',
+                'params'    => array(
+                    ':userid'       => $this->id,
+                    ':myNickName'   => $_POST['profile']['nickname']
+                )
+            ));
+            $profile->setScenario('editor');
+            $profile->attributes = $_POST['profile'];
             $user_validate = $this->user->validate();
-            $profile_validate = $this->profile->validate();
-            print_r($_POST['profile']['nickname']);
-            exit;
+            $profile_validate = $profile->validate();
             if ( $user_validate && $profile_validate )
             {
-                echo 456;
-                exit;
-                if ( $this->profile->save() )
+                if ( $profile->save() )
                 {
-                    echo 123;
-                    exit;
                     $this->redirect(array('profile/profile'));
                 }
             }
@@ -73,7 +72,7 @@ class ProfileController extends Controller
                 $this->render('editor', array(                
                         'user'                   => $this->user, 
                         'departments'            => Department::model()->getDepartment(),
-                        'profile_errors'         => $this->profile->getErrors()
+                        'profile_errors'         => $profile->getErrors()
                 ));
             }
         }
@@ -82,7 +81,7 @@ class ProfileController extends Controller
             $this->render('editor', array(                
                 'user'                   => $this->user, 
                 'departments'            => Department::model()->getDepartment(),
-                'profile_errors'         => $this->profile->getErrors()
+                'profile_errors'         => $profile->getErrors()
             ));
         }
     }

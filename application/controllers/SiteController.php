@@ -287,10 +287,6 @@ class SiteController extends Controller
             }
             else
             {
-                // var_dump($user->getErrors());
-                // echo '<br />';
-                // var_dump($profile->getErrors());
-                // exit;
                 $this->render('register', array(
                         'departments'   => Department::model()->getDepartment(),
                         'username_errors'        => $user->getErrors(),

@@ -13,15 +13,14 @@
             </li>
             <li>
                 <span> 暱稱:</span>
-                <input type="text" name="profile[nickname]" value="
+                <input type="text" name="profile[nickname]" value="<?php echo $user->profile->nickname; ?>" />
+            </li>
+            <li class="is_exist">
 <?php if ( isset($profile_errors['nickname']) ) : ?>
 <?php foreach ( $profile_errors['nickname'] as $error ) : ?>
 <?php echo $error; ?>
 <?php endforeach; ?>
-<?php else: ?>
-<?php echo $user->profile->nickname; ?>
 <?php endif; ?>
-                " />
             </li>
             <li>
                 性別:
@@ -40,7 +39,7 @@
             </li>
             <li>
                 <span>系所:</span><?php echo $user->profile->mydepartment->abbreviation; ?>
-                <input type="hidden" name="profile[department]" value="<?php echo $user->profile->mydepartment->abbreviation; ?>"  />
+                <input type="hidden" name="profile[department]" value="<?php echo $user->profile->department_id; ?>"  />
             </li>
             <li>
                 <span>系級:</span><?php echo $user->profile->grade; ?>年級
@@ -51,27 +50,24 @@
                 <input type="text" name="profile[senior]" value="<?php echo $user->profile->senior; ?>" />
             </li>
             <li>
-                <span>生日:<?php echo $user->profile->birthday; ?></span>
-                <span>年:<?php echo date('Y', $user->profile->getrawValue('birthday')); ?></span>
-                <span>月:<?php echo date('m', $user->profile->getrawValue('birthday')); ?></span>
-                <span>日:<?php echo date('d', $user->profile->getrawValue('birthday')); ?></span>
+                <span>生日:</span>
                     <select name="profile[year]" class="year">
 <?php for ( $year = 2000 ; $year >= 1990 ; $year-- ) : ?>
-                        <option value="<?php echo date('Y', $user->profile->getrawValue('birthday')); ?>">
+                        <option value="<?php echo $year; ?>">
 <?php echo $year; ?>                        
                         </option>
 <?php endfor; ?>
                     </select>
                     <select name="profile[month]" class="month">
 <?php for ( $month = 1 ; $month <= 12 ; $month++ ) : ?>
-                        <option value="<?php echo date('m', $user->profile->getrawValue('birthday')); ?>">
+                        <option value="<?php echo $month; ?>">
 <?php echo $month; ?>                        
                         </option>
 <?php endfor; ?>
                     </select>
                     <select name="profile[day]" class="day">
 <?php for ( $day = 1 ; $day <= 31 ; $day++ ) : ?>
-                        <option value="<?php echo date('d', $user->profile->getrawValue('birthday')); ?>">
+                        <option value="<?php echo $day; ?>">
 <?php echo $day; ?>                        
                         </option>
 <?php endfor; ?>

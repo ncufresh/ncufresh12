@@ -26,7 +26,7 @@ class Profile extends CActiveRecord
             array('name, nickname, department, grade, senior, year, month, day ,gender','required'),
             array('department', 'length','min' => 1, 'max' => 2),
             array('grade', 'length','min' => 1, 'max' => 1),
-            array('nickname', 'unique', 'className' => 'Profile', 'on' => 'register'),
+            array('nickname', 'unique', 'className' => 'Profile', 'on' => 'register, editor'),
             array('year', 'numerical', 'min' => 1990, 'max' => 2000),
             array('month', 'numerical', 'min' => 1, 'max' => 12), 
             array('day', 'numerical', 'min' => 1, 'max' => 31),
