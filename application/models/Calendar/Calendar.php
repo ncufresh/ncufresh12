@@ -142,10 +142,11 @@ class Calendar extends CActiveRecord
     
     public function getGeneralCalendar()
     {
-        return $this->with('events')->find(array(
-            'condition' => 'user_id = :user_id',
+        return $this->find(array(
+            'condition' => 'user_id = :user_id AND category = :category',
             'params' => array(
-                ':user_id' => self::GENERAL_CALENDAR_USER_ID
+                ':user_id' => self::GENERAL_CALENDAR_USER_ID,
+                ':category' => self::CATEGORY_PUBLIC
             )
         ));
     }

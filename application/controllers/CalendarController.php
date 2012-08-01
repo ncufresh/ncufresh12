@@ -199,7 +199,6 @@ class CalendarController extends Controller
     //測試完封閉一般REQUEST
     public function actionAjaxEvents()
     {
-        $user = User::model()->findByPk(Yii::app()->user->id);
         $this->_data['events'] = array();
         if( isset($_POST['event_ids']) )
         {
@@ -239,24 +238,39 @@ class CalendarController extends Controller
         }
         else
         {
+            $user = User::model()->findByPk(Yii::app()->user->id);
             $counter = 0;
-            foreach ( $user->calendar->events as $event )
+            if( Yii::app()->user->isMember )
             {
-                $this->_data['events'][$counter]['id'] = $event->id;
-                $this->_data['events'][$counter]['start'] = $event->start;
-                $this->_data['events'][$counter]['name'] = $event->name;
-                $this->_data['events'][$counter]['end'] = $event->end;
-                $counter++;
-            }
-            foreach ( $user->subscriptions as $calendar )
-            {
-                foreach( $calendar->events as $event )
+                foreach ( $user->calendar->events as $event )
                 {
                     $this->_data['events'][$counter]['id'] = $event->id;
                     $this->_data['events'][$counter]['start'] = $event->start;
                     $this->_data['events'][$counter]['name'] = $event->name;
                     $this->_data['events'][$counter]['end'] = $event->end;
                     $counter++;
+                }
+                foreach ( $user->subscriptions as $calendar )
+                {
+                    foreach ( $calendar->events as $event )
+                    {
+                        $this->_data['events'][$counter]['id'] = $event->id;
+                        $this->_data['events'][$counter]['start'] = $event->start;
+                        $this->_data['events'][$counter]['name'] = $event->name;
+                        $this->_data['events'][$counter]['end'] = $event->end;
+                        $counter++;
+                    }
+                }
+            }
+            else
+            {
+                $events = Calendar::model()->getGeneralCalendar()->events;
+                foreach ( $events as $key => $event )
+                {
+                    $this->_data['events'][$key]['id'] = $event->id;
+                    $this->_data['events'][$key]['start'] = $event->start;
+                    $this->_data['events'][$key]['name'] = $event->name;
+                    $this->_data['events'][$key]['end'] = $event->end;
                 }
             }
         }
