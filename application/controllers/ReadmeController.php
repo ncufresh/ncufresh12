@@ -74,29 +74,46 @@ class ReadmeController extends Controller
     
     public function actionFreshman($id = 0)
     {   
-        if($id == 1)
+        if ( $id == 1 )
         {
-            $index = array("可惡","機車", "水唷");
-            $tab = array(1,2,3);
+            $index = array(
+                '新生體檢說明項目及流程',
+                '大一新生國文檢定',
+                '僑生大一中文能力分級檢測'
+            );
+            $tab = array(1, 2, 3);
             $size = 3;
         }
-        else if($id == 2)
+        else if ( $id == 2 )
         {
-            $index = array("水唷", "機車", "可惡");
-            $tab = array(4,5,6);
-            $size = 3;
+            $index = array(
+                '大一新生身心適應心理講座',
+                '新生入學輔導',
+                '學生學習協助與輔導',
+                '新生輔導需求調查',
+                '導師輔導資源系統'
+            );
+            $tab = array(4, 5, 6, 7, 8);
+            $size = 5;
+        }
+
+        else if ( $id == 3 )
+        {
+            $index = array(
+                '註冊開學',
+                '繳交學雜費',
+                '註冊日程',
+                '學籍登入',
+                '大一新生宿舍',
+                '2012中大新生宿舍',
+            );
+            $tab = array(9, 10, 11, 12, 13, 14);
+            $size = 6;
         }
         
-        else if($id == 3)
+        else if( $id == 4 )
         {
-            $index = array("棒唷", "機車", "可惡");
-            $tab = array(7,8,9);
-            $size = 3;
-        }
-        
-        else if($id == 4)
-        {
-            $index = array("GO唷", "機車", "可惡");
+            $index = array('GO唷', '機車', '可惡');
             $tab = array(10,11,12);
             $size = 3;
         }
@@ -111,29 +128,29 @@ class ReadmeController extends Controller
 
     public function actionReschool($id = 0)
     {
-        if($id == 1)
+        if( $id == 1 )
         {
-            $index = array("我要","復學", "水唷");
+            $index = array('我要','復學', '水唷');
             $tab = array(1,2,3);
             $size = 3;
         }
-        else if($id == 2)
+        else if( $id == 2 )
         {
-            $index = array("水唷", "機車", "可惡");
+            $index = array('水唷', '機車', '可惡');
             $tab = array(4,5,6);
             $size = 3;
         }
         
-        else if($id == 3)
+        else if( $id == 3 )
         {
-            $index = array("棒唷", "機車", "可惡");
+            $index = array('棒唷', '機車', '可惡');
             $tab = array(7,8,9);
             $size = 3;
         }
         
-        else if($id == 4)
+        else if( $id == 4 )
         {
-            $index = array("GO唷", "機車", "可惡");
+            $index = array('GO唷', '機車', '可惡');
             $tab = array(10,11,12);
             $size = 3;
         }
