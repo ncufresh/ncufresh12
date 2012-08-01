@@ -163,8 +163,8 @@
         </dl>
         <div>
             <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
-            <button id="rewrite"><a href="<?php echo Yii::app()->createUrl('site/register'); ?>">重填</a></button>
-            <button type="submit">註冊</button>
+            <button class="button-rewrite"><a href="<?php echo Yii::app()->createUrl('site/register'); ?>" ></a></button>
+            <button type="submit" class="button-register"></button>
         </div>
     </form>
 </div>

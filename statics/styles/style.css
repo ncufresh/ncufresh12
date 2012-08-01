@@ -3470,6 +3470,47 @@ div.profile-message-reply
     margin:0px;
 }
 
+.button-addfriend
+{
+    background-image:url('../profile/button/addfriend.png');
+    background-repeat:no-repeat ;
+    width:50px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-editor
+{
+    background-image:url('../profile/button/editor.png');
+    background-repeat:no-repeat ;
+    width:50px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-register
+{
+    background-image:url('../profile/button/register.png');
+    background-repeat:no-repeat ;
+    width:159px;
+    height:57px;
+    padding:0px;
+    margin:0px;
+    float:left;
+}
+
+.button-rewrite
+{
+    background-image:url('../profile/button/rewrite.png');
+    background-repeat:no-repeat ;
+    width:146px;
+    height:57px;
+    padding:0px;
+    margin:0px;
+}
+
 /**
  * Sitemap
  */
@@ -3502,35 +3543,30 @@ div.profile-message-reply
     width: 660px;
 }
 
-/*#register > form,
-#register .scroll-container
-{
-    height: 330px;
-    overflow: hidden;
-}*/
-
-#register button
-{
-    background: url('../profile/button/button_register.png');
-    height: 22px;
-    margin-left: 25px;
-    padding: 0px;
-    width: 45px;
-}
-
 #register h4
 {
     margin: -10px 0 -5px;
 }
 
-div.register #rewrite
+div#success
 {
-    background-image:url('../profile/button_register.png');
+    background-image:url('../profile/finish.png');
     background-repeat:no-repeat ;
-    width:45px;
-    height:22px;
+    width:690px;
+    height:370px;
+    padding:25px;
+    margin:0px;
+}
+
+div#success a 
+{
+    display:block;
+    outline:1px solid red;
+    width:162px;
+    height:53px;
     padding:0px;
-    margin-left:180px;
+    margin-left:269px;
+    margin-top:207px;
 }
 
 div.login
@@ -3541,6 +3577,13 @@ div.login
     height:370px;
     padding:25px;
     margin:0px;
+}
+
+div.login ul
+{ 
+    padding:0px;
+    margin-left:225px;
+    margin-top:45px;
 }
 
 div.delete-group
@@ -3558,8 +3601,8 @@ div.login form
 {
     width:350px;
     height:110px;
-    margin-left:150px;
-    margin-top:160px;
+    margin-left:200px;
+    margin-top:90px;
     padding:0px;
 }
 
