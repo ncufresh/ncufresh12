@@ -13,7 +13,9 @@ body
 {
     background: #DCE4ED url('../images/header.png') repeat-x;
     margin: 0 auto;
+    overflow-x: hidden;
     overflow-y: scroll;
+    padding: 0;
     width: 1000px;
 }
 
@@ -83,7 +85,10 @@ form textarea
 
 form button
 {
+    cursor: pointer;
     height: 40px;
+    float: right;
+    margin-left: 20px;
     padding: 4px 16px;
 }
 
@@ -193,6 +198,13 @@ form dd .arrow
 form div
 {
     margin-top: 4px;
+    width: 50%;
+}
+
+form div:after
+{
+    content: '\A';
+    white-space: pre;
 }
 
 a
@@ -592,12 +604,17 @@ a:hover
 
 #content
 {
-    margin: 0 225px 0 25px;
-    min-height: 300px;
-    overflow: hidden;
+    float: left;
+    padding: 0 25px;
+    width: 750px;
 }
 
 #footer
+{
+    clear: both;
+}
+
+#footer-background
 {
     background: url('../images/footer.png') repeat-x center;
     height: 120px;
@@ -630,11 +647,8 @@ a:hover
  */
 #sidebar
 {
-    height: 100%;
-    margin-left: 800px;
-    padding-left: 15px;
-    position: absolute;
-    top: 0;
+    float: right;
+    margin: -240px -15px 0 15px;
     width: 200px;
 }
 
@@ -678,7 +692,7 @@ a:hover
 
 #sidebar form.profile dl
 {
-    margin: 0 5%;
+    margin: 0;
     width: 90%;
 }
 
@@ -689,22 +703,18 @@ a:hover
     line-height: 20px;
 }
 
-#sidebar form.profile button
-{
-    box-shadow: none;
-}
-
 #sidebar form.profile div
 {
     text-align: center;
+    width: auto;
 }
 
 #sidebar form.profile button
 {
     border: none;
-    cursor: pointer;
+    box-shadow: none;
+    float: none;
     height: 25px;
-    line-heigth: 25px;
     margin: 0 10px;
     text-indent: -100000px;
     width: 55px;
@@ -1172,6 +1182,11 @@ table.gsc-completion-container
     height: 20px;
     padding-right: 30px;
     width: 178px;
+}
+
+#search div
+{
+    width: auto;
 }
 
 #search button
@@ -1727,26 +1742,39 @@ button.news-button
 /**
  * Multimedia style
  */
-
-#mm-container
+#multimedia
 {
-}
-
-#mm-sidebar
-{
-    width: 25%;
-    float: left;
-}
-
-#mm-menu
-{
-    width: 100%;
-    height: 400px;
-    background: skyblue;
+    background: #18244E url('../images/multimedia_background.png');
+    border-radius: 5px;
     overflow: hidden;
+    padding-top: 90px;
 }
 
-#mm-menu button
+#multimedia .sidebar
+{
+    float: left;
+    width: 25%;
+}
+
+#multimedia .content
+{
+    float: left;
+    width: 75%;
+}
+
+#multimedia .menu
+{
+    height: 400px;
+    overflow: hidden;
+    width: 100%;
+}
+
+#multimedia .items
+{
+    margin-top: 0;
+}
+
+#multimedia button
 {
     border: 0;
     margin: 0;
@@ -1761,23 +1789,18 @@ button.news-button
     z-index: 100;
 }
 
-#mm-menu #mm-menu-items
-{
-    margin-top: 0;
-}
-
-#mm-menu button:hover
+#multimedia button:hover
 {
     opacity: 0.9;
     cursor: pointer;
 }
 
-#mm-menu button.mm-menu-down
+#multimedia button.down
 {
     margin-top: 350px;
 }
 
-#mm-menu a
+#multimedia a
 {
     display: block;
     width: 100%;
@@ -1787,12 +1810,12 @@ button.news-button
     opacity: 1;
 }
 
-#mm-menu a:hover
+#multimedia a:hover
 {
     opacity: 0.8;
 }
 
-#mm-menu a span
+#multimedia a span
 {
     color: white;
     position: relative;
@@ -1807,67 +1830,46 @@ button.news-button
     padding: 0 8px 0 0;
 }
 
-#mm-menu a img
+#multimedia a img
 {
     width: 100%;
     height: 100%;
 }
 
-#mm-player
+#multimedia .player
 {
-    width: 100%;
-    height: 200px;
-    background: blue;
-}
-
-#mm-content
-{
-    width: 75%;
-    float: left;
-}
-
-#mm-video
-{
-    background: #000000;
     height: 400px;
     position: relative;
     width: 100%;
 }
 
-#mm-video .loading
+#multimedia .projector
+{
+    background: url('../images/multimedia_projector.png') 15px 0 no-repeat;
+    height: 200px;
+    width: 100%;
+}
+
+#multimedia .loading
 {
     position: absolute;
 }
 
-#mm-video-frame
+#multimedia .introduction
+{
+    background: url('../images/multimedia_introduction.png') 0 5px no-repeat;
+    color: #FFFFFF;
+    height: 150px;
+    padding: 25px 55px;
+    width: 100%;
+}
+
+#multimedia-frame
 {
     border: 0;
     margin: 0;
     padding: 0;
     position: relative;
-}
-
-#mm-introduction
-{
-    width: 100%;
-    height: 200px;
-    background: gray;
-}
-
-#mm-introduction .text
-{
-    width: 65%;
-    height: 100%;
-    background: red;
-    float: left;
-}
-
-#mm-introduction .pic
-{
-    background: yellow;
-    width: 35%;    
-    height: 100%;
-    float: left;
 }
 
 /**
@@ -2267,7 +2269,7 @@ button.news-button
 
 #freshman-3
 {
-    width: 105px;
+    width: 79px;
     height: 128px;
     left: 272px;
     top: 262px;
@@ -2276,7 +2278,7 @@ button.news-button
 
 #freshman-4
 {
-    width: 119px;
+    width: 54px;
     height: 141px;
     left: 194px;
     top: 271px;
@@ -2377,12 +2379,23 @@ button.news-button
     position: absolute;
 }
 
+#readme .readme-view
+{
+    padding-right: 10px;
+}
+
+#readme .scroll-bar
+{
+    top: 33%;
+    height: 65%;
+}
+
 #readme-logo1
 {
     width: 124px;
     height: 122px;
     left: 357px;
-    top: 75px;
+    top: 74px;
     position: absolute;
 }
 
@@ -2396,8 +2409,8 @@ button.news-button
 {
     width: 140px;
     height: 135px;
-    left: 492px;
-    top: 32px;
+    left: 491px;
+    top: 31px;
     position: absolute;
 }
 
@@ -2412,7 +2425,7 @@ button.news-button
     width: 121px;
     height: 194px;
     left: 607px;
-    top: 33px;
+    top: 32px;
     position: absolute;
 }
 
@@ -2428,7 +2441,7 @@ button.news-button
     width: 126px;
     height: 107px;
     position: absolute;
-    top: 212px;
+    top: 211px;
     left: 603px;
 }
 
@@ -2459,7 +2472,7 @@ button.news-button
     height: 300px;
     top: 50px;
     left: -187px;
-    border-radius: 10px;
+    border-radius: 0 10px 10px 0;
     position: absolute;
     display: block;
     list-style: none;
@@ -3342,10 +3355,11 @@ div.profile-message-reply
 {
     background-image: url('../profile/button/back.png');
     background-repeat: no-repeat ;
-    width: 141px;
-    height: 61px;
+    width: 82px;
+    height: 35px;
     padding: 0px;
     margin: 0px;
+    float:left;
 }
 
 .button-cancel
@@ -3372,8 +3386,8 @@ div.profile-message-reply
 {
     background-image:url('../profile/button/sure.png');
     background-repeat:no-repeat ;
-    width:91px;
-    height:50px;
+    width:62px;
+    height:34px;
     padding:0px;
     margin:0px;
 }
@@ -3388,36 +3402,39 @@ div.profile-message-reply
     margin:0px;
 }
 
-.button-deletegroup
+#button-deletegroup
 {
     background-image:url('../profile/button/delete-group.png');
     background-repeat:no-repeat ;
-    width:213px;
-    height:58px;
+    width:120px;
+    height:33px;
     padding:0px;
     margin:0px;
     float:left;
+    display:block;
 }
 
-.button-addmember
+#button-addmember
 {
     background-image:url('../profile/button/add-member.png');
     background-repeat:no-repeat ;
-    width:213px;
-    height:59px;
+    width:123px;
+    height:35px;
     padding:0px;
     margin:0px;
     float:left;
+    display:block;
 }
 
-.button-deletemember
+#button-deletemember
 {
     background-image:url('../profile/button/delete-member.png');
     background-repeat:no-repeat ;
-    width:213px;
-    height:58px;
+    width:121px;
+    height:34px;
     padding:0px;
     margin:0px;
+    float:left;
 }
 
 .button-makefriend
@@ -3434,8 +3451,8 @@ div.profile-message-reply
 {
     background-image:url('../profile/button/delete-friend.png');
     background-repeat:no-repeat ;
-    width:188px;
-    height:50px;
+    width:122px;
+    height:35px;
     padding:0px;
     margin:0px;
 }
@@ -3454,41 +3471,37 @@ div.profile-message-reply
 {
     background-image:url('../profile/button/addfriend.png');
     background-repeat:no-repeat ;
-    width:50px;
-    height:50px;
+    width:96px;
+    height:35px;
     padding:0px;
     margin:0px;
 }
 
-.button-editor
+#button-editor
 {
     background-image:url('../profile/button/editor.png');
     background-repeat:no-repeat ;
-    width:50px;
-    height:50px;
-    padding:0px;
-    margin:0px;
-}
-
-.button-register
-{
-    background-image:url('../profile/button/register.png');
-    background-repeat:no-repeat ;
-    width:159px;
+    width:158px;
     height:57px;
     padding:0px;
     margin:0px;
+    display: block;
     float:left;
 }
 
-.button-rewrite
+.button-flower
 {
-    background-image:url('../profile/button/rewrite.png');
+    background-image:url('../profile/button/flower.png');
     background-repeat:no-repeat ;
     width:146px;
     height:57px;
     padding:0px;
     margin:0px;
+}
+
+.is_exist
+{
+    color:red;
 }
 
 /**
@@ -3553,7 +3566,7 @@ div#success a
 {
     background: url('../profile/login.png');
     width: 690px;
-    height: 370px;
+    height: 365px;
     padding: 25px;
     margin: 0px;
 }

@@ -23,6 +23,6 @@
         </ul>
     </div>
 </div>
-<button type="submit">確定加為好友</button>
+<button type="submit" class="button-addfriend"></button>
 <button type="button" class="button-back"></button>
 </form>

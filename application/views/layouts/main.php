@@ -85,19 +85,19 @@
             <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>" title="中大生活">中大生活</a>
             <ul>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('nculife/live'); ?>#live" title="住在中大">住在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#live" title="住在中大">住在中大</a>
                 </li>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('nculife/health'); ?>#health" title="健康中大">健康中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#health" title="健康中大">健康中大</a>
                 </li>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('nculife/traffic'); ?>#traffic" title="行在中大">行在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#traffic" title="行在中大">行在中大</a>
                 </li>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('nculife/play'); ?>#play" title="玩在中大">玩在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#play" title="玩在中大">玩在中大</a>
                 </li>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('nculife/school'); ?>#school" title="活在中大">活在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#school" title="活在中大">活在中大</a>
                 </li>
             </ul>
         </li>
@@ -264,13 +264,15 @@
     </div>
 </div>
 <div id="footer">
-    <div id="footer-content">
-        <p>
-            主辦單位：國立中央大學學務處　承辦單位：<a href="http://love.adm.ncu.edu.tw" title="國立中央大學 諮商中心">諮商中心</a>　執行單位：2012大一生活知訊網工作團隊
-        </p>
-        <p>
-            地址：32001桃園縣中壢市五權里2鄰中大路300號 | 電話：(03)422-7151#57261 | 版權所有：2012大一生活知訊網工作團隊
-        </p>
+    <div id="footer-background">
+        <div id="footer-content">
+            <p>
+                主辦單位：國立中央大學學務處　承辦單位：<a href="http://love.adm.ncu.edu.tw" title="國立中央大學 諮商中心">諮商中心</a>　執行單位：2012大一生活知訊網工作團隊
+            </p>
+            <p>
+                地址：32001桃園縣中壢市五權里2鄰中大路300號 | 電話：(03)422-7151#57261 | 版權所有：2012大一生活知訊網工作團隊
+            </p>
+        </div>
     </div>
 </div>
 
