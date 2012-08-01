@@ -1968,7 +1968,7 @@ button.news-button
     text-decoration: underline;
 }
 
-#nculife-db
+#nculife-db .scroll-container
 {
     width: 610px;
     height: 290px;
@@ -1976,10 +1976,6 @@ button.news-button
 
 #nculife-cv
 {
-    width: 620px;
-    height: 320px;
-    overflow-x: hidden;
-    overflow-y: auto;
     margin-left: 10px;
 
 }

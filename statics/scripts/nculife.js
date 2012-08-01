@@ -67,6 +67,10 @@ jQuery(document).ready(function()
             $('#nculife-title h4').text($(this).text());
         }
         $('#nculife-dh > a').first().click();
+
+        $('#nculife-cv').scrollable({
+            scrollableClass:    false
+        });
     });
 
     jQuery('#life-play').mouseenter(function()
@@ -171,5 +175,4 @@ jQuery(document).ready(function()
             jQuery('#life-health').mouseenter();
         break;
     }
-
 });
