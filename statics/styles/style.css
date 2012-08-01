@@ -13,6 +13,7 @@ body
 {
     background: #DCE4ED url('../images/header.png') repeat-x;
     margin: 0 auto;
+    overflow-x: hidden;
     overflow-y: scroll;
     padding: 0;
     width: 1000px;
@@ -594,7 +595,8 @@ a:hover
 #content
 {
     float: left;
-    width: 800px;
+    padding: 0 25px;
+    width: 750px;
 }
 
 #footer
