@@ -49,8 +49,8 @@ return array(
             'password'          => $ncufreshdb['password'],
             'charset'           => 'utf8',
             'tablePrefix'       => '',
-            'enableParamLogging'=> true,
-            'enableProfiling'   => true
+            // 'enableParamLogging'=> true,
+            // 'enableProfiling'   => true
         ),
         'errorHandler'  => array(
             'errorAction'       => 'site/error'

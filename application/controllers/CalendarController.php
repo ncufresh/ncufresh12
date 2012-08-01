@@ -94,10 +94,12 @@ class CalendarController extends Controller
             $event->name = $_POST['event']['name'];
             $event->description = $_POST['event']['description'];
             $event->invisible = 0;
-            $event->start = strtotime($_POST['event']['start']);
-            $event->end = strtotime($_POST['event']['end']);
+            // $event->start = strtotime($_POST['event']['start']);
+            $event->start = $_POST['event']['start'];
+            // $event->end = strtotime($_POST['event']['end']);
+            $event->end = $_POST['event']['end'];
             $event->calendar_id = Calendar::Model()->find('user_id='.Yii::app()->user->getId().' AND category=1')->id;
-            if ( $event->save() )
+            if ( $event->validate() && $event->save() )
             {
                 $this->redirect(Yii::app()->createUrl('calendar/view'));
             }

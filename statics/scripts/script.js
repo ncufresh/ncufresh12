@@ -1679,7 +1679,7 @@
         }, options);
         var current_year = (new Date()).getFullYear();
         var current_month = (new Date()).getMonth() + 1;
-        var container = $('<div></div>').appendTo(options.calendar_container);
+        var container = options.calendar_container;
         var events_container = $(options.events_container);
         var date_container = $(options.date_container);
         var prompt = $(options.prompt)
@@ -1703,6 +1703,7 @@
                         year -= 1;
                     }
                     geneator(year, month);
+                    return false;
                 },
                 rightClick: function()
                 {
@@ -1712,6 +1713,7 @@
                         year += 1;
                     }
                     geneator(year, month);
+                    return false;
                 },
                 dayClick: function()
                 {
