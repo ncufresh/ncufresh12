@@ -236,10 +236,45 @@ class GameController extends Controller
         )));
     }
     
-    public function actionSolve($id = 0)
+    public function actionProblem($id = 0)
     {
         $mission = Mission::model()->findByPk($id);
         $this->_data['name'] = $mission->name;
         $this->_data['content'] = $mission->content;
+    }
+    
+    public function actionSolve($id = 0)
+    {
+        if ( isset($_POST['answer']) )
+        {
+            $mission = Mission::model()->findByPk($id);
+            $user_mission_counter = ($this->characterData->missions)+1;
+            $answer = $mission->answer;
+            $get_money = $mission->money;
+            $get_experience = $mission->experience;
+            // $this->_data['name'] = $mission->name;
+            // $this->_data['content'] = $mission->content;
+            // echo "輸入的答案".$_POST['answer'].'</br>';
+            // echo "正確的答案".$answer.'</br>';
+            if( $_POST['answer'] == $answer )
+            {
+                $this->_data['result'] = true;
+                if( $id == $user_mission_counter ) // 解一題沒解過的題目
+                {
+                    $this->characterData->addMission();
+                    $this->characterData->addMoney($get_money);
+                    $this->characterData->addexp($get_experience);
+                }
+                else
+                {
+                    $this->characterData->addMoney($get_money*0.05);
+                }
+            }
+            else
+            {
+                $this->_data['result'] = false;
+            }
+            $this->_data['token'] = Yii::app()->security->getToken();
+        }
     }
 }
