@@ -3040,17 +3040,22 @@ ul.friend-other-sort
 
 .user-editor li
 {
-    width: 700px;
-    height: 40px;
+    width: 410px;
+    height: 35px;
     display: block;
     list-style-type:none;
     font-size: 20px;
     text-align:left;
 }
 
+.is_exist
+{
+    color:red;
+}
+
 .user-editor input
 {
-    width: 100px;
+    width: 240px;
     height: 30px;
 }
 
@@ -3129,14 +3134,6 @@ div.friends-part2
     width:680px;
     height:370px;
     margin:0px;
-}
-
-div.friends-part4
-{
-    width:330px;
-    height:315px;
-    margin:0px;
-    padding:25px;
 }
 
 /*div.friends-part4 form
@@ -3243,6 +3240,11 @@ div.myprofile
     margin:0px;
 }
 
+div.myprofile form button
+{
+    float:right;
+}
+
 /*div.mygroups
 {
     background-image:url('../profile/mygroups.png');
@@ -3338,7 +3340,19 @@ div.profile-message-reply
     padding: 0;
 }
 
+<<<<<<< HEAD
+div.register form
+{
+    width:330px;
+    height:315px;
+    margin:0px;
+    padding:15px;
+}
+
+div.register button
+=======
 #sitemap div
+>>>>>>> 992d9414b0888f5fee76fd33cad9b3a075203723
 {
     min-height: 240px;
     overflow: hidden;
@@ -3437,17 +3451,6 @@ div.self-messages
     margin:0px;
     float:left;
 }
-
-div.register .is_exist
-{
-    outline:1px solid red;
-}
-
-/*h1
-{
-    text-align:center;
-    color:green;
-}*/
 
 td.reply-content
 {

@@ -5,7 +5,7 @@ class ProfileController extends Controller
     public $id;
 
     public $user;
-
+    
     public function init()
     {
         parent::init();
@@ -45,14 +45,23 @@ class ProfileController extends Controller
 
     public function actionEditor() 
     {
+        $profile = new Profile();
         if ( isset($_POST['profile']) ) 
         {
             $this->user->attributes = $_POST['register'];
-            $profile = $this->user->profile;
+            $profile->find(array(
+                'condition' => 'id = :userid AND nickname != :myNickName',
+                'params'    => array(
+                    ':userid'       => $this->id,
+                    ':myNickName'   => $_POST['profile']['nickname']
+                )
+            ));
+            $profile->setScenario('editor');
             $profile->attributes = $_POST['profile'];
-            if ( $this->user->validate() && $profile->validate() )
+            $user_validate = $this->user->validate();
+            $profile_validate = $profile->validate();
+            if ( $user_validate && $profile_validate )
             {
-                
                 if ( $profile->save() )
                 {
                     $this->redirect(array('profile/profile'));
@@ -61,15 +70,20 @@ class ProfileController extends Controller
             else
             {
                 $this->render('editor', array(                
-                        'user'          => $this->user, 
-                        'departments'   => Department::model()->getDepartment()
+                        'user'                   => $this->user, 
+                        'departments'            => Department::model()->getDepartment(),
+                        'profile_errors'         => $profile->getErrors()
                 ));
             }
         }
-        $this->render('editor', array(                
-            'user'          => $this->user, 
-            'departments'   => Department::model()->getDepartment()
-        ));
+        else
+        {
+            $this->render('editor', array(                
+                'user'                   => $this->user, 
+                'departments'            => Department::model()->getDepartment(),
+                'profile_errors'         => $profile->getErrors()
+            ));
+        }
     }
 
     public function actionMessage()
