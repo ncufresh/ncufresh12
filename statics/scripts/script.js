@@ -894,12 +894,12 @@
             {
                 var originalHeight = $.integer(scrollDragable.css('height'));
                 var scrollContentHeight = scrollContent.height();
-                var scrollContainerHeight = scrollContainer.height();
+                var scrollTrackHeight = scrollTrack.height();
                 var height = 0;
-                if ( scrollContentHeight > scrollContainerHeight )
+                if ( scrollContentHeight > scrollTrackHeight )
                 {
-                    height = scrollContainerHeight
-                           * scrollContainerHeight
+                    height = scrollTrackHeight
+                           * scrollTrackHeight
                            / scrollContentHeight;
                 }
                 if ( height != originalHeight )
