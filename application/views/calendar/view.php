@@ -2,7 +2,7 @@
 <script type="text/javascript">
 jQuery(document).ready(function()
 {
-    $('#personal-calendar .left').calendar();
+    var calendar = $('#personal-calendar .left').calendar();
 
     $('a.calendar-hide-event').live('click', function()
     {
@@ -23,6 +23,7 @@ jQuery(document).ready(function()
                 if ( $.errors(response.errors) )
                 {
                     $(self).parents('li').remove();
+                    calendar.updateData();
                 }
             }
         );
@@ -39,4 +40,11 @@ jQuery(document).ready(function()
     <a href="<?php echo Yii::app()->createUrl('calendar/createevent');?>">新增</a>
     <a href="<?php echo Yii::app()->createUrl('calendar/subscript');?>">訂閱</a>
     <a href="<?php echo Yii::app()->createUrl('calendar/recycle');?>">垃圾桶</a>
+    <div class="prompt">
+        <ul>
+        </ul>
+        <i></i>
+    </div>
 </div>
+
+

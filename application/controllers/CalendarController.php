@@ -110,6 +110,16 @@ class CalendarController extends Controller
 
     public function actionShowEvent()
     {
+        if ( Yii::app()->request->getIsAjaxRequest() )
+        {
+            if ( isset($_POST['calendar']) )
+            {
+                $id = (integer)$_POST['calendar']['id'];
+                if ( Event::model()->show($id) ) return true;
+            }
+            $this->_data['errors'][] = '發生錯誤！';
+            return true;
+        }
     }
 
     public function actionDeleteEvent()
