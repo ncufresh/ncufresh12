@@ -4627,25 +4627,25 @@ td.popularity
 
 #forum-forum-body.blue #body-table .table-body td.category
 {
-    border-color:#97d2f3;
+    border-color:#69c1f2;
 }
 
 #forum-forum-body.blue #body-table .table-body td.title,
-td.author,
-td.reply,
-td.popularity
+#forum-forum-body.blue #body-table .table-body td.author,
+#forum-forum-body.blue #body-table .table-body td.reply,
+#forum-forum-body.blue #body-table .table-body td.popularity
 {
-    border-color:#97d2f3;
+    border-color:#69c1f2;
 }
 
 #forum-forum-body.blue #body-table .table-body td.title a:hover
 {
-    color: #97d2f3;
+    color: #69c1f2;
 }
 
 #forum-forum-body.blue #body-table .table-body td.time
 {
-    border-color:#97d2f3;
+    border-color:#69c1f2;
 }
 /*end of blue CSS*/
 
@@ -4707,9 +4707,9 @@ td.popularity
 }
 
 #forum-forum-body.green #body-table .table-body td.title,
-td.author,
-td.reply,
-td.popularity
+#forum-forum-body.green #body-table .table-body td.author,
+#forum-forum-body.green #body-table .table-body td.reply,
+#forum-forum-body.green #body-table .table-body td.popularity
 {
     border-color:#72c774;
 }
@@ -4783,9 +4783,9 @@ td.popularity
 }
 
 #forum-forum-body.purple #body-table .table-body td.title,
-td.author,
-td.reply,
-td.popularity
+#forum-forum-body.purple #body-table .table-body td.author,
+#forum-forum-body.purple #body-table .table-body td.reply,
+#forum-forum-body.purple #body-table .table-body td.popularity
 {
     border-color:#dd94c0;
 }
@@ -4859,9 +4859,9 @@ td.popularity
 }
 
 #forum-forum-body.orange #body-table .table-body td.title,
-td.author,
-td.reply,
-td.popularity
+#forum-forum-body.orange #body-table .table-body td.author,
+#forum-forum-body.orange #body-table .table-body td.reply,
+#forum-forum-body.orange #body-table .table-body td.popularity
 {
     border-color:#f68764;
 }
@@ -4935,9 +4935,9 @@ td.popularity
 }
 
 #forum-forum-body.yellow #body-table .table-body td.title,
-td.author,
-td.reply,
-td.popularity
+#forum-forum-body.yellow #body-table .table-body td.author,
+#forum-forum-body.yellow #body-table .table-body td.reply,
+#forum-forum-body.yellow #body-table .table-body td.popularity
 {
     border-color:#fdbc59;
 }
