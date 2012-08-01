@@ -1,6 +1,6 @@
 <div class="news-view">
     <div class="header">
-        <h2><?php echo $news->title; ?></h2>
+        <h4><?php echo $news->title; ?></h4>
         <span class="time">時間：<?php echo $news->updated; ?></span>
         <span class="author">作者：<?php echo $news->author->username; ?></span>
 <?php if ( Yii::app()->user->getIsAdmin() ) : ?>

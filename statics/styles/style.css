@@ -19,6 +19,11 @@ body
     width: 1000px;
 }
 
+h2
+{
+    display: none;
+}
+
 h4
 {
     padding: 0;
@@ -1520,7 +1525,7 @@ ul#nculife-details
     box-shadow:2px 2px 5px #000;
 }
 
-.news-view .header h2
+.news-view .header h4
 {
     margin: 10px 0 0 0;
     font-size: 22pt;
@@ -3571,11 +3576,6 @@ div#success a
     margin: 0px;
 }
 
-#login h2
-{
-    display: none;
-}
-
 #login p
 {
     margin: 50px 0 0 100px;
@@ -3792,11 +3792,6 @@ img.user_img
     height: 450px;
     position: relative;
     width: 750px;
-}
-
-#notfound h2
-{
-    display: none;
 }
 
 #notfound p
