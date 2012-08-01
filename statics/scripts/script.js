@@ -1514,33 +1514,6 @@
         var september;
         var august;
         var todolist;
-        this.children('.calendar-top')
-            .children('a')
-            .click(function()
-        {
-            var id = $(this).attr('id');
-            if ( id == 'calendar-all' )
-            {
-                top.removeClass('calendar-top-personal');
-                if ( options.isMember )
-                {
-                    top.addClass('calendar-top-all-login');
-                }
-                else
-                {
-                    top.addClass('calendar-top-all-nologin');
-                }
-            }
-            else if ( id == 'calendar-personal' )
-            {
-                if ( options.isMember )
-                {
-                    top.removeClass('calendar-top-all-login');
-                    top.addClass('calendar-top-personal');
-                }
-            }
-            return false;
-        });
         var tdClick = function()
         {
             $(this).parents('table').find('td').css('outline', '0');
