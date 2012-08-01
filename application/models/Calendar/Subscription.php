@@ -48,4 +48,14 @@ class Subscription extends CActiveRecord
     {
         return $this->findAll('invisible=0 AND user_id='.Yii::app()->user->getId());
     }
+    
+    public function getInvisibleSubscriptionByCalendarID($calendar_id)
+    {
+        return $this->find('calendar_id='.$calendar_id.' AND invisible = 1 AND user_id='.Yii::app()->user->getId());
+    }
+    
+    public function getSubscriptionByCalendarID($calendar_id)
+    {
+        return $this->find('calendar_id='.$calendar_id.' AND invisible = 0 AND user_id='.Yii::app()->user->getId());
+    }
 }
