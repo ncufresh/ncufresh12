@@ -2896,7 +2896,7 @@ button.news-button
     background: url('../club/background.png');
 }
 /* profile... */
-.friends-sort 
+ul.friends-sort 
 
 {
     width:210px;
@@ -2906,9 +2906,9 @@ button.news-button
     padding:0px;
 }
 
-.friends-sort li
+ul.friends-sort li
 {
-    width:100px;
+    width:105px;
     height:60px;
     float:left;
     color:DarkBlue;
@@ -2975,7 +2975,7 @@ ul.friend-other-sort
 .other-department li
 {
     width:132px; 
-    height:220px;
+    height:230px;
     padding:0px;
     margin:0px;
     float:left;
@@ -3048,9 +3048,9 @@ ul.friend-other-sort
     text-align:left;
 }
 
-.is_exist
+.inexistence
 {
-    color:red;
+    outline: 1px solid red;
 }
 
 ul.user-editor input
@@ -3192,7 +3192,7 @@ div.friends-addfriend
     height:140px;
 }
 
-div.friends-addfriend div.avatar
+.friends-addfriend .avatar
 {
     margin-left:0px;
     margin-top:0px;
@@ -3210,7 +3210,7 @@ div.friends-sortfriend
     height:140px;
 }
 
-div.friends-sortfriend div.avatar
+div.friends-sortfriend div.avatar 
 {
     margin-left:0px;
     margin-top:0px;
@@ -3267,7 +3267,7 @@ div.newgroup
 
 div.newmember
 {
-    background-image:url('../profile/sameDsameG.png');
+    background-image:url('../profile/groupmembers.png');
     background-repeat:no-repeat ;
     width:690px;
     height:370px;
@@ -3357,18 +3357,18 @@ div.profile-message-reply
 #register
 {
     background: url('../profile/register.png') no-repeat;
-    height: 335px;
+    height: 515px;
     margin: 0px;
     padding: 40px;
     width: 660px;
 }
 
-#register > form,
+/*#register > form,
 #register .scroll-container
 {
     height: 330px;
     overflow: hidden;
-}
+}*/
 
 #register button
 {
@@ -3597,24 +3597,6 @@ a.mymessage-title
     float:right;
 }
 /*
-.form-friends-title
-{
-    color: yellow;
-    font-size: 20px;
-    text-align: left;
-}
-
-.friend-title
-{
-    color: green;
-    text-align: center;
-}
-
-.friends-title
-{
-    text-align:center;
-    color:DarkSlateGray;
-}*/
 
 img.user_img
 {
