@@ -112,7 +112,7 @@ class GameController extends Controller
         if ( Character::model()->findByPk($id) ) //判斷使用者是否存在
         {
             $this->setPageTitle(Yii::app()->name . ' - 成就系統');
-            $return = Achievement::model()->getAchievementsByUserId($this->userId);
+            $return = Achievement::model()->getAchievementsByUserId($id);
             $content = $this->renderPartial('achievements', array(
                 'achievements'  => $return
             ), true);
@@ -192,7 +192,7 @@ class GameController extends Controller
         }
 
         $status = ItemBag::model()->buyNewItem($id);
-        echo $status;
+        // echo $status;
         switch ($status)
         {
             case 0:
@@ -234,5 +234,12 @@ class GameController extends Controller
         $this->redirect(Yii::app()->createUrl('game/items', array(
             'id'    => $this->userId
         )));
+    }
+    
+    public function actionSolve($id = 0)
+    {
+        $mission = Mission::model()->findByPk($id);
+        $this->_data['name'] = $mission->name;
+        $this->_data['content'] = $mission->content;
     }
 }

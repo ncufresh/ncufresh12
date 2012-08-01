@@ -3,7 +3,6 @@
 jQuery(document).ready(function()
 {
     $('#personal-calendar .left').calendar();
-    // $('#personal-calendar .right').calendarEvents(3);
 
     $('a.calendar-hide-event').live('click', function()
     {
@@ -23,7 +22,7 @@ jQuery(document).ready(function()
                 $.configures.token = response.token;
                 if ( $.errors(response.errors) )
                 {
-                    $(self).parents('ul').remove();
+                    $(self).parents('li').remove();
                 }
             }
         );
@@ -36,7 +35,6 @@ jQuery(document).ready(function()
     <div class="left"></div>
     <h3 class="date"></h3>
     <div class="right">
-
     </div>
     <a href="<?php echo Yii::app()->createUrl('calendar/createevent');?>">新增</a>
     <a href="<?php echo Yii::app()->createUrl('calendar/subscript');?>">訂閱</a>

@@ -6,28 +6,28 @@
 }
 #administration
 {
-    left: 360px;
-    top: 230px;
+    left: 315px;
+    top: 288px;
 }
 #all-teach
 {
-    left: 400px;
-    top: 400px;
+    left: 345px;
+    top: 100px;
 }
 #baseball-softball
 {
-    left: 450px;
-    top: 170px;
+    left: 268px;
+    top: 140px;
 }
 #badminton
 {
-    left:200px;
-    top: 50px;
+    left: 210px;
+    top: 72px;
 }
 #big-tree
 {
-    left: 200px;
-    top: 180px;
+    left: 184px;
+    top: 268px;
 }
 #back-div
 {
@@ -38,23 +38,23 @@
 }
 #backdoor
 {
-    left: 100px;
-    top: 200px;
+    left: -18px;
+    top: 184px;
 }
 #boy-dormitory-3
 {
-    left: 100px;
-    top: 200px;
+    left: 0px;
+    top: 262px;
 }
 #boy-dormitory-5
 {
-    left: 200px;
-    top: 200px;
+    left: 181px;
+    top: 383px;
 }
 #boy-dormitory-6
 {
-    left: 30px;
-    top: 250px;
+    left: 200px;
+    top: 462px;
 }
 #boy-dormitory-9
 {
@@ -63,13 +63,13 @@
 }
 #boy-dormitory-11
 {
-    left: 300px;
-    top: 30px;
+    left: 35px;
+    top: 354px;
 }
 #boy-dormitory-12
 {
-    left: 260px;
-    top: 120px;
+    left: 489px;
+    top: 127px;
 }
 #boy-dormitory-1
 {
@@ -107,8 +107,8 @@
 }
 #computer-center
 {
-    left: 450px;
-    top: 110px;
+    left: 428px;
+    top: 132px;
 }
 #CottageMuffin
 {
@@ -124,33 +124,33 @@
 }
 #calligraphy
 {
-    left: 330px;
-    top: 230px;
+    left: 317px;
+    top: 283px;
 }
 #elephant-element
 {
-    left: 430px;
-    top: 200px;
+    left: 435px;
+    top: 257px;
 }
 #engineering-1
 {
-    left: 160px;
-    top: 140px;
+    left: 140px;
+    top: 214px;
 }
 #engineering-2
 {
-    left: 120px;
-    top: 100px;
+    left: 111px;
+    top: 174px;
 }
 #engineering-3
 {
     left: 75px;
-    top: 60px;
+    top: 105px;
 }
 #engineering-5
 {
     left: 0px;
-    top: 50px;
+    top: 75px;
 }
 #experience-personally
 {
@@ -161,43 +161,43 @@
 }
 #flower-brook
 {
-    left: 180px;
-    top: 100px;
+    left: 153px;
+    top: 175px;
 }
 #girl-dormitory-1234
 {
-    left: 100px;
-    top: 390px;
+    left: 59px;
+    top: 180px;
 }
 #girl-dormitory-5
 {
-    left: 200px;
-    top: 390px;
+    left: 76px;
+    top: 230px;
 }
 #gymnasium
 {
-    left: 100px;
-    top: 238px;
+    left: 167px;
+    top: 165px;
 }
 #history-gallery
 {
-    left: 200px;
-    top: 300px;
+    left: 255px;
+    top: 413px;
 }
 #hakka
 {
-    left: 350px;
-    top: 350px;
+    left: 310px;
+    top: 4px;
 }
 #international-dormitory
 {
-    left: 20px;
-    top: 100px;
+    left: 133px;
+    top: 311px;
 }
 #liberal-arts
 {
-    left: 400px;
-    top: 150px;
+    left: 381px;
+    top: 229px;
 }
 #lover-trail
 {
@@ -214,17 +214,17 @@
 #mathematics
 {
     left: 400px;
-    top: 60px;
+    top: 100px;
 }
 #management
 {
-    left: 350px;
-    top: 300px;
+    left: 410px;
+    top: 135px;
 }
 #midnight-food
 {
-    left: 50px;
-    top: 340px;
+    left: 12px;
+    top: 291px;
 }
 #mapPicture
 {
@@ -235,12 +235,12 @@
 }
 #new-postgraduate
 {
-    left: 470px;
-    top: 180px;
+    left: 433px;
+    top: 162px;
 }
 #ncu-lake
 {
-    left: 310px;
+    left: 292px;
     top: 60px;
 }
 #other-picture-container
@@ -251,23 +251,23 @@
 }
 #playground
 {
-    left: 300px;
-    top: 150px;
+    left: 50px;
+    top: 74px;
 }
 #pine-bookcourt
 {
-    left: 460px;
-    top: 150px;
+    left: 441px;
+    top: 161px;
 }
 #pine-bookcourt2
 {
-    left: 270px;
-    top: 170px;
+    left: 242px;
+    top: 214px;
 }
 #pine-wind
 {
-    left: 40px;
-    top: 160px;
+    left: 34px;
+    top: 205px;
 }
 #playground
 {
@@ -276,8 +276,8 @@
 }
 #photonics
 {
-    left: 280px;
-    top: 400px;
+    left: 241px;
+    top: 36px;
 }
 #picture-other-2
 {
@@ -288,38 +288,38 @@
 }
 #rock-climbing
 {
-    left:300px;
-    top: 260px;
+    left: 165px;
+    top: 0px;
 }
 #skating
 {
-    left: 140px;
-    top: 350px;
+    left: 245px;
+    top: 100px;
 }
 #swimming-pool
 {
-    left: 0px;
+    left: 252px;
     top: 0px;
 }
 #stadium
 {
-    left: 300px;
-    top: 10px;
+    left: 153px;
+    top: 84px;
 }
 #science-1
 {
-    left: 220px;
-    top: 220px;
+    left: 216px;
+    top: 312px;
 }
 #science-2
 {
-    left: 330px;
-    top: 60px;
+    left: 307px;
+    top: 72px;
 }
 #science-3
 {
-    left: 360px;
-    top: 30px;
+    left: 362px;
+    top: 65px;
 }
 #science-4
 {
@@ -329,17 +329,17 @@
 #science-5
 {
     left: 450px;
-    top: 50px;
+    top: 67px;
 }
 #stepping-cloud
 {
-    left: 150px;
-    top: 230px;
+    left: 135px;
+    top: 289px;
 }
 #science-teach
 {
-    left:20px;
-    top: 360px;
+    left: 411px;
+    top: 0px;
 }
 #select-picture-container
 {
@@ -364,8 +364,8 @@
 }
 #tennis
 {
-    left: 420px;
-    top: 300px;
+    left: 186px;
+    top: 20px;
 }
 #text-container
 {
@@ -375,8 +375,8 @@
 }
 #turtle-pond
 {
-    left: 0px;
-    top: 0px;
+    left: 500px;
+    top: 238px;
 }
 /* #text-region
 {
@@ -394,8 +394,8 @@
 }
 #yun-step
 {
-    left: 0px;
-    top: 180px;
+    left: 207px;
+    top: 258px;
 }
 .arrow
 {
@@ -591,8 +591,6 @@
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-down.png" class="arrow down">
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-left.png" class="arrow left">
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-right.png" class="arrow right">
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/right-turn.png" class="arrow rightTurn">
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/left-turn.png" class="arrow leftTurn">
 
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/back.png" class="arrow back">
         <!--<img >
@@ -818,6 +816,7 @@
 
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
 <script type="text/javascript">
+alert('運動放 藝人堂(健身房、羽球館、溜冰場) 游泳池 操場(攀岩) 棒壘球場  4個 然後網球文檔不放');
 $(document).ready(function()
 {
     $( '#experience-personally' ).mousedown(function()
@@ -908,7 +907,7 @@ $(document).ready(function()
         $( '#curtainDiv' ).animate({left: '750px'});
     });
 
-    $( '.arrow' ).eq( 6 ).click(function() // 親身體驗 back
+    $( '.arrow' ).eq( 4 ).click(function() // 親身體驗 back
     {    
         $( '#mapPicture' ).attr( 'src', $('#mapPicture').attr('path') );
         $( '.arrow' ).hide();
@@ -956,18 +955,18 @@ $(document).ready(function()
         $.ajax(
         {
             type: 'GET',
-            url: jQuery.configures.buildingContentUrl.replace( ':id', id ),
+            url: jQuery.configures.buildingContentUrl.replace(':id', id),
             dataType: 'json',
-            success: function( data )
+            success: function(data)
             {
                 $( '#building-text' ).html(data.content);
 
                 $( '#building-picture > li > img' ).each(function(index)
                 {
-                    $( this ).attr( 'src', data.picture_other[index] );
+                    $( this ).attr('src', data.picture_other[index]);
                 });
 
-                $( '#select-picture-container > img' ).each(function( index )
+                $( '#select-picture-container > img' ).each(function(index)
                 {
                     $( this ).attr('src', data.pictureLayerTwo[index]);
                 });
@@ -1028,10 +1027,336 @@ $(document).ready(function()
     // {
         // $('#view-picture-container img').attr('src','<?php echo Yii::app()->request->baseUrl;?>/statics/3.jpg');
     // });
-    var streetPoint = new Array();
-    // streetPoint[0,1,2,3];
-    streetPoint[0,1,2,3];
-    alert(streetPoint[1]);
+    // var streetPoints = new Array( 0, 1, 2, 3 );
+    var streetPoints = 
+    [
+        { // 0 (工5)
+            N:{ photo: '', nextPoint: 3 },
+            E:{ photo: '', nextPoint: 4 },
+            S:{ photo: '', nextPoint: 6 },
+            W:{ photo: '', nextPoint: 5 }            
+        },
+        { // 1 (環工)
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 2
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 3
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 4
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 5
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 6
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 7
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 8
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 9
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 10
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 11
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 12
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 13
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 14
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 15
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 16
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 17
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 18
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        }   ,     
+        { // 19
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 20
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 21
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 22
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 23
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 24
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 25
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 26
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 27
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 28
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 29
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 30
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 31
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 32
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 33
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 34
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 35
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 36
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 37
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 38
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 39
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 40
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 41
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 42
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 43
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 44
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 45
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 46
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 47
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 48
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 49
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        },
+        { // 50
+            N:{ photo: '', nextPoint: 5 },
+            E:{ photo: '', nextPoint: 6 },
+            S:{ photo: '', nextPoint: 8 },
+            W:{ photo: '', nextPoint: 7 }            
+        }        
+    ];
+    
+    // console.log(streetPoints);
+    // alert(streetPoints[1].E.photo);
+    
+    $( '.arrow' ).eq( 0 ).click(function() // up
+    {
+        
+    });
+    $( '.arrow' ).eq( 1 ).click(function() // down
+    {
+        
+    });
+    $( '.arrow' ).eq( 2 ).click(function() // left
+    {
+        
+    });
+    $( '.arrow' ).eq( 3 ).click(function() // right
+    {
+        
+    });
 });
 </script>
 <?php $this->endWidget();?>

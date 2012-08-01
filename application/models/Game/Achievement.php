@@ -25,34 +25,34 @@ class Achievement extends CActiveRecord
     
     public function getAchievementsByUserId($id)
     {
+        $character_data = Character::model()->findByPk($id); //傳入id 查詢使用者遊戲腳色資料
+        $user_data = User::model()->findByPk($id); //傳入id 查詢使用者資料
+        $profile_data = Profile::model()->findByPk($id); //傳入id 查詢使用者資料
+        $level = Character::model()->getLevel($id); //傳入id 查詢等級
+        $level_exp = Character::model()->getLevelExp($level); //傳入等級 查詢等級經驗
+        $user_friend = Friend::model()->getAmount($id);
+        $nickname = $profile_data->nickname;
+        
         $user_value = array(
-            'login_times' => 24,
             'spend_money' => 234324234,
             'total_money' => 13333,
             'friend' => 23,
             'reply' => 10,
             'post' => 15,
             'cloth' => 15,
-            'throw_other_garbage' => 37,
-            'clean_self_garbage' => 32,
-            'other_throw_garbage' => 123,
-            'clean_other_garbage' => 21,
             'body_price' => 51
             );
-        $user_login_times = $user_value['login_times'];
-        $user_spend_money = $user_value['spend_money'];
-        $user_total_money = $user_value['total_money'];
-        $user_friend = $user_value['friend'];
-        $user_reply = $user_value['reply'];
-        $user_post = $user_value['post'];
-        $user_cloth = $user_value['cloth'];
-        $user_throw_other_garbage = $user_value['throw_other_garbage'];
-        $user_clean_self_garbage = $user_value['clean_self_garbage'];
-        $user_other_throw_garbage = $user_value['other_throw_garbage'];
-        $usre_clean_other_garbage = $user_value['clean_other_garbage'];
-        $user_body_price = $user_value['body_price'];
-        
-        // $character = Character::model()->findByPk($id);
+        $user_login_times = $user_data->online_count; // $user_value['login_times'];
+        echo 'user_login_times => '.$user_login_times.'</br>';
+        $user_spend_money = $character_data->total_money - $character_data->money;
+        echo 'user_spend_money => '.$user_spend_money.'</br>';
+        $user_total_money = $character_data->total_money;
+        echo 'user_total_money => '.$user_total_money.'</br>';
+        echo 'user_friend => '.$user_friend.'</br>';
+        $user_reply = $user_value['reply']; // 薏仁
+        $user_post = $user_value['post']; // 薏仁
+        $user_cloth = $user_value['cloth']; //資料庫
+        $user_body_price = $character_data->getBodyPrice($id);
         $achievements = Achievement::model()->findAll();
         $return = array();
         foreach($achievements as $achievement)
@@ -65,10 +65,9 @@ class Achievement extends CActiveRecord
                 $user_post >= $achievement->post &&
                 $user_cloth >= $achievement->cloth &&
                 $user_body_price >= $achievement->body_price )
-            {
-                $return[] = array('name' => $achievement->name, 'description' => $achievement->description);
-                // echo $achievement->name.'=>'.$achievement->description.'</br>';
-            }
+                {
+                    $return[] = array('name' => $achievement->name, 'description' => $achievement->description);
+                }
         }
         return $return;
     } 

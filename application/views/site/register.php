@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 <h1>基本資料</h1>
 <div class="register">
     <form  enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('site/register'); ?>" method="POST">
     <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
+=======
+<div id="register">
+    <h4>基本資料</h4>
+    <form method="POST">
+>>>>>>> 992d9414b0888f5fee76fd33cad9b3a075203723
         <dl>
             <dt>
                 <label for="form-register-name">
@@ -18,6 +24,10 @@
                 <input id="form-register-name" name="profile[name]" type="text" />
             </dd>
         </dl>
+<<<<<<< HEAD
+=======
+<?php if ( ! isset($profile_errors['nickname']) ) :?>
+>>>>>>> 992d9414b0888f5fee76fd33cad9b3a075203723
         <dl>
             <dt>
                 <label for="form-register-nickname">
@@ -43,6 +53,10 @@
                 <input id="form-register-gender-female" name="profile[gender]" type="radio" value="1" /><label for="form-register-gender-female">Female</label>
             </dd>
         </dl>
+<<<<<<< HEAD
+=======
+<?php if ( ! isset($username_errors['username']) ) :?>
+>>>>>>> 992d9414b0888f5fee76fd33cad9b3a075203723
         <dl>
             <dt>
                 <label for="form-register-username">
@@ -69,7 +83,14 @@
 <?php else: ?>
                  密碼
 <?php endif; ?>
+<<<<<<< HEAD
                 </label>
+=======
+<?php if ( ! isset($username_errors['password']) ) : ?>
+        <dl>
+            <dt>
+                <label for="form-register-password">密碼</label>
+>>>>>>> 992d9414b0888f5fee76fd33cad9b3a075203723
             </dt>
             <dd>
                 <input id="form-register-password" name="register[password]" type="password" />
@@ -146,7 +167,16 @@
                 </dd>
             </dt>
         </dl>
+<<<<<<< HEAD
         <button id="rewrite"><a href="<?php echo Yii::app()->createUrl('site/register'); ?>">重填</a></button>
         <button type="submit">註冊</button>
 </form>
+=======
+        <div>
+            <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
+            <button id="rewrite"><a href="<?php echo Yii::app()->createUrl('site/register'); ?>">重填</a></button>
+            <button type="submit">註冊</button>
+        </div>
+    </form>
+>>>>>>> 992d9414b0888f5fee76fd33cad9b3a075203723
 </div>

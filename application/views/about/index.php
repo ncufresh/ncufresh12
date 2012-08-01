@@ -32,7 +32,7 @@
 募資訊，屆時將有更完整的資訊，請大家敬請期待！</PRE>
     <ul>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_left.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo" alt="" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo" alt="" />
         </li>
         <li>
             <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo0.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo" small="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo" alt="" />
@@ -53,7 +53,7 @@
             <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo5.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo" small="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_photo" alt="" />
         </li>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/small_right.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo" alt="" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-right.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo" alt="" />
         </li>
         
     </ul>

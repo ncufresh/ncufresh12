@@ -644,13 +644,26 @@
                             .addClass($.chat.options.chatMessagesClass)
                             .appendTo($(this));
                         var avatar = $('<div></div>')
+                            .data('name', data.name)
                             .addClass($.chat.options.chatAvatarClass)
+                            .hover(function()
+                            {
+                                $('<div></div>')
+                                    .attr('id', 'chat-name')
+                                    .css({
+                                        left: entry.offset().left - $(window).scrollLeft(),
+                                        top: entry.offset().top - $(window).scrollTop()
+                                    })
+                                    .append($('<p></p>').text(data.name))
+                                    .append($('<span></span>').addClass('arrow'))
+                                    .appendTo($('body'));
+                            }, function()
+                            {
+                                $('#chat-name').remove();
+                            })
                             .appendTo(entry);
                         var placehold = $('<div></div>')
                             .addClass('chat-avatar-' + data.avatar)
-                            .appendTo(avatar);
-                        var name = $('<p></p>')
-                            .text(data.name)
                             .appendTo(avatar);
                         $.fn.chat.showAvatar(data.avatar);
                     }
@@ -1189,10 +1202,12 @@
     var getToday = function()
     {
         var date = new Date();
+        var current_year = date.getFullYear();
         var current_day = date.getDate();
         var current_month = date.getMonth();
+        var calendar_year = $(this).data('options').year;
         var calendar_month = $(this).data('options').month;
-        if ( current_month == calendar_month )
+        if ( current_month == calendar_month && current_year ==  calendar_year )
         {
             var tds = $(this).children('tbody').find('td');
             for( var key in tds )
@@ -1255,7 +1270,8 @@
         }
         for( var time = start; time <= end; time+=86400 )
         {
-            if( this.data('options').month ==  date(time).getMonth() )
+            if( this.data('options').month ==  date(time).getMonth() 
+                && this.data('options').year == date(time).getFullYear() )
             {
                 days[days.length] = date(time).getDate();
             }
@@ -1337,7 +1353,16 @@
                     for ( var key2 in data.events[key] )
                     {
                         $('<li></li>')
-                            .text(data.events[key][key2].name)
+                            .append(
+                                $('<a></a>')
+                                    .text(data.events[key][key2].name)
+                                    .attr(
+                                        'href', 
+                                        $.configures
+                                            .calendarEventUrl
+                                            .replace(':id', data.events[key][key2].id)
+                                    )
+                            )
                             .append(
                                 $('<a></a>')
                                     .addClass('calendar-hide-event')
@@ -1399,7 +1424,9 @@
             linkClick:   function(){ return false; },
             leftClick:   function(){ return false; },
             rightClick:  function(){ return false; },
-            dayClick:    function(){}
+            dayClick:    function(event){},
+            dayEnter:    function(event){},
+            dayLeave:    function(event){}
         }, options);
 
         options.month -= 1;
@@ -1458,7 +1485,12 @@
             var td = $('<td></td>');
             if ( position>=date.getDay() )
             {
-                td.text(day).click(options.dayClick).data('day', day);
+                td
+                    .text(day)
+                    .click(options.dayClick)
+                    .mouseenter(options.dayEnter)
+                    .mouseleave(options.dayLeave)
+                    .data('day', day);
                 if( (new Date()).getDate() == day 
                     && (new Date()).getMonth() == options.month
                     && options.today)
@@ -1582,6 +1614,13 @@
         var current_year = (new Date()).getFullYear();
         var current_month = (new Date()).getMonth() + 1;
         var container = $('<div></div>').appendTo(this);
+        var prompt = $('<ul></ul>')
+            .addClass('calendar-prompt')
+            .css({
+                position: 'absolute',
+                display:  'none'
+            }).appendTo('body');
+        var mousemove
         var geneator = function(year, month)
         {
             if ( calendar ) calendar.remove();
@@ -1589,6 +1628,7 @@
                 year: year,
                 month: month,
                 left: true,
+                right: true,
                 leftClick: function()
                 {
                     if ( --month < 1 )
@@ -1598,7 +1638,6 @@
                     }
                     geneator(year, month);
                 },
-                right: true,
                 rightClick: function()
                 {
                     if ( ++month > 12 )
@@ -1608,13 +1647,33 @@
                     }
                     geneator(year, month);
                 },
-                dayClick: function(){
+                dayClick: function()
+                {
                     $('#personal-calendar .date').text(
                         $(calendar).data('options').year + '.'
                         + ($(calendar).data('options').month+1) + '.'
                         + $(this).text()
                     );
                     $(calendar).updateEventsList($(this).data('cal_events'));
+                },
+                dayEnter: function(event)
+                {
+                    var events = $(this).data('cal_events');
+                    if( events.length > 0 )
+                    {
+                        for( var key in $(this).data('cal_events') )
+                        {
+                            $('<li></li>').text(events[key].name).appendTo(prompt);
+                        }
+                        prompt.css({
+                            top: event.pageY,
+                            left: event.pageX
+                        }).show();
+                    }
+                },
+                dayLeave: function()
+                {
+                    prompt.empty().hide();
                 }
             });
             calendar.appendTo(container);
@@ -1970,6 +2029,149 @@
         });
     }
 })(jQuery);
+
+/**
+ * Infield
+ */
+(function ($) {
+
+    $.infield = function(label, field, options)
+    {
+        var base = this;
+
+        base.$label = $(label);
+        base.label  = label;
+
+        base.$field = $(field);
+        base.field  = field;
+
+        base.$label.data("infield", base);
+        base.showing = true;
+
+        base.init = function ()
+        {
+            base.options = $.extend({}, $.infield.defaultOptions, options);
+
+            if ( base.$field.val() !== '' )
+            {
+                base.$label.hide();
+                base.showing = false;
+            }
+
+            base.$field.focus(function()
+            {
+                base.fadeOnFocus();
+            }).blur(function()
+            {
+                base.checkForEmpty(true);
+            }).bind('keydown.infield', function(event)
+            {
+                base.hideOnChange(event);
+            }).bind('keyup', function()
+            {
+                if ( ! base.showing && base.$field.val() === '' )
+                {
+                    base.prepForShow();
+                    base.setOpacity(base.options.fadeOpacity);
+                }
+            }).bind('paste', function(event)
+            {
+                base.setOpacity(0.0);
+            }).change(function(event)
+            {
+                base.checkForEmpty();
+            }).bind('onPropertyChange', function()
+            {
+                base.checkForEmpty();
+            });
+        };
+
+        base.fadeOnFocus = function()
+        {
+            if ( base.showing) base.setOpacity(base.options.fadeOpacity);
+        };
+
+        base.setOpacity = function(opacity)
+        {
+            base.$label.stop().animate({
+                opacity: opacity
+            }, base.options.fadeDuration);
+            base.showing = (opacity > 0.0);
+        };
+
+        base.checkForEmpty = function(blur)
+        {
+            if ( base.$field.val() === '' )
+            {
+                base.prepForShow();
+                base.setOpacity(blur ? 1.0 : base.options.fadeOpacity);
+            }
+            else
+            {
+                base.setOpacity(0.0);
+            }
+        };
+
+        base.prepForShow = function(event)
+        {
+            if ( ! base.showing )
+            {
+                base.$label.css({
+                    opacity: 0.0
+                }).show();
+
+                base.$field.bind('keydown.infield', function(event)
+                {
+                    base.hideOnChange(event);
+                });
+            }
+        };
+
+        base.hideOnChange = function(event)
+        {
+            if ( event.keyCode === 16 || event.keyCode === 9 ) return;
+
+            if ( base.showing )
+            {
+                base.$label.hide();
+                base.showing = false;
+            }
+
+            base.$field.unbind('keydown.infield');
+        };
+
+        base.init();
+    };
+
+    $.infield.defaultOptions = {
+        fadeOpacity: 0.5,
+        fadeDuration: 300
+    };
+
+    $.fn.infield = function(options)
+    {
+        return this.each(function()
+        {
+            var for_attr = $(this).attr('for');
+            var $field;
+            if ( ! for_attr ) return;
+
+            $field = $(
+                'input#' + for_attr + '[type="text"],' +
+                'input#' + for_attr + '[type="search"],' +
+                'input#' + for_attr + '[type="tel"],' +
+                'input#' + for_attr + '[type="url"],' +
+                'input#' + for_attr + '[type="email"],' +
+                'input#' + for_attr + '[type="password"],' +
+                'textarea#' + for_attr
+            );
+
+            if ( $field.length === 0 ) return;
+
+            (new $.infield(this, $field[0], options));
+        });
+    };
+}(jQuery));
 
 /**
  * UltimatePassword
@@ -2461,7 +2663,7 @@
 
         $.configures.sequence = $.random(0, 1000);
 
-        $('#chat').chat();
+        if ( $('#chat').length ) $('#chat').chat();
 
         $('#header').star();
 
@@ -2495,42 +2697,7 @@
             return false;
         });
 
-        $('form input, form textarea').each(function()
-        {
-            var input = $(this);
-            var label = $('label[for="' + $(this).attr('id') + '"]');
-            var type = input.attr('type');
-            if ( type == 'radio' || type == 'checkbox' ) return true;
-            if ( label.length )
-            {
-                var update = function()
-                {
-                    if ( input.val() != '' )
-                    {
-                        label.css({
-                            display: 'none'
-                        });
-                    } else
-                    {
-                        label.css({
-                            display: 'block'
-                        });
-                    }
-                };
-                label.css({
-                    cursor: 'text',
-                    display: 'block'
-                }).click(function()
-                {
-                    input.focus();
-                });
-                input.focusout(function()
-                {
-                    update();
-                })
-                update();  
-            }
-        });
+        $('form dt label').infield();
 
         $.pull.start({
             onlinecounter: $('#header .online'),

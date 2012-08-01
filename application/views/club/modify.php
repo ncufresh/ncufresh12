@@ -1,5 +1,5 @@
 <h4>社團資料修改</h4>
-<form action="<?php echo Yii::app()->createUrl('club/modify',array('id'=>$id))?>" method="post">
+<form action="<?php echo Yii::app()->createUrl('club/modify', array('id'=>$id)); ?>" method="post">
       <div class = "club-modify-table">   
        <dl>
             <dt>
@@ -41,7 +41,7 @@
                     <label for="leader_binary" >二進位ID:</label>
                 </dt>
                 <dd>
-                    <input id="leader_binary" name="club[leader_binary]" type="text" size="15" value="<?php if ( empty($club['leader_ID']) ) echo $data->leader_binary; ?>"/>
+                    <input id="leader_binary" name="club[leader_binary]" type="text" size="15" value="<?php if ( empty($club['leader_binary']) ) echo $data->leader_binary; ?>"/>
                 </dd>
             </dl>
             <dl>
@@ -86,7 +86,7 @@
                     <label for="viceleader_binary" >二進位ID:</label>
                 </dt>
                 <dd>
-                    <input id="viceleader_binary" name="club[viceleader_binary]" type="text" size="15" value="<?php if ( empty($club['viceleader_ID']) ) echo $data->viceleader_binary; ?>"/>
+                    <input id="viceleader_binary" name="club[viceleader_binary]" type="text" size="15" value="<?php if ( empty($club['viceleader_binary']) ) echo $data->viceleader_binary; ?>"/>
                 </dd>
             </dl>
             <dl>
@@ -104,7 +104,7 @@
                 <label for="website" >網站:</label>
             </dt>
             <dd>
-                <input id="website" name="club[website]" type="text" size="100" value="<?php if ( empty($club['web']) ) echo $data->website; ?>"/>
+                <input id="website" name="club[website]" type="text" size="100" value="<?php if ( empty($club['website']) ) echo $data->website; ?>"/>
             </dd>
         </dl>
         <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />

@@ -46,7 +46,8 @@ class Calendar extends CActiveRecord
                 self::HAS_ONE,
                 'Club',
                 '',
-                'on' => 'clubs.master_id = user_id'
+                'on' => 'clubs.master_id = user_id',
+                'condition' => 't.category=0'
             ),
             'subscriptions' => array(
                 self::HAS_ONE,
@@ -55,7 +56,8 @@ class Calendar extends CActiveRecord
                 'on' => 'subscriptions.user_id = :id',
                 'params'    => array(
                     ':id'   => Yii::app()->user->getId()
-                )
+                ),
+                
             )
         );
     }
@@ -75,6 +77,11 @@ class Calendar extends CActiveRecord
         return $this->category === self::CATEGORY_PERSONAL;
     }
 
+    public function getIsOwner()
+    {
+        return $this->user_id !== 0 && $this->user_id == Yii::app()->user->getId();
+    }
+
     public function getClub($user_id)
     {
         return Club::Model()->getClubByMasterId($user_id);
@@ -91,7 +98,7 @@ class Calendar extends CActiveRecord
                 'select'    => 'invisible'
             )
         ))->findAll(array(
-            'select'    => 'id'
+            'select'    => 'id',
         ));
     }
 
