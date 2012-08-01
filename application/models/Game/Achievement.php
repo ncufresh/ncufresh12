@@ -30,6 +30,7 @@ class Achievement extends CActiveRecord
         $profile_data = Profile::model()->findByPk($id); //傳入id 查詢使用者資料
         $level = Character::model()->getLevel($id); //傳入id 查詢等級
         $level_exp = Character::model()->getLevelExp($level); //傳入等級 查詢等級經驗
+        $user_friend = Friend::model()->getAmount($id);
         $nickname = $profile_data->nickname;
         
         $user_value = array(
@@ -47,7 +48,7 @@ class Achievement extends CActiveRecord
         echo 'user_spend_money => '.$user_spend_money.'</br>';
         $user_total_money = $character_data->total_money;
         echo 'user_total_money => '.$user_total_money.'</br>';
-        $user_friend = $user_value['friend']; // 波波
+        echo 'user_friend => '.$user_friend.'</br>';
         $user_reply = $user_value['reply']; // 薏仁
         $user_post = $user_value['post']; // 薏仁
         $user_cloth = $user_value['cloth']; //資料庫

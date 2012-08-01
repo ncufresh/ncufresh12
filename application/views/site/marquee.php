@@ -8,9 +8,12 @@
 
 #admin-marquee form button
 {
-    background: url('<?php echo Yii::app()->request->baseUrl; ?>/statics/images/admin_marquee_add.png');
+    background: url('<?php echo Yii::app()->request->baseUrl; ?>/statics/images/admin_marquee_add.png') 0 1px;
+    border: none;
+    box-shadow: none;
     cursor: pointer;
     height: 40px;
+    margin: 1px;
     text-indent: -100000%;
     width: 72px;
 }
@@ -213,8 +216,8 @@ jQuery(document).ready(function()
     <h1>跑馬燈管理</h1>
 
     <form method="POST">
-        <input id="marquee-form-message" name="marquee[message]" type="text" />
         <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
+        <input id="marquee-form-message" name="marquee[message]" type="text" />
         <button type="submit">新增</button>
     </form>
 

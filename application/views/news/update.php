@@ -23,7 +23,7 @@ input.MultiFile-applied
     height: 20px;
     text-indent: -10000%;
     padding: 0;
-    margin: 0 5px;
+    margin: 5px 0;
 }
 
 #news-url-button:hover
