@@ -1580,7 +1580,7 @@
         var bottom = $('<div></div>')
             .attr('id', 'calendar-August')
             .addClass('calendar-bottom');
-        var bottom_wrap = this.children('.calendar-bottom-wrap');
+        var bottom_wrap = this.children('.calendar-bottom-wrapper');
         if ( options.isMember )
         {
             top.removeClass('calendar-top-all-nologin');

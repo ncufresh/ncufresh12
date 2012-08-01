@@ -1293,114 +1293,76 @@ ul#nculife-details
 
 #index-calendar
 {
+    background: #FFEDB7;
+    border-radius: 15px;
     float: left;
+    height: 400px;
+    margin-top: 40px;
     width: 30%;
 }
 
-#index-calendar .calendar-top
+#index-calendar .calendar-bottom-wrapper
 {
-    width: 204px;
-    height: 85px;
+    background: url('../images/calendar.png') center top no-repeat;
+    height: 360px;
+    margin-top: -45px;
+    padding: 50px 10px 0 10px;
 }
 
-#index-calendar .calendar-top-all-nologin
+#index-calendar .calendar-bottom
 {
-    background: url('../images/calendar_top2.png');
+    position: relative;
 }
 
-#index-calendar .calendar-top-all-login
-{
-    background: url('../images/calendar_top.png');
-}
-
-#index-calendar .calendar-top-personal
-{
-    background: url('../images/calendar_top3.png');
-}
-
-#index-calendar .calendar-bottom-wrap
-{
-    background: #FFEDB7;
-    border-radius: 0 0 15px 15px;
-    float: left;
-    overflow: hidden;
-    position: absolute;
-    width: 204px;
-    height: 355px;
-}
-
-#index-calendar .calendar-bottom-wrap table.calendar-table
+#index-calendar table.calendar-table
 {
     border-collapse: collapse;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table caption
+#index-calendar table.calendar-table caption
 {
-    margin:  15px 0 10px 0 ;
+    margin: 15px 0 10px 0;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table td
+#index-calendar table.calendar-table td
 {
     text-align: right;
     width: 28px;
     cursor: pointer;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table thead
+#index-calendar table.calendar-table thead
 {
     display: block;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table thead td
+#index-calendar table.calendar-table thead td
 {
     color: #af8d5a;
     text-align: center;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table thead td.weekend
+#index-calendar table.calendar-table thead td.weekend
 {
     color: red;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table 
-{
-    width: 204px;
-}
-
-#index-calendar .calendar-bottom-wrap table.calendar-table tbody
+#index-calendar table.calendar-table tbody
 {
     border-top: 1px solid #946722;
     border-bottom: 1px solid #946722;
     display: block;
 }
 
-#index-calendar .calendar-bottom-wrap table.todolist-table td
+#index-calendar table.todolist-table td
 {
     width: 100px;
     text-align: center;
 }
 
-#index-calendar .calendar-bottom-wrap table.todolist-table thead td
+#index-calendar table.todolist-table thead td
 {
     color: #946722;
-}
-
-#index-calendar .calendar-top a{
-    margin-top: 51px;
-    height: 33px;
-    width: 102px;
-    float: left;
-    display: inline-block;
-}
-
-#personal-calendar
-{
-    
-}
-
-#personal-calendar .calendar-table tbody td
-{
-    cursor: pointer;
 }
 
 #personal-calendar .prompt
@@ -2883,6 +2845,7 @@ button.news-button
 {
 	float: left;
 }
+
 #club-schedule-button
 {
     cursor: pointer;
