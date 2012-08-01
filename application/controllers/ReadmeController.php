@@ -111,13 +111,20 @@ class ReadmeController extends Controller
             $size = 6;
         }
         
-        else if( $id == 4 )
+        else if ( $id == 4 )
         {
-            $index = array('GO唷', '機車', '可惡');
-            $tab = array(10,11,12);
-            $size = 3;
+            $index = array(
+                '大一生活宿舍注意事項',
+                '男生兵役注意事項',
+                '學雜費減免',
+                '選課',
+                '新生大一英文修課規定',
+                '申請就學貸款須知'
+                );
+            $tab = array(15, 16, 17, 18, 19, 20);
+            $size = 6;
         }
-
+        
         $this->setPageTitle(Yii::app()->name . ' - 新生區');
         $this->render('freshman', array(
                 'index'         => $index,
@@ -130,29 +137,39 @@ class ReadmeController extends Controller
     {
         if( $id == 1 )
         {
-            $index = array('我要','復學', '水唷');
-            $tab = array(1,2,3);
+            $index = array(
+                '健康檢查流程及注意事項',
+                '大一國文寫作檢定',
+                '僑生大一中文能力分級測驗'
+                );
+            $tab = array(21,22,23);
             $size = 3;
         }
         else if( $id == 2 )
         {
-            $index = array('水唷', '機車', '可惡');
-            $tab = array(4,5,6);
-            $size = 3;
+            $index = array('新生輔導需求調查', '導師輔導資源系統');
+            $tab = array(24,25);
+            $size = 2;
         }
         
         else if( $id == 3 )
         {
-            $index = array('棒唷', '機車', '可惡');
-            $tab = array(7,8,9);
-            $size = 3;
+            $index = array('註冊開學', '線上登錄學籍', '繳交學雜費', '2012中大新生營');
+            $tab = array(27,28,29);
+            $size = 4;
         }
         
         else if( $id == 4 )
         {
-            $index = array('GO唷', '機車', '可惡');
-            $tab = array(10,11,12);
-            $size = 3;
+            $index = array(
+                '男生兵役注意事項',
+                '宿舍申請辦法',
+                '復學生大一英文修課規定',
+                '申請學雜費減免',
+                '申請就學貸款須知',
+                );
+            $tab = array(30, 31, 32, 33, 34, 35);
+            $size = 5;
         }
         $this->setPageTitle(Yii::app()->name . ' - 復學區');
         $this->render('reschool', array(
