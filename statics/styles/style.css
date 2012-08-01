@@ -4374,6 +4374,20 @@ li.enabled a
     background:#f48191;
 }
 
+#forum-forum-body #labels .selected
+{
+    float:left;
+    display: inline;
+    list-style-type: none;
+    width:40px;
+    height:26px;
+    background: #f48191;
+    border-radius: 8px;
+    margin-right: 5px;
+    padding: 4px 4px 0 13px;
+    border: 2px solid #ffffff;
+}
+
 #forum-forum-body #labels a
 {
     display: inline;

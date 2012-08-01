@@ -171,7 +171,7 @@ class CalendarController extends Controller
     {
         $array = array();
         $i =0;
-        foreach( $post as $key => $value)
+        foreach( $post as $key => $value )
         {
             $array[$i++] = $key;
         }
