@@ -126,34 +126,18 @@ class SiteController extends Controller
     public function actionPull($lasttime = 0)
     {
         $this->_data['counter'] = array(
+            'friends'   => Activity::getFriendCount(),
             'online'    => Activity::getOnlineCount(),
             'browsered' => Activity::getTotalCount()
         );
         if ( Yii::app()->user->getIsMember() )
         {
-            if ( $lasttime == 0 ) // Debug only
+            foreach ( Yii::app()->user->getUser()->friends as $friend )
             {
-                $this->_data['friends'] = array(
-                    array(
-                        'id'        => 1,
-                        'name'      => 'Test 1',
-                        'active'    => false
-                    ),
-                    array(
-                        'id'        => 2,
-                        'name'      => 'Demodemo',
-                        'active'    => true
-                    ),
-                    array(
-                        'id'        => 3,
-                        'name'      => 'Adminadmin',
-                        'active'    => true
-                    ),
-                    array(
-                        'id'        => 4,
-                        'name'      => 'WhoAmI',
-                        'active'    => false
-                    )
+                $this->_data['friends'][] = array(
+                    'id'        => $friend->id,
+                    'name'      => $friend->profile->nickname,
+                    'active'    => Activity::getUserActivity($friend->id)
                 );
             }
             $this->_data['messages'] = Chat::getMessages($lasttime);
@@ -238,13 +222,15 @@ class SiteController extends Controller
 
     public function actionRegister()
     {
-        $profile = new Profile();
+        $profile = new Profile('register');
         $user = new User();
         if ( isset($_POST['register']) && isset($_POST['profile']) )
         {
             $user->attributes = $_POST['register'];
             $profile->attributes = $_POST['profile'];
-            if ( $user->validate() && $profile->validate() )
+            $user_validate = $user->validate();
+            $profile_validate = $profile->validate();
+            if ( $user_validate && $profile_validate )
             {
                 if ( $user->save() && $profile->save() )
                 {
@@ -269,7 +255,7 @@ class SiteController extends Controller
                     $calendar_subscriptions = new Subscription();
                     $calendar_subscriptions->user_id = $user->id;
                     $calendar_subscriptions->calendar_id = 1;
-                    $calendar_subscriptions->invisible = 1;
+                    $calendar_subscriptions->invisible = 0;
                     if ( $character->save() && $item->save() && $calendar->save() && $calendar_subscriptions->save() )
                     {
                         $this->redirect(array('profile/profile'));
@@ -280,7 +266,7 @@ class SiteController extends Controller
                     $this->render('register', array(
                         'departments'   => Department::model()->getDepartment(),
                         'username_errors'        => $user->getErrors(),
-                        'profile_errors'        => $profile->getErrors()
+                        'profile_errors'         => $profile->getErrors()
                     ));
                 }
             }
@@ -289,15 +275,15 @@ class SiteController extends Controller
                 $this->render('register', array(
                         'departments'   => Department::model()->getDepartment(),
                         'username_errors'        => $user->getErrors(),
-                        'profile_errors'        => $profile->getErrors()
+                        'profile_errors'         => $profile->getErrors()
                 ));
             }
         }
         else
         {
             $this->render('register', array(
-                    'departments'   => Department::model()->getDepartment(),
-                    'username_errors'        => $user->getErrors(),
+                    'departments'           => Department::model()->getDepartment(),
+                    'username_errors'       => $user->getErrors(),
                     'profile_errors'        => $profile->getErrors()
             ));
         }
