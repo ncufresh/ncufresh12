@@ -9,6 +9,7 @@
         {
             echo '<tr><td>';
             echo $counter_two.'>';
+            echo '<img src="'.Yii::app()->request->baseUrl.'/statics/game/icon/hair/'.$row->translation->filename.'.png" alt="'.$row->translation->name.'" />';
             echo $row->item_id.'><a href="'.Yii::app()->createUrl('game/equip', array('id'=>$row->item_id)).'">'.$row->translation->name.'</a>>'.Yii::app()->format->datetime($row->created);
             $counter_two++;
             // echo '<td>'.Yii::app()->format->datetime($row->created).'</td>';

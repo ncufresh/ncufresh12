@@ -3948,6 +3948,7 @@ img.user_img
     height: 600px;
     background: url('../game/mission.png');
     position: fixed;
+    /*display: inline-block;*/
     display: none;
 }
 
@@ -3981,8 +3982,8 @@ img.user_img
     width: 324px;
     /*outline: 1px solid red;*/
     position: absolute;
-    top: 91px;
-    left: -37px;
+    top: 86px;
+    left: -32px;
 }
 #game-mission-dialog .avatar
 {
