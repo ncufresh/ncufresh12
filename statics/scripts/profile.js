@@ -21,5 +21,9 @@
                 $('<option></option>').text(i).appendTo($("select.day")).val(i);
             }
         });
+        jQuery('.button-back').click(function()
+        {
+            window.history.back();
+        }); 
     });
 })(jQuery);

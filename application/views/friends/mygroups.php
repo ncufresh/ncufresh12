@@ -29,8 +29,8 @@
         </ul>
     </div>
 </div>
-<button type="submit">刪除成員</button>
+<a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$mygroup->id))  ?>" class="button-addmember" ></a>
+<button type="submit" class="button-deletemember"></button>
+<a href="<?php echo Yii::app()->createUrl('friends/deletegroup', array('id'=>$mygroup->id))  ?>" class="button-deletegroup" ></a>
+<button type="button" class="button-back"></button>
 </form>
-<button onClick= "history.back()" >BACK</button>
-<a href="<?php echo Yii::app()->createUrl('friends/deletegroup', array('id'=>$mygroup->id))  ?>">刪除群組</a>
-<a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$mygroup->id))  ?>">+新成員</a>

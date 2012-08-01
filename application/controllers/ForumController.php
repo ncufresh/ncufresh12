@@ -57,7 +57,7 @@ class ForumController extends Controller
         // to be delete $model = new Category();
         // $list = ForumCategory::model()->findAllBySql("SELECT * FROM  `forum_category` ", ' ');
         $this->render('forumlist', array(
-            'list'      => Category::Model()->getForumLists(),
+            'list'      => Category::model()->getForumLists()
         ));
     }
 

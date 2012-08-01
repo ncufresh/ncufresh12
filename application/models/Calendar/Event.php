@@ -47,7 +47,7 @@ class Event extends CActiveRecord
                 self::HAS_ONE,
                 'Status',
                 'event_id',
-                'on' => 'status.user_id IS NULL OR status.user_id=' . Yii::app()->user->id
+                'on' => 'status.user_id IS NULL OR status.user_id=' . (integer)Yii::app()->user->id
             )
         );
     }
@@ -83,7 +83,12 @@ class Event extends CActiveRecord
 
     public function getEventsByCalendarId($calendar_id)
     {
-        
+        return $this->findAll(array(
+            'condition' => 'calendar_id = :id',
+            'params' => array(
+                ':id' => $calendar_id
+            )
+        ));
     }
 
     public function getRecycledEvents()
