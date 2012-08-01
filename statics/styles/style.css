@@ -3751,7 +3751,6 @@ a.mymessage-title
 {
     float:right;
 }
-/*
 
 img.user_img
 {
@@ -3895,6 +3894,38 @@ img.user_img
 /**
  * Game
  */
+.game-display .experience
+{
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    height: 6px;
+    width: 320px;
+}
+
+.game-display .experience .text
+{
+    font-size: 0.75em;
+    height: 1em;
+    line-height: 1em;
+    margin: -0.5em 0 -6px 0;
+    overflow: visible;
+    text-align: center;
+    width: 318px;
+}
+
+.game-display .experience .bar
+{
+    background: #D7D606;
+    border: 1px solid #FFFFFF;
+    height: 4px;
+    max-width: 318px;
+}
+
+.game-display .experience .max
+{
+    background: #FFA100;
+}
+
 #game-mission-dialog
 {
     width: 900px;
