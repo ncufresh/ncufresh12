@@ -8,7 +8,7 @@
 <div class="newgroup">
    <div class="friends-part2">
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
-        <ul class="other-department">
+        <ul class="users-department">
 <?php foreach ($members as $member ): ?>
             <li>
 <?php $profile = Profile::model()->findByPK($member->user_id); ?>

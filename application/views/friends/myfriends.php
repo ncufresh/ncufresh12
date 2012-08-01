@@ -3,7 +3,7 @@
 <h1 class="friend-title">我的好友</h1>
 <div class="myfriend">
     <div class="friends-part2">
-        <ul class="other-department">
+        <ul class="users-department">
 <?php foreach ( $user->friends as $friend ) :?>
             <li>
 <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $friend->profile->id));  ?>">

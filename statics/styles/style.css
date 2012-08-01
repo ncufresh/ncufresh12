@@ -195,12 +195,12 @@ form dd .arrow
     width: 0;
 }
 
-form div
+/*form div
 {
     margin-top: 4px;
     width: 50%;
 }
-
+*/
 form div:after
 {
     content: '\A';
@@ -2984,14 +2984,14 @@ ul.friend-other-sort
     list-style-type:none;
 }
 
-.other-department
+ul#other-department
 {
     width:660px;
     padding:5px;
     margin:0px;
 }
 
-.other-department li
+ul.users-department li
 {
     width:132px; 
     height:230px;
@@ -3001,7 +3001,7 @@ ul.friend-other-sort
     list-style-type:none;
 }
 
-.other-department li h3
+ul.users-department li h3
 {
     color:DarkBlue;
     width:132px; 
@@ -3011,7 +3011,7 @@ ul.friend-other-sort
     text-align:center;
 }
 
-.other-department li h4
+ul.users-department li h4
 {
     color:red;
     width:132px; 
@@ -3101,7 +3101,7 @@ div.friends
     margin:0px;
 }
 
-div.sameDsameG
+form div.sameDsameG
 {
     background-image:url('../profile/sameDsameG.png');
     background-repeat:no-repeat ;
@@ -3111,7 +3111,7 @@ div.sameDsameG
     margin:0px;
 }
 
-div.sameDdiffG
+form div.sameDdiffG
 {
     background-image:url('../profile/sameDdiffG.png');
     background-repeat:no-repeat ;
@@ -3121,7 +3121,7 @@ div.sameDdiffG
     margin:0px;
 }
 
-div.other-department
+form div.other-department
 {
     background-image:url('../profile/otherD.png');
     background-repeat:no-repeat ;
@@ -3349,7 +3349,7 @@ div.profile-message-reply
     height: 35px;
     padding: 0px;
     margin: 0px;
-    float:left;
+    float:right;
 }
 
 .button-cancel
@@ -3360,14 +3360,16 @@ div.profile-message-reply
     height:34px;
     padding:0px;
     margin:0px;
+    display:block;
+    float:right;
 }
 
 .button-push
 {
     background-image:url('../profile/button/push.png');
     background-repeat:no-repeat ;
-    width:71px;
-    height:38px;
+    width:67px;
+    height:35px;
     padding:0px;
     margin:0px;
 }
@@ -3400,7 +3402,7 @@ div.profile-message-reply
     height:33px;
     padding:0px;
     margin:0px;
-    float:left;
+    float:right;
     display:block;
 }
 
@@ -3412,8 +3414,8 @@ div.profile-message-reply
     height:35px;
     padding:0px;
     margin:0px;
-    float:left;
     display:block;
+    float:right;
 }
 
 #button-deletemember
@@ -3424,7 +3426,7 @@ div.profile-message-reply
     height:34px;
     padding:0px;
     margin:0px;
-    float:left;
+    float:right;
 }
 
 .button-makefriend

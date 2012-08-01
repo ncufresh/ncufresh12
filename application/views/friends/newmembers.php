@@ -3,7 +3,7 @@
 <h1>成員</h1>
 <div class="newmember">
     <div class="friends-part2">
-        <ul class="other-department">
+        <ul class="users-department">
 <?php foreach ( $user->friends as $friend ) : ?>
             <li>
 <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $friend->profile->id));  ?>">
@@ -24,7 +24,7 @@
     </div>
 </div>
 <button type="submit" class="button-sure"></button>
-<a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$id)); ?>" class="cancel">取消</a>
+<a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$id)); ?>" class="button-cancel"></a>
 <button type="button" class="button-back"></button>
 </form>
 
