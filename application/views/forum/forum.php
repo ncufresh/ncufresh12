@@ -40,7 +40,7 @@
     <?php $this->widget('Pager', array(
         'url'       => 'forum/forum',
         'pager'     => $page_status,
-        'parameters'=> array('fid' => $fid, 'sort' => $sort, 'category_id' => $current_category)
+        'parameters'=> array('fid' => $fid, 'sort' => $sort, 'category' => $current_category)
     )); 
     ?>
     <select id="sort_list">
@@ -72,13 +72,13 @@
     </div>
     <div class="category-lists">
     <ul id="labels">
-        <li class="un-selected">
-            <a class="change-category" href='<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => $sort, 'category_id' => 0));?>'>全部</a>
+        <li class="<?php echo ( $current_category == 0 ) ? 'selected' : 'un-selected'; ?>">
+            <a class="change-category" href='<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => $sort, 'category' => 0));?>'>全部</a>
         </li>
         <?php
         foreach ( $category->article_categories as $each ) : 
         ?>
-            <li class="un-selected">
+            <li class="<?php echo ( $current_category == $each->id ) ? 'selected' : 'un-selected'; ?>">
                 <a class="change-category" href='<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => $sort, 'category' => $each->id));?>'><?php echo $each->name;?></a>
             </li>
         <?php
