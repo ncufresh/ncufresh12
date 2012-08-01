@@ -186,7 +186,7 @@ class FriendsController extends Controller
         $grade = Profile::model()->findByPK($this->userId)->grade;
         if ( isset($_POST['friends']) )
         {
-            if ( ! Group::model()->addNewGroup($this->userid, $_POST['group-name'], $_POST['group-description'], $_POST['friends']) )
+            if ( ! Group::model()->addNewGroup($this->userId, $_POST['group-name'], $_POST['group-description'], $_POST['friends']) )
             {
             }
             $this->redirect(array('friends/friends'));

@@ -6,5 +6,9 @@
         $('.friends-part2').scrollable({
             wheelSpeed: 90
         });
+        jQuery('.button-back').click(function()
+        {
+            window.history.back();
+        }); 
     });
 })(jQuery);

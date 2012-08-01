@@ -93,6 +93,7 @@
             </dt>
             <dd>
                 <input id="form-register-confirm" name="register[confirm]" type="password" />
+                <span>再來輸入一次吧....要與密碼相同</span>
             </dd>
         </dl>
         <dl class="select">

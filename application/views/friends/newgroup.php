@@ -27,6 +27,6 @@
         </ul>
     </div>
 </div>
-<button type="submit">新增</a>
+<button type="submit" class="button-addmember"></a>
+<button type="button" class="button-back" ></button>
 </form>
-<button onClick= "history.back()" >BACK</button>
