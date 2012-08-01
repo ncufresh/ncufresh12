@@ -76,6 +76,17 @@ form button
     padding: 4px 8px;
 }
 
+form textarea
+{
+    height: 160px;
+}
+
+form button
+{
+    height: 40px;
+    padding: 4px 16px;
+}
+
 form input:hover,
 form textarea:hover,
 form button:hover,
@@ -84,16 +95,6 @@ form textarea:focus,
 form button:focus
 {
     border: 1px solid #909090;
-}
-
-form textarea
-{
-    height: 160px;
-}
-
-form button
-{
-    height: 24px;
 }
 
 form dt label
@@ -3542,21 +3543,37 @@ div#success a
     margin-top:207px;
 }
 
-div.login
+#login
 {
-    background-image:url('../profile/login.png');
-    background-repeat:no-repeat ;
-    width:690px;
-    height:370px;
-    padding:25px;
-    margin:0px;
+    background: url('../profile/login.png');
+    width: 690px;
+    height: 370px;
+    padding: 25px;
+    margin: 0px;
 }
 
-div.login ul
-{ 
-    padding:0px;
-    margin-left:225px;
-    margin-top:45px;
+#login h2
+{
+    display: none;
+}
+
+#login p
+{
+    margin: 50px 0 0 100px;
+}
+
+#login ul
+{
+    padding: 0;
+    margin-left: 160px;
+}
+
+#login form
+{
+    height: 110px;
+    margin: 25px 0 0 160px;
+    padding: 0;
+    width: 640px;
 }
 
 div.delete-group
@@ -3567,16 +3584,6 @@ div.delete-group
     height:50px;
     padding:0px;
     margin:0px;
-}
-
-
-div.login form
-{
-    width:350px;
-    height:110px;
-    margin-left:200px;
-    margin-top:90px;
-    padding:0px;
 }
 
 form.group-description
