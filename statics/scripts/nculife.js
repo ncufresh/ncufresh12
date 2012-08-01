@@ -20,49 +20,20 @@ jQuery(document).ready(function()
         {
             dialogClass: 'nculife-dialog',
             closeText: ' ',
-            onClose: function()
-            {
-                $('#life-dialog').removeClass();
-                $('#life-dialog').addClass('nculife-dialog');
-            }
         });
 
-        if($(this).parent().parent('div').attr('id') == 'life-play')
-        {
-            $('#nculife-title').removeClass();
-            $('#life-dialog').addClass('nculife-style1');
-            $('#nculife-title').addClass('life-top1');
-        }
-        if($(this).parent().parent('div').attr('id') == 'life-traffic')
-        {
-            $('#nculife-title').removeClass();
-            $('#life-dialog').addClass('nculife-style2');
-            $('#nculife-title').addClass('life-top2');
-        }
-        if($(this).parent().parent('div').attr('id') == 'life-school')
-        {
-            $('#nculife-title').removeClass();
-            $('#life-dialog').addClass('nculife-style3');
-            $('#nculife-title').addClass('life-top3');
-        }
-        if($(this).parent().parent('div').attr('id') == 'life-live')
-        {
-            $('#nculife-title').removeClass();
-            $('#life-dialog').addClass('nculife-style4');
-            $('#nculife-title').addClass('life-top4');
-        }
-        if($(this).parent().parent('div').attr('id') == 'life-health')
-        {
-            $('#nculife-title').removeClass();
-            $('#life-dialog').addClass('nculife-style5');
-            $('#nculife-title').addClass('life-top5');
-        }
 
-        $('#nculife-dh').text('');
-        $('#nculife-cv').html('');
-        $('#nculife-dh').html('');
-        $('#nculife-t').html('');
-        
+        $('#life-dialog').removeClass();
+        $('#life-dialog').addClass('nculife-dialog');
+        $('#life-dialog').addClass($(this).parents('ul').attr('pattern'));
+        $('#nculife-title').removeClass();
+        $('#nculife-title').addClass($(this).parents('ul').attr('bar'));
+
+        $('#nculife-dh').empty();
+        $('#nculife-cv').empty();
+        $('#nculife-dh').empty();
+        $('#nculife-t').empty();
+
         var button = $(this)
         if(button.hasClass('life-bar'))
         {
@@ -79,7 +50,7 @@ jQuery(document).ready(function()
             });
             $('#nculife-title h4').text($(this).children('span').text());
         }
-        
+
         else
         {
             jQuery(this).each(function()
@@ -96,8 +67,12 @@ jQuery(document).ready(function()
             $('#nculife-title h4').text($(this).text());
         }
         $('#nculife-dh > a').first().click();
+
+        $('#nculife-cv').scrollable({
+            scrollableClass:    false
+        });
     });
-    
+
     jQuery('#life-play').mouseenter(function()
     {
         jQuery('#life-index1').stop().animate(
@@ -105,7 +80,7 @@ jQuery(document).ready(function()
             height: '130px'
         },500);
     });
-    
+
     jQuery('#life-play').mouseleave(function()
     {
         jQuery('.life-items').stop().animate(
@@ -113,7 +88,7 @@ jQuery(document).ready(function()
             height: '0px'
         },500);
     });
-    
+
     jQuery('#life-traffic').mouseenter(function()
     {
         jQuery('#life-index2').stop().animate(
@@ -121,7 +96,7 @@ jQuery(document).ready(function()
             height: '130px'
         },500);
     });
-    
+
     jQuery('#life-traffic').mouseleave(function()
     {
         jQuery('#life-index2').stop().animate(
@@ -129,7 +104,7 @@ jQuery(document).ready(function()
             height: '0px'
         },500);
     });
-    
+
     jQuery('#life-school').mouseenter(function()
     {
         jQuery('#life-index3').stop().animate(
@@ -137,7 +112,7 @@ jQuery(document).ready(function()
             height: '335px'
         },500);
     });
-    
+
     jQuery('#life-school').mouseleave(function()
     {
         jQuery('#life-index3').stop().animate(
@@ -145,7 +120,7 @@ jQuery(document).ready(function()
             height: '0px'
         },500);
     });
-    
+
     jQuery('#life-live').mouseenter(function()
     {
         jQuery('#life-index4').stop().animate(
@@ -153,7 +128,7 @@ jQuery(document).ready(function()
             height: '165px'
         },500);
     });
-    
+
     jQuery('#life-live').mouseleave(function()
     {
         jQuery('#life-index4').stop().animate(
@@ -161,7 +136,7 @@ jQuery(document).ready(function()
             height: '0px'
         },500);
     });
-    
+
     jQuery('#life-health').mouseenter(function()
     {
         jQuery('#life-index5').stop().animate(
@@ -169,7 +144,7 @@ jQuery(document).ready(function()
             height: '105px'
         },500);
     });
-    
+
     jQuery('#life-health').mouseleave(function()
     {
         jQuery('#life-index5').stop().animate(
@@ -177,7 +152,7 @@ jQuery(document).ready(function()
             height: '0px'
         },500);
     });
-    
+
     switch(window.location.hash.replace('#', ''))
     {
         case 'play' :
@@ -200,5 +175,4 @@ jQuery(document).ready(function()
             jQuery('#life-health').mouseenter();
         break;
     }
-
 });

@@ -70,7 +70,7 @@
                     <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>#reschool" title="復學區">復學區</a>
                 </li>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>#notice" title="相關須知">相關須知</a>
+                    <a href="<?php echo Yii::app()->createUrl('readme/notice'); ?>" title="相關須知">相關須知</a>
                 </li>
                 <li>
                     <a href="<?php echo Yii::app()->createUrl('readme/download'); ?>" title="文件下載">文件下載</a>
@@ -160,7 +160,9 @@
         </li>
     </ul>
 </div>
-<div id="content"><?php echo $content; ?></div>
+<div id="content">
+    <div id="<?php echo $this->getId(); ?>"><?php echo $content; ?></div>
+</div>
 <div id="sidebar">
 <?php if ( Yii::app()->user->getIsGuest() ) : ?>
     <form class="profile" action="<?php echo Yii::app()->createUrl('site/login'); ?>" method="POST">
@@ -189,7 +191,8 @@
 <?php else : ?>
     <div class="profile">
 <?php $this->widget('Avatar', array(
-    'id'        => Yii::app()->user->getId()
+    'id'        => Yii::app()->user->getId(),
+    'link'      => true
 )); ?>
         <p><?php echo Yii::app()->user->getName(); ?></p>
         <a id="sidebar-personal-toggle" href="#" title="點此打開或關閉個人功能"></a>
@@ -214,7 +217,7 @@
     </div>
 <?php endif; ?>
     <div class="links sidebar-box">
-        <h4>連結區</h4>
+        <h4>常用連結</h4>
         <ul>
             <li>
                 <a href="http://www.ncu.edu.tw" title="中大首頁">中大首頁</a>
@@ -223,7 +226,39 @@
                 <a href="http://portal.ncu.edu.tw" title="Portal入口">Portal入口</a>
             </li>
             <li>
-                <a href="http://www.cc.ncu.edu.tw" title="電算中心">電算中心</a>
+                <a href="http://course.ncu.edu.tw" title="選課系統">選課系統</a>
+            </li>
+            <li>
+                <a href="http://bb.ncu.edu.tw" title="BlackBoard">BlackBoard</a>
+            </li>
+            <li>
+                <a href="https://uncia.cc.ncu.edu.tw/dormnet/" title="宿網系統">宿網系統</a>
+            </li>
+            <li>
+                <a href="http://volley.cc.ncu.edu.tw:8080/RepairSystem" title="宿舍修繕">宿舍修繕</a>
+            </li>
+            <li>
+                <a href="http://www.lib.ncu.edu.tw" title="圖書館首頁">圖書館首頁</a>
+            </li>
+        </ul>
+    </div>
+    <div class="links sidebar-box">
+        <h4>推薦連結</h4>
+        <ul>
+            <li>
+                <a href="http://radio.pinewave.tw" title="松濤電台">松濤電台</a>
+            </li>
+            <li>
+                <a href="http://www4.is.ncu.edu.tw/register/check/stdno_check.php" title="學號查詢">學號查詢</a>
+            </li>
+            <li>
+                <a href="http://www.uac.edu.tw" title="線上查榜">線上查榜</a>
+            </li>
+            <li>
+                <a href="http://ncugrad.pixnet.net/blog" title="研究生部落">研究生部落</a>
+            </li>
+            <li>
+                <a href="http://www.facebook.com/groups/282591371819838" title="什麼！">什麼！</a>
             </li>
         </ul>
     </div>
@@ -242,7 +277,7 @@
 <?php if ( Yii::app()->user->getIsMember() ) : ?>
 <div id="chat" notify="<?php echo Yii::app()->request->baseUrl; ?>/statics/notify">
     <p class="online-friends">
-        線上好友<span class="friendcounts"><?php echo 999; // $this->getOnlineFriendsCount(); ?></span>人
+        線上好友<span class="friendcounts">0</span>人
     </p>
 </div>
 <?php endif; ?>
@@ -267,7 +302,8 @@
             calendarEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvents'); ?>'),
             calendarHideEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/hideEvent'); ?>'),
             buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),
-            gameMissionUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/solve', array('id' => ':id'));?>'),
+            gameMissionUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/problem', array('id' => ':id'));?>'),
+            gameSolveUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/solve', array('id' => ':id'));?>'),
             facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
             facebookAppId: '<?php global $ncufreshfb; echo $ncufreshfb['appId']; ?>',
             googleSearchAppId: '011017124764723419863:mdibrr3n-py',

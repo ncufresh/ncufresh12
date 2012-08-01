@@ -2,8 +2,13 @@
 <script type="text/javascript">
 jQuery(document).ready(function()
 {
-    $('#personal-calendar .left').calendar();
-
+    var calendar = $.calendar({
+        calendar_container: '#personal-calendar .left',
+        events_container:   '#personal-calendar .right',
+        date_container:     '#personal-calendar .date',
+        prompt:             '#personal-calendar .prompt',
+        eventsUrl:           $.configures.calendarEventsUrl
+    });
     $('a.calendar-hide-event').live('click', function()
     {
         var id = $(this).attr('href').replace('#', '');
@@ -23,6 +28,7 @@ jQuery(document).ready(function()
                 if ( $.errors(response.errors) )
                 {
                     $(self).parents('li').remove();
+                    calendar.updateData();
                 }
             }
         );
@@ -39,4 +45,11 @@ jQuery(document).ready(function()
     <a href="<?php echo Yii::app()->createUrl('calendar/createevent');?>">新增</a>
     <a href="<?php echo Yii::app()->createUrl('calendar/subscript');?>">訂閱</a>
     <a href="<?php echo Yii::app()->createUrl('calendar/recycle');?>">垃圾桶</a>
+    <div class="prompt">
+        <ul>
+        </ul>
+        <i></i>
+    </div>
 </div>
+
+

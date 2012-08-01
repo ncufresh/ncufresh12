@@ -21,19 +21,7 @@ class CalendarController extends Controller
 
     public function actionClub()
     {
-        // foreach ( Calendar::model()->getClubs() as $qq )
-        // {
-            // var_dump($qq->id);
-            // var_dump($qq->clubs->name);
-            // var_dump($qq->subscriptions ? 1 : 0);
-        // }
-        // var_dump(Event::model()->findByPk(1)->status)
-        
-        // var_dump( array_diff(array(
-            // 10,2,3
-        // ),array(
-            // 2,3,4
-        // )) );
+        $this->render('club');
     }
 
     public function actionRecycle()
@@ -59,6 +47,29 @@ class CalendarController extends Controller
         ));
     }
 
+    public function actionClubRecycle()
+    {
+        if ( Yii::app()->request->getIsAjaxRequest() )
+        {
+            if ( isset($_POST['calendar']) )
+            {
+                $id = (integer)$_POST['calendar']['id'];
+                $event = Event::model()->findByPk($id);
+                if ( $event->calendar->getIsClub() && $event->calendar->getIsOwner() )
+                {
+                    $event->invisible = true;
+                    if ( $event->save() ) return true;
+                }
+            }
+            $this->_data['errors'][] = '發生錯誤！';
+            return true;
+        }
+        else
+        {
+            throw new CHttpException(404);
+        }
+    }
+    
     public function actionEvent($id)
     {
         $id = (integer)$id;
@@ -94,6 +105,25 @@ class CalendarController extends Controller
         $this->render('create_event');
     }
 
+    public function actionCreateClubEvent()
+    {
+        $event = new Event();
+        if ( isset($_POST['event']) )
+        {
+            $event->name = $_POST['event']['name'];
+            $event->description = $_POST['event']['description'];
+            $event->invisible = 0;
+            $event->start = strtotime($_POST['event']['start']);
+            $event->end = strtotime($_POST['event']['end']);
+            $event->calendar_id = Calendar::Model()->find('user_id='.Yii::app()->user->getId().' AND category=0')->id;
+            if ( $event->save() )
+            {
+                $this->redirect(Yii::app()->createUrl('calendar/club'));
+            }
+        }
+        $this->render('create_club_event');
+    }
+    
     public function actionHideEvent()
     {
         if ( Yii::app()->request->getIsAjaxRequest() )
@@ -110,84 +140,78 @@ class CalendarController extends Controller
 
     public function actionShowEvent()
     {
-    }
-
-    public function actionDeleteEvent()
-    {
+        if ( Yii::app()->request->getIsAjaxRequest() )
+        {
+            if ( isset($_POST['calendar']) )
+            {
+                $id = (integer)$_POST['calendar']['id'];
+                if ( Event::model()->show($id) ) return true;
+            }
+            $this->_data['errors'][] = '發生錯誤！';
+            return true;
+        }
     }
 
     public function actionSubscript()
     {
         if ( isset($_POST['token']) )
         {
+            // 若checkbox完全沒有勾選擇給$_POST['subscript']一空陣列
             if( !isset($_POST['subscript']) ) $_POST['subscript'] = array();
-            echo '0';
+            
             $subscript = new Subscription();
-            $array = array();
-            $i =0;
-            foreach( $_POST['subscript'] as $key => $value)
-            {
-                $array[$i++] = $key;
-            }
             
-            //var_dump($array);
-            //var_dump(self::getSubscribedCalendars());
-            //var_dump(array_diff($array, self::getSubscribedCalendars()));
-            // var_dump(array_diff(self::getSubscribedCalendars(), $array));
-            // exit();
-            //here
-            
-            //新傳入的值比原有的多出 => 新增訂閱
+            $array = self::getPostKeys($_POST['subscript']);
+            $check = 0;
+            //新增訂閱
             if ( count(array_diff($array, self::getSubscribedCalendars()))!=0 )
             {
-                echo '1';
                 foreach(array_diff($array, self::getSubscribedCalendars()) as $value)
                 {
-                    if ( Subscription::Model()->find('calendar_id='.$value.' AND invisible=1 AND user_id='.Yii::app()->user->getId()) )
+                    if ( Subscription::model()->getInvisibleSubscriptionByCalendarID($value) )
                     {
-                        $subscript = Subscription::model()->find('calendar_id='.$value.' AND invisible = 1 AND user_id='.Yii::app()->user->getId());
+                        $subscript = Subscription::model()->getInvisibleSubscriptionByCalendarID($value);
                         $subscript->invisible = 0;
-                        $subscript->save();
+                        if ( ! $subscript->save() ) $check=1;
                         continue;
                     }
                     $subscript = new Subscription();
                     $subscript->calendar_id = $value;
                     $subscript->invisible = 0;
-                    if ( $subscript->save() ) $this->redirect(Yii::app()->createUrl('calendar/view'));
+                    if ( ! $subscript->save() ) $check=1;
                 }
             }
             
-            //原有的比新傳入多出的部分 => 取消訂閱
+            //取消訂閱
             if ( count(array_diff(self::getSubscribedCalendars(), $array))!=0 )
             {
-                echo '2';
-                var_dump(array_diff(self::getSubscribedCalendars(), $array));
-                echo '<br/>';
                 foreach(array_diff(self::getSubscribedCalendars(), $array) as $value)
-                {
-                    echo 'abc ';
-                    // var_dump(self::getSubscribedCalendars());
-                    // echo '<br/>';
-                    // var_dump($array);
-                    // echo '<br/>';
-                    // var_dump(array_diff(self::getSubscribedCalendars(), $array));
-                    
-                    if ( $subscript->find('calendar_id='.$value.' AND invisible = 0 AND user_id='.Yii::app()->user->getId()) )
-                    {
-                        echo $subscript->find('calendar_id='.$value.' AND invisible = 0 AND user_id='.Yii::app()->user->getId())->calendar_id;
-                        
-                        $subscript = Subscription::model()->find('calendar_id='.$value.' AND invisible = 0 AND user_id='.Yii::app()->user->getId());
+                {                    
+                    if ( $subscript->getSubscriptionByCalendarID($value) )
+                    {                        
+                        $subscript = Subscription::model()->getSubscriptionByCalendarID($value);
                         $subscript->invisible = 1;
-                        if ( $subscript->save() ) $this->redirect(Yii::app()->createUrl('calendar/view'));
+                        if ( ! $subscript->save() ) $check=1;
                     }
-                    
-                    // echo '<br/><br/>';
                 }
             }
+            
+            if ( $check == 0 ) $this->redirect(Yii::app()->createUrl('calendar/view'));
         }
         $this->render('subscript', array(
             'clubs' => Calendar::model()->getClubs()
         ));
+    }
+
+    private function getPostKeys($post)
+    {
+        $array = array();
+        $i = 0;
+        foreach( $post as $key => $value )
+        {
+            $array[$i++] = $key;
+        }
+        return $array;
     }
 
     private function getSubscribedCalendars()
@@ -202,12 +226,8 @@ class CalendarController extends Controller
         }
         return $result;
     }
-    
-    public function actionUnsubsciprt()
-    {
-        
-    }
 
+    //測試完封閉一般REQUEST
     public function actionAjaxEvent($id)
     {
         $event = Event::model()->getEventById($id);
@@ -218,9 +238,10 @@ class CalendarController extends Controller
         $this->_data['event']['description'] = $event->description;
     }
 
-    public function actionAjaxEvents()
+    //測試完封閉一般REQUEST
+    public function actionAjaxEvents($club = false)
     {
-        $user = User::model()->findByPk(Yii::app()->user->id);
+        if ( $club ) return $this->getAjaxClubEvents();
         $this->_data['events'] = array();
         if( isset($_POST['event_ids']) )
         {
@@ -254,24 +275,16 @@ class CalendarController extends Controller
                         'name'      => $event->name
                     );
                 }
-                // $this->_data['events'][$key]['description'] = $event->description;
             }
             $this->_data['token'] = Yii::app()->security->getToken();
         }
         else
         {
+            $user = User::model()->findByPk(Yii::app()->user->id);
             $counter = 0;
-            foreach ( $user->calendar->events as $event )
+            if( Yii::app()->user->isMember )
             {
-                $this->_data['events'][$counter]['id'] = $event->id;
-                $this->_data['events'][$counter]['start'] = $event->start;
-                $this->_data['events'][$counter]['name'] = $event->name;
-                $this->_data['events'][$counter]['end'] = $event->end;
-                $counter++;
-            }
-            foreach ( $user->subscriptions as $calendar )
-            {
-                foreach( $calendar->events as $event )
+                foreach ( $user->calendar->events as $event )
                 {
                     $this->_data['events'][$counter]['id'] = $event->id;
                     $this->_data['events'][$counter]['start'] = $event->start;
@@ -279,7 +292,42 @@ class CalendarController extends Controller
                     $this->_data['events'][$counter]['end'] = $event->end;
                     $counter++;
                 }
+                foreach ( $user->subscriptions as $calendar )
+                {
+                    foreach ( $calendar->events as $event )
+                    {
+                        $this->_data['events'][$counter]['id'] = $event->id;
+                        $this->_data['events'][$counter]['start'] = $event->start;
+                        $this->_data['events'][$counter]['name'] = $event->name;
+                        $this->_data['events'][$counter]['end'] = $event->end;
+                        $counter++;
+                    }
+                }
             }
+            else
+            {
+                $events = Calendar::model()->getGeneralCalendar()->events;
+                foreach ( $events as $key => $event )
+                {
+                    $this->_data['events'][$key]['id'] = $event->id;
+                    $this->_data['events'][$key]['start'] = $event->start;
+                    $this->_data['events'][$key]['name'] = $event->name;
+                    $this->_data['events'][$key]['end'] = $event->end;
+                }
+            }
+        }
+    }
+    
+    public function getAjaxClubEvents()
+    {
+        $events = Calendar::model()->getClubCalendar()->events;
+        foreach ( $events as $key => $event )
+        {
+            $this->_data['events'][$key]['id'] = $event->id;
+            $this->_data['events'][$key]['start'] = $event->start;
+            $this->_data['events'][$key]['name'] = $event->name;
+            $this->_data['events'][$key]['end'] = $event->end;
+            $this->_data['events'][$key]['invisible'] = $event->invisible;
         }
     }
 }

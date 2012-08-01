@@ -1,7 +1,9 @@
 ﻿/**
  * Global style
  */
-body
+body,
+input,
+textarea
 {
     font-size: 16px;
     font-family: '微軟正黑體', 'Microsoft JhengHei', '微软雅黑', 'Microsoft YaHei', 'WenQuanYi ZenHei', Arial, sans-serif;
@@ -48,11 +50,17 @@ form dt
     position: absolute;
 }
 
+form dt label
+{
+    cursor: text;
+}
+
 form input,
 form textarea
 {
-    font-size: 0.85em;
+    outline: none;
     position: relative;
+    resize: none;
     width: 100%;
 }
 
@@ -68,6 +76,17 @@ form button
     padding: 4px 8px;
 }
 
+form textarea
+{
+    height: 160px;
+}
+
+form button
+{
+    height: 40px;
+    padding: 4px 16px;
+}
+
 form input:hover,
 form textarea:hover,
 form button:hover,
@@ -76,22 +95,6 @@ form textarea:focus,
 form button:focus
 {
     border: 1px solid #909090;
-}
-
-form textarea
-{
-    height: 160px;
-}
-
-form button
-{
-    height: 24px;
-}
-
-form input:focus,
-form textarea:focus
-{
-    z-index: 3000;
 }
 
 form dt label
@@ -152,6 +155,39 @@ form dl.select dd label
     float: left;
     line-height: 30px;
     padding: 4px 8px;
+}
+
+form dd > span
+{
+    background: #646464;
+    background: rgba(100, 100, 100, 0.7);
+    border-radius: 5px;
+    color: #FFFFFF;
+    display: none;
+    left: 103%;
+    line-height: 20px;
+    margin: 6px -4px;
+    min-height: 20px;
+    position: absolute;
+    padding: 8px;
+    top: 0;
+    width: 85%;
+    word-break: break-all;
+}
+
+form dd .arrow
+{
+    border-color: transparent #646464 transparent transparent;
+    border-color: transparent rgba(100, 100, 100, 0.7) transparent transparent;
+    border-style: dashed solid dashed dashed;
+    border-width: 12px;
+    display: block;
+    left: -32px;
+    height: 0;
+    margin-bottom: -24px;
+    position: relative;
+    top: -2px;
+    width: 0;
 }
 
 form div
@@ -863,7 +899,13 @@ a:hover
     border: 2px solid #000000;
     height: 44px;
     float: left;
+    opacity: 0.3;
     width: 44px;
+}
+
+#chat-friend-list .friend-list-entry.online .avatar
+{
+    opacity: 1;
 }
 
 #chat-friend-list .avatar img
@@ -909,7 +951,7 @@ a:hover
 
 .chat-dialog .chat-title span
 {
-    background: url('../images/chat_online.png') no-repeat;
+    background: url('../images/chat_offline.png');
     display: block;
     float: left;
     height: 16px;
@@ -917,9 +959,9 @@ a:hover
     width: 16px;
 }
 
-.chat-dialog .chat-title span.offline
+.chat-dialog .chat-title span.online
 {
-    background: url('../images/chat_offline.png') no-repeat;
+    background: url('../images/chat_online.png');
 }
 
 .chat-dialog .chat-title p
@@ -1114,6 +1156,11 @@ table.gsc-completion-container
     width: 220px;
 }
 
+#search dl
+{
+    width: 95%;
+}
+
 #search label
 {
     height: 20px;
@@ -1122,8 +1169,6 @@ table.gsc-completion-container
 
 #search input
 {
-    /*border: none;
-    box-shadow: none;*/
     height: 20px;
     padding-right: 30px;
     width: 178px;
@@ -1136,8 +1181,8 @@ table.gsc-completion-container
     box-shadow: none;
     cursor: pointer;
     float: right;
-    height: 20px;
-    margin: -30px 4px 0 0;
+    height: 24px;
+    margin: -32px 2px 0 0;
     position: relative;
     text-indent: -100000px;
     width: 32px;
@@ -1146,7 +1191,16 @@ table.gsc-completion-container
 
 #result
 {
+    background: #FFFFFF url('../images/search.png') right top no-repeat;
+    border-radius: 10px;
     margin: 0 auto;
+    min-height: 160px;
+    padding-top: 200px;
+}
+
+#result .loading
+{
+    margin-top: 10px;
 }
 
 #result .gs-title
@@ -1253,128 +1307,108 @@ ul#nculife-details
 
 #index-calendar
 {
+    background: #FFEDB7;
+    border-radius: 15px;
     float: left;
+    height: 400px;
+    margin-top: 40px;
     width: 30%;
 }
 
-#index-calendar .calendar-top
+#index-calendar .calendar-bottom-wrapper
 {
-    width: 204px;
-    height: 85px;
+    background: url('../images/calendar.png') center top no-repeat;
+    height: 360px;
+    margin-top: -45px;
+    padding: 50px 10px 0 10px;
 }
 
-#index-calendar .calendar-top-all-nologin
+#index-calendar .calendar-bottom
 {
-    background: url('../images/calendar_top2.png');
+    position: relative;
 }
 
-#index-calendar .calendar-top-all-login
-{
-    background: url('../images/calendar_top.png');
-}
-
-#index-calendar .calendar-top-personal
-{
-    background: url('../images/calendar_top3.png');
-}
-
-#index-calendar .calendar-bottom-wrap
-{
-    background: #FFEDB7;
-    border-radius: 0 0 15px 15px;
-    float: left;
-    overflow: hidden;
-    position: absolute;
-    width: 204px;
-    height: 355px;
-}
-
-#index-calendar .calendar-bottom-wrap table.calendar-table
+#index-calendar table.calendar-table
 {
     border-collapse: collapse;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table caption
+#index-calendar table.calendar-table caption
 {
-    margin:  15px 0 10px 0 ;
+    margin: 15px 0 10px 0;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table td
+#index-calendar table.calendar-table td
 {
     text-align: right;
     width: 28px;
     cursor: pointer;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table thead
+#index-calendar table.calendar-table thead
 {
     display: block;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table thead td
+#index-calendar table.calendar-table thead td
 {
     color: #af8d5a;
     text-align: center;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table thead td.weekend
+#index-calendar table.calendar-table thead td.weekend
 {
     color: red;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table 
-{
-    width: 204px;
-}
-
-#index-calendar .calendar-bottom-wrap table.calendar-table tbody
+#index-calendar table.calendar-table tbody
 {
     border-top: 1px solid #946722;
     border-bottom: 1px solid #946722;
     display: block;
 }
 
-#index-calendar .calendar-bottom-wrap table.todolist-table td
+#index-calendar table.todolist-table td
 {
     width: 100px;
     text-align: center;
 }
 
-#index-calendar .calendar-bottom-wrap table.todolist-table thead td
+#index-calendar table.todolist-table thead td
 {
     color: #946722;
 }
 
-#index-calendar .calendar-top a{
-    margin-top: 51px;
-    height: 33px;
-    width: 102px;
-    float: left;
-    display: inline-block;
-}
-
-#index-calendar .calendar-top a#calendar-all
+#personal-calendar .prompt
 {
+    background: gray;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
 }
 
-#index-calendar .calendar-top a#calendar-personal
+#personal-calendar .prompt i
 {
+    border: 5px solid;
+    border-color: transparent transparent gray transparent;
+    border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+    margin-bottom: -10px;
+    margin-left: 5px;
+    display: block;
+    width: 0;
+    height: 0;
 }
 
-#index-calendar .calendar-top a
+#personal-calendar .prompt ul
 {
+    margin: 0;
+    padding: 5px;
+    list-style: none;
 }
 
-#personal-calendar
+#personal-calendar .prompt ul li
 {
-    
+    color: white;
 }
-
-#personal-calendar .calendar-table tbody td
-{
-    cursor: pointer;
-}
-
 .calendar-prompt
 {
     background: gray;
@@ -1948,7 +1982,7 @@ button.news-button
     text-decoration: underline;
 }
 
-#nculife-db
+#nculife-db .scroll-container
 {
     width: 610px;
     height: 290px;
@@ -1956,10 +1990,6 @@ button.news-button
 
 #nculife-cv
 {
-    width: 620px;
-    height: 320px;
-    overflow-x: hidden;
-    overflow-y: auto;
     margin-left: 10px;
 
 }
@@ -1981,8 +2011,8 @@ button.news-button
     background: url('../images/life_rope.png') repeat-y;
     width: 100px;
     height: 0px;
-    left: 50px;
-    top: 169px;
+    left: 13px;
+    top: 129px;
     padding: 0 0 0 20px;
     position: absolute;
     list-style: none;
@@ -1993,8 +2023,8 @@ button.news-button
     background: url('../images/life_rope.png') repeat-y;
     width: 130px;
     height: 0px;
-    left: -4px;
-    top: 157px;
+    left: -3px;
+    top: 133px;
     padding: 0 0 0 16px;
     position: absolute;
     list-style: none;
@@ -2005,8 +2035,8 @@ button.news-button
     background: url('../images/life_rope.png') repeat-y;
     width: 150px;
     height: 0px;
-    left: 38px;
-    top: 185px;
+    left: 32px;
+    top: 165px;
     padding: 0 0 0 16px;
     position: absolute;
     list-style: none;
@@ -2018,7 +2048,7 @@ button.news-button
     width: 150px;
     height: 0px;
     left: -16px;
-    top: 118px;
+    top: 98px;
     padding: 0 0 0 16px;
     position: absolute;
     list-style: none;
@@ -2076,35 +2106,36 @@ button.news-button
 #life-play
 {
     position: absolute;
-    width: 170px;
-    height: 320px;
-    top: 20px;
+    width: 125px;
+    height: 150px;
+    top: 60px;
+    left: 40px;
 }
 
 #life-traffic
 {
     position: absolute;
     width: 140px;
-    height: 300px;
-    top: 100px;
+    height: 150px;
+    top: 125px;
     left: 170px;
 }
 
 #life-school
 {
     position: absolute;
-    width: 150px;
-    height: 320px;
-    top: 30px;
-    left: 300px;
+    width: 155px;
+    height: 180px;
+    top: 50px;
+    left: 307px;
 }
 
 #life-live
 {
     position: absolute;
     width: 100px;
-    height: 300px;
-    top: 120px;
+    height: 120px;
+    top: 140px;
     left: 460px;
 }
 
@@ -2112,7 +2143,7 @@ button.news-button
 {
     position: absolute;
     width: 170px;
-    height: 330px;
+    height: 200px;
     top: 20px;
     left: 540px;
 }
@@ -2126,14 +2157,19 @@ button.news-button
     left: 660px;
 }
 
+#readme .scroll-container
+{
+    height: 420px;
+    width: 630px;
+}
+
 #readme-fresh
 {
-    width: 750px;
-    height: 450px;
-    position: relative;
-    overflow-x: hidden;
-    overflow-y: auto;
     background: url('../readme/freshman_background.png');
+    padding: 15px 25px;
+    height: 420px;
+    position: relative;
+    width: 700px;
 }
 
 #fresh-back
@@ -2166,9 +2202,10 @@ button.news-button
 
 #readme-reschool
 {
-    width: 750px;
-    height: 450px;
+    padding: 15px 25px;
+    height: 420px;
     position: relative;
+    width: 700px;
     background: url('../readme/reschool_background.png');
 }
 
@@ -2426,13 +2463,19 @@ button.news-button
     position: absolute;
     display: block;
     list-style: none;
-    font-size: 1.5em;
-    opacity: 0.75;
+    opacity: 0.95;
 }
 
 .readme-menu p
 {
     text-align: center;
+}
+
+.readme-menu p:hover
+{
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 .readme-menu span
@@ -2460,12 +2503,6 @@ button.news-button
 {
     cursor: pointer;
     text-align: center;
-}
-
-#readme-view
-{
-    width: 750px;
-    height: 450px;
 }
 
 #about .introdution
@@ -2825,6 +2862,7 @@ button.news-button
 {
 	float: left;
 }
+
 #club-schedule-button
 {
     cursor: pointer;
@@ -2864,7 +2902,7 @@ button.news-button
     background: url('../club/background.png');
 }
 /* profile... */
-.friends-sort 
+ul.friends-sort 
 
 {
     width:210px;
@@ -2874,9 +2912,9 @@ button.news-button
     padding:0px;
 }
 
-.friends-sort li
+ul.friends-sort li
 {
-    width:100px;
+    width:105px;
     height:60px;
     float:left;
     color:DarkBlue;
@@ -2943,7 +2981,7 @@ ul.friend-other-sort
 .other-department li
 {
     width:132px; 
-    height:220px;
+    height:230px;
     padding:0px;
     margin:0px;
     float:left;
@@ -3008,18 +3046,23 @@ ul.friend-other-sort
 
 .user-editor li
 {
-    width: 700px;
-    height: 40px;
+    width: 410px;
+    height: 35px;
     display: block;
     list-style-type:none;
     font-size: 20px;
     text-align:left;
 }
 
-.user-editor input
+.inexistence
 {
-    width: 100px;
-    height: 30px;
+    outline: 1px solid red;
+}
+
+ul.user-editor input
+{
+    width: 135px;
+    height: 20px;
 }
 
 div.friends h4
@@ -3099,14 +3142,6 @@ div.friends-part2
     margin:0px;
 }
 
-div.friends-part4
-{
-    width:330px;
-    height:315px;
-    margin:0px;
-    padding:25px;
-}
-
 /*div.friends-part4 form
 {
     width:300px;
@@ -3163,7 +3198,7 @@ div.friends-addfriend
     height:140px;
 }
 
-div.friends-addfriend div.avatar
+.friends-addfriend .avatar
 {
     margin-left:0px;
     margin-top:0px;
@@ -3181,7 +3216,7 @@ div.friends-sortfriend
     height:140px;
 }
 
-div.friends-sortfriend div.avatar
+div.friends-sortfriend div.avatar 
 {
     margin-left:0px;
     margin-top:0px;
@@ -3211,6 +3246,11 @@ div.myprofile
     margin:0px;
 }
 
+div.myprofile form button
+{
+    float:right;
+}
+
 /*div.mygroups
 {
     background-image:url('../profile/mygroups.png');
@@ -3233,7 +3273,7 @@ div.newgroup
 
 div.newmember
 {
-    background-image:url('../profile/sameDsameG.png');
+    background-image:url('../profile/groupmembers.png');
     background-repeat:no-repeat ;
     width:690px;
     height:370px;
@@ -3243,7 +3283,7 @@ div.newmember
 
 div.allgroups
 {
-    background-image:url('../profile/sameDsameG.png');
+    background-image:url('../profile/allgroups.png');
     background-repeat:no-repeat ;
     width:690px;
     height:370px;
@@ -3295,6 +3335,160 @@ div.profile-message-reply
     height:370px;
     padding:25px;
     margin:0px;
+    float:left;
+}
+
+.button-back
+{
+    background-image: url('../profile/button/back.png');
+    background-repeat: no-repeat ;
+    width: 141px;
+    height: 61px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.button-cancel
+{
+    background-image:url('../profile/button/cancel.png');
+    background-repeat:no-repeat ;
+    width:91px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-push
+{
+    background-image:url('../profile/button/push.png');
+    background-repeat:no-repeat ;
+    width:71px;
+    height:38px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-sure
+{
+    background-image:url('../profile/button/sure.png');
+    background-repeat:no-repeat ;
+    width:91px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-addgroup
+{
+    background-image:url('../profile/button/addgroup.png');
+    background-repeat:no-repeat ;
+    width:50px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-deletegroup
+{
+    background-image:url('../profile/button/delete-group.png');
+    background-repeat:no-repeat ;
+    width:213px;
+    height:58px;
+    padding:0px;
+    margin:0px;
+    float:left;
+}
+
+.button-addmember
+{
+    background-image:url('../profile/button/add-member.png');
+    background-repeat:no-repeat ;
+    width:213px;
+    height:59px;
+    padding:0px;
+    margin:0px;
+    float:left;
+}
+
+.button-deletemember
+{
+    background-image:url('../profile/button/delete-member.png');
+    background-repeat:no-repeat ;
+    width:213px;
+    height:58px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-makefriend
+{
+    background-image:url('../profile/button/makefriend.png');
+    background-repeat:no-repeat ;
+    width:188px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-deletefriend
+{
+    background-image:url('../profile/button/delete-friend.png');
+    background-repeat:no-repeat ;
+    width:188px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-mygroup
+{
+    background-image:url('../profile/button/mygroup.png');
+    background-repeat:no-repeat ;
+    width:50px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-addfriend
+{
+    background-image:url('../profile/button/addfriend.png');
+    background-repeat:no-repeat ;
+    width:50px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-editor
+{
+    background-image:url('../profile/button/editor.png');
+    background-repeat:no-repeat ;
+    width:50px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-register
+{
+    background-image:url('../profile/button/register.png');
+    background-repeat:no-repeat ;
+    width:159px;
+    height:57px;
+    padding:0px;
+    margin:0px;
+    float:left;
+}
+
+.button-rewrite
+{
+    background-image:url('../profile/button/rewrite.png');
+    background-repeat:no-repeat ;
+    width:146px;
+    height:57px;
+    padding:0px;
+    margin:0px;
 }
 
 /**
@@ -3306,7 +3500,6 @@ div.profile-message-reply
     padding: 0;
 }
 
-#sitemap div
 {
     min-height: 240px;
     overflow: hidden;
@@ -3324,26 +3517,10 @@ div.profile-message-reply
 #register
 {
     background: url('../profile/register.png') no-repeat;
-    height: 335px;
+    height: 515px;
     margin: 0px;
     padding: 40px;
     width: 660px;
-}
-
-#register > form,
-#register .scroll-container
-{
-    height: 330px;
-    overflow: hidden;
-}
-
-#register button
-{
-    background: url('../profile/button_register.png');
-    height: 22px;
-    margin-left: 25px;
-    padding: 0px;
-    width: 45px;
 }
 
 #register h4
@@ -3351,24 +3528,58 @@ div.profile-message-reply
     margin: -10px 0 -5px;
 }
 
-div.register #rewrite
+div#success
 {
-    background-image:url('../profile/button_register.png');
-    background-repeat:no-repeat ;
-    width:45px;
-    height:22px;
-    padding:0px;
-    margin-left:180px;
-}
-
-div.login
-{
-    background-image:url('../profile/login.png');
+    background-image:url('../profile/finish.png');
     background-repeat:no-repeat ;
     width:690px;
     height:370px;
     padding:25px;
     margin:0px;
+}
+
+div#success a 
+{
+    display:block;
+    outline:1px solid red;
+    width:162px;
+    height:53px;
+    padding:0px;
+    margin-left:269px;
+    margin-top:207px;
+}
+
+#login
+{
+    background: url('../profile/login.png');
+    width: 690px;
+    height: 370px;
+    padding: 25px;
+    margin: 0px;
+}
+
+#login h2
+{
+    display: none;
+}
+
+#login p
+{
+    margin: 50px 0 0 100px;
+}
+
+#login ul
+{
+    padding: 0;
+    margin-left: 160px;
+}
+
+#login form
+{
+    height: 110px;
+    margin: 25px 0 0 160px;
+    padding: 0;
+    width: 640px;
 }
 
 div.delete-group
@@ -3381,20 +3592,10 @@ div.delete-group
     margin:0px;
 }
 
-
-div.login form
-{
-    width:350px;
-    height:110px;
-    margin-left:150px;
-    margin-top:160px;
-    padding:0px;
-}
-
 form.group-description
 {
     width:500px;
-    height:560px;
+    height:635px;
 }
 
 div.self-messages
@@ -3405,17 +3606,6 @@ div.self-messages
     margin:0px;
     float:left;
 }
-
-div.register .is_exist
-{
-    outline:1px solid red;
-}
-
-/*h1
-{
-    text-align:center;
-    color:green;
-}*/
 
 td.reply-content
 {
@@ -3574,25 +3764,6 @@ a.mymessage-title
 {
     float:right;
 }
-/*
-.form-friends-title
-{
-    color: yellow;
-    font-size: 20px;
-    text-align: left;
-}
-
-.friend-title
-{
-    color: green;
-    text-align: center;
-}
-
-.friends-title
-{
-    text-align:center;
-    color:DarkSlateGray;
-}*/
 
 img.user_img
 {
@@ -3736,52 +3907,111 @@ img.user_img
 /**
  * Game
  */
+.game-display .experience
+{
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    height: 6px;
+    width: 320px;
+}
+
+.game-display .experience .text
+{
+    font-size: 0.75em;
+    height: 1em;
+    line-height: 1em;
+    margin: -0.5em 0 -6px 0;
+    overflow: visible;
+    text-align: center;
+    width: 318px;
+}
+
+.game-display .experience .bar
+{
+    background: #D7D606;
+    border: 1px solid #FFFFFF;
+    height: 4px;
+    max-width: 318px;
+}
+
+.game-display .experience .max
+{
+    background: #FFA100;
+}
+
 #game-mission-dialog
 {
-    width: 800px;
-    height: 500px;
+    width: 900px;
+    height: 600px;
     background: url('../game/mission.png');
     position: fixed;
+    display: inline-block;
 }
 
 #game-mission-dialog .dialog-close-button
 {
-    
+    width: 117px;
+    height: 119px;
+    background: url('../game/exit.png');
+    text-indent: -1000%;
+    position: absolute;
+    top: -16px;
+    left: 806px;
+    display: block;
+    z-index: 1;
 }
 
 #game-mission-dialog .display
 {
-    width: 260px;
-    height: 199px;
-    font-size: 18px;
-    margin: 14px 0px 0px 241px;
-    outline: 1px solid black;
+    width: 325px;
+    height: 246px;
+    font-size: 25px;
+    font-weight: bold;
+    /*outline: 1px solid black;*/
     position: absolute;
+    top: 56px;
+    left: 277px;
 }
+
 #game-mission-dialog .npc
 {
-    width: 160px;
-    height: 322px;
-    margin: 48px 0px 0px 31px;
-    outline: 1px solid black;
+    width: 324px;
+    /*outline: 1px solid red;*/
     position: absolute;
+    top: 91px;
+    left: -37px;
 }
 #game-mission-dialog .avatar
 {
-    width: 207px;
-    height: 353px;
+    width: 270px;
+    height: 451px;
     font-size: 18px;
-    margin: 32px 0px 0px 535px;
-    outline: 1px solid black;
+    /*outline: 1px solid black;*/
     position: absolute;
+    top: 43px;
+    left: 629px;
 }
 
 #game-mission-dialog h4
 {
-    margin: 6px 0px 0px 38px;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 31px;
+    /*outline: 1px black solid;*/
     position: absolute;
+    top: 39px;
+    left: 30px;
+}
+
+#game-mission-dialog form
+{
+    width: 320px;
+    height: 136px;
+    font-weight: bold;
+    font-size: 31px;
+    outline: 1px black solid;
+    position: absolute;
+    top: 356px;
+    left: 279px;
 }
 
 .avatar
@@ -3791,6 +4021,7 @@ img.user_img
     margin: 0;
     max-height: 800px;
     max-width: 450px;
+    position: relative;
     width: 450px;
 }
 
@@ -3798,7 +4029,7 @@ img.user_img
 {
     display: block;
     height: 100%;
-    position: relative;
+    position: absolute;
     width: 100%;
 }
 
@@ -4335,7 +4566,7 @@ li.enabled a
     background: url('../forum/forum/eraser.png');
     background-repeat: no-repeat;
     width:102px;
-    height:38px;
+    height:36px;
     float:left;
     margin-left: 36px;
     margin-top: 4px;
@@ -4373,6 +4604,20 @@ li.enabled a
 #forum-forum-body #labels .un-selected:hover
 {
     background:#f48191;
+}
+
+#forum-forum-body #labels .selected
+{
+    float:left;
+    display: inline;
+    list-style-type: none;
+    width:40px;
+    height:26px;
+    background: #f48191;
+    border-radius: 8px;
+    margin-right: 5px;
+    padding: 4px 4px 0 13px;
+    border: 2px solid #ffffff;
 }
 
 #forum-forum-body #labels a
@@ -4519,6 +4764,386 @@ td.popularity
     margin-left: 35px;
     padding-top: 20px;
 }
+
+/*blue forum CSS*/
+#forum-forum-body.blue #create-article
+{
+    background: url('../forum/forum/blue/eraser.png');
+}
+
+#forum-forum-body.blue #labels .un-selected
+{
+    background: #c8e5f4;
+}
+
+#forum-forum-body.blue #labels .un-selected:hover
+{
+    background: #69c1f2;
+}
+
+#forum-forum-body.blue #labels .selected
+{
+    background: #69c1f2;
+}
+
+#forum-forum-body.blue #table-head
+{
+    background: url('../forum/forum/blue/pencil.png');
+}
+
+#forum-forum-body.blue #body-table .table-title th,
+#forum-forum-body.blue #body-table .table-foot td
+{
+    background: #69c1f2;
+}
+
+#forum-forum-body.blue #body-table .table-title th.head,
+#forum-forum-body.blue #body-table .table-foot td.head
+{
+    background: url('../forum/forum/blue/pencil_head.png');
+}
+
+#forum-forum-body.blue #body-table .table-title th.category,
+#forum-forum-body.blue #body-table .table-foot td.category
+{
+    width: 84px;
+    background: url('../forum/forum/blue/pencil_category.png');
+    color:#ffffff;
+}
+
+#forum-forum-body.blue #body-table .table-title th.tail,
+#forum-forum-body.blue #body-table .table-foot td.tail
+{
+    background: url('../forum/forum/blue/pencil_tail.png');
+}
+
+#forum-forum-body.blue #body-table .table-body td.category
+{
+    border-color:#97d2f3;
+}
+
+#forum-forum-body.blue #body-table .table-body td.title,
+td.author,
+td.reply,
+td.popularity
+{
+    border-color:#97d2f3;
+}
+
+#forum-forum-body.blue #body-table .table-body td.title a:hover
+{
+    color: #97d2f3;
+}
+
+#forum-forum-body.blue #body-table .table-body td.time
+{
+    border-color:#97d2f3;
+}
+/*end of blue CSS*/
+
+/*green forum CSS*/
+#forum-forum-body.green #create-article
+{
+    background: url('../forum/forum/green/eraser.png');
+}
+
+#forum-forum-body.green #labels .un-selected
+{
+    background: #aae1a6;
+}
+
+#forum-forum-body.green #labels .un-selected:hover
+{
+    background: #72c774;
+}
+
+#forum-forum-body.green #labels .selected
+{
+    background: #72c774;
+}
+
+#forum-forum-body.green #table-head
+{
+    background: url('../forum/forum/green/pencil.png');
+}
+
+#forum-forum-body.green #body-table .table-title th,
+#forum-forum-body.green #body-table .table-foot td
+{
+    background: #72c774;
+}
+
+#forum-forum-body.green #body-table .table-title th.head,
+#forum-forum-body.green #body-table .table-foot td.head
+{
+    background: url('../forum/forum/green/pencil_head.png');
+}
+
+#forum-forum-body.green #body-table .table-title th.category,
+#forum-forum-body.green #body-table .table-foot td.category
+{
+    width: 84px;
+    background: url('../forum/forum/green/pencil_category.png');
+    color:#ffffff;
+}
+
+#forum-forum-body.green #body-table .table-title th.tail,
+#forum-forum-body.green #body-table .table-foot td.tail
+{
+    background: url('../forum/forum/green/pencil_tail.png');
+}
+
+#forum-forum-body.green #body-table .table-body td.category
+{
+    border-color:#72c774;
+}
+
+#forum-forum-body.green #body-table .table-body td.title,
+td.author,
+td.reply,
+td.popularity
+{
+    border-color:#72c774;
+}
+
+#forum-forum-body.green #body-table .table-body td.title a:hover
+{
+    color: #72c774;
+}
+
+#forum-forum-body.green #body-table .table-body td.time
+{
+    border-color:#72c774;
+}
+/*end of green CSS*/
+
+/*purle forum CSS*/
+#forum-forum-body.purple #create-article
+{
+    background: url('../forum/forum/purple/eraser.png');
+}
+
+#forum-forum-body.purple #labels .un-selected
+{
+    background: #efc6df;
+}
+
+#forum-forum-body.purple #labels .un-selected:hover
+{
+    background: #dd94c0;
+}
+
+#forum-forum-body.purple #labels .selected
+{
+    background: #dd94c0;
+}
+
+#forum-forum-body.purple #table-head
+{
+    background: url('../forum/forum/purple/pencil.png');
+}
+
+#forum-forum-body.purple #body-table .table-title th,
+#forum-forum-body.purple #body-table .table-foot td
+{
+    background: #dd94c0;
+}
+
+#forum-forum-body.purple #body-table .table-title th.head,
+#forum-forum-body.purple #body-table .table-foot td.head
+{
+    background: url('../forum/forum/purple/pencil_head.png');
+}
+
+#forum-forum-body.purple #body-table .table-title th.category,
+#forum-forum-body.purple #body-table .table-foot td.category
+{
+    width: 84px;
+    background: url('../forum/forum/purple/pencil_category.png');
+    color:#ffffff;
+}
+
+#forum-forum-body.purple #body-table .table-title th.tail,
+#forum-forum-body.purple #body-table .table-foot td.tail
+{
+    background: url('../forum/forum/purple/pencil_tail.png');
+}
+
+#forum-forum-body.purple #body-table .table-body td.category
+{
+    border-color:#dd94c0;
+}
+
+#forum-forum-body.purple #body-table .table-body td.title,
+td.author,
+td.reply,
+td.popularity
+{
+    border-color:#dd94c0;
+}
+
+#forum-forum-body.purple #body-table .table-body td.title a:hover
+{
+    color: #dd94c0;
+}
+
+#forum-forum-body.purple #body-table .table-body td.time
+{
+    border-color:#dd94c0;
+}
+/*end of purple CSS*/
+
+/*orange forum CSS*/
+#forum-forum-body.orange #create-article
+{
+    background: url('../forum/forum/orange/eraser.png');
+}
+
+#forum-forum-body.orange #labels .un-selected
+{
+    background: #f9bca9;
+}
+
+#forum-forum-body.orange #labels .un-selected:hover
+{
+    background: #f68764;
+}
+
+#forum-forum-body.orange #labels .selected
+{
+    background: #f68764;
+}
+
+#forum-forum-body.orange #table-head
+{
+    background: url('../forum/forum/orange/pencil.png');
+}
+
+#forum-forum-body.orange #body-table .table-title th,
+#forum-forum-body.orange #body-table .table-foot td
+{
+    background: #f68764;
+}
+
+#forum-forum-body.orange #body-table .table-title th.head,
+#forum-forum-body.orange #body-table .table-foot td.head
+{
+    background: url('../forum/forum/orange/pencil_head.png');
+}
+
+#forum-forum-body.orange #body-table .table-title th.category,
+#forum-forum-body.orange #body-table .table-foot td.category
+{
+    width: 84px;
+    background: url('../forum/forum/orange/pencil_category.png');
+    color:#ffffff;
+}
+
+#forum-forum-body.orange #body-table .table-title th.tail,
+#forum-forum-body.orange #body-table .table-foot td.tail
+{
+    background: url('../forum/forum/orange/pencil_tail.png');
+}
+
+#forum-forum-body.orange #body-table .table-body td.category
+{
+    border-color:#f68764;
+}
+
+#forum-forum-body.orange #body-table .table-body td.title,
+td.author,
+td.reply,
+td.popularity
+{
+    border-color:#f68764;
+}
+
+#forum-forum-body.orange #body-table .table-body td.title a:hover
+{
+    color: #f68764;
+}
+
+#forum-forum-body.orange #body-table .table-body td.time
+{
+    border-color:#f68764;
+}
+/*end of orange CSS*/
+
+/*yellow forum CSS*/
+#forum-forum-body.yellow #create-article
+{
+    background: url('../forum/forum/Yellow/eraser.png');
+}
+
+#forum-forum-body.yellow #labels .un-selected
+{
+    background: #f3e9bb;
+}
+
+#forum-forum-body.yellow #labels .un-selected:hover
+{
+    background:#fdbc59;
+}
+
+#forum-forum-body.yellow #labels .selected
+{
+    background: #fdbc59;
+}
+
+#forum-forum-body.yellow #table-head
+{
+    background: url('../forum/forum/Yellow/pencil.png');
+}
+
+#forum-forum-body.yellow #body-table .table-title th,
+#forum-forum-body.yellow #body-table .table-foot td
+{
+    background: #fdbc59;
+}
+
+#forum-forum-body.yellow #body-table .table-title th.head,
+#forum-forum-body.yellow #body-table .table-foot td.head
+{
+    background: url('../forum/forum/Yellow/pencil_head.png');
+}
+
+#forum-forum-body.yellow #body-table .table-title th.category,
+#forum-forum-body.yellow #body-table .table-foot td.category
+{
+    width: 84px;
+    background: url('../forum/forum/yellow/pencil_category.png');
+    color:#ffffff;
+}
+
+#forum-forum-body.yellow #body-table .table-title th.tail,
+#forum-forum-body.yellow #body-table .table-foot td.tail
+{
+    background: url('../forum/forum/Yellow/pencil_tail.png');
+}
+
+#forum-forum-body.yellow #body-table .table-body td.category
+{
+    border-color:#fdbc59;
+}
+
+#forum-forum-body.yellow #body-table .table-body td.title,
+td.author,
+td.reply,
+td.popularity
+{
+    border-color:#fdbc59;
+}
+
+#forum-forum-body.yellow #body-table .table-body td.title a:hover
+{
+    color: #fdbc59;
+}
+
+#forum-forum-body.yellow #body-table .table-body td.time
+{
+    border-color:#fdbc59;
+}
+/*end of yellow CSS*/
 
 #ultimate-password
 {

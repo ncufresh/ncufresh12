@@ -8,7 +8,10 @@ jQuery(document).ready(function()
             jQuery.configures.readMeUrl.replace(':tab', tab).replace(':page', page),
             function(data)
             { 
-                $('#readme-view').html(data.content);
+                $('.readme-view').html(data.content);
+                $('.readme-view').scrollable({
+                    scrollableClass: false
+                });
             }
         ); 
         return false;
@@ -45,14 +48,6 @@ jQuery(document).ready(function()
         return false;
     });
 
-    jQuery('#readme-logo3').click(function()
-    {
-        $('.notice-inner:hidden').fadeIn('slow');
-        $('.reschool-inner:visible').fadeOut('fast');
-        $('.fresh-inner:visible').fadeOut('fast');
-        return false;
-    });
-
     jQuery('.readme-menu').mouseenter(function()
     {
         $(this).stop().animate(
@@ -83,5 +78,4 @@ jQuery(document).ready(function()
             jQuery('#readme-logo3').click();
         break;
     }
-
 });

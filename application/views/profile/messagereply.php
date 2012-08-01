@@ -56,11 +56,11 @@
 <?php endforeach;?>
     </table>
     <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/comment'); ?>" method="POST"> 
+        <input type="hidden" name="token" value="echo Yii::app()->security->getToken(); ?>" />
         <input type="text" name="comment[content]" />
         <input type="hidden" name="comment[aid]" value="<?php echo $article->id; ?>" />
-        <input type="submit" value="推文" />
-        <input type="hidden" name="token" value="echo Yii::app()->security->getToken(); ?>" />
+        <input type="submit" value="推文" class="button-push" />
+        <button type="button" class="button-back" ></button>
     </form>
     </div>
 </div>
-<button onClick= "history.back()" >BACK</button>

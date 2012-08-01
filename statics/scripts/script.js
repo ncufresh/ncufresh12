@@ -113,6 +113,10 @@
             do {
                 current = new Date();
             } while ( current - date < miliseconds);
+        },
+        daysInMonth: function(month, year)
+        {
+            return 32 - new Date(year, month, 32).getDate();
         }
     });
 })(jQuery);
@@ -220,6 +224,7 @@
     $.pull = {};
 
     $.pull.options = {
+        friendcounter:          null,
         onlinecounter:          null,
         browseredcounter:       null,
         counterAnimationSpeed:  50,
@@ -241,6 +246,12 @@
                 $.configures.lasttime = response.lasttime;
                 if ( response.counter )
                 {
+                    if ( $.pull.options.friendcounter )
+                    {
+                        $.pull.options.friendcounter.text(
+                            response.counter.friends
+                        );
+                    }
                     if ( $.pull.options.onlinecounter )
                     {
                         $.pull.options.onlinecounter.text(
@@ -352,6 +363,8 @@
 {
     var avatars = [];
 
+    var friends = [];
+
     $.chat = {};
 
     $.fn.chat = function(options)
@@ -412,7 +425,40 @@
         {
             clearInterval($(this).parent().data('timer'));
         });
-    }
+    };
+
+    $.fn.chat.updateFriendStatus = function(id)
+    {
+        $('.friend-list-entry').each(function()
+        {
+            var entry = $(this);
+            $('.' + $.chat.options.chatDialogClass).each(function(index)
+            {
+                if ( $(this).data('id') == id )
+                {
+                    var title = $(this)
+                        .children('.' + $.chat.options.chatTitleClass);
+                    title.children('p').text(entry.children('p').text());
+                    if ( entry.data('online') )
+                    {
+                        title.children('span').addClass('online');
+                    }
+                    else
+                    {
+                        title.children('span').removeClass('online');
+                    }
+                }
+            });
+            if ( entry.data('online') )
+            {
+                entry.addClass('online');
+            }
+            else
+            {
+                entry.removeClass('online');
+            }
+        });
+    };
 
     $.fn.chat.createFriendList = function()
     {
@@ -429,7 +475,23 @@
                 .attr('id', $.chat.options.friendListContainerId);
             var search = $('<input />')
                 .attr('type', 'text')
-                .attr('id', $.chat.options.friendListSearchId);
+                .attr('id', $.chat.options.friendListSearchId)
+                .keyup(function(event)
+                {
+                    var name = $(this).val().toLowerCase();
+                    for ( var key in friends )
+                    {
+                        var data = friends[key];
+                        if ( data[1].toLowerCase().search(name) == 0 )
+                        {
+                            data[2].show();
+                        }
+                        else
+                        {
+                            data[2].hide();
+                        }
+                    }
+                });
             var source = $('#' + $.chat.options.chatId).attr('notify');
             var notify = $('<audio></audio>')
                 .append(
@@ -476,21 +538,34 @@
         for ( var key in response )
         {
             var data = response[key];
-            var entry = $('<div></div>')
-                .data('id', data.id)
-                .addClass('friend-list-entry')
-                .click(function()
+            var entry;
+            $('#' + $.chat.options.friendListContainerId)
+                .find('div')
+                .each(function()
                 {
-                    $.fn.chat.showChatDialog($(this).data('id'));
-                })
-                .appendTo($('#' + $.chat.options.friendListContainerId));
-            var placehold = $('<div></div>')
-                .addClass('chat-avatar-' + data.id)
-                .appendTo(entry);
-            var name = $('<p>')
-                .text(data.name)
-                .appendTo(entry);
-            $.fn.chat.showAvatar(data.id);
+                    if ( $(this).data('id') == data.id ) entry = $(this);
+                });
+            if ( ! entry )
+            {
+                var placehold = $('<div></div>')
+                    .addClass('chat-avatar-' + data.id);
+                var name = $('<p>')
+                    .text(data.name);
+                entry = $('<div></div>')
+                    .data('id', data.id)
+                    .addClass('friend-list-entry')
+                    .click(function()
+                    {
+                        $.fn.chat.showChatDialog($(this).data('id'));
+                    })
+                    .append(placehold)
+                    .append(name)
+                    .appendTo($('#' + $.chat.options.friendListContainerId));
+                friends[friends.length] = [data.id, data.name, entry];
+                $.fn.chat.showAvatar(data.id);
+            }
+            entry.data('online', data.active);
+            $.fn.chat.updateFriendStatus(data.id);
         }
         return list;
     };
@@ -538,9 +613,9 @@
         {
             var title = $('<div></div>')
                 .addClass($.chat.options.chatTitleClass)
-                .append('<span></span>')
-                .append('<p></p>')
-                .append('<button></button>')
+                .append($('<span></span>'))
+                .append($('<p></p>'))
+                .append($('<button></button>'))
                 .click(function()
                 {
                     if ( dialog.data('show') )
@@ -576,21 +651,12 @@
             dialog.css({
                 left: left - dialog.outerWidth(true) * size
             });
-            title.children('span').addClass('offline');
-            $('.friend-list-entry').each(function(index)
-            {
-                if ( $(this).data('id') == id )
-                {
-                    title.children('p').text($(this).children('p').text());
-                    title.children('span').removeClass('offline');
-                }
+            display.scrollable({
+                scrollableClass:    false
             });
             title.children('button').click(function()
             {
                 $.fn.chat.closeChatDialog(dialog.data('id'));
-            });
-            display.scrollable({
-                scrollableClass:    false
             });
             $.get(
                 $.configures.chatOpenUrl.replace(':id', id),
@@ -606,6 +672,7 @@
                     }
                 }
             );
+            $.fn.chat.updateFriendStatus(id);
         }
         return dialog;
     };
@@ -1218,26 +1285,20 @@
         return false;
     }
 
-    var updateData = function(updateEventList)
+    var updateData = function(url, callback)
     {
         var self = this;
-        $.getJSON($.configures.calendarEventsUrl, function(data){
-            for(var key in data.events)
+        $.getJSON( url, function(data){
+            self.cleanUpMark(true);
+            for ( var key in data.events )
             {
                 self.markEvent(data.events[key], { textDecoration: 'underline'});
             }
+            self.markToday();
             self.data('all_events', data.events);
-            if ( updateEventList )
+            if ( callback ) 
             {
-                if( $(self).getToday() )
-                {
-                    self.updateEventsList($(self).getToday().data('cal_events'));
-                    $('#personal-calendar .date').text(
-                        $(self).data('options').year + '.'
-                        + ($(self).data('options').month+1) + '.'
-                        + $(self).getToday().text()
-                    );
-                }
+                callback(self);
             }
         });
         return this;
@@ -1300,17 +1361,18 @@
         return this;
     }
 
-    var cleanUpMark = function()
+    var cleanUpMark = function(isRemoveData)
     {
         return $(this).children('tbody').find('td').each(function(){
             $(this).removeAttr('style');
+            if ( isRemoveData ) $(this).removeData('cal_events');
         });
     }
 
     /**
      * Update the list of events
      */
-    var updateEventsList = function(cal_events)
+    var updateEventsList = function(cal_events, container)
     {
         var self = this;
         var date = function(timestamp)
@@ -1332,7 +1394,7 @@
             }
             self.markToday();
         }
-        $('#personal-calendar .right').empty();
+        $(container).empty();
         if ( cal_events && cal_events.length )
         {
             var event_ids = [];
@@ -1375,7 +1437,7 @@
                             .mouseleave(eventMouseLeave)
                             .appendTo(ul);
                     }
-                    div.append(header).append(ul).appendTo('#personal-calendar .right');
+                    div.append(header).append(ul).appendTo(container);
                 }
                 $.configures.token = data.token;
             });
@@ -1430,10 +1492,6 @@
         }, options);
 
         options.month -= 1;
-        var daysInMonth = function(iMonth, iYear)
-        {
-            return 32 - new Date(iYear, iMonth, 32).getDate();
-        }
         var table = $('<table></table>')
             .addClass(options.tableClass);
         table.data('options', options);
@@ -1475,7 +1533,7 @@
             td.appendTo(tr);
         }
         tr.appendTo(thead);
-        for( var day = 1, position = 0; day <= daysInMonth(options.month, options.year); position++ )
+        for( var day = 1, position = 0; day <= $.daysInMonth(options.month, options.year); position++ )
         {
             if ( position%7 == 0 )
             {
@@ -1522,7 +1580,7 @@
         var bottom = $('<div></div>')
             .attr('id', 'calendar-August')
             .addClass('calendar-bottom');
-        var bottom_wrap = this.children('.calendar-bottom-wrap');
+        var bottom_wrap = this.children('.calendar-bottom-wrapper');
         if ( options.isMember )
         {
             top.removeClass('calendar-top-all-nologin');
@@ -1535,41 +1593,48 @@
         var september;
         var august;
         var todolist;
-        this.children('.calendar-top')
-            .children('a')
-            .click(function()
-        {
-            var id = $(this).attr('id');
-            if ( id == 'calendar-all' )
-            {
-                top.removeClass('calendar-top-personal');
-                if ( options.isMember )
-                {
-                    top.addClass('calendar-top-all-login');
-                }
-                else
-                {
-                    top.addClass('calendar-top-all-nologin');
-                }
-            }
-            else if ( id == 'calendar-personal' )
-            {
-                if ( options.isMember )
-                {
-                    top.removeClass('calendar-top-all-login');
-                    top.addClass('calendar-top-personal');
-                }
-            }
-            return false;
-        });
         var tdClick = function()
         {
             $(this).parents('table').find('td').css('outline', '0');
             $(this).css('outline', '1px solid black');
+            var events = $(this).data('cal_events');
+            var todo = [];
+            for(var key in events)
+            {
+                var start = new Date((events[key].start-(new Date()).getTimezoneOffset()*60)*1000);
+                var end = new Date((events[key].end-(new Date()).getTimezoneOffset()*60)*1000);
+                todo[key]=
+                [
+                    start.getMonth()+'/'+start.getDate()+' ~ '+end.getMonth()+'/'+end.getDate(),
+                    events[key].name
+                ];
+            }
+            todolist.remove();
+            todolist = $.generateTodolist(todo).appendTo(bottom);
+        }
+        var init = function(self)
+        {
+            if( $(self).getToday() )
+            {
+                var events = $(self).getToday().data('cal_events');
+                var todo = [];
+                for(var key in events)
+                {
+                    var start = new Date((events[key].start-(new Date()).getTimezoneOffset()*60)*1000);
+                    var end = new Date((events[key].end-(new Date()).getTimezoneOffset()*60)*1000);
+                    todo[key]=
+                    [
+                        start.getMonth()+'/'+start.getDate()+' ~ '+end.getMonth()+'/'+end.getDate(),
+                        events[key].name
+                    ];
+                }
+                todolist.remove();
+                todolist = $.generateTodolist(todo).appendTo(bottom);
+            }
         }
         september = $.generateCalendar({
             year: 2012,
-            month: 8,
+            month: 9,
             dayClick: tdClick,
             left: true,
             leftClick: function()
@@ -1582,7 +1647,7 @@
         });
         august = $.generateCalendar({
             year: 2012,
-            month: 7,
+            month: 8,
             right: true,
             rightClick: function()
             {
@@ -1592,35 +1657,36 @@
             },
             dayClick: tdClick
         });
-        august.markEvent([0,1343004622,1343868622]).markEvent([1,1342097622,1342097622], { textDecoration: 'underline' });
+        august.updateData($.configures.calendarEventsUrl, init);
+        september.updateData($.configures.calendarEventsUrl, init);
         bottom.append(august);
         bottom.appendTo(bottom_wrap);
-        todolist = $.generateTodolist(
-            [
-                ['2012/8/6', '資訊網上線'],
-                ['2012/8/6', '資訊網上線'],
-                ['2012/8/6', '資訊網上線'],
-                ['2012/8/6', '資訊網上線']
-            ]
-        ).appendTo(bottom);
+        todolist = $.generateTodolist([]).appendTo(bottom);
         return this;
     };
 
     /**
      * Initialize the personal calendar
      */
-    $.fn.calendar = function()
+    $.calendar = function(options)
     {
+        options = $.extend({
+            calendar_container: '#personal-calendar .left',
+            events_container:   '#personal-calendar .right',
+            date_container:     '#personal-calendar .date',
+            prompt:             '#personal-calendar .prompt',
+            eventsUrl:           $.configures.calendarEventsUrl
+        }, options);
         var current_year = (new Date()).getFullYear();
         var current_month = (new Date()).getMonth() + 1;
-        var container = $('<div></div>').appendTo(this);
-        var prompt = $('<ul></ul>')
-            .addClass('calendar-prompt')
+        var container = $('<div></div>').appendTo(options.calendar_container);
+        var events_container = $(options.events_container);
+        var date_container = $(options.date_container);
+        var prompt = $(options.prompt)
             .css({
                 position: 'absolute',
                 display:  'none'
-            }).appendTo('body');
-        var mousemove
+            });
         var geneator = function(year, month)
         {
             if ( calendar ) calendar.remove();
@@ -1649,41 +1715,54 @@
                 },
                 dayClick: function()
                 {
-                    $('#personal-calendar .date').text(
+                    $(date_container).text(
                         $(calendar).data('options').year + '.'
                         + ($(calendar).data('options').month+1) + '.'
                         + $(this).text()
                     );
-                    $(calendar).updateEventsList($(this).data('cal_events'));
+                    $(calendar).updateEventsList($(this).data('cal_events'), events_container);
                 },
                 dayEnter: function(event)
                 {
                     var events = $(this).data('cal_events');
-                    if( events.length > 0 )
+                    if( events && events.length > 0 )
                     {
                         for( var key in $(this).data('cal_events') )
                         {
-                            $('<li></li>').text(events[key].name).appendTo(prompt);
+                            $('<li></li>').text(events[key].name).appendTo(prompt.find('ul'));
                         }
+                        var left = $(this).parents('table').offset().left + event.currentTarget.offsetLeft;
+                        var top = $(this).parents('table').offset().top + event.currentTarget.offsetTop - prompt.height();
                         prompt.css({
-                            top: event.pageY,
-                            left: event.pageX
-                        }).show();
+                            top: top-5,
+                            left: left,
+                            display: 'inline-block'
+                        });
                     }
                 },
                 dayLeave: function()
                 {
-                    prompt.empty().hide();
+                    prompt.find('ul').empty();
+                    prompt.hide();
                 }
             });
             calendar.appendTo(container);
-            calendar.updateData(true);
+            calendar.updateData(options.eventsUrl, function(self)
+            {
+                if( $(self).getToday() )
+                {
+                    self.updateEventsList($(self).getToday().data('cal_events'), events_container);
+                    $(date_container).text(
+                        $(self).data('options').year + '.'
+                        + ($(self).data('options').month+1) + '.'
+                        + $(self).getToday().text()
+                    );
+                }
+            });
             return calendar;
         };
         var calendar = geneator(current_year, current_month);
-        // var calendar = geneator(current_year, current_month);
-        // calendar.appendTo(this);
-        // calendar.updateData(true);
+        return calendar;
     }
 })(jQuery);
 
@@ -2031,6 +2110,149 @@
 })(jQuery);
 
 /**
+ * Infield
+ */
+(function ($) {
+
+    $.infield = function(label, field, options)
+    {
+        var base = this;
+
+        base.$label = $(label);
+        base.label  = label;
+
+        base.$field = $(field);
+        base.field  = field;
+
+        base.$label.data("infield", base);
+        base.showing = true;
+
+        base.init = function ()
+        {
+            base.options = $.extend({}, $.infield.defaultOptions, options);
+
+            if ( base.$field.val() !== '' )
+            {
+                base.$label.hide();
+                base.showing = false;
+            }
+
+            base.$field.focus(function()
+            {
+                base.fadeOnFocus();
+            }).blur(function()
+            {
+                base.checkForEmpty(true);
+            }).bind('keydown.infield', function(event)
+            {
+                base.hideOnChange(event);
+            }).bind('keyup', function()
+            {
+                if ( ! base.showing && base.$field.val() === '' )
+                {
+                    base.prepForShow();
+                    base.setOpacity(base.options.fadeOpacity);
+                }
+            }).bind('paste', function(event)
+            {
+                base.setOpacity(0.0);
+            }).change(function(event)
+            {
+                base.checkForEmpty();
+            }).bind('onPropertyChange', function()
+            {
+                base.checkForEmpty();
+            });
+        };
+
+        base.fadeOnFocus = function()
+        {
+            if ( base.showing) base.setOpacity(base.options.fadeOpacity);
+        };
+
+        base.setOpacity = function(opacity)
+        {
+            base.$label.stop().animate({
+                opacity: opacity
+            }, base.options.fadeDuration);
+            base.showing = (opacity > 0.0);
+        };
+
+        base.checkForEmpty = function(blur)
+        {
+            if ( base.$field.val() === '' )
+            {
+                base.prepForShow();
+                base.setOpacity(blur ? 1.0 : base.options.fadeOpacity);
+            }
+            else
+            {
+                base.setOpacity(0.0);
+            }
+        };
+
+        base.prepForShow = function(event)
+        {
+            if ( ! base.showing )
+            {
+                base.$label.css({
+                    opacity: 0.0
+                }).show();
+
+                base.$field.bind('keydown.infield', function(event)
+                {
+                    base.hideOnChange(event);
+                });
+            }
+        };
+
+        base.hideOnChange = function(event)
+        {
+            if ( event.keyCode === 16 || event.keyCode === 9 ) return;
+
+            if ( base.showing )
+            {
+                base.$label.hide();
+                base.showing = false;
+            }
+
+            base.$field.unbind('keydown.infield');
+        };
+
+        base.init();
+    };
+
+    $.infield.defaultOptions = {
+        fadeOpacity: 0.5,
+        fadeDuration: 300
+    };
+
+    $.fn.infield = function(options)
+    {
+        return this.each(function()
+        {
+            var for_attr = $(this).attr('for');
+            var $field;
+            if ( ! for_attr ) return;
+
+            $field = $(
+                'input#' + for_attr + '[type="text"],' +
+                'input#' + for_attr + '[type="search"],' +
+                'input#' + for_attr + '[type="tel"],' +
+                'input#' + for_attr + '[type="url"],' +
+                'input#' + for_attr + '[type="email"],' +
+                'input#' + for_attr + '[type="password"],' +
+                'textarea#' + for_attr
+            );
+
+            if ( $field.length === 0 ) return;
+
+            (new $.infield(this, $field[0], options));
+        });
+    };
+}(jQuery));
+
+/**
  * UltimatePassword
  */
 (function($)
@@ -2207,6 +2429,37 @@
             return true;
         });
         var errorMessage = $('<p></p>').text('').addClass('error').appendTo(box);
+    };
+})(jQuery);
+
+(function($) {
+    $.clubs = function()
+    {
+        $('#club-menu-items a').lightbox();
+
+        $('#club-schedule-button').click(function()
+        {
+            var button = $(this);
+            if ( button.hasClass('active') )
+            {
+                $('#club-schedule-content').slideUp(300, function()
+                {
+                    button.removeClass('active');
+                });
+            }
+            else
+            {
+                $('#club-schedule-content').slideDown(300, function()
+                {
+                    button.addClass('active');
+                });
+            }
+            return false;
+        });
+        $('.back').click(function()
+        {
+            window.history.back();
+        });      
     };
 })(jQuery);
 
@@ -2521,12 +2774,14 @@
         $.configures.sequence = $.random(0, 1000);
 
         if ( $('#chat').length ) $('#chat').chat();
-
+        
         $('#header').star();
 
         $('#moon').moon();
 
         $('.loading').sprite();
+        
+        if ( $('#club').length ) $.clubs();
 
         $('#form-sidebar-register').click(function()
         {
@@ -2554,44 +2809,39 @@
             return false;
         });
 
-        $('form input, form textarea').each(function()
+        $('form dt label').infield();
+        $('form dd > span').each(function()
         {
-            var input = $(this);
-            var label = $('label[for="' + $(this).attr('id') + '"]');
-            var type = input.attr('type');
-            if ( type == 'radio' || type == 'checkbox' ) return true;
-            if ( label.length )
+            var tooltip = $(this);
+            tooltip.prepend($('<span></span>').addClass('arrow'));
+            if ( $(tooltip).css('display') === 'none' )
             {
-                var update = function()
+                $(tooltip).parent().parent().hover(function()
                 {
-                    if ( input.val() != '' )
+                    if ( $(this).find('input:focus').length === 0 )
                     {
-                        label.css({
-                            display: 'none'
-                        });
-                    } else
-                    {
-                        label.css({
-                            display: 'block'
-                        });
+                        $(tooltip).stop(true, true).fadeIn();
                     }
-                };
-                label.css({
-                    cursor: 'text',
-                    display: 'block'
-                }).click(function()
+                }, function()
                 {
-                    input.focus();
-                });
-                input.focusout(function()
-                {
-                    update();
+                    if ( $(this).find('input:focus').length === 0 )
+                    {
+                        $(tooltip).stop(true, true).fadeOut();
+                    }
                 })
-                update();
+                .find('input').focus(function()
+                {
+                    $(tooltip).stop(true, true).fadeIn();
+                })
+                .blur(function()
+                {
+                    $(tooltip).stop(true, true).fadeOut();
+                });
             }
         });
 
         $.pull.start({
+            friendcounter: $('#chat .friendcounts'),
             onlinecounter: $('#header .online'),
             browseredcounter: $('#header .browsered')
         });
