@@ -1351,7 +1351,7 @@
                         break;
                     }
                 }
-                if ( !found )
+                if ( ! found )
                 {
                     cal_events[cal_events.length] = event;
                     $(this).data('cal_events', cal_events);
@@ -1365,7 +1365,10 @@
     {
         return $(this).children('tbody').find('td').each(function(){
             $(this).removeAttr('style');
-            if ( isRemoveData ) $(this).removeData('cal_events');
+            if ( isRemoveData ) 
+            {
+                $(this).removeData('cal_events');
+            }
         });
     }
 
@@ -1383,7 +1386,8 @@
         {
             self.cleanUpMark();
             $(self).markEvent($(this).data('event'), {
-                background : 'green'
+                color: '#095296',
+                background : '#80c2fe'
             });
         }
         var eventMouseLeave = function(){

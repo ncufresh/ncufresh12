@@ -33,7 +33,6 @@ class Event extends CActiveRecord
     public function rules()
     {
         return array(
-            // array('', 'isDate'),
             array('start', 'isDate'),
             array('end', 'isDate'),
         );

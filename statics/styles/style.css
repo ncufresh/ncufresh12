@@ -1403,9 +1403,16 @@ ul#nculife-details
     position: relative;
 }
 
+.calendar .left table thead td
+{
+    text-align: center;
+}
+
 .calendar .left table tbody td
 {
     cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
 }
 
 .calendar .date
@@ -1471,7 +1478,7 @@ ul#nculife-details
     margin-right: 0.5em;
 }
 
-a.calendar-hide-event
+.calendar a.calendar-hide-event
 {
     background: url('../images/calendar-hide-button.png') no-repeat;
     width: 32px;
@@ -1492,8 +1499,8 @@ a.calendar-hide-event:hover
     background: gray;
     background: rgba(0, 0, 0, 0.7);
     display: none;
+    border-radius: 5px;
 }
-
 
 .calendar .prompt i
 {

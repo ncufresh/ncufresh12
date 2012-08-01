@@ -33,7 +33,7 @@ jQuery(document).ready(function()
                             if ( $.errors(response.errors) )
                             {
                                 $(self).parents('li').remove();
-                                calendar.updateData();
+                                calendar.updateData($.configures.calendarEventsUrl + '?club=true');
                             }
                         }
                     );
