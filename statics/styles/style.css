@@ -50,14 +50,16 @@ form dt
 
 form dt label
 {
-    curosr: text;
+    cursor: text;
 }
 
 form input,
 form textarea
 {
     font-size: 0.85em;
+    outline: none;
     position: relative;
+    resize: none;
     width: 100%;
 }
 
@@ -895,7 +897,13 @@ a:hover
     border: 2px solid #000000;
     height: 44px;
     float: left;
+    opacity: 0.3;
     width: 44px;
+}
+
+#chat-friend-list .friend-list-entry.online .avatar
+{
+    opacity: 1;
 }
 
 #chat-friend-list .avatar img
@@ -941,7 +949,7 @@ a:hover
 
 .chat-dialog .chat-title span
 {
-    background: url('../images/chat_online.png') no-repeat;
+    background: url('../images/chat_offline.png');
     display: block;
     float: left;
     height: 16px;
@@ -949,9 +957,9 @@ a:hover
     width: 16px;
 }
 
-.chat-dialog .chat-title span.offline
+.chat-dialog .chat-title span.online
 {
-    background: url('../images/chat_offline.png') no-repeat;
+    background: url('../images/chat_online.png');
 }
 
 .chat-dialog .chat-title p
@@ -1285,128 +1293,108 @@ ul#nculife-details
 
 #index-calendar
 {
+    background: #FFEDB7;
+    border-radius: 15px;
     float: left;
+    height: 400px;
+    margin-top: 40px;
     width: 30%;
 }
 
-#index-calendar .calendar-top
+#index-calendar .calendar-bottom-wrapper
 {
-    width: 204px;
-    height: 85px;
+    background: url('../images/calendar.png') center top no-repeat;
+    height: 360px;
+    margin-top: -45px;
+    padding: 50px 10px 0 10px;
 }
 
-#index-calendar .calendar-top-all-nologin
+#index-calendar .calendar-bottom
 {
-    background: url('../images/calendar_top2.png');
+    position: relative;
 }
 
-#index-calendar .calendar-top-all-login
-{
-    background: url('../images/calendar_top.png');
-}
-
-#index-calendar .calendar-top-personal
-{
-    background: url('../images/calendar_top3.png');
-}
-
-#index-calendar .calendar-bottom-wrap
-{
-    background: #FFEDB7;
-    border-radius: 0 0 15px 15px;
-    float: left;
-    overflow: hidden;
-    position: absolute;
-    width: 204px;
-    height: 355px;
-}
-
-#index-calendar .calendar-bottom-wrap table.calendar-table
+#index-calendar table.calendar-table
 {
     border-collapse: collapse;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table caption
+#index-calendar table.calendar-table caption
 {
-    margin:  15px 0 10px 0 ;
+    margin: 15px 0 10px 0;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table td
+#index-calendar table.calendar-table td
 {
     text-align: right;
     width: 28px;
     cursor: pointer;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table thead
+#index-calendar table.calendar-table thead
 {
     display: block;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table thead td
+#index-calendar table.calendar-table thead td
 {
     color: #af8d5a;
     text-align: center;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table thead td.weekend
+#index-calendar table.calendar-table thead td.weekend
 {
     color: red;
 }
 
-#index-calendar .calendar-bottom-wrap table.calendar-table 
-{
-    width: 204px;
-}
-
-#index-calendar .calendar-bottom-wrap table.calendar-table tbody
+#index-calendar table.calendar-table tbody
 {
     border-top: 1px solid #946722;
     border-bottom: 1px solid #946722;
     display: block;
 }
 
-#index-calendar .calendar-bottom-wrap table.todolist-table td
+#index-calendar table.todolist-table td
 {
     width: 100px;
     text-align: center;
 }
 
-#index-calendar .calendar-bottom-wrap table.todolist-table thead td
+#index-calendar table.todolist-table thead td
 {
     color: #946722;
 }
 
-#index-calendar .calendar-top a{
-    margin-top: 51px;
-    height: 33px;
-    width: 102px;
-    float: left;
-    display: inline-block;
-}
-
-#index-calendar .calendar-top a#calendar-all
+#personal-calendar .prompt
 {
+    background: gray;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
 }
 
-#index-calendar .calendar-top a#calendar-personal
+#personal-calendar .prompt i
 {
+    border: 5px solid;
+    border-color: transparent transparent gray transparent;
+    border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+    margin-bottom: -10px;
+    margin-left: 5px;
+    display: block;
+    width: 0;
+    height: 0;
 }
 
-#index-calendar .calendar-top a
+#personal-calendar .prompt ul
 {
+    margin: 0;
+    padding: 5px;
+    list-style: none;
 }
 
-#personal-calendar
+#personal-calendar .prompt ul li
 {
-    
+    color: white;
 }
-
-#personal-calendar .calendar-table tbody td
-{
-    cursor: pointer;
-}
-
 .calendar-prompt
 {
     background: gray;
@@ -2857,6 +2845,7 @@ button.news-button
 {
 	float: left;
 }
+
 #club-schedule-button
 {
     cursor: pointer;
@@ -3053,10 +3042,10 @@ ul.friend-other-sort
     color:red;
 }
 
-.user-editor input
+ul.user-editor input
 {
-    width: 240px;
-    height: 30px;
+    width: 135px;
+    height: 20px;
 }
 
 div.friends h4
@@ -3340,19 +3329,6 @@ div.profile-message-reply
     padding: 0;
 }
 
-<<<<<<< HEAD
-div.register form
-{
-    width:330px;
-    height:315px;
-    margin:0px;
-    padding:15px;
-}
-
-div.register button
-=======
-#sitemap div
->>>>>>> 992d9414b0888f5fee76fd33cad9b3a075203723
 {
     min-height: 240px;
     overflow: hidden;
@@ -3773,50 +3749,77 @@ img.user_img
  */
 #game-mission-dialog
 {
-    width: 800px;
-    height: 500px;
+    width: 900px;
+    height: 600px;
     background: url('../game/mission.png');
     position: fixed;
+    display: inline-block;
 }
 
 #game-mission-dialog .dialog-close-button
 {
-    
+    width: 89px;
+    height: 90px;
+    background: url('../game/exit.png');
+    text-indent: -1000%;
+    position: absolute;
+    top: -10px;
+    left: 822px;
+    display: block;
+    z-index: 1;
 }
 
 #game-mission-dialog .display
 {
-    width: 260px;
-    height: 199px;
-    font-size: 18px;
-    margin: 14px 0px 0px 241px;
+    width: 320px;
+    height: 246px;
+    font-size: 22px;
+    font-weight: bold;
     outline: 1px solid black;
     position: absolute;
+    top: 56px;
+    left: 279px;
 }
+
 #game-mission-dialog .npc
 {
-    width: 160px;
-    height: 322px;
-    margin: 48px 0px 0px 31px;
-    outline: 1px solid black;
+    width: 324px;
+    outline: 1px solid red;
     position: absolute;
+    top: 91px;
+    left: -37px;
 }
 #game-mission-dialog .avatar
 {
-    width: 207px;
-    height: 353px;
+    width: 270px;
+    height: 451px;
     font-size: 18px;
-    margin: 32px 0px 0px 535px;
     outline: 1px solid black;
     position: absolute;
+    top: 43px;
+    left: 629px;
 }
 
 #game-mission-dialog h4
 {
-    margin: 6px 0px 0px 38px;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 31px;
+    /*outline: 1px black solid;*/
     position: absolute;
+    top: 39px;
+    left: 30px;
+}
+
+#game-mission-dialog form
+{
+    width: 320px;
+    height: 136px;
+    font-weight: bold;
+    font-size: 31px;
+    outline: 1px black solid;
+    position: absolute;
+    top: 356px;
+    left: 279px;
 }
 
 .avatar
@@ -3826,6 +3829,7 @@ img.user_img
     margin: 0;
     max-height: 800px;
     max-width: 450px;
+    position: relative;
     width: 450px;
 }
 
@@ -3833,7 +3837,7 @@ img.user_img
 {
     display: block;
     height: 100%;
-    position: relative;
+    position: absolute;
     width: 100%;
 }
 

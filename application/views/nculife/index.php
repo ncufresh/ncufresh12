@@ -13,15 +13,14 @@ jQuery(document).ready(function()
 <div id="life-container">
     <div id="life-body">
         <div id="life-play">
-            <ul id="life-index1" class="life-items">
+            <ul id="life-index1" class="life-items" pattern="nculife-style1" bar="life-top1">
                 <li page="play" tab="1">Movie</li>
                 <li page="play" tab="2">KTV</li>
-                <li page="play" tab="3">NOVA</li>
                 <li page="play" tab="4">夜市</li>
             </ul>
         </div>
         <div id="life-traffic">
-            <ul id="life-index2" class="life-items">
+            <ul id="life-index2" class="life-items" pattern="nculife-style2"  bar="life-top2">
                 <li page="traffic" tab="1">腳踏車</li>
                 <li page="traffic" tab="2">汽機車</li>
                 <li page="traffic" tab="3">台聯大專車</li>
@@ -38,13 +37,13 @@ jQuery(document).ready(function()
             </ul>
         </div>
         <div id="life-school">
-            <ul id="life-index3" class="life-items">
+            <ul id="life-index3" class="life-items" pattern="nculife-style3"  bar="life-top3">
                 <li page="school" tab="1">校園影城</li>
                 <li page="school" tab="2">校園影印</li>
                 <li page="school" tab="3">校園劇場</li>
                 <li page="school" tab="4">圖美輸出中心</li>
                 <li page="school" tab="5">印象美髮</li>
-                <li page="school" tab="6">好視康眼鏡</li>
+                <li page="school" tab="6">中大眼鏡行</li>
                 <li page="school" tab="7">敦煌書局</li>
                 <li class="life-bar">
                     <span>悠閒時刻</span>
@@ -84,9 +83,8 @@ jQuery(document).ready(function()
             </ul>
         </div>
         <div id="life-live">
-            <ul id="life-index4" class="life-items">
+            <ul id="life-index4" class="life-items" pattern="nculife-style4" bar="life-top4" >
                 <li page="live" tab="1">所需用品</li>
-                <li page="live" tab="2">郵件招領</li>
                 <li class="life-bar">
                 <span>新生宿舍</span>
                     <ul class="life-inner">
@@ -106,10 +104,20 @@ jQuery(document).ready(function()
                         <li page="live" tab="11">郵局</li>
                     </ul>
                 </li>
+                <li class="life-bar">
+                <span>校外商店</span>
+                    <ul class="life-inner">
+                        <li page="live" tab="12">NOVA</li>
+                        <li page="live" tab="13">墊腳石</li>
+                        <li page="live" tab="14">光南</li>
+                        <li page="live" tab="15">全聯</li>
+                        <li page="live" tab="16">家樂福</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div id="life-health">
-            <ul id="life-index5" class="life-items">
+            <ul id="life-index5" class="life-items" pattern="nculife-style5"  bar="life-top5">
                 <li page="health" tab="1">衛保組</li>
                 <li page="health" tab="2">特約醫院</li>
                 <li page="health" tab="3">心理諮商</li>

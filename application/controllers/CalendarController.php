@@ -21,19 +21,7 @@ class CalendarController extends Controller
 
     public function actionClub()
     {
-        // foreach ( Calendar::model()->getClubs() as $qq )
-        // {
-            // var_dump($qq->id);
-            // var_dump($qq->clubs->name);
-            // var_dump($qq->subscriptions ? 1 : 0);
-        // }
-        // var_dump(Event::model()->findByPk(1)->status)
-        
-        // var_dump( array_diff(array(
-            // 10,2,3
-        // ),array(
-            // 2,3,4
-        // )) );
+
     }
 
     public function actionRecycle()
@@ -110,10 +98,16 @@ class CalendarController extends Controller
 
     public function actionShowEvent()
     {
-    }
-
-    public function actionDeleteEvent()
-    {
+        if ( Yii::app()->request->getIsAjaxRequest() )
+        {
+            if ( isset($_POST['calendar']) )
+            {
+                $id = (integer)$_POST['calendar']['id'];
+                if ( Event::model()->show($id) ) return true;
+            }
+            $this->_data['errors'][] = '發生錯誤！';
+            return true;
+        }
     }
 
     public function actionSubscript()
@@ -177,7 +171,7 @@ class CalendarController extends Controller
         }
         return $array;
     }
-    
+
     private function getSubscribedCalendars()
     {
         $subscript = new Subscription();
@@ -190,12 +184,8 @@ class CalendarController extends Controller
         }
         return $result;
     }
-    
-    public function actionUnsubsciprt()
-    {
-        
-    }
 
+    //測試完封閉一般REQUEST
     public function actionAjaxEvent($id)
     {
         $event = Event::model()->getEventById($id);
@@ -206,6 +196,7 @@ class CalendarController extends Controller
         $this->_data['event']['description'] = $event->description;
     }
 
+    //測試完封閉一般REQUEST
     public function actionAjaxEvents()
     {
         $user = User::model()->findByPk(Yii::app()->user->id);
