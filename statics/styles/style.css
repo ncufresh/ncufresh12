@@ -50,14 +50,16 @@ form dt
 
 form dt label
 {
-    curosr: text;
+    cursor: text;
 }
 
 form input,
 form textarea
 {
     font-size: 0.85em;
+    outline: none;
     position: relative;
+    resize: none;
     width: 100%;
 }
 
@@ -895,7 +897,13 @@ a:hover
     border: 2px solid #000000;
     height: 44px;
     float: left;
+    opacity: 0.3;
     width: 44px;
+}
+
+#chat-friend-list .friend-list-entry.online .avatar
+{
+    opacity: 1;
 }
 
 #chat-friend-list .avatar img
@@ -941,7 +949,7 @@ a:hover
 
 .chat-dialog .chat-title span
 {
-    background: url('../images/chat_online.png') no-repeat;
+    background: url('../images/chat_offline.png');
     display: block;
     float: left;
     height: 16px;
@@ -949,9 +957,9 @@ a:hover
     width: 16px;
 }
 
-.chat-dialog .chat-title span.offline
+.chat-dialog .chat-title span.online
 {
-    background: url('../images/chat_offline.png') no-repeat;
+    background: url('../images/chat_online.png');
 }
 
 .chat-dialog .chat-title p
@@ -3833,6 +3841,7 @@ img.user_img
     margin: 0;
     max-height: 800px;
     max-width: 450px;
+    position: relative;
     width: 450px;
 }
 
@@ -3847,7 +3856,7 @@ img.user_img
 .avatar img
 {
     left: 0;
-    position: absolute;
+    position: relative;
     top: 0;
     width: 100%;
 }
