@@ -1,21 +1,33 @@
 <h1>
-如何到中大 - 高鐵</h1>
+如何到中大 - 客運</h1>
+<h2>
+1.<a href="http://www.kingbus.com.tw/index.php">國光客運</a></h2>
 <p>
-<img alt="桃園高鐵" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E6%A1%83%E5%9C%92%E9%AB%98%E9%90%B5.jpg" style="width:412px;height:102px;" /></p>
+<img alt="國光1" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E5%9C%8B%E5%85%89%E5%AE%A2%E9%81%8B1.jpg" style="width:500px;height:334px;" /><img alt="國光2" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E5%9C%8B%E5%85%89%E5%AE%A2%E9%81%8B2.jpg" style="width:500px;height:375px;" /></p>
 <p>
-地址：桃園縣中壢市高鐵北路一段6號</p>
+下新屋交流道後，在中壢交流道站(民族路)下車，或在中壢火車站前站附近的國光客運中壢總站下車，轉乘中壢客運133路公車或桃園客運132路公車前往中央大學。</p>
 <p>
-營業時間：06:20 ~ 23:45</p>
+連絡電話(03)422-2509、(03)493-7270</p>
+
+<h2>
+2.<a href="http://www.hcbus.com.tw/">新竹客運</a></h2>
 <p>
-車票販售截止時間：當日票23:34 預售票22:30</p>
+<img alt="新竹" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E6%96%B0%E7%AB%B9%E5%AE%A2%E9%81%8B.jpg" style="width:500px;height:358px;" /></p>
 <p>
-請參考<a href="http://www.thsrc.com.tw/tc/travel/travel_station_taoyuao.asp">高鐵桃園站詳細資訊和時刻表</a></p>
+在中壢火車站前站附近的新竹客運中壢總站下車，可步行至中壢客運總站搭乘中壢客運133路公車或至桃園客運總站，搭乘桃園客運132路公車前往中央大學。</p>
+
+<h2>
+3.<a href="http://www.ebus.com.tw/index.asp">和欣客運</a></h2>
 <p>
-往返高鐵桃園站和中央大學交通方式：</p>
+<img alt="和欣" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSCN7992.JPG" style="width:500px;height:375px;" /></p>
 <p>
-機車、汽車、計程車、132或133路公車、高鐵接駁車，</p>
+下新屋交流道後，在中壢交流道站(民族路)下車，轉乘中壢客運133路公車或桃園客運132路公車前往中央大學。</p>
 <p>
-132路、172路部分班次由中央大學延駛至高鐵站。</p>
+連絡電話(03)401-6600</p>
+
+<h2>
+4.<a href="http://www.ubus.com.tw/">統聯客運</a></h2>
 <p>
-<iframe frameborder="0" height="350" marginheight="0" marginwidth="0" scrolling="no" src="https://maps.google.com/maps?f=d&amp;source=s_d&amp;saddr=%E6%A1%83%E5%9C%92%E9%AB%98%E9%90%B5&amp;daddr=320%E6%A1%83%E5%9C%92%E7%B8%A3%E4%B8%AD%E5%A3%A2%E5%B8%82%E4%B8%AD%E5%A4%A7%E8%B7%AF300%E8%99%9F+(%E5%9C%8B%E7%AB%8B%E4%B8%AD%E5%A4%AE%E5%A4%A7%E5%AD%B8)&amp;hl=zh-TW&amp;geocode=FWWrfQEd8Zg5ByHJ8xJKK96XNCmznCvDByFoNDHJ8xJKK96XNA%3BFS78fAEd8ko5ByEEsW24ldRxVinLTZDswSNoNDGmNTh8tv-ICw&amp;aq=&amp;sll=24.957892,121.206665&amp;sspn=0.042254,0.084543&amp;mra=ls&amp;ie=UTF8&amp;t=m&amp;ll=24.990625,121.20458&amp;spn=0.04481,0.02236&amp;output=embed" width="425"></iframe><br />
-<small><a href="https://maps.google.com/maps?f=d&amp;source=embed&amp;saddr=%E6%A1%83%E5%9C%92%E9%AB%98%E9%90%B5&amp;daddr=320%E6%A1%83%E5%9C%92%E7%B8%A3%E4%B8%AD%E5%A3%A2%E5%B8%82%E4%B8%AD%E5%A4%A7%E8%B7%AF300%E8%99%9F+(%E5%9C%8B%E7%AB%8B%E4%B8%AD%E5%A4%AE%E5%A4%A7%E5%AD%B8)&amp;hl=zh-TW&amp;geocode=FWWrfQEd8Zg5ByHJ8xJKK96XNCmznCvDByFoNDHJ8xJKK96XNA%3BFS78fAEd8ko5ByEEsW24ldRxVinLTZDswSNoNDGmNTh8tv-ICw&amp;aq=&amp;sll=24.957892,121.206665&amp;sspn=0.042254,0.084543&amp;mra=ls&amp;ie=UTF8&amp;t=m&amp;ll=24.990625,121.20458&amp;spn=0.04481,0.02236">檢視較大的地圖</a></small></p>
+<img alt="統聯" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E7%B5%B1%E8%81%AF%E5%AE%A2%E9%81%8B.jpg" style="width:500px;height:339px;" /></p>
+<p>
+下新屋交流道後，在中壢交流道站(民族路)下車，轉乘中壢客運133路公車或桃園客運132路公車前往中央大學。</p>

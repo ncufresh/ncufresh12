@@ -52,9 +52,6 @@ class NculifeController extends Controller
             case 1 : 
                 $this->_data['content'] = $this->renderPartial('live/1', null, true, false);
                 break;
-            case 2 :
-                $this->_data['content'] = $this->renderPartial('live/2', null, true, false);
-                break;
             case 3 :
                 $this->_data['content'] = $this->renderPartial('live/3', null, true, false);
                 break;
@@ -81,6 +78,21 @@ class NculifeController extends Controller
                 break;
             case 11 :
                 $this->_data['content'] = $this->renderPartial('live/11', null, true, false);
+                break;
+            case 12 :
+                $this->_data['content'] = $this->renderPartial('live/12', null, true, false);
+                break;
+            case 13 :
+                $this->_data['content'] = $this->renderPartial('live/13', null, true, false);
+                break;
+            case 14 :
+                $this->_data['content'] = $this->renderPartial('live/14', null, true, false);
+                break;
+            case 15 :
+                $this->_data['content'] = $this->renderPartial('live/15', null, true, false);
+                break;
+            case 16 :
+                $this->_data['content'] = $this->renderPartial('live/16', null, true, false);
                 break;
         }
     }
