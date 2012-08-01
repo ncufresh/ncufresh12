@@ -3340,10 +3340,11 @@ div.profile-message-reply
 {
     background-image: url('../profile/button/back.png');
     background-repeat: no-repeat ;
-    width: 139px;
-    height: 58px;
+    width: 82px;
+    height: 35px;
     padding: 0px;
     margin: 0px;
+    float:left;
 }
 
 .button-cancel
@@ -3370,8 +3371,8 @@ div.profile-message-reply
 {
     background-image:url('../profile/button/sure.png');
     background-repeat:no-repeat ;
-    width:91px;
-    height:50px;
+    width:62px;
+    height:34px;
     padding:0px;
     margin:0px;
 }
@@ -3386,36 +3387,39 @@ div.profile-message-reply
     margin:0px;
 }
 
-.button-deletegroup
+#button-deletegroup
 {
     background-image:url('../profile/button/delete-group.png');
     background-repeat:no-repeat ;
-    width:213px;
-    height:58px;
+    width:120px;
+    height:33px;
     padding:0px;
     margin:0px;
     float:left;
+    display:block;
 }
 
-.button-addmember
+#button-addmember
 {
     background-image:url('../profile/button/add-member.png');
     background-repeat:no-repeat ;
-    width:213px;
-    height:59px;
+    width:123px;
+    height:35px;
     padding:0px;
     margin:0px;
     float:left;
+    display:block;
 }
 
-.button-deletemember
+#button-deletemember
 {
     background-image:url('../profile/button/delete-member.png');
     background-repeat:no-repeat ;
-    width:213px;
-    height:58px;
+    width:121px;
+    height:34px;
     padding:0px;
     margin:0px;
+    float:left;
 }
 
 .button-makefriend
@@ -3432,8 +3436,8 @@ div.profile-message-reply
 {
     background-image:url('../profile/button/delete-friend.png');
     background-repeat:no-repeat ;
-    width:188px;
-    height:50px;
+    width:122px;
+    height:35px;
     padding:0px;
     margin:0px;
 }
@@ -3452,28 +3456,30 @@ div.profile-message-reply
 {
     background-image:url('../profile/button/addfriend.png');
     background-repeat:no-repeat ;
-    width:158px;
-    height:56px;
+    width:96px;
+    height:35px;
     padding:0px;
     margin:0px;
 }
 
-.button-editor
+#button-editor
 {
     background-image:url('../profile/button/editor.png');
     background-repeat:no-repeat ;
-    width:50px;
-    height:50px;
+    width:158px;
+    height:57px;
     padding:0px;
     margin:0px;
+    display: block;
+    float:left;
 }
 
 .button-register
 {
     background-image:url('../profile/button/register.png');
     background-repeat:no-repeat ;
-    width:159px;
-    height:57px;
+    width:95px;
+    height:32px;
     padding:0px;
     margin:0px;
     float:left;
@@ -3483,10 +3489,25 @@ div.profile-message-reply
 {
     background-image:url('../profile/button/rewrite.png');
     background-repeat:no-repeat ;
+    width:95px;
+    height:32px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-flower
+{
+    background-image:url('../profile/button/flower.png');
+    background-repeat:no-repeat ;
     width:146px;
     height:57px;
     padding:0px;
     margin:0px;
+}
+
+.is_exist
+{
+    color:red;
 }
 
 /**

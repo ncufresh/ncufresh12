@@ -104,16 +104,6 @@ class FriendsController extends Controller
             }
             $this->redirect(array('friends/myfriends'));
         }
-        // else if( isset($_GET['friend_id']) )
-        // {
-            // $friend = new Friend();
-            // $exist = $friend->isExist($this->userId, $_GET['friend_id']);
-            // if ( $this->userId !== $_GET['friend_id']&& !$exist )
-            // {
-                // $friend->addFriend($this->userId, $_GET['friend_id']);
-                // $friend->makeFriend($this->userId, $_GET['friend_id']);
-            // }
-        // }
         $this->redirect(array('friends/friends'));
     }
 
@@ -259,4 +249,5 @@ class FriendsController extends Controller
             'friends'         => Friend::model()->getRequests()
         ));
    }
+
 }

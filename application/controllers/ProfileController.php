@@ -105,7 +105,8 @@ class ProfileController extends Controller
     public function actionOtherProfile($friend_id)
     {
         $this->render('otherprofile', array(
-            'user'          => User::model()->findByPk($friend_id)
+            'user'          => User::model()->findByPk($friend_id),
+            'is_friend'       => Friend::model()->isExist($friend_id)
         ));
         
     }

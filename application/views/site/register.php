@@ -160,11 +160,10 @@
                     </select>
                 </dd>
             </dt>
-        </dl>
-        <div>
             <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
             <button class="button-rewrite"><a href="<?php echo Yii::app()->createUrl('site/register'); ?>" ></a></button>
             <button type="submit" class="button-register"></button>
-        </div>
+        </dl>
+       
     </form>
 </div>
