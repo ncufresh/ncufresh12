@@ -3794,12 +3794,12 @@ img.user_img
     outline: 1px solid black;
     position: absolute;
 }
+
 #game-mission-dialog .npc
 {
-    width: 204px;
-    height: 404px;
-    margin: 69px 0px 0px 31px;
-    outline: 1px solid black;
+    width: 324px;
+    outline: 1px solid red;
+    margin: 91px 0px 0px -77px;
     position: absolute;
 }
 #game-mission-dialog .avatar
