@@ -43,7 +43,7 @@
 </div>
 <div id="game-mission-dialog">
     <h4>Mission：<span class="MissionName"></span></h4>
-        <img src="http://localhost/ncufresh12/statics/game/npc/0.png" alt="npc" class="npc"/>
+        <img src="<?php echo Yii::app()->request->baseUrl;?>/statics/game/npc/<? echo rand(0,9)?>.png" alt="npc" class="npc"/>
     <div class="display">
         
     </div>
@@ -57,4 +57,3 @@
         )); ?>
 </div>
     <h1>使用者ID => 登入帳號 / 觀看中 => <?php echo $user_id.' / '.$watch_id?> </h1>
-    <h1> <?php echo $filename=Character::model()->findByPk($watch_id)->skin->filename.'<br/>'; ?></h1>
