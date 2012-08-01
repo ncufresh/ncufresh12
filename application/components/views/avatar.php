@@ -1,5 +1,7 @@
 <div class="avatar">
+    <a href="<?php echo Yii::app()->createUrl('game/index', array('id' => $id)); ?>" title="查看個人資料">
 <?php foreach ( $components as $name => $path ) : ?>
-    <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/<?php echo $path;?>" alt="<?php echo $name; ?>" />
+        <img src="<?php echo Yii::app()->baseUrl; ?>/statics/game/<?php echo $path;?>" alt="<?php echo $name; ?>" />
 <?php endforeach; ?>
+    </a>
 </div>

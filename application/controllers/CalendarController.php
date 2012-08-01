@@ -130,76 +130,64 @@ class CalendarController extends Controller
     {
         if ( isset($_POST['token']) )
         {
+            // 若checkbox完全沒有勾選擇給$_POST['subscript']一空陣列
             if( !isset($_POST['subscript']) ) $_POST['subscript'] = array();
-            echo '0';
+            
             $subscript = new Subscription();
-            $array = array();
-            $i =0;
-            foreach( $_POST['subscript'] as $key => $value)
-            {
-                $array[$i++] = $key;
-            }
             
-            //var_dump($array);
-            //var_dump(self::getSubscribedCalendars());
-            //var_dump(array_diff($array, self::getSubscribedCalendars()));
-            // var_dump(array_diff(self::getSubscribedCalendars(), $array));
-            // exit();
-            //here
-            
-            //新傳入的值比原有的多出 => 新增訂閱
+            $array = self::getPostKeys($_POST['subscript']);
+            $check = 0;
+            //新增訂閱
             if ( count(array_diff($array, self::getSubscribedCalendars()))!=0 )
             {
-                echo '1';
                 foreach(array_diff($array, self::getSubscribedCalendars()) as $value)
                 {
-                    if ( Subscription::Model()->find('calendar_id='.$value.' AND invisible=1 AND user_id='.Yii::app()->user->getId()) )
+                    if ( Subscription::model()->getInvisibleSubscriptionByCalendarID($value) )
                     {
-                        $subscript = Subscription::model()->find('calendar_id='.$value.' AND invisible = 1 AND user_id='.Yii::app()->user->getId());
+                        $subscript = Subscription::model()->getInvisibleSubscriptionByCalendarID($value);
                         $subscript->invisible = 0;
-                        $subscript->save();
+                        if ( ! $subscript->save() ) $check=1;
                         continue;
                     }
                     $subscript = new Subscription();
                     $subscript->calendar_id = $value;
                     $subscript->invisible = 0;
-                    if ( $subscript->save() ) $this->redirect(Yii::app()->createUrl('calendar/view'));
+                    if ( ! $subscript->save() ) $check=1;
                 }
             }
             
-            //原有的比新傳入多出的部分 => 取消訂閱
+            //取消訂閱
             if ( count(array_diff(self::getSubscribedCalendars(), $array))!=0 )
             {
-                echo '2';
-                var_dump(array_diff(self::getSubscribedCalendars(), $array));
-                echo '<br/>';
                 foreach(array_diff(self::getSubscribedCalendars(), $array) as $value)
-                {
-                    echo 'abc ';
-                    // var_dump(self::getSubscribedCalendars());
-                    // echo '<br/>';
-                    // var_dump($array);
-                    // echo '<br/>';
-                    // var_dump(array_diff(self::getSubscribedCalendars(), $array));
-                    
-                    if ( $subscript->find('calendar_id='.$value.' AND invisible = 0 AND user_id='.Yii::app()->user->getId()) )
-                    {
-                        echo $subscript->find('calendar_id='.$value.' AND invisible = 0 AND user_id='.Yii::app()->user->getId())->calendar_id;
-                        
-                        $subscript = Subscription::model()->find('calendar_id='.$value.' AND invisible = 0 AND user_id='.Yii::app()->user->getId());
+                {                    
+                    if ( $subscript->getSubscriptionByCalendarID($value) )
+                    {                        
+                        $subscript = Subscription::model()->getSubscriptionByCalendarID($value);
                         $subscript->invisible = 1;
-                        if ( $subscript->save() ) $this->redirect(Yii::app()->createUrl('calendar/view'));
+                        if ( ! $subscript->save() ) $check=1;
                     }
-                    
-                    // echo '<br/><br/>';
                 }
             }
+            
+            if ( $check == 0 ) $this->redirect(Yii::app()->createUrl('calendar/view'));
         }
         $this->render('subscript', array(
             'clubs' => Calendar::model()->getClubs()
         ));
     }
 
+    private function getPostKeys($post)
+    {
+        $array = array();
+        $i =0;
+        foreach( $post as $key => $value )
+        {
+            $array[$i++] = $key;
+        }
+        return $array;
+    }
+    
     private function getSubscribedCalendars()
     {
         $subscript = new Subscription();

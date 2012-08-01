@@ -235,4 +235,11 @@ class GameController extends Controller
             'id'    => $this->userId
         )));
     }
+    
+    public function actionSolve($id = 0)
+    {
+        $mission = Mission::model()->findByPk($id);
+        $this->_data['name'] = $mission->name;
+        $this->_data['content'] = $mission->content;
+    }
 }

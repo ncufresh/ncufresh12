@@ -644,13 +644,26 @@
                             .addClass($.chat.options.chatMessagesClass)
                             .appendTo($(this));
                         var avatar = $('<div></div>')
+                            .data('name', data.name)
                             .addClass($.chat.options.chatAvatarClass)
+                            .hover(function()
+                            {
+                                $('<div></div>')
+                                    .attr('id', 'chat-name')
+                                    .css({
+                                        left: entry.offset().left - $(window).scrollLeft(),
+                                        top: entry.offset().top - $(window).scrollTop()
+                                    })
+                                    .append($('<p></p>').text(data.name))
+                                    .append($('<span></span>').addClass('arrow'))
+                                    .appendTo($('body'));
+                            }, function()
+                            {
+                                $('#chat-name').remove();
+                            })
                             .appendTo(entry);
                         var placehold = $('<div></div>')
                             .addClass('chat-avatar-' + data.avatar)
-                            .appendTo(avatar);
-                        var name = $('<p></p>')
-                            .text(data.name)
                             .appendTo(avatar);
                         $.fn.chat.showAvatar(data.avatar);
                     }
@@ -2025,6 +2038,149 @@
 })(jQuery);
 
 /**
+ * Infield
+ */
+(function ($) {
+
+    $.infield = function(label, field, options)
+    {
+        var base = this;
+
+        base.$label = $(label);
+        base.label  = label;
+
+        base.$field = $(field);
+        base.field  = field;
+
+        base.$label.data("infield", base);
+        base.showing = true;
+
+        base.init = function ()
+        {
+            base.options = $.extend({}, $.infield.defaultOptions, options);
+
+            if ( base.$field.val() !== '' )
+            {
+                base.$label.hide();
+                base.showing = false;
+            }
+
+            base.$field.focus(function()
+            {
+                base.fadeOnFocus();
+            }).blur(function()
+            {
+                base.checkForEmpty(true);
+            }).bind('keydown.infield', function(event)
+            {
+                base.hideOnChange(event);
+            }).bind('keyup', function()
+            {
+                if ( ! base.showing && base.$field.val() === '' )
+                {
+                    base.prepForShow();
+                    base.setOpacity(base.options.fadeOpacity);
+                }
+            }).bind('paste', function(event)
+            {
+                base.setOpacity(0.0);
+            }).change(function(event)
+            {
+                base.checkForEmpty();
+            }).bind('onPropertyChange', function()
+            {
+                base.checkForEmpty();
+            });
+        };
+
+        base.fadeOnFocus = function()
+        {
+            if ( base.showing) base.setOpacity(base.options.fadeOpacity);
+        };
+
+        base.setOpacity = function(opacity)
+        {
+            base.$label.stop().animate({
+                opacity: opacity
+            }, base.options.fadeDuration);
+            base.showing = (opacity > 0.0);
+        };
+
+        base.checkForEmpty = function(blur)
+        {
+            if ( base.$field.val() === '' )
+            {
+                base.prepForShow();
+                base.setOpacity(blur ? 1.0 : base.options.fadeOpacity);
+            }
+            else
+            {
+                base.setOpacity(0.0);
+            }
+        };
+
+        base.prepForShow = function(event)
+        {
+            if ( ! base.showing )
+            {
+                base.$label.css({
+                    opacity: 0.0
+                }).show();
+
+                base.$field.bind('keydown.infield', function(event)
+                {
+                    base.hideOnChange(event);
+                });
+            }
+        };
+
+        base.hideOnChange = function(event)
+        {
+            if ( event.keyCode === 16 || event.keyCode === 9 ) return;
+
+            if ( base.showing )
+            {
+                base.$label.hide();
+                base.showing = false;
+            }
+
+            base.$field.unbind('keydown.infield');
+        };
+
+        base.init();
+    };
+
+    $.infield.defaultOptions = {
+        fadeOpacity: 0.5,
+        fadeDuration: 300
+    };
+
+    $.fn.infield = function(options)
+    {
+        return this.each(function()
+        {
+            var for_attr = $(this).attr('for');
+            var $field;
+            if ( ! for_attr ) return;
+
+            $field = $(
+                'input#' + for_attr + '[type="text"],' +
+                'input#' + for_attr + '[type="search"],' +
+                'input#' + for_attr + '[type="tel"],' +
+                'input#' + for_attr + '[type="url"],' +
+                'input#' + for_attr + '[type="email"],' +
+                'input#' + for_attr + '[type="password"],' +
+                'textarea#' + for_attr
+            );
+
+            if ( $field.length === 0 ) return;
+
+            (new $.infield(this, $field[0], options));
+        });
+    };
+}(jQuery));
+
+/**
  * UltimatePassword
  */
 (function($)
@@ -2548,40 +2704,34 @@
             return false;
         });
 
-        $('form input, form textarea').each(function()
+        $('form dt label').infield();
+        $('form dd > span').each(function()
         {
-            var input = $(this);
-            var label = $('label[for="' + $(this).attr('id') + '"]');
-            var type = input.attr('type');
-            if ( type == 'radio' || type == 'checkbox' ) return true;
-            if ( label.length )
+            var tooltip = $(this);
+            tooltip.prepend($('<span></span>').addClass('arrow'));
+            if ( $(tooltip).css('display') === 'none' )
             {
-                var update = function()
+                $(tooltip).parent().parent().hover(function()
                 {
-                    if ( input.val() != '' )
+                    if ( $(this).find('input:focus').length === 0 )
                     {
-                        label.css({
-                            display: 'none'
-                        });
-                    } else
-                    {
-                        label.css({
-                            display: 'block'
-                        });
+                        $(tooltip).stop(true, true).fadeIn();
                     }
-                };
-                label.css({
-                    cursor: 'text',
-                    display: 'block'
-                }).click(function()
+                }, function()
                 {
-                    input.focus();
-                });
-                input.focusout(function()
-                {
-                    update();
+                    if ( $(this).find('input:focus').length === 0 )
+                    {
+                        $(tooltip).stop(true, true).fadeOut();
+                    }
                 })
-                update();  
+                .find('input').focus(function()
+                {
+                    $(tooltip).stop(true, true).fadeIn();
+                })
+                .blur(function()
+                {
+                    $(tooltip).stop(true, true).fadeOut();
+                });
             }
         });
 
