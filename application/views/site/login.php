@@ -1,5 +1,10 @@
 <h1>登入</h1>
 <div class="login">
+    <ul>
+        <li>登入失敗</li>
+        <li>註冊後再登入吧</li>
+        <li>無權進入管理者頁面</li>
+    </ul> 
 <form method="POST">
     <dl>
         <dt>

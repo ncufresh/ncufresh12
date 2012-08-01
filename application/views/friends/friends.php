@@ -51,11 +51,11 @@
 <?php foreach ( $profileThir as $profilethir ) :?>
 <?php if ( $account <= 4 ):?> 
     <li>
-<a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $profilethir->id));  ?>">
+        <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $profilethir->id));  ?>">
 <?php $this->widget('Avatar', array(
     'id'        => $profilethir->id
 )); ?>
-</a>
+        </a>
 <?php echo $profilethir->name ; ?>
 <?php $account++;?>
 <?php endif; ?>
@@ -70,7 +70,7 @@
 <div class="friends-sortfriend">
 <ul class="friends-self">
     <li>
-        <a href="<?php echo Yii::app()->createUrl('friends/myfriends') ; ?>" title="朋友" class="friends-title">
+        <a href="<?php echo Yii::app()->createUrl('friends/myfriends') ; ?>" title="朋友">
         朋友(
 <?php echo $friend_amount; ?> 
         人)

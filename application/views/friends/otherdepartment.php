@@ -24,6 +24,5 @@
     </div>
 </div>
 <button type="submit">確定加為好友</button>
+<button type="button" class="button-back"></button>
 </form>
-<button><a href="<?php echo Yii::app()->createUrl('friends/otherdepartment'); ?>">取消</a></button>
-<button onClick= "history.back()" >BACK</button>
