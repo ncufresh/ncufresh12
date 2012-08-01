@@ -190,13 +190,26 @@ class Character extends CActiveRecord
 
     public function addExp($value)
     {
-        $this->saveCounters(array('exp' => $value));
+        $this->saveCounters(array('experience' => $value));
         return true;
     }
 
+    public function minusMoney($value)
+    {
+        $this->saveCounters(array('money' => 0-$value));
+        return true;
+    }
+    
     public function addMoney($value)
     {
         $this->saveCounters(array('money' => $value));
+        $this->saveCounters(array('total_money' => $value));
+        return true;
+    }
+    
+    public function addMission()
+    {
+        $this->saveCounters(array('missions' => 1));
         return true;
     }
 
@@ -253,7 +266,7 @@ class Character extends CActiveRecord
         {
             if ( $this->getIsNewRecord() )
             {
-                $this->experience = 1; //一開始使用者經驗設為1
+                $this->experience = 0; //一開始使用者經驗設為0
                 $this->money = 25000; //一開始使用者金錢設為25000
                 $this->total_money = 35000; //一開始使用者總金錢設為35000
             }

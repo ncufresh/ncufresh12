@@ -2,7 +2,13 @@
 <script type="text/javascript">
 jQuery(document).ready(function()
 {
-    var calendar = $('#personal-calendar .left').calendar();
+    var calendar = $.calendar({
+        calendar_container: '#personal-calendar .left',
+        events_container:   '#personal-calendar .right',
+        date_container:     '#personal-calendar .date',
+        prompt:             '#personal-calendar .prompt',
+        eventsUrl:           $.configures.calendarEventsUrl
+    });
     $('a.calendar-hide-event').live('click', function()
     {
         var id = $(this).attr('href').replace('#', '');

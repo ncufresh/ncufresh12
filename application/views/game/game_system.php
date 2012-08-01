@@ -44,13 +44,15 @@
     </div>
 </div>
 <div id="game-mission-dialog">
-    <h4>Mission：<span></span></h4>
+    <h4>Mission：<span class="MissionName"></span></h4>
         <img src="http://localhost/ncufresh12/statics/game/npc/NPC_N1C.png" alt="npc" class="npc"/>
     <div class="display">
         
     </div>
-    <form action="post">
-        123
+    <form action="#" method="post" >
+    <span>解答：</span>
+    <input type="text" name="answer" />
+    <input type="submit" value="Submit" />
     </form>
         <?php $this->widget('Avatar', array(
             'id'        => $watch_id
