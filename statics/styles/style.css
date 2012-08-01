@@ -85,6 +85,7 @@ form textarea
 
 form button
 {
+    cursor: pointer;
     height: 40px;
     padding: 4px 16px;
 }
@@ -693,11 +694,6 @@ a:hover
     line-height: 20px;
 }
 
-#sidebar form.profile button
-{
-    box-shadow: none;
-}
-
 #sidebar form.profile div
 {
     text-align: center;
@@ -706,9 +702,8 @@ a:hover
 #sidebar form.profile button
 {
     border: none;
-    cursor: pointer;
+    box-shadow: none;
     height: 25px;
-    line-heigth: 25px;
     margin: 0 10px;
     text-indent: -100000px;
     width: 55px;
@@ -3568,7 +3563,7 @@ div#success a
 {
     background: url('../profile/login.png');
     width: 690px;
-    height: 370px;
+    height: 365px;
     padding: 25px;
     margin: 0px;
 }

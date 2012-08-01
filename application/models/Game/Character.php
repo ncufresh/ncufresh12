@@ -3,7 +3,7 @@ class Character extends CActiveRecord
 {
     public $exp_level = array(
         array(
-            'name'  => '錯誤級',  //原則上不會跑到這
+            'name'  => '錯誤級', // 原則上不會跑到這
             'exp'   => 0
         ),
         array(
@@ -87,6 +87,7 @@ class Character extends CActiveRecord
             'exp'   => 10000000000
         )
     );
+
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
@@ -105,7 +106,7 @@ class Character extends CActiveRecord
                 'Profile',
                 'id'
             ),
-            'hair'    => array(  // hair為Item的hair_id row
+            'hair'    => array( // hair為Item的hair_id row
                 self::BELONGS_TO,
                 'Item',
                 'hair_id'
@@ -180,7 +181,7 @@ class Character extends CActiveRecord
         $counter++;
         }
     }
-    
+
     public function getLevelExp($level)
     {   
         $target = $this->exp_level;
@@ -199,7 +200,7 @@ class Character extends CActiveRecord
         $this->saveCounters(array('money' => 0-$value));
         return true;
     }
-    
+
     public function addMoney($value)
     {
         $this->saveCounters(array('money' => $value));
@@ -216,12 +217,12 @@ class Character extends CActiveRecord
     public static function getAvatar($id)
     {
         $parts = array(
-            '皮膚'    => 'skin',
+            '皮膚'    => 'skins',
             '臉部'    => 'eyes',
             '鞋子'    => 'shoes',
             '褲子'    => 'pants',
             '衣服'    => 'clothes',
-            '頭髮'    => 'hair',
+            '頭髮'    => 'hairs',
             '其他'    => 'others'
         );
         $avatar = array_fill_keys(array_keys($parts), '../images/unknown.png');
@@ -238,7 +239,7 @@ class Character extends CActiveRecord
         }
         return $avatar;
     }
-    
+
     public static function getBodyPrice($id)
     {
         $character = Character::model()->findByPk($id);
