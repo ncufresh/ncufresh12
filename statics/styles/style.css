@@ -3849,14 +3849,14 @@ img.user_img
 {
     display: block;
     height: 100%;
-    position: relative;
+    position: absolute;
     width: 100%;
 }
 
 .avatar img
 {
     left: 0;
-    position: relative;
+    position: absolute;
     top: 0;
     width: 100%;
 }
