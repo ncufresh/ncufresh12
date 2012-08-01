@@ -24,15 +24,12 @@ class Profile extends CActiveRecord
     {   
         return array(
             array('name, nickname, department, grade, senior, year, month, day ,gender','required'),
-            array('department', 'length','min' => 1, 'max' => 21),
-            array('grade', 'length','min' => 1, 'max' => 5),
-            array('nickname', 'unique', 'className' => 'Profile'),
-            array('year', 'numerical', 'integerOnly'=>true),
-            array('month', 'numerical', 'integerOnly'=>true), 
-            array('day', 'numerical', 'integerOnly'=>true),
-            //array('year', 'length' => 4),
-            array('month', 'length', 'min' => 1, 'max' => 2),
-            array('day', 'length', 'min' => 1, 'max' => 2),
+            array('department', 'length','min' => 1, 'max' => 2),
+            array('grade', 'length','min' => 1, 'max' => 1),
+            array('nickname', 'unique', 'className' => 'Profile', 'on' => 'register, editor'),
+            array('year', 'numerical', 'min' => 1990, 'max' => 2000),
+            array('month', 'numerical', 'min' => 1, 'max' => 12), 
+            array('day', 'numerical', 'min' => 1, 'max' => 31),
         );
     }
 
@@ -142,7 +139,7 @@ class Profile extends CActiveRecord
     protected function afterFind()
     {
         parent::afterFind();
-        $this->birthday = Yii::app()->format->formatText($this->birthday);
+        $this->birthday = Yii::app()->format->date($this->birthday);
     }
 
     protected function beforeSave()
@@ -162,4 +159,5 @@ class Profile extends CActiveRecord
         }
         return false;
     }
+
 }
