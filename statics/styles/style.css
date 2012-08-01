@@ -3945,7 +3945,7 @@ img.user_img
     height: 600px;
     background: url('../game/mission.png');
     position: fixed;
-    display: inline-block;
+    display: none;
 }
 
 #game-mission-dialog .dialog-close-button
