@@ -110,5 +110,5 @@
         <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
     </div>
         <button type="submit" >儲存</button>
-        <button class="back" >回上一頁</button>
+        <button type="button" class="back" >回上一頁</button>
 </form>
