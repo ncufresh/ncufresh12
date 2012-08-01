@@ -2847,18 +2847,18 @@
         });
     });
 
-    // google.load('search', '1', {
-        // language: 'zh_TW'
-    // });
+    google.load('search', '1', {
+        language: 'zh_TW'
+    });
 
-    // google.setOnLoadCallback(function()
-    // {
-        // google.search.CustomSearchControl.attachAutoCompletion(
-            // $.configures.googleSearchAppId,
-            // document.getElementById('form-search-query'),
-            // 'search'
-        // );
-    // });
+    google.setOnLoadCallback(function()
+    {
+        google.search.CustomSearchControl.attachAutoCompletion(
+            $.configures.googleSearchAppId,
+            document.getElementById('form-search-query'),
+            'search'
+        );
+    });
 
     $('<script></script>')
         .attr('id', 'facebook-jssdk')
