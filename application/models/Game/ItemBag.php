@@ -50,7 +50,7 @@ class ItemBag extends CActiveRecord
                     $item->item_id = $item_data->id; //寫入獲得道具的id
                     $item->equipped = 0; //寫入裝備狀態
                     $item->created = TIMESTAMP; //寫入獲得時間
-                    if ($item->save() && Character::model()->findByPk($user_id)->addMoney(0-($item_data->price)))
+                    if ($item->save() && Character::model()->findByPk($user_id)->minusMoney($item_data->price))
                     return 0;
                 }
                 else
@@ -161,6 +161,12 @@ class ItemBag extends CActiveRecord
         else
         return false; //找不到此物品 無法裝備
     }
+
+    public function getClothesNum($id)
+    {
+        return count($this->findAll('user_id='.$id));
+    }
+    
     protected function beforeSave()
     {
         if ( parent::beforeSave() )

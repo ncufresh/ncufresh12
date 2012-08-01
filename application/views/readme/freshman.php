@@ -1,5 +1,5 @@
 <div id="readme-fresh">
-    <div id="readme-view"></div>
+    <div class="readme-view"></div>
     <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" id="fresh-back" class="readme-back"></a>
     <div id="read-fresh-menu" class="readme-menu">
         <p>新生區</p>

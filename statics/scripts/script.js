@@ -894,12 +894,12 @@
             {
                 var originalHeight = $.integer(scrollDragable.css('height'));
                 var scrollContentHeight = scrollContent.height();
-                var scrollContainerHeight = scrollContainer.height();
+                var scrollTrackHeight = scrollTrack.height();
                 var height = 0;
-                if ( scrollContentHeight > scrollContainerHeight )
+                if ( scrollContentHeight > scrollTrackHeight )
                 {
-                    height = scrollContainerHeight
-                           * scrollContainerHeight
+                    height = scrollTrackHeight
+                           * scrollTrackHeight
                            / scrollContentHeight;
                 }
                 if ( height != originalHeight )
@@ -1285,10 +1285,10 @@
         return false;
     }
 
-    var updateData = function(callback)
+    var updateData = function(url, callback)
     {
         var self = this;
-        $.getJSON($.configures.calendarEventsUrl, function(data){
+        $.getJSON( url, function(data){
             self.cleanUpMark(true);
             for ( var key in data.events )
             {
@@ -1372,7 +1372,7 @@
     /**
      * Update the list of events
      */
-    var updateEventsList = function(cal_events)
+    var updateEventsList = function(cal_events, container)
     {
         var self = this;
         var date = function(timestamp)
@@ -1394,7 +1394,7 @@
             }
             self.markToday();
         }
-        $('#personal-calendar .right').empty();
+        $(container).empty();
         if ( cal_events && cal_events.length )
         {
             var event_ids = [];
@@ -1437,7 +1437,7 @@
                             .mouseleave(eventMouseLeave)
                             .appendTo(ul);
                     }
-                    div.append(header).append(ul).appendTo('#personal-calendar .right');
+                    div.append(header).append(ul).appendTo(container);
                 }
                 $.configures.token = data.token;
             });
@@ -1657,8 +1657,8 @@
             },
             dayClick: tdClick
         });
-        august.updateData(init);
-        september.updateData(init);
+        august.updateData($.configures.calendarEventsUrl, init);
+        september.updateData($.configures.calendarEventsUrl, init);
         bottom.append(august);
         bottom.appendTo(bottom_wrap);
         todolist = $.generateTodolist([]).appendTo(bottom);
@@ -1668,12 +1668,21 @@
     /**
      * Initialize the personal calendar
      */
-    $.fn.calendar = function()
+    $.calendar = function(options)
     {
+        options = $.extend({
+            calendar_container: '#personal-calendar .left',
+            events_container:   '#personal-calendar .right',
+            date_container:     '#personal-calendar .date',
+            prompt:             '#personal-calendar .prompt',
+            eventsUrl:           $.configures.calendarEventsUrl
+        }, options);
         var current_year = (new Date()).getFullYear();
         var current_month = (new Date()).getMonth() + 1;
-        var container = $('<div></div>').appendTo(this);
-        var prompt = $('#personal-calendar .prompt')
+        var container = $('<div></div>').appendTo(options.calendar_container);
+        var events_container = $(options.events_container);
+        var date_container = $(options.date_container);
+        var prompt = $(options.prompt)
             .css({
                 position: 'absolute',
                 display:  'none'
@@ -1706,12 +1715,12 @@
                 },
                 dayClick: function()
                 {
-                    $('#personal-calendar .date').text(
+                    $(date_container).text(
                         $(calendar).data('options').year + '.'
                         + ($(calendar).data('options').month+1) + '.'
                         + $(this).text()
                     );
-                    $(calendar).updateEventsList($(this).data('cal_events'));
+                    $(calendar).updateEventsList($(this).data('cal_events'), events_container);
                 },
                 dayEnter: function(event)
                 {
@@ -1738,12 +1747,12 @@
                 }
             });
             calendar.appendTo(container);
-            calendar.updateData(function(self)
+            calendar.updateData(options.eventsUrl, function(self)
             {
                 if( $(self).getToday() )
                 {
-                    self.updateEventsList($(self).getToday().data('cal_events'));
-                    $('#personal-calendar .date').text(
+                    self.updateEventsList($(self).getToday().data('cal_events'), events_container);
+                    $(date_container).text(
                         $(self).data('options').year + '.'
                         + ($(self).data('options').month+1) + '.'
                         + $(self).getToday().text()
@@ -1753,9 +1762,6 @@
             return calendar;
         };
         var calendar = geneator(current_year, current_month);
-        // var calendar = geneator(current_year, current_month);
-        // calendar.appendTo(this);
-        // calendar.updateData(true);
         return calendar;
     }
 })(jQuery);
@@ -2841,19 +2847,6 @@
         });
     });
 
-    google.load('search', '1', {
-        language: 'zh_TW'
-    });
-
-    google.setOnLoadCallback(function()
-    {
-        google.search.CustomSearchControl.attachAutoCompletion(
-            $.configures.googleSearchAppId,
-            document.getElementById('form-search-query'),
-            'search'
-        );
-    });
-
     $('<script></script>')
         .attr('id', 'facebook-jssdk')
         .attr('async', 'async')
@@ -2883,3 +2876,16 @@
         });
     };
 })(jQuery);
+
+google.load('search', '1', {
+    language: 'zh_TW'
+});
+
+google.setOnLoadCallback(function()
+{
+    google.search.CustomSearchControl.attachAutoCompletion(
+        $.configures.googleSearchAppId,
+        document.getElementById('form-search-query'),
+        'search'
+    );
+});

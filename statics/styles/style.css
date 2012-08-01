@@ -13,7 +13,9 @@ body
 {
     background: #DCE4ED url('../images/header.png') repeat-x;
     margin: 0 auto;
+    overflow-x: hidden;
     overflow-y: scroll;
+    padding: 0;
     width: 1000px;
 }
 
@@ -76,6 +78,18 @@ form button
     padding: 4px 8px;
 }
 
+form textarea
+{
+    height: 160px;
+}
+
+form button
+{
+    cursor: pointer;
+    height: 40px;
+    padding: 4px 16px;
+}
+
 form input:hover,
 form textarea:hover,
 form button:hover,
@@ -84,16 +98,6 @@ form textarea:focus,
 form button:focus
 {
     border: 1px solid #909090;
-}
-
-form textarea
-{
-    height: 160px;
-}
-
-form button
-{
-    height: 24px;
 }
 
 form dt label
@@ -591,12 +595,17 @@ a:hover
 
 #content
 {
-    margin: 0 225px 0 25px;
-    min-height: 300px;
-    overflow: hidden;
+    float: left;
+    padding: 0 25px;
+    width: 750px;
 }
 
 #footer
+{
+    clear: both;
+}
+
+#footer-background
 {
     background: url('../images/footer.png') repeat-x center;
     height: 120px;
@@ -629,11 +638,8 @@ a:hover
  */
 #sidebar
 {
-    height: 100%;
-    margin-left: 800px;
-    padding-left: 15px;
-    position: absolute;
-    top: 0;
+    float: right;
+    margin: -240px -15px 0 15px;
     width: 200px;
 }
 
@@ -688,11 +694,6 @@ a:hover
     line-height: 20px;
 }
 
-#sidebar form.profile button
-{
-    box-shadow: none;
-}
-
 #sidebar form.profile div
 {
     text-align: center;
@@ -701,9 +702,8 @@ a:hover
 #sidebar form.profile button
 {
     border: none;
-    cursor: pointer;
+    box-shadow: none;
     height: 25px;
-    line-heigth: 25px;
     margin: 0 10px;
     text-indent: -100000px;
     width: 55px;
@@ -2156,14 +2156,19 @@ button.news-button
     left: 660px;
 }
 
+#readme .scroll-container
+{
+    height: 420px;
+    width: 630px;
+}
+
 #readme-fresh
 {
-    width: 750px;
-    height: 450px;
-    position: relative;
-    overflow-x: hidden;
-    overflow-y: auto;
     background: url('../readme/freshman_background.png');
+    padding: 15px 25px;
+    height: 420px;
+    position: relative;
+    width: 700px;
 }
 
 #fresh-back
@@ -2196,9 +2201,10 @@ button.news-button
 
 #readme-reschool
 {
-    width: 750px;
-    height: 450px;
+    padding: 15px 25px;
+    height: 420px;
     position: relative;
+    width: 700px;
     background: url('../readme/reschool_background.png');
 }
 
@@ -2370,6 +2376,17 @@ button.news-button
     position: absolute;
 }
 
+#readme .readme-view
+{
+    padding-right: 10px;
+}
+
+#readme .scroll-bar
+{
+    top: 33%;
+    height: 65%;
+}
+
 #readme-logo1
 {
     width: 124px;
@@ -2452,17 +2469,23 @@ button.news-button
     height: 300px;
     top: 50px;
     left: -187px;
-    border-radius: 10px;
+    border-radius: 0 10px 10px 0;
     position: absolute;
     display: block;
     list-style: none;
-    font-size: 1.5em;
-    opacity: 0.75;
+    opacity: 0.95;
 }
 
 .readme-menu p
 {
     text-align: center;
+}
+
+.readme-menu p:hover
+{
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 .readme-menu span
@@ -2490,12 +2513,6 @@ button.news-button
 {
     cursor: pointer;
     text-align: center;
-}
-
-#readme-view
-{
-    width: 750px;
-    height: 450px;
 }
 
 #about .introdution
@@ -3542,21 +3559,37 @@ div#success a
     margin-top:207px;
 }
 
-div.login
+#login
 {
-    background-image:url('../profile/login.png');
-    background-repeat:no-repeat ;
-    width:690px;
-    height:370px;
-    padding:25px;
-    margin:0px;
+    background: url('../profile/login.png');
+    width: 690px;
+    height: 365px;
+    padding: 25px;
+    margin: 0px;
 }
 
-div.login ul
-{ 
-    padding:0px;
-    margin-left:225px;
-    margin-top:45px;
+#login h2
+{
+    display: none;
+}
+
+#login p
+{
+    margin: 50px 0 0 100px;
+}
+
+#login ul
+{
+    padding: 0;
+    margin-left: 160px;
+}
+
+#login form
+{
+    height: 110px;
+    margin: 25px 0 0 160px;
+    padding: 0;
+    width: 640px;
 }
 
 div.delete-group
@@ -3567,16 +3600,6 @@ div.delete-group
     height:50px;
     padding:0px;
     margin:0px;
-}
-
-
-div.login form
-{
-    width:350px;
-    height:110px;
-    margin-left:200px;
-    margin-top:90px;
-    padding:0px;
 }
 
 form.group-description
@@ -3932,38 +3955,38 @@ img.user_img
     height: 600px;
     background: url('../game/mission.png');
     position: fixed;
-    display: inline-block;
+    display: none;
 }
 
 #game-mission-dialog .dialog-close-button
 {
-    width: 89px;
-    height: 90px;
+    width: 117px;
+    height: 119px;
     background: url('../game/exit.png');
     text-indent: -1000%;
     position: absolute;
-    top: -10px;
-    left: 822px;
+    top: -16px;
+    left: 806px;
     display: block;
     z-index: 1;
 }
 
 #game-mission-dialog .display
 {
-    width: 320px;
+    width: 325px;
     height: 246px;
-    font-size: 22px;
+    font-size: 25px;
     font-weight: bold;
-    outline: 1px solid black;
+    /*outline: 1px solid black;*/
     position: absolute;
     top: 56px;
-    left: 279px;
+    left: 277px;
 }
 
 #game-mission-dialog .npc
 {
     width: 324px;
-    outline: 1px solid red;
+    /*outline: 1px solid red;*/
     position: absolute;
     top: 91px;
     left: -37px;
@@ -3973,7 +3996,7 @@ img.user_img
     width: 270px;
     height: 451px;
     font-size: 18px;
-    outline: 1px solid black;
+    /*outline: 1px solid black;*/
     position: absolute;
     top: 43px;
     left: 629px;
