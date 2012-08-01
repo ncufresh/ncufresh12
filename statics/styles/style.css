@@ -3841,6 +3841,7 @@ img.user_img
     margin: 0;
     max-height: 800px;
     max-width: 450px;
+    position: relative;
     width: 450px;
 }
 
@@ -3855,7 +3856,7 @@ img.user_img
 .avatar img
 {
     left: 0;
-    position: absolute;
+    position: relative;
     top: 0;
     width: 100%;
 }

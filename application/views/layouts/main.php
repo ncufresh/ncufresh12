@@ -189,7 +189,8 @@
 <?php else : ?>
     <div class="profile">
 <?php $this->widget('Avatar', array(
-    'id'        => Yii::app()->user->getId()
+    'id'        => Yii::app()->user->getId(),
+    'link'      => true
 )); ?>
         <p><?php echo Yii::app()->user->getName(); ?></p>
         <a id="sidebar-personal-toggle" href="#" title="點此打開或關閉個人功能"></a>
