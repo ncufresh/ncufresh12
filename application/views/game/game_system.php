@@ -43,7 +43,7 @@
 </div>
 <div id="game-mission-dialog">
     <h4>Mission：<span class="MissionName"></span></h4>
-        <img src="http://localhost/ncufresh12/statics/game/npc/0.png" alt="npc" class="npc"/>
+        <img src="http://localhost/ncufresh12/statics/game/npcs/0.png" alt="npc" class="npc"/>
     <div class="display">
         
     </div>

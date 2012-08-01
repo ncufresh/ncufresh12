@@ -13,7 +13,9 @@ body
 {
     background: #DCE4ED url('../images/header.png') repeat-x;
     margin: 0 auto;
+    overflow-x: hidden;
     overflow-y: scroll;
+    padding: 0;
     width: 1000px;
 }
 
@@ -83,6 +85,7 @@ form textarea
 
 form button
 {
+    cursor: pointer;
     height: 40px;
     padding: 4px 16px;
 }
@@ -592,12 +595,17 @@ a:hover
 
 #content
 {
-    margin: 0 225px 0 25px;
-    min-height: 300px;
-    overflow: hidden;
+    float: left;
+    padding: 0 25px;
+    width: 750px;
 }
 
 #footer
+{
+    clear: both;
+}
+
+#footer-background
 {
     background: url('../images/footer.png') repeat-x center;
     height: 120px;
@@ -630,11 +638,8 @@ a:hover
  */
 #sidebar
 {
-    height: 100%;
-    margin-left: 800px;
-    padding-left: 15px;
-    position: absolute;
-    top: 0;
+    float: right;
+    margin: -240px -15px 0 15px;
     width: 200px;
 }
 
@@ -689,11 +694,6 @@ a:hover
     line-height: 20px;
 }
 
-#sidebar form.profile button
-{
-    box-shadow: none;
-}
-
 #sidebar form.profile div
 {
     text-align: center;
@@ -702,9 +702,8 @@ a:hover
 #sidebar form.profile button
 {
     border: none;
-    cursor: pointer;
+    box-shadow: none;
     height: 25px;
-    line-heigth: 25px;
     margin: 0 10px;
     text-indent: -100000px;
     width: 55px;
@@ -3564,7 +3563,7 @@ div#success a
 {
     background: url('../profile/login.png');
     width: 690px;
-    height: 370px;
+    height: 365px;
     padding: 25px;
     margin: 0px;
 }
@@ -3956,7 +3955,7 @@ img.user_img
     height: 600px;
     background: url('../game/mission.png');
     position: fixed;
-    display: inline-block,name;
+    display: none;
 }
 
 #game-mission-dialog .dialog-close-button
