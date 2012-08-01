@@ -1403,14 +1403,16 @@ ul#nculife-details
     cursor: pointer;
 }
 
-#personal-calendar .prompt
+#personal-calendar .prompt,
+#club-calendar .prompt
 {
     background: gray;
     background: rgba(0, 0, 0, 0.7);
     display: none;
 }
 
-#personal-calendar .prompt i
+#personal-calendar .prompt i,
+#club-calendar .prompt i
 {
     border: 5px solid;
     border-color: transparent transparent gray transparent;
@@ -1422,17 +1424,20 @@ ul#nculife-details
     height: 0;
 }
 
-#personal-calendar .prompt ul
+#personal-calendar .prompt ul,
+#club-calendar .prompt ul
 {
     margin: 0;
     padding: 5px;
     list-style: none;
 }
 
-#personal-calendar .prompt ul li
+#personal-calendar .prompt ul li,
+#club-calendar .prompt ul li
 {
     color: white;
 }
+
 .calendar-prompt
 {
     background: gray;

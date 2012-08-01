@@ -30,7 +30,7 @@ class Calendar extends CActiveRecord
                 self::HAS_MANY,
                 'Event',
                 'calendar_id',
-                'condition' => 'status.done IS NULL OR status.done = 0',
+                'condition' => '(status.done IS NULL OR status.done = 0) AND invisible = 0',
                 'with' => array(
                     'status' => array(
                         'joinType'  => 'LEFT JOIN'
@@ -57,8 +57,7 @@ class Calendar extends CActiveRecord
                 'params'    => array(
                     ':id'   => Yii::app()->user->getId()
                 ),
-                
-            )
+            ),
         );
     }
 
@@ -172,17 +171,5 @@ class Calendar extends CActiveRecord
         parent::afterFind();
         $this->user_id = (integer)$this->user_id;
         $this->category = (integer)$this->category;
-        // if( $this->user_id == 0 )
-        // {
-            // $this->category = 'general';
-        // }
-        // else if( $this->category == 0 )
-        // {
-            // $this->category = 'club';
-        // }
-        // else
-        // {
-            // $this->category = 'personal';
-        // }
     }
 }
