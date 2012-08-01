@@ -1154,6 +1154,11 @@ table.gsc-completion-container
     width: 220px;
 }
 
+#search dl
+{
+    width: 95%;
+}
+
 #search label
 {
     height: 20px;
@@ -1162,8 +1167,6 @@ table.gsc-completion-container
 
 #search input
 {
-    /*border: none;
-    box-shadow: none;*/
     height: 20px;
     padding-right: 30px;
     width: 178px;
@@ -1176,8 +1179,8 @@ table.gsc-completion-container
     box-shadow: none;
     cursor: pointer;
     float: right;
-    height: 20px;
-    margin: -30px 4px 0 0;
+    height: 24px;
+    margin: -32px 2px 0 0;
     position: relative;
     text-indent: -100000px;
     width: 32px;
@@ -1186,7 +1189,16 @@ table.gsc-completion-container
 
 #result
 {
+    background: #FFFFFF url('../images/search.png') right top no-repeat;
+    border-radius: 10px;
     margin: 0 auto;
+    min-height: 160px;
+    padding-top: 200px;
+}
+
+#result .loading
+{
+    margin-top: 10px;
 }
 
 #result .gs-title
