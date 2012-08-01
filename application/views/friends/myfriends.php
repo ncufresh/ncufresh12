@@ -23,6 +23,6 @@
         </ul>
     </div>
 </div>
-<button type="submit">取消好友</button>
+<button type="submit" class="button-deletefriend"></button>
+<button type="button" class="button-back"></button>
 </form>
-<button onClick= "history.back()" >BACK</button>

@@ -21,4 +21,4 @@
         </table>
     </div>
 </div>
-<button onClick= "history.back()" >BACK</button>
+<button type="button" class="button-back" ></button>

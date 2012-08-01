@@ -33,7 +33,8 @@ class SiteController extends Controller
                     'channel',
                     'profile',
                     'editor',
-                    'sitemap'
+                    'sitemap',
+                    'success'
                 ),
                 'users'     => array('*')
             ),
@@ -194,7 +195,7 @@ class SiteController extends Controller
             $model->attributes = $_POST['login'];
             if ( $model->login() )
             {
-                $this->redirect(Yii::app()->user->returnUrl);
+                $this->redirect(array('site/index'));
             }
         }
         $this->setPageTitle(Yii::app()->name . ' - 登入');
@@ -258,7 +259,7 @@ class SiteController extends Controller
                     $calendar_subscriptions->invisible = 0;
                     if ( $character->save() && $item->save() && $calendar->save() && $calendar_subscriptions->save() )
                     {
-                        $this->redirect(array('profile/profile'));
+                        $this->redirect(array('site/success'));
                     }
                 }
                 else
@@ -292,5 +293,10 @@ class SiteController extends Controller
     public function actionSitemap()
     {
         $this->render('sitemap');
+    }
+
+    public function actionSuccess()
+    {
+         $this->render('success');
     }
 }

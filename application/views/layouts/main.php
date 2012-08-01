@@ -70,7 +70,7 @@
                     <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>#reschool" title="復學區">復學區</a>
                 </li>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>#notice" title="相關須知">相關須知</a>
+                    <a href="<?php echo Yii::app()->createUrl('readme/notice'); ?>" title="相關須知">相關須知</a>
                 </li>
                 <li>
                     <a href="<?php echo Yii::app()->createUrl('readme/download'); ?>" title="文件下載">文件下載</a>
@@ -160,7 +160,9 @@
         </li>
     </ul>
 </div>
-<div id="content"><?php echo $content; ?></div>
+<div id="content">
+    <div id="<?php echo $this->getId(); ?>"><?php echo $content; ?></div>
+</div>
 <div id="sidebar">
 <?php if ( Yii::app()->user->getIsGuest() ) : ?>
     <form class="profile" action="<?php echo Yii::app()->createUrl('site/login'); ?>" method="POST">

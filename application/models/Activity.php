@@ -81,9 +81,12 @@ class Activity extends CActiveRecord
     public static function getFriendCount()
     {
         $count = 0;
-        foreach ( Yii::app()->user->getUser()->friends as $friend )
+        if ( Yii::app()->user->getIsMember() )
         {
-            if ( self::getUserActivity($friend->id) ) $count++;
+            foreach ( Yii::app()->user->getUser()->friends as $friend )
+            {
+                if ( self::getUserActivity($friend->id) ) $count++;
+            }
         }
         return $count;
     }
