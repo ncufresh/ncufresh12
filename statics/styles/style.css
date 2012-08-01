@@ -1393,18 +1393,6 @@ ul#nculife-details
     display: inline-block;
 }
 
-#index-calendar .calendar-top a#calendar-all
-{
-}
-
-#index-calendar .calendar-top a#calendar-personal
-{
-}
-
-#index-calendar .calendar-top a
-{
-}
-
 #personal-calendar
 {
     
@@ -1415,6 +1403,36 @@ ul#nculife-details
     cursor: pointer;
 }
 
+#personal-calendar .prompt
+{
+    background: gray;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+#personal-calendar .prompt i
+{
+    border: 5px solid;
+    border-color: transparent transparent gray transparent;
+    border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+    margin-bottom: -10px;
+    margin-left: 5px;
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+#personal-calendar .prompt ul
+{
+    margin: 0;
+    padding: 5px;
+    list-style: none;
+}
+
+#personal-calendar .prompt ul li
+{
+    color: white;
+}
 .calendar-prompt
 {
     background: gray;
@@ -3061,10 +3079,10 @@ ul.friend-other-sort
     color:red;
 }
 
-.user-editor input
+ul.user-editor input
 {
-    width: 240px;
-    height: 30px;
+    width: 135px;
+    height: 20px;
 }
 
 div.friends h4
@@ -3348,19 +3366,6 @@ div.profile-message-reply
     padding: 0;
 }
 
-<<<<<<< HEAD
-div.register form
-{
-    width:330px;
-    height:315px;
-    margin:0px;
-    padding:15px;
-}
-
-div.register button
-=======
-#sitemap div
->>>>>>> 992d9414b0888f5fee76fd33cad9b3a075203723
 {
     min-height: 240px;
     overflow: hidden;

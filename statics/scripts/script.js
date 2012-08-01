@@ -1285,26 +1285,20 @@
         return false;
     }
 
-    var updateData = function(updateEventList)
+    var updateData = function(callback)
     {
         var self = this;
         $.getJSON($.configures.calendarEventsUrl, function(data){
-            for(var key in data.events)
+            self.cleanUpMark(true);
+            for ( var key in data.events )
             {
                 self.markEvent(data.events[key], { textDecoration: 'underline'});
             }
+            self.markToday();
             self.data('all_events', data.events);
-            if ( updateEventList )
+            if ( callback ) 
             {
-                if( $(self).getToday() )
-                {
-                    self.updateEventsList($(self).getToday().data('cal_events'));
-                    $('#personal-calendar .date').text(
-                        $(self).data('options').year + '.'
-                        + ($(self).data('options').month+1) + '.'
-                        + $(self).getToday().text()
-                    );
-                }
+                callback(self);
             }
         });
         return this;
@@ -1367,10 +1361,11 @@
         return this;
     }
 
-    var cleanUpMark = function()
+    var cleanUpMark = function(isRemoveData)
     {
         return $(this).children('tbody').find('td').each(function(){
             $(this).removeAttr('style');
+            if ( isRemoveData ) $(this).removeData('cal_events');
         });
     }
 
@@ -1598,41 +1593,48 @@
         var september;
         var august;
         var todolist;
-        this.children('.calendar-top')
-            .children('a')
-            .click(function()
-        {
-            var id = $(this).attr('id');
-            if ( id == 'calendar-all' )
-            {
-                top.removeClass('calendar-top-personal');
-                if ( options.isMember )
-                {
-                    top.addClass('calendar-top-all-login');
-                }
-                else
-                {
-                    top.addClass('calendar-top-all-nologin');
-                }
-            }
-            else if ( id == 'calendar-personal' )
-            {
-                if ( options.isMember )
-                {
-                    top.removeClass('calendar-top-all-login');
-                    top.addClass('calendar-top-personal');
-                }
-            }
-            return false;
-        });
         var tdClick = function()
         {
             $(this).parents('table').find('td').css('outline', '0');
             $(this).css('outline', '1px solid black');
+            var events = $(this).data('cal_events');
+            var todo = [];
+            for(var key in events)
+            {
+                var start = new Date((events[key].start-(new Date()).getTimezoneOffset()*60)*1000);
+                var end = new Date((events[key].end-(new Date()).getTimezoneOffset()*60)*1000);
+                todo[key]=
+                [
+                    start.getMonth()+'/'+start.getDate()+' ~ '+end.getMonth()+'/'+end.getDate(),
+                    events[key].name
+                ];
+            }
+            todolist.remove();
+            todolist = $.generateTodolist(todo).appendTo(bottom);
+        }
+        var init = function(self)
+        {
+            if( $(self).getToday() )
+            {
+                var events = $(self).getToday().data('cal_events');
+                var todo = [];
+                for(var key in events)
+                {
+                    var start = new Date((events[key].start-(new Date()).getTimezoneOffset()*60)*1000);
+                    var end = new Date((events[key].end-(new Date()).getTimezoneOffset()*60)*1000);
+                    todo[key]=
+                    [
+                        start.getMonth()+'/'+start.getDate()+' ~ '+end.getMonth()+'/'+end.getDate(),
+                        events[key].name
+                    ];
+                }
+                todolist.remove();
+                todolist = $.generateTodolist(todo).appendTo(bottom);
+            }
         }
         september = $.generateCalendar({
             year: 2012,
-            month: 8,
+            month: 9,
             dayClick: tdClick,
             left: true,
             leftClick: function()
@@ -1645,7 +1647,7 @@
         });
         august = $.generateCalendar({
             year: 2012,
-            month: 7,
+            month: 8,
             right: true,
             rightClick: function()
             {
@@ -1655,17 +1657,11 @@
             },
             dayClick: tdClick
         });
-        august.markEvent([0,1343004622,1343868622]).markEvent([1,1342097622,1342097622], { textDecoration: 'underline' });
+        august.updateData(init);
+        september.updateData(init);
         bottom.append(august);
         bottom.appendTo(bottom_wrap);
-        todolist = $.generateTodolist(
-            [
-                ['2012/8/6', '資訊網上線'],
-                ['2012/8/6', '資訊網上線'],
-                ['2012/8/6', '資訊網上線'],
-                ['2012/8/6', '資訊網上線']
-            ]
-        ).appendTo(bottom);
+        todolist = $.generateTodolist([]).appendTo(bottom);
         return this;
     };
 
@@ -1677,13 +1673,11 @@
         var current_year = (new Date()).getFullYear();
         var current_month = (new Date()).getMonth() + 1;
         var container = $('<div></div>').appendTo(this);
-        var prompt = $('<ul></ul>')
-            .addClass('calendar-prompt')
+        var prompt = $('#personal-calendar .prompt')
             .css({
                 position: 'absolute',
                 display:  'none'
-            }).appendTo('body');
-        var mousemove
+            });
         var geneator = function(year, month)
         {
             if ( calendar ) calendar.remove();
@@ -1722,31 +1716,47 @@
                 dayEnter: function(event)
                 {
                     var events = $(this).data('cal_events');
-                    if( events.length > 0 )
+                    if( events && events.length > 0 )
                     {
                         for( var key in $(this).data('cal_events') )
                         {
-                            $('<li></li>').text(events[key].name).appendTo(prompt);
+                            $('<li></li>').text(events[key].name).appendTo(prompt.find('ul'));
                         }
+                        var left = $(this).parents('table').offset().left + event.currentTarget.offsetLeft;
+                        var top = $(this).parents('table').offset().top + event.currentTarget.offsetTop - prompt.height();
                         prompt.css({
-                            top: event.pageY,
-                            left: event.pageX
-                        }).show();
+                            top: top-5,
+                            left: left,
+                            display: 'inline-block'
+                        });
                     }
                 },
                 dayLeave: function()
                 {
-                    prompt.empty().hide();
+                    prompt.find('ul').empty();
+                    prompt.hide();
                 }
             });
             calendar.appendTo(container);
-            calendar.updateData(true);
+            calendar.updateData(function(self)
+            {
+                if( $(self).getToday() )
+                {
+                    self.updateEventsList($(self).getToday().data('cal_events'));
+                    $('#personal-calendar .date').text(
+                        $(self).data('options').year + '.'
+                        + ($(self).data('options').month+1) + '.'
+                        + $(self).getToday().text()
+                    );
+                }
+            });
             return calendar;
         };
         var calendar = geneator(current_year, current_month);
         // var calendar = geneator(current_year, current_month);
         // calendar.appendTo(this);
         // calendar.updateData(true);
+        return calendar;
     }
 })(jQuery);
 
