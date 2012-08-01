@@ -2894,7 +2894,7 @@ button.news-button
     background: url('../club/background.png');
 }
 /* profile... */
-.friends-sort 
+ul.friends-sort 
 
 {
     width:210px;
@@ -2904,9 +2904,9 @@ button.news-button
     padding:0px;
 }
 
-.friends-sort li
+ul.friends-sort li
 {
-    width:100px;
+    width:105px;
     height:60px;
     float:left;
     color:DarkBlue;
@@ -2973,7 +2973,7 @@ ul.friend-other-sort
 .other-department li
 {
     width:132px; 
-    height:220px;
+    height:230px;
     padding:0px;
     margin:0px;
     float:left;
@@ -3046,9 +3046,9 @@ ul.friend-other-sort
     text-align:left;
 }
 
-.is_exist
+.inexistence
 {
-    color:red;
+    outline: 1px solid red;
 }
 
 ul.user-editor input
@@ -3190,7 +3190,7 @@ div.friends-addfriend
     height:140px;
 }
 
-div.friends-addfriend div.avatar
+.friends-addfriend .avatar
 {
     margin-left:0px;
     margin-top:0px;
@@ -3208,7 +3208,7 @@ div.friends-sortfriend
     height:140px;
 }
 
-div.friends-sortfriend div.avatar
+div.friends-sortfriend div.avatar 
 {
     margin-left:0px;
     margin-top:0px;
@@ -3265,7 +3265,7 @@ div.newgroup
 
 div.newmember
 {
-    background-image:url('../profile/sameDsameG.png');
+    background-image:url('../profile/groupmembers.png');
     background-repeat:no-repeat ;
     width:690px;
     height:370px;
@@ -3275,7 +3275,7 @@ div.newmember
 
 div.allgroups
 {
-    background-image:url('../profile/sameDsameG.png');
+    background-image:url('../profile/allgroups.png');
     background-repeat:no-repeat ;
     width:690px;
     height:370px;
@@ -3327,6 +3327,160 @@ div.profile-message-reply
     height:370px;
     padding:25px;
     margin:0px;
+    float:left;
+}
+
+.button-back
+{
+    background-image: url('../profile/button/back.png');
+    background-repeat: no-repeat ;
+    width: 141px;
+    height: 61px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.button-cancel
+{
+    background-image:url('../profile/button/cancel.png');
+    background-repeat:no-repeat ;
+    width:91px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-push
+{
+    background-image:url('../profile/button/push.png');
+    background-repeat:no-repeat ;
+    width:71px;
+    height:38px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-sure
+{
+    background-image:url('../profile/button/sure.png');
+    background-repeat:no-repeat ;
+    width:91px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-addgroup
+{
+    background-image:url('../profile/button/addgroup.png');
+    background-repeat:no-repeat ;
+    width:50px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-deletegroup
+{
+    background-image:url('../profile/button/delete-group.png');
+    background-repeat:no-repeat ;
+    width:213px;
+    height:58px;
+    padding:0px;
+    margin:0px;
+    float:left;
+}
+
+.button-addmember
+{
+    background-image:url('../profile/button/add-member.png');
+    background-repeat:no-repeat ;
+    width:213px;
+    height:59px;
+    padding:0px;
+    margin:0px;
+    float:left;
+}
+
+.button-deletemember
+{
+    background-image:url('../profile/button/delete-member.png');
+    background-repeat:no-repeat ;
+    width:213px;
+    height:58px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-makefriend
+{
+    background-image:url('../profile/button/makefriend.png');
+    background-repeat:no-repeat ;
+    width:188px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-deletefriend
+{
+    background-image:url('../profile/button/delete-friend.png');
+    background-repeat:no-repeat ;
+    width:188px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-mygroup
+{
+    background-image:url('../profile/button/mygroup.png');
+    background-repeat:no-repeat ;
+    width:50px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-addfriend
+{
+    background-image:url('../profile/button/addfriend.png');
+    background-repeat:no-repeat ;
+    width:50px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-editor
+{
+    background-image:url('../profile/button/editor.png');
+    background-repeat:no-repeat ;
+    width:50px;
+    height:50px;
+    padding:0px;
+    margin:0px;
+}
+
+.button-register
+{
+    background-image:url('../profile/button/register.png');
+    background-repeat:no-repeat ;
+    width:159px;
+    height:57px;
+    padding:0px;
+    margin:0px;
+    float:left;
+}
+
+.button-rewrite
+{
+    background-image:url('../profile/button/rewrite.png');
+    background-repeat:no-repeat ;
+    width:146px;
+    height:57px;
+    padding:0px;
+    margin:0px;
 }
 
 /**
@@ -3355,26 +3509,10 @@ div.profile-message-reply
 #register
 {
     background: url('../profile/register.png') no-repeat;
-    height: 335px;
+    height: 515px;
     margin: 0px;
     padding: 40px;
     width: 660px;
-}
-
-#register > form,
-#register .scroll-container
-{
-    height: 330px;
-    overflow: hidden;
-}
-
-#register button
-{
-    background: url('../profile/button_register.png');
-    height: 22px;
-    margin-left: 25px;
-    padding: 0px;
-    width: 45px;
 }
 
 #register h4
@@ -3382,14 +3520,25 @@ div.profile-message-reply
     margin: -10px 0 -5px;
 }
 
-div.register #rewrite
+div#success
 {
-    background-image:url('../profile/button_register.png');
+    background-image:url('../profile/finish.png');
     background-repeat:no-repeat ;
-    width:45px;
-    height:22px;
+    width:690px;
+    height:370px;
+    padding:25px;
+    margin:0px;
+}
+
+div#success a 
+{
+    display:block;
+    outline:1px solid red;
+    width:162px;
+    height:53px;
     padding:0px;
-    margin-left:180px;
+    margin-left:269px;
+    margin-top:207px;
 }
 
 div.login
@@ -3400,6 +3549,13 @@ div.login
     height:370px;
     padding:25px;
     margin:0px;
+}
+
+div.login ul
+{ 
+    padding:0px;
+    margin-left:225px;
+    margin-top:45px;
 }
 
 div.delete-group
@@ -3417,15 +3573,15 @@ div.login form
 {
     width:350px;
     height:110px;
-    margin-left:150px;
-    margin-top:160px;
+    margin-left:200px;
+    margin-top:90px;
     padding:0px;
 }
 
 form.group-description
 {
     width:500px;
-    height:560px;
+    height:635px;
 }
 
 div.self-messages
@@ -3595,24 +3751,6 @@ a.mymessage-title
     float:right;
 }
 /*
-.form-friends-title
-{
-    color: yellow;
-    font-size: 20px;
-    text-align: left;
-}
-
-.friend-title
-{
-    color: green;
-    text-align: center;
-}
-
-.friends-title
-{
-    text-align:center;
-    color:DarkSlateGray;
-}*/
 
 img.user_img
 {

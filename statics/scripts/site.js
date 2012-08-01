@@ -10,7 +10,6 @@
                 $('<option></option>').text(i).appendTo($('select.day')).val(i);
             }
         });
-
-        $('#register > form').scrollable();
+        /*$('#register > form').scrollable();*/
     });
 })(jQuery);

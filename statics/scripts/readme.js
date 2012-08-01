@@ -45,14 +45,6 @@ jQuery(document).ready(function()
         return false;
     });
 
-    jQuery('#readme-logo3').click(function()
-    {
-        $('.notice-inner:hidden').fadeIn('slow');
-        $('.reschool-inner:visible').fadeOut('fast');
-        $('.fresh-inner:visible').fadeOut('fast');
-        return false;
-    });
-
     jQuery('.readme-menu').mouseenter(function()
     {
         $(this).stop().animate(

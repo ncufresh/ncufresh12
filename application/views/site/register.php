@@ -3,35 +3,36 @@
     <form method="POST">
         <dl>
             <dt>
-                <label for="form-register-name">
+                <label for="form-register-name">姓名</label>
+            </dt>
+            <dd>
+                <input id="form-register-name" name="profile[name]" type="text" />
+                <span>
 <?php if ( isset($profile_errors['name']) ) : ?>
 <?php foreach ( $profile_errors['name'] as $error ) : ?>
 <?php echo $error; ?>
 <?php endforeach; ?>
 <?php else: ?>
-                 姓名
-<?php endif; ?>                
-                </label>
-            </dt>
-            <dd>
-                <input id="form-register-name" name="profile[name]" type="text" />
-                <span>拉啦啦啦</span>
+                 請輸入姓名
+<?php endif; ?>   
+                </span>
             </dd>
         </dl>
         <dl>
             <dt>
-                <label for="form-register-nickname">
+                <label for="form-register-nickname">暱稱</label>
+            </dt>
+            <dd>
+                <input id="form-register-nickname" name="profile[nickname]" type="text" />
+                <span>
 <?php if ( isset($profile_errors['nickname']) ) : ?>
 <?php foreach ( $profile_errors['nickname'] as $error ) : ?>
 <?php echo $error; ?>
 <?php endforeach; ?>
 <?php else: ?>
-                 暱稱
-<?php endif; ?>
-                </label>
-            </dt>
-            <dd>
-                <input id="form-register-nickname" name="profile[nickname]" type="text" />
+                人家都怎麼叫你哩^.<
+<?php endif; ?>                
+                </span>
             </dd>
         </dl>
         <dl class="radio">
@@ -41,38 +42,49 @@
             <dd>
                 <input id="form-register-gender-male" name="profile[gender]" type="radio" value="0" /><label for="form-register-gender-male">Male</label>
                 <input id="form-register-gender-female" name="profile[gender]" type="radio" value="1" /><label for="form-register-gender-female">Female</label>
+                <span>
+<?php if ( isset($profile_errors['gender']) ) :?>
+<?php foreach ( $profile_errors['gender'] as $error ) : ?>
+<?php echo $error; ?>
+<?php endforeach; ?>
+<?php else: ?>
+                A U MAN OR WOMAN
+<?php endif; ?>
+                </span>
             </dd>
         </dl>
         <dl>
             <dt>
-                <label for="form-register-username">
+                <label for="form-register-username">帳號</label>
+            </dt>
+            <dd>
+                <input id="form-register-username" name="register[username]" type="text" />
+                <span>
 <?php if ( isset($username_errors['username']) ) :?>
 <?php foreach ( $username_errors['username'] as $error ) : ?>
 <?php echo $error; ?>
 <?php endforeach; ?>
 <?php else: ?>
-                 帳號
-<?php endif; ?>
-                </label>
-            </dt>
-            <dd>
-                <input id="form-register-username" name="register[username]" type="text" />
+                須大於8碼唷
+<?php endif; ?>                
+                </span>
             </dd>
         </dl>
         <dl>
             <dt>
-                <label for="form-register-password">
+                <label for="form-register-password">密碼</label>
+            </dt>
+            <dd>
+                <input id="form-register-password" name="register[password]" type="password" />
+                <span>
 <?php if ( isset($username_errors['password']) ) : ?>
 <?php foreach ( $username_errors['password'] as $error ) : ?>
 <?php echo $error; ?>
 <?php endforeach; ?>
 <?php else: ?>
-                 密碼
-<?php endif; ?>
-                </label>
-            </dt>
-            <dd>
-                <input id="form-register-password" name="register[password]" type="password" />
+                請輸入密碼
+<?php endif; ?>                
+                </span>
             </dd>
         </dl>
         <dl>
@@ -81,6 +93,7 @@
             </dt>
             <dd>
                 <input id="form-register-confirm" name="register[confirm]" type="password" />
+                <span>再來輸入一次吧....要與密碼相同</span>
             </dd>
         </dl>
         <dl class="select">
@@ -100,23 +113,25 @@
                         <option value="3">三年級</option>
                         <option value="4">四年級</option>
                     </select>
+                    <span>系級</span>
                 </dd>
             </dt>
         </dl>
         <dl>
             <dt>
-                <label for="form-register-senior">
+                <label for="form-register-senior">畢業高中</label>
+            </dt>
+            <dd>
+                <input id="form-register-senior" name="profile[senior]" type="text" />
+                <span>
 <?php if ( isset($profile_errors['senior']) ) :?>
 <?php foreach ( $profile_errors['senior'] as $error ) : ?>
 <?php echo $error; ?>
 <?php endforeach; ?>
 <?php else: ?>
-                 畢業高中
-<?php endif; ?>
-                </label>
-            </dt>
-            <dd>
-                <input id="form-register-senior" name="profile[senior]" type="text" />
+                輸入畢業高中吧!!
+<?php endif; ?>                
+                </span>
             </dd>
         </dl>
         <dl>
@@ -148,8 +163,8 @@
         </dl>
         <div>
             <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
-            <button id="rewrite"><a href="<?php echo Yii::app()->createUrl('site/register'); ?>">重填</a></button>
-            <button type="submit">註冊</button>
+            <button class="button-rewrite"><a href="<?php echo Yii::app()->createUrl('site/register'); ?>" ></a></button>
+            <button type="submit" class="button-register"></button>
         </div>
     </form>
 </div>

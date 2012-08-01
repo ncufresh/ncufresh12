@@ -23,7 +23,7 @@
         </ul>
     </div>
 </div>
-<button type="submit" name="agree">確認</button>
-<button type="submit" name="cancel">取消</button>
+<button type="submit" name="agree" class="button-makefriend"></button>
+<button type="submit" name="cancel" class="button-cancel"></button>
+<button type="button" class="button-back"></button>
 </form>
-<button onClick= "history.back()" >BACK</button>
