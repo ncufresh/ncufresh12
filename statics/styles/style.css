@@ -2377,6 +2377,17 @@ button.news-button
     position: absolute;
 }
 
+#readme .readme-view
+{
+    padding-right: 10px;
+}
+
+#readme .scroll-bar
+{
+    top: 33%;
+    height: 65%;
+}
+
 #readme-logo1
 {
     width: 124px;
@@ -2459,7 +2470,7 @@ button.news-button
     height: 300px;
     top: 50px;
     left: -187px;
-    border-radius: 10px;
+    border-radius: 0 10px 10px 0;
     position: absolute;
     display: block;
     list-style: none;
