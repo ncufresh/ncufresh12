@@ -113,6 +113,10 @@
             do {
                 current = new Date();
             } while ( current - date < miliseconds);
+        },
+        daysInMonth: function(month, year)
+        {
+            return 32 - new Date(year, month, 32).getDate();
         }
     });
 })(jQuery);
@@ -220,6 +224,7 @@
     $.pull = {};
 
     $.pull.options = {
+        friendcounter:          null,
         onlinecounter:          null,
         browseredcounter:       null,
         counterAnimationSpeed:  50,
@@ -241,6 +246,12 @@
                 $.configures.lasttime = response.lasttime;
                 if ( response.counter )
                 {
+                    if ( $.pull.options.friendcounter )
+                    {
+                        $.pull.options.friendcounter.text(
+                            response.counter.friends
+                        );
+                    }
                     if ( $.pull.options.onlinecounter )
                     {
                         $.pull.options.onlinecounter.text(
@@ -412,7 +423,40 @@
         {
             clearInterval($(this).parent().data('timer'));
         });
-    }
+    };
+
+    $.fn.chat.updateFriendStatus = function(id)
+    {
+        $('.friend-list-entry').each(function()
+        {
+            var entry = $(this);
+            $('.' + $.chat.options.chatDialogClass).each(function(index)
+            {
+                if ( $(this).data('id') == id )
+                {
+                    var title = $(this)
+                        .children('.' + $.chat.options.chatTitleClass);
+                    title.children('p').text(entry.children('p').text());
+                    if ( entry.data('online') )
+                    {
+                        title.children('span').addClass('online');
+                    }
+                    else
+                    {
+                        title.children('span').removeClass('online');
+                    }
+                }
+            });
+            if ( entry.data('online') )
+            {
+                entry.addClass('online');
+            }
+            else
+            {
+                entry.removeClass('online');
+            }
+        });
+    };
 
     $.fn.chat.createFriendList = function()
     {
@@ -476,21 +520,33 @@
         for ( var key in response )
         {
             var data = response[key];
-            var entry = $('<div></div>')
-                .data('id', data.id)
-                .addClass('friend-list-entry')
-                .click(function()
+            var entry;
+            $('#' + $.chat.options.friendListContainerId)
+                .find('div')
+                .each(function()
                 {
-                    $.fn.chat.showChatDialog($(this).data('id'));
-                })
-                .appendTo($('#' + $.chat.options.friendListContainerId));
-            var placehold = $('<div></div>')
-                .addClass('chat-avatar-' + data.id)
-                .appendTo(entry);
-            var name = $('<p>')
-                .text(data.name)
-                .appendTo(entry);
-            $.fn.chat.showAvatar(data.id);
+                    if ( $(this).data('id') == data.id ) entry = $(this);
+                });
+            if ( ! entry )
+            {
+                var placehold = $('<div></div>')
+                    .addClass('chat-avatar-' + data.id);
+                var name = $('<p>')
+                    .text(data.name);
+                entry = $('<div></div>')
+                    .data('id', data.id)
+                    .addClass('friend-list-entry')
+                    .click(function()
+                    {
+                        $.fn.chat.showChatDialog($(this).data('id'));
+                    })
+                    .append(placehold)
+                    .append(name)
+                    .appendTo($('#' + $.chat.options.friendListContainerId));
+                $.fn.chat.showAvatar(data.id);
+            }
+            entry.data('online', data.active);
+            $.fn.chat.updateFriendStatus(data.id);
         }
         return list;
     };
@@ -538,9 +594,9 @@
         {
             var title = $('<div></div>')
                 .addClass($.chat.options.chatTitleClass)
-                .append('<span></span>')
-                .append('<p></p>')
-                .append('<button></button>')
+                .append($('<span></span>'))
+                .append($('<p></p>'))
+                .append($('<button></button>'))
                 .click(function()
                 {
                     if ( dialog.data('show') )
@@ -576,21 +632,12 @@
             dialog.css({
                 left: left - dialog.outerWidth(true) * size
             });
-            title.children('span').addClass('offline');
-            $('.friend-list-entry').each(function(index)
-            {
-                if ( $(this).data('id') == id )
-                {
-                    title.children('p').text($(this).children('p').text());
-                    title.children('span').removeClass('offline');
-                }
+            display.scrollable({
+                scrollableClass:    false
             });
             title.children('button').click(function()
             {
                 $.fn.chat.closeChatDialog(dialog.data('id'));
-            });
-            display.scrollable({
-                scrollableClass:    false
             });
             $.get(
                 $.configures.chatOpenUrl.replace(':id', id),
@@ -606,6 +653,7 @@
                     }
                 }
             );
+            $.fn.chat.updateFriendStatus(id);
         }
         return dialog;
     };
@@ -1430,10 +1478,6 @@
         }, options);
 
         options.month -= 1;
-        var daysInMonth = function(iMonth, iYear)
-        {
-            return 32 - new Date(iYear, iMonth, 32).getDate();
-        }
         var table = $('<table></table>')
             .addClass(options.tableClass);
         table.data('options', options);
@@ -1475,7 +1519,7 @@
             td.appendTo(tr);
         }
         tr.appendTo(thead);
-        for( var day = 1, position = 0; day <= daysInMonth(options.month, options.year); position++ )
+        for( var day = 1, position = 0; day <= $.daysInMonth(options.month, options.year); position++ )
         {
             if ( position%7 == 0 )
             {
@@ -2729,6 +2773,7 @@
         });
 
         $.pull.start({
+            friendcounter: $('#chat .friendcounts'),
             onlinecounter: $('#header .online'),
             browseredcounter: $('#header .browsered')
         });

@@ -242,7 +242,7 @@
 <?php if ( Yii::app()->user->getIsMember() ) : ?>
 <div id="chat" notify="<?php echo Yii::app()->request->baseUrl; ?>/statics/notify">
     <p class="online-friends">
-        線上好友<span class="friendcounts"><?php echo 999; // $this->getOnlineFriendsCount(); ?></span>人
+        線上好友<span class="friendcounts">0</span>人
     </p>
 </div>
 <?php endif; ?>

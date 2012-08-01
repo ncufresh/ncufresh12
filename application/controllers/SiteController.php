@@ -126,34 +126,18 @@ class SiteController extends Controller
     public function actionPull($lasttime = 0)
     {
         $this->_data['counter'] = array(
+            'friends'   => Activity::getFriendCount(),
             'online'    => Activity::getOnlineCount(),
             'browsered' => Activity::getTotalCount()
         );
         if ( Yii::app()->user->getIsMember() )
         {
-            if ( $lasttime == 0 ) // Debug only
+            foreach ( Yii::app()->user->getUser()->friends as $friend )
             {
-                $this->_data['friends'] = array(
-                    array(
-                        'id'        => 1,
-                        'name'      => 'Test 1',
-                        'active'    => false
-                    ),
-                    array(
-                        'id'        => 2,
-                        'name'      => 'Demodemo',
-                        'active'    => true
-                    ),
-                    array(
-                        'id'        => 3,
-                        'name'      => 'Adminadmin',
-                        'active'    => true
-                    ),
-                    array(
-                        'id'        => 4,
-                        'name'      => 'WhoAmI',
-                        'active'    => false
-                    )
+                $this->_data['friends'][] = array(
+                    'id'        => $friend->id,
+                    'name'      => $friend->profile->nickname,
+                    'active'    => Activity::getUserActivity($friend->id)
                 );
             }
             $this->_data['messages'] = Chat::getMessages($lasttime);
