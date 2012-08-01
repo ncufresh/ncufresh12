@@ -1205,7 +1205,7 @@
         return false;
     }
 
-    var updateData = function(updateEventList)
+    var updateData = function(callback)
     {
         var self = this;
         $.getJSON($.configures.calendarEventsUrl, function(data){
@@ -1214,17 +1214,9 @@
                 self.markEvent(data.events[key], { textDecoration: 'underline'});
             }
             self.data('all_events', data.events);
-            if ( updateEventList )
+            if ( callback ) 
             {
-                if( $(self).getToday() )
-                {
-                    self.updateEventsList($(self).getToday().data('cal_events'));
-                    $('#personal-calendar .date').text(
-                        $(self).data('options').year + '.'
-                        + ($(self).data('options').month+1) + '.'
-                        + $(self).getToday().text()
-                    );
-                }
+                callback(self);
             }
         });
         return this;
@@ -1557,14 +1549,36 @@
             var todo = [];
             for(var key in events)
             {
+                var start = new Date((events[key].start-(new Date()).getTimezoneOffset()*60)*1000);
+                var end = new Date((events[key].end-(new Date()).getTimezoneOffset()*60)*1000);
                 todo[key]=
                 [
-                    events[key].start ,
+                    start.getMonth()+'/'+start.getDate()+' ~ '+end.getMonth()+'/'+end.getDate(),
                     events[key].name
                 ];
             }
             todolist.remove();
             todolist = $.generateTodolist(todo).appendTo(bottom);
+        }
+        var init = function(self)
+        {
+            if( $(self).getToday() )
+            {
+                var events = $(self).getToday().data('cal_events');
+                var todo = [];
+                for(var key in events)
+                {
+                    var start = new Date((events[key].start-(new Date()).getTimezoneOffset()*60)*1000);
+                    var end = new Date((events[key].end-(new Date()).getTimezoneOffset()*60)*1000);
+                    todo[key]=
+                    [
+                        start.getMonth()+'/'+start.getDate()+' ~ '+end.getMonth()+'/'+end.getDate(),
+                        events[key].name
+                    ];
+                }
+                todolist.remove();
+                todolist = $.generateTodolist(todo).appendTo(bottom);
+            }
         }
         september = $.generateCalendar({
             year: 2012,
@@ -1591,16 +1605,11 @@
             },
             dayClick: tdClick
         });
-        august.updateData();
-        september.updateData();
+        august.updateData(init);
+        september.updateData(init);
         bottom.append(august);
         bottom.appendTo(bottom_wrap);
-        todolist = $.generateTodolist(
-            [
-                ['2012/8/6', '資訊網上線'],
-            ]
-        ).appendTo(bottom);
-        
+        todolist = $.generateTodolist([]).appendTo(bottom);
         return this;
     };
 
@@ -1677,7 +1686,18 @@
                 }
             });
             calendar.appendTo(container);
-            calendar.updateData(true);
+            calendar.updateData(function(self)
+            {
+                if( $(self).getToday() )
+                {
+                    self.updateEventsList($(self).getToday().data('cal_events'));
+                    $('#personal-calendar .date').text(
+                        $(self).data('options').year + '.'
+                        + ($(self).data('options').month+1) + '.'
+                        + $(self).getToday().text()
+                    );
+                }
+            });
             return calendar;
         };
         var calendar = geneator(current_year, current_month);
