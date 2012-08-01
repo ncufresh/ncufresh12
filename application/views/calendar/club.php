@@ -33,7 +33,7 @@ jQuery(document).ready(function()
                             if ( $.errors(response.errors) )
                             {
                                 $(self).parents('li').remove();
-                                calendar.updateData();
+                                calendar.updateData($.configures.calendarEventsUrl + '?club=true');
                             }
                         }
                     );
@@ -46,7 +46,7 @@ jQuery(document).ready(function()
 });
 </script>
 <?php $this->endWidget();?>
-<div id="club-calendar">
+<div id="club-calendar"  class="calendar">
     <div class="left"></div>
     <h3 class="date"></h3>
     <div class="right">
