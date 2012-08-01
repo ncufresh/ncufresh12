@@ -70,7 +70,7 @@
                     <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>#reschool" title="復學區">復學區</a>
                 </li>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>#notice" title="相關須知">相關須知</a>
+                    <a href="<?php echo Yii::app()->createUrl('readme/notice'); ?>" title="相關須知">相關須知</a>
                 </li>
                 <li>
                     <a href="<?php echo Yii::app()->createUrl('readme/download'); ?>" title="文件下載">文件下載</a>
@@ -270,7 +270,8 @@
             calendarEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvents'); ?>'),
             calendarHideEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/hideEvent'); ?>'),
             buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),
-            gameMissionUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/solve', array('id' => ':id'));?>'),
+            gameMissionUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/problem', array('id' => ':id'));?>'),
+            gameSolveUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/solve', array('id' => ':id'));?>'),
             facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
             facebookAppId: '<?php global $ncufreshfb; echo $ncufreshfb['appId']; ?>',
             googleSearchAppId: '011017124764723419863:mdibrr3n-py',
