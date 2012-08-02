@@ -79,14 +79,20 @@
     background-color: #CCFFCC;
 }
 
-#admin-news a.news-edit-link
+#admin-marquee .news-edit-link,
+#admin-marquee .news-delete-link
 {
-    background: url('<?php echo Yii::app()->request->baseUrl; ?>/statics/images/admin_marquee_edit.png');
+    background: url('<?php echo Yii::app()->request->baseUrl; ?>/statics/images/sprites.png');
 }
 
-#admin-news a.news-delete-link
+#admin-marquee .news-edit-link
 {
-    background: url('<?php echo Yii::app()->request->baseUrl; ?>/statics/images/admin_marquee_delete.png');
+    background-position: -32px -32px;
+}
+
+#admin-marquee .news-delete-link
+{
+    background-position: -32px -64px;
 }
 
 #admin-news a.news-create-link

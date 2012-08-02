@@ -450,6 +450,48 @@ a:hover
     width: 66px;
 }
 
+#datepicker
+{
+    background: #646464;
+    background: rgba(100, 100, 100, 0.7);
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    color: #FFFFFF;
+    margin: -75px 0 0 20px;
+    padding: 10px;
+    position: absolute;
+    width: 220px;
+}
+
+#datepicker a
+{
+    color: #FFFFFF;
+}
+
+#datepicker table
+{
+    text-align: center;
+    width: 100%;
+}
+
+#datepicker td
+{
+    border: 1px solid transparent;
+}
+
+#datepicker td.hover
+{
+    background: #CCFFFF;
+    border: 1px solid #FF3333;
+    color: #000000;
+    cursor: pointer;
+}
+
+#datepicker td.selected
+{
+    border: 1px solid #33FF33;
+}
+
 #sidebar-personal-toggle,
 #sidebar-personal-toggle.active,
 .chat-title button,
@@ -3134,6 +3176,7 @@ button.news-button
     position: relative;
     width: 45%;
     float: left;
+    height: 290px;
 }
 
 .club-web
@@ -4184,6 +4227,13 @@ img.user_img
 /**
  * Game
  */
+.game-display .game-title
+{
+    font-size: 1.5em;
+    color: #4d136e;
+    padding: 6px 0px;
+} 
+
 .game-display .experience
 {
     background: #FFFFFF;
@@ -4223,6 +4273,41 @@ img.user_img
     display: inline-block;
 }
 
+.item-description
+{
+    background: #646464;
+    background-color: rgba(100, 100, 100, 0.9);
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    color: #EFEFEF;
+    display: none;
+    margin: -45px 0 0 85px;
+    padding: 10px;
+    position: absolute;
+    width: 360px;
+}
+
+.item-description h4
+{
+    font-size: 1.7em;
+    color: #ddffb0;
+}
+.item-description .description
+{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #cbf0ff;
+}
+div.item-description span
+{
+    display:block;
+}
+div.item-description .exist
+{
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #ff0000;
+}
 #game-mission-dialog
 {
     width: 900px;
@@ -4767,14 +4852,14 @@ li.enabled a
 
 #forum-view-body #forum-view-content
 {
-    width: 389px;
-    height: 191px;
+    width: 378px;
+    min-height: 182px;
     border-radius: 6px;
     background: #ffffff;
     float: left;
     margin-left: 20px;
     border: 2px solid #eaa520;
-    padding: 9px 0 0 11px;
+    padding: 9px 11px 9px 11px;
     word-break: break-all;
 }
 
@@ -4801,6 +4886,15 @@ li.enabled a
     padding: 5px 0 0 11px;
 }
 
+#forum-view-body #form-comment .forum-comment-text
+{
+    width: 386px;
+    height: 28px;
+    float: right;
+    margin-top: 2px;
+    margin-right: 46px;
+}
+
 #forum-view-replies
 {
     background: url('../forum/view/background.png');
@@ -4813,15 +4907,16 @@ li.enabled a
 
 #forum-view-replies .reply-content
 {
-    width: 389px;
-    height: 241px;
+    width: 378px;
+    min-height: 232px;
     border-radius: 6px;
     background: #ffffff;
     float: left;
     margin-left: 20px;
     margin-top: 20px;
-    border: 1px solid black;
-    padding: 9px 0 0 11px;
+    border: 2px solid #eaa520;
+    padding: 9px 11px 9px 11px;
+    word-break: break-all;
 }
 
 #forum-forum-top2

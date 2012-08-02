@@ -1,7 +1,7 @@
 <h4>社團資料修改</h4>
 <form action="<?php echo Yii::app()->createUrl('club/modify', array('id'=>$id)); ?>" method="post">
       <div class = "club-modify-table">   
-       <dl>
+        <dl>
             <dt>
                 <label for="introduction" >簡介:</label>
             </dt>
@@ -34,7 +34,6 @@
                 <dd>
                     <input id="leader_email" name="club[leader_email]" type="text" value="<?php if ( empty($club['leader_email']) ) echo $data->leader_email; ?>"/>
                 </dd>
-                <dd>(e-mail)</dd>
             </dl>
             <dl>
                 <dt>
@@ -51,7 +50,6 @@
                 <dd>
                     <input id="leader_msn" name="club[leader_msn]" type="text" value="<?php if ( empty($club['leader_msn']) ) echo $data->leader_msn; ?>"/>
                 </dd>
-                <dd>(MSN)</dd>
             </dl>
         </div>
         <div class="modify-table">
@@ -79,7 +77,6 @@
                 <dd>
                     <input id="viceleader_email" name="club[viceleader_email]" type="text" value="<?php if ( empty($club['viceleader_email']) ) echo $data->viceleader_email; ?>"/>
                 </dd>
-                <dd>(e-mail)</dd>
             </dl>
             <dl>
                 <dt>
@@ -96,7 +93,6 @@
                 <dd>
                     <input id="viceleader_msn" name="club[viceleader_msn]" type="text" value="<?php if ( empty($club['viceleader_msn']) ) echo $data->viceleader_msn; ?>"/>
                 </dd>
-                <dd>(MSN)</dd>
             </dl>
         </div>
         <dl class="club-web">
@@ -108,7 +104,7 @@
             </dd>
         </dl>
         <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
-    </div>
         <button type="submit" >儲存</button>
         <button type="button" class="back" >回上一頁</button>
+    </div>    
 </form>
