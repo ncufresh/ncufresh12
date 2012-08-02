@@ -19,7 +19,7 @@ input.MultiFile-applied
 
 #news-url-button
 {
-    background: #fff url('<?php echo Yii::app()->baseUrl;?>/statics/images/news_add_url_button.png') no-repeat;
+    background: #fff url('<?php echo Yii::app()->baseUrl;?>/statics/images/sprites.png') -64px 0 no-repeat;
     width: 20px;
     height: 20px;
     text-indent: -10000%;

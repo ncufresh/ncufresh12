@@ -450,6 +450,48 @@ a:hover
     width: 66px;
 }
 
+#datepicker
+{
+    background: #646464;
+    background: rgba(100, 100, 100, 0.7);
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    color: #FFFFFF;
+    margin: -75px 0 0 20px;
+    padding: 10px;
+    position: absolute;
+    width: 220px;
+}
+
+#datepicker a
+{
+    color: #FFFFFF;
+}
+
+#datepicker table
+{
+    text-align: center;
+    width: 100%;
+}
+
+#datepicker td
+{
+    border: 1px solid transparent;
+}
+
+#datepicker td.hover
+{
+    background: #CCFFFF;
+    border: 1px solid #FF3333;
+    color: #000000;
+    cursor: pointer;
+}
+
+#datepicker td.selected
+{
+    border: 1px solid #33FF33;
+}
+
 #sidebar-personal-toggle,
 #sidebar-personal-toggle.active,
 .chat-title button,
@@ -4182,6 +4224,13 @@ img.user_img
 /**
  * Game
  */
+.game-display .game-title
+{
+    font-size: 1.5em;
+    color: #4d136e;
+    padding: 6px 0px;
+} 
+
 .game-display .experience
 {
     background: #FFFFFF;
@@ -4221,6 +4270,41 @@ img.user_img
     display: inline-block;
 }
 
+.item-description
+{
+    background: #646464;
+    background-color: rgba(100, 100, 100, 0.9);
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    color: #EFEFEF;
+    display: none;
+    margin: -45px 0 0 85px;
+    padding: 10px;
+    position: absolute;
+    width: 360px;
+}
+
+.item-description h4
+{
+    font-size: 1.7em;
+    color: #ddffb0;
+}
+.item-description .description
+{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #cbf0ff;
+}
+div.item-description span
+{
+    display:block;
+}
+div.item-description .exist
+{
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #ff0000;
+}
 #game-mission-dialog
 {
     width: 900px;
