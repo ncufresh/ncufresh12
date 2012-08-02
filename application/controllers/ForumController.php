@@ -113,7 +113,7 @@ class ForumController extends Controller
         }
     }
 
-    public function actionView($fid, $id)
+    public function actionView($fid, $id, $page=1)
     {
         if ( Article::model()->findByPk($id) )
         {
@@ -123,7 +123,10 @@ class ForumController extends Controller
             if (  $article->save())
             {
                 $this->render('view', array(
-                'article'   => $article,
+                'fid'           => $article->forum_id,
+                'article'       => $article,
+                'replies'       => Reply::getReplies($id, $page, self::ARTICLES_PER_PAGE),
+                'page_status'   => Reply::getPageStatus($page, self::ARTICLES_PER_PAGE, $article->id)
                 ));
             }
             
@@ -151,7 +154,12 @@ class ForumController extends Controller
                 )));
             }
             else
-                throw new CHttpException(404);
+            {
+                $this->redirect(Yii::app()->createUrl('forum/view', array(
+                    'fid'       => $comment->article->forum->id,
+                    'id'        => $comment->article_id
+                )));
+            }
         }
         else 
         {
@@ -170,15 +178,17 @@ class ForumController extends Controller
             {
                 $article = Article::model()->findByPk($aid);
                 $article->replies_count++;
-                if( ! $article->save() )
+                if( $article->save() )
                 {
-                    echo '!!!!!!!!!!';
-                    exit;
+                    $this->redirect(Yii::app()->createUrl('forum/view', array(
+                    'fid'           => $reply->article->forum->id,
+                    'id'            => $reply->article_id,
+                    )));
                 }
-                $this->redirect(Yii::app()->createUrl('forum/view', array(
-                    'fid'   => $reply->article->forum->id,
-                    'id'    => $reply->article_id
-                )));
+                else
+                {
+                    throw new Exception('some error happening');
+                }
             }
         }
         if ( Article::model()->findByPk($aid) )
