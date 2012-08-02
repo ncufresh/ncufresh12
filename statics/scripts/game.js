@@ -57,7 +57,7 @@
                 description.stop(true, true).fadeOut();
             });
         });
-        //$('<div></div>').attr('id', 'game-mission-dialog').insertAfter($('#game-mission'));
+
         $('.own-items').click(function()
         {
             var target = $(this);
@@ -72,8 +72,6 @@
                 }
             });
             return false;
-        });
-        
-        
+        });     
     });
 })(jQuery);

@@ -24,15 +24,16 @@
             <tr>
                 <td><?php echo Profile::model()->findByPk($reply->author_id)->name; ?></td>
                 <td class="reply-content">
-                    <a href="#">Hehey</a>
-                    <div><?php echo $reply->content; ?></div>
+                    <a href="#">人家回我....啥哩</a>
+                    <span><?php echo $reply->content ?></span>
+                    <br />
+                    <span>....<a href="<?php echo $article->getUrl(); ?>">完整閱讀<a></span>
                 </td>
                 <td><?php echo $reply->created; ?></td>
             </tr>
 <?php endforeach;?>
         </tbody>
     </table>
-    <div id="space">哈哈</div>
     <span class="reply-title">推文</span>
     <table>
         <tr>
@@ -58,8 +59,8 @@
         <input id="forum-comment-text" type="text" maxlength="32" name="comment[content]" />
         <input type="hidden" name="comment[article_id]" value="<?php echo $article->id; ?>" />
         <button type="submit" id="button-push"></button>
+        <button type="button" id="button-back-reply" ></button>
         <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
     </form>
     </div>
-    <button type="button" class="button-back" ></button>
 </div>
