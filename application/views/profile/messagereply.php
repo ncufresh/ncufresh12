@@ -24,15 +24,17 @@
             <tr>
                 <td><?php echo Profile::model()->findByPk($reply->author_id)->name; ?></td>
                 <td class="reply-content">
-                    <a href="#">Hehey</a>
-                    <div><?php echo $reply->content; ?></div>
+                    <a href="#">人家回我....啥哩</a>
+                    <span><?php echo $reply->content ?></span>
+                    <br />
+                    <span>....<a href="#">繼續閱讀<a></span>
                 </td>
                 <td><?php echo $reply->created; ?></td>
             </tr>
 <?php endforeach;?>
         </tbody>
     </table>
-    <div id="space">哈哈</div>
+    <!--<div id="space">哈哈</div>-->
     <span class="reply-title">推文</span>
     <table>
         <tr>

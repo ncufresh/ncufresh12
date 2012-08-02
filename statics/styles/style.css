@@ -3701,7 +3701,7 @@ div.profile-message-reply
 
 #button-deletegroup
 {
-    background-image:url('../profile/button/delete-group.png');
+    background-image:url('../profile/button/deletegroup.png');
     background-repeat:no-repeat ;
     width:120px;
     height:33px;
@@ -3715,7 +3715,7 @@ div.profile-message-reply
 
 #button-addmember
 {
-    background-image:url('../profile/button/add-member.png');
+    background-image:url('../profile/button/addmember.png');
     background-repeat:no-repeat ;
     width:123px;
     height:35px;
@@ -3729,7 +3729,7 @@ div.profile-message-reply
 
 #button-deletemember
 {
-    background-image:url('../profile/button/delete-member.png');
+    background-image:url('../profile/button/deletemember.png');
     background-repeat:no-repeat ;
     width:121px;
     height:34px;
@@ -3945,22 +3945,22 @@ td.reply-content
     position: relative;
 }
 
-td.reply-content div
+td.reply-content span
 {
     display: none;
     position: absolute;
     top: 0px;
     left: 0px;
     width: 100%;
-    /*word-break: break-word;*/
+    word-break: break-word;
     background: AntiqueWhite ;
     z-index: 500;
 }
 
-td.reply-content:hover div
+td.reply-content:hover span
 {
     display: block;
-    z-index: 10000000000000;
+    z-index: 1000;
 }
 
 ul#self-message
