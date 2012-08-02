@@ -144,9 +144,10 @@ class User extends CActiveRecord
 
     public function updateOnlineState()
     {
-        $this->online_count += 1;
-        $this->last_login_timestamp = $this->getRawValue('updated');
-        return $this->save();
+        return $this->saveCounters(array(
+            'online_count'          => 1,
+            'last_login_timestamp'  => (integer)$this->getRawValue('updated') - $this->last_login_timestamp
+        ));
     }
 
     protected function generatePasswordSalt()
@@ -161,6 +162,7 @@ class User extends CActiveRecord
         $this->register_ip = $this->long2ip($this->register_ip);
         $this->last_login_ip = $this->long2ip($this->last_login_ip);
         $this->last_login_timestamp = (integer)$this->last_login_timestamp;
+        $this->online_count = (integer)$this->online_count;
         $this->created = Yii::app()->format->datetime($this->created);
         $this->updated = Yii::app()->format->datetime($this->updated);
     }

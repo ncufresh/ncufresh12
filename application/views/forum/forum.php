@@ -152,7 +152,7 @@ else if ( $fid == 22 || $fid == 23 )
                     <?php endif; ?>
                 </td>
                 <td class="author"><?php echo User::model()->findByPK($each->author_id)->profile->nickname; ?></td>
-                <td class="reply"><span><?php echo $each->replies_count.' ';?></span></td>
+                <td class="reply"><span><?php echo $each->replies_count;?></span></td>
                 <td class="popularity"><span><?php echo $each->viewed;?></span></td>
                 <td class="time"><?php echo $each->created; ?></td>
             </tr>

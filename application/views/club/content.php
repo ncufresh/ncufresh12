@@ -8,27 +8,27 @@
             </div>
         </div>
         <ul id="club-menu-items">
-<?php if( file_exists( Yii::app()->basePath . '/../files/club/' . $id  . '/1.jpg' ) ) : ?>
             <li class="club-picture">
-                <a href="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/1.jpg'; ?>" title="<?php echo $data->name; ?> 照片1">
-                    <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/1.jpg'; ?>" alt="<?php echo $data->name; ?> 照片1" />
+<?php if( file_exists( Yii::app()->basePath . '/../files/clubs/' . $id  . '/1.jpg' ) ) : ?>
+                <a href="<?php echo Yii::app()->baseUrl . '/files/clubs/' . $id . '/1.jpg'; ?>" title="<?php echo $data->name; ?> 照片1">
+                <img src="<?php echo Yii::app()->baseUrl . '/files/clubs/' . $id . '/1.jpg'; ?>" />
                 </a>
-            </li>
 <?php endif; ?>
-<?php if ( file_exists(Yii::app()->basePath . '/../files/club/' . $id  . '/2.jpg') ) : ?>
+            </li>
             <li class="club-picture">
-                <a href="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/2.jpg'; ?>" title="<?php echo $data->name; ?> 照片2">
-                    <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/2.jpg'; ?>" alt="<?php echo $data->name; ?> 照片2" />
-                </a>
-            </li>
+<?php if ( file_exists(Yii::app()->basePath . '/../files/clubs/' . $id  . '/2.jpg') ) : ?>
+                <a href="<?php echo Yii::app()->baseUrl . '/files/clubs/' . $id . '/2.jpg'; ?>" title="<?php echo $data->name; ?> 照片2">
+                <img src="<?php echo Yii::app()->baseUrl . '/files/clubs/' . $id . '/2.jpg'; ?>"/>
+                </a> 
 <?php endif; ?>
-<?php if ( file_exists(Yii::app()->basePath . '/../files/club/' . $id  . '/3.jpg') ) : ?>
+            </li>
             <li class="club-picture">
-                <a href="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/3.jpg'; ?>" title="<?php echo $data->name; ?> 照片3">
-                    <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/3.jpg'; ?>" alt="<?php echo $data->name; ?> 照片3" />
-                </a>
-            </li>
+<?php if ( file_exists(Yii::app()->basePath . '/../files/clubs/' . $id  . '/3.jpg') ) : ?>
+                <a href="<?php echo Yii::app()->baseUrl . '/files/clubs/' . $id . '/3.jpg'; ?>" title="<?php echo $data->name; ?> 照片3">
+                <img src="<?php echo Yii::app()->baseUrl . '/files/clubs/' . $id . '/3.jpg'; ?>"/>
+                </a> 
 <?php endif; ?>
+            </li>
         </ul>
     </div>
     <div class="club-display-head" id="club-head-<?php echo $data->category; ?>">

@@ -1,6 +1,6 @@
 <div id="lastest-news-wrap">
     <div class="header">
-        <h1>最新消息</h1>
+        <h4>最新消息</h4>
         <?php $this->widget('Pager', array(
             'url'       => 'news/index',
             'pager'     => $page_status

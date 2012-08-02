@@ -19,6 +19,11 @@ body
     width: 1000px;
 }
 
+img
+{
+    border: none;
+}
+
 h2
 {
     display: none;
@@ -26,7 +31,25 @@ h2
 
 h4
 {
-    padding: 0;
+    font-size: 1.8em;
+    font-weight: bolder;
+    padding: 0 0 10px;
+    margin: 0;
+}
+
+h5
+{
+    font-size: 1.4em;
+    font-weight: bolder;
+    padding: 0 0 5px;
+    margin: 0;
+}
+
+h6
+{
+    font-size: 1.2em;
+    font-weight: bolder;
+    padding: 0 0 3px;
     margin: 0;
 }
 
@@ -2017,7 +2040,7 @@ button.news-button
     height: 25px;
 }
 
-#lastest-news-wrap .header h1
+#lastest-news-wrap .header h4
 {
     width: 85px;
     height: 0px;
@@ -2562,6 +2585,7 @@ button.news-button
     height: 420px;
     position: relative;
     width: 700px;
+    overflow: hidden;
 }
 
 #fresh-back
@@ -2581,6 +2605,7 @@ button.news-button
     padding: 15px 25px;
     background-position: -5px -1350px;
     position: relative;
+    overflow: hidden;
 }
 
 #notice-back
@@ -2600,6 +2625,7 @@ button.news-button
     padding: 15px 25px;
     position: relative;
     width: 700px;
+    overflow: hidden;
 }
 
 #reschool-back
@@ -2857,20 +2883,20 @@ button.news-button
 #read-notice-menu 
 {
     background: #F7AAF7;
-    top: 10px;
 }
 
 .readme-menu
 {
     width: 200px;
     heigth: auto;
-    top: 50px;
+    top: 5px;
     left: -187px;
     border-radius: 0 10px 10px 0;
     position: absolute;
     display: block;
     list-style: none;
     opacity: 0.95;
+    overflow: auto;
 }
 
 .readme-menu p
@@ -2911,6 +2937,31 @@ button.news-button
     cursor: pointer;
     text-align: center;
 }
+
+#reame-download
+{
+    width: 700px;
+    height: 400px;
+    float: left;
+    word-break: break-all;
+    word-wrap: break-word;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+}
+
+.download-index
+{
+    float: left;
+    list-style: none;
+    font-size: 1.3em;
+}
+
+.download-index li
+{
+    margin-top: 6px
+}
+
 
 #about .introdution
 {
@@ -3659,13 +3710,6 @@ div.friends-sortfriend div.avatar
     float:left;
 }
 
-#space
-{
-    width:35px; 
-    height:45px;
-    outline: 1px sloid yellow;
-}
-
 #myfriend
 {
     background-image:url('../profile/myfriend.png');
@@ -3777,14 +3821,28 @@ div.profile-message-reply
 {
     background-image: url('../profile/button/back.png');
     background-repeat: no-repeat ;
-    width: 82px;
-    height: 35px;
+    width: 84px;
+    height: 37px;
     padding: 0px;
     margin: 0px;
     float:right;
     position:relative;
-    right:27px;
-    bottom:36px;
+    right:60px;
+    bottom:61px;
+}
+
+#button-back-reply
+{
+    background-image: url('../profile/button/back.png');
+    background-repeat: no-repeat ;
+    width: 84px;
+    height: 37px;
+    padding: 0px;
+    margin: 0px;
+    float:right;
+    position:relative;
+    right:-119px;
+    bottom:0px;
 }
 
 .button-cancel
@@ -3797,8 +3855,9 @@ div.profile-message-reply
     margin:0px;
     display:block;
     position:absolute;
-    right:515px;
-    bottom:-100px;
+    right:136px;
+    bottom:24px;
+    bottom:24px;
 }
 
 #button-push
@@ -3823,8 +3882,8 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:577px;
-    bottom:-100px;
+    right:58px;
+    bottom:71px;
 }
 
 .button-addgroup
@@ -3839,7 +3898,7 @@ div.profile-message-reply
 
 #button-deletegroup
 {
-    background-image:url('../profile/button/delete-group.png');
+    background-image:url('../profile/button/deletegroup.png');
     background-repeat:no-repeat ;
     width:120px;
     height:33px;
@@ -3847,13 +3906,13 @@ div.profile-message-reply
     margin:0px;
     display:block;
     position:absolute;
-    right:10px;
+    right:101px;
     bottom:0px;
 }
 
 #button-addmember
 {
-    background-image:url('../profile/button/add-member.png');
+    background-image:url('../profile/button/addmember.png');
     background-repeat:no-repeat ;
     width:123px;
     height:35px;
@@ -3861,20 +3920,20 @@ div.profile-message-reply
     margin:0px;
     display:block;
     position:absolute;
-    right:256px;
+    right:347px;
     bottom:0px;
 }
 
 #button-deletemember
 {
-    background-image:url('../profile/button/delete-member.png');
+    background-image:url('../profile/button/deletemember.png');
     background-repeat:no-repeat ;
     width:121px;
     height:34px;
     padding:0px;
     margin:0px;
     position:absolute;
-    right:133px;
+    right:225px;
     bottom:0px;
 }
 
@@ -3887,8 +3946,8 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:106px;
-    bottom:0px;
+    right:199px;
+    bottom:23px;
 }
 
 .button-deletefriend
@@ -3900,8 +3959,8 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:99px;
-    bottom:0px;
+    right:21px;
+    bottom:68px;
 }
 
 .button-mygroup
@@ -3923,8 +3982,8 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:100px;
-    bottom:0px;
+    right:43px;
+    bottom:78px;
 }
 
 .button-addfriend
@@ -4083,22 +4142,22 @@ td.reply-content
     position: relative;
 }
 
-td.reply-content div
+td.reply-content span
 {
     display: none;
     position: absolute;
     top: 0px;
     left: 0px;
     width: 100%;
-    /*word-break: break-word;*/
+    word-break: break-word;
     background: AntiqueWhite ;
     z-index: 500;
 }
 
-td.reply-content:hover div
+td.reply-content:hover span
 {
     display: block;
-    z-index: 10000000000000;
+    z-index: 1000;
 }
 
 ul#self-message
@@ -4372,6 +4431,19 @@ img.user_img
     padding: 6px 0px;
 }
 
+.game-display .item-category
+{
+    width: 335px;
+    height: 20px;
+    margin: 5px 11px;
+    font-size: 1.5em;
+    text-align: center;
+    background-color: black;
+    border: 3px solid #00788F;
+    border-radius: 10px;
+    color: #B8EEEC;
+}
+
 .game-display .shop-message
 {
     font-size: 2.5em;
@@ -4420,6 +4492,17 @@ img.user_img
 .game-display .item-icons img
 {
     width:85px;
+    display: inline-block;
+}
+
+.game-display .achievement-icons
+{
+    float: left;
+}
+
+.game-display .achievement-icons img
+{
+    width:115px;
     display: inline-block;
 }
 
@@ -4503,7 +4586,7 @@ div.item-description .exist
 }
 #game-mission-dialog .avatar
 {
-    width: 270px;
+    width: 265px;
     height: 451px;
     font-size: 18px;
     /*outline: 1px solid black;*/

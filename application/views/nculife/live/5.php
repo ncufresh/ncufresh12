@@ -1,6 +1,6 @@
-<h1>
+<h4>
     男三舍
-</h1>
+</h4>
 <p>
     <img alt="男三舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2958.JPG" style="width:280px;height:180px;" />
     <img alt="男三舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2960.JPG" style="width:300px;height:180px;" />

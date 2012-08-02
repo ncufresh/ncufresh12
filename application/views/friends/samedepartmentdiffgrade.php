@@ -1,4 +1,4 @@
-<h1>同屆不同系</h1>
+<h4>同屆不同系</h4>
 <div id="sameDdiffG">
 <form class="friends-part2" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
         <ul class="users-department">

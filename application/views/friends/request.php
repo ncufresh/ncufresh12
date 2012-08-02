@@ -1,4 +1,4 @@
-<h1>好友確認</h1>
+<h4>好友確認</h4>
 <div id="request">  
 <form class="friends-part2" method="POST" action="<?php echo $this->createUrl('friends/request'); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
