@@ -92,6 +92,7 @@ class ForumController extends Controller
             }
             if ( $article->validate() && $article->save() )
             {
+                Character::model()->findByPk(Yii::app()->user->getId())->addExp(50000000);
                 $this->redirect($article->url);
             }
         }
