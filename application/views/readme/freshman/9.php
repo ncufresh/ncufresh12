@@ -4,7 +4,7 @@
 <p>
     (一)新生應於<strong>9月14日前</strong>將下列資料(註明系別、班別、學號)交由<strong>大一班代</strong>，班代收齊後按<strong>學號</strong>排列，於<strong>9月17日</strong>統一繳至各負責單位，逾時繳交者屆時將延遲領取<strong>學生證。</strong>
 </p>
-<table border="1" cellpadding="0" cellspacing="0" width="640">
+<table border="1" cellpadding="0" cellspacing="0" width="600px">
     <tbody>
         <tr>
             <td>
