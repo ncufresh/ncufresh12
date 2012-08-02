@@ -249,8 +249,16 @@ class CalendarController extends Controller
             
             if ( $check == 0 ) $this->redirect(Yii::app()->createUrl('calendar/view'));
         }
+        
+        $result = array();
+        $calendars = Calendar::model()->getClubs();
+        foreach ( $calendars as $calendar )
+        {
+            $result[$calendar->club->category][] = $calendar;
+        }
+        
         $this->render('subscript', array(
-            'clubs' => Calendar::model()->getClubs()
+            'result' => $result
         ));
     }
 

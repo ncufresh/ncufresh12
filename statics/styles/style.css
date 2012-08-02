@@ -1723,19 +1723,31 @@ a.calendar-hide-event:hover
     height: 20px;
     line-height: 20px;
     display: inline-block;
-    background-color: #7ecef4;
+    background-color: #fff179;
     border-radius: 5px;
-    color: #1e68fe;
+    color: #27120a;
 }
 
 #calendar-recycle a.calendar-show-event
 {
-    background: url('../images/calendar_recover.png') no-repeat #7ecef4;
+    background: url('../images/calendar_recover.png') no-repeat #fff179;
+}
+
+#calendar-recycle a.calendar-show-event:active
+{
+    color: #040f1d;
+    background: url('../images/calendar_recover_active.png') no-repeat #51adf4;
 }
 
 #calendar-recycle a.calendar-hide-event
 {
-    background: url('../images/calendar_delete.png') no-repeat #7ecef4;
+    background: url('../images/calendar_delete.png') no-repeat #fff179;
+}
+
+#calendar-recycle a.calendar-hide-event:active
+{
+    color: #040f1d;
+    background: url('../images/calendar_delete_active.png') no-repeat #51adf4;
 }
 
 #calendar-recycle ul
