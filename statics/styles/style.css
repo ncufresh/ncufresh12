@@ -3462,7 +3462,7 @@ ul.users-department li h3
 {
     color:DarkBlue;
     width:132px; 
-    height:25px;
+    height:20px;
     padding:0px;
     margin:0px;
     text-align:center;
@@ -3984,8 +3984,8 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:522px;
-    bottom:-98px;
+    right:550px;
+    bottom:-40px;
 }
 
 #button-editor
@@ -3997,7 +3997,9 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     display: block;
-    float:left;
+    position:absolute;
+    right:433px;
+    bottom:71px;
 }
 
 .button-flower
