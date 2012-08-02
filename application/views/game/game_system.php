@@ -23,9 +23,16 @@
             <li class="enabled">
                 <a href="<?php echo Yii::app()->createUrl('game/achievements', array('id'=>$watch_id)) ?>" title="成就">成就</a>
             </li>
+
+<?php if ( $watch_id == $user_id ) : ?>
             <li class="enabled">
                 <a href="<?php echo Yii::app()->createUrl('game/items', array('id'=>$watch_id)) ?>" title="道具">道具</a>
             </li>
+<?php else : ?>
+            <li class="disabled">
+                道具
+            </li>
+<?php endif; ?>
 <?php if ( $watch_id == $user_id ) : ?>
             <li class="enabled">
                 <a href="<?php echo Yii::app()->createUrl('game/shop', array('id'=>$watch_id)) ?>" title="商城">商城</a>
