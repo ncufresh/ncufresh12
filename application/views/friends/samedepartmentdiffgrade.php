@@ -3,7 +3,7 @@
 <h1 class="friend-title">同屆不同系</h1>
 <div class="sameDdiffG">
     <div class="friends-part2">
-        <ul class="other-department">
+        <ul class="ousers-department">
 <?php foreach ( $profiles as $profile ) : ?>
             <li>
 <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $profile->id));  ?>">

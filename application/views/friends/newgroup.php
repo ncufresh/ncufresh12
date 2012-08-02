@@ -7,7 +7,7 @@
     <label>成員: </label>
 <div class="newgroup">
     <div class="friends-part2">
-        <ul class="other-department">
+        <ul class="users-department">
 <?php foreach ( $user->friends as $friend ) : ?>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $friend->profile->id));  ?>">
@@ -27,6 +27,6 @@
         </ul>
     </div>
 </div>
-<button type="submit" class="button-addmember"></a>
+<button type="submit" class="button-sure"></button>
 <button type="button" class="button-back" ></button>
 </form>

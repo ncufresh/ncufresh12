@@ -200,12 +200,12 @@ form dd .arrow
     width: 0;
 }
 
-form div
+/*form div
 {
     margin-top: 4px;
     width: 50%;
 }
-
+*/
 form div:after
 {
     content: '\A';
@@ -1421,14 +1421,131 @@ ul#nculife-details
     color: #946722;
 }
 
-#personal-calendar .prompt
+.calendar
+{
+    background: url('../images/calendar_view_background.png');
+    margin: 0 5px;
+    padding: 60px;
+    height: 680px;
+    border-radius: 15px;
+}
+
+.calendar .left
+{
+    height: 40%;
+    width: 40%;
+    padding: 20% 5% 40% 5%;
+    float: left;
+}
+
+.calendar .left table
+{
+    width: 100%;
+    height: 100%;
+    font-size: 1.2em;
+    position: relative;
+}
+
+.calendar .left table thead td
+{
+    text-align: center;
+}
+
+.calendar .left table tbody td
+{
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.calendar .date
+{
+    margin: 0;
+    display: block;
+    float: left;
+    width: 50%;
+    text-align: center;
+    height: 2em;
+    font-size: 2em;
+    line-height: 2em;
+    text-shadow: 2px 2px 8px;
+    color: rgba(21, 50, 206, 0.67);
+}
+
+.calendar .right
+{
+    height: 80%;
+    width: 50%;
+    float: left;
+    
+}
+
+.calendar .right div
+{
+    padding-top: 2em;
+    width: 100%;
+    background: url('../images/calendar-hr.png') no-repeat;
+    float: left;
+}
+
+.calendar .right div h4
+{
+    font-size: 1.5em;
+    padding: 0 0 0 40px;
+    height: 37px;
+    line-height: 37px;
+    background: url('../images/calendar_category_pattern.png') no-repeat;
+}
+
+.calendar .right div li
+{
+    width: 88%;
+    height: 32px;
+    line-height: 32px;
+}
+
+.calendar .right div li:hover
+{
+    background: rgba(255, 255, 126, 0.17);
+    border-radius: 5px;
+}
+
+.calendar .right div li:hover a.calendar-hide-event
+{
+    display: inline-block;
+}
+
+.calendar .right div li a
+{
+    font-size: 1.2em;
+    margin-right: 0.5em;
+}
+
+.calendar a.calendar-hide-event
+{
+    background: url('../images/calendar-hide-button.png') no-repeat;
+    width: 32px;
+    height: 32px;
+    text-indent: -10000px;
+    display: none;
+    float: right;
+    margin-right: 32px;
+}
+
+a.calendar-hide-event:hover
+{
+    background-color: rgba(255, 255, 199, 0.8);
+}
+
+.calendar .prompt
 {
     background: gray;
     background: rgba(0, 0, 0, 0.7);
     display: none;
+    border-radius: 5px;
 }
 
-#personal-calendar .prompt i
+.calendar .prompt i
 {
     border: 5px solid;
     border-color: transparent transparent gray transparent;
@@ -1440,22 +1557,42 @@ ul#nculife-details
     height: 0;
 }
 
-#personal-calendar .prompt ul
+
+.calendar .prompt ul
 {
     margin: 0;
     padding: 5px;
     list-style: none;
 }
 
-#personal-calendar .prompt ul li
+.calendar .prompt ul li
 {
     color: white;
 }
-.calendar-prompt
+
+.calendar .calendar-buttons
 {
-    background: gray;
-    list-style: none;
-    padding: 5px;
+    padding-left: 32px;
+    height: 32px;
+    display: inline-block;
+    line-height: 32px;
+    margin-right: 1em;
+    font-size: 1.4em;
+}
+
+.calendar .calendar-subscript-button
+{
+    background: url('../images/calendar-subscript-button.png') no-repeat;
+}
+
+.calendar .calendar-hide-button
+{
+    background: url('../images/calendar-hide-button.png') no-repeat;
+}
+
+.calendar .calendar-create-button
+{
+    background: url('../images/calendar-create-button.png') no-repeat;
 }
 
 #index-container
@@ -3011,14 +3148,14 @@ ul.friend-other-sort
     list-style-type:none;
 }
 
-.other-department
+ul#other-department
 {
     width:660px;
     padding:5px;
     margin:0px;
 }
 
-.other-department li
+ul.users-department li
 {
     width:132px; 
     height:230px;
@@ -3028,7 +3165,7 @@ ul.friend-other-sort
     list-style-type:none;
 }
 
-.other-department li h3
+ul.users-department li h3
 {
     color:DarkBlue;
     width:132px; 
@@ -3038,7 +3175,7 @@ ul.friend-other-sort
     text-align:center;
 }
 
-.other-department li h4
+ul.users-department li h4
 {
     color:red;
     width:132px; 
@@ -3128,7 +3265,7 @@ div.friends
     margin:0px;
 }
 
-div.sameDsameG
+form div.sameDsameG
 {
     background-image:url('../profile/sameDsameG.png');
     background-repeat:no-repeat ;
@@ -3138,7 +3275,7 @@ div.sameDsameG
     margin:0px;
 }
 
-div.sameDdiffG
+form div.sameDdiffG
 {
     background-image:url('../profile/sameDdiffG.png');
     background-repeat:no-repeat ;
@@ -3148,7 +3285,7 @@ div.sameDdiffG
     margin:0px;
 }
 
-div.other-department
+form div.other-department
 {
     background-image:url('../profile/otherD.png');
     background-repeat:no-repeat ;
@@ -3291,16 +3428,6 @@ div.myprofile form button
     float:right;
 }
 
-/*div.mygroups
-{
-    background-image:url('../profile/mygroups.png');
-    background-repeat:no-repeat ;
-    width:690px;
-    height:370px;
-    padding:25px;
-    margin:0px;
-}*/
-
 div.newgroup
 {
     background-image:url('../profile/mygroup.png');
@@ -3386,25 +3513,27 @@ div.profile-message-reply
     height: 35px;
     padding: 0px;
     margin: 0px;
-    float:left;
+    float:right;
 }
 
 .button-cancel
 {
     background-image:url('../profile/button/cancel.png');
     background-repeat:no-repeat ;
-    width:91px;
-    height:50px;
+    width:62px;
+    height:34px;
     padding:0px;
     margin:0px;
+    display:block;
+    float:right;
 }
 
 .button-push
 {
     background-image:url('../profile/button/push.png');
     background-repeat:no-repeat ;
-    width:71px;
-    height:38px;
+    width:67px;
+    height:35px;
     padding:0px;
     margin:0px;
 }
@@ -3437,7 +3566,7 @@ div.profile-message-reply
     height:33px;
     padding:0px;
     margin:0px;
-    float:left;
+    float:right;
     display:block;
 }
 
@@ -3449,8 +3578,8 @@ div.profile-message-reply
     height:35px;
     padding:0px;
     margin:0px;
-    float:left;
     display:block;
+    float:right;
 }
 
 #button-deletemember
@@ -3461,15 +3590,15 @@ div.profile-message-reply
     height:34px;
     padding:0px;
     margin:0px;
-    float:left;
+    float:right;
 }
 
 .button-makefriend
 {
     background-image:url('../profile/button/makefriend.png');
     background-repeat:no-repeat ;
-    width:188px;
-    height:50px;
+    width:120px;
+    height:34px;
     padding:0px;
     margin:0px;
 }
@@ -3975,6 +4104,7 @@ img.user_img
     height: 600px;
     background: url('../game/mission.png');
     position: fixed;
+    /*display: inline-block;*/
     display: none;
 }
 
@@ -4008,8 +4138,8 @@ img.user_img
     width: 324px;
     /*outline: 1px solid red;*/
     position: absolute;
-    top: 91px;
-    left: -37px;
+    top: 86px;
+    left: -32px;
 }
 #game-mission-dialog .avatar
 {
