@@ -24,7 +24,7 @@ class CalendarController extends Controller
                     'event',
                     'createEvent',
                     'hideEvent',
-                    'showEvnet',
+                    'showEvent',
                     'subscript'
                 ),
                 'roles'     => array('member')
