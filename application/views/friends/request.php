@@ -5,7 +5,7 @@
     <ul class="users-department">
 <?php foreach ( $friends as $friend ) : ?>
         <li>
-<a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $friend->friend_request->id));  ?>">
+            <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $friend->friend_request->id));  ?>">
 <?php $this->widget('Avatar', array(
     'id'        => $friend->friend_request->id
 )); ?>

@@ -3408,7 +3408,7 @@ div.friends-part2 div.avatar
     float:left;
 }
 
-div.friends-part3
+.friends-part3
 {
     width:675px;
     height:350px;
@@ -3484,7 +3484,7 @@ div.friends-sortfriend div.avatar
     margin:0px;
 }
 
-div.myprofile
+.myprofile
 {
     background-image:url('../profile/profile.png');
     background-repeat:no-repeat ;
@@ -3492,11 +3492,6 @@ div.myprofile
     height:370px;
     padding:25px;
     margin:0px;
-}
-
-div.myprofile form button
-{
-    float:right;
 }
 
 #newgroup
@@ -3595,6 +3590,9 @@ div.profile-message-reply
     padding: 0px;
     margin: 0px;
     float:right;
+    position:relative;
+    right:27px;
+    bottom:36px;
 }
 
 .button-cancel
@@ -3606,10 +3604,9 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     display:block;
-    float:right;
     position:absolute;
-    right:0px;
-    bottom:0px;
+    right:515px;
+    bottom:-100px;
 }
 
 .button-push
@@ -3631,8 +3628,8 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:10px;
-    bottom:0px;
+    right:577px;
+    bottom:-100px;
 }
 
 .button-addgroup
@@ -3653,8 +3650,10 @@ div.profile-message-reply
     height:33px;
     padding:0px;
     margin:0px;
-    float:right;
     display:block;
+    position:absolute;
+    right:10px;
+    bottom:0px;
 }
 
 #button-addmember
@@ -3666,7 +3665,9 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     display:block;
-    float:right;
+    position:absolute;
+    right:256px;
+    bottom:0px;
 }
 
 #button-deletemember
@@ -3677,7 +3678,9 @@ div.profile-message-reply
     height:34px;
     padding:0px;
     margin:0px;
-    float:right;
+    position:absolute;
+    right:133px;
+    bottom:0px;
 }
 
 .button-makefriend
@@ -3702,7 +3705,7 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:10px;
+    right:99px;
     bottom:0px;
 }
 
@@ -3716,6 +3719,19 @@ div.profile-message-reply
     margin:0px;
 }
 
+.button-addfriends
+{
+    background-image:url('../profile/button/addfriend.png');
+    background-repeat:no-repeat ;
+    width:96px;
+    height:35px;
+    padding:0px;
+    margin:0px;
+    position:absolute;
+    right:100px;
+    bottom:0px;
+}
+
 .button-addfriend
 {
     background-image:url('../profile/button/addfriend.png');
@@ -3725,8 +3741,8 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:10px;
-    bottom:0px;
+    right:550px;
+    bottom:-72px;
 }
 
 #button-editor

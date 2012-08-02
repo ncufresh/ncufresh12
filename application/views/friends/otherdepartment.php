@@ -20,7 +20,7 @@
             </li>
 <?php endforeach; ?>
         </ul>
-    <button type="submit" class="button-addfriend"></button>
+    <button type="submit" class="button-addfriends"></button>
 </form>
 <button type="button" class="button-back"></button>
 </div>
