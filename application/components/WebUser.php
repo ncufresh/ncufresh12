@@ -37,7 +37,7 @@ class WebUser extends CWebUser
     protected function afterLogin($fromCookie)
     {
         parent::afterLogin($fromCookie);
-        if ( $this->getIsMember() ) $this->getUser()->updateOnlineState();
+        $this->getUser()->updateOnlineState();
     }
 
     public function getUser()

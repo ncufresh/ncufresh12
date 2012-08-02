@@ -73,9 +73,7 @@ class GameController extends Controller
         }
         else
         {
-            $this->redirect(Yii::app()->createUrl('game/index', array(
-                'id'    => $this->userId
-            )));
+            $this->redirect(Yii::app()->createUrl('site/index'));
         }
     }
     

@@ -19,6 +19,11 @@ body
     width: 1000px;
 }
 
+img
+{
+    border: none;
+}
+
 h2
 {
     display: none;
@@ -26,7 +31,25 @@ h2
 
 h4
 {
-    padding: 0;
+    font-size: 1.8em;
+    font-weight: bolder;
+    padding: 0 0 10px;
+    margin: 0;
+}
+
+h5
+{
+    font-size: 1.4em;
+    font-weight: bolder;
+    padding: 0 0 5px;
+    margin: 0;
+}
+
+h6
+{
+    font-size: 1.2em;
+    font-weight: bolder;
+    padding: 0 0 3px;
     margin: 0;
 }
 
@@ -524,7 +547,7 @@ a:hover
 .index-forums-box h4,
 #notfound a,
 #notfound a:hover,
-#index-calendar .calendar-bottom-wrapper,
+#index-calendar > div,
 .calendar,
 .calendar .right div,
 .calendar .right div h4,
@@ -1450,66 +1473,62 @@ ul#nculife-details
     width: 30%;
 }
 
-#index-calendar .calendar-bottom-wrapper
+#index-calendar > div
 {
     background-position: -960px -160px;
     height: 360px;
     margin-top: -45px;
     padding: 50px 10px 20px 10px;
-}
-
-#index-calendar .calendar-bottom
-{
     position: relative;
 }
 
-#index-calendar table.calendar-table
+#index-calendar .calendar-table
 {
     border-collapse: collapse;
 }
 
-#index-calendar table.calendar-table caption
+#index-calendar .calendar-table caption
 {
     margin: 15px 0 10px 0;
 }
 
-#index-calendar table.calendar-table td
+#index-calendar .calendar-table td
 {
     text-align: right;
     width: 28px;
     cursor: pointer;
 }
 
-#index-calendar table.calendar-table thead
+#index-calendar .calendar-table thead
 {
     display: block;
 }
 
-#index-calendar table.calendar-table thead td
+#index-calendar .calendar-table thead td
 {
     color: #af8d5a;
     text-align: center;
 }
 
-#index-calendar table.calendar-table thead td.weekend
+#index-calendar .calendar-table thead td.weekend
 {
     color: red;
 }
 
-#index-calendar table.calendar-table tbody
+#index-calendar .calendar-table tbody
 {
     border-top: 1px solid #946722;
     border-bottom: 1px solid #946722;
     display: block;
 }
 
-#index-calendar table.todolist-table td
+#index-calendar .todolist-table td
 {
     width: 100px;
     text-align: center;
 }
 
-#index-calendar table.todolist-table thead td
+#index-calendar .todolist-table thead td
 {
     color: #946722;
 }
@@ -2005,7 +2024,7 @@ button.news-button
     height: 25px;
 }
 
-#lastest-news-wrap .header h1
+#lastest-news-wrap .header h4
 {
     width: 85px;
     height: 0px;
@@ -2550,6 +2569,7 @@ button.news-button
     height: 420px;
     position: relative;
     width: 700px;
+    overflow: hidden;
 }
 
 #fresh-back
@@ -2569,6 +2589,7 @@ button.news-button
     padding: 15px 25px;
     background-position: -5px -1350px;
     position: relative;
+    overflow: hidden;
 }
 
 #notice-back
@@ -2588,6 +2609,7 @@ button.news-button
     padding: 15px 25px;
     position: relative;
     width: 700px;
+    overflow: hidden;
 }
 
 #reschool-back
@@ -2845,20 +2867,20 @@ button.news-button
 #read-notice-menu 
 {
     background: #F7AAF7;
-    top: 10px;
 }
 
 .readme-menu
 {
     width: 200px;
     heigth: auto;
-    top: 50px;
+    top: 5px;
     left: -187px;
     border-radius: 0 10px 10px 0;
     position: absolute;
     display: block;
     list-style: none;
     opacity: 0.95;
+    overflow: auto;
 }
 
 .readme-menu p
@@ -2899,6 +2921,31 @@ button.news-button
     cursor: pointer;
     text-align: center;
 }
+
+#reame-download
+{
+    width: 700px;
+    height: 400px;
+    float: left;
+    word-break: break-all;
+    word-wrap: break-word;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+}
+
+.download-index
+{
+    float: left;
+    list-style: none;
+    font-size: 1.3em;
+}
+
+.download-index li
+{
+    margin-top: 6px
+}
+
 
 #about .introdution
 {
@@ -3280,7 +3327,7 @@ button.news-button
 	float: left;
 }
 
-#club-schedule-button
+#club-calendar-button
 {
     cursor: pointer;
     width: 204px;
@@ -3288,12 +3335,17 @@ button.news-button
     display: block;
 }
 
-#club-schedule-content
+#club-calendar
 {
-    background: skyblue;
     display: none;
-    width: 204px;
     height: 329px;
+    position: relative;
+    width: 204px;
+}
+
+#club-calendar table
+{
+    width: 100%;
 }
 
 .modify-table
@@ -4363,9 +4415,28 @@ img.user_img
  */
 .game-display .game-title
 {
+    width: 335px;
+    height: 20px;
+    margin: 5px 11px;
     font-size: 1.5em;
-    color: #4d136e;
-    padding: 6px 0px;
+    text-align: center;
+    background-color: black;
+    border: 3px solid #00788F;
+    border-radius: 10px;
+    color: #B8EEEC;
+}
+
+.game-display .item-category
+{
+    width: 335px;
+    height: 20px;
+    margin: 5px 11px;
+    font-size: 1.5em;
+    text-align: center;
+    background-color: black;
+    border: 3px solid #6CE44E;
+    border-radius: 10px;
+    color: #ABF194;
 }
 
 .game-display .shop-message
@@ -4384,9 +4455,11 @@ img.user_img
 .game-display .experience
 {
     background: #FFFFFF;
-    border: 1px solid #000000;
+    border: 1px solid #22A2D5;;
     height: 6px;
-    width: 320px;
+    width: 360px;
+    margin: 10px 0;
+    font-weight: bold;
 }
 
 .game-display .experience .text
@@ -4397,20 +4470,20 @@ img.user_img
     margin: -0.5em 0 -6px 0;
     overflow: visible;
     text-align: center;
-    width: 318px;
+    width: 358px;
 }
 
 .game-display .experience .bar
 {
-    background: #D7D606;
-    border: 1px solid #FFFFFF;
+    background: #3FD1EC;
+    border: 1px solid white;
     height: 4px;
-    max-width: 318px;
+    max-width: 358px;
 }
 
 .game-display .experience .max
 {
-    background: #FFA100;
+    background: #3F54EC
 }
 
 .game-display .item-icons img
@@ -4430,7 +4503,8 @@ img.user_img
     display: inline-block;
 }
 
-.item-description
+.item-description,
+.mission-description
 {
     background: #646464;
     background-color: rgba(100, 100, 100, 0.9);
@@ -4444,18 +4518,21 @@ img.user_img
     width: 360px;
 }
 
-.item-description h4
+.item-description h4,
+.mission-description h4
 {
     font-size: 1.7em;
     color: #ddffb0;
 }
-.item-description .description
+.item-description .description,
+.mission-description .description
 {
     font-size: 1.5em;
     font-weight: bold;
     color: #cbf0ff;
 }
-div.item-description span
+div.item-description span,
+div.mission-description span
 {
     display:block;
 }
@@ -4510,7 +4587,7 @@ div.item-description .exist
 }
 #game-mission-dialog .avatar
 {
-    width: 270px;
+    width: 265px;
     height: 451px;
     font-size: 18px;
     /*outline: 1px solid black;*/
@@ -4865,23 +4942,10 @@ li.enabled a
     height:30px;
 }
 
-#forum-create-text-category
-{
-}
-
 #forum-create-category
 {
     height:30px;
     width:200px;
-    
-}
-
-#forum-create-text-content
-{
-}
-
-#forum-create-content
-{
 }
 
 #forum-reply-form
@@ -4943,9 +5007,10 @@ li.enabled a
 #forum-view-footer
 {
     background: url('../forum/view/background_footer.png');
-    width: 683px;
+    width: 648px;
     height: 86px;
     margin-left:35px;
+    padding-right: 35px;
 }
 
 .forum-view-profile

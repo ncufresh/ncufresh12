@@ -658,6 +658,14 @@
             {
                 $.fn.chat.closeChatDialog(dialog.data('id'));
             });
+            dialog.data('show', $.cookie('chat-dialog-' + dialog.data('id')) === 'true');
+            if ( ! dialog.data('show') )
+            {
+                dialog.css({
+                    bottom: -1 * dialog.height() + dialog.children('.chat-title').height()
+                });
+            }
+            $.fn.chat.updateChatDialogsPosition();
             $.get(
                 $.configures.chatOpenUrl.replace(':id', id),
                 function(response)
@@ -683,6 +691,7 @@
         dialog.animate({
             bottom: 0
         }, $.chat.options.animationSpeed).data('show', true);
+        $.cookie('chat-dialog-' + dialog.data('id'), 'true');
         $.fn.chat.updateChatDialogsPosition();
         return dialog;
     };
@@ -750,6 +759,7 @@
         dialog.animate({
             bottom: -1 * dialog.height() + dialog.children('.chat-title').height()
         }, $.chat.options.animationSpeed).data('show', false);
+        $.cookie('chat-dialog-' + dialog.data('id'), 'false');
         $.fn.chat.updateChatDialogsPosition();
         return dialog;
     };
@@ -1265,7 +1275,7 @@
  * Calendar
  */
 (function($)
-{   
+{
     var getToday = function()
     {
         var date = new Date();
@@ -1306,7 +1316,8 @@
 
     var markToday = function()
     {
-        this.getToday().css('color', 'red');
+        var today = this.getToday();
+        if ( today ) today.css('color', 'red');
     }
 
     /**
@@ -1477,8 +1488,8 @@
     $.generateCalendar = function(options)
     {
         options = $.extend({
-            year:        2000,
-            month:       1,
+            year:        (new Date()).getFullYear(),
+            month:       (new Date()).getMonth() + 1,
             tableClass:  'calendar-table', 
             buttonClass: 'calendar-button',
             month_tc:    ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'], 
@@ -1563,7 +1574,7 @@
             }
             td.appendTo(tr);
         }
-        $.extend( table.constructor.prototype,{
+        $.extend(table.constructor.prototype,{
             markToday: markToday,
             markEvent: markEvent,
             cleanUpMark: cleanUpMark,
@@ -1576,96 +1587,81 @@
             .append(tbody);
     }
 
-    $.fn.indexCalendar = function(options)
+    $.fn.calendar = function(url)
     {
-        var options = $.extend({ 
-        }, options);
-        var top = $(this).children('.calendar-top');
-        var bottom = $('<div></div>')
-            .attr('id', 'calendar-August')
-            .addClass('calendar-bottom');
-        var bottom_wrap = this.children('.calendar-bottom-wrapper');
-        if ( options.isMember )
+        var container = $(this);
+        var updateTodolist = function()
         {
-            top.removeClass('calendar-top-all-nologin');
-            top.addClass('calendar-top-all-login');
-        }
-        else
-        {
-            $(this).find('#calendar-personal').css('cursor', 'default');
-        }
-        var september;
-        var august;
-        var todolist;
-        var tdClick = function()
-        {
-            $(this).parents('table').find('td').css('outline', '0');
-            $(this).css('outline', '1px solid black');
             var events = $(this).data('cal_events');
-            var todo = [];
-            for(var key in events)
+            var todos = [];
+            for ( var key in events )
             {
-                var start = new Date((events[key].start-(new Date()).getTimezoneOffset()*60)*1000);
-                var end = new Date((events[key].end-(new Date()).getTimezoneOffset()*60)*1000);
-                todo[key]=
+                var start = new Date((events[key].start - (new Date()).getTimezoneOffset() * 60) * 1000);
+                var end = new Date((events[key].end - (new Date()).getTimezoneOffset() * 60) * 1000);
+                todos[key]=
                 [
-                    start.getMonth()+'/'+start.getDate()+' ~ '+end.getMonth()+'/'+end.getDate(),
+                    start.getMonth() + '/' + start.getDate() + ' ~ ' + end.getMonth() + '/' + end.getDate(),
                     events[key].name
                 ];
             }
             todolist.remove();
-            todolist = $.generateTodolist(todo).appendTo(bottom);
-        }
-        var init = function(self)
+            todolist = $.generateTodolist(todos).insertAfter(calendar);
+            return todolist;
+        };
+        var generate = function(year, month)
         {
-            if( $(self).getToday() )
-            {
-                var events = $(self).getToday().data('cal_events');
-                var todo = [];
-                for(var key in events)
+            var calendar = $.generateCalendar({
+                year: year,
+                month: month,
+                right: true,
+                rightClick: function()
                 {
-                    var start = new Date((events[key].start-(new Date()).getTimezoneOffset()*60)*1000);
-                    var end = new Date((events[key].end-(new Date()).getTimezoneOffset()*60)*1000);
-                    todo[key]=
-                    [
-                        start.getMonth()+'/'+start.getDate()+' ~ '+end.getMonth()+'/'+end.getDate(),
-                        events[key].name
-                    ];
+                    if ( ++month > 12 )
+                    {
+                        year += 1;
+                        month = 1;
+                    }
+                    container.children('table').detach();
+                    generate(year, month);
+                    return false;
+                },
+                left: true,
+                leftClick: function()
+                {
+                    if ( --month < 1 )
+                    {
+                        year -= 1;
+                        month = 12;
+                    }
+                    container.children('table').detach();
+                    generate(year, month);
+                    return false;
+                },
+                dayClick: function()
+                {
+                    $(this).parent().parent().find('td').removeClass('selected');
+                    $(this).addClass('selected');
+                    updateTodolist.call(this);
+                },
+                dayEnter: function()
+                {
+                    $(this).addClass('hover');
+                },
+                dayLeave: function()
+                {
+                    $(this).removeClass('hover');
                 }
-                todolist.remove();
-                todolist = $.generateTodolist(todo).appendTo(bottom);
-            }
-        }
-        september = $.generateCalendar({
-            year: 2012,
-            month: 9,
-            dayClick: tdClick,
-            left: true,
-            leftClick: function()
+            }).appendTo(container);
+            calendar.find('caption a:eq(1)').text(year + '年' + month + '月');
+            calendar.updateData(url, function(element)
             {
-                september.detach();
-                august.prependTo(bottom);
+                if ( element.getToday() ) return updateTodolist(element);
                 return false;
-            }
-            
-        });
-        august = $.generateCalendar({
-            year: 2012,
-            month: 8,
-            right: true,
-            rightClick: function()
-            {
-                august.detach();
-                september.prependTo(bottom);
-                return false;
-            },
-            dayClick: tdClick
-        });
-        august.updateData($.configures.calendarEventsUrl, init);
-        september.updateData($.configures.calendarEventsUrl, init);
-        bottom.append(august);
-        bottom.appendTo(bottom_wrap);
-        todolist = $.generateTodolist([]).appendTo(bottom);
+            });
+            return calendar;
+        };
+        var calendar = generate((new Date()).getFullYear(), (new Date()).getMonth() + 1);
+        var todolist = $.generateTodolist([]).insertAfter(calendar);
         return this;
     };
 
@@ -2130,7 +2126,7 @@
         base.$field = $(field);
         base.field  = field;
 
-        base.$label.data("infield", base);
+        base.$label.data('infield', base);
         base.showing = true;
 
         base.init = function ()
@@ -2229,8 +2225,8 @@
     };
 
     $.infield.defaultOptions = {
-        fadeOpacity: 0.5,
-        fadeDuration: 300
+        fadeOpacity:    0.5,
+        fadeDuration:   300
     };
 
     $.fn.infield = function(options)
@@ -2443,25 +2439,28 @@
     {
         $('#club-menu-items a').lightbox();
 
-        $('#club-schedule-button').click(function()
+        $('#club-calendar-button').click(function()
         {
             var button = $(this);
             if ( button.hasClass('active') )
             {
-                $('#club-schedule-content').slideUp(300, function()
+                $('#club-calendar').slideUp(300, function()
                 {
                     button.removeClass('active');
                 });
             }
             else
             {
-                $('#club-schedule-content').slideDown(300, function()
+                $('#club-calendar').slideDown(300, function()
                 {
                     button.addClass('active');
                 });
             }
             return false;
         });
+
+        $('#club-calendar').calendar($.configures.calendarEventsUrl);
+
         $('.back').click(function()
         {
             window.history.back();
@@ -2633,7 +2632,6 @@
                 {
                     if ( width / height >= options.maxImageWidth / options.maxImageHeight )
                     {
-                        console.log(preloader.width);
                         if ( width > options.maxImageWidth )
                         {
                             preloader.width = options.maxImageWidth;
@@ -2799,11 +2797,24 @@
 {
     var input = null;
 
+    var fields = [];
+
     var initialized;
 
     var onClick = function(year, month, day, callback)
     {
-        input.val(year + '-' + month + '-' + day).change().blur().prop('disabled', false);
+        var textPad = function(string, length)
+        {
+            if ( string.length >= length ) return string;
+            return textPad('0' + string, length);
+        }
+        input.val(
+            year
+          + '-'
+          + textPad(month.toString(), 2)
+          + '-'
+          + textPad(day.toString(), 2)
+        ).change();
         $.datepicker.fadeOut();
         if ( callback ) callback();
     };
@@ -2813,8 +2824,8 @@
     $.fn.datepicker = function(settings)
     {
         var options = $.extend({
-            year:   1994,
-            month:  8,
+            year:   (new Date()).getFullYear(),
+            month:  (new Date()).getMonth() + 1,
         }, settings);
 
         if ( ! this.length ) return this;
@@ -2881,11 +2892,18 @@
             initialized = true;
         }
 
+        this.parents('form').find('input, textarea').focus(function()
+        {
+            for ( var field in fields ) fields[field].blur();
+            $.datepicker.fadeOut();
+        });
+
         return this.each(function()
         {
+            fields[fields.length] = $(this).prop('readonly', true);
             $(this).focus(function()
             {
-                input = $(this).prop('disabled', true);
+                input = $(this).blur();
                 $.datepicker.css({
                     left: $(this).offset().left + $(this).width(),
                     top: $(this).offset().top + $(this).height()
@@ -2918,7 +2936,11 @@
         
         if ( $('#club').length ) $.clubs();
 
-        $('#form-register-birthday').datepicker();
+        $('input.datepicker:not(#form-register-birthday)').datepicker();
+        $('#form-register-birthday').datepicker({
+            year: 1994,
+            month: 8
+        });
 
         $('#form-sidebar-register, #form-login-register').click(function()
         {

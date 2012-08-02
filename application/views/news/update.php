@@ -108,7 +108,7 @@ a.news-url-link
 </script>
 <?php $this->endWidget();?>
 <div id="news-update">
-    <h2>編輯文章</h2>
+    <h4>編輯文章</h4>
     <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('news/update', array('id' => $news->id) ); ?>" method="POST" class="MultiFile-intercepted">
         <dl>
             <dt>

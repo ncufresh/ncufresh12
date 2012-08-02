@@ -262,7 +262,7 @@ a.news-url-delete:hover, a.MultiFile-remove:hover
 </script>
 <?php $this->endWidget();?>
 <div id="news-create">
-    <h2 class="news-title">新增文章</h2>
+    <h4 class="news-title">新增文章</h4>
     <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('news/create')?>" method="POST" class="MultiFile-intercepted">
         <dl>
             <dt>
