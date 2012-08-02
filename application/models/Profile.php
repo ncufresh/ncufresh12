@@ -146,7 +146,7 @@ class Profile extends CActiveRecord
     {
         if ( parent::beforeSave() )
         {
-            if ( $this->getIsNewRecord() )
+            if ( $this->getIsNewRecord() || $this->getScenario('editor') )
             {
                 $this->birthday = $this->birthday;
             }

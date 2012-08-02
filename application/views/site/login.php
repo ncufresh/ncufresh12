@@ -1,5 +1,5 @@
+<h2>需要驗證您的身分</h2>
 <div id="login">
-    <h2>需要登入</h2>
     <p>您沒有辦法進入這個區域，可能的原因如下：</p>
     <ul>
         <li>帳號或密碼輸入錯誤，請再次確認帳號密碼是否輸入正確。</li>
@@ -26,6 +26,7 @@
         <div>
             <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
             <button id="form-login-button" type="submit">登入</button>
+            <button id="form-login-register">註冊</button>
         </div>
     </form>
 </div>

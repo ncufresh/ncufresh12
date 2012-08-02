@@ -19,6 +19,11 @@ body
     width: 1000px;
 }
 
+h2
+{
+    display: none;
+}
+
 h4
 {
     padding: 0;
@@ -445,13 +450,76 @@ a:hover
     width: 66px;
 }
 
+#sidebar-personal-toggle,
+#sidebar-personal-toggle.active,
+.chat-title button,
+.chat-title span,
+.chat-title span.online,
+.pager .first,
+.pager .first-disabled,
+.pager .last,
+.pager .last-disabled,
+.pager .prev,
+.pager .prev-disabled,
+.pager .next,
+.pager .next-disabled,
+#chat,
+#marquee span,
+#sidebar-personal,
+#form-sidebar-login,
+#form-sidebar-register,
+#navigation,
+#footer-content,
+#header .online,
+#header .browsered,
+#logo,
+#chat-friend-list-search,
+#search button,
+.index-latest-box h4,
+.index-forums-box h4,
+#notfound a,
+#notfound a:hover,
+#index-calendar .calendar-bottom-wrapper
+{
+    background: url('../images/sprites.png') no-repeat;
+}
+
+#readme-fresh,
+#fresh-back,
+#readme-notice,
+#notice-back,
+#readme-reschool,
+#reschool-back,
+#readme-download,
+#download-back,
+#readme-body,
+#freshman-1,
+#freshman-2,
+#freshman-3,
+#freshman-4,
+#reschool-1,
+#reschool-2,
+#reschool-3,
+#reschool-4,
+#notice-1,
+#notice-2,
+#notice-3,
+#notice-4,
+#readme-logo1,
+#readme-logo2,
+#readme-logo3,
+#readme-logo4
+{
+    background: url('../images/readme.png') no-repeat;
+}
+
 /**
  * Layout style
  */
 #logo,
 #moon
 {
-    background: url('../images/logo.png') no-repeat;
+    background-position: -960px 0;
     display: block;
     height: 160px;
     position: absolute;
@@ -492,12 +560,12 @@ a:hover
 
 #header .online
 {
-    background: url('../images/online.png') no-repeat;
+    background-position: -1200px 0;
 }
 
 #header .browsered
 {
-    background: url('../images/browsered.png') no-repeat;
+    background-position: -1200px -32px;
 }
 
 #menu
@@ -528,7 +596,7 @@ a:hover
 
 #navigation
 {
-    background: url('../images/navigation.png') no-repeat;
+    background-position: 0 -1216px;
     list-style: none;
     margin: 160px 0 0 0;
     padding: 0 15px;
@@ -625,7 +693,7 @@ a:hover
 
 #footer-content
 {
-    background: url('../images/footer-content.png') no-repeat bottom;
+    background-position: 0 -1088px;
     height: 120px;
     margin: 0 auto;
     width: 800px;
@@ -693,7 +761,7 @@ a:hover
 #sidebar form.profile dl
 {
     margin: 0;
-    width: 90%;
+    width: 95%;
 }
 
 #sidebar form.profile input,
@@ -755,17 +823,17 @@ a:hover
 
 #form-sidebar-login
 {
-    background: url('../images/login.png');
+    background-position: -352px -164px;
 }
 
 #form-sidebar-register
 {
-    background: url('../images/register.png');
+    background-position: -288px -164px;
 }
 
 #sidebar-personal
 {
-    background: #FFFFFF url('../images/personal.png') center top;
+    background-position: -288px 0;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     display: none;
@@ -795,7 +863,7 @@ a:hover
 
 #sidebar-personal-toggle
 {
-    background: url('../images/arrow-down.png');
+    background-position: 0 0;
     display: block;
     float: right;
     height: 16px;
@@ -805,7 +873,7 @@ a:hover
 
 #sidebar-personal-toggle.active
 {
-    background: url('../images/arrow-up.png');
+    background-position: 0 -16px;
 }
 
 #sidebar-personal-button,
@@ -837,7 +905,7 @@ a:hover
  */
 #chat
 {
-    background: url('../images/chat.png') 0 5px no-repeat;
+    background-position: -128px 0;
     bottom: 0;
     cursor: pointer;
     height: 120px;
@@ -932,7 +1000,7 @@ a:hover
 
 #chat-friend-list-search
 {
-    background: url('../images/friend_list_search.png') no-repeat;
+    background-position: -1248px -64px;
     border: 3px solid #D7D7D7;
     height: 20px;
     margin: 5px 0;
@@ -961,7 +1029,7 @@ a:hover
 
 .chat-dialog .chat-title span
 {
-    background: url('../images/chat_offline.png');
+    background-position: 0 -48px;
     display: block;
     float: left;
     height: 16px;
@@ -971,7 +1039,7 @@ a:hover
 
 .chat-dialog .chat-title span.online
 {
-    background: url('../images/chat_online.png');
+    background-position: 0 -64px;
 }
 
 .chat-dialog .chat-title p
@@ -986,7 +1054,7 @@ a:hover
 
 .chat-dialog .chat-title button
 {
-    background: url('../images/chat_close.png') 50% 50% no-repeat;
+    background-position: 0 -32px;
     border: 0;
     float: right;
     height: 16px;
@@ -997,7 +1065,7 @@ a:hover
 
 .chat-dialog .chat-title button:hover
 {
-    background: white url('../images/chat_close.png') 50% 50% no-repeat;
+    background-color: #FFFFFF;
     cursor: pointer;
 }
 
@@ -1191,7 +1259,7 @@ table.gsc-completion-container
 
 #search button
 {
-    background: url('../images/search_box_icon.png') no-repeat;
+    background-position: -32px 0;
     border: none;
     box-shadow: none;
     cursor: pointer;
@@ -1206,7 +1274,7 @@ table.gsc-completion-container
 
 #result
 {
-    background: #FFFFFF url('../images/search.png') right top no-repeat;
+    background: #FFFFFF url('../images/result.png') right top no-repeat;
     border-radius: 10px;
     margin: 0 auto;
     min-height: 160px;
@@ -1301,7 +1369,7 @@ ul#nculife-details
 
 #marquee span
 {
-    background: url('../images/marquee_star_icon.png') no-repeat;
+    background-position: -128px -128px;
     display: block;
     height: 50px;
     margin: -15px 0 0 -55px;
@@ -1332,10 +1400,10 @@ ul#nculife-details
 
 #index-calendar .calendar-bottom-wrapper
 {
-    background: url('../images/calendar.png') center top no-repeat;
+    background-position: -960px -160px;
     height: 360px;
     margin-top: -45px;
-    padding: 50px 10px 0 10px;
+    padding: 50px 10px 20px 10px;
 }
 
 #index-calendar .calendar-bottom
@@ -1394,14 +1462,131 @@ ul#nculife-details
     color: #946722;
 }
 
-#personal-calendar .prompt
+.calendar
+{
+    background: url('../images/calendar_view_background.png');
+    margin: 0 5px;
+    padding: 60px;
+    height: 680px;
+    border-radius: 15px;
+}
+
+.calendar .left
+{
+    height: 40%;
+    width: 40%;
+    padding: 20% 5% 40% 5%;
+    float: left;
+}
+
+.calendar .left table
+{
+    width: 100%;
+    height: 100%;
+    font-size: 1.2em;
+    position: relative;
+}
+
+.calendar .left table thead td
+{
+    text-align: center;
+}
+
+.calendar .left table tbody td
+{
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.calendar .date
+{
+    margin: 0;
+    display: block;
+    float: left;
+    width: 50%;
+    text-align: center;
+    height: 2em;
+    font-size: 2em;
+    line-height: 2em;
+    text-shadow: 2px 2px 8px;
+    color: rgba(21, 50, 206, 0.67);
+}
+
+.calendar .right
+{
+    height: 80%;
+    width: 50%;
+    float: left;
+    
+}
+
+.calendar .right div
+{
+    padding-top: 2em;
+    width: 100%;
+    background: url('../images/calendar-hr.png') no-repeat;
+    float: left;
+}
+
+.calendar .right div h4
+{
+    font-size: 1.5em;
+    padding: 0 0 0 40px;
+    height: 37px;
+    line-height: 37px;
+    background: url('../images/calendar_category_pattern.png') no-repeat;
+}
+
+.calendar .right div li
+{
+    width: 88%;
+    height: 32px;
+    line-height: 32px;
+}
+
+.calendar .right div li:hover
+{
+    background: rgba(255, 255, 126, 0.17);
+    border-radius: 5px;
+}
+
+.calendar .right div li:hover a.calendar-hide-event
+{
+    display: inline-block;
+}
+
+.calendar .right div li a
+{
+    font-size: 1.2em;
+    margin-right: 0.5em;
+}
+
+.calendar a.calendar-hide-event
+{
+    background: url('../images/calendar-hide-button.png') no-repeat;
+    width: 32px;
+    height: 32px;
+    text-indent: -10000px;
+    display: none;
+    float: right;
+    margin-right: 32px;
+}
+
+a.calendar-hide-event:hover
+{
+    background-color: rgba(255, 255, 199, 0.8);
+}
+
+.calendar .prompt
 {
     background: gray;
     background: rgba(0, 0, 0, 0.7);
     display: none;
+    border-radius: 5px;
 }
 
-#personal-calendar .prompt i
+.calendar .prompt i
 {
     border: 5px solid;
     border-color: transparent transparent gray transparent;
@@ -1413,22 +1598,42 @@ ul#nculife-details
     height: 0;
 }
 
-#personal-calendar .prompt ul
+
+.calendar .prompt ul
 {
     margin: 0;
     padding: 5px;
     list-style: none;
 }
 
-#personal-calendar .prompt ul li
+.calendar .prompt ul li
 {
     color: white;
 }
-.calendar-prompt
+
+.calendar .calendar-buttons
 {
-    background: gray;
-    list-style: none;
-    padding: 5px;
+    padding-left: 32px;
+    height: 32px;
+    display: inline-block;
+    line-height: 32px;
+    margin-right: 1em;
+    font-size: 1.4em;
+}
+
+.calendar .calendar-subscript-button
+{
+    background: url('../images/calendar-subscript-button.png') no-repeat;
+}
+
+.calendar .calendar-hide-button
+{
+    background: url('../images/calendar-hide-button.png') no-repeat;
+}
+
+.calendar .calendar-create-button
+{
+    background: url('../images/calendar-create-button.png') no-repeat;
 }
 
 #index-container
@@ -1484,7 +1689,7 @@ ul#nculife-details
 
 .index-latest-box h4
 {
-    background: url('../images/index_latest_icon.png') no-repeat;
+    background-position: -128px -176px;
 }
 
 .index-forums-box
@@ -1495,7 +1700,7 @@ ul#nculife-details
 
 .index-forums-box h4
 {
-    background: url('../images/index_forums_icon.png') no-repeat;
+    background-position: -208px -176px;
 }
 
 .news-view
@@ -1520,7 +1725,7 @@ ul#nculife-details
     box-shadow:2px 2px 5px #000;
 }
 
-.news-view .header h2
+.news-view .header h4
 {
     margin: 10px 0 0 0;
     font-size: 22pt;
@@ -2167,7 +2372,7 @@ button.news-button
 
 #readme-fresh
 {
-    background: url('../readme/freshman_background.png');
+    background-position: -5px -450px;
     padding: 15px 25px;
     height: 420px;
     position: relative;
@@ -2176,113 +2381,111 @@ button.news-button
 
 #fresh-back
 {
-    background: url('../readme/fresh_back.png');
+    background-position: -1272px -656px;
 }
 
 #fresh-back:hover
 {
-    background: url('../readme/fresh_back_hover.png');
+    background-position: -1400px -656px;
 }
 
 #readme-notice
 {
-    width: 750px;
+    background-position: -5px -1350px;
     height: 450px;
     position: relative;
-    background: url('../readme/notice_background.png');
+    width: 750px;
 }
 
 #notice-back
 {
-    background: url('../readme/notice_back.png');
+    background-position: -1272px -944px;
 }
 
 #notice-back:hover
 {
-    background: url('../readme/notice_back_hover.png');
+    background-position: -1400px -944px;
 }
 
 #readme-reschool
 {
-    padding: 15px 25px;
+    background-position: -5px -900px;
     height: 420px;
+    padding: 15px 25px;
     position: relative;
     width: 700px;
-    background: url('../readme/reschool_background.png');
 }
 
 #reschool-back
 {
-    background: url('../readme/reschool_back.png');
+    background-position: -1272px -800px;
 }
 
 #reschool-back:hover
 {
-    background: url('../readme/reschool_back_hover.png');
+    background-position: -1400px -800px;
 }
 
 #readme-download
 {
-    width: 750px;
+    background-position: -765px 0;
     height: 450px;
     position: relative;
-    background: url('../readme/download_background.png');
+    width: 750px;
 }
 
 #download-back
 {
-    
-    background: url('../readme/download_back.png');
+    background-position: -1272px -1088px;
 }
 
 #download-back:hover
 {
-    background: url('../readme/download_back_hover.png');
+    background-position: -1400px -1088px;
 }
-
 
 #readme-body
 {
-    width: 750px;
+    background-position: -5px 0;
     height: 450px;
     position: relative;
-    background: url('../readme/readme_background.png');
+    width: 750px;
 }
 
 #freshman-1
 {
-    width: 129px;
+    background-position: -760px -656px;
     height: 91px;
     left: 393px;
     top: 194px;
-    background: url('../readme/freshman_1_word.png');
+    width: 129px;
 }
 
 #freshman-2
 {
-    width: 127px;
+    background-position: -888px -656px;
     height: 100px;
     left: 325px;
     top: 249px;
-    background: url('../readme/freshman_2_word.png');
+    width: 127px;
 }
 
 #freshman-3
 {
-    width: 79px;
+    background-position: -1016px -656px;
     height: 128px;
     left: 272px;
     top: 262px;
-    background: url('../readme/freshman_3_word.png');
+    width: 79px;
 }
 
 #freshman-4
 {
-    width: 54px;
+    background-position: -1144px -656px;
     height: 141px;
     left: 194px;
     top: 271px;
-    background: url('../readme/freshman_4_word.png');
+    width: 54px;
 }
 
 .fresh-inner
@@ -2293,38 +2496,38 @@ button.news-button
 
 #reschool-1
 {
-    width: 126px;
+    background-position: -760px -800px;
     height: 76px;
     left: 530px;
     top: 160px;
-    background: url('../readme/reschool_1_word.png');
+    width: 126px;
 }
 
 #reschool-2
 {
-    width: 100px;
+    background-position: -888px -800px;
     height: 89px;
     left: 500px;
     top: 220px;
-    background: url('../readme/reschool_2_word.png');
+    width: 100px;
 }
 
 #reschool-3
 {
-    width: 98px;
+    background-position: -1016px -800px;
     height: 96px;
     left: 450px;
     top: 274px;
-    background: url('../readme/reschool_3_word.png');
+    width: 98px;
 }
 
 #reschool-4
 {
-    width: 63px;
+    background-position: -1144px -800px;
     height: 140px;
     left: 399px;
     top: 303px;
-    background: url('../readme/reschool_4_word.png');
+    width: 63px;
 }
 
 .reschool-inner
@@ -2335,42 +2538,42 @@ button.news-button
 
 #notice-1
 {
-    width: 96px;
+    background-position: -760px -944px;
     height: 152px;
     left: 529px;
     top: 239px;
     position: absolute;
-    background: url('../readme/notice_1_word.png');
+    width: 96px;
 }
 
 #notice-2
 {
-    width: 73px;
+    background-position: -888px -944px;
     height: 167px;
     left: 469px;
     top: 257px;
     position: absolute;
-    background: url('../readme/notice_2_word.png');
+    width: 73px;
 }
 
 #notice-3
 {
-    width: 72px;
+    background-position: -1016px -944px;
     height: 160px;
     left: 399px;
     top: 266px;
     position: absolute;
-    background: url('../readme/notice_3_word.png');
+    width: 72px;
 }
 
 #notice-4
 {
-    width: 133px;
+    background-position: -1144px -944px;
     height: 145px;
     left: 263px;
     top: 280px;
     position: absolute;
-    background: url('../readme/notice_4_word.png');
+    width: 133px;
 }
 
 .notice-inner
@@ -2392,21 +2595,23 @@ button.news-button
 
 #readme-logo1
 {
-    width: 124px;
+    background-position: -760px -1544px;
     height: 122px;
     left: 357px;
     top: 74px;
     position: absolute;
+    width: 124px;
 }
 
 #readme-logo1:active
 {
+    background-position: -760px -450px;
     display: block;
-    background: url('../readme/freshman.png');
 }
 
 #readme-logo2
 {
+    background-position: -760px -1544px;
     width: 140px;
     height: 135px;
     left: 491px;
@@ -2416,12 +2621,13 @@ button.news-button
 
 #readme-logo2:active
 {
+    background-position: -888px -450px;
     display: block;
-    background: url('../readme/reschool.png');
 }
 
 #readme-logo3
 {
+    background-position: -760px -1544px;
     width: 121px;
     height: 194px;
     left: 607px;
@@ -2431,13 +2637,14 @@ button.news-button
 
 #readme-logo3:active
 {
+    background-position: -1144px -450px;
     display: block;
-    background: url('../readme/notice.png');
     
 }
 
 #readme-logo4
 {
+    background-position: -760px -1544px;
     width: 126px;
     height: 107px;
     position: absolute;
@@ -2447,8 +2654,8 @@ button.news-button
 
 #readme-logo4:active
 {
+    background-position: -1272px -450px;
     display: block;
-    background: url('../readme/download.png');
 }
 
 #read-fresh-menu
@@ -2984,14 +3191,14 @@ ul.friend-other-sort
     list-style-type:none;
 }
 
-.other-department
+ul#other-department
 {
     width:660px;
     padding:5px;
     margin:0px;
 }
 
-.other-department li
+ul.users-department li
 {
     width:132px; 
     height:230px;
@@ -3001,7 +3208,7 @@ ul.friend-other-sort
     list-style-type:none;
 }
 
-.other-department li h3
+ul.users-department li h3
 {
     color:DarkBlue;
     width:132px; 
@@ -3011,7 +3218,7 @@ ul.friend-other-sort
     text-align:center;
 }
 
-.other-department li h4
+ul.users-department li h4
 {
     color:red;
     width:132px; 
@@ -3101,7 +3308,7 @@ div.friends
     margin:0px;
 }
 
-div.sameDsameG
+form div.sameDsameG
 {
     background-image:url('../profile/sameDsameG.png');
     background-repeat:no-repeat ;
@@ -3111,7 +3318,7 @@ div.sameDsameG
     margin:0px;
 }
 
-div.sameDdiffG
+form div.sameDdiffG
 {
     background-image:url('../profile/sameDdiffG.png');
     background-repeat:no-repeat ;
@@ -3121,7 +3328,7 @@ div.sameDdiffG
     margin:0px;
 }
 
-div.other-department
+form div.other-department
 {
     background-image:url('../profile/otherD.png');
     background-repeat:no-repeat ;
@@ -3264,16 +3471,6 @@ div.myprofile form button
     float:right;
 }
 
-/*div.mygroups
-{
-    background-image:url('../profile/mygroups.png');
-    background-repeat:no-repeat ;
-    width:690px;
-    height:370px;
-    padding:25px;
-    margin:0px;
-}*/
-
 div.newgroup
 {
     background-image:url('../profile/mygroup.png');
@@ -3359,25 +3556,27 @@ div.profile-message-reply
     height: 35px;
     padding: 0px;
     margin: 0px;
-    float:left;
+    float:right;
 }
 
 .button-cancel
 {
     background-image:url('../profile/button/cancel.png');
     background-repeat:no-repeat ;
-    width:91px;
-    height:50px;
+    width:62px;
+    height:34px;
     padding:0px;
     margin:0px;
+    display:block;
+    float:right;
 }
 
 .button-push
 {
     background-image:url('../profile/button/push.png');
     background-repeat:no-repeat ;
-    width:71px;
-    height:38px;
+    width:67px;
+    height:35px;
     padding:0px;
     margin:0px;
 }
@@ -3410,7 +3609,7 @@ div.profile-message-reply
     height:33px;
     padding:0px;
     margin:0px;
-    float:left;
+    float:right;
     display:block;
 }
 
@@ -3422,8 +3621,8 @@ div.profile-message-reply
     height:35px;
     padding:0px;
     margin:0px;
-    float:left;
     display:block;
+    float:right;
 }
 
 #button-deletemember
@@ -3434,15 +3633,15 @@ div.profile-message-reply
     height:34px;
     padding:0px;
     margin:0px;
-    float:left;
+    float:right;
 }
 
 .button-makefriend
 {
     background-image:url('../profile/button/makefriend.png');
     background-repeat:no-repeat ;
-    width:188px;
-    height:50px;
+    width:120px;
+    height:34px;
     padding:0px;
     margin:0px;
 }
@@ -3569,11 +3768,6 @@ div#success a
     height: 365px;
     padding: 25px;
     margin: 0px;
-}
-
-#login h2
-{
-    display: none;
 }
 
 #login p
@@ -3794,11 +3988,6 @@ img.user_img
     width: 750px;
 }
 
-#notfound h2
-{
-    display: none;
-}
-
 #notfound p
 {
     left: 70px;
@@ -3816,7 +4005,7 @@ img.user_img
 
 #notfound a
 {
-    background: url('../images/back.png');
+    background-position: -286px -192px;
     display: block;
     height: 40px;
     left: 160px;
@@ -3828,7 +4017,7 @@ img.user_img
 
 #notfound a:hover
 {
-    background: url('../images/back_hover.png');
+    background-position: -286px -240px;
 }
 
 /**
@@ -3873,42 +4062,42 @@ img.user_img
 
 .pager .first
 {
-    background: url('../images/first_page.png');
-}
-
-.pager .last
-{
-    background: url('../images/last_page.png');
-}
-
-.pager .prev
-{
-    background: url('../images/prev_page.png');
-}
-
-.pager .next
-{
-    background: url('../images/next_page.png');
+    background-position: -16px 0;
 }
 
 .pager .first-disabled
 {
-    background: url('../images/first_page_disabled.png');
+    background-position: -16px -16px;
+}
+
+.pager .last
+{
+    background-position: -16px -32px;
 }
 
 .pager .last-disabled
 {
-    background: url('../images/last_page_disabled.png');
+    background-position: -16px -48px;
 }
 
-.pager .prev-disabled
+.pager .next
 {
-    background: url('../images/prev_page_disabled.png');
+    background-position: -16px -64px;
 }
 
 .pager .next-disabled
 {
-    background: url('../images/next_page_disabled.png');
+    background-position: -16px -80px;
+}
+
+.pager .prev
+{
+    background-position: -16px -96px;
+}
+
+.pager .prev-disabled
+{
+    background-position: -16px -112px;
 }
 
 .pager .current
@@ -4507,6 +4696,7 @@ li.enabled a
     margin-left: 20px;
     border: 1px solid black;
     padding: 9px 0 0 11px;
+    word-break: break-all;
 }
 
 .hululu
@@ -5158,6 +5348,11 @@ td.popularity
     border-color:#fdbc59;
 }
 /*end of yellow CSS*/
+
+#forum-forum-body #body-table .table-body .article-delete
+{
+    float:right;
+}
 
 #ultimate-password
 {
