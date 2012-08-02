@@ -3113,7 +3113,6 @@ button.news-button
     cursor: pointer;
     width: 204px;
     height: 50px;
-    background: url('../images/calendar_top.png');
     display: block;
 }
 #club-schedule-content
