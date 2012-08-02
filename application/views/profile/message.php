@@ -14,7 +14,7 @@
                     </a>
                 </td>
                 <td>
-<?php echo Yii::app()->format->datetime($article->create_time); ?>
+<?php echo $article->created; ?>
                 </td>
             </tr>
 <?php endforeach; ?>

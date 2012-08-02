@@ -3430,7 +3430,7 @@ div.my-all-messages
 
 div.allmessages
 {
-    width:470px;
+    width:490px;
     height:290px;
     margin-top:55px;
     padding:5px;
@@ -3476,6 +3476,13 @@ div.friends-sortfriend div.avatar
     height:45px;
     padding:0px;
     float:left;
+}
+
+#space
+{
+    width:35px; 
+    height:45px;
+    outline: 1px sloid yellow;
 }
 
 #myfriend
@@ -3613,7 +3620,7 @@ div.profile-message-reply
     bottom:-100px;
 }
 
-.button-push
+#button-push
 {
     background-image:url('../profile/button/push.png');
     background-repeat:no-repeat ;
@@ -3621,6 +3628,9 @@ div.profile-message-reply
     height:35px;
     padding:0px;
     margin:0px;
+    position:relative;
+    right:35px;
+    bottom:0px;
 }
 
 .button-sure
@@ -3892,22 +3902,22 @@ td.reply-content
     position: relative;
 }
 
-td.reply-content span
+td.reply-content div
 {
     display: none;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0px;
+    left: 0px;
     width: 100%;
-    word-break: break-word;
+    /*word-break: break-word;*/
     background: AntiqueWhite ;
     z-index: 500;
 }
 
-td.reply-content:hover span
+td.reply-content:hover div
 {
     display: block;
-    z-index: 1000;
+    z-index: 10000000000000;
 }
 
 ul#self-message
@@ -3963,17 +3973,9 @@ table.group
     margin:0px;
 }
 
-div.allmessages table
-{
-    width:460px;
-    margin:0px;
-    text-align:center;
-    padding:0px;
-}
-
 div.allmessages tr th
 {
-    width:100px;
+    width:155px;
     height:20px;
     padding:0px;
     margin:0px;
@@ -3982,7 +3984,7 @@ div.allmessages tr th
 
 div.allmessages tr td
 {
-    width:100px;
+    width:155px;
     padding:0px;
     margin:0px;
     text-align:center;
