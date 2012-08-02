@@ -485,7 +485,8 @@ a:hover
 .calendar .right div h4,
 .calendar .calendar-create-button,
 .calendar .calendar-hide-button,
-.calendar .calendar-subscript-button
+.calendar .calendar-subscript-button,
+.calendar a.calendar-hide-event
 {
     background: url('../images/sprites.png') no-repeat;
 }
@@ -1570,7 +1571,7 @@ ul#nculife-details
 
 .calendar a.calendar-hide-event
 {
-    background: url('../images/calendar-hide-button.png') no-repeat;
+    background-position: -32px -96px;
     width: 32px;
     height: 32px;
     text-indent: -10000px;
