@@ -57,5 +57,6 @@ class Comment extends CActiveRecord
     {
         parent::afterFind();
         $this->content = htmlspecialchars($this->content);
+        $this->created = Yii::app()->format->datetime($this->created);
     }
 }
