@@ -11,7 +11,7 @@
     <img src="<?php echo Yii::app()->request->baseUrl ?>/statics/game/icon/question-mark.png" alt="<?php $achievement['name'] ?>">
     <div class="item-description">
         <h4>&lt; ？？？ &gt;</h4>
-        <span class="description">尚未探索，未知的旅程</span>
+        <span class="description">尚未探索，未知的旅程。</span>
     </div>
 <?php endif; ?>
 </div>

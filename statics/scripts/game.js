@@ -72,6 +72,21 @@
                 }
             });
             return false;
-        });     
+        });
+        $('.shop-items').click(function()
+        {
+            var target = $(this);
+            $.confirm({
+                message: '您確定要購買或是裝備此物品嗎？',
+                confirmed: function(result)
+                {
+                    if ( result )
+                    {
+                        window.location = target.attr('href');
+                    }
+                }
+            });
+            return false;
+        }); 
     });
 })(jQuery);
