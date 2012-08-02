@@ -118,11 +118,11 @@ class ForumController extends Controller
         if ( Article::model()->findByPk($id) )
         {
             $article = Article::model()->findByPk($id);
-            $article->viewed++;
-            $article->save();
             $this->render('view', array(
                 'article'   => $article,
             ));
+            $article->viewed++;
+            $article->save();
         }
         else 
         {
