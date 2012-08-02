@@ -3,11 +3,11 @@
 </div>
 <div id="forum-view-top2">
     
-    <?php 
-    //[not yet]
+    <?php
     $this->widget('Pager', array(
-        'url'       => 'forum/forum',
-        'pager'     => 1,
+        'url'       => 'forum/view',
+        'pager'     => $page_status,
+        'parameters'=> array('fid' => $fid, 'id' => $article->id)
     )); ?>
     <a id="forum-view-replylink" href="<?php echo Yii::app()->createUrl('forum/reply', array('aid'=>$article->id));?>"></a>
 </div>
@@ -43,15 +43,14 @@
     ?>
 </div>
 <?php
-$rep = $article->replies;
-foreach ($rep as $each):
+//$rep = $article->replies;
+foreach ($replies as $each):
 ?>
 <div id="forum-view-replies">
     <div class="forum-view-profile">
         <div class="profile-pic"></div>
-        <div class="profile-name"></div>
-        <div class="profile-id"></div>
-        <div class="profile-department"></div>
+        <div class="profile-name">暱稱：<?php echo User::model()->findByPK($each->author_id)->profile->nickname; ?></div>
+        <div class="profile-department">系所：<?php echo User::model()->findByPK($each->author_id)->profile->mydepartment->abbreviation;?></div>
     </div>
     <div class="reply-content">
         <?php echo $each -> content;?>
@@ -63,4 +62,10 @@ foreach ($rep as $each):
 endforeach;
 ?>
 <div id="forum-view-footer">
+    <?php
+    $this->widget('Pager', array(
+        'url'       => 'forum/view',
+        'pager'     => $page_status,
+        'parameters'=> array('fid' => $fid, 'id' => $article->id)
+    )); ?>
 </div>

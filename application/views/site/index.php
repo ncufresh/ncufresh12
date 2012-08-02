@@ -2,17 +2,14 @@
 <script type="text/javascript">
 jQuery(document).ready(function()
 {
-    var options = $.extend({
-        isMember:       <?php echo Yii::app()->user->isMember ? 'true' : 'false'; ?>
-    });
     jQuery('#marquee').marquee();
-    jQuery('#index-calendar').indexCalendar(options);
+    jQuery('#index-calendar div').calendar($.configures.calendarEventsUrl);
 });
 </script>
 <?php $this->endWidget();?>
 
 <div id="index-calendar">
-    <div class="calendar-bottom-wrapper">
+    <div>
     </div>
 </div>
 
