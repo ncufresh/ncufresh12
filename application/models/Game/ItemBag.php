@@ -61,7 +61,6 @@ class ItemBag extends CActiveRecord
         }
         else
         return 1;
-
     }
     public function equipItem($item_id)
     {
