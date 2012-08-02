@@ -9,13 +9,13 @@
     ※抽籤系統連結路徑
 </p>
 <p>
-1.<a href="http://www.ncu.edu.tw/" title="本校首頁">本校首頁</a>&rarr;重要連結&rarr;「宿舍抽籤系統」
+    1.<a href="http://www.ncu.edu.tw/" title="本校首頁">本校首頁</a>&rarr;重要連結&rarr;「宿舍抽籤系統」
 </p>
 <p>
-2.<a href="http://osa-55.adm.ncu.edu.tw/services.php?did=4" title="生輔組網頁">生輔組網頁</a>&rarr;「宿舍抽籤系統」
+    2.<a href="http://osa-55.adm.ncu.edu.tw/services.php?did=4" title="生輔組網頁">生輔組網頁</a>&rarr;「宿舍抽籤系統」
 </p>
 <p>
-3.<a href="http://www.ncu.edu.tw/" title="本校首頁">本校首頁</a>&rarr;在校生&rarr;「住宿資訊」&rarr;「宿舍抽籤系統」
+    3.<a href="http://www.ncu.edu.tw/" title="本校首頁">本校首頁</a>&rarr;在校生&rarr;「住宿資訊」&rarr;「宿舍抽籤系統」
 </p>
 <p>
     (二)住宿生請自備棉被、床墊、單人蚊帳(自行決定)、日常用品及盥洗用具、檯燈等；個人行李不宜過多，寒、暑假關舍時新生寢室內個人物品須全部清空(寒假期間會開放儲藏室提供同學放置寢具等物品)，以便提供寒、暑宿同學申請住宿。
@@ -55,5 +55,6 @@
     (七)本校宿舍床位多屬上舖，床板皆為固定尺寸，若學生身材較壯大或有特殊住宿需求之學生，請主動與生輔組宿舍承辦人聯繫，將協助調整床位，調整後將無法與同班、系同學一同住宿。
 </p>
 <p>
-    (八)相關住宿問題請洽詢生活輔導組(分機：57282、57290；E-mail：<u>ncu57290@cc.ncu.edu.tw</u>)。
+    (八)相關住宿問題請洽詢生活輔導組(分機：57282、57290；E-mail：
+    <u>ncu57290@cc.ncu.edu.tw</u>)。
 </p>

@@ -33,7 +33,8 @@ class CalendarController extends Controller
                 'allow',
                 'actions'   => array(
                     'ajaxEvent',
-                    'ajaxEvents'
+                    'ajaxEvents',
+                    'ajaxClubEvents'
                 ),
                 'users'     => array('*')
             ),
@@ -296,6 +297,19 @@ class CalendarController extends Controller
         $this->_data['event']['end'] = $event->end;
         $this->_data['event']['name'] = $event->name;
         $this->_data['event']['description'] = $event->description;
+    }
+
+    public function actionAjaxClubEvents($id)
+    {
+        $events = Calendar::model()->getClubCalendar($id)->events;
+        foreach ( $events as $key => $event )
+        {
+            $this->_data['events'][$key]['id'] = $event->id;
+            $this->_data['events'][$key]['start'] = $event->start;
+            $this->_data['events'][$key]['name'] = $event->name;
+            $this->_data['events'][$key]['end'] = $event->end;
+            $this->_data['events'][$key]['invisible'] = $event->invisible;
+        }
     }
 
     public function actionAjaxEvents($club = false)
