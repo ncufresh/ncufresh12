@@ -9,8 +9,8 @@
 class ForumController extends Controller
 {
     const ARTICLES_PER_PAGE = 10;
-    NEW_ARTICLE_VALUE = 3000;
-    NEW_REPLY_VALUE = 1000;
+    const NEW_ARTICLE_VALUE = 3000;
+    const NEW_REPLY_VALUE = 1000;
     public function init()
     {
         parent::init();

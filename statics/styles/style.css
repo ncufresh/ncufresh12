@@ -2397,10 +2397,11 @@ button.news-button
 
 #readme-notice
 {
+    height: 420px;
+    width: 700px;
+    padding: 15px 25px;
     background-position: -5px -1350px;
-    height: 450px;
     position: relative;
-    width: 750px;
 }
 
 #notice-back
@@ -2677,12 +2678,13 @@ button.news-button
 #read-notice-menu 
 {
     background: #F7AAF7;
+    top: 10px;
 }
 
 .readme-menu
 {
     width: 200px;
-    height: 300px;
+    heigth: auto;
     top: 50px;
     left: -187px;
     border-radius: 0 10px 10px 0;
@@ -2861,7 +2863,7 @@ button.news-button
     height: 66px;
     background-repeat: no-repeat; 
     float: right;
-    margin-right: 20px;
+    margin-right: 18px;
     
 }
 .club-head:hover
@@ -3039,6 +3041,8 @@ button.news-button
 .club-display-head a
 {
     float: right;
+    margin-top: 14px;
+    margin-right: 20px;
 }
 
 .club-display-bottom
@@ -3062,6 +3066,26 @@ button.news-button
 {
     background: url('../club/4-3.png');
     background-repeat: no-repeat;
+}
+.club-back-button
+{
+    float: right;
+    width: 50px;
+    height: 50px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+#club-back1
+{
+    background: url('../club/clubback1.png');
+}
+#club-back2
+{
+    background: url('../club/clubback2.png');
+}
+#club-back3
+{
+    background: url('../club/clubback3.png');
 }
 .club-picture
 {
@@ -3094,7 +3118,6 @@ button.news-button
     cursor: pointer;
     width: 204px;
     height: 50px;
-    background: url('../images/calendar_top.png');
     display: block;
 }
 #club-schedule-content
@@ -3197,12 +3220,12 @@ ul.friend-other-sort
     list-style-type:none;
 }
 
-ul#other-department
+/*ul#other-department
 {
     width:660px;
     padding:5px;
     margin:0px;
-}
+}*/
 
 ul.users-department li
 {
@@ -3314,37 +3337,34 @@ div.friends
     margin:0px;
 }
 
-form div.sameDsameG
+#sameDsameG
 {
-    background-image:url('../profile/sameDsameG.png');
-    background-repeat:no-repeat ;
+    background: url('../profile/sameDsameG.png') no-repeat;
     width:690px;
     height:370px;
     padding:25px;
     margin:0px;
 }
 
-form div.sameDdiffG
+#sameDdiffG
 {
-    background-image:url('../profile/sameDdiffG.png');
-    background-repeat:no-repeat ;
+    background: url('../profile/sameDdiffG.png') no-repeat ;
     width:690px;
     height:370px;
     padding:25px;
     margin:0px;
 }
 
-form div.other-department
+#other-department
 {
-    background-image:url('../profile/otherD.png');
-    background-repeat:no-repeat ;
+    background:url('../profile/otherD.png') no-repeat ;
     width:690px;
     height:370px;
     padding:25px;
     margin:0px;
 }
 
-div.request
+#request
 {
     background-image:url('../profile/request.png');
     background-repeat:no-repeat ;
@@ -3361,11 +3381,17 @@ div.friends-part1
     margin:25px 25px 25px 25px;
 }
 
-div.friends-part2
+.friends-part2
 {
     width:680px;
     height:370px;
     margin:0px;
+}
+
+div.friends-part2 button
+{
+    padding:0px;
+    margin-top:0px;
 }
 
 /*div.friends-part4 form
@@ -3386,7 +3412,7 @@ div.friends-part2 div.avatar
     float:left;
 }
 
-div.friends-part3
+.friends-part3
 {
     width:675px;
     height:350px;
@@ -3452,9 +3478,9 @@ div.friends-sortfriend div.avatar
     float:left;
 }
 
-div.myfriend
+#myfriend
 {
-    background-image:url('../profile/sameDdiffG.png');
+    background-image:url('../profile/myfriend.png');
     background-repeat:no-repeat ;
     width:690px;
     height:370px;
@@ -3462,7 +3488,7 @@ div.myfriend
     margin:0px;
 }
 
-div.myprofile
+.myprofile
 {
     background-image:url('../profile/profile.png');
     background-repeat:no-repeat ;
@@ -3472,12 +3498,17 @@ div.myprofile
     margin:0px;
 }
 
-div.myprofile form button
+#newgroup
 {
-    float:right;
+    background-image:url('../profile/newgroup.png');
+    background-repeat:no-repeat ;
+    width:690px;
+    height:370px;
+    padding:25px;
+    margin:0px;
 }
 
-div.newgroup
+#mygroup
 {
     background-image:url('../profile/mygroup.png');
     background-repeat:no-repeat ;
@@ -3563,6 +3594,9 @@ div.profile-message-reply
     padding: 0px;
     margin: 0px;
     float:right;
+    position:relative;
+    right:27px;
+    bottom:36px;
 }
 
 .button-cancel
@@ -3574,7 +3608,9 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     display:block;
-    float:right;
+    position:absolute;
+    right:515px;
+    bottom:-100px;
 }
 
 .button-push
@@ -3595,6 +3631,9 @@ div.profile-message-reply
     height:34px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:577px;
+    bottom:-100px;
 }
 
 .button-addgroup
@@ -3615,8 +3654,10 @@ div.profile-message-reply
     height:33px;
     padding:0px;
     margin:0px;
-    float:right;
     display:block;
+    position:absolute;
+    right:10px;
+    bottom:0px;
 }
 
 #button-addmember
@@ -3628,7 +3669,9 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     display:block;
-    float:right;
+    position:absolute;
+    right:256px;
+    bottom:0px;
 }
 
 #button-deletemember
@@ -3639,7 +3682,9 @@ div.profile-message-reply
     height:34px;
     padding:0px;
     margin:0px;
-    float:right;
+    position:absolute;
+    right:133px;
+    bottom:0px;
 }
 
 .button-makefriend
@@ -3650,6 +3695,9 @@ div.profile-message-reply
     height:34px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:63px;
+    bottom:0px;
 }
 
 .button-deletefriend
@@ -3660,6 +3708,9 @@ div.profile-message-reply
     height:35px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:99px;
+    bottom:0px;
 }
 
 .button-mygroup
@@ -3672,6 +3723,19 @@ div.profile-message-reply
     margin:0px;
 }
 
+.button-addfriends
+{
+    background-image:url('../profile/button/addfriend.png');
+    background-repeat:no-repeat ;
+    width:96px;
+    height:35px;
+    padding:0px;
+    margin:0px;
+    position:absolute;
+    right:100px;
+    bottom:0px;
+}
+
 .button-addfriend
 {
     background-image:url('../profile/button/addfriend.png');
@@ -3680,6 +3744,9 @@ div.profile-message-reply
     height:35px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:550px;
+    bottom:-72px;
 }
 
 #button-editor
@@ -3805,11 +3872,11 @@ div.delete-group
     margin:0px;
 }
 
-form.group-description
+/*form.group-description
 {
     width:500px;
     height:635px;
-}
+}*/
 
 div.self-messages
 {
@@ -4668,11 +4735,11 @@ li.enabled a
 
 .forum-view-profile
 {
-    background: #97d2f3;
+    background: #f8c77c;
     width: 165px;
-    height: 283px;
+    height: 263px;
     border-radius: 6px;
-    border: 2px solid #ffffff;
+    border: 2px solid #eaa520;
     margin-left: 45px;
     padding-top: 7px;
     float: left;
@@ -4689,30 +4756,26 @@ li.enabled a
 
 .forum-view-profile .profile-name
 {
-    width: 150px;
-    height: 25px;
-    margin: 1px auto;
-    background: #ffffff;
-    border-top-left-radius:5px;
-    border-top-right-radius:5px;
-}
-
-.forum-view-profile .profile-id
-{
-    width: 150px;
-    height: 25px;
-    margin: 1px auto;
-    background: #ffffff;
+    width: 140px;
+    height: 23px;
+    margin: 10px auto;
+    background: #fff0c8;
+    border-radius:5px;
+    padding-top: 2px;
+    padding-left: 10px;
+    color: #c57902;
 }
 
 .forum-view-profile .profile-department
 {
-    width: 150px;
-    height: 25px;
+    width: 140px;
+    height: 23px;
     margin: 1px auto;
-    background: #ffffff;
-    border-bottom-left-radius:5px;
-    border-bottom-right-radius:5px;
+    background: #fff0c8;
+    border-radius:5px;
+    padding-top: 2px;
+    padding-left: 10px;
+    color: #c57902;
 }
 
 #forum-view-body .forum-view-title
@@ -4720,11 +4783,12 @@ li.enabled a
     width: 389px;
     height: 31px;
     border-radius: 6px;
-    background: #97d2f3;
+    background: #fff0c8;
     float: left;
     margin-left: 20px;
     margin-bottom: 3px;
-    border: 2px solid #ffffff;
+    border: 2px solid #eaa520;
+    font-weight: bold;
     padding: 9px 0 0 11px;
 }
 
@@ -4736,7 +4800,7 @@ li.enabled a
     background: #ffffff;
     float: left;
     margin-left: 20px;
-    border: 1px solid black;
+    border: 2px solid #eaa520;
     padding: 9px 0 0 11px;
     word-break: break-all;
 }
@@ -4748,19 +4812,20 @@ li.enabled a
     height: 30px;
     position: absolute;
     top: 75px;
-    left: 199px;
+    left: 200px;
 }
 
 #forum-view-body .forum-view-comments
 {
-    width: 400px;
-    height: 30px;
+    width: 389px;
+    height: 25px;
     border-radius: 6px;
-    background: #ffffff;
+    background: #f4efe0;
     float: right;
     margin-top: 2px;
     margin-right: 46px;
-    border: 2px solid #97d2f3;
+    border: 2px solid #eaa520;
+    padding: 5px 0 0 11px;
 }
 
 #forum-view-replies
@@ -4960,9 +5025,9 @@ li.enabled a
 }
 
 #forum-forum-body #body-table .table-body td.title,
-td.author,
-td.reply,
-td.popularity
+#forum-forum-body #body-table .table-body td.author,
+#forum-forum-body #body-table .table-body td.reply,
+#forum-forum-body #body-table .table-body td.popularity
 {
     border-top-style:solid;
     border-bottom-style:solid;
@@ -4993,6 +5058,9 @@ td.popularity
 
 #forum-forum-body #body-table .table-body td.time
 {
+    width: 80px;
+    font-size: 0.8em;
+    color: #757575;
     border-top-style:solid;
     border-bottom-style:solid;
     border-right-style:solid;
@@ -5000,6 +5068,7 @@ td.popularity
     border-width:2px;
     border-top-width:0.8px;
     background-color:#ffffff;
+    word-break: break-all;
 }
 
 #forum-forum-footer

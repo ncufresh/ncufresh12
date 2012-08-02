@@ -298,6 +298,6 @@ class SiteController extends Controller
 
     public function actionSuccess()
     {
-         $this->render('success');
+        $this->render('success');
     }
 }
