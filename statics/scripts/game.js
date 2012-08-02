@@ -38,7 +38,7 @@
             return false;
         });
 
-        $('.item-description').each(function()
+        $('.item-description,.mission-description').each(function()
         {
             var icon = $(this).parent();
             var description = $(this).detach();

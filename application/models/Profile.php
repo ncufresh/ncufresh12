@@ -4,12 +4,6 @@ class Profile extends CActiveRecord
 {
     public $department;
     
-    public $year;
-    
-    public $month;
-    
-    public $day;
-    
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
@@ -23,14 +17,12 @@ class Profile extends CActiveRecord
     public function rules()
     {   
         return array(
-            array('name, nickname, department, grade, senior, year, month, day ,gender','required'),
+            array('name, nickname, department, grade, senior, birthday ,gender','required'),
             array('name', 'length','min' => 1, 'max' => 8),
             array('department', 'numerical','min' => 1, 'max' => 21),
-            array('grade', 'numerical','min' => 0, 'max' => 5),
+            array('grade', 'numerical','min' => 0, 'max' => 4),
             array('nickname', 'unique', 'className' => 'Profile', 'on' => 'register, editor'),
-            array('year', 'numerical', 'min' => 1990, 'max' => 2000),
-            array('month', 'numerical', 'min' => 1, 'max' => 12), 
-            array('day', 'numerical', 'min' => 1, 'max' => 31),
+            array('birthday', 'isDate'),
         );
     }
 
@@ -48,6 +40,19 @@ class Profile extends CActiveRecord
                 'user_id'
             )
         ); 
+    }
+
+    public function isDate($attr)
+    {
+        $this->birthday = $this->{$attr};
+        if ( preg_match('/^\d{4}\-\d{2}-\d{2}$/', $this->birthday) )
+        {
+            list($year, $month, $day) = explode('-', $this->birthday);
+            $this->birthday = mktime(0, 0, 0, $month, $day, $year);
+            if ( $this->birthday === false ) $this->addError('birthday', 'WRONG!!!');
+            return true;
+        }
+        $this->addError('birthday', 'WRONG!!!');
     }
 
     public function deleteProfile()
@@ -126,30 +131,20 @@ class Profile extends CActiveRecord
         );
     }
 
-    protected function beforeValidate()
-    {
-        if ( parent::beforeValidate() )
-        {
-            $this->birthday = mktime(0, 0, 0, $this->month, $this->day, $this->year);
-            return true;
-        }
-        return false; 
-        
-    }
-    
     protected function afterFind()
     {
         parent::afterFind();
         $this->birthday = Yii::app()->format->date($this->birthday);
     }
-
-    protected function beforeSave()
+    
+    public function beforeSave()
     {
         if ( parent::beforeSave() )
         {
             if ( $this->getIsNewRecord() || $this->getScenario('editor') )
             {
-                $this->birthday = $this->birthday;
+                list($year, $month, $day) = explode('-', $this->birthday);
+                $this->birthday = mktime(0, 0, 0, $month, $day, $year);
             }
             else
             {
