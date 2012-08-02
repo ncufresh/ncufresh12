@@ -4411,6 +4411,17 @@ img.user_img
     display: inline-block;
 }
 
+.game-display .achievement-icons
+{
+    float: left;
+}
+
+.game-display .achievement-icons img
+{
+    width:115px;
+    display: inline-block;
+}
+
 .item-description
 {
     background: #646464;
