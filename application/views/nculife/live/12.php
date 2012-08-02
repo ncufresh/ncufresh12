@@ -2,7 +2,7 @@
     NOVA
 </h4>
 <h4>
-    <a href="http://www.nova.com.tw/shop/store_info.php?mall_no=6">NOVA資訊廣場-中壢店</a>
+    <a href="http://www.nova.com.tw/shop/store_info.php?mall_no=6" title="NOVA資訊廣場-中壢店">NOVA資訊廣場-中壢店</a>
 </h4>
 <p>
     是中壢地區最大且產品最完善的3C賣場，賣場內提供寬敞明亮的購物空間，內部現代感的設計，多樣化的3C商品，包含筆記型電腦、PDA、通訊、DIY電腦等。

@@ -1,5 +1,6 @@
 <h4>
-申請就學貸款須知</h4>
+    申請就學貸款須知
+</h4>
 <p>
     1.取得繳費單後，先至<a href="https://sloan.bot.com.tw/sloan/sLoanLogin.do" title="台灣銀行網站">台灣銀行網站</a>申請貸款。
 </p>

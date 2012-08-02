@@ -45,6 +45,7 @@ jQuery(document).ready(function()
                     .attr('class', '')
                     .attr('tab', $(this).attr('tab'))
                     .attr('page', $(this).attr('page'))
+                    .attr('title', $(this).text())
                     .click(getTabContent);
                 $('#nculife-dh').append(title);
             });
@@ -61,6 +62,7 @@ jQuery(document).ready(function()
                     .attr('class', '')
                     .attr('tab', $(this).attr('tab'))
                     .attr('page', $(this).attr('page'))
+                    .attr('title', $(this).text())
                     .click(getTabContent);
                 $('#nculife-dh').append(title);
             });
