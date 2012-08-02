@@ -3041,6 +3041,8 @@ button.news-button
 .club-display-head a
 {
     float: right;
+    margin-top: 14px;
+    margin-right: 20px;
 }
 
 .club-display-bottom
@@ -3071,6 +3073,7 @@ button.news-button
     width: 50px;
     height: 50px;
     margin-right: 30px;
+    cursor: pointer;
 }
 #club-back1
 {
