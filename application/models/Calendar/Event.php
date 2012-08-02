@@ -159,6 +159,7 @@ class Event extends CActiveRecord
         parent::afterFind();
         $this->start -= date('Z', $this->start);
         $this->end   -= date('Z', $this->end);
+        $this->description = nl2br(htmlspecialchars($this->description));
     }
     
     public function beforeSave()

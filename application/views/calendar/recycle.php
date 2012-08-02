@@ -59,11 +59,11 @@ jQuery(document).ready(function()
             }
         );
     });
-    $('.calendar-recycle .container').scrollable();
+    $('#calendar-recycle .container').scrollable();
 });
 </script>
 <?php $this->endWidget();?>
-<div class="calendar-recycle">
+<div id="calendar-recycle">
     <h4>回收</h4><a class="back" href="<?php echo Yii::app()->createUrl('calendar/view');?>">返回</a>
     <div class="container">
 <?php foreach ( $result as $key => $events ):?>
