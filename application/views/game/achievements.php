@@ -1,4 +1,4 @@
-<h4 class="game-title">< 成就列表 ></h4>
+<h4 class="game-title">成就列表</h4>
 <?php foreach($achievements as $achievement) : ?>
 <div class="achievement-icons">
 <?php if ( $achievement['get'] == true ) : ?>

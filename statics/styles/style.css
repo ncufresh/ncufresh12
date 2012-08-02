@@ -4414,9 +4414,15 @@ img.user_img
  */
 .game-display .game-title
 {
+    width: 335px;
+    height: 20px;
+    margin: 5px 11px;
     font-size: 1.5em;
-    color: #4d136e;
-    padding: 6px 0px;
+    text-align: center;
+    background-color: black;
+    border: 3px solid #00788F;
+    border-radius: 10px;
+    color: #B8EEEC;
 }
 
 .game-display .item-category
@@ -4427,9 +4433,9 @@ img.user_img
     font-size: 1.5em;
     text-align: center;
     background-color: black;
-    border: 3px solid #00788F;
+    border: 3px solid #6CE44E;
     border-radius: 10px;
-    color: #B8EEEC;
+    color: #ABF194;
 }
 
 .game-display .shop-message
@@ -4448,9 +4454,11 @@ img.user_img
 .game-display .experience
 {
     background: #FFFFFF;
-    border: 1px solid #000000;
+    border: 1px solid #22A2D5;;
     height: 6px;
-    width: 320px;
+    width: 360px;
+    margin: 10px 0;
+    font-weight: bold;
 }
 
 .game-display .experience .text
@@ -4461,20 +4469,20 @@ img.user_img
     margin: -0.5em 0 -6px 0;
     overflow: visible;
     text-align: center;
-    width: 318px;
+    width: 358px;
 }
 
 .game-display .experience .bar
 {
-    background: #D7D606;
-    border: 1px solid #FFFFFF;
+    background: #3FD1EC;
+    border: 1px solid white;
     height: 4px;
-    max-width: 318px;
+    max-width: 358px;
 }
 
 .game-display .experience .max
 {
-    background: #FFA100;
+    background: #3F54EC
 }
 
 .game-display .item-icons img
