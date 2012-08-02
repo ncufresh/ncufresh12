@@ -1063,7 +1063,7 @@
                 })(this));
                 scrollContainer.addClass(classes);
             }
-            $.extend($(this).__proto__, {
+            $.extend($(this).constructor.prototype, {
                 scrollTo: function(position)
                 {
                     var scrollDraggableHeight = updateScrollDraggableHeight();
@@ -1563,7 +1563,7 @@
             }
             td.appendTo(tr);
         }
-        $.extend( table.__proto__,{
+        $.extend( table.constructor.prototype,{
             markToday: markToday,
             markEvent: markEvent,
             cleanUpMark: cleanUpMark,
@@ -1740,7 +1740,7 @@
                         var left = $(this).parents('table').offset().left + event.currentTarget.offsetLeft;
                         var top = $(this).parents('table').offset().top + event.currentTarget.offsetTop - prompt.height();
                         prompt.css({
-                            top: top-5,
+                            top: top,
                             left: left,
                             display: 'inline-block'
                         });
@@ -2104,7 +2104,7 @@
                 overlay.on('click', function() { return overlayClose(uuid); });
             }
             if ( options.closeOnEscape ) $(document).on('keyup', escape);
-            $.extend(overlay.__proto__, {
+            $.extend(overlay.constructor.prototype, {
                 close: function(index)
                 {
                     return overlayClose($(this).data('uuid'), index);
@@ -2488,6 +2488,8 @@
             lightboxDetailsId:          'lightbox-details',
             lightboxCaptionId:          'lightbox-caption',
             lightboxPageId:             'lightbox-page',
+            maxImageHeight:             480,
+            maxImageWidth:              640,
             fixedNavigation:            false,
             containerBorderSize:        10,
             containerResizeSpeed:       'slow',
@@ -2624,7 +2626,29 @@
             $('#' + options.lightboxImageId + ', #' + options.lightboxDetailsId + ', #' + options.lightboxPageId).hide();
 
             preloader.onload = function() {
+                var height = preloader.height;
+                var width = preloader.width;
                 $('#' + options.lightboxImageId).attr('src', images[active][1]);
+                if ( preloader.width > 0 && preloader.height > 0 )
+                {
+                    if ( width / height >= options.maxImageWidth / options.maxImageHeight )
+                    {
+                        console.log(preloader.width);
+                        if ( width > options.maxImageWidth )
+                        {
+                            preloader.width = options.maxImageWidth;
+                            preloader.height = (height * options.maxImageWidth) / width;
+                        }
+                    }
+                    else
+                    {
+                        if ( height > options.maxImageHeight )
+                        {
+                            preloader.height = options.maxImageHeight;
+                            preloader.width = (width * options.maxImageHeight) / height;
+                        }
+                    }
+                }
                 lightboxResize(preloader.width, preloader.height);
             };
             preloader.src = images[active][1];

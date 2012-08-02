@@ -51,7 +51,7 @@ jQuery(document).ready(function()
     <h3 class="date"></h3>
     <div class="right">
     </div>
-    <a href="<?php echo Yii::app()->createUrl('calendar/createclubevent');?>">新增</a>
+    <a class="calendar-create-button calendar-buttons" href="<?php echo Yii::app()->createUrl('calendar/createclubevent');?>">新增</a>
     <div class="prompt">
         <ul>
         </ul>
