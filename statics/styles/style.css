@@ -452,9 +452,44 @@ a:hover
 
 #datepicker
 {
-    height: 120px;
+    background: #646464;
+    background: rgba(100, 100, 100, 0.7);
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    color: #FFFFFF;
+    margin: -75px 0 0 20px;
+    padding: 10px;
     position: absolute;
-    width: 120px;
+    width: 220px;
+}
+
+#datepicker a
+{
+    color: #FFFFFF;
+}
+
+#datepicker table
+{
+    text-align: center;
+    width: 100%;
+}
+
+#datepicker td
+{
+    border: 1px solid transparent;
+}
+
+#datepicker td.hover
+{
+    background: #CCFFFF;
+    border: 1px solid #FF3333;
+    color: #000000;
+    cursor: pointer;
+}
+
+#datepicker td.selected
+{
+    border: 1px solid #33FF33;
 }
 
 #sidebar-personal-toggle,

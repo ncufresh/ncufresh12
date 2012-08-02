@@ -2789,8 +2789,8 @@
     $.fn.datepicker = function(settings)
     {
         var options = $.extend({
-            year:   2000,
-            month:  1,
+            year:   1994,
+            month:  8,
         }, settings);
 
         if ( ! this.length ) return this;
@@ -2831,13 +2831,22 @@
                         var cell = $(this);
                         onClick(year, month, $(this).data('day'), function()
                         {
-                            cell.parent().parent().find('td').removeAttr('style');
-                            cell.css({
-                                backgroundColor: 'red'
-                            });
+                            cell.parent().parent().find('td').removeClass('selected');
+                            cell.addClass('selected');
                         });
+                    },
+                    dayEnter: function()
+                    {
+                        $(this).addClass('hover');
+                    },
+                    dayLeave: function()
+                    {
+                        $(this).removeClass('hover');
                     }
-                }).appendTo($.datepicker);
+                })
+                .appendTo($.datepicker)
+                .find('caption a:eq(1)')
+                .text(year + '年' + month + '月');
                 return calendar;
             };
             $.datepicker = $('<div></div>')
