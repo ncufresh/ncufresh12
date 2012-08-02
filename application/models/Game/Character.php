@@ -244,12 +244,12 @@ class Character extends CActiveRecord
     {
         $character = Character::model()->findByPk($id);
         $price = 0;
-        if( $character->skin !== null)
-            $price = $price + $character->skin->price;
+        if( $character->skins !== null)
+            $price = $price + $character->skins->price;
         if( $character->eyes !== null)
             $price = $price + $character->eyes->price;
-        if( $character->hair !== null)
-            $price = $price + $character->hair->price;
+        if( $character->hairs !== null)
+            $price = $price + $character->hairs->price;
         if( $character->shoes !== null)
             $price = $price + $character->shoes->price;
         if( $character->pants !== null)

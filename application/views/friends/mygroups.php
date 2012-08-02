@@ -4,11 +4,10 @@
     <li><span id="introduce">群組簡介:</span><?php echo $mygroup->description; ?></li>
 <ul>
 </div>
-<form method="POST" action="<?php echo $this->createUrl('friends/deletegroup', array('id'=>$mygroup->id)); ?>">
-<div class="newgroup">
-   <div class="friends-part2">
+<div id="mygroup">
+<form class="friends-part2 method="POST" action="<?php echo $this->createUrl('friends/deletegroup', array('id'=>$mygroup->id)); ?>">
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
-        <ul class="other-department">
+        <ul class="users-department">
 <?php foreach ($members as $member ): ?>
             <li>
 <?php $profile = Profile::model()->findByPK($member->user_id); ?>
@@ -27,10 +26,10 @@
             </li>
 <?php endforeach; ?>
         </ul>
-    </div>
-</div>
-<a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$mygroup->id))  ?>" class="button-addmember" ></a>
-<button type="submit" class="button-deletemember"></button>
-<a href="<?php echo Yii::app()->createUrl('friends/deletegroup', array('id'=>$mygroup->id))  ?>" class="button-deletegroup" ></a>
+
+<a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$mygroup->id))  ?>" id="button-addmember" ></a>
+<button type="submit" id="button-deletemember"></button>
+<a href="<?php echo Yii::app()->createUrl('friends/deletegroup', array('id'=>$mygroup->id))  ?>" id="button-deletegroup" ></a>
 <button type="button" class="button-back"></button>
 </form>
+</div>

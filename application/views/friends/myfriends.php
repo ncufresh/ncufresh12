@@ -1,9 +1,8 @@
-<form method="POST" action="<?php echo $this->createUrl('friends/deletefriends'); ?>">
+<h1>我的好友</h1>
+<div id="myfriend">
+<form class="friends-part2" method="POST" action="<?php echo $this->createUrl('friends/deletefriends'); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
-<h1 class="friend-title">我的好友</h1>
-<div class="myfriend">
-    <div class="friends-part2">
-        <ul class="other-department">
+        <ul class="users-department">
 <?php foreach ( $user->friends as $friend ) :?>
             <li>
 <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $friend->profile->id));  ?>">
@@ -21,8 +20,7 @@
             </li>
 <?php endforeach;?>
         </ul>
-    </div>
-</div>
-<button type="submit" class="button-deletefriend"></button>
-<button type="button" class="button-back"></button>
+    <button type="submit" class="button-deletefriend"></button>
 </form>
+<button type="button" class="button-back"></button>
+</div>
