@@ -3179,6 +3179,7 @@ button.news-button
     position: relative;
     width: 45%;
     float: left;
+    height: 290px;
 }
 
 .club-web
@@ -3475,7 +3476,7 @@ div.my-all-messages
 
 div.allmessages
 {
-    width:470px;
+    width:490px;
     height:290px;
     margin-top:55px;
     padding:5px;
@@ -3521,6 +3522,13 @@ div.friends-sortfriend div.avatar
     height:45px;
     padding:0px;
     float:left;
+}
+
+#space
+{
+    width:35px; 
+    height:45px;
+    outline: 1px sloid yellow;
 }
 
 #myfriend
@@ -3658,7 +3666,7 @@ div.profile-message-reply
     bottom:-100px;
 }
 
-.button-push
+#button-push
 {
     background-image:url('../profile/button/push.png');
     background-repeat:no-repeat ;
@@ -3666,6 +3674,9 @@ div.profile-message-reply
     height:35px;
     padding:0px;
     margin:0px;
+    position:relative;
+    right:35px;
+    bottom:0px;
 }
 
 .button-sure
@@ -3741,7 +3752,7 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:63px;
+    right:106px;
     bottom:0px;
 }
 
@@ -3790,8 +3801,8 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:550px;
-    bottom:-72px;
+    right:522px;
+    bottom:-98px;
 }
 
 #button-editor
@@ -3937,22 +3948,22 @@ td.reply-content
     position: relative;
 }
 
-td.reply-content span
+td.reply-content div
 {
     display: none;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0px;
+    left: 0px;
     width: 100%;
-    word-break: break-word;
+    /*word-break: break-word;*/
     background: AntiqueWhite ;
     z-index: 500;
 }
 
-td.reply-content:hover span
+td.reply-content:hover div
 {
     display: block;
-    z-index: 1000;
+    z-index: 10000000000000;
 }
 
 ul#self-message
@@ -4008,17 +4019,9 @@ table.group
     margin:0px;
 }
 
-div.allmessages table
-{
-    width:460px;
-    margin:0px;
-    text-align:center;
-    padding:0px;
-}
-
 div.allmessages tr th
 {
-    width:100px;
+    width:155px;
     height:20px;
     padding:0px;
     margin:0px;
@@ -4027,7 +4030,7 @@ div.allmessages tr th
 
 div.allmessages tr td
 {
-    width:100px;
+    width:155px;
     padding:0px;
     margin:0px;
     text-align:center;
@@ -4227,6 +4230,26 @@ img.user_img
 /**
  * Game
  */
+.game-display .game-title
+{
+    font-size: 1.5em;
+    color: #4d136e;
+    padding: 6px 0px;
+}
+
+.game-display .shop-message
+{
+    font-size: 2.5em;
+    color: #0C533F;
+    padding: 12px 0px;
+} 
+
+.game-display .shop-click
+{
+    font-size: 1.5em;
+    color: black;
+} 
+
 .game-display .experience
 {
     background: #FFFFFF;
@@ -4259,10 +4282,9 @@ img.user_img
     background: #FFA100;
 }
 
-.game-display a img
+.game-display .item-icons img
 {
     width:85px;
-
     display: inline-block;
 }
 
@@ -4294,6 +4316,12 @@ img.user_img
 div.item-description span
 {
     display:block;
+}
+div.item-description .exist
+{
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #ff0000;
 }
 #game-mission-dialog
 {
@@ -4839,14 +4867,14 @@ li.enabled a
 
 #forum-view-body #forum-view-content
 {
-    width: 389px;
-    height: 191px;
+    width: 378px;
+    min-height: 182px;
     border-radius: 6px;
     background: #ffffff;
     float: left;
     margin-left: 20px;
     border: 2px solid #eaa520;
-    padding: 9px 0 0 11px;
+    padding: 9px 11px 9px 11px;
     word-break: break-all;
 }
 
@@ -4873,6 +4901,15 @@ li.enabled a
     padding: 5px 0 0 11px;
 }
 
+#forum-view-body #form-comment .forum-comment-text
+{
+    width: 386px;
+    height: 28px;
+    float: right;
+    margin-top: 2px;
+    margin-right: 46px;
+}
+
 #forum-view-replies
 {
     background: url('../forum/view/background.png');
@@ -4885,15 +4922,16 @@ li.enabled a
 
 #forum-view-replies .reply-content
 {
-    width: 389px;
-    height: 241px;
+    width: 378px;
+    min-height: 232px;
     border-radius: 6px;
     background: #ffffff;
     float: left;
     margin-left: 20px;
     margin-top: 20px;
-    border: 1px solid black;
-    padding: 9px 0 0 11px;
+    border: 2px solid #eaa520;
+    padding: 9px 11px 9px 11px;
+    word-break: break-all;
 }
 
 #forum-forum-top2
