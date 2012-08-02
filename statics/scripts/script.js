@@ -2801,7 +2801,18 @@
 
     var onClick = function(year, month, day, callback)
     {
-        input.val(year + '-' + month + '-' + day).change().blur().prop('disabled', false);
+        var textPad = function(string, length)
+        {
+            if ( string.length >= length ) return string;
+            return textPad('0' + string, length);
+        }
+        input.val(
+            year
+          + '-'
+          + textPad(month.toString(), 2)
+          + '-'
+          + textPad(day.toString(), 2)
+        ).change().blur().prop('disabled', false);
         $.datepicker.fadeOut();
         if ( callback ) callback();
     };
@@ -2916,7 +2927,7 @@
         
         if ( $('#club').length ) $.clubs();
 
-        $('#form-register-birthday').datepicker();
+        $('input.datepicker').datepicker();
 
         $('#form-sidebar-register, #form-login-register').click(function()
         {
