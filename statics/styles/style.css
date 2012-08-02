@@ -4221,6 +4221,35 @@ img.user_img
     display: inline-block;
 }
 
+.item-description
+{
+    background: #646464;
+    background-color: rgba(100, 100, 100, 0.9);
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    color: #EFEFEF;
+    display: none;
+    margin: -45px 0 0 85px;
+    padding: 10px;
+    position: absolute;
+    width: 360px;
+}
+
+.item-description h4
+{
+    font-size: 1.7em;
+    color: #ddffb0;
+}
+.item-description .description
+{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #cbf0ff;
+}
+div.item-description span
+{
+    display:block;
+}
 #game-mission-dialog
 {
     width: 900px;
