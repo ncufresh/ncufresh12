@@ -2488,6 +2488,8 @@
             lightboxDetailsId:          'lightbox-details',
             lightboxCaptionId:          'lightbox-caption',
             lightboxPageId:             'lightbox-page',
+            maxImageHeight:             480,
+            maxImageWidth:              640,
             fixedNavigation:            false,
             containerBorderSize:        10,
             containerResizeSpeed:       'slow',
@@ -2624,7 +2626,29 @@
             $('#' + options.lightboxImageId + ', #' + options.lightboxDetailsId + ', #' + options.lightboxPageId).hide();
 
             preloader.onload = function() {
+                var height = preloader.height;
+                var width = preloader.width;
                 $('#' + options.lightboxImageId).attr('src', images[active][1]);
+                if ( preloader.width > 0 && preloader.height > 0 )
+                {
+                    if ( width / height >= options.maxImageWidth / options.maxImageHeight )
+                    {
+                        console.log(preloader.width);
+                        if ( width > options.maxImageWidth )
+                        {
+                            preloader.width = options.maxImageWidth;
+                            preloader.height = (height * options.maxImageWidth) / width;
+                        }
+                    }
+                    else
+                    {
+                        if ( height > options.maxImageHeight )
+                        {
+                            preloader.height = options.maxImageHeight;
+                            preloader.width = (width * options.maxImageHeight) / height;
+                        }
+                    }
+                }
                 lightboxResize(preloader.width, preloader.height);
             };
             preloader.src = images[active][1];

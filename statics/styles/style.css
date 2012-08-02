@@ -367,6 +367,8 @@ a:hover
 
 #lightbox-image
 {
+    max-height: 480px;
+    max-width: 640px;
     position: absolute;
     padding: 10px;
 }
@@ -443,10 +445,11 @@ a:hover
 #lightbox-close
 {
     background: url('../images/lightbox_close.png');
+    display: block;
     height: 22px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
+    left: 100%;
+    margin: -22px 0 5px -80px;
+    position: relative;
     width: 66px;
 }
 

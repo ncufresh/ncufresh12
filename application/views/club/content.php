@@ -11,21 +11,21 @@
 <?php if( file_exists( Yii::app()->basePath . '/../files/club/' . $id  . '/1.jpg' ) ) : ?>
             <li class="club-picture">
                 <a href="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/1.jpg'; ?>" title="<?php echo $data->name; ?> 照片1">
-                <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/1.jpg'; ?>" />
+                    <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/1.jpg'; ?>" alt="<?php echo $data->name; ?> 照片1" />
                 </a>
             </li>
 <?php endif; ?>
 <?php if ( file_exists(Yii::app()->basePath . '/../files/club/' . $id  . '/2.jpg') ) : ?>
             <li class="club-picture">
                 <a href="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/2.jpg'; ?>" title="<?php echo $data->name; ?> 照片2">
-                <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/2.jpg'; ?>"/>
+                    <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/2.jpg'; ?>" alt="<?php echo $data->name; ?> 照片2" />
                 </a>
             </li>
 <?php endif; ?>
 <?php if ( file_exists(Yii::app()->basePath . '/../files/club/' . $id  . '/3.jpg') ) : ?>
             <li class="club-picture">
                 <a href="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/3.jpg'; ?>" title="<?php echo $data->name; ?> 照片3">
-                <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/3.jpg'; ?>"/>
+                    <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/3.jpg'; ?>" alt="<?php echo $data->name; ?> 照片3" />
                 </a>
             </li>
 <?php endif; ?>
