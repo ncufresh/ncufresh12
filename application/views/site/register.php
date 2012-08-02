@@ -133,32 +133,12 @@
             </span>
         </dd>
     </dl>
-    <dl class="select">
+    <dl>
         <dt>
             <label for="form-register-birthday">生日</label>
         </dt>
         <dd>
-            <select name="profile[year]" class="year">
-<?php for ( $year = 2000 ; $year >= 1990 ; $year-- ) : ?>
-                <option value="<?php echo $year; ?>">
-<?php echo $year; ?>                        
-                </option>
-<?php endfor; ?>
-            </select>
-            <select name="profile[month]" class="month">
-<?php for ( $month = 1 ; $month <= 12 ; $month++ ) : ?>
-                <option value="<?php echo $month; ?>">
-<?php echo $month; ?>                        
-                </option>
-<?php endfor; ?>
-            </select>
-            <select name="profile[day]" class="day">
-<?php for ( $day = 1 ; $day <= 31 ; $day++ ) : ?>
-                <option value="<?php echo $day; ?>">
-<?php echo $day; ?>                        
-                </option>
-<?php endfor; ?>
-            </select>
+            <input id="form-register-birthday" name="profile[birthday]" type="text" />
         </dd>
     </dl>
     <div>
