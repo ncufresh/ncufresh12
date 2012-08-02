@@ -3,7 +3,13 @@
 <ul>
 <?php foreach ( $missions as $mission ) : ?>
     <li>
-        <a href="#<?php echo $mission->id; ?>"><?php echo $mission->name; ?> < <?php echo $mission->money; ?> 金幣 / <?php echo $mission->experience; ?> 經驗> </a>
+        <a href="#<?php echo $mission->id; ?>"><?php echo $mission->name; ?></a>
+        <div class="mission-description">
+            <h4>&lt; 任務：<?php echo $mission->name ?> &gt;</h4>
+            <span class="description">完成將獲得：</span>
+            <span class="description">[ <?php echo $mission->experience ?> 經驗 / <?php echo $mission->money ?> 金幣 ]</span>
+            <span class="more">（再次解任務之經驗值與金幣獲取量將大幅降低）</span>
+        </div>
     </li>
 <?php endforeach; ?>
 <ul>

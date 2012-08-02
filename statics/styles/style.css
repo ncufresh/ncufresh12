@@ -4502,7 +4502,8 @@ img.user_img
     display: inline-block;
 }
 
-.item-description
+.item-description,
+.mission-description
 {
     background: #646464;
     background-color: rgba(100, 100, 100, 0.9);
@@ -4516,18 +4517,21 @@ img.user_img
     width: 360px;
 }
 
-.item-description h4
+.item-description h4,
+.mission-description h4
 {
     font-size: 1.7em;
     color: #ddffb0;
 }
-.item-description .description
+.item-description .description,
+.mission-description .description
 {
     font-size: 1.5em;
     font-weight: bold;
     color: #cbf0ff;
 }
-div.item-description span
+div.item-description span,
+div.mission-description span
 {
     display:block;
 }
