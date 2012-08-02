@@ -1,5 +1,5 @@
-<h1>
-選課</h1>
+<h4>
+選課</h4>
 <p>
 請以本校計算機中心E-mail帳號、密碼登入<a href="http://course.adm.ncu.edu.tw">選課系統</a>，或登入本校首頁<a href="http://portal.ncu.edu.tw">Portal入口網站</a>，再點選「<a href="http://course.adm.ncu.edu.tw">選課系統</a>」進行選課。選課期間系統定於每日早上7:00～9:00做資料備份，同學選課請避開此時段。學士班學生選課需向導師領取「導師密碼」<strong><u> (入學第1學期可免)</u></strong> 。</p>
 <p>

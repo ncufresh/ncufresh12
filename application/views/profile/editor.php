@@ -1,4 +1,4 @@
-<h1>編輯基本資料</h1>
+<h4>編輯基本資料</h4>
 <div class="myprofile">
 <form class="friends-part3" action="<?php echo Yii::app()->createUrl('profile/editor'); ?>" method="POST">
     <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />

@@ -1,5 +1,5 @@
-<h1>
-繳交學雜費</h1>
+<h4>
+繳交學雜費</h4>
 <p>
 (一)<strong>繳費單</strong>於<strong>8月27日</strong>由<u>出納組</u>郵寄；亦可於<strong>8月23日</strong>後直接至<a href="https://eschool.firstbank.com.tw/">第一銀行第e學雜費入口網</a>，或本校首頁<a href="https://portal.ncu.edu.tw/wps/portal/!ut/p/cxml/04_Sj9SPykssy0xPLMnMz0vM0Q_wyU_PzNMvSFdUBACQIYPZ">Portal入口</a>之「學生繳費單」中，下載繳費單，或以電話(分機：57346)與<u>出納組</u>聯繫。</p>
 <p>

@@ -1,6 +1,6 @@
 <form method="POST" action="<?php echo Yii::app()->createUrl('friends/addnewmembers', array('id'=>$id))  ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
-<h1>成員</h1>
+<h4>成員</h4>
 <div class="newmember">
     <div class="friends-part2">
         <ul class="users-department">
