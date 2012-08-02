@@ -2,7 +2,7 @@
     全聯
 </h4>
 <p>
-    全聯福利中心 <a href="http://www.pxmart.com.tw/">官方網站</a>
+    全聯福利中心 <a href="http://www.pxmart.com.tw/" title="官方網站">官方網站</a>
 </p>
 <p>
     有任何日常用品缺乏，可以在全聯福利中心買齊，是生活在中壢的便利之處。

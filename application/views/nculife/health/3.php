@@ -23,7 +23,7 @@
         來電預約：03-4227151轉分機57263-4
     </li>
     <li>
-        <a href="http://love.adm.ncu.edu.tw">上網預約</a>
+        <a href="http://love.adm.ncu.edu.tw" title="上網預約">上網預約</a>
     </li>
     <li>
         親自到諮商中心預約

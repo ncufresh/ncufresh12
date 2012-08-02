@@ -31,6 +31,6 @@
 <p>
     <strong>
         PS.其中18房為2人愛心寢室，本舍的愛心寢室為下舖，提供給行動不便或受傷的學生申請使用。
-        <a href="http://www.ncu.edu.tw/~ncu7221/index.php?op=newInfo&amp;p=2">愛心寢室相關資訊</a>
+        <a href="http://www.ncu.edu.tw/~ncu7221/index.php?op=newInfo&amp;p=2" title="愛心寢室相關資訊">愛心寢室相關資訊</a>
     </strong>
 </p>

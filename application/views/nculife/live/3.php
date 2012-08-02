@@ -44,6 +44,6 @@
 </p>
 <p>
     <strong>PS.有6床為愛心寢室，本舍的愛心寢室為下舖，提供給行動不便或受傷的學生申請使用。</strong>
-    <strong><a href="http://www.ncu.edu.tw/~ncu7221/index.php?op=newInfo&amp;p=2">愛心寢室相關文件</a></strong>
+    <strong><a href="http://www.ncu.edu.tw/~ncu7221/index.php?op=newInfo&amp;p=2" title="愛心寢室相關文件">愛心寢室相關文件</a></strong>
 </p>
 

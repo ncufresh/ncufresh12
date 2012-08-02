@@ -86,15 +86,6 @@ form dt label
 }
 
 form input,
-form textarea
-{
-    outline: none;
-    position: relative;
-    resize: none;
-    width: 100%;
-}
-
-form input,
 form textarea,
 form button
 {
@@ -103,12 +94,16 @@ form button
     box-shadow: 0 0 0 #000000, 0 3px 3px #D3D3D3 inset;
     border-radius: 5px;
     height: 30px;
+    outline: none;
     padding: 4px 8px;
+    position: relative;
+    width: 100%;
 }
 
 form textarea
 {
     height: 160px;
+    resize: none;
 }
 
 form button
@@ -118,6 +113,12 @@ form button
     float: right;
     margin-left: 20px;
     padding: 4px 16px;
+    width: auto;
+}
+
+form select
+{
+    outline: none;
 }
 
 form input:hover,
@@ -3538,7 +3539,7 @@ ul.users-department li h3
 {
     color:DarkBlue;
     width:132px; 
-    height:25px;
+    height:20px;
     padding:0px;
     margin:0px;
     text-align:center;
@@ -4060,8 +4061,8 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:522px;
-    bottom:-98px;
+    right:550px;
+    bottom:-40px;
 }
 
 #button-editor
@@ -4073,7 +4074,9 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     display: block;
-    float:left;
+    position:absolute;
+    right:433px;
+    bottom:71px;
 }
 
 .button-flower

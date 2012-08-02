@@ -14,9 +14,7 @@
     膳緣麵食/饗閣飯食
 </h5>
 <p>
-    <a href="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2617.JPG">
-        <img alt="九餐-膳緣" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2617.JPG" style="width:500px;height:375px;" />
-    </a>
+    <img alt="九餐-膳緣" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2617.JPG" style="width:500px;height:375px;" />
 </p>
 <p>
     健康餐：素食拉麵
