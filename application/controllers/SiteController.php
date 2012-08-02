@@ -229,6 +229,7 @@ class SiteController extends Controller
         {
             $user->attributes = $_POST['register'];
             $profile->attributes = $_POST['profile'];
+            $profile->birthday = '1992-04-23';
             $user_validate = $user->validate();
             $profile_validate = $profile->validate();
             if ( $user_validate && $profile_validate )

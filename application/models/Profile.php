@@ -148,7 +148,7 @@ class Profile extends CActiveRecord
             }
             else
             {
-                $this->birthday = $this->getRawValue('birthday');//先複製一份資料庫那欄中的資料
+                $this->birthday = $this->getRawValue('birthday'); // 先複製一份資料庫那欄中的資料
             }
             $this->department_id = $this->department;
             return true;
