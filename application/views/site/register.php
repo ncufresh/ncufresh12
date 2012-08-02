@@ -47,7 +47,7 @@
 <?php echo $error; ?>
 <?php endforeach; ?>
 <?php else: ?>
-            A U MAN OR WOMAN
+            Are U MAN OR WOMAN
 <?php endif; ?>
             </span>
         </dd>
