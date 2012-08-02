@@ -70,6 +70,7 @@ class CalendarController extends Controller
                 }
             }
             $this->_data['errors'][] = '發生錯誤！';
+            $this->_data['errors'][] = $event->getErrors();
             return true;
         }
 
