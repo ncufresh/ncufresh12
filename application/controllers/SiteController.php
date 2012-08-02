@@ -231,10 +231,6 @@ class SiteController extends Controller
             $profile->attributes = $_POST['profile'];
             $user_validate = $user->validate();
             $profile_validate = $profile->validate();
-            var_dump($user->getErrors());
-            echo '<br />';
-            var_dump($profile->getErrors());
-            exit;
             if ( $user_validate && $profile_validate )
             {
                 if ( $user->save() && $profile->save() )
