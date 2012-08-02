@@ -1,7 +1,7 @@
-<h2>好友專區</h2>
+<h5>好友專區</h5>
 <div class="friends">
 <div class="friends-part1">
-<h4>新增好友</h4>
+<h6>新增好友</h6>
 <ul class="friends-title">
     <li>
         <a href="<?php echo Yii::app()->createUrl('friends/samedepartmentsamegrade'); ?>" title="同系同屆" class="friends-title">同系同屆</a>

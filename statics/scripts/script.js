@@ -658,6 +658,14 @@
             {
                 $.fn.chat.closeChatDialog(dialog.data('id'));
             });
+            dialog.data('show', $.cookie('chat-dialog-' + dialog.data('id')) === 'true');
+            if ( ! dialog.data('show') )
+            {
+                dialog.css({
+                    bottom: -1 * dialog.height() + dialog.children('.chat-title').height()
+                });
+            }
+            $.fn.chat.updateChatDialogsPosition();
             $.get(
                 $.configures.chatOpenUrl.replace(':id', id),
                 function(response)
@@ -683,6 +691,7 @@
         dialog.animate({
             bottom: 0
         }, $.chat.options.animationSpeed).data('show', true);
+        $.cookie('chat-dialog-' + dialog.data('id'), 'true');
         $.fn.chat.updateChatDialogsPosition();
         return dialog;
     };
@@ -750,6 +759,7 @@
         dialog.animate({
             bottom: -1 * dialog.height() + dialog.children('.chat-title').height()
         }, $.chat.options.animationSpeed).data('show', false);
+        $.cookie('chat-dialog-' + dialog.data('id'), 'false');
         $.fn.chat.updateChatDialogsPosition();
         return dialog;
     };
@@ -2633,7 +2643,6 @@
                 {
                     if ( width / height >= options.maxImageWidth / options.maxImageHeight )
                     {
-                        console.log(preloader.width);
                         if ( width > options.maxImageWidth )
                         {
                             preloader.width = options.maxImageWidth;

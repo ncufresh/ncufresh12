@@ -29,6 +29,6 @@
         </ul>
     </div>
     <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" id="download-back" class="readme-back" title="回上一頁"></a>
-    </div>
-    
+    <h4>文件下載</h4>
+    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" id="download-back" class="readme-back"></a>
 </div>

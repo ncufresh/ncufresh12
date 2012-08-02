@@ -1,4 +1,3 @@
-<div id="about">
     <div class="title"></div>
     <PRE class="introdution">
     
@@ -125,4 +124,3 @@
             <div name="盧婉芳" grade="" left="" top="" width="" height=""></div>
         </li>
     </ul>
-</div>

@@ -1,6 +1,6 @@
-<h1>
+<h4>
     繳交學雜費
-</h1>
+</h4>
 <p>
     (一)<strong>繳費單</strong>於<strong>8月27日</strong>由<u>出納組</u>郵寄；亦可於<strong>8月23日</strong>後直接至
     <a href="https://eschool.firstbank.com.tw/" title="第一銀行第e學雜費入口網">第一銀行第e學雜費入口網</a>，或本校首頁

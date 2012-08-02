@@ -1,6 +1,6 @@
-<h1>
+<h4>
     選課
-</h1>
+</h4>
 <p>
     請以本校計算機中心E-mail帳號、密碼登入<a href="http://course.adm.ncu.edu.tw" title="選課系統">選課系統</a>，或登入本校首頁
     <a href="http://portal.ncu.edu.tw" title="Portal入口網站">Portal入口網站</a>，再點選「
