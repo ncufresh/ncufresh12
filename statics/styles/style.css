@@ -3215,12 +3215,12 @@ ul.friend-other-sort
     list-style-type:none;
 }
 
-ul#other-department
+/*ul#other-department
 {
     width:660px;
     padding:5px;
     margin:0px;
-}
+}*/
 
 ul.users-department li
 {
@@ -3332,37 +3332,34 @@ div.friends
     margin:0px;
 }
 
-form div.sameDsameG
+#sameDsameG
 {
-    background-image:url('../profile/sameDsameG.png');
-    background-repeat:no-repeat ;
+    background: url('../profile/sameDsameG.png') no-repeat;
     width:690px;
     height:370px;
     padding:25px;
     margin:0px;
 }
 
-form div.sameDdiffG
+#sameDdiffG
 {
-    background-image:url('../profile/sameDdiffG.png');
-    background-repeat:no-repeat ;
+    background: url('../profile/sameDdiffG.png') no-repeat ;
     width:690px;
     height:370px;
     padding:25px;
     margin:0px;
 }
 
-form div.other-department
+#other-department
 {
-    background-image:url('../profile/otherD.png');
-    background-repeat:no-repeat ;
+    background:url('../profile/otherD.png') no-repeat ;
     width:690px;
     height:370px;
     padding:25px;
     margin:0px;
 }
 
-div.request
+#request
 {
     background-image:url('../profile/request.png');
     background-repeat:no-repeat ;
@@ -3379,11 +3376,17 @@ div.friends-part1
     margin:25px 25px 25px 25px;
 }
 
-div.friends-part2
+.friends-part2
 {
     width:680px;
     height:370px;
     margin:0px;
+}
+
+div.friends-part2 button
+{
+    padding:0px;
+    margin-top:0px;
 }
 
 /*div.friends-part4 form
@@ -3470,9 +3473,9 @@ div.friends-sortfriend div.avatar
     float:left;
 }
 
-div.myfriend
+#myfriend
 {
-    background-image:url('../profile/sameDdiffG.png');
+    background-image:url('../profile/myfriend.png');
     background-repeat:no-repeat ;
     width:690px;
     height:370px;
@@ -3495,7 +3498,17 @@ div.myprofile form button
     float:right;
 }
 
-div.newgroup
+#newgroup
+{
+    background-image:url('../profile/newgroup.png');
+    background-repeat:no-repeat ;
+    width:690px;
+    height:370px;
+    padding:25px;
+    margin:0px;
+}
+
+#mygroup
 {
     background-image:url('../profile/mygroup.png');
     background-repeat:no-repeat ;
@@ -3593,6 +3606,9 @@ div.profile-message-reply
     margin:0px;
     display:block;
     float:right;
+    position:absolute;
+    right:0px;
+    bottom:0px;
 }
 
 .button-push
@@ -3613,6 +3629,9 @@ div.profile-message-reply
     height:34px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:10px;
+    bottom:0px;
 }
 
 .button-addgroup
@@ -3668,6 +3687,9 @@ div.profile-message-reply
     height:34px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:63px;
+    bottom:0px;
 }
 
 .button-deletefriend
@@ -3678,6 +3700,9 @@ div.profile-message-reply
     height:35px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:10px;
+    bottom:0px;
 }
 
 .button-mygroup
@@ -3698,6 +3723,9 @@ div.profile-message-reply
     height:35px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:10px;
+    bottom:0px;
 }
 
 #button-editor
@@ -3823,11 +3851,11 @@ div.delete-group
     margin:0px;
 }
 
-form.group-description
+/*form.group-description
 {
     width:500px;
     height:635px;
-}
+}*/
 
 div.self-messages
 {
