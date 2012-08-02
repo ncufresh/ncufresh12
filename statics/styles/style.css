@@ -223,7 +223,7 @@ form dd .arrow
     width: 0;
 }
 
-form div
+form div.buttons
 {
     margin-top: 4px;
     width: 50%;
@@ -554,7 +554,8 @@ a:hover
 .calendar .calendar-create-button,
 .calendar .calendar-hide-button,
 .calendar .calendar-subscript-button,
-.calendar a.calendar-hide-event
+.calendar a.calendar-hide-event,
+#calendar-subscript h4
 {
     background: url('../images/sprites.png') no-repeat;
 }
@@ -1842,6 +1843,69 @@ a.calendar-hide-event:hover
 #calendar-subscript
 {
     background: url('../images/calendar_subscription_background.png');
+}
+
+#calendar-subscript h4
+{
+    background-position: -32px -160px;
+    display: inline-block;
+    padding-left: 36px;
+}
+
+#calendar-subscript .category-wrapper
+{
+    width: 20%;
+    margin-top: 10%;
+    height: 60%;
+    float: left;
+    padding: 0 0 0 0;
+}
+
+#calendar-subscript .category-wrapper a
+{
+    float: left;
+    display: inline-block;
+    width: 100%;
+}
+
+#calendar-subscript .calendar-subscript-container
+{
+    height: 205px;
+    overflow: hidden;
+}
+
+#calendar-subscript form
+{
+    margin-top: 40px;
+    width: 80%;
+    float: left;
+    padding: 0;
+}
+
+#calendar-subscript form dl
+{
+    margin: 4px 0;
+    padding: 4px 0;
+    position: relative;
+    width: 30%;
+    float: left;
+}
+
+#calendar-subscript form dt
+{
+    width: 115px;
+}
+
+#calendar-subscript form dt label
+{
+    line-height: auto;
+}
+
+#calendar-subscript form dd
+{
+    margin: 0;
+    overflow: visible;
+    width: 169%;
 }
 
 #index-container

@@ -141,7 +141,7 @@
             <input id="form-register-birthday" name="profile[birthday]" type="text" />
         </dd>
     </dl>
-    <div>
+    <div class="buttons">
         <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
         <button type="submit">註冊</button>
         <button type="reset">重填</button>
