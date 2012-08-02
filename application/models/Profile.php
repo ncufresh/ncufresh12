@@ -44,12 +44,12 @@ class Profile extends CActiveRecord
 
     public function isDate($attr)
     {
-        $this->birthday = $this->{$attr};
-        if ( preg_match('/^\d{4}\-\d{2}-\d{2}$/', $this->birthday) )
+        $birthday = $this->{$attr};
+        if ( preg_match('/^\d{4}\-\d{2}-\d{2}$/', $birthday) )
         {
-            list($year, $month, $day) = explode('-', $this->birthday);
-            $this->birthday = mktime(0, 0, 0, $month, $day, $year);
-            if ( $this->birthday === false ) $this->addError('birthday', 'WRONG!!!');
+            list($year, $month, $day) = explode('-', $birthday);
+            $birthday = mktime(0, 0, 0, $month, $day, $year);
+            if ( $birthday === false ) $this->addError('birthday', 'WRONG!!!');
             return true;
         }
         $this->addError('birthday', 'WRONG!!!');
