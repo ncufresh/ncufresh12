@@ -2383,6 +2383,7 @@ button.news-button
     height: 420px;
     position: relative;
     width: 700px;
+    overflow: hidden;
 }
 
 #fresh-back
@@ -2402,6 +2403,7 @@ button.news-button
     padding: 15px 25px;
     background-position: -5px -1350px;
     position: relative;
+    overflow: hidden;
 }
 
 #notice-back
@@ -2421,6 +2423,7 @@ button.news-button
     padding: 15px 25px;
     position: relative;
     width: 700px;
+    overflow: hidden;
 }
 
 #reschool-back
@@ -2678,20 +2681,20 @@ button.news-button
 #read-notice-menu 
 {
     background: #F7AAF7;
-    top: 10px;
 }
 
 .readme-menu
 {
     width: 200px;
     heigth: auto;
-    top: 50px;
+    top: 5px;
     left: -187px;
     border-radius: 0 10px 10px 0;
     position: absolute;
     display: block;
     list-style: none;
     opacity: 0.95;
+    overflow: auto;
 }
 
 .readme-menu p
@@ -2732,6 +2735,30 @@ button.news-button
     cursor: pointer;
     text-align: center;
 }
+
+#reame-download
+{
+    width: 700px;
+    height: 400px;
+    float: left;
+    word-break: break-all;
+    word-wrap: break-word;
+    position: absolute;
+    top: 20px;
+}
+
+.download-index
+{
+    float: left;
+    list-style: none;
+    font-size: 1.3em;
+}
+
+.download-index li
+{
+    margin-top: 6px
+}
+
 
 #about .introdution
 {
