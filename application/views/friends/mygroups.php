@@ -11,11 +11,11 @@
 <?php foreach ($members as $member ): ?>
             <li>
 <?php $profile = Profile::model()->findByPK($member->user_id); ?>
-<a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $profile->id));  ?>">
+                <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $profile->id));  ?>">
 <?php $this->widget('Avatar', array(
     'id'        => $profile->id
 )); ?>
-</a>
+                </a>
                 <input type="checkbox" name="members[<?php echo $profile->id; ?>]" value="<?php echo $profile->id; ?>" />
                 <h3>
 <?php echo $profile->name; ?>
@@ -26,10 +26,9 @@
             </li>
 <?php endforeach; ?>
         </ul>
-
-<a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$mygroup->id))  ?>" id="button-addmember" ></a>
-<button type="submit" id="button-deletemember"></button>
-<a href="<?php echo Yii::app()->createUrl('friends/deletegroup', array('id'=>$mygroup->id))  ?>" id="button-deletegroup" ></a>
-<button type="button" class="button-back"></button>
+    <a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$mygroup->id))  ?>" id="button-addmember" ></a>
+    <button type="submit" id="button-deletemember"></button>
+    <a href="<?php echo Yii::app()->createUrl('friends/deletegroup', array('id'=>$mygroup->id))  ?>" id="button-deletegroup" ></a>
 </form>
 </div>
+<button type="button" class="button-back"></button>

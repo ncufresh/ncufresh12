@@ -18,6 +18,9 @@ class ReadmeController extends Controller
             case 'reschool' :
                 $this->reschool($tab);
                 break;
+            case 'notice' :
+                $this->notice($tab);
+                break;
         }
     }
 
@@ -55,14 +58,14 @@ class ReadmeController extends Controller
             case 10 :
                 $this->_data['content'] = $this->renderPartial('freshman/10', null, true, false);
                 break;
-            case 11 :
-                $this->_data['content'] = $this->renderPartial('freshman/11', null, true, false);
-                break;
             case 12 :
                 $this->_data['content'] = $this->renderPartial('freshman/12', null, true, false);
                 break;
             case 13 :
                 $this->_data['content'] = $this->renderPartial('freshman/13', null, true, false);
+                break;
+            case 14 :
+                $this->_data['content'] = $this->renderPartial('freshman/14', null, true, false);
                 break;
             case 15 :
                 $this->_data['content'] = $this->renderPartial('freshman/15', null, true, false);
@@ -134,6 +137,46 @@ class ReadmeController extends Controller
         }
     }
 
+    public function notice($tab)
+    {
+        switch ( $tab )
+        {
+            case 1 :
+                $this->_data['content'] = $this->renderPartial('notice/1', null, true, false);
+                break;
+            case 2 :
+                $this->_data['content'] = $this->renderPartial('notice/2', null, true, false);
+                break;
+            case 3 :
+                $this->_data['content'] = $this->renderPartial('notice/3', null, true, false);
+                break;
+            case 4 :
+                $this->_data['content'] = $this->renderPartial('notice/4', null, true, false);
+                break;
+            case 5 :
+                $this->_data['content'] = $this->renderPartial('notice/5', null, true, false);
+                break;
+            case 6 :
+                $this->_data['content'] = $this->renderPartial('notice/6', null, true, false);
+                break;
+            case 7 :
+                $this->_data['content'] = $this->renderPartial('notice/7', null, true, false);
+                break;
+            case 8 :
+                $this->_data['content'] = $this->renderPartial('notice/8', null, true, false);
+                break;
+            case 9 :
+                $this->_data['content'] = $this->renderPartial('notice/9', null, true, false);
+                break;
+            case 10 :
+                $this->_data['content'] = $this->renderPartial('notice/10', null, true, false);
+                break;
+            case 11 :
+                $this->_data['content'] = $this->renderPartial('notice/11', null, true, false);
+                break;
+        }
+    }
+
     public function actionFreshman($id = 0)
     {   
         if ( $id == 1 )
@@ -166,9 +209,9 @@ class ReadmeController extends Controller
                 '繳交學雜費',
                 '學籍登入',
                 '大一新生宿舍',
-                '2012中大新生宿舍',
+                '2012中大新生營',
             );
-            $tab = array(9, 10, 11, 12, 13);
+            $tab = array(9, 10, 12, 13, 14);
             $size = 5;
         }
 
@@ -249,10 +292,32 @@ class ReadmeController extends Controller
         ));
     }
 
-    public function actionNotice()
+    public function actionNotice($id = 0)
     {
+        if( $id == 1 )
+        {
+            $index = array(
+                '大學和高中導師大不同',
+                '學生學習講座',
+                '學生學習護照實施流程',
+                '家長座談會',
+                '導師輔導選課',
+                '性別平等',
+                '新生汽機車入校須知',
+                '服務學習',
+                '校安中心聯絡電話',
+                '種子,志工團隊',
+                '網路學習資源',
+            );
+            $tab = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
+            $size = 11;
+        }
         $this->setPageTitle(Yii::app()->name . ' - 注意事項');
-        $this->render('notice');
+        $this->render('notice', array(
+                'index'         => $index,
+                'tab'           => $tab,
+                'size'          => $size
+        ));
     }
 
     public function actionDownload()

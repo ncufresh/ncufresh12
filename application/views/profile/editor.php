@@ -1,7 +1,6 @@
 <h1>編輯基本資料</h1>
 <div class="myprofile">
-    <div class="friends-part3">
-    <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('profile/editor'); ?>" method="POST">
+<form class="friends-part3" action="<?php echo Yii::app()->createUrl('profile/editor'); ?>" method="POST">
     <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
 <?php $this->widget('Avatar', array(
     'id'        => Yii::app()->user->id
@@ -72,11 +71,10 @@
                         </option>
 <?php endfor; ?>
                     </select>
-            </li> 
-            <button type="submit" class="button-sure"></button>
-            <a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>" class="button-cancel"></a>
-            <button type="button" class="button-back" ></button>
+            </li>
         </ul>
-    </form>
-    </div>
+        <button type="submit" class="button-sure"></button>
+        </form>
+<a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>" class="button-cancel"></a>
+<button type="button" class="button-back" ></button>    
 </div>

@@ -1,30 +1,22 @@
-<?php // <style type="text/css">
-    // div.game-shop
-    // {
-        // position: relative;
-    // }
-    // div.game-shop a
-    // {
-        
-    // }
-    // div.game-shop:hover span
-    // {
-        // display: block;
-    // }
-    // div.game-shop span
-    // {
-        // position: absolute;
-        // width: 200px;
-        // height: 100px;
-        // top: 0px;
-        // left: -10px;
-        // background: red;
-        // display: none;
-    // }
-// </style> ?>
-<h1> 可購買列表 </h1>
 <h3> LV.<?php echo $level ?> / <?php echo $money ?> 金幣</h3>
 <h2> <頭髮> </h2>
+<?php $shopping = Item::model()->getBuyItems($level, 1); ?>
+<?php foreach ($shopping as $item) : ?>
+<a class="item-icons" href="<?php echo Yii::app()->createUrl('game/buy', array('id'=>$item->id))?>">
+    <img src="<?php echo Yii::app()->request->baseUrl ?>/statics/game/icon/hairs/<?php echo $item->filename?>.png" alt="<?php $item->name ?>">
+    <div class="item-description">
+        <h4>&lt; <?php echo $item->name ?> &gt;</h4>
+        <span class="description"><?php echo $item->description ?></span>
+        <span>需求等級：LV.<?php echo $item->level?> / 價值：<?php echo $item->price ?> 金幣</span>
+    </div>
+</a>
+<?php endforeach; ?>
+
+
+
+
+
+
 <?php $array = Item::model()->getBuyItems($level, 1); 
 $counter=0;
 foreach($array as $row)

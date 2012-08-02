@@ -5,39 +5,39 @@
             <h4>行事曆</h4>
             </div>
             <div id="club-schedule-content">
-            <a href="<?php echo Yii::app()->createUrl('calendar/subscript/' . $id); ?>" title="訂閱">訂閱</a>
             </div>
         </div>
-            <ul id="club-menu-items">
-                <li class="club-picture">
+        <ul id="club-menu-items">
+            <li class="club-picture">
 <?php if( file_exists( Yii::app()->basePath . '/../files/club/' . $id  . '/1.jpg' ) ) : ?>
-                    <a href="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/1.jpg'; ?>" title="<?php echo $data->name; ?> 照片1">
-                    <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/1.jpg'; ?>" />
-                    </a>
+                <a href="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/1.jpg'; ?>" title="<?php echo $data->name; ?> 照片1">
+                <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/1.jpg'; ?>" />
+                </a>
 <?php endif; ?>
-                </li>
-                <li class="club-picture">
+            </li>
+            <li class="club-picture">
 <?php if ( file_exists(Yii::app()->basePath . '/../files/club/' . $id  . '/2.jpg') ) : ?>
-                    <a href="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/2.jpg'; ?>" title="<?php echo $data->name; ?> 照片2">
-                    <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/2.jpg'; ?>"/>
-                    </a>
+                <a href="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/2.jpg'; ?>" title="<?php echo $data->name; ?> 照片2">
+                <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/2.jpg'; ?>"/>
+                </a>
 <?php endif; ?>
-                </li>
-                <li class="club-picture">
+            </li>
+            <li class="club-picture">
 <?php if ( file_exists(Yii::app()->basePath . '/../files/club/' . $id  . '/3.jpg') ) : ?>
-                    <a href="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/3.jpg'; ?>" title="<?php echo $data->name; ?> 照片3">
-                    <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/3.jpg'; ?>"/>
-                    </a>
+                <a href="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/3.jpg'; ?>" title="<?php echo $data->name; ?> 照片3">
+                <img src="<?php echo Yii::app()->baseUrl . '/files/club/' . $id . '/3.jpg'; ?>"/>
+                </a>
 <?php endif; ?>
-                </li>
-            </ul>
+            </li>
+        </ul>
     </div>
     <div class="club-display-head" id="club-head-<?php echo $data->category; ?>">
-<?php if ( Club::model()->getIsAdmin($id) ) : ?>
+        <a href="<?php echo Yii::app()->createUrl('calendar/subscript/' . $id); ?>" title="訂閱">訂閱</a>
+<?php if ( Club::model()->getIsAdmin($id) ) : ?>     
         <a href="<?php echo Yii::app()->createUrl('club/modify/' . $id); ?>" title="修改">修改</a>
         <a href="<?php echo Yii::app()->createUrl('club/uploadpicture/' . $id); ?>" title="上傳圖片">上傳圖片</a>
         <a href="<?php echo Yii::app()->createUrl('calendar/club/' . $id); ?>" title="修改行事曆">修改行事曆</a>
-<?php endif; ?>
+<?php endif; ?>  
     <h4><?php echo $data->name; ?></h4>    
     </div>    
     <div class="club-display" id="club-<?php echo $data->category; ?>">

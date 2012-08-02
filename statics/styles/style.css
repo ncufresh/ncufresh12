@@ -2404,10 +2404,11 @@ button.news-button
 
 #readme-notice
 {
+    height: 420px;
+    width: 700px;
+    padding: 15px 25px;
     background-position: -5px -1350px;
-    height: 450px;
     position: relative;
-    width: 750px;
 }
 
 #notice-back
@@ -2684,12 +2685,13 @@ button.news-button
 #read-notice-menu 
 {
     background: #F7AAF7;
+    top: 10px;
 }
 
 .readme-menu
 {
     width: 200px;
-    height: 300px;
+    heigth: auto;
     top: 50px;
     left: -187px;
     border-radius: 0 10px 10px 0;
@@ -3046,6 +3048,8 @@ button.news-button
 .club-display-head a
 {
     float: right;
+    margin-top: 14px;
+    margin-right: 20px;
 }
 
 .club-display-bottom
@@ -3076,6 +3080,7 @@ button.news-button
     width: 50px;
     height: 50px;
     margin-right: 30px;
+    cursor: pointer;
 }
 #club-back1
 {
@@ -3414,7 +3419,7 @@ div.friends-part2 div.avatar
     float:left;
 }
 
-div.friends-part3
+.friends-part3
 {
     width:675px;
     height:350px;
@@ -3490,7 +3495,7 @@ div.friends-sortfriend div.avatar
     margin:0px;
 }
 
-div.myprofile
+.myprofile
 {
     background-image:url('../profile/profile.png');
     background-repeat:no-repeat ;
@@ -3498,11 +3503,6 @@ div.myprofile
     height:370px;
     padding:25px;
     margin:0px;
-}
-
-div.myprofile form button
-{
-    float:right;
 }
 
 #newgroup
@@ -3601,6 +3601,9 @@ div.profile-message-reply
     padding: 0px;
     margin: 0px;
     float:right;
+    position:relative;
+    right:27px;
+    bottom:36px;
 }
 
 .button-cancel
@@ -3612,10 +3615,9 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     display:block;
-    float:right;
     position:absolute;
-    right:0px;
-    bottom:0px;
+    right:515px;
+    bottom:-100px;
 }
 
 .button-push
@@ -3637,8 +3639,8 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:10px;
-    bottom:0px;
+    right:577px;
+    bottom:-100px;
 }
 
 .button-addgroup
@@ -3659,8 +3661,10 @@ div.profile-message-reply
     height:33px;
     padding:0px;
     margin:0px;
-    float:right;
     display:block;
+    position:absolute;
+    right:10px;
+    bottom:0px;
 }
 
 #button-addmember
@@ -3672,7 +3676,9 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     display:block;
-    float:right;
+    position:absolute;
+    right:256px;
+    bottom:0px;
 }
 
 #button-deletemember
@@ -3683,7 +3689,9 @@ div.profile-message-reply
     height:34px;
     padding:0px;
     margin:0px;
-    float:right;
+    position:absolute;
+    right:133px;
+    bottom:0px;
 }
 
 .button-makefriend
@@ -3708,7 +3716,7 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:10px;
+    right:99px;
     bottom:0px;
 }
 
@@ -3722,6 +3730,19 @@ div.profile-message-reply
     margin:0px;
 }
 
+.button-addfriends
+{
+    background-image:url('../profile/button/addfriend.png');
+    background-repeat:no-repeat ;
+    width:96px;
+    height:35px;
+    padding:0px;
+    margin:0px;
+    position:absolute;
+    right:100px;
+    bottom:0px;
+}
+
 .button-addfriend
 {
     background-image:url('../profile/button/addfriend.png');
@@ -3731,8 +3752,8 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:10px;
-    bottom:0px;
+    right:550px;
+    bottom:-72px;
 }
 
 #button-editor
@@ -4207,6 +4228,35 @@ img.user_img
     display: inline-block;
 }
 
+.item-description
+{
+    background: #646464;
+    background-color: rgba(100, 100, 100, 0.9);
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    color: #EFEFEF;
+    display: none;
+    margin: -45px 0 0 85px;
+    padding: 10px;
+    position: absolute;
+    width: 360px;
+}
+
+.item-description h4
+{
+    font-size: 1.7em;
+    color: #ddffb0;
+}
+.item-description .description
+{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #cbf0ff;
+}
+div.item-description span
+{
+    display:block;
+}
 #game-mission-dialog
 {
     width: 900px;
@@ -4692,11 +4742,11 @@ li.enabled a
 
 .forum-view-profile
 {
-    background: #97d2f3;
+    background: #f8c77c;
     width: 165px;
-    height: 283px;
+    height: 263px;
     border-radius: 6px;
-    border: 2px solid #ffffff;
+    border: 2px solid #eaa520;
     margin-left: 45px;
     padding-top: 7px;
     float: left;
@@ -4713,30 +4763,26 @@ li.enabled a
 
 .forum-view-profile .profile-name
 {
-    width: 150px;
-    height: 25px;
-    margin: 1px auto;
-    background: #ffffff;
-    border-top-left-radius:5px;
-    border-top-right-radius:5px;
-}
-
-.forum-view-profile .profile-id
-{
-    width: 150px;
-    height: 25px;
-    margin: 1px auto;
-    background: #ffffff;
+    width: 140px;
+    height: 23px;
+    margin: 10px auto;
+    background: #fff0c8;
+    border-radius:5px;
+    padding-top: 2px;
+    padding-left: 10px;
+    color: #c57902;
 }
 
 .forum-view-profile .profile-department
 {
-    width: 150px;
-    height: 25px;
+    width: 140px;
+    height: 23px;
     margin: 1px auto;
-    background: #ffffff;
-    border-bottom-left-radius:5px;
-    border-bottom-right-radius:5px;
+    background: #fff0c8;
+    border-radius:5px;
+    padding-top: 2px;
+    padding-left: 10px;
+    color: #c57902;
 }
 
 #forum-view-body .forum-view-title
@@ -4744,11 +4790,12 @@ li.enabled a
     width: 389px;
     height: 31px;
     border-radius: 6px;
-    background: #97d2f3;
+    background: #fff0c8;
     float: left;
     margin-left: 20px;
     margin-bottom: 3px;
-    border: 2px solid #ffffff;
+    border: 2px solid #eaa520;
+    font-weight: bold;
     padding: 9px 0 0 11px;
 }
 
@@ -4760,7 +4807,7 @@ li.enabled a
     background: #ffffff;
     float: left;
     margin-left: 20px;
-    border: 1px solid black;
+    border: 2px solid #eaa520;
     padding: 9px 0 0 11px;
     word-break: break-all;
 }
@@ -4772,19 +4819,20 @@ li.enabled a
     height: 30px;
     position: absolute;
     top: 75px;
-    left: 199px;
+    left: 200px;
 }
 
 #forum-view-body .forum-view-comments
 {
-    width: 400px;
-    height: 30px;
+    width: 389px;
+    height: 25px;
     border-radius: 6px;
-    background: #ffffff;
+    background: #f4efe0;
     float: right;
     margin-top: 2px;
     margin-right: 46px;
-    border: 2px solid #97d2f3;
+    border: 2px solid #eaa520;
+    padding: 5px 0 0 11px;
 }
 
 #forum-view-replies
@@ -4984,9 +5032,9 @@ li.enabled a
 }
 
 #forum-forum-body #body-table .table-body td.title,
-td.author,
-td.reply,
-td.popularity
+#forum-forum-body #body-table .table-body td.author,
+#forum-forum-body #body-table .table-body td.reply,
+#forum-forum-body #body-table .table-body td.popularity
 {
     border-top-style:solid;
     border-bottom-style:solid;
@@ -5017,6 +5065,9 @@ td.popularity
 
 #forum-forum-body #body-table .table-body td.time
 {
+    width: 80px;
+    font-size: 0.8em;
+    color: #757575;
     border-top-style:solid;
     border-bottom-style:solid;
     border-right-style:solid;
@@ -5024,6 +5075,7 @@ td.popularity
     border-width:2px;
     border-top-width:0.8px;
     background-color:#ffffff;
+    word-break: break-all;
 }
 
 #forum-forum-footer
