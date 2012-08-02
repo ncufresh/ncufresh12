@@ -2126,7 +2126,7 @@
         base.$field = $(field);
         base.field  = field;
 
-        base.$label.data("infield", base);
+        base.$label.data('infield', base);
         base.showing = true;
 
         base.init = function ()
@@ -2225,8 +2225,8 @@
     };
 
     $.infield.defaultOptions = {
-        fadeOpacity: 0.5,
-        fadeDuration: 300
+        fadeOpacity:    0.5,
+        fadeDuration:   300
     };
 
     $.fn.infield = function(options)
@@ -2797,6 +2797,8 @@
 {
     var input = null;
 
+    var fields = [];
+
     var initialized;
 
     var onClick = function(year, month, day, callback)
@@ -2812,7 +2814,7 @@
           + textPad(month.toString(), 2)
           + '-'
           + textPad(day.toString(), 2)
-        ).change().blur().prop('disabled', false);
+        ).change();
         $.datepicker.fadeOut();
         if ( callback ) callback();
     };
@@ -2822,8 +2824,8 @@
     $.fn.datepicker = function(settings)
     {
         var options = $.extend({
-            year:   1994,
-            month:  8,
+            year:   (new Date()).getFullYear(),
+            month:  (new Date()).getMonth() + 1,
         }, settings);
 
         if ( ! this.length ) return this;
@@ -2890,11 +2892,18 @@
             initialized = true;
         }
 
+        this.parents('form').find('input, textarea').focus(function()
+        {
+            for ( var field in fields ) fields[field].blur();
+            $.datepicker.fadeOut();
+        });
+
         return this.each(function()
         {
+            fields[fields.length] = $(this).prop('readonly', true);
             $(this).focus(function()
             {
-                input = $(this).prop('disabled', true);
+                input = $(this).blur();
                 $.datepicker.css({
                     left: $(this).offset().left + $(this).width(),
                     top: $(this).offset().top + $(this).height()
@@ -2927,7 +2936,11 @@
         
         if ( $('#club').length ) $.clubs();
 
-        $('input.datepicker').datepicker();
+        $('input.datepicker:not(#form-register-birthday)').datepicker();
+        $('#form-register-birthday').datepicker({
+            year: 1994,
+            month: 8
+        });
 
         $('#form-sidebar-register, #form-login-register').click(function()
         {
