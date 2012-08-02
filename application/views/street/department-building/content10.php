@@ -1,0 +1,30 @@
+<h4>
+    科學一館
+</h4>
+<p>
+    聽聞好多2012的事情
+</p>
+<p>
+    心中感到莫名的恐懼
+</p>
+<p>
+    究竟這些可怕的預言
+</p>
+<p>
+    是否符合科學
+</p>
+<p>
+    是否真會在我們深愛的地球上發生
+</p>
+<p>
+    走進這棟被大樹包圍的美麗建築
+</p>
+<p>
+    讓地科院的專家來告訴你吧
+</p>
+<p>
+    科系：<a href="http://www.gep.ncu.edu.tw/" title="地科">地科</a>
+</p>
+<p>
+    <img alt="科學一館" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2522.JPG" style="width:320px;height:240px;" /><img alt="科學一館" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2523(1).JPG" style="width:320px;height:427px;" />
+</p>

@@ -1,0 +1,52 @@
+<h4>
+    操場
+</h4>
+<p>
+    <img alt="操場1" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E6%93%8D%E5%A0%B41.jpg" style="width:500px;height:332px;" /><img alt="操場2" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E6%93%8D%E5%A0%B42.jpg" style="width:500px;height:332px;" />
+</p>
+<div>
+    中央的操場為一圈400公尺的PU跑道。有時候晚上會看到有同學們相約在這邊進行足球的友誼賽；
+</div>
+<div>
+</div>
+<div>
+    除此之外，操場也是我們每一年在11月舉辦全校運動會的地點，這是一個全校性的活動，各系均積極的爭取最高榮譽─精神總錦標。
+</div>
+<div>
+</div>
+<div>
+    這個地點可以說是許多中大人揮灑青春汗水的地方，也是存放著中大人許多難忘回憶的地方。操場後方有一聖火台，點燃聖火象徵運動員的精神。</div>
+<div>
+</div>
+<div>
+    不過在進入操場時，也有許多該注意的地方：
+</div>
+<ol>
+    <li>
+        禁止任何車輛進入。
+    </li>
+    <li>
+        禁止穿拖鞋、皮鞋、高跟鞋入場。
+    </li>
+    <li>
+        雨天禁止在操場中央及草皮從事球類運動。
+    </li>
+    <li>
+        跑道內禁止吸菸。
+    </li>
+    <li>
+        禁止打棒壘球。
+    </li>
+</ol>
+<div>
+    <h1>
+        攀岩場
+    </h1>
+    <p>
+        <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0021(1).JPG" style="width:500px;height:754px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0022.JPG" style="width:500px;height:332px;" />
+    </p>
+    <p>
+        位於操場邊緣的一面土色的牆，上面有許多凸起的石頭，看到那面牆的中間還有趨近90度的垂直轉角，想要攻頂真的需要很多的技巧及勇氣，大家可以來挑戰看看，可是記得要先找好教練和做好安全措施再上場。
+    </p>
+</div>
+
