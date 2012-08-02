@@ -4626,11 +4626,11 @@ li.enabled a
 
 .forum-view-profile
 {
-    background: #97d2f3;
+    background: #f8c77c;
     width: 165px;
-    height: 283px;
+    height: 263px;
     border-radius: 6px;
-    border: 2px solid #ffffff;
+    border: 2px solid #eaa520;
     margin-left: 45px;
     padding-top: 7px;
     float: left;
@@ -4647,30 +4647,26 @@ li.enabled a
 
 .forum-view-profile .profile-name
 {
-    width: 150px;
-    height: 25px;
-    margin: 1px auto;
-    background: #ffffff;
-    border-top-left-radius:5px;
-    border-top-right-radius:5px;
-}
-
-.forum-view-profile .profile-id
-{
-    width: 150px;
-    height: 25px;
-    margin: 1px auto;
-    background: #ffffff;
+    width: 140px;
+    height: 23px;
+    margin: 10px auto;
+    background: #fff0c8;
+    border-radius:5px;
+    padding-top: 2px;
+    padding-left: 10px;
+    color: #c57902;
 }
 
 .forum-view-profile .profile-department
 {
-    width: 150px;
-    height: 25px;
+    width: 140px;
+    height: 23px;
     margin: 1px auto;
-    background: #ffffff;
-    border-bottom-left-radius:5px;
-    border-bottom-right-radius:5px;
+    background: #fff0c8;
+    border-radius:5px;
+    padding-top: 2px;
+    padding-left: 10px;
+    color: #c57902;
 }
 
 #forum-view-body .forum-view-title
@@ -4678,11 +4674,12 @@ li.enabled a
     width: 389px;
     height: 31px;
     border-radius: 6px;
-    background: #97d2f3;
+    background: #fff0c8;
     float: left;
     margin-left: 20px;
     margin-bottom: 3px;
-    border: 2px solid #ffffff;
+    border: 2px solid #eaa520;
+    font-weight: bold;
     padding: 9px 0 0 11px;
 }
 
@@ -4694,7 +4691,7 @@ li.enabled a
     background: #ffffff;
     float: left;
     margin-left: 20px;
-    border: 1px solid black;
+    border: 2px solid #eaa520;
     padding: 9px 0 0 11px;
     word-break: break-all;
 }
@@ -4706,19 +4703,20 @@ li.enabled a
     height: 30px;
     position: absolute;
     top: 75px;
-    left: 199px;
+    left: 200px;
 }
 
 #forum-view-body .forum-view-comments
 {
-    width: 400px;
-    height: 30px;
+    width: 389px;
+    height: 25px;
     border-radius: 6px;
-    background: #ffffff;
+    background: #f4efe0;
     float: right;
     margin-top: 2px;
     margin-right: 46px;
-    border: 2px solid #97d2f3;
+    border: 2px solid #eaa520;
+    padding: 5px 0 0 11px;
 }
 
 #forum-view-replies
@@ -4918,9 +4916,9 @@ li.enabled a
 }
 
 #forum-forum-body #body-table .table-body td.title,
-td.author,
-td.reply,
-td.popularity
+#forum-forum-body #body-table .table-body td.author,
+#forum-forum-body #body-table .table-body td.reply,
+#forum-forum-body #body-table .table-body td.popularity
 {
     border-top-style:solid;
     border-bottom-style:solid;
@@ -4951,6 +4949,9 @@ td.popularity
 
 #forum-forum-body #body-table .table-body td.time
 {
+    width: 80px;
+    font-size: 0.8em;
+    color: #757575;
     border-top-style:solid;
     border-bottom-style:solid;
     border-right-style:solid;
@@ -4958,6 +4959,7 @@ td.popularity
     border-width:2px;
     border-top-width:0.8px;
     background-color:#ffffff;
+    word-break: break-all;
 }
 
 #forum-forum-footer
