@@ -123,7 +123,6 @@ jQuery(document).ready(function()
                 <li page="health" tab="3">心理諮商</li>
             </ul>
         </div>
-
     </div>
     <div id="life-dialog">
             <div id="nculife-title">
@@ -134,7 +133,6 @@ jQuery(document).ready(function()
             </div>
             <div id="nculife-db">
                 <div id="nculife-cv">
-                    View
                 </div>
             </div>
         </div>

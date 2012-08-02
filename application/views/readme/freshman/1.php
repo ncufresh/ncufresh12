@@ -55,20 +55,13 @@
         </tr>
         <tr>
             <td>
-            <p>
-            <strong>9</strong></p>
-            <p align="center">
-            <strong>月</strong></p>
-            <p>
-            <strong>13</strong></p>
-            <p align="center">
-            <strong>日</strong></p>
-            <p align="center">
-            <strong>星</strong></p>
-            <p align="center">
-            <strong>期</strong></p>
-            <p align="center">
-            <strong>四</strong></p>
+                <p align="center"><strong>9</strong></p>
+                <p align="center"><strong>月</strong></p>
+                <p align="center"><strong>13</strong></p>
+                <p align="center"><strong>日</strong></p>
+                <p align="center"><strong>星</strong></p>
+                <p align="center"><strong>期</strong></p>
+                <p align="center"><strong>四</strong></p>
             </td>
             <td>
                 <p>資工系</p>
