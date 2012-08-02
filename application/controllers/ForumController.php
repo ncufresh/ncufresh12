@@ -9,7 +9,8 @@
 class ForumController extends Controller
 {
     const ARTICLES_PER_PAGE = 10;
-
+    NEW_ARTICLE_VALUE = 3000;
+    NEW_REPLY_VALUE = 1000;
     public function init()
     {
         parent::init();
@@ -92,7 +93,8 @@ class ForumController extends Controller
             }
             if ( $article->validate() && $article->save() )
             {
-                Character::model()->findByPk(Yii::app()->user->getId())->addExp(50000000);
+                Character::model()->findByPk(Yii::app()->user->getId())->addExp(self::NEW_ARTICLE_VALUE);
+                Character::model()->findByPk(Yii::app()->user->getId())->addMoney(self::NEW_ARTICLE_VALUE);
                 $this->redirect($article->url);
             }
         }
@@ -136,6 +138,8 @@ class ForumController extends Controller
             $comment->attributes = $_POST['comment'];
             if ( $comment->validate() && $comment->save() )
             {
+                Character::model()->findByPk(Yii::app()->user->getId())->addExp(self::NEW_REPLY_VALUE);
+                Character::model()->findByPk(Yii::app()->user->getId())->addMoney(self::NEW_REPLY_VALUE);
                 $this->redirect(Yii::app()->createUrl('forum/view', array(
                     'fid'       => $comment->article->forum->id,
                     'id'        => $comment->article_id
