@@ -1073,7 +1073,7 @@
                 })(this));
                 scrollContainer.addClass(classes);
             }
-            $.extend($(this).__proto__, {
+            $.extend($(this).constructor.prototype, {
                 scrollTo: function(position)
                 {
                     var scrollDraggableHeight = updateScrollDraggableHeight();
@@ -1573,7 +1573,7 @@
             }
             td.appendTo(tr);
         }
-        $.extend( table.__proto__,{
+        $.extend( table.constructor.prototype,{
             markToday: markToday,
             markEvent: markEvent,
             cleanUpMark: cleanUpMark,
@@ -1750,7 +1750,7 @@
                         var left = $(this).parents('table').offset().left + event.currentTarget.offsetLeft;
                         var top = $(this).parents('table').offset().top + event.currentTarget.offsetTop - prompt.height();
                         prompt.css({
-                            top: top-5,
+                            top: top,
                             left: left,
                             display: 'inline-block'
                         });
@@ -2114,7 +2114,7 @@
                 overlay.on('click', function() { return overlayClose(uuid); });
             }
             if ( options.closeOnEscape ) $(document).on('keyup', escape);
-            $.extend(overlay.__proto__, {
+            $.extend(overlay.constructor.prototype, {
                 close: function(index)
                 {
                     return overlayClose($(this).data('uuid'), index);

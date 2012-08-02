@@ -118,16 +118,21 @@ class ForumController extends Controller
         if ( Article::model()->findByPk($id) )
         {
             $article = Article::model()->findByPk($id);
-            $this->render('view', array(
-                'article'   => $article,
-            ));
             $article->viewed++;
-            $article->save();
+            
+            if (  $article->save())
+            {
+                $this->render('view', array(
+                'article'   => $article,
+                ));
+            }
+            
         }
         else 
         {
             throw new CHttpException(404);
         }
+        
     }
 
     public function actionComment(){
@@ -145,6 +150,8 @@ class ForumController extends Controller
                     'id'        => $comment->article_id
                 )));
             }
+            else
+                throw new CHttpException(404);
         }
         else 
         {
@@ -163,7 +170,11 @@ class ForumController extends Controller
             {
                 $article = Article::model()->findByPk($aid);
                 $article->replies_count++;
-                $article->save();
+                if( ! $article->save() )
+                {
+                    echo '!!!!!!!!!!';
+                    exit;
+                }
                 $this->redirect(Yii::app()->createUrl('forum/view', array(
                     'fid'   => $reply->article->forum->id,
                     'id'    => $reply->article_id
