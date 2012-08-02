@@ -479,7 +479,13 @@ a:hover
 .index-forums-box h4,
 #notfound a,
 #notfound a:hover,
-#index-calendar .calendar-bottom-wrapper
+#index-calendar .calendar-bottom-wrapper,
+.calendar,
+.calendar .right div,
+.calendar .right div h4,
+.calendar .calendar-create-button,
+.calendar .calendar-hide-button,
+.calendar .calendar-subscript-button
 {
     background: url('../images/sprites.png') no-repeat;
 }
@@ -1464,7 +1470,7 @@ ul#nculife-details
 
 .calendar
 {
-    background: url('../images/calendar_view_background.png');
+    background-position: 0 -288px;
     margin: 0 5px;
     padding: 60px;
     height: 680px;
@@ -1523,19 +1529,19 @@ ul#nculife-details
 
 .calendar .right div
 {
+    background-position: -848px -1264px;
     padding-top: 2em;
     width: 100%;
-    background: url('../images/calendar-hr.png') no-repeat;
     float: left;
 }
 
 .calendar .right div h4
 {
+    background-position: -1248px -96px;
     font-size: 1.5em;
     padding: 0 0 0 40px;
-    height: 37px;
-    line-height: 37px;
-    background: url('../images/calendar_category_pattern.png') no-repeat;
+    height: 32px;
+    line-height: 32px;
 }
 
 .calendar .right div li
@@ -1623,17 +1629,17 @@ a.calendar-hide-event:hover
 
 .calendar .calendar-subscript-button
 {
-    background: url('../images/calendar-subscript-button.png') no-repeat;
+    background-position: -32px -160px;
 }
 
 .calendar .calendar-hide-button
 {
-    background: url('../images/calendar-hide-button.png') no-repeat;
+    background-position: -32px -96px;
 }
 
 .calendar .calendar-create-button
 {
-    background: url('../images/calendar-create-button.png') no-repeat;
+    background-position: -32px -128px;
 }
 
 #index-container
