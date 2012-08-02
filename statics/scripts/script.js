@@ -2789,7 +2789,7 @@
         
         if ( $('#club').length ) $.clubs();
 
-        $('#form-sidebar-register').click(function()
+        $('#form-sidebar-register, #form-login-register').click(function()
         {
             window.location.href = $.configures.registerUrl;
             return false;
