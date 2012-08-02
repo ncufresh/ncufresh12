@@ -4182,6 +4182,13 @@ img.user_img
 /**
  * Game
  */
+.game-display .game-title
+{
+    font-size: 1.5em;
+    color: #4d136e;
+    padding: 6px 0px;
+} 
+
 .game-display .experience
 {
     background: #FFFFFF;
@@ -4249,6 +4256,12 @@ img.user_img
 div.item-description span
 {
     display:block;
+}
+div.item-description .exist
+{
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #ff0000;
 }
 #game-mission-dialog
 {
