@@ -484,6 +484,35 @@ a:hover
     background: url('../images/sprites.png') no-repeat;
 }
 
+#readme-fresh,
+#fresh-back,
+#readme-notice,
+#notice-back,
+#readme-reschool,
+#reschool-back,
+#readme-download,
+#download-back,
+#readme-body,
+#freshman-1,
+#freshman-2,
+#freshman-3,
+#freshman-4,
+#reschool-1,
+#reschool-2,
+#reschool-3,
+#reschool-4,
+#notice-1,
+#notice-2,
+#notice-3,
+#notice-4,
+#readme-logo1,
+#readme-logo2,
+#readme-logo3,
+#readme-logo4
+{
+    background: url('../images/readme.png') no-repeat;
+}
+
 /**
  * Layout style
  */
@@ -2343,7 +2372,7 @@ button.news-button
 
 #readme-fresh
 {
-    background: url('../readme/freshman_background.png');
+    background-position: -5px -450px;
     padding: 15px 25px;
     height: 420px;
     position: relative;
@@ -2352,113 +2381,111 @@ button.news-button
 
 #fresh-back
 {
-    background: url('../readme/fresh_back.png');
+    background-position: -1272px -656px;
 }
 
 #fresh-back:hover
 {
-    background: url('../readme/fresh_back_hover.png');
+    background-position: -1400px -656px;
 }
 
 #readme-notice
 {
-    width: 750px;
+    background-position: -5px -1350px;
     height: 450px;
     position: relative;
-    background: url('../readme/notice_background.png');
+    width: 750px;
 }
 
 #notice-back
 {
-    background: url('../readme/notice_back.png');
+    background-position: -1272px -944px;
 }
 
 #notice-back:hover
 {
-    background: url('../readme/notice_back_hover.png');
+    background-position: -1400px -944px;
 }
 
 #readme-reschool
 {
-    padding: 15px 25px;
+    background-position: -5px -900px;
     height: 420px;
+    padding: 15px 25px;
     position: relative;
     width: 700px;
-    background: url('../readme/reschool_background.png');
 }
 
 #reschool-back
 {
-    background: url('../readme/reschool_back.png');
+    background-position: -1272px -800px;
 }
 
 #reschool-back:hover
 {
-    background: url('../readme/reschool_back_hover.png');
+    background-position: -1400px -800px;
 }
 
 #readme-download
 {
-    width: 750px;
+    background-position: -765px 0;
     height: 450px;
     position: relative;
-    background: url('../readme/download_background.png');
+    width: 750px;
 }
 
 #download-back
 {
-    
-    background: url('../readme/download_back.png');
+    background-position: -1272px -1088px;
 }
 
 #download-back:hover
 {
-    background: url('../readme/download_back_hover.png');
+    background-position: -1400px -1088px;
 }
-
 
 #readme-body
 {
-    width: 750px;
+    background-position: -5px 0;
     height: 450px;
     position: relative;
-    background: url('../readme/readme_background.png');
+    width: 750px;
 }
 
 #freshman-1
 {
-    width: 129px;
+    background-position: -760px -656px;
     height: 91px;
     left: 393px;
     top: 194px;
-    background: url('../readme/freshman_1_word.png');
+    width: 129px;
 }
 
 #freshman-2
 {
-    width: 127px;
+    background-position: -888px -656px;
     height: 100px;
     left: 325px;
     top: 249px;
-    background: url('../readme/freshman_2_word.png');
+    width: 127px;
 }
 
 #freshman-3
 {
-    width: 79px;
+    background-position: -1016px -656px;
     height: 128px;
     left: 272px;
     top: 262px;
-    background: url('../readme/freshman_3_word.png');
+    width: 79px;
 }
 
 #freshman-4
 {
-    width: 54px;
+    background-position: -1144px -656px;
     height: 141px;
     left: 194px;
     top: 271px;
-    background: url('../readme/freshman_4_word.png');
+    width: 54px;
 }
 
 .fresh-inner
@@ -2469,38 +2496,38 @@ button.news-button
 
 #reschool-1
 {
-    width: 126px;
+    background-position: -760px -800px;
     height: 76px;
     left: 530px;
     top: 160px;
-    background: url('../readme/reschool_1_word.png');
+    width: 126px;
 }
 
 #reschool-2
 {
-    width: 100px;
+    background-position: -888px -800px;
     height: 89px;
     left: 500px;
     top: 220px;
-    background: url('../readme/reschool_2_word.png');
+    width: 100px;
 }
 
 #reschool-3
 {
-    width: 98px;
+    background-position: -1016px -800px;
     height: 96px;
     left: 450px;
     top: 274px;
-    background: url('../readme/reschool_3_word.png');
+    width: 98px;
 }
 
 #reschool-4
 {
-    width: 63px;
+    background-position: -1144px -800px;
     height: 140px;
     left: 399px;
     top: 303px;
-    background: url('../readme/reschool_4_word.png');
+    width: 63px;
 }
 
 .reschool-inner
@@ -2511,42 +2538,42 @@ button.news-button
 
 #notice-1
 {
-    width: 96px;
+    background-position: -760px -944px;
     height: 152px;
     left: 529px;
     top: 239px;
     position: absolute;
-    background: url('../readme/notice_1_word.png');
+    width: 96px;
 }
 
 #notice-2
 {
-    width: 73px;
+    background-position: -888px -944px;
     height: 167px;
     left: 469px;
     top: 257px;
     position: absolute;
-    background: url('../readme/notice_2_word.png');
+    width: 73px;
 }
 
 #notice-3
 {
-    width: 72px;
+    background-position: -1016px -944px;
     height: 160px;
     left: 399px;
     top: 266px;
     position: absolute;
-    background: url('../readme/notice_3_word.png');
+    width: 72px;
 }
 
 #notice-4
 {
-    width: 133px;
+    background-position: -1144px -944px;
     height: 145px;
     left: 263px;
     top: 280px;
     position: absolute;
-    background: url('../readme/notice_4_word.png');
+    width: 133px;
 }
 
 .notice-inner
@@ -2568,21 +2595,23 @@ button.news-button
 
 #readme-logo1
 {
-    width: 124px;
+    background-position: -760px -1544px;
     height: 122px;
     left: 357px;
     top: 74px;
     position: absolute;
+    width: 124px;
 }
 
 #readme-logo1:active
 {
+    background-position: -760px -450px;
     display: block;
-    background: url('../readme/freshman.png');
 }
 
 #readme-logo2
 {
+    background-position: -760px -1544px;
     width: 140px;
     height: 135px;
     left: 491px;
@@ -2592,12 +2621,13 @@ button.news-button
 
 #readme-logo2:active
 {
+    background-position: -888px -450px;
     display: block;
-    background: url('../readme/reschool.png');
 }
 
 #readme-logo3
 {
+    background-position: -760px -1544px;
     width: 121px;
     height: 194px;
     left: 607px;
@@ -2607,13 +2637,14 @@ button.news-button
 
 #readme-logo3:active
 {
+    background-position: -1144px -450px;
     display: block;
-    background: url('../readme/notice.png');
     
 }
 
 #readme-logo4
 {
+    background-position: -760px -1544px;
     width: 126px;
     height: 107px;
     position: absolute;
@@ -2623,8 +2654,8 @@ button.news-button
 
 #readme-logo4:active
 {
+    background-position: -1272px -450px;
     display: block;
-    background: url('../readme/download.png');
 }
 
 #read-fresh-menu
