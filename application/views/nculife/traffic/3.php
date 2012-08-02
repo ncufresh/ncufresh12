@@ -5,7 +5,7 @@
     台聯大系統是由中央、陽明、清華、交通等四所北部大學所組成，台聯大專車在四校內行駛提供了台聯大的教職員工以及學生上課以及洽公或是學術交流相互往來的交通管道。台聯大專車在學期中行駛時間為每週一到五，車站牌在依仁堂前。另外於19：10由中央大學發車的夜車，會行經清交後再返回中央，接著便直達台北車站，增加返回台北的師生另一個可選擇的交通方式。
 </p>
 <p>
-    時刻表(<a href="http://www.ust.edu.tw/new/c04_2.htm">資料來源</a>)
+    時刻表(<a href="http://www.ust.edu.tw/new/c04_2.htm" title="資料來源">資料來源</a>)
 </p>
 <p>
 <img alt="台聯大專車時刻表" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E5%8F%B0%E8%81%AF%E5%A4%A7%E5%B0%88%E8%BB%8A%E6%99%82%E5%88%BB%E8%A1%A8(1).jpg" style="width:698px;height:498px;" />

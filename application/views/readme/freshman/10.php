@@ -19,7 +19,8 @@
     <strong>月28日</strong>，否則依學則第5條之規定，即取消入學資格。
 </p>
 <p>
-    (四)申請就學貸款者：</p>
+    (四)申請就學貸款者：
+</p>
 <p>
     1.取得繳費單後，先至
     <a href="https://sloan.bot.com.tw/sloan/sLoanLogin.do" title="台灣銀行網站">台灣銀行網站</a>申請貸款。

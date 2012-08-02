@@ -2,8 +2,8 @@
     如何到中大 - 公車
 </h4>
 <h5>
-    <a href="http://www.tybus.com.tw/">桃園客運</a>　　　　　　　　　
-    <a href="http://www.chunglibus.com.tw/index.aspx">中壢客運</a>
+    <a href="http://www.tybus.com.tw/" title="桃園客運">桃園客運</a>　　　　　　　　　
+    <a href="http://www.chunglibus.com.tw/index.aspx" title="中壢客運">中壢客運</a>
 </h5>
 <p>
     <img alt="桃園中壢客運" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/bus.jpg" style="width:500px;height:399px;" />

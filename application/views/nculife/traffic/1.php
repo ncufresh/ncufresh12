@@ -23,5 +23,5 @@
     <img alt="愛心腳踏車" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E6%84%9B%E5%BF%83%E8%85%B3%E8%B8%8F%E8%BB%8A.jpg" style="width:590px;height:391px;" />
 </p>
 <p>
-    <a href="http://ctee.com.tw/NewsImgs/12325/93c7cfb7-6be3-4c20-8121-e4c1f50aed14.jpg">資料來源(圖片截取於Google)</a>
+    <a href="http://ctee.com.tw/NewsImgs/12325/93c7cfb7-6be3-4c20-8121-e4c1f50aed14.jpg" title="資料來源">資料來源(圖片截取於Google)</a>
 </p>
