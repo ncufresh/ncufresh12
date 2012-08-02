@@ -1,4 +1,4 @@
-<h1>論壇回覆</h1>
+<h4>論壇回覆</h4>
 <div class="profile-message-reply" >
     <ul id="self-message">
         <li class="article-title">標題:<li >
@@ -24,15 +24,15 @@
             <tr>
                 <td><?php echo Profile::model()->findByPk($reply->author_id)->name; ?></td>
                 <td class="reply-content">
-                    <a href="#">Hehey</a>
-                    <span><?php echo $reply->content; ?></span>
+                    <a href="#">人家回我....啥哩</a>
+                    <span><?php echo $reply->content ?></span>
+                    <br />
+                    <span>....<a href="<?php echo $article->getUrl(); ?>">完整閱讀<a></span>
                 </td>
-                <td><?php echo Yii::app()->format->datetime($reply->create_time); ?></td>
+                <td><?php echo $reply->created; ?></td>
             </tr>
 <?php endforeach;?>
         </tbody>
-        <div>
-        </div>
     </table>
     <span class="reply-title">推文</span>
     <table>
@@ -50,17 +50,17 @@
 <?php echo $comment->content; ?>
             </td>
             <td>
-<?php echo Yii::app()->format->datetime($comment->create_time); ?>
+<?php echo $comment->created; ?>
             </td>
         </tr>
 <?php endforeach;?>
     </table>
-    <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/comment'); ?>" method="POST"> 
-        <input type="hidden" name="token" value="echo Yii::app()->security->getToken(); ?>" />
-        <input type="text" name="comment[content]" />
-        <input type="hidden" name="comment[aid]" value="<?php echo $article->id; ?>" />
-        <input type="submit" value="推文" class="button-push" />
-        <button type="button" class="button-back" ></button>
+    <form id="forum-comment" enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/comment'); ?>" method="POST"> 
+        <input id="forum-comment-text" type="text" maxlength="32" name="comment[content]" />
+        <input type="hidden" name="comment[article_id]" value="<?php echo $article->id; ?>" />
+        <button type="submit" id="button-push"></button>
+        <button type="button" id="button-back-reply" ></button>
+        <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
     </form>
     </div>
 </div>

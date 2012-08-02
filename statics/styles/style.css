@@ -13,13 +13,43 @@ body
 {
     background: #DCE4ED url('../images/header.png') repeat-x;
     margin: 0 auto;
+    overflow-x: hidden;
     overflow-y: scroll;
+    padding: 0;
     width: 1000px;
+}
+
+img
+{
+    border: none;
+}
+
+h2
+{
+    display: none;
 }
 
 h4
 {
-    padding: 0;
+    font-size: 1.8em;
+    font-weight: bolder;
+    padding: 0 0 10px;
+    margin: 0;
+}
+
+h5
+{
+    font-size: 1.4em;
+    font-weight: bolder;
+    padding: 0 0 5px;
+    margin: 0;
+}
+
+h6
+{
+    font-size: 1.2em;
+    font-weight: bolder;
+    padding: 0 0 3px;
     margin: 0;
 }
 
@@ -56,15 +86,6 @@ form dt label
 }
 
 form input,
-form textarea
-{
-    outline: none;
-    position: relative;
-    resize: none;
-    width: 100%;
-}
-
-form input,
 form textarea,
 form button
 {
@@ -73,18 +94,31 @@ form button
     box-shadow: 0 0 0 #000000, 0 3px 3px #D3D3D3 inset;
     border-radius: 5px;
     height: 30px;
+    outline: none;
     padding: 4px 8px;
+    position: relative;
+    width: 100%;
 }
 
 form textarea
 {
     height: 160px;
+    resize: none;
 }
 
 form button
 {
+    cursor: pointer;
     height: 40px;
+    float: right;
+    margin-left: 20px;
     padding: 4px 16px;
+    width: auto;
+}
+
+form select
+{
+    outline: none;
 }
 
 form input:hover,
@@ -193,6 +227,13 @@ form dd .arrow
 form div
 {
     margin-top: 4px;
+    width: 50%;
+}
+
+form div:after
+{
+    content: '\A';
+    white-space: pre;
 }
 
 a
@@ -350,6 +391,8 @@ a:hover
 
 #lightbox-image
 {
+    max-height: 480px;
+    max-width: 640px;
     position: absolute;
     padding: 10px;
 }
@@ -426,11 +469,124 @@ a:hover
 #lightbox-close
 {
     background: url('../images/lightbox_close.png');
+    display: block;
     height: 22px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
+    left: 100%;
+    margin: -22px 0 5px -80px;
+    position: relative;
     width: 66px;
+}
+
+#datepicker
+{
+    background: #646464;
+    background: rgba(100, 100, 100, 0.7);
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    color: #FFFFFF;
+    margin: -75px 0 0 20px;
+    padding: 10px;
+    position: absolute;
+    width: 220px;
+}
+
+#datepicker a
+{
+    color: #FFFFFF;
+}
+
+#datepicker table
+{
+    text-align: center;
+    width: 100%;
+}
+
+#datepicker td
+{
+    border: 1px solid transparent;
+}
+
+#datepicker td.hover
+{
+    background: #CCFFFF;
+    border: 1px solid #FF3333;
+    color: #000000;
+    cursor: pointer;
+}
+
+#datepicker td.selected
+{
+    border: 1px solid #33FF33;
+}
+
+#sidebar-personal-toggle,
+#sidebar-personal-toggle.active,
+.chat-title button,
+.chat-title span,
+.chat-title span.online,
+.pager .first,
+.pager .first-disabled,
+.pager .last,
+.pager .last-disabled,
+.pager .prev,
+.pager .prev-disabled,
+.pager .next,
+.pager .next-disabled,
+#chat,
+#marquee span,
+#sidebar-personal,
+#form-sidebar-login,
+#form-sidebar-register,
+#navigation,
+#footer-content,
+#header .online,
+#header .browsered,
+#logo,
+#chat-friend-list-search,
+#search button,
+.index-latest-box h4,
+.index-forums-box h4,
+#notfound a,
+#notfound a:hover,
+#index-calendar > div,
+.calendar,
+.calendar .right div,
+.calendar .right div h4,
+.calendar .calendar-create-button,
+.calendar .calendar-hide-button,
+.calendar .calendar-subscript-button,
+.calendar a.calendar-hide-event
+{
+    background: url('../images/sprites.png') no-repeat;
+}
+
+#readme-fresh,
+#fresh-back,
+#readme-notice,
+#notice-back,
+#readme-reschool,
+#reschool-back,
+#readme-download,
+#download-back,
+#readme-body,
+#freshman-1,
+#freshman-2,
+#freshman-3,
+#freshman-4,
+#reschool-1,
+#reschool-2,
+#reschool-3,
+#reschool-4,
+#notice-1,
+#notice-2,
+#notice-3,
+#notice-4,
+#readme-logo1,
+#readme-logo2,
+#readme-logo3,
+#readme-logo4
+{
+    background: url('../images/readme.png') no-repeat;
 }
 
 /**
@@ -439,7 +595,7 @@ a:hover
 #logo,
 #moon
 {
-    background: url('../images/logo.png') no-repeat;
+    background-position: -960px 0;
     display: block;
     height: 160px;
     position: absolute;
@@ -480,12 +636,12 @@ a:hover
 
 #header .online
 {
-    background: url('../images/online.png') no-repeat;
+    background-position: -1200px 0;
 }
 
 #header .browsered
 {
-    background: url('../images/browsered.png') no-repeat;
+    background-position: -1200px -32px;
 }
 
 #menu
@@ -516,7 +672,7 @@ a:hover
 
 #navigation
 {
-    background: url('../images/navigation.png') no-repeat;
+    background-position: 0 -1216px;
     list-style: none;
     margin: 160px 0 0 0;
     padding: 0 15px;
@@ -592,12 +748,17 @@ a:hover
 
 #content
 {
-    margin: 0 225px 0 25px;
-    min-height: 300px;
-    overflow: hidden;
+    float: left;
+    padding: 0 25px;
+    width: 750px;
 }
 
 #footer
+{
+    clear: both;
+}
+
+#footer-background
 {
     background: url('../images/footer.png') repeat-x center;
     height: 120px;
@@ -608,7 +769,7 @@ a:hover
 
 #footer-content
 {
-    background: url('../images/footer-content.png') no-repeat bottom;
+    background-position: 0 -1088px;
     height: 120px;
     margin: 0 auto;
     width: 800px;
@@ -630,11 +791,8 @@ a:hover
  */
 #sidebar
 {
-    height: 100%;
-    margin-left: 800px;
-    padding-left: 15px;
-    position: absolute;
-    top: 0;
+    float: right;
+    margin: -240px -15px 0 15px;
     width: 200px;
 }
 
@@ -678,8 +836,8 @@ a:hover
 
 #sidebar form.profile dl
 {
-    margin: 0 5%;
-    width: 90%;
+    margin: 0;
+    width: 95%;
 }
 
 #sidebar form.profile input,
@@ -689,22 +847,18 @@ a:hover
     line-height: 20px;
 }
 
-#sidebar form.profile button
-{
-    box-shadow: none;
-}
-
 #sidebar form.profile div
 {
     text-align: center;
+    width: auto;
 }
 
 #sidebar form.profile button
 {
     border: none;
-    cursor: pointer;
+    box-shadow: none;
+    float: none;
     height: 25px;
-    line-heigth: 25px;
     margin: 0 10px;
     text-indent: -100000px;
     width: 55px;
@@ -745,17 +899,17 @@ a:hover
 
 #form-sidebar-login
 {
-    background: url('../images/login.png');
+    background-position: -352px -164px;
 }
 
 #form-sidebar-register
 {
-    background: url('../images/register.png');
+    background-position: -288px -164px;
 }
 
 #sidebar-personal
 {
-    background: #FFFFFF url('../images/personal.png') center top;
+    background-position: -288px 0;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     display: none;
@@ -785,7 +939,7 @@ a:hover
 
 #sidebar-personal-toggle
 {
-    background: url('../images/arrow-down.png');
+    background-position: 0 0;
     display: block;
     float: right;
     height: 16px;
@@ -795,7 +949,7 @@ a:hover
 
 #sidebar-personal-toggle.active
 {
-    background: url('../images/arrow-up.png');
+    background-position: 0 -16px;
 }
 
 #sidebar-personal-button,
@@ -827,7 +981,7 @@ a:hover
  */
 #chat
 {
-    background: url('../images/chat.png') 0 5px no-repeat;
+    background-position: -128px 0;
     bottom: 0;
     cursor: pointer;
     height: 120px;
@@ -922,7 +1076,7 @@ a:hover
 
 #chat-friend-list-search
 {
-    background: url('../images/friend_list_search.png') no-repeat;
+    background-position: -1248px -64px;
     border: 3px solid #D7D7D7;
     height: 20px;
     margin: 5px 0;
@@ -951,7 +1105,7 @@ a:hover
 
 .chat-dialog .chat-title span
 {
-    background: url('../images/chat_offline.png');
+    background-position: 0 -48px;
     display: block;
     float: left;
     height: 16px;
@@ -961,7 +1115,7 @@ a:hover
 
 .chat-dialog .chat-title span.online
 {
-    background: url('../images/chat_online.png');
+    background-position: 0 -64px;
 }
 
 .chat-dialog .chat-title p
@@ -976,7 +1130,7 @@ a:hover
 
 .chat-dialog .chat-title button
 {
-    background: url('../images/chat_close.png') 50% 50% no-repeat;
+    background-position: 0 -32px;
     border: 0;
     float: right;
     height: 16px;
@@ -987,7 +1141,7 @@ a:hover
 
 .chat-dialog .chat-title button:hover
 {
-    background: white url('../images/chat_close.png') 50% 50% no-repeat;
+    background-color: #FFFFFF;
     cursor: pointer;
 }
 
@@ -1174,9 +1328,14 @@ table.gsc-completion-container
     width: 178px;
 }
 
+#search div
+{
+    width: auto;
+}
+
 #search button
 {
-    background: url('../images/search_box_icon.png') no-repeat;
+    background-position: -32px 0;
     border: none;
     box-shadow: none;
     cursor: pointer;
@@ -1191,7 +1350,7 @@ table.gsc-completion-container
 
 #result
 {
-    background: #FFFFFF url('../images/search.png') right top no-repeat;
+    background: #FFFFFF url('../images/result.png') right top no-repeat;
     border-radius: 10px;
     margin: 0 auto;
     min-height: 160px;
@@ -1286,7 +1445,7 @@ ul#nculife-details
 
 #marquee span
 {
-    background: url('../images/marquee_star_icon.png') no-repeat;
+    background-position: -128px -128px;
     display: block;
     height: 50px;
     margin: -15px 0 0 -55px;
@@ -1315,78 +1474,191 @@ ul#nculife-details
     width: 30%;
 }
 
-#index-calendar .calendar-bottom-wrapper
+#index-calendar > div
 {
-    background: url('../images/calendar.png') center top no-repeat;
+    background-position: -960px -160px;
     height: 360px;
     margin-top: -45px;
-    padding: 50px 10px 0 10px;
-}
-
-#index-calendar .calendar-bottom
-{
+    padding: 50px 10px 20px 10px;
     position: relative;
 }
 
-#index-calendar table.calendar-table
+#index-calendar .calendar-table
 {
     border-collapse: collapse;
 }
 
-#index-calendar table.calendar-table caption
+#index-calendar .calendar-table caption
 {
     margin: 15px 0 10px 0;
 }
 
-#index-calendar table.calendar-table td
+#index-calendar .calendar-table td
 {
     text-align: right;
     width: 28px;
     cursor: pointer;
 }
 
-#index-calendar table.calendar-table thead
+#index-calendar .calendar-table thead
 {
     display: block;
 }
 
-#index-calendar table.calendar-table thead td
+#index-calendar .calendar-table thead td
 {
     color: #af8d5a;
     text-align: center;
 }
 
-#index-calendar table.calendar-table thead td.weekend
+#index-calendar .calendar-table thead td.weekend
 {
     color: red;
 }
 
-#index-calendar table.calendar-table tbody
+#index-calendar .calendar-table tbody
 {
     border-top: 1px solid #946722;
     border-bottom: 1px solid #946722;
     display: block;
 }
 
-#index-calendar table.todolist-table td
+#index-calendar .todolist-table td
 {
     width: 100px;
     text-align: center;
 }
 
-#index-calendar table.todolist-table thead td
+#index-calendar .todolist-table thead td
 {
     color: #946722;
 }
 
-#personal-calendar .prompt
+.calendar
+{
+    background-position: 0 -288px;
+    margin: 0 5px;
+    padding: 60px;
+    height: 680px;
+    border-radius: 15px;
+}
+
+.calendar .left
+{
+    height: 40%;
+    width: 40%;
+    padding: 20% 5% 40% 5%;
+    float: left;
+}
+
+.calendar .left table
+{
+    width: 100%;
+    height: 100%;
+    font-size: 1.2em;
+    position: relative;
+}
+
+.calendar .left table thead td
+{
+    text-align: center;
+}
+
+.calendar .left table tbody td
+{
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.calendar .date
+{
+    margin: 0;
+    display: block;
+    float: left;
+    width: 50%;
+    text-align: center;
+    height: 2em;
+    font-size: 2em;
+    line-height: 2em;
+    text-shadow: 2px 2px 8px;
+    color: rgba(21, 50, 206, 0.67);
+}
+
+.calendar .right
+{
+    height: 80%;
+    width: 50%;
+    float: left;
+    
+}
+
+.calendar .right div
+{
+    background-position: -848px -1264px;
+    padding-top: 2em;
+    width: 100%;
+    float: left;
+}
+
+.calendar .right div h4
+{
+    background-position: -1248px -96px;
+    font-size: 1.5em;
+    padding: 0 0 0 40px;
+    height: 32px;
+    line-height: 32px;
+}
+
+.calendar .right div li
+{
+    width: 88%;
+    height: 32px;
+    line-height: 32px;
+}
+
+.calendar .right div li:hover
+{
+    background: rgba(255, 255, 126, 0.17);
+    border-radius: 5px;
+}
+
+.calendar .right div li:hover a.calendar-hide-event
+{
+    display: inline-block;
+}
+
+.calendar .right div li a
+{
+    font-size: 1.2em;
+    margin-right: 0.5em;
+}
+
+.calendar a.calendar-hide-event
+{
+    background-position: -32px -96px;
+    width: 32px;
+    height: 32px;
+    text-indent: -10000px;
+    display: none;
+    float: right;
+    margin-right: 32px;
+}
+
+a.calendar-hide-event:hover
+{
+    background-color: rgba(255, 255, 199, 0.8);
+}
+
+.calendar .prompt
 {
     background: gray;
     background: rgba(0, 0, 0, 0.7);
     display: none;
+    border-radius: 5px;
 }
 
-#personal-calendar .prompt i
+.calendar .prompt i
 {
     border: 5px solid;
     border-color: transparent transparent gray transparent;
@@ -1398,22 +1670,163 @@ ul#nculife-details
     height: 0;
 }
 
-#personal-calendar .prompt ul
+
+.calendar .prompt ul
 {
     margin: 0;
     padding: 5px;
     list-style: none;
 }
 
-#personal-calendar .prompt ul li
+.calendar .prompt ul li
 {
     color: white;
 }
-.calendar-prompt
+
+.calendar .calendar-buttons
 {
-    background: gray;
+    padding-left: 32px;
+    height: 32px;
+    display: inline-block;
+    line-height: 32px;
+    margin-right: 1em;
+    font-size: 1.4em;
+}
+
+.calendar .calendar-subscript-button
+{
+    background-position: -32px -160px;
+}
+
+.calendar .calendar-hide-button
+{
+    background-position: -32px -96px;
+}
+
+.calendar .calendar-create-button
+{
+    background-position: -32px -128px;
+}
+
+#calendar-event,
+#calendar-recycle,
+#calendar-subscript
+{
+    height: 296px;
+    margin: 0 5px;
+    padding: 60px;
+    border-radius: 15px;
+    position: relative;
+}
+
+#calendar-recycle
+{
+    background: url('../images/calendar_recycle_background.png') no-repeat;
+}
+
+#calendar-recycle .scroll-container
+{
+    height: 232px;
+}
+
+#calendar-recycle h4
+{
+    background: url('../images/calendar_recycle_title.png') no-repeat;
+    padding: 0px 0 32px 45px;
+    font-size: 2em;
+}
+
+#calendar-recycle a.calendar-show-event,
+#calendar-recycle a.calendar-hide-event
+{
+    padding-left: 20px;
+    height: 20px;
+    line-height: 20px;
+    display: inline-block;
+    background-color: #7ecef4;
+    border-radius: 5px;
+    color: #1e68fe;
+}
+
+#calendar-recycle a.calendar-show-event
+{
+    background: url('../images/calendar_recover.png') no-repeat #7ecef4;
+}
+
+#calendar-recycle a.calendar-hide-event
+{
+    background: url('../images/calendar_delete.png') no-repeat #7ecef4;
+}
+
+#calendar-recycle ul
+{
     list-style: none;
-    padding: 5px;
+}
+
+#calendar-recycle li
+{
+    margin: 5px 0;
+}
+
+#calendar-recycle h5
+{
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+
+#calendar-event
+{
+    background: url('../images/calendar_event_background.png');
+}
+
+#calendar-event h4
+{
+    padding: 0;
+    margin: 0;
+    font-size: 2em;
+}
+
+#calendar-event h5
+{
+    padding: 0;
+    margin: 15px 0;
+    font-size: 1.5em;
+}
+
+#calendar-event div.container
+{
+    width: 600px;
+    overflow-y: hidden;
+}
+
+#calendar-event .scroll-container
+{
+    width: 610px;
+    height: 240px;
+}
+
+#calendar-event p
+{
+    line-height: 1.4em;
+}
+
+#calendar-recycle a.back,
+#calendar-event a.back
+{
+    background: url('../images/calendar_back.png') no-repeat;
+    height: 80px;
+    padding-left: 26px;
+    display: inline-block;
+    line-height: 80px;
+    font-size: 1.5em;
+    position: absolute;
+    top: 331px;
+    left: 642px;
+}
+
+#calendar-subscript
+{
+    background: url('../images/calendar_subscription_background.png');
 }
 
 #index-container
@@ -1469,7 +1882,7 @@ ul#nculife-details
 
 .index-latest-box h4
 {
-    background: url('../images/index_latest_icon.png') no-repeat;
+    background-position: -128px -176px;
 }
 
 .index-forums-box
@@ -1480,7 +1893,7 @@ ul#nculife-details
 
 .index-forums-box h4
 {
-    background: url('../images/index_forums_icon.png') no-repeat;
+    background-position: -208px -176px;
 }
 
 .news-view
@@ -1505,7 +1918,7 @@ ul#nculife-details
     box-shadow:2px 2px 5px #000;
 }
 
-.news-view .header h2
+.news-view .header h4
 {
     margin: 10px 0 0 0;
     font-size: 22pt;
@@ -1612,7 +2025,7 @@ button.news-button
     height: 25px;
 }
 
-#lastest-news-wrap .header h1
+#lastest-news-wrap .header h4
 {
     width: 85px;
     height: 0px;
@@ -1727,26 +2140,39 @@ button.news-button
 /**
  * Multimedia style
  */
-
-#mm-container
+#multimedia
 {
-}
-
-#mm-sidebar
-{
-    width: 25%;
-    float: left;
-}
-
-#mm-menu
-{
-    width: 100%;
-    height: 400px;
-    background: skyblue;
+    background: #18244E url('../images/multimedia_background.png');
+    border-radius: 5px;
     overflow: hidden;
+    padding-top: 90px;
 }
 
-#mm-menu button
+#multimedia .sidebar
+{
+    float: left;
+    width: 25%;
+}
+
+#multimedia .content
+{
+    float: left;
+    width: 75%;
+}
+
+#multimedia .menu
+{
+    height: 400px;
+    overflow: hidden;
+    width: 100%;
+}
+
+#multimedia .items
+{
+    margin-top: 0;
+}
+
+#multimedia button
 {
     border: 0;
     margin: 0;
@@ -1761,23 +2187,18 @@ button.news-button
     z-index: 100;
 }
 
-#mm-menu #mm-menu-items
-{
-    margin-top: 0;
-}
-
-#mm-menu button:hover
+#multimedia button:hover
 {
     opacity: 0.9;
     cursor: pointer;
 }
 
-#mm-menu button.mm-menu-down
+#multimedia button.down
 {
     margin-top: 350px;
 }
 
-#mm-menu a
+#multimedia a
 {
     display: block;
     width: 100%;
@@ -1787,12 +2208,12 @@ button.news-button
     opacity: 1;
 }
 
-#mm-menu a:hover
+#multimedia a:hover
 {
     opacity: 0.8;
 }
 
-#mm-menu a span
+#multimedia a span
 {
     color: white;
     position: relative;
@@ -1807,67 +2228,46 @@ button.news-button
     padding: 0 8px 0 0;
 }
 
-#mm-menu a img
+#multimedia a img
 {
     width: 100%;
     height: 100%;
 }
 
-#mm-player
+#multimedia .player
 {
-    width: 100%;
-    height: 200px;
-    background: blue;
-}
-
-#mm-content
-{
-    width: 75%;
-    float: left;
-}
-
-#mm-video
-{
-    background: #000000;
     height: 400px;
     position: relative;
     width: 100%;
 }
 
-#mm-video .loading
+#multimedia .projector
+{
+    background: url('../images/multimedia_projector.png') 15px 0 no-repeat;
+    height: 200px;
+    width: 100%;
+}
+
+#multimedia .loading
 {
     position: absolute;
 }
 
-#mm-video-frame
+#multimedia .introduction
+{
+    background: url('../images/multimedia_introduction.png') 0 5px no-repeat;
+    color: #FFFFFF;
+    height: 150px;
+    padding: 25px 55px;
+    width: 100%;
+}
+
+#multimedia-frame
 {
     border: 0;
     margin: 0;
     padding: 0;
     position: relative;
-}
-
-#mm-introduction
-{
-    width: 100%;
-    height: 200px;
-    background: gray;
-}
-
-#mm-introduction .text
-{
-    width: 65%;
-    height: 100%;
-    background: red;
-    float: left;
-}
-
-#mm-introduction .pic
-{
-    background: yellow;
-    width: 35%;    
-    height: 100%;
-    float: left;
 }
 
 /**
@@ -2165,122 +2565,124 @@ button.news-button
 
 #readme-fresh
 {
-    background: url('../readme/freshman_background.png');
+    background-position: -5px -450px;
     padding: 15px 25px;
     height: 420px;
     position: relative;
     width: 700px;
+    overflow: hidden;
 }
 
 #fresh-back
 {
-    background: url('../readme/fresh_back.png');
+    background-position: -1272px -656px;
 }
 
 #fresh-back:hover
 {
-    background: url('../readme/fresh_back_hover.png');
+    background-position: -1400px -656px;
 }
 
 #readme-notice
 {
-    width: 750px;
-    height: 450px;
+    height: 420px;
+    width: 700px;
+    padding: 15px 25px;
+    background-position: -5px -1350px;
     position: relative;
-    background: url('../readme/notice_background.png');
+    overflow: hidden;
 }
 
 #notice-back
 {
-    background: url('../readme/notice_back.png');
+    background-position: -1272px -944px;
 }
 
 #notice-back:hover
 {
-    background: url('../readme/notice_back_hover.png');
+    background-position: -1400px -944px;
 }
 
 #readme-reschool
 {
-    padding: 15px 25px;
+    background-position: -5px -900px;
     height: 420px;
+    padding: 15px 25px;
     position: relative;
     width: 700px;
-    background: url('../readme/reschool_background.png');
+    overflow: hidden;
 }
 
 #reschool-back
 {
-    background: url('../readme/reschool_back.png');
+    background-position: -1272px -800px;
 }
 
 #reschool-back:hover
 {
-    background: url('../readme/reschool_back_hover.png');
+    background-position: -1400px -800px;
 }
 
 #readme-download
 {
-    width: 750px;
+    background-position: -765px 0;
     height: 450px;
     position: relative;
-    background: url('../readme/download_background.png');
+    width: 750px;
 }
 
 #download-back
 {
-    
-    background: url('../readme/download_back.png');
+    background-position: -1272px -1088px;
 }
 
 #download-back:hover
 {
-    background: url('../readme/download_back_hover.png');
+    background-position: -1400px -1088px;
 }
-
 
 #readme-body
 {
-    width: 750px;
+    background-position: -5px 0;
     height: 450px;
     position: relative;
-    background: url('../readme/readme_background.png');
+    width: 750px;
 }
 
 #freshman-1
 {
-    width: 129px;
+    background-position: -760px -656px;
     height: 91px;
     left: 393px;
     top: 194px;
-    background: url('../readme/freshman_1_word.png');
+    width: 129px;
 }
 
 #freshman-2
 {
-    width: 127px;
+    background-position: -888px -656px;
     height: 100px;
     left: 325px;
     top: 249px;
-    background: url('../readme/freshman_2_word.png');
+    width: 127px;
 }
 
 #freshman-3
 {
-    width: 105px;
+    background-position: -1016px -656px;
     height: 128px;
     left: 272px;
     top: 262px;
-    background: url('../readme/freshman_3_word.png');
+    width: 79px;
 }
 
 #freshman-4
 {
-    width: 119px;
+    background-position: -1144px -656px;
     height: 141px;
     left: 194px;
     top: 271px;
-    background: url('../readme/freshman_4_word.png');
+    width: 54px;
 }
 
 .fresh-inner
@@ -2291,38 +2693,38 @@ button.news-button
 
 #reschool-1
 {
-    width: 126px;
+    background-position: -760px -800px;
     height: 76px;
     left: 530px;
     top: 160px;
-    background: url('../readme/reschool_1_word.png');
+    width: 126px;
 }
 
 #reschool-2
 {
-    width: 100px;
+    background-position: -888px -800px;
     height: 89px;
     left: 500px;
     top: 220px;
-    background: url('../readme/reschool_2_word.png');
+    width: 100px;
 }
 
 #reschool-3
 {
-    width: 98px;
+    background-position: -1016px -800px;
     height: 96px;
     left: 450px;
     top: 274px;
-    background: url('../readme/reschool_3_word.png');
+    width: 98px;
 }
 
 #reschool-4
 {
-    width: 63px;
+    background-position: -1144px -800px;
     height: 140px;
     left: 399px;
     top: 303px;
-    background: url('../readme/reschool_4_word.png');
+    width: 63px;
 }
 
 .reschool-inner
@@ -2333,42 +2735,42 @@ button.news-button
 
 #notice-1
 {
-    width: 96px;
+    background-position: -760px -944px;
     height: 152px;
     left: 529px;
     top: 239px;
     position: absolute;
-    background: url('../readme/notice_1_word.png');
+    width: 96px;
 }
 
 #notice-2
 {
-    width: 73px;
+    background-position: -888px -944px;
     height: 167px;
     left: 469px;
     top: 257px;
     position: absolute;
-    background: url('../readme/notice_2_word.png');
+    width: 73px;
 }
 
 #notice-3
 {
-    width: 72px;
+    background-position: -1016px -944px;
     height: 160px;
     left: 399px;
     top: 266px;
     position: absolute;
-    background: url('../readme/notice_3_word.png');
+    width: 72px;
 }
 
 #notice-4
 {
-    width: 133px;
+    background-position: -1144px -944px;
     height: 145px;
     left: 263px;
     top: 280px;
     position: absolute;
-    background: url('../readme/notice_4_word.png');
+    width: 133px;
 }
 
 .notice-inner
@@ -2377,65 +2779,80 @@ button.news-button
     position: absolute;
 }
 
+#readme .readme-view
+{
+    padding-right: 10px;
+}
+
+#readme .scroll-bar
+{
+    top: 33%;
+    height: 65%;
+}
+
 #readme-logo1
 {
-    width: 124px;
+    background-position: -760px -1544px;
     height: 122px;
     left: 357px;
-    top: 75px;
+    top: 74px;
     position: absolute;
+    width: 124px;
 }
 
 #readme-logo1:active
 {
+    background-position: -760px -450px;
     display: block;
-    background: url('../readme/freshman.png');
 }
 
 #readme-logo2
 {
+    background-position: -760px -1544px;
     width: 140px;
     height: 135px;
-    left: 492px;
-    top: 32px;
+    left: 491px;
+    top: 31px;
     position: absolute;
 }
 
 #readme-logo2:active
 {
+    background-position: -888px -450px;
     display: block;
-    background: url('../readme/reschool.png');
 }
 
 #readme-logo3
 {
+    background-position: -760px -1544px;
     width: 121px;
     height: 194px;
     left: 607px;
-    top: 33px;
+    top: 32px;
     position: absolute;
 }
 
 #readme-logo3:active
 {
+    background-position: -1144px -450px;
     display: block;
-    background: url('../readme/notice.png');
     
 }
 
 #readme-logo4
 {
+    background-position: -760px -1544px;
     width: 126px;
     height: 107px;
     position: absolute;
-    top: 212px;
+    top: 211px;
     left: 603px;
 }
 
 #readme-logo4:active
 {
+    background-position: -1272px -450px;
     display: block;
-    background: url('../readme/download.png');
 }
 
 #read-fresh-menu
@@ -2456,14 +2873,15 @@ button.news-button
 .readme-menu
 {
     width: 200px;
-    height: 300px;
-    top: 50px;
+    heigth: auto;
+    top: 5px;
     left: -187px;
-    border-radius: 10px;
+    border-radius: 0 10px 10px 0;
     position: absolute;
     display: block;
     list-style: none;
     opacity: 0.95;
+    overflow: auto;
 }
 
 .readme-menu p
@@ -2504,6 +2922,31 @@ button.news-button
     cursor: pointer;
     text-align: center;
 }
+
+#reame-download
+{
+    width: 700px;
+    height: 400px;
+    float: left;
+    word-break: break-all;
+    word-wrap: break-word;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+}
+
+.download-index
+{
+    float: left;
+    list-style: none;
+    font-size: 1.3em;
+}
+
+.download-index li
+{
+    margin-top: 6px
+}
+
 
 #about .introdution
 {
@@ -2635,7 +3078,7 @@ button.news-button
     height: 66px;
     background-repeat: no-repeat; 
     float: right;
-    margin-right: 20px;
+    margin-right: 18px;
     
 }
 .club-head:hover
@@ -2813,6 +3256,8 @@ button.news-button
 .club-display-head a
 {
     float: right;
+    margin-top: 14px;
+    margin-right: 20px;
 }
 
 .club-display-bottom
@@ -2836,6 +3281,26 @@ button.news-button
 {
     background: url('../club/4-3.png');
     background-repeat: no-repeat;
+}
+.club-back-button
+{
+    float: right;
+    width: 50px;
+    height: 50px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+#club-back1
+{
+    background: url('../club/clubback1.png');
+}
+#club-back2
+{
+    background: url('../club/clubback2.png');
+}
+#club-back3
+{
+    background: url('../club/clubback3.png');
 }
 .club-picture
 {
@@ -2863,20 +3328,25 @@ button.news-button
 	float: left;
 }
 
-#club-schedule-button
+#club-calendar-button
 {
     cursor: pointer;
     width: 204px;
     height: 50px;
-    background: url('../images/calendar_top.png');
     display: block;
 }
-#club-schedule-content
+
+#club-calendar
 {
-    background: skyblue;
     display: none;
-    width: 204px;
     height: 329px;
+    position: relative;
+    width: 204px;
+}
+
+#club-calendar table
+{
+    width: 100%;
 }
 
 .modify-table
@@ -2885,6 +3355,7 @@ button.news-button
     position: relative;
     width: 45%;
     float: left;
+    height: 290px;
 }
 
 .club-web
@@ -2971,14 +3442,14 @@ ul.friend-other-sort
     list-style-type:none;
 }
 
-.other-department
+/*ul#other-department
 {
     width:660px;
     padding:5px;
     margin:0px;
-}
+}*/
 
-.other-department li
+ul.users-department li
 {
     width:132px; 
     height:230px;
@@ -2988,17 +3459,17 @@ ul.friend-other-sort
     list-style-type:none;
 }
 
-.other-department li h3
+ul.users-department li h3
 {
     color:DarkBlue;
     width:132px; 
-    height:25px;
+    height:20px;
     padding:0px;
     margin:0px;
     text-align:center;
 }
 
-.other-department li h4
+ul.users-department li h4
 {
     color:red;
     width:132px; 
@@ -3088,37 +3559,34 @@ div.friends
     margin:0px;
 }
 
-div.sameDsameG
+#sameDsameG
 {
-    background-image:url('../profile/sameDsameG.png');
-    background-repeat:no-repeat ;
+    background: url('../profile/sameDsameG.png') no-repeat;
     width:690px;
     height:370px;
     padding:25px;
     margin:0px;
 }
 
-div.sameDdiffG
+#sameDdiffG
 {
-    background-image:url('../profile/sameDdiffG.png');
-    background-repeat:no-repeat ;
+    background: url('../profile/sameDdiffG.png') no-repeat ;
     width:690px;
     height:370px;
     padding:25px;
     margin:0px;
 }
 
-div.other-department
+#other-department
 {
-    background-image:url('../profile/otherD.png');
-    background-repeat:no-repeat ;
+    background:url('../profile/otherD.png') no-repeat ;
     width:690px;
     height:370px;
     padding:25px;
     margin:0px;
 }
 
-div.request
+#request
 {
     background-image:url('../profile/request.png');
     background-repeat:no-repeat ;
@@ -3135,11 +3603,17 @@ div.friends-part1
     margin:25px 25px 25px 25px;
 }
 
-div.friends-part2
+.friends-part2
 {
     width:680px;
     height:370px;
     margin:0px;
+}
+
+div.friends-part2 button
+{
+    padding:0px;
+    margin-top:0px;
 }
 
 /*div.friends-part4 form
@@ -3160,7 +3634,7 @@ div.friends-part2 div.avatar
     float:left;
 }
 
-div.friends-part3
+.friends-part3
 {
     width:675px;
     height:350px;
@@ -3178,7 +3652,7 @@ div.my-all-messages
 
 div.allmessages
 {
-    width:470px;
+    width:490px;
     height:290px;
     margin-top:55px;
     padding:5px;
@@ -3226,9 +3700,9 @@ div.friends-sortfriend div.avatar
     float:left;
 }
 
-div.myfriend
+#myfriend
 {
-    background-image:url('../profile/sameDdiffG.png');
+    background-image:url('../profile/myfriend.png');
     background-repeat:no-repeat ;
     width:690px;
     height:370px;
@@ -3236,7 +3710,7 @@ div.myfriend
     margin:0px;
 }
 
-div.myprofile
+.myprofile
 {
     background-image:url('../profile/profile.png');
     background-repeat:no-repeat ;
@@ -3246,22 +3720,17 @@ div.myprofile
     margin:0px;
 }
 
-div.myprofile form button
+#newgroup
 {
-    float:right;
-}
-
-/*div.mygroups
-{
-    background-image:url('../profile/mygroups.png');
+    background-image:url('../profile/newgroup.png');
     background-repeat:no-repeat ;
     width:690px;
     height:370px;
     padding:25px;
     margin:0px;
-}*/
+}
 
-div.newgroup
+#mygroup
 {
     background-image:url('../profile/mygroup.png');
     background-repeat:no-repeat ;
@@ -3342,40 +3811,69 @@ div.profile-message-reply
 {
     background-image: url('../profile/button/back.png');
     background-repeat: no-repeat ;
-    width: 141px;
-    height: 61px;
+    width: 84px;
+    height: 37px;
     padding: 0px;
     margin: 0px;
+    float:right;
+    position:relative;
+    right:60px;
+    bottom:61px;
+}
+
+#button-back-reply
+{
+    background-image: url('../profile/button/back.png');
+    background-repeat: no-repeat ;
+    width: 84px;
+    height: 37px;
+    padding: 0px;
+    margin: 0px;
+    float:right;
+    position:relative;
+    right:-119px;
+    bottom:0px;
 }
 
 .button-cancel
 {
     background-image:url('../profile/button/cancel.png');
     background-repeat:no-repeat ;
-    width:91px;
-    height:50px;
+    width:62px;
+    height:34px;
     padding:0px;
     margin:0px;
+    display:block;
+    position:absolute;
+    right:136px;
+    bottom:24px;
+    bottom:24px;
 }
 
-.button-push
+#button-push
 {
     background-image:url('../profile/button/push.png');
     background-repeat:no-repeat ;
-    width:71px;
-    height:38px;
+    width:67px;
+    height:35px;
     padding:0px;
     margin:0px;
+    position:relative;
+    right:35px;
+    bottom:0px;
 }
 
 .button-sure
 {
     background-image:url('../profile/button/sure.png');
     background-repeat:no-repeat ;
-    width:91px;
-    height:50px;
+    width:62px;
+    height:34px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:58px;
+    bottom:71px;
 }
 
 .button-addgroup
@@ -3388,56 +3886,71 @@ div.profile-message-reply
     margin:0px;
 }
 
-.button-deletegroup
+#button-deletegroup
 {
-    background-image:url('../profile/button/delete-group.png');
+    background-image:url('../profile/button/deletegroup.png');
     background-repeat:no-repeat ;
-    width:213px;
-    height:58px;
+    width:120px;
+    height:33px;
     padding:0px;
     margin:0px;
-    float:left;
+    display:block;
+    position:absolute;
+    right:101px;
+    bottom:0px;
 }
 
-.button-addmember
+#button-addmember
 {
-    background-image:url('../profile/button/add-member.png');
+    background-image:url('../profile/button/addmember.png');
     background-repeat:no-repeat ;
-    width:213px;
-    height:59px;
+    width:123px;
+    height:35px;
     padding:0px;
     margin:0px;
-    float:left;
+    display:block;
+    position:absolute;
+    right:347px;
+    bottom:0px;
 }
 
-.button-deletemember
+#button-deletemember
 {
-    background-image:url('../profile/button/delete-member.png');
+    background-image:url('../profile/button/deletemember.png');
     background-repeat:no-repeat ;
-    width:213px;
-    height:58px;
+    width:121px;
+    height:34px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:225px;
+    bottom:0px;
 }
 
 .button-makefriend
 {
     background-image:url('../profile/button/makefriend.png');
     background-repeat:no-repeat ;
-    width:188px;
-    height:50px;
+    width:120px;
+    height:34px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:199px;
+    bottom:23px;
 }
 
 .button-deletefriend
 {
     background-image:url('../profile/button/delete-friend.png');
     background-repeat:no-repeat ;
-    width:188px;
-    height:50px;
+    width:122px;
+    height:35px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:21px;
+    bottom:68px;
 }
 
 .button-mygroup
@@ -3450,45 +3963,59 @@ div.profile-message-reply
     margin:0px;
 }
 
+.button-addfriends
+{
+    background-image:url('../profile/button/addfriend.png');
+    background-repeat:no-repeat ;
+    width:96px;
+    height:35px;
+    padding:0px;
+    margin:0px;
+    position:absolute;
+    right:43px;
+    bottom:78px;
+}
+
 .button-addfriend
 {
     background-image:url('../profile/button/addfriend.png');
     background-repeat:no-repeat ;
-    width:50px;
-    height:50px;
+    width:96px;
+    height:35px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:550px;
+    bottom:-40px;
 }
 
-.button-editor
+#button-editor
 {
     background-image:url('../profile/button/editor.png');
     background-repeat:no-repeat ;
-    width:50px;
-    height:50px;
-    padding:0px;
-    margin:0px;
-}
-
-.button-register
-{
-    background-image:url('../profile/button/register.png');
-    background-repeat:no-repeat ;
-    width:159px;
+    width:158px;
     height:57px;
     padding:0px;
     margin:0px;
-    float:left;
+    display: block;
+    position:absolute;
+    right:433px;
+    bottom:71px;
 }
 
-.button-rewrite
+.button-flower
 {
-    background-image:url('../profile/button/rewrite.png');
+    background-image:url('../profile/button/flower.png');
     background-repeat:no-repeat ;
     width:146px;
     height:57px;
     padding:0px;
     margin:0px;
+}
+
+.is_exist
+{
+    color:red;
 }
 
 /**
@@ -3553,14 +4080,9 @@ div#success a
 {
     background: url('../profile/login.png');
     width: 690px;
-    height: 370px;
+    height: 365px;
     padding: 25px;
     margin: 0px;
-}
-
-#login h2
-{
-    display: none;
 }
 
 #login p
@@ -3592,11 +4114,11 @@ div.delete-group
     margin:0px;
 }
 
-form.group-description
+/*form.group-description
 {
     width:500px;
     height:635px;
-}
+}*/
 
 div.self-messages
 {
@@ -3616,8 +4138,8 @@ td.reply-content span
 {
     display: none;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0px;
+    left: 0px;
     width: 100%;
     word-break: break-word;
     background: AntiqueWhite ;
@@ -3683,17 +4205,9 @@ table.group
     margin:0px;
 }
 
-div.allmessages table
-{
-    width:460px;
-    margin:0px;
-    text-align:center;
-    padding:0px;
-}
-
 div.allmessages tr th
 {
-    width:100px;
+    width:155px;
     height:20px;
     padding:0px;
     margin:0px;
@@ -3702,7 +4216,7 @@ div.allmessages tr th
 
 div.allmessages tr td
 {
-    width:100px;
+    width:155px;
     padding:0px;
     margin:0px;
     text-align:center;
@@ -3781,11 +4295,6 @@ img.user_img
     width: 750px;
 }
 
-#notfound h2
-{
-    display: none;
-}
-
 #notfound p
 {
     left: 70px;
@@ -3803,7 +4312,7 @@ img.user_img
 
 #notfound a
 {
-    background: url('../images/back.png');
+    background-position: -286px -192px;
     display: block;
     height: 40px;
     left: 160px;
@@ -3815,7 +4324,7 @@ img.user_img
 
 #notfound a:hover
 {
-    background: url('../images/back_hover.png');
+    background-position: -286px -240px;
 }
 
 /**
@@ -3860,42 +4369,42 @@ img.user_img
 
 .pager .first
 {
-    background: url('../images/first_page.png');
-}
-
-.pager .last
-{
-    background: url('../images/last_page.png');
-}
-
-.pager .prev
-{
-    background: url('../images/prev_page.png');
-}
-
-.pager .next
-{
-    background: url('../images/next_page.png');
+    background-position: -16px 0;
 }
 
 .pager .first-disabled
 {
-    background: url('../images/first_page_disabled.png');
+    background-position: -16px -16px;
+}
+
+.pager .last
+{
+    background-position: -16px -32px;
 }
 
 .pager .last-disabled
 {
-    background: url('../images/last_page_disabled.png');
+    background-position: -16px -48px;
 }
 
-.pager .prev-disabled
+.pager .next
 {
-    background: url('../images/prev_page_disabled.png');
+    background-position: -16px -64px;
 }
 
 .pager .next-disabled
 {
-    background: url('../images/next_page_disabled.png');
+    background-position: -16px -80px;
+}
+
+.pager .prev
+{
+    background-position: -16px -96px;
+}
+
+.pager .prev-disabled
+{
+    background-position: -16px -112px;
 }
 
 .pager .current
@@ -3907,12 +4416,53 @@ img.user_img
 /**
  * Game
  */
+.game-display .game-title
+{
+    width: 335px;
+    height: 20px;
+    margin: 5px 11px;
+    font-size: 1.5em;
+    text-align: center;
+    background-color: black;
+    border: 3px solid #00788F;
+    border-radius: 10px;
+    color: #B8EEEC;
+}
+
+.game-display .item-category
+{
+    width: 335px;
+    height: 20px;
+    margin: 5px 11px;
+    font-size: 1.5em;
+    text-align: center;
+    background-color: black;
+    border: 3px solid #6CE44E;
+    border-radius: 10px;
+    color: #ABF194;
+}
+
+.game-display .shop-message
+{
+    font-size: 2.5em;
+    color: #0C533F;
+    padding: 12px 0px;
+} 
+
+.game-display .shop-click
+{
+    font-size: 1.5em;
+    color: black;
+} 
+
 .game-display .experience
 {
     background: #FFFFFF;
-    border: 1px solid #000000;
+    border: 1px solid #22A2D5;;
     height: 6px;
-    width: 320px;
+    width: 360px;
+    margin: 10px 0;
+    font-weight: bold;
 }
 
 .game-display .experience .text
@@ -3923,29 +4473,86 @@ img.user_img
     margin: -0.5em 0 -6px 0;
     overflow: visible;
     text-align: center;
-    width: 318px;
+    width: 358px;
 }
 
 .game-display .experience .bar
 {
-    background: #D7D606;
-    border: 1px solid #FFFFFF;
+    background: #3FD1EC;
+    border: 1px solid white;
     height: 4px;
-    max-width: 318px;
+    max-width: 358px;
 }
 
 .game-display .experience .max
 {
-    background: #FFA100;
+    background: #3F54EC
 }
 
+.game-display .item-icons img
+{
+    width:85px;
+    display: inline-block;
+}
+
+.game-display .achievement-icons
+{
+    float: left;
+}
+
+.game-display .achievement-icons img
+{
+    width:115px;
+    display: inline-block;
+}
+
+.item-description,
+.mission-description
+{
+    background: #646464;
+    background-color: rgba(100, 100, 100, 0.9);
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    color: #EFEFEF;
+    display: none;
+    margin: -45px 0 0 85px;
+    padding: 10px;
+    position: absolute;
+    width: 360px;
+}
+
+.item-description h4,
+.mission-description h4
+{
+    font-size: 1.7em;
+    color: #ddffb0;
+}
+.item-description .description,
+.mission-description .description
+{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #cbf0ff;
+}
+div.item-description span,
+div.mission-description span
+{
+    display:block;
+}
+div.item-description .exist
+{
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #ff0000;
+}
 #game-mission-dialog
 {
     width: 900px;
     height: 600px;
     background: url('../game/mission.png');
     position: fixed;
-    display: inline-block,name;
+    /*display: inline-block;*/
+    display: none;
 }
 
 #game-mission-dialog .dialog-close-button
@@ -3978,12 +4585,12 @@ img.user_img
     width: 324px;
     /*outline: 1px solid red;*/
     position: absolute;
-    top: 91px;
-    left: -37px;
+    top: 86px;
+    left: -32px;
 }
 #game-mission-dialog .avatar
 {
-    width: 270px;
+    width: 265px;
     height: 451px;
     font-size: 18px;
     /*outline: 1px solid black;*/
@@ -4338,23 +4945,10 @@ li.enabled a
     height:30px;
 }
 
-#forum-create-text-category
-{
-}
-
 #forum-create-category
 {
     height:30px;
     width:200px;
-    
-}
-
-#forum-create-text-content
-{
-}
-
-#forum-create-content
-{
 }
 
 #forum-reply-form
@@ -4416,18 +5010,19 @@ li.enabled a
 #forum-view-footer
 {
     background: url('../forum/view/background_footer.png');
-    width: 683px;
+    width: 648px;
     height: 86px;
     margin-left:35px;
+    padding-right: 35px;
 }
 
 .forum-view-profile
 {
-    background: #97d2f3;
+    background: #f8c77c;
     width: 165px;
-    height: 283px;
+    height: 263px;
     border-radius: 6px;
-    border: 2px solid #ffffff;
+    border: 2px solid #eaa520;
     margin-left: 45px;
     padding-top: 7px;
     float: left;
@@ -4444,30 +5039,26 @@ li.enabled a
 
 .forum-view-profile .profile-name
 {
-    width: 150px;
-    height: 25px;
-    margin: 1px auto;
-    background: #ffffff;
-    border-top-left-radius:5px;
-    border-top-right-radius:5px;
-}
-
-.forum-view-profile .profile-id
-{
-    width: 150px;
-    height: 25px;
-    margin: 1px auto;
-    background: #ffffff;
+    width: 140px;
+    height: 23px;
+    margin: 10px auto;
+    background: #fff0c8;
+    border-radius:5px;
+    padding-top: 2px;
+    padding-left: 10px;
+    color: #c57902;
 }
 
 .forum-view-profile .profile-department
 {
-    width: 150px;
-    height: 25px;
+    width: 140px;
+    height: 23px;
     margin: 1px auto;
-    background: #ffffff;
-    border-bottom-left-radius:5px;
-    border-bottom-right-radius:5px;
+    background: #fff0c8;
+    border-radius:5px;
+    padding-top: 2px;
+    padding-left: 10px;
+    color: #c57902;
 }
 
 #forum-view-body .forum-view-title
@@ -4475,24 +5066,26 @@ li.enabled a
     width: 389px;
     height: 31px;
     border-radius: 6px;
-    background: #97d2f3;
+    background: #fff0c8;
     float: left;
     margin-left: 20px;
     margin-bottom: 3px;
-    border: 2px solid #ffffff;
+    border: 2px solid #eaa520;
+    font-weight: bold;
     padding: 9px 0 0 11px;
 }
 
 #forum-view-body #forum-view-content
 {
-    width: 389px;
-    height: 191px;
+    width: 378px;
+    min-height: 182px;
     border-radius: 6px;
     background: #ffffff;
     float: left;
     margin-left: 20px;
-    border: 1px solid black;
-    padding: 9px 0 0 11px;
+    border: 2px solid #eaa520;
+    padding: 9px 11px 9px 11px;
+    word-break: break-all;
 }
 
 .hululu
@@ -4502,19 +5095,29 @@ li.enabled a
     height: 30px;
     position: absolute;
     top: 75px;
-    left: 199px;
+    left: 200px;
 }
 
 #forum-view-body .forum-view-comments
 {
-    width: 400px;
-    height: 30px;
+    width: 389px;
+    height: 25px;
     border-radius: 6px;
-    background: #ffffff;
+    background: #f4efe0;
     float: right;
     margin-top: 2px;
     margin-right: 46px;
-    border: 2px solid #97d2f3;
+    border: 2px solid #eaa520;
+    padding: 5px 0 0 11px;
+}
+
+#forum-view-body #form-comment .forum-comment-text
+{
+    width: 386px;
+    height: 28px;
+    float: right;
+    margin-top: 2px;
+    margin-right: 46px;
 }
 
 #forum-view-replies
@@ -4529,15 +5132,16 @@ li.enabled a
 
 #forum-view-replies .reply-content
 {
-    width: 389px;
-    height: 241px;
+    width: 378px;
+    min-height: 232px;
     border-radius: 6px;
     background: #ffffff;
     float: left;
     margin-left: 20px;
     margin-top: 20px;
-    border: 1px solid black;
-    padding: 9px 0 0 11px;
+    border: 2px solid #eaa520;
+    padding: 9px 11px 9px 11px;
+    word-break: break-all;
 }
 
 #forum-forum-top2
@@ -4714,9 +5318,9 @@ li.enabled a
 }
 
 #forum-forum-body #body-table .table-body td.title,
-td.author,
-td.reply,
-td.popularity
+#forum-forum-body #body-table .table-body td.author,
+#forum-forum-body #body-table .table-body td.reply,
+#forum-forum-body #body-table .table-body td.popularity
 {
     border-top-style:solid;
     border-bottom-style:solid;
@@ -4747,6 +5351,9 @@ td.popularity
 
 #forum-forum-body #body-table .table-body td.time
 {
+    width: 80px;
+    font-size: 0.8em;
+    color: #757575;
     border-top-style:solid;
     border-bottom-style:solid;
     border-right-style:solid;
@@ -4754,6 +5361,7 @@ td.popularity
     border-width:2px;
     border-top-width:0.8px;
     background-color:#ffffff;
+    word-break: break-all;
 }
 
 #forum-forum-footer
@@ -5144,6 +5752,11 @@ td.popularity
     border-color:#fdbc59;
 }
 /*end of yellow CSS*/
+
+#forum-forum-body #body-table .table-body .article-delete
+{
+    float:right;
+}
 
 #ultimate-password
 {

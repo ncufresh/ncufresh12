@@ -1,19 +1,18 @@
-<h1>
-註冊程序</h1>
+<h4>
+    註冊程序
+</h4>
 <p>
-(一)<strong>復學生</strong>應完成之註冊程序分別如下：</p>
+    (一)<strong>復學生</strong>應完成之註冊程序分別如下：
+</p>
 <ol>
-<li>
-<strong><u>繳費</u></strong><strong>。</strong></li>
-<li>
-<strong><u>新生登錄學籍</u></strong>：已於休學前完成者，仍須完成英文姓名及通訊地址確認，方得領取學生證。</li>
-<li>
-<strong><u>新生健康檢查</u></strong><strong>：</strong>已完成100學年度健康檢查，可免辦理。</li>
-<li>
-<strong><u>郵寄兵役資料表</u></strong><strong>(</strong><strong>男生)。</strong></li>
+    <li><strong><u>繳費</u></strong><strong>。</strong></li>
+    <li><strong><u>新生登錄學籍</u></strong>：已於休學前完成者，仍須完成英文姓名及通訊地址確認，方得領取學生證。</li>
+    <li><strong><u>新生健康檢查</u></strong><strong>：</strong>已完成100學年度健康檢查，可免辦理。</li>
+    <li><strong><u>郵寄兵役資料表</u></strong><strong>(</strong><strong>男生)。</strong></li>
 </ol>
 <p>
-上述事項皆已完成者可於<strong>9</strong><strong>月17日</strong>起至<strong>註冊組</strong>領取學生證。</p>
+    上述事項皆已完成者可於<strong>9</strong><strong>月17日</strong>起至<strong>註冊組</strong>領取學生證。
+</p>
 <p>
-(二)相關問題請洽詢<strong>註冊組</strong>(分機：57121、57111～3)</p>
-
+    (二)相關問題請洽詢<strong>註冊組</strong>(分機：57121、57111～3)
+</p>

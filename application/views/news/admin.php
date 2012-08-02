@@ -5,11 +5,9 @@
     height: 35px;
 }
 
-#admin-news h2
+#admin-news h4
 {
-    display: block;
     float: left;
-    margin: 5px 0 0 0;
 }
 
 #admin-news .header .pager
@@ -79,14 +77,20 @@
     background-color: #CCFFCC;
 }
 
-#admin-news a.news-edit-link
+#admin-marquee .news-edit-link,
+#admin-marquee .news-delete-link
 {
-    background: url('<?php echo Yii::app()->request->baseUrl; ?>/statics/images/admin_marquee_edit.png');
+    background: url('<?php echo Yii::app()->request->baseUrl; ?>/statics/images/sprites.png');
 }
 
-#admin-news a.news-delete-link
+#admin-marquee .news-edit-link
 {
-    background: url('<?php echo Yii::app()->request->baseUrl; ?>/statics/images/admin_marquee_delete.png');
+    background-position: -32px -32px;
+}
+
+#admin-marquee .news-delete-link
+{
+    background-position: -32px -64px;
 }
 
 #admin-news a.news-create-link
@@ -143,7 +147,7 @@
 <?php $this->endWidget();?>
 <div id="admin-news">
     <div class="header">
-        <h2>管理最新消息</h2>
+        <h4>管理最新消息</h4>
         <a class="news-create-link" href="<?php echo Yii::app()->createUrl('news/create') ;?>" title="新增文章">新增文章</a>
         <?php $this->widget('Pager', array(
             'url'       => 'news/admin',

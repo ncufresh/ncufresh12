@@ -61,7 +61,6 @@ class ItemBag extends CActiveRecord
         }
         else
         return 1;
-
     }
     public function equipItem($item_id)
     {
@@ -82,8 +81,8 @@ class ItemBag extends CActiveRecord
             
             $character_current_item_id = 0; // 檢查是否有穿裝備用
             
-            if($item_category == 1 && $character_data->hair != null)    //穿裝備前先檢查有沒有穿
-                $character_current_item_id = $character_data->hair->id;
+            if($item_category == 1 && $character_data->hairs != null)    //穿裝備前先檢查有沒有穿
+                $character_current_item_id = $character_data->hairs->id;
             else if($item_category == 2 && $character_data->eyes != null)
                 $character_current_item_id = $character_data->eyes->id;
             else if($item_category == 3 && $character_data->clothes != null)
@@ -92,8 +91,8 @@ class ItemBag extends CActiveRecord
                 $character_current_item_id = $character_data->pants->id;
             else if($item_category == 5 && $character_data->shoes != null)
                 $character_current_item_id = $character_data->shoes->id;
-            else if($item_category == 6 && $character_data->skin != null)
-                $character_current_item_id = $character_data->skin->id;
+            else if($item_category == 6 && $character_data->skins != null)
+                $character_current_item_id = $character_data->skins->id;
             else if($item_category == 7 && $character_data->others != null)
                 $character_current_item_id = $character_data->others->id;
                 
@@ -162,6 +161,21 @@ class ItemBag extends CActiveRecord
         return false; //找不到此物品 無法裝備
     }
 
+    public function itemExist($item_id)
+    {
+        $user_id = Yii::app()->user->getId();
+        $item_exist = $this->findAll(array(
+            'condition' => 'user_id = :user_id AND item_id = :item_id',
+            'params'    => array(
+                ':user_id' => $user_id,
+                ':item_id' => $item_id)
+            ));
+        if( $item_exist != null )
+            return true;
+        else
+            return false;
+    }
+    
     public function getClothesNum($id)
     {
         return count($this->findAll('user_id='.$id));

@@ -25,17 +25,5 @@
         {
             window.history.back();
         }); 
-        /*jQuery.getJSON( //url , data
-            $.configures.friendIDrl,
-            friends: $.configures.id
-        );*/
-        $('button').click(function(){
-                jQuery.getJSON( //url , data
-                $.configures.friendIDrl,
-                friends: $.configures.id
-            );
-        });
-        
-        
     });
 })(jQuery);

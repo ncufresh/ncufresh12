@@ -122,7 +122,8 @@ class Chat extends CActiveRecord
         ;')->queryRow(true, array(  
             ':sender'   => Yii::app()->user->getId(),
             ':receiver' => $id
-        ))['start'];
+        ));
+        $lastStateTime = $lastStateTime['start'];
         $lastLoginTime = Yii::app()->user->getUser()->getLastLoginTimestamp();
         $lasttime = $lastStateTime > $lastLoginTime
                   ? $lastStateTime

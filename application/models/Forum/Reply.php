@@ -52,9 +52,41 @@ class Reply extends CActiveRecord
         }
         return false;
     }
-    
+        
     public function getRepliesNumOfUser($author_id)
     {
         return count($this->findAll('author_id='.$author_id));
+    }
+    
+    public static function getReplies($article_id, $page, $entries_per_page)
+    {
+        $count = self::model()->count();
+        $total_pages = ceil($count / $entries_per_page);
+        $current_page = ($page<$total_pages?$page:$total_pages);
+        
+        return self::model()->findAll(array(
+                'condition' => 'article_id = '.$article_id,
+                'limit'     => $entries_per_page,
+                'offset'    => ($current_page - 1) * $entries_per_page
+        ));
+    }
+    
+    public static function getPageStatus($page, $entries_per_page=10, $aid)
+    {
+        $pages = ceil(self::model()->count('article_id= '.$aid) / $entries_per_page);
+
+        return array(
+            'pages'         => $pages,
+            'current'       => $page,
+            'first'         => 1,
+            'last'          => $pages
+        );
+    }
+    
+    public function afterFind()
+    {
+        parent::afterFind();
+        $this->content = nl2br(htmlspecialchars($this->content));
+        $this->created = Yii::app()->format->datetime($this->created);
     }
 }

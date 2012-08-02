@@ -198,7 +198,7 @@ class SiteController extends Controller
                 $this->redirect(array('site/index'));
             }
         }
-        $this->setPageTitle(Yii::app()->name . ' - 登入');
+        $this->setPageTitle(Yii::app()->name . ' - 需要驗證您的身分');
         $this->render('login');
     }
 
@@ -229,6 +229,7 @@ class SiteController extends Controller
         {
             $user->attributes = $_POST['register'];
             $profile->attributes = $_POST['profile'];
+            $profile->birthday = '1992-04-23';
             $user_validate = $user->validate();
             $profile_validate = $profile->validate();
             if ( $user_validate && $profile_validate )
@@ -264,6 +265,7 @@ class SiteController extends Controller
                 }
                 else
                 {
+                    $this->setPageTitle(Yii::app()->name . ' - 註冊');
                     $this->render('register', array(
                         'departments'   => Department::model()->getDepartment(),
                         'username_errors'        => $user->getErrors(),
@@ -297,6 +299,6 @@ class SiteController extends Controller
 
     public function actionSuccess()
     {
-         $this->render('success');
+        $this->render('success');
     }
 }

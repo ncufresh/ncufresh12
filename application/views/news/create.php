@@ -19,7 +19,7 @@ input.MultiFile-applied
 
 #news-url-button
 {
-    background: #fff url('<?php echo Yii::app()->baseUrl;?>/statics/images/news_add_url_button.png') no-repeat;
+    background: #fff url('<?php echo Yii::app()->baseUrl;?>/statics/images/sprites.png') -64px 0 no-repeat;
     width: 20px;
     height: 20px;
     text-indent: -10000%;
@@ -262,7 +262,7 @@ a.news-url-delete:hover, a.MultiFile-remove:hover
 </script>
 <?php $this->endWidget();?>
 <div id="news-create">
-    <h2 class="news-title">新增文章</h2>
+    <h4 class="news-title">新增文章</h4>
     <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('news/create')?>" method="POST" class="MultiFile-intercepted">
         <dl>
             <dt>

@@ -33,15 +33,6 @@ class Achievement extends CActiveRecord
         $level_exp = Character::model()->getLevelExp($level); //傳入等級 查詢等級經驗
         $user_friend = Friend::model()->getAmount($id);
         $nickname = $profile_data->nickname;
-        $user_value = array(
-            'spend_money' => 234324234,
-            'total_money' => 13333,
-            'friend' => 23,
-            'reply' => 10,
-            'post' => 15,
-            'cloth' => 15,
-            'body_price' => 51
-            );
         $user_login_times = $user_data->online_count; // $user_value['login_times'];
         echo 'user_login_times => '.$user_login_times.',  ';
         $user_spend_money = $character_data->total_money - $character_data->money;
@@ -68,9 +59,9 @@ class Achievement extends CActiveRecord
                 $user_post >= $achievement->post &&
                 $user_cloth >= $achievement->cloth &&
                 $user_body_price >= $achievement->body_price )
-                {
-                    $return[] = array('name' => $achievement->name, 'description' => $achievement->description);
-                }
+                $return[] = array('name' => $achievement->name, 'description' => $achievement->description, 'get' => true);
+            else
+                $return[] = array('name' => $achievement->name, 'description' => $achievement->description, 'get' => false);
         }
         return $return;
     } 

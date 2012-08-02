@@ -35,7 +35,7 @@ jQuery(document).ready(function()
         $('#nculife-t').empty();
 
         var button = $(this)
-        if(button.hasClass('life-bar'))
+        if( button.hasClass('life-bar') )
         {
             jQuery(this).children().children().each(function()
             {
@@ -45,6 +45,7 @@ jQuery(document).ready(function()
                     .attr('class', '')
                     .attr('tab', $(this).attr('tab'))
                     .attr('page', $(this).attr('page'))
+                    .attr('title', $(this).text())
                     .click(getTabContent);
                 $('#nculife-dh').append(title);
             });
@@ -61,6 +62,7 @@ jQuery(document).ready(function()
                     .attr('class', '')
                     .attr('tab', $(this).attr('tab'))
                     .attr('page', $(this).attr('page'))
+                    .attr('title', $(this).text())
                     .click(getTabContent);
                 $('#nculife-dh').append(title);
             });
@@ -153,7 +155,7 @@ jQuery(document).ready(function()
         },500);
     });
 
-    switch(window.location.hash.replace('#', ''))
+    switch( window.location.hash.replace('#', '') )
     {
         case 'play' :
             jQuery('#life-play').mouseenter();

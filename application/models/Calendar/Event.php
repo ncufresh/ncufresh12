@@ -30,6 +30,14 @@ class Event extends CActiveRecord
         );
     }
     
+    public function rules()
+    {
+        return array(
+            array('start', 'isDate'),
+            array('end', 'isDate'),
+        );
+    }
+    
     public function relations()
     {
         return array(
@@ -50,6 +58,19 @@ class Event extends CActiveRecord
                 'on' => 'status.user_id IS NULL OR status.user_id=' . (integer)Yii::app()->user->id
             )
         );
+    }
+
+    public function isDate($attr)
+    {
+        $date = $this->{$attr};
+        if ( preg_match('/^\d{4}\-\d{2}-\d{2}$/', $date) )
+        {
+            list($year, $month, $day) = explode('-', $date);
+            $date = mktime(0, 0, 0, $month, $day, $year);
+            if ( $date === false ) $this->addError('date', 'WRONG!!!');
+            return true;
+        }
+        $this->addError('date', 'WRONG!!!');
     }
 
     public function getEventById($id)
@@ -97,7 +118,7 @@ class Event extends CActiveRecord
             'status'    => array(
                 'select'    => false,
                 'condition' => 'status.done = 1'
-            )
+            ),
         ))->findAll(array(
             'condition' => 'invisible = 0'
         ));
@@ -138,6 +159,7 @@ class Event extends CActiveRecord
         parent::afterFind();
         $this->start -= date('Z', $this->start);
         $this->end   -= date('Z', $this->end);
+        $this->description = nl2br(htmlspecialchars($this->description));
     }
     
     public function beforeSave()
@@ -147,6 +169,10 @@ class Event extends CActiveRecord
             if ( $this->getIsNewRecord() )
             {
                 $this->created = TIMESTAMP;
+                list($year, $month, $day) = explode('-', $this->start);
+                $this->start = mktime(0, 0, 0, $month, $day, $year);
+                list($year, $month, $day) = explode('-', $this->end);
+                $this->end = mktime(0, 0, 0, $month, $day, $year);
             }
             return true;
         }

@@ -9,13 +9,14 @@ jQuery(document).ready(function()
             function(data)
             { 
                 $('.readme-view').html(data.content);
-                $('.readme-view').scrollable({
-                    scrollableClass: false
-                });
             }
         ); 
         return false;
     }
+
+    $('.readme-view').scrollable({
+        scrollableClass: false
+    });
 
     if( $('.readme-menu p').length == 1 )
     {

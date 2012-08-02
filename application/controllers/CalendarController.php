@@ -11,7 +11,38 @@ class CalendarController extends Controller
 
     public function accessRules()
     {
-        return array();
+        return array(
+            array(
+                'allow',
+                'roles'     => array('admin')
+            ),
+            array(
+                'allow',
+                'actions'   => array(
+                    'view',
+                    'recycle',
+                    'event',
+                    'createEvent',
+                    'hideEvent',
+                    'showEvnet',
+                    'subscript'
+                ),
+                'roles'     => array('member')
+            ),
+            array(
+                'allow',
+                'actions'   => array(
+                    'ajaxEvent',
+                    'ajaxEvents',
+                    'ajaxClubEvents'
+                ),
+                'users'     => array('*')
+            ),
+            array(
+                'deny',
+                'users'     => array('*')
+            )
+        );
     }
 
     public function actionView()
@@ -42,8 +73,27 @@ class CalendarController extends Controller
             return true;
         }
 
+        $events = Event::model()->getRecycledEvents();
+        $result = array();
+        foreach ( $events as $event )
+        {
+            if ( $event->calendar->getIsGeneral() )
+            {
+                $result['全校'][] = $event;
+            }
+            else if ( $event->calendar->getIsClub() )
+            {
+                $name = $event->calendar->getClubName();
+                $result[$name][] = $event;
+            }
+            else
+            {
+                $result['個人'][] = $event;
+            }
+        }
+        
         $this->render('recycle', array(
-            'events'    => Event::model()->getRecycledEvents()
+            'result'    => $result
         ));
     }
 
@@ -85,7 +135,7 @@ class CalendarController extends Controller
             throw new CHttpException(404);
         }
     }
-    
+
     public function actionCreateEvent()
     {
         $event = new Event();
@@ -94,10 +144,12 @@ class CalendarController extends Controller
             $event->name = $_POST['event']['name'];
             $event->description = $_POST['event']['description'];
             $event->invisible = 0;
-            $event->start = strtotime($_POST['event']['start']);
-            $event->end = strtotime($_POST['event']['end']);
+            // $event->start = strtotime($_POST['event']['start']);
+            $event->start = $_POST['event']['start'];
+            // $event->end = strtotime($_POST['event']['end']);
+            $event->end = $_POST['event']['end'];
             $event->calendar_id = Calendar::Model()->find('user_id='.Yii::app()->user->getId().' AND category=1')->id;
-            if ( $event->save() )
+            if ( $event->validate() && $event->save() )
             {
                 $this->redirect(Yii::app()->createUrl('calendar/view'));
             }
@@ -113,10 +165,10 @@ class CalendarController extends Controller
             $event->name = $_POST['event']['name'];
             $event->description = $_POST['event']['description'];
             $event->invisible = 0;
-            $event->start = strtotime($_POST['event']['start']);
-            $event->end = strtotime($_POST['event']['end']);
+            $event->start = $_POST['event']['start'];
+            $event->end = $_POST['event']['end'];
             $event->calendar_id = Calendar::Model()->find('user_id='.Yii::app()->user->getId().' AND category=0')->id;
-            if ( $event->save() )
+            if ( $event->validate() && $event->save() )
             {
                 $this->redirect(Yii::app()->createUrl('calendar/club'));
             }
@@ -227,9 +279,10 @@ class CalendarController extends Controller
         return $result;
     }
 
-    //測試完封閉一般REQUEST
     public function actionAjaxEvent($id)
     {
+        if ( ! Yii::app()->request->getIsAjaxRequest() ) throw new CHttpException(404);
+        $id = (integer)$id;
         $event = Event::model()->getEventById($id);
         $this->_data['event']['id'] = $event->id;
         $this->_data['event']['start'] = $event->start;
@@ -238,9 +291,22 @@ class CalendarController extends Controller
         $this->_data['event']['description'] = $event->description;
     }
 
-    //測試完封閉一般REQUEST
+    public function actionAjaxClubEvents($id)
+    {
+        $events = Calendar::model()->getClubCalendar($id)->events;
+        foreach ( $events as $key => $event )
+        {
+            $this->_data['events'][$key]['id'] = $event->id;
+            $this->_data['events'][$key]['start'] = $event->start;
+            $this->_data['events'][$key]['name'] = $event->name;
+            $this->_data['events'][$key]['end'] = $event->end;
+            $this->_data['events'][$key]['invisible'] = $event->invisible;
+        }
+    }
+
     public function actionAjaxEvents($club = false)
     {
+        if ( ! Yii::app()->request->getIsAjaxRequest() ) throw new CHttpException(404);
         if ( $club ) return $this->getAjaxClubEvents();
         $this->_data['events'] = array();
         if( isset($_POST['event_ids']) )
@@ -317,8 +383,8 @@ class CalendarController extends Controller
             }
         }
     }
-    
-    public function getAjaxClubEvents()
+
+    protected function getAjaxClubEvents()
     {
         $events = Calendar::model()->getClubCalendar()->events;
         foreach ( $events as $key => $event )
