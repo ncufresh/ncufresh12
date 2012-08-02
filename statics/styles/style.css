@@ -1607,6 +1607,81 @@ a.calendar-hide-event:hover
     background: url('../images/calendar-create-button.png') no-repeat;
 }
 
+.calendar-recycle
+{
+    background: url('../images/calendar_recycle_background.png') no-repeat;
+    height: 296px;
+    margin: 0 5px;
+    padding: 60px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.calendar-recycle .scroll-container
+{
+    height: 232px;
+}
+
+.calendar-recycle h4
+{
+    background: url('../images/calendar_recycle_title.png') no-repeat;
+    padding: 0px 0 32px 45px;
+    font-size: 2em;
+}
+
+.calendar-recycle a.back
+{
+    display: block;
+    position: absolute;
+    top: 362px;
+    left: 602px;
+    background: #D2D2D2;
+    width: 67px;
+    height: 33px;
+    line-height: 33px;
+    color: black;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.calendar-recycle a.calendar-show-event,
+.calendar-recycle a.calendar-hide-event
+{
+    padding-left: 20px;
+    height: 20px;
+    line-height: 20px;
+    display: inline-block;
+    background-color: #7ecef4;
+    border-radius: 5px;
+    color: #1e68fe;
+}
+
+.calendar-recycle a.calendar-show-event
+{
+    background: url('../images/calendar_recover.png') no-repeat #7ecef4;
+}
+
+.calendar-recycle a.calendar-hide-event
+{
+    background: url('../images/calendar_delete.png') no-repeat #7ecef4;
+}
+
+.calendar-recycle ul
+{
+    list-style: none;
+}
+
+.calendar-recycle li
+{
+    margin: 5px 0;
+}
+
+.calendar-recycle h5
+{
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+
 #index-container
 {
     float: right;
@@ -3060,6 +3135,7 @@ button.news-button
     background: url('../images/calendar_top.png');
     display: block;
 }
+
 #club-schedule-content
 {
     background: skyblue;

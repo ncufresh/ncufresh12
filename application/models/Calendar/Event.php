@@ -118,7 +118,7 @@ class Event extends CActiveRecord
             'status'    => array(
                 'select'    => false,
                 'condition' => 'status.done = 1'
-            )
+            ),
         ))->findAll(array(
             'condition' => 'invisible = 0'
         ));
