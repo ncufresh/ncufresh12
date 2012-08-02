@@ -1063,7 +1063,7 @@
                 })(this));
                 scrollContainer.addClass(classes);
             }
-            $.extend($(this).__proto__, {
+            $.extend($(this).constructor.prototype, {
                 scrollTo: function(position)
                 {
                     var scrollDraggableHeight = updateScrollDraggableHeight();
@@ -1563,7 +1563,7 @@
             }
             td.appendTo(tr);
         }
-        $.extend( table.__proto__,{
+        $.extend( table.constructor.prototype,{
             markToday: markToday,
             markEvent: markEvent,
             cleanUpMark: cleanUpMark,
@@ -1740,7 +1740,7 @@
                         var left = $(this).parents('table').offset().left + event.currentTarget.offsetLeft;
                         var top = $(this).parents('table').offset().top + event.currentTarget.offsetTop - prompt.height();
                         prompt.css({
-                            top: top-5,
+                            top: top,
                             left: left,
                             display: 'inline-block'
                         });
@@ -2104,7 +2104,7 @@
                 overlay.on('click', function() { return overlayClose(uuid); });
             }
             if ( options.closeOnEscape ) $(document).on('keyup', escape);
-            $.extend(overlay.__proto__, {
+            $.extend(overlay.constructor.prototype, {
                 close: function(index)
                 {
                     return overlayClose($(this).data('uuid'), index);
@@ -2488,6 +2488,8 @@
             lightboxDetailsId:          'lightbox-details',
             lightboxCaptionId:          'lightbox-caption',
             lightboxPageId:             'lightbox-page',
+            maxImageHeight:             480,
+            maxImageWidth:              640,
             fixedNavigation:            false,
             containerBorderSize:        10,
             containerResizeSpeed:       'slow',
@@ -2624,7 +2626,29 @@
             $('#' + options.lightboxImageId + ', #' + options.lightboxDetailsId + ', #' + options.lightboxPageId).hide();
 
             preloader.onload = function() {
+                var height = preloader.height;
+                var width = preloader.width;
                 $('#' + options.lightboxImageId).attr('src', images[active][1]);
+                if ( preloader.width > 0 && preloader.height > 0 )
+                {
+                    if ( width / height >= options.maxImageWidth / options.maxImageHeight )
+                    {
+                        console.log(preloader.width);
+                        if ( width > options.maxImageWidth )
+                        {
+                            preloader.width = options.maxImageWidth;
+                            preloader.height = (height * options.maxImageWidth) / width;
+                        }
+                    }
+                    else
+                    {
+                        if ( height > options.maxImageHeight )
+                        {
+                            preloader.height = options.maxImageHeight;
+                            preloader.width = (width * options.maxImageHeight) / height;
+                        }
+                    }
+                }
                 lightboxResize(preloader.width, preloader.height);
             };
             preloader.src = images[active][1];
@@ -2769,6 +2793,111 @@
 })(jQuery);
 
 /**
+ * DatePicker
+ */
+(function()
+{
+    var input = null;
+
+    var initialized;
+
+    var onClick = function(year, month, day, callback)
+    {
+        input.val(year + '-' + month + '-' + day).change().blur().prop('disabled', false);
+        $.datepicker.fadeOut();
+        if ( callback ) callback();
+    };
+
+    $.datepicker = {};
+
+    $.fn.datepicker = function(settings)
+    {
+        var options = $.extend({
+            year:   1994,
+            month:  8,
+        }, settings);
+
+        if ( ! this.length ) return this;
+
+        if ( ! initialized )
+        {
+            var generate = function(year, month)
+            {
+                return $.generateCalendar({
+                    year: year,
+                    month: month,
+                    right: true,
+                    rightClick: function()
+                    {
+                        if ( ++month > 12 )
+                        {
+                            year += 1;
+                            month = 1;
+                        }
+                        $('#datepicker table').detach();
+                        generate(year, month);
+                        return false;
+                    },
+                    left: true,
+                    leftClick: function()
+                    {
+                        if ( --month < 1 )
+                        {
+                            year -= 1;
+                            month = 12;
+                        }
+                        $('#datepicker table').detach();
+                        generate(year, month);
+                        return false;
+                    },
+                    dayClick: function()
+                    {
+                        var cell = $(this);
+                        onClick(year, month, $(this).data('day'), function()
+                        {
+                            cell.parent().parent().find('td').removeClass('selected');
+                            cell.addClass('selected');
+                        });
+                    },
+                    dayEnter: function()
+                    {
+                        $(this).addClass('hover');
+                    },
+                    dayLeave: function()
+                    {
+                        $(this).removeClass('hover');
+                    }
+                })
+                .appendTo($.datepicker)
+                .find('caption a:eq(1)')
+                .text(year + '年' + month + '月');
+                return calendar;
+            };
+            $.datepicker = $('<div></div>')
+                .attr('id', 'datepicker')
+                .hide()
+                .appendTo($('body'));
+            generate(options.year, options.month);
+            initialized = true;
+        }
+
+        return this.each(function()
+        {
+            $(this).focus(function()
+            {
+                input = $(this).prop('disabled', true);
+                $.datepicker.css({
+                    left: $(this).offset().left + $(this).width(),
+                    top: $(this).offset().top + $(this).height()
+                });
+                $.datepicker.stop(true, true).fadeIn();
+                return true;
+            });
+        });
+    };
+})(jQuery);
+
+/**
  * Main
  */
 (function($)
@@ -2788,6 +2917,8 @@
         $('.loading').sprite();
         
         if ( $('#club').length ) $.clubs();
+
+        $('#form-register-birthday').datepicker();
 
         $('#form-sidebar-register, #form-login-register').click(function()
         {

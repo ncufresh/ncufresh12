@@ -14,14 +14,33 @@
 <div id="forum-view-body">
     <div class="forum-view-profile">
         <div class="profile-pic"></div>
-        <div class="profile-name"></div>
-        <div class="profile-id"></div>
-        <div class="profile-department"></div>
+        <div class="profile-name">暱稱：<?php echo User::model()->findByPK($article->author_id)->profile->nickname; ?></div>
+        <div class="profile-department">系所：<?php echo User::model()->findByPK($article->author_id)->profile->mydepartment->abbreviation;?></div>
     </div>
     <div class="forum-view-title"><?php echo $article->title; ?></div>
+    
     <div id="forum-view-content"><?php echo $article->content; ?></div>
     <div class="hululu"></div>
-    <div class="forum-view-comments"></div>
+    <?php
+    $com = $article->comments;
+    foreach($com as $each):
+    ?>
+    <div class="forum-view-comments"><?php echo User::model()->findByPK($each->author_id)->profile->nickname;?>：<?php echo $each -> content; ?></div>
+    <?php
+    endforeach;
+    ?>
+    <?php
+    /*登入才可以推文*/
+    if(Yii::app()->user->getIsMember()):
+    ?>
+    <form id="form-comment" enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/comment'); ?>" method="POST">
+    <input class="forum-comment-text" type="text" maxlength="28" name="comment[content]" />
+    <input type="hidden" name="comment[article_id]" value="<?php echo $_GET['id']; ?>" />
+    <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
+    </form>
+    <?php
+    endif;
+    ?>
 </div>
 <?php
 $rep = $article->replies;
@@ -45,34 +64,3 @@ endforeach;
 ?>
 <div id="forum-view-footer">
 </div>
-<?php
-echo "title: ".$article->title.'<br/>';
-echo "content: ".$article->content.'<br/>';
-?>
-
-<?php
-$com = $article->comments;
-foreach($com as $each)
-    echo $each -> content . '<br/>';
-/*登入才可以推文*/
-if(Yii::app()->user->getIsMember()):
-?>
-<form id="forum-comment" enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/comment'); ?>" method="POST"> 
-<input id="forum-comment-text" type="text" maxlength="30" name="comment[content]" />
-<input type="hidden" name="comment[article_id]" value="<?php echo $_GET['id']; ?>" />
-<input type="submit" value="推文" />
-<input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
-</form>
-<div id="counter"></div>
-<?php
-endif;
-?>
-<br/>
-<br/>
-
-
-<?php
-$rep = $article->replies;
-foreach ($rep as $each)
-    echo '作者: '.$each->author_id.' 內容: '.$each -> content. '<br/>';
-?>

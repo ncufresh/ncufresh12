@@ -1,5 +1,5 @@
 <div id="game-mission">
-<h2> 任務列表 ( 進度：<?php echo round(($mission_count/93),4)*100 ?>% )</h2>
+<h4 class="game-title"> 任務列表 ( 進度：<?php echo round(($mission_count/93),4)*100 ?>% )</h4>
 <ul>
 <?php foreach ( $missions as $mission ) : ?>
     <li>

@@ -161,6 +161,21 @@ class ItemBag extends CActiveRecord
         return false; //找不到此物品 無法裝備
     }
 
+    public function itemExist($item_id)
+    {
+        $user_id = Yii::app()->user->getId();
+        $item_exist = $this->findAll(array(
+            'condition' => 'user_id = :user_id AND item_id = :item_id',
+            'params'    => array(
+                ':user_id' => $user_id,
+                ':item_id' => $item_id)
+            ));
+        if( $item_exist != null )
+            return true;
+        else
+            return false;
+    }
+    
     public function getClothesNum($id)
     {
         return count($this->findAll('user_id='.$id));

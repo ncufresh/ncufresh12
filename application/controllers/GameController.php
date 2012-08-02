@@ -167,7 +167,8 @@ class GameController extends Controller
             $level = Character::model()->getLevel($this->userId); //傳入id 查詢等級
             $content = $this->renderPartial('shop', array(
                 'level'     => $level,
-                'money'     => $this->characterData->money
+                'money'     => $this->characterData->money,
+                'user_id'   => $this->userId
             ), true);
             $this->setPageTitle(Yii::app()->name . ' - 商城列表');
             $this->render('game_system', array(
@@ -194,8 +195,6 @@ class GameController extends Controller
         }
 
         $status = ItemBag::model()->buyNewItem($id);
-        echo $status;
-        $reason ='test';
         switch ($status)
         {
             case 0:

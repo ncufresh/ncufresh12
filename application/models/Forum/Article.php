@@ -130,7 +130,9 @@ class Article extends CActiveRecord
             }
             else
             {
+                $this->title = $this->getRawValue('title');
                 $this->content = $this->getRawValue('content');
+                $this->created = $this->getRawValue('created');
             }
             //[not yet] 判斷$fid 跟 category 對應
             return true;
@@ -161,6 +163,8 @@ class Article extends CActiveRecord
     public function afterFind()
     {
         parent::afterFind();
+        $this->title = htmlspecialchars($this->title);
         $this->content = nl2br(htmlspecialchars($this->content));
+        $this->created = Yii::app()->format->datetime($this->created);
     }
 }

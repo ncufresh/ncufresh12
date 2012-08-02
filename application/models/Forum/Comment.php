@@ -16,7 +16,7 @@ class Comment extends CActiveRecord
     {
         return array(
             array('content, article_id', 'required'),
-            array('content', 'length', 'max' => 20),
+            array('content', 'length', 'max' => 28),
         );
     }
     
@@ -51,5 +51,12 @@ class Comment extends CActiveRecord
             return true;
         }
         return false;
+    }
+    
+    public function afterFind()
+    {
+        parent::afterFind();
+        $this->content = htmlspecialchars($this->content);
+        $this->created = Yii::app()->format->datetime($this->created);
     }
 }

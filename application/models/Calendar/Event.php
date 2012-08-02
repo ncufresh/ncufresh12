@@ -118,7 +118,7 @@ class Event extends CActiveRecord
             'status'    => array(
                 'select'    => false,
                 'condition' => 'status.done = 1'
-            )
+            ),
         ))->findAll(array(
             'condition' => 'invisible = 0'
         ));
@@ -159,6 +159,7 @@ class Event extends CActiveRecord
         parent::afterFind();
         $this->start -= date('Z', $this->start);
         $this->end   -= date('Z', $this->end);
+        $this->description = nl2br(htmlspecialchars($this->description));
     }
     
     public function beforeSave()

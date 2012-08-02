@@ -9,8 +9,8 @@
 class ForumController extends Controller
 {
     const ARTICLES_PER_PAGE = 10;
-    NEW_ARTICLE_VALUE = 3000;
-    NEW_REPLY_VALUE = 1000;
+    const NEW_ARTICLE_VALUE = 3000;
+    const NEW_REPLY_VALUE = 1000;
     public function init()
     {
         parent::init();
@@ -119,15 +119,20 @@ class ForumController extends Controller
         {
             $article = Article::model()->findByPk($id);
             $article->viewed++;
-            $article->save();
-            $this->render('view', array(
+            
+            if (  $article->save())
+            {
+                $this->render('view', array(
                 'article'   => $article,
-            ));
+                ));
+            }
+            
         }
         else 
         {
             throw new CHttpException(404);
         }
+        
     }
 
     public function actionComment(){
@@ -145,6 +150,8 @@ class ForumController extends Controller
                     'id'        => $comment->article_id
                 )));
             }
+            else
+                throw new CHttpException(404);
         }
         else 
         {
@@ -163,7 +170,11 @@ class ForumController extends Controller
             {
                 $article = Article::model()->findByPk($aid);
                 $article->replies_count++;
-                $article->save();
+                if( ! $article->save() )
+                {
+                    echo '!!!!!!!!!!';
+                    exit;
+                }
                 $this->redirect(Yii::app()->createUrl('forum/view', array(
                     'fid'   => $reply->article->forum->id,
                     'id'    => $reply->article_id
