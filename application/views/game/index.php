@@ -1,12 +1,12 @@
 
-<h4 class="game-title">&lt; <?php echo $nickname; ?> - <?php echo $username; ?> &gt;</h4>
+<h4 class="game-title"><?php echo $nickname; ?> - <?php echo $username; ?></h4>
 
 <div class="experience">
 <?php if ( $level < 20 ) : ?>
     <span class="text">LV. <?php echo $level; ?> [ <?php echo $exp; ?> / <?php echo $level_exp; ?> ]</span>
     <span class="bar" style="width:<?php echo 100 * $exp / $level_exp; ?>%;"></span>
 <?php else : ?>
-    <span class="text">LV. <?php echo $level; ?></span>
+    <span class="text">LV. <?php echo $level; ?> [ <?php echo $exp; ?> / ∞ ]</span>
     <span class="bar max" style="width:100%;"></span>
 <?php endif; ?>
 </div>

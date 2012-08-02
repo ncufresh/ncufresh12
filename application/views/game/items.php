@@ -1,4 +1,4 @@
-<h4 class="game-title"><道具列表></h4>
+<h4 class="game-title">道具列表</h4>
 
 <?php $items_bag = $character_data->getItemsByCategory(1); ?>
 <h4 class="item-category">頭髮<b> （<?php echo count($items_bag)?>）</b></h4>
