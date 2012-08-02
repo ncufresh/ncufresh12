@@ -2769,6 +2769,102 @@
 })(jQuery);
 
 /**
+ * DatePicker
+ */
+(function()
+{
+    var input = null;
+
+    var initialized;
+
+    var onClick = function(year, month, day, callback)
+    {
+        input.val(year + '-' + month + '-' + day).change().blur().prop('disabled', false);
+        $.datepicker.fadeOut();
+        if ( callback ) callback();
+    };
+
+    $.datepicker = {};
+
+    $.fn.datepicker = function(settings)
+    {
+        var options = $.extend({
+            year:   2000,
+            month:  1,
+        }, settings);
+
+        if ( ! this.length ) return this;
+
+        if ( ! initialized )
+        {
+            var generate = function(year, month)
+            {
+                return $.generateCalendar({
+                    year: year,
+                    month: month,
+                    right: true,
+                    rightClick: function()
+                    {
+                        if ( ++month > 12 )
+                        {
+                            year += 1;
+                            month = 1;
+                        }
+                        $('#datepicker table').detach();
+                        generate(year, month);
+                        return false;
+                    },
+                    left: true,
+                    leftClick: function()
+                    {
+                        if ( --month < 1 )
+                        {
+                            year -= 1;
+                            month = 12;
+                        }
+                        $('#datepicker table').detach();
+                        generate(year, month);
+                        return false;
+                    },
+                    dayClick: function()
+                    {
+                        var cell = $(this);
+                        onClick(year, month, $(this).data('day'), function()
+                        {
+                            cell.parent().parent().find('td').removeAttr('style');
+                            cell.css({
+                                backgroundColor: 'red'
+                            });
+                        });
+                    }
+                }).appendTo($.datepicker);
+                return calendar;
+            };
+            $.datepicker = $('<div></div>')
+                .attr('id', 'datepicker')
+                .hide()
+                .appendTo($('body'));
+            generate(options.year, options.month);
+            initialized = true;
+        }
+
+        return this.each(function()
+        {
+            $(this).focus(function()
+            {
+                input = $(this).prop('disabled', true);
+                $.datepicker.css({
+                    left: $(this).offset().left + $(this).width(),
+                    top: $(this).offset().top + $(this).height()
+                });
+                $.datepicker.stop(true, true).fadeIn();
+                return true;
+            });
+        });
+    };
+})(jQuery);
+
+/**
  * Main
  */
 (function($)
@@ -2788,6 +2884,8 @@
         $('.loading').sprite();
         
         if ( $('#club').length ) $.clubs();
+
+        $('#form-register-birthday').datepicker();
 
         $('#form-sidebar-register, #form-login-register').click(function()
         {
