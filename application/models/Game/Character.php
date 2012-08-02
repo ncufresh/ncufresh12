@@ -3,7 +3,7 @@ class Character extends CActiveRecord
 {
     public $exp_level = array(
         array(
-            'name'  => '錯誤級',  //原則上不會跑到這
+            'name'  => '錯誤級', // 原則上不會跑到這
             'exp'   => 0
         ),
         array(
@@ -87,6 +87,7 @@ class Character extends CActiveRecord
             'exp'   => 10000000000
         )
     );
+
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
@@ -105,7 +106,7 @@ class Character extends CActiveRecord
                 'Profile',
                 'id'
             ),
-            'hair'    => array(  // hair為Item的hair_id row
+            'hairs'    => array( // hair為Item的hair_id row
                 self::BELONGS_TO,
                 'Item',
                 'hair_id'
@@ -130,7 +131,7 @@ class Character extends CActiveRecord
                 'Item',
                 'shoes_id'
             ),
-            'skin'    => array(
+            'skins'    => array(
                 self::BELONGS_TO,
                 'Item',
                 'skin_id'
@@ -180,7 +181,7 @@ class Character extends CActiveRecord
         $counter++;
         }
     }
-    
+
     public function getLevelExp($level)
     {   
         $target = $this->exp_level;
@@ -190,25 +191,38 @@ class Character extends CActiveRecord
 
     public function addExp($value)
     {
-        $this->saveCounters(array('exp' => $value));
+        $this->saveCounters(array('experience' => $value));
+        return true;
+    }
+
+    public function minusMoney($value)
+    {
+        $this->saveCounters(array('money' => 0-$value));
         return true;
     }
 
     public function addMoney($value)
     {
         $this->saveCounters(array('money' => $value));
+        $this->saveCounters(array('total_money' => $value));
+        return true;
+    }
+    
+    public function addMission()
+    {
+        $this->saveCounters(array('missions' => 1));
         return true;
     }
 
     public static function getAvatar($id)
     {
         $parts = array(
-            '皮膚'    => 'skin',
+            '皮膚'    => 'skins',
             '臉部'    => 'eyes',
             '鞋子'    => 'shoes',
             '褲子'    => 'pants',
             '衣服'    => 'clothes',
-            '頭髮'    => 'hair',
+            '頭髮'    => 'hairs',
             '其他'    => 'others'
         );
         $avatar = array_fill_keys(array_keys($parts), '../images/unknown.png');
@@ -225,24 +239,24 @@ class Character extends CActiveRecord
         }
         return $avatar;
     }
-    
+
     public static function getBodyPrice($id)
     {
         $character = Character::model()->findByPk($id);
         $price = 0;
-        if( $character->skin !== null)
-            $price = $price + $character->skin->price;
-        if( $character->eyes !== null)
+        if( $character->skin_id !== null)
+            $price = $price + $character->skins->price;
+        if( $character->eyes_id !== null)
             $price = $price + $character->eyes->price;
-        if( $character->hair !== null)
-            $price = $price + $character->hair->price;
-        if( $character->shoes !== null)
+        if( $character->hair_id !== null)
+            $price = $price + $character->hairs->price;
+        if( $character->shoes_id !== null)
             $price = $price + $character->shoes->price;
-        if( $character->pants !== null)
+        if( $character->pants_id !== null)
             $price = $price + $character->pants->price;
-        if( $character->clothes !== null)
+        if( $character->clothes_id !== null)
             $price = $price + $character->clothes->price;
-        if( $character->others !== null)
+        if( $character->others_id !== null)
             $price = $price + $character->others->price;
         return $price;
     }
@@ -253,7 +267,7 @@ class Character extends CActiveRecord
         {
             if ( $this->getIsNewRecord() )
             {
-                $this->experience = 1; //一開始使用者經驗設為1
+                $this->experience = 0; //一開始使用者經驗設為0
                 $this->money = 25000; //一開始使用者金錢設為25000
                 $this->total_money = 35000; //一開始使用者總金錢設為35000
             }

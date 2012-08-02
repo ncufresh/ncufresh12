@@ -894,12 +894,12 @@
             {
                 var originalHeight = $.integer(scrollDragable.css('height'));
                 var scrollContentHeight = scrollContent.height();
-                var scrollContainerHeight = scrollContainer.height();
+                var scrollTrackHeight = scrollTrack.height();
                 var height = 0;
-                if ( scrollContentHeight > scrollContainerHeight )
+                if ( scrollContentHeight > scrollTrackHeight )
                 {
-                    height = scrollContainerHeight
-                           * scrollContainerHeight
+                    height = scrollTrackHeight
+                           * scrollTrackHeight
                            / scrollContentHeight;
                 }
                 if ( height != originalHeight )
@@ -1351,7 +1351,7 @@
                         break;
                     }
                 }
-                if ( !found )
+                if ( ! found )
                 {
                     cal_events[cal_events.length] = event;
                     $(this).data('cal_events', cal_events);
@@ -1365,7 +1365,10 @@
     {
         return $(this).children('tbody').find('td').each(function(){
             $(this).removeAttr('style');
-            if ( isRemoveData ) $(this).removeData('cal_events');
+            if ( isRemoveData ) 
+            {
+                $(this).removeData('cal_events');
+            }
         });
     }
 
@@ -1383,7 +1386,8 @@
         {
             self.cleanUpMark();
             $(self).markEvent($(this).data('event'), {
-                background : 'green'
+                color: '#095296',
+                background : '#80c2fe'
             });
         }
         var eventMouseLeave = function(){
@@ -1679,7 +1683,7 @@
         }, options);
         var current_year = (new Date()).getFullYear();
         var current_month = (new Date()).getMonth() + 1;
-        var container = $('<div></div>').appendTo(options.calendar_container);
+        var container = options.calendar_container;
         var events_container = $(options.events_container);
         var date_container = $(options.date_container);
         var prompt = $(options.prompt)
@@ -1703,6 +1707,7 @@
                         year -= 1;
                     }
                     geneator(year, month);
+                    return false;
                 },
                 rightClick: function()
                 {
@@ -1712,6 +1717,7 @@
                         year += 1;
                     }
                     geneator(year, month);
+                    return false;
                 },
                 dayClick: function()
                 {
@@ -2783,7 +2789,7 @@
         
         if ( $('#club').length ) $.clubs();
 
-        $('#form-sidebar-register').click(function()
+        $('#form-sidebar-register, #form-login-register').click(function()
         {
             window.location.href = $.configures.registerUrl;
             return false;
@@ -2847,19 +2853,6 @@
         });
     });
 
-    google.load('search', '1', {
-        language: 'zh_TW'
-    });
-
-    google.setOnLoadCallback(function()
-    {
-        google.search.CustomSearchControl.attachAutoCompletion(
-            $.configures.googleSearchAppId,
-            document.getElementById('form-search-query'),
-            'search'
-        );
-    });
-
     $('<script></script>')
         .attr('id', 'facebook-jssdk')
         .attr('async', 'async')
@@ -2889,3 +2882,16 @@
         });
     };
 })(jQuery);
+
+google.load('search', '1', {
+    language: 'zh_TW'
+});
+
+google.setOnLoadCallback(function()
+{
+    google.search.CustomSearchControl.attachAutoCompletion(
+        $.configures.googleSearchAppId,
+        document.getElementById('form-search-query'),
+        'search'
+    );
+});

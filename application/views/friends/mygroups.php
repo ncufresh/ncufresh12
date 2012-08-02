@@ -8,7 +8,7 @@
 <div class="newgroup">
    <div class="friends-part2">
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
-        <ul class="other-department">
+        <ul class="users-department">
 <?php foreach ($members as $member ): ?>
             <li>
 <?php $profile = Profile::model()->findByPK($member->user_id); ?>
@@ -29,8 +29,8 @@
         </ul>
     </div>
 </div>
-<a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$mygroup->id))  ?>" class="button-addmember" ></a>
-<button type="submit" class="button-deletemember"></button>
-<a href="<?php echo Yii::app()->createUrl('friends/deletegroup', array('id'=>$mygroup->id))  ?>" class="button-deletegroup" ></a>
+<a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$mygroup->id))  ?>" id="button-addmember" ></a>
+<button type="submit" id="button-deletemember"></button>
+<a href="<?php echo Yii::app()->createUrl('friends/deletegroup', array('id'=>$mygroup->id))  ?>" id="button-deletegroup" ></a>
 <button type="button" class="button-back"></button>
 </form>

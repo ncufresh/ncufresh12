@@ -56,7 +56,7 @@
         </li>
     </ul>
     <ul id="navigation">
-<?php if ( $this->getId() == 'readme' ) : ?>
+<?php if ( $this->getId() === 'readme' ) : ?>
         <li class="active">
 <?php else : ?>
         <li>
@@ -77,7 +77,7 @@
                 </li>
             </ul>
         </li>
-<?php if ( $this->getId() == 'nculife' ) : ?>
+<?php if ( $this->getId() === 'nculife' ) : ?>
         <li class="active">
 <?php else : ?>
         <li>
@@ -85,30 +85,30 @@
             <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>" title="中大生活">中大生活</a>
             <ul>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('nculife/live'); ?>#live" title="住在中大">住在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#live" title="住在中大">住在中大</a>
                 </li>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('nculife/health'); ?>#health" title="健康中大">健康中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#health" title="健康中大">健康中大</a>
                 </li>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('nculife/traffic'); ?>#traffic" title="行在中大">行在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#traffic" title="行在中大">行在中大</a>
                 </li>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('nculife/play'); ?>#play" title="玩在中大">玩在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#play" title="玩在中大">玩在中大</a>
                 </li>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('nculife/school'); ?>#school" title="活在中大">活在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#school" title="活在中大">活在中大</a>
                 </li>
             </ul>
         </li>
-<?php if ( $this->getId() == 'street' ) : ?>
+<?php if ( $this->getId() === 'street' ) : ?>
         <li class="active">
 <?php else : ?>
         <li>
 <?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('street/index'); ?>" title="校園導覽">校園導覽</a>
         </li>
-<?php if ( $this->getId() == 'forum' ) : ?>
+<?php if ( $this->getId() === 'forum' ) : ?>
         <li class="active">
 <?php else : ?>
         <li>
@@ -126,7 +126,7 @@
                 </li>
             </ul>
         </li>
-<?php if ( $this->getId() == 'club' ) : ?>
+<?php if ( $this->getId() === 'club' ) : ?>
         <li class="active">
 <?php else : ?>
         <li>
@@ -144,14 +144,14 @@
                 </li>
             </ul>
         </li>
-<?php if ( $this->getId() == 'multimedia' ) : ?>
+<?php if ( $this->getId() === 'multimedia' ) : ?>
         <li class="active">
 <?php else : ?>
         <li>
 <?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('multimedia/index'); ?>" title="影音專區">影音專區</a>
         </li>
-<?php if ( $this->getId() == 'about' ) : ?>
+<?php if ( $this->getId() === 'about' ) : ?>
         <li class="active">
 <?php else : ?>
         <li>
@@ -165,6 +165,7 @@
 </div>
 <div id="sidebar">
 <?php if ( Yii::app()->user->getIsGuest() ) : ?>
+<?php if ( $this->getId() !== 'site' || $this->getAction()->getId() !== 'login' && $this->getAction()->getId() !== 'register' ) : ?>
     <form class="profile" action="<?php echo Yii::app()->createUrl('site/login'); ?>" method="POST">
         <dl>
             <dt>
@@ -188,6 +189,7 @@
             <button id="form-sidebar-register">[註冊]</button>
         </div>
     </form>
+<?php endif; ?>
 <?php else : ?>
     <div class="profile">
 <?php $this->widget('Avatar', array(
@@ -217,7 +219,7 @@
     </div>
 <?php endif; ?>
     <div class="links sidebar-box">
-        <h4>連結區</h4>
+        <h4>常用連結</h4>
         <ul>
             <li>
                 <a href="http://www.ncu.edu.tw" title="中大首頁">中大首頁</a>
@@ -226,19 +228,53 @@
                 <a href="http://portal.ncu.edu.tw" title="Portal入口">Portal入口</a>
             </li>
             <li>
-                <a href="http://www.cc.ncu.edu.tw" title="電算中心">電算中心</a>
+                <a href="http://course.ncu.edu.tw" title="選課系統">選課系統</a>
+            </li>
+            <li>
+                <a href="http://bb.ncu.edu.tw" title="BlackBoard">BlackBoard</a>
+            </li>
+            <li>
+                <a href="https://uncia.cc.ncu.edu.tw/dormnet/" title="宿網系統">宿網系統</a>
+            </li>
+            <li>
+                <a href="http://volley.cc.ncu.edu.tw:8080/RepairSystem" title="宿舍修繕">宿舍修繕</a>
+            </li>
+            <li>
+                <a href="http://www.lib.ncu.edu.tw" title="圖書館首頁">圖書館首頁</a>
+            </li>
+        </ul>
+    </div>
+    <div class="links sidebar-box">
+        <h4>推薦連結</h4>
+        <ul>
+            <li>
+                <a href="http://radio.pinewave.tw" title="松濤電台">松濤電台</a>
+            </li>
+            <li>
+                <a href="http://www4.is.ncu.edu.tw/register/check/stdno_check.php" title="學號查詢">學號查詢</a>
+            </li>
+            <li>
+                <a href="http://www.uac.edu.tw" title="線上查榜">線上查榜</a>
+            </li>
+            <li>
+                <a href="http://ncugrad.pixnet.net/blog" title="研究生部落">研究生部落</a>
+            </li>
+            <li>
+                <a href="http://www.facebook.com/groups/282591371819838" title="什麼！">什麼！</a>
             </li>
         </ul>
     </div>
 </div>
 <div id="footer">
-    <div id="footer-content">
-        <p>
-            主辦單位：國立中央大學學務處　承辦單位：<a href="http://love.adm.ncu.edu.tw" title="國立中央大學 諮商中心">諮商中心</a>　執行單位：2012大一生活知訊網工作團隊
-        </p>
-        <p>
-            地址：32001桃園縣中壢市五權里2鄰中大路300號 | 電話：(03)422-7151#57261 | 版權所有：2012大一生活知訊網工作團隊
-        </p>
+    <div id="footer-background">
+        <div id="footer-content">
+            <p>
+                主辦單位：國立中央大學學務處　承辦單位：<a href="http://love.adm.ncu.edu.tw" title="國立中央大學 諮商中心">諮商中心</a>　執行單位：2012大一生活知訊網工作團隊
+            </p>
+            <p>
+                地址：32001桃園縣中壢市五權里2鄰中大路300號 | 電話：(03)422-7151#57261 | 版權所有：2012大一生活知訊網工作團隊
+            </p>
+        </div>
     </div>
 </div>
 
@@ -270,7 +306,8 @@
             calendarEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvents'); ?>'),
             calendarHideEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/hideEvent'); ?>'),
             buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),
-            gameMissionUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/solve', array('id' => ':id'));?>'),
+            gameMissionUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/problem', array('id' => ':id'));?>'),
+            gameSolveUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/solve', array('id' => ':id'));?>'),
             facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
             facebookAppId: '<?php global $ncufreshfb; echo $ncufreshfb['appId']; ?>',
             googleSearchAppId: '011017124764723419863:mdibrr3n-py',

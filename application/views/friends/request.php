@@ -3,7 +3,7 @@
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
 <div class="request">  
     <div class="friends-part2">
-        <ul class="other-department">
+        <ul class="users-department">
 <?php foreach ( $friends as $friend ) : ?>
             <li>
 <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $friend->friend_request->id));  ?>">

@@ -122,6 +122,16 @@ class Calendar extends CActiveRecord
             )
         ));
     }
+    
+    public function getAllClubCalendars()
+    {
+        return $this->findAll(array(
+            'condition' => 'category = :category',
+            'params' => array(
+                ':category' => self::CATEGORY_PUBLIC,
+            )
+        ));
+    }
 
     public function getClubCalendarByUserId($user_id)
     {

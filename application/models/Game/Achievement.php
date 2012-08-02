@@ -25,6 +25,7 @@ class Achievement extends CActiveRecord
     
     public function getAchievementsByUserId($id)
     {
+        Yii::import('application.models.Forum.*');
         $character_data = Character::model()->findByPk($id); //傳入id 查詢使用者遊戲腳色資料
         $user_data = User::model()->findByPk($id); //傳入id 查詢使用者資料
         $profile_data = Profile::model()->findByPk($id); //傳入id 查詢使用者資料
@@ -32,7 +33,6 @@ class Achievement extends CActiveRecord
         $level_exp = Character::model()->getLevelExp($level); //傳入等級 查詢等級經驗
         $user_friend = Friend::model()->getAmount($id);
         $nickname = $profile_data->nickname;
-        
         $user_value = array(
             'spend_money' => 234324234,
             'total_money' => 13333,
@@ -43,15 +43,18 @@ class Achievement extends CActiveRecord
             'body_price' => 51
             );
         $user_login_times = $user_data->online_count; // $user_value['login_times'];
-        echo 'user_login_times => '.$user_login_times.'</br>';
+        echo 'user_login_times => '.$user_login_times.',  ';
         $user_spend_money = $character_data->total_money - $character_data->money;
-        echo 'user_spend_money => '.$user_spend_money.'</br>';
+        echo 'user_spend_money => '.$user_spend_money.',  ';
         $user_total_money = $character_data->total_money;
-        echo 'user_total_money => '.$user_total_money.'</br>';
-        echo 'user_friend => '.$user_friend.'</br>';
-        $user_reply = $user_value['reply']; // 薏仁
-        $user_post = $user_value['post']; // 薏仁
-        $user_cloth = $user_value['cloth']; //資料庫
+        echo 'user_total_money => '.$user_total_money.',  ';
+        echo 'user_friend => '.$user_friend.',  ';
+        $user_reply = Reply::model()->getRepliesNumOfUser($id);
+        echo 'user_reply => '.$user_reply.',  ';
+        $user_post = Article::model()->getArticlesNumOfUser($id);
+        echo 'user_post => '.$user_post.',  ';
+        $user_cloth = ItemBag::model()->getClothesNum($id);
+        echo 'user_cloth => '.$user_cloth.',  ';
         $user_body_price = $character_data->getBodyPrice($id);
         $achievements = Achievement::model()->findAll();
         $return = array();

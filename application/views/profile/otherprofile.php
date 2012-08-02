@@ -37,5 +37,13 @@
         </ul>
     </div>
 </div>
-<button><a href="<?php echo Yii::app()->createUrl('friends/makefriends', array('friend_id'=>$_GET['friend_id'])); ?>">加為好友</a></button>
+<?php if ( ! $is_friend ) : ?>
+<form action="<?php echo Yii::app()->createUrl('friends/makefriends'); ?>" method="POST" >
+    <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
+    <input type="hidden" name="friends[<?php echo $user->id; ?>]" value="<?php echo $user->id; ?>" />
+    <button type="submit" class="button-addfriend" ></button>
+    <button type="button" class="button-back" ></button>
+</form>
+<?php else : ?>
 <button type="button" class="button-back" ></button>
+<?php endif; ?>
