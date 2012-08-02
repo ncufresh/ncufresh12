@@ -4419,6 +4419,19 @@ img.user_img
     padding: 6px 0px;
 }
 
+.game-display .item-category
+{
+    width: 335px;
+    height: 20px;
+    margin: 5px 11px;
+    font-size: 1.5em;
+    text-align: center;
+    background-color: black;
+    border: 3px solid #00788F;
+    border-radius: 10px;
+    color: #B8EEEC;
+}
+
 .game-display .shop-message
 {
     font-size: 2.5em;
@@ -4561,7 +4574,7 @@ div.item-description .exist
 }
 #game-mission-dialog .avatar
 {
-    width: 270px;
+    width: 265px;
     height: 451px;
     font-size: 18px;
     /*outline: 1px solid black;*/
