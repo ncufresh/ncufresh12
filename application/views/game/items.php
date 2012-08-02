@@ -1,7 +1,8 @@
+<h4 class="game-title"><道具列表></h4>
 <?php $items_bag = $character_data->getItemsByCategory(1); ?>
 <span class="category"><頭髮><b> (<?php echo count($items_bag)?>)</b></span>
 <?php foreach ($items_bag as $item) : ?>
-<a class="item-icons" href="<?php echo Yii::app()->createUrl('game/equip', array('id'=>$item->item_id))?>">
+<a class="own-items item-icons" href="<?php echo Yii::app()->createUrl('game/equip', array('id'=>$item->item_id))?>">
     <img src="<?php echo Yii::app()->request->baseUrl ?>/statics/game/icon/hairs/<?php echo $item->translation->filename?>.png" alt="<?php $item->translation->name ?>">
     <div class="item-description">
         <h4>&lt; <?php echo $item->translation->name ?> &gt;</h4>
@@ -15,7 +16,7 @@
 <?php $items_bag = $character_data->getItemsByCategory(2); ?>
 <span class="category"><臉飾><b> (<?php echo count($items_bag)?>)</b></span>
 <?php foreach ($items_bag as $item) : ?>
-<a class="item-icons" href="<?php echo Yii::app()->createUrl('game/equip', array('id'=>$item->item_id))?>">
+<a class="own-items item-icons" href="<?php echo Yii::app()->createUrl('game/equip', array('id'=>$item->item_id))?>">
     <img src="<?php echo Yii::app()->request->baseUrl ?>/statics/game/icon/eyes/<?php echo $item->translation->filename?>.png" alt="<?php $item->translation->name ?>">
     <div class="item-description">
         <h4>&lt; <?php echo $item->translation->name ?> &gt;</h4>
@@ -29,7 +30,7 @@
 <?php $items_bag = $character_data->getItemsByCategory(3); ?>
 <span class="category"><衣服><b> (<?php echo count($items_bag)?>)</b></span>
 <?php foreach ($items_bag as $item) : ?>
-<a class="item-icons" href="<?php echo Yii::app()->createUrl('game/equip', array('id'=>$item->item_id))?>">
+<a class="own-items item-icons" href="<?php echo Yii::app()->createUrl('game/equip', array('id'=>$item->item_id))?>">
     <img src="<?php echo Yii::app()->request->baseUrl ?>/statics/game/icon/clothes/<?php echo $item->translation->filename?>.png" alt="<?php $item->translation->name ?>">
     <div class="item-description">
         <h4>&lt; <?php echo $item->translation->name ?> &gt;</h4>
@@ -43,7 +44,7 @@
 <?php $items_bag = $character_data->getItemsByCategory(4); ?>
 <span class="category"><褲子><b> (<?php echo count($items_bag)?>)</b></span>
 <?php foreach ($items_bag as $item) : ?>
-<a class="item-icons" href="<?php echo Yii::app()->createUrl('game/equip', array('id'=>$item->item_id))?>">
+<a class="own-items item-icons" href="<?php echo Yii::app()->createUrl('game/equip', array('id'=>$item->item_id))?>">
     <img src="<?php echo Yii::app()->request->baseUrl ?>/statics/game/icon/pants/<?php echo $item->translation->filename?>.png" alt="<?php $item->translation->name ?>">
     <div class="item-description">
         <h4>&lt; <?php echo $item->translation->name ?> &gt;</h4>
@@ -57,7 +58,7 @@
 <?php $items_bag = $character_data->getItemsByCategory(5); ?>
 <span class="category"><鞋子><b> (<?php echo count($items_bag)?>)</b></span>
 <?php foreach ($items_bag as $item) : ?>
-<a class="item-icons" href="<?php echo Yii::app()->createUrl('game/equip', array('id'=>$item->item_id))?>">
+<a class="own-items item-icons" href="<?php echo Yii::app()->createUrl('game/equip', array('id'=>$item->item_id))?>">
     <img src="<?php echo Yii::app()->request->baseUrl ?>/statics/game/icon/shoes/<?php echo $item->translation->filename?>.png" alt="<?php $item->translation->name ?>">
     <div class="item-description">
         <h4>&lt; <?php echo $item->translation->name ?> &gt;</h4>
@@ -71,7 +72,7 @@
 <?php $items_bag = $character_data->getItemsByCategory(6); ?>
 <span class="category"><皮膚><b> (<?php echo count($items_bag)?>)</b></span>
 <?php foreach ($items_bag as $item) : ?>
-<a class="item-icons" href="<?php echo Yii::app()->createUrl('game/equip', array('id'=>$item->item_id))?>">
+<a class="own-items item-icons" href="<?php echo Yii::app()->createUrl('game/equip', array('id'=>$item->item_id))?>">
     <img src="<?php echo Yii::app()->request->baseUrl ?>/statics/game/icon/skins/<?php echo $item->translation->filename?>.png" alt="<?php $item->translation->name ?>">
     <div class="item-description">
         <h4>&lt; <?php echo $item->translation->name ?> &gt;</h4>
@@ -85,7 +86,7 @@
 <?php $items_bag = $character_data->getItemsByCategory(7); ?>
 <span class="category"><其他裝備><b> (<?php echo count($items_bag)?>)</b></span>
 <?php foreach ($items_bag as $item) : ?>
-<a class="item-icons" href="<?php echo Yii::app()->createUrl('game/equip', array('id'=>$item->item_id))?>">
+<a class="own-items item-icons" href="<?php echo Yii::app()->createUrl('game/equip', array('id'=>$item->item_id))?>">
     <img src="<?php echo Yii::app()->request->baseUrl ?>/statics/game/icon/others/<?php echo $item->translation->filename?>.png" alt="<?php $item->translation->name ?>">
     <div class="item-description">
         <h4>&lt; <?php echo $item->translation->name ?> &gt;</h4>

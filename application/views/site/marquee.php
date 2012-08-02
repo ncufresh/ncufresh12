@@ -3,18 +3,15 @@
 #admin-marquee form input
 {
     height: 30px;
+    float: left;
+    margin-right: 15px;
     width: 320px;
 }
 
 #admin-marquee form button
 {
-    background: url('<?php echo Yii::app()->request->baseUrl; ?>/statics/images/admin_marquee_add.png') 0 1px;
-    border: none;
-    box-shadow: none;
-    cursor: pointer;
-    height: 40px;
-    margin: 1px;
-    text-indent: -100000%;
+    display: block;
+    float: none;
     width: 72px;
 }
 
@@ -62,7 +59,6 @@
 
 #admin-marquee td
 {
-    /*background: #FFFFFF;*/
     height: 20px;
     line-height: 20px;
     padding: 10px 0;
@@ -91,14 +87,20 @@
     background-color: #CCFFCC;
 }
 
+#admin-marquee .marquee-edit-button,
+#admin-marquee .marquee-delete-button
+{
+    background: url('<?php echo Yii::app()->request->baseUrl; ?>/statics/images/sprites.png');
+}
+
 #admin-marquee .marquee-edit-button
 {
-    background: url('<?php echo Yii::app()->request->baseUrl; ?>/statics/images/admin_marquee_edit.png');
+    background-position: -32px -32px;
 }
 
 #admin-marquee .marquee-delete-button
 {
-    background: url('<?php echo Yii::app()->request->baseUrl; ?>/statics/images/admin_marquee_delete.png');
+    background-position: -32px -64px;
 }
 </style>
 <?php $this->endWidget();?>
