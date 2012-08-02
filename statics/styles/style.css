@@ -467,9 +467,21 @@ a:hover
 #marquee span,
 #sidebar-personal,
 #form-sidebar-login,
-#form-sidebar-register
+#form-sidebar-register,
+#navigation,
+#footer-content,
+#header .online,
+#header .browsered,
+#logo,
+#chat-friend-list-search,
+#search button,
+.index-latest-box h4,
+.index-forums-box h4,
+#notfound a,
+#notfound a:hover,
+#index-calendar .calendar-bottom-wrapper
 {
-    background: url('../images/sprites.png');
+    background: url('../images/sprites.png') no-repeat;
 }
 
 /**
@@ -478,7 +490,7 @@ a:hover
 #logo,
 #moon
 {
-    background: url('../images/logo.png') no-repeat;
+    background-position: -960px 0;
     display: block;
     height: 160px;
     position: absolute;
@@ -519,12 +531,12 @@ a:hover
 
 #header .online
 {
-    background: url('../images/online.png') no-repeat;
+    background-position: -1200px 0;
 }
 
 #header .browsered
 {
-    background: url('../images/browsered.png') no-repeat;
+    background-position: -1200px -32px;
 }
 
 #menu
@@ -555,7 +567,7 @@ a:hover
 
 #navigation
 {
-    background: url('../images/navigation.png') no-repeat;
+    background-position: 0 -1216px;
     list-style: none;
     margin: 160px 0 0 0;
     padding: 0 15px;
@@ -652,7 +664,7 @@ a:hover
 
 #footer-content
 {
-    background: url('../images/footer-content.png') no-repeat bottom;
+    background-position: 0 -1088px;
     height: 120px;
     margin: 0 auto;
     width: 800px;
@@ -959,7 +971,7 @@ a:hover
 
 #chat-friend-list-search
 {
-    background: url('../images/friend_list_search.png') no-repeat;
+    background-position: -1248px -64px;
     border: 3px solid #D7D7D7;
     height: 20px;
     margin: 5px 0;
@@ -1218,7 +1230,7 @@ table.gsc-completion-container
 
 #search button
 {
-    background: url('../images/search_box_icon.png') no-repeat;
+    background-position: -32px 0;
     border: none;
     box-shadow: none;
     cursor: pointer;
@@ -1233,7 +1245,7 @@ table.gsc-completion-container
 
 #result
 {
-    background: #FFFFFF url('../images/search.png') right top no-repeat;
+    background: #FFFFFF url('../images/result.png') right top no-repeat;
     border-radius: 10px;
     margin: 0 auto;
     min-height: 160px;
@@ -1359,10 +1371,10 @@ ul#nculife-details
 
 #index-calendar .calendar-bottom-wrapper
 {
-    background: url('../images/calendar.png') center -5px no-repeat;
+    background-position: -960px -160px;
     height: 360px;
     margin-top: -45px;
-    padding: 50px 10px 0 10px;
+    padding: 50px 10px 20px 10px;
 }
 
 #index-calendar .calendar-bottom
@@ -1648,7 +1660,7 @@ a.calendar-hide-event:hover
 
 .index-latest-box h4
 {
-    background: url('../images/index_latest_icon.png') no-repeat;
+    background-position: -128px -176px;
 }
 
 .index-forums-box
@@ -1659,7 +1671,7 @@ a.calendar-hide-event:hover
 
 .index-forums-box h4
 {
-    background: url('../images/index_forums_icon.png') no-repeat;
+    background-position: -208px -176px;
 }
 
 .news-view
@@ -3962,7 +3974,7 @@ img.user_img
 
 #notfound a
 {
-    background: url('../images/back.png');
+    background-position: -286px -192px;
     display: block;
     height: 40px;
     left: 160px;
@@ -3974,7 +3986,7 @@ img.user_img
 
 #notfound a:hover
 {
-    background: url('../images/back_hover.png');
+    background-position: -286px -240px;
 }
 
 /**
