@@ -1,7 +1,6 @@
-<h4 class="game-title"> <商城系統> </h4>
-<h4 class="game-title"> ( LV.<?php echo $level ?> / <?php echo $money ?> 金幣 )</h4>
-<h4> <頭髮> </h4>
+<h4 class="game-title">商城 ( LV.<?php echo $level ?> / <?php echo $money ?> 金幣 )</h4>
 <?php $shopping = Item::model()->getBuyItems($level, 1); ?>
+<h4 class="item-category">頭髮 （<?php echo count($shopping) ?>）</h4>
 <?php foreach ($shopping as $item) : ?>
 <?php $exist = ItemBag::model()->itemExist($item->id); ?>
 <?php if ( $exist == true ) : // 如果已經有此物品 ?>
@@ -24,8 +23,8 @@
 </a>
 <?php endforeach; ?>
 
-<h4> <臉飾> </h4>
 <?php $shopping = Item::model()->getBuyItems($level, 2); ?>
+<h4 class="item-category">臉飾 （<?php echo count($shopping) ?>）</h4>
 <?php foreach ($shopping as $item) : ?>
 <?php $exist = ItemBag::model()->itemExist($item->id); ?>
 <?php if ( $exist == true ) : // 如果已經有此物品 ?>
@@ -48,8 +47,8 @@
 </a>
 <?php endforeach; ?>
 
-<h4> <衣服> </h4>
 <?php $shopping = Item::model()->getBuyItems($level, 3); ?>
+<h4 class="item-category">衣服 （<?php echo count($shopping) ?>）</h4>
 <?php foreach ($shopping as $item) : ?>
 <?php $exist = ItemBag::model()->itemExist($item->id); ?>
 <?php if ( $exist == true ) : // 如果已經有此物品 ?>
@@ -72,8 +71,8 @@
 </a>
 <?php endforeach; ?>
 
-<h4> <褲子> </h4>
 <?php $shopping = Item::model()->getBuyItems($level, 4); ?>
+<h4 class="item-category">褲子 （<?php echo count($shopping) ?>）</h4>
 <?php foreach ($shopping as $item) : ?>
 <?php $exist = ItemBag::model()->itemExist($item->id); ?>
 <?php if ( $exist == true ) : // 如果已經有此物品 ?>
@@ -96,8 +95,8 @@
 </a>
 <?php endforeach; ?>
 
-<h4> <鞋子> </h4>
 <?php $shopping = Item::model()->getBuyItems($level, 5); ?>
+<h4 class="item-category">鞋子 （<?php echo count($shopping) ?>）</h4>
 <?php foreach ($shopping as $item) : ?>
 <?php $exist = ItemBag::model()->itemExist($item->id); ?>
 <?php if ( $exist == true ) : // 如果已經有此物品 ?>
@@ -120,8 +119,8 @@
 </a>
 <?php endforeach; ?>
 
-<h4> <皮膚> </h4>
 <?php $shopping = Item::model()->getBuyItems($level, 6); ?>
+<h4 class="item-category">皮膚 （<?php echo count($shopping) ?>）</h4>
 <?php foreach ($shopping as $item) : ?>
 <?php $exist = ItemBag::model()->itemExist($item->id); ?>
 <?php if ( $exist == true ) : // 如果已經有此物品 ?>
@@ -144,8 +143,8 @@
 </a>
 <?php endforeach; ?>
 
-<h4> <其他裝備> </h4>
 <?php $shopping = Item::model()->getBuyItems($level, 7); ?>
+<h4 class="item-category">其他裝備 （<?php echo count($shopping) ?>）</h4>
 <?php foreach ($shopping as $item) : ?>
 <?php $exist = ItemBag::model()->itemExist($item->id); ?>
 <?php if ( $exist == true ) : // 如果已經有此物品 ?>
