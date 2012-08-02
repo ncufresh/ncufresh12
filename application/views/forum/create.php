@@ -84,7 +84,7 @@
             <label id="forum-create-text-title" for="forum-create-title">標題</label>
         </dt>
         <dd>
-            <input id="forum-create-title" type="text" name="forum[title]" maxLength="20"/>
+            <input id="forum-create-title" type="text" name="forum[title]" maxLength="16"/>
         </dd>
     </dl>
 </div>

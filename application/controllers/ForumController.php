@@ -9,7 +9,8 @@
 class ForumController extends Controller
 {
     const ARTICLES_PER_PAGE = 10;
-
+    const NEW_ARTICLE_VALUE = 3000;
+    const NEW_REPLY_VALUE = 1000;
     public function init()
     {
         parent::init();
@@ -53,9 +54,6 @@ class ForumController extends Controller
 
     public function actionForumList()
     {
-        // list of departments
-        // to be delete $model = new Category();
-        // $list = ForumCategory::model()->findAllBySql("SELECT * FROM  `forum_category` ", ' ');
         $this->render('forumlist', array(
             'list'      => Category::model()->getForumLists()
         ));
@@ -63,16 +61,23 @@ class ForumController extends Controller
 
     public function actionForum($fid, $sort = 'create', $category = 0, $page = 1)
     {
-        $forum = Category::model()->findByPk($fid);
-        // content of each forum
-        $this->render('forum', array(
-            'fid'               => $fid,
-            'sort'              => $sort,
-            'current_category'  => $category,
-            'model'             => Article::getArticlesSort($fid, $sort, $category, $page, self::ARTICLES_PER_PAGE),
-            'category'          => $forum,
-            'page_status'       => Article::getPageStatus($page, self::ARTICLES_PER_PAGE, $fid, $category)
-        ));
+        if ( $forum = Category::model()->findByPk($fid) )
+        {
+            $forum = Category::model()->findByPk($fid);
+            // content of each forum
+            $this->render('forum', array(
+                'fid'               => $fid,
+                'sort'              => $sort,
+                'current_category'  => $category,
+                'model'             => Article::getArticlesSort($fid, $sort, $category, $page, self::ARTICLES_PER_PAGE),
+                'category'          => $forum,
+                'page_status'       => Article::getPageStatus($page, self::ARTICLES_PER_PAGE, $fid, $category)
+            ));
+        }
+        else 
+        {
+            throw new CHttpException(404);
+        }
     }
 
     public function actionCreate($fid)
@@ -88,6 +93,8 @@ class ForumController extends Controller
             }
             if ( $article->validate() && $article->save() )
             {
+                Character::model()->findByPk(Yii::app()->user->getId())->addExp(self::NEW_ARTICLE_VALUE);
+                Character::model()->findByPk(Yii::app()->user->getId())->addMoney(self::NEW_ARTICLE_VALUE);
                 $this->redirect($article->url);
             }
         }
@@ -100,20 +107,27 @@ class ForumController extends Controller
                 'category'  => $forum
             ));
         }
-        else
+        else 
         {
-            throw new Exception('The forum is not exist.');
+            throw new CHttpException(404);
         }
     }
 
     public function actionView($fid, $id)
     {
-        $article = Article::model()->findByPk($id);
-        $article->viewed++;
-        $article->save();
-        $this->render('view', array(
-            'article'   => $article,
-        ));
+        if ( Article::model()->findByPk($id) )
+        {
+            $article = Article::model()->findByPk($id);
+            $article->viewed++;
+            $article->save();
+            $this->render('view', array(
+                'article'   => $article,
+            ));
+        }
+        else 
+        {
+            throw new CHttpException(404);
+        }
     }
 
     public function actionComment(){
@@ -124,13 +138,18 @@ class ForumController extends Controller
             $comment->attributes = $_POST['comment'];
             if ( $comment->validate() && $comment->save() )
             {
+                Character::model()->findByPk(Yii::app()->user->getId())->addExp(self::NEW_REPLY_VALUE);
+                Character::model()->findByPk(Yii::app()->user->getId())->addMoney(self::NEW_REPLY_VALUE);
                 $this->redirect(Yii::app()->createUrl('forum/view', array(
                     'fid'       => $comment->article->forum->id,
                     'id'        => $comment->article_id
                 )));
             }
         }
-        throw new CHttpException(404);
+        else 
+        {
+            throw new CHttpException(404);
+        }
     }
 
     public function actionReply($aid)
@@ -151,7 +170,14 @@ class ForumController extends Controller
                 )));
             }
         }
-        $this->render('reply');
+        if ( Article::model()->findByPk($aid) )
+        {
+            $this->render('reply');
+        }
+        else 
+        {
+            throw new CHttpException(404);
+        }
     }
 
     public function actionDelete() // delete article

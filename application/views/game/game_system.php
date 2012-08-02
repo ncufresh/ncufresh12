@@ -23,9 +23,16 @@
             <li class="enabled">
                 <a href="<?php echo Yii::app()->createUrl('game/achievements', array('id'=>$watch_id)) ?>" title="成就">成就</a>
             </li>
+
+<?php if ( $watch_id == $user_id ) : ?>
             <li class="enabled">
                 <a href="<?php echo Yii::app()->createUrl('game/items', array('id'=>$watch_id)) ?>" title="道具">道具</a>
             </li>
+<?php else : ?>
+            <li class="disabled">
+                道具
+            </li>
+<?php endif; ?>
 <?php if ( $watch_id == $user_id ) : ?>
             <li class="enabled">
                 <a href="<?php echo Yii::app()->createUrl('game/shop', array('id'=>$watch_id)) ?>" title="商城">商城</a>
@@ -43,7 +50,7 @@
 </div>
 <div id="game-mission-dialog">
     <h4>Mission：<span class="MissionName"></span></h4>
-        <img src="<?php echo Yii::app()->request->baseUrl;?>/statics/game/npc/<? echo rand(0,9)?>.png" alt="npc" class="npc"/>
+        <img src="<?php echo Yii::app()->request->baseUrl;?>/statics/game/npcs/<? echo rand(0,9)?>.png" alt="npc" class="npc"/>
     <div class="display">
         
     </div>
@@ -57,3 +64,4 @@
         )); ?>
 </div>
     <h1>使用者ID => 登入帳號 / 觀看中 => <?php echo $user_id.' / '.$watch_id?> </h1>
+    <?php Character::model()->findByPk($user_id)->addExp(3); ?>

@@ -19,9 +19,9 @@
 <p>
 4.就學貸款相關規定請至大一生活知訊網參考<strong>或「就學補助系統」相關公告</strong>。</p>
 <p>
-(六)申請<strong>學雜費減免</strong>(休學前當學期已申請減免費用，不得重複減免)最遲請於<strong>8月2日至9日</strong>前將表格(請自行於學雜費減免系統下載，網址：<strong><a href="http://www.ncu.edu.tw/">本校首頁</a></strong>&rarr;<a href="https://portal.ncu.edu.tw/wps/portal/!ut/p/cxml/04_Sj9SPykssy0xPLMnMz0vM0Q_wyU_PzNMvSFdUBACQIYPZ"><strong>Porta入口</strong></a>(輸入ID及密碼)&rarr;<strong>就學補助系統</strong>&rarr;<strong>學雜費減免申請</strong>&rarr;<strong>登錄申請所需資料</strong>；或<a href="http://ncufresh.ncu.edu.tw/">大一生活知訊網</a>中下載)填妥，連同減免申請資料寄至學務處生活輔導組。如未能及時辦理者，請於郵寄後一週自行上網列印繳費單後再行繳費。</p>
+(六)申請<strong>學雜費減免</strong>(休學前當學期已申請減免費用，不得重複減免)最遲請於<strong>8月2日至9日</strong>前將表格(請自行於學雜費減免系統下載，網址：<strong>本校首頁</strong>&rarr;<a href="https://portal.ncu.edu.tw/wps/portal/!ut/p/cxml/04_Sj9SPykssy0xPLMnMz0vM0Q_wyU_PzNMvSFdUBACQIYPZ"><strong>Porta入口</strong></a>(輸入ID及密碼)&rarr;<strong>就學補助系統</strong>&rarr;<strong>學雜費減免申請</strong>&rarr;<strong>登錄申請所需資料</strong>；或<a href="http://ncufresh.ncu.edu.tw/">大一生活知訊網</a>中下載)填妥，連同減免申請資料寄至學務處生活輔導組。如未能及時辦理者，請於郵寄後一週自行上網列印繳費單後再行繳費。</p>
 <p>
-(七)弱勢學生助學計畫助學金(年收入70萬以下)請於<strong>9月17日起至10月12日止</strong>到<strong><a href="http://www.ncu.edu.tw/">本校首頁</a></strong>&rarr;<a href="https://portal.ncu.edu.tw/wps/portal/!ut/p/cxml/04_Sj9SPykssy0xPLMnMz0vM0Q_wyU_PzNMvSFdUBACQIYPZ"><strong>Portal入口</strong></a>(輸入ID及密碼)&rarr;<strong>就學補助系統</strong>&rarr;<strong>弱勢助學</strong>&rarr;<strong>登錄申請所需資料</strong>，並繳交應繳證件至生輔組辦理<strong>，</strong>同一學年已領有助學金者<strong>，</strong>不得重複申請。</p>
+(七)弱勢學生助學計畫助學金(年收入70萬以下)請於<strong>9月17日起至10月12日止</strong>到<strong>本校首頁</strong>&rarr;<a href="https://portal.ncu.edu.tw/wps/portal/!ut/p/cxml/04_Sj9SPykssy0xPLMnMz0vM0Q_wyU_PzNMvSFdUBACQIYPZ"><strong>Portal入口</strong></a>(輸入ID及密碼)&rarr;<strong>就學補助系統</strong>&rarr;<strong>弱勢助學</strong>&rarr;<strong>登錄申請所需資料</strong>，並繳交應繳證件至生輔組辦理<strong>，</strong>同一學年已領有助學金者<strong>，</strong>不得重複申請。</p>
 <p>
 (八)<strong>繳費單收據(或提款機轉帳明細單)</strong>請妥為保存，以便日後核對有疑義時作為個人繳費證明或退費依據，及作為次年申報所得稅憑單。</p>
 <p>

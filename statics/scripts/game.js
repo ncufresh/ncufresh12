@@ -18,7 +18,6 @@
             return false;
         });
         
-        
         $('#game-mission-dialog form').submit(function()
         {
             $('#game-mission-dialog form input, #game-mission-dialog form button').prop('disabled', true);
@@ -39,7 +38,25 @@
             return false;
         });
 
-        
+        $('.item-description','').each(function()
+        {
+            var icon = $(this).parent();
+            var description = $(this).detach();
+            icon.data('description', description.appendTo($('body')));
+            icon.hover(function()
+            {
+                var description = $(this).data('description');
+                description.css({
+                    left: $(this).offset().left,
+                    top: $(this).offset().top
+                });
+                description.stop(true, true).fadeIn();
+            }, function()
+            {
+                var description = $(this).data('description');
+                description.stop(true, true).fadeOut();
+            });
+        });
         //$('<div></div>').attr('id', 'game-mission-dialog').insertAfter($('#game-mission'));
     });
 })(jQuery);

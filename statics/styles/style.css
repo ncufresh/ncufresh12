@@ -479,9 +479,44 @@ a:hover
 .index-forums-box h4,
 #notfound a,
 #notfound a:hover,
-#index-calendar .calendar-bottom-wrapper
+#index-calendar .calendar-bottom-wrapper,
+.calendar,
+.calendar .right div,
+.calendar .right div h4,
+.calendar .calendar-create-button,
+.calendar .calendar-hide-button,
+.calendar .calendar-subscript-button
 {
     background: url('../images/sprites.png') no-repeat;
+}
+
+#readme-fresh,
+#fresh-back,
+#readme-notice,
+#notice-back,
+#readme-reschool,
+#reschool-back,
+#readme-download,
+#download-back,
+#readme-body,
+#freshman-1,
+#freshman-2,
+#freshman-3,
+#freshman-4,
+#reschool-1,
+#reschool-2,
+#reschool-3,
+#reschool-4,
+#notice-1,
+#notice-2,
+#notice-3,
+#notice-4,
+#readme-logo1,
+#readme-logo2,
+#readme-logo3,
+#readme-logo4
+{
+    background: url('../images/readme.png') no-repeat;
 }
 
 /**
@@ -732,7 +767,7 @@ a:hover
 #sidebar form.profile dl
 {
     margin: 0;
-    width: 90%;
+    width: 95%;
 }
 
 #sidebar form.profile input,
@@ -1435,7 +1470,7 @@ ul#nculife-details
 
 .calendar
 {
-    background: url('../images/calendar_view_background.png');
+    background-position: 0 -288px;
     margin: 0 5px;
     padding: 60px;
     height: 680px;
@@ -1494,19 +1529,19 @@ ul#nculife-details
 
 .calendar .right div
 {
+    background-position: -848px -1264px;
     padding-top: 2em;
     width: 100%;
-    background: url('../images/calendar-hr.png') no-repeat;
     float: left;
 }
 
 .calendar .right div h4
 {
+    background-position: -1248px -96px;
     font-size: 1.5em;
     padding: 0 0 0 40px;
-    height: 37px;
-    line-height: 37px;
-    background: url('../images/calendar_category_pattern.png') no-repeat;
+    height: 32px;
+    line-height: 32px;
 }
 
 .calendar .right div li
@@ -1594,17 +1629,17 @@ a.calendar-hide-event:hover
 
 .calendar .calendar-subscript-button
 {
-    background: url('../images/calendar-subscript-button.png') no-repeat;
+    background-position: -32px -160px;
 }
 
 .calendar .calendar-hide-button
 {
-    background: url('../images/calendar-hide-button.png') no-repeat;
+    background-position: -32px -96px;
 }
 
 .calendar .calendar-create-button
 {
-    background: url('../images/calendar-create-button.png') no-repeat;
+    background-position: -32px -128px;
 }
 
 .calendar-recycle
@@ -2418,7 +2453,7 @@ button.news-button
 
 #readme-fresh
 {
-    background: url('../readme/freshman_background.png');
+    background-position: -5px -450px;
     padding: 15px 25px;
     height: 420px;
     position: relative;
@@ -2427,113 +2462,112 @@ button.news-button
 
 #fresh-back
 {
-    background: url('../readme/fresh_back.png');
+    background-position: -1272px -656px;
 }
 
 #fresh-back:hover
 {
-    background: url('../readme/fresh_back_hover.png');
+    background-position: -1400px -656px;
 }
 
 #readme-notice
 {
-    width: 750px;
-    height: 450px;
+    height: 420px;
+    width: 700px;
+    padding: 15px 25px;
+    background-position: -5px -1350px;
     position: relative;
-    background: url('../readme/notice_background.png');
 }
 
 #notice-back
 {
-    background: url('../readme/notice_back.png');
+    background-position: -1272px -944px;
 }
 
 #notice-back:hover
 {
-    background: url('../readme/notice_back_hover.png');
+    background-position: -1400px -944px;
 }
 
 #readme-reschool
 {
-    padding: 15px 25px;
+    background-position: -5px -900px;
     height: 420px;
+    padding: 15px 25px;
     position: relative;
     width: 700px;
-    background: url('../readme/reschool_background.png');
 }
 
 #reschool-back
 {
-    background: url('../readme/reschool_back.png');
+    background-position: -1272px -800px;
 }
 
 #reschool-back:hover
 {
-    background: url('../readme/reschool_back_hover.png');
+    background-position: -1400px -800px;
 }
 
 #readme-download
 {
-    width: 750px;
+    background-position: -765px 0;
     height: 450px;
     position: relative;
-    background: url('../readme/download_background.png');
+    width: 750px;
 }
 
 #download-back
 {
-    
-    background: url('../readme/download_back.png');
+    background-position: -1272px -1088px;
 }
 
 #download-back:hover
 {
-    background: url('../readme/download_back_hover.png');
+    background-position: -1400px -1088px;
 }
-
 
 #readme-body
 {
-    width: 750px;
+    background-position: -5px 0;
     height: 450px;
     position: relative;
-    background: url('../readme/readme_background.png');
+    width: 750px;
 }
 
 #freshman-1
 {
-    width: 129px;
+    background-position: -760px -656px;
     height: 91px;
     left: 393px;
     top: 194px;
-    background: url('../readme/freshman_1_word.png');
+    width: 129px;
 }
 
 #freshman-2
 {
-    width: 127px;
+    background-position: -888px -656px;
     height: 100px;
     left: 325px;
     top: 249px;
-    background: url('../readme/freshman_2_word.png');
+    width: 127px;
 }
 
 #freshman-3
 {
-    width: 79px;
+    background-position: -1016px -656px;
     height: 128px;
     left: 272px;
     top: 262px;
-    background: url('../readme/freshman_3_word.png');
+    width: 79px;
 }
 
 #freshman-4
 {
-    width: 54px;
+    background-position: -1144px -656px;
     height: 141px;
     left: 194px;
     top: 271px;
-    background: url('../readme/freshman_4_word.png');
+    width: 54px;
 }
 
 .fresh-inner
@@ -2544,38 +2578,38 @@ button.news-button
 
 #reschool-1
 {
-    width: 126px;
+    background-position: -760px -800px;
     height: 76px;
     left: 530px;
     top: 160px;
-    background: url('../readme/reschool_1_word.png');
+    width: 126px;
 }
 
 #reschool-2
 {
-    width: 100px;
+    background-position: -888px -800px;
     height: 89px;
     left: 500px;
     top: 220px;
-    background: url('../readme/reschool_2_word.png');
+    width: 100px;
 }
 
 #reschool-3
 {
-    width: 98px;
+    background-position: -1016px -800px;
     height: 96px;
     left: 450px;
     top: 274px;
-    background: url('../readme/reschool_3_word.png');
+    width: 98px;
 }
 
 #reschool-4
 {
-    width: 63px;
+    background-position: -1144px -800px;
     height: 140px;
     left: 399px;
     top: 303px;
-    background: url('../readme/reschool_4_word.png');
+    width: 63px;
 }
 
 .reschool-inner
@@ -2586,42 +2620,42 @@ button.news-button
 
 #notice-1
 {
-    width: 96px;
+    background-position: -760px -944px;
     height: 152px;
     left: 529px;
     top: 239px;
     position: absolute;
-    background: url('../readme/notice_1_word.png');
+    width: 96px;
 }
 
 #notice-2
 {
-    width: 73px;
+    background-position: -888px -944px;
     height: 167px;
     left: 469px;
     top: 257px;
     position: absolute;
-    background: url('../readme/notice_2_word.png');
+    width: 73px;
 }
 
 #notice-3
 {
-    width: 72px;
+    background-position: -1016px -944px;
     height: 160px;
     left: 399px;
     top: 266px;
     position: absolute;
-    background: url('../readme/notice_3_word.png');
+    width: 72px;
 }
 
 #notice-4
 {
-    width: 133px;
+    background-position: -1144px -944px;
     height: 145px;
     left: 263px;
     top: 280px;
     position: absolute;
-    background: url('../readme/notice_4_word.png');
+    width: 133px;
 }
 
 .notice-inner
@@ -2643,21 +2677,23 @@ button.news-button
 
 #readme-logo1
 {
-    width: 124px;
+    background-position: -760px -1544px;
     height: 122px;
     left: 357px;
     top: 74px;
     position: absolute;
+    width: 124px;
 }
 
 #readme-logo1:active
 {
+    background-position: -760px -450px;
     display: block;
-    background: url('../readme/freshman.png');
 }
 
 #readme-logo2
 {
+    background-position: -760px -1544px;
     width: 140px;
     height: 135px;
     left: 491px;
@@ -2667,12 +2703,13 @@ button.news-button
 
 #readme-logo2:active
 {
+    background-position: -888px -450px;
     display: block;
-    background: url('../readme/reschool.png');
 }
 
 #readme-logo3
 {
+    background-position: -760px -1544px;
     width: 121px;
     height: 194px;
     left: 607px;
@@ -2682,13 +2719,14 @@ button.news-button
 
 #readme-logo3:active
 {
+    background-position: -1144px -450px;
     display: block;
-    background: url('../readme/notice.png');
     
 }
 
 #readme-logo4
 {
+    background-position: -760px -1544px;
     width: 126px;
     height: 107px;
     position: absolute;
@@ -2698,8 +2736,8 @@ button.news-button
 
 #readme-logo4:active
 {
+    background-position: -1272px -450px;
     display: block;
-    background: url('../readme/download.png');
 }
 
 #read-fresh-menu
@@ -2715,12 +2753,13 @@ button.news-button
 #read-notice-menu 
 {
     background: #F7AAF7;
+    top: 10px;
 }
 
 .readme-menu
 {
     width: 200px;
-    height: 300px;
+    heigth: auto;
     top: 50px;
     left: -187px;
     border-radius: 0 10px 10px 0;
@@ -2899,7 +2938,7 @@ button.news-button
     height: 66px;
     background-repeat: no-repeat; 
     float: right;
-    margin-right: 20px;
+    margin-right: 18px;
     
 }
 .club-head:hover
@@ -3077,6 +3116,8 @@ button.news-button
 .club-display-head a
 {
     float: right;
+    margin-top: 14px;
+    margin-right: 20px;
 }
 
 .club-display-bottom
@@ -3100,6 +3141,26 @@ button.news-button
 {
     background: url('../club/4-3.png');
     background-repeat: no-repeat;
+}
+.club-back-button
+{
+    float: right;
+    width: 50px;
+    height: 50px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+#club-back1
+{
+    background: url('../club/clubback1.png');
+}
+#club-back2
+{
+    background: url('../club/clubback2.png');
+}
+#club-back3
+{
+    background: url('../club/clubback3.png');
 }
 .club-picture
 {
@@ -3132,7 +3193,6 @@ button.news-button
     cursor: pointer;
     width: 204px;
     height: 50px;
-    background: url('../images/calendar_top.png');
     display: block;
 }
 
@@ -3236,12 +3296,12 @@ ul.friend-other-sort
     list-style-type:none;
 }
 
-ul#other-department
+/*ul#other-department
 {
     width:660px;
     padding:5px;
     margin:0px;
-}
+}*/
 
 ul.users-department li
 {
@@ -3353,37 +3413,34 @@ div.friends
     margin:0px;
 }
 
-form div.sameDsameG
+#sameDsameG
 {
-    background-image:url('../profile/sameDsameG.png');
-    background-repeat:no-repeat ;
+    background: url('../profile/sameDsameG.png') no-repeat;
     width:690px;
     height:370px;
     padding:25px;
     margin:0px;
 }
 
-form div.sameDdiffG
+#sameDdiffG
 {
-    background-image:url('../profile/sameDdiffG.png');
-    background-repeat:no-repeat ;
+    background: url('../profile/sameDdiffG.png') no-repeat ;
     width:690px;
     height:370px;
     padding:25px;
     margin:0px;
 }
 
-form div.other-department
+#other-department
 {
-    background-image:url('../profile/otherD.png');
-    background-repeat:no-repeat ;
+    background:url('../profile/otherD.png') no-repeat ;
     width:690px;
     height:370px;
     padding:25px;
     margin:0px;
 }
 
-div.request
+#request
 {
     background-image:url('../profile/request.png');
     background-repeat:no-repeat ;
@@ -3400,11 +3457,17 @@ div.friends-part1
     margin:25px 25px 25px 25px;
 }
 
-div.friends-part2
+.friends-part2
 {
     width:680px;
     height:370px;
     margin:0px;
+}
+
+div.friends-part2 button
+{
+    padding:0px;
+    margin-top:0px;
 }
 
 /*div.friends-part4 form
@@ -3425,7 +3488,7 @@ div.friends-part2 div.avatar
     float:left;
 }
 
-div.friends-part3
+.friends-part3
 {
     width:675px;
     height:350px;
@@ -3491,9 +3554,9 @@ div.friends-sortfriend div.avatar
     float:left;
 }
 
-div.myfriend
+#myfriend
 {
-    background-image:url('../profile/sameDdiffG.png');
+    background-image:url('../profile/myfriend.png');
     background-repeat:no-repeat ;
     width:690px;
     height:370px;
@@ -3501,7 +3564,7 @@ div.myfriend
     margin:0px;
 }
 
-div.myprofile
+.myprofile
 {
     background-image:url('../profile/profile.png');
     background-repeat:no-repeat ;
@@ -3511,12 +3574,17 @@ div.myprofile
     margin:0px;
 }
 
-div.myprofile form button
+#newgroup
 {
-    float:right;
+    background-image:url('../profile/newgroup.png');
+    background-repeat:no-repeat ;
+    width:690px;
+    height:370px;
+    padding:25px;
+    margin:0px;
 }
 
-div.newgroup
+#mygroup
 {
     background-image:url('../profile/mygroup.png');
     background-repeat:no-repeat ;
@@ -3602,6 +3670,9 @@ div.profile-message-reply
     padding: 0px;
     margin: 0px;
     float:right;
+    position:relative;
+    right:27px;
+    bottom:36px;
 }
 
 .button-cancel
@@ -3613,7 +3684,9 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     display:block;
-    float:right;
+    position:absolute;
+    right:515px;
+    bottom:-100px;
 }
 
 .button-push
@@ -3634,6 +3707,9 @@ div.profile-message-reply
     height:34px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:577px;
+    bottom:-100px;
 }
 
 .button-addgroup
@@ -3654,8 +3730,10 @@ div.profile-message-reply
     height:33px;
     padding:0px;
     margin:0px;
-    float:right;
     display:block;
+    position:absolute;
+    right:10px;
+    bottom:0px;
 }
 
 #button-addmember
@@ -3667,7 +3745,9 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     display:block;
-    float:right;
+    position:absolute;
+    right:256px;
+    bottom:0px;
 }
 
 #button-deletemember
@@ -3678,7 +3758,9 @@ div.profile-message-reply
     height:34px;
     padding:0px;
     margin:0px;
-    float:right;
+    position:absolute;
+    right:133px;
+    bottom:0px;
 }
 
 .button-makefriend
@@ -3689,6 +3771,9 @@ div.profile-message-reply
     height:34px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:63px;
+    bottom:0px;
 }
 
 .button-deletefriend
@@ -3699,6 +3784,9 @@ div.profile-message-reply
     height:35px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:99px;
+    bottom:0px;
 }
 
 .button-mygroup
@@ -3711,6 +3799,19 @@ div.profile-message-reply
     margin:0px;
 }
 
+.button-addfriends
+{
+    background-image:url('../profile/button/addfriend.png');
+    background-repeat:no-repeat ;
+    width:96px;
+    height:35px;
+    padding:0px;
+    margin:0px;
+    position:absolute;
+    right:100px;
+    bottom:0px;
+}
+
 .button-addfriend
 {
     background-image:url('../profile/button/addfriend.png');
@@ -3719,6 +3820,9 @@ div.profile-message-reply
     height:35px;
     padding:0px;
     margin:0px;
+    position:absolute;
+    right:550px;
+    bottom:-72px;
 }
 
 #button-editor
@@ -3844,11 +3948,11 @@ div.delete-group
     margin:0px;
 }
 
-form.group-description
+/*form.group-description
 {
     width:500px;
     height:635px;
-}
+}*/
 
 div.self-messages
 {
@@ -4186,6 +4290,42 @@ img.user_img
     background: #FFA100;
 }
 
+.game-display a img
+{
+    width:85px;
+
+    display: inline-block;
+}
+
+.item-description
+{
+    background: #646464;
+    background-color: rgba(100, 100, 100, 0.9);
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    color: #EFEFEF;
+    display: none;
+    margin: -45px 0 0 85px;
+    padding: 10px;
+    position: absolute;
+    width: 360px;
+}
+
+.item-description h4
+{
+    font-size: 1.7em;
+    color: #ddffb0;
+}
+.item-description .description
+{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #cbf0ff;
+}
+div.item-description span
+{
+    display:block;
+}
 #game-mission-dialog
 {
     width: 900px;
@@ -4671,11 +4811,11 @@ li.enabled a
 
 .forum-view-profile
 {
-    background: #97d2f3;
+    background: #f8c77c;
     width: 165px;
-    height: 283px;
+    height: 263px;
     border-radius: 6px;
-    border: 2px solid #ffffff;
+    border: 2px solid #eaa520;
     margin-left: 45px;
     padding-top: 7px;
     float: left;
@@ -4692,30 +4832,26 @@ li.enabled a
 
 .forum-view-profile .profile-name
 {
-    width: 150px;
-    height: 25px;
-    margin: 1px auto;
-    background: #ffffff;
-    border-top-left-radius:5px;
-    border-top-right-radius:5px;
-}
-
-.forum-view-profile .profile-id
-{
-    width: 150px;
-    height: 25px;
-    margin: 1px auto;
-    background: #ffffff;
+    width: 140px;
+    height: 23px;
+    margin: 10px auto;
+    background: #fff0c8;
+    border-radius:5px;
+    padding-top: 2px;
+    padding-left: 10px;
+    color: #c57902;
 }
 
 .forum-view-profile .profile-department
 {
-    width: 150px;
-    height: 25px;
+    width: 140px;
+    height: 23px;
     margin: 1px auto;
-    background: #ffffff;
-    border-bottom-left-radius:5px;
-    border-bottom-right-radius:5px;
+    background: #fff0c8;
+    border-radius:5px;
+    padding-top: 2px;
+    padding-left: 10px;
+    color: #c57902;
 }
 
 #forum-view-body .forum-view-title
@@ -4723,11 +4859,12 @@ li.enabled a
     width: 389px;
     height: 31px;
     border-radius: 6px;
-    background: #97d2f3;
+    background: #fff0c8;
     float: left;
     margin-left: 20px;
     margin-bottom: 3px;
-    border: 2px solid #ffffff;
+    border: 2px solid #eaa520;
+    font-weight: bold;
     padding: 9px 0 0 11px;
 }
 
@@ -4739,8 +4876,9 @@ li.enabled a
     background: #ffffff;
     float: left;
     margin-left: 20px;
-    border: 1px solid black;
+    border: 2px solid #eaa520;
     padding: 9px 0 0 11px;
+    word-break: break-all;
 }
 
 .hululu
@@ -4750,19 +4888,20 @@ li.enabled a
     height: 30px;
     position: absolute;
     top: 75px;
-    left: 199px;
+    left: 200px;
 }
 
 #forum-view-body .forum-view-comments
 {
-    width: 400px;
-    height: 30px;
+    width: 389px;
+    height: 25px;
     border-radius: 6px;
-    background: #ffffff;
+    background: #f4efe0;
     float: right;
     margin-top: 2px;
     margin-right: 46px;
-    border: 2px solid #97d2f3;
+    border: 2px solid #eaa520;
+    padding: 5px 0 0 11px;
 }
 
 #forum-view-replies
@@ -4962,9 +5101,9 @@ li.enabled a
 }
 
 #forum-forum-body #body-table .table-body td.title,
-td.author,
-td.reply,
-td.popularity
+#forum-forum-body #body-table .table-body td.author,
+#forum-forum-body #body-table .table-body td.reply,
+#forum-forum-body #body-table .table-body td.popularity
 {
     border-top-style:solid;
     border-bottom-style:solid;
@@ -4995,6 +5134,9 @@ td.popularity
 
 #forum-forum-body #body-table .table-body td.time
 {
+    width: 80px;
+    font-size: 0.8em;
+    color: #757575;
     border-top-style:solid;
     border-bottom-style:solid;
     border-right-style:solid;
@@ -5002,6 +5144,7 @@ td.popularity
     border-width:2px;
     border-top-width:0.8px;
     background-color:#ffffff;
+    word-break: break-all;
 }
 
 #forum-forum-footer
@@ -5392,6 +5535,11 @@ td.popularity
     border-color:#fdbc59;
 }
 /*end of yellow CSS*/
+
+#forum-forum-body #body-table .table-body .article-delete
+{
+    float:right;
+}
 
 #ultimate-password
 {

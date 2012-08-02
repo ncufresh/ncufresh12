@@ -141,11 +141,20 @@ else if ( $fid == 22 || $fid == 23 )
             <tr class="table-body">
                 <td class="head"></td>
                 <td class="category"><?php echo $each->category_name->name.' '; ?></td>
-                <td class="title"><a href="<?php echo $each->url?>"><?php echo $each->title; ?></a></td>
-                <td class="author"></td>
+                <td class="title">
+                    <a href="<?php echo $each->url?>"><?php echo $each->title; ?></a>
+                    <?php if( $category->getIsMaster() ): ?>
+                    <a href="#<?php echo $each->id;?>" class="article-delete" >刪除</a>
+                    <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/delete'); ?>" method="POST" class="form-delete">
+                    <input type="hidden" name="delete" value=""/>
+                    <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
+                    </form>
+                    <?php endif; ?>
+                </td>
+                <td class="author"><?php echo User::model()->findByPK($each->author_id)->profile->nickname; ?></td>
                 <td class="reply"><span><?php echo $each->replies_count.' ';?></span></td>
                 <td class="popularity"><span><?php echo $each->viewed;?></span></td>
-                <td class="time"></td>
+                <td class="time"><?php echo $each->created; ?></td>
             </tr>
             <?php
             endforeach;
@@ -174,38 +183,3 @@ else if ( $fid == 22 || $fid == 23 )
     )); 
     ?>
 </div>
-<br/>
-
-    
-    
-    <?php
-    foreach($model as $each):
-        echo $each->category_name->name.' '; 
-    ?>
-        
-        <a href="<?php echo $each->url?>"><?php echo $each->title; ?></a>
-        <?php
-        echo $each->id.' ';
-        echo $each->replies_count.' ';
-        echo $each->viewed;
-        if ( $category->getIsMaster() ):
-        ?>
-        <a href="#<?php echo $each->id;?>" class="article-delete" >刪除</a>
-        <br/>
-    <?php
-        else:
-            echo '<br/>';
-        endif;
-    endforeach;
-    ?>
-時間顯示(!?)
-<br/>
-<?php $this->widget('Pager', array(
-    'url'       => 'forum/forum',
-    'pager'     => $page_status,
-    'parameters'=> array('fid' => $fid, 'sort' => $sort, 'category' => $current_category)
-)); ?>
-<form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/delete'); ?>" method="POST" class="form-delete">
-<input type="hidden" name="delete" value=""/>
-<input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
-</form>
