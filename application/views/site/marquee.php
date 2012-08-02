@@ -215,7 +215,7 @@ jQuery(document).ready(function()
 <?php $this->endWidget();?>
 
 <div id="admin-marquee">
-    <h1>跑馬燈管理</h1>
+    <h4>跑馬燈管理</h4>
 
     <form method="POST">
         <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />

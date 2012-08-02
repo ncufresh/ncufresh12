@@ -5,11 +5,9 @@
     height: 35px;
 }
 
-#admin-news h2
+#admin-news h4
 {
-    display: block;
     float: left;
-    margin: 5px 0 0 0;
 }
 
 #admin-news .header .pager
@@ -149,7 +147,7 @@
 <?php $this->endWidget();?>
 <div id="admin-news">
     <div class="header">
-        <h2>管理最新消息</h2>
+        <h4>管理最新消息</h4>
         <a class="news-create-link" href="<?php echo Yii::app()->createUrl('news/create') ;?>" title="新增文章">新增文章</a>
         <?php $this->widget('Pager', array(
             'url'       => 'news/admin',

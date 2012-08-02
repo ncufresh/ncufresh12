@@ -1,4 +1,4 @@
-<h1>基本資料</h1>
+<h4>基本資料</h4>
 <div class="myprofile">
     <div class="friends-part3">
 <?php $this->widget('Avatar', array(
