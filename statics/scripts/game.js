@@ -38,7 +38,7 @@
             return false;
         });
 
-        $('.item-description','').each(function()
+        $('.item-description').each(function()
         {
             var icon = $(this).parent();
             var description = $(this).detach();
@@ -58,5 +58,22 @@
             });
         });
         //$('<div></div>').attr('id', 'game-mission-dialog').insertAfter($('#game-mission'));
+        $('.own-items').click(function()
+        {
+            var target = $(this);
+            $.confirm({
+                message: '您確定要裝備此物品嗎？',
+                confirmed: function(result)
+                {
+                    if ( result )
+                    {
+                        window.location = target.attr('href');
+                    }
+                }
+            });
+            return false;
+        });
+        
+        
     });
 })(jQuery);

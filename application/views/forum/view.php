@@ -33,13 +33,11 @@
     /*登入才可以推文*/
     if(Yii::app()->user->getIsMember()):
     ?>
-    <form id="forum-comment" enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/comment'); ?>" method="POST"> 
-    <input id="forum-comment-text" type="text" maxlength="32" name="comment[content]" />
+    <form id="form-comment" enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/comment'); ?>" method="POST">
+    <input class="forum-comment-text" type="text" maxlength="28" name="comment[content]" />
     <input type="hidden" name="comment[article_id]" value="<?php echo $_GET['id']; ?>" />
-    <button type="submit" value="推文">推文</button>
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
     </form>
-    <div id="counter"></div>
     <?php
     endif;
     ?>
