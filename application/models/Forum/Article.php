@@ -11,14 +11,20 @@ class Article extends CActiveRecord
         return '{{forum_articles}}';
     }
 
+    public function behaviors()
+    {
+        return array(
+            'RawDataBehavior'
+        );
+    }
+    
     public function rules()
     {
         return array(
             array('forum_id, category_id, title, content', 'required'),
             array('forum_id, category_id', 'numerical'),
-            array('title', 'length', 'max' => 20),
+            array('title', 'length', 'min' => 1, 'max' => 16),
             array('content', 'length', 'min' => 20),
-            // array('invisible', 'boolean')
         );
     }
     
@@ -122,6 +128,10 @@ class Article extends CActiveRecord
                     if(Category::Model()->getIsMaster()==false) $this->sticky = 0;
                 }
             }
+            else
+            {
+                $this->content = $this->getRawValue('content');
+            }
             //[not yet] 判斷$fid 跟 category 對應
             return true;
         }
@@ -146,5 +156,11 @@ class Article extends CActiveRecord
     public function getArticlesNumOfUser($author_id)
     {
         return count($this->findAll('author_id='.$author_id.' AND invisible=0'));
+    }
+    
+    public function afterFind()
+    {
+        parent::afterFind();
+        $this->content = nl2br(htmlspecialchars($this->content));
     }
 }

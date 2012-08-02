@@ -4702,6 +4702,7 @@ li.enabled a
     margin-left: 20px;
     border: 1px solid black;
     padding: 9px 0 0 11px;
+    word-break: break-all;
 }
 
 .hululu
@@ -5353,6 +5354,11 @@ td.popularity
     border-color:#fdbc59;
 }
 /*end of yellow CSS*/
+
+#forum-forum-body #body-table .table-body .article-delete
+{
+    float:right;
+}
 
 #ultimate-password
 {
