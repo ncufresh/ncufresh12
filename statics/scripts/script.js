@@ -2459,7 +2459,7 @@
             return false;
         });
 
-        $('#club-calendar').calendar($.configures.calendarEventsUrl);
+        $('#club-calendar').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
 
         $('.back').click(function()
         {
