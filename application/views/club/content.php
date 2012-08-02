@@ -2,10 +2,10 @@
     <div class="club-underpicture">
         <div class="schedule">
             <div id="club-schedule-button">
-            
+            <h4>行事曆</h4>
             </div>
             <div id="club-schedule-content">
-            
+            <a href="<?php echo Yii::app()->createUrl('calendar/subscript/' . $id); ?>" title="訂閱">訂閱</a>
             </div>
         </div>
             <ul id="club-menu-items">
@@ -84,15 +84,15 @@
         <div class="club-title">MSN:</div>
         <div class="club-item">
 <?php echo $data->viceleader_msn; ?>
-        </div>
+        </div> 
 <?php if ( $data->website != null ) : ?>
         <div class="club-title">網站:</div>
         <div class="club-item">
         <a href="<?php echo $data->website; ?>"><?php echo $data->website; ?></a>
         </div>
 <?php endif; ?>
+         <a class="back"><div class="club-back-button" id="club-back<?php echo $data->category; ?>"></div></a>
     </div>
     <div class="club-display-bottom" id="club-bottom-<?php echo $data->category; ?>">
-    <a class="back" id="club-back">回上一頁</a>
     </div>
 </div>

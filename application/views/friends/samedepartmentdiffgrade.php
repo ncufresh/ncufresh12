@@ -1,9 +1,7 @@
-<form enctype="multipart/form-data" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
-<input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
-<h1 class="friend-title">同屆不同系</h1>
-<div class="sameDdiffG">
-    <div class="friends-part2">
-        <ul class="ousers-department">
+<h1>同屆不同系</h1>
+<div id="sameDdiffG">
+<form class="friends-part2" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
+        <ul class="users-department">
 <?php foreach ( $profiles as $profile ) : ?>
             <li>
 <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $profile->id));  ?>">
@@ -21,8 +19,8 @@
             </li>
 <?php endforeach; ?>
         </ul>
-    </div>
-</div>
-<button type="submit" class="button-addfriend"></button>
-<button type="button" class="button-back" ></button>
+    <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
+    <button type="submit" class="button-addfriend"></button>
 </form>
+<button type="button" class="button-back" ></button>
+</div>
