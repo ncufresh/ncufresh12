@@ -1,7 +1,7 @@
 ﻿<div id="readme-body">
     <a href="#" id="readme-logo1" title="新生區"></a>
     <a href="#" id="readme-logo2" title="復學區"></a>
-    <a href="<?php echo Yii::app()->createUrl('readme/notice'); ?>" id="readme-logo3" title="相關須知"></a>
+    <a href="<?php echo Yii::app()->createUrl('readme/notice', array('id' =>  1)); ?>" id="readme-logo3" title="相關須知"></a>
     <a href="<?php echo Yii::app()->createUrl('readme/download'); ?>" id="readme-logo4" title="文件下載"></a>
     
     <a href="<?php echo Yii::app()->createUrl('readme/freshman', array('id' =>  1)); ?>" id="freshman-1" class="fresh-inner"></a>

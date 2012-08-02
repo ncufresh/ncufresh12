@@ -2,10 +2,10 @@
     <div class="club-underpicture">
         <div class="schedule">
             <div id="club-schedule-button">
-            
+            <h4>行事曆</h4>
             </div>
             <div id="club-schedule-content">
-            
+            <a href="<?php echo Yii::app()->createUrl('calendar/subscript/' . $id); ?>" title="訂閱">訂閱</a>
             </div>
         </div>
             <ul id="club-menu-items">

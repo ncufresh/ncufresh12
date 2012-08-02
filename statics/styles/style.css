@@ -2397,10 +2397,11 @@ button.news-button
 
 #readme-notice
 {
+    height: 420px;
+    width: 700px;
+    padding: 15px 25px;
     background-position: -5px -1350px;
-    height: 450px;
     position: relative;
-    width: 750px;
 }
 
 #notice-back
@@ -2677,12 +2678,13 @@ button.news-button
 #read-notice-menu 
 {
     background: #F7AAF7;
+    top: 10px;
 }
 
 .readme-menu
 {
     width: 200px;
-    height: 300px;
+    heigth: auto;
     top: 50px;
     left: -187px;
     border-radius: 0 10px 10px 0;
@@ -3113,7 +3115,6 @@ button.news-button
     cursor: pointer;
     width: 204px;
     height: 50px;
-    background: url('../images/calendar_top.png');
     display: block;
 }
 #club-schedule-content
