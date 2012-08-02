@@ -1,4 +1,4 @@
-<h1>其他科系</h1>
+<h4>其他科系</h4>
 <div id="other-department">
 <form class="friends-part2" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
