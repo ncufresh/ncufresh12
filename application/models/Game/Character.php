@@ -106,7 +106,7 @@ class Character extends CActiveRecord
                 'Profile',
                 'id'
             ),
-            'hair'    => array( // hair為Item的hair_id row
+            'hairs'    => array( // hair為Item的hair_id row
                 self::BELONGS_TO,
                 'Item',
                 'hair_id'
@@ -131,7 +131,7 @@ class Character extends CActiveRecord
                 'Item',
                 'shoes_id'
             ),
-            'skin'    => array(
+            'skins'    => array(
                 self::BELONGS_TO,
                 'Item',
                 'skin_id'
@@ -244,19 +244,19 @@ class Character extends CActiveRecord
     {
         $character = Character::model()->findByPk($id);
         $price = 0;
-        if( $character->skin !== null)
-            $price = $price + $character->skin->price;
-        if( $character->eyes !== null)
+        if( $character->skin_id !== null)
+            $price = $price + $character->skins->price;
+        if( $character->eyes_id !== null)
             $price = $price + $character->eyes->price;
-        if( $character->hair !== null)
-            $price = $price + $character->hair->price;
-        if( $character->shoes !== null)
+        if( $character->hair_id !== null)
+            $price = $price + $character->hairs->price;
+        if( $character->shoes_id !== null)
             $price = $price + $character->shoes->price;
-        if( $character->pants !== null)
+        if( $character->pants_id !== null)
             $price = $price + $character->pants->price;
-        if( $character->clothes !== null)
+        if( $character->clothes_id !== null)
             $price = $price + $character->clothes->price;
-        if( $character->others !== null)
+        if( $character->others_id !== null)
             $price = $price + $character->others->price;
         return $price;
     }

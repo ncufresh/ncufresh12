@@ -56,7 +56,7 @@
         </li>
     </ul>
     <ul id="navigation">
-<?php if ( $this->getId() == 'readme' ) : ?>
+<?php if ( $this->getId() === 'readme' ) : ?>
         <li class="active">
 <?php else : ?>
         <li>
@@ -77,7 +77,7 @@
                 </li>
             </ul>
         </li>
-<?php if ( $this->getId() == 'nculife' ) : ?>
+<?php if ( $this->getId() === 'nculife' ) : ?>
         <li class="active">
 <?php else : ?>
         <li>
@@ -101,14 +101,14 @@
                 </li>
             </ul>
         </li>
-<?php if ( $this->getId() == 'street' ) : ?>
+<?php if ( $this->getId() === 'street' ) : ?>
         <li class="active">
 <?php else : ?>
         <li>
 <?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('street/index'); ?>" title="校園導覽">校園導覽</a>
         </li>
-<?php if ( $this->getId() == 'forum' ) : ?>
+<?php if ( $this->getId() === 'forum' ) : ?>
         <li class="active">
 <?php else : ?>
         <li>
@@ -126,7 +126,7 @@
                 </li>
             </ul>
         </li>
-<?php if ( $this->getId() == 'club' ) : ?>
+<?php if ( $this->getId() === 'club' ) : ?>
         <li class="active">
 <?php else : ?>
         <li>
@@ -144,14 +144,14 @@
                 </li>
             </ul>
         </li>
-<?php if ( $this->getId() == 'multimedia' ) : ?>
+<?php if ( $this->getId() === 'multimedia' ) : ?>
         <li class="active">
 <?php else : ?>
         <li>
 <?php endif; ?>
             <a href="<?php echo Yii::app()->createUrl('multimedia/index'); ?>" title="影音專區">影音專區</a>
         </li>
-<?php if ( $this->getId() == 'about' ) : ?>
+<?php if ( $this->getId() === 'about' ) : ?>
         <li class="active">
 <?php else : ?>
         <li>
@@ -165,6 +165,7 @@
 </div>
 <div id="sidebar">
 <?php if ( Yii::app()->user->getIsGuest() ) : ?>
+<?php if ( $this->getId() !== 'site' || $this->getAction()->getId() !== 'login' && $this->getAction()->getId() !== 'register' ) : ?>
     <form class="profile" action="<?php echo Yii::app()->createUrl('site/login'); ?>" method="POST">
         <dl>
             <dt>
@@ -188,6 +189,7 @@
             <button id="form-sidebar-register">[註冊]</button>
         </div>
     </form>
+<?php endif; ?>
 <?php else : ?>
     <div class="profile">
 <?php $this->widget('Avatar', array(
