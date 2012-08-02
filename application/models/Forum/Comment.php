@@ -16,7 +16,7 @@ class Comment extends CActiveRecord
     {
         return array(
             array('content, article_id', 'required'),
-            array('content', 'length', 'max' => 20),
+            array('content', 'length', 'max' => 32),
         );
     }
     
