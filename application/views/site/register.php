@@ -138,7 +138,7 @@
             <label for="form-register-birthday">生日</label>
         </dt>
         <dd>
-            <input id="form-register-birthday" name="profile[birthday]" type="text" />
+            <input class="datepicker" id="form-register-birthday" name="profile[birthday]" type="text" />
         </dd>
     </dl>
     <div>

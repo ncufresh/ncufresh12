@@ -547,7 +547,7 @@ a:hover
 .index-forums-box h4,
 #notfound a,
 #notfound a:hover,
-#index-calendar .calendar-bottom-wrapper,
+#index-calendar > div,
 .calendar,
 .calendar .right div,
 .calendar .right div h4,
@@ -1473,66 +1473,62 @@ ul#nculife-details
     width: 30%;
 }
 
-#index-calendar .calendar-bottom-wrapper
+#index-calendar > div
 {
     background-position: -960px -160px;
     height: 360px;
     margin-top: -45px;
     padding: 50px 10px 20px 10px;
-}
-
-#index-calendar .calendar-bottom
-{
     position: relative;
 }
 
-#index-calendar table.calendar-table
+#index-calendar .calendar-table
 {
     border-collapse: collapse;
 }
 
-#index-calendar table.calendar-table caption
+#index-calendar .calendar-table caption
 {
     margin: 15px 0 10px 0;
 }
 
-#index-calendar table.calendar-table td
+#index-calendar .calendar-table td
 {
     text-align: right;
     width: 28px;
     cursor: pointer;
 }
 
-#index-calendar table.calendar-table thead
+#index-calendar .calendar-table thead
 {
     display: block;
 }
 
-#index-calendar table.calendar-table thead td
+#index-calendar .calendar-table thead td
 {
     color: #af8d5a;
     text-align: center;
 }
 
-#index-calendar table.calendar-table thead td.weekend
+#index-calendar .calendar-table thead td.weekend
 {
     color: red;
 }
 
-#index-calendar table.calendar-table tbody
+#index-calendar .calendar-table tbody
 {
     border-top: 1px solid #946722;
     border-bottom: 1px solid #946722;
     display: block;
 }
 
-#index-calendar table.todolist-table td
+#index-calendar .todolist-table td
 {
     width: 100px;
     text-align: center;
 }
 
-#index-calendar table.todolist-table thead td
+#index-calendar .todolist-table thead td
 {
     color: #946722;
 }
@@ -3331,7 +3327,7 @@ button.news-button
 	float: left;
 }
 
-#club-schedule-button
+#club-calendar-button
 {
     cursor: pointer;
     width: 204px;
@@ -3339,12 +3335,17 @@ button.news-button
     display: block;
 }
 
-#club-schedule-content
+#club-calendar
 {
-    background: skyblue;
     display: none;
-    width: 204px;
     height: 329px;
+    position: relative;
+    width: 204px;
+}
+
+#club-calendar table
+{
+    width: 100%;
 }
 
 .modify-table
@@ -4941,23 +4942,10 @@ li.enabled a
     height:30px;
 }
 
-#forum-create-text-category
-{
-}
-
 #forum-create-category
 {
     height:30px;
     width:200px;
-    
-}
-
-#forum-create-text-content
-{
-}
-
-#forum-create-content
-{
 }
 
 #forum-reply-form
