@@ -200,12 +200,12 @@ form dd .arrow
     width: 0;
 }
 
-/*form div
+form div
 {
     margin-top: 4px;
     width: 50%;
 }
-*/
+
 form div:after
 {
     content: '\A';
