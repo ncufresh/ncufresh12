@@ -450,6 +450,28 @@ a:hover
     width: 66px;
 }
 
+#sidebar-personal-toggle,
+#sidebar-personal-toggle.active,
+.chat-title button,
+.chat-title span,
+.chat-title span.online,
+.pager .first,
+.pager .first-disabled,
+.pager .last,
+.pager .last-disabled,
+.pager .prev,
+.pager .prev-disabled,
+.pager .next,
+.pager .next-disabled,
+#chat,
+#marquee span,
+#sidebar-personal,
+#form-sidebar-login,
+#form-sidebar-register
+{
+    background: url('../images/sprites.png');
+}
+
 /**
  * Layout style
  */
@@ -760,17 +782,17 @@ a:hover
 
 #form-sidebar-login
 {
-    background: url('../images/login.png');
+    background-position: -352px -164px;
 }
 
 #form-sidebar-register
 {
-    background: url('../images/register.png');
+    background-position: -288px -164px;
 }
 
 #sidebar-personal
 {
-    background: #FFFFFF url('../images/personal.png') center top;
+    background-position: -288px 0;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     display: none;
@@ -800,7 +822,7 @@ a:hover
 
 #sidebar-personal-toggle
 {
-    background: url('../images/arrow-down.png');
+    background-position: 0 0;
     display: block;
     float: right;
     height: 16px;
@@ -810,7 +832,7 @@ a:hover
 
 #sidebar-personal-toggle.active
 {
-    background: url('../images/arrow-up.png');
+    background-position: 0 -16px;
 }
 
 #sidebar-personal-button,
@@ -842,7 +864,7 @@ a:hover
  */
 #chat
 {
-    background: url('../images/chat.png') 0 5px no-repeat;
+    background-position: -128px 0;
     bottom: 0;
     cursor: pointer;
     height: 120px;
@@ -966,7 +988,7 @@ a:hover
 
 .chat-dialog .chat-title span
 {
-    background: url('../images/chat_offline.png');
+    background-position: 0 -48px;
     display: block;
     float: left;
     height: 16px;
@@ -976,7 +998,7 @@ a:hover
 
 .chat-dialog .chat-title span.online
 {
-    background: url('../images/chat_online.png');
+    background-position: 0 -64px;
 }
 
 .chat-dialog .chat-title p
@@ -991,7 +1013,7 @@ a:hover
 
 .chat-dialog .chat-title button
 {
-    background: url('../images/chat_close.png') 50% 50% no-repeat;
+    background-position: 0 -32px;
     border: 0;
     float: right;
     height: 16px;
@@ -1002,7 +1024,7 @@ a:hover
 
 .chat-dialog .chat-title button:hover
 {
-    background: white url('../images/chat_close.png') 50% 50% no-repeat;
+    background-color: #FFFFFF;
     cursor: pointer;
 }
 
@@ -1306,7 +1328,7 @@ ul#nculife-details
 
 #marquee span
 {
-    background: url('../images/marquee_star_icon.png') no-repeat;
+    background-position: -128px -128px;
     display: block;
     height: 50px;
     margin: -15px 0 0 -55px;
@@ -1337,7 +1359,7 @@ ul#nculife-details
 
 #index-calendar .calendar-bottom-wrapper
 {
-    background: url('../images/calendar.png') center top no-repeat;
+    background: url('../images/calendar.png') center -5px no-repeat;
     height: 360px;
     margin-top: -45px;
     padding: 50px 10px 0 10px;
@@ -3868,42 +3890,42 @@ img.user_img
 
 .pager .first
 {
-    background: url('../images/first_page.png');
-}
-
-.pager .last
-{
-    background: url('../images/last_page.png');
-}
-
-.pager .prev
-{
-    background: url('../images/prev_page.png');
-}
-
-.pager .next
-{
-    background: url('../images/next_page.png');
+    background-position: -16px 0;
 }
 
 .pager .first-disabled
 {
-    background: url('../images/first_page_disabled.png');
+    background-position: -16px -16px;
+}
+
+.pager .last
+{
+    background-position: -16px -32px;
 }
 
 .pager .last-disabled
 {
-    background: url('../images/last_page_disabled.png');
+    background-position: -16px -48px;
 }
 
-.pager .prev-disabled
+.pager .next
 {
-    background: url('../images/prev_page_disabled.png');
+    background-position: -16px -64px;
 }
 
 .pager .next-disabled
 {
-    background: url('../images/next_page_disabled.png');
+    background-position: -16px -80px;
+}
+
+.pager .prev
+{
+    background-position: -16px -96px;
+}
+
+.pager .prev-disabled
+{
+    background-position: -16px -112px;
 }
 
 .pager .current
