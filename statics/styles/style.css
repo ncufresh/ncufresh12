@@ -5015,9 +5015,10 @@ li.enabled a
 #forum-view-footer
 {
     background: url('../forum/view/background_footer.png');
-    width: 683px;
+    width: 648px;
     height: 86px;
     margin-left:35px;
+    padding-right: 35px;
 }
 
 .forum-view-profile
