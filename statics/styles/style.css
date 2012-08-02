@@ -4147,6 +4147,13 @@ img.user_img
     background: #FFA100;
 }
 
+.game-display a img
+{
+    width:85px;
+
+    display: inline-block;
+}
+
 #game-mission-dialog
 {
     width: 900px;

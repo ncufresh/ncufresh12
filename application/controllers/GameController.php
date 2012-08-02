@@ -132,9 +132,11 @@ class GameController extends Controller
     public function actionItems($id = 0)
     {
         $id = (integer)$id;
-        if ( $id === 0 )
+        if ( $id !== $this->userId )
         {
-            $id = $this->userId;
+            $this->redirect(Yii::app()->createUrl('game/items', array(
+                'id'    => $this->userId
+            )));
         }
         if ( Character::model()->findByPk($id) ) //判斷使用者是否存在
         {
