@@ -367,6 +367,8 @@ a:hover
 
 #lightbox-image
 {
+    max-height: 480px;
+    max-width: 640px;
     position: absolute;
     padding: 10px;
 }
@@ -443,10 +445,11 @@ a:hover
 #lightbox-close
 {
     background: url('../images/lightbox_close.png');
+    display: block;
     height: 22px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
+    left: 100%;
+    margin: -22px 0 5px -80px;
+    position: relative;
     width: 66px;
 }
 
@@ -527,7 +530,8 @@ a:hover
 .calendar .right div h4,
 .calendar .calendar-create-button,
 .calendar .calendar-hide-button,
-.calendar .calendar-subscript-button
+.calendar .calendar-subscript-button,
+.calendar a.calendar-hide-event
 {
     background: url('../images/sprites.png') no-repeat;
 }
@@ -1612,7 +1616,7 @@ ul#nculife-details
 
 .calendar a.calendar-hide-event
 {
-    background: url('../images/calendar-hide-button.png') no-repeat;
+    background-position: -32px -96px;
     width: 32px;
     height: 32px;
     text-indent: -10000px;
@@ -1682,6 +1686,127 @@ a.calendar-hide-event:hover
 .calendar .calendar-create-button
 {
     background-position: -32px -128px;
+}
+
+#calendar-event,
+#calendar-recycle,
+#calendar-subscript
+{
+    height: 296px;
+    margin: 0 5px;
+    padding: 60px;
+    border-radius: 15px;
+    position: relative;
+}
+
+#calendar-recycle
+{
+    background: url('../images/calendar_recycle_background.png') no-repeat;
+}
+
+#calendar-recycle .scroll-container
+{
+    height: 232px;
+}
+
+#calendar-recycle h4
+{
+    background: url('../images/calendar_recycle_title.png') no-repeat;
+    padding: 0px 0 32px 45px;
+    font-size: 2em;
+}
+
+#calendar-recycle a.calendar-show-event,
+#calendar-recycle a.calendar-hide-event
+{
+    padding-left: 20px;
+    height: 20px;
+    line-height: 20px;
+    display: inline-block;
+    background-color: #7ecef4;
+    border-radius: 5px;
+    color: #1e68fe;
+}
+
+#calendar-recycle a.calendar-show-event
+{
+    background: url('../images/calendar_recover.png') no-repeat #7ecef4;
+}
+
+#calendar-recycle a.calendar-hide-event
+{
+    background: url('../images/calendar_delete.png') no-repeat #7ecef4;
+}
+
+#calendar-recycle ul
+{
+    list-style: none;
+}
+
+#calendar-recycle li
+{
+    margin: 5px 0;
+}
+
+#calendar-recycle h5
+{
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+
+#calendar-event
+{
+    background: url('../images/calendar_event_background.png');
+}
+
+#calendar-event h4
+{
+    padding: 0;
+    margin: 0;
+    font-size: 2em;
+}
+
+#calendar-event h5
+{
+    padding: 0;
+    margin: 15px 0;
+    font-size: 1.5em;
+}
+
+#calendar-event div.container
+{
+    width: 600px;
+    overflow-y: hidden;
+}
+
+#calendar-event .scroll-container
+{
+    width: 610px;
+    height: 240px;
+}
+
+#calendar-event p
+{
+    line-height: 1.4em;
+}
+
+#calendar-recycle a.back,
+#calendar-event a.back
+{
+    background: url('../images/calendar_back.png') no-repeat;
+    height: 80px;
+    padding-left: 26px;
+    display: inline-block;
+    line-height: 80px;
+    font-size: 1.5em;
+    position: absolute;
+    top: 331px;
+    left: 642px;
+}
+
+#calendar-subscript
+{
+    background: url('../images/calendar_subscription_background.png');
 }
 
 #index-container
@@ -3162,6 +3287,7 @@ button.news-button
     height: 50px;
     display: block;
 }
+
 #club-schedule-content
 {
     background: skyblue;
@@ -3473,7 +3599,7 @@ div.my-all-messages
 
 div.allmessages
 {
-    width:470px;
+    width:490px;
     height:290px;
     margin-top:55px;
     padding:5px;
@@ -3519,6 +3645,13 @@ div.friends-sortfriend div.avatar
     height:45px;
     padding:0px;
     float:left;
+}
+
+#space
+{
+    width:35px; 
+    height:45px;
+    outline: 1px sloid yellow;
 }
 
 #myfriend
@@ -3656,7 +3789,7 @@ div.profile-message-reply
     bottom:-100px;
 }
 
-.button-push
+#button-push
 {
     background-image:url('../profile/button/push.png');
     background-repeat:no-repeat ;
@@ -3664,6 +3797,9 @@ div.profile-message-reply
     height:35px;
     padding:0px;
     margin:0px;
+    position:relative;
+    right:35px;
+    bottom:0px;
 }
 
 .button-sure
@@ -3739,7 +3875,7 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:63px;
+    right:106px;
     bottom:0px;
 }
 
@@ -3788,8 +3924,8 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:550px;
-    bottom:-72px;
+    right:522px;
+    bottom:-98px;
 }
 
 #button-editor
@@ -3935,22 +4071,22 @@ td.reply-content
     position: relative;
 }
 
-td.reply-content span
+td.reply-content div
 {
     display: none;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0px;
+    left: 0px;
     width: 100%;
-    word-break: break-word;
+    /*word-break: break-word;*/
     background: AntiqueWhite ;
     z-index: 500;
 }
 
-td.reply-content:hover span
+td.reply-content:hover div
 {
     display: block;
-    z-index: 1000;
+    z-index: 10000000000000;
 }
 
 ul#self-message
@@ -4006,17 +4142,9 @@ table.group
     margin:0px;
 }
 
-div.allmessages table
-{
-    width:460px;
-    margin:0px;
-    text-align:center;
-    padding:0px;
-}
-
 div.allmessages tr th
 {
-    width:100px;
+    width:155px;
     height:20px;
     padding:0px;
     margin:0px;
@@ -4025,7 +4153,7 @@ div.allmessages tr th
 
 div.allmessages tr td
 {
-    width:100px;
+    width:155px;
     padding:0px;
     margin:0px;
     text-align:center;
@@ -4230,6 +4358,19 @@ img.user_img
     font-size: 1.5em;
     color: #4d136e;
     padding: 6px 0px;
+}
+
+.game-display .shop-message
+{
+    font-size: 2.5em;
+    color: #0C533F;
+    padding: 12px 0px;
+} 
+
+.game-display .shop-click
+{
+    font-size: 1.5em;
+    color: black;
 } 
 
 .game-display .experience
@@ -4264,10 +4405,9 @@ img.user_img
     background: #FFA100;
 }
 
-.game-display a img
+.game-display .item-icons img
 {
     width:85px;
-
     display: inline-block;
 }
 

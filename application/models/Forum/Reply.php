@@ -62,5 +62,6 @@ class Reply extends CActiveRecord
     {
         parent::afterFind();
         $this->content = nl2br(htmlspecialchars($this->content));
+        $this->created = Yii::app()->format->datetime($this->created);
     }
 }
