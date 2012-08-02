@@ -195,8 +195,6 @@ class GameController extends Controller
         }
 
         $status = ItemBag::model()->buyNewItem($id);
-        echo $status;
-        $reason ='test';
         switch ($status)
         {
             case 0:
