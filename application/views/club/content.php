@@ -1,10 +1,10 @@
 <div id="club">
     <div class="club-underpicture">
-        <div class="schedule">
-            <div id="club-schedule-button">
+        <div>
+            <div id="club-calendar-button">
             <h4>行事曆</h4>
             </div>
-            <div id="club-schedule-content">
+            <div id="club-calendar">
             </div>
         </div>
         <ul id="club-menu-items">
