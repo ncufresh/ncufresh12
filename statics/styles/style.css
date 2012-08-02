@@ -4229,6 +4229,19 @@ img.user_img
     font-size: 1.5em;
     color: #4d136e;
     padding: 6px 0px;
+}
+
+.game-display .shop-message
+{
+    font-size: 2.5em;
+    color: #0C533F;
+    padding: 12px 0px;
+} 
+
+.game-display .shop-click
+{
+    font-size: 1.5em;
+    color: black;
 } 
 
 .game-display .experience
@@ -4263,10 +4276,9 @@ img.user_img
     background: #FFA100;
 }
 
-.game-display a img
+.game-display .item-icons img
 {
     width:85px;
-
     display: inline-block;
 }
 

@@ -1,5 +1,6 @@
-<h3> LV.<?php echo $level ?> / <?php echo $money ?> 金幣</h3>
-<h3> <頭髮> </h3>
+<h4 class="game-title"> <商城系統> </h4>
+<h4 class="game-title"> ( LV.<?php echo $level ?> / <?php echo $money ?> 金幣 )</h4>
+<h4> <頭髮> </h4>
 <?php $shopping = Item::model()->getBuyItems($level, 1); ?>
 <?php foreach ($shopping as $item) : ?>
 <?php $exist = ItemBag::model()->itemExist($item->id); ?>
@@ -23,7 +24,7 @@
 </a>
 <?php endforeach; ?>
 
-<h3> <臉飾> </h3>
+<h4> <臉飾> </h4>
 <?php $shopping = Item::model()->getBuyItems($level, 2); ?>
 <?php foreach ($shopping as $item) : ?>
 <?php $exist = ItemBag::model()->itemExist($item->id); ?>
@@ -47,7 +48,7 @@
 </a>
 <?php endforeach; ?>
 
-<h3> <衣服> </h3>
+<h4> <衣服> </h4>
 <?php $shopping = Item::model()->getBuyItems($level, 3); ?>
 <?php foreach ($shopping as $item) : ?>
 <?php $exist = ItemBag::model()->itemExist($item->id); ?>
@@ -71,7 +72,7 @@
 </a>
 <?php endforeach; ?>
 
-<h3> <褲子> </h3>
+<h4> <褲子> </h4>
 <?php $shopping = Item::model()->getBuyItems($level, 4); ?>
 <?php foreach ($shopping as $item) : ?>
 <?php $exist = ItemBag::model()->itemExist($item->id); ?>
@@ -95,7 +96,7 @@
 </a>
 <?php endforeach; ?>
 
-<h3> <鞋子> </h3>
+<h4> <鞋子> </h4>
 <?php $shopping = Item::model()->getBuyItems($level, 5); ?>
 <?php foreach ($shopping as $item) : ?>
 <?php $exist = ItemBag::model()->itemExist($item->id); ?>
@@ -119,7 +120,7 @@
 </a>
 <?php endforeach; ?>
 
-<h3> <皮膚> </h3>
+<h4> <皮膚> </h4>
 <?php $shopping = Item::model()->getBuyItems($level, 6); ?>
 <?php foreach ($shopping as $item) : ?>
 <?php $exist = ItemBag::model()->itemExist($item->id); ?>
@@ -143,7 +144,7 @@
 </a>
 <?php endforeach; ?>
 
-<h3> <其他裝備> </h3>
+<h4> <其他裝備> </h4>
 <?php $shopping = Item::model()->getBuyItems($level, 7); ?>
 <?php foreach ($shopping as $item) : ?>
 <?php $exist = ItemBag::model()->itemExist($item->id); ?>
