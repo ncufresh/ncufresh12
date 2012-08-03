@@ -361,6 +361,7 @@ a:hover
     height: 160px;
     position: fixed;
     width: 320px;
+    z-index: 2000;
 }
 
 .confirm-title,
