@@ -1,0 +1,30 @@
+<h4>
+    客家管理學院
+</h4>
+<p>
+    生命中總有那麼些時候
+</p>
+<p>
+    想要走走看看聽聽
+</p>
+<p>
+    聽聽世界不一樣的聲音
+</p>
+<p>
+    走訪客家管理學院
+</p>
+<p>
+    聽聽不一樣的聲音
+</p>
+<p>
+    不一樣的語言
+</p>
+<p>
+    感受心中最澎湃的交流
+</p>
+<p>
+    科系：<a href="http://140.115.170.1/Hakkacollege/" title="客家學院碩士博士班">客家學院碩士博士班</a>
+</p>
+<p>
+    <img alt="客家管理學院" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2777.JPG" style="width:320px;height:180px;" /><img alt="客家管理學院" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2778.JPG" style="width:320px;height:180px;" />
+</p>
