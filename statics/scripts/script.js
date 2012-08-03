@@ -1778,7 +1778,7 @@
             this.options =  $.extend({
                 width:          $(this).width(),
                 height:         $(this).height(),
-                modal:          true,
+                modal:          false,
                 escape:         true,
                 closeButton:    true,
                 speed:          'fast',
@@ -2093,7 +2093,10 @@
             }
             if ( options.closeOnClick )
             {
-                overlay.on('click', function() { return overlayClose(uuid); });
+                overlay.on('click', function()
+                {
+                    return overlayClose(uuid);
+                });
             }
             if ( options.closeOnEscape ) $(document).on('keyup', escape);
             $.extend(overlay.constructor.prototype, {
