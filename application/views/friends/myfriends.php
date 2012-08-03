@@ -22,5 +22,5 @@
         </ul>
     <button type="submit" class="button-deletefriend"></button>
 </form>
-<button type="button" class="button-back"></button>
+<a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back"></a>
 </div>

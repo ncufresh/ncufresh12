@@ -1,6 +1,3 @@
-<h4>
-    全聯
-</h4>
 <p>
     全聯福利中心 <a href="http://www.pxmart.com.tw/" title="官方網站">官方網站</a>
 </p>

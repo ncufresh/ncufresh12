@@ -10,7 +10,7 @@
         <h4>&lt; <?php echo $item->name ?> &gt;</h4>
         <span class="description"><?php echo $item->description ?></span>
         <span>[ 需求等級：LV.<?php echo $item->level?> / 價值：<?php echo $item->price ?> 金幣 ]</span>
-        <span class="exist">（已經擁有此道具）</span>
+        <span class="exist">[ 已經擁有此道具 ]</span>
 <?php else : // 如果沒有此物品 ?>
 <a class="shop-items item-icons" href="<?php echo Yii::app()->createUrl('game/buy', array('id'=>$item->id))?>">
     <img src="<?php echo Yii::app()->request->baseUrl ?>/statics/game/icons/question-mark.png" alt="<?php $item->name ?>">
@@ -34,7 +34,7 @@
         <h4>&lt; <?php echo $item->name ?> &gt;</h4>
         <span class="description"><?php echo $item->description ?></span>
         <span>[ 需求等級：LV.<?php echo $item->level?> / 價值：<?php echo $item->price ?> 金幣 ]</span>
-        <span class="exist">（已經擁有此道具）</span>
+        <span class="exist">[ 已經擁有此道具 ]</span>
 <?php else : // 如果沒有此物品 ?>
 <a class="shop-items item-icons" href="<?php echo Yii::app()->createUrl('game/buy', array('id'=>$item->id))?>">
     <img src="<?php echo Yii::app()->request->baseUrl ?>/statics/game/icons/question-mark.png" alt="<?php $item->name ?>">
@@ -58,7 +58,7 @@
         <h4>&lt; <?php echo $item->name ?> &gt;</h4>
         <span class="description"><?php echo $item->description ?></span>
         <span>[ 需求等級：LV.<?php echo $item->level?> / 價值：<?php echo $item->price ?> 金幣 ]</span>
-        <span class="exist">（已經擁有此道具）</span>
+        <span class="exist">[ 已經擁有此道具 ]</span>
 <?php else : // 如果沒有此物品 ?>
 <a class="shop-items item-icons" href="<?php echo Yii::app()->createUrl('game/buy', array('id'=>$item->id))?>">
     <img src="<?php echo Yii::app()->request->baseUrl ?>/statics/game/icons/question-mark.png" alt="<?php $item->name ?>">
@@ -82,7 +82,7 @@
         <h4>&lt; <?php echo $item->name ?> &gt;</h4>
         <span class="description"><?php echo $item->description ?></span>
         <span>[ 需求等級：LV.<?php echo $item->level?> / 價值：<?php echo $item->price ?> 金幣 ]</span>
-        <span class="exist">（已經擁有此道具）</span>
+        <span class="exist">[ 已經擁有此道具 ]</span>
 <?php else : // 如果沒有此物品 ?>
 <a class="shop-items item-icons" href="<?php echo Yii::app()->createUrl('game/buy', array('id'=>$item->id))?>">
     <img src="<?php echo Yii::app()->request->baseUrl ?>/statics/game/icons/question-mark.png" alt="<?php $item->name ?>">
@@ -106,7 +106,7 @@
         <h4>&lt; <?php echo $item->name ?> &gt;</h4>
         <span class="description"><?php echo $item->description ?></span>
         <span>[ 需求等級：LV.<?php echo $item->level?> / 價值：<?php echo $item->price ?> 金幣 ]</span>
-        <span class="exist">（已經擁有此道具）</span>
+        <span class="exist">[ 已經擁有此道具 ]</span>
 <?php else : // 如果沒有此物品 ?>
 <a class="shop-items item-icons" href="<?php echo Yii::app()->createUrl('game/buy', array('id'=>$item->id))?>">
     <img src="<?php echo Yii::app()->request->baseUrl ?>/statics/game/icons/question-mark.png" alt="<?php $item->name ?>">
@@ -130,7 +130,7 @@
         <h4>&lt; <?php echo $item->name ?> &gt;</h4>
         <span class="description"><?php echo $item->description ?></span>
         <span>[ 需求等級：LV.<?php echo $item->level?> / 價值：<?php echo $item->price ?> 金幣 ]</span>
-        <span class="exist">（已經擁有此道具）</span>
+        <span class="exist">[ 已經擁有此道具 ]</span>
 <?php else : // 如果沒有此物品 ?>
 <a class="shop-items item-icons" href="<?php echo Yii::app()->createUrl('game/buy', array('id'=>$item->id))?>">
     <img src="<?php echo Yii::app()->request->baseUrl ?>/statics/game/icons/question-mark.png" alt="<?php $item->name ?>">
@@ -154,7 +154,7 @@
         <h4>&lt; <?php echo $item->name ?> &gt;</h4>
         <span class="description"><?php echo $item->description ?></span>
         <span>[ 需求等級：LV.<?php echo $item->level?> / 價值：<?php echo $item->price ?> 金幣 ]</span>
-        <span class="exist">（已經擁有此道具）</span>
+        <span class="exist">[ 已經擁有此道具 ]</span>
 <?php else : // 如果沒有此物品 ?>
 <a class="shop-items item-icons" href="<?php echo Yii::app()->createUrl('game/buy', array('id'=>$item->id))?>">
     <img src="<?php echo Yii::app()->request->baseUrl ?>/statics/game/icons/question-mark.png" alt="<?php $item->name ?>">

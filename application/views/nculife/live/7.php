@@ -1,6 +1,3 @@
-<h4>
-    男九舍B棟
-</h4>
 <p>
     <img alt="男九舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0189.JPG" style="height:220px;width:146px;" />
     <img alt="男九舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/boy9-1.jpg" style="width:264px;height:220px;" />
