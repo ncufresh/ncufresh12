@@ -1711,7 +1711,8 @@ a.calendar-hide-event:hover
 
 #calendar-event,
 #calendar-recycle,
-#calendar-subscript
+#calendar-subscript,
+#calendar-create
 {
     height: 296px;
     margin: 0 5px;
@@ -1904,6 +1905,21 @@ a.calendar-hide-event:hover
     margin: 0;
     overflow: visible;
     width: 169%;
+}
+
+#calendar-create
+{
+    background: url('../images/calendar_create_background.png') no-repeat;
+}
+
+#calendar-create form textarea
+{
+    height: 100px;
+}
+
+#calendar-create form div.buttons
+{
+    margin: -50px 0 0 50%;
 }
 
 #index-container
