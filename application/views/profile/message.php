@@ -21,4 +21,4 @@
         </table>
     </div>
 </div>
-<button type="button" class="button-back" ></button>
+<a href="<?php echo Yii::app()->createUrl('site/index'); ?>" class="button-back"></a>

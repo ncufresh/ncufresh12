@@ -90,7 +90,7 @@ class  UserGroup extends CActiveRecord
    /* public function getNewMember($groupid)
     {
         return $this->findAll(array(
-                    'condition' => 'id = :groupid'
+                    'condition' => 'id = :groupid AND invisible = 0'
                 ));
     }*/
 }

@@ -22,5 +22,5 @@
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
     <button type="submit" class="button-addfriends"></button>
 </form>
-<button type="button" class="button-back" ></button>
+<a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back"></a>
 </div>
