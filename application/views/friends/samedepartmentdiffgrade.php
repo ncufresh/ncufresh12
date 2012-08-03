@@ -14,7 +14,7 @@
 <?php echo $profile->name;?>
                 </h3>
                 <h4>
-<?php echo $user->profile->mydepartment->abbreviation; ?>
+<?php echo $profile->mydepartment->abbreviation; ?>
                 </h4>
             </li>
 <?php endforeach; ?>
