@@ -1554,6 +1554,15 @@ ul#nculife-details
     cursor: pointer;
 }
 
+#index-calendar .calendar-table td.hover
+{
+    color: green;
+}
+#index-calendar .calendar-table td.selected
+{
+    outline: 1px solid #000;
+}
+
 #club-calendar .calendar-table thead,
 #index-calendar .calendar-table thead
 {
@@ -1629,6 +1638,11 @@ ul#nculife-details
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
+}
+
+.calendar .left table tbody td.today
+{
+    color: red;
 }
 
 .calendar .date
