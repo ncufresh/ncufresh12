@@ -2457,13 +2457,16 @@
             {
                 $('#club-calendar').slideDown(300, function()
                 {
+                    $('#club-calendar').css({
+                        overflow: 'visible'
+                    });
                     button.addClass('active');
                 });
             }
             return false;
         });
 
-        $('#club-calendar').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
+        $('#club-calendar div').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
 
         $('.back').click(function()
         {

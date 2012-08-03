@@ -548,6 +548,8 @@ a:hover
 .index-forums-box h4,
 #notfound a,
 #notfound a:hover,
+#club-calendar > div,
+#club-calendar-button,
 #index-calendar > div,
 .calendar,
 .calendar .right div,
@@ -1475,6 +1477,7 @@ ul#nculife-details
     width: 30%;
 }
 
+#club-calendar > div,
 #index-calendar > div
 {
     background-position: -960px -160px;
@@ -1484,16 +1487,19 @@ ul#nculife-details
     position: relative;
 }
 
+#club-calendar .calendar-table,
 #index-calendar .calendar-table
 {
     border-collapse: collapse;
 }
 
+#club-calendar .calendar-table caption,
 #index-calendar .calendar-table caption
 {
     margin: 15px 0 10px 0;
 }
 
+#club-calendar .calendar-table td,
 #index-calendar .calendar-table td
 {
     text-align: right;
@@ -1501,22 +1507,26 @@ ul#nculife-details
     cursor: pointer;
 }
 
+#club-calendar .calendar-table thead,
 #index-calendar .calendar-table thead
 {
     display: block;
 }
 
+#club-calendar .calendar-table thead td,
 #index-calendar .calendar-table thead td
 {
     color: #af8d5a;
     text-align: center;
 }
 
+#club-calendar .calendar-table thead td.weekend,
 #index-calendar .calendar-table thead td.weekend
 {
     color: red;
 }
 
+#club-calendar .calendar-table tbody,
 #index-calendar .calendar-table tbody
 {
     border-top: 1px solid #946722;
@@ -1524,12 +1534,14 @@ ul#nculife-details
     display: block;
 }
 
+#club-calendar .todolist-table td,
 #index-calendar .todolist-table td
 {
     width: 100px;
     text-align: center;
 }
 
+#club-calendar  .todolist-table thead td,
 #index-calendar .todolist-table thead td
 {
     color: #946722;
@@ -3316,10 +3328,17 @@ button.news-button
 .club-underpicture
 {
 	float: left;
+    margin-left: -20px;
+}
+
+.club-underpicture ul
+{
+    display: inline-block;
 }
 
 #club-calendar-button
 {
+    background-position: -960px -160px;
     cursor: pointer;
     width: 204px;
     height: 50px;
@@ -3333,7 +3352,8 @@ button.news-button
     float: left;
     height: 400px;
     margin-top: 40px;
-    width: 30%;
+    display: block;
+    position: relative;
 }
 
 #club-calendar table
