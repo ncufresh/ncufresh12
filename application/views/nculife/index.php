@@ -6,6 +6,8 @@ jQuery(document).ready(function()
     {
         jQuery('.life-picture').fadeOut(500).eq(jQuery.random(0, $('.life-picture').length - 1)).fadeIn(500);
     }, 1000);
+    
+
 });
 </script>
 <?php $this->endWidget();?>

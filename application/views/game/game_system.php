@@ -62,4 +62,3 @@
             'id'        => $watch_id
         )); ?>
 </div>
-    <h1>使用者ID => 登入帳號 / 觀看中 => <?php echo $user_id.' / '.$watch_id?> </h1>

@@ -1,6 +1,6 @@
 <h4>基本資料</h4>
 <div class="myprofile">
-    <div class="friends-part3">
+    <div class="profile-modify">
 <?php $this->widget('Avatar', array(
     'id'        => Yii::app()->user->id
 )); ?>
