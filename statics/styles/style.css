@@ -5479,6 +5479,11 @@ li.enabled a
     min-height: 70px;
 }
 
+#forum-forum-body .category-lists #labels
+{
+    padding: 0px;
+}
+
 #forum-forum-body #create-article
 {
     background: url('../forum/forum/eraser.png');
