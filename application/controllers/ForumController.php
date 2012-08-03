@@ -120,8 +120,9 @@ class ForumController extends Controller
             $article = Article::model()->findByPk($id);
             $article->viewed++;
             
-            if (  $article->save())
+            if ( $article->save())
             {
+                $article = Article::model()->findByPk($id);
                 $this->render('view', array(
                 'fid'           => $article->forum_id,
                 'article'       => $article,

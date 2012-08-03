@@ -164,7 +164,7 @@ class Article extends CActiveRecord
     {
         parent::afterFind();
         $this->title = htmlspecialchars($this->title);
-        $this->content = nl2br(htmlspecialchars($this->content));
+        $this->content = nl2br($this->content);
         $this->created = Yii::app()->format->datetime($this->created);
     }
 }
