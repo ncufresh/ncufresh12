@@ -16,8 +16,7 @@ class Item extends CActiveRecord
     {
         return $this->findAll(array(
             'condition' => 'level <= :level AND category = :category',
-            'order'     => 'level ASC',
-            'order'     => 'price ASC',
+            'order'     => 'level ASC,price ASC',
             'params'    => array(
                 ':level' => $level,
                 ':category' => $category
