@@ -125,14 +125,14 @@ jQuery(document).ready(function()
         </div>
     </div>
     <div id="life-dialog">
-            <div id="nculife-title">
-                <h4>jjjjjj</h4>
+        <div id="nculife-title">
+            <h4>jjjjjj</h4>
+        </div>
+        <div id="nculife-dialog-head">
+        </div>
+        <div id="nculife-dialog-body">
+            <div id="nculife-content-view">
             </div>
-            <div id="nculife-dialog-head">
-            </div>
-            <div id="nculife-dialog-body">
-                <div id="nculife-content-view">
-                </div>
-            </div>
+        </div>
     </div>
 </div>

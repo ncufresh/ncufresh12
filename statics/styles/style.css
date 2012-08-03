@@ -3328,10 +3328,12 @@ button.news-button
 
 #club-calendar
 {
-    display: none;
-    height: 329px;
-    position: relative;
-    width: 204px;
+    background: #FFEDB7;
+    border-radius: 15px;
+    float: left;
+    height: 400px;
+    margin-top: 40px;
+    width: 30%;
 }
 
 #club-calendar table
