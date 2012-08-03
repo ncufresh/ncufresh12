@@ -3352,6 +3352,17 @@
             }
         });
 
+        $('a').click(function()
+        {
+            var url = $(this).attr('href');
+            if ( url.match(/^\/.+/) || url.search(location.hostname) >= 0 )
+            {
+                return true;
+            }
+            window.open(url);
+            return false;
+        });
+
         $.pull.start({
             friendcounter: $('#chat .friendcounts'),
             onlinecounter: $('#header .online'),
