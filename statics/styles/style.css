@@ -3040,6 +3040,20 @@ button.news-button
     margin-top: 6px
 }
 
+#about .itrBlock
+{
+    padding-left: 15px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-top: 1px;
+    border-radius: 10px;
+    background: #fffce0;
+    position: relative;
+    float: top;
+    left: 25px;
+    height: 739px;
+    width: 675px;
+}
 
 #about .introdution
 {

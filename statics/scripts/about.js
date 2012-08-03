@@ -5,13 +5,14 @@
         var options = $.extend({
             aboutId:                         'about',
             titleClass:                      'title',
+            introdutionBlock:                'itrBlock',
             introduceId:                     'introdution',
             tagBar:                          'tagBar',
             animationClass:                  'animation',
             block1InfClass:                  'information',
             picBarSpeed:                     1000,
             picAutoSpeed:                    3000,
-            tagBarSpeed:                     10000
+            tagBarSpeed:                     30000
         }, options);
         var photoIndex = 0;
         var photos = $('#' + options.aboutId + ' img');
@@ -50,28 +51,14 @@
                 .addClass('block1'),
             $('<div></div>')
                 .addClass('block2')
-        ]
-        var itr = $('<div></div>').css({
-            paddingLeft: 15,
-            paddingBottom: 10,
-            paddingRight: 10,
-            paddingTop: 1,
-            borderRadius: 10,
-            background: '#fffce0',
-            position: 'relative',
-            float: 'top',
-            left: 25,
-            height: 739,
-            width: 675,
-        })
-        .appendTo(blocks[0])
-        .append($('.' + options.introduceId));
+        ];
+        var itr = $('#' + options.aboutId + ' .' + options.introdutionBlock).appendTo(blocks[0]);
         var picture = $('<div></div>')
             .css({
                 background: 'url(\'' + photos.eq(photoIndex).attr('photo') + '0.png' + '\')',
                 float: 'right',
                 height: 300,
-                top: -722,
+                top: -699,
                 position: 'relative',
                 width:  400
             })
@@ -92,7 +79,7 @@
             .appendTo(itr);
         var display = $('<div></div>')
             .css({
-                background: 'black',
+                background: '#FFFFFF',
                 bottom: 0,
                 height: 0,
                 opacity: 0,
@@ -119,7 +106,7 @@
         {
             $(this).css({
                 position: 'absolute',
-                top: 40,
+                top: 30,
                 left: 40
             })
             .hide()
