@@ -205,7 +205,7 @@
                 <a href="<?php echo Yii::app()->createUrl('calendar/view'); ?>" title="個人行事曆">個人行事曆</a>
             </li>
             <li>
-                <a href="#" title="最新更新">最新更新</a>
+                <a href="<?php echo Yii::app()->createUrl('profile/message'); ?>" title="最新更新">最新更新</a>
             </li>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('profile/profile'); ?>" title="個人資料">個人資料</a>
@@ -214,7 +214,7 @@
                 <a href="<?php echo Yii::app()->createUrl('game/index'); ?>" title="遊戲介面">遊戲介面</a>
             </li>
         </ul>
-        <a id="sidebar-personal-button" href="<?php echo Yii::app()->createUrl('friend/friend'); ?>" title="個人專區">個人專區</a>
+        <a id="sidebar-personal-button" href="<?php echo Yii::app()->createUrl('friends/friends'); ?>" title="個人專區">個人專區</a>
         <a id="sidebar-logout-button" href="<?php echo Yii::app()->createUrl('site/logout'); ?>" title="登出">登出</a>
     </div>
 <?php endif; ?>
@@ -307,6 +307,8 @@
             calendarClubEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxClubEvents', array('id' => ':id')); ?>'),
             calendarHideEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/hideEvent'); ?>'),
             buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),
+            forumSortUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('forum/forum', array('fid' => isset($_GET['fid'])?$_GET['fid']:0, 'sort' => ':sort', 'category' => isset($_GET['category'])?$_GET['category']:0));?>'),
+            forumCancelUrl:decodeURIComponent('<?php echo Yii::app()->createUrl('forum/forum', array('fid' => isset($_GET['fid'])?$_GET['fid']:0, 'sort' => 'create'));?>'),
             gameMissionUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/problem', array('id' => ':id'));?>'),
             gameSolveUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/solve', array('id' => ':id'));?>'),
             facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),

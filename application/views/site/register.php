@@ -78,7 +78,7 @@
             <label for="form-register-nickname">暱稱</label>
         </dt>
         <dd>
-            <input id="form-register-nickname" name="profile[nickname]" type="text" />
+            <input id="form-register-nickname" name="profile[nickname]" type="text" maxlength=8/>
             <span>
 <?php if ( isset($profile_errors['nickname']) ) : ?>
 <?php foreach ( $profile_errors['nickname'] as $error ) : ?>
