@@ -129,10 +129,10 @@ jQuery(document).ready(function()
                 <h4>
                 </h4>
             </div>
-            <div id="nculife-dh">
+            <div id="nculife-dialog-head">
             </div>
-            <div id="nculife-db">
-                <div id="nculife-cv">
+            <div id="nculife-dialog-body">
+                <div id="nculife-content-view">
                 </div>
             </div>
         </div>

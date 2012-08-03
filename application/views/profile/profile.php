@@ -26,7 +26,12 @@
                 系所:<?php echo $user->profile->mydepartment->abbreviation; ?>
             </li>
             <li>
-                系級:<?php echo $user->profile->grade; ?>年級
+                系級:
+<?php if ( $user->profile->grade == 0 ) : ?>
+                這是秘密唷^.&lt;
+<?php else : ?>
+<?php echo $user->profile->grade; ?>年級
+<?php endif; ?>
             </li>
             <li>
                 畢業高中:<?php echo $user->profile->senior; ?>    
