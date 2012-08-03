@@ -10,6 +10,7 @@
 )); ?>
 </a>
                 <input type="checkbox" name="friends[<?php echo $profile->id;?>]" value="<?php echo $profile->id;?>"  />
+                <input type="hidden" name="friends-all-choose[<?php echo $profile->id;?>]" value="<?php echo $profile->id;?>" />
                 <h3>
 <?php echo $profile->name;?>
                 </h3>
@@ -19,6 +20,7 @@
             </li>
 <?php endforeach; ?>
         </ul>
+    <button type="submit" name="all-choose" class="button-all-choose">全選</button>
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
     <button type="submit" class="button-addfriends"></button>
 </form>

@@ -22,5 +22,5 @@
     </ul>
     <button type="submit" class="button-sure"></button>
 </form>
-<a href="<?php echo $this->createUrl('friends/mygroups'); ?>" class="button-back"></a>
+<a href="<?php echo $this->createUrl('friends/mygroups', array('id' => $id)); ?>" class="button-back"></a>
 </div>
