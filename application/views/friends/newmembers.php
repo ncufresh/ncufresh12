@@ -1,6 +1,6 @@
 <h4>新增成員</h4>
 <div class="newmember">
-<form class="friends-part2" method="POST" action="<?php echo Yii::app()->createUrl('friends/addnewmembers', array('id'=>$id))  ?>">
+<form class="A-group-users" method="POST" action="<?php echo Yii::app()->createUrl('friends/addnewmembers', array('id'=>$id))  ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
     <ul class="users-department">
 <?php foreach ( $friends as $friend ) : ?>

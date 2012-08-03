@@ -1,6 +1,6 @@
 <h4>好友確認</h4>
 <div id="request">  
-<form class="friends-part2" method="POST" action="<?php echo $this->createUrl('friends/request'); ?>">
+<form class="A-group-users" method="POST" action="<?php echo $this->createUrl('friends/request'); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
     <ul class="users-department">
 <?php foreach ( $friends as $friend ) : ?>

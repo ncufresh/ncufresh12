@@ -3588,7 +3588,7 @@ ul.users-department li h4
     list-style-type:none;
 }
 
-.friends-part3 div.avatar
+/*.friends-part3 div.avatar
 {
     margin-left:40px;
     margin-top:20px;
@@ -3596,7 +3596,7 @@ ul.users-department li h4
     height:310px;
     padding:0px;
     float:left;
-}
+}*/
 
 .user-editor
 {
@@ -3687,21 +3687,21 @@ div.friends
     margin:0px;
 }
 
-div.friends-part1
+div.all-sorts-of-friends
 {
     width:690px;
     height:370px;
     margin:25px 25px 25px 25px;
 }
 
-.friends-part2
+.A-group-users
 {
     width:680px;
     height:370px;
     margin:0px;
 }
 
-div.friends-part2 button
+div.A-group-users button
 {
     padding:0px;
     margin-top:0px;
@@ -3715,7 +3715,7 @@ div.friends-part2 button
     padding:0px;
 }*/
 
-div.friends-part2 div.avatar
+div.A-group-users div.avatar
 {
     margin-left:28px;
     margin-top:0px;
@@ -3725,12 +3725,31 @@ div.friends-part2 div.avatar
     float:left;
 }
 
-.friends-part3
+/*.friends-part3
 {
     width:675px;
     height:350px;
     margin:0px;
     padding:5px;
+}*/
+
+.profile-modify
+{
+    width:675px;
+    height:350px;
+    margin:0px;
+    padding:5px;
+}
+
+
+.profile-modify div.avatar
+{
+    margin-left:40px;
+    margin-top:20px;
+    width:180px; 
+    height:310px;
+    padding:0px;
+    float:left;
 }
 
 div.my-all-messages
