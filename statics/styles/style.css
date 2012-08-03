@@ -3684,14 +3684,14 @@ ul.users-department li h4
     width:185px; 
     height:350px;
     padding:0px;
-    margin-top:0px;
-    margin-left:75px;
+    margin-top:10px;
+    margin-left:90px;
 }
 
 #user-data-view li
 {
-    width: 185px;
-    height: 32px;
+    width: 165px;
+    height: 25px;
     display: block;
     list-style-type:none;
     text-align:left;
@@ -3872,8 +3872,8 @@ div.A-group-users div.avatar
 {
     margin-left:65px;
     margin-top:0px;
-    width:125px; 
-    height:100px;
+    width:150px; 
+    height:125px;
     padding:0px;
 }
 
@@ -4041,6 +4041,32 @@ div.profile-message-reply
     padding:25px;
     margin:0px;
     float:left;
+}
+
+#is_friend
+{
+    /*background-image: url('../profile/button/back.png');
+    background-repeat: no-repeat ;*/
+    width: 84px;
+    height: 33px;
+    padding: 0px;
+    margin: 0px;
+    position:absolute;
+    right:550px;
+    bottom:-40px;
+}
+
+#friend_request
+{
+    /*background-image: url('../profile/button/back.png');
+    background-repeat: no-repeat ;*/
+    width: 95px;
+    height: 33px;
+    padding: 0px;
+    margin: 0px;
+    position:absolute;
+    right:550px;
+    bottom:-40px;
 }
 
 .button-back
