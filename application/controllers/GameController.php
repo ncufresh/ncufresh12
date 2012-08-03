@@ -238,6 +238,7 @@ class GameController extends Controller
     
     public function actionProblem($id = 0)
     {
+        // $user_mission_counter = $characterData->missions;
         $mission = Mission::model()->findByPk($id);
         $this->_data['name'] = $mission->name;
         $this->_data['content'] = $mission->content;

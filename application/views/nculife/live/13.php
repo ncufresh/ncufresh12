@@ -1,6 +1,3 @@
-<h4>
-    墊腳石
-</h4>
 <h5>
     <a href="http://www.steppingstone.com.tw/" title="墊腳石圖書廣場">墊腳石圖書廣場</a>
 </h5>

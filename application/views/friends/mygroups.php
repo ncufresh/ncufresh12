@@ -5,7 +5,7 @@
 <ul>
 </div>
 <div id="mygroup">
-<form class="friends-part2 method="POST" action="<?php echo $this->createUrl('friends/deletegroup', array('id'=>$mygroup->id)); ?>">
+<form class="A-group-users" method="POST" action="<?php echo $this->createUrl('friends/deletemembers', array('id'=>$mygroup->id)); ?>">
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
         <ul class="users-department">
 <?php foreach ($members as $member ): ?>
@@ -16,7 +16,7 @@
     'id'        => $profile->id
 )); ?>
                 </a>
-                <input type="checkbox" name="members[<?php echo $profile->id; ?>]" value="<?php echo $profile->id; ?>" />
+                <input type="checkbox" name="group-members[<?php echo $profile->id; ?>]" value="<?php echo $profile->id; ?>" />
                 <h3>
 <?php echo $profile->name; ?>
                 </h3>
@@ -31,4 +31,4 @@
     <a href="<?php echo Yii::app()->createUrl('friends/deletegroup', array('id'=>$mygroup->id))  ?>" id="button-deletegroup" ></a>
 </form>
 </div>
-<button type="button" class="button-back"></button>
+<a href="<?php echo $this->createUrl('friends/allgroups'); ?>" class="button-back"></a>

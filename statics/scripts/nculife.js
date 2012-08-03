@@ -22,7 +22,6 @@ jQuery(document).ready(function()
             closeText: ' ',
         });
 
-
         $('#life-dialog').removeClass();
         $('#life-dialog').addClass('nculife-dialog');
         $('#life-dialog').addClass($(this).parents('ul').attr('pattern'));
@@ -31,7 +30,6 @@ jQuery(document).ready(function()
 
         $('#nculife-content-view').empty();
         $('#nculife-dialog-head').empty();
-        $('#nculife-title').empty();
 
         var button = $(this)
         if( button.hasClass('life-bar') )
@@ -67,18 +65,18 @@ jQuery(document).ready(function()
             });
             $('#nculife-title h4').text($(this).text());
         }
-        $('#nculife-dialog-head > a').first().click();
 
-        $('#nculife-content-view').scrollable({
+        $('#nculife-dialog-head > a').first().click();
+        
+    });
+    jQuery('#nculife-content-view').scrollable({
             scrollableClass:    false
         });
-    });
-
     jQuery('#life-play').mouseenter(function()
     {
         jQuery('#life-index1').stop().animate(
         {
-            height: '130px'
+            height: '95px'
         },500);
     });
 
@@ -94,7 +92,7 @@ jQuery(document).ready(function()
     {
         jQuery('#life-index2').stop().animate(
         {
-            height: '130px'
+            height: '120px'
         },500);
     });
 
@@ -126,7 +124,7 @@ jQuery(document).ready(function()
     {
         jQuery('#life-index4').stop().animate(
         {
-            height: '165px'
+            height: '150px'
         },500);
     });
 
@@ -142,7 +140,7 @@ jQuery(document).ready(function()
     {
         jQuery('#life-index5').stop().animate(
         {
-            height: '105px'
+            height: '100px'
         },500);
     });
 
