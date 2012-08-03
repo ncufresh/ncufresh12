@@ -107,6 +107,7 @@ class CalendarController extends Controller
 
     public function actionClubRecycle($id)
     {
+        $id = (integer)$id;
         if ( Yii::app()->request->getIsAjaxRequest() 
             && Club::model()->getIsMaster($id) )
         {
@@ -179,7 +180,7 @@ class CalendarController extends Controller
             $event->calendar_id = Calendar::Model()->find('user_id='.Yii::app()->user->getId().' AND category=0')->id;
             if ( $event->validate() && $event->save() )
             {
-                $this->redirect(Yii::app()->createUrl('calendar/club'));
+                $this->redirect(Yii::app()->createUrl('calendar/club', array('id'=>$id)));
             }
         }
         $this->render('create_club_event', array('id'=>$id));

@@ -19,7 +19,7 @@ jQuery(document).ready(function()
                 if ( result )
                 {
                     $.post(
-                        '<?php echo Yii::app()->createAbsoluteUrl('calendar/clubrecycle', array('id', $id));?>',
+                        '<?php echo Yii::app()->createAbsoluteUrl('calendar/clubrecycle', array('id'=> $id));?>',
                         {
                             calendar:
                             {
@@ -51,7 +51,7 @@ jQuery(document).ready(function()
     <h4 class="date"></h4>
     <div class="right">
     </div>
-    <a class="calendar-create-button calendar-buttons" href="<?php echo Yii::app()->createUrl('calendar/createclubevent', array('id', $id));?>">新增</a>
+    <a class="calendar-create-button calendar-buttons" href="<?php echo Yii::app()->createUrl('calendar/createclubevent', array('id'=> $id));?>">新增</a>
     <div class="prompt">
         <ul>
         </ul>
