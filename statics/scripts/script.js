@@ -1494,12 +1494,12 @@
             today:       true,
             left:        false,
             right:       false,
-            linkClick:   function(){ return false; },
-            leftClick:   function(){ return false; },
-            rightClick:  function(){ return false; },
-            dayClick:    function(event){},
-            dayEnter:    function(event){},
-            dayLeave:    function(event){}
+            linkClick:   function() { return false; },
+            leftClick:   function() { return false; },
+            rightClick:  function() { return false; },
+            dayClick:    function(event) {},
+            dayEnter:    function(event) {},
+            dayLeave:    function(event) {}
         }, options);
 
         options.month -= 1;
@@ -1585,11 +1585,13 @@
 
     $.fn.calendar = function(url)
     {
+        var todolist;
         var container = $(this);
         var updateTodolist = function()
         {
             var events = $(this).data('cal_events');
             var todos = [];
+            if ( todolist ) todolist.remove();
             for ( var key in events )
             {
                 var start = new Date((events[key].start - (new Date()).getTimezoneOffset() * 60) * 1000);
@@ -1600,8 +1602,7 @@
                     events[key].name
                 ];
             }
-            todolist.remove();
-            todolist = $.generateTodolist(todos).insertAfter(calendar);
+            todolist = $.generateTodolist(todos).appendTo(container);
             return todolist;
         };
         var generate = function(year, month)
@@ -1617,8 +1618,9 @@
                         year += 1;
                         month = 1;
                     }
-                    container.children('table').detach();
-                    generate(year, month);
+                    calendar.remove();
+                    todolist.remove();
+                    calendar = generate(year, month);
                     return false;
                 },
                 left: true,
@@ -1629,8 +1631,9 @@
                         year -= 1;
                         month = 12;
                     }
-                    container.children('table').detach();
-                    generate(year, month);
+                    calendar.remove();
+                    todolist.remove();
+                    calendar = generate(year, month);
                     return false;
                 },
                 dayClick: function()
@@ -1649,15 +1652,13 @@
                 }
             }).appendTo(container);
             calendar.find('caption a:eq(1)').text(year + '年' + month + '月');
-            calendar.updateData(url, function(element)
+            calendar.updateData(url, function()
             {
-                if ( element.getToday() ) return updateTodolist(element);
-                return false;
+                return updateTodolist.call(calendar.getToday());
             });
             return calendar;
         };
         var calendar = generate((new Date()).getFullYear(), (new Date()).getMonth() + 1);
-        var todolist = $.generateTodolist([]).insertAfter(calendar);
         return this;
     };
 
