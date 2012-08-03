@@ -1711,7 +1711,8 @@ a.calendar-hide-event:hover
 
 #calendar-event,
 #calendar-recycle,
-#calendar-subscript
+#calendar-subscript,
+.calendar-create
 {
     height: 296px;
     margin: 0 5px;
@@ -1863,6 +1864,7 @@ a.calendar-hide-event:hover
     float: left;
     display: inline-block;
     width: 100%;
+    padding: 5px 0;
 }
 
 #calendar-subscript .calendar-subscript-container
@@ -1903,6 +1905,21 @@ a.calendar-hide-event:hover
     margin: 0;
     overflow: visible;
     width: 169%;
+}
+
+.calendar-create
+{
+    background: url('../images/calendar_create_background.png') no-repeat;
+}
+
+.calendar-create form textarea
+{
+    height: 100px;
+}
+
+.calendar-create form div.buttons
+{
+    margin: -50px 0 0 50%;
 }
 
 #index-container
@@ -3154,8 +3171,7 @@ button.news-button
     height: 66px;
     background-repeat: no-repeat; 
     float: right;
-    margin-right: 18px;
-    
+    margin-right: 17px;
 }
 .club-head:hover
 {
@@ -3164,8 +3180,7 @@ button.news-button
     height: 66px;
     background-repeat: no-repeat; 
     float: right;
-    margin-right: 19px;
-    
+    margin-right: 18px;
 }
 .department
 {
@@ -4620,6 +4635,28 @@ div.item-description .exist
     font-size: 1.3em;
     font-weight: bold;
     color: #ff0000;
+}
+#game-mission li
+{
+    width: 80px;
+    height: 22px;
+    margin: 6px 0;
+    padding: 0px 0px 5px 0;
+    font-size: 1.3em;
+    text-align: center;
+    font-weight: bold;
+    background-color: black;
+    border: 3px solid #FFAD00;
+    border-radius: 17px;
+    color: black;
+}
+#game-mission a:hover
+{
+    color: #F1F173;
+}
+#game-mission a
+{
+    color: #FFA747;
 }
 #game-mission-dialog
 {
