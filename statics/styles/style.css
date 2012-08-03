@@ -4131,6 +4131,41 @@ div.profile-message-reply
     margin: -10px 0 -5px;
 }
 
+#form-password-meter
+{
+    background: #FFFFFF;
+    border: 1px solid #B0B0B0;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    height: 7px;
+    margin-top: -8px;
+    padding: 0 8px;
+    position: relative;
+    width: 100%;
+}
+
+#form-password-meter table
+{
+    height: 8px;
+    margin-left: -8px;
+    width: 105%;
+}
+
+#form-password-meter td
+{
+    width: 20%;
+}
+
+#form-password-meter td:first-child
+{
+    border-radius: 0 0 0 5px;
+}
+
+#form-password-meter td:last-child
+{
+    border-radius: 0 0 5px 0;
+}
+
 div#success
 {
     background-image:url('../profile/finish.png');
