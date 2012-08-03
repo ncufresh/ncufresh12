@@ -126,8 +126,7 @@ jQuery(document).ready(function()
     </div>
     <div id="life-dialog">
             <div id="nculife-title">
-                <h4>
-                </h4>
+                <h4>jjjjjj</h4>
             </div>
             <div id="nculife-dialog-head">
             </div>
@@ -135,5 +134,5 @@ jQuery(document).ready(function()
                 <div id="nculife-content-view">
                 </div>
             </div>
-        </div>
+    </div>
 </div>

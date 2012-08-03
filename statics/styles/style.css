@@ -323,6 +323,7 @@ a:hover
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 1000;
 }
 
 .confirm,
@@ -1305,7 +1306,7 @@ table.gsc-completion-container
 
 #search
 {
-    margin: 8px 0 0 580px;
+    margin: 4px 0 0 560px;
     position: absolute;
     height: 90px;
     width: 220px;
@@ -1477,8 +1478,8 @@ ul#nculife-details
 
 #index-calendar > div
 {
-    background-position: -960px -160px;
-    height: 360px;
+    background-position: -1048px -880px;
+    height: 0;
     margin-top: -45px;
     padding: 50px 10px 20px 10px;
     position: relative;
@@ -2385,7 +2386,7 @@ button.news-button
 
 .nculife-style3
 {
-    background: url('../images/life_pink.png');
+    background: url('../images/life_blue.png');
 }
 
 .nculife-style4
@@ -2395,7 +2396,7 @@ button.news-button
 
 .nculife-style5
 {
-    background: url('../images/life_blue.png');
+    background: url('../images/life_pink.png');
 }
 
 .nculife-dialog .dialog-close-button
@@ -2435,7 +2436,7 @@ button.news-button
 #nculife-title
 {
     width: 605px;
-    height: 125px;
+    height: 122px;
     margin: -72px 0 0 10px;
     display: inline-block;
 }
@@ -3455,14 +3456,14 @@ ul.users-department li h4
 
 .all-groups
 {
-    width:660px;
+    width:560px;
     padding:5px;
-    margin:0px;
+    margin-left:75px;
 }
 
 .all-groups li
 {
-    width:220px; 
+    width:165px; 
     height:60px;
     padding:0px;
     margin:0px;
@@ -3618,8 +3619,8 @@ div.friends-part2 div.avatar
 
 div.my-all-messages
 {
-    width:620px;
-    height:290px;
+    width:666px;
+    height:268px;
     margin-top:55px;
     padding:5px;
 }
@@ -3637,6 +3638,7 @@ div.allmessages form
     width:430px;
     height:50px;
     padding:0px;
+    margin-left:25px;
 }
 
 div.friends-addfriend
@@ -3805,7 +3807,7 @@ div.profile-message-reply
     margin: 0px;
     float:right;
     position:relative;
-    right:-119px;
+    right:-85px;
     bottom:0px;
 }
 
@@ -3846,7 +3848,7 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:relative;
-    right:35px;
+    right:68px;
     bottom:0px;
 }
 
@@ -3949,8 +3951,8 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:21px;
-    bottom:68px;
+    right:142px;
+    bottom:23px;
 }
 
 .button-mygroup
@@ -4044,10 +4046,10 @@ div.profile-message-reply
 #register
 {
     background: url('../profile/register.png') no-repeat;
-    height: 515px;
+    height: 540px;
     margin: 0px;
     padding: 40px;
-    width: 660px;
+    width: 658px;
 }
 
 #register h4
@@ -4290,7 +4292,7 @@ label.group-friends-name
 a.mygroup-name
 {
     font-size: 2em;
-    text-align: center;
+    text-align: left;
     display: block;
     margin-right: 10px;
 }
