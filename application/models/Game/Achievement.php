@@ -34,20 +34,20 @@ class Achievement extends CActiveRecord
         $user_friend = Friend::model()->getAmount($id);
         $nickname = $profile_data->nickname;
         $user_login_times = $user_data->online_count; // $user_value['login_times'];
-        echo 'user_login_times => '.$user_login_times.',  ';
         $user_spend_money = $character_data->total_money - $character_data->money;
-        echo 'user_spend_money => '.$user_spend_money.',  ';
         $user_total_money = $character_data->total_money;
-        echo 'user_total_money => '.$user_total_money.',  ';
-        echo 'user_friend => '.$user_friend.',  ';
         $user_reply = Reply::model()->getRepliesNumOfUser($id);
-        echo 'user_reply => '.$user_reply.',  ';
         $user_post = Article::model()->getArticlesNumOfUser($id);
-        echo 'user_post => '.$user_post.',  ';
         $user_cloth = ItemBag::model()->getClothesNum($id);
-        echo 'user_cloth => '.$user_cloth.',  ';
         $user_body_price = $character_data->getBodyPrice($id);
         $achievements = Achievement::model()->findAll();
+        // echo 'user_login_times => '.$user_login_times.',  ';
+        // echo 'user_spend_money => '.$user_spend_money.',  ';
+        // echo 'user_total_money => '.$user_total_money.',  ';
+        // echo 'user_friend => '.$user_friend.',  ';
+        // echo 'user_reply => '.$user_reply.',  ';
+        // echo 'user_post => '.$user_post.',  ';
+        // echo 'user_cloth => '.$user_cloth.',  ';
         $return = array();
         foreach($achievements as $achievement)
         {
