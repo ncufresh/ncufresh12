@@ -32,12 +32,14 @@
         </ul>
     </div>
     <div class="club-display-head" id="club-head-<?php echo $data->category; ?>">
-        <a href="<?php echo Yii::app()->createUrl('calendar/subscript/' . $id); ?>" title="訂閱">訂閱</a>
+        <a href="<?php echo Yii::app()->createUrl('calendar/subscript/' . $id) ?>" title="訂閱">訂閱</a>
 <?php if ( Club::model()->getIsAdmin($id) ) : ?>     
         <a href="<?php echo Yii::app()->createUrl('club/modify/' . $id); ?>" title="修改">修改</a>
         <a href="<?php echo Yii::app()->createUrl('club/uploadpicture/' . $id); ?>" title="上傳圖片">上傳圖片</a>
-        <a href="<?php echo Yii::app()->createUrl('calendar/club/' . $id); ?>" title="修改行事曆">修改行事曆</a>
 <?php endif; ?>  
+<?php if ( Club::model()->getIsMaster($id) ) : ?>
+        <a href="<?php echo Yii::app()->createUrl('calendar/club/' . $id); ?>" title="修改行事曆">修改行事曆</a>
+<?php endif; ?>
     <h4><?php echo $data->name; ?></h4>    
     </div>    
     <div class="club-display" id="club-<?php echo $data->category; ?>">
