@@ -59,7 +59,7 @@
         <input id="forum-comment-text" type="text" maxlength="32" name="comment[content]" />
         <input type="hidden" name="comment[article_id]" value="<?php echo $article->id; ?>" />
         <button type="submit" id="button-push"></button>
-        <button type="button" id="button-back-reply" ></button>
+        <a href="<?php echo Yii::app()->createUrl('profile/message'); ?>" id="button-back-reply"></a>
         <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
     </form>
     </div>

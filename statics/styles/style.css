@@ -3791,6 +3791,7 @@ div.profile-message-reply
     padding: 0px;
     margin: 0px;
     float:right;
+    display:block;
     position:relative;
     right:60px;
     bottom:61px;
@@ -4290,7 +4291,6 @@ label.group-friends-name
 }
 a.mygroup-name
 {
-    font-size: 2em;
     text-align: left;
     display: block;
     margin-right: 10px;

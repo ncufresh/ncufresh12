@@ -56,5 +56,5 @@
         <button type="submit" id="button-editor-sure"></button>
         <a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>" id="button-editor-cancel"></a>
         </form>
-<button type="button" class="button-back" ></button>    
+<a href="<?php echo Yii::app()->createUrl('profile/profile'); ?>" class="button-back""></a>
 </div>
