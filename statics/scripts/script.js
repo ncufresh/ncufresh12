@@ -3355,7 +3355,10 @@
         $('a').click(function()
         {
             var url = $(this).attr('href');
-            if ( url.match(/^\/.+/) || url.search(location.hostname) >= 0 )
+            if (
+                url.match(/^\/.+/)
+             || url.match(/^#.*/)
+             || url.search(location.hostname) >= 0 )
             {
                 return true;
             }
