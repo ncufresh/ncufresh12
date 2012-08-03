@@ -3,7 +3,7 @@
       <div class = "club-modify-table">   
         <dl>
             <dt>
-                <label for="introduction" >簡介:</label>
+                <label for="introduction" >簡介(500字內):</label>
             </dt>
             <dd>
                 <textarea id="introduction" name="club[introduction]" type="text" cols="50" rows="15"><?php if ( empty($club['introduction']) ) echo $data->introduction; ?></textarea>

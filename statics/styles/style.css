@@ -4636,6 +4636,28 @@ div.item-description .exist
     font-weight: bold;
     color: #ff0000;
 }
+#game-mission li
+{
+    width: 80px;
+    height: 22px;
+    margin: 6px 0;
+    padding: 0px 0px 5px 0;
+    font-size: 1.3em;
+    text-align: center;
+    font-weight: bold;
+    background-color: black;
+    border: 3px solid #FFAD00;
+    border-radius: 17px;
+    color: black;
+}
+#game-mission a:hover
+{
+    color: #F1F173;
+}
+#game-mission a
+{
+    color: #FFA747;
+}
 #game-mission-dialog
 {
     width: 900px;
