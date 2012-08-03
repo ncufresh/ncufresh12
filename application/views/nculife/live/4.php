@@ -1,7 +1,4 @@
 <h4>
-    女四舍
-</h4>
-<h4>
     <img alt="女四舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/girl4-1.jpg" style="width:500px;height:417px;" />
 </h4>
 <p>
