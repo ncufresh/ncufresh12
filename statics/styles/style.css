@@ -1502,6 +1502,15 @@ ul#nculife-details
     cursor: pointer;
 }
 
+#index-calendar .calendar-table td.hover
+{
+    color: green;
+}
+#index-calendar .calendar-table td.selected
+{
+    outline: 1px solid #000;
+}
+
 #index-calendar .calendar-table thead
 {
     display: block;
