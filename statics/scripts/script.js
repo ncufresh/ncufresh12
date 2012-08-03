@@ -2449,22 +2449,25 @@
             var button = $(this);
             if ( button.hasClass('active') )
             {
-                $('#club-calendar').slideUp(300, function()
+                $('.club-underpicture div').slideUp(300, function()
                 {
                     button.removeClass('active');
                 });
             }
             else
             {
-                $('#club-calendar').slideDown(300, function()
+                $('.club-underpicture div').slideDown(300, function()
                 {
+                    $('#club-calendar').css({
+                        overflow: 'visible'
+                    });
                     button.addClass('active');
                 });
             }
             return false;
         });
 
-        $('#club-calendar').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
+        $('#club-calendar div').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
 
         $('.back').click(function()
         {
