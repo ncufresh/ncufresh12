@@ -1863,6 +1863,7 @@ a.calendar-hide-event:hover
     float: left;
     display: inline-block;
     width: 100%;
+    padding: 5px 0;
 }
 
 #calendar-subscript .calendar-subscript-container
