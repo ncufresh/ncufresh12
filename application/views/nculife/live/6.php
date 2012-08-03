@@ -1,6 +1,3 @@
-<h4>
-    男七舍
-</h4>
 <p>
     <img alt="男七舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/boy7-1.jpg" style="width:267px;height:200px;" />
 </p>

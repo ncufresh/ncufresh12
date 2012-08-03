@@ -1,6 +1,3 @@
-<h4>
-    校園劇場
-</h4>
 <h5>
     <a href="http://theatre.ncu.edu.tw/" title="黑盒子"><strong>黑盒子</strong></a>
 </h5>

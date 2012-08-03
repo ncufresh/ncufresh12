@@ -70,7 +70,7 @@
                     <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>#reschool" title="復學區">復學區</a>
                 </li>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('readme/notice'); ?>" title="相關須知">相關須知</a>
+                    <a href="<?php echo Yii::app()->createUrl('readme/notice', array('id' =>  1)); ?>" title="相關須知">相關須知</a>
                 </li>
                 <li>
                     <a href="<?php echo Yii::app()->createUrl('readme/download'); ?>" title="文件下載">文件下載</a>

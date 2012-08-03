@@ -1,6 +1,3 @@
-<h4>
-    MOVIE
-</h4>
 <h5>
     <a href="http://www.venice-cinemas.com.tw/" title="威尼斯影城">威尼斯影城</a>
 </h5>

@@ -31,10 +31,34 @@ class Friend extends CActiveRecord
                 self::BELONGS_TO,
                 'Profile',
                 'user_id'
-            ) 
+            ),
+            'user_group' => array(
+                self::HAS_MANY,
+                'UserGroup',
+                '',
+                'on' => 'friend_id = user_group.user_id'
+            )
         );
     }
 
+    public function getFriendsNotInGroup($id)
+    {
+        return $this->with(array(
+            'user_group' => array(
+                'condition' => '(user_group.invisible=1 OR user_group.invisible IS NULL)', //不存在該社團的條件
+                'on' => 'user_group.group_id = :gid', //現在是哪個社團
+                'params' => array(
+                    ':gid' => $id
+                )
+            )
+        ))->findAll(array(
+            'condition' => 't.user_id = :id AND t.invisible = 0', //是朋友的條件
+            'params' => array(
+                ':id' => Yii::app()->user->getId()
+            )
+        ));
+    }
+    
     public function isExist($friendid)
     {
         $data = $this->find(array(
@@ -116,6 +140,14 @@ class Friend extends CActiveRecord
                     )
                 ));
         return count($data);
+    }
+
+    public function getNewMember()
+    {
+        $group = new Group();
+        return $this->findAll(array(
+                    'condition' => 'id = :groupid AND invisible = 0'
+                ));
     }
 
 }
