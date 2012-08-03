@@ -308,7 +308,7 @@
             calendarHideEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/hideEvent'); ?>'),
             buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),
             forumSortUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('forum/forum', array('fid' => isset($_GET['fid'])?$_GET['fid']:0, 'sort' => ':sort', 'category' => isset($_GET['category'])?$_GET['category']:0));?>'),
-            forumCancelUrl:decodeURIComponent('<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $_GET['fid'], 'sort' => 'create'));?>'),
+            forumCancelUrl:decodeURIComponent('<?php echo Yii::app()->createUrl('forum/forum', array('fid' => isset($_GET['fid'])?$_GET['fid']:0, 'sort' => 'create'));?>'),
             gameMissionUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/problem', array('id' => ':id'));?>'),
             gameSolveUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/solve', array('id' => ':id'));?>'),
             facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
