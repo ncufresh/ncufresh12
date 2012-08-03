@@ -2371,7 +2371,6 @@ button.news-button
     display: none;
     width: 649px;
     height: 449px;
-    
 }
 
 .nculife-style1
@@ -2399,22 +2398,10 @@ button.news-button
     background: url('../images/life_blue.png');
 }
 
-#nculife-dialog p
-{
-    margin: 0;
-    padding: 20px;
-}
-
-#nculife-dh
-{
-    font-size: 1.4em;
-    width: 637px;
-    height: 25px;
-}
 .nculife-dialog .dialog-close-button
 {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     margin: -15px 0px 0px 620px;
     display: block;
     background: url('../images/life_exit.png');
@@ -2465,98 +2452,81 @@ button.news-button
     color: black;
 }
 
-#nculife-dh a
+#nculife-dialog p
 {
-    margin-left: 10px;
+    margin: 0;
+    padding: 20px;
 }
 
-#nculife-dh a:hover
+#nculife-dialog-head
+{
+    font-size: 1.4em;
+    width: 637px;
+    height: 25px;
+}
+
+#nculife-dialog-head a:hover
 {
     text-decoration: underline;
 }
 
-#nculife-db .scroll-container
-{
-    width: 610px;
-    height: 290px;
-}
-
-#nculife-cv
-{
-    margin-left: 10px;
-
-}
-
-#nculife-dh a
+#nculife-dialog-head a
 {
     width: 50px;
     height: 50px;
+    margin-left: 10px;
 }
 
-#nculife-dh li
+#nculife-dialog-head li
 {
     float: left;
     list-style: none;
 }
 
+#nculife-dialog-body .scroll-container
+{
+    width: 610px;
+    height: 290px;
+}
+
+#nculife-content-view
+{
+    margin-left: 10px;
+}
+
 #life-index1
 {
-    background: url('../images/life_rope.png') repeat-y;
     width: 100px;
-    height: 0px;
     left: 13px;
     top: 129px;
-    padding: 0 0 0 20px;
-    position: absolute;
-    list-style: none;
 }
 
 #life-index2
 {
-    background: url('../images/life_rope.png') repeat-y;
     width: 130px;
-    height: 0px;
     left: -3px;
     top: 133px;
-    padding: 0 0 0 16px;
-    position: absolute;
-    list-style: none;
 }
 
 #life-index3
 {
-    background: url('../images/life_rope.png') repeat-y;
     width: 150px;
-    height: 0px;
     left: 32px;
     top: 165px;
-    padding: 0 0 0 16px;
-    position: absolute;
-    list-style: none;
 }
 
 #life-index4
 {
-    background: url('../images/life_rope.png') repeat-y;
     width: 150px;
-    height: 0px;
     left: -16px;
     top: 98px;
-    padding: 0 0 0 16px;
-    position: absolute;
-    list-style: none;
 }
 
 #life-index5
 {
-    background: url('../images/life_rope.png') repeat-y;
     width: 150px;
-    height: 0px;
     left: 35px;
     top: 180px;
-    padding: 0 0 0 16px;
-    position: absolute;
-    list-style: none;
 }
 
 .life-inner
@@ -2568,6 +2538,10 @@ button.news-button
 {
     height: 0;
     overflow: hidden;
+    position: absolute;
+    list-style: none;
+    background: url('../images/life_rope.png') repeat-y;
+    padding: 0 0 0 16px;
 }
 
 .life-items li
@@ -2593,7 +2567,7 @@ button.news-button
 {
     height: 600px;
     width: 740px;
-    background: url('../images/life_background.png') repeat-y;
+    background: url('../images/life_background.png');
 }
 
 #life-play
@@ -2650,22 +2624,6 @@ button.news-button
     left: 660px;
 }
 
-#readme .scroll-container
-{
-    height: 420px;
-    width: 630px;
-}
-
-#readme-fresh
-{
-    background-position: -5px -450px;
-    padding: 15px 25px;
-    height: 420px;
-    position: relative;
-    width: 700px;
-    overflow: hidden;
-}
-
 #fresh-back
 {
     background-position: -1272px -656px;
@@ -2674,16 +2632,6 @@ button.news-button
 #fresh-back:hover
 {
     background-position: -1400px -656px;
-}
-
-#readme-notice
-{
-    height: 420px;
-    width: 700px;
-    padding: 15px 25px;
-    background-position: -5px -1350px;
-    position: relative;
-    overflow: hidden;
 }
 
 #notice-back
@@ -2696,16 +2644,6 @@ button.news-button
     background-position: -1400px -944px;
 }
 
-#readme-reschool
-{
-    background-position: -5px -900px;
-    height: 420px;
-    padding: 15px 25px;
-    position: relative;
-    width: 700px;
-    overflow: hidden;
-}
-
 #reschool-back
 {
     background-position: -1272px -800px;
@@ -2716,14 +2654,6 @@ button.news-button
     background-position: -1400px -800px;
 }
 
-#readme-download
-{
-    background-position: -765px 0;
-    height: 450px;
-    position: relative;
-    width: 750px;
-}
-
 #download-back
 {
     background-position: -1272px -1088px;
@@ -2732,6 +2662,41 @@ button.news-button
 #download-back:hover
 {
     background-position: -1400px -1088px;
+}
+
+#readme .scroll-container
+{
+    height: 420px;
+    width: 630px;
+}
+
+#readme-fresh
+{
+    background-position: -5px -450px;
+}
+
+#readme-notice
+{
+    background-position: -5px -1350px;
+}
+
+#readme-reschool
+{
+    background-position: -5px -900px;
+}
+
+#readme-download
+{
+    background-position: -765px 0;
+}
+
+.readme-background
+{
+    height: 420px;
+    padding: 15px 25px;
+    position: relative;
+    width: 700px;
+    overflow: hidden;
 }
 
 #readme-body
@@ -2784,6 +2749,12 @@ button.news-button
     position: absolute;
 }
 
+.reschool-inner
+{
+    display: none;
+    position: absolute;
+}
+
 #reschool-1
 {
     background-position: -760px -800px;
@@ -2820,58 +2791,6 @@ button.news-button
     width: 63px;
 }
 
-.reschool-inner
-{
-    display: none;
-    position: absolute;
-}
-
-#notice-1
-{
-    background-position: -760px -944px;
-    height: 152px;
-    left: 529px;
-    top: 239px;
-    position: absolute;
-    width: 96px;
-}
-
-#notice-2
-{
-    background-position: -888px -944px;
-    height: 167px;
-    left: 469px;
-    top: 257px;
-    position: absolute;
-    width: 73px;
-}
-
-#notice-3
-{
-    background-position: -1016px -944px;
-    height: 160px;
-    left: 399px;
-    top: 266px;
-    position: absolute;
-    width: 72px;
-}
-
-#notice-4
-{
-    background-position: -1144px -944px;
-    height: 145px;
-    left: 263px;
-    top: 280px;
-    position: absolute;
-    width: 133px;
-}
-
-.notice-inner
-{
-    display: none;
-    position: absolute;
-}
-
 #readme .readme-view
 {
     padding-right: 10px;
@@ -2895,7 +2814,7 @@ button.news-button
 
 #readme-logo1:active
 {
-    background-position: -760px -450px;
+    background-position: -759px -452px;
     display: block;
 }
 
@@ -2911,7 +2830,7 @@ button.news-button
 
 #readme-logo2:active
 {
-    background-position: -888px -450px;
+    background-position: -888px -452px;
     display: block;
 }
 
@@ -2927,9 +2846,8 @@ button.news-button
 
 #readme-logo3:active
 {
-    background-position: -1144px -450px;
+    background-position: -1142px -452px;
     display: block;
-    
 }
 
 #readme-logo4
@@ -2944,7 +2862,7 @@ button.news-button
 
 #readme-logo4:active
 {
-    background-position: -1272px -450px;
+    background-position: -1272px -452px;
     display: block;
 }
 
@@ -2989,50 +2907,17 @@ button.news-button
     font-weight: bold;
 }
 
-.readme-menu span
-{
-    text-align: center;
-}
-
 .readme-menu-index
 {
     display: none;
 }
 
-.fresh-menu li
-{
-    padding: 5px;
-    margin-top: 15px;
-}
-
-.fresh-menu li:hover
-{
-    text-decoration: underline;
-}
-
-.fresh-menu
-{
-    cursor: pointer;
-    text-align: center;
-}
-
-#reame-download
-{
-    width: 700px;
-    height: 400px;
-    float: left;
-    word-break: break-all;
-    word-wrap: break-word;
-    position: absolute;
-    top: 20px;
-    left: 40px;
-}
-
 .download-index
 {
     float: left;
-    list-style: none;
-    font-size: 1.3em;
+    list-style-type: lower-greek;
+    font-size: 1.8em;
+    margin-top: 35px;
 }
 
 .download-index li
