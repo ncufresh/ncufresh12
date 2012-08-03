@@ -192,6 +192,30 @@ form dl.select dd label
     padding: 4px 8px;
 }
 
+form span.radio
+{
+    background: #FFFFFF;
+    border: 1px solid #B0B0B0;
+    border-radius: 15px;
+    cursor: pointer;
+    display: inline;
+    float: left;
+    height: 8px;
+    margin: 15px 0 0 5px;
+    min-height: 0;
+    padding: 0;
+    position: static;
+    width: 8px;
+}
+
+form span.radio:hover {
+    border: 1px solid #909090;
+}
+
+form span.radio.checked {
+    background: #4B4B4B;
+}
+
 form dd > span
 {
     background: #646464;

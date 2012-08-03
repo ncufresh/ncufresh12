@@ -1872,8 +1872,7 @@
                 marginLeft: -1 * target.options.width / 2,
                 marginTop: -1 * target.options.height / 2,
                 padding: 0,
-                display: 'none',
-                zIndex: 1000
+                display: 'none'
             })
             .addClass(target.options.dialogClass)
             .detach()
@@ -3019,6 +3018,41 @@
                 {
                     $(tooltip).stop(true, true).fadeOut();
                 });
+            }
+        });
+        $('form input[type="radio"]').each(function(element)
+        {
+            var span = $('<span></span>')
+                .addClass('radio')
+                .mousedown(function()
+                {
+                    $('input[type="radio"][name="' + $(this).prev().prop('checked', true).attr('name') + '"]').each(function()
+                    {
+                        $(this).next().removeClass('checked');
+                    });
+                    $(this).addClass('checked');
+                })
+                .insertAfter($(this));
+
+            $(this).css({
+                    display: 'none',
+                    height: 'auto',
+                    width: 'auto'
+                })
+                .change(function()
+                {
+                    $('input[type="radio"][name="' + $(this).attr('name') + '"]').each(function()
+                    {
+                        if ( $(this).prop('checked') ) {
+                            $(this).next().addClass('checked');
+                        } else {
+                            $(this).next().removeClass('checked');
+                        }
+                    });
+                });
+
+            if ( $(this).prop('checked') ) {
+                $(this).prev().addClass('checked');
             }
         });
 
