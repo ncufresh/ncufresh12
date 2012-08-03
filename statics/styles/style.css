@@ -5092,6 +5092,7 @@ li.enabled a
     padding-right: 35px;
 }
 
+/*yellow*/
 .forum-view-profile
 {
     background: #f8c77c;
@@ -5219,6 +5220,262 @@ li.enabled a
     padding: 9px 11px 9px 11px;
     word-break: break-all;
 }
+/*end of yellow*/
+
+/*pink*/
+#forum-view-body.pink .forum-view-profile,
+#forum-view-replies.pink .forum-view-profile
+{
+    background: #fbbdc7;
+    border: 2px solid #f38294;
+}
+
+#forum-view-body.pink .forum-view-profile .profile-name,
+#forum-view-replies.pink .forum-view-profile .profile-name
+{
+    background: #fce5ed;
+    color: #cb5165;
+}
+
+#forum-view-body.pink .forum-view-profile .profile-department,
+#forum-view-replies.pink .forum-view-profile .profile-department
+{
+    background: #fce5ed;
+    color: #cb5165;
+}
+
+#forum-view-body.pink .forum-view-title
+{
+    background: #fce5ed;
+    border: 2px solid #f38294;
+}
+
+#forum-view-body.pink #forum-view-content
+{
+    border: 2px solid #f38294;
+}
+
+#forum-view-body.pink .hululu,
+#forum-view-replies.pink .hululu
+{
+    background: url('../forum/view/pink/hululu.png');
+}
+
+#forum-view-body.pink .forum-view-comments
+{
+    background: #f4efe0;
+    border: 2px solid #f38294;
+}
+
+#forum-view-replies.pink .reply-content
+{
+    border: 2px solid #f38294;
+}
+/*end of pink*/
+
+/*blue*/
+#forum-view-body.blue .forum-view-profile,
+#forum-view-replies.blue .forum-view-profile
+{
+    background: #97d2f3;
+    border: 2px solid #4fa4d3;
+}
+
+#forum-view-body.blue .forum-view-profile .profile-name,
+#forum-view-replies.blue .forum-view-profile .profile-name
+{
+    background: #cce6f5;
+    color: #135980;
+}
+
+#forum-view-body.blue .forum-view-profile .profile-department,
+#forum-view-replies.blue .forum-view-profile .profile-department
+{
+    background: #cce6f5;
+    color: #135980;
+}
+
+#forum-view-body.blue .forum-view-title
+{
+    background: #cce6f5;
+    border: 2px solid #4fa4d3;
+}
+
+#forum-view-body.blue #forum-view-content
+{
+    border: 2px solid #4fa4d3;
+}
+
+#forum-view-body.blue .hululu,
+#forum-view-replies.blue .hululu
+{
+    background: url('../forum/view/blue/hululu.png');
+}
+
+#forum-view-body.blue .forum-view-comments
+{
+    background: #f4efe0;
+    border: 2px solid #4fa4d3;
+}
+
+#forum-view-replies.blue .reply-content
+{
+    border: 2px solid #4fa4d3;
+}
+/*end of blue*/
+
+/*green*/
+#forum-view-body.green .forum-view-profile,
+#forum-view-replies.green .forum-view-profile
+{
+    background: #92e782;
+    border: 2px solid #0ca645;
+}
+
+#forum-view-body.green .forum-view-profile .profile-name,
+#forum-view-replies.green .forum-view-profile .profile-name
+{
+    background: #c2f7b8;
+    color: #009437;
+}
+
+#forum-view-body.green .forum-view-profile .profile-department,
+#forum-view-replies.green .forum-view-profile .profile-department
+{
+    background: #c2f7b8;
+    color: #009437;
+}
+
+#forum-view-body.green .forum-view-title
+{
+    background: #c2f7b8;
+    border: 2px solid #0ca645;
+}
+
+#forum-view-body.green #forum-view-content
+{
+    border: 2px solid #0ca645;
+}
+
+#forum-view-body.green .hululu,
+#forum-view-replies.green .hululu
+{
+    background: url('../forum/view/green/hululu.png');
+}
+
+#forum-view-body.green .forum-view-comments
+{
+    background: #f4efe0;
+    border: 2px solid #0ca645;
+}
+
+#forum-view-replies.green .reply-content
+{
+    border: 2px solid #0ca645;
+}
+/*end of green*/
+
+/*purple*/
+#forum-view-body.purple .forum-view-profile,
+#forum-view-replies.purple .forum-view-profile
+{
+    background: #dd94c0;
+    border: 2px solid #c42aa2;
+}
+
+#forum-view-body.purple .forum-view-profile .profile-name,
+#forum-view-replies.purple .forum-view-profile .profile-name
+{
+    background: #f1c6e0;
+    color: #80004d;
+}
+
+#forum-view-body.purple .forum-view-profile .profile-department,
+#forum-view-replies.purple .forum-view-profile .profile-department
+{
+    background: #f1c6e0;
+    color: #80004d;
+}
+
+#forum-view-body.purple .forum-view-title
+{
+    background: #f1c6e0;
+    border: 2px solid #c42aa2;
+}
+
+#forum-view-body.purple #forum-view-content
+{
+    border: 2px solid #c42aa2;
+}
+
+#forum-view-body.purple .hululu,
+#forum-view-replies.purple .hululu
+{
+    background: url('../forum/view/purple/hululu.png');
+}
+
+#forum-view-body.purple .forum-view-comments
+{
+    background: #f4efe0;
+    border: 2px solid #c42aa2;
+}
+
+#forum-view-replies.purple .reply-content
+{
+    border: 2px solid #c42aa2;
+}
+/*end of purple*/
+
+/*orange*/
+#forum-view-body.orange .forum-view-profile,
+#forum-view-replies.orange .forum-view-profile
+{
+    background: #f7987a;
+    border: 2px solid #e76f48;
+}
+
+#forum-view-body.orange .forum-view-profile .profile-name,
+#forum-view-replies.orange .forum-view-profile .profile-name
+{
+    background: #faddc1;
+    color: #b92d00;
+}
+
+#forum-view-body.orange .forum-view-profile .profile-department,
+#forum-view-replies.orange .forum-view-profile .profile-department
+{
+    background: #faddc1;
+    color: #b92d00;
+}
+
+#forum-view-body.orange .forum-view-title
+{
+    background: #faddc1;
+    border: 2px solid #e76f48;
+}
+
+#forum-view-body.orange #forum-view-content
+{
+    border: 2px solid #e76f48;
+}
+
+#forum-view-body.orange .hululu,
+#forum-view-replies.orange .hululu
+{
+    background: url('../forum/view/orange/hululu.png');
+}
+
+#forum-view-body.orange .forum-view-comments
+{
+    background: #f4efe0;
+    border: 2px solid #e76f48;
+}
+
+#forum-view-replies.orange .reply-content
+{
+    border: 2px solid #e76f48;
+}
+/*end of orange*/
 
 #forum-forum-top2
 {
