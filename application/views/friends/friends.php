@@ -1,6 +1,6 @@
 <h5>好友專區</h5>
 <div class="friends">
-<div class="friends-part1">
+<div class="all-sorts-of-friends">
 <h6>新增好友</h6>
 <ul class="friends-title">
     <li>

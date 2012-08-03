@@ -78,13 +78,15 @@
 }
 #boy-dormitory-11
 {
-    left: 35px;
-    top: 354px;
+    left: 56px;
+    top: 372px;
+    height: 85px;
+    width: 117px;
 }
 #boy-dormitory-12
 {
     left: 489px;
-    top: 127px;
+    top: 98px;
 }
 #boy-dormitory-13
 {
@@ -104,11 +106,6 @@
     width: 250px;
     background-color: gray;
 }
-#boyDormitory11
-{
-    left: 130px;
-    top: 420px;
-}
 #curtainDiv
 {
     background: url('../statics/building/curtain2.png') no-repeat;
@@ -119,12 +116,9 @@
     height: 551px;
     width: 380px;
 }
-#curtainDiv div
 #curtain
 {
     position:absolute;
-    left: 601px;
-    z-index: 6;
 }
 #curtain-up
 {
@@ -445,9 +439,9 @@
 }
 #text-container
 {
-    z-index: 2;
+    position: fixed;
+    z-index: 1500;
     display: none;
-    overflow: scroll;
     background: url('../statics/building/introduction.png') no-repeat;
 }
 #turtle-pond
@@ -472,30 +466,34 @@
     position: absolute;
     z-index: 4;
     display: none;
+    cursor: pointer;
 }
 .arrow.up
 {
-    left: 260px;
-    top: 200px;
+    left: 350px;
+    top: 0px;
 }
 .arrow.left
 {
-     left: 160px;
-     top: 260px;
+     left: 0px;
+     top: 249px;
 }
 .arrow.right
 {
-     left: 360px;
-     top: 260px;
+     left: 700px;
+     top: 249px;
 }
 .arrow.back
 {
-     left: 670px;
-     top: 0px;
+    height: 51px;
+    width: 100px;
+    left: 650px;
+    top: 3px;
+    cursor: pointer;
 }
 .button-text
 {
-    padding: 4px;
+    padding: 3px;
 }
 .exercise
 {
@@ -537,12 +535,12 @@
 }
 .one-image.exercise
 {
-    top: 10px;
-    left: 680px;
+    top: 31px;
+    left: 687px;
 }
 .one-image.curtainOpen
 {
-    top: 230px;
+    top: 320px;
     left: 680px;
     z-index: 1;
 }
@@ -561,6 +559,12 @@
     height 70px;
     width: 70px;
     z-index: 1;
+    font-size: 2em;
+}
+.scroll-class
+{
+    margin-left: 30px;
+    margin-right: 100px;
 }
 .two-image.department-building
 {
@@ -599,6 +603,20 @@
     float: left;
     margin-left: 10px;
 }
+.dialog-close-button
+{
+    display: block;
+    width: 48px;
+    height: 48px;
+    text-indent: -100000%;
+    margin-left: 620px;
+    margin-top: 5px;
+}
+.scroll-container
+{
+    width: 630px;
+    height:  330px;
+}
 </style>
 <?php
     $file_path = array();
@@ -636,13 +654,13 @@
         <img id="engineering-5" class="department-building picture" streetPoints="0" faceto="E" show="department-building" href="#1" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-5.png">
         <img id="engineering-3" class="department-building picture" streetPoints="2" faceto="W" show="department-building" href="#2" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-3.png">
         <img id="engineering-2" class="department-building picture" streetPoints="51" faceto="W" show="department-building" href="#3" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-2.png">
-        <img id="engineering-1" class="department-building picture" streetPoints="10" faceto="" show="department-building" href="#4" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-1.png">
+        <img id="engineering-1" class="department-building picture" streetPoints="10" faceto="W" show="department-building" href="#4" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-1.png">
         <img id="photonics" class="department-building picture" streetPoints="-1" faceto="W" show="department-building" href="#5" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/photonics.png">
         <img id="science-5" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#6" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-5.png">
         <img id="science-4" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#7" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-4.png">
         <img id="science-3" class="department-building picture" streetPoints="45" faceto="S" show="department-building" href="#8" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-3.png">
         <img id="science-2" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#9" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-2.png">
-        <img id="science-1" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#10" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-1.png">       
+        <img id="science-1" class="department-building picture" streetPoints="19" faceto="W" show="department-building" href="#10" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-1.png">       
         <img id="science-teach" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#11" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-teach.png">
         <img id="mathematics" class="department-building picture" streetPoints="45" faceto="W" show="department-building" href="#12" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/mathematics.png">
         <img id="liberal-arts" class="department-building picture" streetPoints="24" faceto="W" show="department-building" href="#13" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/liberal-arts.png">
@@ -663,11 +681,11 @@
         <img id="calligraphy" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#26" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/calligraphy.png">
         <img id="kon-fu" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#61" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/kon-fu.png">
         <img id="green-plain" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#62" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/green-plain.png">
-        <img id="girl-14-front" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#63" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/girl-14-front.png">
+        <img id="girl-14-front" class="landscape picture" streetPoints="14" faceto="E" show="landscape" href="#63" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/girl-14-front.png">
         
         <!--飲食-->
         <img id="restaurant-7" class="diet picture" streetPoints="16" faceto="E" show="diet" href="#28" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/restaurant-7.png" >
-        <img id="restaurant-9" class="diet picture" streetPoints="-1" faceto="-1" show="diet" href="#29" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/restaurant-9.png" >
+        <img id="restaurant-9" class="diet picture" streetPoints="29" faceto="N" show="diet" href="#29" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/restaurant-9.png" >
         <img id="midnight-food" class="diet picture" streetPoints="13" faceto="E" show="diet" href="#30" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/midnight-food.png">
         <img id="backdoor" class="diet picture" streetPoints="8" faceto="E" show="diet" href="#31" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/backdoor.png">
         <img id="school-coffee" class="diet picture" streetPoints="-1" faceto="-1" show="diet" href="#32" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/school-coffee.png">
@@ -690,17 +708,17 @@
         <img id="boy-dormitory-3" class="dormitory picture" streetPoints="55" faceto="E" show="dormitory" href="#41" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-3.png">
         <img id="boy-dormitory-5" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#42" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-5.png">
         <img id="boy-dormitory-6" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#43" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-6.png">
-        <img id="boy-dormitory-7" class="dormitory picture" streetPoints="85" faceto="E" show="dormitory" href="#44" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-7.png">
+        <img id="boy-dormitory-7" class="dormitory picture" streetPoints="16" faceto="E" show="dormitory" href="#44" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-7.png">
         <img id="boy-dormitory-9" class="dormitory picture" streetPoints="29" faceto="N" show="dormitory" href="#45" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-9.png">
         <img id="boy-dormitory-11" class="dormitory picture" streetPoints="15" faceto="E" show="dormitory" href="#46" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-11.png">
-        <img id="boy-dormitory-12" class="dormitory picture" streetPoints="50" faceto="" show="dormitory" href="#47" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-12.png">
+        <!--街景缺漏--><img id="boy-dormitory-12" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#47" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-12.png">
         <img id="boy-dormitory-13" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#48" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-13.png">
         <img id="girl-dormitory-14" class="dormitory picture" streetPoints="14" faceto="E" show="dormitory" href="#49" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/girl-dormitory-14.png">
         <img id="new-postgraduate" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#50" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/new-postgraduate.png">
         <img id="international-dormitory" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#51" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/international-dormitory.png">        
         <!--運動-->
         <img id="swimming-pool" class="exercise picture" streetPoints="48" faceto="W" show="exercise" href="#52" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/swimming-pool.png">
-        <img id="playground" class="exercise picture" rockClimbing="57" streetPoints="5" faceto="W" show="exercise" href="#53" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/playground.png">
+        <img id="playground" class="exercise picture" streetPoints="4" faceto="W" show="exercise" href="#53" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/playground.png">
         <img id="stadium" class="exercise picture" streetPoints="52" faceto="S" show="exercise" href="#54" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/stadium.png">
 
         <!--選擇鈕-->
@@ -806,13 +824,14 @@
             </div>
         </div>
         <div id="text-container"><!--第一層-->
-                <div id="building-text">
+                <div id="building-text" class="scroll-class">
+                454555
                 </div>
         </div>
 
         <div id="all-picture-container"><!--第二層-->
             <div id="view-picture-container"><!--2-1-->
-                <img src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg">
+                <img>
             </div>
 
             <div id="select-picture-container"><!--2-2-->
@@ -830,8 +849,8 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-    $('#back-div .picture').hide();
-    $('#street-div #experience-personally').mousedown(function()
+    $('.picture').hide();
+    $('#experience-personally').mousedown(function()
     {
         $(document).mousemove(mousemove);
         return false;
@@ -840,21 +859,21 @@ $(document).ready(function()
     var isInPicture = false;
     var mousemove = function(event)
     {
-        x = event.pageX - $('#street-div #back-div').offset().left;
-        y = event.pageY - $('#street-div #back-div').offset().top;
-        $('#street-div #experience-personally').css(
+        x = event.pageX - $('#back-div').offset().left;
+        y = event.pageY - $('#back-div').offset().top;
+        $('#experience-personally').css(
         {
         top: y +  2 + 'px',
         left: x + 2 + 'px',
         });
     };
-    $('#back-div .picture').mouseenter(function()
+    $('.picture').mouseenter(function()
     {
         isInPicture = true;
         mouseInId = $(this).attr('id');
         $(this).attr('src', $(this).attr('src').replace('mouseleave', 'mouseenter'));
     });
-    $('#back-div .picture').mouseleave(function()
+    $('.picture').mouseleave(function()
     {
         isInPicture = false;
         $(this).attr('src', $(this).attr('src').replace('mouseenter', 'mouseleave'));
@@ -863,21 +882,25 @@ $(document).ready(function()
     {
         if( isInPicture == true )
         {
-            if( $('#back-div  #' + mouseInId).attr('streetPoints') == (-1) )
+            if( $('#' + mouseInId).attr('streetPoints') == (-1) )
             {
-                alert('這裡沒有街景服務喔');
+                $('#experience-personally').css(
+                {
+                    top: 410,
+                    left: 530,
+                });
             }
             else
             {
-                $('#street-div #experience-personally').css(
+                $('#experience-personally').css(
                 {
                     zIndex: 3,
                 });
                 var id = $('#' + mouseInId).attr('href').replace( '#', '' );
-                $('#street-div #mapPicture').attr('src', url + streetPoints[$('#back-div #' + mouseInId).attr('streetPoints')][$('#' + mouseInId).attr('faceto')].photo);
+                $('#mapPicture').attr('src', url + streetPoints[$('#' + mouseInId).attr('streetPoints')][$('#' + mouseInId).attr('faceto')].photo);
                 
-                nowfaceto = $('#back-div #' + mouseInId).attr('faceto');
-                nowpointat = [$('#back-div #' + mouseInId).attr('streetPoints')];
+                nowfaceto = $('#' + mouseInId).attr('faceto');
+                nowpointat = [$('#' + mouseInId).attr('streetPoints')];
                 nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
 
                 console.log('一開始');
@@ -885,17 +908,19 @@ $(document).ready(function()
                 console.log('nowfaceto: ' + nowfaceto);
                 console.log('nextpointat: ' + nextpointat); 
                 console.log('--------------------------');
-                $('#street-div .arrow').eq( 0 ).click(function() //前進nextDirection
+                $('.arrow').eq( 0 ).click(function() //前進nextDirection
                 {
                     if( nextpointat == (-1) )
                     {
-                        alert('這裡不能走!!!');
+                        $.alert({
+                            message: '這裡不能走！'
+                        });
                     }
                     else if( nextpointat != (-1))
                     {
                         nowpointat = nextpointat;
                         nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
-                        $('#street-div #mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
+                        $('#mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
                     }
                     console.log('按前進');
                     console.log('nowpointat: ' + nowpointat);
@@ -903,10 +928,10 @@ $(document).ready(function()
                     console.log('nextpointat: ' + nextpointat);            
                     console.log('--------------------------');
                 });
-                $('#street-div .arrow').eq( 1 ).click(function() // 左旋
+                $('.arrow').eq( 1 ).click(function() // 左旋
                 {                        
                     turnLeft();
-                    $('#street-div #mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
+                    $('#mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
                     nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
                     console.log('按左旋');
                     console.log('nowpointat: ' + nowpointat);
@@ -914,10 +939,10 @@ $(document).ready(function()
                     console.log('nextpointat: ' + nextpointat);
                     console.log('--------------------------');
                 });
-                $('#street-div .arrow').eq( 2 ).click(function() // 右旋
+                $('.arrow').eq( 2 ).click(function() // 右旋
                 {
                     turnRight();
-                    $('#street-div #mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
+                    $('#mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
                     nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
                     console.log('按右旋');
                     console.log('nowpointat: ' + nowpointat);
@@ -974,23 +999,23 @@ $(document).ready(function()
                     }
                 };
                     
-                $('#street-div #back-div').css(
+                $('#back-div').css(
                 {
                     height: 498,
                 });
 
-                $('#street-div #mapPicture').css(
+                $('#mapPicture').css(
                 {
                     zIndex: '3',
                     width: 750,
                     height: 498,
                 });
-                $('#street-div .arrow').show();
+                $('.arrow').show();
                 isInPicture = false;
             }
         }
             $(document).unbind('mousemove', mousemove);
-            $('#street-div #experience-personally').css(
+            $('#experience-personally').css(
             {
                 top: 410,
                 left: 530,
@@ -999,73 +1024,73 @@ $(document).ready(function()
     };
     $(document).mouseup(mouseup);
 
-    $('#back-div .picture').hide();
-    $('#back-div .landscape').show();
+    $('.picture').hide();
+    $('.landscape').show();
 
     var littleBuilding = function() // building icon show
     {
-        $('#back-div .picture').hide();
+        $('.picture').hide();
         $( '.' + $( this ).attr( 'show' )).show();
     };
-    $('#street-div .one-image').bind('click', littleBuilding);
+    $('.one-image').bind('click', littleBuilding);
 
-    $('#street-div .two-image').click(function(){
-        $('#street-div .button-text').hide();
-        $('#street-div .button-text[ detailItem = ' + $(this).attr('detailItem') + ']' ).show();
+    $('.two-image').click(function(){
+        $('.button-text').hide();
+        $('.button-text[ detailItem = ' + $(this).attr('detailItem') + ']' ).show();
     });
 
-    $('#street-div .curtainOpen').click(function()
+    $('.curtainOpen').click(function()
     { // 窗簾
-        $('#street-div #experience-personally').css(
+        $('#experience-personally').css(
         {
             zIndex: 1,
         });
-        $('#street-div #curtainDiv').animate(
+        $('#curtainDiv').animate(
         {
             left: '370px'
         });
-        $('#street-div .button-text').hide();
-        $('#street-div .button-text[ detailItem = "department" ]').show();        
-        $('#street-div .one-image').unbind('click', littleBuilding);
+        $('.button-text').hide();
+        $('.button-text[ detailItem = "department" ]').show();        
+        $('.one-image').unbind('click', littleBuilding);
     });
-    $('#street-div #curtainclose').click(function()
+    $('#curtainclose').click(function()
     {// 窗簾
-        $('#street-div #curtainDiv').animate(
+        $('#curtainDiv').animate(
         {
             left: '750px'
         });
-        $('#street-div #experience-personally').css(
+        $('#experience-personally').css(
         {
             zIndex: 4,
         });
-        $('#street-div .one-image').bind('click', littleBuilding);
-        $('#back-div .landscape').show();
+        $('.one-image').bind('click', littleBuilding);
+        $('.landscape').show();
     });
 
-    $('#street-div .arrow').eq( 3 ).click(function() // 親身體驗 back
+    $('.arrow').eq( 3 ).click(function() // 親身體驗 back
     {    
-        $('#street-div #mapPicture').attr('src', $('#mapPicture').attr('path'));
-        $('#street-div .arrow').hide();
+        $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
+        $('.arrow').hide();
         
-        $('#street-div #back-div').css(
+        $('#back-div').css(
         {
             height: 552,
         });
-        $('#street-div #mapPicture').css(
+        $('#mapPicture').css(
         {
             width: 601,
             height: 552,  
             zIndex: 0,
         });
     });
-    $('#back-div .picture, #back-div .button-text').click(function()
+    $('.picture, .button-text').click(function()
     {
-         isInPicture = false;
-         $('#street-div #back-div').css(
-         {
-            height: 552,
-         });
-        $('#back-div #text-container').dialog(
+        isInPicture = false;
+        $('#back-div').css(
+        {
+           height: 552,
+        });
+        $('#text-container').dialog(
         {
             width: 680,
             height: 400,
@@ -1077,8 +1102,8 @@ $(document).ready(function()
             }
         });
 
-        $('#street-div .arrow').hide();
-        $('#street-div #mapPicture').css(
+        $('.arrow').hide();
+        $('#mapPicture').css(
         {
             width: 601,
             height: 552,
@@ -1109,57 +1134,30 @@ $(document).ready(function()
                 });
                 $('#building-text a.lightbox').lightbox({
                     hideOverlayBackground: true
-                });
-                // lightbox();
-                // $('#building-text img').click(function()
-                // {
-                    // $('div#all-picture-container').dialog(
-                        // {
-                            // width: '700px',
-                            // height: '500px',
-                            // modal: true,
-                            // draggable: false,
-                            // onOpen: function()
-                            // {
-                                // howmanyphoto = $('#building-text img').length;
-                                // $('#all-selected-pic-ul').empty();
-                                // $('#view-picture-container img').css(
-                                // {
-                                    // width: 700,
-                                // });
-                                // $('#building-text img').each(function()
-                                // {
-                                    // var manyimgs = $('<img>')
-                                                    // .attr('class', 'lili')
-                                                    // .attr('src', $(this).attr('src'))
-                                                    // .css(
-                                                    // {
-                                                        // marginLeft: 10,
-                                                        // width: 100
-                                                    // })
-                                                    // .click(function()
-                                                    // {
-                                                        // $('#view-picture-container img').attr('src', $(this).attr('src'));                                                        
-                                                    // });
-                                    // $('#all-selected-pic-ul').append(manyimgs);
-                                // });
-                                // $('#view-picture-container img').attr('src', $('#building-text img').eq(0).attr('src'));
-                            // }
-                        // });
-                        // $('#all-selected-pic-ul').css(
-                        // {
-                            // left: 0,
-                        // });
-                        // position = 0;
-                // });
-                
+                });             
             },
         });
+        
     });
-
+    $('#building-text').scrollable({
+        scrollableClass: false
+    });
+     // $(this).attr('src', $(this).attr('src').replace('mouseleave', 'mouseenter'));
+    
+    $('.arrow.up, .arrow.right, .arrow.left').hover(function()
+    {
+        var arrowStrong = $(this).attr('src').replace('arrow', 'showPoint');
+        $(this).attr('src', arrowStrong);
+    }, function()
+    {
+        var arrowStrong = $(this).attr('src').replace('showPoint', 'arrow');
+        $(this).attr('src', arrowStrong);
+    });
+    // $('.arrow .up, .arrow .right, .arrow .left').attr('src', arrowStrong);
+    
     var howmanyphoto;
     var position = 0;
-    $('#street-div #select-right-button').click(function()
+    $('#select-right-button').click(function()
     {
         if( position > 100 )
         {
@@ -1168,11 +1166,11 @@ $(document).ready(function()
         else
         {
             position = position + 60;
-            $('#street-div #all-selected-pic-ul').animate({left: position + 'px'});
+            $('#all-selected-pic-ul').animate({left: position + 'px'});
         }
     });
 
-    $('#street-div #select-left-button').click(function()
+    $('#select-left-button').click(function()
     {
         if( position < (-50) )
         {
@@ -1181,12 +1179,11 @@ $(document).ready(function()
         else
         {
             position = position - 60;
-            $('#street-div #all-selected-pic-ul' ).animate({left: position + 'px'});
-        }
-    
+            $('#all-selected-pic-ul' ).animate({left: position + 'px'});
+        }    
     });
     
-    var url = '../../street-view/';
+    var url = '../statics/street-view/';
     var nowfaceto;
     var nowpointat;
     var streetPoints = 

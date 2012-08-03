@@ -42,7 +42,23 @@ class Club extends CActiveRecord
             array('introduction', 'length', 'max' => 500),
         );
     }   
-
+    
+    public function relations()
+    {
+        return array(
+            'calendar' => array(
+                self::HAS_ONE,
+                'Calendar',
+                '',
+                'on' => 'master_id = calendar.user_id',
+                'condition' => 'calendar.category = :category AND master_id != 0',
+                'params' => array(
+                    ':category' => Calendar::CATEGORY_PUBLIC
+                )
+            )
+        );
+    }
+    
     public function tableName()
     {
         return '{{clubs}}';

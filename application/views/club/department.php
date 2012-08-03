@@ -1,6 +1,6 @@
 <div class ="alltag"> 
     <a href="<?php echo Yii::app()->createUrl('club/department'); ?>" title="系所" class="department-head"></a>
-    <a href="<?php echo Yii::app()->createUrl('club/student'); ?>" title="學生組織" class="student-head">></a>
+    <a href="<?php echo Yii::app()->createUrl('club/student'); ?>" title="學生組織" class="student-head"></a>
     <a href="<?php echo Yii::app()->createUrl('club/club'); ?>" title="社團" class="club-head"></a>
 </div>
 <div class="department">

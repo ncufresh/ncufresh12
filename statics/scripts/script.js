@@ -896,12 +896,43 @@
             var active = false;
             var inside = false;
             var scrollHeight = 0;
+            var scrollWidth = (function()
+            {
+                var inner = document.createElement('p');
+                inner.style.width = '100%';
+                inner.style.height = '200px';
+
+                var outer = document.createElement('div');
+                outer.style.position = 'absolute';
+                outer.style.top = '0px';
+                outer.style.left = '0px';
+                outer.style.visibility = 'hidden';
+                outer.style.width = '200px';
+                outer.style.height = '150px';
+                outer.style.overflow = 'hidden';
+                outer.appendChild(inner);
+
+                document.body.appendChild (outer);
+                var w1 = inner.offsetWidth;
+                outer.style.overflow = 'scroll';
+                var w2 = inner.offsetWidth;
+                if (w1 == w2) w2 = outer.clientWidth;
+
+                document.body.removeChild (outer);
+                return (w1 - w2);
+            })();
             var updateScrollDraggableHeight = function()
             {
                 var originalHeight = parseInt(scrollDragable.css('height'));
                 var scrollContentHeight = scrollContent.height();
                 var scrollTrackHeight = scrollTrack.height();
                 var height = 0;
+                if ( scrollContainer.width() - scrollContent.width() > 0 )
+                {
+                    scrollArea.css({
+                        width: scrollContainer.width() + scrollWidth
+                    });
+                }
                 if ( scrollContentHeight > scrollTrackHeight )
                 {
                     height = scrollTrackHeight
@@ -1051,9 +1082,6 @@
                 );
                 return $(this);
             };
-            scrollArea.css({
-                width: 2 * scrollArea.width() - scrollContent.width()
-            });
             if ( options.scrollableClass )
             {
                 scrollContainer.addClass(options.scrollableClass);
@@ -2442,6 +2470,267 @@
 })(jQuery);
 
 (function($) {
+    $.nculife = function()
+    {
+        var getTabContent = function()
+        {
+            var tab = jQuery(this).attr('tab');
+            var page = jQuery(this).attr('page');
+            jQuery.getJSON(
+                jQuery.configures.ncuLifeUrl.replace(':tab', tab).replace(':page', page),
+                function(data)
+                { 
+                    $('#nculife-content-view').html(data.content);
+                }
+            ); 
+            return false;
+        }
+
+        $('.life-items li').click(function()
+        {
+            $('#life-dialog').dialog(
+            {
+                dialogClass: 'nculife-dialog',
+                closeText: ' ',
+            });
+
+            $('#life-dialog').removeClass();
+            $('#life-dialog').addClass('nculife-dialog');
+            $('#life-dialog').addClass($(this).parents('ul').attr('pattern'));
+            $('#nculife-title').removeClass();
+            $('#nculife-title').addClass($(this).parents('ul').attr('bar'));
+
+            $('#nculife-content-view').empty();
+            $('#nculife-dialog-head').empty();
+
+            var button = $(this)
+            if ( button.hasClass('life-bar') )
+            {
+                $(this).children().children().each(function()
+                {
+                    var title = $('<a></a>')
+                        .text($(this).text())
+                        .attr('href', '#')
+                        .attr('class', '')
+                        .attr('tab', $(this).attr('tab'))
+                        .attr('page', $(this).attr('page'))
+                        .attr('title', $(this).text())
+                        .click(getTabContent);
+                    $('#nculife-dialog-head').append(title);
+                });
+                $('#nculife-title h4').text($(this).children('span').text());
+            }
+
+            else
+            {
+                $(this).each(function()
+                {
+                    var title = $('<a></a>')
+                        .text($(this).text())
+                        .attr('href', '#')
+                        .attr('class', '')
+                        .attr('tab', $(this).attr('tab'))
+                        .attr('page', $(this).attr('page'))
+                        .attr('title', $(this).text())
+                        .click(getTabContent);
+                    $('#nculife-dialog-head').append(title);
+                });
+                $('#nculife-title h4').text($(this).text());
+            }
+
+            $('#nculife-dialog-head > a').first().click();
+            
+        });
+
+        $('#nculife-content-view').scrollable(
+        {
+            scrollableClass:    false
+        });
+        $('#life-play').mouseenter(function()
+        {
+            $('#life-index1').stop().animate(
+            {
+                height: '95px'
+            },500);
+        });
+
+        $('#life-play').mouseleave(function()
+        {
+            $('.life-items').stop().animate(
+            {
+                height: '0px'
+            },500);
+        });
+
+        $('#life-traffic').mouseenter(function()
+        {
+            $('#life-index2').stop().animate(
+            {
+                height: '120px'
+            },500);
+        });
+
+        $('#life-traffic').mouseleave(function()
+        {
+            $('#life-index2').stop().animate(
+            {
+                height: '0px'
+            },500);
+        });
+
+        $('#life-school').mouseenter(function()
+        {
+            $('#life-index3').stop().animate(
+            {
+                height: '335px'
+            },500);
+        });
+
+        $('#life-school').mouseleave(function()
+        {
+            $('#life-index3').stop().animate(
+            {
+                height: '0px'
+            },500);
+        });
+
+        $('#life-live').mouseenter(function()
+        {
+            $('#life-index4').stop().animate(
+            {
+                height: '150px'
+            },500);
+        });
+
+        $('#life-live').mouseleave(function()
+        {
+            $('#life-index4').stop().animate(
+            {
+                height: '0px'
+            },500);
+        });
+
+        $('#life-health').mouseenter(function()
+        {
+            $('#life-index5').stop().animate(
+            {
+                height: '100px'
+            },500);
+        });
+
+        $('#life-health').mouseleave(function()
+        {
+            $('#life-index5').stop().animate(
+            {
+                height: '0px'
+            },500);
+        });
+
+        switch( window.location.hash.replace('#', '') )
+        {
+            case 'play' :
+                $('#life-play').mouseenter();
+            break;
+
+            case 'traffic' :
+                $('#life-traffic').mouseenter();
+            break;
+
+            case 'school' :
+                $('#life-school').mouseenter();
+            break;
+
+            case 'live' :
+                $('#life-live').mouseenter();
+            break;
+
+            case 'health' :
+                $('#life-health').mouseenter();
+            break;
+        }
+
+    };
+})(jQuery);
+
+(function($) {
+    $.readme = function()
+    {
+        var getTabContent = function()
+        {
+            var tab = jQuery(this).attr('tab');
+            var page = jQuery(this).attr('page');
+            jQuery.getJSON(
+                jQuery.configures.readMeUrl.replace(':tab', tab).replace(':page', page),
+                function(data)
+                { 
+                    $('.readme-view').html(data.content);
+                }
+            ); 
+            return false;
+        }
+
+        $('.readme-view').scrollable({
+            scrollableClass: false
+        });
+
+        if( $('.readme-menu p').length == 1 )
+        {
+            $('.readme-menu-index li').each(function()
+            {
+                var title = $('<p></p>')
+                        .text($(this).text())
+                        .attr('href', '#')
+                        .attr('tab', $(this).attr('tab'))
+                        .attr('page', $(this).attr('page'))
+                        .click(getTabContent);
+                $('.readme-menu').append(title);
+            });
+            $('.readme-menu > p').eq(1).click();
+        }
+
+        $('#readme-logo1').click(function()
+        {
+            $('.fresh-inner:hidden').fadeIn('slow');
+            $('.reschool-inner:visible').fadeOut('fast');
+            return false;
+        });
+
+        $('#readme-logo2').click(function()
+        {
+            $('.reschool-inner:hidden').fadeIn('slow');
+            $('.fresh-inner:visible').fadeOut('fast');
+            return false;
+        });
+
+        $('.readme-menu').mouseenter(function()
+        {
+            $(this).stop().animate(
+            {
+                left : '0px'
+            },500);
+        });
+
+        $('.readme-menu').mouseleave(function()
+        {
+            $(this).stop().animate(
+            {
+                left : '-187px'
+            },500);
+        });
+
+            switch( window.location.hash.replace('#', '') )
+        {
+            case 'freshman' :
+                jQuery('#readme-logo1').click();
+            break;
+
+            case 'reschool' :
+                jQuery('#readme-logo2').click();
+            break;
+        }
+    };
+})(jQuery);
+(function($) {
     $.clubs = function()
     {
         $('#club-menu-items a').lightbox();
@@ -2955,7 +3244,7 @@
         $.configures.sequence = $.random(0, 1000);
 
         if ( $('#chat').length ) $('#chat').chat();
-        
+
         $('#header').star();
 
         $('#moon').moon();
@@ -2963,6 +3252,10 @@
         $('.loading').sprite();
         
         if ( $('#club').length ) $.clubs();
+        
+        if ( $('#nculife').length ) $.nculife();
+
+        if ( $('#readme').length ) $.readme(); 
 
         $('input.datepicker:not(#form-register-birthday)').datepicker();
         $('#form-register-birthday').datepicker({
@@ -3098,6 +3391,40 @@
         });
     };
 })(jQuery);
+
+(function($){
+    $(document).ready(function(){
+        $('.allmessages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.my-all-messages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.self-messages').scrollable({
+            wheelSpeed: 90
+        });
+         var daysInMonth = function(iYear, iMonth)
+        {
+            return 32 - new Date(iYear, iMonth-1, 32).getDate();
+        }
+        jQuery('.button-back').click(function()
+        {
+            window.history.back();
+        }); 
+        $(document).ready(function(){
+        $('.A-group-users').scrollable({
+            wheelSpeed: 90
+        });
+        $('.users-group').scrollable({
+            wheelSpeed: 90
+        });
+        $('#friend-chatting').scrollable({
+            wheelSpeed: 90
+        });
+    });
+    });
+})(jQuery);
+
 
 google.load('search', '1', {
     language: 'zh_TW'
