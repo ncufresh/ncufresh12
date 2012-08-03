@@ -13,6 +13,9 @@ jQuery(document).ready(function()
     {
         var id = $(this).attr('href').replace('#', '');
         var self = this;
+        var li = $(this).parents('li');
+        var ul = li.parent();
+        var div = ul.parent();
         $.post(
             $.configures.calendarHideEventUrl,
             {
@@ -27,7 +30,8 @@ jQuery(document).ready(function()
                 $.configures.token = response.token;
                 if ( $.errors(response.errors) )
                 {
-                    $(self).parents('li').remove();
+                    li.remove();
+                    if ( $.trim(ul.html()) == '' ) div.remove();
                     calendar.updateData($.configures.calendarEventsUrl);
                 }
             }
@@ -39,7 +43,7 @@ jQuery(document).ready(function()
 <?php $this->endWidget();?>
 <div id="personal-calendar" class="calendar">
     <div class="left"></div>
-    <h3 class="date"></h3>
+    <h4 class="date"></h4>
     <div class="right">
     </div>
     <a class="calendar-subscript-button calendar-buttons" href="<?php echo Yii::app()->createUrl('calendar/subscript');?>" title="訂閱行事曆">訂閱</a>

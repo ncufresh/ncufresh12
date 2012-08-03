@@ -9,7 +9,7 @@
                 message: '確定取消編輯此篇文章？',
                 confirmed: function(result)
                 {
-                    if ( result ) window.location = '<?php echo Yii::app()->createUrl('calendar/club');?>';
+                    if ( result ) window.location = '<?php echo Yii::app()->createUrl('calendar/club', array('id'=> $id));?>';
                     return false;
                 }
             });
@@ -19,9 +19,9 @@
 })(jQuery);
 </script>
 <?php $this->endWidget();?>
-<form id="calendar-create-form" enctype="multiprt/form-data" action="<?php echo Yii::app()->createUrl('calendar/createclubevent'); ?>" method="POST">
-<div class="form-top">
-    <p id="calendar-create-text-number-check">新增事件</p>
+<div class="calendar-create">
+    <form id="calendar-create-form" enctype="multiprt/form-data" action="<?php echo Yii::app()->createUrl('calendar/createclubevent', array('id'=>$id)); ?>" method="POST">
+    <h4 id="calendar-create-text-number-check">新增事件</h4>
     <dl>
         <dt>
             <label id="calendar-create-text-title" for="calendar-create-title">標題</label>
@@ -30,11 +30,9 @@
             <input id="calendar-create-title" type="text" name="event[name]" maxLength="20"/>
         </dd>
     </dl>
-</div>
-<div class="form-body">
     <dl class="content">
         <dt>
-            <label for="calendar-create-start">起始日 (ex:2012/07/30)</label>
+            <label for="calendar-create-start">起始日</label>
         </dt>
         <dd>
             <input class="datepicker" id="calendar-create-start" type="text" name="event[start]" maxLength="10"/>
@@ -42,7 +40,7 @@
     </dl>
     <dl class="content">
         <dt>
-            <label for="calendar-create-end">結束日 (ex:2012/07/30)</label>
+            <label for="calendar-create-end">結束日</label>
         </dt>
         <dd>
             <input class="datepicker" id="calendar-create-end" type="text" name="event[end]" maxLength="10"/>
@@ -56,10 +54,10 @@
             <textarea id="form-create-content" name="event[description]" cols="70" rows="10"></textarea>
         </dd>
     </dl>
+    <div class="buttons">
+        <button id="calendar-create-submit">發佈</button>
+        <button class="calendar-cancel-button" type="reset">取消</button>
+        <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
+    </div>
+    </form>
 </div>
-<div class="form-foot">
-    <button id="calendar-create-submit">發佈</button>
-    <button class="calendar-cancel-button" type="reset">取消</button>
-</div>
-<input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
-</form>

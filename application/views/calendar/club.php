@@ -3,10 +3,10 @@
 jQuery(document).ready(function()
 {
     var calendar = $.calendar({
-        calendar_container: '#club-calendar .left',
-        events_container:   '#club-calendar .right',
-        date_container:     '#club-calendar .date',
-        prompt:             '#club-calendar .prompt',
+        calendar_container: '#calendar-club .left',
+        events_container:   '#calendar-club .right',
+        date_container:     '#calendar-club .date',
+        prompt:             '#calendar-club .prompt',
         eventsUrl:           $.configures.calendarEventsUrl + '?club=true'
     });
     $('a.calendar-hide-event').live('click', function()
@@ -19,7 +19,7 @@ jQuery(document).ready(function()
                 if ( result )
                 {
                     $.post(
-                        '<?php echo Yii::app()->createAbsoluteUrl('calendar/clubrecycle');?>',
+                        '<?php echo Yii::app()->createAbsoluteUrl('calendar/clubrecycle', array('id'=> $id));?>',
                         {
                             calendar:
                             {
@@ -46,12 +46,12 @@ jQuery(document).ready(function()
 });
 </script>
 <?php $this->endWidget();?>
-<div id="club-calendar"  class="calendar">
+<div id="calendar-club"  class="calendar">
     <div class="left"></div>
-    <h3 class="date"></h3>
+    <h4 class="date"></h4>
     <div class="right">
     </div>
-    <a class="calendar-create-button calendar-buttons" href="<?php echo Yii::app()->createUrl('calendar/createclubevent');?>">新增</a>
+    <a class="calendar-create-button calendar-buttons" href="<?php echo Yii::app()->createUrl('calendar/createclubevent', array('id'=> $id));?>">新增</a>
     <div class="prompt">
         <ul>
         </ul>

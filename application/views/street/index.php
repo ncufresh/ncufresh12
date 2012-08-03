@@ -1070,7 +1070,7 @@ $(document).ready(function()
             width: 680,
             height: 400,
             modal: true,
-            draggable: false,
+            escape: false,
             onClose: function()
             {
                 $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
@@ -1107,7 +1107,9 @@ $(document).ready(function()
                             .attr('title', $(this).attr('alt'))
                     );
                 });
-                $('#building-text a.lightbox').lightbox();
+                $('#building-text a.lightbox').lightbox({
+                    hideOverlayBackground: true
+                });
                 // lightbox();
                 // $('#building-text img').click(function()
                 // {

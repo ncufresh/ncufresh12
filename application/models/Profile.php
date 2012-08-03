@@ -18,7 +18,7 @@ class Profile extends CActiveRecord
     {   
         return array(
             array('name, nickname, department, grade, senior, birthday ,gender','required'),
-            array('name', 'length','min' => 1, 'max' => 8),
+            array('nickname', 'length','min' => 1, 'max' => 8, 'on' => 'register, editor'),
             array('department', 'numerical','min' => 1, 'max' => 21),
             array('grade', 'numerical','min' => 0, 'max' => 4),
             array('nickname', 'unique', 'className' => 'Profile', 'on' => 'register, editor'),
@@ -135,6 +135,9 @@ class Profile extends CActiveRecord
     {
         parent::afterFind();
         $this->birthday = Yii::app()->format->date($this->birthday);
+        $this->name = htmlspecialchars( $this->name );
+        $this->nickname = htmlspecialchars( $this->nickname );
+        $this->senior = htmlspecialchars( $this->senior );
     }
     
     public function beforeSave()

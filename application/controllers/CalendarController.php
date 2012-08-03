@@ -14,18 +14,17 @@ class CalendarController extends Controller
         return array(
             array(
                 'allow',
-                'roles'     => array('admin')
-            ),
-            array(
-                'allow',
                 'actions'   => array(
                     'view',
                     'recycle',
                     'event',
                     'createEvent',
                     'hideEvent',
-                    'showEvnet',
-                    'subscript'
+                    'showEvent',
+                    'subscript',
+                    'club',
+                    'clubRecycle',
+                    'createClubEvent'
                 ),
                 'roles'     => array('member')
             ),
@@ -50,9 +49,17 @@ class CalendarController extends Controller
         $this->render('view');
     }
 
-    public function actionClub()
+    public function actionClub($id)
     {
-        $this->render('club');
+        $id = (integer)$id;
+        if ( Club::model()->getIsMaster($id) )
+        {
+            $this->render('club', array('id' => $id));
+        }
+        else
+        {
+            throw new CHttpException(404);
+        }
     }
 
     public function actionRecycle()
@@ -70,6 +77,7 @@ class CalendarController extends Controller
                 }
             }
             $this->_data['errors'][] = '發生錯誤！';
+            $this->_data['errors'][] = $event->getErrors();
             return true;
         }
 
@@ -97,9 +105,11 @@ class CalendarController extends Controller
         ));
     }
 
-    public function actionClubRecycle()
+    public function actionClubRecycle($id)
     {
-        if ( Yii::app()->request->getIsAjaxRequest() )
+        $id = (integer)$id;
+        if ( Yii::app()->request->getIsAjaxRequest() 
+            && Club::model()->getIsMaster($id) )
         {
             if ( isset($_POST['calendar']) )
             {
@@ -144,9 +154,7 @@ class CalendarController extends Controller
             $event->name = $_POST['event']['name'];
             $event->description = $_POST['event']['description'];
             $event->invisible = 0;
-            // $event->start = strtotime($_POST['event']['start']);
             $event->start = $_POST['event']['start'];
-            // $event->end = strtotime($_POST['event']['end']);
             $event->end = $_POST['event']['end'];
             $event->calendar_id = Calendar::Model()->find('user_id='.Yii::app()->user->getId().' AND category=1')->id;
             if ( $event->validate() && $event->save() )
@@ -157,8 +165,10 @@ class CalendarController extends Controller
         $this->render('create_event');
     }
 
-    public function actionCreateClubEvent()
+    public function actionCreateClubEvent($id)
     {
+        $id = (integer)$id;
+        if ( ! Club::model()->getIsMaster($id) ) throw new CHttpException(404);
         $event = new Event();
         if ( isset($_POST['event']) )
         {
@@ -170,10 +180,10 @@ class CalendarController extends Controller
             $event->calendar_id = Calendar::Model()->find('user_id='.Yii::app()->user->getId().' AND category=0')->id;
             if ( $event->validate() && $event->save() )
             {
-                $this->redirect(Yii::app()->createUrl('calendar/club'));
+                $this->redirect(Yii::app()->createUrl('calendar/club', array('id'=>$id)));
             }
         }
-        $this->render('create_club_event');
+        $this->render('create_club_event', array('id'=>$id));
     }
     
     public function actionHideEvent()
@@ -250,8 +260,16 @@ class CalendarController extends Controller
             
             if ( $check == 0 ) $this->redirect(Yii::app()->createUrl('calendar/view'));
         }
+        
+        $result = array();
+        $calendars = Calendar::model()->getClubs();
+        foreach ( $calendars as $calendar )
+        {
+            $result[$calendar->club->category][] = $calendar;
+        }
+        
         $this->render('subscript', array(
-            'clubs' => Calendar::model()->getClubs()
+            'result' => $result
         ));
     }
 

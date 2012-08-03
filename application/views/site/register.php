@@ -1,5 +1,61 @@
 <h2>註冊</h2>
 <form id="register" method="POST">
+    <h4>帳號資訊</h4>
+    <dl>
+        <dt>
+            <label for="form-register-username">帳號</label>
+        </dt>
+        <dd>
+            <input id="form-register-username" name="register[username]" type="text" />
+            <span>
+<?php if ( isset($username_errors['username']) ) :?>
+<?php foreach ( $username_errors['username'] as $error ) : ?>
+<?php echo $error; ?>
+<?php endforeach; ?>
+<?php else: ?>
+            須大於8碼唷
+<?php endif; ?>
+            </span>
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            <label for="form-register-password">密碼</label>
+        </dt>
+        <dd>
+            <input id="form-register-password" name="register[password]" type="password" />
+            <span>
+<?php if ( isset($username_errors['password']) ) : ?>
+<?php foreach ( $username_errors['password'] as $error ) : ?>
+<?php echo $error; ?>
+<?php endforeach; ?>
+<?php else: ?>
+            請輸入密碼
+<?php endif; ?>
+            </span>
+            <div id="form-password-meter">
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            <label for="form-register-confirm">再輸入一次</label>
+        </dt>
+        <dd>
+            <input id="form-register-confirm" name="register[confirm]" type="password" />
+            <span>再來輸入一次吧....要與密碼相同</span>
+        </dd>
+    </dl>
+    <h4>基本資料</h4>
     <dl>
         <dt>
             <label for="form-register-name">姓名</label>
@@ -13,7 +69,7 @@
 <?php endforeach; ?>
 <?php else: ?>
              需小於等於等於8個字元
-<?php endif; ?>   
+<?php endif; ?>
             </span>
         </dd>
     </dl>
@@ -22,7 +78,7 @@
             <label for="form-register-nickname">暱稱</label>
         </dt>
         <dd>
-            <input id="form-register-nickname" name="profile[nickname]" type="text" />
+            <input id="form-register-nickname" name="profile[nickname]" type="text" maxlength=8/>
             <span>
 <?php if ( isset($profile_errors['nickname']) ) : ?>
 <?php foreach ( $profile_errors['nickname'] as $error ) : ?>
@@ -30,7 +86,7 @@
 <?php endforeach; ?>
 <?php else: ?>
             人家都怎麼叫你哩^.<
-<?php endif; ?>                
+<?php endif; ?>
             </span>
         </dd>
     </dl>
@@ -50,49 +106,6 @@
             Are U MAN OR WOMAN
 <?php endif; ?>
             </span>
-        </dd>
-    </dl>
-    <dl>
-        <dt>
-            <label for="form-register-username">帳號</label>
-        </dt>
-        <dd>
-            <input id="form-register-username" name="register[username]" type="text" />
-            <span>
-<?php if ( isset($username_errors['username']) ) :?>
-<?php foreach ( $username_errors['username'] as $error ) : ?>
-<?php echo $error; ?>
-<?php endforeach; ?>
-<?php else: ?>
-            須大於8碼唷
-<?php endif; ?>                
-            </span>
-        </dd>
-    </dl>
-    <dl>
-        <dt>
-            <label for="form-register-password">密碼</label>
-        </dt>
-        <dd>
-            <input id="form-register-password" name="register[password]" type="password" />
-            <span>
-<?php if ( isset($username_errors['password']) ) : ?>
-<?php foreach ( $username_errors['password'] as $error ) : ?>
-<?php echo $error; ?>
-<?php endforeach; ?>
-<?php else: ?>
-            請輸入密碼
-<?php endif; ?>                
-            </span>
-        </dd>
-    </dl>
-    <dl>
-        <dt>
-            <label for="form-register-confirm">再輸入一次</label>
-        </dt>
-        <dd>
-            <input id="form-register-confirm" name="register[confirm]" type="password" />
-            <span>再來輸入一次吧....要與密碼相同</span>
         </dd>
     </dl>
     <dl class="select">
@@ -118,6 +131,14 @@
     </dl>
     <dl>
         <dt>
+            <label for="form-register-birthday">生日</label>
+        </dt>
+        <dd>
+            <input class="datepicker" id="form-register-birthday" name="profile[birthday]" type="text" />
+        </dd>
+    </dl>
+    <dl>
+        <dt>
             <label for="form-register-senior">畢業高中</label>
         </dt>
         <dd>
@@ -129,19 +150,11 @@
 <?php endforeach; ?>
 <?php else: ?>
             輸入畢業高中吧!!
-<?php endif; ?>                
+<?php endif; ?>
             </span>
         </dd>
     </dl>
-    <dl>
-        <dt>
-            <label for="form-register-birthday">生日</label>
-        </dt>
-        <dd>
-            <input class="datepicker" id="form-register-birthday" name="profile[birthday]" type="text" />
-        </dd>
-    </dl>
-    <div>
+    <div class="buttons">
         <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
         <button type="submit">註冊</button>
         <button type="reset">重填</button>
