@@ -1,6 +1,6 @@
 <h4>編輯基本資料</h4>
 <div class="myprofile">
-<form class="friends-part3" action="<?php echo Yii::app()->createUrl('profile/editor'); ?>" method="POST">
+<form class="profile-modify" action="<?php echo Yii::app()->createUrl('profile/editor'); ?>" method="POST">
     <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
 <?php $this->widget('Avatar', array(
     'id'        => Yii::app()->user->id
