@@ -81,5 +81,16 @@ class Club extends CActiveRecord
     {
         parent::afterFind();
         $this->introduction = nl2br(htmlspecialchars($this->introduction));
+        $this->leader = htmlspecialchars($this->leader);
+        $this->leader_phone = htmlspecialchars($this->leader_phone);
+        $this->leader_email = htmlspecialchars($this->leader_email);
+        $this->leader_binary = htmlspecialchars($this->leader_binary);
+        $this->leader_msn = htmlspecialchars($this->leader_msn);
+        $this->viceleader = htmlspecialchars($this->viceleader);
+        $this->viceleader_phone = htmlspecialchars($this->viceleader_phone);
+        $this->viceleader_email = htmlspecialchars($this->viceleader_email);
+        $this->viceleader_binary = htmlspecialchars($this->viceleader_binary);
+        $this->viceleader_msn = htmlspecialchars($this->viceleader_msn);
+        $this->website = htmlspecialchars($this->website);
     }
 }
