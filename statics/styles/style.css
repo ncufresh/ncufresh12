@@ -4990,9 +4990,10 @@ li.enabled a
 
 #forum-index
 {
-    background: url('../forum/index/background_1.png');
+    background: url('../forum/index/background.png');
     border-radius: 20px;
-    height: 400px;
+    width: 683px;
+    height: 399px;
     margin-left: 35px;
     padding-top: 50px;
     
@@ -5870,7 +5871,6 @@ li.enabled a
 #forum-forum-body #body-table .table-body td.title a:hover
 {
     color: #F48191;
-    font-weight: bolder;
 }
 
 #forum-forum-body #body-table .table-body td.time
