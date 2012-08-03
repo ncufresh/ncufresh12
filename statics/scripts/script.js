@@ -3408,19 +3408,20 @@
         {
             window.history.back();
         }); 
-    });
-})(jQuery);
-
-(function($){
-    $(document).ready(function(){
+        $(document).ready(function(){
         $('.A-group-users').scrollable({
             wheelSpeed: 90
         });
         $('.users-group').scrollable({
             wheelSpeed: 90
         });
+        $('#friend-chatting').scrollable({
+            wheelSpeed: 90
+        });
+    });
     });
 })(jQuery);
+
 
 google.load('search', '1', {
     language: 'zh_TW'

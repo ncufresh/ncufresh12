@@ -1,12 +1,12 @@
 <h4>基本資料</h4>
 <div class="myprofile">
-    <div class="profile-modify">
+    <div id="profile-friend">
      <a href="<?php echo Yii::app()->createUrl('game/index', array('id' => $user->id)); ?>">
 <?php $this->widget('Avatar', array(
     'id'        => $user->id //得到profile的id---觀看他人基本資料
 )); ?>
     </a>
-        <ul class="user-editor">  
+        <ul id="user-data-view">  
             <li>
                 姓名:<?php echo $user->profile->name; ?>
             </li>
@@ -36,6 +36,20 @@
             <li>
                 生日:<?php echo $user->profile->birthday; ?>
             </li>
+        </ul>
+    </div> <!--顯示歷史訊息-->  
+    <div id="friend-chatting">
+        <ul>
+            <li>時間:</li>
+            <li>對話內容:</li>
+<?php foreach ( $messages as $message ) : ?>
+            <li>
+<?php echo $message->timestamp; ?>
+            </li>
+            <li>
+<?php echo $message->message; ?>
+            </li>
+<?php endforeach; ?>
         </ul>
     </div>
 </div>

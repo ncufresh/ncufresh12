@@ -3649,17 +3649,35 @@ ul.users-department li h4
 
 .user-editor
 {
-    width:400px; 
+    width:380px; 
     height:350px;
     padding:0px;
-    margin-top:20px;
-    margin-left:280px;
+    margin-top:-300px;
+    margin-left:300px;
 }
 
 .user-editor li
 {
-    width: 410px;
+    width: 290px;
     height: 35px;
+    display: block;
+    list-style-type:none;
+    text-align:left;
+}
+
+#user-data-view
+{
+    width:185px; 
+    height:350px;
+    padding:0px;
+    margin-top:0px;
+    margin-left:75px;
+}
+
+#user-data-view li
+{
+    width: 185px;
+    height: 32px;
     display: block;
     list-style-type:none;
     text-align:left;
@@ -3782,23 +3800,67 @@ div.A-group-users div.avatar
     padding:5px;
 }*/
 
+#friend-chatting
+{
+    width:415px;
+    height:315px;
+    margin-top:14px;
+    padding:0px;
+    outline:1px solid yellow
+}
+
+#friend-chatting ul
+{
+    width:411px;
+    height:312px;
+    margin-left:3px;
+    padding:0px;
+    outline:1px solid red
+}
+
+#friend-chatting ul li
+{
+    width:205px;
+    padding:0px;
+    float:left;
+    list-style-type:none;
+    outline:1px solid green
+}
+
 .profile-modify
 {
-    width:675px;
+    width:240px;
     height:350px;
     margin:0px;
     padding:5px;
 }
 
-
 .profile-modify div.avatar
 {
-    margin-left:40px;
-    margin-top:20px;
-    width:180px; 
-    height:310px;
+    margin-left:65px;
+    margin-top:0px;
+    width:202px; 
+    height:338px;
     padding:0px;
+}
+
+#profile-friend
+{
+    width:240px;
+    height:350px;
+    margin:0px;
+    padding:5px;
     float:left;
+}
+
+
+#profile-friend div.avatar
+{
+    margin-left:65px;
+    margin-top:0px;
+    width:125px; 
+    height:100px;
+    padding:0px;
 }
 
 div.my-all-messages
