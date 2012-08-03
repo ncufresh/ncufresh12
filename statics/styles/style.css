@@ -2421,6 +2421,8 @@ button.news-button
     display: none;
     width: 649px;
     height: 449px;
+    z-index: 1200;
+    position: fixed;
 }
 
 .nculife-style1
