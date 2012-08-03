@@ -5,13 +5,15 @@
         var options = $.extend({
             aboutId:                         'about',
             titleClass:                      'title',
+            introdutionBlock:                'itr-block',
+            introdutionPicture:              'about-picture',
             introduceId:                     'introdution',
             tagBar:                          'tagBar',
             animationClass:                  'animation',
             block1InfClass:                  'information',
             picBarSpeed:                     1000,
             picAutoSpeed:                    3000,
-            tagBarSpeed:                     10000
+            tagBarSpeed:                     30000
         }, options);
         var photoIndex = 0;
         var photos = $('#' + options.aboutId + ' img');
@@ -50,34 +52,17 @@
                 .addClass('block1'),
             $('<div></div>')
                 .addClass('block2')
-        ]
-        var itr = $('<div></div>').css({
-            paddingLeft: 15,
-            paddingBottom: 10,
-            paddingRight: 10,
-            paddingTop: 1,
-            borderRadius: 10,
-            background: '#fffce0',
-            position: 'relative',
-            float: 'top',
-            left: 25,
-            height: 739,
-            width: 675,
-        })
-        .appendTo(blocks[0])
-        .append($('.' + options.introduceId));
+        ];
+        var itrPic = $('#' + options.aboutId + ' .' + options.introdutionPicture);
         var picture = $('<div></div>')
             .css({
                 background: 'url(\'' + photos.eq(photoIndex).attr('photo') + '0.png' + '\')',
-                float: 'right',
                 height: 300,
-                top: -722,
-                position: 'relative',
-                width:  400
+                width: 400
             })
             .mouseenter(function()
             {
-                display.stop().animate({
+                display.show().stop().animate({
                     height: 50,
                     opacity: 1
                 }, options.picBarSpeed);
@@ -89,53 +74,20 @@
                     opacity: 0
                 }, options.picBarSpeed);
             })
-            .appendTo(itr);
-        var display = $('<div></div>')
-            .css({
-                background: 'black',
-                bottom: 0,
-                height: 0,
-                opacity: 0,
-                position: 'absolute',
-                width: 400
-            })
-            .appendTo(picture);
-        var block1Pic = $('<div></div>')
-            .css({
-                left: 25,
-                height: 280,
-                width: 700,
-                position: 'relative'
-            })
-            .appendTo(blocks[1]);
-        var block1Tag = $('<div></div>')
-            .addClass('tag')
-            .appendTo(blocks[1]);
-        var block1Txt = $('<div></div>')
-            .addClass('tag-txt')
-            .appendTo(blocks[1]);
+            .appendTo(itrPic);
+        var display = $('<div></div>').addClass('about-display').hide().appendTo(picture);
+        var itr = $('#' + options.aboutId + ' .' + options.introdutionBlock).appendTo(blocks[0]);
+        var block1Pic = $('<div></div>').addClass('about-block1Pic').appendTo(blocks[1]);
+        var block1Tag = $('<div></div>').addClass('tag').appendTo(blocks[1]);
+        var block1Txt = $('<div></div>').addClass('tag-txt').appendTo(blocks[1]);
         var block1Inf = $('#' + options.aboutId + ' .' + options.block1InfClass);
         block1Inf.each(function()
         {
-            $(this).css({
-                position: 'absolute',
-                top: 40,
-                left: 40
-            })
-            .hide()
-            .appendTo(block1Txt);
+            $(this).addClass('about-block1Inf').hide().appendTo(block1Txt);
         });
         tagbar.each(function(index)
         {
-            $(this).css({
-                top: '10%',
-                left: '10%',
-                position: 'relative',
-                height: '80%',
-                width: '80%'
-            })
-            .hide()
-            .appendTo(block1Tag);
+            $(this).addClass('about-tagbar').hide().appendTo(block1Tag);
         });
         $('#' + options.aboutId + ' .' + options.animationClass).each(function(index)
         {
@@ -143,14 +95,12 @@
             {
                 case 0:
                     $(this).css({
-                        position: 'absolute',
                         width: 700,
                         height: 280
                     });
                     break;
                 case 1:
                     $(this).css({
-                        position: 'absolute',
                         top: 12,
                         left: 36,
                         height: 132,
@@ -159,7 +109,6 @@
                     break;
                 case 2:
                     $(this).css({
-                        position: 'absolute',
                         top: 145,
                         left: 150,
                         height: 132,
@@ -168,7 +117,6 @@
                     break;
                 case 3:
                     $(this).css({
-                        position: 'absolute',
                         top: 146,
                         left: 379,
                         height: 132,
@@ -177,7 +125,6 @@
                     break;
                 case 4:
                     $(this).css({
-                        position: 'absolute',
                         top: 142,
                         left: 576,
                         height: 132,
@@ -186,7 +133,6 @@
                     break;
                 case 5:
                     $(this).css({
-                        position: 'absolute',
                         top: 11,
                         left: 573,
                         height: 132,
@@ -278,12 +224,7 @@
         {
             if ( index < 8 )
             {
-                $(this).css({
-                    height: 40,
-                    float: 'left',
-                    margin: 5,
-                    width: 40
-                })
+                $(this).addClass('about-photos')
                 .click(function()
                 {
                     if ( index == 0 )

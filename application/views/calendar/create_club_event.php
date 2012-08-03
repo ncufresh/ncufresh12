@@ -9,7 +9,7 @@
                 message: '確定取消編輯此篇文章？',
                 confirmed: function(result)
                 {
-                    if ( result ) window.location = '<?php echo Yii::app()->createUrl('calendar/club');?>';
+                    if ( result ) window.location = '<?php echo Yii::app()->createUrl('calendar/club', array('id'=> $id));?>';
                     return false;
                 }
             });
@@ -20,7 +20,7 @@
 </script>
 <?php $this->endWidget();?>
 <div class="calendar-create">
-    <form id="calendar-create-form" enctype="multiprt/form-data" action="<?php echo Yii::app()->createUrl('calendar/createclubevent'); ?>" method="POST">
+    <form id="calendar-create-form" enctype="multiprt/form-data" action="<?php echo Yii::app()->createUrl('calendar/createclubevent', array('id'=>$id)); ?>" method="POST">
     <h4 id="calendar-create-text-number-check">新增事件</h4>
     <dl>
         <dt>
@@ -32,7 +32,7 @@
     </dl>
     <dl class="content">
         <dt>
-            <label for="calendar-create-start">起始日 (ex:2012/07/30)</label>
+            <label for="calendar-create-start">起始日</label>
         </dt>
         <dd>
             <input class="datepicker" id="calendar-create-start" type="text" name="event[start]" maxLength="10"/>
@@ -40,7 +40,7 @@
     </dl>
     <dl class="content">
         <dt>
-            <label for="calendar-create-end">結束日 (ex:2012/07/30)</label>
+            <label for="calendar-create-end">結束日</label>
         </dt>
         <dd>
             <input class="datepicker" id="calendar-create-end" type="text" name="event[end]" maxLength="10"/>

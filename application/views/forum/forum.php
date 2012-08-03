@@ -1,37 +1,3 @@
-<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
-<script>
-(function($){
-    $(document).ready(function (){
-        $('.article-delete').click(function (){
-            $('.form-delete input').attr('value', $(this).attr('href').replace('#', ''));
-            if(confirm("刪除文章?")){
-                $('.form-delete').submit();            
-            }
-            return false;
-        });
-        $("#sort_list").change(function() {
-            var url = decodeURIComponent('<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => ':sort', 'category' => isset($_GET['category'])?:0));?>');
-            window.location = url.replace(':sort', $(this).val());
-        });
-        /* Dimo大大貢獻的使用jquery替換資料
-        $('.category1').click(function(){
-            $.getJSON('<?php echo Yii::app()->createUrl('forum/forum', array('fid' => $fid, 'sort' => $sort, 'category' => '4'));?>', 
-                function(data){
-                    var ul = $('<ul></ul>');
-                    for( var key in data.content )
-                    {
-                        ul.append($('<li></li>').text(data.content[key]));
-                    }
-                    $('.articles').html(ul);
-                });
-                
-            return false;
-        });
-        */
-    });
-})(jQuery);
-</script>
-<?php $this->endWidget();?>
 <div id="forum-forum-top">
     <a id="forum-forum-backlink"href="#">回上一頁</a>
 </div>

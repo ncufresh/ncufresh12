@@ -1,19 +1,3 @@
-<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
-<script>
-(function($){
-    $("#forum-reply-content").keydown(function(){
-        var content_num = 20;
-        /* 若content字數小於10則將submit disable */
-        if($(this).val().length < content_num){
-            $(".reply-submit").attr('disabled','');
-        }
-        else{
-            $(".reply-submit").removeAttr('disabled');
-        }
-    });
-})(jQuery);
-</script>
-<?php $this->endWidget();?>
 <?php
 $aid = $_GET['aid'];
 ?>
