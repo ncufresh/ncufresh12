@@ -2496,36 +2496,36 @@ button.news-button
 
 #life-index1
 {
-    width: 100px;
-    left: 13px;
+    width: 110px;
+    left: 20px;
     top: 129px;
 }
 
 #life-index2
 {
-    width: 130px;
-    left: -3px;
-    top: 133px;
+    width: 140px;
+    left: 4px;
+    top: 131px;
 }
 
 #life-index3
 {
-    width: 150px;
-    left: 32px;
-    top: 165px;
+    width: 156px;
+    left: 40px;
+    top: 164px;
 }
 
 #life-index4
 {
     width: 150px;
-    left: -16px;
-    top: 98px;
+    left: -8px;
+    top: 97px;
 }
 
 #life-index5
 {
     width: 150px;
-    left: 35px;
+    left: 40px;
     top: 180px;
 }
 
@@ -2546,7 +2546,7 @@ button.news-button
 
 .life-items li
 {
-    padding: 0 0 10px 50px;
+    padding: 0 0 10px 62px;
     cursor: pointer;
 }
 
@@ -2915,8 +2915,8 @@ button.news-button
 .download-index
 {
     float: left;
-    list-style-type: lower-greek;
-    font-size: 1.8em;
+    list-style-type: disc;
+    font-size: 1.4em;
     margin-top: 35px;
 }
 
