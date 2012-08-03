@@ -5243,6 +5243,22 @@ li.enabled a
     padding-top:5px
 }
 
+
+#forum-view-top2 .fb_iframe_widget
+{
+    margin-left: 10px;
+}
+
+#forum-view-top2 .fb .button_count a.connect_widget_like_button
+{
+    padding: 0px;
+}
+
+#forum-view-top2 a
+{
+    float: left;
+}
+
 #forum-view-top2 .pager,
 #forum-forum-top2 .pager,
 #forum-forum-footer .pager
@@ -5264,7 +5280,7 @@ li.enabled a
 {
     background: url('../forum/view/background.png');
     width: 683px;
-    min-height: 300px;
+    min-height: 324px;
     margin-left:35px;
     position: relative;
     overflow: hidden;
@@ -5284,7 +5300,7 @@ li.enabled a
 {
     background: #F8C77C;
     width: 165px;
-    height: 263px;
+    height: 296px;
     border-radius: 6px;
     border: 2px solid #EAA520;
     margin-left: 45px;
@@ -5317,12 +5333,33 @@ li.enabled a
 {
     width: 140px;
     height: 23px;
-    margin: 1px auto;
+    margin: 10px auto;
     background: #FFF0C8;
     border-radius:5px;
     padding-top: 2px;
     padding-left: 10px;
     color: #C57902;
+}
+
+.forum-view-profile .profile-add-friend
+{
+    width: 120px;
+    height: 23px;
+    margin: 1px auto;
+    background: #FFF0C8;
+    border-radius:5px;
+    padding-top: 2px;
+    padding-left: 30px;
+}
+
+.forum-view-profile .profile-add-friend a
+{
+    color: #C57902;
+}
+
+.forum-view-profile .profile-add-friend a:hover
+{
+    font-weight: bold;
 }
 
 #forum-view-body .forum-view-title

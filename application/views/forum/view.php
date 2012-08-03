@@ -10,6 +10,16 @@
         'parameters'=> array('fid' => $fid, 'id' => $article->id)
     )); ?>
     <a id="forum-view-replylink" href="<?php echo Yii::app()->createUrl('forum/reply', array('aid'=>$article->id));?>"></a>
+    
+    <fb:share-button class="meta">
+	<meta name="title" content="分享標題或應用程式名稱"/> 
+	<meta name="description" content="內容描述"/> 
+	<link rel="image_src" href="圖片位置"/> 
+	<link rel="target_url" href="連結網址"/> 
+    </fb:share-button>
+    <span class="fb">
+    <fb:like href="" layout="button_count" show_faces="false" action="like" colorscheme="light"></fb:like>
+    </span>
 </div>
 <?php
 /*綜合討論 + 管理學院*/
@@ -48,6 +58,14 @@ else if ( $fid == 22 || $fid == 23 )
         <div class="profile-pic"></div>
         <div class="profile-name">暱稱：<?php echo User::model()->findByPK($article->author_id)->profile->nickname; ?></div>
         <div class="profile-department">系所：<?php echo User::model()->findByPK($article->author_id)->profile->mydepartment->abbreviation;?></div>
+        <div class="profile-add-friend">
+            <a href="#">+加為好友+</a>
+            <form action="<?php echo Yii::app()->createUrl('friends/makefriends'); ?>" method="POST" >
+                <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
+                <input type="hidden" name="friends[<?php echo $article->author_id; ?>]" value="<?php echo $article->author_id; ?>" />
+                <button type="submit" class="button-addfriend" ></button>
+            </form>
+        </div>
     </div>
     <div class="forum-view-title"><?php echo $article->title; ?></div>
     
@@ -83,6 +101,14 @@ foreach ($replies as $each):
         <div class="profile-pic"></div>
         <div class="profile-name">暱稱：<?php echo User::model()->findByPK($each->author_id)->profile->nickname; ?></div>
         <div class="profile-department">系所：<?php echo User::model()->findByPK($each->author_id)->profile->mydepartment->abbreviation;?></div>
+        <div class="profile-add-friend">
+            <a href="#">+加為好友+</a>
+            <form action="<?php echo Yii::app()->createUrl('friends/makefriends'); ?>" method="POST" >
+                <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
+                <input type="hidden" name="friends[<?php echo $each->author_id; ?>]" value="<?php echo $each->author_id; ?>" />
+                <button type="submit" class="button-addfriend" ></button>
+            </form>
+        </div>
     </div>
     <div class="reply-content">
         <?php echo $each -> content;?>
