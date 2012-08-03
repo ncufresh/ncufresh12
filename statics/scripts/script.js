@@ -102,10 +102,6 @@
 
             return null;
         },
-        integer: function(value)
-        {
-            return parseInt(value, 10);
-        },
         pause: function(miliseconds)
         {
             var date = new Date(); 
@@ -843,8 +839,8 @@
                 if ( options.animated() )
                 {
                     var position = sprite.css('background-position').split(' ');
-                    var left = $.integer(position[0]);
-                    var top = $.integer(position[1]);
+                    var left = parseInt(position[0]);
+                    var top = parseInt(position[1]);
                     var ml = options.frameXDimension * options.horizontalFrames;
                     var mt = options.frameYDimension * options.verticalFrames;
 
@@ -902,7 +898,7 @@
             var scrollHeight = 0;
             var updateScrollDraggableHeight = function()
             {
-                var originalHeight = $.integer(scrollDragable.css('height'));
+                var originalHeight = parseInt(scrollDragable.css('height'));
                 var scrollContentHeight = scrollContent.height();
                 var scrollTrackHeight = scrollTrack.height();
                 var height = 0;
@@ -963,7 +959,7 @@
                 .addClass('scroll-content')
                 .mousewheel(function(event, delta)
                 {
-                    var top = $.integer(scrollDragable.css('top'));
+                    var top = parseInt(scrollDragable.css('top'));
                     var multiplier =
                         2
                       * options.wheelSpeed
@@ -1012,7 +1008,7 @@
                 .addClass('scroll-dragable')
                 .mousedown(function(event)
                 {
-                    var origin = $.integer(scrollDragable.css('top')) - event.pageY;
+                    var origin = parseInt(scrollDragable.css('top')) - event.pageY;
                     var stop = function()
                     {
                         $(document)
@@ -1109,7 +1105,7 @@
             var items = $(this).children('li');
             var animation = function()
             {
-                var position = $.integer(items.css('top')) - items.height();
+                var position = parseInt(items.css('top')) - items.height();
                 if ( position <= -1 * items.length * items.height() )
                 {
                     position = 0;
@@ -1208,12 +1204,12 @@
                 return date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
             };
             var t = -1
-                  * $.integer(getTimeSeconds() / options.interval)
+                  * parseInt(getTimeSeconds() / options.interval)
                   % (options.horizontalFrames * options.verticalFrames);
             var x = t
                   % options.horizontalFrames
                   * options.frameXDimension;
-            var y = $.integer(t / options.horizontalFrames)
+            var y = parseInt(t / options.horizontalFrames)
                   * options.frameYDimension;
             $(this).sprite({
                 horizontalFrames:       options.horizontalFrames,
@@ -1844,8 +1840,8 @@
 
     $.fn.dialog.create = function(target)
     {
-        target.options.width = $.integer(target.options.width);
-        target.options.height = $.integer(target.options.height);
+        target.options.width = parseInt(target.options.width);
+        target.options.height = parseInt(target.options.height);
         if ( ! $(target).hasClass(target.options.dialogClass) )
         {
             if ( target.options.closeButton )

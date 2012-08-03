@@ -33,6 +33,17 @@
             請輸入密碼
 <?php endif; ?>
             </span>
+            <div id="form-password-meter">
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
         </dd>
     </dl>
     <dl>
