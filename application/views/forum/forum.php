@@ -1,5 +1,15 @@
+<?php
+    if( $fid == 1 || $fid == 2)
+    {
+        $back_url = Yii::app()->createUrl('forum/index');
+    }
+    else
+    {
+        $back_url = Yii::app()->createUrl('forum/forumlist');
+    }
+?>
 <div id="forum-forum-top">
-    <a id="forum-forum-backlink"href="#">回上一頁</a>
+    <a id="forum-forum-backlink" href="<?php echo $back_url; ?>">回上一頁</a>
 </div>
 <div id="forum-forum-top2">
     
