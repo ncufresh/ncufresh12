@@ -67,11 +67,11 @@ jQuery(document).ready(function()
         }
 
         $('#nculife-dialog-head > a').first().click();
-        $('#nculife-content-view').scrollable({
+        
+    });
+    jQuery('#nculife-content-view').scrollable({
             scrollableClass:    false
         });
-    });
-
     jQuery('#life-play').mouseenter(function()
     {
         jQuery('#life-index1').stop().animate(

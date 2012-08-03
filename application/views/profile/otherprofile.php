@@ -1,9 +1,11 @@
 <h4>基本資料</h4>
 <div class="myprofile">
-    <div class="friends-part3">
+    <div class="profile-modify">
+     <a href="<?php echo Yii::app()->createUrl('game/index', array('id' => $user->id)); ?>">
 <?php $this->widget('Avatar', array(
     'id'        => $user->id //得到profile的id---觀看他人基本資料
 )); ?>
+    </a>
         <ul class="user-editor">  
             <li>
                 姓名:<?php echo $user->profile->name; ?>
@@ -33,7 +35,7 @@
             </li>
             <li>
                 生日:<?php echo $user->profile->birthday; ?>
-            </li>   
+            </li>
         </ul>
     </div>
 </div>

@@ -192,6 +192,30 @@ form dl.select dd label
     padding: 4px 8px;
 }
 
+form span.radio
+{
+    background: #FFFFFF;
+    border: 1px solid #B0B0B0;
+    border-radius: 15px;
+    cursor: pointer;
+    display: inline;
+    float: left;
+    height: 8px;
+    margin: 15px 0 0 5px;
+    min-height: 0;
+    padding: 0;
+    position: static;
+    width: 8px;
+}
+
+form span.radio:hover {
+    border: 1px solid #909090;
+}
+
+form span.radio.checked {
+    background: #4B4B4B;
+}
+
 form dd > span
 {
     background: #646464;
@@ -337,6 +361,7 @@ a:hover
     height: 160px;
     position: fixed;
     width: 320px;
+    z-index: 2000;
 }
 
 .confirm-title,
@@ -2396,6 +2421,8 @@ button.news-button
     display: none;
     width: 649px;
     height: 449px;
+    z-index: 1200;
+    position: fixed;
 }
 
 .nculife-style1
@@ -2955,23 +2982,18 @@ button.news-button
     padding-left: 15px;
     padding-bottom: 10px;
     padding-right: 10px;
-    padding-top: 1px;
+    padding-top: 5px;
     border-radius: 10px;
-    background: #FFFFFFce0;
+    background: #FFFFFF;
     position: relative;
     left: 25px;
     height: 739px;
     width: 675px;
-}
-
-#about .introdution
-{
-    border-radius: 3px;
     color: black;
-    line-height: 1.2em;
-    line-height: 24px;
-    letter-spacing: 3px;
-    position: relative;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: 2px;
+    text-indent: 2.2em;
 }
 
 #about .about-picture
@@ -2981,7 +3003,7 @@ button.news-button
     float: right;
     height: 300px;
     width: 400px;
-    margin: 5px;
+    margin: 0px;
 }
 
 #about .tag-txt
@@ -3001,14 +3023,15 @@ button.news-button
 
 #about .title1
 {
-    background: url('../about/what.png') no-repeat;
+    border-radius: 10px 10px 0px 0px;
+    background: url('../about/what.png') #385281 no-repeat;
     width: 750px;
     height: 75px;
 }
 
 #about .title2
 {
-    background: url('../about/who_with_stars.png') #385281  no-repeat;
+    background: url('../about/who_with_stars.png') #385281 no-repeat;
     width: 750px;
     height: 85px;
 }
@@ -3022,6 +3045,7 @@ button.news-button
 
 #about .block2
 {
+    border-radius: 0px 0px 10px 10px;
     background: #385281;
     height: 950px;    
     width: 750px;
@@ -3037,6 +3061,15 @@ button.news-button
     width: 400px;
 }
 
+#about .photo-bar
+{
+    position: absolute;
+    left: 50px;
+    width: 300px;
+    height: 50px;
+    overflow: hidden;
+}
+
 #about .about-block1Pic
 {
     left: 25px;
@@ -3050,6 +3083,7 @@ button.news-button
     position: absolute;
     top: 30px;
     left: 40px;
+    line-height: 10px;
 }
 
 #about .tag
@@ -3099,6 +3133,21 @@ button.news-button
     float: left;
     margin: 5px;
     width: 40px;
+}
+
+#about .photo-ul
+{   
+    left: -40px;
+    position: absolute;
+    margin: 0px;
+    height: 50px;
+}
+
+#about .photo-li
+{
+    width: 50px;
+    height: 50px;
+    float: left;
 }
 
 /**
@@ -3588,7 +3637,7 @@ ul.users-department li h4
     list-style-type:none;
 }
 
-.friends-part3 div.avatar
+/*.friends-part3 div.avatar
 {
     margin-left:40px;
     margin-top:20px;
@@ -3596,7 +3645,7 @@ ul.users-department li h4
     height:310px;
     padding:0px;
     float:left;
-}
+}*/
 
 .user-editor
 {
@@ -3687,21 +3736,21 @@ div.friends
     margin:0px;
 }
 
-div.friends-part1
+div.all-sorts-of-friends
 {
     width:690px;
     height:370px;
     margin:25px 25px 25px 25px;
 }
 
-.friends-part2
+.A-group-users
 {
     width:680px;
     height:370px;
     margin:0px;
 }
 
-div.friends-part2 button
+div.A-group-users button
 {
     padding:0px;
     margin-top:0px;
@@ -3715,7 +3764,7 @@ div.friends-part2 button
     padding:0px;
 }*/
 
-div.friends-part2 div.avatar
+div.A-group-users div.avatar
 {
     margin-left:28px;
     margin-top:0px;
@@ -3725,12 +3774,31 @@ div.friends-part2 div.avatar
     float:left;
 }
 
-.friends-part3
+/*.friends-part3
 {
     width:675px;
     height:350px;
     margin:0px;
     padding:5px;
+}*/
+
+.profile-modify
+{
+    width:675px;
+    height:350px;
+    margin:0px;
+    padding:5px;
+}
+
+
+.profile-modify div.avatar
+{
+    margin-left:40px;
+    margin-top:20px;
+    width:180px; 
+    height:310px;
+    padding:0px;
+    float:left;
 }
 
 div.my-all-messages
@@ -4725,8 +4793,8 @@ div.item-description .exist
     height: 600px;
     background: url('../game/mission.png');
     position: fixed;
-    /*display: inline-block;*/
     display: none;
+    z-index: 2000;
 }
 
 #game-mission-dialog .dialog-close-button
@@ -4787,10 +4855,33 @@ div.item-description .exist
     width: 320px;
     height: 136px;
     font-weight: bold;
-    outline: 1px black solid;
+    /*outline: 1px black solid;*/
     position: absolute;
     top: 356px;
     left: 279px;
+}
+#game-mission-dialog form input
+{
+    width: 302px;
+    height: 50px;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    margin: 12px 0;
+    background: #B5E298;
+    border: 0px solid;
+    border-radius: 14px;
+    box-shadow: 0 0 0 black, 0 3px 3px #3D6914 inset;
+}
+#game-mission-dialog button
+{
+    cursor: pointer;
+    height: 40px;
+    float: left;
+    width: 101px;
+    margin: 5px 110px;
+    font-weight: bold;
+    font-size: 1.5em;
 }
 
 .avatar
