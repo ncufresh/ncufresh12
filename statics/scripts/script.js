@@ -1778,7 +1778,7 @@
             this.options =  $.extend({
                 width:          $(this).width(),
                 height:         $(this).height(),
-                modal:          true,
+                modal:          false,
                 escape:         true,
                 closeButton:    true,
                 speed:          'fast',
@@ -2093,13 +2093,21 @@
             }
             if ( options.closeOnClick )
             {
-                overlay.on('click', function() { return overlayClose(uuid); });
+                overlay.on('click', function()
+                {
+                    return overlayClose(uuid);
+                });
             }
             if ( options.closeOnEscape ) $(document).on('keyup', escape);
             $.extend(overlay.constructor.prototype, {
                 close: function(index)
                 {
                     return overlayClose($(this).data('uuid'), index);
+                },
+                getOverlay: function(index)
+                {
+                    if ( index ) return elements[$(this).data('uuid')][index][0];
+                    return elements[$(this).data('uuid')];
                 }
             });
             elements[uuid][index] = [overlay, options, escape];
@@ -2472,6 +2480,7 @@
     {
         var options = $.extend({
             lightboxId:                 'lightbox',
+            lightboxOverlayId:          'lightbox-overlay',
             lightboxContainerId:        'lightbox-container',
             lightboxBoxId:              'lightbox-box',
             lightboxLoadingId:          'lightbox-loading',
@@ -2483,6 +2492,7 @@
             lightboxDetailsId:          'lightbox-details',
             lightboxCaptionId:          'lightbox-caption',
             lightboxPageId:             'lightbox-page',
+            hideOverlayBackground:      false,
             maxImageHeight:             480,
             maxImageWidth:              640,
             fixedNavigation:            false,
@@ -2510,9 +2520,17 @@
         {
             if ( options.onBeforeShow() )
             {
-                var overlay = $.overlay({
-                    onBeforeHide: lightboxClose
-                });
+                var overlay = $('<div></div>')
+                    .css({
+                        height: $(window).height(),
+                        left: 0,
+                        position: 'fixed',
+                        top: 0,
+                        width: $(window).width()
+                    })
+                    .overlay({
+                        onBeforeHide: lightboxClose
+                    });
                 var lightbox = $('<div></div>')
                     .attr('id', options.lightboxId)
                     .click(function()
@@ -2569,6 +2587,14 @@
                     ));
                 });
                 while ( images[active][1] != $(this).attr('href') ) active++;
+
+                overlay.getOverlay(overlay.index).attr('id', options.lightboxOverlayId);
+                if ( options.hideOverlayBackground )
+                {
+                    overlay.getOverlay(overlay.index).css({
+                        backgroundColor: 'transparent'
+                    });
+                }
 
                 options.onShow();
                 lightbox.css({
@@ -2658,7 +2684,7 @@
             var differenceHeight = currentHeight - containerHeight;
 
             $('#' + options.lightboxId).css({
-                marginTop: -1 * containerWidth / 2
+                marginTop: -1 * containerHeight / 2
             });
             $('#' + options.lightboxDetailsId).css({
                 width: width

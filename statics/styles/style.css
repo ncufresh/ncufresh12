@@ -1305,7 +1305,7 @@ table.gsc-completion-container
 
 #search
 {
-    margin: 8px 0 0 580px;
+    margin: 4px 0 0 560px;
     position: absolute;
     height: 90px;
     width: 220px;
@@ -2385,7 +2385,7 @@ button.news-button
 
 .nculife-style3
 {
-    background: url('../images/life_pink.png');
+    background: url('../images/life_blue.png');
 }
 
 .nculife-style4
@@ -2395,7 +2395,7 @@ button.news-button
 
 .nculife-style5
 {
-    background: url('../images/life_blue.png');
+    background: url('../images/life_pink.png');
 }
 
 .nculife-dialog .dialog-close-button
@@ -2435,7 +2435,7 @@ button.news-button
 #nculife-title
 {
     width: 605px;
-    height: 125px;
+    height: 122px;
     margin: -72px 0 0 10px;
     display: inline-block;
 }

@@ -36,39 +36,32 @@ class StreetController extends Controller
 
 	public function actionBuilding($id = 0) // dialog building information page
     {
-        $url2;
+        $url;
         if( 1 <= $id && $id <= 16 )
         {
-            $url2 = 'department-building';
+            $url = 'department-building';
         }
         else if( ( 17 <= $id && $id <= 26 ) || $id == 61 || $id == 62 || $id == 63 )
         {
-            $url2 = 'landscape';
+            $url = 'landscape';
         }
         else if( ( 27 <= $id && $id <= 33 ) || $id == 68 )
         {
-            $url2 = 'diet';
+            $url = 'diet';
         }
         else if( $id <= 37 || $id == 64 || $id == 65 || $id == 66 || $id == 67 )
         {
-            $url2 = 'government';
+            $url = 'government';
         }
         else if( $id <= 51 )
         {
-            $url2 = 'dormitory';
+            $url = 'dormitory';
         }
         else
         {
-            $url2 = 'exercise';
+            $url = 'exercise';
         }
 
-        $this->_data['content'] = $this->renderPartial( $url2 . '/content' . $id, null, true, false);
-        // $this->_data['photo'] = $url . '/' . $id . '-big.jpg';
-        // $this->_data['picture_main'] = $url . '/' . $id . '.png';
-        // $this->_data['picture_other'][0] = $url . '/' . $id . '.png';                
-        // $this->_data['picture_other'][1] = $url . '/' . $id . '.png';
-        // $this->_data['pictureLayerTwo'][0] = $url . '/5.png';
-        // $this->_data['pictureLayerTwo'][1] = $url . '/4.png';
-        // $this->_data['pictureLayerTwo'][2] = $url . '/1.png';
+        $this->_data['content'] = $this->renderPartial( $url . '/content' . $id, null, true, false);
     }
 }
