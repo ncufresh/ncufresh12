@@ -1,6 +1,3 @@
-<h4>
-    家樂福
-</h4>
 <h5>
     <a href="http://www.carrefour.com.tw/" title="家樂福官方網站">家樂福官方網站</a>
 </h5>

@@ -896,12 +896,43 @@
             var active = false;
             var inside = false;
             var scrollHeight = 0;
+            var scrollWidth = (function()
+            {
+                var inner = document.createElement('p');
+                inner.style.width = '100%';
+                inner.style.height = '200px';
+
+                var outer = document.createElement('div');
+                outer.style.position = 'absolute';
+                outer.style.top = '0px';
+                outer.style.left = '0px';
+                outer.style.visibility = 'hidden';
+                outer.style.width = '200px';
+                outer.style.height = '150px';
+                outer.style.overflow = 'hidden';
+                outer.appendChild(inner);
+
+                document.body.appendChild (outer);
+                var w1 = inner.offsetWidth;
+                outer.style.overflow = 'scroll';
+                var w2 = inner.offsetWidth;
+                if (w1 == w2) w2 = outer.clientWidth;
+
+                document.body.removeChild (outer);
+                return (w1 - w2);
+            })();
             var updateScrollDraggableHeight = function()
             {
                 var originalHeight = parseInt(scrollDragable.css('height'));
                 var scrollContentHeight = scrollContent.height();
                 var scrollTrackHeight = scrollTrack.height();
                 var height = 0;
+                if ( scrollContainer.width() - scrollContent.width() > 0 )
+                {
+                    scrollArea.css({
+                        width: scrollContainer.width() + scrollWidth
+                    });
+                }
                 if ( scrollContentHeight > scrollTrackHeight )
                 {
                     height = scrollTrackHeight
@@ -1051,9 +1082,6 @@
                 );
                 return $(this);
             };
-            scrollArea.css({
-                width: 2 * scrollArea.width() - scrollContent.width()
-            });
             if ( options.scrollableClass )
             {
                 scrollContainer.addClass(options.scrollableClass);
@@ -1872,8 +1900,7 @@
                 marginLeft: -1 * target.options.width / 2,
                 marginTop: -1 * target.options.height / 2,
                 padding: 0,
-                display: 'none',
-                zIndex: 1000
+                display: 'none'
             })
             .addClass(target.options.dialogClass)
             .detach()
@@ -2449,22 +2476,25 @@
             var button = $(this);
             if ( button.hasClass('active') )
             {
-                $('#club-calendar').slideUp(300, function()
+                $('.club-underpicture div').slideUp(300, function()
                 {
                     button.removeClass('active');
                 });
             }
             else
             {
-                $('#club-calendar').slideDown(300, function()
+                $('.club-underpicture div').slideDown(300, function()
                 {
+                    $('#club-calendar').css({
+                        overflow: 'visible'
+                    });
                     button.addClass('active');
                 });
             }
             return false;
         });
 
-        $('#club-calendar').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
+        $('#club-calendar div').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
 
         $('.back').click(function()
         {
@@ -3021,6 +3051,41 @@
                 });
             }
         });
+        $('form input[type="radio"]').each(function(element)
+        {
+            var span = $('<span></span>')
+                .addClass('radio')
+                .mousedown(function()
+                {
+                    $('input[type="radio"][name="' + $(this).prev().prop('checked', true).attr('name') + '"]').each(function()
+                    {
+                        $(this).next().removeClass('checked');
+                    });
+                    $(this).addClass('checked');
+                })
+                .insertAfter($(this));
+
+            $(this).css({
+                    display: 'none',
+                    height: 'auto',
+                    width: 'auto'
+                })
+                .change(function()
+                {
+                    $('input[type="radio"][name="' + $(this).attr('name') + '"]').each(function()
+                    {
+                        if ( $(this).prop('checked') ) {
+                            $(this).next().addClass('checked');
+                        } else {
+                            $(this).next().removeClass('checked');
+                        }
+                    });
+                });
+
+            if ( $(this).prop('checked') ) {
+                $(this).prev().addClass('checked');
+            }
+        });
 
         $.pull.start({
             friendcounter: $('#chat .friendcounts'),
@@ -3057,6 +3122,39 @@
             xfbml:      true
         });
     };
+})(jQuery);
+
+(function($){
+    $(document).ready(function(){
+        $('.allmessages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.my-all-messages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.self-messages').scrollable({
+            wheelSpeed: 90
+        });
+         var daysInMonth = function(iYear, iMonth)
+        {
+            return 32 - new Date(iYear, iMonth-1, 32).getDate();
+        }
+        jQuery('.button-back').click(function()
+        {
+            window.history.back();
+        }); 
+    });
+})(jQuery);
+
+(function($){
+    $(document).ready(function(){
+        $('.A-group-users').scrollable({
+            wheelSpeed: 90
+        });
+        $('.users-group').scrollable({
+            wheelSpeed: 90
+        });
+    });
 })(jQuery);
 
 google.load('search', '1', {

@@ -1,6 +1,6 @@
 <h4>基本資料</h4>
 <div class="myprofile">
-    <div class="friends-part3">
+    <div class="profile-modify">
 <?php $this->widget('Avatar', array(
     'id'        => Yii::app()->user->id
 )); ?>
@@ -40,7 +40,7 @@
                 生日:<?php echo $user->profile->birthday; ?>
             </li> 
             <a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>" id="button-editor"></a>
-            <button type="button" class="button-back"></button>
+            <a href="<?php echo Yii::app()->createUrl('site/index'); ?>" class="button-back""></a>
         </ul>
         
     </div>

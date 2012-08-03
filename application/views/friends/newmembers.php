@@ -1,9 +1,9 @@
-<h4>成員</h4>
+<h4>新增成員</h4>
 <div class="newmember">
-<form class="friends-part2" method="POST" action="<?php echo Yii::app()->createUrl('friends/addnewmembers', array('id'=>$id))  ?>">
+<form class="A-group-users" method="POST" action="<?php echo Yii::app()->createUrl('friends/addnewmembers', array('id'=>$id))  ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
     <ul class="users-department">
-<?php foreach ( $user->friends as $friend ) : ?>
+<?php foreach ( $friends as $friend ) : ?>
         <li>
             <a href="<?php echo Yii::app()->createUrl('profile/otherprofile', array('friend_id' => $friend->profile->id));  ?>">
 <?php $this->widget('Avatar', array(
@@ -22,5 +22,5 @@
     </ul>
     <button type="submit" class="button-sure"></button>
 </form>
-<button type="button" class="button-back"></button>
+<a href="<?php echo $this->createUrl('friends/mygroups'); ?>" class="button-back"></a>
 </div>

@@ -144,10 +144,6 @@ class FriendsController extends Controller
                 else if ( ! $exist && $usergroup->AddNewMember($friendid, $id) )
                 {
                 }
-                else
-                {
-                    echo '新增成員失敗了';
-                }
             }
             $this->redirect(array('friends/mygroups', 'id' => $id));
         }
@@ -156,14 +152,13 @@ class FriendsController extends Controller
 
     public function actionDeleteMembers($id)
     {
-        if ( isset($_POST['members']) )
+        if ( isset($_POST['group-members']) )
         {
-            foreach ( $_POST['members'] as $cancelmember )
+            foreach ( $_POST['group-members'] as $cancelmember )
             {   
                 $close = UserGroup::model()->closeMember($cancelmember, $id);
                 if ( ! $close )
                 {
-                    echo '沒有兩筆資料存在喔';
                 }
             } 
             $this->redirect(array('friends/mygroups', 'id'=> $id));
@@ -196,7 +191,6 @@ class FriendsController extends Controller
                 $close = UserGroup::model()->closeMember($cancelmember->user_id, $id);
                 if ( ! $close )
                 {
-                    echo '沒有刪除所有成員耶';
                 }
             } 
             $this->redirect(array('friends/allgroups'));
@@ -207,9 +201,8 @@ class FriendsController extends Controller
    public function actionNewMembers($id) //新增成員的頁面
    {
         $this->setPageTitle(Yii::app()->name . ' - 我的好友');
-        $user = User::model()->findByPk($this->userId);
         $this->render('newmembers', array(                
-            'user'          => User::model()->findByPk($this->userId),
+            'friends'       => Friend::model()->getFriendsNotInGroup($id),
             'id'            => $id
         ));
    }

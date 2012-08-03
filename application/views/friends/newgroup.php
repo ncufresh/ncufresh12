@@ -1,5 +1,5 @@
 <div id="newgroup">
-<form  class="friends-part2" method="POST" action="<?php echo Yii::app()->createUrl('friends/newgroup');  ?>">
+<form  class="A-group-users" method="POST" action="<?php echo Yii::app()->createUrl('friends/newgroup');  ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
     <label>名稱: </label>
 <input type="text" name="group-name" required="true" />
@@ -27,5 +27,5 @@
         </ul>
 <button type="submit" class="button-sure"></button>
 </form>
-<button type="button" class="button-back" ></button>
+<a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back"></a>
 </div>

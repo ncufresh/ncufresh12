@@ -1,6 +1,6 @@
 <h4>同屆同系</h4>
 <div id="sameDsameG">
-<form class="friends-part2" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
+<form class="A-group-users" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
         <ul class="users-department">
 <?php foreach ( $profiles as $profile ) : ?>
             <li>
@@ -22,5 +22,5 @@
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
     <button type="submit" class="button-addfriends"></button>
 </form>
-<button type="button" class="button-back" ></button>
+<a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back"></a>
 </div>
