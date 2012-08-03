@@ -1,4 +1,9 @@
 <style>
+#all-selected-pic-ul
+{
+    margin-left: 50px;
+    position: relative;
+}
 #all-picture-container
 {
     background: yellow;
@@ -43,7 +48,7 @@
 }
 #backdoor
 {
-    left: -18px;
+    left: -4px;
     top: 184px;
 }
 #boy-dormitory-3
@@ -114,6 +119,19 @@
     height: 551px;
     width: 380px;
 }
+#curtainDiv div
+#curtain
+{
+    position:absolute;
+    left: 601px;
+    z-index: 6;
+}
+#curtain-up
+{
+    position:absolute;
+    top: 0px;
+    z-index: 2;
+}
 #computer-center
 {
     left: 428px;
@@ -128,7 +146,7 @@
 {
     cursor: pointer;
     position: absolute;
-    top: 315px;
+    top: 415px;
     left: 327px;
 }
 #calligraphy
@@ -143,8 +161,8 @@
 }
 #elephant-element
 {
-    left: 435px;
-    top: 257px;
+    left: 465px;
+    top: 252px;
 }
 #engineering-1
 {
@@ -218,6 +236,19 @@
     left: 304px;
     top: 25px;
 }
+#inside-choose
+{
+    float:left;
+    width:190px;
+    height:422px;
+}
+#inside-text
+{
+    float:right;
+    width:190px;
+    height:422px;
+    margin-top: 100px;
+}
 #international-dormitory
 {
     left: 133px;
@@ -265,12 +296,6 @@
     left: 292px;
     top: 60px;
 }
-#other-picture-container
-{
-    overflow: auto;
-    background-color: green;
-    height: 250px;
-}
 #old-library
 {
     left: 177px;
@@ -310,13 +335,6 @@
 {
     left: 241px;
     top: 36px;
-}
-#picture-other-2
-{
-    float: left;
-    height: 150px;
-    width: 250px;
-    background-color: gray;
 }
 #playing-dancing
 {
@@ -378,6 +396,10 @@
     left: 450px;
     top: 84px;
 }
+#street-div
+{
+    overflow: hidden;
+}
 #stepping-cloud
 {
     left: 135px;
@@ -400,6 +422,7 @@
     position: relative;
     margin: 0px;
     bottom: 0px;
+    overflow: hidden;
 }
 #select-left-button
 {
@@ -424,7 +447,8 @@
 {
     z-index: 2;
     display: none;
-    background: white;
+    overflow: scroll;
+    background: url('../statics/building/introduction.png') no-repeat;
 }
 #turtle-pond
 {
@@ -434,7 +458,6 @@
 #view-picture-container
 {
     position: relative;
-    /* height: 350px; */
     width: 700px;
     margin: 0px;
     background-color: black;
@@ -455,11 +478,6 @@
     left: 260px;
     top: 200px;
 }
-.arrow.down
-{
-    left: 260px;
-    top: 320px;
-}
 .arrow.left
 {
      left: 160px;
@@ -470,40 +488,19 @@
      left: 360px;
      top: 260px;
 }
-.arrow.rightTurn
-{
-     left: 380px;
-     top: 350px;
-}
-.arrow.leftTurn
-{
-     left: 140px;
-     top: 350px; 
-}
 .arrow.back
 {
      left: 670px;
      top: 0px;
 }
-.arrow.dayAndNight
+.button-text
 {
+    padding: 4px;
+}
+.exercise
+{
+    top: 440px;
     left: 0px;
-    top: 0px;
-}
-.arrow.hideAndShow
-{
-    left: 0px;
-    top: 382px
-}
-.departmentBuildingText
-{
-    position: relative;
-    float: left;
-}
-.dormitory-text
-{
-    position: relative;
-    float: left;
 }
 .one-image
 {
@@ -551,12 +548,14 @@
 }
 .picture
 {
+    display: none;
     position: absolute;
     z-index: 2;
     cursor: pointer;
 }
 .two-image
 {
+    margin-left: 30px;
     cursor: pointer;
     position: absolute;
     height 70px;
@@ -588,11 +587,6 @@
     top: 140px;
     left: 0px;
 }
-.exercise
-{
-    top: 440px;
-    left: 0px;
-}
 .text-ul
 {
     cursor: pointer;
@@ -600,25 +594,10 @@
     margin-top: 0px;
     padding: 0px;"
 }
-#all-selected-pic-ul
-{
-    margin-left: 50px;
-}
 .lili
 {
     float: left;
     margin-left: 10px;
-}
-#curtain
-{
-    position:absolute;
-    left: 601px;
-}
-#curtain-up
-{
-    position:absolute;
-    top: 0px;
-    z-index: 2;
 }
 </style>
 <?php
@@ -626,14 +605,14 @@
     $index = 0;
     if(empty($files))
     {
-        echo 'no files';
+        // echo 'no files';
     }
     else
     {
         foreach ( $files as $key => $path )
         {
-            // echo 'key: '.$key.' ';
-            // echo 'value: '.$path;
+            echo 'key: '.$key.' ';
+            echo 'value: '.$path;
             $file_path[$index] = $path;
             $index = $index + 1;
         }
@@ -646,12 +625,10 @@
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-up.png" class="arrow up">        
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-left.png" class="arrow left">
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-right.png" class="arrow right">
-
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/back.png" class="arrow back">
-        <!--<img >
-        總寬:750px 總高:601px  窗簾:249px  地圖:寬601px高551px  相片原圖:2256*1496
-        <img >-->
-
+        
+        <!--總寬:750px 總高:601px  窗簾:249px  地圖:寬601px高551px  相片原圖:2256*1496-->
+        
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/map-no-text.png" id="mapPicture" path="<?php echo Yii::app()->request->baseUrl;?>/statics/building/map-no-text.png"><!--底圖-->
         <img id="curtain" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain.png">
         
@@ -739,16 +716,22 @@
 
         <div id="curtainDiv">
         <!--選擇鈕2-->
-            <div style="float:left; width:190px; height:422px;">
-                <img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/college.png" class="two-image department-building" show="department-building" detailItem="department">
-                <img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/landscape.png" class="two-image landscape" show="landscape" detailItem="landscape">
-                <img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/food.png" class="two-image diet" show="diet" detailItem="meal">
-                <img src="<?php echo Yii::app()->baseUrl?>/statics/building/government/government-out.png" class="two-image government" show="government" detailItem="govern">
-                <img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/dormitory.png" class="two-image dormitory" show="dormitory" detailItem="dorm">
-                <img src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/exercise.png" class="two-image exercise" show="exercise" detailItem="sport">           
+            <div id="inside-choose">
+                <!--<img src="<?php //echo Yii::app()->baseUrl?>/statics/building/college/college.png" class="two-image department-building" show="department-building" detailItem="department">-->
+                <p class="two-image department-building" show="department-building" detailItem="department">系館</p>
+                <!--<img src="<?php //echo Yii::app()->baseUrl?>/statics/building/landscape/landscape.png" class="two-image landscape" show="landscape" detailItem="landscape">-->
+                <p class="two-image landscape" show="landscape" detailItem="landscape">景點</p>
+                <!--<img src="<?php //echo Yii::app()->baseUrl?>/statics/building/food/food.png" class="two-image diet" show="diet" detailItem="meal">-->
+                <p class="two-image diet" show="diet" detailItem="meal">餐廳</p>
+                <!--<img src="<?php //echo Yii::app()->baseUrl?>/statics/building/government/government-out.png" class="two-image government" show="government" detailItem="govern">-->
+                <p class="two-image government" show="government" detailItem="govern">建築</p>
+                <!--<img src="<?php //echo Yii::app()->baseUrl?>/statics/building/dormitory/dormitory.png" class="two-image dormitory" show="dormitory" detailItem="dorm">-->
+                <p class="two-image dormitory" show="dormitory" detailItem="dorm">宿舍</p>
+                <!--<img src="<?php //echo Yii::app()->baseUrl?>/statics/building/exercise/exercise.png" class="two-image exercise" show="exercise" detailItem="sport">-->
+                <p class="two-image exercise" show="exercise" detailItem="sport">運動</p>
 
             </div>
-            <div style="float:right; width:190px; height:422px; margin-top: 100px;">
+            <div id="inside-text">
                 <ul class="text-ul">
                     <li class="department-button-text button-text" detailItem="department" href="#1">工程五館</li>
                     <li class="department-button-text button-text" detailItem="department" href="#2">工程三館</li>
@@ -780,7 +763,7 @@
                     <li class="landscape-text button-text" detailItem="landscape" href="#62">綠草如茵</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#63">女14舍前廣場</li>
                 </ul>
-                <ul style="list-style-type:none; margin-top:0px; padding:0px;" class="text-ul">
+                <ul class="text-ul">
                     <li class="food-text button-text" detailItem="meal" href="#28">男七餐廳</li>
                     <li class="food-text button-text" detailItem="meal" href="#29">男九餐廳</li>
                     <li class="food-text button-text" detailItem="meal" href="#30">消夜街</li>
@@ -822,9 +805,8 @@
                 <img id="curtainclose" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtainClose.png">            
             </div>
         </div>
-        <div id="text-container" style="overflow: scroll; background: url('../statics/building/introduction.png') no-repeat;"><!--第一層-->
+        <div id="text-container"><!--第一層-->
                 <div id="building-text">
-                    <p id="ppp">55555</p>
                 </div>
         </div>
 
@@ -833,10 +815,10 @@
                 <img src="<?php echo Yii::app()->baseUrl?>/statics/little_man.jpg">
             </div>
 
-            <div id="select-picture-container" style="overflow: hidden;"><!--2-2-->
+            <div id="select-picture-container"><!--2-2-->
 
                     <button id="select-left-button">left</button>
-                        <ul class="text-ul" id="all-selected-pic-ul" style="position: relative;">                          
+                        <ul class="text-ul" id="all-selected-pic-ul">                          
                         </ul>
                     <button id="select-right-button">right</button>                
             </div>
@@ -848,7 +830,8 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-    $( '#experience-personally' ).mousedown(function()
+    $('#back-div .picture').hide();
+    $('#street-div #experience-personally').mousedown(function()
     {
         $(document).mousemove(mousemove);
         return false;
@@ -857,216 +840,232 @@ $(document).ready(function()
     var isInPicture = false;
     var mousemove = function(event)
     {
-        x = event.pageX - $('#back-div').offset().left;
-        y = event.pageY - $('#back-div').offset().top;
-        $('#experience-personally').css(
+        x = event.pageX - $('#street-div #back-div').offset().left;
+        y = event.pageY - $('#street-div #back-div').offset().top;
+        $('#street-div #experience-personally').css(
         {
         top: y +  2 + 'px',
         left: x + 2 + 'px',
         });
     };
-    $('.picture').mouseenter(function()
+    $('#back-div .picture').mouseenter(function()
     {
         isInPicture = true;
         mouseInId = $(this).attr('id');
+        $(this).attr('src', $(this).attr('src').replace('mouseleave', 'mouseenter'));
     });
-    $('.picture').mouseleave(function()
+    $('#back-div .picture').mouseleave(function()
     {
         isInPicture = false;
+        $(this).attr('src', $(this).attr('src').replace('mouseenter', 'mouseleave'));
     });
     var mouseup = function()
     {
         if( isInPicture == true )
         {
-            $('#experience-personally').css(
+            if( $('#back-div  #' + mouseInId).attr('streetPoints') == (-1) )
             {
-                zIndex: 3,
-            });
-            var id = $('#' + mouseInId).attr('href').replace( '#', '' );
-            $('#mapPicture').attr('src', url + streetPoints[$('#' + mouseInId).attr('streetPoints')][$('#' + mouseInId).attr('faceto')].photo);
-            
-            nowfaceto = $('#' + mouseInId).attr('faceto');
-            nowpointat = [$('#' + mouseInId).attr('streetPoints')];
-            nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
-
-            console.log('一開始');
-            console.log('nowpointat: ' + nowpointat);
-            console.log('nowfaceto: ' + nowfaceto);
-            console.log('nextpointat: ' + nextpointat); 
-            console.log('--------------------------');
-            $( '.arrow' ).eq( 0 ).click(function() //前進nextDirection
+                alert('這裡沒有街景服務喔');
+            }
+            else
             {
-                if( nextpointat == (-1) )
+                $('#street-div #experience-personally').css(
                 {
-                    alert('這裡不能走!!!');
-                }
-                else if( nextpointat != (-1))
-                {
-                    nowpointat = nextpointat;
-                    nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
-                    $('#mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
-                }
-                console.log('按前進');
-                console.log('nowpointat: ' + nowpointat);
-                console.log('nowfaceto: ' + nowfaceto);
-                console.log('nextpointat: ' + nextpointat);            
-                console.log('--------------------------');
-            });
-            $( '.arrow' ).eq( 1 ).click(function() // 左旋
-            {                        
-                turnLeft();
-                $('#mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
-                nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
-                console.log('按左旋');
-                console.log('nowpointat: ' + nowpointat);
-                console.log('nowfaceto: ' + nowfaceto);
-                console.log('nextpointat: ' + nextpointat);
-                console.log('--------------------------');
-            });
-            $( '.arrow' ).eq( 2 ).click(function() // 右旋
-            {
-                turnRight();
-                $('#mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
-                nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
-                console.log('按右旋');
-                console.log('nowpointat: ' + nowpointat);
-                console.log('nowfaceto: ' + nowfaceto);
-                console.log('nextpointat: ' + nextpointat);                        
-                console.log('--------------------------');
-            });
-//-------------------------------------------------------------------------------------------------
-            function turnLeft()
-            {
-                if( nowfaceto == 'N')
-                {
-                    nowfaceto = 'W';
-                }
-                else if( nowfaceto == 'E')
-                {
-                    nowfaceto = 'N';
-                }
-                else if( nowfaceto == 'S')
-                {
-                    nowfaceto = 'E';
-                }
-                else if( nowfaceto == 'W')
-                {
-                    nowfaceto = 'S';
-                }
-                else
-                {
-                    return;
-                }
-            };
-            function turnRight()
-            {
-
-                if( nowfaceto == 'N')
-                {
-                    nowfaceto = 'E';
-                }
-                else if( nowfaceto == 'E')
-                {
-                    nowfaceto = 'S';
-                }
-                else if( nowfaceto == 'S')
-                {
-                    nowfaceto = 'W';
-                }
-                else if( nowfaceto == 'W')
-                {
-                    nowfaceto = 'N';
-                }
-                else
-                {
-                    return;
-                }
-            };
+                    zIndex: 3,
+                });
+                var id = $('#' + mouseInId).attr('href').replace( '#', '' );
+                $('#street-div #mapPicture').attr('src', url + streetPoints[$('#back-div #' + mouseInId).attr('streetPoints')][$('#' + mouseInId).attr('faceto')].photo);
                 
-            $('#back-div').css(
-            {
-                height: 498,
-            });
+                nowfaceto = $('#back-div #' + mouseInId).attr('faceto');
+                nowpointat = [$('#back-div #' + mouseInId).attr('streetPoints')];
+                nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
 
-            $( '#mapPicture' ).css(
-            {
-                zIndex: '3',
-                width: 750,
-                height: 498,
-            });
-            $( '.arrow' ).show();
-            isInPicture = false;
+                console.log('一開始');
+                console.log('nowpointat: ' + nowpointat);
+                console.log('nowfaceto: ' + nowfaceto);
+                console.log('nextpointat: ' + nextpointat); 
+                console.log('--------------------------');
+                $('#street-div .arrow').eq( 0 ).click(function() //前進nextDirection
+                {
+                    if( nextpointat == (-1) )
+                    {
+                        alert('這裡不能走!!!');
+                    }
+                    else if( nextpointat != (-1))
+                    {
+                        nowpointat = nextpointat;
+                        nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
+                        $('#street-div #mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
+                    }
+                    console.log('按前進');
+                    console.log('nowpointat: ' + nowpointat);
+                    console.log('nowfaceto: ' + nowfaceto);
+                    console.log('nextpointat: ' + nextpointat);            
+                    console.log('--------------------------');
+                });
+                $('#street-div .arrow').eq( 1 ).click(function() // 左旋
+                {                        
+                    turnLeft();
+                    $('#street-div #mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
+                    nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
+                    console.log('按左旋');
+                    console.log('nowpointat: ' + nowpointat);
+                    console.log('nowfaceto: ' + nowfaceto);
+                    console.log('nextpointat: ' + nextpointat);
+                    console.log('--------------------------');
+                });
+                $('#street-div .arrow').eq( 2 ).click(function() // 右旋
+                {
+                    turnRight();
+                    $('#street-div #mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
+                    nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
+                    console.log('按右旋');
+                    console.log('nowpointat: ' + nowpointat);
+                    console.log('nowfaceto: ' + nowfaceto);
+                    console.log('nextpointat: ' + nextpointat);                        
+                    console.log('--------------------------');
+                });
+    //-------------------------------------------------------------------------------------------------
+                function turnLeft()
+                {
+                    if( nowfaceto == 'N')
+                    {
+                        nowfaceto = 'W';
+                    }
+                    else if( nowfaceto == 'E')
+                    {
+                        nowfaceto = 'N';
+                    }
+                    else if( nowfaceto == 'S')
+                    {
+                        nowfaceto = 'E';
+                    }
+                    else if( nowfaceto == 'W')
+                    {
+                        nowfaceto = 'S';
+                    }
+                    else
+                    {
+                        return;
+                    }
+                };
+                function turnRight()
+                {
+
+                    if( nowfaceto == 'N')
+                    {
+                        nowfaceto = 'E';
+                    }
+                    else if( nowfaceto == 'E')
+                    {
+                        nowfaceto = 'S';
+                    }
+                    else if( nowfaceto == 'S')
+                    {
+                        nowfaceto = 'W';
+                    }
+                    else if( nowfaceto == 'W')
+                    {
+                        nowfaceto = 'N';
+                    }
+                    else
+                    {
+                        return;
+                    }
+                };
+                    
+                $('#street-div #back-div').css(
+                {
+                    height: 498,
+                });
+
+                $('#street-div #mapPicture').css(
+                {
+                    zIndex: '3',
+                    width: 750,
+                    height: 498,
+                });
+                $('#street-div .arrow').show();
+                isInPicture = false;
+            }
         }
-            $( document ).unbind( 'mousemove', mousemove );
-            $( '#experience-personally' ).css(
+            $(document).unbind('mousemove', mousemove);
+            $('#street-div #experience-personally').css(
             {
                 top: 410,
                 left: 530,
             });
             isInPicture = false;
     };
-    $( document ).mouseup( mouseup );
+    $(document).mouseup(mouseup);
 
-    $( '.picture' ).hide();
-    $('.landscape').show();
+    $('#back-div .picture').hide();
+    $('#back-div .landscape').show();
 
     var littleBuilding = function() // building icon show
     {
-        $( '.picture' ).hide();
+        $('#back-div .picture').hide();
         $( '.' + $( this ).attr( 'show' )).show();
     };
-    $( '.one-image' ).bind('click', littleBuilding);
+    $('#street-div .one-image').bind('click', littleBuilding);
 
-    $( '.two-image' ).click(function(){
-        $( '.button-text' ).hide();
-        $( '.button-text[ detailItem = ' + $( this ).attr( 'detailItem' ) + ']' ).show();
+    $('#street-div .two-image').click(function(){
+        $('#street-div .button-text').hide();
+        $('#street-div .button-text[ detailItem = ' + $(this).attr('detailItem') + ']' ).show();
     });
 
-    $( '.curtainOpen' ).click(function()
+    $('#street-div .curtainOpen').click(function()
     { // 窗簾
-        $('#experience-personally').css(
+        $('#street-div #experience-personally').css(
         {
             zIndex: 1,
         });
-        $( '#curtainDiv' ).animate({left: '370px'});
-        $( '.button-text' ).hide();
-        $( '.button-text[ detailItem = "department" ]' ).show();        
-        $( '.one-image' ).unbind('click', littleBuilding);
+        $('#street-div #curtainDiv').animate(
+        {
+            left: '370px'
+        });
+        $('#street-div .button-text').hide();
+        $('#street-div .button-text[ detailItem = "department" ]').show();        
+        $('#street-div .one-image').unbind('click', littleBuilding);
     });
-    $( '#curtainclose' ).click(function()
+    $('#street-div #curtainclose').click(function()
     {// 窗簾
-        $( '#curtainDiv' ).animate({left: '750px'});
-        $('#experience-personally').css(
+        $('#street-div #curtainDiv').animate(
+        {
+            left: '750px'
+        });
+        $('#street-div #experience-personally').css(
         {
             zIndex: 4,
         });
-        $( '.one-image' ).bind('click', littleBuilding);
+        $('#street-div .one-image').bind('click', littleBuilding);
+        $('#back-div .landscape').show();
     });
 
-    $( '.arrow' ).eq( 3 ).click(function() // 親身體驗 back
+    $('#street-div .arrow').eq( 3 ).click(function() // 親身體驗 back
     {    
-        $( '#mapPicture' ).attr( 'src', $('#mapPicture').attr('path') );
-        $( '.arrow' ).hide();
+        $('#street-div #mapPicture').attr('src', $('#mapPicture').attr('path'));
+        $('#street-div .arrow').hide();
         
-        $('#back-div').css(
+        $('#street-div #back-div').css(
         {
             height: 552,
         });
-        $( '#mapPicture' ).css(
+        $('#street-div #mapPicture').css(
         {
             width: 601,
             height: 552,  
             zIndex: 0,
         });
     });
-    $('.picture, .button-text').click(function()
+    $('#back-div .picture, #back-div .button-text').click(function()
     {
          isInPicture = false;
-         $('#back-div').css(
+         $('#street-div #back-div').css(
          {
             height: 552,
          });
-        $( '#text-container' ).dialog(
+        $('#back-div #text-container').dialog(
         {
             width: 680,
             height: 400,
@@ -1078,15 +1077,15 @@ $(document).ready(function()
             }
         });
 
-        $( '.arrow' ).hide();
-        $( '#mapPicture' ).css(
+        $('#street-div .arrow').hide();
+        $('#street-div #mapPicture').css(
         {
             width: 601,
             height: 552,
             zIndex: 0,
         });
 
-        var id = $( this ).attr( 'href' ).replace( '#', '' );
+        var id = $(this).attr('href').replace('#', '');
         $.ajax(
         {
             type: 'GET',
@@ -1095,16 +1094,10 @@ $(document).ready(function()
             success: function(data)
             {
                 $('#building-text').html(data.content);
-
-                $('#select-picture-container > img').each(function(index)
-                {
-                    $(this).attr('src', data.pictureLayerTwo[index]);
-                });
                 $('#building-text img').css(
                 {
                     cursor: 'pointer',
                 });
-                // alert($('#building-text img').length);
                 $('#building-text img').each(function()
                 {
                     $(this).wrapAll(
@@ -1166,22 +1159,20 @@ $(document).ready(function()
 
     var howmanyphoto;
     var position = 0;
-    // $( '#all-selected-pic-ul > li' )
-    $( '#select-right-button' ).click(function()
+    $('#street-div #select-right-button').click(function()
     {
         if( position > 100 )
-        // if( )
         {
             return;
         }
         else
         {
             position = position + 60;
-            $( '#all-selected-pic-ul' ).animate({left: position + 'px'});
+            $('#street-div #all-selected-pic-ul').animate({left: position + 'px'});
         }
     });
 
-    $( '#select-left-button' ).click(function()
+    $('#street-div #select-left-button').click(function()
     {
         if( position < (-50) )
         {
@@ -1190,7 +1181,7 @@ $(document).ready(function()
         else
         {
             position = position - 60;
-            $( '#all-selected-pic-ul' ).animate({left: position + 'px'});
+            $('#street-div #all-selected-pic-ul' ).animate({left: position + 'px'});
         }
     
     });

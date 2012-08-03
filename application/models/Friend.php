@@ -38,9 +38,9 @@ class Friend extends CActiveRecord
     public function isExist($friendid)
     {
         $data = $this->find(array(
-            'condition' => 'user_id = :userid AND friend_id = :friendid',
-            'params'    => array(
-                ':userid' => Yii::app()->user->getId(),
+                'condition' => 'user_id = :userid AND friend_id = :friendid',
+                'params'    => array(
+                ':userid'   => Yii::app()->user->getId(),
                 ':friendid' => $friendid
             )
         ));
@@ -55,9 +55,9 @@ class Friend extends CActiveRecord
     {
         $friendid = (integer)$friendid;  
         $this->deleteAll(array(
-            'condition' => 'user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid',
-            'params'    => array(
-                ':userid' => Yii::app()->user->getId(),
+                'condition' => 'user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid',
+                'params'    => array(
+                ':userid'   => Yii::app()->user->getId(),
                 ':friendid' => $friendid
             )
         ));
@@ -67,9 +67,9 @@ class Friend extends CActiveRecord
     {
         $friendid = (integer)$friendid;  
         $data = $this->findAll(array(
-            'condition' => 'user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid',
-            'params'    => array(
-                ':userid' => Yii::app()->user->getId(),
+                'condition' => 'user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid',
+                'params'    => array(
+                ':userid'   => Yii::app()->user->getId(),
                 ':friendid' => $friendid
             )
         ));
@@ -78,7 +78,7 @@ class Friend extends CActiveRecord
             $this->updateAll(array(
                 'invisible' => 0
             ), "user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid", array(
-                ':userid' => Yii::app()->user->getId(),
+                ':userid'   => Yii::app()->user->getId(),
                 ':friendid' => $friendid
             ));
         }
@@ -96,9 +96,9 @@ class Friend extends CActiveRecord
     public function getRequests() //好友確認
     {
         return  $this->findAll(array(
-                    'condition' => 'friend_id = :userid AND invisible = 1',
-                    'params'    => array(
-                        ':userid' => Yii::app()->user->getId()
+                        'condition' => 'friend_id = :userid AND invisible = 1',
+                        'params'    => array(
+                        ':userid'   => Yii::app()->user->getId()
                     )
                 ));
     }
@@ -110,8 +110,8 @@ class Friend extends CActiveRecord
         if ( $id === 0 )
              $id = $user_id;
         $data = $this->findAll(array(
-                    'condition' => 'user_id = :userid AND invisible = 0',
-                    'params'    => array(
+                        'condition' => 'user_id = :userid AND invisible = 0',
+                        'params'    => array(
                         ':userid'   => $id
                     )
                 ));
