@@ -86,7 +86,7 @@
 #boy-dormitory-12
 {
     left: 489px;
-    top: 127px;
+    top: 98px;
 }
 #boy-dormitory-13
 {
@@ -105,11 +105,6 @@
     height: 150px;
     width: 250px;
     background-color: gray;
-}
-#boyDormitory11
-{
-    left: 130px;
-    top: 420px;
 }
 #curtainDiv
 {
@@ -445,7 +440,7 @@
 #text-container
 {
     position: fixed;
-    z-index: 2;
+    z-index: 1500;
     display: none;
     background: url('../statics/building/introduction.png') no-repeat;
 }
@@ -653,7 +648,7 @@
         <!--總寬:750px 總高:601px  窗簾:249px  地圖:寬601px高551px  相片原圖:2256*1496-->
         
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/map-no-text.png" id="mapPicture" path="<?php echo Yii::app()->request->baseUrl;?>/statics/building/map-no-text.png"><!--底圖-->
-        <img style="width: 150px;" id="curtain" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain.png">
+        <img id="curtain" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain.png">
         
         <!--系館-->
         <img id="engineering-5" class="department-building picture" streetPoints="0" faceto="E" show="department-building" href="#1" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-5.png">
