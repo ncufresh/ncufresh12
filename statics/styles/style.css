@@ -5754,7 +5754,7 @@ td.popularity
 /*yellow forum CSS*/
 #forum-forum-body.yellow #create-article
 {
-    background: url('../forum/forum/Yellow/eraser.png');
+    background: url('../forum/forum/yellow/eraser.png');
 }
 
 #forum-forum-body.yellow #labels .un-selected
@@ -5774,7 +5774,7 @@ td.popularity
 
 #forum-forum-body.yellow #table-head
 {
-    background: url('../forum/forum/Yellow/pencil.png');
+    background: url('../forum/forum/yellow/pencil.png');
 }
 
 #forum-forum-body.yellow #body-table .table-title th,
@@ -5786,7 +5786,7 @@ td.popularity
 #forum-forum-body.yellow #body-table .table-title th.head,
 #forum-forum-body.yellow #body-table .table-foot td.head
 {
-    background: url('../forum/forum/Yellow/pencil_head.png');
+    background: url('../forum/forum/yellow/pencil_head.png');
 }
 
 #forum-forum-body.yellow #body-table .table-title th.category,
@@ -5800,7 +5800,7 @@ td.popularity
 #forum-forum-body.yellow #body-table .table-title th.tail,
 #forum-forum-body.yellow #body-table .table-foot td.tail
 {
-    background: url('../forum/forum/Yellow/pencil_tail.png');
+    background: url('../forum/forum/yellow/pencil_tail.png');
 }
 
 #forum-forum-body.yellow #body-table .table-body td.category
