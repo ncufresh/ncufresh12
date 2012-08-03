@@ -8,7 +8,7 @@ jQuery(document).ready(function()
             jQuery.configures.ncuLifeUrl.replace(':tab', tab).replace(':page', page),
             function(data)
             { 
-                $('#nculife-cv').html(data.content);
+                $('#nculife-content-view').html(data.content);
             }
         ); 
         return false;
@@ -29,10 +29,9 @@ jQuery(document).ready(function()
         $('#nculife-title').removeClass();
         $('#nculife-title').addClass($(this).parents('ul').attr('bar'));
 
-        $('#nculife-dh').empty();
-        $('#nculife-cv').empty();
-        $('#nculife-dh').empty();
-        $('#nculife-t').empty();
+        $('#nculife-content-view').empty();
+        $('#nculife-dialog-head').empty();
+        $('#nculife-title').empty();
 
         var button = $(this)
         if( button.hasClass('life-bar') )
@@ -47,7 +46,7 @@ jQuery(document).ready(function()
                     .attr('page', $(this).attr('page'))
                     .attr('title', $(this).text())
                     .click(getTabContent);
-                $('#nculife-dh').append(title);
+                $('#nculife-dialog-head').append(title);
             });
             $('#nculife-title h4').text($(this).children('span').text());
         }
@@ -64,13 +63,13 @@ jQuery(document).ready(function()
                     .attr('page', $(this).attr('page'))
                     .attr('title', $(this).text())
                     .click(getTabContent);
-                $('#nculife-dh').append(title);
+                $('#nculife-dialog-head').append(title);
             });
             $('#nculife-title h4').text($(this).text());
         }
-        $('#nculife-dh > a').first().click();
+        $('#nculife-dialog-head > a').first().click();
 
-        $('#nculife-cv').scrollable({
+        $('#nculife-content-view').scrollable({
             scrollableClass:    false
         });
     });
