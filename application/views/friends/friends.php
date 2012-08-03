@@ -70,11 +70,13 @@
 <div class="friends-sortfriend">
 <ul class="friends-self">
     <li>
-        <a href="<?php echo Yii::app()->createUrl('friends/myfriends') ; ?>" title="朋友">
+        <a href="<?php echo Yii::app()->createUrl('friends/myfriends') ; ?>" title="朋友" class="friends-title">
         朋友(
 <?php echo $friend_amount; ?> 
         人)
         </a>
+        <a href="<?php echo Yii::app()->createUrl('friends/allgroups')  ?>" title="我的群組" class="friends-title">我的群組</a>
+        <a href="<?php echo Yii::app()->createUrl('friends/newgroup') ; ?>" title="自訂" class="friends-title">自訂類別</a>
     </li>
 <?php  $account = 1;?>
 <?php foreach ( $user->friends as $friend ) : ?>
@@ -90,14 +92,6 @@
 <?php endif ; ?>
     </li>
 <?php endforeach ; ?>
-</ul>
-<ul class="friend-other-sort">
-    <li>
-        <a href="<?php echo Yii::app()->createUrl('friends/allgroups')  ?>" title="我的群組" class="friends-title">我的群組</a>
-    </li>
-    <li>
-        <a href="<?php echo Yii::app()->createUrl('friends/newgroup') ; ?>" title="自訂" class="friends-title">自訂類別</a>
-    </li>
 </ul>
 </div>
 </div>
