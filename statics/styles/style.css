@@ -1769,14 +1769,14 @@ a.calendar-hide-event:hover
     height: 20px;
     line-height: 20px;
     display: inline-block;
-    background-color: #fff179;
+    background-color: #FFFFFF179;
     border-radius: 5px;
     color: #27120a;
 }
 
 #calendar-recycle a.calendar-show-event
 {
-    background: url('../images/calendar_recover.png') no-repeat #fff179;
+    background: url('../images/calendar_recover.png') no-repeat #FFFFFF179;
 }
 
 #calendar-recycle a.calendar-show-event:active
@@ -1787,7 +1787,7 @@ a.calendar-hide-event:hover
 
 #calendar-recycle a.calendar-hide-event
 {
-    background: url('../images/calendar_delete.png') no-repeat #fff179;
+    background: url('../images/calendar_delete.png') no-repeat #FFFFFF179;
 }
 
 #calendar-recycle a.calendar-hide-event:active
@@ -2037,19 +2037,17 @@ a.calendar-hide-event:hover
 
 .news-view .header h4
 {
-    margin: 10px 0 0 0;
-    font-size: 22pt;
     width: 700px;
     display: block;
     overflow: hidden;
-    text-shadow: #fff 0px 0px 3px;
+    text-shadow: #FFFFFF 0px 0px 3px;
 }
 
 .news-view .header .edit
 {  
     width: 95px;
     height: 35px;
-    background: #fff;
+    background: #FFFFFF;
     border-radius: 10px;
     display: block;
     line-height: 35px;
@@ -2092,14 +2090,7 @@ a.calendar-hide-event:hover
     margin: 0 0 10px 0;
     min-height: 250px;
     word-break: break-all;
-}
-
-.news-view .content label
-{
-    color: #666666;
-    font-size: 14pt;
-    display: block;
-    height: 19px;
+    line-height: 1.4em;
 }
 
 .news-view .content a
@@ -2949,16 +2940,15 @@ button.news-button
     margin-top: 6px
 }
 
-#about .itrBlock
+#about .itr-block
 {
     padding-left: 15px;
     padding-bottom: 10px;
     padding-right: 10px;
     padding-top: 1px;
     border-radius: 10px;
-    background: #fffce0;
+    background: #FFFFFFce0;
     position: relative;
-    float: top;
     left: 25px;
     height: 739px;
     width: 675px;
@@ -2969,6 +2959,19 @@ button.news-button
     border-radius: 3px;
     color: black;
     line-height: 1.2em;
+    line-height: 24px;
+    letter-spacing: 3px;
+    position: relative;
+}
+
+#about .about-picture
+{
+    z-index: 1;
+    position: relative;
+    float: right;
+    height: 300px;
+    width: 400px;
+    margin: 5px;
 }
 
 #about .tag-txt
@@ -3014,9 +3017,29 @@ button.news-button
     width: 750px;
 }
 
-#about .information
+#about .about-display
 {
-    
+    background: #FFFFFF;
+    bottom: 0px;
+    height: 0px;
+    opacity: 0px;
+    position: absolute;
+    width: 400px;
+}
+
+#about .about-block1Pic
+{
+    left: 25px;
+    height: 280px;
+    width: 700px;
+    position: relative;
+}
+
+#about .about-block1Inf
+{
+    position: absolute;
+    top: 30px;
+    left: 40px;
 }
 
 #about .tag
@@ -3026,6 +3049,15 @@ button.news-button
     height: 508px;
     width: 700px;
     position: relative;
+}
+
+#about .about-tagbar
+{
+    top: 10%;
+    left: 10%;
+    position: relative;
+    height: 80%;
+    width: 80%;
 }
 
 #about .tag-Box-name
@@ -3044,6 +3076,19 @@ button.news-button
     text-align: center;
     height: 10%;
     width: 100%;
+}
+
+#about .animation
+{
+    position: absolute;
+}
+
+#about .about-photos
+{
+    height: 40px;
+    float: left;
+    margin: 5px;
+    width: 40px;
 }
 
 /**
@@ -3247,7 +3292,6 @@ button.news-button
 }
 .club-display-head h4
 {
-    font-size: 30px;
     text-align: center;
     margin-top: 35px;
 }
@@ -3516,7 +3560,6 @@ ul.users-department li h4
     height: 35px;
     display: block;
     list-style-type:none;
-    font-size: 20px;
     text-align:left;
 }
 
@@ -4248,7 +4291,6 @@ li#article-content
     width: 600px;
     height: 50px;
     display: block;
-    font-size: 30px;
     text-align:left;
     color:DarkMagenta ;
 }
@@ -4651,7 +4693,7 @@ div.item-description .exist
 {
     width: 325px;
     height: 246px;
-    font-size: 25px;
+    font-size: 1.5em;
     font-weight: bold;
     /*outline: 1px solid black;*/
     position: absolute;
@@ -4671,7 +4713,7 @@ div.item-description .exist
 {
     width: 265px;
     height: 451px;
-    font-size: 18px;
+    font-size: 1.125em;
     /*outline: 1px solid black;*/
     position: absolute;
     top: 43px;
@@ -4681,7 +4723,6 @@ div.item-description .exist
 #game-mission-dialog h4
 {
     font-weight: bold;
-    font-size: 31px;
     /*outline: 1px black solid;*/
     position: absolute;
     top: 39px;
@@ -4693,7 +4734,6 @@ div.item-description .exist
     width: 320px;
     height: 136px;
     font-weight: bold;
-    font-size: 31px;
     outline: 1px black solid;
     position: absolute;
     top: 356px;
@@ -4779,7 +4819,6 @@ ul.game-button li
     /* outline: 1px solid red; */
     float: left;
     margin-right: 1px;
-    font-size: 24px;
     text-align:center;
     color:#b9b9b9;
 }
@@ -4941,7 +4980,7 @@ li.enabled a
     height: 20px;
     padding: 5px;
     padding-left: 8px;
-    border: 2px solid #ffffff;
+    border: 2px solid #FFFFFFFFFFFF;
     border-radius: 5px;
     background-color: rgba(175,191,232,0.5);
     color: #1042ba;
@@ -5111,7 +5150,7 @@ li.enabled a
 {
     width: 150px;
     height: 180px;
-    background: #ffffff;
+    background: #FFFFFFFFFFFF;
     border-radius: 6px;
     margin: 0 auto;
 }
@@ -5121,7 +5160,7 @@ li.enabled a
     width: 140px;
     height: 23px;
     margin: 10px auto;
-    background: #fff0c8;
+    background: #FFFFFF0c8;
     border-radius:5px;
     padding-top: 2px;
     padding-left: 10px;
@@ -5133,7 +5172,7 @@ li.enabled a
     width: 140px;
     height: 23px;
     margin: 1px auto;
-    background: #fff0c8;
+    background: #FFFFFF0c8;
     border-radius:5px;
     padding-top: 2px;
     padding-left: 10px;
@@ -5145,7 +5184,7 @@ li.enabled a
     width: 389px;
     height: 31px;
     border-radius: 6px;
-    background: #fff0c8;
+    background: #FFFFFF0c8;
     float: left;
     margin-left: 20px;
     margin-bottom: 3px;
@@ -5159,7 +5198,7 @@ li.enabled a
     width: 378px;
     min-height: 182px;
     border-radius: 6px;
-    background: #ffffff;
+    background: #FFFFFFFFFFFF;
     float: left;
     margin-left: 20px;
     border: 2px solid #eaa520;
@@ -5214,7 +5253,7 @@ li.enabled a
     width: 378px;
     min-height: 232px;
     border-radius: 6px;
-    background: #ffffff;
+    background: #FFFFFFFFFFFF;
     float: left;
     margin-left: 20px;
     margin-top: 20px;
@@ -5500,6 +5539,11 @@ li.enabled a
     min-height: 70px;
 }
 
+#forum-forum-body .category-lists #labels
+{
+    padding: 0px;
+}
+
 #forum-forum-body #create-article
 {
     background: url('../forum/forum/eraser.png');
@@ -5514,7 +5558,7 @@ li.enabled a
 
 #forum-forum-body #create-article a
 {
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body #labels
@@ -5537,7 +5581,7 @@ li.enabled a
     border-radius: 8px;
     margin-right: 5px;
     padding: 4px 4px 0 13px;
-    border: 2px solid #ffffff;
+    border: 2px solid #FFFFFFFFFFFF;
 }
 
 #forum-forum-body #labels .un-selected:hover
@@ -5556,13 +5600,13 @@ li.enabled a
     border-radius: 8px;
     margin-right: 5px;
     padding: 4px 4px 0 13px;
-    border: 2px solid #ffffff;
+    border: 2px solid #FFFFFFFFFFFF;
 }
 
 #forum-forum-body #labels a
 {
     display: inline;
-    color: #ffffff;
+    color: #FFFFFFFFFFFF;
     display:block;
 }
 
@@ -5588,7 +5632,7 @@ li.enabled a
     min-height:40px;
     height:40px;
     
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body #body-table .table-title th.head,
@@ -5604,14 +5648,14 @@ li.enabled a
 {
     width: 84px;
     background: url('../forum/forum/pencil_category.png');
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body #body-table .table-title th.title,
 #forum-forum-body #body-table .table-foot td.title
 {
     width: 190px;
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 
@@ -5648,7 +5692,7 @@ li.enabled a
     border-color:#f48191;
     border-width:2px;
     border-top-width:0.8px;
-    background-color:#ffffff;
+    background-color:#FFFFFFFFFFFF;
     text-align: center;
 }
 
@@ -5662,7 +5706,7 @@ li.enabled a
     border-color:#f48191;
     border-width:2px;
     border-top-width:0.8px;
-    background-color:#ffffff;
+    background-color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body #body-table .table-body td.author
@@ -5695,7 +5739,7 @@ li.enabled a
     border-color:#f48191;
     border-width:2px;
     border-top-width:0.8px;
-    background-color:#ffffff;
+    background-color:#FFFFFFFFFFFF;
     word-break: break-all;
 }
 
@@ -5751,7 +5795,7 @@ li.enabled a
 {
     width: 84px;
     background: url('../forum/forum/blue/pencil_category.png');
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body.blue #body-table .table-title th.tail,
@@ -5827,7 +5871,7 @@ td.popularity
 {
     width: 84px;
     background: url('../forum/forum/green/pencil_category.png');
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body.green #body-table .table-title th.tail,
@@ -5903,7 +5947,7 @@ td.popularity
 {
     width: 84px;
     background: url('../forum/forum/purple/pencil_category.png');
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body.purple #body-table .table-title th.tail,
@@ -5979,7 +6023,7 @@ td.popularity
 {
     width: 84px;
     background: url('../forum/forum/orange/pencil_category.png');
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body.orange #body-table .table-title th.tail,
@@ -6055,7 +6099,7 @@ td.popularity
 {
     width: 84px;
     background: url('../forum/forum/yellow/pencil_category.png');
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body.yellow #body-table .table-title th.tail,
@@ -6108,14 +6152,14 @@ td.popularity
 {    
     color: #1E50A2;
     text-align: center;
-    font-size: 30px;
+    font-size: 1.8em;
 }
 
 #ultimate-password .message
 {    
     color: #B44C97;
     text-align: center;
-    font-size: 20px;
+    font-size: 1.25em;
 }
 
 #ultimate-password .input
@@ -6134,14 +6178,14 @@ td.popularity
     width: 100px;
     height: 50px;
     text-align: center;
-    font-size: 30px;
+    font-size: 1.8em;
 }
 
 #ultimate-password .error
 {    
     color: red;
     text-align: center;
-    font-size: 20px;
+    font-size: 1.15em;
     margin-top: 0;
 }
 

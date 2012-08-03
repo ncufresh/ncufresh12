@@ -8,8 +8,8 @@
     <div class="item-description">
         <h4>&lt; <?php echo $item->translation->name ?> &gt;</h4>
         <span class="description"><?php echo $item->translation->description ?></span>
-        <span>需求等級：LV.<?php echo $item->translation->level?> / 價值：<?php echo $item->translation->price ?> 金幣</span>
-        <span>獲取時間：<?php echo Yii::app()->format->datetime($item->created)?></span>
+        <span>[ 需求等級：LV.<?php echo $item->translation->level?> / 價值：<?php echo $item->translation->price ?> 金幣 ]</span>
+        <span>[ 獲取時間：<?php echo Yii::app()->format->datetime($item->created)?> ]</span>
     </div>
 </a>
 <?php endforeach; ?>
@@ -22,8 +22,8 @@
     <div class="item-description">
         <h4>&lt; <?php echo $item->translation->name ?> &gt;</h4>
         <span class="description"><?php echo $item->translation->description ?></span>
-        <span>需求等級：LV.<?php echo $item->translation->level?> / 價值：<?php echo $item->translation->price ?> 金幣</span>
-        <span>獲取時間：<?php echo Yii::app()->format->datetime($item->created)?></span>
+        <span>[ 需求等級：LV.<?php echo $item->translation->level?> / 價值：<?php echo $item->translation->price ?> 金幣 ]</span>
+        <span>[ 獲取時間：<?php echo Yii::app()->format->datetime($item->created)?> ]</span>
     </div>
 </a>
 <?php endforeach; ?>
@@ -36,8 +36,8 @@
     <div class="item-description">
         <h4>&lt; <?php echo $item->translation->name ?> &gt;</h4>
         <span class="description"><?php echo $item->translation->description ?></span>
-        <span>需求等級：LV.<?php echo $item->translation->level?> / 價值：<?php echo $item->translation->price ?> 金幣</span>
-        <span>獲取時間：<?php echo Yii::app()->format->datetime($item->created)?></span>
+        <span>[ 需求等級：LV.<?php echo $item->translation->level?> / 價值：<?php echo $item->translation->price ?> 金幣 ]</span>
+        <span>[ 獲取時間：<?php echo Yii::app()->format->datetime($item->created)?> ]</span>
     </div>
 </a>
 <?php endforeach; ?>
@@ -50,8 +50,8 @@
     <div class="item-description">
         <h4>&lt; <?php echo $item->translation->name ?> &gt;</h4>
         <span class="description"><?php echo $item->translation->description ?></span>
-        <span>需求等級：LV.<?php echo $item->translation->level?> / 價值：<?php echo $item->translation->price ?> 金幣</span>
-        <span>獲取時間：<?php echo Yii::app()->format->datetime($item->created)?></span>
+        <span>[ 需求等級：LV.<?php echo $item->translation->level?> / 價值：<?php echo $item->translation->price ?> 金幣 ]</span>
+        <span>[ 獲取時間：<?php echo Yii::app()->format->datetime($item->created)?> ]</span>
     </div>
 </a>
 <?php endforeach; ?>
@@ -64,8 +64,8 @@
     <div class="item-description">
         <h4>&lt; <?php echo $item->translation->name ?> &gt;</h4>
         <span class="description"><?php echo $item->translation->description ?></span>
-        <span>需求等級：LV.<?php echo $item->translation->level?> / 價值：<?php echo $item->translation->price ?> 金幣</span>
-        <span>獲取時間：<?php echo Yii::app()->format->datetime($item->created)?></span>
+        <span>[ 需求等級：LV.<?php echo $item->translation->level?> / 價值：<?php echo $item->translation->price ?> 金幣 ]</span>
+        <span>[ 獲取時間：<?php echo Yii::app()->format->datetime($item->created)?> ]</span>
     </div>
 </a>
 <?php endforeach; ?>
@@ -78,8 +78,8 @@
     <div class="item-description">
         <h4>&lt; <?php echo $item->translation->name ?> &gt;</h4>
         <span class="description"><?php echo $item->translation->description ?></span>
-        <span>需求等級：LV.<?php echo $item->translation->level?> / 價值：<?php echo $item->translation->price ?> 金幣</span>
-        <span>獲取時間：<?php echo Yii::app()->format->datetime($item->created)?></span>
+        <span>[ 需求等級：LV.<?php echo $item->translation->level?> / 價值：<?php echo $item->translation->price ?> 金幣 ]</span>
+        <span>[ 獲取時間：<?php echo Yii::app()->format->datetime($item->created)?> ]</span>
     </div>
 </a>
 <?php endforeach; ?>
@@ -92,8 +92,8 @@
     <div class="item-description">
         <h4>&lt; <?php echo $item->translation->name ?> &gt;</h4>
         <span class="description"><?php echo $item->translation->description ?></span>
-        <span>需求等級：LV.<?php echo $item->translation->level?> / 價值：<?php echo $item->translation->price ?> 金幣</span>
-        <span>獲取時間：<?php echo Yii::app()->format->datetime($item->created)?></span>
+        <span>[ 需求等級：LV.<?php echo $item->translation->level?> / 價值：<?php echo $item->translation->price ?> 金幣 ]</span>
+        <span>[ 獲取時間：<?php echo Yii::app()->format->datetime($item->created)?> ]</span>
     </div>
 </a>
 <?php endforeach; ?>
