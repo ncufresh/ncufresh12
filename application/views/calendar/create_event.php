@@ -19,7 +19,7 @@
 })(jQuery);
 </script>
 <?php $this->endWidget();?>
-<div id="calendar-create">
+<div class="calendar-create">
     <form id="calendar-create-form" enctype="multiprt/form-data" action="<?php echo Yii::app()->createUrl('calendar/createevent'); ?>" method="POST">
     <h4 id="calendar-create-text-number-check">新增事件</h4>
     <dl>
