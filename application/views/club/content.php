@@ -1,10 +1,10 @@
 <div id="club-<?php echo $data->id; ?>">
     <div class="club-underpicture">
+        <h4 id="club-calendar-button">行事曆</h4>
         <div>
-            <div id="club-calendar-button">
-            <h4>行事曆</h4>
-            </div>
             <div id="club-calendar">
+            <div>
+            </div>
             </div>
         </div>
         <ul id="club-menu-items">

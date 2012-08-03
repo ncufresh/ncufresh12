@@ -40,7 +40,7 @@
                 生日:<?php echo $user->profile->birthday; ?>
             </li> 
             <a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>" id="button-editor"></a>
-            <button type="button" class="button-back"></button>
+            <a href="<?php echo Yii::app()->createUrl('site/index'); ?>" class="button-back""></a>
         </ul>
         
     </div>

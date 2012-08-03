@@ -1494,12 +1494,12 @@
             today:       true,
             left:        false,
             right:       false,
-            linkClick:   function(){ return false; },
-            leftClick:   function(){ return false; },
-            rightClick:  function(){ return false; },
-            dayClick:    function(event){},
-            dayEnter:    function(event){},
-            dayLeave:    function(event){}
+            linkClick:   function() { return false; },
+            leftClick:   function() { return false; },
+            rightClick:  function() { return false; },
+            dayClick:    function(event) {},
+            dayEnter:    function(event) {},
+            dayLeave:    function(event) {}
         }, options);
 
         options.month -= 1;
@@ -1585,11 +1585,13 @@
 
     $.fn.calendar = function(url)
     {
+        var todolist;
         var container = $(this);
         var updateTodolist = function()
         {
             var events = $(this).data('cal_events');
             var todos = [];
+            if ( todolist ) todolist.remove();
             for ( var key in events )
             {
                 var start = new Date((events[key].start - (new Date()).getTimezoneOffset() * 60) * 1000);
@@ -1600,8 +1602,7 @@
                     events[key].name
                 ];
             }
-            todolist.remove();
-            todolist = $.generateTodolist(todos).insertAfter(calendar);
+            todolist = $.generateTodolist(todos).appendTo(container);
             return todolist;
         };
         var generate = function(year, month)
@@ -1617,8 +1618,9 @@
                         year += 1;
                         month = 1;
                     }
-                    container.children('table').detach();
-                    generate(year, month);
+                    calendar.remove();
+                    todolist.remove();
+                    calendar = generate(year, month);
                     return false;
                 },
                 left: true,
@@ -1629,8 +1631,9 @@
                         year -= 1;
                         month = 12;
                     }
-                    container.children('table').detach();
-                    generate(year, month);
+                    calendar.remove();
+                    todolist.remove();
+                    calendar = generate(year, month);
                     return false;
                 },
                 dayClick: function()
@@ -1649,15 +1652,13 @@
                 }
             }).appendTo(container);
             calendar.find('caption a:eq(1)').text(year + '年' + month + '月');
-            calendar.updateData(url, function(element)
+            calendar.updateData(url, function()
             {
-                if ( element.getToday() ) return updateTodolist(element);
-                return false;
+                return updateTodolist.call(calendar.getToday());
             });
             return calendar;
         };
         var calendar = generate((new Date()).getFullYear(), (new Date()).getMonth() + 1);
-        var todolist = $.generateTodolist([]).insertAfter(calendar);
         return this;
     };
 
@@ -1778,7 +1779,7 @@
             this.options =  $.extend({
                 width:          $(this).width(),
                 height:         $(this).height(),
-                modal:          true,
+                modal:          false,
                 escape:         true,
                 closeButton:    true,
                 speed:          'fast',
@@ -2093,13 +2094,21 @@
             }
             if ( options.closeOnClick )
             {
-                overlay.on('click', function() { return overlayClose(uuid); });
+                overlay.on('click', function()
+                {
+                    return overlayClose(uuid);
+                });
             }
             if ( options.closeOnEscape ) $(document).on('keyup', escape);
             $.extend(overlay.constructor.prototype, {
                 close: function(index)
                 {
                     return overlayClose($(this).data('uuid'), index);
+                },
+                getOverlay: function(index)
+                {
+                    if ( index ) return elements[$(this).data('uuid')][index][0];
+                    return elements[$(this).data('uuid')];
                 }
             });
             elements[uuid][index] = [overlay, options, escape];
@@ -2440,22 +2449,25 @@
             var button = $(this);
             if ( button.hasClass('active') )
             {
-                $('#club-calendar').slideUp(300, function()
+                $('.club-underpicture div').slideUp(300, function()
                 {
                     button.removeClass('active');
                 });
             }
             else
             {
-                $('#club-calendar').slideDown(300, function()
+                $('.club-underpicture div').slideDown(300, function()
                 {
+                    $('#club-calendar').css({
+                        overflow: 'visible'
+                    });
                     button.addClass('active');
                 });
             }
             return false;
         });
 
-        $('#club-calendar').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
+        $('#club-calendar div').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
 
         $('.back').click(function()
         {
@@ -2472,6 +2484,7 @@
     {
         var options = $.extend({
             lightboxId:                 'lightbox',
+            lightboxOverlayId:          'lightbox-overlay',
             lightboxContainerId:        'lightbox-container',
             lightboxBoxId:              'lightbox-box',
             lightboxLoadingId:          'lightbox-loading',
@@ -2483,6 +2496,7 @@
             lightboxDetailsId:          'lightbox-details',
             lightboxCaptionId:          'lightbox-caption',
             lightboxPageId:             'lightbox-page',
+            hideOverlayBackground:      false,
             maxImageHeight:             480,
             maxImageWidth:              640,
             fixedNavigation:            false,
@@ -2510,9 +2524,17 @@
         {
             if ( options.onBeforeShow() )
             {
-                var overlay = $.overlay({
-                    onBeforeHide: lightboxClose
-                });
+                var overlay = $('<div></div>')
+                    .css({
+                        height: $(window).height(),
+                        left: 0,
+                        position: 'fixed',
+                        top: 0,
+                        width: $(window).width()
+                    })
+                    .overlay({
+                        onBeforeHide: lightboxClose
+                    });
                 var lightbox = $('<div></div>')
                     .attr('id', options.lightboxId)
                     .click(function()
@@ -2569,6 +2591,14 @@
                     ));
                 });
                 while ( images[active][1] != $(this).attr('href') ) active++;
+
+                overlay.getOverlay(overlay.index).attr('id', options.lightboxOverlayId);
+                if ( options.hideOverlayBackground )
+                {
+                    overlay.getOverlay(overlay.index).css({
+                        backgroundColor: 'transparent'
+                    });
+                }
 
                 options.onShow();
                 lightbox.css({
@@ -2658,7 +2688,7 @@
             var differenceHeight = currentHeight - containerHeight;
 
             $('#' + options.lightboxId).css({
-                marginTop: -1 * containerWidth / 2
+                marginTop: -1 * containerHeight / 2
             });
             $('#' + options.lightboxDetailsId).css({
                 width: width

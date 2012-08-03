@@ -31,16 +31,40 @@ class Friend extends CActiveRecord
                 self::BELONGS_TO,
                 'Profile',
                 'user_id'
-            ) 
+            ),
+            'user_group' => array(
+                self::HAS_MANY,
+                'UserGroup',
+                '',
+                'on' => 'friend_id = user_group.user_id'
+            )
         );
     }
 
+    public function getFriendsNotInGroup($id)
+    {
+        return $this->with(array(
+            'user_group' => array(
+                'condition' => '(user_group.invisible=1 OR user_group.invisible IS NULL)', //不存在該社團的條件
+                'on' => 'user_group.group_id = :gid', //現在是哪個社團
+                'params' => array(
+                    ':gid' => $id
+                )
+            )
+        ))->findAll(array(
+            'condition' => 't.user_id = :id AND t.invisible = 0', //是朋友的條件
+            'params' => array(
+                ':id' => Yii::app()->user->getId()
+            )
+        ));
+    }
+    
     public function isExist($friendid)
     {
         $data = $this->find(array(
-            'condition' => 'user_id = :userid AND friend_id = :friendid',
-            'params'    => array(
-                ':userid' => Yii::app()->user->getId(),
+                'condition' => 'user_id = :userid AND friend_id = :friendid',
+                'params'    => array(
+                ':userid'   => Yii::app()->user->getId(),
                 ':friendid' => $friendid
             )
         ));
@@ -55,9 +79,9 @@ class Friend extends CActiveRecord
     {
         $friendid = (integer)$friendid;  
         $this->deleteAll(array(
-            'condition' => 'user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid',
-            'params'    => array(
-                ':userid' => Yii::app()->user->getId(),
+                'condition' => 'user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid',
+                'params'    => array(
+                ':userid'   => Yii::app()->user->getId(),
                 ':friendid' => $friendid
             )
         ));
@@ -67,9 +91,9 @@ class Friend extends CActiveRecord
     {
         $friendid = (integer)$friendid;  
         $data = $this->findAll(array(
-            'condition' => 'user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid',
-            'params'    => array(
-                ':userid' => Yii::app()->user->getId(),
+                'condition' => 'user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid',
+                'params'    => array(
+                ':userid'   => Yii::app()->user->getId(),
                 ':friendid' => $friendid
             )
         ));
@@ -78,7 +102,7 @@ class Friend extends CActiveRecord
             $this->updateAll(array(
                 'invisible' => 0
             ), "user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid", array(
-                ':userid' => Yii::app()->user->getId(),
+                ':userid'   => Yii::app()->user->getId(),
                 ':friendid' => $friendid
             ));
         }
@@ -96,9 +120,9 @@ class Friend extends CActiveRecord
     public function getRequests() //好友確認
     {
         return  $this->findAll(array(
-                    'condition' => 'friend_id = :userid AND invisible = 1',
-                    'params'    => array(
-                        ':userid' => Yii::app()->user->getId()
+                        'condition' => 'friend_id = :userid AND invisible = 1',
+                        'params'    => array(
+                        ':userid'   => Yii::app()->user->getId()
                     )
                 ));
     }
@@ -110,12 +134,20 @@ class Friend extends CActiveRecord
         if ( $id === 0 )
              $id = $user_id;
         $data = $this->findAll(array(
-                    'condition' => 'user_id = :userid AND invisible = 0',
-                    'params'    => array(
+                        'condition' => 'user_id = :userid AND invisible = 0',
+                        'params'    => array(
                         ':userid'   => $id
                     )
                 ));
         return count($data);
+    }
+
+    public function getNewMember()
+    {
+        $group = new Group();
+        return $this->findAll(array(
+                    'condition' => 'id = :groupid AND invisible = 0'
+                ));
     }
 
 }
