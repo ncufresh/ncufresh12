@@ -2926,7 +2926,7 @@ button.news-button
     margin-top: 6px
 }
 
-#about .itrBlock
+#about .itr-block
 {
     padding-left: 15px;
     padding-bottom: 10px;
@@ -2935,7 +2935,6 @@ button.news-button
     border-radius: 10px;
     background: #fffce0;
     position: relative;
-    float: top;
     left: 25px;
     height: 739px;
     width: 675px;
@@ -2949,6 +2948,17 @@ button.news-button
     font-size: 18px;
     line-height: 24px;
     letter-spacing: 3px;
+    position: relative;
+}
+
+#about .about-picture
+{
+    z-index: 1;
+    position: relative;
+    float: right;
+    height: 300px;
+    width: 400px;
+    margin: 5px;
 }
 
 #about .tag-txt
@@ -2994,9 +3004,29 @@ button.news-button
     width: 750px;
 }
 
-#about .information
+#about .about-display
 {
-    
+    background: #FFFFFF;
+    bottom: 0px;
+    height: 0px;
+    opacity: 0px;
+    position: absolute;
+    width: 400px;
+}
+
+#about .about-block1Pic
+{
+    left: 25px;
+    height: 280px;
+    width: 700px;
+    position: relative;
+}
+
+#about .about-block1Inf
+{
+    position: absolute;
+    top: 30px;
+    left: 40px;
 }
 
 #about .tag
@@ -3006,6 +3036,15 @@ button.news-button
     height: 508px;
     width: 700px;
     position: relative;
+}
+
+#about .about-tagbar
+{
+    top: 10%;
+    left: 10%;
+    position: relative;
+    height: 80%;
+    width: 80%;
 }
 
 #about .tag-Box-name
@@ -3024,6 +3063,19 @@ button.news-button
     text-align: center;
     height: 10%;
     width: 100%;
+}
+
+#about .animation
+{
+    position: absolute;
+}
+
+#about .about-photos
+{
+    height: 40px;
+    float: left;
+    margin: 5px;
+    width: 40px;
 }
 
 /**
