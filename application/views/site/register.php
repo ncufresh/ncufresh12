@@ -6,15 +6,24 @@
             <label for="form-register-username">帳號</label>
         </dt>
         <dd>
+<<<<<<< HEAD
+            <input id="form-register-name" name="profile[name]" type="text" />
+=======
             <input id="form-register-username" name="register[username]" type="text" />
+>>>>>>> e534389b966f96e9317a7cc9bd5bb42d928b1d34
             <span>
 <?php if ( isset($username_errors['username']) ) :?>
 <?php foreach ( $username_errors['username'] as $error ) : ?>
 <?php echo $error; ?>
 <?php endforeach; ?>
 <?php else: ?>
+<<<<<<< HEAD
+            真實姓名
+<?php endif; ?>   
+=======
             須大於8碼唷
 <?php endif; ?>
+>>>>>>> e534389b966f96e9317a7cc9bd5bb42d928b1d34
             </span>
         </dd>
     </dl>
@@ -23,15 +32,24 @@
             <label for="form-register-password">密碼</label>
         </dt>
         <dd>
+<<<<<<< HEAD
+            <input id="form-register-nickname" name="profile[nickname]" type="text" maxlength=8 />
+=======
             <input id="form-register-password" name="register[password]" type="password" />
+>>>>>>> e534389b966f96e9317a7cc9bd5bb42d928b1d34
             <span>
 <?php if ( isset($username_errors['password']) ) : ?>
 <?php foreach ( $username_errors['password'] as $error ) : ?>
 <?php echo $error; ?>
 <?php endforeach; ?>
 <?php else: ?>
+<<<<<<< HEAD
+            需小於等於等於8個字元
+<?php endif; ?>                
+=======
             請輸入密碼
 <?php endif; ?>
+>>>>>>> e534389b966f96e9317a7cc9bd5bb42d928b1d34
             </span>
             <div id="form-password-meter">
                 <table>
