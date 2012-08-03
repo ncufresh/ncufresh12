@@ -51,11 +51,29 @@ class Subscription extends CActiveRecord
     
     public function getInvisibleSubscriptionByCalendarID($calendar_id)
     {
-        return $this->find('calendar_id='.$calendar_id.' AND invisible = 1 AND user_id='.Yii::app()->user->getId());
+        var_dump('calendar_id='.$calendar_id.' AND invisible = 1 AND user_id='.Yii::app()->user->getId());
+        return $this->find(array(
+                'condition' => 'calendar_id = :calendar_id AND invisible = 1 AND user_id= :user_id',
+                'params' => array(
+                    ':calendar_id'  => $calendar_id,
+                    ':user_id'      => Yii::app()->user->id
+                )
+            )
+        );
     }
     
     public function getSubscriptionByCalendarID($calendar_id)
     {
         return $this->find('calendar_id='.$calendar_id.' AND invisible = 0 AND user_id='.Yii::app()->user->getId());
+    }
+    
+    public function getIsSubscriptByClubID($master_id)
+    {
+        $calendar_id = Calendar::model()->getClubCalendar($master_id)->id;
+        if ( $this->find('calendar_id='.$calendar_id.' AND invisible = 0 AND user_id='.Yii::app()->user->getId()) )
+        {
+            return true;
+        }
+        return false;
     }
 }

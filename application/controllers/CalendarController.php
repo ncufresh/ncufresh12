@@ -24,7 +24,9 @@ class CalendarController extends Controller
                     'subscript',
                     'club',
                     'clubRecycle',
-                    'createClubEvent'
+                    'createClubEvent',
+                    'subscriptfromclub',
+                    'cancelsubscriptfromclub',
                 ),
                 'roles'     => array('member')
             ),
@@ -213,7 +215,75 @@ class CalendarController extends Controller
             return true;
         }
     }
-
+    
+    public function actionSubscriptFromClub($club_id)
+    {
+        if ( Club::model()->findByPK($club_id) )
+        {
+            $subscription = new Subscription();
+            $calendar_id = Club::model()->with(
+                'calendar'
+            )->findByPk($club_id)->calendar->id;
+            $check = 0;
+            if ( Subscription::model()->getInvisibleSubscriptionByCalendarID($calendar_id) )
+            {
+                $subscript = Subscription::model()->getInvisibleSubscriptionByCalendarID($calendar_id);
+                $subscript->invisible = 0;
+                if ( ! $subscript->save() ) $check=1;
+            }
+            else
+            {
+                $subscript = new Subscription();
+                $subscript->calendar_id = $calendar_id;
+                $subscript->invisible = 0;
+                if ( ! $subscript->save() ) $check=1;
+            }
+            if ( $check == 0 )
+            {
+                $this->redirect(Yii::app()->createUrl('calendar/view'));
+            }
+            else
+            {
+                throw new CHttpException(404);
+            }
+        }
+        else throw new CHttpException(404);
+    }
+    
+    public function actionCancelSubscriptFromClub($club_id)
+    {
+        if ( Club::model()->findByPK($club_id) )
+        {
+            $subscription = new Subscription();
+            $calendar_id = Club::model()->with(
+                'calendar'
+            )->findByPk($club_id)->calendar->id;
+            $check = 0;
+            if ( Subscription::model()->getSubscriptionByCalendarID($calendar_id) )
+            {
+                $subscript = Subscription::model()->getSubscriptionByCalendarID($calendar_id);
+                $subscript->invisible = 1;
+                if ( ! $subscript->save() ) $check=1;
+            }
+            else
+            {
+                $subscript = new Subscription();
+                $subscript->calendar_id = $calendar_id;
+                $subscript->invisible = 1;
+                if ( ! $subscript->save() ) $check=1;
+            }
+            if ( $check == 0 )
+            {
+                $this->redirect(Yii::app()->createUrl('calendar/view'));
+            }
+            else
+            {
+                throw new CHttpException(404);
+            }
+        }
+        else throw new CHttpException(404);
+    }
+    
     public function actionSubscript()
     {
         if ( isset($_POST['token']) )

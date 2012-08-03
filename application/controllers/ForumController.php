@@ -181,6 +181,7 @@ class ForumController extends Controller
                 $article->replies_count++;
                 if( $article->save() )
                 {
+                    $article = Article::model()->findByPk($aid);
                     $this->redirect(Yii::app()->createUrl('forum/view', array(
                     'fid'           => $reply->article->forum->id,
                     'id'            => $reply->article_id,
