@@ -14,9 +14,19 @@
     【<strong>101學年度全校大一親師座談會</strong>】
 </p>
 <ul>
-    <li><strong>時間：101年11月24日星期六</strong></li>
-    <li><strong>地點：校史館大講堂</strong></li>
-    <li><strong>對象：大一家長</strong></li>
-    <li><strong>舉辦單位：中央大學 學務處諮商中心</strong></li>
-    <li><strong>有關詳細資訊，屆時本中心會寄發邀請函通知家長</strong></li>
+    <li>
+        <strong>時間：101年11月24日星期六</strong>
+    </li>
+    <li>
+        <strong>地點：校史館大講堂</strong>
+    </li>
+    <li>
+        <strong>對象：大一家長</strong>
+    </li>
+    <li>
+        <strong>舉辦單位：中央大學 學務處諮商中心</strong>
+    </li>
+    <li>
+        <strong>有關詳細資訊，屆時本中心會寄發邀請函通知家長</strong>
+    </li>
 </ul>
