@@ -19,6 +19,7 @@
         
         $('#game-mission-dialog form').submit(function()
         {
+            if($(this).find('input[name=answer]').val() == '' ) return false;
             $('#game-mission-dialog form input, #game-mission-dialog form button').prop('disabled', true);
             $.post($.configures.gameSolveUrl.replace(':id',id), {
                 answer: $(this).find('input[name=answer]').val(),
@@ -34,7 +35,9 @@
                 });
                 $.configures.token = data.token;
             });
+            $(this).find('input[name=answer]').val('');
             return false;
+            
         });
 
         $('.item-description,.mission-description').each(function()

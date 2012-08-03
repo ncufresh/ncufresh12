@@ -55,9 +55,8 @@
         
     </div>
     <form action="#" method="post" >
-    <span>解答：</span>
-    <input type="text" name="answer" />
-    <button type="submit">送啦~!!!</button>
+    <input class="game-mission-input" type="text" name="answer"/>
+    <button type="submit">確定</button>
     </form>
         <?php $this->widget('Avatar', array(
             'id'        => $watch_id
