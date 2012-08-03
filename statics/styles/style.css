@@ -549,7 +549,6 @@ a:hover
 .index-forums-box h4,
 #notfound a,
 #notfound a:hover,
-#club-calendar > div,
 #club-calendar-button,
 #index-calendar > div,
 .calendar,
@@ -1478,7 +1477,6 @@ ul#nculife-details
     width: 30%;
 }
 
-#club-calendar > div,
 #index-calendar > div
 {
     background-position: -1048px -880px;
@@ -3366,8 +3364,9 @@ button.news-button
     padding: 0px;
     cursor: pointer;
     width: 204px;
-    height: 204px;
+    height: 110px;
     display: block;
+    padding-top: 80px;
     margin-left: -34px;
 }
 
@@ -3385,6 +3384,13 @@ button.news-button
     margin-left: -20px;
 }
 
+.club-underpicture > div
+{
+    position: relative;
+    height: 470px;
+    display: none;
+}
+
 .club-underpicture ul
 {
     display: inline-block;
@@ -3392,11 +3398,14 @@ button.news-button
 
 #club-calendar-button
 {
-    background-position: -960px -160px;
+    background-position: -1070px -880px;
     cursor: pointer;
     width: 204px;
-    height: 50px;
-    display: block;
+    height: 58px;
+    overflow: visible;
+    text-indent: -10000px;
+    position: absolute;        
+    z-index: 1;
 }
 
 #club-calendar
@@ -3405,9 +3414,8 @@ button.news-button
     border-radius: 15px;
     float: left;
     height: 400px;
-    margin-top: 40px;
-    display: block;
-    position: relative;
+    position: absolute;
+    margin-top: 52px;
 }
 
 #club-calendar table
