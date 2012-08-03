@@ -2931,24 +2931,18 @@ button.news-button
     padding-left: 15px;
     padding-bottom: 10px;
     padding-right: 10px;
-    padding-top: 1px;
+    padding-top: 5px;
     border-radius: 10px;
     background: #fffce0;
     position: relative;
     left: 25px;
     height: 739px;
     width: 675px;
-}
-
-#about .introdution
-{
-    border-radius: 3px;
     color: black;
-    font-family: 微軟正黑體;
     font-size: 18px;
-    line-height: 24px;
-    letter-spacing: 3px;
-    position: relative;
+    line-height: 27px;
+    letter-spacing: 2px;
+    text-indent: 2.2em;
 }
 
 #about .about-picture
@@ -2958,7 +2952,7 @@ button.news-button
     float: right;
     height: 300px;
     width: 400px;
-    margin: 5px;
+    margin: 0px;
 }
 
 #about .tag-txt
@@ -2978,14 +2972,15 @@ button.news-button
 
 #about .title1
 {
-    background: url('../about/what.png') no-repeat;
+    border-radius: 10px 10px 0px 0px;
+    background: url('../about/what.png') #385281 no-repeat;
     width: 750px;
     height: 75px;
 }
 
 #about .title2
 {
-    background: url('../about/who_with_stars.png') #385281  no-repeat;
+    background: url('../about/who_with_stars.png') #385281 no-repeat;
     width: 750px;
     height: 85px;
 }
@@ -2999,6 +2994,7 @@ button.news-button
 
 #about .block2
 {
+    border-radius: 0px 0px 10px 10px;
     background: #385281;
     height: 950px;    
     width: 750px;
@@ -3014,6 +3010,15 @@ button.news-button
     width: 400px;
 }
 
+#about .photo-bar
+{
+    position: absolute;
+    left: 50px;
+    width: 300px;
+    height: 50px;
+    overflow: hidden;
+}
+
 #about .about-block1Pic
 {
     left: 25px;
@@ -3027,6 +3032,7 @@ button.news-button
     position: absolute;
     top: 30px;
     left: 40px;
+    line-height: 10px;
 }
 
 #about .tag
@@ -3076,6 +3082,21 @@ button.news-button
     float: left;
     margin: 5px;
     width: 40px;
+}
+
+#about .photo-ul
+{   
+    left: -40px;
+    position: absolute;
+    margin: 0px;
+    height: 50px;
+}
+
+#about .photo-li
+{
+    width: 50px;
+    height: 50px;
+    float: left;
 }
 
 /**
