@@ -3124,6 +3124,39 @@
     };
 })(jQuery);
 
+(function($){
+    $(document).ready(function(){
+        $('.allmessages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.my-all-messages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.self-messages').scrollable({
+            wheelSpeed: 90
+        });
+         var daysInMonth = function(iYear, iMonth)
+        {
+            return 32 - new Date(iYear, iMonth-1, 32).getDate();
+        }
+        jQuery('.button-back').click(function()
+        {
+            window.history.back();
+        }); 
+    });
+})(jQuery);
+
+(function($){
+    $(document).ready(function(){
+        $('.A-group-users').scrollable({
+            wheelSpeed: 90
+        });
+        $('.users-group').scrollable({
+            wheelSpeed: 90
+        });
+    });
+})(jQuery);
+
 google.load('search', '1', {
     language: 'zh_TW'
 });

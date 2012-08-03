@@ -1,6 +1,6 @@
 <h4>我的群組</h4>
 <div class="allgroups">
-    <div class="friends-part2">
+    <div class="A-group-users">
         <ul class="all-groups">
 <?php foreach ( $groups as $mygroup ) : ?>
             <li>
