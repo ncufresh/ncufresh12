@@ -85,19 +85,19 @@
             <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>" title="中大生活">中大生活</a>
             <ul>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#live" title="住在中大">住在中大</a>
-                </li>
-                <li>
-                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#health" title="健康中大">健康中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#play" title="玩在中大">玩在中大</a>
                 </li>
                 <li>
                     <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#traffic" title="行在中大">行在中大</a>
                 </li>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#play" title="玩在中大">玩在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#school" title="活在中大">活在中大</a>
                 </li>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#school" title="活在中大">活在中大</a>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#live" title="住在中大">住在中大</a>
+                </li>
+                <li>
+                    <a href="<?php echo Yii::app()->createUrl('nculife/index'); ?>#health" title="健康中大">健康中大</a>
                 </li>
             </ul>
         </li>
@@ -304,6 +304,7 @@
             registerUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>'),
             calendarEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/event', array('id'=> ':id')); ?>'),
             calendarEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvents'); ?>'),
+            calendarClubEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxClubEvents', array('id' => ':id')); ?>'),
             calendarHideEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/hideEvent'); ?>'),
             buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),
             gameMissionUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/problem', array('id' => ':id'));?>'),

@@ -23,7 +23,7 @@
                 <input id="form-login-password" name="login[password]" type="password" />
             </dd>
         </dl>
-        <div>
+        <div class="buttons">
             <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
             <button id="form-login-button" type="submit">登入</button>
             <button id="form-login-register">註冊</button>

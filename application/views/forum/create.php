@@ -128,7 +128,7 @@
     endif;
     ?>
 </div>
-<div class="form-foot">
+<div class="form-foot buttons">
     <input type="hidden" name="forum[forum_id]" value="<?php echo $fid; ?>" />
     <button id="forum-create-submit" disabled>發佈</button>
     <button class="forum-cancel-button" type="reset">取消</button>
