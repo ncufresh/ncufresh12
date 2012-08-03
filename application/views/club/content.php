@@ -32,7 +32,11 @@
         </ul>
     </div>
     <div class="club-display-head" id="club-head-<?php echo $data->category; ?>">
-        <a href="<?php echo Yii::app()->createUrl('calendar/subscript/', array('id'=>$id)) ?>" title="訂閱">訂閱</a>
+<?php if ( $is_subscript == false ): ?>
+        <a href="<?php echo Yii::app()->createUrl('calendar/subscriptfromclub/', array('club_id'=>$id)) ?>" title="訂閱">訂閱</a>
+<?php elseif ( $is_subscript == true ): ?>
+        <a href="<?php echo Yii::app()->createUrl('calendar/cancelsubscriptfromclub/', array('club_id'=>$id)) ?>" title="訂閱">取消訂閱</a>
+<?php endif; ?>     
 <?php if ( Club::model()->getIsAdmin($id) ) : ?>     
         <a href="<?php echo Yii::app()->createUrl('club/modify/', array('id'=>$id)); ?>" title="修改">修改</a>
         <a href="<?php echo Yii::app()->createUrl('club/uploadpicture/', array('id'=>$id)); ?>" title="上傳圖片">上傳圖片</a>
