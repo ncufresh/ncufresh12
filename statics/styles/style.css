@@ -4059,6 +4059,20 @@ div.profile-message-reply
     bottom:61px;
 }
 
+.button-all-choose
+{
+    /*background-image: url('../profile/button/allchoose.png');
+    background-repeat: no-repeat ;*/
+    width: 84px;
+    height: 37px;
+    padding: 0px;
+    margin: 0px;
+    float:right;
+    position:absolute;
+    right:50px;
+    bottom:125px;
+}
+
 #button-back-reply
 {
     background-image: url('../profile/button/back.png');
@@ -4136,8 +4150,8 @@ div.profile-message-reply
     padding:0px;
     margin:0px;
     position:absolute;
-    right:142px;
-    bottom:23px;
+    right:64px;
+    bottom:77px;
 }
 
 .button-addgroup
