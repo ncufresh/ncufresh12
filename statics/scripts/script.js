@@ -1282,6 +1282,7 @@
         var calendar_month = $(this).data('options').month;
         if ( current_month == calendar_month && current_year ==  calendar_year )
         {
+            console.log(current_year,calendar_year);
             var tds = $(this).children('tbody').find('td');
             for( var key in tds )
             {
@@ -1313,7 +1314,7 @@
     var markToday = function()
     {
         var today = this.getToday();
-        if ( today ) today.css('color', 'red');
+        if ( today ) today.addClass('today');
     }
 
     /**
@@ -1371,7 +1372,7 @@
     var cleanUpMark = function(isRemoveData)
     {
         return $(this).children('tbody').find('td').each(function(){
-            $(this).removeAttr('style');
+            $(this).removeAttr('style').removeClass();
             if ( isRemoveData ) 
             {
                 $(this).removeData('cal_events');
@@ -1560,11 +1561,13 @@
                     .mouseenter(options.dayEnter)
                     .mouseleave(options.dayLeave)
                     .data('day', day);
-                if( (new Date()).getDate() == day 
-                    && (new Date()).getMonth() == options.month
-                    && options.today)
+                var d = new Date();
+                if( d.getDate() == day 
+                    && d.getMonth() == options.month
+                    && d.getFullYear() == options.year
+                    && options.today )
                 {
-                    td.css({color: 'red'});
+                    td.addClass('today');
                 }
                 ++day;
             }

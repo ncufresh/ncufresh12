@@ -1582,6 +1582,11 @@ ul#nculife-details
     text-align: center;
 }
 
+.calendar .left table tbody td.today
+{
+    color: red;
+}
+
 .calendar .date
 {
     margin: 0;
