@@ -16,7 +16,7 @@ class News extends CActiveRecord
     {
         return array(
             array('title, content', 'required'),
-            array('title', 'length' , 'max' => 25),
+            array('title', 'length' , 'max' => 20),
         );
     }
 
