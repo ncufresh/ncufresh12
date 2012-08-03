@@ -6,6 +6,8 @@ jQuery(document).ready(function()
     {
         var id = $(this).attr('href').replace('#', '');
         var li = $(this).parent();
+        var ul = li.parent();
+        var div = ul.parent();
         $.confirm({
             message: '你真的想要隱藏事件嗎？',
             confirmed: function(result)
@@ -27,6 +29,7 @@ jQuery(document).ready(function()
                             if ( $.errors(response.errors) )
                             {
                                 li.remove();
+                                if ( $.trim(ul.html()) == '' ) div.remove();
                             }
                         }
                     );
@@ -40,6 +43,8 @@ jQuery(document).ready(function()
     {
         var id = $(this).attr('href').replace('#', '');
         var li = $(this).parent();
+        var ul = li.parent();
+        var div = ul.parent();
         $.post(
             decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/showevent'); ?>'),
             {
@@ -55,6 +60,7 @@ jQuery(document).ready(function()
                 if ( $.errors(response.errors) )
                 {
                     li.remove();
+                    if ( $.trim(ul.html()) == '' ) div.remove();
                 }
             }
         );
@@ -67,19 +73,20 @@ jQuery(document).ready(function()
     <h4>回收</h4><a class="back" href="<?php echo Yii::app()->createUrl('calendar/view');?>">返回</a>
     <div class="container">
 <?php foreach ( $result as $key => $events ):?>
-        <h5><?php echo $key;?></h5>
-        <ul>
+        <div>
+            <h5><?php echo $key;?></h5>
+            <ul>
 <?php foreach ( $events as $event ) : ?>
-            <li>
-                <span><?php echo $event->name; ?></span>
-                <a class="calendar-show-event" href="#<?php echo $event->id; ?>" title="復原事件">復原</a>
+                <li>
+                    <span><?php echo $event->name; ?></span>
+                    <a class="calendar-show-event" href="#<?php echo $event->id; ?>" title="復原事件">復原</a>
 <?php if ( $event->calendar->getIsPersonal() && $event->calendar->getIsOwner() ) : ?>
-                <a class="calendar-hide-event" href="#<?php echo $event->id; ?>" title="刪除事件">刪除</a>
+                    <a class="calendar-hide-event" href="#<?php echo $event->id; ?>" title="刪除事件">刪除</a>
 <?php endif; ?>
-            </li>
+                </li>
 <?php endforeach; ?>
-        </ul>
+            </ul>
+        </div>
 <?php endforeach; ?>
-        
     </div>
 </div>

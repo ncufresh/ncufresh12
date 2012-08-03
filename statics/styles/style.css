@@ -1711,7 +1711,8 @@ a.calendar-hide-event:hover
 
 #calendar-event,
 #calendar-recycle,
-#calendar-subscript
+#calendar-subscript,
+.calendar-create
 {
     height: 296px;
     margin: 0 5px;
@@ -1863,6 +1864,7 @@ a.calendar-hide-event:hover
     float: left;
     display: inline-block;
     width: 100%;
+    padding: 5px 0;
 }
 
 #calendar-subscript .calendar-subscript-container
@@ -1903,6 +1905,21 @@ a.calendar-hide-event:hover
     margin: 0;
     overflow: visible;
     width: 169%;
+}
+
+.calendar-create
+{
+    background: url('../images/calendar_create_background.png') no-repeat;
+}
+
+.calendar-create form textarea
+{
+    height: 100px;
+}
+
+.calendar-create form div.buttons
+{
+    margin: -50px 0 0 50%;
 }
 
 #index-container
@@ -3154,8 +3171,7 @@ button.news-button
     height: 66px;
     background-repeat: no-repeat; 
     float: right;
-    margin-right: 18px;
-    
+    margin-right: 17px;
 }
 .club-head:hover
 {
@@ -3164,8 +3180,7 @@ button.news-button
     height: 66px;
     background-repeat: no-repeat; 
     float: right;
-    margin-right: 19px;
-    
+    margin-right: 18px;
 }
 .department
 {
@@ -4656,6 +4671,28 @@ div.item-description .exist
     font-weight: bold;
     color: #ff0000;
 }
+#game-mission li
+{
+    width: 80px;
+    height: 22px;
+    margin: 6px 0;
+    padding: 0px 0px 5px 0;
+    font-size: 1.3em;
+    text-align: center;
+    font-weight: bold;
+    background-color: black;
+    border: 3px solid #FFAD00;
+    border-radius: 17px;
+    color: black;
+}
+#game-mission a:hover
+{
+    color: #F1F173;
+}
+#game-mission a
+{
+    color: #FFA747;
+}
 #game-mission-dialog
 {
     width: 900px;
@@ -5127,6 +5164,7 @@ li.enabled a
     padding-right: 35px;
 }
 
+/*yellow*/
 .forum-view-profile
 {
     background: #f8c77c;
@@ -5254,6 +5292,262 @@ li.enabled a
     padding: 9px 11px 9px 11px;
     word-break: break-all;
 }
+/*end of yellow*/
+
+/*pink*/
+#forum-view-body.pink .forum-view-profile,
+#forum-view-replies.pink .forum-view-profile
+{
+    background: #fbbdc7;
+    border: 2px solid #f38294;
+}
+
+#forum-view-body.pink .forum-view-profile .profile-name,
+#forum-view-replies.pink .forum-view-profile .profile-name
+{
+    background: #fce5ed;
+    color: #cb5165;
+}
+
+#forum-view-body.pink .forum-view-profile .profile-department,
+#forum-view-replies.pink .forum-view-profile .profile-department
+{
+    background: #fce5ed;
+    color: #cb5165;
+}
+
+#forum-view-body.pink .forum-view-title
+{
+    background: #fce5ed;
+    border: 2px solid #f38294;
+}
+
+#forum-view-body.pink #forum-view-content
+{
+    border: 2px solid #f38294;
+}
+
+#forum-view-body.pink .hululu,
+#forum-view-replies.pink .hululu
+{
+    background: url('../forum/view/pink/hululu.png');
+}
+
+#forum-view-body.pink .forum-view-comments
+{
+    background: #f4efe0;
+    border: 2px solid #f38294;
+}
+
+#forum-view-replies.pink .reply-content
+{
+    border: 2px solid #f38294;
+}
+/*end of pink*/
+
+/*blue*/
+#forum-view-body.blue .forum-view-profile,
+#forum-view-replies.blue .forum-view-profile
+{
+    background: #97d2f3;
+    border: 2px solid #4fa4d3;
+}
+
+#forum-view-body.blue .forum-view-profile .profile-name,
+#forum-view-replies.blue .forum-view-profile .profile-name
+{
+    background: #cce6f5;
+    color: #135980;
+}
+
+#forum-view-body.blue .forum-view-profile .profile-department,
+#forum-view-replies.blue .forum-view-profile .profile-department
+{
+    background: #cce6f5;
+    color: #135980;
+}
+
+#forum-view-body.blue .forum-view-title
+{
+    background: #cce6f5;
+    border: 2px solid #4fa4d3;
+}
+
+#forum-view-body.blue #forum-view-content
+{
+    border: 2px solid #4fa4d3;
+}
+
+#forum-view-body.blue .hululu,
+#forum-view-replies.blue .hululu
+{
+    background: url('../forum/view/blue/hululu.png');
+}
+
+#forum-view-body.blue .forum-view-comments
+{
+    background: #f4efe0;
+    border: 2px solid #4fa4d3;
+}
+
+#forum-view-replies.blue .reply-content
+{
+    border: 2px solid #4fa4d3;
+}
+/*end of blue*/
+
+/*green*/
+#forum-view-body.green .forum-view-profile,
+#forum-view-replies.green .forum-view-profile
+{
+    background: #92e782;
+    border: 2px solid #0ca645;
+}
+
+#forum-view-body.green .forum-view-profile .profile-name,
+#forum-view-replies.green .forum-view-profile .profile-name
+{
+    background: #c2f7b8;
+    color: #009437;
+}
+
+#forum-view-body.green .forum-view-profile .profile-department,
+#forum-view-replies.green .forum-view-profile .profile-department
+{
+    background: #c2f7b8;
+    color: #009437;
+}
+
+#forum-view-body.green .forum-view-title
+{
+    background: #c2f7b8;
+    border: 2px solid #0ca645;
+}
+
+#forum-view-body.green #forum-view-content
+{
+    border: 2px solid #0ca645;
+}
+
+#forum-view-body.green .hululu,
+#forum-view-replies.green .hululu
+{
+    background: url('../forum/view/green/hululu.png');
+}
+
+#forum-view-body.green .forum-view-comments
+{
+    background: #f4efe0;
+    border: 2px solid #0ca645;
+}
+
+#forum-view-replies.green .reply-content
+{
+    border: 2px solid #0ca645;
+}
+/*end of green*/
+
+/*purple*/
+#forum-view-body.purple .forum-view-profile,
+#forum-view-replies.purple .forum-view-profile
+{
+    background: #dd94c0;
+    border: 2px solid #c42aa2;
+}
+
+#forum-view-body.purple .forum-view-profile .profile-name,
+#forum-view-replies.purple .forum-view-profile .profile-name
+{
+    background: #f1c6e0;
+    color: #80004d;
+}
+
+#forum-view-body.purple .forum-view-profile .profile-department,
+#forum-view-replies.purple .forum-view-profile .profile-department
+{
+    background: #f1c6e0;
+    color: #80004d;
+}
+
+#forum-view-body.purple .forum-view-title
+{
+    background: #f1c6e0;
+    border: 2px solid #c42aa2;
+}
+
+#forum-view-body.purple #forum-view-content
+{
+    border: 2px solid #c42aa2;
+}
+
+#forum-view-body.purple .hululu,
+#forum-view-replies.purple .hululu
+{
+    background: url('../forum/view/purple/hululu.png');
+}
+
+#forum-view-body.purple .forum-view-comments
+{
+    background: #f4efe0;
+    border: 2px solid #c42aa2;
+}
+
+#forum-view-replies.purple .reply-content
+{
+    border: 2px solid #c42aa2;
+}
+/*end of purple*/
+
+/*orange*/
+#forum-view-body.orange .forum-view-profile,
+#forum-view-replies.orange .forum-view-profile
+{
+    background: #f7987a;
+    border: 2px solid #e76f48;
+}
+
+#forum-view-body.orange .forum-view-profile .profile-name,
+#forum-view-replies.orange .forum-view-profile .profile-name
+{
+    background: #faddc1;
+    color: #b92d00;
+}
+
+#forum-view-body.orange .forum-view-profile .profile-department,
+#forum-view-replies.orange .forum-view-profile .profile-department
+{
+    background: #faddc1;
+    color: #b92d00;
+}
+
+#forum-view-body.orange .forum-view-title
+{
+    background: #faddc1;
+    border: 2px solid #e76f48;
+}
+
+#forum-view-body.orange #forum-view-content
+{
+    border: 2px solid #e76f48;
+}
+
+#forum-view-body.orange .hululu,
+#forum-view-replies.orange .hululu
+{
+    background: url('../forum/view/orange/hululu.png');
+}
+
+#forum-view-body.orange .forum-view-comments
+{
+    background: #f4efe0;
+    border: 2px solid #e76f48;
+}
+
+#forum-view-replies.orange .reply-content
+{
+    border: 2px solid #e76f48;
+}
+/*end of orange*/
 
 #forum-forum-top2
 {
@@ -5791,7 +6085,7 @@ td.popularity
 /*yellow forum CSS*/
 #forum-forum-body.yellow #create-article
 {
-    background: url('../forum/forum/Yellow/eraser.png');
+    background: url('../forum/forum/yellow/eraser.png');
 }
 
 #forum-forum-body.yellow #labels .un-selected
@@ -5811,7 +6105,7 @@ td.popularity
 
 #forum-forum-body.yellow #table-head
 {
-    background: url('../forum/forum/Yellow/pencil.png');
+    background: url('../forum/forum/yellow/pencil.png');
 }
 
 #forum-forum-body.yellow #body-table .table-title th,
@@ -5823,7 +6117,7 @@ td.popularity
 #forum-forum-body.yellow #body-table .table-title th.head,
 #forum-forum-body.yellow #body-table .table-foot td.head
 {
-    background: url('../forum/forum/Yellow/pencil_head.png');
+    background: url('../forum/forum/yellow/pencil_head.png');
 }
 
 #forum-forum-body.yellow #body-table .table-title th.category,
@@ -5837,7 +6131,7 @@ td.popularity
 #forum-forum-body.yellow #body-table .table-title th.tail,
 #forum-forum-body.yellow #body-table .table-foot td.tail
 {
-    background: url('../forum/forum/Yellow/pencil_tail.png');
+    background: url('../forum/forum/yellow/pencil_tail.png');
 }
 
 #forum-forum-body.yellow #body-table .table-body td.category

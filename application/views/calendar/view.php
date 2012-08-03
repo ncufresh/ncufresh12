@@ -13,6 +13,9 @@ jQuery(document).ready(function()
     {
         var id = $(this).attr('href').replace('#', '');
         var self = this;
+        var li = $(this).parents('li');
+        var ul = li.parent();
+        var div = ul.parent();
         $.post(
             $.configures.calendarHideEventUrl,
             {
@@ -27,7 +30,8 @@ jQuery(document).ready(function()
                 $.configures.token = response.token;
                 if ( $.errors(response.errors) )
                 {
-                    $(self).parents('li').remove();
+                    li.remove();
+                    if ( $.trim(ul.html()) == '' ) div.remove();
                     calendar.updateData($.configures.calendarEventsUrl);
                 }
             }
