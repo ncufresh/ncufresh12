@@ -251,10 +251,13 @@
             }
         };
 
-        checkPasswordStrength.call(
-            $('#form-register-password')
-                .keyup(checkPasswordStrength)
-                .keydown(checkPasswordStrength)
-        );
+        if ( $('#form-register-password').length )
+        {
+            checkPasswordStrength.call(
+                $('#form-register-password')
+                    .keyup(checkPasswordStrength)
+                    .keydown(checkPasswordStrength)
+            );
+        }
     });
 })(jQuery);
