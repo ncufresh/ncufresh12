@@ -50,7 +50,7 @@
 </div>
 <div id="game-mission-dialog">
     <h4>Mission：<span class="MissionName"></span></h4>
-        <img src="<?php echo Yii::app()->request->baseUrl;?>/statics/game/npcs/<? echo rand(0,9)?>.png" alt="npc" class="npc"/>
+        <img src="<?php echo Yii::app()->request->baseUrl;?>/statics/game/npcs/<?php echo rand(0,9)?>.png" alt="npc" class="npc"/>
     <div class="display">
         
     </div>
