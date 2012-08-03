@@ -2658,7 +2658,7 @@
             var differenceHeight = currentHeight - containerHeight;
 
             $('#' + options.lightboxId).css({
-                marginTop: -1 * containerWidth / 2
+                marginTop: -1 * containerHeight / 2
             });
             $('#' + options.lightboxDetailsId).css({
                 width: width
