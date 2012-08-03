@@ -62,15 +62,19 @@ class Event extends CActiveRecord
 
     public function isDate($attr)
     {
-        $date = $this->{$attr};
-        if ( preg_match('/^\d{4}\-\d{2}-\d{2}$/', $date) )
+        if ( $this->getIsNewRecord() )
         {
-            list($year, $month, $day) = explode('-', $date);
-            $date = mktime(0, 0, 0, $month, $day, $year);
-            if ( $date === false ) $this->addError('date', 'WRONG!!!');
-            return true;
+            $date = $this->{$attr};
+            if ( preg_match('/^\d{4}\-\d{2}-\d{2}$/', $date) )
+            {
+                list($year, $month, $day) = explode('-', $date);
+                $date = mktime(0, 0, 0, $month, $day, $year);
+                if ( $date === false ) $this->addError('date', 'WRONG!!!');
+                return true;
+            }
+            $this->addError('date', 'WRONG!!!');
         }
-        $this->addError('date', 'WRONG!!!');
+        return true;
     }
 
     public function getEventById($id)

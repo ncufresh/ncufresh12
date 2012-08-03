@@ -24,7 +24,7 @@ class CalendarController extends Controller
                     'event',
                     'createEvent',
                     'hideEvent',
-                    'showEvnet',
+                    'showEvent',
                     'subscript'
                 ),
                 'roles'     => array('member')
@@ -70,6 +70,7 @@ class CalendarController extends Controller
                 }
             }
             $this->_data['errors'][] = '發生錯誤！';
+            $this->_data['errors'][] = $event->getErrors();
             return true;
         }
 
@@ -250,8 +251,16 @@ class CalendarController extends Controller
             
             if ( $check == 0 ) $this->redirect(Yii::app()->createUrl('calendar/view'));
         }
+        
+        $result = array();
+        $calendars = Calendar::model()->getClubs();
+        foreach ( $calendars as $calendar )
+        {
+            $result[$calendar->club->category][] = $calendar;
+        }
+        
         $this->render('subscript', array(
-            'clubs' => Calendar::model()->getClubs()
+            'result' => $result
         ));
     }
 

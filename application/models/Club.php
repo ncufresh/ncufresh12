@@ -1,6 +1,14 @@
 <?php
 class Club extends CActiveRecord
 {
+    private static $category_name = array(
+        '',
+        '社團',
+        '系所',
+        '學生組織'
+    );
+
+
     public static function model($className=__CLASS__)
     {
         return parent::model($className);
@@ -62,6 +70,11 @@ class Club extends CActiveRecord
            $isAdmin=false;
         }
         return $isAdmin;
+    }
+
+    public static function getCategoryName( $category )
+    {
+        return Club::$category_name[$category];
     }
     
     public function afterFind()

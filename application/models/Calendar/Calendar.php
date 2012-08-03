@@ -42,11 +42,11 @@ class Calendar extends CActiveRecord
                 'User',
                 'user_id'
             ),
-            'clubs' => array(
+            'club' => array(
                 self::HAS_ONE,
                 'Club',
                 '',
-                'on' => 'clubs.master_id = user_id',
+                'on' => 'club.master_id = user_id',
                 'condition' => 't.category=0'
             ),
             'subscriptions' => array(
@@ -89,9 +89,9 @@ class Calendar extends CActiveRecord
     public function getClubs()
     {
         return $this->with(array(
-            'clubs' => array(
-                'select'    => 'name',
-                'condition' => 'clubs.master_id != 0'
+            'club' => array(
+                'select'    => 'name, category',
+                'condition' => 'club.master_id != 0'
             ),
             'subscriptions' => array(
                 'select'    => 'invisible'

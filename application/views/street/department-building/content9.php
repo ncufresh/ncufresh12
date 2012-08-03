@@ -1,0 +1,30 @@
+<h4>
+    科學二館
+</h4>
+<p>
+    今天天氣真好
+</p>
+<p>
+    昨天的氣象預報真的很準確呢！
+</p>
+<p>
+    究竟氣象是用何種技術來精準的預測呢？
+</p>
+<p>
+    大氣的對流
+</p>
+<p>
+    氣候與環境的變遷
+</p>
+<p>
+    讓我們一同了解吧
+</p>
+<p>
+    大氣科學
+</p>
+<p>
+    科系：<a href="http://www.atm.ncu.edu.tw/" title="大氣">大氣</a>
+</p>
+<p>
+    <img alt="科學二館" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2821.JPG" style="width:320px;height:180px;" /><img alt="科學二館" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2822.JPG" style="width:320px;height:180px;" />
+</p>
