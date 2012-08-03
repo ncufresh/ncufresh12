@@ -3,7 +3,8 @@
  */
 body,
 input,
-textarea
+textarea,
+button
 {
     font-size: 16px;
     font-family: '微軟正黑體', 'Microsoft JhengHei', '微软雅黑', 'Microsoft YaHei', 'WenQuanYi ZenHei', Arial, sans-serif;
@@ -331,9 +332,21 @@ a:hover
 {
     background: #FFFFFF;
     border: 1px solid #333333;
+    box-shadow: 0 0 0 #000000, 0 3px 3px #D3D3D3 inset;
+    border-radius: 5px;
     height: 160px;
     position: fixed;
     width: 320px;
+}
+
+.confirm-title,
+.alert-title
+{
+    border-radius: 5px 5px 0 0;
+    font-size: 1.5em;
+    height: 25px;
+    margin: 0 0 -25px 0;
+    padding: 0 10px;
 }
 
 .confirm-message,
@@ -351,6 +364,8 @@ a:hover
 
 .confirm-buttons
 {
+    background: #EBEBEB;
+    border-radius: 0 0 5px 5px;
     height: 40px;
     text-align: center;
 }
@@ -358,11 +373,19 @@ a:hover
 .confirm-button
 {
     background: #FFFFFF;
-    border: 1px solid #333333;
+    border: 1px solid #D6D6D6;
+    box-shadow: 0 0 0 #000000, 0 3px 3px #D3D3D3 inset;
+    border-radius: 5px;
+    cursor: pointer;
     height: 30px;
     line-height: 18px;
     margin: 5px 10px;
     padding: 5px 15px;
+}
+
+.confirm-button:hover
+{
+    border: 1px solid #909090;
 }
 
 #lightbox
@@ -1756,14 +1779,14 @@ a.calendar-hide-event:hover
     height: 20px;
     line-height: 20px;
     display: inline-block;
-    background-color: #fff179;
+    background-color: #FFFFFF179;
     border-radius: 5px;
     color: #27120a;
 }
 
 #calendar-recycle a.calendar-show-event
 {
-    background: url('../images/calendar_recover.png') no-repeat #fff179;
+    background: url('../images/calendar_recover.png') no-repeat #FFFFFF179;
 }
 
 #calendar-recycle a.calendar-show-event:active
@@ -1774,7 +1797,7 @@ a.calendar-hide-event:hover
 
 #calendar-recycle a.calendar-hide-event
 {
-    background: url('../images/calendar_delete.png') no-repeat #fff179;
+    background: url('../images/calendar_delete.png') no-repeat #FFFFFF179;
 }
 
 #calendar-recycle a.calendar-hide-event:active
@@ -2024,19 +2047,17 @@ a.calendar-hide-event:hover
 
 .news-view .header h4
 {
-    margin: 10px 0 0 0;
-    font-size: 22pt;
     width: 700px;
     display: block;
     overflow: hidden;
-    text-shadow: #fff 0px 0px 3px;
+    text-shadow: #FFFFFF 0px 0px 3px;
 }
 
 .news-view .header .edit
 {  
     width: 95px;
     height: 35px;
-    background: #fff;
+    background: #FFFFFF;
     border-radius: 10px;
     display: block;
     line-height: 35px;
@@ -2080,14 +2101,6 @@ a.calendar-hide-event:hover
     min-height: 250px;
     word-break: break-all;
     line-height: 1.4em;
-}
-
-.news-view .content label
-{
-    color: #666666;
-    font-size: 14pt;
-    display: block;
-    height: 19px;
 }
 
 .news-view .content a
@@ -2944,7 +2957,7 @@ button.news-button
     padding-right: 10px;
     padding-top: 1px;
     border-radius: 10px;
-    background: #fffce0;
+    background: #FFFFFFce0;
     position: relative;
     left: 25px;
     height: 739px;
@@ -2955,8 +2968,7 @@ button.news-button
 {
     border-radius: 3px;
     color: black;
-    font-family: 微軟正黑體;
-    font-size: 18px;
+    line-height: 1.2em;
     line-height: 24px;
     letter-spacing: 3px;
     position: relative;
@@ -3290,7 +3302,6 @@ button.news-button
 }
 .club-display-head h4
 {
-    font-size: 30px;
     text-align: center;
     margin-top: 35px;
 }
@@ -3579,7 +3590,6 @@ ul.users-department li h4
     height: 35px;
     display: block;
     list-style-type:none;
-    font-size: 20px;
     text-align:left;
 }
 
@@ -4311,7 +4321,6 @@ li#article-content
     width: 600px;
     height: 50px;
     display: block;
-    font-size: 30px;
     text-align:left;
     color:DarkMagenta ;
 }
@@ -4714,7 +4723,7 @@ div.item-description .exist
 {
     width: 325px;
     height: 246px;
-    font-size: 25px;
+    font-size: 1.5em;
     font-weight: bold;
     /*outline: 1px solid black;*/
     position: absolute;
@@ -4734,7 +4743,7 @@ div.item-description .exist
 {
     width: 265px;
     height: 451px;
-    font-size: 18px;
+    font-size: 1.125em;
     /*outline: 1px solid black;*/
     position: absolute;
     top: 43px;
@@ -4744,7 +4753,6 @@ div.item-description .exist
 #game-mission-dialog h4
 {
     font-weight: bold;
-    font-size: 31px;
     /*outline: 1px black solid;*/
     position: absolute;
     top: 39px;
@@ -4756,7 +4764,6 @@ div.item-description .exist
     width: 320px;
     height: 136px;
     font-weight: bold;
-    font-size: 31px;
     outline: 1px black solid;
     position: absolute;
     top: 356px;
@@ -4842,8 +4849,6 @@ ul.game-button li
     /* outline: 1px solid red; */
     float: left;
     margin-right: 1px;
-    font-family:微軟正黑體;
-    font-size: 24px;
     text-align:center;
     color:#b9b9b9;
 }
@@ -5005,7 +5010,7 @@ li.enabled a
     height: 20px;
     padding: 5px;
     padding-left: 8px;
-    border: 2px solid #ffffff;
+    border: 2px solid #FFFFFFFFFFFF;
     border-radius: 5px;
     background-color: rgba(175,191,232,0.5);
     color: #1042ba;
@@ -5175,7 +5180,7 @@ li.enabled a
 {
     width: 150px;
     height: 180px;
-    background: #ffffff;
+    background: #FFFFFFFFFFFF;
     border-radius: 6px;
     margin: 0 auto;
 }
@@ -5185,7 +5190,7 @@ li.enabled a
     width: 140px;
     height: 23px;
     margin: 10px auto;
-    background: #fff0c8;
+    background: #FFFFFF0c8;
     border-radius:5px;
     padding-top: 2px;
     padding-left: 10px;
@@ -5197,7 +5202,7 @@ li.enabled a
     width: 140px;
     height: 23px;
     margin: 1px auto;
-    background: #fff0c8;
+    background: #FFFFFF0c8;
     border-radius:5px;
     padding-top: 2px;
     padding-left: 10px;
@@ -5209,7 +5214,7 @@ li.enabled a
     width: 389px;
     height: 31px;
     border-radius: 6px;
-    background: #fff0c8;
+    background: #FFFFFF0c8;
     float: left;
     margin-left: 20px;
     margin-bottom: 3px;
@@ -5223,7 +5228,7 @@ li.enabled a
     width: 378px;
     min-height: 182px;
     border-radius: 6px;
-    background: #ffffff;
+    background: #FFFFFFFFFFFF;
     float: left;
     margin-left: 20px;
     border: 2px solid #eaa520;
@@ -5278,7 +5283,7 @@ li.enabled a
     width: 378px;
     min-height: 232px;
     border-radius: 6px;
-    background: #ffffff;
+    background: #FFFFFFFFFFFF;
     float: left;
     margin-left: 20px;
     margin-top: 20px;
@@ -5583,7 +5588,7 @@ li.enabled a
 
 #forum-forum-body #create-article a
 {
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body #labels
@@ -5606,7 +5611,7 @@ li.enabled a
     border-radius: 8px;
     margin-right: 5px;
     padding: 4px 4px 0 13px;
-    border: 2px solid #ffffff;
+    border: 2px solid #FFFFFFFFFFFF;
 }
 
 #forum-forum-body #labels .un-selected:hover
@@ -5625,13 +5630,13 @@ li.enabled a
     border-radius: 8px;
     margin-right: 5px;
     padding: 4px 4px 0 13px;
-    border: 2px solid #ffffff;
+    border: 2px solid #FFFFFFFFFFFF;
 }
 
 #forum-forum-body #labels a
 {
     display: inline;
-    color: #ffffff;
+    color: #FFFFFFFFFFFF;
     display:block;
 }
 
@@ -5657,7 +5662,7 @@ li.enabled a
     min-height:40px;
     height:40px;
     
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body #body-table .table-title th.head,
@@ -5673,14 +5678,14 @@ li.enabled a
 {
     width: 84px;
     background: url('../forum/forum/pencil_category.png');
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body #body-table .table-title th.title,
 #forum-forum-body #body-table .table-foot td.title
 {
     width: 190px;
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 
@@ -5717,7 +5722,7 @@ li.enabled a
     border-color:#f48191;
     border-width:2px;
     border-top-width:0.8px;
-    background-color:#ffffff;
+    background-color:#FFFFFFFFFFFF;
     text-align: center;
 }
 
@@ -5731,7 +5736,7 @@ li.enabled a
     border-color:#f48191;
     border-width:2px;
     border-top-width:0.8px;
-    background-color:#ffffff;
+    background-color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body #body-table .table-body td.author
@@ -5764,7 +5769,7 @@ li.enabled a
     border-color:#f48191;
     border-width:2px;
     border-top-width:0.8px;
-    background-color:#ffffff;
+    background-color:#FFFFFFFFFFFF;
     word-break: break-all;
 }
 
@@ -5820,7 +5825,7 @@ li.enabled a
 {
     width: 84px;
     background: url('../forum/forum/blue/pencil_category.png');
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body.blue #body-table .table-title th.tail,
@@ -5896,7 +5901,7 @@ td.popularity
 {
     width: 84px;
     background: url('../forum/forum/green/pencil_category.png');
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body.green #body-table .table-title th.tail,
@@ -5972,7 +5977,7 @@ td.popularity
 {
     width: 84px;
     background: url('../forum/forum/purple/pencil_category.png');
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body.purple #body-table .table-title th.tail,
@@ -6048,7 +6053,7 @@ td.popularity
 {
     width: 84px;
     background: url('../forum/forum/orange/pencil_category.png');
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body.orange #body-table .table-title th.tail,
@@ -6124,7 +6129,7 @@ td.popularity
 {
     width: 84px;
     background: url('../forum/forum/yellow/pencil_category.png');
-    color:#ffffff;
+    color:#FFFFFFFFFFFF;
 }
 
 #forum-forum-body.yellow #body-table .table-title th.tail,
@@ -6177,14 +6182,14 @@ td.popularity
 {    
     color: #1E50A2;
     text-align: center;
-    font-size: 30px;
+    font-size: 1.8em;
 }
 
 #ultimate-password .message
 {    
     color: #B44C97;
     text-align: center;
-    font-size: 20px;
+    font-size: 1.25em;
 }
 
 #ultimate-password .input
@@ -6203,14 +6208,14 @@ td.popularity
     width: 100px;
     height: 50px;
     text-align: center;
-    font-size: 30px;
+    font-size: 1.8em;
 }
 
 #ultimate-password .error
 {    
     color: red;
     text-align: center;
-    font-size: 20px;
+    font-size: 1.15em;
     margin-top: 0;
 }
 
