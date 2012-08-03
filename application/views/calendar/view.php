@@ -43,7 +43,7 @@ jQuery(document).ready(function()
 <?php $this->endWidget();?>
 <div id="personal-calendar" class="calendar">
     <div class="left"></div>
-    <h3 class="date"></h3>
+    <h4 class="date"></h4>
     <div class="right">
     </div>
     <a class="calendar-subscript-button calendar-buttons" href="<?php echo Yii::app()->createUrl('calendar/subscript');?>" title="訂閱行事曆">訂閱</a>
