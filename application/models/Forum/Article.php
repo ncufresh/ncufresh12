@@ -148,7 +148,7 @@ class Article extends CActiveRecord
         }
         return false;
     }
-    
+        
     public static function getPageStatus($page, $entries_per_page=10, $fid, $category)
     {
         if($category==0)

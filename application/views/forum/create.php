@@ -1,4 +1,3 @@
-
 <form id="forum-create-form" enctype="multiprt/form-data" action="<?php echo Yii::app()->createUrl('forum/create', array('fid' => $fid)); ?>" method="POST">
 <div class="form-top">
     <p id="forum-create-text-number-check">發表文章</p>
@@ -30,7 +29,7 @@
             <label for="form-create-content">內容</label>
         </dt>
         <dd>
-            <textarea id="form-create-content" name="content[name]"></textarea>
+            <textarea id="form-create-content" name="forum[content]"></textarea>
         </dd>
     </dl>
     <!--置頂-->
