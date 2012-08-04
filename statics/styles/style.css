@@ -3685,14 +3685,14 @@ ul.users-department li h4
     width:185px; 
     height:350px;
     padding:0px;
-    margin-top:0px;
-    margin-left:75px;
+    margin-top:10px;
+    margin-left:90px;
 }
 
 #user-data-view li
 {
-    width: 185px;
-    height: 32px;
+    width: 165px;
+    height: 25px;
     display: block;
     list-style-type:none;
     text-align:left;
@@ -3815,7 +3815,7 @@ div.A-group-users div.avatar
     padding:5px;
 }*/
 
-#friend-chatting
+.friend-chatting
 {
     width:415px;
     height:315px;
@@ -3824,7 +3824,7 @@ div.A-group-users div.avatar
     outline:1px solid yellow
 }
 
-#friend-chatting ul
+.friend-chatting ul
 {
     width:411px;
     height:312px;
@@ -3833,7 +3833,7 @@ div.A-group-users div.avatar
     outline:1px solid red
 }
 
-#friend-chatting ul li
+.friend-chatting ul li
 {
     width:205px;
     padding:0px;
@@ -3873,8 +3873,8 @@ div.A-group-users div.avatar
 {
     margin-left:65px;
     margin-top:0px;
-    width:125px; 
-    height:100px;
+    width:150px; 
+    height:125px;
     padding:0px;
 }
 
@@ -4044,6 +4044,32 @@ div.profile-message-reply
     float:left;
 }
 
+#is_friend
+{
+    background-image: url('../profile/button/isfriend.png');
+    background-repeat: no-repeat ;
+    width: 95px;
+    height: 40px;
+    padding: 0px;
+    margin: 0px;
+    position:absolute;
+    right:550px;
+    bottom:-43px;
+}
+
+#friend_request
+{
+    background-image: url('../profile/button/friendrequest.png');
+    background-repeat: no-repeat ;
+    width: 95px;
+    height: 42px;
+    padding: 0px;
+    margin: 0px;
+    position:absolute;
+    right:550px;
+    bottom:-44px;
+}
+
 .button-back
 {
     background-image: url('../profile/button/back.png');
@@ -4061,8 +4087,8 @@ div.profile-message-reply
 
 .button-all-choose
 {
-    /*background-image: url('../profile/button/allchoose.png');
-    background-repeat: no-repeat ;*/
+    background-image: url('../profile/button/allchoose.png');
+    background-repeat: no-repeat ;
     width: 84px;
     height: 37px;
     padding: 0px;

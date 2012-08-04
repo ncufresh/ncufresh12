@@ -20,7 +20,7 @@
             </li>
 <?php endforeach; ?>
         </ul>
-    <button type="submit" name="all-choose" class="button-all-choose">全選</button>
+    <button type="submit" name="all-choose" class="button-all-choose"></button>
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
     <button type="submit" class="button-addfriends"></button>
 </form>

@@ -3425,17 +3425,15 @@
         {
             window.history.back();
         }); 
-        $(document).ready(function(){
         $('.A-group-users').scrollable({
             wheelSpeed: 90
         });
         $('.users-group').scrollable({
             wheelSpeed: 90
         });
-        $('#friend-chatting').scrollable({
+        $('.friend-chatting').scrollable({
             wheelSpeed: 90
         });
-    });
     });
 })(jQuery);
 
