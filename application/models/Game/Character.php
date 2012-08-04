@@ -261,15 +261,22 @@ class Character extends CActiveRecord
         return $price;
     }
 
-    public function createNewCharacter($user_id,$gender)
+    public function createNewCharacter($user_id)
     {
         $character = new Character(); //Character Model
-        $character->id = $user_id;//同步寫入user的id至遊戲資料列表
-        if( $gender == 0 )
+        $character->id = $user_id; //同步寫入user的id至遊戲資料列表
+        $profile = Profile::model()->findByPk($user_id);
+        if ( $profile )
+            $gender = $profile->gender;
+        else
+            $gender = 0;
+            
+        if  ( $gender == 0 )
             $character->skin_id = 81; //男生 皮膚預設id=81
         else
             $character->skin_id = 85; //女生 皮膚預設id=85
-        if ( $character->save() == true ) 
+            
+        if ( $character->save() == true )
             return true;
         else
             return false;
