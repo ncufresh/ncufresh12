@@ -2475,15 +2475,17 @@ button.news-button
 }
 
 #multimedia
+{
+}
 
 /**
  * Nculife style
  */
 #life-dialog
 {
-    display: none;
     width: 649px;
     height: 449px;
+    display: none;
     z-index: 1200;
     position: fixed;
 }
@@ -2550,7 +2552,7 @@ button.news-button
 #nculife-title
 {
     width: 605px;
-    height: 122px;
+    height: 121px;
     margin: -72px 0 0 10px;
     display: inline-block;
 }
@@ -2672,8 +2674,8 @@ button.news-button
 
 #life-container
 {
-    width: 740px;
-    height: 600px;
+    width: 649px;
+    height: 549px;
     position:relative;
     padding: 0;
 }
@@ -2808,6 +2810,15 @@ button.news-button
 }
 
 .readme-background
+{
+    height: 420px;
+    padding: 15px 25px;
+    position: relative;
+    width: 700px;
+    overflow: hidden;
+}
+
+.readme-download-background
 {
     height: 357px;
     padding: 15px 25px;
@@ -3119,7 +3130,7 @@ button.news-button
 
 #about .about-display
 {
-    background: #FFFFFF;
+    background: #B9B9B9;
     bottom: 0px;
     height: 0px;
     opacity: 0px;
@@ -3173,19 +3184,21 @@ button.news-button
 
 #about .tag-Box-name
 {
+    border-radius: 8px;
+    background: white;
     top: 95%;
     position: absolute;
     text-align: center;
-    height: 10%;
     width: 100%;
 }
 
 #about .tag-Box-grade
 {
-    top: 120%;
+    border-radius: 8px;
+    background: white;
+    top: 130%;
     position: absolute;
     text-align: center;
-    height: 10%;
     width: 100%;
 }
 
@@ -5473,6 +5486,22 @@ li.enabled a
     padding-top:5px
 }
 
+
+#forum-view-top2 .fb_iframe_widget
+{
+    margin-left: 10px;
+}
+
+#forum-view-top2 .fb .button_count a.connect_widget_like_button
+{
+    padding: 0px;
+}
+
+#forum-view-top2 a
+{
+    float: left;
+}
+
 #forum-view-top2 .pager,
 #forum-forum-top2 .pager,
 #forum-forum-footer .pager
@@ -5494,7 +5523,7 @@ li.enabled a
 {
     background: url('../forum/view/background.png');
     width: 683px;
-    min-height: 300px;
+    min-height: 324px;
     margin-left:35px;
     position: relative;
     overflow: hidden;
@@ -5514,12 +5543,17 @@ li.enabled a
 {
     background: #F8C77C;
     width: 165px;
-    height: 263px;
+    height: 296px;
     border-radius: 6px;
     border: 2px solid #EAA520;
     margin-left: 45px;
     padding-top: 7px;
     float: left;
+}
+
+#forum-view-replies .forum-view-profile
+{
+    margin-top: 10px;
 }
 
 .forum-view-profile .profile-pic
@@ -5529,6 +5563,13 @@ li.enabled a
     background: white;
     border-radius: 6px;
     margin: 0 auto;
+    overflow: hidden;
+}
+
+.forum-view-profile .profile-pic .avatar
+{
+    margin-left: -27px;
+    max-width: 221px;
 }
 
 .forum-view-profile .profile-name
@@ -5547,12 +5588,33 @@ li.enabled a
 {
     width: 140px;
     height: 23px;
-    margin: 1px auto;
+    margin: 10px auto;
     background: #FFF0C8;
     border-radius:5px;
     padding-top: 2px;
     padding-left: 10px;
     color: #C57902;
+}
+
+.forum-view-profile .profile-add-friend
+{
+    width: 120px;
+    height: 23px;
+    margin: 1px auto;
+    background: #FFF0C8;
+    border-radius:5px;
+    padding-top: 2px;
+    padding-left: 30px;
+}
+
+.forum-view-profile .profile-add-friend a
+{
+    color: #C57902;
+}
+
+.forum-view-profile .profile-add-friend a:hover
+{
+    font-weight: bold;
 }
 
 #forum-view-body .forum-view-title
@@ -5595,14 +5657,17 @@ li.enabled a
 #forum-view-body .forum-view-comments
 {
     width: 389px;
-    height: 25px;
+    height: 30px;
     border-radius: 6px;
     background: #F4EFE0;
     float: right;
     margin-top: 2px;
     margin-right: 46px;
     border: 2px solid #EAA520;
-    padding: 5px 0 0 11px;
+    padding: 0 0 0 11px;
+    word-break: break-all;
+    overflow: hidden;
+    line-height: 30px;
 }
 
 #forum-view-body #form-comment .forum-comment-text

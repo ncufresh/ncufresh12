@@ -10,6 +10,16 @@
         'parameters'=> array('fid' => $fid, 'id' => $article->id)
     )); ?>
     <a id="forum-view-replylink" href="<?php echo Yii::app()->createUrl('forum/reply', array('aid'=>$article->id));?>"></a>
+    
+    <fb:share-button class="meta">
+	<meta name="title" content="分享標題或應用程式名稱"/> 
+	<meta name="description" content="內容描述"/> 
+	<link rel="image_src" href="圖片位置"/> 
+	<link rel="target_url" href="連結網址"/> 
+    </fb:share-button>
+    <span class="fb">
+    <fb:like href="" layout="button_count" show_faces="false" action="like" colorscheme="light"></fb:like>
+    </span>
 </div>
 <?php
 /*綜合討論 + 管理學院*/
@@ -45,9 +55,18 @@ else if ( $fid == 22 || $fid == 23 )
 ?>
 <div id="forum-view-body" class="<?php echo $forum_color; ?>">
     <div class="forum-view-profile">
-        <div class="profile-pic"></div>
+        <div class="profile-pic">
+        <?php $this->widget('Avatar', array(
+            'id'        => $article->author_id
+        )); ?>
+        </div>
         <div class="profile-name">暱稱：<?php echo User::model()->findByPK($article->author_id)->profile->nickname; ?></div>
         <div class="profile-department">系所：<?php echo User::model()->findByPK($article->author_id)->profile->mydepartment->abbreviation;?></div>
+<?php if ( ! Yii::app()->user->isguest && Yii::app()->user->id != $article->author_id ) :?>
+        <div class="profile-add-friend">
+            <a class="add-friend" href="#<?php echo $article->author_id;?>">+加為好友+</a>
+        </div>
+<?php endif; ?>
     </div>
     <div class="forum-view-title"><?php echo $article->title; ?></div>
     
@@ -80,14 +99,22 @@ foreach ($replies as $each):
 ?>
 <div id="forum-view-replies" class="<?php echo $forum_color; ?>">
     <div class="forum-view-profile">
-        <div class="profile-pic"></div>
+        <div class="profile-pic">
+        <?php $this->widget('Avatar', array(
+            'id'        => $each->author_id
+        )); ?>
+        </div>
         <div class="profile-name">暱稱：<?php echo User::model()->findByPK($each->author_id)->profile->nickname; ?></div>
         <div class="profile-department">系所：<?php echo User::model()->findByPK($each->author_id)->profile->mydepartment->abbreviation;?></div>
+<?php if ( ! Yii::app()->user->isguest && Yii::app()->user->id != $each->author_id ) :?>
+        <div class="profile-add-friend">
+            <a class="add-friend" href="#<?php echo $article->author_id;?>">+加為好友+</a>
+        </div>
+<?php endif; ?>
     </div>
     <div class="reply-content">
         <?php echo $each -> content;?>
-        <div class="hululu"></div>
-        
+        <div class="hululu"></div>        
     </div>
 </div>
 <?php
@@ -101,3 +128,7 @@ endforeach;
         'parameters'=> array('fid' => $fid, 'id' => $article->id)
     )); ?>
 </div>
+<form class="form-addfriend" action="<?php echo Yii::app()->createUrl('friends/makefriends'); ?>" method="POST" >
+    <input class="addfriend-input" type="hidden" name="" value="" />
+    <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
+</form>

@@ -12,7 +12,7 @@
 </div>
 <div class="form-body">
     
-    <dl>
+    <dl class="select">
         <dt>
             <label for="forum-create-category"></label>
         </dt>
@@ -29,19 +29,20 @@
             <label for="form-create-content">內容</label>
         </dt>
         <dd>
-            <textarea id="form-create-content" name="forum[content]" cols="70" rows="10"></textarea>
+            <textarea id="form-create-content" name="forum[content]"></textarea>
         </dd>
     </dl>
     <!--置頂-->
     <?php
     if ( $category->getIsMaster() ) :
     ?>
-        <dl class="article-is-top">
+        <dl class="article-is-top checkbox">
             <dt>
-                <label class="top-checkbox" for="form-create-top">置頂</label>
+                <label for="form-create-top">置頂</label>
             </dt>
             <dd>
                 <input id="form-create-top" type="checkbox" name="forum[sticky]" value="1" />
+                <label for="form-create-top">置頂</label>
             </dd>
         </dl>
         
@@ -50,10 +51,12 @@
     endif;
     ?>
 </div>
-<div class="form-foot buttons">
+<div class="form-foot">
+    <div class="buttons">
+    <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
     <input type="hidden" name="forum[forum_id]" value="<?php echo $fid; ?>" />
     <button id="forum-create-submit" disabled>發佈</button>
     <button class="forum-cancel-button" type="reset">取消</button>
+    </div>
 </div>
-<input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
 </form>

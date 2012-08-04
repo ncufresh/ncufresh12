@@ -19,8 +19,6 @@
 <p>
     <img alt="綠草如茵" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/1%20(3).jpg" style="width:340px;height:240px;" />
 </p>
-<div>
-</div>
 
 
 

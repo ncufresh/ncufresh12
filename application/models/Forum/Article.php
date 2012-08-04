@@ -103,7 +103,21 @@ class Article extends CActiveRecord
             ));
         }
     }
-
+    
+    public function getLastestArticles($num)
+    {
+        $articles = $this->findAll(array(
+            'condition' => 'invisible=0 AND forum_id=1',
+            'order'     => 'created DESC',
+            'limit'     => $num
+        ));
+        foreach ( $articles as $each )
+        {
+            $each->created = Yii::app()->format->date($each->getRawValue('created'));
+        }
+        return $articles;
+    }
+    
     public function getUrl()
     {
         return Yii::app()->createUrl('forum/view', array(
@@ -139,7 +153,7 @@ class Article extends CActiveRecord
         }
         return false;
     }
-    
+        
     public static function getPageStatus($page, $entries_per_page=10, $fid, $category)
     {
         if($category==0)
