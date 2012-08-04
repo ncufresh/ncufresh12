@@ -37,62 +37,71 @@ class ProfileController extends Controller
 
     public function actionProfile() 
     {
-        $this->render('profile', array(
-            'user'      => $this->user
-        ));
+        if ( empty($this->user->profile) )
+        {
+            $this->redirect(array('profile/editor'));
+        }
+        else
+        {
+            $this->render('profile', array(
+                'user'      => $this->user
+            ));
+        }
         
     }
 
     public function actionEditor() 
     {
         $profile = $this->user->profile; //該筆資料非空值
-        if ( !empty($profile) )
+        if ( isset($_POST['profile']) ) 
         {
-            if ( isset($_POST['profile']) ) 
+            $this->user->attributes = $_POST['register'];
+            $profile->find(array(
+                'condition' => 'id = :userid AND nickname != :myNickName',
+                'params'    => array(
+                    ':userid'       => $this->id,
+                    ':myNickName'   => $_POST['profile']['nickname']
+                )
+            ));
+            $profile->setScenario('editor');
+            $profile->attributes = $_POST['profile'];
+            $user_validate = $this->user->validate();
+            $profile_validate = $profile->validate();
+            if ( $user_validate && $profile_validate )
             {
-                $this->user->attributes = $_POST['register'];
-                $profile->find(array(
-                    'condition' => 'id = :userid AND nickname != :myNickName',
-                    'params'    => array(
-                        ':userid'       => $this->id,
-                        ':myNickName'   => $_POST['profile']['nickname']
-                    )
-                ));
-                $profile->setScenario('editor');
-                $profile->attributes = $_POST['profile'];
-                $user_validate = $this->user->validate();
-                $profile_validate = $profile->validate();
-                if ( $user_validate && $profile_validate )
+                if ( $profile->save() )
                 {
-                    if ( $profile->save() )
-                    {
-                        $this->redirect(array('profile/profile'));
-                    }
+                    $this->redirect(array('profile/profile'));
                 }
             }
         }
-        else//資料為空值
+        else
         {
-            $profile->setScenario('wrong-data');
-            $profile->attributes = array(     
-                'name'              => '',
-                'nickname'          => '',
-                'gender'            => 0, //預設男生
-                'department_id'     => 2, //預設他是資工系
-                'grade'             => 0,
-                'senior'            => '',
-                'birthday'          => 1
-            );
-            if ( $profile->save() )
+            if ( empty($profile) )
             {
-                $this->render(array('profile/editor'));
+                $profile = new Profile();
+                $profile->id = $this->user->id;
+                $profile->attributes = array(     
+                    'name'              => 'QQ',
+                    'nickname'          => 'QQ',
+                    'gender'            => 0, //預設男生
+                    'department'        => 2, //預設他是資工系
+                    'grade'             => 0,//其他年級
+                    'senior'            => 'QQ',
+                    'birthday'          => '2000-01-01'
+                );
+                $profile_validate = $profile->validate();
+                if (  $profile_validate && $profile->save() )
+                {
+                    $this->redirect(array('profile/editor'));
+                }
             }
         }
         $this->render('editor', array(                
             'user'                   => $this->user, 
             'departments'            => Department::model()->getDepartment(),
             'profile_errors'         => $profile->getErrors()
-        ));
+        ));       
     }
 
     public function actionMessage()
