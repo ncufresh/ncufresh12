@@ -57,9 +57,17 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        $news = News::model()->getPopularNews(10);
+        foreach ( $news as & $entry )
+        {
+            $title = $entry->title;
+            $entry->title = mb_strcut($title, 0, 24);
+            if ( strlen($title) > strlen($entry->title) ) $entry->title .= '…';
+        }
+
         $this->setPageTitle(Yii::app()->name);
         $this->render('index', array(
-            'latests'   => News::model()->getPopularNews(10),
+            'latests'   => $news,
             'articles'  => array(),
             'marquees'  => Marquee::model()->getMarquees()
         ));
