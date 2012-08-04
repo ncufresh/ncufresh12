@@ -2729,6 +2729,7 @@
         }
     };
 })(jQuery);
+
 (function($) {
     $.clubs = function()
     {
@@ -3552,7 +3553,6 @@
     });
     });
 })(jQuery);
-
 
 google.load('search', '1', {
     language: 'zh_TW'
