@@ -2800,7 +2800,7 @@ button.news-button
 #readme .scroll-container
 {
     height: 357px;
-    width: 630px;
+    width: 639px;
 }
 
 #readme-fresh
@@ -2841,6 +2841,11 @@ button.news-button
     position: relative;
     width: 700px;
     overflow: hidden;
+}
+
+#readme .readme-view
+{
+	width: 590px;
 }
 
 #readme-body
@@ -2934,12 +2939,6 @@ button.news-button
     top: 303px;
     width: 63px;
 }
-
-/*#readme .readme-view
-{
-    padding-right: 10px;
-	width: 660px;
-}*/
 
 #readme .scroll-bar
 {
@@ -3053,13 +3052,13 @@ button.news-button
 .readme-menu h5
 {
 	text-align: center;
+	margin-top: 25px;
 }
 
-.readme-menu p:hover
+#readme .menu-index a:hover
 {
-    cursor: pointer;
     text-decoration: underline;
-    font-weight: bold;
+    color: black;
 }
 
 .readme-menu-index
@@ -3070,6 +3069,11 @@ button.news-button
 #readme .menu-index
 {
 	list-style: none;
+}
+
+#readme .menu-index li
+{
+	margin-top: 10px;
 }
 
 #readme .index
@@ -5272,6 +5276,16 @@ div.game-system
     width: 750px;
     height: 450px;
     display: inline-block;
+}
+
+div.game-system .scroll-container
+{
+    width: 380px;
+}
+
+div.game-system .scroll-content
+{
+    width: 380px;
 }
 
 div.user-body
@@ -7933,14 +7947,14 @@ td.popularity
     padding: 0px;"
 }
 
-.scroll-content
+#street-div .scroll-content
 {
     margin-right: -70px;
     margin-left: 38px;
     margin-top: 8px;
 }
 
-.scroll-container
+#street-div .scroll-container
 {
     width: 630px;
     height: 300px;
