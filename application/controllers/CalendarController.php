@@ -424,7 +424,6 @@ class CalendarController extends Controller
         //抓取全部事件
         else
         {
-            
             $counter = 0;
             //登入
             if( Yii::app()->user->isMember )
