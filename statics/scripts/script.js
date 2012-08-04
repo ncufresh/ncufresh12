@@ -3363,13 +3363,11 @@
         
         if ( $('#club').length ) $.clubs();
         
-<<<<<<< HEAD
         if ( $('#game').length ) $.game();
-=======
+
         if ( $('#friends').length ) $.friends();
         
         if ( $('#profile').length ) $.profile();
->>>>>>> 1dcba67e827767c16d813e330b5484c3ac3f384a
         
         if ( $('#nculife').length ) $.nculife();
 
