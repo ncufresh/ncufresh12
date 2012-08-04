@@ -5331,6 +5331,11 @@ ul.game-button li
     color:#b9b9b9;
 }
 
+ul.game-button li a:hover
+{
+    color: red;
+}
+
 div.game-display
 {
     width: 378px;
