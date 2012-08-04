@@ -38,28 +38,31 @@
             </li>
         </ul>
     </div> <!--顯示歷史訊息-->  
-    <div id="friend-chatting">
+    <div class="friend-chatting">
         <ul>
             <li>時間:</li>
             <li>對話內容:</li>
 <?php foreach ( $messages as $message ) : ?>
             <li>
-<?php echo $message->timestamp; ?>
+<?php echo $message['time']; ?>
             </li>
             <li>
-<?php echo $message->message; ?>
+<?php echo $message['message']; ?>
             </li>
 <?php endforeach; ?>
         </ul>
     </div>
 </div>
-<?php if ( ! $is_friend ) : ?>
+<?php if ( $friend_relation === 2 ) : ?>
 <form action="<?php echo Yii::app()->createUrl('friends/makefriends'); ?>" method="POST" >
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
     <input type="hidden" name="friends[<?php echo $user->id; ?>]" value="<?php echo $user->id; ?>" />
     <button type="submit" class="button-addfriend" ></button>
     <button type="button" class="button-back" ></button>
 </form>
+<?php elseif ( $friend_relation === 1 ) : ?>
+<button id="friend_request"></button>
 <?php else : ?>
-<button type="button" class="button-back" ></button>
+<button id="is_friend"></button>
 <?php endif; ?>
+<button type="button" class="button-back" ></button>
