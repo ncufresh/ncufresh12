@@ -9,7 +9,7 @@
     </div>
     <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="left" />
     <ul class="photo-ul">
-<?php for ( $count=0; $count<82; $count++ ) : ?>
+<?php for ( $count = 0 ; $count < 82 ; ++$count ) : ?>
         <li class="photo-li">
             <a href="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photos/photo<?php echo $count; ?>.jpg">
             <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photos/photo<?php echo $count; ?>.jpg" alt="photo" />
