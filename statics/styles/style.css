@@ -2794,7 +2794,7 @@ button.news-button
 #readme .scroll-container
 {
     height: 357px;
-    width: 630px;
+    width: 639px;
 }
 
 #readme-fresh
@@ -2819,7 +2819,7 @@ button.news-button
     padding-bottom: 40px;
 }
 
-.readme-background
+#readme .background
 {
     height: 420px;
     padding: 15px 25px;
@@ -2828,13 +2828,18 @@ button.news-button
     overflow: hidden;
 }
 
-.readme-download-background
+#readme .download-background
 {
     height: 357px;
     padding: 15px 25px;
     position: relative;
     width: 700px;
     overflow: hidden;
+}
+
+#readme .readme-view
+{
+	width: 590px;
 }
 
 #readme-body
@@ -2929,11 +2934,6 @@ button.news-button
     width: 63px;
 }
 
-#readme .readme-view
-{
-    padding-right: 10px;
-}
-
 #readme .scroll-bar
 {
     top: 33%;
@@ -3021,10 +3021,10 @@ button.news-button
 
 .readme-menu
 {
-    width: 200px;
+    width: 220px;
     heigth: auto;
     top: 5px;
-    left: -187px;
+    left: -177px;
     border-radius: 0 10px 10px 0;
     position: absolute;
     display: block;
@@ -3033,16 +3033,26 @@ button.news-button
     overflow: auto;
 }
 
+.readme-menu li
+{
+	margin: 0 0 0 -30px;
+}
+
 .readme-menu p
 {
     text-align: center;
 }
 
-.readme-menu p:hover
+.readme-menu h5
 {
-    cursor: pointer;
+	text-align: center;
+	margin-top: 25px;
+}
+
+#readme .menu-index a:hover
+{
     text-decoration: underline;
-    font-weight: bold;
+    color: black;
 }
 
 .readme-menu-index
@@ -3050,7 +3060,17 @@ button.news-button
     display: none;
 }
 
-.download-index
+#readme .menu-index
+{
+	list-style: none;
+}
+
+#readme .menu-index li
+{
+	margin-top: 10px;
+}
+
+#readme .index
 {
     float: left;
     list-style-type: disc;
@@ -3385,7 +3405,7 @@ button.news-button
     width: 96px;
 }
 
-<<<<<<< HEAD
+
 #club .club,
 #club .club-head,
 #club .club-head:hover,
@@ -3449,7 +3469,7 @@ button.news-button
 
 #club .department
 {
-    background: url('../club/department.png');
+    background-position: -800px 0px;
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -5250,6 +5270,16 @@ div.game-system
     width: 750px;
     height: 450px;
     display: inline-block;
+}
+
+div.game-system .scroll-container
+{
+    width: 380px;
+}
+
+div.game-system .scroll-content
+{
+    width: 380px;
 }
 
 div.user-body
@@ -7911,14 +7941,14 @@ td.popularity
     padding: 0px;"
 }
 
-.scroll-content
+#street-div .scroll-content
 {
     margin-right: -70px;
     margin-left: 38px;
     margin-top: 8px;
 }
 
-.scroll-container
+#street-div .scroll-container
 {
     width: 630px;
     height: 300px;
