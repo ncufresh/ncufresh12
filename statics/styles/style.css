@@ -1922,6 +1922,7 @@ a.calendar-hide-event:hover
     background-position: -32px -160px;
     display: inline-block;
     padding-left: 36px;
+    margin-right: 80%;
 }
 
 #calendar-subscript .category-wrapper
@@ -2300,16 +2301,61 @@ button.news-button
  */
 #multimedia
 {
-    background: #18244E url('../images/multimedia_background.png');
+    background: url('../images/multimedia_background.png');
     border-radius: 5px;
-    overflow: hidden;
-    padding-top: 90px;
+    overflow: visible;
+    width: 100%;
+    height: 720px;
+    display: inline-block;
+}
+
+#multimedia .title
+{
+    background: url('../images/multimedia_title.png') no-repeat;
+    height: 60px;
+    width: 304px;
+    margin: 15px auto;
 }
 
 #multimedia .sidebar
 {
     float: left;
     width: 25%;
+    position: relative;
+    overflow: visible;
+}
+
+#multimedia .sidebar a.tab
+{
+    display: inline-block;
+    position: absolute;
+    left: -29px;
+    width: 30px;
+    height: 100px;
+    text-indent: -10000px;
+}
+
+#multimedia .sidebar #tab1
+{
+    background: url('../images/multimedia_tab1.png');
+}
+
+#multimedia .sidebar #tab1:active,
+#multimedia .sidebar #tab1.active 
+{
+    background: url('../images/multimedia_tab1_active.png');
+}
+
+#multimedia .sidebar #tab2
+{
+    background: url('../images/multimedia_tab2.png');
+    top: 100px;
+}
+
+#multimedia .sidebar #tab2:active,
+#multimedia .sidebar #tab2.active 
+{
+    background: url('../images/multimedia_tab2_active.png');
 }
 
 #multimedia .content
@@ -2356,7 +2402,7 @@ button.news-button
     margin-top: 350px;
 }
 
-#multimedia a
+#multimedia .menu a
 {
     display: block;
     width: 100%;
@@ -2366,12 +2412,12 @@ button.news-button
     opacity: 1;
 }
 
-#multimedia a:hover
+#multimedia .menu a:hover
 {
     opacity: 0.8;
 }
 
-#multimedia a span
+#multimedia .menu a span
 {
     color: white;
     position: relative;
@@ -2386,7 +2432,7 @@ button.news-button
     padding: 0 8px 0 0;
 }
 
-#multimedia a img
+#multimedia .menu a img
 {
     width: 100%;
     height: 100%;
@@ -2414,10 +2460,9 @@ button.news-button
 #multimedia .introduction
 {
     background: url('../images/multimedia_introduction.png') 0 5px no-repeat;
-    color: #FFFFFF;
+    color: #000000;
     height: 150px;
     padding: 25px 55px;
-    width: 100%;
 }
 
 #multimedia-frame
@@ -2427,6 +2472,8 @@ button.news-button
     padding: 0;
     position: relative;
 }
+
+#multimedia
 
 /**
  * Nculife style
@@ -3062,6 +3109,7 @@ button.news-button
 
 #about .block2
 {
+    margin-top: -16px;
     border-radius: 0px 0px 10px 10px;
     background: #385281;
     height: 950px;    
@@ -3097,6 +3145,7 @@ button.news-button
 
 #about .about-block1Inf
 {
+    display: none;
     position: absolute;
     top: 30px;
     left: 40px;
@@ -3154,6 +3203,7 @@ button.news-button
 
 #about .photo-ul
 {   
+    display: none;
     left: -40px;
     position: absolute;
     margin: 0px;
@@ -3165,6 +3215,58 @@ button.news-button
     width: 50px;
     height: 50px;
     float: left;
+}
+
+#about .about-small-0
+{
+    background: url('../about/about.png') no-repeat;
+    width: 700px;
+    height: 280px;
+}
+
+#about .about-small-1
+{
+    top: 12px;
+    left: 36px;
+    height: 132px;
+    width: 122px;
+}
+
+#about .about-small-2
+{
+    top: 145px;
+    left: 150px;
+    height: 132px;
+    width: 122px;
+}
+
+#about .about-small-3
+{
+    top: 146px;
+    left: 379px;
+    height: 132px;
+    width: 122px;
+}
+
+#about .about-small-4
+{
+    top: 142px;
+    left: 576px;
+    height: 132px;
+    width: 122px;
+}
+
+#about .about-small-5
+{
+    top: 11px;
+    left: 573px;
+    height: 132px;
+    width: 122px;
+}
+
+#about .hidden
+{
+    display: none;
 }
 
 /**
@@ -3809,30 +3911,21 @@ div.A-group-users div.avatar
     float:left;
 }
 
-/*.friends-part3
-{
-    width:675px;
-    height:350px;
-    margin:0px;
-    padding:5px;
-}*/
-
 .friend-chatting
 {
     width:415px;
     height:315px;
     margin-top:14px;
     padding:0px;
-    outline:1px solid yellow
 }
 
 .friend-chatting ul
 {
-    width:411px;
-    height:312px;
-    margin-left:3px;
+    width:410px;
+    margin-left:2px;
     padding:0px;
-    outline:1px solid red
+    outline:1px solid black;
+    outline-style:dotted;
 }
 
 .friend-chatting ul li
@@ -3841,7 +3934,8 @@ div.A-group-users div.avatar
     padding:0px;
     float:left;
     list-style-type:none;
-    outline:1px solid green
+    outline:1px solid black;
+    outline-style:dotted;
 }
 
 .profile-modify
@@ -5052,8 +5146,8 @@ div.user-body img
 {
     position: absolute;
     top: 0;
-    left: 0;
-    width:250px;
+    left: 11px;
+    width:225px;
     height:400px;
 }
 

@@ -300,6 +300,7 @@
             ncuLifeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('nculife/content', array('tab' => ':tab', 'page' => ':page'));?>'),
             readMeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('readme/content', array('tab' => ':tab', 'page' => ':page'));?>'),
             multimediaYoutubeUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('multimedia/watch', array('v' => ':v')); ?>'),
+            multimediaIntroductionUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('multimedia/introduction', array('v' => ':v')); ?>'),
             newsIndexUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>'),
             registerUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>'),
             calendarEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/event', array('id'=> ':id')); ?>'),

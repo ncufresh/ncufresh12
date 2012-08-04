@@ -195,6 +195,10 @@ class SiteController extends Controller
             $model->attributes = $_POST['login'];
             if ( $model->login() )
             {
+                if ( empty($model->profile) )
+                {
+                    $this->redirect(array('profile/editor'));
+                }
                 $this->redirect(array('site/index'));
             }
         }
@@ -236,60 +240,32 @@ class SiteController extends Controller
                 if ( $user->save() )
                 {
                     $profile->id = $user->id;
-                    $character = new Character(); //Character Model
-                    $character->id = $user->id;//同步寫入user的id至遊戲資料列表
-                    if( $_POST['profile']['gender'] == 0 )
+                    if ( $profile->save() )
                     {
-                        $character->skin_id = 81; //男生 皮膚預設id=81
+                        $item_save = ItemBag::model()->characterNewItem($user->id);
+                        $character_save = Character::model()->createNewCharacter($user->id);
+                        //行事曆的部分
+                        $calendar = new Calendar();
+                        $calendar->user_id = $user->id;
+                        $calendar->category = 1;
+                        $calendar_subscriptions = new Subscription();
+                        $calendar_subscriptions->user_id = $user->id;
+                        $calendar_subscriptions->calendar_id = 1;
+                        $calendar_subscriptions->invisible = 0;
+                         if ( $character_save && $item_save && $calendar->save() && $calendar_subscriptions->save() )
+                        { 
+                            $this->redirect(array('site/success'));
+                        }
                     }
-                    else
-                    {
-                        $character->skin_id = 85; //女生 皮膚預設id=85
-                    }
-                    $item = new ItemBag(); //ItemBag Model
-                    $item->user_id = $user->id; //同步寫入user的id至道具列表
-                    $item->equipped = true; //寫入裝備狀態
-                    $item->item_id = $character->skin_id; //寫入獲得道具的id
-                    //行事曆的部分
-                    $calendar = new Calendar();
-                    $calendar->user_id = $user->id;
-                    $calendar->category = 1;
-                    $calendar_subscriptions = new Subscription();
-                    $calendar_subscriptions->user_id = $user->id;
-                    $calendar_subscriptions->calendar_id = 1;
-                    $calendar_subscriptions->invisible = 0;
-                    if ( $profile->save() && $character->save() && $item->save() && $calendar->save() && $calendar_subscriptions->save() )
-                    { 
-                        $this->redirect(array('site/success'));
-                    }
-                }
-                else
-                {
-                    $this->setPageTitle(Yii::app()->name . ' - 註冊');
-                    $this->render('register', array(
-                        'departments'   => Department::model()->getDepartment(),
-                        'username_errors'        => $user->getErrors(),
-                        'profile_errors'         => $profile->getErrors()
-                    ));
+                   
                 }
             }
-            else
-            {
-                $this->render('register', array(
-                        'departments'   => Department::model()->getDepartment(),
-                        'username_errors'        => $user->getErrors(),
-                        'profile_errors'         => $profile->getErrors()
-                ));
-            }
         }
-        else
-        {
-            $this->render('register', array(
-                    'departments'           => Department::model()->getDepartment(),
-                    'username_errors'       => $user->getErrors(),
-                    'profile_errors'        => $profile->getErrors()
-            ));
-        }
+        $this->render('register', array(
+            'departments'           => Department::model()->getDepartment(),
+            'username_errors'       => $user->getErrors(),
+            'profile_errors'        => $profile->getErrors()
+        ));
     }
 
     public function actionSitemap()
