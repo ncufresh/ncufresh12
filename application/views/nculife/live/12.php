@@ -11,14 +11,14 @@
     營業時間：
 </p>
 <p>
-    週一-週五10:00-22:00
+    週一-週五:10:00-22:00
 </p>
 <p>
-    週六10:30-22:30、週日和例假日10:30-22:00
+    週六:10:30-22:30、週日和例假日:10:30-22:00
 </p>
 <p>
     電話：03-402-8686
 </p>
 <p>
     <img alt="NOVA" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2595.JPG" style="width:500px;height:375px;" />
-</p>
+</p>
