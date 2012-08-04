@@ -3527,10 +3527,6 @@
 (function($){
     $.friends = function()
     {
-        jQuery('.button-back').click(function()
-        {
-            window.history.back();
-        }); 
         $('.a-group-users').scrollable({
             wheelSpeed: 90
         });
@@ -3560,6 +3556,10 @@
         $('.friend-chatting-content').scrollable({
             wheelSpeed: 90
         });
+        jQuery('.button-back').click(function()
+        {
+            window.history.back();
+        }); 
     
     }
 })(jQuery);

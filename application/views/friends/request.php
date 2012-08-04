@@ -20,8 +20,8 @@
          </li>
 <?php endforeach; ?>
     </ul>
-    <button type="submit" name="agree" class="button-makefriend"></button>
-    <button type="submit" name="cancel" class="button-cancel"></button>
+    <button type="submit" name="agree" class="button-makefriend">好友確認</button>
+    <button type="submit" name="cancel" class="button-cancel">取消</button>
 </form>
-<button type="button" class="button-back"></button>
+<a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>
 </div>

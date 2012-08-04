@@ -27,7 +27,7 @@
 <?php endforeach ; ?>
         </ul>
 <button type="submit" name="all-choose" class="button-all-choose">全選</button>
-<button type="submit" class="button-sure"></button>
+<button type="submit" class="button-sure">確認</button>
 </form>
-<a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back"></a>
+<a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>
 </div>

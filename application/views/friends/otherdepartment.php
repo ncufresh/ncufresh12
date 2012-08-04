@@ -22,8 +22,8 @@
             </li>
 <?php endforeach; ?>
         </ul>
-    <button type="submit" name="all-choose" class="button-all-choose"></button>
-    <button type="submit" class="button-addfriends"></button>
+    <button type="submit" name="all-choose" class="button-all-choose">全選</button>
+    <button type="submit" class="button-addfriends">新增好友</button>
 </form>
-<a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back"></a>
+<a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>
 </div>
