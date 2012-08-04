@@ -27,9 +27,10 @@
         var tagbarPerson = $('.' + options.tagBar + ' div');
         var personName = $('<p></p>').addClass('tag-box-name').hide();
         var personGrade = $('<p></p>').addClass('tag-box-grade').hide();
-        var photoNumber = 82;
+        var photoNumber = 31;
         var smallPhotoIndex = 0;
         var photoA = $('#' + options.aboutId + ' a');
+        var tagBool = true;
         var jumpTo = function()
         {   
             tagbar.each(function(){
@@ -100,6 +101,7 @@
             })
             .click(function()
             {
+                tagBool = false;
                 for ( var i = 0; i < 4; i++)
                 {
                     block1Inf.eq(i).hide();
@@ -152,15 +154,18 @@
         },options.picAutoSpeed);
         setInterval(function()
         {
-            if ( tagbarIndex < 4 )
+            if ( tagBool )
             {
-                tagbarIndex++;
+                if ( tagbarIndex < 4 )
+                {
+                    tagbarIndex++;
+                }
+                else
+                {
+                    tagbarIndex = 0;
+                }
+                jumpTo();
             }
-            else
-            {
-                tagbarIndex = 0;
-            }
-            jumpTo();
         },options.tagBarSpeed);
         $('#' + options.aboutId + ' .' + options.title1Class).appendTo($('#' + options.aboutId));
         blocks[0].appendTo($('#' + options.aboutId));

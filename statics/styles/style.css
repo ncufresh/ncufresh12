@@ -3240,6 +3240,7 @@ button.news-button
 
 #about .about-small-0
 {
+    border-radius: 10px 10px 0px 0px;
     background: url('../about/about.png') no-repeat;
     width: 700px;
     height: 280px;
@@ -3311,6 +3312,31 @@ button.news-button
     width: 96px;
 }
 
+.club,
+.club-head,
+.club-head:hover,
+.department,
+.department-head,
+.department-head:hover,
+.student,
+.student-head,
+.student-head:hover,
+#club-head-1,
+#club-head-2,
+#club-head-3,
+#club-back1,
+#club-back2,
+#club-back3,
+.club-modify-table,
+#club-bottom-1,
+#club-bottom-2,
+#club-bottom-3
+{
+	background: url('../images/club.png');
+}
+
+
+
 /**
  * Club style
  */
@@ -3321,7 +3347,7 @@ button.news-button
  
  .club
  {
-    background: url('../club/club.png');
+    background-position: 0px 0px;
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -3331,7 +3357,7 @@ button.news-button
  
 .club-head
 {
-    background: url('../club/club-head.png');
+    background-position: -960px -1600px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3341,7 +3367,7 @@ button.news-button
 
 .club-head:hover
 {
-    background: url('../club/club-head2.png');
+    background-position: -960px -1680px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3351,7 +3377,7 @@ button.news-button
 
 .department
 {
-    background: url('../club/department.png');
+    background-position: -800px 0px;
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -3361,7 +3387,7 @@ button.news-button
 
 .department-head
 {
-    background: url('../club/department-head.png');
+    background-position: -1280px -1600px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3370,7 +3396,7 @@ button.news-button
 
 .department-head:hover
 {
-    background: url('../club/department-head2.png');
+    background-position: -1280px -1680px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3379,7 +3405,7 @@ button.news-button
 
 .student
 {
-    background: url('../club/student.png');
+    background-position: 0px -960px;
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -3389,7 +3415,7 @@ button.news-button
 
 .student-head
 {
-    background: url('../club/student-head.png');
+    background-position: -1600px -1600px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3399,7 +3425,7 @@ button.news-button
 
 .student-head:hover
 {
-    background: url('../club/student-head2.png');
+    background-position: -1600px -1680px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3509,17 +3535,17 @@ button.news-button
 
 #club-head-1
 {
-    background: url('../club/5-1.png');
+    background-position: 0px -1920px;
 }
 
 #club-head-3
 {
-    background: url('../club/6-1.png');
+    background-position: 0px -2010px;
 }
 
 #club-head-2
 {
-    background: url('../club/4-1.png');
+    background-position: -480px -1920px;
 }
 
 .club-display-head a
@@ -3539,19 +3565,19 @@ button.news-button
 
 #club-bottom-1
 {
-    background: url('../club/5-3.png');
+    background-position: -480px -2010px;
     background-repeat: no-repeat;
 }
 
 #club-bottom-3
 {
-    background: url('../club/6-3.png');
+	background-position: -960px -2090px;
     background-repeat: no-repeat;
 }
 
 #club-bottom-2
 {
-    background: url('../club/4-3.png');
+    background-position: -960px -1920px;
     background-repeat: no-repeat;
 }
 
@@ -3566,17 +3592,17 @@ button.news-button
 
 #club-back1
 {
-    background: url('../club/clubback1.png');
+    background-position: 0px -2170px;
 }
 
 #club-back2
 {
-    background: url('../club/clubback2.png');
+    background-position: -160px -2170px;
 }
 
 #club-back3
 {
-    background: url('../club/clubback3.png');
+    background-position: -320px -2170px;
 }
 
 .club-picture
@@ -3667,7 +3693,7 @@ button.news-button
     padding: 5px;
     height: 600px;
     width: 750px;
-    background: url('../club/background.png');
+    background-position: -960px -960px;
 }
 /* profile... */
 ul.friends-sort 
