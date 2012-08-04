@@ -1043,6 +1043,7 @@ a:hover
 
 #chat .online-friends
 {
+    color: #FFFFFF;
     margin: 40px 0 0 85px;
     position: absolute;
     text-align: center;
@@ -1498,10 +1499,10 @@ ul#nculife-details
 {
     background-position: -128px -128px;
     display: block;
-    height: 50px;
+    height: 48px;
     margin: -15px 0 0 -55px;
     position: absolute;
-    width: 50px;
+    width: 48px;
 }
 
 #marquee a
@@ -1922,6 +1923,7 @@ a.calendar-hide-event:hover
     background-position: -32px -160px;
     display: inline-block;
     padding-left: 36px;
+    margin-right: 80%;
 }
 
 #calendar-subscript .category-wrapper
@@ -2300,16 +2302,61 @@ button.news-button
  */
 #multimedia
 {
-    background: #18244E url('../images/multimedia_background.png');
+    background: url('../images/multimedia_background.png');
     border-radius: 5px;
-    overflow: hidden;
-    padding-top: 90px;
+    overflow: visible;
+    width: 100%;
+    height: 720px;
+    display: inline-block;
+}
+
+#multimedia .title
+{
+    background: url('../images/multimedia_title.png') no-repeat;
+    height: 60px;
+    width: 304px;
+    margin: 15px auto;
 }
 
 #multimedia .sidebar
 {
     float: left;
     width: 25%;
+    position: relative;
+    overflow: visible;
+}
+
+#multimedia .sidebar a.tab
+{
+    display: inline-block;
+    position: absolute;
+    left: -29px;
+    width: 30px;
+    height: 100px;
+    text-indent: -10000px;
+}
+
+#multimedia .sidebar #tab1
+{
+    background: url('../images/multimedia_tab1.png');
+}
+
+#multimedia .sidebar #tab1:active,
+#multimedia .sidebar #tab1.active 
+{
+    background: url('../images/multimedia_tab1_active.png');
+}
+
+#multimedia .sidebar #tab2
+{
+    background: url('../images/multimedia_tab2.png');
+    top: 100px;
+}
+
+#multimedia .sidebar #tab2:active,
+#multimedia .sidebar #tab2.active 
+{
+    background: url('../images/multimedia_tab2_active.png');
 }
 
 #multimedia .content
@@ -2356,7 +2403,7 @@ button.news-button
     margin-top: 350px;
 }
 
-#multimedia a
+#multimedia .menu a
 {
     display: block;
     width: 100%;
@@ -2366,12 +2413,12 @@ button.news-button
     opacity: 1;
 }
 
-#multimedia a:hover
+#multimedia .menu a:hover
 {
     opacity: 0.8;
 }
 
-#multimedia a span
+#multimedia .menu a span
 {
     color: white;
     position: relative;
@@ -2386,7 +2433,7 @@ button.news-button
     padding: 0 8px 0 0;
 }
 
-#multimedia a img
+#multimedia .menu a img
 {
     width: 100%;
     height: 100%;
@@ -2414,10 +2461,9 @@ button.news-button
 #multimedia .introduction
 {
     background: url('../images/multimedia_introduction.png') 0 5px no-repeat;
-    color: #FFFFFF;
+    color: #000000;
     height: 150px;
     padding: 25px 55px;
-    width: 100%;
 }
 
 #multimedia-frame
@@ -2427,6 +2473,8 @@ button.news-button
     padding: 0;
     position: relative;
 }
+
+#multimedia
 
 /**
  * Nculife style
@@ -2570,14 +2618,14 @@ button.news-button
 
 #life-index2
 {
-    width: 140px;
+    width: 155px;
     left: 4px;
     top: 131px;
 }
 
 #life-index3
 {
-    width: 156px;
+    width: 165px;
     left: 40px;
     top: 164px;
 }
@@ -2733,7 +2781,7 @@ button.news-button
 
 #readme .scroll-container
 {
-    height: 420px;
+    height: 377px;
     width: 630px;
 }
 
@@ -2755,11 +2803,22 @@ button.news-button
 #readme-download
 {
     background-position: -765px 0;
+    padding-top: 55px;
+    padding-bottom: 40px;
 }
 
 .readme-background
 {
     height: 420px;
+    padding: 15px 25px;
+    position: relative;
+    width: 700px;
+    overflow: hidden;
+}
+
+.readme-download-background
+{
+    height: 357px;
     padding: 15px 25px;
     position: relative;
     width: 700px;
@@ -2984,7 +3043,7 @@ button.news-button
     float: left;
     list-style-type: disc;
     font-size: 1.4em;
-    margin-top: 35px;
+    margin-top: 4px;
 }
 
 .download-index li
@@ -3831,61 +3890,45 @@ div.all-sorts-of-friends
     margin:25px 25px 25px 25px;
 }
 
-.A-group-users
+.a-group-users
 {
     width:680px;
     height:370px;
     margin:0px;
 }
 
-div.A-group-users button
+div.a-group-users button
 {
     padding:0px;
     margin-top:0px;
 }
 
-/*div.friends-part4 form
+div.a-group-users div.avatar
 {
-    width:300px;
-    height:315px;
-    margin-left:5px;
-    padding:0px;
-}*/
-
-div.A-group-users div.avatar
-{
-    margin-left:28px;
+    margin-left:20px;
     margin-top:0px;
-    width:87px; 
-    height:145px;
+    width:100px; 
+    height:70px;
     padding:0px;
     float:left;
 }
-
-/*.friends-part3
-{
-    width:675px;
-    height:350px;
-    margin:0px;
-    padding:5px;
-}*/
 
 .friend-chatting
 {
     width:415px;
     height:315px;
-    margin-top:14px;
+    margin-top:0;
+    margin-left:260px;
     padding:0px;
-    outline:1px solid yellow
 }
 
 .friend-chatting ul
 {
-    width:411px;
-    height:312px;
-    margin-left:3px;
+    width:410px;
+    margin-left:1px;
     padding:0px;
-    outline:1px solid red
+    outline:1px solid black;
+    outline-style:dotted;
 }
 
 .friend-chatting ul li
@@ -3894,7 +3937,24 @@ div.A-group-users div.avatar
     padding:0px;
     float:left;
     list-style-type:none;
-    outline:1px solid green
+    outline:1px solid black;
+    outline-style:dotted;
+    overflow: hidden;
+}
+
+.friend-chatting-content
+{
+    background-position: -288px 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    display: block;
+    height: 60px;
+    overflow: hidden;
+    padding: 5px;
+    position: relative;
+    width: 190px;
+    outline:1px solid black;
+    outline-style:dotted;
 }
 
 .profile-modify
@@ -4375,6 +4435,13 @@ div.profile-message-reply
 .is_exist
 {
     color:red;
+}
+
+.group-users-list-search
+{
+    position:absolute;
+    right:435px;
+    bottom:360px;
 }
 
 /**
@@ -5005,11 +5072,11 @@ div.item-description .exist
 #game-mission-dialog .avatar
 {
     width: 265px;
-    height: 451px;
+    height: 475px;
     font-size: 1.125em;
     /*outline: 1px solid black;*/
     position: absolute;
-    top: 43px;
+    top: 42px;
     left: 629px;
 }
 
@@ -5105,8 +5172,8 @@ div.user-body img
 {
     position: absolute;
     top: 0;
-    left: 0;
-    width:250px;
+    left: 11px;
+    width:225px;
     height:400px;
 }
 
@@ -5415,6 +5482,22 @@ li.enabled a
     padding-top:5px
 }
 
+
+#forum-view-top2 .fb_iframe_widget
+{
+    margin-left: 10px;
+}
+
+#forum-view-top2 .fb .button_count a.connect_widget_like_button
+{
+    padding: 0px;
+}
+
+#forum-view-top2 a
+{
+    float: left;
+}
+
 #forum-view-top2 .pager,
 #forum-forum-top2 .pager,
 #forum-forum-footer .pager
@@ -5436,7 +5519,7 @@ li.enabled a
 {
     background: url('../forum/view/background.png');
     width: 683px;
-    min-height: 300px;
+    min-height: 324px;
     margin-left:35px;
     position: relative;
     overflow: hidden;
@@ -5456,12 +5539,17 @@ li.enabled a
 {
     background: #F8C77C;
     width: 165px;
-    height: 263px;
+    height: 296px;
     border-radius: 6px;
     border: 2px solid #EAA520;
     margin-left: 45px;
     padding-top: 7px;
     float: left;
+}
+
+#forum-view-replies .forum-view-profile
+{
+    margin-top: 10px;
 }
 
 .forum-view-profile .profile-pic
@@ -5471,6 +5559,13 @@ li.enabled a
     background: white;
     border-radius: 6px;
     margin: 0 auto;
+    overflow: hidden;
+}
+
+.forum-view-profile .profile-pic .avatar
+{
+    margin-left: -27px;
+    max-width: 221px;
 }
 
 .forum-view-profile .profile-name
@@ -5489,12 +5584,33 @@ li.enabled a
 {
     width: 140px;
     height: 23px;
-    margin: 1px auto;
+    margin: 10px auto;
     background: #FFF0C8;
     border-radius:5px;
     padding-top: 2px;
     padding-left: 10px;
     color: #C57902;
+}
+
+.forum-view-profile .profile-add-friend
+{
+    width: 120px;
+    height: 23px;
+    margin: 1px auto;
+    background: #FFF0C8;
+    border-radius:5px;
+    padding-top: 2px;
+    padding-left: 30px;
+}
+
+.forum-view-profile .profile-add-friend a
+{
+    color: #C57902;
+}
+
+.forum-view-profile .profile-add-friend a:hover
+{
+    font-weight: bold;
 }
 
 #forum-view-body .forum-view-title
@@ -5537,14 +5653,17 @@ li.enabled a
 #forum-view-body .forum-view-comments
 {
     width: 389px;
-    height: 25px;
+    height: 30px;
     border-radius: 6px;
     background: #F4EFE0;
     float: right;
     margin-top: 2px;
     margin-right: 46px;
     border: 2px solid #EAA520;
-    padding: 5px 0 0 11px;
+    padding: 0 0 0 11px;
+    word-break: break-all;
+    overflow: hidden;
+    line-height: 30px;
 }
 
 #forum-view-body #form-comment .forum-comment-text

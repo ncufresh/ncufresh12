@@ -46,8 +46,10 @@
             <li>
 <?php echo $message['time']; ?>
             </li>
-            <li>
+            <li class="friend-chatting-content">
+           
 <?php echo $message['message']; ?>
+           
             </li>
 <?php endforeach; ?>
         </ul>

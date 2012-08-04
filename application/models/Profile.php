@@ -19,8 +19,8 @@ class Profile extends CActiveRecord
         return array(
             array('name, nickname, department, grade, senior, birthday ,gender','required'),
             array('nickname', 'length','min' => 1, 'max' => 8, 'on' => 'register, editor'),
-            array('department', 'numerical','min' => 1, 'max' => 21),
-            array('grade', 'numerical','min' => 0, 'max' => 4),
+            array('department', 'numerical','min' => 1, 'max' => 21, 'on' => 'register, editor, wrong-data'),
+            array('grade', 'numerical','min' => 0, 'max' => 4, 'on' => 'register, editor, wrong-data'),
             array('nickname', 'unique', 'className' => 'Profile', 'on' => 'register, editor'),
             array('birthday', 'isDate'),
         );
