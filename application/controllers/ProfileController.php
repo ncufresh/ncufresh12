@@ -104,10 +104,11 @@ class ProfileController extends Controller
 
     public function actionOtherProfile($friend_id)
     {
-        
+        // var_dump(Chat::model()->getAllMessages($friend_id));
+        // exit;
         $this->render('otherprofile', array(
             'user'            => User::model()->findByPk($friend_id),
-            'is_friend'       => Friend::model()->isExist($friend_id),
+            'friend_relation' => Friend::model()->friendRelation($friend_id),
             'messages'        => Chat::model()->getAllMessages($friend_id)
         ));
         

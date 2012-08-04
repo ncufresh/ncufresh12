@@ -90,7 +90,21 @@ class FriendsController extends Controller
 
     public function actionMakeFriends() 
     {
-        if ( isset($_POST['friends']) )
+        if ( isset($_POST['all-choose']) )
+        {
+            foreach ( $_POST['friends-all-choose'] as $friendid )
+            {   
+                $friend = new Friend();
+                $exist = $friend->friendRelation($friendid);
+                if ( $this->userId !== $friendid && $exist === 2 )
+                {
+                    $friend->addFriend($friendid);
+                    $friend->makeFriend($friendid);
+                }
+            }
+            $this->redirect(array('friends/myfriends'));
+        }        
+        else if ( isset($_POST['friends']) )
         {
             foreach ( $_POST['friends'] as $friendid )
             {   
@@ -169,6 +183,13 @@ class FriendsController extends Controller
     public function actionNewGroup()
     {
         $grade = Profile::model()->findByPK($this->userId)->grade;
+        if ( isset($_POST['all-choose']) )
+        {
+            if ( ! Group::model()->addNewGroup($this->userId, $_POST['group-name'], $_POST['group-description'], $_POST['friends-all-choose']) )
+            {
+            }
+            $this->redirect(array('friends/friends'));
+        }        
         if ( isset($_POST['friends']) )
         {
             if ( ! Group::model()->addNewGroup($this->userId, $_POST['group-name'], $_POST['group-description'], $_POST['friends']) )

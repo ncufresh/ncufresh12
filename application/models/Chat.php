@@ -50,10 +50,12 @@ class Chat extends CActiveRecord
     {
         $user = Yii::app()->user->getId();
 
-        $message = Yii::app()->db->createCommand('
+        $messages = Yii::app()->db->createCommand('
             SELECT `uuid`, `sender_id`, `receiver_id`, `message`, `timestamp`
             FROM `{{chat_messages}}`
-            WHERE `sender_id` = :sender AND `receiver_id` = :receiver
+            WHERE
+                (`sender_id` = :sender AND `receiver_id` = :receiver)
+             OR (`sender_id` = :receiver AND `receiver_id` = :sender)
             ORDER BY `timestamp` ASC
         ')->queryAll(true, array(  
             ':sender'   => $user,
@@ -64,23 +66,20 @@ class Chat extends CActiveRecord
         $criteria->select = '`uuid`, `sender_id`, `receiver_id`, `message`, `timestamp`';
         $criteria->order = '`timestamp` ASC, `sequence` ASC';
         $criteria->condition = '
-            `sender_id` = :sender AND `receiver_id` = :receiver AND `timestamp` > :timestamp
+            ((`sender_id` = :sender AND `receiver_id` = :receiver)
+         OR (`sender_id` = :receiver AND `receiver_id` = :sender))
+        AND `timestamp` > :timestamp
         ';
         $criteria->params = array(
             ':sender'   => $user,
             ':receiver' => $id,
-            ':timestamp'=> count($message) ? $message[count($message) - 1]['timestamp'] : 0
+            ':timestamp'=> count($messages) ? $messages[count($messages) - 1]['timestamp'] : 0
         );
 
-        $uuids = array_map(function($entry)
-        {
-            return $entry['uuid'];
-        }, array_values($message));
-
         $data = array();
-        if ( count($message) )
+        if ( count($messages) )
         {
-            foreach ( $message as $entry )
+            foreach ( $messages as $entry )
             {
                 $data[] = array(
                     'uuid'      => $entry['uuid'],
@@ -93,6 +92,11 @@ class Chat extends CActiveRecord
                 );
             }
         }
+
+        $uuids = array_map(function($entry)
+        {
+            return $entry['uuid'];
+        }, array_values($messages));
 
         foreach ( self::model()->findAll($criteria) as $entry )
         {

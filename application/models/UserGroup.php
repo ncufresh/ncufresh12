@@ -86,11 +86,4 @@ class  UserGroup extends CActiveRecord
         }
         return false;
     }
-
-   /* public function getNewMember($groupid)
-    {
-        return $this->findAll(array(
-                    'condition' => 'id = :groupid AND invisible = 0'
-                ));
-    }*/
 }
