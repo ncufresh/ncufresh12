@@ -1,7 +1,5 @@
 SetEnv SERVER_ADMIN ncufresh@ncu.edu.tw
-
 FileETag MTime Size
-
 AddDefaultCharset UTF-8
 
 <ifModule mod_headers.c>
