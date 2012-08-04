@@ -67,7 +67,7 @@ jQuery(document).ready(function()
             <tfoot>
                 <tr>
                     <td colspan="2">
-                        [<a href="<?php echo Yii::app()->createUrl('forum/forum', array('id' => 1)); ?>" title="檢視所有文章">檢視所有文章</a>]
+                        [<a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 1)); ?>" title="檢視所有文章">檢視所有文章</a>]
                     </td>
                 </tr>
             </tfoot>
