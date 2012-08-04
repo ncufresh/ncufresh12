@@ -4,14 +4,9 @@
 <p>
     <img alt="蘊‧行" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2574.JPG" style="width:200px;height:267px;" />
 </p>
-
-
-
 <p>
     <img alt="蘊‧行" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0289(1).JPG" style="width:200px;height:133px;" />
 </p>
-
-
 <p>
     設置於中正圖書館前方平台，由日籍藝術家松本薰設計。
 </p>

@@ -8,8 +8,7 @@
     少數在校園內設立的摩斯漢堡，憑中央大學證件享有9折優惠，因此相當受學生歡迎。且舒適的環境、柔美的燈光，是個聊天聚會的好地方。
 </p>
 <p>
-    <span><span>
-    <img alt="MOS漢堡" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2459.JPG" style="width:375px;height:500px;" /><img alt="MOS漢堡" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2460.JPG" style="width:375px;height:500px;" /><img alt="MOS漢堡" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2461.JPG" style="width:375px;height:500px;" /></span></span>
+    <img alt="MOS漢堡" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2459.JPG" style="width:375px;height:500px;" /><img alt="MOS漢堡" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2460.JPG" style="width:375px;height:500px;" /><img alt="MOS漢堡" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2461.JPG" style="width:375px;height:500px;" />
 </p>
 <h5>
     二、華碩三井3C
@@ -28,8 +27,7 @@
         此屬口味實在的便當店，份量相當大，肉類食品也非常好吃，且價格不會太高，中大學生享有五元折扣，有附送冬瓜茶，內用也有熱湯可享用，想要吃好又吃飽來這就對了！
     </p>
     <p>
-        <span><span>
-        <img alt="野味" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2466.JPG" style="width:500px;height:375px;" /><img alt="野味" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2467.JPG" style="width:500px;height:375px;" /></span></span>
+        <img alt="野味" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2466.JPG" style="width:500px;height:375px;" /><img alt="野味" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2467.JPG" style="width:500px;height:375px;" />
     </p>
 </div>
 <h5>
@@ -104,14 +102,6 @@
         </tr>
     </tbody>
 </table>
-<h4>
-</h4>
-<h4>
-</h4>
-<h4>
-</h4>
-<h4>
-</h4>
 <h5>
     五、全家(中央三店)
 </h5>

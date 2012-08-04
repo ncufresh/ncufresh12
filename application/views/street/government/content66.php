@@ -1,6 +1,6 @@
-<h1>
+<h4>
     國鼎圖書資料館
-</h1>
+</h4>
 <p>
     <img alt="國鼎圖書資料館" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2830.JPG" style="width:270px;height:200px;" /><img alt="國鼎圖書資料館" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2831%20(1).JPG" style="width:300px;height:200px;" />
 </p>
@@ -14,5 +14,5 @@
     在這一間圖書館內保存、整理與收藏了有關於國鼎先生檔案重要的相關物品，其個人收藏資料包羅萬象，可說是台灣經濟發展重要的記錄者。
 </p>
 <p>
-連絡電話：<strong> (03)422-7151轉34779</strong>
+    連絡電話：<strong> (03)422-7151轉34779</strong>
 </p>
