@@ -58,14 +58,11 @@ else if ( $fid == 22 || $fid == 23 )
         <div class="profile-pic"></div>
         <div class="profile-name">暱稱：<?php echo User::model()->findByPK($article->author_id)->profile->nickname; ?></div>
         <div class="profile-department">系所：<?php echo User::model()->findByPK($article->author_id)->profile->mydepartment->abbreviation;?></div>
+<?php if ( ! Yii::app()->user->isguest && Yii::app()->user->id != $article->author_id ) :?>
         <div class="profile-add-friend">
-            <a href="#">+加為好友+</a>
-            <form action="<?php echo Yii::app()->createUrl('friends/makefriends'); ?>" method="POST" >
-                <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
-                <input type="hidden" name="friends[<?php echo $article->author_id; ?>]" value="<?php echo $article->author_id; ?>" />
-                <button type="submit" class="button-addfriend" ></button>
-            </form>
+            <a class="add-friend" href="#<?php echo $article->author_id;?>">+加為好友+</a>
         </div>
+<?php endif; ?>
     </div>
     <div class="forum-view-title"><?php echo $article->title; ?></div>
     
@@ -101,19 +98,15 @@ foreach ($replies as $each):
         <div class="profile-pic"></div>
         <div class="profile-name">暱稱：<?php echo User::model()->findByPK($each->author_id)->profile->nickname; ?></div>
         <div class="profile-department">系所：<?php echo User::model()->findByPK($each->author_id)->profile->mydepartment->abbreviation;?></div>
+<?php if ( ! Yii::app()->user->isguest && Yii::app()->user->id != $each->author_id ) :?>
         <div class="profile-add-friend">
-            <a href="#">+加為好友+</a>
-            <form action="<?php echo Yii::app()->createUrl('friends/makefriends'); ?>" method="POST" >
-                <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
-                <input type="hidden" name="friends[<?php echo $each->author_id; ?>]" value="<?php echo $each->author_id; ?>" />
-                <button type="submit" class="button-addfriend" ></button>
-            </form>
+            <a class="add-friend" href="#<?php echo $article->author_id;?>">+加為好友+</a>
         </div>
+<?php endif; ?>
     </div>
     <div class="reply-content">
         <?php echo $each -> content;?>
-        <div class="hululu"></div>
-        
+        <div class="hululu"></div>        
     </div>
 </div>
 <?php
@@ -127,3 +120,7 @@ endforeach;
         'parameters'=> array('fid' => $fid, 'id' => $article->id)
     )); ?>
 </div>
+<form class="form-addfriend" action="<?php echo Yii::app()->createUrl('friends/makefriends'); ?>" method="POST" >
+    <input class="addfriend-input" type="hidden" name="" value="" />
+    <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
+</form>

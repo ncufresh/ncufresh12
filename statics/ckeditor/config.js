@@ -6,4 +6,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 CKEDITOR.editorConfig = function(config)
 {
 	config.language = 'zh';
+    config.toolbar = 'Basic';
+    config.toolbar_Basic=[
+        ['Cut','Copy','Paste','Bold','Italic','TextColor']
+    ];
 };

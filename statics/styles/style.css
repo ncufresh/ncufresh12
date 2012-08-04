@@ -5308,6 +5308,11 @@ li.enabled a
     float: left;
 }
 
+#forum-view-replies .forum-view-profile
+{
+    margin-top: 10px;
+}
+
 .forum-view-profile .profile-pic
 {
     width: 150px;
