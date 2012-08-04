@@ -4369,7 +4369,11 @@
         if ( $('#readme').length ) $.readme(); 
 
         if ( $('#street').length ) $.street(); 
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 452810d1a717a9a1ac37e70c807d66f8ee215ff4
         if ( $('#multimedia').length ) $.multimedia();
 
         if ( $('.calendar-create').length ) $.calendarCreate();
@@ -4384,7 +4388,10 @@
 
         if ( $('#calendar-event').length ) $.calendarEvent();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 452810d1a717a9a1ac37e70c807d66f8ee215ff4
         $('input.datepicker:not(#form-register-birthday)').datepicker();
         $('#form-register-birthday').datepicker({
             year: 1994,
@@ -4481,71 +4488,6 @@
             if ( $(this).prop('checked') ) {
                 $(this).prev().addClass('checked');
             }
-        });
-        $('form select').each(function()
-        {
-            var select = $(this).hide();
-            var selected = $(this).children(':selected');
-            var value = selected.val() ? selected.text() : '';
-            var input = this.input = $('<input>').attr('disabled', true).insertAfter(select).val(value).autocomplete({
-                delay: 0,
-                minLength: 0,
-                source: function(request, response) {
-                    var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), 'i');
-                    response(select.children('option').map(function() {
-                        var text = $(this).text();
-                        if ( this.value && ( !request.term || matcher.test(text) ) ) return {
-                            label: text.replace(new RegExp('(?![^&;]+;)(?!<[^<>]*)(' + $.ui.autocomplete.escapeRegex(request.term) + ')(?![^<>]*>)(?![^&;]+;)', 'gi'), '<strong>$1</strong>'),
-                            value: text,
-                            option: this
-                        };
-                    }));
-                },
-                select: function(event, ui) {
-                    ui.item.option.selected = true;
-                    self._trigger('selected', event, {
-                        item: ui.item.option
-                    });
-                },
-                change: function(event, ui) {
-                    if ( !ui.item ) {
-                        var matcher = new RegExp('^' + $.ui.autocomplete.escapeRegex($(this).val()) + '$', 'i');
-                        var valid = false;
-                        select.children('option').each(function() {
-                            if ( $(this).text().match(matcher) ) {
-                                this.selected = valid = true;
-                                return false;
-                            }
-                        });
-                        if ( !valid ) {
-                            $(this).val('');
-                            select.val('');
-                            input.data('autocomplete').term = '';
-                            return false;
-                        }
-                    }
-                }
-            }).addClass('ui-widget ui-widget-content ui-corner-left');
-
-            input.data('autocomplete')._renderItem = function(ul, item) {
-                ul.addClass(select.attr('name'));
-                return $('<li></li>').data('item.autocomplete', item).append('<a>' + item.label + '</a>').appendTo(ul);
-            };
-
-            this.button = $('<button type="button">&nbsp;</button>').attr('tabIndex', -1 ).attr('title', 'Show All Items').insertAfter(input).button({
-                icons: {
-                    primary: 'ui-icon-triangle-1-s'
-                },
-                text: false
-            }).removeClass('ui-corner-all').addClass('ui-corner-right ui-button-icon').click(function() {
-                if ( input.autocomplete('widget').is(':visible') ) {
-                    input.autocomplete('close');
-                    return;
-                }
-                $(this).blur();
-                input.autocomplete('search', '');
-                input.focus();
-            });
         });
 
         $('a').live('click', function()

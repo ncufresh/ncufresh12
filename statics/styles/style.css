@@ -2216,6 +2216,7 @@ button.news-button
 {
     margin-bottom: 5px;
 }
+
 #lastest-news-wrap .indexes
 {
     width: 100%;
@@ -3354,11 +3355,13 @@ button.news-button
     margin-left: 50px;
     position: relative;
 }
+
 #street-div #all-picture-container
 {
     background: yellow;
     display: none;
 }
+
 #street-div #administration
 {
     width: 145px;
@@ -3367,10 +3370,12 @@ button.news-button
     left: 315px;
     top: 288px;
 }
+
 #street-div #administration:hover
 {
     background:  url('../building/government/mouseenter/administration.png');
 }
+
 #street-div #all-teach
 {
     width: 93px;
@@ -3379,20 +3384,24 @@ button.news-button
     left: 345px;
     top: 100px;
 }
+
 #street-div #all-teach:hover
 {
     background:  url('../building/government/mouseenter/all_teach.png');
 }
+
 #street-div #baseball-softball
 {
     left: 268px;
     top: 147px;
 }
+
 #street-div #badminton
 {
     left: 210px;
     top: 72px;
 }
+
 #street-div #big-tree
 {
     width: 66px;
@@ -3401,10 +3410,12 @@ button.news-button
     left: 177px;
     top: 268px;
 }
+
 #street-div #big-tree:hover
 {
     background:  url('../building/landscape/mouseenter/big_tree.png');
 }
+
 #street-div #back-div
 {
     background: url('../building/bottom.png') no-repeat;
@@ -3412,6 +3423,7 @@ button.news-button
     height: 551px;
     width: 750px;
 }
+
 #street-div #big-library
 {
     width: 117px;
@@ -3420,10 +3432,12 @@ button.news-button
     left: 272px;
     top: 190px;
 }
+
 #street-div #big-library:hover
 {
     background:  url('../building/government/mouseenter/big_library.png');
 }
+
 #street-div #backdoor
 {
     width: 128px;
@@ -3432,10 +3446,12 @@ button.news-button
     left: -4px;
     top: 184px;
 }
+
 #street-div #backdoor:hover
 {
     background:  url('../building/food/mouseenter/backdoor.png');
 }
+
 #street-div #boy-dormitory-3
 {
     width: 116px;
@@ -3444,10 +3460,12 @@ button.news-button
     left: 0px;
     top: 262px;
 }
+
 #street-div #boy-dormitory-3:hover
 {
     background:  url('../building/dormitory/mouseenter/boy_dormitory_3.png');
 }
+
 #street-div #boy-dormitory-5
 {
     width: 123px;
@@ -3456,10 +3474,12 @@ button.news-button
     left: 185px;
     top: 370px;
 }
+
 #street-div #boy-dormitory-5:hover
 {
     background:  url('../building/dormitory/mouseenter/boy_dormitory_5.png');
 }
+
 #street-div #boy-dormitory-6
 {
     width: 108px;
@@ -3468,10 +3488,12 @@ button.news-button
     left: 230px;
     top: 460px;
 }
+
 #street-div #boy-dormitory-6:hover
 {
     background:  url('../building/dormitory/mouseenter/boy_dormitory_6.png');
 }
+
 #street-div #boy-dormitory-7
 {
     width: 132px;
@@ -3480,10 +3502,12 @@ button.news-button
     left: 11px;
     top: 450px;
 }
+
 #street-div #boy-dormitory-7:hover
 {
     background:  url('../building/dormitory/mouseenter/boy_dormitory_7.png');
 }
+
 #street-div #boy-dormitory-9
 {
     width: 106px;
@@ -3492,10 +3516,12 @@ button.news-button
     left: 495px;
     top: 260px;
 }
+
 #street-div #boy-dormitory-9:hover
 {
     background:  url(' ../building/dormitory/mouseenter/boy_dormitory_9.png');
 }
+
 #street-div #boy-dormitory-11
 {
     width: 117px;
@@ -3504,10 +3530,12 @@ button.news-button
     left: 56px;
     top: 372px;
 }
+
 #street-div #boy-dormitory-11:hover
 {
     background:  url('../building/dormitory/mouseenter/boy_dormitory_11.png');
 }
+
 #street-div #boy-dormitory-12
 {
     width: 112px;
@@ -3516,10 +3544,12 @@ button.news-button
     left: 489px;
     top: 98px;
 }
+
 #street-div #boy-dormitory-12:hover
 {
     background:  url('../building/dormitory/mouseenter/boy_dormitory_12.png');
 }
+
 #street-div #boy-dormitory-13
 {
     width: 103px;
@@ -3528,10 +3558,12 @@ button.news-button
     left: 135px;
     top: 431px;
 }
+
 #street-div #boy-dormitory-13:hover
 {
     background:  url('../building/dormitory/mouseenter/boy_dormitory_13.png');
 }
+
 #street-div #curtainDiv
 {
     background: url('../building/curtain2.png') no-repeat;
@@ -3542,6 +3574,7 @@ button.news-button
     height: 551px;
     width: 380px;
 }
+
 #street-div #curtain-close-div
 {
      background: url('../building/curtain.png') no-repeat;
@@ -3550,16 +3583,19 @@ button.news-button
      width: 149px;
      height: 552px;
 }
+
 #street-div #curtain
 {
     position:absolute;
 }
+
 #street-div #curtain-up
 {
     position:absolute;
     top: 0px;
     z-index: 2;
 }
+
 #street-div #computer-center
 {
     width: 97px;
@@ -3568,10 +3604,12 @@ button.news-button
     left: 428px;
     top: 132px;
 }
+
 #street-div #computer-center:hover
 {
     background:  url('../building/government/mouseenter/computer_center.png');
 }
+
 #street-div #cottage-muffin
 {
     width: 106px;
@@ -3580,10 +3618,12 @@ button.news-button
     left: 400px;
     top: 180px;
 }
+
 #street-div #cottage-muffin:hover
 {
     background:  url('../building/food/mouseenter/cottage_muffin.png');
 }
+
 #street-div #curtainclose
 {
     cursor: pointer;
@@ -3591,6 +3631,7 @@ button.news-button
     top: 415px;
     left: 327px;
 }
+
 #street-div #calligraphy
 {
     width: 169px;
@@ -3599,10 +3640,12 @@ button.news-button
     left: 317px;
     top: 283px;
 }
+
 #street-div #calligraphy:hover
 {
     background:  url('../building/landscape/mouseenter/calligraphy.png');
 }
+
 #street-div #ding-data-library
 {
     width: 90px;
@@ -3611,10 +3654,12 @@ button.news-button
     left: 450px;
     top: 178px;
 }
+
 #street-div #ding-data-library:hover
 {
     background:  url('../building/government/mouseenter/ding_data_library.png');
 }
+
 #street-div #drag-me
 {
     position: absolute;
@@ -3622,6 +3667,7 @@ button.news-button
     left: 480px;
     color: red;
 }
+
 #street-div #elephant-element
 {
     width: 52px;
@@ -3630,10 +3676,12 @@ button.news-button
     left: 465px;
     top: 252px;
 }
+
 #street-div #elephant-element:hover
 {
     background:  url('../building/landscape/mouseenter/elephant_element.png');
 }
+
 #street-div #engineering-1
 {
     height: 59px;
@@ -3642,10 +3690,12 @@ button.news-button
     left: 140px;
     top: 214px;
 }
+
 #street-div #engineering-1:hover
 {
     background: url('../building/college/mouseenter/engineering_1.png');
 }
+
 #street-div #engineering-2
 {
     width: 109px;
@@ -3654,10 +3704,12 @@ button.news-button
     left: 111px;
     top: 174px;
 }
+
 #street-div #engineering-2:hover
 {
     background: url('../building/college/mouseenter/engineering_2.png');
 }
+
 #street-div #engineering-3
 {
     width: 99px;
@@ -3666,10 +3718,12 @@ button.news-button
     left: 75px;
     top: 105px;
 }
+
 #street-div #engineering-3:hover
 {
     background: url('../building/college/mouseenter/engineering_3.png');
 }
+
 #street-div #engineering-5
 {
     width: 85px;
@@ -3678,10 +3732,12 @@ button.news-button
     top: 75px;
     background: url('../building/college/mouseleave/engineering_5.png');
 }
+
 #street-div #engineering-5:hover
 {
     background: url('../building/college/mouseenter/engineering_5.png');
 }
+
 #street-div #experience-personally
 {
     position: absolute;
@@ -3689,6 +3745,7 @@ button.news-button
     left: 530px;
     z-index: 4;
 }
+
 #street-div #flower-brook
 {
     width: 238px;
@@ -3697,10 +3754,12 @@ button.news-button
     left: 153px;
     top: 175px;
 }
+
 #street-div #flower-brook:hover
 {
     background:  url('../building/landscape/mouseenter/flower_brook.png');
 }
+
 #street-div #green-plain
 {
     width: 61px;
@@ -3709,10 +3768,12 @@ button.news-button
     left: 300px;
     top: 135px;
 }
+
 #street-div #green-plain:hover
 {
     background:  url('../building/landscape/mouseenter/green_plain.png');
 }
+
 #street-div #girl-14-front
 {
     width: 116px;
@@ -3721,10 +3782,12 @@ button.news-button
     left: 40px;
     top: 310px;
 }
+
 #street-div #girl-14-front:hover
 {
     background:  url('../building/landscape/mouseenter/girl_14_front.png');
 }
+
 #street-div #girl-dormitory-14
 {
     width: 116px;
@@ -3733,10 +3796,12 @@ button.news-button
     left: 30px;
     top: 300px;
 }
+
 #street-div #girl-dormitory-14:hover
 {
     background:  url('../building/dormitory/mouseenter/girl_dormitory_14.png');
 }
+
 #street-div #girl-dormitory-1234
 {
     width: 101px;
@@ -3745,10 +3810,12 @@ button.news-button
     left: 38px;
     top: 157px;
 }
+
 #street-div #girl-dormitory-1234:hover
 {
     background:  url('../building/dormitory/mouseenter/girl_dormitory_1234.png');
 }
+
 #street-div #girl-dormitory-5
 {
     width: 159px;
@@ -3757,15 +3824,18 @@ button.news-button
     left: 80px;
     top: 230px;
 }
+
 #street-div #girl-dormitory-5:hover
 {
     background:  url('../building/dormitory/mouseenter/girl_dormitory_5.png');
 }
+
 #street-div #gymnasium
 {
     left: 167px;
     top: 165px;
 }
+
 #street-div #history-gallery
 {
     width: 130px;
@@ -3774,10 +3844,12 @@ button.news-button
     left: 255px;
     top: 413px;
 }
+
 #street-div #history-gallery:hover
 {
     background:  url('../building/government/mouseenter/history_gallery.png');
 }
+
 #street-div #hakka
 {
     width: 90px;
@@ -3786,16 +3858,19 @@ button.news-button
     left: 304px;
     top: 25px;
 }
+
 #street-div #hakka:hover
 {
     background:  url('../building/college/mouseenter/hakka.png');
 }
+
 #street-div #inside-choose
 {
     float:left;
     width:190px;
     height:422px;
 }
+
 #street-div #inside-text
 {
     float:right;
@@ -3803,6 +3878,7 @@ button.news-button
     height:422px;
     margin-top: 100px;
 }
+
 #street-div #international-dormitory
 {
     width: 128px;
@@ -3811,10 +3887,12 @@ button.news-button
     left: 133px;
     top: 311px;
 }
+
 #street-div #international-dormitory:hover
 {
     background:  url('../building/dormitory/mouseenter/international_dormitory.png');
 }
+
 #street-div #kon-fu
 {
     width: 58px;
@@ -3823,10 +3901,12 @@ button.news-button
     left: 375px;
     top: 180px;
 }
+
 #street-div #kon-fu:hover
 {
     background:  url('../building/landscape/mouseenter/kon_fu.png');
 }
+
 #street-div #liberal-arts
 {
     width: 144px;
@@ -3835,10 +3915,12 @@ button.news-button
     left: 381px;
     top: 229px;
 }
+
 #street-div #liberal-arts:hover
 {
     background:  url('../building/college/mouseenter/liberal_arts.png');
 }
+
 #street-div #map-div
 {
     background: url('../building/map_no_text.png') no-repeat;
@@ -3847,6 +3929,7 @@ button.news-button
     width: 601px;
     height: 552px;
 }
+
 #street-div #mathematics
 {
     width: 92px;
@@ -3855,10 +3938,12 @@ button.news-button
     left: 385px;
     top: 100px;
 }
+
 #street-div #mathematics:hover
 {
     background:  url('../building/college/mouseenter/mathematics.png');
 }
+
 #street-div #management
 {
     width: 178px;
@@ -3867,10 +3952,12 @@ button.news-button
     left: 410px;
     top: 135px;
 }
+
 #street-div #management:hover
 {
     background:  url('../building/college/mouseenter/management.png');
 }
+
 #street-div #midnight-food
 {
     width: 102px;
@@ -3879,10 +3966,12 @@ button.news-button
     left: 12px;
     top: 291px;
 }
+
 #street-div #midnight-food:hover
 {
     background:  url('../building/food/mouseenter/midnight_food.png');
 }
+
 #street-div #mapPicture
 {
     position: relative;
@@ -3890,6 +3979,7 @@ button.news-button
     width: 601px
     height: 551px;
 }
+
 #street-div #new-postgraduate
 {
     width: 112px;
@@ -3898,10 +3988,12 @@ button.news-button
     left: 433px;
     top: 162px;
 }
+
 #street-div #new-postgraduate:hover
 {
     background:  url('../building/dormitory/mouseenter/new_postgraduate.png');
 }
+
 #street-div #ncu-lake
 {
     width: 106px;
@@ -3910,10 +4002,12 @@ button.news-button
     top: 60px;
     background: url('../building/landscape/mouseleave/ncu_lake.png') no-repeat;
 }
+
 #street-div #ncu-lake:hover
 {
     background: url('../building/landscape/mouseenter/ncu_lake.png') no-repeat;
 }
+
 #street-div #old-library
 {
     width: 127px;
@@ -3922,10 +4016,12 @@ button.news-button
     left: 177px;
     top: 152px;
 }
+
 #street-div #old-library:hover
 {
     background:  url('../building/government/mouseenter/old_library.png');
 }
+
 #street-div #pine-wind
 {
     width: 51px;
@@ -3934,10 +4030,12 @@ button.news-button
     left: 34px;
     top: 205px;
 }
+
 #street-div #pine-wind:hover
 {
     background:  url('../building/landscape/mouseenter/pine_wind.png');
 }
+
 #street-div #playground
 {
     width: 192px;
@@ -3946,10 +4044,12 @@ button.news-button
     left: 50px;
     top: 300px;
 }
+
 #street-div #playground:hover
 {
     background:  url('../building/exercise/mouseenter/playground.png');
 }
+
 #street-div #pine-restaurant
 {
     width: 134px;
@@ -3958,10 +4058,12 @@ button.news-button
     left: 84px;
     top: 148px;
 }
+
 #street-div #pine-restaurant:hover
 {
     background:  url('../building/food/mouseenter/pine_restaurant.png');
 }
+
 #street-div #photonics
 {
     height: 63px;
@@ -3970,10 +4072,12 @@ button.news-button
     left: 241px;
     top: 36px;
 }
+
 #street-div #photonics:hover
 {
     background: url('../building/college/mouseenter/photonics.png');
 }
+
 #street-div #playing-dancing
 {
     width: 214px;
@@ -3982,10 +4086,12 @@ button.news-button
     left: 55px;
     top: 390px;
 }
+
 #street-div #playing-dancing:hover
 {
     background:  url('../building/government/mouseenter/playing_dancing.png');
 }
+
 #street-div #restaurant-7
 {
     width: 132px;
@@ -3994,10 +4100,12 @@ button.news-button
     left: 125px;
     top: 442px;
 }
+
 #street-div #restaurant-7:hover
 {
     background:  url('../building/food/mouseenter/restaurant_7.png');
 }
+
 #street-div #restaurant-9
 {
     width: 106px;
@@ -4006,20 +4114,24 @@ button.news-button
     left: 493px;
     top: 240px;
 }
+
 #street-div #restaurant-9:hover
 {
     background:  url('../building/food/mouseenter/restaurant_9.png');
 }
+
 #street-div #rock-climbing
 {
     left: 165px;
     top: 0px;
 }
+
 #street-div #skating
 {
     left: 245px;
     top: 100px;
 }
+
 #street-div #swimming-pool
 {
     width: 160px;
@@ -4028,10 +4140,12 @@ button.news-button
     left: 252px;
     top: 49px;
 }
+
 #street-div #swimming-pool:hover
 {
     background:  url('../building/exercise/mouseenter/swimming-pool.png');
 }
+
 #street-div #stadium
 {
     width: 132px;
@@ -4040,10 +4154,12 @@ button.news-button
     left: 129px;
     top: 84px;
 }
+
 #street-div #stadium:hover
 {
     background:  url('../building/exercise/mouseenter/stadium.png');
 }
+
 #street-div #science-1
 {
     width: 113px;
@@ -4052,10 +4168,12 @@ button.news-button
     left: 216px;
     top: 312px;
 }
+
 #street-div #science-1:hover
 {
     background:  url('../building/college/mouseenter/science_1.png');
 }
+
 #street-div #science-2
 {
     width: 61px;
@@ -4064,10 +4182,12 @@ button.news-button
     left: 291px;
     top: 80px;
 }
+
 #street-div #science-2:hover
 {
     background:  url('../building/college/mouseenter/science_2.png');
 }
+
 #street-div #science-3
 {
     width: 78px;
@@ -4076,10 +4196,12 @@ button.news-button
     left: 345px;
     top: 84px;
 }
+
 #street-div #science-3:hover
 {
     background:  url('../building/college/mouseenter/science_3.png');
 }
+
 #street-div #science-4
 {
     height: 74px;
@@ -4088,10 +4210,12 @@ button.news-button
     left: 383px;
     top: 30px;
 }
+
 #street-div #science-4:hover
 {
     background: url('../building/college/mouseenter/science_4.png');
 }
+
 #street-div #science-5
 {
     height: 72px;
@@ -4100,14 +4224,17 @@ button.news-button
     left: 450px;
     top: 84px;
 }
+
 #street-div #science-5:hover
 {
     background: url('../building/college/mouseenter/science_5.png');
 }
+
 #street-div
 {
     overflow: hidden;
 }
+
 #street-div #stepping-cloud
 {
     width: 73px;
@@ -4116,10 +4243,12 @@ button.news-button
     left: 135px;
     top: 289px;
 }
+
 #street-div #stepping-cloud:hover
 {
     background:  url('../building/landscape/mouseenter/stepping_cloud.png');
 }
+
 #street-div #science-teach
 {
     width: 82px;
@@ -4128,10 +4257,12 @@ button.news-button
     left: 421px;
     top: 5px;
 }
+
 #street-div #science-teach:hover
 {
     background:  url('../building/college/mouseenter/science_teach.png');
 }
+
 #street-div #school-coffee
 {
     width: 109px;
@@ -4140,10 +4271,12 @@ button.news-button
     left: 493px;
     top: 127px;
 }
+
 #street-div #school-coffee:hover
 {
     background:  url('../building/food/mouseenter/school_coffee.png');
 }
+
 #street-div select-picture-container
 {
     width: 700px;
@@ -4153,6 +4286,7 @@ button.news-button
     bottom: 0px;
     overflow: hidden;
 }
+
 #street-div #select-left-button
 {
     position: absolute;
@@ -4160,6 +4294,7 @@ button.news-button
     bottom: 0px;
     z-index: 2;
 }
+
 #street-div #select-right-button
 {
     position: absolute;
@@ -4167,11 +4302,13 @@ button.news-button
     bottom: 0px;
     z-index: 2;
 }
+
 #street-div #tennis
 {
     left: 186px;
     top: 20px;
 }
+
 #text-container
 {
     position: fixed;
@@ -4179,6 +4316,7 @@ button.news-button
     display: none;
     background: url('../building/introduction.png') no-repeat;
 }
+
 #street-div #turtle-pond
 {
     width: 59px;
@@ -4187,10 +4325,12 @@ button.news-button
     left: 500px;
     top: 238px;
 }
+
 #street-div #turtle-pond:hover
 {
     background:  url('../building/landscape/mouseenter/turtle_pond.png');
 }
+
 #street-div #up-curtain-div
 {
      background: url('../building/curtain_up.png') no-repeat; 
@@ -4200,6 +4340,7 @@ button.news-button
      height: 88px;
      width: 750px;
 }
+
 #street-div #view-picture-container
 {
     position: relative;
@@ -4207,6 +4348,7 @@ button.news-button
     margin: 0px;
     background-color: black;
 }
+
 #street-div #yun-step
 {
     width: 50px;
@@ -4215,10 +4357,12 @@ button.news-button
     left: 237px;
     top: 275px;
 }
+
 #street-div #yun-step:hover
 {
     background:  url('../building/landscape/mouseenter/yun_step.png ');
 }
+
 #street-div .arrow
 {
     position: absolute;
@@ -4226,21 +4370,25 @@ button.news-button
     display: none;
     cursor: pointer;
 }
+
 #street-div .arrow.up
 {
     left: 350px;
     top: 0px;
 }
+
 #street-div .arrow.left
 {
      left: 0px;
      top: 249px;
 }
+
 #street-div .arrow.right
 {
      left: 700px;
      top: 249px;
 }
+
 #street-div .arrow.back
 {
     height: 51px;
@@ -4249,10 +4397,12 @@ button.news-button
     top: 3px;
     cursor: pointer;
 }
+
 #street-div .button-text
 {
     padding: 3px;
 }
+
 #street-div .curtainOpen
 {
     cursor: pointer;
@@ -4269,11 +4419,13 @@ button.news-button
     margin-left: 620px;
     margin-top: 5px;
 }
+
 #street-div .exercise
 {
     top: 440px;
     left: 0px;
 }
+
 #street-div .one-image
 {
     cursor: pointer;
@@ -4282,36 +4434,43 @@ button.news-button
     width: 70px;
     z-index: 2;
 }
+
 #street-div .one-image.dormitory
 {
     top: 10px;
     left: 20px;
 }
+
 #street-div .one-image.diet
 {
     top: 10px;
     left: 475px;
 }
+
 #street-div .one-image.department-building
 {
     top: -2px;
     left: 306px; 
 }
+
 #street-div .one-image.landscape
 {
     top: 10px;
     left: 150px;
 }
+
 #street-div .one-image.government
 {
     top: 10px;
     left: 590px;
 }
+
 #street-div .one-image.exercise
 {
     top: 31px;
     left: 687px;
 }
+
 #street-div .picture
 {
     display: none;
@@ -4319,6 +4478,7 @@ button.news-button
     z-index: 2;
     cursor: pointer;
 }
+
 #street-div .two-image
 {
     margin-left: 30px;
@@ -4329,31 +4489,37 @@ button.news-button
     z-index: 1;
     font-size: 2em;
 }
+
 #street-div .two-image.department-building
 {
     top: 210px;
     left: 0px;
 }
+
 #street-div .two-image.dormitory
 {
     top: 70px;
     left: 0px;
 }
+
 #street-div .two-image.government
 {
     top: 360px;
     left: 0px;
 }
+
 #street-div .two-image.diet
 {
     top: 280px;
     left: 0px;
 }
+
 #street-div .two-image.landscape
 {
     top: 140px;
     left: 0px;
 }
+
 #street-div .text-ul
 {
     cursor: pointer;
@@ -4372,6 +4538,7 @@ button.news-button
     width: 630px;
     height: 300px;
 }
+
 #street-div .scroll-class
 {
     margin-left: 30px;
@@ -6134,6 +6301,7 @@ div.item-description .exist
     font-weight: bold;
     color: #ff0000;
 }
+
 #game-mission li
 {
     width: 80px;
@@ -6148,14 +6316,17 @@ div.item-description .exist
     border-radius: 17px;
     color: black;
 }
+
 #game-mission a:hover
 {
     color: #F1F173;
 }
+
 #game-mission a
 {
     color: #FFA747;
 }
+
 #game-mission-dialog
 {
     width: 900px;
@@ -6199,6 +6370,7 @@ div.item-description .exist
     top: 86px;
     left: -32px;
 }
+
 #game-mission-dialog .avatar
 {
     width: 265px;
@@ -6229,6 +6401,7 @@ div.item-description .exist
     top: 356px;
     left: 279px;
 }
+
 #game-mission-dialog form input
 {
     width: 302px;
@@ -6242,6 +6415,7 @@ div.item-description .exist
     border-radius: 14px;
     box-shadow: 0 0 0 black, 0 3px 3px #3D6914 inset;
 }
+
 #game-mission-dialog button
 {
     cursor: pointer;

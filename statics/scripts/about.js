@@ -21,10 +21,14 @@
             tagBarSpeed:                     30000
         }, options);
         var photoIndex = 0;
+        var button = [$('#' + options.aboutId + ' .button-left'), $('#' + options.aboutId + ' .button-right')];
         var photos = $('#' + options.aboutId + ' img');
         var tagbarIndex = 0;
-        var tagbar = $('.' + options.tagBar + ' img');
-        var tagbarPerson = $('.' + options.tagBar + ' div');
+        var tagbar = $('.' + options.tagBar + ' .tag-image').each(function(index)
+        {
+            $(this).addClass('tag-bar' + index);
+        });
+        var tagbarPerson = $('.' + options.tagBar + ' .person');
         var personName = $('<p></p>').addClass('tag-box-name').hide();
         var personGrade = $('<p></p>').addClass('tag-box-grade').hide();
         var photoNumber = 31;
@@ -57,6 +61,7 @@
         var itrPic = $('#' + options.aboutId + ' .' + options.introdutionPicture);
         var picture = $('<div></div>')
             .css({
+                borderRadius: 10,
                 background: 'url(\'' + photoA.eq(1).attr('href') + '\')',
                 height: 300,
                 width: 400
@@ -102,7 +107,7 @@
             .click(function()
             {
                 tagBool = false;
-                for ( var i = 0; i < 4; i++)
+                for ( var i = 0; i < 5; i++)
                 {
                     block1Inf.eq(i).hide();
                 }
@@ -173,7 +178,7 @@
         blocks[1].appendTo($('#' + options.aboutId));
         photos.each(function(index)
         {
-            if ( index < photoNumber + 2 )
+            if ( index < photoNumber )
             {
                 $(this).addClass('about-photos')
                 .mouseenter(function()
@@ -182,44 +187,39 @@
                 })
                 .click(function()
                 {
-                    if ( index == 0 )
-                    {
-                        if ( smallPhotoIndex > 0 )
-                        {
-                            smallPhotoIndex--;
-                            $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
-                                left: -40 + smallPhotoIndex * -50 
-                            });
-                        }
-                    }
-                    else if ( index == photoNumber + 1 )
-                    {
-                        if( smallPhotoIndex + 6 < photoNumber )
-                        {
-                            smallPhotoIndex++;
-                            $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
-                                left: -40 + smallPhotoIndex * -50 
-                            });
-                        }
-                    }
-                    else
-                    {
-                        photoIndex = index;
-                        picture.css({
-                            background: 'url(\'' + photoA.eq(index - 1).attr('href') + '\')'
-                        });
-                    }
+                    photoIndex = index;
+                    picture.css({
+                        background: 'url(\'' + photoA.eq(index).attr('href') + '\')'
+                    });
                 })
             }
         });
         $('#' +  options.aboutId + ' .' + options.photoUl).appendTo(photoBar).show();
-        photos.eq(0).css({
+        button[0].css({
             left: 0,
             position: 'absolute'
+        }).click(function()
+        {
+            if ( smallPhotoIndex > 0 )
+            {
+                smallPhotoIndex--;
+                $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
+                    left: -40 + smallPhotoIndex * -50 
+                });
+            }
         }).appendTo(display).show();
-        photos.eq(photoNumber + 1).css({
+        button[1].css({
             left: 350,
             position: 'absolute'
+        }).click(function()
+        {
+            if( smallPhotoIndex + 6 < photoNumber )
+            {
+                smallPhotoIndex++;
+                $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
+                    left: -40 + smallPhotoIndex * -50 
+                });
+            }
         }).appendTo(display).show();
         photoA.each(function(index)
         {
