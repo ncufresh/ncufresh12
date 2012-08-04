@@ -1,5 +1,5 @@
 
-<h4 class="game-title"><?php echo $nickname; ?> - <?php echo $username; ?></h4>
+<h4 class="game-title"><?php echo $nickname; ?></h4>
 
 <div class="experience">
 <?php if ( $level < 20 ) : ?>

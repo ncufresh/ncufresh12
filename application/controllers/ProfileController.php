@@ -52,7 +52,7 @@ class ProfileController extends Controller
 
     public function actionEditor() 
     {
-        $profile = $this->user->profile; //¸Óµ§¸ê®Æ«DªÅ­È
+        $profile = $this->user->profile; //è©²ç­†è³‡æ–™éžç©ºå€¼
         if ( isset($_POST['profile']) ) 
         {
             $this->user->attributes = $_POST['register'];
@@ -81,17 +81,15 @@ class ProfileController extends Controller
             {
                 $profile = new Profile();
                 $profile->id = $this->user->id;
-                $profile->attributes = array(     
-                    'name'              => 'QQ',
-                    'nickname'          => 'QQ',
-                    'gender'            => 0, //¹w³]¨k¥Í
-                    'department'        => 2, //¹w³]¥L¬O¸ê¤u¨t
-                    'grade'             => 0,//¨ä¥L¦~¯Å
-                    'senior'            => 'QQ',
-                    'birthday'          => '2000-01-01'
-                );
-                $profile_validate = $profile->validate();
-                if (  $profile_validate && $profile->save() )
+                $profile->name = '';
+                $profile->nickname = '';
+                $profile->gender = 0; //é è¨­ç”·ç”Ÿ
+                $profile->department = 2; //é è¨­ä»–æ˜¯è³‡å·¥ç³»
+                $profile->grade = 0; //å…¶ä»–å¹´ç´š
+                $profile->senior = '';
+                $profile->birthday = date('Y-m-d');
+                $profile->setScenario('wrong-data');
+                if ( $profile->save() )
                 {
                     $this->redirect(array('profile/editor'));
                 }
@@ -113,7 +111,7 @@ class ProfileController extends Controller
 
     public function actionMessageReply($aid)
     {
-        $this->render('messagereply', array( //ÁÙ­n¦A§PÂ_¬O§_¦³±À¤å©Î¦^´_---¤£µM¦^¬OªÅ­È­C
+        $this->render('messagereply', array( //é‚„è¦å†åˆ¤æ–·æ˜¯å¦æœ‰æŽ¨æ–‡æˆ–å›žå¾©---ä¸ç„¶å›žæ˜¯ç©ºå€¼è€¶
             'article'       => Article::model()->findByPk($aid),
             'replys'        => Reply::model()->getArticleReplies($aid),
             'comments'      => Comment::model()->getArticleComments($aid)

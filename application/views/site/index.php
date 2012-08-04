@@ -59,7 +59,7 @@ jQuery(document).ready(function()
                         <a href="<?php echo $article->url; ?>" title="<?php echo $article->title; ?>"><?php echo $article->title; ?></a>
                     </td>
                     <td class="time">
-                        <?php echo $article->updated; ?>
+                        <?php echo $article->created; ?>
                     </td>
                 </tr>
 <?php endforeach; ?>
@@ -67,7 +67,7 @@ jQuery(document).ready(function()
             <tfoot>
                 <tr>
                     <td colspan="2">
-                        [<a href="<?php echo Yii::app()->createUrl('forums/index'); ?>" title="檢視所有文章">檢視所有文章</a>]
+                        [<a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 1)); ?>" title="檢視所有文章">檢視所有文章</a>]
                     </td>
                 </tr>
             </tfoot>

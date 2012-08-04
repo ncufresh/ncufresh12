@@ -1,4 +1,5 @@
 ﻿(function($){
+    // $('#form-create-content').ckeditor();
     $("#forum-reply-content").keydown(function(){
         var content_num = 20;
         /* 若content字數小於10則將submit disable */
@@ -15,6 +16,12 @@
             if(confirm("刪除文章?")){
                 $('.form-delete').submit();            
             }
+            return false;
+        });
+        $('.profile-add-friend a').click(function (){
+            $('.form-addfriend .addfriend-input').attr('value', $(this).attr('href').replace('#', ''));
+            $('.form-addfriend .addfriend-input').attr('name', 'friends['+$(this).attr('href').replace('#', '')+']');
+            $('.form-addfriend').submit();
             return false;
         });
         $("#forum-forum-top2 #sort_list").change(function() {
@@ -59,6 +66,12 @@
                     $("#forum-create-submit").removeAttr('disabled');
             }
         });
+        // $('#form-create-content').ckeditorGet().on('key', function(e) {
+            // var keyCode = e.data.keyCode; // if you need to track the key
+            // isModified = true;
+            console.log($(this).val().length);
+        // });
+
         $("#form-create-content").keydown(function(){
             /* 若content字數小於10則將submit disable */
             if($(this).val().length < content_num){

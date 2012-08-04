@@ -17,7 +17,7 @@
             title1Class:                     'title1',
             title2Class:                     'title2',
             picBarSpeed:                     1000,
-            picAutoSpeed:                    3000,
+            picAutoSpeed:                    6000,
             tagBarSpeed:                     30000
         }, options);
         var photoIndex = 0;
@@ -25,13 +25,17 @@
         var tagbarIndex = 0;
         var tagbar = $('.' + options.tagBar + ' img');
         var tagbarPerson = $('.' + options.tagBar + ' div');
-        var personName = $('<p></p>').addClass('tag-Box-name').hide();
-        var personGrade = $('<p></p>').addClass('tag-Box-grade').hide();
-        var photoNumber = 10;
+        var personName = $('<p></p>').addClass('tag-box-name').hide();
+        var personGrade = $('<p></p>').addClass('tag-box-grade').hide();
+        var photoNumber = 31;
         var smallPhotoIndex = 0;
         var photoA = $('#' + options.aboutId + ' a');
+        var tagBool = true;
         var jumpTo = function()
         {   
+            tagbar.each(function(){
+                $(this).hide();
+            });
             block1Inf.each(function(){
                 $(this).hide();
             });
@@ -40,9 +44,9 @@
             tagbarPerson.each(function(){
                 $(this).hide();
             });
-            for (var p = 0; p < 8; p++)
+            for (var p = 0; p < 9; p++)
             {
-                tagbarPerson.eq(tagbarIndex * 8 + p).show();
+                tagbarPerson.eq(tagbarIndex * 9 + p).show();
                 if ( tagbarIndex == 4 && p == 1 )
                 {
                     break;
@@ -97,6 +101,7 @@
             })
             .click(function()
             {
+                tagBool = false;
                 for ( var i = 0; i < 4; i++)
                 {
                     block1Inf.eq(i).hide();
@@ -109,10 +114,10 @@
         tagbarPerson.each(function(){
             $(this).css({
                 position: 'absolute',
-                top: $(this).attr('top'),
-                left: $(this).attr('left'),
+                top: 45 + parseInt($(this).attr('top')),
+                left: 67 + parseInt($(this).attr('left')),
                 height: $(this).attr('height'),
-                width: $(this).attr('width')
+                width: $(this).attr('width'),
             })
             .mouseenter(function()
             {
@@ -149,15 +154,18 @@
         },options.picAutoSpeed);
         setInterval(function()
         {
-            if ( tagbarIndex < 4 )
+            if ( tagBool )
             {
-                tagbarIndex++;
+                if ( tagbarIndex < 4 )
+                {
+                    tagbarIndex++;
+                }
+                else
+                {
+                    tagbarIndex = 0;
+                }
+                jumpTo();
             }
-            else
-            {
-                tagbarIndex = 0;
-            }
-            jumpTo();
         },options.tagBarSpeed);
         $('#' + options.aboutId + ' .' + options.title1Class).appendTo($('#' + options.aboutId));
         blocks[0].appendTo($('#' + options.aboutId));

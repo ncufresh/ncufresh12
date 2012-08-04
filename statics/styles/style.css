@@ -606,7 +606,8 @@ a:hover
 .calendar .calendar-hide-button,
 .calendar .calendar-subscript-button,
 .calendar a.calendar-hide-event,
-#calendar-subscript h4
+#calendar-subscript h4,
+#lastest-news-wrap .header h4
 {
     background: url('../images/sprites.png') no-repeat;
 }
@@ -1043,6 +1044,7 @@ a:hover
 
 #chat .online-friends
 {
+    color: #FFFFFF;
     margin: 40px 0 0 85px;
     position: absolute;
     text-align: center;
@@ -1498,10 +1500,10 @@ ul#nculife-details
 {
     background-position: -128px -128px;
     display: block;
-    height: 50px;
+    height: 48px;
     margin: -15px 0 0 -55px;
     position: absolute;
-    width: 50px;
+    width: 48px;
 }
 
 #marquee a
@@ -1554,11 +1556,20 @@ ul#nculife-details
     cursor: pointer;
 }
 
+
+#club-calendar .calendar-table td.today,
+#index-calendar .calendar-table td.today
+{
+    color: red;
+}
+
+#club-calendar .calendar-table td.hover,
 #index-calendar .calendar-table td.hover
 {
     color: green;
 }
 
+#club-calendar .calendar-table td.selected,
 #index-calendar .calendar-table td.selected
 {
     outline: 1px solid #000;
@@ -1819,14 +1830,14 @@ a.calendar-hide-event:hover
     height: 20px;
     line-height: 20px;
     display: inline-block;
-    background-color: #FFFFFF179;
+    background-color: #FFFFFF;
     border-radius: 5px;
     color: #27120a;
 }
 
 #calendar-recycle a.calendar-show-event
 {
-    background: url('../images/calendar_recover.png') no-repeat #FFFFFF179;
+    background: url('../images/calendar_recover.png') no-repeat #FFFFFF;
 }
 
 #calendar-recycle a.calendar-show-event:active
@@ -1837,7 +1848,7 @@ a.calendar-hide-event:hover
 
 #calendar-recycle a.calendar-hide-event
 {
-    background: url('../images/calendar_delete.png') no-repeat #FFFFFF179;
+    background: url('../images/calendar_delete.png') no-repeat #FFFFFF;
 }
 
 #calendar-recycle a.calendar-hide-event:active
@@ -2186,14 +2197,14 @@ button.news-button
 
 #lastest-news-wrap .header h4
 {
-    width: 85px;
+    background-position: -128px -176px;
+    width: 80px;
     height: 0px;
     padding: 25px 0 0 0;
     margin: 0;
     overflow: hidden;
     display: block;
     float: left;
-    background: url('../images/index_latest_icon.png') no-repeat;
 }
 
 #lastest-news-wrap .header ul.pager
@@ -2474,15 +2485,17 @@ button.news-button
 }
 
 #multimedia
+{
+}
 
 /**
  * Nculife style
  */
 #life-dialog
 {
-    display: none;
     width: 649px;
     height: 449px;
+    display: none;
     z-index: 1200;
     position: fixed;
 }
@@ -2549,7 +2562,7 @@ button.news-button
 #nculife-title
 {
     width: 605px;
-    height: 122px;
+    height: 121px;
     margin: -72px 0 0 10px;
     display: inline-block;
 }
@@ -2617,14 +2630,14 @@ button.news-button
 
 #life-index2
 {
-    width: 140px;
+    width: 155px;
     left: 4px;
     top: 131px;
 }
 
 #life-index3
 {
-    width: 156px;
+    width: 165px;
     left: 40px;
     top: 164px;
 }
@@ -2671,8 +2684,8 @@ button.news-button
 
 #life-container
 {
-    width: 740px;
-    height: 600px;
+    width: 649px;
+    height: 549px;
     position:relative;
     padding: 0;
 }
@@ -2738,6 +2751,15 @@ button.news-button
     left: 660px;
 }
 
+.readme-download-back
+{
+    width: 70px;
+    height: 85px;
+    position: absolute;
+    top: 600px;
+    left: 870px;
+}
+
 #fresh-back
 {
     background-position: -1272px -656px;
@@ -2780,7 +2802,7 @@ button.news-button
 
 #readme .scroll-container
 {
-    height: 420px;
+    height: 357px;
     width: 630px;
 }
 
@@ -2802,11 +2824,22 @@ button.news-button
 #readme-download
 {
     background-position: -765px 0;
+    padding-top: 55px;
+    padding-bottom: 40px;
 }
 
 .readme-background
 {
     height: 420px;
+    padding: 15px 25px;
+    position: relative;
+    width: 700px;
+    overflow: hidden;
+}
+
+.readme-download-background
+{
+    height: 357px;
     padding: 15px 25px;
     position: relative;
     width: 700px;
@@ -2997,10 +3030,10 @@ button.news-button
 
 .readme-menu
 {
-    width: 200px;
+    width: 220px;
     heigth: auto;
     top: 5px;
-    left: -187px;
+    left: -197px;
     border-radius: 0 10px 10px 0;
     position: absolute;
     display: block;
@@ -3009,9 +3042,15 @@ button.news-button
     overflow: auto;
 }
 
-.readme-menu p
+.readme-menu h5
 {
     text-align: center;
+	margin-top: 10px;
+}
+
+.readme-menu-index li
+{
+	display: none;
 }
 
 .readme-menu p:hover
@@ -3021,9 +3060,28 @@ button.news-button
     font-weight: bold;
 }
 
+#readme .menu-index
+{
+	list-style: none;
+}
+
+#readme .menu-index li
+{
+	list-style: none;
+	margin: 10px 0 0 -15px;
+}
+
+#readme .menu-index a:hover
+{
+	text-decoration: underline;
+	color: black;
+}
+
 .readme-menu-index
 {
-    display: none;
+    display: block;
+	list-style: none;
+	margin-top: -10px;
 }
 
 .download-index
@@ -3031,7 +3089,7 @@ button.news-button
     float: left;
     list-style-type: disc;
     font-size: 1.4em;
-    margin-top: 35px;
+    margin-top: 4px;
 }
 
 .download-index li
@@ -3116,7 +3174,7 @@ button.news-button
 
 #about .about-display
 {
-    background: #FFFFFF;
+    background: #B9B9B9;
     bottom: 0px;
     height: 0px;
     opacity: 0px;
@@ -3168,23 +3226,22 @@ button.news-button
     width: 80%;
 }
 
-#about .tag-Box-name
+#about .tag-box-name,
+#about .tag-box-grade
 {
-    top: 95%;
-    position: absolute;
+    background: #FFFFFF;
+    font-size: 0.95em;
+    margin: 0 -5px;
+    padding: 0 5px;
     text-align: center;
-    height: 10%;
     width: 100%;
 }
 
-#about .tag-Box-grade
+#about .tag-box-name
 {
-    top: 120%;
-    position: absolute;
-    text-align: center;
-    height: 10%;
-    width: 100%;
+    margin-top: 100%;
 }
+
 
 #about .animation
 {
@@ -3217,6 +3274,7 @@ button.news-button
 
 #about .about-small-0
 {
+    border-radius: 10px 10px 0px 0px;
     background: url('../about/about.png') no-repeat;
     width: 700px;
     height: 280px;
@@ -3287,6 +3345,7 @@ button.news-button
     text-indent: -100000%;
     width: 96px;
 }
+<<<<<<< HEAD
 /**
  * street style
  */
@@ -4318,6 +4377,34 @@ button.news-button
     margin-left: 30px;
     margin-right: 100px;
 }
+=======
+
+.club,
+.club-head,
+.club-head:hover,
+.department,
+.department-head,
+.department-head:hover,
+.student,
+.student-head,
+.student-head:hover,
+#club-head-1,
+#club-head-2,
+#club-head-3,
+#club-back1,
+#club-back2,
+#club-back3,
+.club-modify-table,
+#club-bottom-1,
+#club-bottom-2,
+#club-bottom-3
+{
+	background: url('../images/club.png');
+}
+
+
+
+>>>>>>> 260a9f6de5eab749f3531199996f58f86eedc556
 /**
  * Club style
  */
@@ -4328,7 +4415,7 @@ button.news-button
  
  .club
  {
-    background: url('../club/club.png');
+    background-position: 0px 0px;
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -4338,7 +4425,7 @@ button.news-button
  
 .club-head
 {
-    background: url('../club/club-head.png');
+    background-position: -960px -1600px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -4348,7 +4435,7 @@ button.news-button
 
 .club-head:hover
 {
-    background: url('../club/club-head2.png');
+    background-position: -960px -1680px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -4358,7 +4445,7 @@ button.news-button
 
 .department
 {
-    background: url('../club/department.png');
+    background-position: -800px 0px;
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -4368,7 +4455,7 @@ button.news-button
 
 .department-head
 {
-    background: url('../club/department-head.png');
+    background-position: -1280px -1600px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -4377,7 +4464,7 @@ button.news-button
 
 .department-head:hover
 {
-    background: url('../club/department-head2.png');
+    background-position: -1280px -1680px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -4386,7 +4473,7 @@ button.news-button
 
 .student
 {
-    background: url('../club/student.png');
+    background-position: 0px -960px;
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -4396,7 +4483,7 @@ button.news-button
 
 .student-head
 {
-    background: url('../club/student-head.png');
+    background-position: -1600px -1600px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -4406,7 +4493,7 @@ button.news-button
 
 .student-head:hover
 {
-    background: url('../club/student-head2.png');
+    background-position: -1600px -1680px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -4516,17 +4603,17 @@ button.news-button
 
 #club-head-1
 {
-    background: url('../club/5-1.png');
+    background-position: 0px -1920px;
 }
 
 #club-head-3
 {
-    background: url('../club/6-1.png');
+    background-position: 0px -2010px;
 }
 
 #club-head-2
 {
-    background: url('../club/4-1.png');
+    background-position: -480px -1920px;
 }
 
 .club-display-head a
@@ -4546,19 +4633,19 @@ button.news-button
 
 #club-bottom-1
 {
-    background: url('../club/5-3.png');
+    background-position: -480px -2010px;
     background-repeat: no-repeat;
 }
 
 #club-bottom-3
 {
-    background: url('../club/6-3.png');
+	background-position: -960px -2090px;
     background-repeat: no-repeat;
 }
 
 #club-bottom-2
 {
-    background: url('../club/4-3.png');
+    background-position: -960px -1920px;
     background-repeat: no-repeat;
 }
 
@@ -4573,17 +4660,17 @@ button.news-button
 
 #club-back1
 {
-    background: url('../club/clubback1.png');
+    background-position: 0px -2170px;
 }
 
 #club-back2
 {
-    background: url('../club/clubback2.png');
+    background-position: -160px -2170px;
 }
 
 #club-back3
 {
-    background: url('../club/clubback3.png');
+    background-position: -320px -2170px;
 }
 
 .club-picture
@@ -4674,7 +4761,7 @@ button.news-button
     padding: 5px;
     height: 600px;
     width: 750px;
-    background: url('../club/background.png');
+    background-position: -960px -960px;
 }
 /* profile... */
 ul.friends-sort 
@@ -4908,33 +4995,25 @@ div.all-sorts-of-friends
     margin:25px 25px 25px 25px;
 }
 
-.A-group-users
+.a-group-users
 {
     width:680px;
     height:370px;
     margin:0px;
 }
 
-div.A-group-users button
+div.a-group-users button
 {
     padding:0px;
     margin-top:0px;
 }
 
-/*div.friends-part4 form
+div.a-group-users div.avatar
 {
-    width:300px;
-    height:315px;
-    margin-left:5px;
-    padding:0px;
-}*/
-
-div.A-group-users div.avatar
-{
-    margin-left:28px;
+    margin-left:20px;
     margin-top:0px;
-    width:87px; 
-    height:145px;
+    width:100px; 
+    height:70px;
     padding:0px;
     float:left;
 }
@@ -4943,14 +5022,15 @@ div.A-group-users div.avatar
 {
     width:415px;
     height:315px;
-    margin-top:14px;
+    margin-top:0;
+    margin-left:260px;
     padding:0px;
 }
 
 .friend-chatting ul
 {
     width:410px;
-    margin-left:2px;
+    margin-left:1px;
     padding:0px;
     outline:1px solid black;
     outline-style:dotted;
@@ -4962,6 +5042,22 @@ div.A-group-users div.avatar
     padding:0px;
     float:left;
     list-style-type:none;
+    outline:1px solid black;
+    outline-style:dotted;
+    overflow: hidden;
+}
+
+.friend-chatting-content
+{
+    background-position: -288px 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    display: block;
+    height: 60px;
+    overflow: hidden;
+    padding: 5px;
+    position: relative;
+    width: 190px;
     outline:1px solid black;
     outline-style:dotted;
 }
@@ -4977,8 +5073,8 @@ div.A-group-users div.avatar
 .profile-modify div.avatar
 {
     margin-left:65px;
-    margin-top:0px;
-    width:202px; 
+    margin-top:5px;
+    width:180px; 
     height:338px;
     padding:0px;
 }
@@ -5196,17 +5292,17 @@ div.profile-message-reply
 
 .button-back
 {
-    background-image: url('../profile/button/back.png');
-    background-repeat: no-repeat ;
-    width: 84px;
-    height: 37px;
-    padding: 0px;
-    margin: 0px;
-    float:right;
-    display:block;
-    position:relative;
     right:60px;
     bottom:61px;
+    display: block;
+    border: 2px black solid;
+    width: 68px;
+    padding: 3px;
+    font-weight: bold;
+    color: #0A5163;
+    background: #C9F8E7;
+    border-radius: 9px;
+    text-align: center;
 }
 
 .button-all-choose
@@ -5444,6 +5540,13 @@ div.profile-message-reply
 .is_exist
 {
     color:red;
+}
+
+.group-users-list-search
+{
+    position:absolute;
+    right:435px;
+    bottom:360px;
 }
 
 /**
@@ -5879,9 +5982,9 @@ img.user_img
  */
 .game-display .game-title
 {
-    width: 335px;
+    width: 356px;
     height: 20px;
-    margin: 5px 11px;
+    margin: 5px 0px;
     font-size: 1.5em;
     text-align: center;
     background-color: black;
@@ -5892,9 +5995,9 @@ img.user_img
 
 .game-display .item-category
 {
-    width: 335px;
+    width: 356px;
     height: 20px;
-    margin: 5px 11px;
+    margin: 5px 0px;
     font-size: 1.5em;
     text-align: center;
     background-color: black;
@@ -5908,12 +6011,37 @@ img.user_img
     font-size: 2.5em;
     color: #0C533F;
     padding: 12px 0px;
+    display: block;
+    width: 378px;
+    text-align: center;
+} 
+
+.game-display .shop-foot
+{
+    display: block;
+    width: 361px;
+    height: 36px;
+    text-align: center;
 } 
 
 .game-display .shop-click
 {
-    font-size: 1.5em;
-    color: black;
+    width: 367px;
+    height: 20px;
+    margin: 5px 0px;
+    font-size: 1.2em;
+    text-align: center;
+    background-color: black;
+    border: 3px solid #BCE96C;
+    border-radius: 10px;
+    color: #DEFF76;
+    padding: 2px 5px;
+    font-weight: bold;
+} 
+
+.game-display .shop-click:hover
+{
+    color: #A6FF06;
 } 
 
 .game-display .experience
@@ -6074,11 +6202,11 @@ div.item-description .exist
 #game-mission-dialog .avatar
 {
     width: 265px;
-    height: 451px;
+    height: 475px;
     font-size: 1.125em;
     /*outline: 1px solid black;*/
     position: absolute;
-    top: 43px;
+    top: 42px;
     left: 629px;
 }
 
@@ -6207,6 +6335,11 @@ ul.game-button li
     margin-right: 1px;
     text-align:center;
     color:#b9b9b9;
+}
+
+ul.game-button li a:hover
+{
+    color:#00A3FF;
 }
 
 div.game-display
@@ -6350,10 +6483,16 @@ li.enabled a
     padding-left:44px;
 }
 
+#forum-create
+{
+    background-image: url(../forum/create/background.png);
+    margin-left: 35px;
+    background-repeat: no-repeat;
+}
+
 #forum-create-form .form-top
 {
-    background-image: url('../forum/create/background_top.png');
-    background-repeat: no-repeat;
+    
     margin-left:35px;
     width:656px;
     height:81px;
@@ -6382,7 +6521,7 @@ li.enabled a
 
 #forum-create-form .form-body
 {
-    background-image: url('../forum/create/background_body.png');
+    
     margin-left:35px;
     margin-top:0px;
     width:656px;
@@ -6416,8 +6555,7 @@ li.enabled a
 
 #forum-create-form .form-foot
 {
-    background-image: url('../forum/create/background_foot.png');
-    background-repeat: no-repeat;
+    
     margin-left:35px;
     margin-top:0px;
     width:656px;
@@ -6484,6 +6622,22 @@ li.enabled a
     padding-top:5px
 }
 
+
+#forum-view-top2 .fb_iframe_widget
+{
+    margin-left: 10px;
+}
+
+#forum-view-top2 .fb .button_count a.connect_widget_like_button
+{
+    padding: 0px;
+}
+
+#forum-view-top2 a
+{
+    float: left;
+}
+
 #forum-view-top2 .pager,
 #forum-forum-top2 .pager,
 #forum-forum-footer .pager
@@ -6505,7 +6659,7 @@ li.enabled a
 {
     background: url('../forum/view/background.png');
     width: 683px;
-    min-height: 300px;
+    min-height: 324px;
     margin-left:35px;
     position: relative;
     overflow: hidden;
@@ -6525,12 +6679,17 @@ li.enabled a
 {
     background: #F8C77C;
     width: 165px;
-    height: 263px;
+    height: 296px;
     border-radius: 6px;
     border: 2px solid #EAA520;
     margin-left: 45px;
     padding-top: 7px;
     float: left;
+}
+
+#forum-view-replies .forum-view-profile
+{
+    margin-top: 10px;
 }
 
 .forum-view-profile .profile-pic
@@ -6540,6 +6699,13 @@ li.enabled a
     background: white;
     border-radius: 6px;
     margin: 0 auto;
+    overflow: hidden;
+}
+
+.forum-view-profile .profile-pic .avatar
+{
+    margin-left: -27px;
+    max-width: 221px;
 }
 
 .forum-view-profile .profile-name
@@ -6558,12 +6724,33 @@ li.enabled a
 {
     width: 140px;
     height: 23px;
-    margin: 1px auto;
+    margin: 10px auto;
     background: #FFF0C8;
     border-radius:5px;
     padding-top: 2px;
     padding-left: 10px;
     color: #C57902;
+}
+
+.forum-view-profile .profile-add-friend
+{
+    width: 120px;
+    height: 23px;
+    margin: 1px auto;
+    background: #FFF0C8;
+    border-radius:5px;
+    padding-top: 2px;
+    padding-left: 30px;
+}
+
+.forum-view-profile .profile-add-friend a
+{
+    color: #C57902;
+}
+
+.forum-view-profile .profile-add-friend a:hover
+{
+    font-weight: bold;
 }
 
 #forum-view-body .forum-view-title
@@ -6606,14 +6793,17 @@ li.enabled a
 #forum-view-body .forum-view-comments
 {
     width: 389px;
-    height: 25px;
+    height: 30px;
     border-radius: 6px;
     background: #F4EFE0;
     float: right;
     margin-top: 2px;
     margin-right: 46px;
     border: 2px solid #EAA520;
-    padding: 5px 0 0 11px;
+    padding: 0 0 0 11px;
+    word-break: break-all;
+    overflow: hidden;
+    line-height: 30px;
 }
 
 #forum-view-body #form-comment .forum-comment-text

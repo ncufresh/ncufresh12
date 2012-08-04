@@ -61,18 +61,21 @@ class Subscription extends CActiveRecord
             )
         );
     }
-    
+
     public function getSubscriptionByCalendarID($calendar_id)
     {
         return $this->find('calendar_id='.$calendar_id.' AND invisible = 0 AND user_id='.Yii::app()->user->getId());
     }
-    
-    public function getIsSubscriptByClubID($master_id)
+
+    public function getIsSubscriptByClubID($club_id)
     {
-        $calendar_id = Calendar::model()->getClubCalendar($master_id)->id;
-        if ( $this->find('calendar_id='.$calendar_id.' AND invisible = 0 AND user_id='.Yii::app()->user->getId()) )
-        {
-            return true;
+        $calendar = Calendar::model()->getClubCalendar($club_id);
+        if ( $calendar ) {
+            if ( $this->find('calendar_id='.$calendar->id.' AND invisible = 0 AND user_id='.Yii::app()->user->getId()) )
+            {
+                return true;
+            }
+            return false;
         }
         return false;
     }

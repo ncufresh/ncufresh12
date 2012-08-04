@@ -62,17 +62,17 @@ class Friend extends CActiveRecord
     public function friendRelation($friendid)
     {
         $friend = $this->find(array(
-                'condition' => 'user_id = :userid AND friend_id = :friendid AND invisible = 0',
+                'condition' => 'user_id = :userid AND friend_id = :friendid AND invisible = 0',//成為朋友
                 'params'    => array(
                 ':userid'   => Yii::app()->user->getId(),
                 ':friendid' => $friendid
             )
         ));
         $request = $this->find(array(
-                'condition' => 'user_id = :userid AND friend_id = :friendid AND invisible = 1',
+                'condition' => 'user_id = :userid AND friend_id = :friendid AND invisible = 1', //一方已送出邀請
                 'params'    => array(
-                ':userid'   => Yii::app()->user->getId(),
-                ':friendid' => $friendid
+                ':userid'   => $friendid,
+                ':friendid' => Yii::app()->user->getId()
             )
         ));
         if ( $friend )

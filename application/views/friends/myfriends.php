@@ -1,6 +1,6 @@
 <h4>我的好友</h4>
 <div id="myfriend">
-<form class="A-group-users" method="POST" action="<?php echo $this->createUrl('friends/deletefriends'); ?>">
+<form class="a-group-users" method="POST" action="<?php echo $this->createUrl('friends/deletefriends'); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
         <ul class="users-department">
 <?php foreach ( $user->friends as $friend ) :?>

@@ -1,16 +1,9 @@
 <h4>
     烏龜池
-</h1>
+</h4>
 <p>
     <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/1.jpg" style="height:200px;width:267px;" />　
 </p>
-
-
-
-
-
-
-
 <p>
     位於男九舍前面的噴水池。
 </p>

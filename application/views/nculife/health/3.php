@@ -1,7 +1,7 @@
 <h4>
-    心裡諮商
+    心理諮商
 </h4>
-<img alt="諮商中心" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E8%AB%AE%E5%95%86%E4%B8%AD%E5%BF%83.jpg" style="width:500px;height:667px;" />
+<img alt="諮商中心" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/health3-1.jpg" style="width:500px;height:667px;" />
 <h5>
     1.預約：
 </h5>
@@ -22,7 +22,7 @@
     <strong>為什麼要初談？</strong>
 </p>
 <p>
-    目的在協助你釐清自己的需求，由初談老 師與你進行短暫會談，為你安排合適之心理師，也解答你對諮商的需求或期待，以利後續諮商之進行。
+    目的在協助你釐清自己的需求，由初談老師與你進行短暫會談，為你安排合適之心理師，也解答你對諮商的需求或期待，以利後續諮商之進行。
 </p>
 <ul>
     <li>

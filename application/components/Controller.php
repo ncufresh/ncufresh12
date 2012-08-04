@@ -23,6 +23,7 @@ class Controller extends CController
         Yii::app()->session['uuid'] = $activity->uuid;
         Yii::app()->format->dateFormat = 'Y-m-d';
         Yii::app()->format->datetimeFormat = 'Y-m-d h:i:s A';
+        mb_internal_encoding('UTF-8');
         return true;
     }
 

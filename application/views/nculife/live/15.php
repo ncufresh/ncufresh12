@@ -13,7 +13,7 @@
     </li>
 </ol>
 <p>
-    <img alt="全聯" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E5%85%A8%E8%81%AF.jpg" style="width:500px;height:365px;" />
+    <img alt="全聯" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/life15-1.jpg" style="width:500px;height:365px;" />
 </p>
 <p>
     (圖片截取於Google地圖)
