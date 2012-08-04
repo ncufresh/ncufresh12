@@ -648,7 +648,8 @@
         <!--總寬:750px 總高:601px  窗簾:249px  地圖:寬601px高551px  相片原圖:2256*1496-->
         
         <img src="<?php echo Yii::app()->baseUrl?>/statics/building/map-no-text.png" id="mapPicture" path="<?php echo Yii::app()->request->baseUrl;?>/statics/building/map-no-text.png"><!--底圖-->
-        <img id="curtain" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain.png">
+        
+<img id="curtain" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain.png">
         
         <!--系館-->
         <img id="engineering-5" class="department-building picture" streetPoints="0" faceto="E" show="department-building" href="#1" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-5.png">
@@ -667,7 +668,7 @@
         <img id="management" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#14" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/management.png">        
         <img id="hakka" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#16" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/hakka.png">
         
-        <!--街景缺漏!!!  12舍及操場前-->
+        <!--街景缺漏!!!  12舍及操場前移 style script 街景照片測試 有錯 缺漏圖片-->
          
         <!--景觀-->
         <img id="ncu-lake"class="landscape picture"  streetPoints="-1" faceto="-1" show="landscape" href="#17" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/ncu-lake.png">
@@ -1189,340 +1190,340 @@ $(document).ready(function()
     var streetPoints = 
     [
         { // 0 (工5)
-            N:{ photo: 'Day 1 (4).jpg', nextPoint: 2 },
-            E:{ photo: 'Day 1 (3).jpg', nextPoint: (-1) },
-            S:{ photo: 'Day 1 (2).jpg', nextPoint: (-1) },
-            W:{ photo: 'Day 1 (1).jpg', nextPoint: 1 }            
+            N:{ photo: 'Day 1 (4).JPG', nextPoint: 2 },
+            E:{ photo: 'Day 1 (3).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (2).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 1 (1).JPG', nextPoint: 1 }            
         },
         { // 1 (環工)
-            N:{ photo: 'Day 3 (3).jpg', nextPoint: (-1) },
-            E:{ photo: 'Day 3 (2).jpg', nextPoint: 0 },
-            S:{ photo: 'Day 3 (1).jpg', nextPoint: (-1) },
-            W:{ photo: 'Day 3 (4).jpg', nextPoint: 48 }
+            N:{ photo: 'Day 3 (3).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (2).JPG', nextPoint: 0 },
+            S:{ photo: 'Day 3 (1).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 3 (4).JPG', nextPoint: 48 }
         },
         { // 2 (工3)
-            N:{ photo: 'Day 1 (6).jpg', nextPoint: 3 },
-            E:{ photo: 'Day 1 (7).jpg', nextPoint: (-1) },
-            S:{ photo: 'Day 1 (8).jpg', nextPoint: 0 },
-            W:{ photo: 'Day 1 (5).jpg', nextPoint: (-1) }
+            N:{ photo: 'Day 1 (6).JPG', nextPoint: 3 },
+            E:{ photo: 'Day 1 (7).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (8).JPG', nextPoint: 0 },
+            W:{ photo: 'Day 1 (5).JPG', nextPoint: (-1) }
         },
         { // 3 (操場前)
-            N:{ photo: 'Day 1 (10).jpg', nextPoint: 4 },
-            E:{ photo: 'Day 1 (9).jpg', nextPoint: (-1) },
+            N:{ photo: 'Day 1 (10).JPG', nextPoint: 4 },
+            E:{ photo: 'Day 1 (9).JPG', nextPoint: (-1) },
             S:{ photo: '', nextPoint: 2 },/////////////////////////////////////////////////////////////
-            W:{ photo: 'Day 1 (11).jpg', nextPoint: (-1) } // 缺圖
+            W:{ photo: 'Day 1 (11).JPG', nextPoint: (-1) } // 缺圖
         },
         { // 4 (操場)
-            N:{ photo: 'Day 1 (13).jpg', nextPoint: 5 },
-            E:{ photo: 'Day 1 (14).jpg', nextPoint: (-1) },
-            S:{ photo: 'Day 1 (15).jpg', nextPoint: 3 },
-            W:{ photo: 'Day 1 (12).jpg', nextPoint: (-1) }
+            N:{ photo: 'Day 1 (13).JPG', nextPoint: 5 },
+            E:{ photo: 'Day 1 (14).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (15).JPG', nextPoint: 3 },
+            W:{ photo: 'Day 1 (12).JPG', nextPoint: (-1) }
         },
         { // 5 (排球)
-            N:{ photo: 'Day 1 (17).jpg', nextPoint: 6 },
-            E:{ photo: 'Day 1 (18).jpg', nextPoint: (-1) },
-            S:{ photo: 'Day 1 (19).jpg', nextPoint: 4 },
-            W:{ photo: 'Day 1 (16).jpg', nextPoint: (-1) }
+            N:{ photo: 'Day 1 (17).JPG', nextPoint: 6 },
+            E:{ photo: 'Day 1 (18).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (19).JPG', nextPoint: 4 },
+            W:{ photo: 'Day 1 (16).JPG', nextPoint: (-1) }
         },        
         { // 6 (可麗餅)            
-            N:{ photo: 'Day 1 (23).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 1 (20).jpg', nextPoint: 7 },    
-            S:{ photo: 'Day 1 (21).jpg', nextPoint: 5 },    
-            W:{ photo: 'Day 1 (22).jpg', nextPoint: 52 }         
+            N:{ photo: 'Day 1 (23).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 1 (20).JPG', nextPoint: 7 },    
+            S:{ photo: 'Day 1 (21).JPG', nextPoint: 5 },    
+            W:{ photo: 'Day 1 (22).JPG', nextPoint: 52 }         
         },
         { // 7 (育成中心前)            
-            N:{ photo: 'Day 1 (24).jpg', nextPoint: 51 },
-            E:{ photo: 'Day 1 (26).jpg', nextPoint: 8 },
-            S:{ photo: 'Day 1 (27).jpg', nextPoint: (-1) },
-            W:{ photo: 'Day 1 (25).jpg', nextPoint: 6 }
+            N:{ photo: 'Day 1 (24).JPG', nextPoint: 51 },
+            E:{ photo: 'Day 1 (26).JPG', nextPoint: 8 },
+            S:{ photo: 'Day 1 (27).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 1 (25).JPG', nextPoint: 6 }
         },
         { // 8 (後門)            
-            N:{ photo: 'Day 1 (29).jpg', nextPoint: 9 },       
-            E:{ photo: 'Day 1 (28).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 1 (31).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 1 (30).jpg', nextPoint: 7 }         
+            N:{ photo: 'Day 1 (29).JPG', nextPoint: 9 },       
+            E:{ photo: 'Day 1 (28).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 1 (31).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 1 (30).JPG', nextPoint: 7 }         
         },
         { // 9 (女四東)            
-            N:{ photo: 'Day 1 (45).jpg', nextPoint: 55 },       
-            E:{ photo: 'Day 1 (44).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 1 (46).jpg', nextPoint: 8 },    
-            W:{ photo: 'Day 1 (47).jpg', nextPoint: 54 }         
+            N:{ photo: 'Day 1 (45).JPG', nextPoint: 55 },       
+            E:{ photo: 'Day 1 (44).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 1 (46).JPG', nextPoint: 8 },    
+            W:{ photo: 'Day 1 (47).JPG', nextPoint: 54 }         
         },
         { // 10 (工1)            
-            N:{ photo: 'Day 1 (37).jpg', nextPoint: 11 },       
-            E:{ photo: 'Day 1 (39).jpg', nextPoint: 54 },    
-            S:{ photo: 'Day 1 (38).jpg', nextPoint: 51 },    
-            W:{ photo: 'Day 1 (36).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 1 (37).JPG', nextPoint: 11 },       
+            E:{ photo: 'Day 1 (39).JPG', nextPoint: 54 },    
+            S:{ photo: 'Day 1 (38).JPG', nextPoint: 51 },    
+            W:{ photo: 'Day 1 (36).JPG', nextPoint: (-1) }         
         },
         { // 11 (海音西方岔路)            
-            N:{ photo: 'Day 1 (63).jpg', nextPoint: 19 },       
-            E:{ photo: 'Day 1 (62).jpg', nextPoint: 12 },    
-            S:{ photo: 'Day 1 (61).jpg', nextPoint: 10 },    
-            W:{ photo: 'Day 1 (60).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 1 (63).JPG', nextPoint: 19 },       
+            E:{ photo: 'Day 1 (62).JPG', nextPoint: 12 },    
+            S:{ photo: 'Day 1 (61).JPG', nextPoint: 10 },    
+            W:{ photo: 'Day 1 (60).JPG', nextPoint: (-1) }         
         },
         { // 12 (海音咖啡)            
-            N:{ photo: 'Day 1 (56).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 1 (59).jpg', nextPoint: 13 },    
-            S:{ photo: 'Day 1 (58).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 1 (57).jpg', nextPoint: 11 }         
+            N:{ photo: 'Day 1 (56).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 1 (59).JPG', nextPoint: 13 },    
+            S:{ photo: 'Day 1 (58).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 1 (57).JPG', nextPoint: 11 }         
         },
         { // 13 (宵夜街口)            
-            N:{ photo: 'Day 1 (53).jpg', nextPoint: 14 },       
-            E:{ photo: 'Day 1 (54).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 1 (55).jpg', nextPoint: 55 },    
-            W:{ photo: 'Day 1 (52).jpg', nextPoint: 12 }         
+            N:{ photo: 'Day 1 (53).JPG', nextPoint: 14 },       
+            E:{ photo: 'Day 1 (54).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 1 (55).JPG', nextPoint: 55 },    
+            W:{ photo: 'Day 1 (52).JPG', nextPoint: 12 }         
         },
         { // 14 (女14舍)            
-            N:{ photo: 'Day 3 (89).jpg', nextPoint: 15 },       
-            E:{ photo: 'Day 3 (86).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (87).jpg', nextPoint: 13 },    
-            W:{ photo: 'Day 3 (88).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 3 (89).JPG', nextPoint: 15 },       
+            E:{ photo: 'Day 3 (86).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (87).JPG', nextPoint: 13 },    
+            W:{ photo: 'Day 3 (88).JPG', nextPoint: (-1) }         
         },
         { // 15 (男11舍)            
-            N:{ photo: 'Day 3 (91).jpg', nextPoint: 16 },       
-            E:{ photo: 'Day 3 (90).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (93).jpg', nextPoint: 14 },    
-            W:{ photo: 'Day 3 (92).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 3 (91).JPG', nextPoint: 16 },       
+            E:{ photo: 'Day 3 (90).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (93).JPG', nextPoint: 14 },    
+            W:{ photo: 'Day 3 (92).JPG', nextPoint: (-1) }         
         },
         { // 16 (男7舍；7餐前L轉角)            
-            N:{ photo: 'Day 3 (82).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (85).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (84).jpg', nextPoint: 15 },    
-            W:{ photo: 'Day 3 (83).jpg', nextPoint: 17 }         
+            N:{ photo: 'Day 3 (82).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (85).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (84).JPG', nextPoint: 15 },    
+            W:{ photo: 'Day 3 (83).JPG', nextPoint: 17 }         
         },
         { // 17 (據德樓)            
-            N:{ photo: 'Day 1 (74).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 1 (73).jpg', nextPoint: 16 },    
-            S:{ photo: 'Day 1 (72).jpg', nextPoint: 18 },    
-            W:{ photo: 'Day 1 (75).jpg', nextPoint: 26 }         
+            N:{ photo: 'Day 1 (74).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 1 (73).JPG', nextPoint: 16 },    
+            S:{ photo: 'Day 1 (72).JPG', nextPoint: 18 },    
+            W:{ photo: 'Day 1 (75).JPG', nextPoint: 26 }         
         },
         { // 18 (地科學院)            
-            N:{ photo: 'Day 1 (69).jpg', nextPoint: 17 },       
-            E:{ photo: 'Day 1 (70).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 1 (71).jpg', nextPoint: 19 },    
-            W:{ photo: 'Day 1 (68).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 1 (69).JPG', nextPoint: 17 },       
+            E:{ photo: 'Day 1 (70).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 1 (71).JPG', nextPoint: 19 },    
+            W:{ photo: 'Day 1 (68).JPG', nextPoint: (-1) }         
         }, 
         { // 19 (地科南方馬路)            
-            N:{ photo: 'Day 1 (65).jpg', nextPoint: 18 },       
-            E:{ photo: 'Day 1 (66).jpg', nextPoint: (-1) },   
-            S:{ photo: 'Day 1 (67).jpg', nextPoint: 11 },    
-            W:{ photo: 'Day 1 (64).jpg', nextPoint: 20 }         
+            N:{ photo: 'Day 1 (65).JPG', nextPoint: 18 },       
+            E:{ photo: 'Day 1 (66).JPG', nextPoint: (-1) },   
+            S:{ photo: 'Day 1 (67).JPG', nextPoint: 11 },    
+            W:{ photo: 'Day 1 (64).JPG', nextPoint: 20 }         
         },
         { // 20 (國泰樹)            
-            N:{ photo: 'Day 2 (7).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 2 (6).jpg', nextPoint: 19 },    
-            S:{ photo: 'Day 2 (5).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 2 (8).jpg', nextPoint: 21 }         
+            N:{ photo: 'Day 2 (7).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 2 (6).JPG', nextPoint: 19 },    
+            S:{ photo: 'Day 2 (5).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 2 (8).JPG', nextPoint: 21 }         
         },
         { // 21 (舊北十字)            
-            N:{ photo: 'Day 2 (2).jpg', nextPoint: 22 },       
-            E:{ photo: 'Day 2 (3).jpg', nextPoint: 20 },    
-            S:{ photo: 'Day 2 (4).jpg', nextPoint: 39 },    
-            W:{ photo: 'Day 2 (1).jpg', nextPoint: 32 }         
+            N:{ photo: 'Day 2 (2).JPG', nextPoint: 22 },       
+            E:{ photo: 'Day 2 (3).JPG', nextPoint: 20 },    
+            S:{ photo: 'Day 2 (4).JPG', nextPoint: 39 },    
+            W:{ photo: 'Day 2 (1).JPG', nextPoint: 32 }         
         },
         { // 22 (總圖前路)            
-            N:{ photo: 'Day 2 (10).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 2 (11).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 2 (12).jpg', nextPoint: 21 },    
-            W:{ photo: 'Day 2 (9).jpg', nextPoint: 23 }         
+            N:{ photo: 'Day 2 (10).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 2 (11).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 2 (12).JPG', nextPoint: 21 },    
+            W:{ photo: 'Day 2 (9).JPG', nextPoint: 23 }         
         },
         { // 23 (總圖)            
-            N:{ photo: 'Day 2 (14).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 2 (13).jpg', nextPoint: 22 },    
-            S:{ photo: 'Day 2 (16).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 2 (15).jpg', nextPoint: 24 }         
+            N:{ photo: 'Day 2 (14).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 2 (13).JPG', nextPoint: 22 },    
+            S:{ photo: 'Day 2 (16).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 2 (15).JPG', nextPoint: 24 }         
         },
         { // 24 (文學院)            
-            N:{ photo: 'Day 2 (18).jpg', nextPoint: 25 },       
-            E:{ photo: 'Day 2 (19).jpg', nextPoint: 23 },    
-            S:{ photo: 'Day 2 (20).jpg', nextPoint: 32 },    
-            W:{ photo: 'Day 2 (17).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 2 (18).JPG', nextPoint: 25 },       
+            E:{ photo: 'Day 2 (19).JPG', nextPoint: 23 },    
+            S:{ photo: 'Day 2 (20).JPG', nextPoint: 32 },    
+            W:{ photo: 'Day 2 (17).JPG', nextPoint: (-1) }         
         },
         { // 25 (行政大樓)            
-            N:{ photo: 'Day 1 (81).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 1 (82).jpg', nextPoint: 26 },    
-            S:{ photo: 'Day 1 (80).jpg', nextPoint: 24 },    
-            W:{ photo: 'Day 1 (83).jpg', nextPoint: 27 }         
+            N:{ photo: 'Day 1 (81).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 1 (82).JPG', nextPoint: 26 },    
+            S:{ photo: 'Day 1 (80).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 1 (83).JPG', nextPoint: 27 }         
         },
         { // 26 (大講堂)            
-            N:{ photo: 'Day 1 (79).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 1 (78).jpg', nextPoint: 17 },    
-            S:{ photo: 'Day 1 (77).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 1 (76).jpg', nextPoint: 25 }         
+            N:{ photo: 'Day 1 (79).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 1 (78).JPG', nextPoint: 17 },    
+            S:{ photo: 'Day 1 (77).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 1 (76).JPG', nextPoint: 25 }         
         },
         { // 27 (黑盒子)            
-            N:{ photo: 'Day 3 (70).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (73).jpg', nextPoint: 25 },    
-            S:{ photo: 'Day 3 (72).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (71).jpg', nextPoint: 28 }         
+            N:{ photo: 'Day 3 (70).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (73).JPG', nextPoint: 25 },    
+            S:{ photo: 'Day 3 (72).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (71).JPG', nextPoint: 28 }         
         },
         { // 28 (品好9舍)            
-            N:{ photo: 'Day 3 (67).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (66).jpg', nextPoint: 27 },    
-            S:{ photo: 'Day 3 (69).jpg', nextPoint: 31 },    
-            W:{ photo: 'Day 3 (68).jpg', nextPoint: 29 }         
+            N:{ photo: 'Day 3 (67).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (66).JPG', nextPoint: 27 },    
+            S:{ photo: 'Day 3 (69).JPG', nextPoint: 31 },    
+            W:{ photo: 'Day 3 (68).JPG', nextPoint: 29 }         
         },
         { // 29 (烏龜池)            
-            N:{ photo: 'Day 3 (63).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (62).jpg', nextPoint: 28 },    
-            S:{ photo: 'Day 3 (65).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (64).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 3 (63).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (62).JPG', nextPoint: 28 },    
+            S:{ photo: 'Day 3 (65).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (64).JPG', nextPoint: (-1) }         
         },
         { // 30 (國鼎、烏龜池旁邊)            
-            N:{ photo: 'Day 3 (58).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (57).jpg', nextPoint: 31 },    
-            S:{ photo: 'Day 3 (60).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (59).jpg', nextPoint: 50 }         
+            N:{ photo: 'Day 3 (58).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (57).JPG', nextPoint: 31 },    
+            S:{ photo: 'Day 3 (60).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (59).JPG', nextPoint: 50 }         
         },
         { // 31 (文學院)            
-            N:{ photo: 'Day 3 (54).jpg', nextPoint: 28 },       
-            E:{ photo: 'Day 3 (53).jpg', nextPoint: 32 },    
-            S:{ photo: 'Day 3 (56).jpg', nextPoint: 33 },    
-            W:{ photo: 'Day 3 (55).jpg', nextPoint: 30 }         
+            N:{ photo: 'Day 3 (54).JPG', nextPoint: 28 },       
+            E:{ photo: 'Day 3 (53).JPG', nextPoint: 32 },    
+            S:{ photo: 'Day 3 (56).JPG', nextPoint: 33 },    
+            W:{ photo: 'Day 3 (55).JPG', nextPoint: 30 }         
         },
         { // 32 (文院到舊圖間岔路)            
-            N:{ photo: 'Day 2 (24).jpg', nextPoint: 24 },       
-            E:{ photo: 'Day 2 (21).jpg', nextPoint: 21 },    
-            S:{ photo: 'Day 2 (22).jpg', nextPoint: 34 },    
-            W:{ photo: 'Day 2 (23).jpg', nextPoint: 31 }         
+            N:{ photo: 'Day 2 (24).JPG', nextPoint: 24 },       
+            E:{ photo: 'Day 2 (21).JPG', nextPoint: 21 },    
+            S:{ photo: 'Day 2 (22).JPG', nextPoint: 34 },    
+            W:{ photo: 'Day 2 (23).JPG', nextPoint: 31 }         
         },
         { // 33 (國鼎東岔路)            
-            N:{ photo: 'Day 3 (50).jpg', nextPoint: 31 },       
-            E:{ photo: 'Day 3 (51).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (52).jpg', nextPoint: 35 },    
-            W:{ photo: 'Day 3 (49).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 3 (50).JPG', nextPoint: 31 },       
+            E:{ photo: 'Day 3 (51).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (52).JPG', nextPoint: 35 },    
+            W:{ photo: 'Day 3 (49).JPG', nextPoint: (-1) }         
         },
         { // 34 (學務處)            
-            N:{ photo: 'Day 2 (28).jpg', nextPoint: 32 },       
-            E:{ photo: 'Day 2 (25).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 2 (26).jpg', nextPoint: 37 },    
-            W:{ photo: 'Day 2 (27).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 2 (28).JPG', nextPoint: 32 },       
+            E:{ photo: 'Day 2 (25).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 2 (26).JPG', nextPoint: 37 },    
+            W:{ photo: 'Day 2 (27).JPG', nextPoint: (-1) }         
         },
         { // 35 (志希)            
-            N:{ photo: 'Day 3 (46).jpg', nextPoint: 33 },       
-            E:{ photo: 'Day 3 (48).jpg', nextPoint: 36 },    
-            S:{ photo: 'Day 3 (47).jpg', nextPoint: 40 },    
-            W:{ photo: 'Day 3 (45).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 3 (46).JPG', nextPoint: 33 },       
+            E:{ photo: 'Day 3 (48).JPG', nextPoint: 36 },    
+            S:{ photo: 'Day 3 (47).JPG', nextPoint: 40 },    
+            W:{ photo: 'Day 3 (45).JPG', nextPoint: (-1) }         
         },
         { // 36 (太極銅雕)            
-            N:{ photo: 'Day 2 (29).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 2 (31).jpg', nextPoint: 37 },    
-            S:{ photo: 'Day 2 (32).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 2 (30).jpg', nextPoint: 35 }         
+            N:{ photo: 'Day 2 (29).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 2 (31).JPG', nextPoint: 37 },    
+            S:{ photo: 'Day 2 (32).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 2 (30).JPG', nextPoint: 35 }         
         },
         { // 37 (百花川、棒球場)            
-            N:{ photo: 'Day 2 (35).jpg', nextPoint: 34 },       
-            E:{ photo: 'Day 2 (36).jpg', nextPoint: 38 },    
-            S:{ photo: 'Day 2 (33).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 2 (34).jpg', nextPoint: 36 }         
+            N:{ photo: 'Day 2 (35).JPG', nextPoint: 34 },       
+            E:{ photo: 'Day 2 (36).JPG', nextPoint: 38 },    
+            S:{ photo: 'Day 2 (33).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 2 (34).JPG', nextPoint: 36 }         
         },
         { // 38 (百花川、舊圖)            
-            N:{ photo: 'Day 1 (17).jpg', nextPoint: 39 },       
-            E:{ photo: 'Day 1 (18).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 1 (19).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 1 (16).jpg', nextPoint: 37 }         
+            N:{ photo: 'Day 1 (17).JPG', nextPoint: 39 },       
+            E:{ photo: 'Day 1 (18).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 1 (19).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 1 (16).JPG', nextPoint: 37 }         
         },
         { // 39 (舊圖)            
-            N:{ photo: 'Day 2 (41).jpg', nextPoint: 21 },       
-            E:{ photo: 'Day 2 (42).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 2 (43).jpg', nextPoint: 38 },    
-            W:{ photo: 'Day 2 (40).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 2 (41).JPG', nextPoint: 21 },       
+            E:{ photo: 'Day 2 (42).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 2 (43).JPG', nextPoint: 38 },    
+            W:{ photo: 'Day 2 (40).JPG', nextPoint: (-1) }         
         },
         { // 40 (鬆餅屋)            
-            N:{ photo: 'Day 3 (39).jpg', nextPoint: 35 },       
-            E:{ photo: 'Day 3 (40).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (37).jpg', nextPoint: 44 },    
-            W:{ photo: 'Day 3 (38).jpg', nextPoint: 41 }         
+            N:{ photo: 'Day 3 (39).JPG', nextPoint: 35 },       
+            E:{ photo: 'Day 3 (40).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (37).JPG', nextPoint: 44 },    
+            W:{ photo: 'Day 3 (38).JPG', nextPoint: 41 }         
         },
         { // 41 (科四至管院路)            
-            N:{ photo: 'Day 3 (32).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (31).jpg', nextPoint: 40 },    
-            S:{ photo: 'Day 3 (30).jpg', nextPoint: 42 },    
-            W:{ photo: 'Day 3 (29).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 3 (32).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (31).JPG', nextPoint: 40 },    
+            S:{ photo: 'Day 3 (30).JPG', nextPoint: 42 },    
+            W:{ photo: 'Day 3 (29).JPG', nextPoint: (-1) }         
         },
         { // 42 (科學館)            
-            N:{ photo: 'Day 3 (28).jpg', nextPoint: 41 },       
-            E:{ photo: 'Day 3 (27).jpg', nextPoint: 43 },    
-            S:{ photo: 'Day 3 (26).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (25).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 3 (28).JPG', nextPoint: 41 },       
+            E:{ photo: 'Day 3 (27).JPG', nextPoint: 43 },    
+            S:{ photo: 'Day 3 (26).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (25).JPG', nextPoint: (-1) }         
         },
         { // 43 (中大湖前路)            
-            N:{ photo: 'Day 3 (21).jpg', nextPoint: 44 },       
-            E:{ photo: 'Day 3 (22).jpg', nextPoint: 53 },    
-            S:{ photo: 'Day 3 (23).jpg', nextPoint: 46 },    
-            W:{ photo: 'Day 3 (24).jpg', nextPoint: 42 }         
+            N:{ photo: 'Day 3 (21).JPG', nextPoint: 44 },       
+            E:{ photo: 'Day 3 (22).JPG', nextPoint: 53 },    
+            S:{ photo: 'Day 3 (23).JPG', nextPoint: 46 },    
+            W:{ photo: 'Day 3 (24).JPG', nextPoint: 42 }         
         },
         { // 44 (科二東路)            
-            N:{ photo: 'Day 3 (39).jpg', nextPoint: 40 },       
-            E:{ photo: 'Day 3 (40).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (37).jpg', nextPoint: 43 },    
-            W:{ photo: 'Day 3 (38).jpg', nextPoint: 45 }         
+            N:{ photo: 'Day 3 (39).JPG', nextPoint: 40 },       
+            E:{ photo: 'Day 3 (40).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (37).JPG', nextPoint: 43 },    
+            W:{ photo: 'Day 3 (38).JPG', nextPoint: 45 }         
         },
         { // 45 (鴻經館)            
-            N:{ photo: 'Day 3 (43).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (44).jpg', nextPoint: 44 },    
-            S:{ photo: 'Day 3 (42).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (41).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 3 (43).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (44).JPG', nextPoint: 44 },    
+            S:{ photo: 'Day 3 (42).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (41).JPG', nextPoint: (-1) }         
         },
         { // 46 (籃球)            
-            N:{ photo: 'Day 3 (18).jpg', nextPoint: 43 },       
-            E:{ photo: 'Day 3 (17).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (20).jpg', nextPoint: 47 },    
-            W:{ photo: 'Day 3 (19).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 3 (18).JPG', nextPoint: 43 },       
+            E:{ photo: 'Day 3 (17).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (20).JPG', nextPoint: 47 },    
+            W:{ photo: 'Day 3 (19).JPG', nextPoint: (-1) }         
         },
         { // 47 (網球場)            
-            N:{ photo: 'Day 3 (16).jpg', nextPoint: 46 },
-            E:{ photo: 'Day 3 (15).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (14).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (13).jpg', nextPoint: 48 }
+            N:{ photo: 'Day 3 (16).JPG', nextPoint: 46 },
+            E:{ photo: 'Day 3 (15).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (14).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (13).JPG', nextPoint: 48 }
         },
         { // 48 (游泳池)            
-            N:{ photo: 'Day 3 (10).jpg', nextPoint: 47 },       
-            E:{ photo: 'Day 3 (11).jpg', nextPoint: 1 },    
-            S:{ photo: 'Day 3 (12).jpg', nextPoint: 49 },    
-            W:{ photo: 'Day 3 (9).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 3 (10).JPG', nextPoint: 47 },       
+            E:{ photo: 'Day 3 (11).JPG', nextPoint: 1 },    
+            S:{ photo: 'Day 3 (12).JPG', nextPoint: 49 },    
+            W:{ photo: 'Day 3 (9).JPG', nextPoint: (-1) }         
         },
         { // 49 (游泳池旁側門)            
-            N:{ photo: 'Day 3 (8).jpg', nextPoint: 48 },       
-            E:{ photo: 'Day 3 (7).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (5).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (6).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 3 (8).JPG', nextPoint: 48 },       
+            E:{ photo: 'Day 3 (7).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (6).JPG', nextPoint: (-1) }         
         },
         { // 50 (男12舍)這裡要注意....沒有改裡面資料////////////////////////////////////////////////////////////////////////////////////////
-            N:{ photo: 'Day 1 (17).jpg', nextPoint: (-1) },       //缺圖
-            E:{ photo: 'Day 1 (18).jpg', nextPoint: 30 },    
-            S:{ photo: 'Day 1 (19).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 1 (16).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 1 (17).JPG', nextPoint: (-1) },       //缺圖
+            E:{ photo: 'Day 1 (18).JPG', nextPoint: 30 },    
+            S:{ photo: 'Day 1 (19).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 1 (16).JPG', nextPoint: (-1) }         
         },
         { // 51 (工2)            
-            N:{ photo: 'Day 1 (35).jpg', nextPoint: 10 },       
-            E:{ photo: 'Day 1 (34).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 1 (33).jpg', nextPoint: 7 },    
-            W:{ photo: 'Day 1 (32).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 1 (35).JPG', nextPoint: 10 },       
+            E:{ photo: 'Day 1 (34).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 1 (33).JPG', nextPoint: 7 },    
+            W:{ photo: 'Day 1 (32).JPG', nextPoint: (-1) }         
         },
         { // 52 (依仁堂)            
-            N:{ photo: 'Day 3 (80).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (81).jpg', nextPoint: 6 },    
-            S:{ photo: 'Day 3 (78).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (79).jpg', nextPoint: 53 }         
+            N:{ photo: 'Day 3 (80).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (81).JPG', nextPoint: 6 },    
+            S:{ photo: 'Day 3 (78).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (79).JPG', nextPoint: 53 }         
         },
         { // 53 (羽球館)            
-            N:{ photo: 'Day 3 (75).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (76).jpg', nextPoint: 52 },    
-            S:{ photo: 'Day 3 (77).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (74).jpg', nextPoint: 43 }         
+            N:{ photo: 'Day 3 (75).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (76).JPG', nextPoint: 52 },    
+            S:{ photo: 'Day 3 (77).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (74).JPG', nextPoint: 43 }         
         },
         { // 54 (女1~4)            
-            N:{ photo: 'Day 1 (42).jpg', nextPoint: (-1) },       
-            E:{ photo: 'Day 1 (41).jpg', nextPoint: 9 },    
-            S:{ photo: 'Day 1 (40).jpg', nextPoint: (-1) },    
-            W:{ photo: 'Day 1 (43).jpg', nextPoint: 10 }         
+            N:{ photo: 'Day 1 (42).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 1 (41).JPG', nextPoint: 9 },    
+            S:{ photo: 'Day 1 (40).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 1 (43).JPG', nextPoint: 10 }         
         },
         { // 55 (女5男3)            
-            N:{ photo: 'Day 1 (49).jpg', nextPoint: 13 },       
-            E:{ photo: 'Day 1 (50).jpg', nextPoint: (-1) },    
-            S:{ photo: 'Day 1 (51).jpg', nextPoint: 9 },    
-            W:{ photo: 'Day 1 (48).jpg', nextPoint: (-1) }         
+            N:{ photo: 'Day 1 (49).JPG', nextPoint: 13 },       
+            E:{ photo: 'Day 1 (50).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 1 (51).JPG', nextPoint: 9 },    
+            W:{ photo: 'Day 1 (48).JPG', nextPoint: (-1) }         
         },
     ];
 });
