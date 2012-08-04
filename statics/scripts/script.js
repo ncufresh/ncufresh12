@@ -355,6 +355,7 @@
 /**
  * Chat
  */
+
 (function($)
 {
     var avatars = [];
@@ -378,7 +379,7 @@
             chatFormClass:          'chat-form',
             chatInputClass:         'chat-input',
             chatMessagesClass:      'chat-messages',
-            chatAvatarClass:        'chat-avatar'
+            chatAvatarClass:        'chat-avatar',
         }, options);
         return $(this).click(function()
         {
@@ -3361,6 +3362,10 @@
         
         if ( $('#club').length ) $.clubs();
         
+        if ( $('#friends').length ) $.friends();
+        
+        if ( $('#profile').length ) $.profile();
+        
         if ( $('#nculife').length ) $.nculife();
 
         if ( $('#readme').length ) $.readme(); 
@@ -3517,7 +3522,26 @@
 })(jQuery);
 
 (function($){
-    $(document).ready(function(){
+    $.friends = function()
+    {
+        jQuery('.button-back').click(function()
+        {
+            window.history.back();
+        }); 
+        $('.a-group-users').scrollable({
+            wheelSpeed: 90
+        });
+        $('.users-group').scrollable({
+            wheelSpeed: 90
+        });
+    
+    }
+})(jQuery);
+
+
+(function($){
+    $.profile = function()
+    {
         $('.allmessages').scrollable({
             wheelSpeed: 90
         });
@@ -3527,32 +3551,15 @@
         $('.self-messages').scrollable({
             wheelSpeed: 90
         });
-         var daysInMonth = function(iYear, iMonth)
-        {
-            return 32 - new Date(iYear, iMonth-1, 32).getDate();
-        }
-        jQuery('.button-back').click(function()
-        {
-            window.history.back();
-        }); 
-        $(document).ready(function(){
-        $('.a-group-users').scrollable({
-            wheelSpeed: 90
-        });
-        $('.users-group').scrollable({
-            wheelSpeed: 90
-        });
         $('.friend-chatting').scrollable({
             wheelSpeed: 90
         })
         $('.friend-chatting-content').scrollable({
             wheelSpeed: 90
         });
-       
-    });
-    });
+    
+    }
 })(jQuery);
-
 
 google.load('search', '1', {
     language: 'zh_TW'
