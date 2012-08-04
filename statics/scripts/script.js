@@ -4399,52 +4399,11 @@
     }
 })(jQuery);
 
-/**
- * Main
- */
 (function($)
 {
-    $(document).ready(function()
+    $.ncufresh = function()
     {
-        $.configures.lasttime = 0;
-
-        $.configures.sequence = $.random(0, 1000);
-
-        if ( $('#chat').length ) $('#chat').chat();
-
-        $('#header').star();
-
-        $('#moon').moon();
-
         $('.loading').sprite();
-        
-        if ( $('#club').length ) $.clubs();
-
-        if ( $('#game').length ) $.game();
-
-        if ( $('#friends').length ) $.friends();
-
-        if ( $('#profile').length ) $.profile();
-
-        if ( $('#nculife').length ) $.nculife();
-
-        if ( $('#readme').length ) $.readme(); 
-
-        if ( $('#street').length ) $.street(); 
-
-        if ( $('#multimedia').length ) $.multimedia();
-
-        if ( $('.calendar-create').length ) $.calendarCreate();
-
-        if ( $('#calendar-recycle').length ) $.calendarRecycle();
-
-        if ( $('#personal-calendar').length ) $.calendarView();
-
-        if ( $('#calendar-subscript').length ) $.calendarSubscript();
-
-        if ( $('#calendar-club').length ) $.calendarClub();
-
-        if ( $('#calendar-event').length ) $.calendarEvent();
 
         $('input.datepicker:not(#form-register-birthday, #form-editor-birthday)').datepicker();
         $('#form-register-birthday, #form-editor-birthday').datepicker({
@@ -4508,6 +4467,7 @@
                 });
             }
         });
+
         $('form input[type="radio"]').each(function(element)
         {
             var span = $('<span></span>')
@@ -4557,6 +4517,55 @@
             window.open(url);
             return false;
         });
+    };
+})(jQuery);
+
+/**
+ * Main
+ */
+(function($)
+{
+    $(document).ready(function()
+    {
+        $.configures.lasttime = 0;
+
+        $.configures.sequence = $.random(0, 1000);
+
+        $.ncufresh();
+
+        $('#header').star();
+
+        $('#moon').moon();
+
+        if ( $('#chat').length ) $('#chat').chat();
+
+        if ( $('#club').length ) $.clubs();
+
+        if ( $('#game').length ) $.game();
+
+        if ( $('#friends').length ) $.friends();
+
+        if ( $('#profile').length ) $.profile();
+
+        if ( $('#nculife').length ) $.nculife();
+
+        if ( $('#readme').length ) $.readme(); 
+
+        if ( $('#street').length ) $.street(); 
+
+        if ( $('#multimedia').length ) $.multimedia();
+
+        if ( $('.calendar-create').length ) $.calendarCreate();
+
+        if ( $('#calendar-recycle').length ) $.calendarRecycle();
+
+        if ( $('#personal-calendar').length ) $.calendarView();
+
+        if ( $('#calendar-subscript').length ) $.calendarSubscript();
+
+        if ( $('#calendar-club').length ) $.calendarClub();
+
+        if ( $('#calendar-event').length ) $.calendarEvent();
 
         $.pull.start({
             friendcounter: $('#chat .friendcounts'),
@@ -4593,17 +4602,17 @@
             xfbml:      true
         });
     };
+
+    google.setOnLoadCallback(function()
+    {
+        google.search.CustomSearchControl.attachAutoCompletion(
+            $.configures.googleSearchAppId,
+            $('#form-search-query').get(0),
+            'search'
+        );
+    });
 })(jQuery);
 
 google.load('search', '1', {
     language: 'zh_TW'
-});
-
-google.setOnLoadCallback(function()
-{
-    google.search.CustomSearchControl.attachAutoCompletion(
-        $.configures.googleSearchAppId,
-        document.getElementById('form-search-query'),
-        'search'
-    );
 });
