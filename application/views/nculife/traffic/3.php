@@ -8,5 +8,5 @@
     時刻表(<a href="http://www.ust.edu.tw/new/c04_2.htm" title="資料來源">資料來源</a>)
 </p>
 <p>
-<img alt="台聯大專車時刻表" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E5%8F%B0%E8%81%AF%E5%A4%A7%E5%B0%88%E8%BB%8A%E6%99%82%E5%88%BB%E8%A1%A8(1).jpg" style="width:600px;height:498px;" />
+<img alt="台聯大專車時刻表" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/traffic3-1.jpg" style="width:600px;height:498px;" />
 </p>

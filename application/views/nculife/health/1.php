@@ -1,5 +1,5 @@
 <p>
-    <img alt="衛保組" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E8%A1%9B%E4%BF%9D%E7%B5%84.jpg" style="width:500px;height:667px;" />
+    <img alt="衛保組" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/health1-1.jpg" style="width:500px;height:667px;" />
 </p>
 <p>
     衛保組位於中正圖書館一樓，提供緊急醫療處理（如傷口包紮）、醫療器材的借用及辦理學生團體保險理賠等。請注意，衛保組因法令限制，無法提供任何藥品給師生喔。

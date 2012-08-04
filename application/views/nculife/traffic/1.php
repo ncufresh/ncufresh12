@@ -8,7 +8,7 @@
     A.正門打氣裝置
 </p>
 <p>
-    <img alt="正門打氣裝置" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E5%89%8D%E9%96%80%E8%85%B3%E8%B8%8F%E8%BB%8A.jpg" style="width:500px;height:375px;" />
+    <img alt="正門打氣裝置" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/traffic1-1.jpg" style="width:500px;height:375px;" />
 </p>
 <p>
     B.後門打氣裝置
@@ -20,7 +20,7 @@
     2.學校最近實施「愛心腳踏車」的政策，在校園內多處設置愛心腳踏車的停車點，提供免費的腳踏車給同學在校園內使用，愛心腳踏車為全身漆成綠色的腳踏車，請同學使用後務必將愛心腳踏車停放置學校設置的停車點，並且不要騎出校外。
 </p>
 <p>
-    <img alt="愛心腳踏車" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E6%84%9B%E5%BF%83%E8%85%B3%E8%B8%8F%E8%BB%8A.jpg" style="width:590px;height:391px;" />
+    <img alt="愛心腳踏車" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/traffic1-2.jpg" style="width:590px;height:391px;" />
 </p>
 <p>
     <a href="http://ctee.com.tw/NewsImgs/12325/93c7cfb7-6be3-4c20-8121-e4c1f50aed14.jpg" title="資料來源">資料來源(圖片截取於Google)</a>
