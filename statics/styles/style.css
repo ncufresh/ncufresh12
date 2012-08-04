@@ -2733,7 +2733,7 @@ button.news-button
     left: 540px;
 }
 
-.readme-back
+#readme .back
 {
     width: 70px;
     height: 85px;
@@ -2742,7 +2742,7 @@ button.news-button
     left: 660px;
 }
 
-.readme-download-back
+#readme .download-back
 {
     width: 70px;
     height: 85px;
@@ -2819,7 +2819,7 @@ button.news-button
     padding-bottom: 40px;
 }
 
-.readme-background
+#readme .background
 {
     height: 420px;
     padding: 15px 25px;
@@ -2828,7 +2828,7 @@ button.news-button
     overflow: hidden;
 }
 
-.readme-download-background
+#readme .download-background
 {
     height: 357px;
     padding: 15px 25px;
@@ -2881,13 +2881,13 @@ button.news-button
     width: 54px;
 }
 
-.fresh-inner
+#readme .fresh-inner
 {
     display: none;
     position: absolute;
 }
 
-.reschool-inner
+#readme .reschool-inner
 {
     display: none;
     position: absolute;
@@ -3068,14 +3068,7 @@ button.news-button
 	color: black;
 }
 
-.readme-menu-index
-{
-    display: block;
-	list-style: none;
-	margin-top: -10px;
-}
-
-.download-index
+#readme .index
 {
     float: left;
     list-style-type: disc;
@@ -3083,7 +3076,7 @@ button.news-button
     margin-top: 4px;
 }
 
-.download-index li
+#readme .index li
 {
     margin-top: 6px
 }
