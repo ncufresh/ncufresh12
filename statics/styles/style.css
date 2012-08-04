@@ -3240,6 +3240,7 @@ button.news-button
 
 #about .about-small-0
 {
+    border-radius: 10px 10px 0px 0px;
     background: url('../about/about.png') no-repeat;
     width: 700px;
     height: 280px;
