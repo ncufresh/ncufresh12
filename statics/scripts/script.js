@@ -1794,6 +1794,196 @@
         var calendar = geneator(current_year, current_month);
         return calendar;
     }
+
+    $.calendarCreate = function (){
+        $('.calendar-cancel-button').click(function()
+        {
+            $.confirm({
+                message: '確定取消編輯此篇文章？',
+                confirmed: function(result)
+                {
+                    if ( result ) window.location = $.configures.calendarViewUrl;
+                    return false;
+                }
+            });
+            return false;
+        });
+    };
+    
+    $.calendarRecycle = function()
+    {
+        $('a.calendar-hide-event').click(function()
+        {
+            var id = $(this).attr('href').replace('#', '');
+            var li = $(this).parent();
+            var ul = li.parent();
+            var div = ul.parent();
+            $.confirm({
+                message: '你真的想要隱藏事件嗎？',
+                confirmed: function(result)
+                {
+                    if ( result === true )
+                    {
+                        $.post(
+                            window.location.href,
+                            {
+                                calendar:
+                                {
+                                    id: id
+                                },
+                                token: $.configures.token
+                            },
+                            function(response)
+                            {
+                                $.configures.token = response.token;
+                                if ( $.errors(response.errors) )
+                                {
+                                    li.remove();
+                                    if ( $.trim(ul.html()) == '' ) div.remove();
+                                }
+                            }
+                        );
+                    }
+                }
+            });
+            return false;
+        });
+        
+        $('a.calendar-show-event').click(function()
+        {
+            var id = $(this).attr('href').replace('#', '');
+            var li = $(this).parent();
+            var ul = li.parent();
+            var div = ul.parent();
+            $.post(
+                $.configures.calendarShowEventsUrl,
+                {
+                    calendar:
+                    {
+                        id: id
+                    },
+                    token: $.configures.token
+                },
+                function(response)
+                {
+                    $.configures.token = response.token;
+                    if ( $.errors(response.errors) )
+                    {
+                        li.remove();
+                        if ( $.trim(ul.html()) == '' ) div.remove();
+                    }
+                }
+            );
+        });
+        
+        $('#calendar-recycle .container').scrollable();
+    };
+    
+    $.calendarView = function()
+    {
+        var calendar = $.calendar({
+            calendar_container: '#personal-calendar .left',
+            events_container:   '#personal-calendar .right',
+            date_container:     '#personal-calendar .date',
+            prompt:             '#personal-calendar .prompt',
+            eventsUrl:           $.configures.calendarEventsUrl
+        });
+        $('a.calendar-hide-event').live('click', function()
+        {
+            var id = $(this).attr('href').replace('#', '');
+            var self = this;
+            var li = $(this).parents('li');
+            var ul = li.parent();
+            var div = ul.parent();
+            $.post(
+                $.configures.calendarHideEventUrl,
+                {
+                    calendar:
+                    {
+                        id: id
+                    },
+                    token: $.configures.token
+                },
+                function(response)
+                {
+                    $.configures.token = response.token;
+                    if ( $.errors(response.errors) )
+                    {
+                        li.remove();
+                        if ( $.trim(ul.html()) == '' ) div.remove();
+                        calendar.updateData($.configures.calendarEventsUrl);
+                    }
+                }
+            );
+            return false;
+        });
+    };
+
+    $.calendarSubscript =  function()
+    {
+        $('.category-button').click(function()
+        {
+            var id = $(this).attr('href').replace('#','');
+            $('.calendar-subscript-category').hide();
+            $('#calendar-subscript-category-' + id).show();
+        });
+        $('.category-button').first().click();
+        $('.calendar-subscript-container').scrollable();
+    };
+    
+    $.calendarClub =  function()
+    {
+        var club_id = $('#calendar-club').attr('club');
+        var calendar = $.calendar({
+            calendar_container: '#calendar-club .left',
+            events_container:   '#calendar-club .right',
+            date_container:     '#calendar-club .date',
+            prompt:             '#calendar-club .prompt',
+            eventsUrl:           $.configures.calendarClubEventsUrl.replace(':id', 0)
+        });
+        $('a.calendar-hide-event').live('click', function()
+        {
+            var id = $(this).attr('href').replace('#', '');
+            var self = this;
+            $.confirm({
+                confirmed: function(result)
+                {
+                    if ( result )
+                    {
+                        $.post(
+                            $.configures.calendarClubRecycleUrl.replace(':id', club_id),
+                            {
+                                calendar:
+                                {
+                                    id: id
+                                },
+                                token: $.configures.token
+                            },
+                            function(response)
+                            {
+                                $.configures.token = response.token;
+                                if ( $.errors(response.errors) )
+                                {
+                                    $(self).parents('li').remove();
+                                    calendar.updateData($.configures.calendarClubEventsUrl.replace(':id', 0));
+                                }
+                            }
+                        );
+                    }
+                },
+                message: '刪除將無法復原，您確定要刪除嗎？'
+            });
+            return false;
+        });
+    };
+
+    $.calendarEvent = function()
+    {
+        $('#calendar-event div.container').scrollable({
+            scrollableClass:    false
+        });
+    };
+
 })(jQuery);
 
 /**
@@ -1979,7 +2169,7 @@
             modal:          true,
             escape:         false,
             closeButton:    false
-        });
+        }).find('button').last().focus();
     };
 })(jQuery);
 
@@ -2673,19 +2863,19 @@
             scrollableClass: false
         });
 
-        if( $('.readme-menu p').length == 1 )
+        if( $('.readme-menu a').length == 0 )
         {
             $('.readme-menu-index li').each(function()
             {
-                var title = $('<p></p>')
+				var title = $('<li></li>').append($('<a></a>')
                         .text($(this).text())
                         .attr('href', '#')
                         .attr('tab', $(this).attr('tab'))
                         .attr('page', $(this).attr('page'))
-                        .click(getTabContent);
-                $('.readme-menu').append(title);
+                        .click(getTabContent));
+                $('#readme .menu-index').append(title);
             });
-            $('.readme-menu > p').eq(1).click();
+            $('.readme-menu a').eq(0).click();
         }
 
         $('#readme-logo1').click(function()
@@ -2714,7 +2904,7 @@
         {
             $(this).stop().animate(
             {
-                left : '-187px'
+                left : '-197px'
             },500);
         });
 
@@ -3342,191 +3532,13 @@
     }
 })(jQuery);
 
-/**
- * Main
- */
-(function($)
-{
-    $(document).ready(function()
-    {
-        $.configures.lasttime = 0;
-
-        $.configures.sequence = $.random(0, 1000);
-
-        if ( $('#chat').length ) $('#chat').chat();
-
-        $('#header').star();
-
-        $('#moon').moon();
-
-        $('.loading').sprite();
-        
-        if ( $('#club').length ) $.clubs();
-        
-        if ( $('#game').length ) $.game();
-
-        if ( $('#friends').length ) $.friends();
-        
-        if ( $('#profile').length ) $.profile();
-        
-        if ( $('#nculife').length ) $.nculife();
-
-        if ( $('#readme').length ) $.readme(); 
-        
-        if ( $('#multimedia').length ) $.multimedia();
-
-        $('input.datepicker:not(#form-register-birthday)').datepicker();
-        $('#form-register-birthday').datepicker({
-            year: 1994,
-            month: 8
-        });
-
-        $('#form-sidebar-register, #form-login-register').click(function()
-        {
-            window.location.href = $.configures.registerUrl;
-            return false;
-        });
-
-        $('#sidebar-personal-toggle').click(function()
-        {
-            var button = $(this);
-            if ( button.hasClass('active') )
-            {
-                $('#sidebar-personal').slideUp(300, function()
-                {
-                    button.removeClass('active');
-                });
-            }
-            else
-            {
-                $('#sidebar-personal').slideDown(300, function()
-                {
-                    button.addClass('active');
-                });
-            }
-            return false;
-        });
-
-        $('form dt label').infield();
-        $('form dd > span').each(function()
-        {
-            var tooltip = $(this);
-            tooltip.prepend($('<span></span>').addClass('arrow'));
-            if ( $(tooltip).css('display') === 'none' )
-            {
-                $(tooltip).parent().parent().hover(function()
-                {
-                    if ( $(this).find('input:focus').length === 0 )
-                    {
-                        $(tooltip).stop(true, true).fadeIn();
-                    }
-                }, function()
-                {
-                    if ( $(this).find('input:focus').length === 0 )
-                    {
-                        $(tooltip).stop(true, true).fadeOut();
-                    }
-                })
-                .find('input').focus(function()
-                {
-                    $(tooltip).stop(true, true).fadeIn();
-                })
-                .blur(function()
-                {
-                    $(tooltip).stop(true, true).fadeOut();
-                });
-            }
-        });
-        $('form input[type="radio"]').each(function(element)
-        {
-            var span = $('<span></span>')
-                .addClass('radio')
-                .mousedown(function()
-                {
-                    $('input[type="radio"][name="' + $(this).prev().prop('checked', true).attr('name') + '"]').each(function()
-                    {
-                        $(this).next().removeClass('checked');
-                    });
-                    $(this).addClass('checked');
-                })
-                .insertAfter($(this));
-
-            $(this).css({
-                    display: 'none',
-                    height: 'auto',
-                    width: 'auto'
-                })
-                .change(function()
-                {
-                    $('input[type="radio"][name="' + $(this).attr('name') + '"]').each(function()
-                    {
-                        if ( $(this).prop('checked') ) {
-                            $(this).next().addClass('checked');
-                        } else {
-                            $(this).next().removeClass('checked');
-                        }
-                    });
-                });
-
-            if ( $(this).prop('checked') ) {
-                $(this).prev().addClass('checked');
-            }
-        });
-
-        $('a').click(function()
-        {
-            var url = $(this).attr('href');
-            if (
-                url.match(/^\/.+/)
-             || url.match(/^#.*/)
-             || url.search(location.hostname) >= 0 )
-            {
-                return true;
-            }
-            window.open(url);
-            return false;
-        });
-
-        $.pull.start({
-            friendcounter: $('#chat .friendcounts'),
-            onlinecounter: $('#header .online'),
-            browseredcounter: $('#header .browsered')
-        });
-    });
-
-    $('<script></script>')
-        .attr('id', 'facebook-jssdk')
-        .attr('async', 'async')
-        .attr('type', 'text/javascript')
-        .attr('src', '//connect.facebook.net/zh_TW/all.js')
-        .insertBefore($('script').first());
-
-    window.fbAsyncInit = function()
-    {
-        var like = $('<div></div>')
-            .attr('id', 'fb-like')
-            .appendTo($('#fb-root'));
-
-        $('<fb:like></fb:like>')
-            .attr('href', window.location.href)
-            .attr('data-send', 'false')
-            .attr('data-layout', 'button_count')
-            .attr('data-show-faces', 'false')
-            .appendTo(like);
-
-        FB.init({
-            appId:      $.configures.facebookAppId,
-            channelUrl: $.configures.facebookChannelUrl,
-            status:     true,
-            cookie:     true,
-            xfbml:      true
-        });
-    };
-})(jQuery);
-
 (function($){
     $.friends = function()
     {
+        jQuery('.button-back').click(function()
+        {
+            window.history.back();
+        }); 
         $('.a-group-users').scrollable({
             wheelSpeed: 90
         });
@@ -3536,7 +3548,6 @@
     
     }
 })(jQuery);
-
 
 (function($){
     $.profile = function()
@@ -3556,26 +3567,9 @@
         $('.friend-chatting-content').scrollable({
             wheelSpeed: 90
         });
-        jQuery('.button-back').click(function()
-        {
-            window.history.back();
-        }); 
     
     }
 })(jQuery);
-
-google.load('search', '1', {
-    language: 'zh_TW'
-});
-
-google.setOnLoadCallback(function()
-{
-    google.search.CustomSearchControl.attachAutoCompletion(
-        $.configures.googleSearchAppId,
-        document.getElementById('form-search-query'),
-        'search'
-    );
-});
 
 (function($){
     $.game = function()
@@ -3680,3 +3674,326 @@ google.setOnLoadCallback(function()
         }); 
     };
 })(jQuery);
+
+/**
+ * Main
+ */
+(function($)
+{
+    $(document).ready(function()
+    {
+        $.configures.lasttime = 0;
+
+        $.configures.sequence = $.random(0, 1000);
+
+        if ( $('#chat').length ) $('#chat').chat();
+
+        $('#header').star();
+
+        $('#moon').moon();
+
+        $('.loading').sprite();
+        
+        if ( $('#club').length ) $.clubs();
+
+        if ( $('#game').length ) $.game();
+
+        if ( $('#friends').length ) $.friends();
+
+        if ( $('#profile').length ) $.profile();
+
+        if ( $('#nculife').length ) $.nculife();
+
+        if ( $('#readme').length ) $.readme(); 
+
+        if ( $('#multimedia').length ) $.multimedia();
+
+        if ( $('.calendar-create').length ) $.calendarCreate();
+
+        if ( $('#calendar-recycle').length ) $.calendarRecycle();
+
+        if ( $('#personal-calendar').length ) $.calendarView();
+
+        if ( $('#calendar-subscript').length ) $.calendarSubscript();
+
+        if ( $('#calendar-club').length ) $.calendarClub();
+
+        if ( $('#calendar-event').length ) $.calendarEvent();
+
+        $('input.datepicker:not(#form-register-birthday)').datepicker();
+        $('#form-register-birthday').datepicker({
+            year: 1994,
+            month: 8
+        });
+
+        $('#form-sidebar-register, #form-login-register').click(function()
+        {
+            window.location.href = $.configures.registerUrl;
+            return false;
+        });
+
+        $('#sidebar-personal-toggle').click(function()
+        {
+            var button = $(this);
+            if ( button.hasClass('active') )
+            {
+                $('#sidebar-personal').slideUp(300, function()
+                {
+                    button.removeClass('active');
+                });
+            }
+            else
+            {
+                $('#sidebar-personal').slideDown(300, function()
+                {
+                    button.addClass('active');
+                });
+            }
+            return false;
+        });
+
+        $('form dt label').infield();
+        $('form dd > span').each(function()
+        {
+            var tooltip = $(this);
+            tooltip.prepend($('<span></span>').addClass('arrow'));
+            if ( $(tooltip).css('display') === 'none' )
+            {
+                $(tooltip).parent().parent().hover(function()
+                {
+                    if ( $(this).find('input:focus').length === 0 )
+                    {
+                        $(tooltip).stop(true, true).fadeIn();
+                    }
+                }, function()
+                {
+                    if ( $(this).find('input:focus').length === 0 )
+                    {
+                        $(tooltip).stop(true, true).fadeOut();
+                    }
+                })
+                .find('input').focus(function()
+                {
+                    $(tooltip).stop(true, true).fadeIn();
+                })
+                .blur(function()
+                {
+                    $(tooltip).stop(true, true).fadeOut();
+                });
+            }
+        });
+        $('form input[type="radio"]').each(function(element)
+        {
+            var span = $('<span></span>')
+                .addClass('radio')
+                .mousedown(function()
+                {
+                    $('input[type="radio"][name="' + $(this).prev().prop('checked', true).attr('name') + '"]').each(function()
+                    {
+                        $(this).next().removeClass('checked');
+                    });
+                    $(this).addClass('checked');
+                })
+                .insertAfter($(this));
+
+            $(this).css({
+                    display: 'none',
+                    height: 'auto',
+                    width: 'auto'
+                })
+                .change(function()
+                {
+                    $('input[type="radio"][name="' + $(this).attr('name') + '"]').each(function()
+                    {
+                        if ( $(this).prop('checked') ) {
+                            $(this).next().addClass('checked');
+                        } else {
+                            $(this).next().removeClass('checked');
+                        }
+                    });
+                });
+
+            if ( $(this).prop('checked') ) {
+                $(this).prev().addClass('checked');
+            }
+        });
+        $('form select').each(function()
+        {
+            var select = $(this).hide();
+            var selected = $(this).children(':selected');
+            var value = selected.val() ? selected.text() : '';
+            var input = this.input = $('<input>').attr('disabled', true).insertAfter(select).val(value).autocomplete({
+                delay: 0,
+                minLength: 0,
+                source: function(request, response) {
+                    var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), 'i');
+                    response(select.children('option').map(function() {
+                        var text = $(this).text();
+                        if ( this.value && ( !request.term || matcher.test(text) ) ) return {
+                            label: text.replace(new RegExp('(?![^&;]+;)(?!<[^<>]*)(' + $.ui.autocomplete.escapeRegex(request.term) + ')(?![^<>]*>)(?![^&;]+;)', 'gi'), '<strong>$1</strong>'),
+                            value: text,
+                            option: this
+                        };
+                    }));
+                },
+                select: function(event, ui) {
+                    ui.item.option.selected = true;
+                    self._trigger('selected', event, {
+                        item: ui.item.option
+                    });
+                },
+                change: function(event, ui) {
+                    if ( !ui.item ) {
+                        var matcher = new RegExp('^' + $.ui.autocomplete.escapeRegex($(this).val()) + '$', 'i');
+                        var valid = false;
+                        select.children('option').each(function() {
+                            if ( $(this).text().match(matcher) ) {
+                                this.selected = valid = true;
+                                return false;
+                            }
+                        });
+                        if ( !valid ) {
+                            $(this).val('');
+                            select.val('');
+                            input.data('autocomplete').term = '';
+                            return false;
+                        }
+                    }
+                }
+            }).addClass('ui-widget ui-widget-content ui-corner-left');
+
+            input.data('autocomplete')._renderItem = function(ul, item) {
+                ul.addClass(select.attr('name'));
+                return $('<li></li>').data('item.autocomplete', item).append('<a>' + item.label + '</a>').appendTo(ul);
+            };
+
+            this.button = $('<button type="button">&nbsp;</button>').attr('tabIndex', -1 ).attr('title', 'Show All Items').insertAfter(input).button({
+                icons: {
+                    primary: 'ui-icon-triangle-1-s'
+                },
+                text: false
+            }).removeClass('ui-corner-all').addClass('ui-corner-right ui-button-icon').click(function() {
+                if ( input.autocomplete('widget').is(':visible') ) {
+                    input.autocomplete('close');
+                    return;
+                }
+                $(this).blur();
+                input.autocomplete('search', '');
+                input.focus();
+            });
+        });
+
+        $('a').live('click', function()
+        {
+            var url = $(this).attr('href');
+            if (
+                url.match(/^\/.+/)
+             || url.match(/^#.*/)
+             || url.search(location.hostname) >= 0 )
+            {
+                return true;
+            }
+            window.open(url);
+            return false;
+        });
+
+        $.pull.start({
+            friendcounter: $('#chat .friendcounts'),
+            onlinecounter: $('#header .online'),
+            browseredcounter: $('#header .browsered')
+        });
+    });
+
+    $('<script></script>')
+        .attr('id', 'facebook-jssdk')
+        .attr('async', 'async')
+        .attr('type', 'text/javascript')
+        .attr('src', '//connect.facebook.net/zh_TW/all.js')
+        .insertBefore($('script').first());
+
+    window.fbAsyncInit = function()
+    {
+        var like = $('<div></div>')
+            .attr('id', 'fb-like')
+            .appendTo($('#fb-root'));
+
+        $('<fb:like></fb:like>')
+            .attr('href', window.location.href)
+            .attr('data-send', 'false')
+            .attr('data-layout', 'button_count')
+            .attr('data-show-faces', 'false')
+            .appendTo(like);
+
+        FB.init({
+            appId:      $.configures.facebookAppId,
+            channelUrl: $.configures.facebookChannelUrl,
+            status:     true,
+            cookie:     true,
+            xfbml:      true
+        });
+    };
+})(jQuery);
+
+(function($){
+    var checked = false;
+    $.friends = function()
+    {
+        $('.a-group-users').scrollable({
+            wheelSpeed: 90
+        });
+        $('.users-group').scrollable({
+            wheelSpeed: 90
+        });
+        $('#new-group-members').scrollable({
+            wheelSpeed: 90
+        });
+    }
+    $('.button-all-choose').click(function()
+    {
+        checked = ! checked;
+        $('input[type="checkbox"][name^="friends"]').each(function()
+        {
+            $(this).prop('checked', checked);
+        });
+        return false;
+    });
+})(jQuery);
+
+(function($){
+    $.profile = function()
+    {
+        $('.allmessages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.my-all-messages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.self-messages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.friend-chatting').scrollable({
+            wheelSpeed: 90
+        })
+        $('.friend-chatting-content').scrollable({
+            wheelSpeed: 90
+        });
+        jQuery('.button-viewProfile-back').click(function()
+        {
+            window.history.back();
+        }); 
+    
+    }
+})(jQuery);
+
+google.load('search', '1', {
+    language: 'zh_TW'
+});
+
+google.setOnLoadCallback(function()
+{
+    google.search.CustomSearchControl.attachAutoCompletion(
+        $.configures.googleSearchAppId,
+        document.getElementById('form-search-query'),
+        'search'
+    );
+});

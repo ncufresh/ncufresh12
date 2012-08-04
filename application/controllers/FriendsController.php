@@ -89,34 +89,17 @@ class FriendsController extends Controller
     }
 
     public function actionMakeFriends() 
-    {
-        if ( isset($_POST['all-choose']) )//全選
-        {
-            foreach ( $_POST['friends-all-choose'] as $friendid )
-            {   
-                $relation = Friend::model()->friendRelation($friendid);
-                // echo $relation;
-                // echo '<br />';
-                // exit;
-                if ( $this->userId != $friendid && ($relation === Friend::IS_RECEIVERED_REQUEST || $relation === Friend::IS_NOT_FRIEND) )
-                // if ( ($this->userId !== $friendid && $relation !== 0) || ($this->userId !== $friendid && $relation !== 1) )//尚未互加為好友
-                {
-                    Friend::model()->addFriend($friendid); //本人加朋友資料
-                    Friend::model()->makeFriend($friendid);
-                }
-            }
-            $this->redirect(array('friends/myfriends'));
-        }        
-        else if ( isset($_POST['friends']) )
+    {  
+        if ( isset($_POST['friends']) )
         {
             foreach ( $_POST['friends'] as $friendid )
             {   
-                $friend = new Friend();
-                $relation = $friend->friendRelation($friendid);
-                if ( $this->userId !== $friendid && $relation !== 0 )
+                $relation = Friend::model()->friendRelation($friendid);
+                if ( $this->userId != $friendid && ($relation === Friend::IS_RECEIVERED_REQUEST || $relation === Friend::IS_NOT_FRIEND) )
+                
                 {
-                    $friend->addFriend($friendid);
-                    $friend->makeFriend($friendid);
+                    Friend::model()->addFriend($friendid); //本人加朋友資料
+                    Friend::model()->makeFriend($friendid);
                 }
             }
             $this->redirect(array('friends/myfriends'));
@@ -244,17 +227,13 @@ class FriendsController extends Controller
         {
             foreach ( $_POST['friends'] as $friendid )
             {   
-                // $friend = new Friend();
                 $relation = Friend::model()->friendRelation($friendid);
-                ///var_dump($exist);
-                // exit;
                 if ( $this->userId != $friendid && $relation === Friend::IS_RECEIVERED_REQUEST )
                 {
                     Friend::model()->addFriend($friendid);
                     Friend::model()->makeFriend($friendid);
                 }
             }
-            //exit;
             $this->redirect(array('friends/myfriends'));
         }
         else if ( isset($_POST['friends']) && isset($_POST['cancel']) )

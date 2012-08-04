@@ -1,6 +1,6 @@
-<h4>同屆不同系</h4>
-<div id="sameDdiffG">
-<form class="a-group-users" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
+<form id="sameDdiffG" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
+    <h4>同屆不同系</h4>
+    <div class="a-group-users">
         <ul class="users-department">
 <?php foreach ( $profiles as $profile ) : ?>
             <li>
@@ -20,9 +20,10 @@
             </li>
 <?php endforeach; ?>
         </ul>
-    <button type="submit" name="all-choose" class="button-all-choose">全選</button>
+    </div>
+    <button class="button-all-choose">全選</button>
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
     <button type="submit" class="button-addfriends">新增好友</button>
+    <a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>
 </form>
-<a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>
-</div>
+

@@ -27,6 +27,7 @@
 <?php endforeach; ?>
         </ul>
     <a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$mygroup->id))  ?>" id="button-addmember" >新增成員</a>
+    <button class="button-all-choose">全選</button>
     <button type="submit" id="button-deletemember">刪除成員</button>
     <a href="<?php echo Yii::app()->createUrl('friends/deletegroup', array('id'=>$mygroup->id))  ?>" id="button-deletegroup" >刪除群組</a>
 </form>
