@@ -95,8 +95,8 @@ class FriendsController extends Controller
             foreach ( $_POST['friends-all-choose'] as $friendid )
             {   
                 $friend = new Friend();
-                $exist = $friend->isExist($friendid);
-                if ( $this->userId !== $friendid && ! $exist )
+                $exist = $friend->friendRelation($friendid);
+                if ( $this->userId !== $friendid && $exist === 2 )
                 {
                     $friend->addFriend($friendid);
                     $friend->makeFriend($friendid);

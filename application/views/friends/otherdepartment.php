@@ -1,5 +1,6 @@
 <h4>其他科系</h4>
 <div id="other-department">
+<div class="search-users-in-group"></div>
 <form class="A-group-users" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
         <ul class="users-department">
@@ -21,7 +22,7 @@
             </li>
 <?php endforeach; ?>
         </ul>
-    <button type="submit" name="all-choose" class="button-all-choose">全選</button>
+    <button type="submit" name="all-choose" class="button-all-choose"></button>
     <button type="submit" class="button-addfriends"></button>
 </form>
 <a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back"></a>

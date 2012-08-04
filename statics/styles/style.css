@@ -3870,7 +3870,7 @@ div.A-group-users div.avatar
     padding:5px;
 }*/
 
-#friend-chatting
+.friend-chatting
 {
     width:415px;
     height:315px;
@@ -3879,7 +3879,7 @@ div.A-group-users div.avatar
     outline:1px solid yellow
 }
 
-#friend-chatting ul
+.friend-chatting ul
 {
     width:411px;
     height:312px;
@@ -3888,7 +3888,7 @@ div.A-group-users div.avatar
     outline:1px solid red
 }
 
-#friend-chatting ul li
+.friend-chatting ul li
 {
     width:205px;
     padding:0px;
@@ -4109,7 +4109,7 @@ div.profile-message-reply
     margin: 0px;
     position:absolute;
     right:550px;
-    bottom:-86px;
+    bottom:-43px;
 }
 
 #friend_request
@@ -4122,7 +4122,7 @@ div.profile-message-reply
     margin: 0px;
     position:absolute;
     right:550px;
-    bottom:-88px;
+    bottom:-44px;
 }
 
 .button-back
