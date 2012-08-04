@@ -1310,7 +1310,6 @@
         var calendar_month = $(this).data('options').month;
         if ( current_month == calendar_month && current_year ==  calendar_year )
         {
-            console.log(current_year,calendar_year);
             var tds = $(this).children('tbody').find('td');
             for( var key in tds )
             {
@@ -3233,6 +3232,115 @@
 })(jQuery);
 
 /**
+ * Multimedia
+ */
+(function($)
+{
+    $.multimedia = function()
+    {
+        var target;
+
+        var mmMenuScroll = function(offset)
+        {
+            console.log(target);
+            if ( typeof(mmMenuScroll.mousein) == 'undefined' )
+            {
+                mmMenuScroll.mousein = false;
+            }
+            var margin_top = parseInt($(target).css('margin-top'));
+            if ( margin_top + offset > mmMenuScroll.margin_top_max() )
+            {
+                margin_top = mmMenuScroll.margin_top_max();
+                mmMenuScroll.mousein = false;
+                $(target).css('margin-top', margin_top);
+            }
+            if ( margin_top + offset < mmMenuScroll.margin_top_min() )
+            {
+                margin_top = mmMenuScroll.margin_top_min() ;
+                mmMenuScroll.mousein = false;
+                $(target).css('margin-top', margin_top);
+            }
+
+            if ( mmMenuScroll.mousein )
+            {
+                $(target).css('margin-top', margin_top + offset);
+                setTimeout(function()
+                {
+                    mmMenuScroll(offset);
+                }, 30);
+            }
+            else
+            {
+                return;
+            }
+        };
+
+        $('#multimedia .menu a').each(function(index, element)
+        {
+            var youtube_img_src = 'http://img.youtube.com/vi/:id/0.jpg';
+            var video_img_id = $(this).attr('href').substr(1);
+            var video_title = $('<span></span>').text($(this).text());
+            var video_img = $('<img />')
+                .attr('src', youtube_img_src.replace(':id', video_img_id));
+            $(this).html(video_title).append(video_img);
+        });
+
+        $('#multimedia .items').each(function()
+        {
+            $(this).height($(this).find('a').length*$(this).find('a').height());
+        });
+        
+        $('#multimedia .menu a').click(function()
+        {
+            var url = $.configures.multimediaYoutubeUrl.replace(':v', $(this).attr('href').substr(1));
+            $('#multimedia-frame').attr('src', url);
+            $.getJSON($.configures.multimediaIntroductionUrl.replace(':v', $(this).attr('href').substr(1)), function(data)
+            {
+                $('#multimedia .introduction').text(data.introduction);
+            });
+            return false;
+        });
+        $('#multimedia .menu a').eq($.random(0, $('#multimedia .menu .items a').length - 1)).click();
+
+        var srcoll_offset = 10;
+        mmMenuScroll.margin_top_max = function(){ return 0 };
+        mmMenuScroll.margin_top_min = function()
+        {
+            return $('#multimedia .menu').height() - $(target).height();
+        }
+        
+        $('#multimedia .up').mouseenter(function()
+        {
+            mmMenuScroll.mousein = true;
+            mmMenuScroll(srcoll_offset);
+        }).mouseleave(function()
+        {
+            mmMenuScroll.mousein = false;
+        });
+
+        $('#multimedia .down').mouseenter(function()
+        {
+            mmMenuScroll.mousein = true;
+            mmMenuScroll(-1 * srcoll_offset);
+        }).mouseleave(function()
+        {
+            mmMenuScroll.mousein = false;
+        });
+
+        $('#multimedia .tab').click(function(){
+            var id = $(this).attr('href').replace('#','');
+            $('#multimedia .tab').removeClass('active');
+            $(this).addClass('active');
+            $('#multimedia .items').hide();
+            $('#multimedia #items' + id).show();
+            target = $('#multimedia #items' + id);
+        });
+        
+        $('#multimedia .tab').first().click();
+    }
+})(jQuery);
+
+/**
  * Main
  */
 (function($)
@@ -3256,6 +3364,8 @@
         if ( $('#nculife').length ) $.nculife();
 
         if ( $('#readme').length ) $.readme(); 
+        
+        if ( $('#multimedia').length ) $.multimedia();
 
         $('input.datepicker:not(#form-register-birthday)').datepicker();
         $('#form-register-birthday').datepicker({
