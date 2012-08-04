@@ -928,7 +928,7 @@
                 var scrollContentHeight = scrollContent.height();
                 var scrollTrackHeight = scrollTrack.height();
                 var height = 0;
-                if ( scrollContainer.width() - scrollContent.width() > 0 )
+                if ( scrollContent.width() - scrollContainer.width() > 0 )
                 {
                     scrollArea.css({
                         width: scrollContainer.width() + scrollWidth
@@ -3566,7 +3566,7 @@
         {
             $(this).stop().animate(
             {
-                left : '-197px'
+                left : '-177px'
             },500);
         });
 
