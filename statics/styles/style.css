@@ -606,7 +606,8 @@ a:hover
 .calendar .calendar-hide-button,
 .calendar .calendar-subscript-button,
 .calendar a.calendar-hide-event,
-#calendar-subscript h4
+#calendar-subscript h4,
+#lastest-news-wrap .header h4
 {
     background: url('../images/sprites.png') no-repeat;
 }
@@ -2187,14 +2188,14 @@ button.news-button
 
 #lastest-news-wrap .header h4
 {
-    width: 85px;
+    background-position: -128px -176px;
+    width: 80px;
     height: 0px;
     padding: 25px 0 0 0;
     margin: 0;
     overflow: hidden;
     display: block;
     float: left;
-    background: url('../images/index_latest_icon.png') no-repeat;
 }
 
 #lastest-news-wrap .header ul.pager
@@ -2475,15 +2476,17 @@ button.news-button
 }
 
 #multimedia
+{
+}
 
 /**
  * Nculife style
  */
 #life-dialog
 {
-    display: none;
     width: 649px;
     height: 449px;
+    display: none;
     z-index: 1200;
     position: fixed;
 }
@@ -2550,7 +2553,7 @@ button.news-button
 #nculife-title
 {
     width: 605px;
-    height: 122px;
+    height: 121px;
     margin: -72px 0 0 10px;
     display: inline-block;
 }
@@ -2672,8 +2675,8 @@ button.news-button
 
 #life-container
 {
-    width: 740px;
-    height: 600px;
+    width: 649px;
+    height: 549px;
     position:relative;
     padding: 0;
 }
@@ -2739,6 +2742,15 @@ button.news-button
     left: 660px;
 }
 
+.readme-download-back
+{
+    width: 70px;
+    height: 85px;
+    position: absolute;
+    top: 600px;
+    left: 870px;
+}
+
 #fresh-back
 {
     background-position: -1272px -656px;
@@ -2781,7 +2793,7 @@ button.news-button
 
 #readme .scroll-container
 {
-    height: 377px;
+    height: 357px;
     width: 630px;
 }
 
@@ -3128,7 +3140,7 @@ button.news-button
 
 #about .about-display
 {
-    background: #FFFFFF;
+    background: #B9B9B9;
     bottom: 0px;
     height: 0px;
     opacity: 0px;
@@ -3182,19 +3194,21 @@ button.news-button
 
 #about .tag-Box-name
 {
+    border-radius: 8px;
+    background: white;
     top: 95%;
     position: absolute;
     text-align: center;
-    height: 10%;
     width: 100%;
 }
 
 #about .tag-Box-grade
 {
-    top: 120%;
+    border-radius: 8px;
+    background: white;
+    top: 130%;
     position: absolute;
     text-align: center;
-    height: 10%;
     width: 100%;
 }
 
@@ -3968,8 +3982,8 @@ div.a-group-users div.avatar
 .profile-modify div.avatar
 {
     margin-left:65px;
-    margin-top:0px;
-    width:202px; 
+    margin-top:5px;
+    width:180px; 
     height:338px;
     padding:0px;
 }
@@ -4187,17 +4201,17 @@ div.profile-message-reply
 
 .button-back
 {
-    background-image: url('../profile/button/back.png');
-    background-repeat: no-repeat ;
-    width: 84px;
-    height: 37px;
-    padding: 0px;
-    margin: 0px;
-    float:right;
-    display:block;
-    position:relative;
     right:60px;
     bottom:61px;
+    display: block;
+    border: 2px black solid;
+    width: 68px;
+    padding: 3px;
+    font-weight: bold;
+    color: #0A5163;
+    background: #C9F8E7;
+    border-radius: 9px;
+    text-align: center;
 }
 
 .button-all-choose

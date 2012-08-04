@@ -8,15 +8,10 @@
     中央的操場為一圈400公尺的PU跑道。有時候晚上會看到有同學們相約在這邊進行足球的友誼賽；
 </div>
 <div>
-</div>
-<div>
     除此之外，操場也是我們每一年在11月舉辦全校運動會的地點，這是一個全校性的活動，各系均積極的爭取最高榮譽─精神總錦標。
 </div>
 <div>
-</div>
-<div>
-    這個地點可以說是許多中大人揮灑青春汗水的地方，也是存放著中大人許多難忘回憶的地方。操場後方有一聖火台，點燃聖火象徵運動員的精神。</div>
-<div>
+    這個地點可以說是許多中大人揮灑青春汗水的地方，也是存放著中大人許多難忘回憶的地方。操場後方有一聖火台，點燃聖火象徵運動員的精神。
 </div>
 <div>
     不過在進入操場時，也有許多該注意的地方：
@@ -39,9 +34,9 @@
     </li>
 </ol>
 <div>
-    <h1>
+    <h4>
         攀岩場
-    </h1>
+    </h4>
     <p>
         <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0021(1).JPG" style="width:500px;height:754px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0022.JPG" style="width:500px;height:332px;" />
     </p>

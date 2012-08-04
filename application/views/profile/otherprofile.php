@@ -59,12 +59,11 @@
 <form action="<?php echo Yii::app()->createUrl('friends/makefriends'); ?>" method="POST" >
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
     <input type="hidden" name="friends[<?php echo $user->id; ?>]" value="<?php echo $user->id; ?>" />
-    <button type="submit" class="button-addfriend" ></button>
-    <button type="button" class="button-back" ></button>
+    <button type="submit">新增好友</button>
+    <button type="button">BACK</button>
 </form>
 <?php elseif ( $friend_relation === 1 ) : ?>
-<button id="friend_request"></button>
+<button>已送出邀請咯</button>
 <?php else : ?>
-<button id="is_friend"></button>
+<button>朋友</button>
 <?php endif; ?>
-<button type="button" class="button-back" ></button>

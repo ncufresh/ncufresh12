@@ -274,7 +274,7 @@ class CalendarController extends Controller
             }
             if ( $check == 0 )
             {
-                $this->redirect(Yii::app()->createUrl('calendar/view'));
+                $this->redirect(Yii::app()->createUrl('club/content', array('id'=>$club_id)));
             }
             else
             {

@@ -7,6 +7,7 @@ class SiteController extends Controller
         parent::init();
         Yii::import('application.models.News.*');
         Yii::import('application.models.Game.*');
+        Yii::import('application.models.Forum.*');
         Yii::import('application.models.Calendar.*');
         return true;
     }
@@ -58,17 +59,25 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $news = News::model()->getPopularNews(10);
-        foreach ( $news as & $entry )
+        foreach ( $news as $entry )
         {
             $title = $entry->title;
-            $entry->title = mb_strcut($title, 0, 24);
+            $entry->title = mb_substr($title, 0, 8);
+            if ( strlen($title) > strlen($entry->title) ) $entry->title .= '…';
+        }
+
+        $articles = Article::model()->getLastestArticles(10);
+        foreach ( $articles as $entry )
+        {
+            $title = $entry->title;
+            $entry->title = mb_substr($title, 0, 8);
             if ( strlen($title) > strlen($entry->title) ) $entry->title .= '…';
         }
 
         $this->setPageTitle(Yii::app()->name);
         $this->render('index', array(
             'latests'   => $news,
-            'articles'  => array(),
+            'articles'  => $articles,
             'marquees'  => Marquee::model()->getMarquees()
         ));
     }
@@ -203,7 +212,8 @@ class SiteController extends Controller
             $model->attributes = $_POST['login'];
             if ( $model->login() )
             {
-                if ( empty($model->profile) )
+                $user = Yii::app()->user->getUser();
+                if ( ! isset($user->profile->id) )
                 {
                     $this->redirect(array('profile/editor'));
                 }
