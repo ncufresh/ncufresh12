@@ -214,7 +214,7 @@
                 <a href="<?php echo Yii::app()->createUrl('game/index'); ?>" title="遊戲介面">遊戲介面</a>
             </li>
         </ul>
-        <a id="sidebar-personal-button" href="<?php echo Yii::app()->createUrl('friends/friends'); ?>" title="個人專區">個人專區</a>
+        <a id="sidebar-personal-button" href="<?php echo Yii::app()->createUrl('friends/friends'); ?>" title="好友專區">好友專區</a>
         <a id="sidebar-logout-button" href="<?php echo Yii::app()->createUrl('site/logout'); ?>" title="登出">登出</a>
     </div>
 <?php endif; ?>
@@ -303,9 +303,12 @@
             multimediaIntroductionUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('multimedia/introduction', array('v' => ':v')); ?>'),
             newsIndexUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>'),
             registerUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>'),
+            calendarViewUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/view'); ?>'),
             calendarEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/event', array('id'=> ':id')); ?>'),
             calendarEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvents'); ?>'),
+            calendarShowEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/showevent'); ?>'),
             calendarClubEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxClubEvents', array('id' => ':id')); ?>'),
+            calendarClubRecycleUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/clubrecycle', array('id'=> ':id'));?>'),
             calendarHideEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/hideEvent'); ?>'),
             buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),
             forumSortUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('forum/forum', array('fid' => isset($_GET['fid'])?$_GET['fid']:0, 'sort' => ':sort', 'category' => isset($_GET['category'])?$_GET['category']:0));?>'),

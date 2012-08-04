@@ -606,7 +606,8 @@ a:hover
 .calendar .calendar-hide-button,
 .calendar .calendar-subscript-button,
 .calendar a.calendar-hide-event,
-#calendar-subscript h4
+#calendar-subscript h4,
+#lastest-news-wrap .header h4
 {
     background: url('../images/sprites.png') no-repeat;
 }
@@ -1820,14 +1821,14 @@ a.calendar-hide-event:hover
     height: 20px;
     line-height: 20px;
     display: inline-block;
-    background-color: #FFFFFF179;
+    background-color: #FFFFFF;
     border-radius: 5px;
     color: #27120a;
 }
 
 #calendar-recycle a.calendar-show-event
 {
-    background: url('../images/calendar_recover.png') no-repeat #FFFFFF179;
+    background: url('../images/calendar_recover.png') no-repeat #FFFFFF;
 }
 
 #calendar-recycle a.calendar-show-event:active
@@ -1838,7 +1839,7 @@ a.calendar-hide-event:hover
 
 #calendar-recycle a.calendar-hide-event
 {
-    background: url('../images/calendar_delete.png') no-repeat #FFFFFF179;
+    background: url('../images/calendar_delete.png') no-repeat #FFFFFF;
 }
 
 #calendar-recycle a.calendar-hide-event:active
@@ -2187,14 +2188,14 @@ button.news-button
 
 #lastest-news-wrap .header h4
 {
-    width: 85px;
+    background-position: -128px -176px;
+    width: 80px;
     height: 0px;
     padding: 25px 0 0 0;
     margin: 0;
     overflow: hidden;
     display: block;
     float: left;
-    background: url('../images/index_latest_icon.png') no-repeat;
 }
 
 #lastest-news-wrap .header ul.pager
@@ -2741,6 +2742,15 @@ button.news-button
     left: 660px;
 }
 
+.readme-download-back
+{
+    width: 70px;
+    height: 85px;
+    position: absolute;
+    top: 600px;
+    left: 870px;
+}
+
 #fresh-back
 {
     background-position: -1272px -656px;
@@ -2783,7 +2793,7 @@ button.news-button
 
 #readme .scroll-container
 {
-    height: 377px;
+    height: 357px;
     width: 630px;
 }
 
@@ -3182,25 +3192,22 @@ button.news-button
     width: 80%;
 }
 
-#about .tag-Box-name
+#about .tag-box-name,
+#about .tag-box-grade
 {
-    border-radius: 8px;
-    background: white;
-    top: 95%;
-    position: absolute;
+    background: #FFFFFF;
+    font-size: 0.95em;
+    margin: 0 -5px;
+    padding: 0 5px;
     text-align: center;
     width: 100%;
 }
 
-#about .tag-Box-grade
+#about .tag-box-name
 {
-    border-radius: 8px;
-    background: white;
-    top: 130%;
-    position: absolute;
-    text-align: center;
-    width: 100%;
+    margin-top: 100%;
 }
+
 
 #about .animation
 {
@@ -3233,6 +3240,7 @@ button.news-button
 
 #about .about-small-0
 {
+    border-radius: 10px 10px 0px 0px;
     background: url('../about/about.png') no-repeat;
     width: 700px;
     height: 280px;
@@ -3304,6 +3312,31 @@ button.news-button
     width: 96px;
 }
 
+.club,
+.club-head,
+.club-head:hover,
+.department,
+.department-head,
+.department-head:hover,
+.student,
+.student-head,
+.student-head:hover,
+#club-head-1,
+#club-head-2,
+#club-head-3,
+#club-back1,
+#club-back2,
+#club-back3,
+.club-modify-table,
+#club-bottom-1,
+#club-bottom-2,
+#club-bottom-3
+{
+	background: url('../images/club.png');
+}
+
+
+
 /**
  * Club style
  */
@@ -3314,7 +3347,7 @@ button.news-button
  
  .club
  {
-    background: url('../club/club.png');
+    background-position: 0px 0px;
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -3324,7 +3357,7 @@ button.news-button
  
 .club-head
 {
-    background: url('../club/club-head.png');
+    background-position: -960px -1600px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3334,7 +3367,7 @@ button.news-button
 
 .club-head:hover
 {
-    background: url('../club/club-head2.png');
+    background-position: -960px -1680px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3344,7 +3377,7 @@ button.news-button
 
 .department
 {
-    background: url('../club/department.png');
+    background-position: -800px 0px;
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -3354,7 +3387,7 @@ button.news-button
 
 .department-head
 {
-    background: url('../club/department-head.png');
+    background-position: -1280px -1600px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3363,7 +3396,7 @@ button.news-button
 
 .department-head:hover
 {
-    background: url('../club/department-head2.png');
+    background-position: -1280px -1680px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3372,7 +3405,7 @@ button.news-button
 
 .student
 {
-    background: url('../club/student.png');
+    background-position: 0px -960px;
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -3382,7 +3415,7 @@ button.news-button
 
 .student-head
 {
-    background: url('../club/student-head.png');
+    background-position: -1600px -1600px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3392,7 +3425,7 @@ button.news-button
 
 .student-head:hover
 {
-    background: url('../club/student-head2.png');
+    background-position: -1600px -1680px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3502,17 +3535,17 @@ button.news-button
 
 #club-head-1
 {
-    background: url('../club/5-1.png');
+    background-position: 0px -1920px;
 }
 
 #club-head-3
 {
-    background: url('../club/6-1.png');
+    background-position: 0px -2010px;
 }
 
 #club-head-2
 {
-    background: url('../club/4-1.png');
+    background-position: -480px -1920px;
 }
 
 .club-display-head a
@@ -3532,19 +3565,19 @@ button.news-button
 
 #club-bottom-1
 {
-    background: url('../club/5-3.png');
+    background-position: -480px -2010px;
     background-repeat: no-repeat;
 }
 
 #club-bottom-3
 {
-    background: url('../club/6-3.png');
+	background-position: -960px -2090px;
     background-repeat: no-repeat;
 }
 
 #club-bottom-2
 {
-    background: url('../club/4-3.png');
+    background-position: -960px -1920px;
     background-repeat: no-repeat;
 }
 
@@ -3559,17 +3592,17 @@ button.news-button
 
 #club-back1
 {
-    background: url('../club/clubback1.png');
+    background-position: 0px -2170px;
 }
 
 #club-back2
 {
-    background: url('../club/clubback2.png');
+    background-position: -160px -2170px;
 }
 
 #club-back3
 {
-    background: url('../club/clubback3.png');
+    background-position: -320px -2170px;
 }
 
 .club-picture
@@ -3660,7 +3693,7 @@ button.news-button
     padding: 5px;
     height: 600px;
     width: 750px;
-    background: url('../club/background.png');
+    background-position: -960px -960px;
 }
 /* profile... */
 ul.friends-sort 
@@ -3972,8 +4005,8 @@ div.a-group-users div.avatar
 .profile-modify div.avatar
 {
     margin-left:65px;
-    margin-top:0px;
-    width:202px; 
+    margin-top:5px;
+    width:180px; 
     height:338px;
     padding:0px;
 }
@@ -4191,17 +4224,17 @@ div.profile-message-reply
 
 .button-back
 {
-    background-image: url('../profile/button/back.png');
-    background-repeat: no-repeat ;
-    width: 84px;
-    height: 37px;
-    padding: 0px;
-    margin: 0px;
-    float:right;
-    display:block;
-    position:relative;
     right:60px;
     bottom:61px;
+    display: block;
+    border: 2px black solid;
+    width: 68px;
+    padding: 3px;
+    font-weight: bold;
+    color: #0A5163;
+    background: #C9F8E7;
+    border-radius: 9px;
+    text-align: center;
 }
 
 .button-all-choose

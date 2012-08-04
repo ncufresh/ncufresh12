@@ -90,13 +90,13 @@ class FriendsController extends Controller
 
     public function actionMakeFriends() 
     {
-        if ( isset($_POST['all-choose']) )
+        if ( isset($_POST['all-choose']) )//全選
         {
             foreach ( $_POST['friends-all-choose'] as $friendid )
             {   
                 $friend = new Friend();
-                $exist = $friend->friendRelation($friendid);
-                if ( $this->userId !== $friendid && $exist === 2 )
+                $relation = $friend->friendRelation($friendid);
+                if ( $this->userId !== $friendid && $relation != 0 )
                 {
                     $friend->addFriend($friendid);
                     $friend->makeFriend($friendid);
@@ -109,8 +109,8 @@ class FriendsController extends Controller
             foreach ( $_POST['friends'] as $friendid )
             {   
                 $friend = new Friend();
-                $exist = $friend->friendRelation($friendid);
-                if ( $this->userId !== $friendid && ! $exist === 2 )
+                $relation = $friend->friendRelation($friendid);
+                if ( $this->userId !== $friendid && $relation != 0 )
                 {
                     $friend->addFriend($friendid);
                     $friend->makeFriend($friendid);
@@ -235,7 +235,7 @@ class FriendsController extends Controller
         ));
    }
 
-   public function actionRequest() //確認好友關係
+   public function actionRequest() //確認好友關係...人家先加我了
    {
         if ( isset($_POST['friends']) && isset($_POST['agree']) )
         {
@@ -243,7 +243,7 @@ class FriendsController extends Controller
             {   
                 $friend = new Friend();
                 $exist = $friend->friendRelation($friendid);
-                if ( $this->userId !== $friendid && ! $exist === 1 )
+                if ( $this->userId !== $friendid && $exist === 1 )
                 {
                     $friend->addFriend($friendid);
                     $friend->makeFriend($friendid);

@@ -1,19 +1,4 @@
-﻿<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
-<script type="text/javascript">
-jQuery(document).ready(function()
-{
-    $('.category-button').click(function()
-    {
-        var id = $(this).attr('href').replace('#','');
-        $('.calendar-subscript-category').hide();
-        $('#calendar-subscript-category-' + id).show();
-    });
-    $('.category-button').first().click();
-    $('.calendar-subscript-container').scrollable();
-});
-</script>
-<?php $this->endWidget();?>
-<div id="calendar-subscript">
+﻿<div id="calendar-subscript">
     <h4>訂閱</h4>
     <div class="category-wrapper">
 <?php foreach($result as $key => $clubs): ?>

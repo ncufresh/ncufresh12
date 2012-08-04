@@ -16,7 +16,7 @@
     </li>
 </ol>
 <div>
-    <img alt="家樂福" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E5%AE%B6%E6%A8%82%E7%A6%8F.png" style="width:500px;height:316px;" />
+    <img alt="家樂福" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/life16-1.png" style="width:500px;height:316px;" />
 </div>
 <div>
     (圖片截取於Google地圖)

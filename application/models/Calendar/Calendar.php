@@ -114,13 +114,32 @@ class Calendar extends CActiveRecord
 
     public function getClubCalendar($id = 0)
     {
-        return $this->find(array(
-            'condition' => 'user_id = :user_id AND category = :category',
-            'params' => array(
-                ':user_id'  => $id ?: Yii::app()->user->id,
-                ':category' => self::CATEGORY_PUBLIC,
-            )
-        ));
+        if ( $id )
+        {
+            return $this->with(array(
+                'club' => array(
+                    'condition' => 'club.id = :club_id',
+                    'params' => array(
+                        ':club_id' => $id,
+                    )
+                )
+            ))->find(array(
+                'condition' => 't.category = :category AND user_id != 0',
+                'params' => array(
+                    ':category' => self::CATEGORY_PUBLIC,
+                )
+            ));
+        }
+        else
+        {
+            return $this->find(array(
+                'condition' => 'user_id = :user_id AND category = :category',
+                'params' => array(
+                    ':category' => self::CATEGORY_PUBLIC,
+                    ':user_id'  => Yii::app()->user->id
+                )
+            ));
+        }
     }
     
     public function getAllClubCalendars()

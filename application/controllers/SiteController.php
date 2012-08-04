@@ -62,7 +62,7 @@ class SiteController extends Controller
         foreach ( $news as $entry )
         {
             $title = $entry->title;
-            $entry->title = mb_strcut($title, 0, 24);
+            $entry->title = mb_substr($title, 0, 8);
             if ( strlen($title) > strlen($entry->title) ) $entry->title .= '…';
         }
 
@@ -70,7 +70,7 @@ class SiteController extends Controller
         foreach ( $articles as $entry )
         {
             $title = $entry->title;
-            $entry->title = mb_strcut($title, 0, 24);
+            $entry->title = mb_substr($title, 0, 8);
             if ( strlen($title) > strlen($entry->title) ) $entry->title .= '…';
         }
 
@@ -212,11 +212,12 @@ class SiteController extends Controller
             $model->attributes = $_POST['login'];
             if ( $model->login() )
             {
-                if ( empty($model->profile) )
+                $user = Yii::app()->user->getUser();
+                if ( ! isset($user->profile->id) )
                 {
                     $this->redirect(array('profile/editor'));
                 }
-                $this->redirect(array('site/index'));
+                $this->redirect(Yii::app()->user->returnUrl);
             }
         }
         $this->setPageTitle(Yii::app()->name . ' - 需要驗證您的身分');
