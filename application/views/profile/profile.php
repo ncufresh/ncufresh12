@@ -1,9 +1,11 @@
 <h4>基本資料</h4>
 <div class="myprofile">
     <div class="profile-modify">
+    <a href="<?php echo Yii::app()->createUrl('game/index', array('id' => $user->id)); ?>">
 <?php $this->widget('Avatar', array(
     'id'        => Yii::app()->user->id
 )); ?>
+    </a>
         <ul class="user-editor">  
             <li>
                 姓名:<?php echo $user->profile->name; ?>
