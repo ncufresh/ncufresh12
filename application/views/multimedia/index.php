@@ -1,17 +1,26 @@
+<div class="title"></div>
 <div class="sidebar">
+    <a href="#1" class="tab active" id="tab1">微電影</a>
+    <a href="#2" class="tab" id="tab2">校園景觀</a>
     <div class="menu">
         <button class="up">UP</button>
         <button class="down">DOWN</button>
-        <div class="items">
-            <a href="#3Aoy5hodu1Y" title="Inception">TDKR</a>
-            <a href="#66TuSJo4dZM" title="Inception">Inception</a>
-            <a href="#ZRmWLqrJkz4" title="Resident Evil 5">Resident Evil 5</a>
-            <a href="#FNQowwwwYa0" title="Iron Man 2">Iron Man 2</a>
-            <a href="#E7a5LcTckfg" title="Incredible Hulk">Incredible Hulk</a>
-            <a href="#YpRyJBoEiMg" title="Grenade- Bruno">Grenade- Bruno</a>
-            <a href="#BSLPH9d-jsI" title="Skyrim">Skyrim</a>
-            <a href="#tY9DnBNJFTI" title="The Avengers">The Avengers</a>
-            <a href="#JOddp-nlNvQ" title="Thor">Thor</a>
+        <div id="items1" class="items">
+            <a href="#wmReq_jw1mE" title="Grenade- Bruno">Grenade- Bruno</a>
+            <a href="#wmReq_jw1mE" title="Grenade- Bruno">Grenade- Bruno</a>
+            <a href="#wmReq_jw1mE" title="Grenade- Bruno">Grenade- Bruno</a>
+            <a href="#wmReq_jw1mE" title="Grenade- Bruno">Grenade- Bruno</a>
+            <a href="#wmReq_jw1mE" title="Grenade- Bruno">Grenade- Bruno</a>
+            <a href="#wmReq_jw1mE" title="Grenade- Bruno">Grenade- Bruno</a>
+            <a href="#wmReq_jw1mE" title="Grenade- Bruno">Grenade- Bruno</a>
+        </div>
+        <div id="items2" class="items" style="display:none">
+            <a href="#jor7-ba6B00" title="紙不住的燦爛火硯 ">紙不住的燦爛火硯 </a>
+            <a href="#xTUvMq258oE" title="愛上黑堂">愛上黑堂</a>
+            <a href="#OG9mHEPjKWQ" title="Resident Evil 5">Resident Evil 5</a>
+            <a href="#eX5BcpGWyp4" title="優呼！～遊湖！～">優呼！～遊湖！～</a>
+            <a href="#unwH3YkSx34" title="知性導覽">知性導覽</a>
+            <a href="#wmReq_jw1mE" title="Grenade- Bruno">Grenade- Bruno</a>
         </div>
     </div>
     <div class="projector"></div>
