@@ -35,9 +35,6 @@
             block1Inf.each(function(){
                 $(this).hide();
             });
-            tagbar.each(function(){
-                $(this).hide();
-            });
             block1Inf.eq(tagbarIndex).show();
             tagbar.eq(tagbarIndex).show();
             tagbarPerson.each(function(){

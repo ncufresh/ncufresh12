@@ -73,7 +73,7 @@
     <div class="tag"></div>
     <ul class="tag-bar">
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="美工" />
+            <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="美工" />
             <div name="陳禹傑" grade="資工2A" left="0" top="0" width="100" height="100"></div>
             <div name="張力"   grade="" left="" top="" width="" height=""></div>
             <div name="李冠勳" grade="" left="" top="" width="" height=""></div>
@@ -84,7 +84,7 @@
             <div name="楊雅媛" grade="" left="" top="" width="" height=""></div>
         </li>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="程設" />
+            <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="程設" />
             <div name="蔡志豪" grade="" left="" top="" width="" height=""></div>
             <div name="楊梓豪" grade="" left="" top="" width="" height=""></div>
             <div name="李韋成" grade="" left="" top="" width="" height=""></div>
@@ -95,7 +95,7 @@
             <div name="梁郁珮" grade="" left="" top="" width="" height=""></div>
         </li>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="影音" />
+            <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="影音" />
             <div name="賀靖雅" grade="" left="" top="" width="" height=""></div>
             <div name="蘇致維" grade="" left="" top="" width="" height=""></div>
             <div name="鐘育東" grade="" left="" top="" width="" height=""></div>
@@ -106,7 +106,7 @@
             <div name="許庭瑜" grade="" left="" top="" width="" height=""></div>
         </li>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="企劃" />
+            <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="企劃" />
             <div name="王菩生" grade="" left="" top="" width="" height=""></div>
             <div name="王儀靜" grade="" left="" top="" width="" height=""></div>
             <div name="許子亮" grade="" left="" top="" width="" height=""></div>
@@ -117,7 +117,7 @@
             <div name="陳星妘" grade="" left="" top="" width="" height=""></div>
         </li>
         <li>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="執行" />
+            <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="執行" />
             <div name="黃筱萍" grade="" left="" top="" width="" height=""></div>
             <div name="盧婉芳" grade="" left="" top="" width="" height=""></div>
         </li>
