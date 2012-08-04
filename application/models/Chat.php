@@ -64,7 +64,7 @@ class Chat extends CActiveRecord
 
         $criteria = new CDbCriteria();
         $criteria->select = '`uuid`, `sender_id`, `receiver_id`, `message`, `timestamp`';
-        $criteria->order = '`timestamp` ASC, `sequence` ASC';
+        $criteria->order = '`timestamp` DESC, `sequence` ASC';
         $criteria->condition = '
             ((`sender_id` = :sender AND `receiver_id` = :receiver)
          OR (`sender_id` = :receiver AND `receiver_id` = :sender))

@@ -3434,6 +3434,25 @@
         $('.friend-chatting').scrollable({
             wheelSpeed: 90
         });
+       /*$('.friend-chatting-title').click(function()
+        {
+            var button = $(this);
+            if ( button.hasClass('active') )
+            {
+                $('friend-chatting-content').slideUp(300, function()
+                {
+                    button.removeClass('active');
+                });
+            }
+            else
+            {
+                $('friend-chatting-content').slideDown(300, function()
+                {
+                    button.addClass('active');
+                });
+            }
+            return false;
+        });*/
     });
 })(jQuery);
 
