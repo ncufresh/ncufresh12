@@ -3363,6 +3363,8 @@
         
         if ( $('#club').length ) $.clubs();
         
+        if ( $('#game').length ) $.game();
+
         if ( $('#friends').length ) $.friends();
         
         if ( $('#profile').length ) $.profile();
@@ -3576,7 +3578,8 @@ google.setOnLoadCallback(function()
 });
 
 (function($){
-    $(document).ready(function(){
+    $.game = function()
+    {
         $('.game-display').scrollable({
         });
         
@@ -3675,5 +3678,5 @@ google.setOnLoadCallback(function()
             });
             return false;
         }); 
-    });
+    };
 })(jQuery);

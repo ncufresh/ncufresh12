@@ -1,7 +1,7 @@
 <h4>
     心理諮商
 </h4>
-<img alt="諮商中心" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E8%AB%AE%E5%95%86%E4%B8%AD%E5%BF%83.jpg" style="width:500px;height:667px;" />
+<img alt="諮商中心" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/health3-1.jpg" style="width:500px;height:667px;" />
 <h5>
     1.預約：
 </h5>
