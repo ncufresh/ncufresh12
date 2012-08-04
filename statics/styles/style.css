@@ -4191,17 +4191,17 @@ div.profile-message-reply
 
 .button-back
 {
-    background-image: url('../profile/button/back.png');
-    background-repeat: no-repeat ;
-    width: 84px;
-    height: 37px;
-    padding: 0px;
-    margin: 0px;
-    float:right;
-    display:block;
-    position:relative;
     right:60px;
     bottom:61px;
+    display: block;
+    border: 2px black solid;
+    width: 68px;
+    padding: 3px;
+    font-weight: bold;
+    color: #0A5163;
+    background: #C9F8E7;
+    border-radius: 9px;
+    text-align: center;
 }
 
 .button-all-choose

@@ -212,7 +212,8 @@ class SiteController extends Controller
             $model->attributes = $_POST['login'];
             if ( $model->login() )
             {
-                if ( empty($model->profile) )
+                $user = Yii::app()->user->getUser();
+                if ( ! isset($user->profile->id) )
                 {
                     $this->redirect(array('profile/editor'));
                 }
