@@ -5268,6 +5268,16 @@ div.game-system
     display: inline-block;
 }
 
+div.game-system .scroll-container
+{
+    width: 380px;
+}
+
+div.game-system .scroll-content
+{
+    width: 380px;
+}
+
 div.user-body
 {
     position:relative;
@@ -7927,14 +7937,14 @@ td.popularity
     padding: 0px;"
 }
 
-.scroll-content
+#street-div .scroll-content
 {
     margin-right: -70px;
     margin-left: 38px;
     margin-top: 8px;
 }
 
-.scroll-container
+#street-div .scroll-container
 {
     width: 630px;
     height: 300px;
