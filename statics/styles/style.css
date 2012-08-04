@@ -1043,6 +1043,7 @@ a:hover
 
 #chat .online-friends
 {
+    color: #FFFFFF;
     margin: 40px 0 0 85px;
     position: absolute;
     text-align: center;
@@ -3889,33 +3890,25 @@ div.all-sorts-of-friends
     margin:25px 25px 25px 25px;
 }
 
-.A-group-users
+.a-group-users
 {
     width:680px;
     height:370px;
     margin:0px;
 }
 
-div.A-group-users button
+div.a-group-users button
 {
     padding:0px;
     margin-top:0px;
 }
 
-/*div.friends-part4 form
+div.a-group-users div.avatar
 {
-    width:300px;
-    height:315px;
-    margin-left:5px;
-    padding:0px;
-}*/
-
-div.A-group-users div.avatar
-{
-    margin-left:28px;
+    margin-left:20px;
     margin-top:0px;
-    width:87px; 
-    height:145px;
+    width:100px; 
+    height:70px;
     padding:0px;
     float:left;
 }
@@ -3924,14 +3917,15 @@ div.A-group-users div.avatar
 {
     width:415px;
     height:315px;
-    margin-top:14px;
+    margin-top:0;
+    margin-left:260px;
     padding:0px;
 }
 
 .friend-chatting ul
 {
     width:410px;
-    margin-left:2px;
+    margin-left:1px;
     padding:0px;
     outline:1px solid black;
     outline-style:dotted;
@@ -3943,6 +3937,22 @@ div.A-group-users div.avatar
     padding:0px;
     float:left;
     list-style-type:none;
+    outline:1px solid black;
+    outline-style:dotted;
+    overflow: hidden;
+}
+
+.friend-chatting-content
+{
+    background-position: -288px 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    display: block;
+    height: 60px;
+    overflow: hidden;
+    padding: 5px;
+    position: relative;
+    width: 190px;
     outline:1px solid black;
     outline-style:dotted;
 }
@@ -4425,6 +4435,13 @@ div.profile-message-reply
 .is_exist
 {
     color:red;
+}
+
+.group-users-list-search
+{
+    position:absolute;
+    right:435px;
+    bottom:360px;
 }
 
 /**
@@ -5055,11 +5072,11 @@ div.item-description .exist
 #game-mission-dialog .avatar
 {
     width: 265px;
-    height: 451px;
+    height: 475px;
     font-size: 1.125em;
     /*outline: 1px solid black;*/
     position: absolute;
-    top: 43px;
+    top: 42px;
     left: 629px;
 }
 

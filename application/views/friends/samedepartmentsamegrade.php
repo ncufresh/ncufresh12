@@ -1,6 +1,6 @@
 <h4>同屆同系</h4>
 <div id="sameDsameG">
-<form class="A-group-users" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
+<form class="a-group-users" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
         <ul class="users-department">
 <?php foreach ( $profiles as $profile ) : ?>
             <li>
