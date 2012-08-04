@@ -3097,6 +3097,26 @@ button.news-button
     margin-top: 6px
 }
 
+#about .title1,
+#about .title2,
+#about .button-left,
+#about .button-right,
+#about .about-small-0,
+#about .tag,
+#about .tag-txt
+{
+    background: url('../about/picture.png') no-repeat;
+}
+
+#about .tag-bar0,
+#about .tag-bar1,
+#about .tag-bar2,
+#about .tag-bar3,
+#about .tag-bar4
+{
+    background: url('../about/photo.jpg') no-repeat;
+}
+
 #about .itr-block
 {
     padding-left: 15px;
@@ -4209,11 +4229,20 @@ button.news-button
 }
 #street-div #yun-step
 {
+<<<<<<< HEAD
+    background-position: 0px -1056px;
+    left: 25px;
+    height: 140px;
+    width: 700px;
+    position: relative;
+    margin-top: -0px;
+=======
     width: 50px;
     height: 88px;
     background:  url('../building/landscape/mouseleave/yun_step.png ');
     left: 237px;
     top: 275px;
+>>>>>>> 7efc94add797bfb048cb9aedeaa7b6f3cfbc31cc
 }
 #street-div #yun-step:hover
 {
@@ -4221,15 +4250,30 @@ button.news-button
 }
 #street-div .arrow
 {
+<<<<<<< HEAD
+    border-radius: 10px 10px 0px 0px;
+    background-color: #385281;
+    background-position: 0px 0px;
+    width: 750px;
+    height: 75px;
+=======
     position: absolute;
     z-index: 4;
     display: none;
     cursor: pointer;
+>>>>>>> 7efc94add797bfb048cb9aedeaa7b6f3cfbc31cc
 }
 #street-div .arrow.up
 {
+<<<<<<< HEAD
+    background-color: #385281;
+    background-position: 0px -80px;
+    width: 750px;
+    height: 85px;
+=======
     left: 350px;
     top: 0px;
+>>>>>>> 7efc94add797bfb048cb9aedeaa7b6f3cfbc31cc
 }
 #street-div .arrow.left
 {
@@ -4243,11 +4287,21 @@ button.news-button
 }
 #street-div .arrow.back
 {
+<<<<<<< HEAD
+    border-radius: 0px 0px 10px 10px;
+    background: #B9B9B9;
+    bottom: 0px;
+    height: 0px;
+    opacity: 0px;
+    position: absolute;
+    width: 400px;
+=======
     height: 51px;
     width: 100px;
     left: 650px;
     top: 3px;
     cursor: pointer;
+>>>>>>> 7efc94add797bfb048cb9aedeaa7b6f3cfbc31cc
 }
 #street-div .button-text
 {
@@ -4284,8 +4338,17 @@ button.news-button
 }
 #street-div .one-image.dormitory
 {
+<<<<<<< HEAD
+    background-position: 0px -544px;
+    background-color: #8ca86c;
+    left: 25px;
+    height: 508px;
+    width: 700px;
+    position: relative;
+=======
     top: 10px;
     left: 20px;
+>>>>>>> 7efc94add797bfb048cb9aedeaa7b6f3cfbc31cc
 }
 #street-div .one-image.diet
 {
@@ -4309,8 +4372,16 @@ button.news-button
 }
 #street-div .one-image.exercise
 {
+<<<<<<< HEAD
+    border-radius: 10px;
+    height: 40px;
+    float: left;
+    margin: 5px;
+    width: 40px;
+=======
     top: 31px;
     left: 687px;
+>>>>>>> 7efc94add797bfb048cb9aedeaa7b6f3cfbc31cc
 }
 #street-div .picture
 {
@@ -4331,8 +4402,15 @@ button.news-button
 }
 #street-div .two-image.department-building
 {
+<<<<<<< HEAD
+    border-radius: 10px 10px 0px 0px;
+    background-position: 0px -256px;
+    width: 700px;
+    height: 280px;
+=======
     top: 210px;
     left: 0px;
+>>>>>>> 7efc94add797bfb048cb9aedeaa7b6f3cfbc31cc
 }
 #street-div .two-image.dormitory
 {
@@ -4367,7 +4445,63 @@ button.news-button
     margin-left: 38px;
     margin-top: 8px;
 }
+<<<<<<< HEAD
+
+#about .button-left
+{
+    cursor: pointer;
+    display: none;
+    background-position: 0px -176px;
+    width: 67px;
+    height: 67px;
+}
+
+#about .button-right
+{
+    cursor: pointer;
+    display: none;
+    background-position: -80px -176px;
+    width: 67px;
+    height: 67px;
+}
+
+#about .tag-bar0
+{
+    background-position: -0px -0px;
+    display: none;
+}
+
+#about .tag-bar1
+{
+    background-position: 0px -432px;
+    display: none;
+}
+
+#about .tag-bar2
+{
+    background-position: 0px -864px;
+    display: none;
+}
+
+#about .tag-bar3
+{
+    background-position: -560px 0px;
+    display: none;
+}
+
+#about .tag-bar4
+{
+    background-position: -560px -432px;
+    display: none;
+}
+
+/**
+ * Facebook style
+ */
+#fb-like
+=======
 .scroll-container
+>>>>>>> 7efc94add797bfb048cb9aedeaa7b6f3cfbc31cc
 {
     width: 630px;
     height: 300px;
