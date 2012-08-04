@@ -15,4 +15,9 @@ $ncufreshfb = array(
     'secret'    => 'da3b004c79c3122de3a702a90a8a6dbf'
 );
 
+$ncufreshma = array(
+    'address'   => 'username@gmail.com',
+    'password'  => 'password'
+);
+
 return dirname(__FILE__) . '/yii/yii.php';

@@ -3401,7 +3401,7 @@ button.news-button
     width: 96px;
 }
 
-<<<<<<< HEAD
+
 #club .club,
 #club .club-head,
 #club .club-head:hover,
@@ -3465,7 +3465,7 @@ button.news-button
 
 #club .department
 {
-    background: url('../club/department.png');
+    background-position: -800px 0px;
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
