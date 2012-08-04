@@ -928,7 +928,7 @@
                 var scrollContentHeight = scrollContent.height();
                 var scrollTrackHeight = scrollTrack.height();
                 var height = 0;
-                if ( scrollContent.width() - scrollContainer.width() > 0 )
+                if ( scrollContent.width() - scrollContainer.width() >= 0 )
                 {
                     scrollArea.css({
                         width: scrollContainer.width() + scrollWidth
@@ -3611,9 +3611,12 @@
             return false;
         });
 
-        $('#calendar div').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
-
-        $('.back').click(function()
+        if ( $('#calendar div').length ) 
+        {
+            $('#calendar div').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
+        }
+        
+        $('#club .back').click(function()
         {
             window.history.back();
         });      
@@ -4225,7 +4228,7 @@
         });
         $('.friend-chatting').scrollable({
             wheelSpeed: 90
-        })
+        });
         $('.friend-chatting-content').scrollable({
             wheelSpeed: 90
         });
@@ -4384,8 +4387,8 @@
 
         if ( $('#calendar-event').length ) $.calendarEvent();
 
-        $('input.datepicker:not(#form-register-birthday)').datepicker();
-        $('#form-register-birthday').datepicker({
+        $('input.datepicker:not(#form-register-birthday, #form-editor-birthday)').datepicker();
+        $('#form-register-birthday, #form-editor-birthday').datepicker({
             year: 1994,
             month: 8
         });
