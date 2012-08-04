@@ -355,6 +355,7 @@
 /**
  * Chat
  */
+
 (function($)
 {
     var avatars = [];
@@ -378,7 +379,7 @@
             chatFormClass:          'chat-form',
             chatInputClass:         'chat-input',
             chatMessagesClass:      'chat-messages',
-            chatAvatarClass:        'chat-avatar'
+            chatAvatarClass:        'chat-avatar',
         }, options);
         return $(this).click(function()
         {
@@ -2729,6 +2730,7 @@
         }
     };
 })(jQuery);
+
 (function($) {
     $.clubs = function()
     {
@@ -3361,6 +3363,12 @@
         
         if ( $('#club').length ) $.clubs();
         
+        if ( $('#game').length ) $.game();
+
+        if ( $('#friends').length ) $.friends();
+        
+        if ( $('#profile').length ) $.profile();
+        
         if ( $('#nculife').length ) $.nculife();
 
         if ( $('#readme').length ) $.readme(); 
@@ -3517,7 +3525,26 @@
 })(jQuery);
 
 (function($){
-    $(document).ready(function(){
+    $.friends = function()
+    {
+        jQuery('.button-back').click(function()
+        {
+            window.history.back();
+        }); 
+        $('.a-group-users').scrollable({
+            wheelSpeed: 90
+        });
+        $('.users-group').scrollable({
+            wheelSpeed: 90
+        });
+    
+    }
+})(jQuery);
+
+
+(function($){
+    $.profile = function()
+    {
         $('.allmessages').scrollable({
             wheelSpeed: 90
         });
@@ -3527,32 +3554,15 @@
         $('.self-messages').scrollable({
             wheelSpeed: 90
         });
-         var daysInMonth = function(iYear, iMonth)
-        {
-            return 32 - new Date(iYear, iMonth-1, 32).getDate();
-        }
-        jQuery('.button-back').click(function()
-        {
-            window.history.back();
-        }); 
-        $(document).ready(function(){
-        $('.a-group-users').scrollable({
-            wheelSpeed: 90
-        });
-        $('.users-group').scrollable({
-            wheelSpeed: 90
-        });
         $('.friend-chatting').scrollable({
             wheelSpeed: 90
         })
         $('.friend-chatting-content').scrollable({
             wheelSpeed: 90
         });
-       
-    });
-    });
+    
+    }
 })(jQuery);
-
 
 google.load('search', '1', {
     language: 'zh_TW'
@@ -3568,7 +3578,8 @@ google.setOnLoadCallback(function()
 });
 
 (function($){
-    $(document).ready(function(){
+    $.game = function()
+    {
         $('.game-display').scrollable({
         });
         
@@ -3594,6 +3605,14 @@ google.setOnLoadCallback(function()
                 answer: $(this).find('input[name=answer]').val(),
                 token: $.configures.token
             }, function(data){
+                if ( data.result )
+                {
+                    $('#game-mission-correct').get(0).play();
+                }
+                else
+                {
+                    $('#game-mission-wrong').get(0).play();
+                }
                 $.alert({
                     message: data.result ? '恭喜您～答對囉！獲取了金幣與經驗值' : '答錯囉～請再接再厲',
                     confirmed: function()
@@ -3659,5 +3678,5 @@ google.setOnLoadCallback(function()
             });
             return false;
         }); 
-    });
+    };
 })(jQuery);
