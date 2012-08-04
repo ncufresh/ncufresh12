@@ -5352,10 +5352,16 @@ li.enabled a
     padding-left:44px;
 }
 
+#forum-create
+{
+    background-image: url(../forum/create/background.png);
+    margin-left: 35px;
+    background-repeat: no-repeat;
+}
+
 #forum-create-form .form-top
 {
-    background-image: url('../forum/create/background_top.png');
-    background-repeat: no-repeat;
+    
     margin-left:35px;
     width:656px;
     height:81px;
@@ -5384,7 +5390,7 @@ li.enabled a
 
 #forum-create-form .form-body
 {
-    background-image: url('../forum/create/background_body.png');
+    
     margin-left:35px;
     margin-top:0px;
     width:656px;
@@ -5418,8 +5424,7 @@ li.enabled a
 
 #forum-create-form .form-foot
 {
-    background-image: url('../forum/create/background_foot.png');
-    background-repeat: no-repeat;
+    
     margin-left:35px;
     margin-top:0px;
     width:656px;
