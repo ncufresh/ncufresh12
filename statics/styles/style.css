@@ -597,7 +597,7 @@ a:hover
 .index-forums-box h4,
 #notfound a,
 #notfound a:hover,
-#club-calendar-button,
+#club #calendar-button,
 #index-calendar > div,
 .calendar,
 .calendar .right div,
@@ -1536,19 +1536,19 @@ ul#nculife-details
     position: relative;
 }
 
-#club-calendar .calendar-table,
+#club #calendar  .calendar-table,
 #index-calendar .calendar-table
 {
     border-collapse: collapse;
 }
 
-#club-calendar .calendar-table caption,
+#club #calendar  .calendar-table caption,
 #index-calendar .calendar-table caption
 {
     margin: 15px 0 10px 0;
 }
 
-#club-calendar .calendar-table td,
+#club #calendar  .calendar-table td,
 #index-calendar .calendar-table td
 {
     text-align: right;
@@ -1566,26 +1566,26 @@ ul#nculife-details
     outline: 1px solid #000;
 }
 
-#club-calendar .calendar-table thead,
+#club #calendar  .calendar-table thead,
 #index-calendar .calendar-table thead
 {
     display: block;
 }
 
-#club-calendar .calendar-table thead td,
+#club #calendar  .calendar-table thead td,
 #index-calendar .calendar-table thead td
 {
     color: #af8d5a;
     text-align: center;
 }
 
-#club-calendar .calendar-table thead td.weekend,
+#club #calendar  .calendar-table thead td.weekend,
 #index-calendar .calendar-table thead td.weekend
 {
     color: red;
 }
 
-#club-calendar .calendar-table tbody,
+#club #calendar  .calendar-table tbody,
 #index-calendar .calendar-table tbody
 {
     border-top: 1px solid #946722;
@@ -1593,14 +1593,14 @@ ul#nculife-details
     display: block;
 }
 
-#club-calendar .todolist-table td,
+#club #calendar  .todolist-table td,
 #index-calendar .todolist-table td
 {
     width: 100px;
     text-align: center;
 }
 
-#club-calendar  .todolist-table thead td,
+#club #calendar  .todolist-table thead td,
 #index-calendar .todolist-table thead td
 {
     color: #946722;
@@ -3312,42 +3312,40 @@ button.news-button
     width: 96px;
 }
 
-.club,
-.club-head,
-.club-head:hover,
-.department,
-.department-head,
-.department-head:hover,
-.student,
-.student-head,
-.student-head:hover,
-#club-head-1,
-#club-head-2,
-#club-head-3,
-#club-back1,
-#club-back2,
-#club-back3,
-.club-modify-table,
-#club-bottom-1,
-#club-bottom-2,
-#club-bottom-3
+#club .club,
+#club .club-head,
+#club .club-head:hover,
+#club .department,
+#club .department-head, 
+#club .department-head:hover,
+#club .student,
+#club .student-head,
+#club .student-head:hover,
+#club #head-1,
+#club #head-2,
+#club #head-3,
+#club #back1,
+#club #back2,
+#club #back3,
+#club .modify,
+#club #bottom-1,
+#club #bottom-2,
+#club #bottom-3
 {
 	background: url('../images/club.png');
 }
 
-
-
 /**
  * Club style
  */
- .alltag
+#club .alltag
  {
     height: 66px;
  }
  
- .club
+#club .club
  {
-    background-position: 0px 0px;
+    background-position: -800px -880px;
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -3355,9 +3353,9 @@ button.news-button
     display: inline-block;
  }
  
-.club-head
+#club .club-head
 {
-    background-position: -960px -1600px;
+    background-position: -1600px -880px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3365,9 +3363,9 @@ button.news-button
     margin-right: 18px;
 }
 
-.club-head:hover
+#club .club-head:hover
 {
-    background-position: -960px -1680px;
+    background-position: -1840px -880px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3375,7 +3373,7 @@ button.news-button
     margin-right: 19px;
 }
 
-.department
+#club .department
 {
     background-position: -800px 0px;
     background-repeat: no-repeat; 
@@ -3385,27 +3383,27 @@ button.news-button
     display: inline-block;
 }
 
-.department-head
+#club .department-head
 {
-    background-position: -1280px -1600px;
+    background-position: -1600px -960px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
     float: left;
 }
 
-.department-head:hover
+#club .department-head:hover
 {
-    background-position: -1280px -1680px;
+    background-position: -1840px -960px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
     float: left;
 }
 
-.student
+#club .student
 {
-    background-position: 0px -960px;
+    background-position: -16px -880px;
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -3413,9 +3411,9 @@ button.news-button
     display: inline-block;
 }
 
-.student-head
+#club .student-head
 {
-    background-position: -1600px -1600px;
+    background-position: -1600px -1040px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3423,9 +3421,9 @@ button.news-button
     margin-left: 23px;
 }
 
-.student-head:hover
+#club .student-head:hover
 {
-    background-position: -1600px -1680px;
+    background-position: -1840px -1040px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3433,7 +3431,7 @@ button.news-button
     margin-left: 23px;
 }
 
-.club-list
+#club .club-list
 {
     text-align: left;
     overflow: hidden;
@@ -3441,7 +3439,7 @@ button.news-button
     margin-left: 30px;
 }
 
-.club-list ul
+#club .club-list ul
 {
     float: left;
     padding: 0;
@@ -3449,14 +3447,14 @@ button.news-button
     list-style: none;
 }
 
-.department-list
+#club .department-list
 {
     text-align: left;
     margin-top: 98px;
     margin-left: 91px;
 }
 
-.department-list ul
+#club .department-list ul
 {
     float: left;
     padding: 0;
@@ -3465,12 +3463,12 @@ button.news-button
     list-style: none;
 }
 
-.student-list
+#club .student-list
 {
     text-align: left;
 }
 
-.student-list ul
+#club .student-list ul
 {
     float: left;
     padding: 0;
@@ -3480,7 +3478,7 @@ button.news-button
     margin-left: 143px;
 }
 
-.club-title
+#club .title
 {
     font-weight: bold;
     width: 90%;
@@ -3488,7 +3486,7 @@ button.news-button
     height: 25px;
 }
 
-.club-item
+#club .item
 {
     padding-top: 5px;
     padding-bottom: 20px;
@@ -3496,7 +3494,7 @@ button.news-button
     margin-left: 43px;
 }
 
-.club-display
+#club .display
 {
 	float: right;
 	width: 530px;
@@ -3518,7 +3516,7 @@ button.news-button
     background: url('../club/4-2.png');
 }
 
-.club-display-head
+#club .display-head
 {
     height: 105px;
     width: 530px;
@@ -3527,61 +3525,61 @@ button.news-button
     background-repeat: no-repeat;
 }
 
-.club-display-head h4
+#club .display-head h4
 {
     text-align: center;
     margin-top: 35px;
 }
 
-#club-head-1
+#club #head-2
 {
-    background-position: 0px -1920px;
+    background-position: -1600px -480px;
 }
 
-#club-head-3
+#club #head-1
 {
-    background-position: 0px -2010px;
+    background-position: -1600px -600px;
 }
 
-#club-head-2
+#club #head-3
 {
-    background-position: -480px -1920px;
+    background-position: -1600px -720px;
 }
 
-.club-display-head a
+#club .display-head a
 {
     float: right;
     margin-top: 14px;
     margin-right: 20px;
 }
 
-.club-display-bottom
+#club .display-bottom
 {
-    height: 182px;
+    height: 140px;
     width: 530px;
     background-repeat: no-repeat;
     float: right;
 }
 
-#club-bottom-1
+#club #bottom-1
 {
-    background-position: -480px -2010px;
+    background-position: -1600px -160px;
     background-repeat: no-repeat;
 }
 
-#club-bottom-3
+#club #bottom-2
 {
-	background-position: -960px -2090px;
+	background-position: -1600px 0px;
     background-repeat: no-repeat;
 }
 
-#club-bottom-2
+#club #bottom-3
 {
-    background-position: -960px -1920px;
+    background-position: -1600px -320px;
     background-repeat: no-repeat;
 }
 
-.club-back-button
+#club .back-button
 {
     float: right;
     width: 50px;
@@ -3590,22 +3588,22 @@ button.news-button
     cursor: pointer;
 }
 
-#club-back1
+#club #back1
 {
-    background-position: 0px -2170px;
+    background-position: -1600px -1120px;
 }
 
-#club-back2
+#club #back2
 {
-    background-position: -160px -2170px;
+    background-position: -1680px -1120px;
 }
 
-#club-back3
+#club #back3
 {
-    background-position: -320px -2170px;
+    background-position: -1760px -1120px;
 }
 
-.club-picture
+#club .picture
 {
     background: none;
     border: 0px;
@@ -3619,7 +3617,7 @@ button.news-button
     margin-left: -34px;
 }
 
-.club-picture img
+#club .picture img
 {
     border: 5px solid #FFFFFF;
     width: 194px;
@@ -3627,25 +3625,25 @@ button.news-button
     position: relative;
 }
 
-.club-underpicture
+#club .underpicture
 {
 	float: left;
     margin-left: -20px;
 }
 
-.club-underpicture > div
+#club .underpicture > div
 {
     position: relative;
     height: 470px;
     display: none;
 }
 
-.club-underpicture ul
+#club .underpicture ul
 {
     display: inline-block;
 }
 
-#club-calendar-button
+#club #calendar-button
 {
     background-position: -1070px -880px;
     cursor: pointer;
@@ -3657,7 +3655,7 @@ button.news-button
     z-index: 1;
 }
 
-#club-calendar
+#club #calendar
 {
     background: #FFEDB7;
     border-radius: 15px;
@@ -3667,12 +3665,12 @@ button.news-button
     margin-top: 52px;
 }
 
-#club-calendar table
+#club #calendar table
 {
     width: 100%;
 }
 
-.modify-table
+#club .modify-table
 {
     padding: 0 5% 5% 0;
     position: relative;
@@ -3681,19 +3679,19 @@ button.news-button
     height: 290px;
 }
 
-.club-web
+#club .web
 {
     height: 55px;
     float: left;
     position: relative;
 }
 
-.club-modify-table
+#club .modify
 {
     padding: 5px;
     height: 600px;
     width: 750px;
-    background-position: -960px -960px;
+    background-position: -16px 0px;
 }
 /* profile... */
 ul.friends-sort 
