@@ -4971,6 +4971,11 @@ img.user_img
     font-weight: bold;
 } 
 
+.game-display .shop-click:hover
+{
+    color: #A6FF06;
+} 
+
 .game-display .experience
 {
     background: #FFFFFF;
@@ -5262,6 +5267,11 @@ ul.game-button li
     margin-right: 1px;
     text-align:center;
     color:#b9b9b9;
+}
+
+ul.game-button li a:hover
+{
+    color:#00B2B9;
 }
 
 div.game-display

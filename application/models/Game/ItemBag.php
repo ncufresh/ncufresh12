@@ -30,6 +30,8 @@ class ItemBag extends CActiveRecord
         $user_money = $character->money;
         $user_level = $character->getLevel($user_id);
         $item_data = Item::model()->findByPk($item_id);
+        if( $item_data == null )
+            return 4; //沒有此物品
         $item_price = $item_data->price;
         $item_level = $item_data->level;
         $item_exist = $this->findAll(array(
@@ -39,11 +41,11 @@ class ItemBag extends CActiveRecord
                 ':item_id' => $item_id)
             ));
         //print_r($item_exist);
-        if($user_money >= $item_price)
+        if($item_exist == null)
         {
             if($user_level >= $item_level)
             {
-                if($item_exist == null)
+                if($user_money >= $item_price)
                 {
                     $item = new ItemBag(); //ItemBag Model
                     $item->user_id = $user_id; //同步寫入user的id至道具列表
@@ -54,13 +56,13 @@ class ItemBag extends CActiveRecord
                     return 0;
                 }
                 else
-                return 3;
+                return 1;
             }
             else
             return 2;
         }
         else
-        return 1;
+        return 3;
     }
     public function equipItem($item_id)
     {
