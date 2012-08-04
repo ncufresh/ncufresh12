@@ -147,8 +147,6 @@ class ForumController extends Controller
             $comment->attributes = $_POST['comment'];
             if ( $comment->validate() && $comment->save() )
             {
-                Character::model()->findByPk(Yii::app()->user->getId())->addExp(self::NEW_REPLY_VALUE);
-                Character::model()->findByPk(Yii::app()->user->getId())->addMoney(self::NEW_REPLY_VALUE);
                 $this->redirect(Yii::app()->createUrl('forum/view', array(
                     'fid'       => $comment->article->forum->id,
                     'id'        => $comment->article_id
@@ -182,6 +180,8 @@ class ForumController extends Controller
                 if( $article->save() )
                 {
                     $article = Article::model()->findByPk($aid);
+                    Character::model()->findByPk(Yii::app()->user->getId())->addExp(self::NEW_REPLY_VALUE);
+                    Character::model()->findByPk(Yii::app()->user->getId())->addMoney(self::NEW_REPLY_VALUE);
                     $this->redirect(Yii::app()->createUrl('forum/view', array(
                     'fid'           => $reply->article->forum->id,
                     'id'            => $reply->article_id,

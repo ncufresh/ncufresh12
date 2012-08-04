@@ -103,7 +103,16 @@ class Article extends CActiveRecord
             ));
         }
     }
-
+    
+    public function getLastestArticles($num)
+    {
+        return $this->findAll(array(
+            'condition' => 'invisible=0',
+            'order'     => 'created DESC',
+            'limit'     => $num
+        ));
+    }
+    
     public function getUrl()
     {
         return Yii::app()->createUrl('forum/view', array(

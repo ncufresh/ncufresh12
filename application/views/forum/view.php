@@ -55,7 +55,11 @@ else if ( $fid == 22 || $fid == 23 )
 ?>
 <div id="forum-view-body" class="<?php echo $forum_color; ?>">
     <div class="forum-view-profile">
-        <div class="profile-pic"></div>
+        <div class="profile-pic">
+        <?php $this->widget('Avatar', array(
+            'id'        => $article->author_id
+        )); ?>
+        </div>
         <div class="profile-name">暱稱：<?php echo User::model()->findByPK($article->author_id)->profile->nickname; ?></div>
         <div class="profile-department">系所：<?php echo User::model()->findByPK($article->author_id)->profile->mydepartment->abbreviation;?></div>
 <?php if ( ! Yii::app()->user->isguest && Yii::app()->user->id != $article->author_id ) :?>
@@ -95,7 +99,11 @@ foreach ($replies as $each):
 ?>
 <div id="forum-view-replies" class="<?php echo $forum_color; ?>">
     <div class="forum-view-profile">
-        <div class="profile-pic"></div>
+        <div class="profile-pic">
+        <?php $this->widget('Avatar', array(
+            'id'        => $each->author_id
+        )); ?>
+        </div>
         <div class="profile-name">暱稱：<?php echo User::model()->findByPK($each->author_id)->profile->nickname; ?></div>
         <div class="profile-department">系所：<?php echo User::model()->findByPK($each->author_id)->profile->mydepartment->abbreviation;?></div>
 <?php if ( ! Yii::app()->user->isguest && Yii::app()->user->id != $each->author_id ) :?>
