@@ -3586,23 +3586,23 @@
 (function($) {
     $.clubs = function()
     {
-        $('#club-menu-items a').lightbox();
+        $('#menu-items a').lightbox();
 
-        $('#club-calendar-button').click(function()
+        $('#calendar-button').click(function()
         {
             var button = $(this);
             if ( button.hasClass('active') )
             {
-                $('.club-underpicture div').slideUp(300, function()
+                $('.underpicture div').slideUp(300, function()
                 {
                     button.removeClass('active');
                 });
             }
             else
             {
-                $('.club-underpicture div').slideDown(300, function()
+                $('.underpicture div').slideDown(300, function()
                 {
-                    $('#club-calendar').css({
+                    $('#calendar').css({
                         overflow: 'visible'
                     });
                     button.addClass('active');
@@ -3611,7 +3611,7 @@
             return false;
         });
 
-        $('#club-calendar div').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
+        $('#calendar div').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
 
         $('.back').click(function()
         {

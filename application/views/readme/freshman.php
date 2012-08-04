@@ -1,6 +1,6 @@
-<div id="readme-fresh" class="readme-background">
+<div id="readme-fresh" class="background">
     <div class="readme-view"></div>
-    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" id="fresh-back" class="readme-back" title="回上一頁"></a>
+    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" id="fresh-back" class="back" title="回上一頁"></a>
     <div id="read-fresh-menu" class="readme-menu">
         <h5>新生區</h5>
         <ul class="readme-menu-index">
