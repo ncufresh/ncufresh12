@@ -9,7 +9,7 @@
     </div>
     <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="left" />
     <ul class="photo-ul">
-<?php for ( $count=0; $count<82; $count++ ) : ?>
+<?php for ( $count = 0 ; $count < 31 ; ++$count ) : ?>
         <li class="photo-li">
             <a href="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photos/photo<?php echo $count; ?>.jpg">
             <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photos/photo<?php echo $count; ?>.jpg" alt="photo" />
@@ -31,56 +31,56 @@
     <ul class="tag-bar">
         <li>
             <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/design.jpg" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="美工" />
-            <div name="陳禹傑" grade="資工三" left="292px" top="49px" width="50px" height="50px"></div>
-            <div name="張力"   grade="資工三" left="98px" top="250px" width="70px" height="70px"></div>
+            <div name="陳禹傑" grade="資工三" left="292px" top="47px" width="50px" height="50px"></div>
+            <div name="張力"   grade="資工三" left="98px" top="240px" width="70px" height="70px"></div>
             <div name="李冠勳" grade="資工二" left="227px" top="39px" width="58px" height="58px"></div>
             <div name="彭恮傑" grade="資工二" left="164px" top="37px" width="58px" height="58px"></div>
-            <div name="康心柔" grade="資管二" left="247px" top="100px" width="58px" height="58px"></div>
-            <div name="黃晨翔" grade="資工二" left="373px" top="94px" width="58px" height="58px"></div>
+            <div name="康心柔" grade="資管二" left="247px" top="93px" width="58px" height="58px"></div>
+            <div name="黃晨翔" grade="資工二" left="370px" top="94px" width="58px" height="58px"></div>
             <div name="曾敏"   grade="中文二" left="306px" top="97px" width="58px" height="58px"></div>
-            <div name="楊雅媛" grade="資工三" left="168px" top="91px" width="58px" height="58px"></div>
-            <div name="黃千鳳" grade="資工三" left="131px" top="84px" width="53px" height="53px"></div>
+            <div name="楊雅媛" grade="資工三" left="166px" top="91px" width="58px" height="58px"></div>
+            <div name="黃千鳳" grade="資工三" left="126px" top="84px" width="53px" height="53px"></div>
         </li>
         <li>
             <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/program.jpg" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="程設" />
             <div name="蔡志豪" grade="資工三" left="301px" top="46px" width="50px" height="50px"></div>
-            <div name="楊梓豪" grade="資工三" left="178px" top="55px" width="50px" height="50px"></div>
-            <div name="李韋成" grade="資工三" left="256px" top="150px" width="50px" height="50px"></div>
-            <div name="林志信" grade="資工二" left="253px" top="39px" width="50px" height="50px"></div>
-            <div name="黃熙程" grade="資工二" left="403px" top="28px" width="50px" height="50px"></div>
-            <div name="陳薏如" grade="資工二" left="178px" top="134px" width="50px" height="50px"></div>
+            <div name="楊梓豪" grade="資工三" left="178px" top="52px" width="50px" height="50px"></div>
+            <div name="李韋成" grade="資工三" left="256px" top="145px" width="50px" height="50px"></div>
+            <div name="林志信" grade="資工二" left="250px" top="37px" width="50px" height="50px"></div>
+            <div name="黃熙程" grade="資工二" left="403px" top="24px" width="50px" height="50px"></div>
+            <div name="陳薏如" grade="資工三" left="178px" top="127px" width="50px" height="50px"></div>
             <div name="羅雨晴" grade="資工二" left="372px" top="57px" width="50px" height="50px"></div>
-            <div name="梁郁珮" grade="資工二" left="95px" top="179px" width="50px" height="50px"></div>
+            <div name="梁郁珮" grade="資工二" left="92px" top="175px" width="50px" height="50px"></div>
             <div></div>
         </li>
         <li>
             <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/media.jpg" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="影音" />
-            <div name="賀靖雅" grade="資管三" left="206px" top="143px" width="62px" height="62px"></div>
-            <div name="蘇致維" grade="資工三" left="358px" top="75px" width="58px" height="58px"></div>
+            <div name="賀靖雅" grade="資管三" left="206px" top="138px" width="62px" height="62px"></div>
+            <div name="蘇致維" grade="資工三" left="354px" top="75px" width="58px" height="58px"></div>
             <div name="鐘育東" grade="資工二" left="183px" top="88px" width="58px" height="58px"></div>
-            <div name="賴韋辰" grade="資工二" left="322px" top="125px" width="50px" height="50px"></div>
-            <div name="吳易璁" grade="資工二" left="289px" top="115px" width="50px" height="50px"></div>
+            <div name="賴韋辰" grade="資工二" left="320px" top="122px" width="50px" height="50px"></div>
+            <div name="吳易璁" grade="資工二" left="283px" top="115px" width="50px" height="50px"></div>
             <div name="王禹軒" grade="資工二" left="" top="" width="" height=""></div>
-            <div name="林雅淇" grade="資工二" left="243px" top="108px" width="50px" height="50px"></div>
-            <div name="許庭瑜" grade="資工二" left="133px" top="146px" width="60px" height="60px"></div>
+            <div name="林雅淇" grade="資工二" left="238px" top="102px" width="50px" height="50px"></div>
+            <div name="許庭瑜" grade="資工二" left="129px" top="142px" width="60px" height="60px"></div>
             <div></div>
         </li>
         <li>
             <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/project.jpg" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="企劃" />
-            <div name="王菩生" grade="資工三" left="376px" top="127px" width="50px" height="50px"></div>
-            <div name="王儀靜" grade="資工三" left="237px" top="138px" width="50px" height="50px"></div>
-            <div name="許子亮" grade="資工二" left="14px" top="103px" width="50px" height="50px"></div>
-            <div name="吳孟儒" grade="資工二" left="305px" top="100px" width="50px" height="50px"></div>
-            <div name="林長鴻" grade="資工二" left="155px" top="110px" width="50px" height="50px"></div>
+            <div name="王菩生" grade="資工三" left="373px" top="124px" width="50px" height="50px"></div>
+            <div name="王儀靜" grade="資工三" left="234px" top="135px" width="50px" height="50px"></div>
+            <div name="許子亮" grade="資工二" left="10px" top="97px" width="50px" height="50px"></div>
+            <div name="吳孟儒" grade="資工二" left="303px" top="97px" width="50px" height="50px"></div>
+            <div name="林長鴻" grade="資工二" left="155px" top="105px" width="50px" height="50px"></div>
             <div name="張祐瑞" grade="資工二" left="441px" top="106px" width="50px" height="50px"></div>
             <div name="梁乃勻" grade="資工二" left="83px" top="122px" width="50px" height="50px"></div>
-            <div name="陳星妘" grade="資管二" left="502px" top="134px" width="50px" height="50px"></div>
+            <div name="陳星妘" grade="資管二" left="502px" top="126px" width="50px" height="50px"></div>
             <div></div>
         </li>
         <li>
             <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/leader.jpg" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="執行" />
-            <div name="黃筱萍" grade="資工三" left="157px" top="45px" width="80px" height="80px"></div>
-            <div name="盧婉芳" grade="資工三" left="249px" top="32px" width="80px" height="80px"></div>
+            <div name="黃筱萍" grade="資工三" left="152px" top="37px" width="95px" height="95px"></div>
+            <div name="盧婉芳" grade="資工三" left="244px" top="24px" width="95px" height="95px"></div>
         </li>
     </ul>
     <div class="tag-txt"></div>

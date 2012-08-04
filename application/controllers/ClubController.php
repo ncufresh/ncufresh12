@@ -57,8 +57,7 @@ class ClubController extends Controller
         $id = (integer)$id;
         if ( Club::model()->findByPK($id) )
         {
-            $master_id = Club::model()->findByPK($id)->master_id;
-            $is_subscript = Subscription::model()->getIsSubscriptByClubID($master_id);
+            $is_subscript = Subscription::model()->getIsSubscriptByClubID($id);
         }
         $this->render('content', array(
             'data'          => Club::model()->findByPk($id),
