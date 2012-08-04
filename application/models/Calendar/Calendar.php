@@ -61,6 +61,19 @@ class Calendar extends CActiveRecord
         );
     }
 
+    public function createPersonalCalendar()
+    {
+        $calendar = new Calendar();
+        $calendar->user_id = Yii::app()->user->id;
+        $calendar->category = Calendar::CATEGORY_PERSONAL;
+        if ( $calendar->validate() )
+        {
+            $calendar->save();
+            return $calendar;
+        }
+        return false;
+    }
+    
     public function getIsGeneral()
     {
         return $this->category === self::CATEGORY_PUBLIC && $this->user_id === self::GENERAL_CALENDAR_USER_ID;
@@ -163,11 +176,6 @@ class Calendar extends CActiveRecord
         ));
     }
     
-    public function getClubCalendarsSubscriptionStatus()
-    {
-        
-    }
-    
     public function getGeneralCalendar()
     {
         return $this->find(array(
@@ -181,18 +189,12 @@ class Calendar extends CActiveRecord
 
     public function getClubName()
     {
-        // if ( $this->category == 'club' )
         if ( $this->getIsClub() )
         {
             $club = Club::model()->getClubByMasterId($this->author->id);
             return $club?$club->name:'unknown';
         }
         return false;
-    }
-
-    public static function getCurrentMonth()
-    {
-        return date('m', TIMESTAMP);
     }
 
     public function afterFind()

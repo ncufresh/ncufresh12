@@ -2733,7 +2733,7 @@ button.news-button
     left: 540px;
 }
 
-.readme-back
+#readme .back
 {
     width: 70px;
     height: 85px;
@@ -2742,7 +2742,7 @@ button.news-button
     left: 660px;
 }
 
-.readme-download-back
+#readme .download-back
 {
     width: 70px;
     height: 85px;
@@ -3063,6 +3063,26 @@ button.news-button
     margin-top: 6px
 }
 
+#about .title1,
+#about .title2,
+#about .button-left,
+#about .button-right,
+#about .about-small-0,
+#about .tag,
+#about .tag-txt
+{
+    background: url('../about/picture.png') no-repeat;
+}
+
+#about .tag-bar0,
+#about .tag-bar1,
+#about .tag-bar2,
+#about .tag-bar3,
+#about .tag-bar4
+{
+    background: url('../about/photo.jpg') no-repeat;
+}
+
 #about .itr-block
 {
     padding-left: 15px;
@@ -3094,7 +3114,7 @@ button.news-button
 
 #about .tag-txt
 {
-    background: url('../about/small_wood_plate.png') no-repeat;
+    background-position: 0px -1056px;
     left: 25px;
     height: 140px;
     width: 700px;
@@ -3110,14 +3130,16 @@ button.news-button
 #about .title1
 {
     border-radius: 10px 10px 0px 0px;
-    background: url('../about/what.png') #385281 no-repeat;
+    background-color: #385281;
+    background-position: 0px 0px;
     width: 750px;
     height: 75px;
 }
 
 #about .title2
 {
-    background: url('../about/who_with_stars.png') #385281 no-repeat;
+    background-color: #385281;
+    background-position: 0px -80px;
     width: 750px;
     height: 85px;
 }
@@ -3140,6 +3162,7 @@ button.news-button
 
 #about .about-display
 {
+    border-radius: 0px 0px 10px 10px;
     background: #B9B9B9;
     bottom: 0px;
     height: 0px;
@@ -3176,7 +3199,8 @@ button.news-button
 
 #about .tag
 {
-    background: url('../about/wood_plate_for_photo.png') no-repeat #8ca86c center;
+    background-position: 0px -544px;
+    background-color: #8ca86c;
     left: 25px;
     height: 508px;
     width: 700px;
@@ -3216,6 +3240,7 @@ button.news-button
 
 #about .about-photos
 {
+    border-radius: 10px;
     height: 40px;
     float: left;
     margin: 5px;
@@ -3241,7 +3266,7 @@ button.news-button
 #about .about-small-0
 {
     border-radius: 10px 10px 0px 0px;
-    background: url('../about/about.png') no-repeat;
+    background-position: 0px -256px;
     width: 700px;
     height: 280px;
 }
@@ -3291,6 +3316,54 @@ button.news-button
     display: none;
 }
 
+#about .button-left
+{
+    cursor: pointer;
+    display: none;
+    background-position: 0px -176px;
+    width: 67px;
+    height: 67px;
+}
+
+#about .button-right
+{
+    cursor: pointer;
+    display: none;
+    background-position: -80px -176px;
+    width: 67px;
+    height: 67px;
+}
+
+#about .tag-bar0
+{
+    background-position: -0px -0px;
+    display: none;
+}
+
+#about .tag-bar1
+{
+    background-position: 0px -432px;
+    display: none;
+}
+
+#about .tag-bar2
+{
+    background-position: 0px -864px;
+    display: none;
+}
+
+#about .tag-bar3
+{
+    background-position: -560px 0px;
+    display: none;
+}
+
+#about .tag-bar4
+{
+    background-position: -560px -432px;
+    display: none;
+}
+
 /**
  * Facebook style
  */
@@ -3312,6 +3385,7 @@ button.news-button
     width: 96px;
 }
 
+<<<<<<< HEAD
 #club .club,
 #club .club-head,
 #club .club-head:hover,
@@ -3335,6 +3409,8 @@ button.news-button
 	background: url('../images/club.png');
 }
 
+=======
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
 /**
  * Club style
  */
@@ -3345,7 +3421,11 @@ button.news-button
  
 #club .club
  {
+<<<<<<< HEAD
     background-position: -800px -880px;
+=======
+    background: url('../club/club.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -3355,7 +3435,11 @@ button.news-button
  
 #club .club-head
 {
+<<<<<<< HEAD
     background-position: -1600px -880px;
+=======
+    background: url('../club/club-head.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3365,7 +3449,11 @@ button.news-button
 
 #club .club-head:hover
 {
+<<<<<<< HEAD
     background-position: -1840px -880px;
+=======
+    background: url('../club/club-head2.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3375,7 +3463,7 @@ button.news-button
 
 #club .department
 {
-    background-position: -800px 0px;
+    background: url('../club/department.png');
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -3385,7 +3473,11 @@ button.news-button
 
 #club .department-head
 {
+<<<<<<< HEAD
     background-position: -1600px -960px;
+=======
+    background: url('../club/department-head.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3394,7 +3486,11 @@ button.news-button
 
 #club .department-head:hover
 {
+<<<<<<< HEAD
     background-position: -1840px -960px;
+=======
+    background: url('../club/department-head2.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3403,7 +3499,11 @@ button.news-button
 
 #club .student
 {
+<<<<<<< HEAD
     background-position: -16px -880px;
+=======
+    background: url('../club/student.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -3413,7 +3513,11 @@ button.news-button
 
 #club .student-head
 {
+<<<<<<< HEAD
     background-position: -1600px -1040px;
+=======
+    background: url('../club/student-head.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3423,7 +3527,11 @@ button.news-button
 
 #club .student-head:hover
 {
+<<<<<<< HEAD
     background-position: -1840px -1040px;
+=======
+    background: url('../club/student-head2.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3533,17 +3641,29 @@ button.news-button
 
 #club #head-2
 {
+<<<<<<< HEAD
     background-position: -1600px -480px;
+=======
+    background: url('../club/5-1.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
 }
 
 #club #head-1
 {
+<<<<<<< HEAD
     background-position: -1600px -600px;
+=======
+    background: url('../club/6-1.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
 }
 
 #club #head-3
 {
+<<<<<<< HEAD
     background-position: -1600px -720px;
+=======
+    background: url('../club/4-1.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
 }
 
 #club .display-head a
@@ -3563,19 +3683,31 @@ button.news-button
 
 #club #bottom-1
 {
+<<<<<<< HEAD
     background-position: -1600px -160px;
+=======
+    background: url('../club/5-3.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     background-repeat: no-repeat;
 }
 
 #club #bottom-2
 {
+<<<<<<< HEAD
 	background-position: -1600px 0px;
+=======
+    background: url('../club/6-3.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     background-repeat: no-repeat;
 }
 
 #club #bottom-3
 {
+<<<<<<< HEAD
     background-position: -1600px -320px;
+=======
+    background: url('../club/4-3.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     background-repeat: no-repeat;
 }
 
@@ -3590,17 +3722,29 @@ button.news-button
 
 #club #back1
 {
+<<<<<<< HEAD
     background-position: -1600px -1120px;
+=======
+    background: url('../club/clubback1.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
 }
 
 #club #back2
 {
+<<<<<<< HEAD
     background-position: -1680px -1120px;
+=======
+    background: url('../club/clubback2.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
 }
 
 #club #back3
 {
+<<<<<<< HEAD
     background-position: -1760px -1120px;
+=======
+    background: url('../club/clubback3.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
 }
 
 #club .picture
@@ -3691,7 +3835,11 @@ button.news-button
     padding: 5px;
     height: 600px;
     width: 750px;
+<<<<<<< HEAD
     background-position: -16px 0px;
+=======
+    background: url('../club/background.png');
+>>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
 }
 /* profile... */
 ul.friends-sort 
@@ -4732,21 +4880,6 @@ label.group-friends-name
     background-color:green;
 }
 
-.etmomi
-{
-    background: url('../1.jpg');
-    width:30px;
-    height:30px;
-    display:block;
-}
-
-.etmomi:hover
-{
-    background: url('../2.png');
-    width:300px;
-    height:300px;
-    display:block;
-}
 a.mygroup-name
 {
     text-align: left;

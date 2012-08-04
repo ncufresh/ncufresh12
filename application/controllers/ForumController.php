@@ -137,7 +137,6 @@ class ForumController extends Controller
         {
             throw new CHttpException(404);
         }
-        
     }
 
     public function actionComment(){

@@ -1,6 +1,6 @@
-<div id="readme-download" class="readme-downlaod-background">
+<div id="readme-download" class="downlaod-background">
     <div class="readme-view">
-        <ul class="download-index">
+        <ul class="index">
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/附件-申請就學貸款須知.doc" title="附件-申請就學貸款須知">附件-申請就學貸款須知</a></li>
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/附件-校內獎學金一覽表.doc" title="附件-校內獎學金一覽表">附件-校內獎學金一覽表</a></li>
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/附件-新生健康檢查項目說明.doc" title="附件-新生健康檢查項目說明">附件-新生健康檢查項目說明</a></li>
@@ -26,5 +26,5 @@
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/生活助學金申請表.doc" title="生活助學金申請表">生活助學金申請表</a></li>
         </ul>
     </div>
-    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" id="download-back" class="readme-download-back" title="回上一頁"></a>
+    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" id="download-back" class="download-back" title="回上一頁"></a>
 </div>
