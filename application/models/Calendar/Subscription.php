@@ -69,10 +69,13 @@ class Subscription extends CActiveRecord
     
     public function getIsSubscriptByClubID($master_id)
     {
-        $calendar_id = Calendar::model()->getClubCalendar($master_id)->id;
-        if ( $this->find('calendar_id='.$calendar_id.' AND invisible = 0 AND user_id='.Yii::app()->user->getId()) )
-        {
-            return true;
+        if ( Calendar::model()->getClubCalendar($master_id)->id && $master_id != 0) {
+            $calendar_id = Calendar::model()->getClubCalendar($master_id)->id;
+            if ( $this->find('calendar_id='.$calendar_id.' AND invisible = 0 AND user_id='.Yii::app()->user->getId()) )
+            {
+                return true;
+            }
+            return false;
         }
         return false;
     }

@@ -5,9 +5,7 @@
     <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0180.JPG" style="width:302px;height:200px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0224.JPG" style="width:302px;height:200px;" />
 </p>
 <h5>
-    <strong>
-        文書組
-    </strong>：
+    <strong>文書組</strong>：
 </h5>
 <p>
     文書組位於行政大樓<strong>一樓</strong>，工作時間為<strong>週一至週五8:00~17:00</strong>。

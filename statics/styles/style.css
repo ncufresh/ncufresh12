@@ -606,7 +606,8 @@ a:hover
 .calendar .calendar-hide-button,
 .calendar .calendar-subscript-button,
 .calendar a.calendar-hide-event,
-#calendar-subscript h4
+#calendar-subscript h4,
+#lastest-news-wrap .header h4
 {
     background: url('../images/sprites.png') no-repeat;
 }
@@ -2187,14 +2188,14 @@ button.news-button
 
 #lastest-news-wrap .header h4
 {
-    width: 85px;
+    background-position: -128px -176px;
+    width: 80px;
     height: 0px;
     padding: 25px 0 0 0;
     margin: 0;
     overflow: hidden;
     display: block;
     float: left;
-    background: url('../images/index_latest_icon.png') no-repeat;
 }
 
 #lastest-news-wrap .header ul.pager
@@ -3972,8 +3973,8 @@ div.a-group-users div.avatar
 .profile-modify div.avatar
 {
     margin-left:65px;
-    margin-top:0px;
-    width:202px; 
+    margin-top:5px;
+    width:180px; 
     height:338px;
     padding:0px;
 }

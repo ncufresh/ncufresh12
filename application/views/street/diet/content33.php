@@ -8,12 +8,10 @@
     <img alt="小木屋鬆餅" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0098.JPG" style="width:500px;height:332px;" />
 </p>
 <p>
-    <span><span>
-    <img alt="小木屋鬆餅" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0100.JPG" style="width:500px;height:332px;" /></span></span>
+    <img alt="小木屋鬆餅" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0100.JPG" style="width:500px;height:332px;" />
 </p>
 <p>
-    <span><span>
-    <img alt="小木屋鬆餅" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0101.JPG" style="width:500px;height:332px;" /></span></span>
+    <img alt="小木屋鬆餅" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0101.JPG" style="width:500px;height:332px;" />
 </p>
 <p>
     <strong>健康餐：起司蔬菜鬆餅</strong>
@@ -72,8 +70,6 @@
                 <p>
                     <strong>起司屬於乳品類，若有乳糖不耐症，可選擇起司來代替奶類，既可攝取到鈣質又可預防骨質疏鬆症唷!</strong>
                 </p>
-                <div>
-                </div>
             </td>
         </tr>
     </tbody>

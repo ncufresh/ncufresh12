@@ -67,4 +67,3 @@
 <?php else : ?>
 <button id="is_friend"></button>
 <?php endif; ?>
-<button type="button" class="button-back" ></button>
