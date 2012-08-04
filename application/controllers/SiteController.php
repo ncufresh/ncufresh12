@@ -62,7 +62,7 @@ class SiteController extends Controller
         foreach ( $news as $entry )
         {
             $title = $entry->title;
-            $entry->title = mb_strcut($title, 0, 24);
+            $entry->title = mb_substr($title, 0, 8);
             if ( strlen($title) > strlen($entry->title) ) $entry->title .= '…';
         }
 
@@ -70,7 +70,7 @@ class SiteController extends Controller
         foreach ( $articles as $entry )
         {
             $title = $entry->title;
-            $entry->title = mb_strcut($title, 0, 24);
+            $entry->title = mb_substr($title, 0, 8);
             if ( strlen($title) > strlen($entry->title) ) $entry->title .= '…';
         }
 
