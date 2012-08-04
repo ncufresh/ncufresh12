@@ -36,7 +36,7 @@
 }
 #back-div
 {
-    background: url('../statics/building/bottom.png') no-repeat;
+    /* background: url('../statics/building/bottom.png') no-repeat; */
     position: relative;
     height: 551px;
     width: 750px;
@@ -68,7 +68,7 @@
 }
 #boy-dormitory-7
 {
-    left: 20px;
+    left: 11px;
     top: 450px;
 }
 #boy-dormitory-9
@@ -110,7 +110,7 @@
 {
     background: url('../statics/building/curtain2.png') no-repeat;
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     top: 0px;
     left: 750px;
     height: 551px;
@@ -175,8 +175,11 @@
 }
 #engineering-5
 {
+    width: 85px;
+    height: 91px;
     left: 0px;
     top: 75px;
+    background: url('../statics/building/college/mouseleave/engineering_5.png');
 }
 #experience-personally
 {
@@ -287,8 +290,11 @@
 }
 #ncu-lake
 {
+    width: 106px;
+    height: 72px;
     left: 292px;
     top: 60px;
+    background: url('../statics/building/landscape/mouseleave/ncu_lake.png') no-repeat;
 }
 #old-library
 {
@@ -538,11 +544,12 @@
     top: 31px;
     left: 687px;
 }
-.one-image.curtainOpen
+.curtainOpen
 {
-    top: 320px;
-    left: 680px;
-    z-index: 1;
+    cursor: pointer;
+    margin-top: 325px;
+    margin-left: 85px;
+    z-index: 2;
 }
 .picture
 {
@@ -565,6 +572,11 @@
 {
     margin-left: 30px;
     margin-right: 100px;
+}
+..scroll-container
+{
+    width: 630px;
+    height:  330px;
 }
 .two-image.department-building
 {
@@ -612,10 +624,30 @@
     margin-left: 620px;
     margin-top: 5px;
 }
-.scroll-container
+#map-div
 {
-    width: 630px;
-    height:  330px;
+    background: url('../statics/building/map_no_text.png') no-repeat;
+    position: relative;
+    float: left;
+    width: 601px;
+    height: 552px;
+}
+#up-curtain-div
+{
+     background: url('../statics/building/curtain_up.png') no-repeat; 
+     position: absolute;
+     margin-top: opx;
+     z-index: 2;
+     height: 88px;
+     width: 750px;
+}
+#curtain-close-div
+{
+     background: url('../statics/building/curtain.png') no-repeat;
+     position: relative;
+     float: right;
+     width: 149px;
+     height: 552px;
 }
 </style>
 <?php
@@ -637,116 +669,121 @@
     }
 ?>
 <div id="street-div">
-    <div id="back-div">
-        <img id="curtain-up" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain_up.png"> 
-        <img id="experience-personally" src="<?php echo Yii::app()->baseUrl?>/statics/building/little_man.png">
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-up.png" class="arrow up">        
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-left.png" class="arrow left">
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow-right.png" class="arrow right">
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/back.png" class="arrow back">
+    <div id="back-div">    
+    
+        <div id="up-curtain-div">
+        </div>
         
-        <!--總寬:750px 總高:601px  窗簾:249px  地圖:寬601px高551px  相片原圖:2256*1496-->
+        <div id="curtain-close-div">
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/curtainOpen.png" class="curtainOpen">
+        </div>
         
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/map-no-text.png" id="mapPicture" path="<?php echo Yii::app()->request->baseUrl;?>/statics/building/map-no-text.png"><!--底圖-->
-        
-<img id="curtain" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain.png">
-        
-        <!--系館-->
-        <img id="engineering-5" class="department-building picture" streetPoints="0" faceto="E" show="department-building" href="#1" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-5.png">
-        <img id="engineering-3" class="department-building picture" streetPoints="2" faceto="W" show="department-building" href="#2" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-3.png">
-        <img id="engineering-2" class="department-building picture" streetPoints="51" faceto="W" show="department-building" href="#3" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-2.png">
-        <img id="engineering-1" class="department-building picture" streetPoints="10" faceto="W" show="department-building" href="#4" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering-1.png">
-        <img id="photonics" class="department-building picture" streetPoints="-1" faceto="W" show="department-building" href="#5" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/photonics.png">
-        <img id="science-5" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#6" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-5.png">
-        <img id="science-4" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#7" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-4.png">
-        <img id="science-3" class="department-building picture" streetPoints="45" faceto="S" show="department-building" href="#8" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-3.png">
-        <img id="science-2" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#9" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-2.png">
-        <img id="science-1" class="department-building picture" streetPoints="19" faceto="W" show="department-building" href="#10" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-1.png">       
-        <img id="science-teach" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#11" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science-teach.png">
-        <img id="mathematics" class="department-building picture" streetPoints="45" faceto="W" show="department-building" href="#12" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/mathematics.png">
-        <img id="liberal-arts" class="department-building picture" streetPoints="24" faceto="W" show="department-building" href="#13" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/liberal-arts.png">
-        <img id="management" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#14" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/management.png">        
-        <img id="hakka" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#16" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/hakka.png">
-        
-        <!--街景缺漏!!!  12舍及操場前移 style script 街景照片測試 有錯 缺漏圖片-->
-         
-        <!--景觀-->
-        <img id="ncu-lake"class="landscape picture"  streetPoints="-1" faceto="-1" show="landscape" href="#17" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/ncu-lake.png">
-        <img id="turtle-pond" class="landscape picture" streetPoints="29" faceto="W" show="landscape" href="#18" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/turtle-pond.png">
-        <img id="pine-wind" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#20" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/pine-wind.png">
-        <img id="stepping-cloud" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#21" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/stepping-cloud.png">
-        <img id="elephant-element" class="landscape picture" streetPoints="27" faceto="S" show="landscape" href="#22" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/elephant-element.png">
-        <img id="yun-step" class="landscape picture" streetPoints="39" faceto="E" show="landscape" href="#23" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/yun-step.png">       
-        <img id="flower-brook" class="landscape picture" streetPoints="37" faceto="W" show="landscape" href="#24" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/flower-brook.png">
-        <img id="big-tree" class="landscape picture" streetPoints="20" faceto="S" show="landscape" href="#25" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/big-tree.png">
-        <img id="calligraphy" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#26" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/calligraphy.png">
-        <img id="kon-fu" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#61" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/kon-fu.png">
-        <img id="green-plain" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#62" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/green-plain.png">
-        <img id="girl-14-front" class="landscape picture" streetPoints="14" faceto="E" show="landscape" href="#63" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/girl-14-front.png">
-        
-        <!--飲食-->
-        <img id="restaurant-7" class="diet picture" streetPoints="16" faceto="E" show="diet" href="#28" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/restaurant-7.png" >
-        <img id="restaurant-9" class="diet picture" streetPoints="29" faceto="N" show="diet" href="#29" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/restaurant-9.png" >
-        <img id="midnight-food" class="diet picture" streetPoints="13" faceto="E" show="diet" href="#30" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/midnight-food.png">
-        <img id="backdoor" class="diet picture" streetPoints="8" faceto="E" show="diet" href="#31" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/backdoor.png">
-        <img id="school-coffee" class="diet picture" streetPoints="-1" faceto="-1" show="diet" href="#32" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/school-coffee.png">
-        <img id="cottage-muffin" class="diet picture" streetPoints="-1" faceto="-1" show="diet" href="#33" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/cottage-muffin.png">
-        <img id="pine-restaurant" class="diet picture" streetPoints="-1" faceto="-1" show="diet" href="#68" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/pine-restaurant.png">
-        
-        <!--行政-->
-        <img id="administration" class="government picture" streetPoints="25" faceto="S" show="government" href="#34" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/administration.png">
-        <img id="computer-center" class="government picture" streetPoints="35" faceto="W" show="government" href="#35" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/computer-center.png">
-        <img id="history-gallery" class="government picture" streetPoints="26" faceto="N" show="government" href="#36" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/history-gallery.png">
-        <img id="all-teach" class="government picture" streetPoints="44" faceto="W" show="government" href="#37" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/all-teach.png">
-        <img id="big-library" class="government picture" streetPoints="23" faceto="S" show="government" href="#64" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/big-library.png">
-        <img id="playing-dancing" class="government picture" streetPoints="17" faceto="E" show="government" href="#65" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/playing-dancing.png">
-        <img id="ding-data-library" class="government picture" streetPoints="-1" faceto="-1" show="government" href="#66" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/ding-data-library.png">
-        <img id="old-library" class="government picture" streetPoints="39" faceto="W" show="government" href="#67" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/old-library.png">
-       
-        <!--宿舍-->
-        <img id="girl-dormitory-1234" class="dormitory picture" streetPoints="54" faceto="S" show="dormitory" href="#39" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/girl-dormitory-1234.png">
-        <img id="girl-dormitory-5" class="dormitory picture" streetPoints="55" faceto="W" show="dormitory" href="#40" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/girl-dormitory-5.png">
-        <img id="boy-dormitory-3" class="dormitory picture" streetPoints="55" faceto="E" show="dormitory" href="#41" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-3.png">
-        <img id="boy-dormitory-5" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#42" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-5.png">
-        <img id="boy-dormitory-6" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#43" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-6.png">
-        <img id="boy-dormitory-7" class="dormitory picture" streetPoints="16" faceto="E" show="dormitory" href="#44" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-7.png">
-        <img id="boy-dormitory-9" class="dormitory picture" streetPoints="29" faceto="N" show="dormitory" href="#45" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-9.png">
-        <img id="boy-dormitory-11" class="dormitory picture" streetPoints="15" faceto="E" show="dormitory" href="#46" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-11.png">
-        <!--街景缺漏--><img id="boy-dormitory-12" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#47" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-12.png">
-        <img id="boy-dormitory-13" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#48" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy-dormitory-13.png">
-        <img id="girl-dormitory-14" class="dormitory picture" streetPoints="14" faceto="E" show="dormitory" href="#49" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/girl-dormitory-14.png">
-        <img id="new-postgraduate" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#50" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/new-postgraduate.png">
-        <img id="international-dormitory" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#51" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/international-dormitory.png">        
-        <!--運動-->
-        <img id="swimming-pool" class="exercise picture" streetPoints="48" faceto="W" show="exercise" href="#52" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/swimming-pool.png">
-        <img id="playground" class="exercise picture" streetPoints="4" faceto="W" show="exercise" href="#53" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/playground.png">
-        <img id="stadium" class="exercise picture" streetPoints="52" faceto="S" show="exercise" href="#54" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/stadium.png">
+        <div id="map-div">
+            <img id="mapPicture" path="<?php echo Yii::app()->baseUrl?>/statics/building/map_no_text.png">
+            
+            <!--選擇鈕-->
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/dormitory.png" class="one-image dormitory" show="dormitory">
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/food.png" class="one-image diet" show="diet">
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/college.png" class="one-image department-building" show="department-building">
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/landscape.png" class="one-image landscape" show="landscape">
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/government/government-out.png" class="one-image government" show="government">
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/exercise.png" class="one-image exercise" show="exercise">
 
-        <!--選擇鈕-->
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/dormitory.png" class="one-image dormitory" show="dormitory">
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/food.png" class="one-image diet" show="diet">
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/college.png" class="one-image department-building" show="department-building">
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/landscape.png" class="one-image landscape" show="landscape">
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/government/government-out.png" class="one-image government" show="government">
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/exercise.png" class="one-image exercise" show="exercise">
-        
-        <img src="<?php echo Yii::app()->baseUrl?>/statics/building/curtainOpen.png" class="one-image curtainOpen">
-        <!--窗簾-->
+            <img><!-- photo put in this -->
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow_up.png" class="arrow up">        
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow_left.png" class="arrow left">
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow_right.png" class="arrow right">
+            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/back.png" class="arrow back">
+            
+            <img id="experience-personally" src="<?php echo Yii::app()->baseUrl?>/statics/building/little_man.png">
+            
+                <!--系館-->
+                <div id="engineering-5" class="department-building picture" streetPoints="0" faceto="E" show="department-building" href="#1">
+                </div>
+                
+                <img id="engineering-3" class="department-building picture" streetPoints="2" faceto="W" show="department-building" href="#2" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering_3.png">
+                <img id="engineering-2" class="department-building picture" streetPoints="51" faceto="W" show="department-building" href="#3" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering_2.png">
+                <img id="engineering-1" class="department-building picture" streetPoints="10" faceto="W" show="department-building" href="#4" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/engineering_1.png">
+                <img id="photonics" class="department-building picture" streetPoints="-1" faceto="W" show="department-building" href="#5" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/photonics.png">
+                <img id="science-5" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#6" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science_5.png">
+                <img id="science-4" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#7" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science_4.png">
+                <img id="science-3" class="department-building picture" streetPoints="45" faceto="S" show="department-building" href="#8" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science_3.png">
+                <img id="science-2" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#9" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science_2.png">
+                <img id="science-1" class="department-building picture" streetPoints="19" faceto="W" show="department-building" href="#10" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science_1.png">       
+                <img id="science-teach" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#11" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/science_teach.png">
+                <img id="mathematics" class="department-building picture" streetPoints="45" faceto="W" show="department-building" href="#12" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/mathematics.png">
+                <img id="liberal-arts" class="department-building picture" streetPoints="24" faceto="W" show="department-building" href="#13" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/liberal_arts.png">
+                <img id="management" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#14" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/management.png">        
+                <img id="hakka" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#16" src="<?php echo Yii::app()->baseUrl?>/statics/building/college/mouseleave/hakka.png">
+                
+                <!--街景缺漏!!!  12舍及操場前移 style script 街景照片測試 有錯 缺漏圖片-->
+                 
+                <!--景觀-->
+                <div id="ncu-lake"class="landscape picture"  streetPoints="-1" faceto="-1" show="landscape" href="#17" style="">
+                </div>
+
+                <img id="turtle-pond" class="landscape picture" streetPoints="29" faceto="W" show="landscape" href="#18" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/turtle_pond.png">
+                <img id="pine-wind" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#20" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/pine_wind.png">
+                <img id="stepping-cloud" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#21" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/stepping_cloud.png">
+                <img id="elephant-element" class="landscape picture" streetPoints="27" faceto="S" show="landscape" href="#22" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/elephant_element.png">
+                <img id="yun-step" class="landscape picture" streetPoints="39" faceto="E" show="landscape" href="#23" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/yun_step.png">       
+                <img id="flower-brook" class="landscape picture" streetPoints="37" faceto="W" show="landscape" href="#24" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/flower_brook.png">
+                <img id="big-tree" class="landscape picture" streetPoints="20" faceto="S" show="landscape" href="#25" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/big_tree.png">
+                <img id="calligraphy" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#26" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/calligraphy.png">
+                <img id="kon-fu" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#61" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/kon_fu.png">
+                <img id="green-plain" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#62" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/green_plain.png">
+                <img id="girl-14-front" class="landscape picture" streetPoints="14" faceto="E" show="landscape" href="#63" src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/mouseleave/girl_14_front.png">
+                
+                <!--飲食-->
+                <img id="restaurant-7" class="diet picture" streetPoints="16" faceto="E" show="diet" href="#28" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/restaurant_7.png" >
+                <img id="restaurant-9" class="diet picture" streetPoints="29" faceto="N" show="diet" href="#29" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/restaurant_9.png" >
+                <img id="midnight-food" class="diet picture" streetPoints="13" faceto="E" show="diet" href="#30" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/midnight_food.png">
+                <img id="backdoor" class="diet picture" streetPoints="8" faceto="E" show="diet" href="#31" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/backdoor.png">
+                <img id="school-coffee" class="diet picture" streetPoints="-1" faceto="-1" show="diet" href="#32" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/school_coffee.png">
+                <img id="cottage-muffin" class="diet picture" streetPoints="-1" faceto="-1" show="diet" href="#33" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/cottage_muffin.png">
+                <img id="pine-restaurant" class="diet picture" streetPoints="-1" faceto="-1" show="diet" href="#68" src="<?php echo Yii::app()->baseUrl?>/statics/building/food/mouseleave/pine_restaurant.png">
+                
+                <!--行政-->
+                <img id="administration" class="government picture" streetPoints="25" faceto="S" show="government" href="#34" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/administration.png">
+                <img id="computer-center" class="government picture" streetPoints="35" faceto="W" show="government" href="#35" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/computer_center.png">
+                <img id="history-gallery" class="government picture" streetPoints="26" faceto="N" show="government" href="#36" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/history_gallery.png">
+                <img id="all-teach" class="government picture" streetPoints="44" faceto="W" show="government" href="#37" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/all_teach.png">
+                <img id="big-library" class="government picture" streetPoints="23" faceto="S" show="government" href="#64" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/big_library.png">
+                <img id="playing-dancing" class="government picture" streetPoints="17" faceto="E" show="government" href="#65" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/playing_dancing.png">
+                <img id="ding-data-library" class="government picture" streetPoints="-1" faceto="-1" show="government" href="#66" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/ding_data_library.png">
+                <img id="old-library" class="government picture" streetPoints="39" faceto="W" show="government" href="#67" src="<?php echo Yii::app()->baseUrl?>/statics/building/government/mouseleave/old_library.png">
+               
+                <!--宿舍-->
+                <img id="girl-dormitory-1234" class="dormitory picture" streetPoints="54" faceto="S" show="dormitory" href="#39" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/girl_dormitory_1234.png">
+                <img id="girl-dormitory-5" class="dormitory picture" streetPoints="55" faceto="W" show="dormitory" href="#40" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/girl_dormitory_5.png">
+                <img id="boy-dormitory-3" class="dormitory picture" streetPoints="55" faceto="E" show="dormitory" href="#41" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy_dormitory_3.png">
+                <img id="boy-dormitory-5" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#42" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy_dormitory_5.png">
+                <img id="boy-dormitory-6" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#43" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy_dormitory_6.png">
+                <img id="boy-dormitory-7" class="dormitory picture" streetPoints="16" faceto="E" show="dormitory" href="#44" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy_dormitory_7.png">
+                <img id="boy-dormitory-9" class="dormitory picture" streetPoints="29" faceto="N" show="dormitory" href="#45" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy_dormitory_9.png">
+                <img id="boy-dormitory-11" class="dormitory picture" streetPoints="15" faceto="E" show="dormitory" href="#46" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy_dormitory_11.png">
+                <img id="boy-dormitory-12" class="dormitory picture" streetPoints="50" faceto="W" show="dormitory" href="#47" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy_dormitory_12.png">
+                <img id="boy-dormitory-13" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#48" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/boy_dormitory_13.png">
+                <img id="girl-dormitory-14" class="dormitory picture" streetPoints="14" faceto="E" show="dormitory" href="#49" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/girl_dormitory_14.png">
+                <img id="new-postgraduate" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#50" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/new_postgraduate.png">
+                <img id="international-dormitory" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#51" src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/mouseleave/international_dormitory.png">        
+                <!--運動-->
+                <img id="swimming-pool" class="exercise picture" streetPoints="48" faceto="W" show="exercise" href="#52" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/swimming-pool.png">
+                <img id="playground" class="exercise picture" streetPoints="4" faceto="W" show="exercise" href="#53" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/playground.png">
+                <img id="stadium" class="exercise picture" streetPoints="52" faceto="S" show="exercise" href="#54" src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/mouseleave/stadium.png">
+        </div>
+
+        <!--總寬:750px 總高:601px  窗簾:249px  地圖:寬601px高551px  相片原圖:2256*1496-->
 
         <div id="curtainDiv">
         <!--選擇鈕2-->
-            <div id="inside-choose">
-                <!--<img src="<?php //echo Yii::app()->baseUrl?>/statics/building/college/college.png" class="two-image department-building" show="department-building" detailItem="department">-->
-                <p class="two-image department-building" show="department-building" detailItem="department">系館</p>
-                <!--<img src="<?php //echo Yii::app()->baseUrl?>/statics/building/landscape/landscape.png" class="two-image landscape" show="landscape" detailItem="landscape">-->
-                <p class="two-image landscape" show="landscape" detailItem="landscape">景點</p>
-                <!--<img src="<?php //echo Yii::app()->baseUrl?>/statics/building/food/food.png" class="two-image diet" show="diet" detailItem="meal">-->
-                <p class="two-image diet" show="diet" detailItem="meal">餐廳</p>
-                <!--<img src="<?php //echo Yii::app()->baseUrl?>/statics/building/government/government-out.png" class="two-image government" show="government" detailItem="govern">-->
-                <p class="two-image government" show="government" detailItem="govern">建築</p>
-                <!--<img src="<?php //echo Yii::app()->baseUrl?>/statics/building/dormitory/dormitory.png" class="two-image dormitory" show="dormitory" detailItem="dorm">-->
+            
+            <div id="inside-choose">                
+                <p class="two-image department-building" show="department-building" detailItem="department">系館</p>                
+                <p class="two-image landscape" show="landscape" detailItem="landscape">景點</p>                
+                <p class="two-image diet" show="diet" detailItem="meal">餐廳</p>                
+                <p class="two-image government" show="government" detailItem="govern">建築</p>               
                 <p class="two-image dormitory" show="dormitory" detailItem="dorm">宿舍</p>
-                <!--<img src="<?php //echo Yii::app()->baseUrl?>/statics/building/exercise/exercise.png" class="two-image exercise" show="exercise" detailItem="sport">-->
                 <p class="two-image exercise" show="exercise" detailItem="sport">運動</p>
 
             </div>
@@ -821,7 +858,7 @@
                     <li class="exercise-text button-text" detailItem="sport" href="#53">操場</li>
                     <li class="exercise-text button-text" detailItem="sport" href="#54">依仁堂</li>
                 </ul>
-                <img id="curtainclose" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtainClose.png">            
+                <img id="curtainclose" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain_close.png">            
             </div>
         </div>
         <div id="text-container"><!--第一層-->
@@ -913,6 +950,7 @@ $(document).ready(function()
                 {
                     if( nextpointat == (-1) )
                     {
+                    // console.log('這裡不能走！');
                         $.alert({
                             message: '這裡不能走！'
                         });
@@ -1000,7 +1038,7 @@ $(document).ready(function()
                     }
                 };
                     
-                $('#back-div').css(
+                $('#map-div, #curtain-close-div').css(
                 {
                     height: 498,
                 });
@@ -1073,7 +1111,7 @@ $(document).ready(function()
         $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
         $('.arrow').hide();
         
-        $('#back-div').css(
+        $('#map-div, #curtain-close-div').css(
         {
             height: 552,
         });
@@ -1210,8 +1248,8 @@ $(document).ready(function()
         { // 3 (操場前)
             N:{ photo: 'Day 1 (10).JPG', nextPoint: 4 },
             E:{ photo: 'Day 1 (9).JPG', nextPoint: (-1) },
-            S:{ photo: '', nextPoint: 2 },/////////////////////////////////////////////////////////////
-            W:{ photo: 'Day 1 (11).JPG', nextPoint: (-1) } // 缺圖
+            S:{ photo: 'Day 1 (84).JPG', nextPoint: 2 },
+            W:{ photo: 'Day 1 (11).JPG', nextPoint: (-1) }
         },
         { // 4 (操場)
             N:{ photo: 'Day 1 (13).JPG', nextPoint: 5 },
@@ -1489,11 +1527,11 @@ $(document).ready(function()
             S:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) },    
             W:{ photo: 'Day 3 (6).JPG', nextPoint: (-1) }         
         },
-        { // 50 (男12舍)這裡要注意....沒有改裡面資料////////////////////////////////////////////////////////////////////////////////////////
-            N:{ photo: 'Day 1 (17).JPG', nextPoint: (-1) },       //缺圖
-            E:{ photo: 'Day 1 (18).JPG', nextPoint: 30 },    
-            S:{ photo: 'Day 1 (19).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 1 (16).JPG', nextPoint: (-1) }         
+        { // 50 (男12舍)
+            N:{ photo: 'Day 3 (95).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (96).JPG', nextPoint: 30 },    
+            S:{ photo: 'Day 3 (94).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (61).JPG', nextPoint: (-1) }         
         },
         { // 51 (工2)            
             N:{ photo: 'Day 1 (35).JPG', nextPoint: 10 },       
