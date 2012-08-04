@@ -46,9 +46,8 @@
             <li>
 <?php echo $message['time']; ?>
             </li>
-            <li>
-            <!--<a href="#" class="friend-chatting-title" title="談話內容">****</a>
-            <div class="friend-chatting-content"> </div>-->
+            <li class="friend-chatting-content">
+           
 <?php echo $message['message']; ?>
            
             </li>
