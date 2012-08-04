@@ -74,13 +74,12 @@
         </tr>
     </tbody>
 </table>
-
-<h5>
-    中大滷味
-</h5>
 <p>
     <img alt="九餐-滷味" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2613.JPG" style="width:500px;height:375px;" />
 </p>
+<h5>
+    中大滷味
+</h5>
 <p>
     健康餐：百菇套餐
 </p>
@@ -142,13 +141,12 @@
         </tr>
     </tbody>
 </table>
-
-<h5>
-    比司多早餐
-</h5>
 <p>
     <img alt="九餐-比司多" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2610.JPG" style="width:500px;height:375px;" />
 </p>
+<h5>
+    比司多早餐
+</h5>
 <p>
     健康餐：水果蔬菜總匯三明治
 </p>
@@ -210,10 +208,8 @@
         </tr>
     </tbody>
 </table>
-
-<h5>
-    全家(中央二店)
-</h5>
 <p>
     <img alt="九餐-全家" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2619.jpg" style="width:500px;height:667px;" />
-</p>
+</p><h5>
+    全家(中央二店)
+</h5>

@@ -2570,14 +2570,14 @@ button.news-button
 
 #life-index2
 {
-    width: 140px;
+    width: 155px;
     left: 4px;
     top: 131px;
 }
 
 #life-index3
 {
-    width: 156px;
+    width: 165px;
     left: 40px;
     top: 164px;
 }
@@ -2733,7 +2733,7 @@ button.news-button
 
 #readme .scroll-container
 {
-    height: 420px;
+    height: 377px;
     width: 630px;
 }
 
@@ -2755,11 +2755,13 @@ button.news-button
 #readme-download
 {
     background-position: -765px 0;
+    padding-top: 55px;
+    padding-bottom: 40px;
 }
 
 .readme-background
 {
-    height: 420px;
+    height: 357px;
     padding: 15px 25px;
     position: relative;
     width: 700px;
@@ -2984,7 +2986,7 @@ button.news-button
     float: left;
     list-style-type: disc;
     font-size: 1.4em;
-    margin-top: 35px;
+    margin-top: 4px;
 }
 
 .download-index li
