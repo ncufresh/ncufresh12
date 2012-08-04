@@ -2169,7 +2169,7 @@
             modal:          true,
             escape:         false,
             closeButton:    false
-        });
+        }).find('button').last().focus();
     };
 })(jQuery);
 
@@ -2658,7 +2658,669 @@
         var errorMessage = $('<p></p>').text('').addClass('error').appendTo(box);
     };
 })(jQuery);
+(function($) {
+    $.street = function()
+    {
+        $('.picture').hide();
+    $('#street-div #experience-personally').mousedown(function()
+    {
+        $(document).mousemove(mousemove);
+        return false;
+    });
+    var mouseInId;
+    var isInPicture = false;
+    var mousemove = function(event)
+    {
+        x = event.pageX - $('#street-div #back-div').offset().left;
+        y = event.pageY - $('#street-div #back-div').offset().top;
+        $('#street-div #experience-personally').css(
+        {
+        top: y +  2 + 'px',
+        left: x + 2 + 'px',
+        });
+    };
+    $('#street-div .picture').mouseenter(function()
+    {
+        isInPicture = true;
+        mouseInId = $(this).attr('id');
+        $(this).attr('src', $(this).attr('src').replace('mouseleave', 'mouseenter'));
+    });
+    $('#street-div .picture').mouseleave(function()
+    {
+        isInPicture = false;
+        $(this).attr('src', $(this).attr('src').replace('mouseenter', 'mouseleave'));
+    });
+    var mouseup = function()
+    {
+        if( isInPicture == true )
+        {
+            if( $('#' + mouseInId).attr('streetPoints') == (-1) )
+            {
+                $('#street-div #experience-personally').css(
+                {
+                    top: 410,
+                    left: 530,
+                });
+            }
+            else
+            {
+                $('#street-div #experience-personally').css(
+                {
+                    zIndex: 2,
+                });
+                var id = $('#street-div #' + mouseInId).attr('href').replace( '#', '' );
+                $('#street-div #mapPicture').attr('src', url + streetPoints[$('#street-div #' + mouseInId).attr('streetPoints')][$('#' + mouseInId).attr('faceto')].photo);
+                
+                nowfaceto = $('#' + mouseInId).attr('faceto');
+                nowpointat = [$('#' + mouseInId).attr('streetPoints')];
+                nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
 
+                console.log('一開始');
+                console.log('nowpointat: ' + nowpointat);
+                console.log('nowfaceto: ' + nowfaceto);
+                console.log('nextpointat: ' + nextpointat); 
+                console.log('--------------------------');
+                $('#street-div .arrow').eq( 0 ).click(function() //前進nextDirection
+                {
+                    if( nextpointat == (-1) )
+                    {
+                    // console.log('這裡不能走！');
+                        $.alert({
+                            message: '這裡不能走！'
+                        });
+                    }
+                    else if( nextpointat != (-1))
+                    {
+                        nowpointat = nextpointat;
+                        nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
+                        $('#street-div #mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
+                    }
+                    console.log('按前進');
+                    console.log('nowpointat: ' + nowpointat);
+                    console.log('nowfaceto: ' + nowfaceto);
+                    console.log('nextpointat: ' + nextpointat);            
+                    console.log('--------------------------');
+                });
+                $('#street-div .arrow').eq( 1 ).click(function() // 左旋
+                {                        
+                    turnLeft();
+                    $('#street-div #mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
+                    nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
+                    console.log('按左旋');
+                    console.log('nowpointat: ' + nowpointat);
+                    console.log('nowfaceto: ' + nowfaceto);
+                    console.log('nextpointat: ' + nextpointat);
+                    console.log('--------------------------');
+                });
+                $('#street-div .arrow').eq( 2 ).click(function() // 右旋
+                {
+                    turnRight();
+                    $('#street-div #mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
+                    nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
+                    console.log('按右旋');
+                    console.log('nowpointat: ' + nowpointat);
+                    console.log('nowfaceto: ' + nowfaceto);
+                    console.log('nextpointat: ' + nextpointat);                        
+                    console.log('--------------------------');
+                });
+    //-------------------------------------------------------------------------------------------------
+                function turnLeft()
+                {
+                    if( nowfaceto == 'N')
+                    {
+                        nowfaceto = 'W';
+                    }
+                    else if( nowfaceto == 'E')
+                    {
+                        nowfaceto = 'N';
+                    }
+                    else if( nowfaceto == 'S')
+                    {
+                        nowfaceto = 'E';
+                    }
+                    else if( nowfaceto == 'W')
+                    {
+                        nowfaceto = 'S';
+                    }
+                    else
+                    {
+                        return;
+                    }
+                };
+                function turnRight()
+                {
+
+                    if( nowfaceto == 'N')
+                    {
+                        nowfaceto = 'E';
+                    }
+                    else if( nowfaceto == 'E')
+                    {
+                        nowfaceto = 'S';
+                    }
+                    else if( nowfaceto == 'S')
+                    {
+                        nowfaceto = 'W';
+                    }
+                    else if( nowfaceto == 'W')
+                    {
+                        nowfaceto = 'N';
+                    }
+                    else
+                    {
+                        return;
+                    }
+                };
+                    
+                $('#street-div #map-div, #street-div #curtain-close-div, #street-div #back-div').css(
+                {
+                    height: 498,
+                });
+
+                $('#street-div #mapPicture').css(
+                {
+                    zIndex: '3',
+                    width: 750,
+                    height: 498,
+                });
+                $('#street-div .arrow').show();
+                isInPicture = false;
+            }
+        }
+            $(document).unbind('mousemove', mousemove);
+            $('#street-div #experience-personally').css(
+            {
+                top: 410,
+                left: 530,
+            });
+            isInPicture = false;
+    };
+    $(document).mouseup(mouseup);
+
+    $('#street-div .picture').hide();
+    $('#street-div .landscape').show();
+
+    var littleBuilding = function() // building icon show
+    {
+        $('#street-div .picture').hide();
+        $( '.' + $(this).attr('show')).show();
+    };
+    $('#street-div .one-image').bind('click', littleBuilding);
+
+    $('#street-div .two-image').click(function(){
+        $('#street-div .button-text').hide();
+        $('#street-div .button-text[ detailItem = ' + $(this).attr('detailItem') + ']' ).show();
+    });
+
+    $('#street-div .curtainOpen').click(function()
+    { // 窗簾
+        $('#street-div #experience-personally').css(
+        {
+            zIndex: 1,
+        });
+        $('#street-div #curtainDiv').animate(
+        {
+            left: '370px'
+        });
+        $('#street-div .button-text').hide();
+        $('#street-div .button-text[ detailItem = "department" ]').show();        
+        $('#street-div .one-image').unbind('click', littleBuilding);
+    });
+    $('#street-div #curtainclose').click(function()
+    {// 窗簾
+        $('#street-div #curtainDiv').animate(
+        {
+            left: '750px'
+        });
+        $('#street-div #experience-personally').css(
+        {
+            zIndex: 4,
+        });
+        $('#street-div .one-image').bind('click', littleBuilding);
+        $('#street-div .landscape').show();
+    });
+
+    $('#street-div .arrow').eq( 3 ).click(function() // 親身體驗 back
+    {
+        $('#street-div #mapPicture').attr('src', $('#street-div #mapPicture').attr('path'));
+        $('#street-div .arrow').hide();
+
+        $('#street-div #map-div, #street-div #curtain-close-div, #street-div #back-div').css(
+        {
+            height: 552,
+        });
+        $('#street-div #mapPicture').css(
+        {
+            width: 601,
+            height: 552,  
+            zIndex: 0,
+        });
+        $('#street-div #experience-personally').css(
+        {
+            zIndex: 3,
+        });
+    });
+    $('#street-div .picture, #street-div .button-text').click(function()
+    {
+        isInPicture = false;
+        $('#street-div #back-div, #street-div #curtain-close-div').css(
+        {
+           height: 552,
+        });
+        $('#street-div #experience-personally').css(
+        {
+            zIndex: 3,
+        });
+        $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
+        $('#text-container').dialog(
+        {
+            width: 680,
+            height: 400,
+            modal: true,
+            escape: false,
+            onClose: function()
+            {
+                
+            }
+        });
+
+        $('#street-div .arrow').hide();
+        $('#street-div #mapPicture').css(
+        {
+            width: 601,
+            height: 552,
+            zIndex: 0,
+        });
+
+        var id = $(this).attr('href').replace('#', '');
+        $.ajax(
+        {
+            type: 'GET',
+            url: jQuery.configures.buildingContentUrl.replace(':id', id),
+            dataType: 'json',
+            success: function(data)
+            {
+                $('#building-text').html(data.content);
+                $('#building-text img').css(
+                {
+                    cursor: 'pointer',
+                });
+                $('#building-text img').each(function()
+                {
+                    $(this).wrapAll(
+                        $('<a></a>')
+                            .addClass('lightbox')
+                            .attr('href', $(this).attr('src'))
+                            .attr('title', $(this).attr('alt'))
+                    );
+                });
+                $('#building-text a.lightbox').lightbox({
+                    hideOverlayBackground: true
+                });             
+            },
+        });
+        
+    });
+    $('#street-div #building-text').scrollable({
+        scrollableClass: false
+    });
+    
+    $('#street-div .arrow.up, #street-div .arrow.right, #street-div .arrow.left').hover(function()
+    {
+        var arrowStrong = $(this).attr('src').replace('arrow', 'showPoint');
+        $(this).attr('src', arrowStrong);
+    }, function()
+    {
+        var arrowStrong = $(this).attr('src').replace('showPoint', 'arrow');
+        $(this).attr('src', arrowStrong);
+    });
+
+    var howmanyphoto;
+    var position = 0;    
+    var url = '../statics/street-view/';
+    var nowfaceto;
+    var nowpointat;
+    var streetPoints = 
+    [
+        { // 0 (工5)
+            N:{ photo: 'Day 1 (4).JPG', nextPoint: 2 },
+            E:{ photo: 'Day 1 (3).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (2).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 1 (1).JPG', nextPoint: 1 }            
+        },
+        { // 1 (環工)
+            N:{ photo: 'Day 3 (3).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (2).JPG', nextPoint: 0 },
+            S:{ photo: 'Day 3 (1).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 3 (4).JPG', nextPoint: 48 }
+        },
+        { // 2 (工3)
+            N:{ photo: 'Day 1 (6).JPG', nextPoint: 3 },
+            E:{ photo: 'Day 1 (7).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (8).JPG', nextPoint: 0 },
+            W:{ photo: 'Day 1 (5).JPG', nextPoint: (-1) }
+        },
+        { // 3 (操場前)
+            N:{ photo: 'Day 1 (10).JPG', nextPoint: 4 },
+            E:{ photo: 'Day 1 (9).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (84).JPG', nextPoint: 2 },
+            W:{ photo: 'Day 1 (11).JPG', nextPoint: (-1) }
+        },
+        { // 4 (操場)
+            N:{ photo: 'Day 1 (13).JPG', nextPoint: 5 },
+            E:{ photo: 'Day 1 (14).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (15).JPG', nextPoint: 3 },
+            W:{ photo: 'Day 1 (12).JPG', nextPoint: (-1) }
+        },
+        { // 5 (排球)
+            N:{ photo: 'Day 1 (17).JPG', nextPoint: 6 },
+            E:{ photo: 'Day 1 (18).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (19).JPG', nextPoint: 4 },
+            W:{ photo: 'Day 1 (16).JPG', nextPoint: (-1) }
+        },        
+        { // 6 (可麗餅)            
+            N:{ photo: 'Day 1 (23).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 1 (20).JPG', nextPoint: 7 },    
+            S:{ photo: 'Day 1 (21).JPG', nextPoint: 5 },    
+            W:{ photo: 'Day 1 (22).JPG', nextPoint: 52 }         
+        },
+        { // 7 (育成中心前)            
+            N:{ photo: 'Day 1 (24).JPG', nextPoint: 51 },
+            E:{ photo: 'Day 1 (26).JPG', nextPoint: 8 },
+            S:{ photo: 'Day 1 (27).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 1 (25).JPG', nextPoint: 6 }
+        },
+        { // 8 (後門)            
+            N:{ photo: 'Day 1 (29).JPG', nextPoint: 9 },       
+            E:{ photo: 'Day 1 (28).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 1 (31).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 1 (30).JPG', nextPoint: 7 }         
+        },
+        { // 9 (女四東)            
+            N:{ photo: 'Day 1 (45).JPG', nextPoint: 55 },       
+            E:{ photo: 'Day 1 (44).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 1 (46).JPG', nextPoint: 8 },    
+            W:{ photo: 'Day 1 (47).JPG', nextPoint: 54 }         
+        },
+        { // 10 (工1)            
+            N:{ photo: 'Day 1 (37).JPG', nextPoint: 11 },       
+            E:{ photo: 'Day 1 (39).JPG', nextPoint: 54 },    
+            S:{ photo: 'Day 1 (38).JPG', nextPoint: 51 },    
+            W:{ photo: 'Day 1 (36).JPG', nextPoint: (-1) }         
+        },
+        { // 11 (海音西方岔路)            
+            N:{ photo: 'Day 1 (63).JPG', nextPoint: 19 },       
+            E:{ photo: 'Day 1 (62).JPG', nextPoint: 12 },    
+            S:{ photo: 'Day 1 (61).JPG', nextPoint: 10 },    
+            W:{ photo: 'Day 1 (60).JPG', nextPoint: (-1) }         
+        },
+        { // 12 (海音咖啡)            
+            N:{ photo: 'Day 1 (56).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 1 (59).JPG', nextPoint: 13 },    
+            S:{ photo: 'Day 1 (58).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 1 (57).JPG', nextPoint: 11 }         
+        },
+        { // 13 (宵夜街口)            
+            N:{ photo: 'Day 1 (53).JPG', nextPoint: 14 },       
+            E:{ photo: 'Day 1 (54).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 1 (55).JPG', nextPoint: 55 },    
+            W:{ photo: 'Day 1 (52).JPG', nextPoint: 12 }         
+        },
+        { // 14 (女14舍)            
+            N:{ photo: 'Day 3 (89).JPG', nextPoint: 15 },       
+            E:{ photo: 'Day 3 (86).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (87).JPG', nextPoint: 13 },    
+            W:{ photo: 'Day 3 (88).JPG', nextPoint: (-1) }         
+        },
+        { // 15 (男11舍)            
+            N:{ photo: 'Day 3 (91).JPG', nextPoint: 16 },       
+            E:{ photo: 'Day 3 (90).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (93).JPG', nextPoint: 14 },    
+            W:{ photo: 'Day 3 (92).JPG', nextPoint: (-1) }         
+        },
+        { // 16 (男7舍；7餐前L轉角)            
+            N:{ photo: 'Day 3 (82).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (85).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (84).JPG', nextPoint: 15 },    
+            W:{ photo: 'Day 3 (83).JPG', nextPoint: 17 }         
+        },
+        { // 17 (據德樓)            
+            N:{ photo: 'Day 1 (74).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 1 (73).JPG', nextPoint: 16 },    
+            S:{ photo: 'Day 1 (72).JPG', nextPoint: 18 },    
+            W:{ photo: 'Day 1 (75).JPG', nextPoint: 26 }         
+        },
+        { // 18 (地科學院)            
+            N:{ photo: 'Day 1 (69).JPG', nextPoint: 17 },       
+            E:{ photo: 'Day 1 (70).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 1 (71).JPG', nextPoint: 19 },    
+            W:{ photo: 'Day 1 (68).JPG', nextPoint: (-1) }         
+        }, 
+        { // 19 (地科南方馬路)            
+            N:{ photo: 'Day 1 (65).JPG', nextPoint: 18 },       
+            E:{ photo: 'Day 1 (66).JPG', nextPoint: (-1) },   
+            S:{ photo: 'Day 1 (67).JPG', nextPoint: 11 },    
+            W:{ photo: 'Day 1 (64).JPG', nextPoint: 20 }         
+        },
+        { // 20 (國泰樹)            
+            N:{ photo: 'Day 2 (7).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 2 (6).JPG', nextPoint: 19 },    
+            S:{ photo: 'Day 2 (5).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 2 (8).JPG', nextPoint: 21 }         
+        },
+        { // 21 (舊北十字)            
+            N:{ photo: 'Day 2 (2).JPG', nextPoint: 22 },       
+            E:{ photo: 'Day 2 (3).JPG', nextPoint: 20 },    
+            S:{ photo: 'Day 2 (4).JPG', nextPoint: 39 },    
+            W:{ photo: 'Day 2 (1).JPG', nextPoint: 32 }         
+        },
+        { // 22 (總圖前路)            
+            N:{ photo: 'Day 2 (10).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 2 (11).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 2 (12).JPG', nextPoint: 21 },    
+            W:{ photo: 'Day 2 (9).JPG', nextPoint: 23 }         
+        },
+        { // 23 (總圖)            
+            N:{ photo: 'Day 2 (14).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 2 (13).JPG', nextPoint: 22 },    
+            S:{ photo: 'Day 2 (16).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 2 (15).JPG', nextPoint: 24 }         
+        },
+        { // 24 (文學院)            
+            N:{ photo: 'Day 2 (18).JPG', nextPoint: 25 },       
+            E:{ photo: 'Day 2 (19).JPG', nextPoint: 23 },    
+            S:{ photo: 'Day 2 (20).JPG', nextPoint: 32 },    
+            W:{ photo: 'Day 2 (17).JPG', nextPoint: (-1) }         
+        },
+        { // 25 (行政大樓)            
+            N:{ photo: 'Day 1 (81).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 1 (82).JPG', nextPoint: 26 },    
+            S:{ photo: 'Day 1 (80).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 1 (83).JPG', nextPoint: 27 }         
+        },
+        { // 26 (大講堂)            
+            N:{ photo: 'Day 1 (79).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 1 (78).JPG', nextPoint: 17 },    
+            S:{ photo: 'Day 1 (77).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 1 (76).JPG', nextPoint: 25 }         
+        },
+        { // 27 (黑盒子)            
+            N:{ photo: 'Day 3 (70).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (73).JPG', nextPoint: 25 },    
+            S:{ photo: 'Day 3 (72).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (71).JPG', nextPoint: 28 }         
+        },
+        { // 28 (品好9舍)            
+            N:{ photo: 'Day 3 (67).JPG', nextPoint: 27 },       
+            E:{ photo: 'Day 3 (66).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (69).JPG', nextPoint: 31 },    
+            W:{ photo: 'Day 3 (68).JPG', nextPoint: 29 }         
+        },
+        { // 29 (烏龜池)            
+            N:{ photo: 'Day 3 (63).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (62).JPG', nextPoint: 28 },    
+            S:{ photo: 'Day 3 (65).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (64).JPG', nextPoint: (-1) }         
+        },
+        { // 30 (國鼎、烏龜池旁邊)            
+            N:{ photo: 'Day 3 (58).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (57).JPG', nextPoint: 31 },    
+            S:{ photo: 'Day 3 (60).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (59).JPG', nextPoint: 50 }         
+        },
+        { // 31 (文學院)            
+            N:{ photo: 'Day 3 (54).JPG', nextPoint: 28 },       
+            E:{ photo: 'Day 3 (53).JPG', nextPoint: 32 },    
+            S:{ photo: 'Day 3 (56).JPG', nextPoint: 33 },    
+            W:{ photo: 'Day 3 (55).JPG', nextPoint: 30 }         
+        },
+        { // 32 (文院到舊圖間岔路)            
+            N:{ photo: 'Day 2 (24).JPG', nextPoint: 24 },       
+            E:{ photo: 'Day 2 (21).JPG', nextPoint: 21 },    
+            S:{ photo: 'Day 2 (22).JPG', nextPoint: 34 },    
+            W:{ photo: 'Day 2 (23).JPG', nextPoint: 31 }         
+        },
+        { // 33 (國鼎東岔路)            
+            N:{ photo: 'Day 3 (50).JPG', nextPoint: 31 },       
+            E:{ photo: 'Day 3 (51).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (52).JPG', nextPoint: 35 },    
+            W:{ photo: 'Day 3 (49).JPG', nextPoint: (-1) }         
+        },
+        { // 34 (學務處)            
+            N:{ photo: 'Day 2 (28).JPG', nextPoint: 32 },       
+            E:{ photo: 'Day 2 (25).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 2 (26).JPG', nextPoint: 37 },    
+            W:{ photo: 'Day 2 (27).JPG', nextPoint: (-1) }         
+        },
+        { // 35 (志希)            
+            N:{ photo: 'Day 3 (46).JPG', nextPoint: 33 },       
+            E:{ photo: 'Day 3 (48).JPG', nextPoint: 36 },    
+            S:{ photo: 'Day 3 (47).JPG', nextPoint: 40 },    
+            W:{ photo: 'Day 3 (45).JPG', nextPoint: (-1) }         
+        },
+        { // 36 (太極銅雕)            
+            N:{ photo: 'Day 2 (29).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 2 (31).JPG', nextPoint: 37 },    
+            S:{ photo: 'Day 2 (32).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 2 (30).JPG', nextPoint: 35 }         
+        },
+        { // 37 (百花川、棒球場)            
+            N:{ photo: 'Day 2 (35).JPG', nextPoint: 34 },       
+            E:{ photo: 'Day 2 (36).JPG', nextPoint: 38 },    
+            S:{ photo: 'Day 2 (33).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 2 (34).JPG', nextPoint: 36 }         
+        },
+        { // 38 (百花川、舊圖)            
+            N:{ photo: 'Day 1 (17).JPG', nextPoint: 39 },       
+            E:{ photo: 'Day 1 (18).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 1 (19).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 1 (16).JPG', nextPoint: 37 }         
+        },
+        { // 39 (舊圖)            
+            N:{ photo: 'Day 2 (41).JPG', nextPoint: 21 },       
+            E:{ photo: 'Day 2 (42).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 2 (43).JPG', nextPoint: 38 },    
+            W:{ photo: 'Day 2 (40).JPG', nextPoint: (-1) }         
+        },
+        { // 40 (鬆餅屋)            
+            N:{ photo: 'Day 3 (39).JPG', nextPoint: 35 },       
+            E:{ photo: 'Day 3 (40).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (37).JPG', nextPoint: 44 },    
+            W:{ photo: 'Day 3 (38).JPG', nextPoint: 41 }         
+        },
+        { // 41 (科四至管院路)            
+            N:{ photo: 'Day 3 (32).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (31).JPG', nextPoint: 40 },    
+            S:{ photo: 'Day 3 (30).JPG', nextPoint: 42 },    
+            W:{ photo: 'Day 3 (29).JPG', nextPoint: (-1) }         
+        },
+        { // 42 (科學館)            
+            N:{ photo: 'Day 3 (28).JPG', nextPoint: 41 },       
+            E:{ photo: 'Day 3 (27).JPG', nextPoint: 43 },    
+            S:{ photo: 'Day 3 (26).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (25).JPG', nextPoint: (-1) }         
+        },
+        { // 43 (中大湖前路)            
+            N:{ photo: 'Day 3 (21).JPG', nextPoint: 44 },       
+            E:{ photo: 'Day 3 (22).JPG', nextPoint: 53 },    
+            S:{ photo: 'Day 3 (23).JPG', nextPoint: 46 },    
+            W:{ photo: 'Day 3 (24).JPG', nextPoint: 42 }         
+        },
+        { // 44 (科二東路)            
+            N:{ photo: 'Day 3 (39).JPG', nextPoint: 40 },       
+            E:{ photo: 'Day 3 (40).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (37).JPG', nextPoint: 43 },    
+            W:{ photo: 'Day 3 (38).JPG', nextPoint: 45 }         
+        },
+        { // 45 (鴻經館)            
+            N:{ photo: 'Day 3 (43).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (44).JPG', nextPoint: 44 },    
+            S:{ photo: 'Day 3 (42).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (41).JPG', nextPoint: (-1) }         
+        },
+        { // 46 (籃球)            
+            N:{ photo: 'Day 3 (18).JPG', nextPoint: 43 },       
+            E:{ photo: 'Day 3 (17).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (20).JPG', nextPoint: 47 },    
+            W:{ photo: 'Day 3 (19).JPG', nextPoint: (-1) }         
+        },
+        { // 47 (網球場)            
+            N:{ photo: 'Day 3 (16).JPG', nextPoint: 46 },
+            E:{ photo: 'Day 3 (15).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (14).JPG', nextPoint: 48 },    
+            W:{ photo: 'Day 3 (13).JPG', nextPoint: (-1) }
+        },
+        { // 48 (游泳池)            
+            N:{ photo: 'Day 3 (10).JPG', nextPoint: 47 },       
+            E:{ photo: 'Day 3 (11).JPG', nextPoint: 1 },    
+            S:{ photo: 'Day 3 (12).JPG', nextPoint: 49 },    
+            W:{ photo: 'Day 3 (9).JPG', nextPoint: (-1) }         
+        },
+        { // 49 (游泳池旁側門)            
+            N:{ photo: 'Day 3 (8).JPG', nextPoint: 48 },       
+            E:{ photo: 'Day 3 (7).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (6).JPG', nextPoint: (-1) }         
+        },
+        { // 50 (男12舍)
+            N:{ photo: 'Day 3 (95).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (96).JPG', nextPoint: 30 },    
+            S:{ photo: 'Day 3 (94).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (61).JPG', nextPoint: (-1) }         
+        },
+        { // 51 (工2)            
+            N:{ photo: 'Day 1 (35).JPG', nextPoint: 10 },       
+            E:{ photo: 'Day 1 (34).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 1 (33).JPG', nextPoint: 7 },    
+            W:{ photo: 'Day 1 (32).JPG', nextPoint: (-1) }         
+        },
+        { // 52 (依仁堂)            
+            N:{ photo: 'Day 3 (80).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (81).JPG', nextPoint: 6 },    
+            S:{ photo: 'Day 3 (78).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (79).JPG', nextPoint: 53 }         
+        },
+        { // 53 (羽球館)            
+            N:{ photo: 'Day 3 (75).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 3 (76).JPG', nextPoint: 52 },    
+            S:{ photo: 'Day 3 (77).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 3 (74).JPG', nextPoint: 43 }         
+        },
+        { // 54 (女1~4)            
+            N:{ photo: 'Day 1 (42).JPG', nextPoint: (-1) },       
+            E:{ photo: 'Day 1 (41).JPG', nextPoint: 9 },    
+            S:{ photo: 'Day 1 (40).JPG', nextPoint: (-1) },    
+            W:{ photo: 'Day 1 (43).JPG', nextPoint: 10 }         
+        },
+        { // 55 (女5男3)            
+            N:{ photo: 'Day 1 (49).JPG', nextPoint: 13 },       
+            E:{ photo: 'Day 1 (50).JPG', nextPoint: (-1) },    
+            S:{ photo: 'Day 1 (51).JPG', nextPoint: 9 },    
+            W:{ photo: 'Day 1 (48).JPG', nextPoint: (-1) }         
+        },
+    ];
+    };
+})(jQuery);
 (function($) {
     $.nculife = function()
     {
@@ -2863,19 +3525,19 @@
             scrollableClass: false
         });
 
-        if( $('.readme-menu p').length == 1 )
+        if( $('.readme-menu a').length == 0 )
         {
             $('.readme-menu-index li').each(function()
             {
-                var title = $('<p></p>')
+				var title = $('<li></li>').append($('<a></a>')
                         .text($(this).text())
                         .attr('href', '#')
                         .attr('tab', $(this).attr('tab'))
                         .attr('page', $(this).attr('page'))
-                        .click(getTabContent);
-                $('.readme-menu').append(title);
+                        .click(getTabContent));
+                $('#readme .menu-index').append(title);
             });
-            $('.readme-menu > p').eq(1).click();
+            $('.readme-menu a').eq(0).click();
         }
 
         $('#readme-logo1').click(function()
@@ -2904,7 +3566,7 @@
         {
             $(this).stop().animate(
             {
-                left : '-187px'
+                left : '-197px'
             },500);
         });
 
@@ -3706,6 +4368,10 @@
 
         if ( $('#readme').length ) $.readme(); 
 
+<<<<<<< HEAD
+        if ( $('#street').length ) $.street(); 
+        
+=======
         if ( $('#multimedia').length ) $.multimedia();
 
         if ( $('.calendar-create').length ) $.calendarCreate();
@@ -3720,6 +4386,7 @@
 
         if ( $('#calendar-event').length ) $.calendarEvent();
 
+>>>>>>> 260a9f6de5eab749f3531199996f58f86eedc556
         $('input.datepicker:not(#form-register-birthday)').datepicker();
         $('#form-register-birthday').datepicker({
             year: 1994,

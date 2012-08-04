@@ -217,7 +217,7 @@ class SiteController extends Controller
                 {
                     $this->redirect(array('profile/editor'));
                 }
-                $this->redirect(array('site/index'));
+                $this->redirect(Yii::app()->user->returnUrl);
             }
         }
         $this->setPageTitle(Yii::app()->name . ' - 需要驗證您的身分');
@@ -262,15 +262,7 @@ class SiteController extends Controller
                     {
                         $item_save = ItemBag::model()->characterNewItem($user->id);
                         $character_save = Character::model()->createNewCharacter($user->id);
-                        //行事曆的部分
-                        $calendar = new Calendar();
-                        $calendar->user_id = $user->id;
-                        $calendar->category = 1;
-                        $calendar_subscriptions = new Subscription();
-                        $calendar_subscriptions->user_id = $user->id;
-                        $calendar_subscriptions->calendar_id = 1;
-                        $calendar_subscriptions->invisible = 0;
-                         if ( $character_save && $item_save && $calendar->save() && $calendar_subscriptions->save() )
+                         if ( $character_save && $item_save )
                         { 
                             $this->redirect(array('site/success'));
                         }
