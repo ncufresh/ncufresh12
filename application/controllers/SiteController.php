@@ -59,7 +59,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $news = News::model()->getPopularNews(10);
-        foreach ( $news as & $entry )
+        foreach ( $news as $entry )
         {
             $title = $entry->title;
             $entry->title = mb_strcut($title, 0, 24);
@@ -67,7 +67,7 @@ class SiteController extends Controller
         }
 
         $articles = Article::model()->getLastestArticles(10);
-        foreach ( $articles as & $entry )
+        foreach ( $articles as $entry )
         {
             $title = $entry->title;
             $entry->title = mb_strcut($title, 0, 24);
@@ -77,7 +77,7 @@ class SiteController extends Controller
         $this->setPageTitle(Yii::app()->name);
         $this->render('index', array(
             'latests'   => $news,
-            'articles'  => array(),
+            'articles'  => $articles,
             'marquees'  => Marquee::model()->getMarquees()
         ));
     }

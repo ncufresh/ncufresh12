@@ -2475,15 +2475,17 @@ button.news-button
 }
 
 #multimedia
+{
+}
 
 /**
  * Nculife style
  */
 #life-dialog
 {
-    display: none;
     width: 649px;
     height: 449px;
+    display: none;
     z-index: 1200;
     position: fixed;
 }
@@ -2550,7 +2552,7 @@ button.news-button
 #nculife-title
 {
     width: 605px;
-    height: 122px;
+    height: 121px;
     margin: -72px 0 0 10px;
     display: inline-block;
 }
@@ -2672,8 +2674,8 @@ button.news-button
 
 #life-container
 {
-    width: 740px;
-    height: 600px;
+    width: 649px;
+    height: 549px;
     position:relative;
     padding: 0;
 }
