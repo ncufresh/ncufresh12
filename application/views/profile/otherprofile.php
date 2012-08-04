@@ -1,12 +1,12 @@
 <h4>基本資料</h4>
 <div class="myprofile">
-    <div class="profile-modify">
+    <div id="profile-friend">
      <a href="<?php echo Yii::app()->createUrl('game/index', array('id' => $user->id)); ?>">
 <?php $this->widget('Avatar', array(
     'id'        => $user->id //得到profile的id---觀看他人基本資料
 )); ?>
     </a>
-        <ul class="user-editor">  
+        <ul id="user-data-view">  
             <li>
                 姓名:<?php echo $user->profile->name; ?>
             </li>
@@ -37,15 +37,34 @@
                 生日:<?php echo $user->profile->birthday; ?>
             </li>
         </ul>
+    </div> <!--顯示歷史訊息-->  
+    <div class="friend-chatting">
+        <ul>
+            <li>時間:</li>
+            <li>對話內容:</li>
+<?php foreach ( $messages as $message ) : ?>
+            <li>
+<?php echo $message['time']; ?>
+            </li>
+            <li class="friend-chatting-content">
+           
+<?php echo $message['message']; ?>
+           
+            </li>
+<?php endforeach; ?>
+        </ul>
     </div>
 </div>
-<?php if ( ! $is_friend ) : ?>
+<?php if ( $friend_relation === 2 ) : ?>
 <form action="<?php echo Yii::app()->createUrl('friends/makefriends'); ?>" method="POST" >
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
     <input type="hidden" name="friends[<?php echo $user->id; ?>]" value="<?php echo $user->id; ?>" />
     <button type="submit" class="button-addfriend" ></button>
     <button type="button" class="button-back" ></button>
 </form>
+<?php elseif ( $friend_relation === 1 ) : ?>
+<button id="friend_request"></button>
 <?php else : ?>
-<button type="button" class="button-back" ></button>
+<button id="is_friend"></button>
 <?php endif; ?>
+<button type="button" class="button-back" ></button>

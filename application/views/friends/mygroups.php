@@ -5,7 +5,7 @@
 <ul>
 </div>
 <div id="mygroup">
-<form class="A-group-users" method="POST" action="<?php echo $this->createUrl('friends/deletemembers', array('id'=>$mygroup->id)); ?>">
+<form class="a-group-users" method="POST" action="<?php echo $this->createUrl('friends/deletemembers', array('id'=>$mygroup->id)); ?>">
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
         <ul class="users-department">
 <?php foreach ($members as $member ): ?>

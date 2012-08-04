@@ -50,10 +50,12 @@ class Chat extends CActiveRecord
     {
         $user = Yii::app()->user->getId();
 
-        $message = Yii::app()->db->createCommand('
+        $messages = Yii::app()->db->createCommand('
             SELECT `uuid`, `sender_id`, `receiver_id`, `message`, `timestamp`
             FROM `{{chat_messages}}`
-            WHERE `sender_id` = :sender AND `receiver_id` = :receiver
+            WHERE
+                (`sender_id` = :sender AND `receiver_id` = :receiver)
+             OR (`sender_id` = :receiver AND `receiver_id` = :sender)
             ORDER BY `timestamp` ASC
         ')->queryAll(true, array(  
             ':sender'   => $user,
@@ -62,43 +64,44 @@ class Chat extends CActiveRecord
 
         $criteria = new CDbCriteria();
         $criteria->select = '`uuid`, `sender_id`, `receiver_id`, `message`, `timestamp`';
-        $criteria->order = '`timestamp` ASC, `sequence` ASC';
+        $criteria->order = '`timestamp` DESC, `sequence` ASC';
         $criteria->condition = '
-            `sender_id` = :sender AND `receiver_id` = :receiver AND `timestamp` > :timestamp
+            ((`sender_id` = :sender AND `receiver_id` = :receiver)
+         OR (`sender_id` = :receiver AND `receiver_id` = :sender))
+        AND `timestamp` > :timestamp
         ';
         $criteria->params = array(
             ':sender'   => $user,
             ':receiver' => $id,
-            ':timestamp'=> count($message) ? $message[count($message) - 1]['timestamp'] : 0
+            ':timestamp'=> count($messages) ? $messages[count($messages) - 1]['timestamp'] : 0
         );
 
-        $uuids = array_map(function($entry)
-        {
-            return $entry['uuid'];
-        }, array_values($message));
-
         $data = array();
-        if ( count($message) )
+        if ( count($messages) )
         {
-            foreach ( $message as $entry )
+            foreach ( $messages as $entry )
             {
                 $data[] = array(
-                    'uuid'      => $entry['uuid'],
                     'id'        => $entry['sender_id'] == $user
                                  ? $entry['receiver_id']
                                  : $entry['sender_id'],
                     'name'      => User::model()->findByPk($entry['sender_id'])->username,
                     'avatar'    => $entry['sender_id'],
-                    'message'   => $entry['message']
+                    'message'   => $entry['message'],
+                    'time'      => Yii::app()->format->date($entry['timestamp'])
                 );
             }
         }
+
+        $uuids = array_map(function($entry)
+        {
+            return $entry['uuid'];
+        }, array_values($messages));
 
         foreach ( self::model()->findAll($criteria) as $entry )
         {
             if ( in_array($entry->uuid, $uuids) ) continue;
             $data[] = array(
-                'uuid'      => $entry->uuid,
                 'id'        => $entry->sender_id == $user
                              ? $entry->receiver_id
                              : $entry->sender_id,
@@ -106,7 +109,8 @@ class Chat extends CActiveRecord
                              ? $entry->sender->username
                              : 'Unknown',
                 'avatar'    => $entry->sender_id,
-                'message'   => $entry->message
+                'message'   => $entry->message,
+                'time'      => Yii::app()->format->date($entry->timestamp)
             );
         }
         return $data;

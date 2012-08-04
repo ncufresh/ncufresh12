@@ -16,7 +16,7 @@
         <strong>公共設備</strong>：洗衣機（10元/次）、烘衣機（10元/次）、脫水機（免費）、飲水機。
     </li>
     <li>
-        <strong>垃圾車</strong>：週一至週六晚間<strong>18:35</strong>。
+        <strong>垃圾車</strong>：週一至週六:晚間<strong>18:35</strong>。
     </li>
 </ol>
 <p>

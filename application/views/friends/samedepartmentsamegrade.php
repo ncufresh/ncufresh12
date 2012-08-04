@@ -1,6 +1,6 @@
 <h4>同屆同系</h4>
 <div id="sameDsameG">
-<form class="A-group-users" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
+<form class="a-group-users" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
         <ul class="users-department">
 <?php foreach ( $profiles as $profile ) : ?>
             <li>
@@ -10,6 +10,7 @@
 )); ?>
 </a>
                 <input type="checkbox" name="friends[<?php echo $profile->id;?>]" value="<?php echo $profile->id;?>" />
+                <input type="hidden" name="friends-all-choose[<?php echo $profile->id;?>]" value="<?php echo $profile->id;?>" />
                 <h3>
 <?php echo $profile->name;?>
                 </h3>
@@ -19,6 +20,7 @@
             </li>
 <?php endforeach; ?>
         </ul>
+    <button type="submit" name="all-choose" class="button-all-choose"></button>
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
     <button type="submit" class="button-addfriends"></button>
 </form>

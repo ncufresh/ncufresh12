@@ -59,20 +59,34 @@ class Friend extends CActiveRecord
         ));
     }
     
-    public function isExist($friendid)
+    public function friendRelation($friendid)
     {
-        $data = $this->find(array(
-                'condition' => 'user_id = :userid AND friend_id = :friendid',
+        $friend = $this->find(array(
+                'condition' => 'user_id = :userid AND friend_id = :friendid AND invisible = 0',
                 'params'    => array(
                 ':userid'   => Yii::app()->user->getId(),
                 ':friendid' => $friendid
             )
         ));
-        if ( $data )
+        $request = $this->find(array(
+                'condition' => 'user_id = :userid AND friend_id = :friendid AND invisible = 1',
+                'params'    => array(
+                ':userid'   => Yii::app()->user->getId(),
+                ':friendid' => $friendid
+            )
+        ));
+        if ( $friend )
         {
-            return true;
+            return 0; //是好友
         }
-        return false;
+        else if ( $request )
+        {
+            return 1; //已送出邀請等對方接受
+        }
+        else
+        {
+            return 2; //尚未加為好友
+        }
     }
 
     public function deleteFriend($friendid) //刪除好友關係

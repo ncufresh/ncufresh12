@@ -16,3 +16,15 @@
 <ul>
 
 </div>
+
+<audio id="game-mission-correct">
+    <source type="audio/ogg" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/correct.ogg">
+    <source type="audio/mp3" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/correct.mp3">
+    <source type="audio/wav" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/correct.mp3">
+</audio>
+
+<audio id="game-mission-wrong">
+    <source type="audio/ogg" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/wrong.ogg">
+    <source type="audio/mp3" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/wrong.mp3">
+    <source type="audio/wav" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/wrong.mp3">
+</audio>

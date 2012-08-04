@@ -261,6 +261,27 @@ class Character extends CActiveRecord
         return $price;
     }
 
+    public function createNewCharacter($user_id)
+    {
+        $character = new Character(); //Character Model
+        $character->id = $user_id; //同步寫入user的id至遊戲資料列表
+        $profile = Profile::model()->findByPk($user_id);
+        if ( $profile )
+            $gender = $profile->gender;
+        else
+            $gender = 0;
+            
+        if  ( $gender == 0 )
+            $character->skin_id = 81; //男生 皮膚預設id=81
+        else
+            $character->skin_id = 85; //女生 皮膚預設id=85
+            
+        if ( $character->save() == true )
+            return true;
+        else
+            return false;
+    }
+    
     protected function beforeSave()
     {
         if ( parent::beforeSave() )
@@ -268,8 +289,8 @@ class Character extends CActiveRecord
             if ( $this->getIsNewRecord() )
             {
                 $this->experience = 0; //一開始使用者經驗設為0
-                $this->money = 25000; //一開始使用者金錢設為25000
-                $this->total_money = 35000; //一開始使用者總金錢設為35000
+                $this->money = 45000; //一開始使用者金錢設為25000
+                $this->total_money = 55000; //一開始使用者總金錢設為35000
             }
             return true;
         }
