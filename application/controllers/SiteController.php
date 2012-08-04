@@ -7,6 +7,7 @@ class SiteController extends Controller
         parent::init();
         Yii::import('application.models.News.*');
         Yii::import('application.models.Game.*');
+        Yii::import('application.models.Forum.*');
         Yii::import('application.models.Calendar.*');
         return true;
     }
@@ -59,6 +60,14 @@ class SiteController extends Controller
     {
         $news = News::model()->getPopularNews(10);
         foreach ( $news as & $entry )
+        {
+            $title = $entry->title;
+            $entry->title = mb_strcut($title, 0, 24);
+            if ( strlen($title) > strlen($entry->title) ) $entry->title .= '…';
+        }
+
+        $articles = Article::model()->getLastestArticles(10);
+        foreach ( $articles as & $entry )
         {
             $title = $entry->title;
             $entry->title = mb_strcut($title, 0, 24);
