@@ -17,12 +17,12 @@ class Profile extends CActiveRecord
     public function rules()
     {   
         return array(
-            array('name, nickname, department, grade, senior, birthday ,gender','required'),
+            array('name, nickname, department, grade, senior, birthday ,gender','required', 'on' => 'register, editor'),
             array('nickname', 'length','min' => 1, 'max' => 8, 'on' => 'register, editor'),
-            array('department', 'numerical','min' => 1, 'max' => 21, 'on' => 'register, editor, wrong-data'),
-            array('grade', 'numerical','min' => 0, 'max' => 4, 'on' => 'register, editor, wrong-data'),
+            array('department', 'numerical','min' => 1, 'max' => 21, 'on' => 'register, editor'),
+            array('grade', 'numerical','min' => 0, 'max' => 4, 'on' => 'register, editor'),
             array('nickname', 'unique', 'className' => 'Profile', 'on' => 'register, editor'),
-            array('birthday', 'isDate'),
+            array('birthday', 'isDate', 'on' => 'register, editor'),
         );
     }
 

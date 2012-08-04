@@ -26,5 +26,5 @@
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/生活助學金申請表.doc" title="生活助學金申請表">生活助學金申請表</a></li>
         </ul>
     </div>
-    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" id="download-back" class="readme-back" title="回上一頁"></a>
+    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" id="download-back" class="readme-download-back" title="回上一頁"></a>
 </div>
