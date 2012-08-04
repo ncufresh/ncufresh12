@@ -926,7 +926,7 @@
             {
                 var originalHeight = parseInt(scrollDragable.css('height'));
                 var scrollContentHeight = scrollContent.height();
-                var scrollTrackHeight = scrollTrack.height();
+                var scrollBarHeight = scrollBar.height();
                 var height = 0;
                 if ( scrollContent.width() - scrollContainer.width() >= 0 )
                 {
@@ -934,10 +934,10 @@
                         width: scrollContainer.width() + scrollWidth
                     });
                 }
-                if ( scrollContentHeight > scrollTrackHeight )
+                if ( scrollContentHeight > scrollBarHeight )
                 {
-                    height = scrollTrackHeight
-                           * scrollTrackHeight
+                    height = scrollBarHeight
+                           * scrollBarHeight
                            / scrollContentHeight;
                 }
                 if ( height != originalHeight )
@@ -1000,25 +1000,28 @@
                     updateScrollDragable(top - delta * multiplier);
                     return false;
                 })
-                .mousedown(function()
+                .mousedown(function(event)
                 {
-                    var timer = setInterval(function()
+                    if ( event.which === 1 )
                     {
-                        scrollDragable.css({
-                            top: (scrollTrack.height()
-                               - updateScrollDraggableHeight())
-                               * scrollArea.scrollTop()
-                               / scrollHeight
-                        });
-                    }, 1);
-                    var revert = function()
-                    {
-                        active = false;
-                        $(document).off('mouseup', revert);
-                        clearInterval(timer);
-                    };
-                    $(document).on('mouseup', revert);
-                    active = true;
+                        var timer = setInterval(function()
+                        {
+                            scrollDragable.css({
+                                top: (scrollTrack.height()
+                                   - updateScrollDraggableHeight())
+                                   * scrollArea.scrollTop()
+                                   / scrollHeight
+                            });
+                        }, 1);
+                        var revert = function()
+                        {
+                            active = false;
+                            $(document).off('mouseup', revert);
+                            clearInterval(timer);
+                        };
+                        $(document).on('mouseup', revert);
+                        active = true;
+                    }
                 })
                 .wrapInner($(this))
                 .appendTo(scrollArea);
@@ -1029,41 +1032,47 @@
                 .addClass('scroll-track')
                 .mousedown(function(event)
                 {
-                    var y = event.pageY;
-                    var top = $(this).offset().top;
-                    var height = updateScrollDraggableHeight();
-                    updateScrollDragable(y - top - height / 2);
-                    return false;
+                    if ( event.which === 1 )
+                    {
+                        var y = event.pageY;
+                        var top = $(this).offset().top;
+                        var height = updateScrollDraggableHeight();
+                        updateScrollDragable(y - top - height / 2);
+                        return false;
+                    }
                 })
                 .appendTo(scrollBar);
             var scrollDragable = $('<div></div>')
                 .addClass('scroll-dragable')
                 .mousedown(function(event)
                 {
-                    var origin = parseInt(scrollDragable.css('top')) - event.pageY;
-                    var stop = function()
+                    if ( event.which === 1 )
                     {
-                        $(document)
-                            .unbind('mouseup', stop)
-                            .unbind('mousemove', update);
-                        if ( ! inside )
+                        var origin = parseInt(scrollDragable.css('top')) - event.pageY;
+                        var stop = function()
                         {
-                            scrollBar
-                                .stop(true, true)
-                                .fadeOut(options.fadeInDuration);
-                        }
-                        active = false;
-                    };
-                    var update = function(event)
-                    {
-                        updateScrollDragable(origin + event.pageY);
-                    };
-                    $(document)
-                        .bind('mouseup', stop)
-                        .bind('mouseleave', stop)
-                        .bind('mousemove', update);
-                    active = true;
-                    return false;
+                            $(document)
+                                .unbind('mouseup', stop)
+                                .unbind('mousemove', update);
+                            if ( ! inside )
+                            {
+                                scrollBar
+                                    .stop(true, true)
+                                    .fadeOut(options.fadeInDuration);
+                            }
+                            active = false;
+                        };
+                        var update = function(event)
+                        {
+                            updateScrollDragable(origin + event.pageY);
+                        };
+                        $(document)
+                            .bind('mouseup', stop)
+                            .bind('mouseleave', stop)
+                            .bind('mousemove', update);
+                        active = true;
+                        return false;
+                    }
                 })
                 .appendTo(scrollTrack);
             var updateScrollDragable = function(position)
