@@ -12,6 +12,10 @@
             tagBar:                          'tag-bar',
             animationClass:                  'animation',
             block1InfClass:                  'about-block1Inf',
+            tagClass:                        'tag',
+            tagTxtClass:                     'tag-txt',
+            title1Class:                     'title1',
+            title2Class:                     'title2',
             picBarSpeed:                     1000,
             picAutoSpeed:                    3000,
             tagBarSpeed:                     30000
@@ -31,9 +35,6 @@
             block1Inf.each(function(){
                 $(this).hide();
             });
-            tagbar.each(function(){
-                $(this).hide();
-            });
             block1Inf.eq(tagbarIndex).show();
             tagbar.eq(tagbarIndex).show();
             tagbarPerson.each(function(){
@@ -48,16 +49,11 @@
                 }
             }
         };
-        var blocks = [
-            $('<div></div>')
-                .addClass('block1'),
-            $('<div></div>')
-                .addClass('block2')
-        ];
+        var blocks = [$('#' + options.aboutId + ' .block1'), $('#' + options.aboutId + ' .block2')];
         var itrPic = $('#' + options.aboutId + ' .' + options.introdutionPicture);
         var picture = $('<div></div>')
             .css({
-                background: 'url(\'' + photos.eq(1).attr('photo') + '\')',
+                background: 'url(\'' + photoA.eq(1).attr('href') + '\')',
                 height: 300,
                 width: 400
             })
@@ -80,8 +76,8 @@
         var photoBar = $('<div></div>').addClass('photo-bar').appendTo(display);
         var itr = $('#' + options.aboutId + ' .' + options.introdutionBlock).appendTo(blocks[0]);
         var block1Pic = $('<div></div>').addClass('about-block1Pic').appendTo(blocks[1]);
-        var block1Tag = $('<div></div>').addClass('tag').appendTo(blocks[1]);
-        var block1Txt = $('<div></div>').addClass('tag-txt').appendTo(blocks[1]);
+        var block1Tag = $('#' + options.aboutId + ' .' + options.tagClass).appendTo(blocks[1]);
+        var block1Txt = $('#' + options.aboutId + ' .' + options.tagTxtClass).appendTo(blocks[1]);
         var block1Inf = $('#' + options.aboutId + ' .' + options.block1InfClass);
         block1Inf.each(function()
         {
@@ -93,58 +89,7 @@
         });
         $('#' + options.aboutId + ' .' + options.animationClass).each(function(index)
         {
-            switch ( index )
-            {
-                case 0:
-                    $(this).css({
-                        width: 700,
-                        height: 280
-                    });
-                    break;
-                case 1:
-                    $(this).css({
-                        top: 12,
-                        left: 36,
-                        height: 132,
-                        width: 122
-                    });
-                    break;
-                case 2:
-                    $(this).css({
-                        top: 145,
-                        left: 150,
-                        height: 132,
-                        width: 122
-                    });
-                    break;
-                case 3:
-                    $(this).css({
-                        top: 146,
-                        left: 379,
-                        height: 132,
-                        width: 122
-                    });
-                    break;
-                case 4:
-                    $(this).css({
-                        top: 142,
-                        left: 576,
-                        height: 132,
-                        width: 122
-                    });
-                    break;
-                case 5:
-                    $(this).css({
-                        top: 11,
-                        left: 573,
-                        height: 132,
-                        width: 122
-                    });
-                    break;
-                 default:
-                    break;
-            }
-            $(this).mouseenter(function()
+            $(this).addClass('about-small-' + index ).mouseenter(function()
             {
                 $(this).css({
                     cursor: 'pointer'
@@ -200,7 +145,7 @@
             {
                 photoIndex = 0;
             }
-            picture.css('background-image', 'url(\'' + photos.eq(photoIndex).attr('photo') + '\')');
+            picture.css('background-image', 'url(\'' + photoA.eq(photoIndex).attr('href') + '\')');
         },options.picAutoSpeed);
         setInterval(function()
         {
@@ -214,14 +159,10 @@
             }
             jumpTo();
         },options.tagBarSpeed);
-        $('#' + options.aboutId + ' .' + options.titleClass)
-            .appendTo($('#' + options.aboutId))
-            .each(function(index)
-            {
-                if ( index == 0 ) $(this).addClass('title1');
-                if ( index == 1 ) $(this).addClass('title2');
-                blocks[index].insertAfter($(this));
-            });
+        $('#' + options.aboutId + ' .' + options.title1Class).appendTo($('#' + options.aboutId));
+        blocks[0].appendTo($('#' + options.aboutId));
+        $('#' + options.aboutId + ' .' + options.title2Class).appendTo($('#' + options.aboutId));
+        blocks[1].appendTo($('#' + options.aboutId));
         photos.each(function(index)
         {
             if ( index < photoNumber + 2 )
@@ -257,27 +198,27 @@
                     {
                         photoIndex = index;
                         picture.css({
-                            background: 'url(\'' + photos.eq(index - 1).attr('photo') + '\')'
+                            background: 'url(\'' + photoA.eq(index - 1).attr('href') + '\')'
                         });
                     }
                 })
             }
         });
-        $('#' +  options.aboutId + ' .' + options.photoUl).appendTo(photoBar);
+        $('#' +  options.aboutId + ' .' + options.photoUl).appendTo(photoBar).show();
         photos.eq(0).css({
             left: 0,
             position: 'absolute'
-        }).appendTo(display);
+        }).appendTo(display).show();
         photos.eq(photoNumber + 1).css({
             left: 350,
             position: 'absolute'
-        }).appendTo(display);
+        }).appendTo(display).show();
         photoA.each(function(index)
         {
             $(this).click(function()
             {
                 picture.css({
-                    background: 'url(\'' + photos.eq(index + 1).attr('photo') + '\')'
+                    background: 'url(\'' + $(this).attr('href') + '\')'
                 });
                 return false;
             });

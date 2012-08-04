@@ -3106,6 +3106,7 @@ button.news-button
 
 #about .block2
 {
+    margin-top: -16px;
     border-radius: 0px 0px 10px 10px;
     background: #385281;
     height: 950px;    
@@ -3141,6 +3142,7 @@ button.news-button
 
 #about .about-block1Inf
 {
+    display: none;
     position: absolute;
     top: 30px;
     left: 40px;
@@ -3198,6 +3200,7 @@ button.news-button
 
 #about .photo-ul
 {   
+    display: none;
     left: -40px;
     position: absolute;
     margin: 0px;
@@ -3209,6 +3212,58 @@ button.news-button
     width: 50px;
     height: 50px;
     float: left;
+}
+
+#about .about-small-0
+{
+    background: url('../about/about.png') no-repeat;
+    width: 700px;
+    height: 280px;
+}
+
+#about .about-small-1
+{
+    top: 12px;
+    left: 36px;
+    height: 132px;
+    width: 122px;
+}
+
+#about .about-small-2
+{
+    top: 145px;
+    left: 150px;
+    height: 132px;
+    width: 122px;
+}
+
+#about .about-small-3
+{
+    top: 146px;
+    left: 379px;
+    height: 132px;
+    width: 122px;
+}
+
+#about .about-small-4
+{
+    top: 142px;
+    left: 576px;
+    height: 132px;
+    width: 122px;
+}
+
+#about .about-small-5
+{
+    top: 11px;
+    left: 573px;
+    height: 132px;
+    width: 122px;
+}
+
+#about .hidden
+{
+    display: none;
 }
 
 /**
@@ -3853,30 +3908,21 @@ div.A-group-users div.avatar
     float:left;
 }
 
-/*.friends-part3
-{
-    width:675px;
-    height:350px;
-    margin:0px;
-    padding:5px;
-}*/
-
 .friend-chatting
 {
     width:415px;
     height:315px;
     margin-top:14px;
     padding:0px;
-    outline:1px solid yellow
 }
 
 .friend-chatting ul
 {
-    width:411px;
-    height:312px;
-    margin-left:3px;
+    width:410px;
+    margin-left:2px;
     padding:0px;
-    outline:1px solid red
+    outline:1px solid black;
+    outline-style:dotted;
 }
 
 .friend-chatting ul li
@@ -3885,7 +3931,8 @@ div.A-group-users div.avatar
     padding:0px;
     float:left;
     list-style-type:none;
-    outline:1px solid green
+    outline:1px solid black;
+    outline-style:dotted;
 }
 
 .profile-modify
