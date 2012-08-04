@@ -2658,335 +2658,18 @@
         var errorMessage = $('<p></p>').text('').addClass('error').appendTo(box);
     };
 })(jQuery);
+
 (function($) {
-    $.street = function()
-    {
-        $('.picture').hide();
-    $('#street-div #experience-personally').mousedown(function()
-    {
-        $(document).mousemove(mousemove);
-        return false;
-    });
-    var mouseInId;
-    var isInPicture = false;
-    var mousemove = function(event)
-    {
-        x = event.pageX - $('#street-div #back-div').offset().left;
-        y = event.pageY - $('#street-div #back-div').offset().top;
-        $('#street-div #experience-personally').css(
-        {
-        top: y +  2 + 'px',
-        left: x + 2 + 'px',
-        });
-    };
-    $('#street-div .picture').mouseenter(function()
-    {
-        isInPicture = true;
-        mouseInId = $(this).attr('id');
-        $(this).attr('src', $(this).attr('src').replace('mouseleave', 'mouseenter'));
-    });
-    $('#street-div .picture').mouseleave(function()
-    {
-        isInPicture = false;
-        $(this).attr('src', $(this).attr('src').replace('mouseenter', 'mouseleave'));
-    });
-    var mouseup = function()
-    {
-        if( isInPicture == true )
-        {
-            if( $('#' + mouseInId).attr('streetPoints') == (-1) )
-            {
-                $('#street-div #experience-personally').css(
-                {
-                    top: 410,
-                    left: 530,
-                });
-            }
-            else
-            {
-                $('#street-div #experience-personally').css(
-                {
-                    zIndex: 2,
-                });
-                var id = $('#street-div #' + mouseInId).attr('href').replace( '#', '' );
-                $('#street-div #mapPicture').attr('src', url + streetPoints[$('#street-div #' + mouseInId).attr('streetPoints')][$('#' + mouseInId).attr('faceto')].photo);
-                
-                nowfaceto = $('#' + mouseInId).attr('faceto');
-                nowpointat = [$('#' + mouseInId).attr('streetPoints')];
-                nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
-
-                console.log('一開始');
-                console.log('nowpointat: ' + nowpointat);
-                console.log('nowfaceto: ' + nowfaceto);
-                console.log('nextpointat: ' + nextpointat); 
-                console.log('--------------------------');
-                $('#street-div .arrow').eq( 0 ).click(function() //前進nextDirection
-                {
-                    if( nextpointat == (-1) )
-                    {
-                    // console.log('這裡不能走！');
-                        $.alert({
-                            message: '這裡不能走！'
-                        });
-                    }
-                    else if( nextpointat != (-1))
-                    {
-                        nowpointat = nextpointat;
-                        nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
-                        $('#street-div #mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
-                    }
-                    console.log('按前進');
-                    console.log('nowpointat: ' + nowpointat);
-                    console.log('nowfaceto: ' + nowfaceto);
-                    console.log('nextpointat: ' + nextpointat);            
-                    console.log('--------------------------');
-                });
-                $('#street-div .arrow').eq( 1 ).click(function() // 左旋
-                {                        
-                    turnLeft();
-                    $('#street-div #mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
-                    nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
-                    console.log('按左旋');
-                    console.log('nowpointat: ' + nowpointat);
-                    console.log('nowfaceto: ' + nowfaceto);
-                    console.log('nextpointat: ' + nextpointat);
-                    console.log('--------------------------');
-                });
-                $('#street-div .arrow').eq( 2 ).click(function() // 右旋
-                {
-                    turnRight();
-                    $('#street-div #mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
-                    nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
-                    console.log('按右旋');
-                    console.log('nowpointat: ' + nowpointat);
-                    console.log('nowfaceto: ' + nowfaceto);
-                    console.log('nextpointat: ' + nextpointat);                        
-                    console.log('--------------------------');
-                });
-    //-------------------------------------------------------------------------------------------------
-                function turnLeft()
-                {
-                    if( nowfaceto == 'N')
-                    {
-                        nowfaceto = 'W';
-                    }
-                    else if( nowfaceto == 'E')
-                    {
-                        nowfaceto = 'N';
-                    }
-                    else if( nowfaceto == 'S')
-                    {
-                        nowfaceto = 'E';
-                    }
-                    else if( nowfaceto == 'W')
-                    {
-                        nowfaceto = 'S';
-                    }
-                    else
-                    {
-                        return;
-                    }
-                };
-                function turnRight()
-                {
-
-                    if( nowfaceto == 'N')
-                    {
-                        nowfaceto = 'E';
-                    }
-                    else if( nowfaceto == 'E')
-                    {
-                        nowfaceto = 'S';
-                    }
-                    else if( nowfaceto == 'S')
-                    {
-                        nowfaceto = 'W';
-                    }
-                    else if( nowfaceto == 'W')
-                    {
-                        nowfaceto = 'N';
-                    }
-                    else
-                    {
-                        return;
-                    }
-                };
-                    
-                $('#street-div #map-div, #street-div #curtain-close-div, #street-div #back-div').css(
-                {
-                    height: 498,
-                });
-
-                $('#street-div #mapPicture').css(
-                {
-                    zIndex: '3',
-                    width: 750,
-                    height: 498,
-                });
-                $('#street-div .arrow').show();
-                isInPicture = false;
-            }
-        }
-            $(document).unbind('mousemove', mousemove);
-            $('#street-div #experience-personally').css(
-            {
-                top: 410,
-                left: 530,
-            });
-            isInPicture = false;
-    };
-    $(document).mouseup(mouseup);
-
-    $('#street-div .picture').hide();
-    $('#street-div .landscape').show();
-
-    var littleBuilding = function() // building icon show
-    {
-        $('#street-div .picture').hide();
-        $( '.' + $(this).attr('show')).show();
-    };
-    $('#street-div .one-image').bind('click', littleBuilding);
-
-    $('#street-div .two-image').click(function(){
-        $('#street-div .button-text').hide();
-        $('#street-div .button-text[ detailItem = ' + $(this).attr('detailItem') + ']' ).show();
-    });
-
-    $('#street-div .curtainOpen').click(function()
-    { // 窗簾
-        $('#street-div #experience-personally').css(
-        {
-            zIndex: 1,
-        });
-        $('#street-div #curtainDiv').animate(
-        {
-            left: '370px'
-        });
-        $('#street-div .button-text').hide();
-        $('#street-div .button-text[ detailItem = "department" ]').show();        
-        $('#street-div .one-image').unbind('click', littleBuilding);
-    });
-    $('#street-div #curtainclose').click(function()
-    {// 窗簾
-        $('#street-div #curtainDiv').animate(
-        {
-            left: '750px'
-        });
-        $('#street-div #experience-personally').css(
-        {
-            zIndex: 4,
-        });
-        $('#street-div .one-image').bind('click', littleBuilding);
-        $('#street-div .landscape').show();
-    });
-
-    $('#street-div .arrow').eq( 3 ).click(function() // 親身體驗 back
-    {
-        $('#street-div #mapPicture').attr('src', $('#street-div #mapPicture').attr('path'));
-        $('#street-div .arrow').hide();
-
-        $('#street-div #map-div, #street-div #curtain-close-div, #street-div #back-div').css(
-        {
-            height: 552,
-        });
-        $('#street-div #mapPicture').css(
-        {
-            width: 601,
-            height: 552,  
-            zIndex: 0,
-        });
-        $('#street-div #experience-personally').css(
-        {
-            zIndex: 3,
-        });
-    });
-    $('#street-div .picture, #street-div .button-text').click(function()
-    {
-        isInPicture = false;
-        $('#street-div #back-div, #street-div #curtain-close-div').css(
-        {
-           height: 552,
-        });
-        $('#street-div #experience-personally').css(
-        {
-            zIndex: 3,
-        });
-        $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
-        $('#text-container').dialog(
-        {
-            width: 680,
-            height: 400,
-            modal: true,
-            escape: false,
-            onClose: function()
-            {
-                
-            }
-        });
-
-        $('#street-div .arrow').hide();
-        $('#street-div #mapPicture').css(
-        {
-            width: 601,
-            height: 552,
-            zIndex: 0,
-        });
-
-        var id = $(this).attr('href').replace('#', '');
-        $.ajax(
-        {
-            type: 'GET',
-            url: jQuery.configures.buildingContentUrl.replace(':id', id),
-            dataType: 'json',
-            success: function(data)
-            {
-                $('#building-text').html(data.content);
-                $('#building-text img').css(
-                {
-                    cursor: 'pointer',
-                });
-                $('#building-text img').each(function()
-                {
-                    $(this).wrapAll(
-                        $('<a></a>')
-                            .addClass('lightbox')
-                            .attr('href', $(this).attr('src'))
-                            .attr('title', $(this).attr('alt'))
-                    );
-                });
-                $('#building-text a.lightbox').lightbox({
-                    hideOverlayBackground: true
-                });             
-            },
-        });
-        
-    });
-    $('#street-div #building-text').scrollable({
-        scrollableClass: false
-    });
-    
-    $('#street-div .arrow.up, #street-div .arrow.right, #street-div .arrow.left').hover(function()
-    {
-        var arrowStrong = $(this).attr('src').replace('arrow', 'showPoint');
-        $(this).attr('src', arrowStrong);
-    }, function()
-    {
-        var arrowStrong = $(this).attr('src').replace('showPoint', 'arrow');
-        $(this).attr('src', arrowStrong);
-    });
-
-    var howmanyphoto;
-    var position = 0;    
     var url = '../statics/street-view/';
     var nowfaceto;
     var nowpointat;
-    var streetPoints = 
+    var streetPoints =
     [
         { // 0 (工5)
             N:{ photo: 'Day 1 (4).JPG', nextPoint: 2 },
             E:{ photo: 'Day 1 (3).JPG', nextPoint: (-1) },
             S:{ photo: 'Day 1 (2).JPG', nextPoint: (-1) },
-            W:{ photo: 'Day 1 (1).JPG', nextPoint: 1 }            
+            W:{ photo: 'Day 1 (1).JPG', nextPoint: 1 }
         },
         { // 1 (環工)
             N:{ photo: 'Day 3 (3).JPG', nextPoint: (-1) },
@@ -3319,8 +3002,322 @@
             W:{ photo: 'Day 1 (48).JPG', nextPoint: (-1) }         
         },
     ];
+
+    var move = function(pointat, faceto)
+    {
+        if ( pointat == -1 )
+        {
+            $.alert({
+                message: '這裡不能走！'
+            });
+        }
+        else
+        {
+            nowpointat = pointat;
+            nowfaceto = faceto;
+            $('#street-div #mapPicture')
+                .attr(
+                    'src',
+                    url + streetPoints[nowpointat][nowfaceto].photo
+                );
+        }
+    };
+
+    var forward = function()
+    {
+        move(streetPoints[nowpointat][nowfaceto].nextPoint, nowfaceto);
+    };
+
+    var turnLeft = function()
+    {
+        switch ( nowfaceto )
+        {
+            case 'N':
+                nowfaceto = 'W';
+                break;
+            case 'E':
+                nowfaceto = 'N';
+                break;
+            case 'S':
+                nowfaceto = 'E';
+                break;
+            case 'W':
+                nowfaceto = 'S';
+                break;
+        }
+        move(nowpointat, nowfaceto);
+    };
+
+    var turnRight = function()
+    {
+        switch ( nowfaceto )
+        {
+            case 'N':
+                nowfaceto = 'E';
+                break;
+            case 'E':
+                nowfaceto = 'S';
+                break;
+            case 'S':
+                nowfaceto = 'W';
+                break;
+            case 'W':
+                nowfaceto = 'N';
+                break;
+        }
+        move(nowpointat, nowfaceto);
+    };
+
+    $.street = function()
+    {
+        $('.picture').hide();
+        $('#street-div #experience-personally').mousedown(function()
+        {
+            $(document).mousemove(mousemove);
+            return false;
+        });
+        var mouseInId;
+        var isInPicture = false;
+        var mousemove = function(event)
+        {
+            x = event.pageX - $('#street-div #back-div').offset().left;
+            y = event.pageY - $('#street-div #back-div').offset().top;
+            $('#street-div #experience-personally').css(
+            {
+            top: y +  2 + 'px',
+            left: x + 2 + 'px',
+            });
+        };
+
+        $('#street-div .picture').mouseenter(function()
+        {
+            isInPicture = true;
+            mouseInId = $(this).attr('id');
+        });
+
+        $('#street-div .picture').mouseleave(function()
+        {
+            isInPicture = false;
+        });
+
+        var mouseup = function()
+        {
+            if( isInPicture == true )
+            {
+                if( $('#' + mouseInId).attr('streetPoints') == (-1) )
+                {
+                    $('#street-div #experience-personally').css(
+                    {
+                        top: 410,
+                        left: 530,
+                    });
+                }
+                else
+                {
+                    $('#street-div #experience-personally').css(
+                    {
+                        zIndex: 2,
+                    });
+
+                    $('#street-div #map-div, #street-div #curtain-close-div, #street-div #back-div').css(
+                    {
+                        height: 498,
+                    });
+
+                    $('#street-div #mapPicture').css(
+                    {
+                        zIndex: '3',
+                        width: 750,
+                        height: 498,
+                    });
+
+                    $('#street-div .arrow').show();
+
+                    move($('#' + mouseInId).attr('streetPoints'), $('#' + mouseInId).attr('faceto'));
+                    console.log('一開始');
+                    console.log('nowpointat: ' + nowpointat);
+                    console.log('nowfaceto: ' + nowfaceto);
+                    console.log('--------------------------');
+                    $('#street-div .arrow').eq(0).unbind('click').click(function() //前進nextDirection
+                    {
+                        forward();
+                        console.log('按前進');
+                        console.log('nowpointat: ' + nowpointat);
+                        console.log('nowfaceto: ' + nowfaceto);
+                        console.log('--------------------------');
+                    });
+                    $('#street-div .arrow').eq(1).unbind('click').click(function() // 左旋
+                    {
+                        turnLeft();
+                        console.log('按左旋');
+                        console.log('nowpointat: ' + nowpointat);
+                        console.log('nowfaceto: ' + nowfaceto);
+                        console.log('--------------------------');
+                    });
+                    $('#street-div .arrow').eq(2).unbind('click').click(function() // 右旋
+                    {
+                        turnRight();
+                        console.log('按右旋');
+                        console.log('nowpointat: ' + nowpointat);
+                        console.log('nowfaceto: ' + nowfaceto);
+                        console.log('--------------------------');
+                    });
+
+                    isInPicture = false;
+                }
+            }
+            $(document).unbind('mousemove', mousemove);
+            $('#street-div #experience-personally').css(
+            {
+                top: 410,
+                left: 530,
+            });
+        };
+        $(document).mouseup(mouseup);
+
+        $('#street-div .picture').hide();
+        $('#street-div .landscape').show();
+
+        var littleBuilding = function() // building icon show
+        {
+            $('#street-div .picture').hide();
+            $( '.' + $(this).attr('show')).show();
+        };
+        $('#street-div .one-image').bind('click', littleBuilding);
+
+        $('#street-div .two-image').click(function(){
+            $('#street-div .button-text').hide();
+            $('#street-div .button-text[ detailItem = ' + $(this).attr('detailItem') + ']' ).show();
+        });
+
+        $('#street-div .curtainOpen').click(function()
+        { // 窗簾
+            $('#street-div #experience-personally').css(
+            {
+                zIndex: 1,
+            });
+            $('#street-div #curtainDiv').animate(
+            {
+                left: '370px'
+            });
+            $('#street-div .button-text').hide();
+            $('#street-div .button-text[ detailItem = "department" ]').show();        
+            $('#street-div .one-image').unbind('click', littleBuilding);
+        });
+        $('#street-div #curtainclose').click(function()
+        {// 窗簾
+            $('#street-div #curtainDiv').animate(
+            {
+                left: '750px'
+            });
+            $('#street-div #experience-personally').css(
+            {
+                zIndex: 4,
+            });
+            $('#street-div .one-image').bind('click', littleBuilding);
+            $('#street-div .landscape').show();
+        });
+
+        $('#street-div .arrow').eq( 3 ).click(function() // 親身體驗 back
+        {
+            $('#street-div #mapPicture').attr('src', $('#street-div #mapPicture').attr('path'));
+            $('#street-div .arrow').hide();
+
+            $('#street-div #map-div, #street-div #curtain-close-div, #street-div #back-div').css(
+            {
+                height: 552,
+            });
+            $('#street-div #mapPicture').css(
+            {
+                width: 601,
+                height: 552,  
+                zIndex: 0,
+            });
+            $('#street-div #experience-personally').css(
+            {
+                zIndex: 3,
+            });
+        });
+        $('#street-div .picture, #street-div .button-text').click(function()
+        {
+            isInPicture = false;
+            $('#street-div #back-div, #street-div #curtain-close-div').css(
+            {
+               height: 552,
+            });
+            $('#street-div #experience-personally').css(
+            {
+                zIndex: 3,
+            });
+            $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
+            $('#text-container').dialog(
+            {
+                width: 680,
+                height: 400,
+                modal: true,
+                escape: false,
+                onClose: function()
+                {
+                    
+                }
+            });
+
+            $('#street-div .arrow').hide();
+            $('#street-div #mapPicture').css(
+            {
+                width: 601,
+                height: 552,
+                zIndex: 0,
+            });
+
+            var id = $(this).attr('href').replace('#', '');
+            $.ajax(
+            {
+                type: 'GET',
+                url: jQuery.configures.buildingContentUrl.replace(':id', id),
+                dataType: 'json',
+                success: function(data)
+                {
+                    $('#building-text').html(data.content);
+                    $('#building-text img').css(
+                    {
+                        cursor: 'pointer',
+                    });
+                    $('#building-text img').each(function()
+                    {
+                        $(this).wrapAll(
+                            $('<a></a>')
+                                .addClass('lightbox')
+                                .attr('href', $(this).attr('src'))
+                                .attr('title', $(this).attr('alt'))
+                        );
+                    });
+                    $('#building-text a.lightbox').lightbox({
+                        hideOverlayBackground: true
+                    });             
+                },
+            });
+            
+        });
+        $('#street-div #building-text').scrollable({
+            scrollableClass: false
+        });
+        
+        $('#street-div .arrow.up, #street-div .arrow.right, #street-div .arrow.left').hover(function()
+        {
+            var arrowStrong = $(this).attr('src').replace('arrow', 'showPoint');
+            $(this).attr('src', arrowStrong);
+        }, function()
+        {
+            var arrowStrong = $(this).attr('src').replace('showPoint', 'arrow');
+            $(this).attr('src', arrowStrong);
+        });
+
+        var howmanyphoto;
+        var position = 0;
     };
 })(jQuery);
+
 (function($) {
     $.nculife = function()
     {
