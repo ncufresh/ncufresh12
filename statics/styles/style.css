@@ -1556,11 +1556,20 @@ ul#nculife-details
     cursor: pointer;
 }
 
+
+#club-calendar .calendar-table td.today,
+#index-calendar .calendar-table td.today
+{
+    color: red;
+}
+
+#club-calendar .calendar-table td.hover,
 #index-calendar .calendar-table td.hover
 {
     color: green;
 }
 
+#club-calendar .calendar-table td.selected,
 #index-calendar .calendar-table td.selected
 {
     outline: 1px solid #000;
