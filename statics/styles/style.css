@@ -2808,6 +2808,15 @@ button.news-button
 
 .readme-background
 {
+    height: 420px;
+    padding: 15px 25px;
+    position: relative;
+    width: 700px;
+    overflow: hidden;
+}
+
+.readme-download-background
+{
     height: 357px;
     padding: 15px 25px;
     position: relative;
