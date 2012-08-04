@@ -181,6 +181,22 @@ class ItemBag extends CActiveRecord
         return count($this->findAll('user_id='.$id));
     }
     
+    public function characterNewItem($user_id,$gender)
+    {
+        $item = new ItemBag(); //ItemBag Model
+        $item->user_id = $user_id; //同步寫入user的id至道具列表
+        $item->equipped = true; //寫入裝備狀態
+        if( $gender == 0 )
+            $item->item_id = 81; //男生 皮膚預設id=81
+        else
+            $item->item_id = 85; //女生 皮膚預設id=85
+        if ( $item->save() == true )
+            return true;
+        else
+            return false;
+    }
+    
+    
     protected function beforeSave()
     {
         if ( parent::beforeSave() )
