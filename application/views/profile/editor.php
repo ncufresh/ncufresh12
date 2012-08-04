@@ -50,7 +50,7 @@
             </li>
             <li>
                 <span>生日:</span>
-                <input class="datepicker" name="profile[birthday]" type="text" value="<?php echo $user->profile->birthday; ?>" />
+                <input id="form-editor-birthday" class="datepicker" name="profile[birthday]" type="text" value="<?php echo $user->profile->birthday; ?>" />
             </li>
         </ul>
         <button type="submit" id="button-editor-sure"></button>
