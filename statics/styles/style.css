@@ -175,11 +175,20 @@ form dl.select dt
 }
 
 form dl.radio input,
-form dl.checkbox input
-form dl.select input
+form dl.checkbox input,
+form dl.select select
+{
+    width: auto;
+}
+
+form dl.radio input
 {
     float: left;
-    width: auto;
+}
+
+form dl.select select
+{
+    margin-top: 8px;
 }
 
 form dl.radio dd label,
