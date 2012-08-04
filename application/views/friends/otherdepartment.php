@@ -25,5 +25,6 @@
     <button type="submit" name="all-choose" class="button-all-choose"></button>
     <button type="submit" class="button-addfriends"></button>
 </form>
+<input type="text" value="search" class="group-users-list-search" />
 <a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back"></a>
 </div>

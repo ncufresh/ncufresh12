@@ -1,4 +1,4 @@
-<div id="readme-download" class="readme-background">
+<div id="readme-download" class="readme-downlaod-background">
     <div class="readme-view">
         <ul class="download-index">
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/附件-申請就學貸款須知.doc" title="附件-申請就學貸款須知">附件-申請就學貸款須知</a></li>
