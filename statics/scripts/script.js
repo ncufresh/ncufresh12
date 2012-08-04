@@ -4368,10 +4368,8 @@
 
         if ( $('#readme').length ) $.readme(); 
 
-<<<<<<< HEAD
         if ( $('#street').length ) $.street(); 
         
-=======
         if ( $('#multimedia').length ) $.multimedia();
 
         if ( $('.calendar-create').length ) $.calendarCreate();
@@ -4386,7 +4384,7 @@
 
         if ( $('#calendar-event').length ) $.calendarEvent();
 
->>>>>>> 260a9f6de5eab749f3531199996f58f86eedc556
+
         $('input.datepicker:not(#form-register-birthday)').datepicker();
         $('#form-register-birthday').datepicker({
             year: 1994,
