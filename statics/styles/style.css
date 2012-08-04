@@ -3021,10 +3021,10 @@ button.news-button
 
 .readme-menu
 {
-    width: 200px;
+    width: 220px;
     heigth: auto;
     top: 5px;
-    left: -187px;
+    left: -197px;
     border-radius: 0 10px 10px 0;
     position: absolute;
     display: block;
@@ -3033,9 +3033,15 @@ button.news-button
     overflow: auto;
 }
 
-.readme-menu p
+.readme-menu h5
 {
     text-align: center;
+	margin-top: 10px;
+}
+
+.readme-menu-index li
+{
+	display: none;
 }
 
 .readme-menu p:hover
@@ -3045,9 +3051,28 @@ button.news-button
     font-weight: bold;
 }
 
+#readme .menu-index
+{
+	list-style: none;
+}
+
+#readme .menu-index li
+{
+	list-style: none;
+	margin: 10px 0 0 -15px;
+}
+
+#readme .menu-index a:hover
+{
+	text-decoration: underline;
+	color: black;
+}
+
 .readme-menu-index
 {
-    display: none;
+    display: block;
+	list-style: none;
+	margin-top: -10px;
 }
 
 .download-index

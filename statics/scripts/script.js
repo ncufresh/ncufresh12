@@ -2863,19 +2863,19 @@
             scrollableClass: false
         });
 
-        if( $('.readme-menu p').length == 1 )
+        if( $('.readme-menu a').length == 0 )
         {
             $('.readme-menu-index li').each(function()
             {
-                var title = $('<p></p>')
+				var title = $('<li></li>').append($('<a></a>')
                         .text($(this).text())
                         .attr('href', '#')
                         .attr('tab', $(this).attr('tab'))
                         .attr('page', $(this).attr('page'))
-                        .click(getTabContent);
-                $('.readme-menu').append(title);
+                        .click(getTabContent));
+                $('#readme .menu-index').append(title);
             });
-            $('.readme-menu > p').eq(1).click();
+            $('.readme-menu a').eq(0).click();
         }
 
         $('#readme-logo1').click(function()
@@ -2904,7 +2904,7 @@
         {
             $(this).stop().animate(
             {
-                left : '-187px'
+                left : '-197px'
             },500);
         });
 
