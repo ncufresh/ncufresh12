@@ -61,8 +61,8 @@
     <button type="button" class="button-back" ></button>
 </form>
 <?php elseif ( $friend_relation === 1 ) : ?>
-<button id="friend_request">*已送出邀請</button>
+<button id="friend_request"></button>
 <?php else : ?>
-<button id="is_friend">*朋友</button>
+<button id="is_friend"></button>
 <?php endif; ?>
 <button type="button" class="button-back" ></button>
