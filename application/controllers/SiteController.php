@@ -233,8 +233,9 @@ class SiteController extends Controller
             $profile_validate = $profile->validate();
             if ( $user_validate && $profile_validate )
             {
-                if ( $user->save() && $profile->save() )
+                if ( $user->save() )
                 {
+                    $profile->id = $user->id;
                     $character = new Character(); //Character Model
                     $character->id = $user->id;//同步寫入user的id至遊戲資料列表
                     if( $_POST['profile']['gender'] == 0 )
@@ -257,8 +258,8 @@ class SiteController extends Controller
                     $calendar_subscriptions->user_id = $user->id;
                     $calendar_subscriptions->calendar_id = 1;
                     $calendar_subscriptions->invisible = 0;
-                    if ( $character->save() && $item->save() && $calendar->save() && $calendar_subscriptions->save() )
-                    {
+                    if ( $profile->save() && $character->save() && $item->save() && $calendar->save() && $calendar_subscriptions->save() )
+                    { 
                         $this->redirect(array('site/success'));
                     }
                 }

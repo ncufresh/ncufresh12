@@ -82,13 +82,13 @@ class Chat extends CActiveRecord
             foreach ( $messages as $entry )
             {
                 $data[] = array(
-                    'uuid'      => $entry['uuid'],
                     'id'        => $entry['sender_id'] == $user
                                  ? $entry['receiver_id']
                                  : $entry['sender_id'],
                     'name'      => User::model()->findByPk($entry['sender_id'])->username,
                     'avatar'    => $entry['sender_id'],
-                    'message'   => $entry['message']
+                    'message'   => $entry['message'],
+                    'time'      => Yii::app()->format->date($entry['timestamp'])
                 );
             }
         }
@@ -102,7 +102,6 @@ class Chat extends CActiveRecord
         {
             if ( in_array($entry->uuid, $uuids) ) continue;
             $data[] = array(
-                'uuid'      => $entry->uuid,
                 'id'        => $entry->sender_id == $user
                              ? $entry->receiver_id
                              : $entry->sender_id,
@@ -110,7 +109,8 @@ class Chat extends CActiveRecord
                              ? $entry->sender->username
                              : 'Unknown',
                 'avatar'    => $entry->sender_id,
-                'message'   => $entry->message
+                'message'   => $entry->message,
+                'time'      => Yii::app()->format->date($entry->timestamp)
             );
         }
         return $data;
