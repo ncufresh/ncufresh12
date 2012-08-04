@@ -181,9 +181,15 @@ form dl.select select
     width: auto;
 }
 
-form dl.radio input
+form dl.radio input,
+form dl.checkbox input
 {
     float: left;
+}
+
+form dl.checkbox input
+{
+    margin-left: 8px;
 }
 
 form dl.select select
@@ -222,6 +228,30 @@ form span.radio:hover {
 }
 
 form span.radio.checked {
+    background: #4B4B4B;
+}
+
+form span.checkbox
+{
+    background: #FFFFFF;
+    border: 1px solid #B0B0B0;
+    border-radius: 0;
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 8px;
+    margin: 15px 0 0 8px;
+    min-height: 0;
+    padding: 0;
+    position: static;
+    width: 8px;
+}
+
+form span.checkbox:hover {
+    border: 1px solid #909090;
+}
+
+form span.checkbox.checked {
     background: #4B4B4B;
 }
 
@@ -5474,12 +5504,12 @@ li.enabled a
     padding:10px 0 0 32px;
 }
 
-#forum-create-form .form-body dl,
+/*#forum-create-form .form-body dl,
 #forum-create-form .form-body input
 {
     margin:0 0 10px 0;
     padding:0px;
-}
+}*/
 
 #forum-create-form .form-body .article-is-top
 {
@@ -5522,10 +5552,10 @@ li.enabled a
     margin-top: 5px;
 }
 
-#forum-create-text-title
+/*#forum-create-text-title
 {
     margin-top:6px;
-}
+}*/
 
 #forum-create-title
 {
@@ -5535,7 +5565,7 @@ li.enabled a
 
 #forum-create-category
 {
-    height:30px;
+    /*height:30px;*/
     width:200px;
 }
 

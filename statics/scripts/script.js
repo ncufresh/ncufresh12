@@ -4110,7 +4110,6 @@
 
         var mmMenuScroll = function(offset)
         {
-            console.log(target);
             if ( typeof(mmMenuScroll.mousein) == 'undefined' )
             {
                 mmMenuScroll.mousein = false;
@@ -4502,6 +4501,48 @@
                             $(this).next().removeClass('checked');
                         }
                     });
+                });
+
+            if ( $(this).prop('checked') ) {
+                $(this).prev().addClass('checked');
+            }
+        });
+
+        $('form input[type="checkbox"]').each(function(element)
+        {
+            var span = $('<span></span>')
+                .addClass('checkbox')
+                .mousedown(function()
+                {
+                    if ( $(this).hasClass('checked') )
+                    {
+                        $(this).prev().prop('checked', false);
+                        $(this).removeClass('checked');
+                    }
+                    else
+                    {
+                        $(this).prev().prop('checked', true);
+                        $(this).addClass('checked');
+                    }
+                })
+                .insertAfter($(this));
+
+            $(this).css({
+                    display: 'none',
+                    height: 'auto',
+                    width: 'auto'
+                })
+                .change(function()
+                {
+                    if ( $(this).prop('checked') )
+                    {
+                        $(this).next().addClass('checked');
+                    }
+                    else
+                    {
+                        $(this).next().removeClass('checked');
+                    }
+                    console.log($(this).prop('checked'));
                 });
 
             if ( $(this).prop('checked') ) {
