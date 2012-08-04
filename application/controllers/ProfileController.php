@@ -37,9 +37,16 @@ class ProfileController extends Controller
 
     public function actionProfile() 
     {
-        $this->render('profile', array(
-            'user'      => $this->user
-        ));
+        if ( empty($this->user->profile) )
+        {
+            $this->redirect(array('profile/editor'));
+        }
+        else
+        {
+            $this->render('profile', array(
+                'user'      => $this->user
+            ));
+        }
         
     }
 
@@ -70,29 +77,36 @@ class ProfileController extends Controller
                     }
                 }
             }
+            $this->render('editor', array(                
+                'user'                   => $this->user, 
+                'departments'            => Department::model()->getDepartment(),
+                'profile_errors'         => $profile->getErrors()
+            ));
         }
         else//資料為空值
         {
-            $profile->setScenario('wrong-data');
+            $profile = new Profile();
+            $profile->id = $this->user->id;
             $profile->attributes = array(     
-                'name'              => '',
-                'nickname'          => '',
+                'name'              => 'QQ',
+                'nickname'          => 'QQ',
                 'gender'            => 0, //預設男生
-                'department_id'     => 2, //預設他是資工系
-                'grade'             => 0,
-                'senior'            => '',
-                'birthday'          => 1
+                'department'        => 2, //預設他是資工系
+                'grade'             => 0,//其他年級
+                'senior'            => 'QQ',
+                'birthday'          => '2000-01-01'
             );
-            if ( $profile->save() )
+            $profile_validate = $profile->validate();
+            if (  $profile_validate && $profile->save() )
             {
-                $this->render(array('profile/editor'));
+                $this->render('editor', array(                
+                    'user'                   => $this->user, 
+                    'departments'            => Department::model()->getDepartment(),
+                    'profile_errors'         => $profile->getErrors()
+                ));
             }
         }
-        $this->render('editor', array(                
-            'user'                   => $this->user, 
-            'departments'            => Department::model()->getDepartment(),
-            'profile_errors'         => $profile->getErrors()
-        ));
+       
     }
 
     public function actionMessage()
