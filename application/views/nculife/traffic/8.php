@@ -15,7 +15,7 @@
     1.中壢火車站 - 中央大學
 </h5>
 <p>
-    <img alt="火車站-中央大學" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E7%81%AB%E8%BB%8A%E7%AB%99-%E4%B8%AD%E5%A4%AE%E5%A4%A7%E5%AD%B8.jpg" style="width:500px;height:325px;" />
+    <img alt="火車站-中央大學" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/traffic8-1.jpg" style="width:500px;height:325px;" />
 </p>
 <p>
     可在中壢火車站前站附近的桃園客運總站搭乘132路公車[中壢-中央大學]或到中壢客運總站搭乘133路公車[中壢-中央大學]。
@@ -24,7 +24,7 @@
     2.桃園高鐵站 - 中央大學
 </h5>
 <p>
-    <img alt="桃園高鐵-中央大學" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E4%B8%AD%E5%A4%AE%E5%A4%A7%E5%AD%B8-%E6%A1%83%E5%9C%92%E9%AB%98%E9%90%B5.jpg" style="width:500px;height:335px;" />
+    <img alt="桃園高鐵-中央大學" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/traffic8-2.jpg" style="width:500px;height:335px;" />
 </p>
 
 <p>
