@@ -3409,8 +3409,6 @@ button.news-button
 	background: url('../images/club.png');
 }
 
-=======
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
 /**
  * Club style
  */
@@ -3421,11 +3419,7 @@ button.news-button
  
 #club .club
  {
-<<<<<<< HEAD
     background-position: -800px -880px;
-=======
-    background: url('../club/club.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -3435,11 +3429,7 @@ button.news-button
  
 #club .club-head
 {
-<<<<<<< HEAD
     background-position: -1600px -880px;
-=======
-    background: url('../club/club-head.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3449,11 +3439,7 @@ button.news-button
 
 #club .club-head:hover
 {
-<<<<<<< HEAD
     background-position: -1840px -880px;
-=======
-    background: url('../club/club-head2.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3473,11 +3459,7 @@ button.news-button
 
 #club .department-head
 {
-<<<<<<< HEAD
     background-position: -1600px -960px;
-=======
-    background: url('../club/department-head.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3486,11 +3468,7 @@ button.news-button
 
 #club .department-head:hover
 {
-<<<<<<< HEAD
     background-position: -1840px -960px;
-=======
-    background: url('../club/department-head2.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3499,11 +3477,7 @@ button.news-button
 
 #club .student
 {
-<<<<<<< HEAD
     background-position: -16px -880px;
-=======
-    background: url('../club/student.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -3513,11 +3487,7 @@ button.news-button
 
 #club .student-head
 {
-<<<<<<< HEAD
     background-position: -1600px -1040px;
-=======
-    background: url('../club/student-head.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3527,11 +3497,7 @@ button.news-button
 
 #club .student-head:hover
 {
-<<<<<<< HEAD
     background-position: -1840px -1040px;
-=======
-    background: url('../club/student-head2.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3641,29 +3607,17 @@ button.news-button
 
 #club #head-2
 {
-<<<<<<< HEAD
     background-position: -1600px -480px;
-=======
-    background: url('../club/5-1.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
 }
 
 #club #head-1
 {
-<<<<<<< HEAD
     background-position: -1600px -600px;
-=======
-    background: url('../club/6-1.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
 }
 
 #club #head-3
 {
-<<<<<<< HEAD
     background-position: -1600px -720px;
-=======
-    background: url('../club/4-1.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
 }
 
 #club .display-head a
@@ -3683,31 +3637,19 @@ button.news-button
 
 #club #bottom-1
 {
-<<<<<<< HEAD
     background-position: -1600px -160px;
-=======
-    background: url('../club/5-3.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     background-repeat: no-repeat;
 }
 
 #club #bottom-2
 {
-<<<<<<< HEAD
 	background-position: -1600px 0px;
-=======
-    background: url('../club/6-3.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     background-repeat: no-repeat;
 }
 
 #club #bottom-3
 {
-<<<<<<< HEAD
     background-position: -1600px -320px;
-=======
-    background: url('../club/4-3.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
     background-repeat: no-repeat;
 }
 
@@ -3722,29 +3664,17 @@ button.news-button
 
 #club #back1
 {
-<<<<<<< HEAD
     background-position: -1600px -1120px;
-=======
-    background: url('../club/clubback1.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
 }
 
 #club #back2
 {
-<<<<<<< HEAD
     background-position: -1680px -1120px;
-=======
-    background: url('../club/clubback2.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
 }
 
 #club #back3
 {
-<<<<<<< HEAD
     background-position: -1760px -1120px;
-=======
-    background: url('../club/clubback3.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
 }
 
 #club .picture
@@ -3835,11 +3765,7 @@ button.news-button
     padding: 5px;
     height: 600px;
     width: 750px;
-<<<<<<< HEAD
     background-position: -16px 0px;
-=======
-    background: url('../club/background.png');
->>>>>>> 065f10ce20ca28992827309ff48f82ca3577453a
 }
 /* profile... */
 ul.friends-sort 
