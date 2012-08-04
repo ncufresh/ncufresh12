@@ -239,9 +239,9 @@ class GameController extends Controller
     public function actionProblem($id = 0)
     {
         $user_mission_counter = ($this->characterData->missions)+1;
-        if ( $id < $user_mission_counter )
+        $mission = Mission::model()->findByPk($id);
+        if ( $id <= $user_mission_counter && $mission )
         {
-            $mission = Mission::model()->findByPk($id);
             $this->_data['name'] = $mission->name;
             $this->_data['content'] = $mission->content;
         }
@@ -253,17 +253,17 @@ class GameController extends Controller
     }
     
     public function actionSolve($id = 0)
-    {   
+    {
         $user_mission_counter = ($this->characterData->missions)+1;
-        if ( $id < $user_mission_counter )
+        if ( isset($_POST['answer']) )
         {
-            if ( isset($_POST['answer']))
+            $mission = Mission::model()->findByPk($id);
+            if ( $mission )
             {
-                $mission = Mission::model()->findByPk($id);
                 $answer = $mission->answer;
                 $get_money = $mission->money;
                 $get_experience = $mission->experience;
-                if( $_POST['answer'] == $answer )
+                if ( $_POST['answer'] == $answer )
                 {
                     $this->_data['result'] = true;
                     if( $id == $user_mission_counter ) // 解一題沒解過的題目
@@ -284,7 +284,7 @@ class GameController extends Controller
                 }
                 $this->_data['token'] = Yii::app()->security->getToken();
             }
-        else
+            else
             {
                 $this->_data['result'] = false;
                 $this->_data['token'] = Yii::app()->security->getToken();
