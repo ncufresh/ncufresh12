@@ -9,10 +9,10 @@
     </div>
     <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="left" />
     <ul class="photo-ul">
-<?php for($count=0;$count<82;$count++) : ?>
+<?php for ( $count=0; $count<82; $count++ ) : ?>
         <li class="photo-li">
-            <a href="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo/photo<?php echo $count; ?>.jpg">
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo/photo<?php echo $count; ?>.jpg" alt="photo" />
+            <a href="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photos/photo<?php echo $count; ?>.jpg">
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photos/photo<?php echo $count; ?>.jpg" alt="photo" />
             </a>
         </li>
 <?php endfor; ?>
@@ -32,7 +32,7 @@
         <li>
             <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/design.jpg" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="美工" />
             <div name="陳禹傑" grade="資工三" left="292px" top="49px" width="50px" height="50px"></div>
-            <div name="張力"   grade="資工三" left="98px" top="250px" width="80px" height="80px"></div>
+            <div name="張力"   grade="資工三" left="98px" top="250px" width="70px" height="70px"></div>
             <div name="李冠勳" grade="資工二" left="227px" top="39px" width="58px" height="58px"></div>
             <div name="彭恮傑" grade="資工二" left="164px" top="37px" width="58px" height="58px"></div>
             <div name="康心柔" grade="資管二" left="247px" top="100px" width="58px" height="58px"></div>
@@ -79,8 +79,8 @@
         </li>
         <li>
             <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/leader.jpg" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="執行" />
-            <div name="黃筱萍" grade="資工三" left="147px" top="35px" width="105px" height="105px"></div>
-            <div name="盧婉芳" grade="資工三" left="239px" top="22px" width="105px" height="105px"></div>
+            <div name="黃筱萍" grade="資工三" left="157px" top="45px" width="80px" height="80px"></div>
+            <div name="盧婉芳" grade="資工三" left="249px" top="32px" width="80px" height="80px"></div>
         </li>
     </ul>
     <div class="tag-txt"></div>
