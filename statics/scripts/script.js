@@ -3611,9 +3611,12 @@
             return false;
         });
 
-        $('#calendar div').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
-
-        $('.back').click(function()
+        if ( $('#calendar div').length ) 
+        {
+            $('#calendar div').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
+        }
+        
+        $('#club .back').click(function()
         {
             window.history.back();
         });      
