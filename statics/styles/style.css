@@ -3287,7 +3287,1037 @@ button.news-button
     text-indent: -100000%;
     width: 96px;
 }
-
+/**
+ * street style
+ */
+#street-div #all-selected-pic-ul
+{
+    margin-left: 50px;
+    position: relative;
+}
+#street-div #all-picture-container
+{
+    background: yellow;
+    display: none;
+}
+#street-div #administration
+{
+    width: 145px;
+    height: 92px;
+    background:  url('../building/government/mouseleave/administration.png');
+    left: 315px;
+    top: 288px;
+}
+#street-div #administration:hover
+{
+    background:  url('../building/government/mouseenter/administration.png');
+}
+#street-div #all-teach
+{
+    width: 93px;
+    height: 76px;
+    background:  url('../building/government/mouseleave/all_teach.png');
+    left: 345px;
+    top: 100px;
+}
+#street-div #all-teach:hover
+{
+    background:  url('../building/government/mouseenter/all_teach.png');
+}
+#street-div #baseball-softball
+{
+    left: 268px;
+    top: 147px;
+}
+#street-div #badminton
+{
+    left: 210px;
+    top: 72px;
+}
+#street-div #big-tree
+{
+    width: 66px;
+    height: 83px;
+    background:  url('../building/landscape/mouseleave/big_tree.png');
+    left: 177px;
+    top: 268px;
+}
+#street-div #big-tree:hover
+{
+    background:  url('../building/landscape/mouseenter/big_tree.png');
+}
+#street-div #back-div
+{
+    background: url('../building/bottom.png') no-repeat;
+    position: relative;
+    height: 551px;
+    width: 750px;
+}
+#street-div #big-library
+{
+    width: 117px;
+    height: 121px;
+    background:  url('../building/government/mouseleave/big_library.png');
+    left: 272px;
+    top: 190px;
+}
+#street-div #big-library:hover
+{
+    background:  url('../building/government/mouseenter/big_library.png');
+}
+#street-div #backdoor
+{
+    width: 128px;
+    height: 96px;
+    background:  url('../building/food/mouseleave/backdoor.png');
+    left: -4px;
+    top: 184px;
+}
+#street-div #backdoor:hover
+{
+    background:  url('../building/food/mouseenter/backdoor.png');
+}
+#street-div #boy-dormitory-3
+{
+    width: 116px;
+    height: 100px;
+    background:  url('../building/dormitory/mouseleave/boy_dormitory_3.png');
+    left: 0px;
+    top: 262px;
+}
+#street-div #boy-dormitory-3:hover
+{
+    background:  url('../building/dormitory/mouseenter/boy_dormitory_3.png');
+}
+#street-div #boy-dormitory-5
+{
+    width: 123px;
+    height: 87px;
+    background:  url('../building/dormitory/mouseleave/boy_dormitory_5.png');
+    left: 185px;
+    top: 370px;
+}
+#street-div #boy-dormitory-5:hover
+{
+    background:  url('../building/dormitory/mouseenter/boy_dormitory_5.png');
+}
+#street-div #boy-dormitory-6
+{
+    width: 108px;
+    height: 60px;
+    background:  url('../building/dormitory/mouseleave/boy_dormitory_6.png');
+    left: 230px;
+    top: 460px;
+}
+#street-div #boy-dormitory-6:hover
+{
+    background:  url('../building/dormitory/mouseenter/boy_dormitory_6.png');
+}
+#street-div #boy-dormitory-7
+{
+    width: 132px;
+    height: 65px;
+    background:  url('../building/dormitory/mouseleave/boy_dormitory_7.png');
+    left: 11px;
+    top: 450px;
+}
+#street-div #boy-dormitory-7:hover
+{
+    background:  url('../building/dormitory/mouseenter/boy_dormitory_7.png');
+}
+#street-div #boy-dormitory-9
+{
+    width: 106px;
+    height: 94px;
+    background:  url(' ../building/dormitory/mouseleave/boy_dormitory_9.png');
+    left: 495px;
+    top: 260px;
+}
+#street-div #boy-dormitory-9:hover
+{
+    background:  url(' ../building/dormitory/mouseenter/boy_dormitory_9.png');
+}
+#street-div #boy-dormitory-11
+{
+    width: 117px;
+    height: 85px;
+    background:  url('../building/dormitory/mouseleave/boy_dormitory_11.png');
+    left: 56px;
+    top: 372px;
+}
+#street-div #boy-dormitory-11:hover
+{
+    background:  url('../building/dormitory/mouseenter/boy_dormitory_11.png');
+}
+#street-div #boy-dormitory-12
+{
+    width: 112px;
+    height: 84px;
+    background:  url('../building/dormitory/mouseleave/boy_dormitory_12.png');
+    left: 489px;
+    top: 98px;
+}
+#street-div #boy-dormitory-12:hover
+{
+    background:  url('../building/dormitory/mouseenter/boy_dormitory_12.png');
+}
+#street-div #boy-dormitory-13
+{
+    width: 103px;
+    height: 120px;
+    background:  url('../building/dormitory/mouseleave/boy_dormitory_13.png');
+    left: 135px;
+    top: 431px;
+}
+#street-div #boy-dormitory-13:hover
+{
+    background:  url('../building/dormitory/mouseenter/boy_dormitory_13.png');
+}
+#street-div #curtainDiv
+{
+    background: url('../building/curtain2.png') no-repeat;
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    left: 750px;
+    height: 551px;
+    width: 380px;
+}
+#street-div #curtain-close-div
+{
+     background: url('../building/curtain.png') no-repeat;
+     position: relative;
+     float: right;
+     width: 149px;
+     height: 552px;
+}
+#street-div #curtain
+{
+    position:absolute;
+}
+#street-div #curtain-up
+{
+    position:absolute;
+    top: 0px;
+    z-index: 2;
+}
+#street-div #computer-center
+{
+    width: 97px;
+    height: 80px;
+    background:  url('../building/government/mouseleave/computer_center.png');
+    left: 428px;
+    top: 132px;
+}
+#street-div #computer-center:hover
+{
+    background:  url('../building/government/mouseenter/computer_center.png');
+}
+#street-div #cottage-muffin
+{
+    width: 106px;
+    height: 106px;
+    background:  url('../building/food/mouseleave/cottage_muffin.png');
+    left: 400px;
+    top: 180px;
+}
+#street-div #cottage-muffin:hover
+{
+    background:  url('../building/food/mouseenter/cottage_muffin.png');
+}
+#street-div #curtainclose
+{
+    cursor: pointer;
+    position: absolute;
+    top: 415px;
+    left: 327px;
+}
+#street-div #calligraphy
+{
+    width: 169px;
+    height: 158px;
+    background:  url('../building/landscape/mouseleave/calligraphy.png');
+    left: 317px;
+    top: 283px;
+}
+#street-div #calligraphy:hover
+{
+    background:  url('../building/landscape/mouseenter/calligraphy.png');
+}
+#street-div #ding-data-library
+{
+    width: 90px;
+    height: 99px;
+    background:  url('../building/government/mouseleave/ding_data_library.png');
+    left: 450px;
+    top: 178px;
+}
+#street-div #ding-data-library:hover
+{
+    background:  url('../building/government/mouseenter/ding_data_library.png');
+}
+#street-div #drag-me
+{
+    position: absolute;
+    top: 430px;
+    left: 480px;
+    color: red;
+}
+#street-div #elephant-element
+{
+    width: 52px;
+    height: 75px;
+    background:  url('../building/landscape/mouseleave/elephant_element.png');
+    left: 465px;
+    top: 252px;
+}
+#street-div #elephant-element:hover
+{
+    background:  url('../building/landscape/mouseenter/elephant_element.png');
+}
+#street-div #engineering-1
+{
+    height: 59px;
+    width: 104px;
+    background: url('../building/college/mouseleave/engineering_1.png');
+    left: 140px;
+    top: 214px;
+}
+#street-div #engineering-1:hover
+{
+    background: url('../building/college/mouseenter/engineering_1.png');
+}
+#street-div #engineering-2
+{
+    width: 109px;
+    height: 66px;
+    background: url('../building/college/mouseleave/engineering_2.png');
+    left: 111px;
+    top: 174px;
+}
+#street-div #engineering-2:hover
+{
+    background: url('../building/college/mouseenter/engineering_2.png');
+}
+#street-div #engineering-3
+{
+    width: 99px;
+    height: 56px;
+    background: url('../building/college/mouseleave/engineering_3.png');
+    left: 75px;
+    top: 105px;
+}
+#street-div #engineering-3:hover
+{
+    background: url('../building/college/mouseenter/engineering_3.png');
+}
+#street-div #engineering-5
+{
+    width: 85px;
+    height: 91px;
+    left: 0px;
+    top: 75px;
+    background: url('../building/college/mouseleave/engineering_5.png');
+}
+#street-div #engineering-5:hover
+{
+    background: url('../building/college/mouseenter/engineering_5.png');
+}
+#street-div #experience-personally
+{
+    position: absolute;
+    top: 410px;
+    left: 530px;
+    z-index: 4;
+}
+#street-div #flower-brook
+{
+    width: 238px;
+    height: 119px;
+    background:  url('../building/landscape/mouseleave/flower_brook.png');
+    left: 153px;
+    top: 175px;
+}
+#street-div #flower-brook:hover
+{
+    background:  url('../building/landscape/mouseenter/flower_brook.png');
+}
+#street-div #green-plain
+{
+    width: 61px;
+    height: 68px;
+    background:  url('../building/landscape/mouseleave/green_plain.png');
+    left: 300px;
+    top: 135px;
+}
+#street-div #green-plain:hover
+{
+    background:  url('../building/landscape/mouseenter/green_plain.png');
+}
+#street-div #girl-14-front
+{
+    width: 116px;
+    height: 91px;
+    background:  url('../building/landscape/mouseleave/girl_14_front.png');
+    left: 40px;
+    top: 310px;
+}
+#street-div #girl-14-front:hover
+{
+    background:  url('../building/landscape/mouseenter/girl_14_front.png');
+}
+#street-div #girl-dormitory-14
+{
+    width: 116px;
+    height: 91px;
+    background:  url('../building/dormitory/mouseleave/girl_dormitory_14.png');
+    left: 30px;
+    top: 300px;
+}
+#street-div #girl-dormitory-14:hover
+{
+    background:  url('../building/dormitory/mouseenter/girl_dormitory_14.png');
+}
+#street-div #girl-dormitory-1234
+{
+    width: 101px;
+    height: 103px;
+    background:  url('../building/dormitory/mouseleave/girl_dormitory_1234.png');
+    left: 38px;
+    top: 157px;
+}
+#street-div #girl-dormitory-1234:hover
+{
+    background:  url('../building/dormitory/mouseenter/girl_dormitory_1234.png');
+}
+#street-div #girl-dormitory-5
+{
+    width: 159px;
+    height: 95px;
+    background:  url('../building/dormitory/mouseleave/girl_dormitory_5.png');
+    left: 80px;
+    top: 230px;
+}
+#street-div #girl-dormitory-5:hover
+{
+    background:  url('../building/dormitory/mouseenter/girl_dormitory_5.png');
+}
+#street-div #gymnasium
+{
+    left: 167px;
+    top: 165px;
+}
+#street-div #history-gallery
+{
+    width: 130px;
+    height: 85px;
+    background:  url('../building/government/mouseleave/history_gallery.png');
+    left: 255px;
+    top: 413px;
+}
+#street-div #history-gallery:hover
+{
+    background:  url('../building/government/mouseenter/history_gallery.png');
+}
+#street-div #hakka
+{
+    width: 90px;
+    height: 78px;
+    background:  url('../building/college/mouseleave/hakka.png');
+    left: 304px;
+    top: 25px;
+}
+#street-div #hakka:hover
+{
+    background:  url('../building/college/mouseenter/hakka.png');
+}
+#street-div #inside-choose
+{
+    float:left;
+    width:190px;
+    height:422px;
+}
+#street-div #inside-text
+{
+    float:right;
+    width:190px;
+    height:422px;
+    margin-top: 100px;
+}
+#street-div #international-dormitory
+{
+    width: 128px;
+    height: 96px;
+    background:  url('../building/dormitory/mouseleave/international_dormitory.png');
+    left: 133px;
+    top: 311px;
+}
+#street-div #international-dormitory:hover
+{
+    background:  url('../building/dormitory/mouseenter/international_dormitory.png');
+}
+#street-div #kon-fu
+{
+    width: 58px;
+    height: 59px;
+    background:  url('../building/landscape/mouseleave/kon_fu.png');
+    left: 375px;
+    top: 180px;
+}
+#street-div #kon-fu:hover
+{
+    background:  url('../building/landscape/mouseenter/kon_fu.png');
+}
+#street-div #liberal-arts
+{
+    width: 144px;
+    height: 90px;
+    background:  url('../building/college/mouseleave/liberal_arts.png');
+    left: 381px;
+    top: 229px;
+}
+#street-div #liberal-arts:hover
+{
+    background:  url('../building/college/mouseenter/liberal_arts.png');
+}
+#street-div #map-div
+{
+    background: url('../building/map_no_text.png') no-repeat;
+    position: relative;
+    float: left;
+    width: 601px;
+    height: 552px;
+}
+#street-div #mathematics
+{
+    width: 92px;
+    height: 60px;
+    background:  url('../building/college/mouseleave/mathematics.png');
+    left: 385px;
+    top: 100px;
+}
+#street-div #mathematics:hover
+{
+    background:  url('../building/college/mouseenter/mathematics.png');
+}
+#street-div #management
+{
+    width: 178px;
+    height: 86px;
+    background:  url('../building/college/mouseleave/management.png');
+    left: 410px;
+    top: 135px;
+}
+#street-div #management:hover
+{
+    background:  url('../building/college/mouseenter/management.png');
+}
+#street-div #midnight-food
+{
+    width: 102px;
+    height: 88px;
+    background:  url('../building/food/mouseleave/midnight_food.png');
+    left: 12px;
+    top: 291px;
+}
+#street-div #midnight-food:hover
+{
+    background:  url('../building/food/mouseenter/midnight_food.png');
+}
+#street-div #mapPicture
+{
+    position: relative;
+    margin-bottom: 0px;
+    width: 601px
+    height: 551px;
+}
+#street-div #new-postgraduate
+{
+    width: 112px;
+    height: 84px;
+    background:  url('../building/dormitory/mouseleave/new_postgraduate.png');
+    left: 433px;
+    top: 162px;
+}
+#street-div #new-postgraduate:hover
+{
+    background:  url('../building/dormitory/mouseenter/new_postgraduate.png');
+}
+#street-div #ncu-lake
+{
+    width: 106px;
+    height: 72px;
+    left: 292px;
+    top: 60px;
+    background: url('../building/landscape/mouseleave/ncu_lake.png') no-repeat;
+}
+#street-div #ncu-lake:hover
+{
+    background: url('../building/landscape/mouseenter/ncu_lake.png') no-repeat;
+}
+#street-div #old-library
+{
+    width: 127px;
+    height: 91px;
+    background:  url('../building/government/mouseleave/old_library.png');
+    left: 177px;
+    top: 152px;
+}
+#street-div #old-library:hover
+{
+    background:  url('../building/government/mouseenter/old_library.png');
+}
+#street-div #pine-wind
+{
+    width: 51px;
+    height: 68px;
+    background:  url('../building/landscape/mouseleave/pine_wind.png');
+    left: 34px;
+    top: 205px;
+}
+#street-div #pine-wind:hover
+{
+    background:  url('../building/landscape/mouseenter/pine_wind.png');
+}
+#street-div #playground
+{
+    width: 192px;
+    height: 144px;
+    background:  url('../building/exercise/mouseleave/playground.png');
+    left: 50px;
+    top: 300px;
+}
+#street-div #playground:hover
+{
+    background:  url('../building/exercise/mouseenter/playground.png');
+}
+#street-div #pine-restaurant
+{
+    width: 134px;
+    height: 71px;
+    background:  url('../building/food/mouseleave/pine_restaurant.png');
+    left: 84px;
+    top: 148px;
+}
+#street-div #pine-restaurant:hover
+{
+    background:  url('../building/food/mouseenter/pine_restaurant.png');
+}
+#street-div #photonics
+{
+    height: 63px;
+    width: 95px;
+    background: url('../building/college/mouseleave/photonics.png');
+    left: 241px;
+    top: 36px;
+}
+#street-div #photonics:hover
+{
+    background: url('../building/college/mouseenter/photonics.png');
+}
+#street-div #playing-dancing
+{
+    width: 214px;
+    height: 98px;
+    background:  url('../building/government/mouseleave/playing_dancing.png');
+    left: 55px;
+    top: 390px;
+}
+#street-div #playing-dancing:hover
+{
+    background:  url('../building/government/mouseenter/playing_dancing.png');
+}
+#street-div #restaurant-7
+{
+    width: 132px;
+    height: 65px;
+    background:  url('../building/food/mouseleave/restaurant_7.png');
+    left: 125px;
+    top: 442px;
+}
+#street-div #restaurant-7:hover
+{
+    background:  url('../building/food/mouseenter/restaurant_7.png');
+}
+#street-div #restaurant-9
+{
+    width: 106px;
+    height: 94px;
+    background:  url('../building/food/mouseleave/restaurant_9.png');
+    left: 493px;
+    top: 240px;
+}
+#street-div #restaurant-9:hover
+{
+    background:  url('../building/food/mouseenter/restaurant_9.png');
+}
+#street-div #rock-climbing
+{
+    left: 165px;
+    top: 0px;
+}
+#street-div #skating
+{
+    left: 245px;
+    top: 100px;
+}
+#street-div #swimming-pool
+{
+    width: 160px;
+    height: 120px;
+    background:  url('../building/exercise/mouseleave/swimming-pool.png');
+    left: 252px;
+    top: 49px;
+}
+#street-div #swimming-pool:hover
+{
+    background:  url('../building/exercise/mouseenter/swimming-pool.png');
+}
+#street-div #stadium
+{
+    width: 132px;
+    height: 99px;
+    background:  url('../building/exercise/mouseleave/stadium.png');
+    left: 129px;
+    top: 84px;
+}
+#street-div #stadium:hover
+{
+    background:  url('../building/exercise/mouseenter/stadium.png');
+}
+#street-div #science-1
+{
+    width: 113px;
+    height: 69px;
+    background:  url('../building/college/mouseleave/science_1.png');
+    left: 216px;
+    top: 312px;
+}
+#street-div #science-1:hover
+{
+    background:  url('../building/college/mouseenter/science_1.png');
+}
+#street-div #science-2
+{
+    width: 61px;
+    height: 66px;
+    background:  url('../building/college/mouseleave/science_2.png');
+    left: 291px;
+    top: 80px;
+}
+#street-div #science-2:hover
+{
+    background:  url('../building/college/mouseenter/science_2.png');
+}
+#street-div #science-3
+{
+    width: 78px;
+    height: 61px;
+    background:  url('../building/college/mouseleave/science_3.png');
+    left: 345px;
+    top: 84px;
+}
+#street-div #science-3:hover
+{
+    background:  url('../building/college/mouseenter/science_3.png');
+}
+#street-div #science-4
+{
+    height: 74px;
+    width: 91px;
+    background: url('../building/college/mouseleave/science_4.png');
+    left: 383px;
+    top: 30px;
+}
+#street-div #science-4:hover
+{
+    background: url('../building/college/mouseenter/science_4.png');
+}
+#street-div #science-5
+{
+    height: 72px;
+    width: 89px;
+    background: url('../building/college/mouseleave/science_5.png');
+    left: 450px;
+    top: 84px;
+}
+#street-div #science-5:hover
+{
+    background: url('../building/college/mouseenter/science_5.png');
+}
+#street-div
+{
+    overflow: hidden;
+}
+#street-div #stepping-cloud
+{
+    width: 73px;
+    height: 71px;
+    background:  url('../building/landscape/mouseleave/stepping_cloud.png');
+    left: 135px;
+    top: 289px;
+}
+#street-div #stepping-cloud:hover
+{
+    background:  url('../building/landscape/mouseenter/stepping_cloud.png');
+}
+#street-div #science-teach
+{
+    width: 82px;
+    height: 107px;
+    background:  url('../building/college/mouseleave/science_teach.png');
+    left: 421px;
+    top: 5px;
+}
+#street-div #science-teach:hover
+{
+    background:  url('../building/college/mouseenter/science_teach.png');
+}
+#street-div #school-coffee
+{
+    width: 109px;
+    height: 105px;
+    background:  url('../building/food/mouseleave/school_coffee.png');
+    left: 493px;
+    top: 127px;
+}
+#street-div #school-coffee:hover
+{
+    background:  url('../building/food/mouseenter/school_coffee.png');
+}
+#street-div select-picture-container
+{
+    width: 700px;
+    background-color: white;
+    position: relative;
+    margin: 0px;
+    bottom: 0px;
+    overflow: hidden;
+}
+#street-div #select-left-button
+{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 2;
+}
+#street-div #select-right-button
+{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    z-index: 2;
+}
+#street-div #tennis
+{
+    left: 186px;
+    top: 20px;
+}
+#text-container
+{
+    position: fixed;
+    z-index: 1500;
+    display: none;
+    background: url('../building/introduction.png') no-repeat;
+}
+#street-div #turtle-pond
+{
+    width: 59px;
+    height: 57px;
+    background:  url('../building/landscape/mouseleave/turtle_pond.png');
+    left: 500px;
+    top: 238px;
+}
+#street-div #turtle-pond:hover
+{
+    background:  url('../building/landscape/mouseenter/turtle_pond.png');
+}
+#street-div #up-curtain-div
+{
+     background: url('../building/curtain_up.png') no-repeat; 
+     position: absolute;
+     margin-top: opx;
+     z-index: 2;
+     height: 88px;
+     width: 750px;
+}
+#street-div #view-picture-container
+{
+    position: relative;
+    width: 700px;
+    margin: 0px;
+    background-color: black;
+}
+#street-div #yun-step
+{
+    width: 50px;
+    height: 88px;
+    background:  url('../building/landscape/mouseleave/yun_step.png ');
+    left: 237px;
+    top: 275px;
+}
+#street-div #yun-step:hover
+{
+    background:  url('../building/landscape/mouseenter/yun_step.png ');
+}
+#street-div .arrow
+{
+    position: absolute;
+    z-index: 4;
+    display: none;
+    cursor: pointer;
+}
+#street-div .arrow.up
+{
+    left: 350px;
+    top: 0px;
+}
+#street-div .arrow.left
+{
+     left: 0px;
+     top: 249px;
+}
+#street-div .arrow.right
+{
+     left: 700px;
+     top: 249px;
+}
+#street-div .arrow.back
+{
+    height: 51px;
+    width: 100px;
+    left: 650px;
+    top: 3px;
+    cursor: pointer;
+}
+#street-div .button-text
+{
+    padding: 3px;
+}
+#street-div .curtainOpen
+{
+    cursor: pointer;
+    margin-top: 325px;
+    margin-left: 85px;
+    z-index: 2;
+}
+.dialog-close-button
+{
+    display: block;
+    width: 48px;
+    height: 48px;
+    text-indent: -100000%;
+    margin-left: 620px;
+    margin-top: 5px;
+}
+#street-div .exercise
+{
+    top: 440px;
+    left: 0px;
+}
+#street-div .one-image
+{
+    cursor: pointer;
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    z-index: 2;
+}
+#street-div .one-image.dormitory
+{
+    top: 10px;
+    left: 20px;
+}
+#street-div .one-image.diet
+{
+    top: 10px;
+    left: 475px;
+}
+#street-div .one-image.department-building
+{
+    top: -2px;
+    left: 306px; 
+}
+#street-div .one-image.landscape
+{
+    top: 10px;
+    left: 150px;
+}
+#street-div .one-image.government
+{
+    top: 10px;
+    left: 590px;
+}
+#street-div .one-image.exercise
+{
+    top: 31px;
+    left: 687px;
+}
+#street-div .picture
+{
+    display: none;
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+}
+#street-div .two-image
+{
+    margin-left: 30px;
+    cursor: pointer;
+    position: absolute;
+    height 70px;
+    width: 70px;
+    z-index: 1;
+    font-size: 2em;
+}
+#street-div .two-image.department-building
+{
+    top: 210px;
+    left: 0px;
+}
+#street-div .two-image.dormitory
+{
+    top: 70px;
+    left: 0px;
+}
+#street-div .two-image.government
+{
+    top: 360px;
+    left: 0px;
+}
+#street-div .two-image.diet
+{
+    top: 280px;
+    left: 0px;
+}
+#street-div .two-image.landscape
+{
+    top: 140px;
+    left: 0px;
+}
+#street-div .text-ul
+{
+    cursor: pointer;
+    list-style-type: none;
+    margin-top: 0px;
+    padding: 0px;"
+}
+.scroll-content
+{
+    margin-right: -70px;
+    margin-left: 38px;
+    margin-top: 8px;
+}
+.scroll-container
+{
+    width: 630px;
+    height: 300px;
+}
+#street-div .scroll-class
+{
+    margin-left: 30px;
+    margin-right: 100px;
+}
 /**
  * Club style
  */
