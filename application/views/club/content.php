@@ -1,28 +1,28 @@
 <div id="club-<?php echo $data->id; ?>">
-    <div class="club-underpicture">
-        <h4 id="club-calendar-button">行事曆</h4>
+    <div class="underpicture">
+        <h4 id="calendar-button">行事曆</h4>
         <div>
-            <div id="club-calendar">
+            <div id="calendar">
             <div>
             </div>
             </div>
         </div>
-        <ul id="club-menu-items">
-            <li class="club-picture">
+        <ul id="menu-items">
+            <li class="picture">
 <?php if( file_exists( Yii::app()->basePath . '/../files/clubs/' . $id  . '/1.jpg' ) ) : ?>
                 <a href="<?php echo Yii::app()->baseUrl . '/files/clubs/' . $id . '/1.jpg'; ?>" title="<?php echo $data->name; ?> 照片1">
                 <img src="<?php echo Yii::app()->baseUrl . '/files/clubs/' . $id . '/1.jpg'; ?>" />
                 </a>
 <?php endif; ?>
             </li>
-            <li class="club-picture">
+            <li class="picture">
 <?php if ( file_exists(Yii::app()->basePath . '/../files/clubs/' . $id  . '/2.jpg') ) : ?>
                 <a href="<?php echo Yii::app()->baseUrl . '/files/clubs/' . $id . '/2.jpg'; ?>" title="<?php echo $data->name; ?> 照片2">
                 <img src="<?php echo Yii::app()->baseUrl . '/files/clubs/' . $id . '/2.jpg'; ?>"/>
                 </a> 
 <?php endif; ?>
             </li>
-            <li class="club-picture">
+            <li class="picture">
 <?php if ( file_exists(Yii::app()->basePath . '/../files/clubs/' . $id  . '/3.jpg') ) : ?>
                 <a href="<?php echo Yii::app()->baseUrl . '/files/clubs/' . $id . '/3.jpg'; ?>" title="<?php echo $data->name; ?> 照片3">
                 <img src="<?php echo Yii::app()->baseUrl . '/files/clubs/' . $id . '/3.jpg'; ?>"/>
@@ -31,7 +31,7 @@
             </li>
         </ul>
     </div>
-    <div class="club-display-head" id="club-head-<?php echo $data->category; ?>">
+    <div class="display-head" id="head-<?php echo $data->category; ?>">
 <?php if ( $is_subscript == false ): ?>
         <a href="<?php echo Yii::app()->createUrl('calendar/subscriptfromclub/', array('club_id'=>$id)) ?>" title="訂閱">訂閱</a>
 <?php elseif ( $is_subscript == true ): ?>
@@ -46,59 +46,59 @@
 <?php endif; ?>
     <h4><?php echo $data->name; ?></h4>    
     </div>    
-    <div class="club-display" id="club-<?php echo $data->category; ?>">
-        <div class="club-title">簡介:</div>
-        <div class="club-item">
+    <div class="display" id="club-<?php echo $data->category; ?>">
+        <div class="title">簡介:</div>
+        <div class="item">
 <?php echo $data->introduction; ?>
         </div>
-        <div class="club-title"><?php if ( $data->category !=2 ) : ?>社長:<?php else : ?>系代:<?php endif; ?></div>
-        <div class="club-item">
+        <div class="title"><?php if ( $data->category !=2 ) : ?>社長:<?php else : ?>系代:<?php endif; ?></div>
+        <div class="item">
 <?php echo $data->leader; ?>
         </div>
-        <div class="club-title">手機:</div>
-        <div class="club-item">
+        <div class="title">手機:</div>
+        <div class="item">
 <?php echo $data->leader_phone; ?>
         </div>
-        <div class="club-title">E-mail:</div>
-        <div class="club-item">
+        <div class="title">E-mail:</div>
+        <div class="item">
 <?php echo $data->leader_email; ?>
         </div>
-        <div class="club-title">二進位ID:</div>
-        <div class="club-item">
+        <div class="title">二進位ID:</div>
+        <div class="item">
 <?php echo $data->leader_binary; ?>
         </div>
-        <div class="club-title">MSN:</div>
-        <div class="club-item">
+        <div class="title">MSN:</div>
+        <div class="item">
 <?php echo $data->leader_msn; ?>
         </div>
-        <div class="club-title"><?php if ( $data->category !=2 ) : ?>副社長:<?php else : ?>副系代:<?php endif; ?></div>
-        <div class="club-item">
+        <div class="title"><?php if ( $data->category !=2 ) : ?>副社長:<?php else : ?>副系代:<?php endif; ?></div>
+        <div class="item">
 <?php echo $data->viceleader; ?>
         </div>
-        <div class="club-title">手機:</div>
-        <div class="club-item">
+        <div class="title">手機:</div>
+        <div class="item">
 <?php echo $data->viceleader_phone; ?>
         </div>
-        <div class="club-title">E-mail:</div>
-        <div class="club-item">
+        <div class="title">E-mail:</div>
+        <div class="item">
 <?php echo $data->viceleader_email; ?>
         </div>
-        <div class="club-title">二進位ID:</div>
-        <div class="club-item">
+        <div class="title">二進位ID:</div>
+        <div class="item">
 <?php echo $data->viceleader_binary; ?>
         </div>
-        <div class="club-title">MSN:</div>
-        <div class="club-item">
+        <div class="title">MSN:</div>
+        <div class="item">
 <?php echo $data->viceleader_msn; ?>
         </div> 
 <?php if ( $data->website != null ) : ?>
-        <div class="club-title">網站:</div>
-        <div class="club-item">
+        <div class="title">網站:</div>
+        <div class="item">
         <a href="<?php echo $data->website; ?>"><?php echo $data->website; ?></a>
         </div>
 <?php endif; ?>
-         <a class="back"><div class="club-back-button" id="club-back<?php echo $data->category; ?>"></div></a>
+         <a class="back"><div class="back-button" id="back<?php echo $data->category; ?>"></div></a>
     </div>
-    <div class="club-display-bottom" id="club-bottom-<?php echo $data->category; ?>">
+    <div class="display-bottom" id="bottom-<?php echo $data->category; ?>">
     </div>
 </div>
