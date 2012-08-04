@@ -3063,6 +3063,26 @@ button.news-button
     margin-top: 6px
 }
 
+#about .title1,
+#about .title2,
+#about .button-left,
+#about .button-right,
+#about .about-small-0,
+#about .tag,
+#about .tag-txt
+{
+    background: url('../about/picture.png') no-repeat;
+}
+
+#about .tag-bar0,
+#about .tag-bar1,
+#about .tag-bar2,
+#about .tag-bar3,
+#about .tag-bar4
+{
+    background: url('../about/photo.jpg') no-repeat;
+}
+
 #about .itr-block
 {
     padding-left: 15px;
@@ -3094,7 +3114,7 @@ button.news-button
 
 #about .tag-txt
 {
-    background: url('../about/small_wood_plate.png') no-repeat;
+    background-position: 0px -1056px;
     left: 25px;
     height: 140px;
     width: 700px;
@@ -3110,14 +3130,16 @@ button.news-button
 #about .title1
 {
     border-radius: 10px 10px 0px 0px;
-    background: url('../about/what.png') #385281 no-repeat;
+    background-color: #385281;
+    background-position: 0px 0px;
     width: 750px;
     height: 75px;
 }
 
 #about .title2
 {
-    background: url('../about/who_with_stars.png') #385281 no-repeat;
+    background-color: #385281;
+    background-position: 0px -80px;
     width: 750px;
     height: 85px;
 }
@@ -3140,6 +3162,7 @@ button.news-button
 
 #about .about-display
 {
+    border-radius: 0px 0px 10px 10px;
     background: #B9B9B9;
     bottom: 0px;
     height: 0px;
@@ -3176,7 +3199,8 @@ button.news-button
 
 #about .tag
 {
-    background: url('../about/wood_plate_for_photo.png') no-repeat #8ca86c center;
+    background-position: 0px -544px;
+    background-color: #8ca86c;
     left: 25px;
     height: 508px;
     width: 700px;
@@ -3216,6 +3240,7 @@ button.news-button
 
 #about .about-photos
 {
+    border-radius: 10px;
     height: 40px;
     float: left;
     margin: 5px;
@@ -3241,7 +3266,7 @@ button.news-button
 #about .about-small-0
 {
     border-radius: 10px 10px 0px 0px;
-    background: url('../about/about.png') no-repeat;
+    background-position: 0px -256px;
     width: 700px;
     height: 280px;
 }
@@ -3288,6 +3313,54 @@ button.news-button
 
 #about .hidden
 {
+    display: none;
+}
+
+#about .button-left
+{
+    cursor: pointer;
+    display: none;
+    background-position: 0px -176px;
+    width: 67px;
+    height: 67px;
+}
+
+#about .button-right
+{
+    cursor: pointer;
+    display: none;
+    background-position: -80px -176px;
+    width: 67px;
+    height: 67px;
+}
+
+#about .tag-bar0
+{
+    background-position: -0px -0px;
+    display: none;
+}
+
+#about .tag-bar1
+{
+    background-position: 0px -432px;
+    display: none;
+}
+
+#about .tag-bar2
+{
+    background-position: 0px -864px;
+    display: none;
+}
+
+#about .tag-bar3
+{
+    background-position: -560px 0px;
+    display: none;
+}
+
+#about .tag-bar4
+{
+    background-position: -560px -432px;
     display: none;
 }
 

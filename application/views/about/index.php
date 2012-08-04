@@ -7,7 +7,7 @@
         <p>除了我們所提供的，當然還有許多神秘未知的問題，我們另外設置了屬於各系及社團的論壇專區，讓大家能跟系上同學、學長姐彼此交流，不錯過任何即時訊息，更深入地瞭解中大的一切！</p>
         <p>非常感謝新鮮人們使用「２０１２大一生活知訊網」，在十月我們將完成團隊的使命－＂帶領各位熟悉中大校園＂。在十月之後，我們團隊將會傳承給下一代的你們，讓知訊網能夠薪火相傳。如果你有感受到知訊網的用心，願意為下一屆的學弟妹們盡一份心力，並且對知訊網有很多想法及熱情，歡迎你們加入，「２０１２大一生活知訊網」需要你唷！詳細在開學後的十月、十一月，將會在校園各處或是ＢＢＳ上張貼訊息、公布招募資訊，屆時將有更完整的資訊，請大家敬請期待！</p>
     </div>
-    <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="left" />
+    <div class="button-left"></div>
     <ul class="photo-ul">
 <?php for ( $count = 0 ; $count < 31 ; ++$count ) : ?>
         <li class="photo-li">
@@ -17,11 +17,11 @@
         </li>
 <?php endfor; ?>
     </ul>
-    <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-right.png" alt="right" />
+    <div class="button-right"></div>
 </div>
 <div class="title2"></div>
 <div class="block2">
-    <div class="animation" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/about.png"></div>
+    <div class="animation"></div>
     <div class="animation"></div>
     <div class="animation"></div>
     <div class="animation"></div>
@@ -30,57 +30,57 @@
     <div class="tag"></div>
     <ul class="tag-bar">
         <li>
-            <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/design.jpg" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="美工" />
-            <div name="陳禹傑" grade="資工三" left="292px" top="47px" width="50px" height="50px"></div>
-            <div name="張力"   grade="資工三" left="98px" top="240px" width="70px" height="70px"></div>
-            <div name="李冠勳" grade="資工二" left="227px" top="39px" width="58px" height="58px"></div>
-            <div name="彭恮傑" grade="資工二" left="164px" top="37px" width="58px" height="58px"></div>
-            <div name="康心柔" grade="資管二" left="247px" top="93px" width="58px" height="58px"></div>
-            <div name="黃晨翔" grade="資工二" left="370px" top="94px" width="58px" height="58px"></div>
-            <div name="曾敏"   grade="中文二" left="306px" top="97px" width="58px" height="58px"></div>
-            <div name="楊雅媛" grade="資工三" left="166px" top="91px" width="58px" height="58px"></div>
-            <div name="黃千鳳" grade="資工三" left="126px" top="84px" width="53px" height="53px"></div>
+            <div class="tag-image"></div>
+            <div class="person" name="陳禹傑" grade="資工三" left="292px" top="47px" width="50px" height="50px"></div>
+            <div class="person" name="張力"   grade="資工三" left="98px" top="240px" width="70px" height="70px"></div>
+            <div class="person" name="李冠勳" grade="資工二" left="227px" top="39px" width="58px" height="58px"></div>
+            <div class="person" name="彭恮傑" grade="資工二" left="164px" top="37px" width="58px" height="58px"></div>
+            <div class="person" name="康心柔" grade="資管二" left="247px" top="93px" width="58px" height="58px"></div>
+            <div class="person" name="黃晨翔" grade="資工二" left="370px" top="94px" width="58px" height="58px"></div>
+            <div class="person" name="曾敏"   grade="中文二" left="306px" top="97px" width="58px" height="58px"></div>
+            <div class="person" name="楊雅媛" grade="資工三" left="166px" top="91px" width="58px" height="58px"></div>
+            <div class="person" name="黃千鳳" grade="資工三" left="126px" top="84px" width="53px" height="53px"></div>
         </li>
         <li>
-            <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/program.jpg" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="程設" />
-            <div name="蔡志豪" grade="資工三" left="301px" top="46px" width="50px" height="50px"></div>
-            <div name="楊梓豪" grade="資工三" left="178px" top="52px" width="50px" height="50px"></div>
-            <div name="李韋成" grade="資工三" left="256px" top="145px" width="50px" height="50px"></div>
-            <div name="林志信" grade="資工二" left="250px" top="37px" width="50px" height="50px"></div>
-            <div name="黃熙程" grade="資工二" left="403px" top="24px" width="50px" height="50px"></div>
-            <div name="陳薏如" grade="資工三" left="178px" top="127px" width="50px" height="50px"></div>
-            <div name="羅雨晴" grade="資工二" left="372px" top="57px" width="50px" height="50px"></div>
-            <div name="梁郁珮" grade="資工二" left="92px" top="175px" width="50px" height="50px"></div>
-            <div></div>
+            <div class="tag-image"></div>
+            <div class="person" name="蔡志豪" grade="資工三" left="301px" top="46px" width="50px" height="50px"></div>
+            <div class="person" name="楊梓豪" grade="資工三" left="178px" top="52px" width="50px" height="50px"></div>
+            <div class="person" name="李韋成" grade="資工三" left="256px" top="145px" width="50px" height="50px"></div>
+            <div class="person" name="林志信" grade="資工二" left="250px" top="37px" width="50px" height="50px"></div>
+            <div class="person" name="黃熙程" grade="資工二" left="403px" top="24px" width="50px" height="50px"></div>
+            <div class="person" name="陳薏如" grade="資工三" left="178px" top="127px" width="50px" height="50px"></div>
+            <div class="person" name="羅雨晴" grade="資工二" left="372px" top="57px" width="50px" height="50px"></div>
+            <div class="person" name="梁郁珮" grade="資工二" left="92px" top="175px" width="50px" height="50px"></div>
+            <div class="person"></div>
         </li>
         <li>
-            <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/media.jpg" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="影音" />
-            <div name="賀靖雅" grade="資管三" left="206px" top="138px" width="62px" height="62px"></div>
-            <div name="蘇致維" grade="資工三" left="354px" top="75px" width="58px" height="58px"></div>
-            <div name="鐘育東" grade="資工二" left="183px" top="88px" width="58px" height="58px"></div>
-            <div name="賴韋辰" grade="資工二" left="320px" top="122px" width="50px" height="50px"></div>
-            <div name="吳易璁" grade="資工二" left="283px" top="115px" width="50px" height="50px"></div>
-            <div name="王禹軒" grade="資工二" left="" top="" width="" height=""></div>
-            <div name="林雅淇" grade="資工二" left="238px" top="102px" width="50px" height="50px"></div>
-            <div name="許庭瑜" grade="資工二" left="129px" top="142px" width="60px" height="60px"></div>
-            <div></div>
+            <div class="tag-image"></div>
+            <div class="person" name="賀靖雅" grade="資管三" left="206px" top="138px" width="62px" height="62px"></div>
+            <div class="person" name="蘇致維" grade="資工三" left="354px" top="71px" width="58px" height="58px"></div>
+            <div class="person" name="鐘育東" grade="資工二" left="183px" top="88px" width="58px" height="58px"></div>
+            <div class="person" name="賴韋辰" grade="資工二" left="316px" top="117px" width="58px" height="58px"></div>
+            <div class="person" name="吳易璁" grade="資工二" left="287px" top="110px" width="50px" height="50px"></div>
+            <div class="person" name="王禹軒" grade="資工二" left="" top="" width="" height=""></div>
+            <div class="person" name="林雅淇" grade="資工二" left="238px" top="102px" width="50px" height="50px"></div>
+            <div class="person" name="許庭瑜" grade="資工二" left="129px" top="142px" width="60px" height="60px"></div>
+            <div class="person"></div>
         </li>
         <li>
-            <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/project.jpg" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="企劃" />
-            <div name="王菩生" grade="資工三" left="373px" top="124px" width="50px" height="50px"></div>
-            <div name="王儀靜" grade="資工三" left="234px" top="135px" width="50px" height="50px"></div>
-            <div name="許子亮" grade="資工二" left="10px" top="97px" width="50px" height="50px"></div>
-            <div name="吳孟儒" grade="資工二" left="303px" top="97px" width="50px" height="50px"></div>
-            <div name="林長鴻" grade="資工二" left="155px" top="105px" width="50px" height="50px"></div>
-            <div name="張祐瑞" grade="資工二" left="441px" top="106px" width="50px" height="50px"></div>
-            <div name="梁乃勻" grade="資工二" left="83px" top="122px" width="50px" height="50px"></div>
-            <div name="陳星妘" grade="資管二" left="502px" top="126px" width="50px" height="50px"></div>
-            <div></div>
+            <div class="tag-image"></div>
+            <div class="person" name="王菩生" grade="資工三" left="373px" top="124px" width="50px" height="50px"></div>
+            <div class="person" name="王儀靜" grade="資工三" left="234px" top="135px" width="50px" height="50px"></div>
+            <div class="person" name="許子亮" grade="資工二" left="10px" top="97px" width="50px" height="50px"></div>
+            <div class="person" name="吳孟儒" grade="資工二" left="303px" top="97px" width="50px" height="50px"></div>
+            <div class="person" name="林長鴻" grade="資工二" left="155px" top="105px" width="50px" height="50px"></div>
+            <div class="person" name="張祐瑞" grade="資工二" left="441px" top="106px" width="50px" height="50px"></div>
+            <div class="person" name="梁乃勻" grade="資工二" left="83px" top="122px" width="50px" height="50px"></div>
+            <div class="person" name="陳星妘" grade="資管二" left="502px" top="126px" width="50px" height="50px"></div>
+            <div class="person"></div>
         </li>
         <li>
-            <img class="hidden" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/leader.jpg" photo="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/arrow-left.png" alt="執行" />
-            <div name="黃筱萍" grade="資工三" left="152px" top="37px" width="95px" height="95px"></div>
-            <div name="盧婉芳" grade="資工三" left="244px" top="24px" width="95px" height="95px"></div>
+            <div class="tag-image"></div>
+            <div class="person" name="黃筱萍" grade="資工三" left="152px" top="37px" width="95px" height="95px"></div>
+            <div class="person" name="盧婉芳" grade="資工三" left="244px" top="24px" width="95px" height="95px"></div>
         </li>
     </ul>
     <div class="tag-txt"></div>
