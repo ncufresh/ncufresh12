@@ -2796,6 +2796,10 @@ button.news-button
     height: 357px;
     width: 639px;
 }
+#readme .scroll-content
+{
+    width: 639px;
+}
 
 #readme-fresh
 {
@@ -2821,8 +2825,8 @@ button.news-button
 
 #readme .background
 {
-    height: 420px;
-    padding: 15px 25px;
+    height: 390px;
+    padding: 30px 25px;
     position: relative;
     width: 700px;
     overflow: hidden;
@@ -2831,7 +2835,7 @@ button.news-button
 #readme .download-background
 {
     height: 357px;
-    padding: 15px 25px;
+    padding: 30px 25px;
     position: relative;
     width: 700px;
     overflow: hidden;
@@ -3024,7 +3028,7 @@ button.news-button
     width: 220px;
     heigth: auto;
     top: 5px;
-    left: -177px;
+    left: -200px;
     border-radius: 0 10px 10px 0;
     position: absolute;
     display: block;

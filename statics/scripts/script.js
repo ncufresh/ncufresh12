@@ -3566,7 +3566,7 @@
         {
             $(this).stop().animate(
             {
-                left : '-177px'
+                left : '-200px'
             },500);
         });
 
