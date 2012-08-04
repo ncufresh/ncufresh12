@@ -4943,12 +4943,32 @@ img.user_img
     font-size: 2.5em;
     color: #0C533F;
     padding: 12px 0px;
+    display: block;
+    width: 378px;
+    text-align: center;
+} 
+
+.game-display .shop-foot
+{
+    display: block;
+    width: 361px;
+    height: 36px;
+    text-align: center;
 } 
 
 .game-display .shop-click
 {
-    font-size: 1.5em;
-    color: black;
+    width: 367px;
+    height: 20px;
+    margin: 5px 0px;
+    font-size: 1.2em;
+    text-align: center;
+    background-color: black;
+    border: 3px solid #BCE96C;
+    border-radius: 10px;
+    color: #DEFF76;
+    padding: 2px 5px;
+    font-weight: bold;
 } 
 
 .game-display .experience
