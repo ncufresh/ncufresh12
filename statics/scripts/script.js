@@ -3362,6 +3362,8 @@
         
         if ( $('#club').length ) $.clubs();
         
+        if ( $('#game').length ) $.game();
+        
         if ( $('#nculife').length ) $.nculife();
 
         if ( $('#readme').length ) $.readme(); 
@@ -3568,7 +3570,8 @@ google.setOnLoadCallback(function()
 });
 
 (function($){
-    $(document).ready(function(){
+    $.game = function()
+    {
         $('.game-display').scrollable({
         });
         
@@ -3667,5 +3670,5 @@ google.setOnLoadCallback(function()
             });
             return false;
         }); 
-    });
+    };
 })(jQuery);
