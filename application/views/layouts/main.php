@@ -214,7 +214,7 @@
                 <a href="<?php echo Yii::app()->createUrl('game/index'); ?>" title="遊戲介面">遊戲介面</a>
             </li>
         </ul>
-        <a id="sidebar-personal-button" href="<?php echo Yii::app()->createUrl('friends/friends'); ?>" title="個人專區">個人專區</a>
+        <a id="sidebar-personal-button" href="<?php echo Yii::app()->createUrl('friends/friends'); ?>" title="好友專區">好友專區</a>
         <a id="sidebar-logout-button" href="<?php echo Yii::app()->createUrl('site/logout'); ?>" title="登出">登出</a>
     </div>
 <?php endif; ?>

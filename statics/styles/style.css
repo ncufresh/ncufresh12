@@ -3030,10 +3030,10 @@ button.news-button
 
 .readme-menu
 {
-    width: 200px;
+    width: 220px;
     heigth: auto;
     top: 5px;
-    left: -187px;
+    left: -197px;
     border-radius: 0 10px 10px 0;
     position: absolute;
     display: block;
@@ -3042,9 +3042,15 @@ button.news-button
     overflow: auto;
 }
 
-.readme-menu p
+.readme-menu h5
 {
     text-align: center;
+	margin-top: 10px;
+}
+
+.readme-menu-index li
+{
+	display: none;
 }
 
 .readme-menu p:hover
@@ -3054,9 +3060,28 @@ button.news-button
     font-weight: bold;
 }
 
+#readme .menu-index
+{
+	list-style: none;
+}
+
+#readme .menu-index li
+{
+	list-style: none;
+	margin: 10px 0 0 -15px;
+}
+
+#readme .menu-index a:hover
+{
+	text-decoration: underline;
+	color: black;
+}
+
 .readme-menu-index
 {
-    display: none;
+    display: block;
+	list-style: none;
+	margin-top: -10px;
 }
 
 .download-index
@@ -3249,6 +3274,7 @@ button.news-button
 
 #about .about-small-0
 {
+    border-radius: 10px 10px 0px 0px;
     background: url('../about/about.png') no-repeat;
     width: 700px;
     height: 280px;
@@ -3320,6 +3346,31 @@ button.news-button
     width: 96px;
 }
 
+.club,
+.club-head,
+.club-head:hover,
+.department,
+.department-head,
+.department-head:hover,
+.student,
+.student-head,
+.student-head:hover,
+#club-head-1,
+#club-head-2,
+#club-head-3,
+#club-back1,
+#club-back2,
+#club-back3,
+.club-modify-table,
+#club-bottom-1,
+#club-bottom-2,
+#club-bottom-3
+{
+	background: url('../images/club.png');
+}
+
+
+
 /**
  * Club style
  */
@@ -3330,7 +3381,7 @@ button.news-button
  
  .club
  {
-    background: url('../club/club.png');
+    background-position: 0px 0px;
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -3340,7 +3391,7 @@ button.news-button
  
 .club-head
 {
-    background: url('../club/club-head.png');
+    background-position: -960px -1600px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3350,7 +3401,7 @@ button.news-button
 
 .club-head:hover
 {
-    background: url('../club/club-head2.png');
+    background-position: -960px -1680px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3360,7 +3411,7 @@ button.news-button
 
 .department
 {
-    background: url('../club/department.png');
+    background-position: -800px 0px;
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -3370,7 +3421,7 @@ button.news-button
 
 .department-head
 {
-    background: url('../club/department-head.png');
+    background-position: -1280px -1600px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3379,7 +3430,7 @@ button.news-button
 
 .department-head:hover
 {
-    background: url('../club/department-head2.png');
+    background-position: -1280px -1680px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3388,7 +3439,7 @@ button.news-button
 
 .student
 {
-    background: url('../club/student.png');
+    background-position: 0px -960px;
     background-repeat: no-repeat; 
     height: 900px;
     width: 750px;
@@ -3398,7 +3449,7 @@ button.news-button
 
 .student-head
 {
-    background: url('../club/student-head.png');
+    background-position: -1600px -1600px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3408,7 +3459,7 @@ button.news-button
 
 .student-head:hover
 {
-    background: url('../club/student-head2.png');
+    background-position: -1600px -1680px;
     width: 230px;
     height: 66px;
     background-repeat: no-repeat; 
@@ -3518,17 +3569,17 @@ button.news-button
 
 #club-head-1
 {
-    background: url('../club/5-1.png');
+    background-position: 0px -1920px;
 }
 
 #club-head-3
 {
-    background: url('../club/6-1.png');
+    background-position: 0px -2010px;
 }
 
 #club-head-2
 {
-    background: url('../club/4-1.png');
+    background-position: -480px -1920px;
 }
 
 .club-display-head a
@@ -3548,19 +3599,19 @@ button.news-button
 
 #club-bottom-1
 {
-    background: url('../club/5-3.png');
+    background-position: -480px -2010px;
     background-repeat: no-repeat;
 }
 
 #club-bottom-3
 {
-    background: url('../club/6-3.png');
+	background-position: -960px -2090px;
     background-repeat: no-repeat;
 }
 
 #club-bottom-2
 {
-    background: url('../club/4-3.png');
+    background-position: -960px -1920px;
     background-repeat: no-repeat;
 }
 
@@ -3575,17 +3626,17 @@ button.news-button
 
 #club-back1
 {
-    background: url('../club/clubback1.png');
+    background-position: 0px -2170px;
 }
 
 #club-back2
 {
-    background: url('../club/clubback2.png');
+    background-position: -160px -2170px;
 }
 
 #club-back3
 {
-    background: url('../club/clubback3.png');
+    background-position: -320px -2170px;
 }
 
 .club-picture
@@ -3676,7 +3727,7 @@ button.news-button
     padding: 5px;
     height: 600px;
     width: 750px;
-    background: url('../club/background.png');
+    background-position: -960px -960px;
 }
 /* profile... */
 ul.friends-sort 
@@ -4897,9 +4948,9 @@ img.user_img
  */
 .game-display .game-title
 {
-    width: 335px;
+    width: 356px;
     height: 20px;
-    margin: 5px 11px;
+    margin: 5px 0px;
     font-size: 1.5em;
     text-align: center;
     background-color: black;
@@ -4910,9 +4961,9 @@ img.user_img
 
 .game-display .item-category
 {
-    width: 335px;
+    width: 356px;
     height: 20px;
-    margin: 5px 11px;
+    margin: 5px 0px;
     font-size: 1.5em;
     text-align: center;
     background-color: black;
@@ -4926,12 +4977,37 @@ img.user_img
     font-size: 2.5em;
     color: #0C533F;
     padding: 12px 0px;
+    display: block;
+    width: 378px;
+    text-align: center;
+} 
+
+.game-display .shop-foot
+{
+    display: block;
+    width: 361px;
+    height: 36px;
+    text-align: center;
 } 
 
 .game-display .shop-click
 {
-    font-size: 1.5em;
-    color: black;
+    width: 367px;
+    height: 20px;
+    margin: 5px 0px;
+    font-size: 1.2em;
+    text-align: center;
+    background-color: black;
+    border: 3px solid #BCE96C;
+    border-radius: 10px;
+    color: #DEFF76;
+    padding: 2px 5px;
+    font-weight: bold;
+} 
+
+.game-display .shop-click:hover
+{
+    color: #A6FF06;
 } 
 
 .game-display .experience
@@ -5227,6 +5303,11 @@ ul.game-button li
     color:#b9b9b9;
 }
 
+ul.game-button li a:hover
+{
+    color:#00A3FF;
+}
+
 div.game-display
 {
     width: 378px;
@@ -5368,10 +5449,16 @@ li.enabled a
     padding-left:44px;
 }
 
+#forum-create
+{
+    background-image: url(../forum/create/background.png);
+    margin-left: 35px;
+    background-repeat: no-repeat;
+}
+
 #forum-create-form .form-top
 {
-    background-image: url('../forum/create/background_top.png');
-    background-repeat: no-repeat;
+    
     margin-left:35px;
     width:656px;
     height:81px;
@@ -5400,7 +5487,7 @@ li.enabled a
 
 #forum-create-form .form-body
 {
-    background-image: url('../forum/create/background_body.png');
+    
     margin-left:35px;
     margin-top:0px;
     width:656px;
@@ -5434,8 +5521,7 @@ li.enabled a
 
 #forum-create-form .form-foot
 {
-    background-image: url('../forum/create/background_foot.png');
-    background-repeat: no-repeat;
+    
     margin-left:35px;
     margin-top:0px;
     width:656px;

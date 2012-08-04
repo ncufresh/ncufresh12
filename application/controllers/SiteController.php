@@ -217,7 +217,7 @@ class SiteController extends Controller
                 {
                     $this->redirect(array('profile/editor'));
                 }
-                $this->redirect(array('site/index'));
+                $this->redirect(Yii::app()->user->returnUrl);
             }
         }
         $this->setPageTitle(Yii::app()->name . ' - 需要驗證您的身分');
