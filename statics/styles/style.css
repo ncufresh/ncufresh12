@@ -2742,6 +2742,15 @@ button.news-button
     left: 660px;
 }
 
+.readme-download-back
+{
+    width: 70px;
+    height: 85px;
+    position: absolute;
+    top: 600px;
+    left: 930px;
+}
+
 #fresh-back
 {
     background-position: -1272px -656px;
