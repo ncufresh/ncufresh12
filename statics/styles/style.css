@@ -4782,21 +4782,6 @@ label.group-friends-name
     background-color:green;
 }
 
-.etmomi
-{
-    background: url('../1.jpg');
-    width:30px;
-    height:30px;
-    display:block;
-}
-
-.etmomi:hover
-{
-    background: url('../2.png');
-    width:300px;
-    height:300px;
-    display:block;
-}
 a.mygroup-name
 {
     text-align: left;

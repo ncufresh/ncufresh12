@@ -4369,11 +4369,7 @@
         if ( $('#readme').length ) $.readme(); 
 
         if ( $('#street').length ) $.street(); 
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> 452810d1a717a9a1ac37e70c807d66f8ee215ff4
         if ( $('#multimedia').length ) $.multimedia();
 
         if ( $('.calendar-create').length ) $.calendarCreate();
@@ -4388,10 +4384,6 @@
 
         if ( $('#calendar-event').length ) $.calendarEvent();
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 452810d1a717a9a1ac37e70c807d66f8ee215ff4
         $('input.datepicker:not(#form-register-birthday)').datepicker();
         $('#form-register-birthday').datepicker({
             year: 1994,
