@@ -5335,6 +5335,11 @@ ul.game-button li
     color:#b9b9b9;
 }
 
+ul.game-button li a:hover
+{
+    color: red;
+}
+
 div.game-display
 {
     width: 378px;
@@ -7835,6 +7840,18 @@ td.popularity
     text-indent: -100000%;
     margin-left: 620px;
     margin-top: 5px;
+}
+
+#text-container .scroll-container
+{
+    height: 345px;
+    margin: -20px 25px;
+    width: 600px;
+}
+
+#text-container .scroll-content
+{
+    width: 600px;
 }
 
 #street-div .exercise
