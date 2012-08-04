@@ -107,7 +107,7 @@ class Article extends CActiveRecord
     public function getLastestArticles($num)
     {
         return $this->findAll(array(
-            'condition' => 'invisible=0',
+            'condition' => 'invisible=0 AND forum_id=1',
             'order'     => 'created DESC',
             'limit'     => $num
         ));
