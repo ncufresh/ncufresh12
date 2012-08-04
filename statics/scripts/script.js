@@ -3300,7 +3300,7 @@
             
         });
         $('#street-div #building-text').scrollable({
-            scrollableClass: false
+            scrollableClass: 'street-scrollable'
         });
         
         $('#street-div .arrow.up, #street-div .arrow.right, #street-div .arrow.left').hover(function()
