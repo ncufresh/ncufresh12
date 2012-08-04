@@ -2819,7 +2819,7 @@ button.news-button
     padding-bottom: 40px;
 }
 
-.readme-background
+#readme .background
 {
     height: 420px;
     padding: 15px 25px;
@@ -2828,7 +2828,7 @@ button.news-button
     overflow: hidden;
 }
 
-.readme-download-background
+#readme .download-background
 {
     height: 357px;
     padding: 15px 25px;
@@ -2929,10 +2929,11 @@ button.news-button
     width: 63px;
 }
 
-#readme .readme-view
+/*#readme .readme-view
 {
     padding-right: 10px;
-}
+	width: 660px;
+}*/
 
 #readme .scroll-bar
 {
@@ -3021,10 +3022,10 @@ button.news-button
 
 .readme-menu
 {
-    width: 200px;
+    width: 220px;
     heigth: auto;
     top: 5px;
-    left: -187px;
+    left: -177px;
     border-radius: 0 10px 10px 0;
     position: absolute;
     display: block;
@@ -3033,9 +3034,19 @@ button.news-button
     overflow: auto;
 }
 
+.readme-menu li
+{
+	margin: 0 0 0 -30px;
+}
+
 .readme-menu p
 {
     text-align: center;
+}
+
+.readme-menu h5
+{
+	text-align: center;
 }
 
 .readme-menu p:hover
@@ -3050,7 +3061,12 @@ button.news-button
     display: none;
 }
 
-.download-index
+#readme .menu-index
+{
+	list-style: none;
+}
+
+#readme .index
 {
     float: left;
     list-style-type: disc;
