@@ -5044,11 +5044,11 @@ div.item-description .exist
 #game-mission-dialog .avatar
 {
     width: 265px;
-    height: 451px;
+    height: 475px;
     font-size: 1.125em;
     /*outline: 1px solid black;*/
     position: absolute;
-    top: 43px;
+    top: 42px;
     left: 629px;
 }
 
