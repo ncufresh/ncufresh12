@@ -2552,7 +2552,7 @@ button.news-button
 #nculife-title
 {
     width: 605px;
-    height: 122px;
+    height: 121px;
     margin: -72px 0 0 10px;
     display: inline-block;
 }
@@ -3130,7 +3130,7 @@ button.news-button
 
 #about .about-display
 {
-    background: #FFFFFF;
+    background: #B9B9B9;
     bottom: 0px;
     height: 0px;
     opacity: 0px;
@@ -3184,19 +3184,21 @@ button.news-button
 
 #about .tag-Box-name
 {
+    border-radius: 8px;
+    background: white;
     top: 95%;
     position: absolute;
     text-align: center;
-    height: 10%;
     width: 100%;
 }
 
 #about .tag-Box-grade
 {
-    top: 125%;
+    border-radius: 8px;
+    background: white;
+    top: 130%;
     position: absolute;
     text-align: center;
-    height: 10%;
     width: 100%;
 }
 

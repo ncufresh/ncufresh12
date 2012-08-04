@@ -88,9 +88,5 @@
     <img alt="交誼廳 " src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/04-1.png" style="width:273px;height:180px;" /><img alt="自修室" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/G4_4-2.jpg" style="width:240px;height:180px;" />
 </p>
 <p>
-    <strong></strong><img alt="簡易廚房" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/04-3.png" style="width:271px;height:180px;" /><img alt="簡易廚房" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/04-4.png" style="width:194px;height:180px;" />
+    <img alt="簡易廚房" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/04-3.png" style="width:271px;height:180px;" /><img alt="簡易廚房" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/04-4.png" style="width:194px;height:180px;" />
 </p>
-<div>
-</div>
-<div>
-</div>
