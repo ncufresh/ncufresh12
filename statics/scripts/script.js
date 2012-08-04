@@ -1794,6 +1794,196 @@
         var calendar = geneator(current_year, current_month);
         return calendar;
     }
+
+    $.calendarCreate = function (){
+        $('.calendar-cancel-button').click(function()
+        {
+            $.confirm({
+                message: '確定取消編輯此篇文章？',
+                confirmed: function(result)
+                {
+                    if ( result ) window.location = $.configures.calendarViewUrl;
+                    return false;
+                }
+            });
+            return false;
+        });
+    };
+    
+    $.calendarRecycle = function()
+    {
+        $('a.calendar-hide-event').click(function()
+        {
+            var id = $(this).attr('href').replace('#', '');
+            var li = $(this).parent();
+            var ul = li.parent();
+            var div = ul.parent();
+            $.confirm({
+                message: '你真的想要隱藏事件嗎？',
+                confirmed: function(result)
+                {
+                    if ( result === true )
+                    {
+                        $.post(
+                            window.location.href,
+                            {
+                                calendar:
+                                {
+                                    id: id
+                                },
+                                token: $.configures.token
+                            },
+                            function(response)
+                            {
+                                $.configures.token = response.token;
+                                if ( $.errors(response.errors) )
+                                {
+                                    li.remove();
+                                    if ( $.trim(ul.html()) == '' ) div.remove();
+                                }
+                            }
+                        );
+                    }
+                }
+            });
+            return false;
+        });
+        
+        $('a.calendar-show-event').click(function()
+        {
+            var id = $(this).attr('href').replace('#', '');
+            var li = $(this).parent();
+            var ul = li.parent();
+            var div = ul.parent();
+            $.post(
+                $.configures.calendarShowEventsUrl,
+                {
+                    calendar:
+                    {
+                        id: id
+                    },
+                    token: $.configures.token
+                },
+                function(response)
+                {
+                    $.configures.token = response.token;
+                    if ( $.errors(response.errors) )
+                    {
+                        li.remove();
+                        if ( $.trim(ul.html()) == '' ) div.remove();
+                    }
+                }
+            );
+        });
+        
+        $('#calendar-recycle .container').scrollable();
+    };
+    
+    $.calendarView = function()
+    {
+        var calendar = $.calendar({
+            calendar_container: '#personal-calendar .left',
+            events_container:   '#personal-calendar .right',
+            date_container:     '#personal-calendar .date',
+            prompt:             '#personal-calendar .prompt',
+            eventsUrl:           $.configures.calendarEventsUrl
+        });
+        $('a.calendar-hide-event').live('click', function()
+        {
+            var id = $(this).attr('href').replace('#', '');
+            var self = this;
+            var li = $(this).parents('li');
+            var ul = li.parent();
+            var div = ul.parent();
+            $.post(
+                $.configures.calendarHideEventUrl,
+                {
+                    calendar:
+                    {
+                        id: id
+                    },
+                    token: $.configures.token
+                },
+                function(response)
+                {
+                    $.configures.token = response.token;
+                    if ( $.errors(response.errors) )
+                    {
+                        li.remove();
+                        if ( $.trim(ul.html()) == '' ) div.remove();
+                        calendar.updateData($.configures.calendarEventsUrl);
+                    }
+                }
+            );
+            return false;
+        });
+    };
+
+    $.calendarSubscript =  function()
+    {
+        $('.category-button').click(function()
+        {
+            var id = $(this).attr('href').replace('#','');
+            $('.calendar-subscript-category').hide();
+            $('#calendar-subscript-category-' + id).show();
+        });
+        $('.category-button').first().click();
+        $('.calendar-subscript-container').scrollable();
+    };
+    
+    $.calendarClub =  function()
+    {
+        var club_id = $('#calendar-club').attr('club');
+        var calendar = $.calendar({
+            calendar_container: '#calendar-club .left',
+            events_container:   '#calendar-club .right',
+            date_container:     '#calendar-club .date',
+            prompt:             '#calendar-club .prompt',
+            eventsUrl:           $.configures.calendarClubEventsUrl.replace(':id', 0)
+        });
+        $('a.calendar-hide-event').live('click', function()
+        {
+            var id = $(this).attr('href').replace('#', '');
+            var self = this;
+            $.confirm({
+                confirmed: function(result)
+                {
+                    if ( result )
+                    {
+                        $.post(
+                            $.configures.calendarClubRecycleUrl.replace(':id', club_id),
+                            {
+                                calendar:
+                                {
+                                    id: id
+                                },
+                                token: $.configures.token
+                            },
+                            function(response)
+                            {
+                                $.configures.token = response.token;
+                                if ( $.errors(response.errors) )
+                                {
+                                    $(self).parents('li').remove();
+                                    calendar.updateData($.configures.calendarClubEventsUrl.replace(':id', 0));
+                                }
+                            }
+                        );
+                    }
+                },
+                message: '刪除將無法復原，您確定要刪除嗎？'
+            });
+            return false;
+        });
+    };
+
+    $.calendarEvent = function()
+    {
+        $('#calendar-event div.container').scrollable({
+            scrollableClass:    false
+        });
+    };
+
 })(jQuery);
 
 /**
@@ -3375,6 +3565,18 @@
         
         if ( $('#multimedia').length ) $.multimedia();
 
+        if ( $('.calendar-create').length ) $.calendarCreate();
+        
+        if ( $('#calendar-recycle').length ) $.calendarRecycle();
+        
+        if ( $('#personal-calendar').length ) $.calendarView();
+        
+        if ( $('#calendar-subscript').length ) $.calendarSubscript();
+        
+        if ( $('#calendar-club').length ) $.calendarClub();
+        
+        if ( $('#calendar-event').length ) $.calendarEvent();
+        
         $('input.datepicker:not(#form-register-birthday)').datepicker();
         $('#form-register-birthday').datepicker({
             year: 1994,

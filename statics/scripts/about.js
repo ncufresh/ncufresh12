@@ -25,8 +25,8 @@
         var tagbarIndex = 0;
         var tagbar = $('.' + options.tagBar + ' img');
         var tagbarPerson = $('.' + options.tagBar + ' div');
-        var personName = $('<p></p>').addClass('tag-Box-name').hide();
-        var personGrade = $('<p></p>').addClass('tag-Box-grade').hide();
+        var personName = $('<p></p>').addClass('tag-box-name').hide();
+        var personGrade = $('<p></p>').addClass('tag-box-grade').hide();
         var photoNumber = 82;
         var smallPhotoIndex = 0;
         var photoA = $('#' + options.aboutId + ' a');

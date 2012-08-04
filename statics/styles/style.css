@@ -1821,14 +1821,14 @@ a.calendar-hide-event:hover
     height: 20px;
     line-height: 20px;
     display: inline-block;
-    background-color: #FFFFFF179;
+    background-color: #FFFFFF;
     border-radius: 5px;
     color: #27120a;
 }
 
 #calendar-recycle a.calendar-show-event
 {
-    background: url('../images/calendar_recover.png') no-repeat #FFFFFF179;
+    background: url('../images/calendar_recover.png') no-repeat #FFFFFF;
 }
 
 #calendar-recycle a.calendar-show-event:active
@@ -1839,7 +1839,7 @@ a.calendar-hide-event:hover
 
 #calendar-recycle a.calendar-hide-event
 {
-    background: url('../images/calendar_delete.png') no-repeat #FFFFFF179;
+    background: url('../images/calendar_delete.png') no-repeat #FFFFFF;
 }
 
 #calendar-recycle a.calendar-hide-event:active
@@ -3192,25 +3192,22 @@ button.news-button
     width: 80%;
 }
 
-#about .tag-Box-name
+#about .tag-box-name,
+#about .tag-box-grade
 {
-    border-radius: 8px;
-    background: white;
-    top: 95%;
-    position: absolute;
+    background: #FFFFFF;
+    font-size: 0.95em;
+    margin: 0 -5px;
+    padding: 0 5px;
     text-align: center;
     width: 100%;
 }
 
-#about .tag-Box-grade
+#about .tag-box-name
 {
-    border-radius: 8px;
-    background: white;
-    top: 130%;
-    position: absolute;
-    text-align: center;
-    width: 100%;
+    margin-top: 100%;
 }
+
 
 #about .animation
 {
