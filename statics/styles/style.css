@@ -1922,6 +1922,7 @@ a.calendar-hide-event:hover
     background-position: -32px -160px;
     display: inline-block;
     padding-left: 36px;
+    margin-right: 80%;
 }
 
 #calendar-subscript .category-wrapper
