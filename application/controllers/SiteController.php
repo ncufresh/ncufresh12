@@ -238,20 +238,22 @@ class SiteController extends Controller
                     $profile->id = $user->id;
                     if ( $profile->save() )
                     {
-                        $character = new Character(); //Character Model
-                        $character->id = $user->id;//同步寫入user的id至遊戲資料列表
-                        if( $_POST['profile']['gender'] == 0 )
-                        {
-                            $character->skin_id = 81; //男生 皮膚預設id=81
-                        }
-                        else
-                        {
-                            $character->skin_id = 85; //女生 皮膚預設id=85
-                        }
-                        $item = new ItemBag(); //ItemBag Model
-                        $item->user_id = $user->id; //同步寫入user的id至道具列表
-                        $item->equipped = true; //寫入裝備狀態
-                        $item->item_id = $character->skin_id; //寫入獲得道具的id
+                        $item_save = ItemBag::model()->characterNewItem($user->id);
+                        $character_save = Character::model()->createNewCharacter($user->id);
+                        // $character = new Character(); //Character Model
+                        // $character->id = $user->id;//同步寫入user的id至遊戲資料列表
+                        // if( $_POST['profile']['gender'] == 0 )
+                        // {
+                            // $character->skin_id = 81; //男生 皮膚預設id=81
+                        // }
+                        // else
+                        // {
+                            // $character->skin_id = 85; //女生 皮膚預設id=85
+                        // }
+                        // $item = new ItemBag(); //ItemBag Model
+                        // $item->user_id = $user->id; //同步寫入user的id至道具列表
+                        // $item->equipped = true; //寫入裝備狀態
+                        // $item->item_id = $character->skin_id; //寫入獲得道具的id
                         //行事曆的部分
                         $calendar = new Calendar();
                         $calendar->user_id = $user->id;
@@ -260,7 +262,7 @@ class SiteController extends Controller
                         $calendar_subscriptions->user_id = $user->id;
                         $calendar_subscriptions->calendar_id = 1;
                         $calendar_subscriptions->invisible = 0;
-                         if ( $character->save() && $item->save() && $calendar->save() && $calendar_subscriptions->save() )
+                         if ( $character_save && $item_save && $calendar->save() && $calendar_subscriptions->save() )
                         { 
                             $this->redirect(array('site/success'));
                         }
