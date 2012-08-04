@@ -67,7 +67,7 @@
             
             return false;
         });
-        $('#multimedia .menu a').eq($.random(0, $('#multimedia .menu a').length - 1)).click();
+        $('#multimedia .menu a').eq($.random(0, $('#multimedia .menu .items a').length - 1)).click();
 
         var srcoll_offset = 10;
         mmMenuScroll.margin_top_max = 0;
