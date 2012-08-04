@@ -4046,28 +4046,28 @@ div.profile-message-reply
 
 #is_friend
 {
-    /*background-image: url('../profile/button/back.png');
-    background-repeat: no-repeat ;*/
-    width: 84px;
-    height: 33px;
+    background-image: url('../profile/button/isfriend.png');
+    background-repeat: no-repeat ;
+    width: 95px;
+    height: 40px;
     padding: 0px;
     margin: 0px;
     position:absolute;
     right:550px;
-    bottom:-40px;
+    bottom:-86px;
 }
 
 #friend_request
 {
-    /*background-image: url('../profile/button/back.png');
-    background-repeat: no-repeat ;*/
+    background-image: url('../profile/button/friendrequest.png');
+    background-repeat: no-repeat ;
     width: 95px;
-    height: 33px;
+    height: 42px;
     padding: 0px;
     margin: 0px;
     position:absolute;
     right:550px;
-    bottom:-40px;
+    bottom:-88px;
 }
 
 .button-back
@@ -4087,8 +4087,8 @@ div.profile-message-reply
 
 .button-all-choose
 {
-    /*background-image: url('../profile/button/allchoose.png');
-    background-repeat: no-repeat ;*/
+    background-image: url('../profile/button/allchoose.png');
+    background-repeat: no-repeat ;
     width: 84px;
     height: 37px;
     padding: 0px;
