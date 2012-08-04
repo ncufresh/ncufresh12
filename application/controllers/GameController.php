@@ -238,41 +238,57 @@ class GameController extends Controller
     
     public function actionProblem($id = 0)
     {
-        // $user_mission_counter = $characterData->missions;
+        $user_mission_counter = ($this->characterData->missions)+1;
         $mission = Mission::model()->findByPk($id);
-        $this->_data['name'] = $mission->name;
-        $this->_data['content'] = $mission->content;
+        if ( $id <= $user_mission_counter && $mission )
+        {
+            $this->_data['name'] = $mission->name;
+            $this->_data['content'] = $mission->content;
+        }
+        else
+        {
+            $this->_data['name'] = '禁止';
+            $this->_data['content'] = '看到這個畫面，代表您嘗試進入禁止區域';
+        }
     }
     
     public function actionSolve($id = 0)
     {
+        $user_mission_counter = ($this->characterData->missions)+1;
         if ( isset($_POST['answer']) )
         {
             $mission = Mission::model()->findByPk($id);
-            $user_mission_counter = ($this->characterData->missions)+1;
-            $answer = $mission->answer;
-            $get_money = $mission->money;
-            $get_experience = $mission->experience;
-            if( $_POST['answer'] == $answer )
+            if ( $mission )
             {
-                $this->_data['result'] = true;
-                if( $id == $user_mission_counter ) // 解一題沒解過的題目
+                $answer = $mission->answer;
+                $get_money = $mission->money;
+                $get_experience = $mission->experience;
+                if ( $_POST['answer'] == $answer )
                 {
-                    $this->characterData->addMission();
-                    $this->characterData->addMoney($get_money);
-                    $this->characterData->addexp($get_experience);
+                    $this->_data['result'] = true;
+                    if( $id == $user_mission_counter ) // 解一題沒解過的題目
+                    {
+                        $this->characterData->addMission();
+                        $this->characterData->addMoney($get_money);
+                        $this->characterData->addexp($get_experience);
+                    }
+                    else
+                    {
+                        $this->characterData->addMoney($get_money*0.05);
+                        $this->characterData->addexp($get_experience*0.02);
+                    }
                 }
                 else
                 {
-                    $this->characterData->addMoney($get_money*0.05);
-                    $this->characterData->addexp($get_experience*0.02);
+                    $this->_data['result'] = false;
                 }
+                $this->_data['token'] = Yii::app()->security->getToken();
             }
             else
             {
                 $this->_data['result'] = false;
+                $this->_data['token'] = Yii::app()->security->getToken();
             }
-            $this->_data['token'] = Yii::app()->security->getToken();
         }
     }
 }

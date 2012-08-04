@@ -3532,200 +3532,6 @@
     }
 })(jQuery);
 
-/**
- * Main
- */
-(function($)
-{
-    $(document).ready(function()
-    {
-        $.configures.lasttime = 0;
-
-        $.configures.sequence = $.random(0, 1000);
-
-        if ( $('#chat').length ) $('#chat').chat();
-
-        $('#header').star();
-
-        $('#moon').moon();
-
-        $('.loading').sprite();
-        
-        if ( $('#club').length ) $.clubs();
-        
-        if ( $('#game').length ) $.game();
-
-        if ( $('#friends').length ) $.friends();
-        
-        if ( $('#profile').length ) $.profile();
-        
-        if ( $('#nculife').length ) $.nculife();
-
-        if ( $('#readme').length ) $.readme(); 
-        
-        if ( $('#multimedia').length ) $.multimedia();
-
-        if ( $('.calendar-create').length ) $.calendarCreate();
-        
-        if ( $('#calendar-recycle').length ) $.calendarRecycle();
-        
-        if ( $('#personal-calendar').length ) $.calendarView();
-        
-        if ( $('#calendar-subscript').length ) $.calendarSubscript();
-        
-        if ( $('#calendar-club').length ) $.calendarClub();
-        
-        if ( $('#calendar-event').length ) $.calendarEvent();
-        
-        $('input.datepicker:not(#form-register-birthday)').datepicker();
-        $('#form-register-birthday').datepicker({
-            year: 1994,
-            month: 8
-        });
-
-        $('#form-sidebar-register, #form-login-register').click(function()
-        {
-            window.location.href = $.configures.registerUrl;
-            return false;
-        });
-
-        $('#sidebar-personal-toggle').click(function()
-        {
-            var button = $(this);
-            if ( button.hasClass('active') )
-            {
-                $('#sidebar-personal').slideUp(300, function()
-                {
-                    button.removeClass('active');
-                });
-            }
-            else
-            {
-                $('#sidebar-personal').slideDown(300, function()
-                {
-                    button.addClass('active');
-                });
-            }
-            return false;
-        });
-
-        $('form dt label').infield();
-        $('form dd > span').each(function()
-        {
-            var tooltip = $(this);
-            tooltip.prepend($('<span></span>').addClass('arrow'));
-            if ( $(tooltip).css('display') === 'none' )
-            {
-                $(tooltip).parent().parent().hover(function()
-                {
-                    if ( $(this).find('input:focus').length === 0 )
-                    {
-                        $(tooltip).stop(true, true).fadeIn();
-                    }
-                }, function()
-                {
-                    if ( $(this).find('input:focus').length === 0 )
-                    {
-                        $(tooltip).stop(true, true).fadeOut();
-                    }
-                })
-                .find('input').focus(function()
-                {
-                    $(tooltip).stop(true, true).fadeIn();
-                })
-                .blur(function()
-                {
-                    $(tooltip).stop(true, true).fadeOut();
-                });
-            }
-        });
-        $('form input[type="radio"]').each(function(element)
-        {
-            var span = $('<span></span>')
-                .addClass('radio')
-                .mousedown(function()
-                {
-                    $('input[type="radio"][name="' + $(this).prev().prop('checked', true).attr('name') + '"]').each(function()
-                    {
-                        $(this).next().removeClass('checked');
-                    });
-                    $(this).addClass('checked');
-                })
-                .insertAfter($(this));
-
-            $(this).css({
-                    display: 'none',
-                    height: 'auto',
-                    width: 'auto'
-                })
-                .change(function()
-                {
-                    $('input[type="radio"][name="' + $(this).attr('name') + '"]').each(function()
-                    {
-                        if ( $(this).prop('checked') ) {
-                            $(this).next().addClass('checked');
-                        } else {
-                            $(this).next().removeClass('checked');
-                        }
-                    });
-                });
-
-            if ( $(this).prop('checked') ) {
-                $(this).prev().addClass('checked');
-            }
-        });
-
-        $('a').click(function()
-        {
-            var url = $(this).attr('href');
-            if (
-                url.match(/^\/.+/)
-             || url.match(/^#.*/)
-             || url.search(location.hostname) >= 0 )
-            {
-                return true;
-            }
-            window.open(url);
-            return false;
-        });
-
-        $.pull.start({
-            friendcounter: $('#chat .friendcounts'),
-            onlinecounter: $('#header .online'),
-            browseredcounter: $('#header .browsered')
-        });
-    });
-
-    $('<script></script>')
-        .attr('id', 'facebook-jssdk')
-        .attr('async', 'async')
-        .attr('type', 'text/javascript')
-        .attr('src', '//connect.facebook.net/zh_TW/all.js')
-        .insertBefore($('script').first());
-
-    window.fbAsyncInit = function()
-    {
-        var like = $('<div></div>')
-            .attr('id', 'fb-like')
-            .appendTo($('#fb-root'));
-
-        $('<fb:like></fb:like>')
-            .attr('href', window.location.href)
-            .attr('data-send', 'false')
-            .attr('data-layout', 'button_count')
-            .attr('data-show-faces', 'false')
-            .appendTo(like);
-
-        FB.init({
-            appId:      $.configures.facebookAppId,
-            channelUrl: $.configures.facebookChannelUrl,
-            status:     true,
-            cookie:     true,
-            xfbml:      true
-        });
-    };
-})(jQuery);
-
 (function($){
     $.friends = function()
     {
@@ -3742,7 +3548,6 @@
     
     }
 })(jQuery);
-
 
 (function($){
     $.profile = function()
@@ -3765,19 +3570,6 @@
     
     }
 })(jQuery);
-
-google.load('search', '1', {
-    language: 'zh_TW'
-});
-
-google.setOnLoadCallback(function()
-{
-    google.search.CustomSearchControl.attachAutoCompletion(
-        $.configures.googleSearchAppId,
-        document.getElementById('form-search-query'),
-        'search'
-    );
-});
 
 (function($){
     $.game = function()
@@ -3882,3 +3674,275 @@ google.setOnLoadCallback(function()
         }); 
     };
 })(jQuery);
+
+/**
+ * Main
+ */
+(function($)
+{
+    $(document).ready(function()
+    {
+        $.configures.lasttime = 0;
+
+        $.configures.sequence = $.random(0, 1000);
+
+        if ( $('#chat').length ) $('#chat').chat();
+
+        $('#header').star();
+
+        $('#moon').moon();
+
+        $('.loading').sprite();
+        
+        if ( $('#club').length ) $.clubs();
+
+        if ( $('#game').length ) $.game();
+
+        if ( $('#friends').length ) $.friends();
+
+        if ( $('#profile').length ) $.profile();
+
+        if ( $('#nculife').length ) $.nculife();
+
+        if ( $('#readme').length ) $.readme(); 
+
+        if ( $('#multimedia').length ) $.multimedia();
+
+        if ( $('.calendar-create').length ) $.calendarCreate();
+
+        if ( $('#calendar-recycle').length ) $.calendarRecycle();
+
+        if ( $('#personal-calendar').length ) $.calendarView();
+
+        if ( $('#calendar-subscript').length ) $.calendarSubscript();
+
+        if ( $('#calendar-club').length ) $.calendarClub();
+
+        if ( $('#calendar-event').length ) $.calendarEvent();
+
+        $('input.datepicker:not(#form-register-birthday)').datepicker();
+        $('#form-register-birthday').datepicker({
+            year: 1994,
+            month: 8
+        });
+
+        $('#form-sidebar-register, #form-login-register').click(function()
+        {
+            window.location.href = $.configures.registerUrl;
+            return false;
+        });
+
+        $('#sidebar-personal-toggle').click(function()
+        {
+            var button = $(this);
+            if ( button.hasClass('active') )
+            {
+                $('#sidebar-personal').slideUp(300, function()
+                {
+                    button.removeClass('active');
+                });
+            }
+            else
+            {
+                $('#sidebar-personal').slideDown(300, function()
+                {
+                    button.addClass('active');
+                });
+            }
+            return false;
+        });
+
+        $('form dt label').infield();
+        $('form dd > span').each(function()
+        {
+            var tooltip = $(this);
+            tooltip.prepend($('<span></span>').addClass('arrow'));
+            if ( $(tooltip).css('display') === 'none' )
+            {
+                $(tooltip).parent().parent().hover(function()
+                {
+                    if ( $(this).find('input:focus').length === 0 )
+                    {
+                        $(tooltip).stop(true, true).fadeIn();
+                    }
+                }, function()
+                {
+                    if ( $(this).find('input:focus').length === 0 )
+                    {
+                        $(tooltip).stop(true, true).fadeOut();
+                    }
+                })
+                .find('input').focus(function()
+                {
+                    $(tooltip).stop(true, true).fadeIn();
+                })
+                .blur(function()
+                {
+                    $(tooltip).stop(true, true).fadeOut();
+                });
+            }
+        });
+        $('form input[type="radio"]').each(function(element)
+        {
+            var span = $('<span></span>')
+                .addClass('radio')
+                .mousedown(function()
+                {
+                    $('input[type="radio"][name="' + $(this).prev().prop('checked', true).attr('name') + '"]').each(function()
+                    {
+                        $(this).next().removeClass('checked');
+                    });
+                    $(this).addClass('checked');
+                })
+                .insertAfter($(this));
+
+            $(this).css({
+                    display: 'none',
+                    height: 'auto',
+                    width: 'auto'
+                })
+                .change(function()
+                {
+                    $('input[type="radio"][name="' + $(this).attr('name') + '"]').each(function()
+                    {
+                        if ( $(this).prop('checked') ) {
+                            $(this).next().addClass('checked');
+                        } else {
+                            $(this).next().removeClass('checked');
+                        }
+                    });
+                });
+
+            if ( $(this).prop('checked') ) {
+                $(this).prev().addClass('checked');
+            }
+        });
+        $('form select').each(function()
+        {
+            var select = $(this).hide();
+            var selected = $(this).children(':selected');
+            var value = selected.val() ? selected.text() : '';
+            var input = this.input = $('<input>').attr('disabled', true).insertAfter(select).val(value).autocomplete({
+                delay: 0,
+                minLength: 0,
+                source: function(request, response) {
+                    var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), 'i');
+                    response(select.children('option').map(function() {
+                        var text = $(this).text();
+                        if ( this.value && ( !request.term || matcher.test(text) ) ) return {
+                            label: text.replace(new RegExp('(?![^&;]+;)(?!<[^<>]*)(' + $.ui.autocomplete.escapeRegex(request.term) + ')(?![^<>]*>)(?![^&;]+;)', 'gi'), '<strong>$1</strong>'),
+                            value: text,
+                            option: this
+                        };
+                    }));
+                },
+                select: function(event, ui) {
+                    ui.item.option.selected = true;
+                    self._trigger('selected', event, {
+                        item: ui.item.option
+                    });
+                },
+                change: function(event, ui) {
+                    if ( !ui.item ) {
+                        var matcher = new RegExp('^' + $.ui.autocomplete.escapeRegex($(this).val()) + '$', 'i');
+                        var valid = false;
+                        select.children('option').each(function() {
+                            if ( $(this).text().match(matcher) ) {
+                                this.selected = valid = true;
+                                return false;
+                            }
+                        });
+                        if ( !valid ) {
+                            $(this).val('');
+                            select.val('');
+                            input.data('autocomplete').term = '';
+                            return false;
+                        }
+                    }
+                }
+            }).addClass('ui-widget ui-widget-content ui-corner-left');
+
+            input.data('autocomplete')._renderItem = function(ul, item) {
+                ul.addClass(select.attr('name'));
+                return $('<li></li>').data('item.autocomplete', item).append('<a>' + item.label + '</a>').appendTo(ul);
+            };
+
+            this.button = $('<button type="button">&nbsp;</button>').attr('tabIndex', -1 ).attr('title', 'Show All Items').insertAfter(input).button({
+                icons: {
+                    primary: 'ui-icon-triangle-1-s'
+                },
+                text: false
+            }).removeClass('ui-corner-all').addClass('ui-corner-right ui-button-icon').click(function() {
+                if ( input.autocomplete('widget').is(':visible') ) {
+                    input.autocomplete('close');
+                    return;
+                }
+                $(this).blur();
+                input.autocomplete('search', '');
+                input.focus();
+            });
+        });
+
+        $('a').live('click', function()
+        {
+            var url = $(this).attr('href');
+            if (
+                url.match(/^\/.+/)
+             || url.match(/^#.*/)
+             || url.search(location.hostname) >= 0 )
+            {
+                return true;
+            }
+            window.open(url);
+            return false;
+        });
+
+        $.pull.start({
+            friendcounter: $('#chat .friendcounts'),
+            onlinecounter: $('#header .online'),
+            browseredcounter: $('#header .browsered')
+        });
+    });
+
+    $('<script></script>')
+        .attr('id', 'facebook-jssdk')
+        .attr('async', 'async')
+        .attr('type', 'text/javascript')
+        .attr('src', '//connect.facebook.net/zh_TW/all.js')
+        .insertBefore($('script').first());
+
+    window.fbAsyncInit = function()
+    {
+        var like = $('<div></div>')
+            .attr('id', 'fb-like')
+            .appendTo($('#fb-root'));
+
+        $('<fb:like></fb:like>')
+            .attr('href', window.location.href)
+            .attr('data-send', 'false')
+            .attr('data-layout', 'button_count')
+            .attr('data-show-faces', 'false')
+            .appendTo(like);
+
+        FB.init({
+            appId:      $.configures.facebookAppId,
+            channelUrl: $.configures.facebookChannelUrl,
+            status:     true,
+            cookie:     true,
+            xfbml:      true
+        });
+    };
+})(jQuery);
+
+google.load('search', '1', {
+    language: 'zh_TW'
+});
+
+google.setOnLoadCallback(function()
+{
+    google.search.CustomSearchControl.attachAutoCompletion(
+        $.configures.googleSearchAppId,
+        document.getElementById('form-search-query'),
+        'search'
+    );
+});
