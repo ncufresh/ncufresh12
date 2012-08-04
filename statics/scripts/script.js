@@ -2169,7 +2169,7 @@
             modal:          true,
             escape:         false,
             closeButton:    false
-        });
+        }).find('button').last().focus();
     };
 })(jQuery);
 

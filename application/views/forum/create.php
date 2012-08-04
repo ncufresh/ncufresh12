@@ -1,4 +1,5 @@
 <form id="forum-create-form" enctype="multiprt/form-data" action="<?php echo Yii::app()->createUrl('forum/create', array('fid' => $fid)); ?>" method="POST">
+<div id="forum-create">
 <div class="form-top">
     <p id="forum-create-text-number-check">發表文章</p>
     <dl>
@@ -58,5 +59,6 @@
     <button id="forum-create-submit" disabled>發佈</button>
     <button class="forum-cancel-button" type="reset">取消</button>
     </div>
+</div>
 </div>
 </form>

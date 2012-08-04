@@ -4939,9 +4939,9 @@ img.user_img
  */
 .game-display .game-title
 {
-    width: 335px;
+    width: 356px;
     height: 20px;
-    margin: 5px 11px;
+    margin: 5px 0px;
     font-size: 1.5em;
     text-align: center;
     background-color: black;
@@ -4952,9 +4952,9 @@ img.user_img
 
 .game-display .item-category
 {
-    width: 335px;
+    width: 356px;
     height: 20px;
-    margin: 5px 11px;
+    margin: 5px 0px;
     font-size: 1.5em;
     text-align: center;
     background-color: black;
@@ -4968,12 +4968,32 @@ img.user_img
     font-size: 2.5em;
     color: #0C533F;
     padding: 12px 0px;
+    display: block;
+    width: 378px;
+    text-align: center;
+} 
+
+.game-display .shop-foot
+{
+    display: block;
+    width: 361px;
+    height: 36px;
+    text-align: center;
 } 
 
 .game-display .shop-click
 {
-    font-size: 1.5em;
-    color: black;
+    width: 367px;
+    height: 20px;
+    margin: 5px 0px;
+    font-size: 1.2em;
+    text-align: center;
+    background-color: black;
+    border: 3px solid #BCE96C;
+    border-radius: 10px;
+    color: #DEFF76;
+    padding: 2px 5px;
+    font-weight: bold;
 } 
 
 .game-display .experience
@@ -5410,10 +5430,16 @@ li.enabled a
     padding-left:44px;
 }
 
+#forum-create
+{
+    background-image: url(../forum/create/background.png);
+    margin-left: 35px;
+    background-repeat: no-repeat;
+}
+
 #forum-create-form .form-top
 {
-    background-image: url('../forum/create/background_top.png');
-    background-repeat: no-repeat;
+    
     margin-left:35px;
     width:656px;
     height:81px;
@@ -5442,7 +5468,7 @@ li.enabled a
 
 #forum-create-form .form-body
 {
-    background-image: url('../forum/create/background_body.png');
+    
     margin-left:35px;
     margin-top:0px;
     width:656px;
@@ -5476,8 +5502,7 @@ li.enabled a
 
 #forum-create-form .form-foot
 {
-    background-image: url('../forum/create/background_foot.png');
-    background-repeat: no-repeat;
+    
     margin-left:35px;
     margin-top:0px;
     width:656px;
