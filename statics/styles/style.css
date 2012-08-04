@@ -1820,14 +1820,14 @@ a.calendar-hide-event:hover
     height: 20px;
     line-height: 20px;
     display: inline-block;
-    background-color: #FFFFFF179;
+    background-color: #FFFFFF;
     border-radius: 5px;
     color: #27120a;
 }
 
 #calendar-recycle a.calendar-show-event
 {
-    background: url('../images/calendar_recover.png') no-repeat #FFFFFF179;
+    background: url('../images/calendar_recover.png') no-repeat #FFFFFF;
 }
 
 #calendar-recycle a.calendar-show-event:active
@@ -1838,7 +1838,7 @@ a.calendar-hide-event:hover
 
 #calendar-recycle a.calendar-hide-event
 {
-    background: url('../images/calendar_delete.png') no-repeat #FFFFFF179;
+    background: url('../images/calendar_delete.png') no-repeat #FFFFFF;
 }
 
 #calendar-recycle a.calendar-hide-event:active

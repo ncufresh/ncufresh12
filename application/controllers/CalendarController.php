@@ -379,19 +379,6 @@ class CalendarController extends Controller
         $this->_data['event']['description'] = $event->description;
     }
 
-    public function actionAjaxClubEvents($id)
-    {
-        $events = Calendar::model()->getClubCalendar($id)->events;
-        foreach ( $events as $key => $event )
-        {
-            $this->_data['events'][$key]['id'] = $event->id;
-            $this->_data['events'][$key]['start'] = $event->start;
-            $this->_data['events'][$key]['name'] = $event->name;
-            $this->_data['events'][$key]['end'] = $event->end;
-            $this->_data['events'][$key]['invisible'] = $event->invisible;
-        }
-    }
-
     public function actionAjaxEvents($club = false)
     {
         if ( ! Yii::app()->request->getIsAjaxRequest() ) throw new CHttpException(404);
@@ -470,6 +457,20 @@ class CalendarController extends Controller
         }
     }
 
+
+    public function actionAjaxClubEvents($id)
+    {
+        $events = Calendar::model()->getClubCalendar($id)->events;
+        foreach ( $events as $key => $event )
+        {
+            $this->_data['events'][$key]['id'] = $event->id;
+            $this->_data['events'][$key]['start'] = $event->start;
+            $this->_data['events'][$key]['name'] = $event->name;
+            $this->_data['events'][$key]['end'] = $event->end;
+            $this->_data['events'][$key]['invisible'] = $event->invisible;
+        }
+    }
+    
     protected function getAjaxClubEvents()
     {
         $events = Calendar::model()->getClubCalendar()->events;
