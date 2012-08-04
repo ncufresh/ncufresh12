@@ -4346,6 +4346,59 @@
     };
 })(jQuery);
 
+(function($)
+{
+    var checked = false;
+    $.friends = function()
+    {
+        $('.a-group-users').scrollable({
+            wheelSpeed: 90
+        });
+        $('.users-group').scrollable({
+            wheelSpeed: 90
+        });
+        $('#new-group-members').scrollable({
+            wheelSpeed: 90
+        });
+    }
+    $('.button-all-choose').click(function()
+    {
+        checked = ! checked;
+        $('input[type="checkbox"][name^="friends"]').each(function()
+        {
+            $(this).prop('checked', checked);
+        });
+        return false;
+    });
+})(jQuery);
+
+(function($)
+{
+    $.profile = function()
+    {
+        $('.allmessages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.my-all-messages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.self-messages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.friend-chatting').scrollable({
+            wheelSpeed: 90
+        })
+        $('.friend-chatting-content').scrollable({
+            wheelSpeed: 90
+        });
+        jQuery('.button-viewProfile-back').click(function()
+        {
+            window.history.back();
+        }); 
+    
+    }
+})(jQuery);
+
 /**
  * Main
  */
@@ -4526,7 +4579,7 @@
             .appendTo($('#fb-root'));
 
         $('<fb:like></fb:like>')
-            .attr('href', window.location.href)
+            .attr('href', $.configures.ncuFreshWebUrl)
             .attr('data-send', 'false')
             .attr('data-layout', 'button_count')
             .attr('data-show-faces', 'false')
@@ -4540,57 +4593,6 @@
             xfbml:      true
         });
     };
-})(jQuery);
-
-(function($){
-    var checked = false;
-    $.friends = function()
-    {
-        $('.a-group-users').scrollable({
-            wheelSpeed: 90
-        });
-        $('.users-group').scrollable({
-            wheelSpeed: 90
-        });
-        $('#new-group-members').scrollable({
-            wheelSpeed: 90
-        });
-    }
-    $('.button-all-choose').click(function()
-    {
-        checked = ! checked;
-        $('input[type="checkbox"][name^="friends"]').each(function()
-        {
-            $(this).prop('checked', checked);
-        });
-        return false;
-    });
-})(jQuery);
-
-(function($){
-    $.profile = function()
-    {
-        $('.allmessages').scrollable({
-            wheelSpeed: 90
-        });
-        $('.my-all-messages').scrollable({
-            wheelSpeed: 90
-        });
-        $('.self-messages').scrollable({
-            wheelSpeed: 90
-        });
-        $('.friend-chatting').scrollable({
-            wheelSpeed: 90
-        })
-        $('.friend-chatting-content').scrollable({
-            wheelSpeed: 90
-        });
-        jQuery('.button-viewProfile-back').click(function()
-        {
-            window.history.back();
-        }); 
-    
-    }
 })(jQuery);
 
 google.load('search', '1', {
