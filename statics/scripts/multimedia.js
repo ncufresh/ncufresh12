@@ -60,9 +60,14 @@
         {
             var url = $.configures.multimediaYoutubeUrl.replace(':v', $(this).attr('href').substr(1));
             $('#multimedia-frame').attr('src', url);
+            $.getJSON($.configures.multimediaIntroductionUrl.replace(':v', $(this).attr('href').substr(1)), function(data)
+            {
+                $('#multimedia .introduction').text(data.introduction);
+            });
+            
             return false;
         });
-        $('#multimedia .menu a').eq($.random(0, $('#multimedia .menu a').length - 1)).click();
+        $('#multimedia .menu a').eq($.random(0, $('#multimedia .menu .items a').length - 1)).click();
 
         var srcoll_offset = 10;
         mmMenuScroll.margin_top_max = 0;
@@ -85,5 +90,14 @@
         {
             mmMenuScroll.mousein = false;
         });
+        
+        $('#multimedia .tab').click(function(){
+            var id = $(this).attr('href').replace('#','');
+            $('#multimedia .tab').removeClass('active');
+            $(this).addClass('active');
+            $('#multimedia .items').hide();
+            $('#multimedia #items' + id).show();
+        })
+      
     });
 })(jQuery);

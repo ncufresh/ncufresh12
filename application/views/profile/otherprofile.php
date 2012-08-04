@@ -38,16 +38,19 @@
             </li>
         </ul>
     </div> <!--顯示歷史訊息-->  
-    <div id="friend-chatting">
+    <div class="friend-chatting">
         <ul>
             <li>時間:</li>
             <li>對話內容:</li>
 <?php foreach ( $messages as $message ) : ?>
             <li>
-<?php echo $message->timestamp; ?>
+<?php echo $message['time']; ?>
             </li>
             <li>
-<?php echo $message->message; ?>
+            <!--<a href="#" class="friend-chatting-title" title="談話內容">****</a>
+            <div class="friend-chatting-content"> </div>-->
+<?php echo $message['message']; ?>
+           
             </li>
 <?php endforeach; ?>
         </ul>
