@@ -2822,7 +2822,7 @@
 })(jQuery);
 
 (function($) {
-    var url = '../statics/street-view/';
+    var url = '../statics/streets/';
     var nowfaceto;
     var nowpointat;
     var loading = false;
