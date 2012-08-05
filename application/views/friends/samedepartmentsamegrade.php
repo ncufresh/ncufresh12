@@ -10,17 +10,13 @@
 )); ?>
                 </a>
                 <input type="checkbox" name="friends[<?php echo $profile->id;?>]" value="<?php echo $profile->id;?>" />
-                <p class="user-name">
-<?php echo $profile->name;?>
-                </p>
-                <p class="user-department">
-<?php echo $profile->mydepartment->abbreviation; ?>
-                </p>
+                <p class="user-name"><?php echo $profile->name;?></p>
+                <p class="user-department"><?php echo $profile->mydepartment->abbreviation; ?></p>
             </li>
 <?php endforeach; ?>
         </ul>
     </div>    
-    <button class="button-all-choose">全選</button>
+    <input id="same-department-same-grade-search" type="text" value="搜尋"/>
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
     <button type="submit" class="button-addfriends">新增好友</button>
     <a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>

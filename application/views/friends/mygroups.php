@@ -28,6 +28,7 @@
 <?php endforeach; ?>
         </ul>
     </div>
+    <input id="mygroup-search" type="text" value="搜尋"/>
     <a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$mygroup->id))  ?>" id="button-addmember" >新增成員</a>
     <button class="button-all-choose">全選</button>
     <button type="submit" id="button-deletemember">刪除成員</button>

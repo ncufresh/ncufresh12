@@ -137,7 +137,7 @@ class Calendar extends CActiveRecord
                     )
                 )
             ))->find(array(
-                'condition' => 't.category = :category AND user_id != 0',
+                'condition' => 't.category = :category AND t.user_id != 0',
                 'params' => array(
                     ':category' => self::CATEGORY_PUBLIC,
                 )
@@ -146,7 +146,7 @@ class Calendar extends CActiveRecord
         else
         {
             return $this->find(array(
-                'condition' => 'user_id = :user_id AND category = :category',
+                'condition' => 't.user_id = :user_id AND category = :category',
                 'params' => array(
                     ':category' => self::CATEGORY_PUBLIC,
                     ':user_id'  => Yii::app()->user->id
@@ -211,7 +211,7 @@ class Calendar extends CActiveRecord
         return $this->with(
             array(
                 'events' => array(
-                    'condition' => 'events.start <= :end AND events.end >= :begin',
+                    'condition' => 'events.start < :end AND events.end >= :begin',
                     'params' => array(
                         ':begin' => $begin,
                         ':end' => $end
