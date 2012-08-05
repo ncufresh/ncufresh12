@@ -197,7 +197,7 @@ class FriendsController extends Controller
                 {
                 }
             }
-            foreach ( $close->getErrors() as $field => $error )
+            foreach ( UserGroup::model()->getErrors() as $field => $error )
             {
                 Yii::app()->user->setFlash('delete-members-error', true);
             }
