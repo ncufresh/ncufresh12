@@ -1,5 +1,5 @@
-<h4>基本資料</h4>
 <div class="myprofile">
+    <h4>基本資料</h4>
     <div id="profile-friend">
      <a href="<?php echo Yii::app()->createUrl('game/index', array('id' => $user->id)); ?>">
 <?php $this->widget('Avatar', array(
@@ -55,15 +55,14 @@
         </ul>
     </div>
 </div>
-<?php if ( $friend_relation === 2 ) : ?>
+<?php if ( $friend_relation === Friend::IS_NOT_FRIEND ) : ?>
 <form action="<?php echo Yii::app()->createUrl('friends/makefriends'); ?>" method="POST" >
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
-    <input type="hidden" name="friends[<?php echo $user->id; ?>]" value="<?php echo $user->id; ?>" />
-    <button type="submit">新增好友</button>
-    <button type="button">BACK</button>
+    <button type="submit" id="add-new-friends">新增好友</button>
 </form>
-<?php elseif ( $friend_relation === 1 ) : ?>
-<button>已送出邀請咯</button>
-<?php else : ?>
-<button>朋友</button>
+<?php elseif ( $friend_relation === Friend::IS_SEND_REQUEST ) : ?>
+<button id="friend_request">已送出邀請咯</button>
+<?php elseif( $friend_relation === Friend::IS_FRIEND ): ?>
+<button id="is_friend">**朋友</button>
 <?php endif; ?>
+<button class="button-viewProfile-back">BACK</button>

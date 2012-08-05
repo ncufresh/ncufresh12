@@ -61,14 +61,14 @@
             <label for="form-register-name">姓名</label>
         </dt>
         <dd>
-            <input id="form-register-name" name="profile[name]" type="text" maxlength=8 />
+            <input id="form-register-name" name="profile[name]" type="text" maxlength=10 />
             <span>
 <?php if ( isset($profile_errors['name']) ) : ?>
 <?php foreach ( $profile_errors['name'] as $error ) : ?>
 <?php echo $error; ?>
 <?php endforeach; ?>
 <?php else: ?>
-             需小於等於等於8個字元
+             需小於等於等於10個字元
 <?php endif; ?>
             </span>
         </dd>
@@ -85,7 +85,8 @@
 <?php echo $error; ?>
 <?php endforeach; ?>
 <?php else: ?>
-            人家都怎麼叫你哩^.<
+            人家都怎麼叫你哩
+            需小於等於等於10個字元
 <?php endif; ?>
             </span>
         </dd>

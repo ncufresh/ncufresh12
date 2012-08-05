@@ -2,7 +2,6 @@
     <a id="forum-view-backlink"href="<?php echo Yii::app()->createUrl('forum/forum', array('fid'=>$_GET['fid']));?>">回上一頁</a>
 </div>
 <div id="forum-view-top2">
-    
     <?php
     $this->widget('Pager', array(
         'url'       => 'forum/view',
@@ -10,15 +9,8 @@
         'parameters'=> array('fid' => $fid, 'id' => $article->id)
     )); ?>
     <a id="forum-view-replylink" href="<?php echo Yii::app()->createUrl('forum/reply', array('aid'=>$article->id));?>"></a>
-    
-    <fb:share-button class="meta">
-	<meta name="title" content="分享標題或應用程式名稱"/> 
-	<meta name="description" content="內容描述"/> 
-	<link rel="image_src" href="圖片位置"/> 
-	<link rel="target_url" href="連結網址"/> 
-    </fb:share-button>
     <span class="fb">
-    <fb:like href="" layout="button_count" show_faces="false" action="like" colorscheme="light"></fb:like>
+        <fb:like layout="button_count" show_faces="false" action="like" colorscheme="light"></fb:like>
     </span>
 </div>
 <?php
