@@ -2084,6 +2084,12 @@ a.calendar-hide-event:hover
 {
     height: 205px;
     overflow: hidden;
+    width: 500px;
+}
+
+#calendar-subscript .calendar-subscript-container .scroll-content
+{
+    width: 500px;
 }
 
 #calendar-subscript form

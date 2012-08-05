@@ -1951,7 +1951,7 @@
         $('.calendar-cancel-button').click(function()
         {
             $.confirm({
-                message: '確定取消編輯此篇文章？',
+                message: '確定取消編輯這則事件？',
                 confirmed: function(result)
                 {
                     if ( result ) window.location = $.configures.calendarViewUrl;
