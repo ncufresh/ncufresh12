@@ -50,11 +50,13 @@ class ForumController extends Controller
     {
         // index page, list the three categories of forum
         // to be delete $category = new ArticleCategory();
+        $this->setPageTitle(Yii::app()->name . ' - 論壇專區');
         $this->render('index');
     }
 
     public function actionForumList()
     {
+        $this->setPageTitle(Yii::app()->name . ' - 系所列表');
         $this->render('forumlist', array(
             'list'      => Category::model()->getForumLists()
         ));
@@ -65,6 +67,7 @@ class ForumController extends Controller
         if ( $forum = Category::model()->findByPk($fid) )
         {
             $forum = Category::model()->findByPk($fid);
+            $this->setPageTitle(Yii::app()->name . ' - ' . $forum->name);
             // content of each forum
             $this->render('forum', array(
                 'fid'               => $fid,
@@ -103,6 +106,7 @@ class ForumController extends Controller
         if ( Category::model()->findByPk($fid) )
         {
             $forum = Category::model()->findByPk($fid);
+            $this->setPageTitle(Yii::app()->name . ' - 發表文章');
             $this->render('create',array(
                 'fid'       => $fid,
                 'category'  => $forum
@@ -124,6 +128,7 @@ class ForumController extends Controller
             if ( $article->save())
             {
                 $article = Article::model()->findByPk($id);
+                $this->setPageTitle(Yii::app()->name . ' - ' . $article->title);
                 $this->render('view', array(
                 'fid'           => $article->forum_id,
                 'article'       => $article,
@@ -182,6 +187,7 @@ class ForumController extends Controller
                     $article = Article::model()->findByPk($aid);
                     Character::model()->findByPk(Yii::app()->user->getId())->addExp(self::NEW_REPLY_VALUE);
                     Character::model()->findByPk(Yii::app()->user->getId())->addMoney(self::NEW_REPLY_VALUE);
+                    $this->setPageTitle(Yii::app()->name . ' - 回覆文章');
                     $this->redirect(Yii::app()->createUrl('forum/view', array(
                     'fid'           => $reply->article->forum->id,
                     'id'            => $reply->article_id,

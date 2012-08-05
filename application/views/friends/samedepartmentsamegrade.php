@@ -10,13 +10,12 @@
 )); ?>
 </a>
                 <input type="checkbox" name="friends[<?php echo $profile->id;?>]" value="<?php echo $profile->id;?>" />
-                <input type="hidden" name="friends-all-choose[<?php echo $profile->id;?>]" value="<?php echo $profile->id;?>" />
-                <h3>
+                <p class="user-name">
 <?php echo $profile->name;?>
-                </h3>
-                <h4>
+                </p>
+                <p class="user-department">
 <?php echo $profile->mydepartment->abbreviation; ?>
-                </h4>
+                </p>
             </li>
 <?php endforeach; ?>
         </ul>

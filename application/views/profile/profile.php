@@ -1,5 +1,5 @@
-<h4>基本資料</h4>
 <div class="myprofile">
+    <h4>基本資料</h4>
     <div class="profile-modify">
     <a href="<?php echo Yii::app()->createUrl('game/index', array('id' => $user->id)); ?>">
 <?php $this->widget('Avatar', array(
@@ -41,8 +41,8 @@
             <li>
                 生日:<?php echo $user->profile->birthday; ?>
             </li> 
-            <a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>" id="button-editor"></a>
-            <a href="<?php echo Yii::app()->createUrl('site/index'); ?>" class="button-back""></a>
+            <a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>" id="button-editor">編輯</a>
+            <a href="<?php echo Yii::app()->createUrl('site/index'); ?>" class="button-back"">BACK</a>
         </ul>
         
     </div>
