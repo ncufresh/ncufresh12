@@ -1402,7 +1402,23 @@
     var updateData = function(url, callback)
     {
         var self = this;
-        $.getJSON( url, function(data){
+        // $.getJSON( url, function(data){
+            // self.cleanUpMark(true);
+            // for ( var key in data.events )
+            // {
+                // self.markEvent(data.events[key], { textDecoration: 'underline'});
+            // }
+            // self.markToday();
+            // self.data('all_events', data.events);
+            // if ( callback ) 
+            // {
+                // callback(self);
+            // }
+        // });
+        $.get( url, {
+            m : self.data('options').month,
+            y : self.data('options').year
+        }, function(data){
             self.cleanUpMark(true);
             for ( var key in data.events )
             {
@@ -1414,7 +1430,7 @@
             {
                 callback(self);
             }
-        });
+        } );
         return this;
     }
 

@@ -1661,6 +1661,17 @@ ul#nculife-details
     color: #946722;
 }
 
+
+#calendar .scroll-content
+{
+    width: 484px;
+}
+
+#calendar .scroll-container
+{
+    width: 484px;
+}
+
 #calendar-recycle,
 #calendar-recycle h4,
 #calendar-recycle a.calendar-show-event,
@@ -1675,8 +1686,6 @@ ul#nculife-details
 {
     background: url('../images/calendar.png');
 }
-
-
 
 .calendar
 {
@@ -2566,7 +2575,7 @@ button.news-button
 
 #multimedia .introduction
 {
-    background-position: 0px 720px;
+    background-position: 0px -720px;
     background-repeat: no-repeat;
     color: #000000;
     height: 150px;
@@ -3236,12 +3245,13 @@ button.news-button
 #about .tag-bar1,
 #about .tag-bar2,
 #about .tag-bar3,
-#about .tag-bar4
+#about .tag-bar4,
+#about .tag-bar5
 {
     background: url('../about/photo.jpg') no-repeat;
 }
 
-#about .itr-block
+#about .itrodution-block
 {
     padding-left: 15px;
     padding-bottom: 10px;
@@ -3338,7 +3348,7 @@ button.news-button
     overflow: hidden;
 }
 
-#about .about-block1Pic
+#about .about-block1Picture
 {
     left: 25px;
     height: 280px;
@@ -3398,7 +3408,6 @@ button.news-button
 
 #about .about-photos
 {
-    border-radius: 10px;
     height: 40px;
     float: left;
     margin: 5px;
@@ -3469,6 +3478,14 @@ button.news-button
     width: 122px;
 }
 
+#about .about-small-6
+{
+    top: 8px;
+    left: 198px;
+    height: 113px;
+    width: 196px;
+}
+
 #about .hidden
 {
     display: none;
@@ -3519,6 +3536,12 @@ button.news-button
 #about .tag-bar4
 {
     background-position: -560px -432px;
+    display: none;
+}
+
+#about .tag-bar5
+{
+    background-position: -560px -864px;
     display: none;
 }
 

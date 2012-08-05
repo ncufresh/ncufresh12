@@ -117,7 +117,7 @@ class Calendar extends CActiveRecord
     public function getPersonalCalendar()
     {
         return $this->find(array(
-            'condition' => 'user_id = :user_id AND category = :category',
+            'condition' => 't.user_id = :user_id AND t.category = :category',
             'params' => array(
                 ':user_id' => Yii::app()->user->id,
                 ':category' => self::CATEGORY_PERSONAL,
@@ -179,7 +179,7 @@ class Calendar extends CActiveRecord
     public function getGeneralCalendar()
     {
         return $this->find(array(
-            'condition' => 'user_id = :user_id AND category = :category',
+            'condition' => 't.user_id = :user_id AND t.category = :category',
             'params' => array(
                 ':user_id' => self::GENERAL_CALENDAR_USER_ID,
                 ':category' => self::CATEGORY_PUBLIC
@@ -203,4 +203,22 @@ class Calendar extends CActiveRecord
         $this->user_id = (integer)$this->user_id;
         $this->category = (integer)$this->category;
     }
+    
+    public function limitMonth($year, $month)
+    {
+        $begin = mktime(0,0,0,$month,1,$year);
+        $end = mktime(0,0,0,$month+1,1,$year);
+        return $this->with(
+            array(
+                'events' => array(
+                    'condition' => 'events.start <= :end AND events.end >= :begin',
+                    'params' => array(
+                        ':begin' => $begin,
+                        ':end' => $end
+                    )
+                )
+            )
+        );
+    }
+
 }
