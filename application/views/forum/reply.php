@@ -4,7 +4,7 @@ $aid = $_GET['aid'];
 <form id="forum-reply-form" enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/reply', array('aid'=>$aid)); ?>" method="POST">
 <dl>
         <dt>
-            <label for="forum-reply-content">須滿10個中文字 20個英文字以上</label>
+            <label for="forum-reply-content">內容須滿20字</label>
         </dt>
         <dd>
             <textarea name="reply[content]" id="forum-reply-content"></textarea>

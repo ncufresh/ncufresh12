@@ -507,7 +507,6 @@
         $('.friend-list-entry').each(function()
         {
             var entry = $(this);
-            console.log(entry.data('id'));
             $('.' + $.chat.options.chatDialogClass).each(function(index)
             {
                 if ( $(this).data('id') == entry.data('id') )
@@ -1769,7 +1768,7 @@
                         month = 1;
                     }
                     calendar.remove();
-                    todolist.remove();
+                    if ( todolist ) todolist.remove();
                     calendar = generate(year, month);
                     return false;
                 },
@@ -1782,7 +1781,7 @@
                         month = 12;
                     }
                     calendar.remove();
-                    todolist.remove();
+                    if ( todolist ) todolist.remove();
                     calendar = generate(year, month);
                     return false;
                 },
@@ -2782,6 +2781,7 @@
     var url = '../statics/street-view/';
     var nowfaceto;
     var nowpointat;
+    var loading = false;
     var streetPoints =
     [
         { // 0 (工5)
@@ -3132,35 +3132,29 @@
         }
         else
         {
+            var photo = url + streetPoints[pointat][faceto].photo;
+            var preloader = new Image();
+            loading = true;
+            preloader.onload = function()
+            {
+                $('#street-div #mapPicture').attr('src', photo).fadeIn(300);
+                loading = false;
+            };
+            preloader.src = photo;
+
             nowpointat = pointat;
             nowfaceto = faceto;
-            $('#street-div #mapPicture')
-                .attr(
-                    'src',
-                    url + streetPoints[nowpointat][nowfaceto].photo
-                );
+            $('#street-div #mapPicture').fadeOut(300);
         }
-        $('.loading').hide();
     };
 
     var forward = function()
     {
-        $('.loading').show();
-        $('.loading').css(
-        {
-            zIndex: 1000,
-        });
         move(streetPoints[nowpointat][nowfaceto].nextPoint, nowfaceto);
-        // if( nowpointat )
     };
 
     var turnLeft = function()
     {
-        $('.loading').show();
-        $('.loading').css(
-        {
-            zIndex: 1000,
-        });
         switch ( nowfaceto )
         {
             case 'N':
@@ -3181,11 +3175,6 @@
 
     var turnRight = function()
     {
-        $('.loading').show();
-        $('.loading').css(
-        {
-            zIndex: 1000,
-        });
         switch ( nowfaceto )
         {
             case 'N':
@@ -3206,10 +3195,12 @@
 
     $.street = function()
     {
+        var isStreet = false;
         $('.picture').hide();
         $('#street-div #experience-personally').mousedown(function()
         {
             $(document).mousemove(mousemove);
+            isStreet = true;
             return false;
         });
         var mouseInId;
@@ -3246,7 +3237,7 @@
             {
                 opacity: 1,
             });
-            if( isInPicture == true )
+            if ( isInPicture && isStreet )
             {
                 if( $('#' + mouseInId).attr('streetPoints') == (-1) )
                 {
@@ -3278,21 +3269,24 @@
                     $('#street-div .arrow').show();
 
                     move($('#' + mouseInId).attr('streetPoints'), $('#' + mouseInId).attr('faceto'));
+
+                    $('#street-div .street-loading').show();
                     $('#street-div .arrow').eq(0).unbind('click').click(function() //前進nextDirection
                     {
-                        forward();
+                        if ( ! loading ) forward();
                     });
-                    $('#street-div .arrow').eq(1).unbind('click').click(function() // 左旋
+                     $('#street-div .arrow').eq(1).unbind('click').click(function() // 左旋
                     {
-                        turnLeft();
+                        if ( ! loading ) turnLeft();
                     });
                     $('#street-div .arrow').eq(2).unbind('click').click(function() // 右旋
                     {
-                        turnRight();
+                        if ( ! loading ) turnRight();
                     });
 
                     isInPicture = false;
                 }
+                isStreet = false;;
             }
             $(document).unbind('mousemove', mousemove);
             $('#street-div #experience-personally').css(
@@ -3343,7 +3337,6 @@
                 zIndex: 4,
             });
             $('#street-div .one-image').bind('click', littleBuilding);
-            $('#street-div .landscape').show();
         });
 
         $('#street-div .arrow').eq( 3 ).click(function() // 親身體驗 back
@@ -3365,19 +3358,21 @@
             {
                 zIndex: 3,
             });
+            $('#street-div .street-loading').hide();
         });
         $('#street-div .picture, #street-div .button-text').click(function()
         {
             isInPicture = false;
+            // $('.loading').hide();
             $('#street-div #back-div, #street-div #curtain-close-div').css(
             {
                height: 552,
             });
             $('#street-div #experience-personally').css(
             {
-                zIndex: 3,
+                zIndex: 2,
             });
-            $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
+
             $('#text-container').dialog(
             {
                 width: 680,
@@ -3386,7 +3381,7 @@
                 escape: false,
                 onClose: function()
                 {
-                    
+                    $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
                 }
             });
 
@@ -3406,7 +3401,7 @@
                 dataType: 'json',
                 success: function(data)
                 {
-                    $('#building-text').html(data.content);
+                    $('#building-text').html(data.content).scrollTo(0);
                     $('#building-text img').css(
                     {
                         cursor: 'pointer',
@@ -3438,8 +3433,8 @@
     {
         var getTabContent = function()
         {
-            var tab = jQuery(this).attr('tab');
-            var page = jQuery(this).attr('page');
+            var tab = $(this).attr('tab');
+            var page = $(this).attr('page');
             jQuery.getJSON(
                 jQuery.configures.ncuLifeUrl.replace(':tab', tab).replace(':page', page),
                 function(data)
@@ -3510,85 +3505,22 @@
         {
             scrollableClass:    false
         });
-        $('#life-play').mouseenter(function()
-        {
-            $('#life-index1').stop().animate(
-            {
-                height: '95px'
-            },500);
-        });
-
-        $('#life-play').mouseleave(function()
-        {
-            $('.life-items').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
-
-        $('#life-traffic').mouseenter(function()
-        {
-            $('#life-index2').stop().animate(
-            {
-                height: '120px'
-            },500);
-        });
-
-        $('#life-traffic').mouseleave(function()
-        {
-            $('#life-index2').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
-
-        $('#life-school').mouseenter(function()
-        {
-            $('#life-index3').stop().animate(
-            {
-                height: '335px'
-            },500);
-        });
-
-        $('#life-school').mouseleave(function()
-        {
-            $('#life-index3').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
-
-        $('#life-live').mouseenter(function()
-        {
-            $('#life-index4').stop().animate(
-            {
-                height: '150px'
-            },500);
-        });
-
-        $('#life-live').mouseleave(function()
-        {
-            $('#life-index4').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
-
-        $('#life-health').mouseenter(function()
-        {
-            $('#life-index5').stop().animate(
-            {
-                height: '100px'
-            },500);
-        });
-
-        $('#life-health').mouseleave(function()
-        {
-            $('#life-index5').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
+		
+		$('.nculife-hover').mouseenter(function()
+		{
+			$(this).children('ul').stop().animate(
+			{
+				height: $(this).attr('height')
+			},500);
+		});
+		
+		$('.nculife-hover').mouseleave(function()
+		{
+			$(this).children('ul').stop().animate(
+			{
+				height: '0px'
+			},500);
+		});
 
         switch( window.location.hash.replace('#', '') )
         {
@@ -3621,8 +3553,8 @@
     {
         var getTabContent = function()
         {
-            var tab = jQuery(this).attr('tab');
-            var page = jQuery(this).attr('page');
+            var tab = $(this).attr('tab');
+            var page = $(this).attr('page');
             jQuery.getJSON(
                 jQuery.configures.readMeUrl.replace(':tab', tab).replace(':page', page),
                 function(data)
@@ -3685,11 +3617,11 @@
             switch( window.location.hash.replace('#', '') )
         {
             case 'freshman' :
-                jQuery('#readme-logo1').click();
+                $('#readme-logo1').click();
             break;
 
             case 'reschool' :
-                jQuery('#readme-logo2').click();
+                $('#readme-logo2').click();
             break;
         }
     };
@@ -3725,7 +3657,9 @@
 
         if ( $('#calendar div').length ) 
         {
-            $('#calendar div').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
+            var url = $.configures.calendarClubEventsUrl
+                .replace(':id', $('#club > div').attr('id').replace('club-', ''));
+            $('#calendar div').calendar();
         }
         
         $('#club .back').click(function()
@@ -4414,18 +4348,12 @@
 
 (function($)
 {
+    var friends = [];
+
     $.friends = function()
     {
         var checked = false;
-        $('.a-group-users').scrollable({
-            wheelSpeed: 90
-        });
-        $('.users-group').scrollable({
-            wheelSpeed: 90
-        });
-        $('#new-group-members').scrollable({
-            wheelSpeed: 90
-        });
+        $('.a-group-users, .users-group, #new-group-members').scrollable();
         $('.button-all-choose').click(function()
         {
             checked = ! checked;
@@ -4436,6 +4364,29 @@
             $('input[type="checkbox"][name^="friends"]').change();
             return false;
         });
+
+        $('#same-department-diff-grade-search, #other-department-search, #same-department-same-grade-search, #request-search, #new-group-search, #mygroup-search, #myfriend-search, #newmember-search').keyup(function()
+        {
+            var name = $(this).val().toLowerCase();
+            for ( var key in friends )
+            {
+                var data = friends[key];
+                console.log(data);
+                if ( data[0].toLowerCase().search(name) == 0 )
+                {
+                    data[1].show();
+                }
+                else
+                {
+                    data[1].hide();
+                }
+            }
+        });
+
+        $('p.user-name').each(function()
+        {
+            friends[friends.length] = [$(this).text(), $(this).parent()];
+        });
     };
     
 })(jQuery);
@@ -4444,22 +4395,8 @@
 {
     $.profile = function()
     {
-        $('.allmessages').scrollable({
-            wheelSpeed: 90
-        });
-        $('.my-all-messages').scrollable({
-            wheelSpeed: 90
-        });
-        $('#self-messages-content').scrollable({
-            wheelSpeed: 90
-        });
-        $('.friend-chatting').scrollable({
-            wheelSpeed: 90
-        })
-        $('.friend-chatting-content').scrollable({
-            wheelSpeed: 90
-        });
-        jQuery('.button-viewProfile-back').click(function()
+        $('.allmessages, #my-all-messages, #self-messages-content, #friend-chatting, .friend-chatting-content').scrollable();
+        $('.button-viewProfile-back').click(function()
         {
             window.history.back();
         }); 
@@ -4634,7 +4571,7 @@
 {
     $.site = function()
     {
-        const SEGMENT = 100 / 5;
+        var segment = 100 / 5;
 
         var meter = $('#form-password-meter');
 
@@ -4863,7 +4800,7 @@
             if ( $(this).val() !== '' )
             {
                 var score = calculatePasswordScore($(this).val());
-                var level = parseInt(score / SEGMENT) + 1;
+                var level = parseInt(score / segment) + 1;
 
                 meter.find('td').css({
                     backgroundColor: 'transparent'
@@ -4886,6 +4823,10 @@
                     .keydown(checkPasswordStrength)
             );
         }
+
+        if ( $('#marquee').length ) $('#marquee').marquee();
+
+        if ( $('#index-calendar').length ) $('#index-calendar div').calendar($.configures.calendarEventsUrl);
     };
 })(jQuery);
 
@@ -4897,25 +4838,28 @@
     $.about = function(options)
     {
         var options = $.extend({
-            aboutId:                         'about',
-            titleClass:                      'title',
-            introdutionBlock:                'itrodution-block',
-            introdutionPicture:              'about-picture',
-            photoUl:                         'photo-ul',
-            introduceId:                     'introdution',
-            tagBar:                          'tag-bar',
-            animationClass:                  'animation',
-            block1InfClass:                  'about-block1Inf',
-            tagClass:                        'tag',
-            tagTxtClass:                     'tag-txt',
-            title1Class:                     'title1',
-            title2Class:                     'title2',
-            PictureBarSpeed:                     1000,
-            PictureAutoSpeed:                    6000,
-            tagBarSpeed:                     30000
+            aboutId:                        'about',
+            titleClass:                     'title',
+            introdutionBlock:               'itrodution-block',
+            introdutionPicture:             'about-picture',
+            photoUl:                        'photo-ul',
+            introduceId:                    'introdution',
+            tagBar:                         'tag-bar',
+            animationClass:                 'animation',
+            block1InfClass:                 'about-block1Inf',
+            tagClass:                       'tag',
+            tagTxtClass:                    'tag-txt',
+            title1Class:                    'title1',
+            title2Class:                    'title2',
+            PictureBarSpeed:                1000,
+            PictureAutoSpeed:               6000,
+            tagBarSpeed:                    30000
         }, options);
         var photoIndex = 0;
-        var button = [$('#' + options.aboutId + ' .button-left'), $('#' + options.aboutId + ' .button-right')];
+        var button = [
+            $('#' + options.aboutId + ' .button-left'),
+            $('#' + options.aboutId + ' .button-right')
+        ];
         var photos = $('#' + options.aboutId + ' img');
         var tagbarIndex = 0;
         var tagbar = $('.' + options.tagBar + ' .tag-image').each(function(index)
@@ -4953,7 +4897,10 @@
             }
             tagbar.eq(tagbarIndex).show();
         };
-        var blocks = [$('#' + options.aboutId + ' .block1'), $('#' + options.aboutId + ' .block2')];
+        var blocks = [
+            $('#' + options.aboutId + ' .block1'),
+            $('#' + options.aboutId + ' .block2')
+        ];
         var itrodutionPicture = $('#' + options.aboutId + ' .' + options.introdutionPicture);
         var picture = $('<div></div>')
             .css({
@@ -5016,7 +4963,8 @@
             })
             .appendTo(block1Picture);
         });
-        tagbarPerson.each(function(){
+        tagbarPerson.each(function()
+        {
             $(this).css({
                 position: 'absolute',
                 top: 45 + parseInt($(this).attr('top')),
@@ -5157,7 +5105,6 @@
  (function($){ 
     $.forum = function()
     {
-        // $('#form-create-content').ckeditor();
         $("#forum-reply-content").keydown(function(){
             var content_num = 20;
             /* 若content字數小於10則將submit disable */
@@ -5181,8 +5128,9 @@
             $('.form-addfriend').submit();
             return false;
         });
-        $("#forum-forum-top2 #sort_list").change(function() {
+        $("#forum-forum-top2 .sort-list").change(function() {
             var url = $.configures.forumSortUrl;
+            console.log(url);
             window.location = url.replace(':sort', $(this).val());
         });
         /*forum create*/

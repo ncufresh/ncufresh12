@@ -1,13 +1,12 @@
-<h4>論壇回覆</h4>
 <div class="profile-message-reply" >
+    <h4>論壇回覆</h4>
     <ul id="self-message">
-        <li class="article-title">標題:<li >
+        <li class="article-title">標題:</li>
         <li id="article-content-title"><?php echo $article->title; ?></li>
         <li class="article-title">內容:</li>
         <li id="article-content">
         <div id="self-messages-content"><?php echo $article->content; ?></div>
-        <li>
-        
+        </li>
     </ul>
     <div class="allmessages">
     <span class="reply-title">回覆</span>
