@@ -19,7 +19,7 @@
         'parameters'=> array('fid' => $fid, 'sort' => $sort, 'category' => $current_category)
     )); 
     ?>
-    <select id="sort_list">
+    <select class="sort-list">
 <?php if ( $sort == 'create' ) : ?>
       <option value="create" selected="selected">依發表時間</option>
 <?php else : ?>
