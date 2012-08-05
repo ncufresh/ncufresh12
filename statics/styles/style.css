@@ -4030,6 +4030,16 @@ div.all-sorts-of-friends
     margin:0px;
 }
 
+.a-group-users .scroll-container
+{
+    width:657px;
+}
+
+.a-group-users .scroll-content
+{
+    width:657px;
+}
+
 div.a-group-users button
 {
     padding:0px;
@@ -4053,6 +4063,16 @@ div.a-group-users div.avatar
     margin-top:0;
     margin-left:260px;
     padding:0px;
+}
+
+.friend-chatting .scroll-container
+{
+    width:388px;
+}
+
+.friend-chatting .scroll-content
+{
+    width:388px;
 }
 
 .friend-chatting ul
@@ -4090,20 +4110,30 @@ div.a-group-users div.avatar
     outline-style:dotted;
 }
 
+.friend-chatting-content .scroll-container
+{
+    width: 190px;
+}
+
+.friend-chatting-content .scroll-content
+{
+    width: 190px;
+}
+
 .profile-modify
 {
     width:240px;
     height:350px;
     margin:0px;
-    padding:5px;
+    padding:0px;
 }
 
 .profile-modify div.avatar
 {
     margin-left:65px;
-    margin-top:5px;
+    margin-top:-5px;
     width:180px; 
-    height:338px;
+    height:300px;
     padding:0px;
 }
 
@@ -4134,12 +4164,32 @@ div.my-all-messages
     padding:5px;
 }
 
+.my-all-messages .scroll-container
+{
+    width:600px;
+}
+
+.my-all-messages .scroll-content
+{
+    width:600px;
+}
+
 div.allmessages
 {
     width:490px;
     height:290px;
     margin-top:55px;
     padding:5px;
+}
+
+div.allmessages .scroll-container
+{
+    width:490px;
+}
+
+div.allmessages .scroll-content
+{
+    width:490px;
 }
 
 div.allmessages form
@@ -4292,6 +4342,16 @@ div.profile-message-reply
     float:left;
 }
 
+.profile-message-reply .scroll-container
+{
+    width:690px;
+}
+
+.profile-message-reply .scroll-content
+{
+    width:690px;
+}
+
 #add-new-friends
 {
     position:absolute;
@@ -4318,7 +4378,8 @@ div.profile-message-reply
 .button-sure,
 .button-makefriend,
 #friend_request,
-#is_friend
+#is_friend,
+#button-editor-sure
 {
     background: #FFFFFF;
     border: 1px solid #B0B0B0;
@@ -4335,7 +4396,9 @@ div.profile-message-reply
     width: auto;
 }
 
-a.button-back
+a.button-back,
+a#button-editor,
+a#button-editor-cancel
 {
     background: #FFFFFF;
     border: 1px solid #B0B0B0;
@@ -4358,6 +4421,17 @@ a.button-back
     height:335px;
     margin:0px;
 }
+
+#new-group-members .scroll-container
+{
+    width:670px;
+}
+
+#new-group-members .scroll-content
+{
+    width:670px;
+}
+
 
 #new-group-members div.avatar
 {
@@ -4383,20 +4457,6 @@ a.button-back
     bottom:0px;
 }
 
-#button-editor-cancel
-{
-    background-image:url('../profile/button/cancel.png');
-    background-repeat:no-repeat ;
-    width:62px;
-    height:34px;
-    padding:0px;
-    margin:0px;
-    display:block;
-    position:absolute;
-    right:502px;
-    bottom:34px;
-}
-
 #button-push
 {
     background-image:url('../profile/button/push.png');
@@ -4408,19 +4468,6 @@ a.button-back
     position:relative;
     right:68px;
     bottom:0px;
-}
-
-#button-editor-sure
-{
-    background-image:url('../profile/button/sure.png');
-    background-repeat:no-repeat ;
-    width:62px;
-    height:34px;
-    padding:0px;
-    margin:0px;
-    position:absolute;
-    right:502px;
-    bottom:72px;
 }
 
 .button-addgroup
@@ -4499,20 +4546,6 @@ a.button-back
     height:50px;
     padding:0px;
     margin:0px;
-}
-
-#button-editor
-{
-    background-image:url('../profile/button/editor.png');
-    background-repeat:no-repeat ;
-    width:158px;
-    height:57px;
-    padding:0px;
-    margin:0px;
-    display: block;
-    position:absolute;
-    right:433px;
-    bottom:71px;
 }
 
 .is_exist
@@ -4665,6 +4698,16 @@ div.self-messages
     padding:0px;
     margin:0px;
     float:left;
+}
+
+div.self-messages .scroll-container
+{
+    width:165px;
+}
+
+div.self-messages .scroll-content
+{
+    width:165px;
 }
 
 td.reply-content

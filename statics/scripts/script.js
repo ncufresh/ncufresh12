@@ -4540,9 +4540,6 @@
         $('.a-group-users').scrollable({
             wheelSpeed: 90
         });
-        $('.users-group').scrollable({
-            wheelSpeed: 90
-        });
         $('#new-group-members').scrollable({
             wheelSpeed: 90
         });
