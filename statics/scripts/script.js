@@ -17,6 +17,19 @@
         return this.split('').reverse().join('');
     };
 
+    Array.prototype.indexOf = function(obj)
+    {
+        for(var i=0; i<this.length; i++)
+        {
+            if(this[i]==obj)
+            {
+                return i;
+            }
+        }
+        return -1;
+    };
+    
+    
     $.extend({
         random: function(min, max)
         {
@@ -3037,7 +3050,7 @@
         { // 36 (太極銅雕)
             N:{ photo: 'Day 2 (29).JPG', nextPoint: (-1) },
             E:{ photo: 'Day 2 (32).JPG', nextPoint: 37 },
-            S:{ photo: 'Day 2 (29).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 2 (31).JPG', nextPoint: (-1) },
             W:{ photo: 'Day 2 (30).JPG', nextPoint: 35 }
         },
         { // 37 (百花川、棒球場)

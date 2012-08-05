@@ -18,7 +18,8 @@
     去年春天，台灣中央大學和姐妹校 ── 日本中央大學。兩校校長共同於中大湖畔栽植櫻花，象徵兩國、兩校的友誼。
 </p>
 <p>
-    <img alt="中大湖" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0041.JPG" style="width:300px;height:199px;" /><img alt="中大湖" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0071(1).JPG" style="width:300px;height:199px;" />
+    <img alt="中大湖" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0041.JPG" style="width:300px;height:199px;" />
+    <img alt="中大湖" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0071(1).JPG" style="width:300px;height:199px;" />
 </p>
 </div>
 
