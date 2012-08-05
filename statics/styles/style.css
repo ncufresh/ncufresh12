@@ -7546,8 +7546,8 @@ li.enabled a
     width: 192px;
     height: 144px;
     background:  url('../building/exercise/mouseleave/playground.png');
-    left: 50px;
-    top: 300px;
+    left: 23px;
+    top: 84px;
 }
 
 #street-div #playground:hover
@@ -7653,8 +7653,8 @@ li.enabled a
 
 #street-div #stadium
 {
-    width: 132px;
-    height: 99px;
+    width: 163px;
+    height: 84px;
     background:  url('../building/exercise/mouseleave/stadium.png');
     left: 129px;
     top: 84px;
@@ -7879,7 +7879,7 @@ li.enabled a
 #street-div .arrow.up
 {
     width: 77px;
-    height: 64px;
+    height: 54px;
     background: url('../building/arrow_up.png') no-repeat;
     left: 350px;
     top: 0px;
@@ -7892,30 +7892,30 @@ li.enabled a
 
 #street-div .arrow.left
 {
-    width: 50px;
-    height: 82px;
-    background: url('../building/arrow_left.png');
-    left: 0px;
+    width: 40px;
+    height: 62px;
+    background: url('../building/arrow_left.png') no-repeat;
+    left: 4px;
     top: 249px;
 }
 
 #street-div .arrow.left:hover
 {
-    background: url('../building/show-point_left.png');
+    background: url('../building/show-point_left.png') no-repeat;
 }
 
 #street-div .arrow.right
 {
-    width: 50px;
-    height: 76px;
-    background: url('../building/arrow_right.png');
-    left: 700px;
+    width: 40px;
+    height: 62px;
+    background: url('../building/arrow_right.png') no-repeat;
+    left: 707px;
     top: 249px;
 }
 
 #street-div .arrow.right:hover
 {
-    background: url('../building/show-point_right.png');
+    background: url('../building/show-point_right.png') no-repeat;
 }
 
 #street-div .arrow.back
@@ -7967,6 +7967,12 @@ li.enabled a
 {
     top: 440px;
     left: 0px;
+}
+
+#street-div .loading
+{
+    position:absolute;
+    display: none;
 }
 
 #street-div .one-image

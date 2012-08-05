@@ -3140,15 +3140,27 @@
                     url + streetPoints[nowpointat][nowfaceto].photo
                 );
         }
+        $('.loading').hide();
     };
 
     var forward = function()
     {
+        $('.loading').show();
+        $('.loading').css(
+        {
+            zIndex: 1000,
+        });
         move(streetPoints[nowpointat][nowfaceto].nextPoint, nowfaceto);
+        // if( nowpointat )
     };
 
     var turnLeft = function()
     {
+        $('.loading').show();
+        $('.loading').css(
+        {
+            zIndex: 1000,
+        });
         switch ( nowfaceto )
         {
             case 'N':
@@ -3169,6 +3181,11 @@
 
     var turnRight = function()
     {
+        $('.loading').show();
+        $('.loading').css(
+        {
+            zIndex: 1000,
+        });
         switch ( nowfaceto )
         {
             case 'N':
@@ -3413,19 +3430,6 @@
         $('#street-div #building-text').scrollable({
             scrollableClass: 'street-scrollable'
         });
-        
-        // $('#street-div .arrow.up, #street-div .arrow.right, #street-div .arrow.left').hover(function()
-        // {
-            // var arrowStrong = $(this).attr('src').replace('arrow', 'showPoint');
-            // $(this).attr('src', arrowStrong);
-        // }, function()
-        // {
-            // var arrowStrong = $(this).attr('src').replace('showPoint', 'arrow');
-            // $(this).attr('src', arrowStrong);
-        // });
-
-        // var howmanyphoto;
-        // var position = 0;
     };
 })(jQuery);
 
