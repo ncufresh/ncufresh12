@@ -21,6 +21,7 @@
 <?php endforeach; ?>
         </ul>
     </div>
+    <input id="request-search" type="text" value="搜尋"/>
     <button type="submit" name="agree" class="button-makefriend">好友確認</button>
     <button type="submit" name="cancel" class="button-cancel">取消</button>
     <button class="button-all-choose">全選</button>

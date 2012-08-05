@@ -88,8 +88,11 @@ class FriendsController extends Controller
         ));
     }
 
-    public function actionMakeFriends() 
+    public function actionMakeFriends() //判斷有無網址
     {  
+        // var url = false;
+        // if (  )
+        // else 
         if ( isset($_POST['friends']) )
         {
             foreach ( $_POST['friends'] as $friendid )

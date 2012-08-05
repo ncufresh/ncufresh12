@@ -21,9 +21,10 @@
 <?php endforeach; ?>
     </ul>
     </div>
-    <button type="submit" class="button-sure"></button>
+    <input id="newmember-search" type="text" value="搜尋"/>
+    <button type="submit" class="button-sure">確認</button>
     <button class="button-all-choose">全選</button>
-    <a href="<?php echo $this->createUrl('friends/mygroups', array('id' => $id)); ?>" class="button-back"></a>
+    <a href="<?php echo $this->createUrl('friends/mygroups', array('id' => $id)); ?>" class="button-back">BACK</a>
 </form>
 
 
