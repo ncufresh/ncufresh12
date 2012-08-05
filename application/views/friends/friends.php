@@ -1,6 +1,6 @@
 <div class="friends">
 <div class="all-sorts-of-friends">
-<h4>好有專區</h4>
+<h4>好友專區</h4>
 <ul class="friends-title">
     <li>
         <a href="<?php echo Yii::app()->createUrl('friends/samedepartmentsamegrade'); ?>" title="同系同屆" class="friends-title">同系同屆</a>
