@@ -1538,6 +1538,10 @@
                     cal_events[cal_events.length] = event;
                     $(this).data('cal_events', cal_events);
                 }
+                else
+                {
+                    $(this).data('cal_events', []);
+                }
             }
         });
         return this;
@@ -1766,7 +1770,7 @@
         var container = $(this);
         var updateTodolist = function()
         {
-            var events = $(this).data('cal_events');
+            var events = $(this).data('cal_events')?$(this).data('cal_events'):[];
             var todos = [];
             $(this).parents('table').next().remove();
             if ( events )
@@ -3304,14 +3308,15 @@
                     $('#street-div .street-loading').show();
                     $('#street-div .arrow').eq(0).unbind('click').click(function() //前進nextDirection
                     {
+                    console.log(loading);
                         if ( ! loading ) forward();
                     });
                      $('#street-div .arrow').eq(1).unbind('click').click(function() // 左旋
-                    {
+                    {console.log(loading);
                         if ( ! loading ) turnLeft();
                     });
                     $('#street-div .arrow').eq(2).unbind('click').click(function() // 右旋
-                    {
+                    {console.log(loading);
                         if ( ! loading ) turnRight();
                     });
 
