@@ -2794,7 +2794,7 @@
             N:{ photo: 'Day 3 (3).JPG', nextPoint: (-1) },
             E:{ photo: 'Day 3 (2).JPG', nextPoint: 0 },
             S:{ photo: 'Day 3 (1).JPG', nextPoint: (-1) },
-            W:{ photo: 'Day 3 (4).JPG', nextPoint: 48 }
+            W:{ photo: 'Day 3 (4).JPG', nextPoint: 49 }
         },
         { // 2 (工3)
             N:{ photo: 'Day 1 (6).JPG', nextPoint: 3 },
@@ -3025,10 +3025,10 @@
             W:{ photo: 'Day 2 (40).JPG', nextPoint: (-1) }
         },
         { // 40 (鬆餅屋)
-            N:{ photo: 'Day 3 (39).JPG', nextPoint: 35 },
-            E:{ photo: 'Day 3 (40).JPG', nextPoint: (-1) },
-            S:{ photo: 'Day 3 (37).JPG', nextPoint: 44 },
-            W:{ photo: 'Day 3 (38).JPG', nextPoint: 41 }
+            N:{ photo: 'Day 3 (36).JPG', nextPoint: 35 },
+            E:{ photo: 'Day 3 (35).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 3 (34).JPG', nextPoint: 44 },
+            W:{ photo: 'Day 3 (33).JPG', nextPoint: 41 }
         },
         { // 41 (科四至管院路)
             N:{ photo: 'Day 3 (32).JPG', nextPoint: (-1) },
@@ -3046,7 +3046,7 @@
             N:{ photo: 'Day 3 (21).JPG', nextPoint: 44 },
             E:{ photo: 'Day 3 (22).JPG', nextPoint: 53 },
             S:{ photo: 'Day 3 (23).JPG', nextPoint: 46 },
-            W:{ photo: 'Day 3 (24).JPG', nextPoint: 42 }
+            W:{ photo: 'Day 3 (24).JPG', nextPoint: (-1) }
         },
         { // 44 (科二東路)
             N:{ photo: 'Day 3 (39).JPG', nextPoint: 40 },
@@ -3074,15 +3074,15 @@
         },
         { // 48 (游泳池)
             N:{ photo: 'Day 3 (10).JPG', nextPoint: 47 },
-            E:{ photo: 'Day 3 (11).JPG', nextPoint: 1 },
+            E:{ photo: 'Day 3 (11).JPG', nextPoint: (-1) },
             S:{ photo: 'Day 3 (12).JPG', nextPoint: 49 },
             W:{ photo: 'Day 3 (9).JPG', nextPoint: (-1) }
         },
         { // 49 (游泳池旁側門)
             N:{ photo: 'Day 3 (8).JPG', nextPoint: 48 },
-            E:{ photo: 'Day 3 (7).JPG', nextPoint: (-1) },
-            S:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) },
-            W:{ photo: 'Day 3 (6).JPG', nextPoint: (-1) }
+            E:{ photo: 'Day 3 (7).JPG', nextPoint: 1 },
+            S:{ photo: 'Day 3 (6).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) }
         },
         { // 50 (男12舍)
             N:{ photo: 'Day 3 (95).JPG', nextPoint: (-1) },

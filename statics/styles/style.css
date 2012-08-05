@@ -6938,12 +6938,7 @@ li.enabled a
  {
     background: url('../building/street.png');
  }
- 
- #street-div #back-div
- {
-    background: url('../building/street2.png');
- }
- 
+  
 #street-div #all-selected-pic-ul
 {
     margin-left: 50px;
