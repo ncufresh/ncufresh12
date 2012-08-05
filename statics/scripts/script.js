@@ -1050,6 +1050,12 @@
                 .insertAfter($(this));
             var scrollArea = $('<div></div>')
                 .addClass('scroll-area')
+                .css({
+                    height: '100%',
+                    overflowX: 'hidden',
+                    overflowY: 'scroll',
+                    width: '100%'
+                })
                 .appendTo(scrollContainer);
             var scrollContent = $('<div></div>')
                 .addClass('scroll-content')
