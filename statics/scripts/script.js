@@ -5204,7 +5204,6 @@
         $('#header').star();
 
         $('#moon').moon();
-        alert('!!!');
 
         if ( $('#chat').length ) $('#chat').chat();
 
