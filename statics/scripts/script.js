@@ -2242,8 +2242,8 @@
             title:              null,
             message:            '',
             buttons:            {
-                '確定':         function() { return true; },
-                '取消':         function() { return false; }
+                '取消':         function() { return false; },
+                '確定':         function() { return true; }
             },
             confirmed:          function(result) { return true; }
         }, options);
