@@ -3433,8 +3433,8 @@
     {
         var getTabContent = function()
         {
-            var tab = jQuery(this).attr('tab');
-            var page = jQuery(this).attr('page');
+            var tab = $(this).attr('tab');
+            var page = $(this).attr('page');
             jQuery.getJSON(
                 jQuery.configures.ncuLifeUrl.replace(':tab', tab).replace(':page', page),
                 function(data)
@@ -3553,8 +3553,8 @@
     {
         var getTabContent = function()
         {
-            var tab = jQuery(this).attr('tab');
-            var page = jQuery(this).attr('page');
+            var tab = $(this).attr('tab');
+            var page = $(this).attr('page');
             jQuery.getJSON(
                 jQuery.configures.readMeUrl.replace(':tab', tab).replace(':page', page),
                 function(data)
@@ -3618,11 +3618,11 @@
             switch( window.location.hash.replace('#', '') )
         {
             case 'freshman' :
-                jQuery('#readme-logo1').click();
+                $('#readme-logo1').click();
             break;
 
             case 'reschool' :
-                jQuery('#readme-logo2').click();
+                $('#readme-logo2').click();
             break;
         }
     };
@@ -4358,11 +4358,12 @@
         $('.button-all-choose').click(function()
         {
             checked = ! checked;
-            $('input[type="checkbox"][name^="friends"]').each(function()
+            $('input[type="checkbox"][name^="friends"], input[type="checkbox"][name^="group-members"]').each(function()
             {
                 $(this).prop('checked', checked);
             });
             $('input[type="checkbox"][name^="friends"]').change();
+            $('input[type="checkbox"][name^="group-members"]').change();
             return false;
         });
 
@@ -4397,7 +4398,7 @@
     $.profile = function()
     {
         $('.allmessages, #my-all-messages, #self-messages-content, #friend-chatting, .friend-chatting-content').scrollable();
-        jQuery('.button-viewProfile-back').click(function()
+        $('.button-viewProfile-back').click(function()
         {
             window.history.back();
         }); 
@@ -4558,7 +4559,9 @@
             if (
                 url.match(/^\/.+/)
              || url.match(/^#.*/)
-             || url.search(location.hostname) >= 0 )
+             || url.search(location.hostname) >= 0
+             || $(this).attr('rel') !== 'external'
+            )
             {
                 return true;
             }
@@ -4572,7 +4575,7 @@
 {
     $.site = function()
     {
-        const SEGMENT = 100 / 5;
+        var segment = 100 / 5;
 
         var meter = $('#form-password-meter');
 
@@ -4801,7 +4804,7 @@
             if ( $(this).val() !== '' )
             {
                 var score = calculatePasswordScore($(this).val());
-                var level = parseInt(score / SEGMENT) + 1;
+                var level = parseInt(score / segment) + 1;
 
                 meter.find('td').css({
                     backgroundColor: 'transparent'
@@ -4824,6 +4827,10 @@
                     .keydown(checkPasswordStrength)
             );
         }
+
+        if ( $('#marquee').length ) $('#marquee').marquee();
+
+        if ( $('#index-calendar').length ) $('#index-calendar div').calendar($.configures.calendarEventsUrl);
     };
 })(jQuery);
 
@@ -4870,6 +4877,8 @@
         var smallPhotoIndex = 0;
         var photoA = $('#' + options.aboutId + ' a');
         var tagBool = true;
+        var photoMoveLeft = false;
+        var photoMoveRight = false;
         var jumpTo = function()
         {   
             tagbar.each(function(){
@@ -4878,20 +4887,16 @@
             block1Inf.each(function(){
                 $(this).hide();
             });
-            if ( tagbarIndex != 6 )
+            block1Inf.eq(tagbarIndex).show();
+            tagbarPerson.each(function(){
+                $(this).hide();
+            });
+            for (var p = 0; p < 9; p++)
             {
-                block1Inf.eq(tagbarIndex).show();
-                tagbarPerson.each(function()
+                tagbarPerson.eq(tagbarIndex * 9 + p).show();
+                if ( tagbarIndex == 4 && p == 1 )
                 {
-                    $(this).hide();
-                });
-                for (var p = 0; p < 9; p++)
-                {
-                    tagbarPerson.eq(tagbarIndex * 9 + p).show();
-                    if ( tagbarIndex == 4 && p == 1 )
-                    {
-                        break;
-                    }
+                    break;
                 }
             }
             tagbar.eq(tagbarIndex).show();
@@ -5006,6 +5011,29 @@
         },options.PictureAutoSpeed);
         setInterval(function()
         {
+            if ( photoMoveLeft )
+            {
+                if( smallPhotoIndex + 6 < photoNumber )
+                {
+                    smallPhotoIndex++;
+                    $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
+                        left: -40 + smallPhotoIndex * -50
+                    });
+                }
+            }
+            else if ( photoMoveRight )
+            {
+                if ( smallPhotoIndex > 0 )
+                {
+                    smallPhotoIndex--;
+                    $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
+                        left: -40 + smallPhotoIndex * -50
+                    });
+                }
+            }
+        },300);
+        setInterval(function()
+        {
             if ( tagBool )
             {
                 if ( tagbarIndex < 5 )
@@ -5045,28 +5073,22 @@
         button[0].css({
             left: 0,
             position: 'absolute'
-        }).click(function()
+        }).mouseenter(function()
         {
-            if ( smallPhotoIndex > 0 )
-            {
-                smallPhotoIndex--;
-                $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
-                    left: -40 + smallPhotoIndex * -50 
-                });
-            }
+            photoMoveRight = true;
+        }).mouseleave(function()
+        {
+            photoMoveRight = false;
         }).appendTo(display).show();
         button[1].css({
             left: 350,
             position: 'absolute'
-        }).click(function()
+        }).mouseenter(function()
         {
-            if( smallPhotoIndex + 6 < photoNumber )
-            {
-                smallPhotoIndex++;
-                $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
-                    left: -40 + smallPhotoIndex * -50 
-                });
-            }
+            photoMoveLeft = true;
+        }).mouseleave(function()
+        {
+            photoMoveLeft = false;
         }).appendTo(display).show();
         photoA.each(function(index)
         {

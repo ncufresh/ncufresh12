@@ -3260,7 +3260,7 @@ button.news-button
 #about .tag,
 #about .tag-txt
 {
-    background: url('../about/picture.png') no-repeat;
+    background: url('../images/about.png') no-repeat;
 }
 
 #about .tag-bar0,
@@ -3270,7 +3270,7 @@ button.news-button
 #about .tag-bar4,
 #about .tag-bar5
 {
-    background: url('../about/photo.jpg') no-repeat;
+    background: url('../images/about_photos.jpg') no-repeat;
 }
 
 #about .itrodution-block
@@ -4030,7 +4030,7 @@ ul.friends-sort li
 {
     width:690px;
     height:30px;
-    margin-top:-15px;
+    margin-top:-10px;
     padding:0px;
 }
 
@@ -4606,7 +4606,8 @@ div.profile-message-reply h4
 #same-department-same-grade-search,
 #same-department-diff-grade-search,
 #other-department-search,
-#newmember-search
+#newmember-search,
+#request-search
 {
     width:100px;
     height:25px;
@@ -6937,13 +6938,23 @@ li.enabled a
 }
 
 #ultimate-password .click
-{    
+{
     color: yellow;    
 }
 
 /**
  * street style
  */
+ #street-div #back-div
+ {
+    background: url('../building/street.png');
+ }
+ 
+ #street-div #back-div
+ {
+    background: url('../building/street2.png');
+ }
+ 
 #street-div #all-selected-pic-ul
 {
     margin-left: 50px;
@@ -7012,7 +7023,7 @@ li.enabled a
 
 #street-div #back-div
 {
-    background: url('../building/bottom.png') no-repeat;
+    background-position: 0px -1280px;
     position: relative;
     height: 551px;
     width: 750px;
