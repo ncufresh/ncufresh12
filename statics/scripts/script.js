@@ -507,9 +507,10 @@
         $('.friend-list-entry').each(function()
         {
             var entry = $(this);
+            console.log(entry.data('id'));
             $('.' + $.chat.options.chatDialogClass).each(function(index)
             {
-                if ( $(this).data('id') == id )
+                if ( $(this).data('id') == entry.data('id') )
                 {
                     var title = $(this)
                         .children('.' + $.chat.options.chatTitleClass);
