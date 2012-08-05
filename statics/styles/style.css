@@ -333,10 +333,11 @@ a:hover
 
 .scroll-container .scroll-bar
 {
+    display: none;
     height: 98%;
-    right: 2px;
     margin-top: -1px;
     position: absolute;
+    right: 2px;
     top: 1%;
     width: 6px;
 }
@@ -4639,9 +4640,74 @@ a#button-editor-cancel
     padding: 0;
 }
 
+#sitemap div
 {
-    min-height: 240px;
+    border-radius: 5px;
+    margin: 10px 0;
     overflow: hidden;
+    padding: 10px;
+}
+
+#sitemap h4
+{
+    border-radius: 5px;
+    padding: 5px 5px 5px 10px;
+}
+
+#sitemap ul
+{
+    margin: 5px 0;
+}
+
+#sitemap div > ul > li
+{
+    padding: 0 5px;
+    width: 25%;
+}
+
+#sitemap div > ul ul > li
+{
+    padding-left: 10px;
+}
+
+#sitemap .freshman
+{
+    background: #D9FEDE;
+}
+
+#sitemap .freshman h4
+{
+    background: #BCFCC3;
+}
+
+#sitemap .discuss
+{
+    background: #FCCCE7;
+}
+
+#sitemap .discuss h4
+{
+    background: #FD8BC4;
+}
+
+#sitemap .personal
+{
+    background: #FAFAC9;
+}
+
+#sitemap .personal h4
+{
+    background: #F7E185;
+}
+
+#sitemap .information
+{
+    background: #D1EDF6;
+}
+
+#sitemap .information h4
+{
+    background: #8FC4F0;
 }
 
 #sitemap div > ul > li
