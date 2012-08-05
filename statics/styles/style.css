@@ -3854,17 +3854,18 @@ ul.friends-sort
     width:210px;
     height:130px;
     float:left;
-    margin-top:-15px;
+    margin-top:-27px;
     padding:0px;
 }
 
 ul.friends-sort li
 {
     width:105px;
-    height:65px;
+    height:75px;
     float:left;
     color:DarkBlue;
     list-style-type:none;
+    text-align:center;
 }
 
 .friends-self 
@@ -3888,7 +3889,7 @@ ul.friends-sort li
 .friends-self li a.friends-title
 {
     width:100px;
-    height:20px;
+    height:45px;
     float:left;
 }
 
@@ -3896,7 +3897,7 @@ ul.friends-sort li
 {
     width:690px;
     height:30px;
-    margin:0px;
+    margin-top:-15px;
     padding:0px;
 }
 
@@ -3911,14 +3912,14 @@ ul.friends-sort li
 ul.users-department li
 {
     width:132px; 
-    height:230px;
+    height:170px;
     padding:0px;
     margin:0px;
     float:left;
     list-style-type:none;
 }
 
-ul.users-department li h3
+ul.users-department li p.user-name
 {
     color:DarkBlue;
     width:132px; 
@@ -3926,9 +3927,10 @@ ul.users-department li h3
     padding:0px;
     margin:0px;
     text-align:center;
+    float:left;
 }
 
-ul. li h4
+ul.users-department li p.user-department
 {
     color:red;
     width:132px; 
@@ -3936,6 +3938,7 @@ ul. li h4
     padding:0px;
     margin:0px;
     text-align:center;
+    float:left;
 }
 
 .all-groups
@@ -4044,6 +4047,12 @@ div.friends
     margin:0px;
 }
 
+#sameDsameG h4
+{
+    text-align:center;
+    color:green;
+}
+
 #sameDdiffG
 {
     background: url('../profile/sameDdiffG.png') no-repeat ;
@@ -4053,6 +4062,12 @@ div.friends
     margin:0px;
 }
 
+#sameDdiffG h4
+{
+    text-align:center;
+    color:green;
+}
+
 #other-department
 {
     background:url('../profile/otherD.png') no-repeat ;
@@ -4060,6 +4075,12 @@ div.friends
     height:370px;
     padding:25px;
     margin:0px;
+}
+
+#other-department h4
+{
+    text-align:center;
+    color:green;
 }
 
 #request
@@ -4076,7 +4097,7 @@ div.all-sorts-of-friends
 {
     width:690px;
     height:370px;
-    margin:25px 25px 25px 25px;
+    margin:8px 25px 25px 25px;
 }
 
 .a-group-users
@@ -4084,6 +4105,16 @@ div.all-sorts-of-friends
     width:657px;
     height:300px;
     margin:0px;
+}
+
+.a-group-users .scroll-container
+{
+    width:657px;
+}
+
+.a-group-users .scroll-content
+{
+    width:657px;
 }
 
 div.a-group-users button
@@ -4109,6 +4140,16 @@ div.a-group-users div.avatar
     margin-top:0;
     margin-left:260px;
     padding:0px;
+}
+
+.friend-chatting .scroll-container
+{
+    width:388px;
+}
+
+.friend-chatting .scroll-content
+{
+    width:388px;
 }
 
 .friend-chatting ul
@@ -4146,20 +4187,30 @@ div.a-group-users div.avatar
     outline-style:dotted;
 }
 
+.friend-chatting-content .scroll-container
+{
+    width: 190px;
+}
+
+.friend-chatting-content .scroll-content
+{
+    width: 190px;
+}
+
 .profile-modify
 {
     width:240px;
     height:350px;
     margin:0px;
-    padding:5px;
+    padding:0px;
 }
 
 .profile-modify div.avatar
 {
     margin-left:65px;
-    margin-top:5px;
+    margin-top:-5px;
     width:180px; 
-    height:338px;
+    height:300px;
     padding:0px;
 }
 
@@ -4190,12 +4241,32 @@ div.my-all-messages
     padding:5px;
 }
 
+.my-all-messages .scroll-container
+{
+    width:600px;
+}
+
+.my-all-messages .scroll-content
+{
+    width:600px;
+}
+
 div.allmessages
 {
     width:490px;
     height:290px;
     margin-top:55px;
     padding:5px;
+}
+
+div.allmessages .scroll-container
+{
+    width:490px;
+}
+
+div.allmessages .scroll-content
+{
+    width:490px;
 }
 
 div.allmessages form
@@ -4210,15 +4281,15 @@ div.friends-addfriend
 {
     display:inline-block;
     width:650px;
-    height:140px;
+    height:150px;
 }
 
 .friends-addfriend .avatar
 {
     margin-left:0px;
     margin-top:0px;
-    width:35px; 
-    height:45px;
+    width:100px; 
+    height:65px;
     padding:0px;
     float:left;
 }
@@ -4348,21 +4419,14 @@ div.profile-message-reply
     float:left;
 }
 
-#add-new-friends
+.profile-message-reply .scroll-container
 {
-    position:absolute;
-    right:472px;
-    bottom:23px;
-    display: block;
-    border: 2px black solid;
-    width: 74px;
-    height:29px;
-    padding: 3px;
-    font-weight: bold;
-    color: #0A5163;
-    background: #C9F8E7;
-    border-radius: 9px;
-    text-align: center;
+    width:690px;
+}
+
+.profile-message-reply .scroll-content
+{
+    width:690px;
 }
 
 .button-viewProfile-back,
@@ -4374,7 +4438,16 @@ div.profile-message-reply
 .button-sure,
 .button-makefriend,
 #friend_request,
-#is_friend
+#is_friend,
+#button-editor-sure,
+.button-addgroup,
+#button-deletegroup,
+#button-addmember,
+#button-deletemember,
+#button-back-reply,
+#button-push,
+.button-mygroup,
+#add-new-friends
 {
     background: #FFFFFF;
     border: 1px solid #B0B0B0;
@@ -4391,7 +4464,9 @@ div.profile-message-reply
     width: auto;
 }
 
-a.button-back
+a.button-back,
+a#button-editor,
+a#button-editor-cancel
 {
     background: #FFFFFF;
     border: 1px solid #B0B0B0;
@@ -4410,10 +4485,21 @@ a.button-back
 
 #new-group-members
 {
-    width:670px;
+    width:650px;
     height:335px;
     margin:0px;
 }
+
+#new-group-members div .scroll-container
+{
+    width:650px;
+}
+
+#new-group-members div .scroll-content
+{
+    width:650px;
+}
+
 
 #new-group-members div.avatar
 {
@@ -4423,152 +4509,6 @@ a.button-back
     height:70px;
     padding:0px;
     float:left;
-}
-
-#button-back-reply
-{
-    background-image: url('../profile/button/back.png');
-    background-repeat: no-repeat ;
-    width: 84px;
-    height: 37px;
-    padding: 0px;
-    margin: 0px;
-    float:right;
-    position:relative;
-    right:-85px;
-    bottom:0px;
-}
-
-#button-editor-cancel
-{
-    background-image:url('../profile/button/cancel.png');
-    background-repeat:no-repeat ;
-    width:62px;
-    height:34px;
-    padding:0px;
-    margin:0px;
-    display:block;
-    position:absolute;
-    right:502px;
-    bottom:34px;
-}
-
-#button-push
-{
-    background-image:url('../profile/button/push.png');
-    background-repeat:no-repeat ;
-    width:67px;
-    height:35px;
-    padding:0px;
-    margin:0px;
-    position:relative;
-    right:68px;
-    bottom:0px;
-}
-
-#button-editor-sure
-{
-    background-image:url('../profile/button/sure.png');
-    background-repeat:no-repeat ;
-    width:62px;
-    height:34px;
-    padding:0px;
-    margin:0px;
-    position:absolute;
-    right:502px;
-    bottom:72px;
-}
-
-.button-addgroup
-{
-     display: block;
-    border: 2px black solid;
-    padding: 3px;
-    font-weight: bold;
-    color: #0A5163;
-    background: #C9F8E7;
-    border-radius: 9px;
-    text-align: center;
-    position:absolute;
-    right:28px;
-    bottom:66px;
-    width: 77px;
-    height:35px;
-}
-
-#button-deletegroup
-{
-     display: block;
-    border: 2px black solid;
-    padding: 3px;
-    font-weight: bold;
-    color: #0A5163;
-    background: #C9F8E7;
-    border-radius: 9px;
-    text-align: center;
-    position:absolute;
-    right:28px;
-    bottom:97px;
-    width: 67px;
-    height:26px;
-}
-
-#button-addmember
-{
-    display: block;
-    border: 2px black solid;
-    padding: 3px;
-    font-weight: bold;
-    color: #0A5163;
-    background: #C9F8E7;
-    border-radius: 9px;
-    text-align: center;
-    position:absolute;
-    right:28px;
-    bottom:21px;
-    width: 66px;
-    height:26px;
-}
-
-#button-deletemember
-{
-    display: block;
-    border: 2px black solid;
-    padding: 3px;
-    font-weight: bold;
-    color: #0A5163;
-    background: #C9F8E7;
-    border-radius: 9px;
-    text-align: center;
-    position:absolute;
-    right:28px;
-    bottom:60px;
-    width: 77px;
-    height:35px;
-}
-
-.button-mygroup
-{
-    background-image:url('../profile/button/mygroup.png');
-    background-repeat:no-repeat ;
-    width:50px;
-    height:50px;
-    padding:0px;
-    margin:0px;
-}
-
-#button-editor
-{
-    background-image:url('../profile/button/editor.png');
-    background-repeat:no-repeat ;
-    width:158px;
-    height:57px;
-    padding:0px;
-    margin:0px;
-    display: block;
-    position:absolute;
-    right:433px;
-    bottom:71px;
 }
 
 .is_exist
@@ -4721,6 +4661,16 @@ div.self-messages
     padding:0px;
     margin:0px;
     float:left;
+}
+
+div.self-messages .scroll-container
+{
+    width:165px;
+}
+
+div.self-messages .scroll-content
+{
+    width:165px;
 }
 
 td.reply-content
