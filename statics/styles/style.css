@@ -2484,25 +2484,25 @@ button.news-button
 
 #multimedia .sidebar #tab1
 {
-    background-position: -752px -320px;
+    background-position: -816px -320px;
 }
 
 #multimedia .sidebar #tab1:active,
 #multimedia .sidebar #tab1.active 
 {
-    background-position: -784px -320px;
+    background-position: -848px -320px;
 }
 
 #multimedia .sidebar #tab2
 {
-    background-position: -816px -320px;
+    background-position: -752px -320px;
     top: 100px;
 }
 
 #multimedia .sidebar #tab2:active,
 #multimedia .sidebar #tab2.active 
 {
-    background-position: -848px -320px;
+    background-position: -784px -320px;  
 }
 
 #multimedia .content
@@ -3723,14 +3723,14 @@ button.news-button
     text-align: left;
     overflow: hidden;
     margin-top: 56px;
-    margin-left: 30px;
+    margin-left: 27px;
 }
 
 #club .club-list ul
 {
     float: left;
     padding: 0;
-    width: 24%;
+    width: 23.5%;
     list-style: none;
 }
 
@@ -3738,16 +3738,23 @@ button.news-button
 {
     text-align: left;
     margin-top: 98px;
-    margin-left: 91px;
+    margin-left: 81px;
 }
 
 #club .department-list ul
 {
     float: left;
     padding: 0;
-    width: 30%;
+    width: 28.5%;
     height: 320px;
     list-style: none;
+}
+
+#club .department li,
+#club .student li,
+#club .club li
+{
+    line-height: 1.6em;
 }
 
 #club .student-list
@@ -3759,10 +3766,10 @@ button.news-button
 {
     float: left;
     padding: 0;
-    width: 28%;
+    width: 18.5%;
     list-style: none;
     margin-top: 69px;
-    margin-left: 143px;
+    margin-left: 172px;
 }
 
 #club .title
