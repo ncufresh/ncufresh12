@@ -9,7 +9,7 @@
         </div>
 
         <div id="curtain-close-div">
-            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/curtainOpen.png" class="curtainOpen">
+            <div class="curtainOpen"></div>
         </div>
         
         <div id="map-div">
@@ -27,7 +27,7 @@
             <div class="arrow right"></div>
             <div class="arrow back"></div>
 
-            <img id="experience-personally" src="<?php echo Yii::app()->baseUrl?>/statics/building/little_man.png">
+            <div id="experience-personally" class=""></div>
             <p id="drag-me">拉我到建築喔!!</p>
             
             <!--系館-->
@@ -184,7 +184,7 @@
                     <li class="exercise-text button-text" detailItem="sport" href="#53">操場</li>
                     <li class="exercise-text button-text" detailItem="sport" href="#54">依仁堂</li>
                 </ul>
-                <img id="curtainclose" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain_close.png">
+                <div id="curtainclose"></div>
             </div>
         </div>
         <div id="text-container"><!--第一層-->

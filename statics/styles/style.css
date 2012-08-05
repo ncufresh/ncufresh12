@@ -6934,16 +6934,152 @@ li.enabled a
 /**
  * street style
  */
- #street-div #back-div
- {
-    background: url('../building/street.png');
- }
- 
- #street-div #back-div
- {
-    background: url('../building/street2.png');
- }
- 
+#street-div #back-div,
+#street-div #backdoor,
+#street-div #backdoor:hover,
+#street-div #boy-dormitory-3,
+#street-div #boy-dormitory-3:hover,
+#street-div #boy-dormitory-5,
+#street-div #boy-dormitory-5:hover,
+#street-div #boy-dormitory-6,
+#street-div #boy-dormitory-6:hover,
+#street-div #boy-dormitory-7,
+#street-div #boy-dormitory-7:hover,
+#street-div #boy-dormitory-9,
+#street-div #boy-dormitory-9:hover,
+#street-div #boy-dormitory-11,
+#street-div #boy-dormitory-11:hover,
+#street-div #boy-dormitory-12,
+#street-div #boy-dormitory-12:hover,
+#street-div #boy-dormitory-13,
+#street-div #boy-dormitory-13:hover,
+#street-div #curtainDiv,
+#street-div #curtain-close-div,
+#street-div #cottage-muffin,
+#street-div #cottage-muffin:hover,
+#street-div #engineering-1,
+#street-div #engineering-1:hover,
+#street-div #engineering-2,
+#street-div #engineering-2:hover,
+#street-div #engineering-3,
+#street-div #engineering-3:hover,
+#street-div #engineering-5,
+#street-div #engineering-5:hover,
+#street-div #girl-dormitory-14,
+#street-div #girl-dormitory-14:hover,
+#street-div #girl-dormitory-1234,
+#street-div #girl-dormitory-1234:hover,
+#street-div #girl-dormitory-5,
+#street-div #girl-dormitory-5:hover,
+#street-div #hakka,
+#street-div #hakka:hover,
+#street-div #international-dormitory,
+#street-div #international-dormitory:hover,
+#street-div #liberal-arts,
+#street-div #liberal-arts:hover,
+#street-div #mathematics,
+#street-div #mathematics:hover,
+#street-div #management,
+#street-div #management:hover,
+#street-div #midnight-food,
+#street-div #midnight-food:hover,
+#street-div #new-postgraduate,
+#street-div #new-postgraduate:hover,
+#street-div #pine-restaurant,
+#street-div #pine-restaurant:hover,
+#street-div #photonics,
+#street-div #photonics:hover,
+#street-div #restaurant-7,
+#street-div #restaurant-7:hover,
+#street-div #restaurant-9,
+#street-div #restaurant-9:hover,
+#street-div #science-1,
+#street-div #science-1:hover,
+#street-div #science-2,
+#street-div #science-2:hover,
+#street-div #science-3,
+#street-div #science-3:hover,
+#street-div #science-4,
+#street-div #science-4:hover,
+#street-div #science-5,
+#street-div #science-5:hover,
+#street-div #science-teach,
+#street-div #science-teach:hover,
+#street-div #school-coffee,
+#street-div #school-coffee:hover,
+#street-div .one-image.dormitory,
+#street-div .one-image.diet,
+#street-div .one-image.department-building,
+#street-div .one-image.landscape,
+#street-div .one-image.government,
+#street-div .one-image.exercise,
+#street-div #playground,
+#street-div #playground:hover,
+#street-div #swimming-pool,
+#street-div #swimming-pool:hover,
+#street-div #stadium,
+#street-div #stadium:hover,
+#street-div #up-curtain-div,
+#street-div .curtainOpen,
+#street-div #curtainclose
+{
+    background: url('../images/street.png');
+}
+
+#street-div #administration,
+#street-div #administration:hover,
+#street-div #all-teach,
+#street-div #all-teach:hover,
+#street-div #big-tree,
+#street-div #big-tree:hover,
+#street-div #big-library,
+#street-div #big-library:hover,
+#street-div #computer-center,
+#street-div #computer-center:hover,
+#street-div #calligraphy,
+#street-div #calligraphy:hover,
+#street-div #ding-data-library,
+#street-div #ding-data-library:hover,
+#street-div #elephant-element,
+#street-div #elephant-element:hover,
+#street-div #flower-brook,
+#street-div #flower-brook:hover,
+#street-div #green-plain,
+#street-div #green-plain:hover,
+#street-div #girl-14-front,
+#street-div #girl-14-front:hover,
+#street-div #history-gallery,
+#street-div #history-gallery:hover,
+#street-div #kon-fu,
+#street-div #kon-fu:hover,
+#street-div #map-div,
+#street-div #ncu-lake,
+#street-div #ncu-lake:hover,
+#street-div #old-library,
+#street-div #old-library:hover,
+#street-div #pine-wind,
+#street-div #pine-wind:hover,
+#street-div #playing-dancing,
+#street-div #playing-dancing:hover,
+#street-div #stepping-cloud,
+#street-div #stepping-cloud:hover,
+#text-container,
+#street-div #turtle-pond,
+#street-div #turtle-pond:hover,
+#street-div #yun-step,
+#street-div #yun-step:hover
+#street-div .arrow.up,
+#street-div .arrow.up:hover,
+#street-div .arrow.left,
+#street-div .arrow.left:hover,
+#street-div .arrow.right,
+#street-div .arrow.right:hover,
+#street-div .arrow.back,
+#street-div #experience-personally
+{
+    background: url('../images/street2.png');
+}
+
 #street-div #all-selected-pic-ul
 {
     margin-left: 50px;
@@ -6960,28 +7096,28 @@ li.enabled a
 {
     width: 145px;
     height: 92px;
-    background:  url('../building/government/mouseleave/administration.png');
+    background-position: 0px -1120px;
     left: 315px;
     top: 288px;
 }
 
 #street-div #administration:hover
 {
-    background:  url('../building/government/mouseenter/administration.png');
+    background-position: -160px -1120px;
 }
 
 #street-div #all-teach
 {
     width: 93px;
     height: 76px;
-    background:  url('../building/government/mouseleave/all_teach.png');
+    background-position: -320px -1120px;
     left: 345px;
     top: 100px;
 }
 
 #street-div #all-teach:hover
 {
-    background:  url('../building/government/mouseenter/all_teach.png');
+    background-position: -480px -1120px;
 }
 
 #street-div #baseball-softball
@@ -7000,14 +7136,14 @@ li.enabled a
 {
     width: 66px;
     height: 83px;
-    background:  url('../building/landscape/mouseleave/big_tree.png');
+    background-position: -960px -1280px;
     left: 177px;
     top: 268px;
 }
 
 #street-div #big-tree:hover
 {
-    background:  url('../building/landscape/mouseenter/big_tree.png');
+    background-position: -1120px -1280px;
 }
 
 #street-div #back-div
@@ -7022,145 +7158,145 @@ li.enabled a
 {
     width: 117px;
     height: 121px;
-    background:  url('../building/government/mouseleave/big_library.png');
+    background-position: -640px -1120px;
     left: 272px;
     top: 190px;
 }
 
 #street-div #big-library:hover
 {
-    background:  url('../building/government/mouseenter/big_library.png');
+    background-position: -800px -1120px;
 }
 
 #street-div #backdoor
 {
     width: 128px;
     height: 96px;
-    background:  url('../building/food/mouseleave/backdoor.png');
+    background-position: -1712px -1120px;
     left: -4px;
     top: 184px;
 }
 
 #street-div #backdoor:hover
 {
-    background:  url('../building/food/mouseenter/backdoor.png');
+    background-position: -1872px -1120px;
 }
 
 #street-div #boy-dormitory-3
 {
     width: 116px;
     height: 100px;
-    background:  url('../building/dormitory/mouseleave/boy_dormitory_3.png');
+    background-position: -1712px -960px;
     left: 0px;
     top: 262px;
 }
 
 #street-div #boy-dormitory-3:hover
 {
-    background:  url('../building/dormitory/mouseenter/boy_dormitory_3.png');
+    background-position: -1872px -960px;
 }
 
 #street-div #boy-dormitory-5
 {
     width: 123px;
     height: 87px;
-    background:  url('../building/dormitory/mouseleave/boy_dormitory_5.png');
+    background-position: -752px -1120px;
     left: 185px;
     top: 370px;
 }
 
 #street-div #boy-dormitory-5:hover
 {
-    background:  url('../building/dormitory/mouseenter/boy_dormitory_5.png');
+    background-position: -912px -1120px;
 }
 
 #street-div #boy-dormitory-6
 {
     width: 108px;
     height: 60px;
-    background:  url('../building/dormitory/mouseleave/boy_dormitory_6.png');
+    background-position: -1072px -1120px;
     left: 230px;
     top: 460px;
 }
 
 #street-div #boy-dormitory-6:hover
 {
-    background:  url('../building/dormitory/mouseenter/boy_dormitory_6.png');
+    background-position: -1232px -1120px;
 }
 
 #street-div #boy-dormitory-7
 {
     width: 132px;
     height: 65px;
-    background:  url('../building/dormitory/mouseleave/boy_dormitory_7.png');
+    background-position: -1520px -480px;
     left: 11px;
     top: 450px;
 }
 
 #street-div #boy-dormitory-7:hover
 {
-    background:  url('../building/dormitory/mouseenter/boy_dormitory_7.png');
+    background-position: -1680px -480px;
 }
 
 #street-div #boy-dormitory-9
 {
     width: 106px;
     height: 94px;
-    background:  url(' ../building/dormitory/mouseleave/boy_dormitory_9.png');
+    background-position: -752px -960px;
     left: 495px;
     top: 260px;
 }
 
 #street-div #boy-dormitory-9:hover
 {
-    background:  url(' ../building/dormitory/mouseenter/boy_dormitory_9.png');
+    background-position: -912px -960px;
 }
 
 #street-div #boy-dormitory-11
 {
     width: 117px;
     height: 85px;
-    background:  url('../building/dormitory/mouseleave/boy_dormitory_11.png');
+    background-position: -1072px -800px;
     left: 56px;
     top: 372px;
 }
 
 #street-div #boy-dormitory-11:hover
 {
-    background:  url('../building/dormitory/mouseenter/boy_dormitory_11.png');
+    background-position: -1232px -800px;
 }
 
 #street-div #boy-dormitory-12
 {
     width: 90px;
     height: 67px;
-    background:  url('../building/dormitory/mouseleave/boy_dormitory_12.png');
+    background-position: -1072px -960px;
     left: 489px;
     top: 98px;
 }
 
 #street-div #boy-dormitory-12:hover
 {
-    background:  url('../building/dormitory/mouseenter/boy_dormitory_12.png');
+    background-position: -1232px -960px;
 }
 
 #street-div #boy-dormitory-13
 {
     width: 82px;
     height: 96px;
-    background:  url('../building/dormitory/mouseleave/boy_dormitory_13.png');
+    background-position: -1392px -960px;
     left: 148px;
     top: 431px;
 }
 
 #street-div #boy-dormitory-13:hover
 {
-    background:  url('../building/dormitory/mouseenter/boy_dormitory_13.png');
+    background-position: -1552px -960px;
 }
 
 #street-div #curtainDiv
 {
-    background: url('../building/curtain2.png') no-repeat;
+    background-position: -752px -192px;
     position: absolute;
     z-index: 2;
     top: 0px;
@@ -7171,7 +7307,7 @@ li.enabled a
 
 #street-div #curtain-close-div
 {
-     background: url('../building/curtain.png') no-repeat;
+     background-position: -1136px -192px;
      position: relative;
      float: right;
      width: 149px;
@@ -7194,64 +7330,67 @@ li.enabled a
 {
     width: 97px;
     height: 80px;
-    background:  url('../building/government/mouseleave/computer_center.png');
+    background-position: -960px -1120px;
     left: 428px;
     top: 132px;
 }
 
 #street-div #computer-center:hover
 {
-    background:  url('../building/government/mouseenter/computer_center.png');
+    background-position: -1120px -1120px;
 }
 
 #street-div #cottage-muffin
 {
     width: 106px;
     height: 106px;
-    background:  url('../building/food/mouseleave/cottage_muffin.png');
+    background-position: -1392px -1280px;
     left: 400px;
     top: 180px;
 }
 
 #street-div #cottage-muffin:hover
 {
-    background:  url('../building/food/mouseenter/cottage_muffin.png');
+    background-position: -1552px -1280px;
 }
 
 #street-div #curtainclose
 {
+    background-position: -1280px -192px;
     cursor: pointer;
     position: absolute;
     top: 415px;
     left: 327px;
+    width: 38px;
+    height: 125px;
 }
 
 #street-div #calligraphy
 {
     width: 169px;
     height: 158px;
-    background:  url('../building/landscape/mouseleave/calligraphy.png');
+    background-position: -1280px -1280px;
     left: 317px;
     top: 283px;
 }
 
 #street-div #calligraphy:hover
 {
-    background:  url('../building/landscape/mouseenter/calligraphy.png');
+    background-position: -1600px -1280px;
 }
 
 #street-div #ding-data-library
 {
     width: 90px;
     height: 99px;
-    background:  url('../building/government/mouseleave/ding_data_library.png');
+    background-position: -1280px -1120px;
     left: 450px;
     top: 178px;
 }
 
 #street-div #ding-data-library:hover
 {
-    background:  url('../building/government/mouseenter/ding_data_library.png');
+    background-position: -1440px -1120px;
 }
 
 #street-div #drag-me
@@ -7266,56 +7405,56 @@ li.enabled a
 {
     width: 52px;
     height: 75px;
-    background:  url('../building/landscape/mouseleave/elephant_element.png');
+    background-position: -0px -1440px;
     left: 465px;
     top: 252px;
 }
 
 #street-div #elephant-element:hover
 {
-    background:  url('../building/landscape/mouseenter/elephant_element.png');
+    background-position: -160px -1440px;
 }
 
 #street-div #engineering-1
 {
     height: 59px;
     width: 104px;
-    background: url('../building/college/mouseleave/engineering_1.png');
+    background-position: -1392px -1440px;
     left: 140px;
     top: 214px;
 }
 
 #street-div #engineering-1:hover
 {
-    background: url('../building/college/mouseenter/engineering_1.png');
+    background-position: -1552px -1440px;
 }
 
 #street-div #engineering-2
 {
     width: 109px;
     height: 66px;
-    background: url('../building/college/mouseleave/engineering_2.png');
+    background-position: -1552px -1600px;
     left: 111px;
     top: 174px;
 }
 
 #street-div #engineering-2:hover
 {
-    background: url('../building/college/mouseenter/engineering_2.png');
+    background-position: -1392px -1600px;
 }
 
 #street-div #engineering-3
 {
     width: 99px;
     height: 56px;
-    background: url('../building/college/mouseleave/engineering_3.png');
+    background-position: -1872px -1600px;
     left: 75px;
     top: 105px;
 }
 
 #street-div #engineering-3:hover
 {
-    background: url('../building/college/mouseenter/engineering_3.png');
+    background-position: -1712px -1600px;
 }
 
 #street-div #engineering-5
@@ -7324,104 +7463,107 @@ li.enabled a
     height: 91px;
     left: 0px;
     top: 75px;
-    background: url('../building/college/mouseleave/engineering_5.png');
+    background-position: -912px -1760px;
 }
 
 #street-div #engineering-5:hover
 {
-    background: url('../building/college/mouseenter/engineering_5.png');
+    background-position: -752px -1760px;
 }
 
 #street-div #experience-personally
 {
+    background-position: -464px -560px;
     position: absolute;
     top: 410px;
     left: 530px;
     z-index: 4;
+    width: 30px;
+    height: 36px;
 }
 
 #street-div #flower-brook
 {
     width: 238px;
     height: 119px;
-    background:  url('../building/landscape/mouseleave/flower_brook.png');
+    background-position: -960px -1600px;
     left: 153px;
     top: 175px;
 }
 
 #street-div #flower-brook:hover
 {
-    background:  url('../building/landscape/mouseenter/flower_brook.png');
+    background-position: -1280px -1600px;
 }
 
 #street-div #green-plain
 {
     width: 61px;
     height: 68px;
-    background:  url('../building/landscape/mouseleave/green_plain.png');
+    background-position: -640px -1440px;
     left: 300px;
     top: 135px;
 }
 
 #street-div #green-plain:hover
 {
-    background:  url('../building/landscape/mouseenter/green_plain.png');
+    background-position: -800px -1440px;
 }
 
 #street-div #girl-14-front
 {
     width: 116px;
     height: 91px;
-    background:  url('../building/landscape/mouseleave/girl_14_front.png');
+    background-position: -320px -1440px;
     left: 40px;
     top: 310px;
 }
 
 #street-div #girl-14-front:hover
 {
-    background:  url('../building/landscape/mouseenter/girl_14_front.png');
+    background-position: -480px -1440px;
 }
 
 #street-div #girl-dormitory-14
 {
     width: 116px;
     height: 91px;
-    background:  url('../building/dormitory/mouseleave/girl_dormitory_14.png');
+    background-position: -1840px -480px;
     left: 30px;
     top: 300px;
 }
 
 #street-div #girl-dormitory-14:hover
 {
-    background:  url('../building/dormitory/mouseenter/girl_dormitory_14.png');
+    background-position: -1520px -640px;
 }
 
 #street-div #girl-dormitory-1234
 {
     width: 101px;
     height: 103px;
-    background:  url('../building/dormitory/mouseleave/girl_dormitory_1234.png');
+    background-position: -1712px -800px;
     left: 38px;
     top: 157px;
 }
 
 #street-div #girl-dormitory-1234:hover
 {
-    background:  url('../building/dormitory/mouseenter/girl_dormitory_1234.png');
+    background-position: -1872px -800px;
 }
 
 #street-div #girl-dormitory-5
 {
     width: 159px;
     height: 95px;
-    background:  url('../building/dormitory/mouseleave/girl_dormitory_5.png');
+    background-position: -1392px -800px;
     left: 80px;
     top: 230px;
 }
 
 #street-div #girl-dormitory-5:hover
 {
-    background:  url('../building/dormitory/mouseenter/girl_dormitory_5.png');
+    background-position: -1552px -800px;
 }
 
 #street-div #gymnasium
@@ -7434,28 +7576,28 @@ li.enabled a
 {
     width: 130px;
     height: 85px;
-    background:  url('../building/government/mouseleave/history_gallery.png');
+    background-position: -1600px -1120px;
     left: 255px;
     top: 413px;
 }
 
 #street-div #history-gallery:hover
 {
-    background:  url('../building/government/mouseenter/history_gallery.png');
+    background-position: -1760px -1120px;
 }
 
 #street-div #hakka
 {
     width: 90px;
     height: 78px;
-    background:  url('../building/college/mouseleave/hakka.png');
+    background-position: -1232px -1760px;
     left: 304px;
     top: 25px;
 }
 
 #street-div #hakka:hover
 {
-    background:  url('../building/college/mouseenter/hakka.png');
+    background-position: -1072px -1760px;
 }
 
 #street-div #inside-choose
@@ -7477,47 +7619,47 @@ li.enabled a
 {
     width: 128px;
     height: 96px;
-    background:  url('../building/dormitory/mouseleave/international_dormitory.png');
+    background-position: -1072px -1280px;
     left: 133px;
     top: 311px;
 }
 
 #street-div #international-dormitory:hover
 {
-    background:  url('../building/dormitory/mouseenter/international_dormitory.png');
+    background-position: -1232px -1280px;
 }
 
 #street-div #kon-fu
 {
     width: 58px;
     height: 59px;
-    background:  url('../building/landscape/mouseleave/kon_fu.png');
+    background-position: -960px -1440px;
     left: 375px;
     top: 180px;
 }
 
 #street-div #kon-fu:hover
 {
-    background:  url('../building/landscape/mouseenter/kon_fu.png');
+    background-position: -1120px -1440px;
 }
 
 #street-div #liberal-arts
 {
     width: 144px;
     height: 90px;
-    background:  url('../building/college/mouseleave/liberal_arts.png');
+    background-position: -1552px -1760px;
     left: 381px;
     top: 229px;
 }
 
 #street-div #liberal-arts:hover
 {
-    background:  url('../building/college/mouseenter/liberal_arts.png');
+    background-position: -1392px -1760px;
 }
 
 #street-div #map-div
 {
-    background: url('../building/map_no_text.png') no-repeat;
+    background-position: 0px 0px;
     position: relative;
     float: left;
     width: 601px;
@@ -7528,42 +7670,42 @@ li.enabled a
 {
     width: 92px;
     height: 60px;
-    background:  url('../building/college/mouseleave/mathematics.png');
+    background-position: -1872px -1440px;
     left: 385px;
     top: 100px;
 }
 
 #street-div #mathematics:hover
 {
-    background:  url('../building/college/mouseenter/mathematics.png');
+    background-position: -1712px -1440px;
 }
 
 #street-div #management
 {
     width: 178px;
     height: 86px;
-    background:  url('../building/college/mouseleave/management.png');
+    background-position: -1520px -0px;
     left: 410px;
     top: 135px;
 }
 
 #street-div #management:hover
 {
-    background:  url('../building/college/mouseenter/management.png');
+    background-position: -1696px -0px;
 }
 
 #street-div #midnight-food
 {
     width: 102px;
     height: 88px;
-    background:  url('../building/food/mouseleave/midnight_food.png');
+    background-position: -752px -1280px;
     left: 12px;
     top: 291px;
 }
 
 #street-div #midnight-food:hover
 {
-    background:  url('../building/food/mouseenter/midnight_food.png');
+    background-position: -912px -1280px;
 }
 
 #street-div #mapPicture
@@ -7578,14 +7720,14 @@ li.enabled a
 {
     width: 112px;
     height: 84px;
-    background:  url('../building/dormitory/mouseleave/new_postgraduate.png');
+    background-position: -1392px -1120px;
     left: 433px;
     top: 162px;
 }
 
 #street-div #new-postgraduate:hover
 {
-    background:  url('../building/dormitory/mouseenter/new_postgraduate.png');
+    background-position: -1552px -1120px;
 }
 
 #street-div #ncu-lake
@@ -7594,124 +7736,124 @@ li.enabled a
     height: 72px;
     left: 292px;
     top: 60px;
-    background: url('../building/landscape/mouseleave/ncu_lake.png') no-repeat;
+    background-position: -1280px -1440px;
 }
 
 #street-div #ncu-lake:hover
 {
-    background: url('../building/landscape/mouseenter/ncu_lake.png') no-repeat;
+    background-position: -1440px -1440px;
 }
 
 #street-div #old-library
 {
     width: 127px;
     height: 91px;
-    background:  url('../building/government/mouseleave/old_library.png');
+    background-position: 0px -1280px;
     left: 177px;
     top: 152px;
 }
 
 #street-div #old-library:hover
 {
-    background:  url('../building/government/mouseenter/old_library.png');
+    background-position: -160px -1280px;
 }
 
 #street-div #pine-wind
 {
     width: 51px;
     height: 68px;
-    background:  url('../building/landscape/mouseleave/pine_wind.png');
+    background-position: -1600px -1440px;
     left: 34px;
     top: 205px;
 }
 
 #street-div #pine-wind:hover
 {
-    background:  url('../building/landscape/mouseenter/pine_wind.png');
+    background-position: -1760px -1440px;
 }
 
 #street-div #playground
 {
-    width: 192px;
-    height: 144px;
-    background:  url('../building/exercise/mouseleave/playground.png');
+    width: 160px;
+    height: 160px;
+    background-position: -1520px -320px;
     left: 23px;
     top: 84px;
 }
 
 #street-div #playground:hover
 {
-    background:  url('../building/exercise/mouseenter/playground.png');
+    background-position: -1680px -320px;
 }
 
 #street-div #pine-restaurant
 {
     width: 134px;
     height: 71px;
-    background:  url('../building/food/mouseleave/pine_restaurant.png');
+    background-position: -1712px -1280px;
     left: 84px;
     top: 148px;
 }
 
 #street-div #pine-restaurant:hover
 {
-    background:  url('../building/food/mouseenter/pine_restaurant.png');
+    background-position: -1872px -1280px;
 }
 
 #street-div #photonics
 {
     height: 63px;
     width: 95px;
-    background: url('../building/college/mouseleave/photonics.png');
+    background-position: -752px -1600px;
     left: 241px;
     top: 36px;
 }
 
 #street-div #photonics:hover
 {
-    background: url('../building/college/mouseenter/photonics.png');
+    background-position: -912px -1600px;
 }
 
 #street-div #playing-dancing
 {
     width: 214px;
     height: 98px;
-    background:  url('../building/government/mouseleave/playing_dancing.png');
+    background-position: -320px -1280px;
     left: 55px;
     top: 390px;
 }
 
 #street-div #playing-dancing:hover
 {
-    background:  url('../building/government/mouseenter/playing_dancing.png');
+    background-position: -640px -1280px;
 }
 
 #street-div #restaurant-7
 {
     width: 132px;
     height: 65px;
-    background:  url('../building/food/mouseleave/restaurant_7.png');
+    background-position: -752px -1440px;
     left: 125px;
     top: 442px;
 }
 
 #street-div #restaurant-7:hover
 {
-    background:  url('../building/food/mouseenter/restaurant_7.png');
+    background-position: -912px -1440px;
 }
 
 #street-div #restaurant-9
 {
     width: 85px;
     height: 75px;
-    background:  url('../building/food/mouseleave/restaurant_9.png');
+    background-position: -1680px -640px;
     left: 493px;
     top: 240px;
 }
 
 #street-div #restaurant-9:hover
 {
-    background:  url('../building/food/mouseenter/restaurant_9.png');
+    background-position: -1840px -640px;
 }
 
 #street-div #rock-climbing
@@ -7730,98 +7872,98 @@ li.enabled a
 {
     width: 160px;
     height: 120px;
-    background:  url('../building/exercise/mouseleave/swimming-pool.png');
+    background-position: -1840px -160px;
     left: 252px;
     top: 49px;
 }
 
 #street-div #swimming-pool:hover
 {
-    background:  url('../building/exercise/mouseenter/swimming-pool.png');
+    background-position: -1840px -320px;
 }
 
 #street-div #stadium
 {
     width: 132px;
     height: 99px;
-    background:  url('../building/exercise/mouseleave/stadium.png');
+    background-position: -1520px -160px;
     left: 163px;
     top: 84px;
 }
 
 #street-div #stadium:hover
 {
-    background:  url('../building/exercise/mouseenter/stadium.png');
+    background-position: -1680px -160px;
 }
 
 #street-div #science-1
 {
     width: 113px;
     height: 69px;
-    background:  url('../building/college/mouseleave/science_1.png');
+    background-position: -1072px -1600px;
     left: 216px;
     top: 312px;
 }
 
 #street-div #science-1:hover
 {
-    background:  url('../building/college/mouseenter/science_1.png');
+    background-position: -1232px -1600px;
 }
 
 #street-div #science-2
 {
     width: 61px;
     height: 66px;
-    background:  url('../building/college/mouseleave/science_2.png');
+    background-position: -1872px -1760px;
     left: 291px;
     top: 80px;
 }
 
 #street-div #science-2:hover
 {
-    background:  url('../building/college/mouseenter/science_2.png');
+    background-position: -1712px -1760px;
 }
 
 #street-div #science-3
 {
     width: 78px;
     height: 61px;
-    background:  url('../building/college/mouseleave/science_3.png');
+    background-position: -912px -1920px;
     left: 345px;
     top: 84px;
 }
 
 #street-div #science-3:hover
 {
-    background:  url('../building/college/mouseenter/science_3.png');
+    background-position: -752px -1920px;
 }
 
 #street-div #science-4
 {
     height: 74px;
     width: 91px;
-    background: url('../building/college/mouseleave/science_4.png');
+    background-position: -1232px -1920px;
     left: 383px;
     top: 30px;
 }
 
 #street-div #science-4:hover
 {
-    background: url('../building/college/mouseenter/science_4.png');
+    background-position: -1072px -1920px;
 }
 
 #street-div #science-5
 {
     height: 72px;
     width: 89px;
-    background: url('../building/college/mouseleave/science_5.png');
+    background-position: -1552px -1920px;
     left: 450px;
     top: 84px;
 }
 
 #street-div #science-5:hover
 {
-    background: url('../building/college/mouseenter/science_5.png');
+    background-position: -1392px -1920px;
 }
 
 #street-div
@@ -7833,42 +7975,42 @@ li.enabled a
 {
     width: 73px;
     height: 71px;
-    background:  url('../building/landscape/mouseleave/stepping_cloud.png');
+    background-position: 0px -1600px;
     left: 135px;
     top: 289px;
 }
 
 #street-div #stepping-cloud:hover
 {
-    background:  url('../building/landscape/mouseenter/stepping_cloud.png');
+    background-position: -160px -1600px;
 }
 
 #street-div #science-teach
 {
     width: 82px;
     height: 107px;
-    background:  url('../building/college/mouseleave/science_teach.png');
+    background-position: -1872px -1920px;
     left: 421px;
     top: 5px;
 }
 
 #street-div #science-teach:hover
 {
-    background:  url('../building/college/mouseenter/science_teach.png');
+    background-position: -1712px -1920px;
 }
 
 #street-div #school-coffee
 {
     width: 109px;
     height: 105px;
-    background:  url('../building/food/mouseleave/school_coffee.png');
+    background-position: -1072px -1440px;
     left: 493px;
     top: 127px;
 }
 
 #street-div #school-coffee:hover
 {
-    background:  url('../building/food/mouseenter/school_coffee.png');
+    background-position: -1232px -1440px;
 }
 
 #street-div select-picture-container
@@ -7908,31 +8050,31 @@ li.enabled a
     position: fixed;
     z-index: 1500;
     display: none;
-    background: url('../building/introduction.png') no-repeat;
+    background-position: -0px -640px;
 }
 
 #street-div #turtle-pond
 {
     width: 59px;
     height: 57px;
-    background:  url('../building/landscape/mouseleave/turtle_pond.png');
+    background-position: -320px -1600px;
     left: 500px;
     top: 238px;
 }
 
 #street-div #turtle-pond:hover
 {
-    background:  url('../building/landscape/mouseenter/turtle_pond.png');
+    background-position: -480px -1600px;
 }
 
 #street-div #up-curtain-div
 {
-     background: url('../building/curtain_up.png') no-repeat; 
-     position: absolute;
-     margin-top: opx;
-     z-index: 2;
-     height: 88px;
-     width: 750px;
+    background-position: -752px -96px;
+    position: absolute;
+    margin-top: opx;
+    z-index: 2;
+    height: 88px;
+    width: 750px;
 }
 
 #street-div #view-picture-container
@@ -7947,14 +8089,14 @@ li.enabled a
 {
     width: 50px;
     height: 88px;
-    background:  url('../building/landscape/mouseleave/yun_step.png ');
+    background-position: -640px -1600px;
     left: 237px;
     top: 275px;
 }
 
 #street-div #yun-step:hover
 {
-    background:  url('../building/landscape/mouseenter/yun_step.png ');
+    background-position: -800px -1600px;
 }
 
 #street-div .arrow
@@ -7969,49 +8111,49 @@ li.enabled a
 {
     width: 77px;
     height: 54px;
-    background: url('../building/arrow_up.png') no-repeat;
+    background-position: -384px -560px;
     left: 350px;
     top: 0px;
 }
 
 #street-div .arrow.up:hover
 {
-    background: url('../building/show-point_up.png') no-repeat;
+    background-position: -112px -560px;
 }
 
 #street-div .arrow.left
 {
     width: 40px;
     height: 62px;
-    background: url('../building/arrow_left.png') no-repeat;
+    background-position: -288px -560px;
     left: 4px;
     top: 249px;
 }
 
 #street-div .arrow.left:hover
 {
-    background: url('../building/show-point_left.png') no-repeat;
+    background-position: -192px -560px;
 }
 
 #street-div .arrow.right
 {
     width: 40px;
     height: 62px;
-    background: url('../building/arrow_right.png') no-repeat;
+    background-position: -336px -560px;
     left: 707px;
     top: 249px;
 }
 
 #street-div .arrow.right:hover
 {
-    background: url('../building/show-point_right.png') no-repeat;
+    background-position: -240px -560px;
 }
 
 #street-div .arrow.back
 {
     height: 51px;
     width: 100px;
-    background: url('../building/back.png');
+    background-position: 0px -560px;
     left: 650px;
     top: 3px;
     cursor: pointer;
@@ -8024,10 +8166,13 @@ li.enabled a
 
 #street-div .curtainOpen
 {
+    background-position: -1328px -192px;
     cursor: pointer;
     margin-top: 325px;
     margin-left: 85px;
     z-index: 2;
+    width: 48px;
+    height: 99px;
 }
 
 .dialog-close-button
@@ -8079,42 +8224,42 @@ li.enabled a
 
 #street-div .one-image.dormitory
 {
-    background: url('../building/dormitory/dormitory.png');
+    background-position: -80px -1920px;
     top: 10px;
     left: 20px;
 }
 
 #street-div .one-image.diet
 {
-    background: url('../building/food/food.png');
+    background-position: -240px -1920px;
     top: 10px;
     left: 475px;
 }
 
 #street-div .one-image.department-building
 {
-    background: url('../building/college/college.png');
+    background-position: -0px -1920px;
     top: -2px;
     left: 306px; 
 }
 
 #street-div .one-image.landscape
 {
-    background: url('../building/landscape/landscape.png');
+    background-position: -400px -1920px;
     top: 10px;
     left: 150px;
 }
 
 #street-div .one-image.government
 {
-    background: url('../building/government/government-out.png');
+    background-position: -320px -1920px;
     top: 10px;
     left: 590px;
 }
 
 #street-div .one-image.exercise
 {
-    background: url('../building/exercise/exercise.png');
+    background-position: -160px -1920px;
     top: 31px;
     left: 687px;
 }
