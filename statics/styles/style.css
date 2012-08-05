@@ -1778,23 +1778,23 @@ table.gsc-completion-container
 
 .calendar .right
 {
-    height: 80%;
+    /*height: 80%;
     width: 50%;
-    float: left;
+    float: left;*/
 }
 
-.calendar .right.scroll-container
+.calendar .scroll-container
 {
-    height: 550px;
-    width: 300px;
+    height: 500px;
+    width: 250px;
 }
 
-.calendar .right.scroll-container .scroll-content
+.calendar .scroll-container .scroll-content
 {
-    width: 300px;
+    width: 250px;
 }
 
-.calendar .right .scroll-content div > div
+.calendar .scroll-content div > div
 {
     background-position: -848px -1264px;
     padding-top: 15px;
