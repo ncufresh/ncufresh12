@@ -4325,10 +4325,9 @@ div.a-group-users div.avatar
 
 #friend-chatting ul
 {
-    width:392px;
+    width:394px;
     margin-left:25px;
     padding:0px;
-    border:1px solid black;
 }
 
 #friend-chatting ul li
@@ -4657,16 +4656,32 @@ div.profile-message-reply h4
 .button-cancel,
 .button-sure,
 .button-makefriend,
-#friend_request,
-#is_friend,
 #button-editor-sure,
 .button-addgroup,
 #button-deletemember,
 #button-push,
-.button-mygroup,
-#add-new-friends
+.button-mygroup
 {
-    background: #FFFFFF;
+    background: rgba(8, 196, 255, 0.07);
+    border: 1px solid #B0B0B0;
+    box-shadow: 0 0 0 #000000, 0 3px 3px #D3D3D3 inset;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    height: 40px;
+    line-height: 30px;
+    margin-left: 20px;
+    outline: none;
+    padding: 4px 16px;
+    position: relative;
+    width: auto;
+}
+
+#add-new-friends,
+#friend_request,
+#is_friend
+{
+    background: rgba(255, 8, 28, 0.19);
     border: 1px solid #B0B0B0;
     box-shadow: 0 0 0 #000000, 0 3px 3px #D3D3D3 inset;
     border-radius: 5px;
@@ -4688,7 +4703,7 @@ a#button-editor-cancel,
 #button-deletegroup,
 #button-back-reply
 {
-    background: #FFFFFF;
+    background: rgba(8, 196, 255, 0.07);
     border: 1px solid #B0B0B0;
     box-shadow: 0 0 0 #000000, 0 3px 3px #D3D3D3 inset;
     border-radius: 5px;
