@@ -4235,7 +4235,7 @@ div.a-group-users div.avatar
 {
     margin-left:20px;
     margin-top:0px;
-    width:100px; 
+    width:94px; 
     height:70px;
     padding:0px;
     float:left;
@@ -4340,41 +4340,21 @@ div.a-group-users div.avatar
     padding:0px;
 }
 
-div.my-all-messages
+#my-all-messages
 {
     width:600px;
-    height:310px;
-    margin-top:20px;
+    height:330px;
+    margin-top:35px;
     margin-left:35px;
     padding:5px;
-}
-
-.my-all-messages .scroll-container
-{
-    width:600px;
-}
-
-.my-all-messages .scroll-content
-{
-    width:600px;
 }
 
 div.allmessages
 {
     width:490px;
     height:290px;
-    margin-top:55px;
+    margin-top:0px;
     padding:5px;
-}
-
-div.allmessages .scroll-container
-{
-    width:490px;
-}
-
-div.allmessages .scroll-content
-{
-    width:490px;
 }
 
 div.allmessages form
@@ -4510,6 +4490,17 @@ div.profile-message-allmessages
     margin:0px;
 }
 
+div.profile-message-allmessages .scroll-container
+{
+    width:670px;
+    height:317px;
+}
+
+div.profile-message-allmessages .scroll-content
+{
+    width:690px;
+}
+
 div.profile-message-allmessages table
 {
     width:530px;
@@ -4545,6 +4536,22 @@ div.profile-message-reply
     padding:25px;
     margin:0px;
     float:left;
+}
+
+.profile-message-reply .scroll-container
+{
+    width:490px;
+    height:290px;
+}
+
+.profile-message-reply .scroll-content
+{
+     width:490px;
+}
+
+div.profile-message-reply h4
+{
+    text-align:center;
 }
 
 .button-viewProfile-back,
@@ -4840,18 +4847,18 @@ div.delete-group
 #self-messages-content
 {
     width:165px;
-    height:125px;
     padding:0px;
     margin:0px;
     float:left;
 }
 
-#self-messages-content .scroll-container
+#article-content .scroll-container
 {
     width:165px;
+    height:125px;
 }
 
-#self-messages-content .scroll-content
+#article-content .scroll-content
 {
     width:165px;
 }
@@ -4889,6 +4896,16 @@ ul#self-message
     list-style-type:none;
 }
 
+ul#self-message .scroll-container
+{
+    width: 165px;
+}
+
+ul#self-message .scroll-content
+{
+    width: 165px;
+}
+
 li.article-title
 {
     text-align: left;
@@ -4909,8 +4926,19 @@ li#article-content
 {
     outline: 1px solid black;
     width: 165px;
-	height: 125px;
+	height: 120px;
     list-style-type:none;
+}
+
+li#article-content .scroll-container
+{
+    width: 165px;
+    height: 120px;
+}
+
+li#article-content .scroll-content
+{
+    width: 165px;
 }
 
 #introduce

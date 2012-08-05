@@ -1,6 +1,6 @@
 <h4>論壇回覆</h4>
 <div class="profile-message-allmessages">
-    <div class="my-all-messages">
+    <div id="my-all-messages">
         <table>
             <tr>
                 <th>標題</th>
@@ -21,4 +21,4 @@
         </table>
     </div>
 </div>
-<a href="<?php echo Yii::app()->createUrl('site/index'); ?>" class="button-back"></a>
+<a href="<?php echo Yii::app()->createUrl('site/index'); ?>" class="button-back">BACK</a>
