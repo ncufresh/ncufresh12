@@ -42,6 +42,13 @@ class  Group extends CActiveRecord
         );
     }
 
+    protected function afterFind()
+    {
+        parent::afterFind();
+        $this->name = htmlspecialchars( $this->name );
+        $this->description = htmlspecialchars( $this->description );
+    }
+
     public function deleteGroup($groupid)
     {
         $groupid = (integer)$groupid;  
