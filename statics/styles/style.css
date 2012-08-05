@@ -3963,7 +3963,7 @@ ul.friends-sort
 ul.friends-sort li
 {
     width:105px;
-    height:75px;
+    height:83px;
     float:left;
     color:DarkBlue;
     list-style-type:none;
@@ -4432,6 +4432,12 @@ div.friends-sortfriend div.avatar
     height:370px;
     padding:25px;
     margin:0px;
+}
+
+.myprofile h4
+{
+    text-align:center;
+    color:#8427C2;
 }
 
 #newgroup
