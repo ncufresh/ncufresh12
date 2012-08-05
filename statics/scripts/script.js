@@ -2822,7 +2822,7 @@
 })(jQuery);
 
 (function($) {
-    var url = '../statics/street-view/';
+    var url = '../statics/streets/';
     var nowfaceto;
     var nowpointat;
     var loading = false;
@@ -4319,6 +4319,8 @@
         {
             id = $(this).attr('href').replace('#', '');
             $('#game-mission-dialog').dialog({
+                height: 600,
+                width: 900
                 // dialogClass: 'game-mission'
             });
             $.getJSON($.configures.gameMissionUrl.replace(':id',id),function(data){
