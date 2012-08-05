@@ -60,7 +60,7 @@ else if ( $fid == 22 || $fid == 23 )
 ?>
         <div class="profile-add-friend">
             <?php if ( $relation === Friend::IS_NOT_FRIEND ) : ?>
-            <a class="add-friend" href="#<?php echo $article->author_id;?>">+加為好友+</a>
+            <a class="add-friend-<?php echo $article->author_id;?>" href="#<?php echo $article->author_id;?>">+加為好友+</a>
             <?php elseif ( $relation === Friend::IS_SEND_REQUEST ) : ?>
             <span>已送出邀請</span>
             <?php elseif ( $relation === Friend::IS_FRIEND ) : ?>
@@ -115,7 +115,7 @@ foreach ($replies as $each):
 ?>
         <div class="profile-add-friend">
             <?php if ( $relation === Friend::IS_NOT_FRIEND ) : ?>
-            <a class="add-friend" href="#<?php echo $each->author_id;?>">+加為好友+</a>
+            <a class="add-friend-<?php echo $each->author_id;?>" href="#<?php echo $each->author_id;?>">+加為好友+</a>
             <?php elseif ( $relation === Friend::IS_SEND_REQUEST ) : ?>
             <span>已送出邀請</span>
             <?php elseif ( $relation === Friend::IS_FRIEND ) : ?>
