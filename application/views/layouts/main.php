@@ -7,6 +7,7 @@
     <meta name="keywords" content="國立中央大學, 中央大學, 中大, 央大, 大一生活知訊網, 生活知訊網, 知訊網, NCU, NCUFreshWeb, NCUFresh, 2012" />
     <meta name="author" content="National Central University FreshWeb Team." />
     <meta name="revised" content="<?php echo date('Y/m/d'); ?>" />
+    <meta name="google-site-verification" content="bV-6NsNHeY88_KDBt4G6B0xyJgsIot-eKruL-TZfUkg" />
 
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/styles/print.css" media="print" />
@@ -19,6 +20,18 @@
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/statics/favicon.ico" rel="shortcut icon">
 
     <title><?php echo $this->getPageTitle(); ?></title>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-33883883-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
 </head>
 
 <body>
