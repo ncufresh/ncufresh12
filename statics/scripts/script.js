@@ -1584,7 +1584,7 @@
             }
             self.markToday();
         }
-        $('#personal-calendar .right').remove();
+        $('#personal-calendar').find('.right').remove();
         if ( $.browser.msie )
         {
             container = $('<div></div>').addClass('scroll-container').addClass('right').insertAfter($('#personal-calendar .date'));

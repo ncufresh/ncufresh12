@@ -1778,14 +1778,14 @@ table.gsc-completion-container
 
 .calendar .right
 {
-    height: 80%;
+    /*height: 80%;
     width: 50%;
-    float: left;
+    float: left;*/
 }
 
 .calendar .scroll-container
 {
-    height: 550px;
+    height: 500px;
     width: 250px;
 }
 
