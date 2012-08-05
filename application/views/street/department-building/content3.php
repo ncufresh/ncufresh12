@@ -31,7 +31,6 @@
 <p>
 	科系：<a href="http://www.ee.ncu.edu.tw/" title="電機">電機</a>、<a href="http://www.ce.ncu.edu.tw/ce/" title="通訊">通訊</a>
 </p>
-<hr />
 <p>
     <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2478(1).JPG" style="width:255px;height:340px; margin-left: 5px; margin-right: 8px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2480.JPG" style="width:320px;height:240px;" />
 </p>

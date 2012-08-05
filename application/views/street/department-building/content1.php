@@ -41,7 +41,6 @@
 <p>
     科系：<a href="http://www.csie.ncu.edu.tw/show.php" title="資工">資工</a>
 </p>
-<hr />
 <p>
     <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2441.JPG" style="width:320px;height:180px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2766.JPG" style="width:320px;height:180px;" />
 </p>
