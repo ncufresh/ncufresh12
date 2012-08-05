@@ -3305,18 +3305,17 @@
 
                     move($('#' + mouseInId).attr('streetPoints'), $('#' + mouseInId).attr('faceto'));
 
-                    $('#street-div .street-loading').show();
+                    $('#street-div .street-pu').show();
                     $('#street-div .arrow').eq(0).unbind('click').click(function() //前進nextDirection
                     {
-                    console.log(loading);
                         if ( ! loading ) forward();
                     });
                      $('#street-div .arrow').eq(1).unbind('click').click(function() // 左旋
-                    {console.log(loading);
+                    {
                         if ( ! loading ) turnLeft();
                     });
                     $('#street-div .arrow').eq(2).unbind('click').click(function() // 右旋
-                    {console.log(loading);
+                    {
                         if ( ! loading ) turnRight();
                     });
 
@@ -3413,11 +3412,7 @@
                 width: 680,
                 height: 400,
                 modal: true,
-                escape: false,
-                onClose: function()
-                {
-                    // $('  #mapPicture').attr('src', $('#mapPicture').attr('path'));
-                }
+                escape: false
             });
 
             $('#street-div .arrow').hide();
