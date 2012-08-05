@@ -333,10 +333,11 @@ a:hover
 
 .scroll-container .scroll-bar
 {
+    display: none;
     height: 98%;
-    right: 2px;
     margin-top: -1px;
     position: absolute;
+    right: 2px;
     top: 1%;
     width: 6px;
 }
@@ -3245,12 +3246,13 @@ button.news-button
 #about .tag-bar1,
 #about .tag-bar2,
 #about .tag-bar3,
-#about .tag-bar4
+#about .tag-bar4,
+#about .tag-bar5
 {
     background: url('../about/photo.jpg') no-repeat;
 }
 
-#about .itr-block
+#about .itrodution-block
 {
     padding-left: 15px;
     padding-bottom: 10px;
@@ -3347,7 +3349,7 @@ button.news-button
     overflow: hidden;
 }
 
-#about .about-block1Pic
+#about .about-block1Picture
 {
     left: 25px;
     height: 280px;
@@ -3407,7 +3409,6 @@ button.news-button
 
 #about .about-photos
 {
-    border-radius: 10px;
     height: 40px;
     float: left;
     margin: 5px;
@@ -3478,6 +3479,14 @@ button.news-button
     width: 122px;
 }
 
+#about .about-small-6
+{
+    top: 8px;
+    left: 198px;
+    height: 113px;
+    width: 196px;
+}
+
 #about .hidden
 {
     display: none;
@@ -3528,6 +3537,12 @@ button.news-button
 #about .tag-bar4
 {
     background-position: -560px -432px;
+    display: none;
+}
+
+#about .tag-bar5
+{
+    background-position: -560px -864px;
     display: none;
 }
 
@@ -3948,7 +3963,7 @@ ul.friends-sort
 ul.friends-sort li
 {
     width:105px;
-    height:75px;
+    height:83px;
     float:left;
     color:DarkBlue;
     list-style-type:none;
@@ -4419,6 +4434,12 @@ div.friends-sortfriend div.avatar
     margin:0px;
 }
 
+.myprofile h4
+{
+    text-align:center;
+    color:#8427C2;
+}
+
 #newgroup
 {
     background-image:url('../profile/newgroup.png');
@@ -4619,9 +4640,74 @@ a#button-editor-cancel
     padding: 0;
 }
 
+#sitemap div
 {
-    min-height: 240px;
+    border-radius: 5px;
+    margin: 10px 0;
     overflow: hidden;
+    padding: 10px;
+}
+
+#sitemap h4
+{
+    border-radius: 5px;
+    padding: 5px 5px 5px 10px;
+}
+
+#sitemap ul
+{
+    margin: 5px 0;
+}
+
+#sitemap div > ul > li
+{
+    padding: 0 5px;
+    width: 25%;
+}
+
+#sitemap div > ul ul > li
+{
+    padding-left: 10px;
+}
+
+#sitemap .freshman
+{
+    background: #D9FEDE;
+}
+
+#sitemap .freshman h4
+{
+    background: #BCFCC3;
+}
+
+#sitemap .discuss
+{
+    background: #FCCCE7;
+}
+
+#sitemap .discuss h4
+{
+    background: #FD8BC4;
+}
+
+#sitemap .personal
+{
+    background: #FAFAC9;
+}
+
+#sitemap .personal h4
+{
+    background: #F7E185;
+}
+
+#sitemap .information
+{
+    background: #D1EDF6;
+}
+
+#sitemap .information h4
+{
+    background: #8FC4F0;
 }
 
 #sitemap div > ul > li

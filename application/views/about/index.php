@@ -1,6 +1,6 @@
 <div class="title1"></div>
 <div class="block1">
-    <div class="itr-block">
+    <div class="itrodution-block">
         <div class="about-picture"></div>
         <p>嗨！各位新生你們好！求學的新階段總是令人興奮，特別是從高中解脫的你們，對於新生活總是既期待又怕受傷害。身為學長姐的我們，曾經也走過這段，心情也正是如此，像個無頭蒼蠅毫無目的，正是聽到你們的呼叫，化身為「大一生活知訊網」，成為你們的＂校園網路導覽員＂！</p>
         <p>一年又一年的經驗傳承及追求創新，知訊網的進步、所有的付出，都是為了讓新鮮人，帶著期待、愉快的心情來迎接大學生活，並能夠對校園周遭的環境及資源有初步的認識，甚至是提早認識新朋友！有關宿舍、生活、註冊....所有的一切，都可以透過知訊網來得知。</p>
@@ -21,6 +21,7 @@
 </div>
 <div class="title2"></div>
 <div class="block2">
+    <div class="animation"></div>
     <div class="animation"></div>
     <div class="animation"></div>
     <div class="animation"></div>
@@ -48,21 +49,21 @@
             <div class="person" name="李韋成" grade="資工三" left="256px" top="145px" width="50px" height="50px"></div>
             <div class="person" name="林志信" grade="資工二" left="250px" top="37px" width="50px" height="50px"></div>
             <div class="person" name="黃熙程" grade="資工二" left="403px" top="24px" width="50px" height="50px"></div>
-            <div class="person" name="陳薏如" grade="資工三" left="178px" top="127px" width="50px" height="50px"></div>
+            <div class="person" name="陳薏如" grade="資工三" left="178px" top="132px" width="50px" height="50px"></div>
             <div class="person" name="羅雨晴" grade="資工二" left="372px" top="57px" width="50px" height="50px"></div>
             <div class="person" name="梁郁珮" grade="資工二" left="92px" top="175px" width="50px" height="50px"></div>
             <div class="person"></div>
         </li>
         <li>
             <div class="tag-image"></div>
-            <div class="person" name="賀靖雅" grade="資管三" left="206px" top="138px" width="62px" height="62px"></div>
-            <div class="person" name="蘇致維" grade="資工三" left="354px" top="71px" width="58px" height="58px"></div>
-            <div class="person" name="鐘育東" grade="資工二" left="183px" top="88px" width="58px" height="58px"></div>
-            <div class="person" name="賴韋辰" grade="資工二" left="316px" top="117px" width="58px" height="58px"></div>
-            <div class="person" name="吳易璁" grade="資工二" left="287px" top="110px" width="50px" height="50px"></div>
-            <div class="person" name="王禹軒" grade="資工二" left="" top="" width="" height=""></div>
-            <div class="person" name="林雅淇" grade="資工二" left="238px" top="102px" width="50px" height="50px"></div>
-            <div class="person" name="許庭瑜" grade="資工二" left="129px" top="142px" width="60px" height="60px"></div>
+            <div class="person" name="賀靖雅" grade="資管三" left="164px" top="69px" width="54px" height="54px"></div>
+            <div class="person" name="蘇致維" grade="資工三" left="306px" top="122px" width="54px" height="54px"></div>
+            <div class="person" name="鐘育東" grade="資工二" left="287px" top="49px" width="54px" height="54px"></div>
+            <div class="person" name="賴韋辰" grade="資工二" left="216px" top="181px" width="62px" height="62px"></div>
+            <div class="person" name="吳易璁" grade="資工二" left="234px" top="52px" width="50px" height="50px"></div>
+            <div class="person" name="王禹軒" grade="資工二" left="188px" top="35px" width="50px" height="50px"></div>
+            <div class="person" name="林雅淇" grade="資工二" left="163px" top="125px" width="51px" height="51px"></div>
+            <div class="person" name="許庭瑜" grade="資工二" left="219px" top="98px" width="57px" height="57px"></div>
             <div class="person"></div>
         </li>
         <li>
@@ -81,6 +82,9 @@
             <div class="tag-image"></div>
             <div class="person" name="黃筱萍" grade="資工三" left="152px" top="37px" width="95px" height="95px"></div>
             <div class="person" name="盧婉芳" grade="資工三" left="244px" top="24px" width="95px" height="95px"></div>
+        </li>
+        <li>
+            <div class="tag-image"></div>
         </li>
     </ul>
     <div class="tag-txt"></div>
