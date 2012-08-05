@@ -3433,8 +3433,8 @@
     {
         var getTabContent = function()
         {
-            var tab = jQuery(this).attr('tab');
-            var page = jQuery(this).attr('page');
+            var tab = $(this).attr('tab');
+            var page = $(this).attr('page');
             jQuery.getJSON(
                 jQuery.configures.ncuLifeUrl.replace(':tab', tab).replace(':page', page),
                 function(data)
@@ -3553,8 +3553,8 @@
     {
         var getTabContent = function()
         {
-            var tab = jQuery(this).attr('tab');
-            var page = jQuery(this).attr('page');
+            var tab = $(this).attr('tab');
+            var page = $(this).attr('page');
             jQuery.getJSON(
                 jQuery.configures.readMeUrl.replace(':tab', tab).replace(':page', page),
                 function(data)
@@ -3617,11 +3617,11 @@
             switch( window.location.hash.replace('#', '') )
         {
             case 'freshman' :
-                jQuery('#readme-logo1').click();
+                $('#readme-logo1').click();
             break;
 
             case 'reschool' :
-                jQuery('#readme-logo2').click();
+                $('#readme-logo2').click();
             break;
         }
     };
@@ -4396,7 +4396,7 @@
     $.profile = function()
     {
         $('.allmessages, #my-all-messages, #self-messages-content, #friend-chatting, .friend-chatting-content').scrollable();
-        jQuery('.button-viewProfile-back').click(function()
+        $('.button-viewProfile-back').click(function()
         {
             window.history.back();
         }); 
@@ -4571,7 +4571,7 @@
 {
     $.site = function()
     {
-        const SEGMENT = 100 / 5;
+        var segment = 100 / 5;
 
         var meter = $('#form-password-meter');
 
@@ -4800,7 +4800,7 @@
             if ( $(this).val() !== '' )
             {
                 var score = calculatePasswordScore($(this).val());
-                var level = parseInt(score / SEGMENT) + 1;
+                var level = parseInt(score / segment) + 1;
 
                 meter.find('td').css({
                     backgroundColor: 'transparent'
@@ -4823,6 +4823,10 @@
                     .keydown(checkPasswordStrength)
             );
         }
+
+        if ( $('#marquee').length ) $('#marquee').marquee();
+
+        if ( $('#index-calendar').length ) $('#index-calendar div').calendar($.configures.calendarEventsUrl);
     };
 })(jQuery);
 
