@@ -1120,10 +1120,15 @@ a:hover
     cursor: pointer;
 }
 
-#chat-friend-list .scroll-container,
-#chat-friend-list-container
+#chat-friend-list .scroll-container
 {
     height: 180px;
+    width: 160px;
+}
+
+#chat-friend-list .scroll-content
+{
+    width: 160px;
 }
 
 #chat-friend-list .friend-list-entry
@@ -1299,12 +1304,22 @@ a:hover
 .chat-dialog .scroll-container
 {
     height: 150px;
+    width: 160px;
+}
+
+.chat-dialog .scroll-content
+{
+    width: 160px;
+}
+
+.chat-dialog .scroll-bar
+{
+    height: 144px;
 }
 
 .chat-dialog .scroll-area
 {
     margin: -3px 0;
-    width: 160px;
 }
 
 #chat-name
@@ -1589,7 +1604,7 @@ ul#nculife-details
 #club #calendar  .calendar-table td,
 #index-calendar .calendar-table td
 {
-    text-align: right;
+    text-align: center;
     width: 28px;
     cursor: pointer;
 }
