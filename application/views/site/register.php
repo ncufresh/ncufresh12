@@ -164,7 +164,7 @@
             <label for="form-register-senior">畢業高中</label>
         </dt>
         <dd>
-            <input id="form-register-senior" name="profile[senior]" type="text" />
+            <input id="form-register-senior" name="profile[senior]" type="text" maxlength=8 />
             <span>
                 請輸入您的畢業高中！
             </span>
