@@ -3,7 +3,7 @@
     <div id="profile-friend">
      <a href="<?php echo Yii::app()->createUrl('game/index', array('id' => $user->id)); ?>">
 <?php $this->widget('Avatar', array(
-    'id'        => $user->id //得到profile的id---觀看他人基本資料
+    'id'        => $user->id 
 )); ?>
     </a>
         <ul id="user-data-view">  
@@ -43,16 +43,16 @@
     </div>
     <div id="friend-chatting">
         <ul>
-            <li>時間：</li>
-            <li>對話內容：</li>
 <?php foreach ( $messages as $message ) : ?>
-            <li>
+            <li>時間：
 <?php echo $message['time']; ?>
+                <br />名字：<?php echo $message['name'] ?>
+<?php $this->widget('Avatar', array(
+    'id'        => $message['id']
+)); ?>
             </li>
-            <li class="friend-chatting-content">
-           
+            <li class="friend-chatting-content">對話內容：<br />
 <?php echo $message['message']; ?>
-           
             </li>
 <?php endforeach; ?>
         </ul>

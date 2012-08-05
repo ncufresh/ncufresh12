@@ -4292,59 +4292,50 @@ div.a-group-users div.avatar
     float:left;
 }
 
-.friend-chatting
+#friend-chatting
 {
-    width:388px;
+    width:420px;
     height:308px;
     margin-top:0;
-    margin-left:260px;
+    margin-left:25px;
     padding:0px;
+}
+
+#friend-chatting div.avatar
+{
+    margin-left:53px;
+    margin-top:0px;
+    width:90px; 
+    height:61px;
+    padding:0px;
+    float:left;
 }
 
 #friend-chatting .scroll-container
 {
-    width:212px;
-    height:78px;
+    width:195px;
+    height:103px;
 }
 
 #friend-chatting .scroll-content
 {
-    width:214px;
+    width:197px;
 }
 
 #friend-chatting ul
 {
-    width:445px;
+    width:392px;
     margin-left:25px;
     padding:0px;
-    outline:1px solid black;
-    outline-style:dotted;
+    border:1px solid black;
 }
 
 #friend-chatting ul li
 {
-    width:222px;
-    padding:0px;
+    width:195px;
     float:left;
     list-style-type:none;
-    outline:1px solid black;
-    outline-style:dotted;
-    overflow: hidden;
-}
-
-.friend-chatting-content
-{
-    background-position: -288px 0;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
-    display: block;
-    height: 60px;
-    overflow: hidden;
-    padding: 5px;
-    position: relative;
-    width: 190px;
-    outline:1px solid black;
-    outline-style:dotted;
+    border:1px solid black;
 }
 
 .profile-modify
@@ -4467,7 +4458,7 @@ div.friends-sortfriend div.avatar
 .myprofile .scroll-container
 {
     width:445px;
-    height:280px;
+    height:226px;
 }
 
 .myprofile .scroll-content
