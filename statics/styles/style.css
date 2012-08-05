@@ -4481,10 +4481,15 @@ div.friends-sortfriend div.avatar
     padding:25px;
 }
 
+#newgroup h4
+{
+    text-align:center;
+}
+
 #newgroup .scroll-container
 {
     width:665px;
-    height:340px;
+    height:300px;
 }
 
 #newgroup .scroll-content
