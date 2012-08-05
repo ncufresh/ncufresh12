@@ -4208,45 +4208,6 @@
 })(jQuery);
 
 (function($){
-    $.friends = function()
-    {
-        jQuery('.button-back').click(function()
-        {
-            window.history.back();
-        }); 
-        $('.a-group-users').scrollable({
-            wheelSpeed: 90
-        });
-        $('.users-group').scrollable({
-            wheelSpeed: 90
-        });
-    
-    }
-})(jQuery);
-
-(function($){
-    $.profile = function()
-    {
-        $('.allmessages').scrollable({
-            wheelSpeed: 90
-        });
-        $('.my-all-messages').scrollable({
-            wheelSpeed: 90
-        });
-        $('.self-messages').scrollable({
-            wheelSpeed: 90
-        });
-        $('.friend-chatting').scrollable({
-            wheelSpeed: 90
-        });
-        $('.friend-chatting-content').scrollable({
-            wheelSpeed: 90
-        });
-    
-    }
-})(jQuery);
-
-(function($){
     $.game = function()
     {
         $('.game-display').scrollable({
@@ -4364,16 +4325,17 @@
         $('#new-group-members').scrollable({
             wheelSpeed: 90
         });
-    }
-    $('.button-all-choose').click(function()
-    {
-        checked = ! checked;
-        $('input[type="checkbox"][name^="friends"]').each(function()
+        $('.button-all-choose').click(function()
         {
-            $(this).prop('checked', checked);
+            checked = ! checked;
+            $('input[type="checkbox"][name^="friends"]').each(function()
+            {
+                $(this).prop('checked', checked);
+            });
+            return false;
         });
-        return false;
-    });
+    };
+    
 })(jQuery);
 
 (function($)
@@ -4400,7 +4362,7 @@
             window.history.back();
         }); 
     
-    }
+    };
 })(jQuery);
 
 (function($)

@@ -3851,17 +3851,18 @@ ul.friends-sort
     width:210px;
     height:130px;
     float:left;
-    margin-top:-15px;
+    margin-top:-35px;
     padding:0px;
 }
 
 ul.friends-sort li
 {
     width:105px;
-    height:65px;
+    height:85px;
     float:left;
     color:DarkBlue;
     list-style-type:none;
+    text-align:center;
 }
 
 .friends-self 
@@ -3885,7 +3886,7 @@ ul.friends-sort li
 .friends-self li a.friends-title
 {
     width:100px;
-    height:20px;
+    height:45px;
     float:left;
 }
 
@@ -3893,7 +3894,7 @@ ul.friends-sort li
 {
     width:690px;
     height:30px;
-    margin:0px;
+    margin-top:-15px;
     padding:0px;
 }
 
@@ -3908,14 +3909,14 @@ ul.friends-sort li
 ul.users-department li
 {
     width:132px; 
-    height:230px;
+    height:170px;
     padding:0px;
     margin:0px;
     float:left;
     list-style-type:none;
 }
 
-ul.users-department li h3
+ul.users-department li p.user-name
 {
     color:DarkBlue;
     width:132px; 
@@ -3923,9 +3924,10 @@ ul.users-department li h3
     padding:0px;
     margin:0px;
     text-align:center;
+    float:left;
 }
 
-ul. li h4
+ul.users-department li p.user-department
 {
     color:red;
     width:132px; 
@@ -3933,6 +3935,7 @@ ul. li h4
     padding:0px;
     margin:0px;
     text-align:center;
+    float:left;
 }
 
 .all-groups
@@ -4041,6 +4044,12 @@ div.friends
     margin:0px;
 }
 
+#sameDsameG h4
+{
+    text-align:center;
+    color:green;
+}
+
 #sameDdiffG
 {
     background: url('../profile/sameDdiffG.png') no-repeat ;
@@ -4050,6 +4059,12 @@ div.friends
     margin:0px;
 }
 
+#sameDdiffG h4
+{
+    text-align:center;
+    color:green;
+}
+
 #other-department
 {
     background:url('../profile/otherD.png') no-repeat ;
@@ -4057,6 +4072,12 @@ div.friends
     height:370px;
     padding:25px;
     margin:0px;
+}
+
+#other-department h4
+{
+    text-align:center;
+    color:green;
 }
 
 #request
@@ -4073,7 +4094,7 @@ div.all-sorts-of-friends
 {
     width:690px;
     height:370px;
-    margin:25px 25px 25px 25px;
+    margin:8px 25px 25px 25px;
 }
 
 .a-group-users
@@ -4257,15 +4278,15 @@ div.friends-addfriend
 {
     display:inline-block;
     width:650px;
-    height:140px;
+    height:150px;
 }
 
 .friends-addfriend .avatar
 {
     margin-left:0px;
     margin-top:0px;
-    width:35px; 
-    height:45px;
+    width:100px; 
+    height:65px;
     padding:0px;
     float:left;
 }
