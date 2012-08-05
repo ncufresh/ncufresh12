@@ -1,13 +1,3 @@
-<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
-<script type="text/javascript">
-jQuery(document).ready(function()
-{
-    jQuery('#marquee').marquee();
-    jQuery('#index-calendar div').calendar($.configures.calendarEventsUrl);
-});
-</script>
-<?php $this->endWidget();?>
-
 <div id="index-calendar">
     <div>
     </div>

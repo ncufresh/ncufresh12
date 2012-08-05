@@ -1,6 +1,10 @@
 <div id="street-div">
     <div id="back-div">    
     
+        <div class="street-loading">
+            <div class="loading"></div>
+        </div>
+
         <div id="up-curtain-div">
         </div>
 
@@ -10,7 +14,6 @@
         
         <div id="map-div">
             <img id="mapPicture" path="<?php echo Yii::app()->baseUrl?>/statics/building/map_no_text.png">
-            <div class="loading"></div>
             <!--選擇鈕-->
             <div class="one-image dormitory" show="dormitory"></div>
             <div class="one-image diet" show="diet"></div>

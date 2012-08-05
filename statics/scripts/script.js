@@ -962,6 +962,21 @@
             fadeOutDuration:        'slow',
             wheelSpeed:             48
         }, options);
+        if ( $.browser.msie )
+        {
+            var container = $('<div></div>')
+                .addClass('scroll-container')
+                .css({
+                    overflow: 'hidden'
+                })
+                .insertAfter($(this));
+            $(this).css({
+                height: container.height(),
+                overflowY: 'scroll'
+            });
+            container.wrapInner($(this))
+            return this;
+        }
         return this.each(function()
         {
             var active = false;
@@ -2781,6 +2796,7 @@
     var url = '../statics/street-view/';
     var nowfaceto;
     var nowpointat;
+    var loading = false;
     var streetPoints =
     [
         { // 0 (工5)
@@ -2793,7 +2809,7 @@
             N:{ photo: 'Day 3 (3).JPG', nextPoint: (-1) },
             E:{ photo: 'Day 3 (2).JPG', nextPoint: 0 },
             S:{ photo: 'Day 3 (1).JPG', nextPoint: (-1) },
-            W:{ photo: 'Day 3 (4).JPG', nextPoint: 48 }
+            W:{ photo: 'Day 3 (4).JPG', nextPoint: 49 }
         },
         { // 2 (工3)
             N:{ photo: 'Day 1 (6).JPG', nextPoint: 3 },
@@ -3024,10 +3040,10 @@
             W:{ photo: 'Day 2 (40).JPG', nextPoint: (-1) }
         },
         { // 40 (鬆餅屋)
-            N:{ photo: 'Day 3 (39).JPG', nextPoint: 35 },
-            E:{ photo: 'Day 3 (40).JPG', nextPoint: (-1) },
-            S:{ photo: 'Day 3 (37).JPG', nextPoint: 44 },
-            W:{ photo: 'Day 3 (38).JPG', nextPoint: 41 }
+            N:{ photo: 'Day 3 (36).JPG', nextPoint: 35 },
+            E:{ photo: 'Day 3 (35).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 3 (34).JPG', nextPoint: 44 },
+            W:{ photo: 'Day 3 (33).JPG', nextPoint: 41 }
         },
         { // 41 (科四至管院路)
             N:{ photo: 'Day 3 (32).JPG', nextPoint: (-1) },
@@ -3045,7 +3061,7 @@
             N:{ photo: 'Day 3 (21).JPG', nextPoint: 44 },
             E:{ photo: 'Day 3 (22).JPG', nextPoint: 53 },
             S:{ photo: 'Day 3 (23).JPG', nextPoint: 46 },
-            W:{ photo: 'Day 3 (24).JPG', nextPoint: 42 }
+            W:{ photo: 'Day 3 (24).JPG', nextPoint: (-1) }
         },
         { // 44 (科二東路)
             N:{ photo: 'Day 3 (39).JPG', nextPoint: 40 },
@@ -3073,15 +3089,15 @@
         },
         { // 48 (游泳池)
             N:{ photo: 'Day 3 (10).JPG', nextPoint: 47 },
-            E:{ photo: 'Day 3 (11).JPG', nextPoint: 1 },
+            E:{ photo: 'Day 3 (11).JPG', nextPoint: (-1) },
             S:{ photo: 'Day 3 (12).JPG', nextPoint: 49 },
             W:{ photo: 'Day 3 (9).JPG', nextPoint: (-1) }
         },
         { // 49 (游泳池旁側門)
             N:{ photo: 'Day 3 (8).JPG', nextPoint: 48 },
-            E:{ photo: 'Day 3 (7).JPG', nextPoint: (-1) },
-            S:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) },
-            W:{ photo: 'Day 3 (6).JPG', nextPoint: (-1) }
+            E:{ photo: 'Day 3 (7).JPG', nextPoint: 1 },
+            S:{ photo: 'Day 3 (6).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) }
         },
         { // 50 (男12舍)
             N:{ photo: 'Day 3 (95).JPG', nextPoint: (-1) },
@@ -3133,15 +3149,17 @@
         {
             var photo = url + streetPoints[pointat][faceto].photo;
             var preloader = new Image();
+            loading = true;
             preloader.onload = function()
             {
-                $('#street-div #mapPicture').attr('src', photo).fadeIn();
+                $('#street-div #mapPicture').attr('src', photo).fadeIn(300);
+                loading = false;
             };
             preloader.src = photo;
 
             nowpointat = pointat;
             nowfaceto = faceto;
-            $('#street-div #mapPicture').fadeOut();
+            $('#street-div #mapPicture').fadeOut(300);
         }
     };
 
@@ -3192,10 +3210,12 @@
 
     $.street = function()
     {
+        var isStreet = false;
         $('.picture').hide();
         $('#street-div #experience-personally').mousedown(function()
         {
             $(document).mousemove(mousemove);
+            isStreet = true;
             return false;
         });
         var mouseInId;
@@ -3232,9 +3252,8 @@
             {
                 opacity: 1,
             });
-            if( isInPicture == true )
+            if ( isInPicture && isStreet )
             {
-                $('.loading').show();
                 if( $('#' + mouseInId).attr('streetPoints') == (-1) )
                 {
                     $('#street-div #experience-personally').css(
@@ -3265,21 +3284,24 @@
                     $('#street-div .arrow').show();
 
                     move($('#' + mouseInId).attr('streetPoints'), $('#' + mouseInId).attr('faceto'));
+
+                    $('#street-div .street-loading').show();
                     $('#street-div .arrow').eq(0).unbind('click').click(function() //前進nextDirection
                     {
-                        forward();
+                        if ( ! loading ) forward();
                     });
-                    $('#street-div .arrow').eq(1).unbind('click').click(function() // 左旋
+                     $('#street-div .arrow').eq(1).unbind('click').click(function() // 左旋
                     {
-                        turnLeft();
+                        if ( ! loading ) turnLeft();
                     });
                     $('#street-div .arrow').eq(2).unbind('click').click(function() // 右旋
                     {
-                        turnRight();
+                        if ( ! loading ) turnRight();
                     });
 
                     isInPicture = false;
                 }
+                isStreet = false;;
             }
             $(document).unbind('mousemove', mousemove);
             $('#street-div #experience-personally').css(
@@ -3351,11 +3373,12 @@
             {
                 zIndex: 3,
             });
-            $('.loading').hide();
+            $('#street-div .street-loading').hide();
         });
         $('#street-div .picture, #street-div .button-text').click(function()
         {
             isInPicture = false;
+            // $('.loading').hide();
             $('#street-div #back-div, #street-div #curtain-close-div').css(
             {
                height: 552,
@@ -3393,7 +3416,7 @@
                 dataType: 'json',
                 success: function(data)
                 {
-                    $('#building-text').html(data.content);
+                    $('#building-text').html(data.content).scrollTo(0);
                     $('#building-text img').css(
                     {
                         cursor: 'pointer',
@@ -3425,13 +3448,13 @@
     {
         var getTabContent = function()
         {
-            var tab = jQuery(this).attr('tab');
-            var page = jQuery(this).attr('page');
+            var tab = $(this).attr('tab');
+            var page = $(this).attr('page');
             jQuery.getJSON(
                 jQuery.configures.ncuLifeUrl.replace(':tab', tab).replace(':page', page),
                 function(data)
                 { 
-                    $('#nculife-content-view').html(data.content);
+                    $('#nculife-content-view').html(data.content).scrollTo(0);
                 }
             ); 
             return false;
@@ -3545,19 +3568,20 @@
     {
         var getTabContent = function()
         {
-            var tab = jQuery(this).attr('tab');
-            var page = jQuery(this).attr('page');
+            var tab = $(this).attr('tab');
+            var page = $(this).attr('page');
             jQuery.getJSON(
                 jQuery.configures.readMeUrl.replace(':tab', tab).replace(':page', page),
                 function(data)
                 { 
-                    $('.readme-view').html(data.content);
+                    $('.readme-view').html(data.content).scrollTo(0);
                 }
             ); 
             return false;
         }
 
-        $('.readme-view').scrollable({
+        $('.readme-view').scrollable(
+		{
             scrollableClass: false
         });
 
@@ -3609,11 +3633,11 @@
             switch( window.location.hash.replace('#', '') )
         {
             case 'freshman' :
-                jQuery('#readme-logo1').click();
+                $('#readme-logo1').click();
             break;
 
             case 'reschool' :
-                jQuery('#readme-logo2').click();
+                $('#readme-logo2').click();
             break;
         }
     };
@@ -4349,11 +4373,12 @@
         $('.button-all-choose').click(function()
         {
             checked = ! checked;
-            $('input[type="checkbox"][name^="friends"]').each(function()
+            $('input[type="checkbox"][name^="friends"], input[type="checkbox"][name^="group-members"]').each(function()
             {
                 $(this).prop('checked', checked);
             });
             $('input[type="checkbox"][name^="friends"]').change();
+            $('input[type="checkbox"][name^="group-members"]').change();
             return false;
         });
 
@@ -4388,7 +4413,7 @@
     $.profile = function()
     {
         $('.allmessages, #my-all-messages, #self-messages-content, #friend-chatting, .friend-chatting-content').scrollable();
-        jQuery('.button-viewProfile-back').click(function()
+        $('.button-viewProfile-back').click(function()
         {
             window.history.back();
         }); 
@@ -4547,9 +4572,11 @@
         {
             var url = $(this).attr('href');
             if (
-                url.match(/^\/.+/)
+                (url.match(/^\/.+/)
              || url.match(/^#.*/)
-             || url.search(location.hostname) >= 0 )
+             || url.search(location.hostname) >= 0)
+             && $(this).attr('rel') !== 'external'
+            )
             {
                 return true;
             }
@@ -4563,7 +4590,7 @@
 {
     $.site = function()
     {
-        const SEGMENT = 100 / 5;
+        var segment = 100 / 5;
 
         var meter = $('#form-password-meter');
 
@@ -4792,7 +4819,7 @@
             if ( $(this).val() !== '' )
             {
                 var score = calculatePasswordScore($(this).val());
-                var level = parseInt(score / SEGMENT) + 1;
+                var level = parseInt(score / segment) + 1;
 
                 meter.find('td').css({
                     backgroundColor: 'transparent'
@@ -4815,6 +4842,10 @@
                     .keydown(checkPasswordStrength)
             );
         }
+
+        if ( $('#marquee').length ) $('#marquee').marquee();
+
+        if ( $('#index-calendar').length ) $('#index-calendar div').calendar($.configures.calendarEventsUrl);
     };
 })(jQuery);
 
@@ -4861,6 +4892,8 @@
         var smallPhotoIndex = 0;
         var photoA = $('#' + options.aboutId + ' a');
         var tagBool = true;
+        var photoMoveLeft = false;
+        var photoMoveRight = false;
         var jumpTo = function()
         {   
             tagbar.each(function(){
@@ -4869,20 +4902,16 @@
             block1Inf.each(function(){
                 $(this).hide();
             });
-            if ( tagbarIndex != 6 )
+            block1Inf.eq(tagbarIndex).show();
+            tagbarPerson.each(function(){
+                $(this).hide();
+            });
+            for (var p = 0; p < 9; p++)
             {
-                block1Inf.eq(tagbarIndex).show();
-                tagbarPerson.each(function()
+                tagbarPerson.eq(tagbarIndex * 9 + p).show();
+                if ( tagbarIndex == 4 && p == 1 )
                 {
-                    $(this).hide();
-                });
-                for (var p = 0; p < 9; p++)
-                {
-                    tagbarPerson.eq(tagbarIndex * 9 + p).show();
-                    if ( tagbarIndex == 4 && p == 1 )
-                    {
-                        break;
-                    }
+                    break;
                 }
             }
             tagbar.eq(tagbarIndex).show();
@@ -4997,6 +5026,29 @@
         },options.PictureAutoSpeed);
         setInterval(function()
         {
+            if ( photoMoveLeft )
+            {
+                if( smallPhotoIndex + 6 < photoNumber )
+                {
+                    smallPhotoIndex++;
+                    $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
+                        left: -40 + smallPhotoIndex * -50
+                    });
+                }
+            }
+            else if ( photoMoveRight )
+            {
+                if ( smallPhotoIndex > 0 )
+                {
+                    smallPhotoIndex--;
+                    $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
+                        left: -40 + smallPhotoIndex * -50
+                    });
+                }
+            }
+        },300);
+        setInterval(function()
+        {
             if ( tagBool )
             {
                 if ( tagbarIndex < 5 )
@@ -5036,28 +5088,22 @@
         button[0].css({
             left: 0,
             position: 'absolute'
-        }).click(function()
+        }).mouseenter(function()
         {
-            if ( smallPhotoIndex > 0 )
-            {
-                smallPhotoIndex--;
-                $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
-                    left: -40 + smallPhotoIndex * -50 
-                });
-            }
+            photoMoveRight = true;
+        }).mouseleave(function()
+        {
+            photoMoveRight = false;
         }).appendTo(display).show();
         button[1].css({
             left: 350,
             position: 'absolute'
-        }).click(function()
+        }).mouseenter(function()
         {
-            if( smallPhotoIndex + 6 < photoNumber )
-            {
-                smallPhotoIndex++;
-                $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
-                    left: -40 + smallPhotoIndex * -50 
-                });
-            }
+            photoMoveLeft = true;
+        }).mouseleave(function()
+        {
+            photoMoveLeft = false;
         }).appendTo(display).show();
         photoA.each(function(index)
         {
@@ -5096,10 +5142,24 @@
             return false;
         });
         $('.profile-add-friend a').click(function (){
-            $('.form-addfriend .addfriend-input').attr('value', $(this).attr('href').replace('#', ''));
-            $('.form-addfriend .addfriend-input').attr('name', 'friends['+$(this).attr('href').replace('#', '')+']');
-            $('.form-addfriend').submit();
-            return false;
+            // $('.form-addfriend .addfriend-input').attr('value', $(this).attr('href').replace('#', ''));
+            // $('.form-addfriend .addfriend-input').attr('name', 'friends['+$(this).attr('href').replace('#', '')+']');
+            // $('.form-addfriend').submit();
+            // return false;
+            var friends = [];
+            var link = $(this);
+            friends[0] = $(this).attr('href').replace('#', '');
+            $.post($.configures.makeFriendUrl, { 
+                friends: friends,
+                token: $.configures.token
+                }, function(data){
+                    if( data.result == true )
+                    {
+                        link.replaceWith($('<span></span>').text('已送出邀請'));
+                        alert('已經送出好友邀請!');
+                    }
+            });
+            // console.log('!!!');
         });
         $("#forum-forum-top2 .sort-list").change(function() {
             var url = $.configures.forumSortUrl;
@@ -5187,7 +5247,7 @@
     $(document).ready(function()
     {
         $.configures.lasttime = 0;
-
+        
         $.configures.sequence = $.random(0, 1000);
 
         $.ncufresh();
