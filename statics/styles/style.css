@@ -6610,6 +6610,12 @@ li.enabled a
     background-color:white;
 }
 
+#forum-forum-body #body-table .table-body:last-child td,
+#forum-forum-body #body-table .table-body:last-child td.time
+{
+    border-bottom: none;
+}
+
 #forum-forum-body #body-table .table-body td.author
 {
     width:80px;
@@ -6668,7 +6674,7 @@ li.enabled a
 #forum-forum-body.blue #body-table .table-title th,
 #forum-forum-body.blue #body-table .table-foot td
 {
-    background: #69C1F2;
+    background: #8DCDF1;
 }
 
 #forum-forum-body.blue #body-table .table-title th.head,
