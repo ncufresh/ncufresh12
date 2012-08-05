@@ -4354,15 +4354,7 @@
     $.friends = function()
     {
         var checked = false;
-        $('.a-group-users').scrollable({
-            wheelSpeed: 90
-        });
-        $('.users-group').scrollable({
-            wheelSpeed: 90
-        });
-        $('#new-group-members').scrollable({
-            wheelSpeed: 90
-        });
+        $('.a-group-users, .users-group, #new-group-members').scrollable();
         $('.button-all-choose').click(function()
         {
             checked = ! checked;
@@ -4381,21 +4373,7 @@
 {
     $.profile = function()
     {
-        $('.allmessages').scrollable({
-            wheelSpeed: 90
-        });
-        $('#my-all-messages').scrollable({
-            wheelSpeed: 90
-        });
-        $('#self-messages-content').scrollable({
-            wheelSpeed: 90
-        });
-        $('#friend-chatting').scrollable({
-            wheelSpeed: 90
-        })
-        $('.friend-chatting-content').scrollable({
-            wheelSpeed: 90
-        });
+        $('.allmessages, #my-all-messages, #self-messages-content, #friend-chatting, .friend-chatting-content').scrollable();
         jQuery('.button-viewProfile-back').click(function()
         {
             window.history.back();

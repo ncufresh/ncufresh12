@@ -39,7 +39,11 @@
                 <input type="hidden" name="profile[department]" value="<?php echo $user->profile->department_id; ?>"  />
             </li>
             <li>
-                <span>系級：</span><?php echo $user->profile->grade; ?>年級
+<?php if ( $user->profile->grade == 0 ) : ?>
+                 <span>系級：這是秘密唷^.&lt;</span>
+<?php else : ?>
+                 <span>系級：<?php echo $user->profile->grade; ?>年級</span>
+<?php endif; ?>
                 <input type="hidden" name="profile[grade]" value="<?php echo $user->profile->grade; ?>"  />
             </li>
             <li>

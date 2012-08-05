@@ -4342,7 +4342,6 @@ div.a-group-users div.avatar
 #profile-friend
 {
     width:240px;
-    height:350px;
     margin:-25px;
     padding:5px;
     float:left;
@@ -4371,7 +4370,6 @@ div.allmessages
     width:490px;
     height:290px;
     margin-top:0px;
-    padding:5px;
 }
 
 div.allmessages form
@@ -4447,7 +4445,7 @@ div.friends-sortfriend div.avatar
     height:280px;
 }
 
-.myprofile .scroll-container
+.myprofile .scroll-content
 {
     width:445px;
 }
@@ -4465,7 +4463,17 @@ div.friends-sortfriend div.avatar
     width:690px;
     height:370px;
     padding:25px;
-    margin:0px;
+}
+
+#newgroup .scroll-container
+{
+    width:665px;
+    height:340px;
+}
+
+#newgroup .scroll-content
+{
+    width:665px;
 }
 
 #mygroup
@@ -4643,22 +4651,11 @@ a#button-editor-cancel,
     margin:0px;
 }
 
-#new-group-members div .scroll-container
-{
-    width:650px;
-}
-
-#new-group-members div .scroll-content
-{
-    width:650px;
-}
-
-
 #new-group-members div.avatar
 {
     margin-left:20px;
     margin-top:0px;
-    width:100px; 
+    width:94px; 
     height:70px;
     padding:0px;
     float:left;
