@@ -27,6 +27,7 @@
 <?php endforeach ; ?>
         </ul>
     </div>
+    <input id="new-group-search" type="text" value="搜尋"/>
     <button class="button-all-choose">全選</button>
     <button type="submit" class="button-sure">確認</button>
     <a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>
