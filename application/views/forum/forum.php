@@ -118,7 +118,17 @@ else if ( $fid == 22 || $fid == 23 )
                 <td class="head"></td>
                 <td class="category"><?php echo $each->category_name->name.' '; ?></td>
                 <td class="title">
-                    <a href="<?php echo $each->url?>"><?php echo $each->title; ?></a>
+                    <a href="<?php echo $each->url?>">
+                        <?php
+                        if(mb_strlen($each->title) > mb_strlen(mb_substr($each->title,0,10))) 
+                        {
+                            echo mb_substr($each->title,0,10).'...'; 
+                        }
+                        else
+                        {
+                            echo $each->title;
+                        }?>
+                    </a>
                     <?php if( $category->getIsMaster() ): ?>
                     <a href="#<?php echo $each->id;?>" class="article-delete" >刪除</a>
                     <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/delete'); ?>" method="POST" class="form-delete">
