@@ -8,6 +8,7 @@ class ClubController extends Controller
             'accessControl'
         );
     }
+
     public function accessRules()
     {
         return array(
@@ -32,6 +33,7 @@ class ClubController extends Controller
             )
         );
     }
+
     public function actionIndex()
     {
         $this->redirect(array('club'));
@@ -59,12 +61,14 @@ class ClubController extends Controller
         {
             $is_subscript = Subscription::model()->getIsSubscriptByClubID($id);
         }
+
         $this->render('content', array(
             'data'          => Club::model()->findByPk($id),
 			'id'		    => $id,
-            'is_subscript' => $is_subscript
+            'is_subscript'  => $is_subscript
         )); 
     }
+
  	public function actionModify($id)
 	{
         $id = (integer)$id; 
@@ -112,6 +116,11 @@ class ClubController extends Controller
                 if ( in_array($filetype[$index], $uptypes) )
                 {
                     if ( empty($_FILES['pictures']['name'][$index]) ) continue;
+                    if ( ! is_dir($path) )
+                    {
+                       mkdir($path);
+                       chmod($path, 0755);
+                    }
                     $file = $path . DIRECTORY_SEPARATOR . ($index + 1) . '.jpg';
                     if ( file_exists($file) ) unlink($file);
                     move_uploaded_file($_FILES['pictures']['tmp_name'][$index], $file);
