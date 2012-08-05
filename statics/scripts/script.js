@@ -28,8 +28,7 @@
             return -1;
         };
     }
-    
-    
+
     $.extend({
         random: function(min, max)
         {
@@ -1456,7 +1455,7 @@
         if ( current_month == calendar_month && current_year ==  calendar_year )
         {
             var tds = $(this).children('tbody').find('td');
-            for( var key in tds )
+            for( var key=0; key<tds.length; key++ )
             {
                 if ( $(tds[key]).data('day') == current_day ) return $(tds[key]);
             }
@@ -1467,25 +1466,12 @@
     var updateData = function(url, callback)
     {
         var self = this;
-        // $.getJSON( url, function(data){
-            // self.cleanUpMark(true);
-            // for ( var key in data.events )
-            // {
-                // self.markEvent(data.events[key], { textDecoration: 'underline'});
-            // }
-            // self.markToday();
-            // self.data('all_events', data.events);
-            // if ( callback ) 
-            // {
-                // callback(self);
-            // }
-        // });
         $.get( url, {
             m : self.data('options').month,
             y : self.data('options').year
         }, function(data){
             self.cleanUpMark(true);
-            for ( var key in data.events )
+            for ( var key=0; key<data.events.length; key++ )
             {
                 self.markEvent(data.events[key], { textDecoration: 'underline'});
             }
@@ -1539,7 +1525,7 @@
                 $(this).css(css);
                 var cal_events = $(this).data('cal_events')?$(this).data('cal_events'):[];
                 var found = false;
-                for( var key in cal_events )
+                for( var key=0; key<cal_events.length; key++ )
                 {
                     if( cal_events[key].id == event.id )
                     {
@@ -1588,7 +1574,7 @@
         }
         var eventMouseLeave = function(){
             self.cleanUpMark();
-            for( var key in self.data('all_events') )
+            for( var key=0; key<self.data('all_events').length; key++ )
             {
                 self.markEvent(self.data('all_events')[key], { textDecoration: 'underline'});
             }
@@ -1598,7 +1584,7 @@
         if ( cal_events && cal_events.length )
         {
             var event_ids = [];
-            for( var key in cal_events )
+            for( var key=0; key<cal_events.length; key++ )
             {
                 event_ids[key] = cal_events[key].id;
             }
@@ -1606,37 +1592,36 @@
                 event_ids : event_ids,
                 token : $.configures.token
             }, function(data){
-                
-                for( var key in data.events )
+                for ( var key in data.events )
                 {
                     var div = $('<div></div>');
                     var header = $('<h4></h4>').text(key);
                     var ul = $('<ul></ul>');
-                    for ( var key2 in data.events[key] )
+                    $(data.events[key]).each(function(k, e)
                     {
                         $('<li></li>')
                             .append(
                                 $('<a></a>')
-                                    .text(data.events[key][key2].name)
+                                    .text(e.name)
                                     .attr(
                                         'href', 
                                         $.configures
                                             .calendarEventUrl
-                                            .replace(':id', data.events[key][key2].id)
+                                            .replace(':id', e.id)
                                     )
                             )
                             .append(
                                 $('<a></a>')
                                     .addClass('calendar-hide-event')
                                     .attr('title', '丟進回收桶')
-                                    .attr('href', '#' + data.events[key][key2].id)
+                                    .attr('href', '#' + e.id)
                                     .text('把我丟掉')
                             )
-                            .data('event', data.events[key][key2])
+                            .data('event', e)
                             .mouseenter(eventMouseEnter)
                             .mouseleave(eventMouseLeave)
                             .appendTo(ul);
-                    }
+                    });
                     div.append(header).append(ul).appendTo(container);
                 }
                 $.configures.token = data.token;
@@ -1658,7 +1643,7 @@
         $('<td></td>').text(options.dateText).appendTo(tr);
         $('<td></td>').text(options.eventText).appendTo(tr);
         tr.appendTo(thead);
-        for(var key in events)
+        for(var key=0; key<events.length; key++)
         {
             var tr = $('<tr></tr>');
             var td = $('<td></td>').text(events[key][0]);
@@ -1726,7 +1711,7 @@
         var tbody = $('<tbody></tbody>');
         var tr = $('<tr></tr>');
         var date = new Date(options.year, options.month);
-        for( var key in options.dayOfWeek )
+        for( var key=0; key<options.dayOfWeek.length; key++ )
         {
             var td = $('<td></td>').text(options.dayOfWeek[key]);
             if ( key==0 || key==6 ) td.addClass('weekend');
@@ -1783,7 +1768,7 @@
             var events = $(this).data('cal_events');
             var todos = [];
             if ( todolist ) todolist.remove();
-            for ( var key in events )
+            for ( var key=0; key<events.length; key++ )
             {
                 var start = new Date((events[key].start - (new Date()).getTimezoneOffset() * 60) * 1000);
                 var end = new Date((events[key].end - (new Date()).getTimezoneOffset() * 60) * 1000);
@@ -1917,7 +1902,7 @@
                     var events = $(this).data('cal_events');
                     if( events && events.length > 0 )
                     {
-                        for( var key in $(this).data('cal_events') )
+                        for( var key=0; key<$(this).data('cal_events').length; key++ )
                         {
                             $('<li></li>').text(events[key].name).appendTo(prompt.find('ul'));
                         }
@@ -3385,7 +3370,7 @@
 
         $('#street-div .arrow').eq( 3 ).click(function() // 親身體驗 back
         {
-            $('#street-div #mapPicture').attr('src', $('#street-div #mapPicture').attr('path'));
+            $('#map-div img').hide();            
             $('#street-div .arrow').hide();
 
             $('#street-div #map-div, #street-div #curtain-close-div, #street-div #back-div').css(
