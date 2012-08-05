@@ -330,11 +330,10 @@
                     }
                     if ( response.messages )
                     {
-                        for ( var key in response.messages )
+                        $(response.messages).each(function(index, data)
                         {
-                            var data = response.messages[key];
                             $.fn.chat.updateChatDialog(data.id, data);
-                        }
+                        });
                     }
                     $.pull.pulling = false;
                 }
@@ -390,11 +389,10 @@
                         $.configures.lasttime = response.lasttime;
                         if ( $.errors(response.errors) )
                         {
-                            for ( var key in response.messages )
+                            $(response.messages).each(function(index, data)
                             {
-                                var data = response.messages[key];
                                 $.fn.chat.updateChatDialog(data.id, data);
-                            }
+                            });
                         }
                         $.push.pushing = false;
                         $.push.restart();
@@ -427,7 +425,7 @@
         if ( errors )
         {
             var messages = '';
-            for ( var key in errors )
+            for ( var key = 0 ; key < errors.length ; ++key )
             {
                 messages += errors[key];
             }
@@ -567,7 +565,7 @@
                 .keyup(function(event)
                 {
                     var name = $(this).val().toLowerCase();
-                    for ( var key in friends )
+                    for ( var key = 0 ; key < friends.length ; ++key )
                     {
                         var data = friends[key];
                         if ( data[1].toLowerCase().search(name) == 0 )
@@ -623,9 +621,8 @@
     $.fn.chat.updateFriendList = function(response)
     {
         var list = $.fn.chat.createFriendList();
-        for ( var key in response )
+        $(response).each(function(index, data)
         {
-            var data = response[key];
             var entry = null;
             $('#' + $.chat.options.friendListContainerId)
                 .find('.friend-list-entry')
@@ -654,7 +651,7 @@
             }
             entry.data('online', data.active);
             $.fn.chat.updateFriendStatus(data.id);
-        }
+        });
         return list;
     };
 
@@ -762,11 +759,10 @@
                 {
                     if ( $.errors(response.errors) )
                     {
-                        for ( var key in response.messages )
+                        $(response.messages).each(function(index, data)
                         {
-                            var data = response.messages[key];
                             $.fn.chat.updateChatDialog(data.id, data);
-                        }
+                        });
                     }
                 }
             );
@@ -2382,7 +2378,7 @@
     {
         if ( index === undefined )
         {
-            for ( var index in elements[uuid] )
+            for ( var index = 0 ; index < elements[uuid].length ; ++index )
             {
                 var data = elements[uuid][index];
                 if ( ! overlayCloseInternal(data) ) return false;
@@ -2811,7 +2807,7 @@
 })(jQuery);
 
 (function($) {
-    var url = '../statics/street-view/';
+    var url = '../statics/streets/';
     var nowfaceto;
     var nowpointat;
     var loading = false;
@@ -3374,7 +3370,7 @@
 
         $('#street-div .arrow').eq( 3 ).click(function() // 親身體驗 back
         {
-            $('#street-div #mapPicture').attr('src', $('#street-div #mapPicture').attr('path'));
+            $('#map-div img').hide();            
             $('#street-div .arrow').hide();
 
             $('#street-div #map-div, #street-div #curtain-close-div, #street-div #back-div').css(
@@ -3413,7 +3409,7 @@
                 escape: false,
                 onClose: function()
                 {
-                    $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
+                    // $('  #mapPicture').attr('src', $('#mapPicture').attr('path'));
                 }
             });
 
@@ -4151,7 +4147,10 @@
 
         this.parents('form').find('input, textarea').focus(function()
         {
-            for ( var field in fields ) fields[field].blur();
+            $(fields).each(function(index, field)
+            {
+                field.blur();
+            });
             $.datepicker.fadeOut();
         });
 
@@ -4305,6 +4304,8 @@
         {
             id = $(this).attr('href').replace('#', '');
             $('#game-mission-dialog').dialog({
+                height: 600,
+                width: 900
                 // dialogClass: 'game-mission'
             });
             $.getJSON($.configures.gameMissionUrl.replace(':id',id),function(data){
@@ -4416,10 +4417,8 @@
         $('#same-department-diff-grade-search, #other-department-search, #same-department-same-grade-search, #request-search, #new-group-search, #mygroup-search, #myfriend-search, #newmember-search').keyup(function()
         {
             var name = $(this).val().toLowerCase();
-            for ( var key in friends )
+            $(friends).each(function(index, data)
             {
-                var data = friends[key];
-                console.log(data);
                 if ( data[0].toLowerCase().search(name) == 0 )
                 {
                     data[1].show();
@@ -4428,7 +4427,7 @@
                 {
                     data[1].hide();
                 }
-            }
+            });
         });
 
         $('p.user-name').each(function()

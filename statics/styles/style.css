@@ -471,10 +471,10 @@ a:hover
 #lightbox
 {
     left: 0;
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
-    z-index: 10000;
+    z-index: 1500;
 }
 
 #lightbox-box
@@ -537,7 +537,7 @@ a:hover
     position: relative;
     top: 0;
     width: 100%;
-    z-index: 10000;
+    z-index: 1750;
 }
 
 #lightbox-details
@@ -824,7 +824,7 @@ a:hover
     position: relative;
     visibility: hidden;
     width: 100px;
-    z-index: 5000;
+    z-index: 1000;
 }
 
 #navigation ul li
@@ -1206,6 +1206,7 @@ a:hover
     opacity: 0.9;
     position: fixed;
     width: 160px;
+    z-index: 500;
 }
 
 .chat-dialog .chat-title
@@ -1468,7 +1469,7 @@ table.gsc-completion-container
     position: relative;
     text-indent: -100000px;
     width: 32px;
-    z-index: 10000;
+    z-index: 500;
 }
 
 #result
@@ -4481,10 +4482,15 @@ div.friends-sortfriend div.avatar
     padding:25px;
 }
 
+#newgroup h4
+{
+    text-align:center;
+}
+
 #newgroup .scroll-container
 {
     width:665px;
-    height:340px;
+    height:300px;
 }
 
 #newgroup .scroll-content
@@ -7152,7 +7158,7 @@ li.enabled a
 #street-div #turtle-pond,
 #street-div #turtle-pond:hover,
 #street-div #yun-step,
-#street-div #yun-step:hover
+#street-div #yun-step:hover,
 #street-div .arrow.up,
 #street-div .arrow.up:hover,
 #street-div .arrow.left,
@@ -7393,9 +7399,10 @@ li.enabled a
 #street-div #curtain-close-div
 {
      background-position: -1136px -192px;
+     border-top-right-radius: 20px;
      position: relative;
      float: right;
-     width: 149px;
+     width: 141px;
      height: 552px;
 }
 
@@ -7745,6 +7752,7 @@ li.enabled a
 #street-div #map-div
 {
     background-position: 0px 0px;
+    border-top-left-radius: 20px;
     position: relative;
     float: left;
     width: 601px;
@@ -7767,7 +7775,7 @@ li.enabled a
 
 #street-div #management
 {
-    width: 178px;
+    width: 175px;
     height: 86px;
     background-position: -1520px -0px;
     left: 410px;
