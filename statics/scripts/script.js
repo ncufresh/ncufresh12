@@ -3131,35 +3131,27 @@
         }
         else
         {
+            var photo = url + streetPoints[pointat][faceto].photo;
+            var preloader = new Image();
+            preloader.onload = function()
+            {
+                $('#street-div #mapPicture').attr('src', photo).fadeIn();
+            };
+            preloader.src = photo;
+
             nowpointat = pointat;
             nowfaceto = faceto;
-            $('#street-div #mapPicture')
-                .attr(
-                    'src',
-                    url + streetPoints[nowpointat][nowfaceto].photo
-                );
+            $('#street-div #mapPicture').fadeOut();
         }
-        $('.loading').hide();
     };
 
     var forward = function()
     {
-        $('.loading').show();
-        $('.loading').css(
-        {
-            zIndex: 1000,
-        });
         move(streetPoints[nowpointat][nowfaceto].nextPoint, nowfaceto);
-        // if( nowpointat )
     };
 
     var turnLeft = function()
     {
-        $('.loading').show();
-        $('.loading').css(
-        {
-            zIndex: 1000,
-        });
         switch ( nowfaceto )
         {
             case 'N':
@@ -3180,11 +3172,6 @@
 
     var turnRight = function()
     {
-        $('.loading').show();
-        $('.loading').css(
-        {
-            zIndex: 1000,
-        });
         switch ( nowfaceto )
         {
             case 'N':
@@ -3247,6 +3234,7 @@
             });
             if( isInPicture == true )
             {
+                $('.loading').show();
                 if( $('#' + mouseInId).attr('streetPoints') == (-1) )
                 {
                     $('#street-div #experience-personally').css(
@@ -3342,7 +3330,6 @@
                 zIndex: 4,
             });
             $('#street-div .one-image').bind('click', littleBuilding);
-            $('#street-div .landscape').show();
         });
 
         $('#street-div .arrow').eq( 3 ).click(function() // 親身體驗 back
@@ -3364,6 +3351,7 @@
             {
                 zIndex: 3,
             });
+            $('.loading').hide();
         });
         $('#street-div .picture, #street-div .button-text').click(function()
         {
@@ -3374,9 +3362,9 @@
             });
             $('#street-div #experience-personally').css(
             {
-                zIndex: 3,
+                zIndex: 2,
             });
-            $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
+
             $('#text-container').dialog(
             {
                 width: 680,
@@ -3385,7 +3373,7 @@
                 escape: false,
                 onClose: function()
                 {
-                    
+                    $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
                 }
             });
 
@@ -5063,7 +5051,6 @@
  (function($){ 
     $.forum = function()
     {
-        // $('#form-create-content').ckeditor();
         $("#forum-reply-content").keydown(function(){
             var content_num = 20;
             /* 若content字數小於10則將submit disable */

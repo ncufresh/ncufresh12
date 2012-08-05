@@ -4118,11 +4118,12 @@ ul.users-department li p.user-department
 
 #user-data-view
 {
-    width:185px; 
-    height:350px;
-    padding:0px;
-    margin-top:10px;
-    margin-left:90px;
+    width: 185px;
+    height: 350px;
+    padding: 0px;
+    margin-top: 10px;
+    margin-left: 71px;
+    font-weight: bold;
 }
 
 #user-data-view li
@@ -7099,8 +7100,8 @@ li.enabled a
 
 #street-div #boy-dormitory-12
 {
-    width: 112px;
-    height: 84px;
+    width: 90px;
+    height: 67px;
     background:  url('../building/dormitory/mouseleave/boy_dormitory_12.png');
     left: 489px;
     top: 98px;
@@ -7113,10 +7114,10 @@ li.enabled a
 
 #street-div #boy-dormitory-13
 {
-    width: 103px;
-    height: 120px;
+    width: 82px;
+    height: 96px;
     background:  url('../building/dormitory/mouseleave/boy_dormitory_13.png');
-    left: 135px;
+    left: 148px;
     top: 431px;
 }
 
@@ -7669,8 +7670,8 @@ li.enabled a
 
 #street-div #restaurant-9
 {
-    width: 106px;
-    height: 94px;
+    width: 85px;
+    height: 75px;
     background:  url('../building/food/mouseleave/restaurant_9.png');
     left: 493px;
     top: 240px;
@@ -7709,10 +7710,10 @@ li.enabled a
 
 #street-div #stadium
 {
-    width: 163px;
-    height: 84px;
+    width: 132px;
+    height: 99px;
     background:  url('../building/exercise/mouseleave/stadium.png');
-    left: 129px;
+    left: 163px;
     top: 84px;
 }
 
@@ -8027,8 +8028,10 @@ li.enabled a
 
 #street-div .loading
 {
-    position:absolute;
+    position: absolute;
     display: none;
+    left: 63%;
+    z-index: 2;
 }
 
 #street-div .one-image
