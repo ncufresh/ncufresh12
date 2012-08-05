@@ -4442,7 +4442,7 @@
         $('.allmessages').scrollable({
             wheelSpeed: 90
         });
-        $('.my-all-messages').scrollable({
+        $('#my-all-messages').scrollable({
             wheelSpeed: 90
         });
         $('#self-messages-content').scrollable({
