@@ -4034,21 +4034,30 @@ button.news-button
 
 /* profile... */
 div.friends,
-#sameDsameG,
-#sameDdiffG,
-#other-department,
-#request,
 #myfriend,
-.myprofile,
-#newgroup,
-#mygroup,
 .newmember,
 div.allgroups,
 div.profile-message-allmessages,
 div.profile-message-reply,
+#login,
+div#success
+{
+    background-image: url('../images/profile_01.png');
+}
 
-ul.friends-sort 
+#mygroup,
+#newgroup,
+#other-department,
+.myprofile,
+#request,
+#sameDsameG,
+#sameDdiffG,
+#register
+{
+    background-image: url('../images/profile_02.png');
+}
 
+ul.friends-sort
 {
     width:210px;
     height:130px;
@@ -4224,22 +4233,18 @@ div.group-friends
 
 div.friends
 {
-    background-image:url('../profile/friend.png');
-    background-repeat:no-repeat ;
     background-position: 0px -832px;
     width:740px;
-    height:410px;
+    height:406px;
     padding:5px;
     margin:0px;
 }
 
 #sameDsameG
 {
-    background: url('../profile/sameDsameG.png');
-    background-repeat:no-repeat ;
     background-position: 0px -416px;
     width:690px;
-    height:370px;
+    height:366px;
     padding:25px;
     margin:0px;
 }
@@ -4252,10 +4257,9 @@ div.friends
 
 #sameDdiffG
 {
-    background: url('../profile/sameDdiffG.png') no-repeat ;
     background-position: -752px -416px;
     width:690px;
-    height:370px;
+    height:367px;
     padding:25px;
     margin:0px;
 }
@@ -4268,10 +4272,9 @@ div.friends
 
 #other-department
 {
-    background:url('../profile/otherD.png') no-repeat ;
     background-position: -752px 0px;
     width:690px;
-    height:370px;
+    height:367px;
     padding:25px;
     margin:0px;
 }
@@ -4284,11 +4287,9 @@ div.friends
 
 #request
 {
-    background-image:url('../profile/request.png');
-    background-repeat:no-repeat ;
     background-position: 0px -832px;
     width:690px;
-    height:370px;
+    height:366px;
     padding:25px;
     margin:0px;
 }
@@ -4478,11 +4479,9 @@ div.friends-sortfriend div.avatar
 
 #myfriend
 {
-    background-image:url('../profile/myfriend.png');
-    background-repeat:no-repeat ;
     background-position: -752px -1248px;
     width:690px;
-    height:370px;
+    height:366px;
     padding:25px;
     margin:0px;
 }
@@ -4493,11 +4492,9 @@ div.friends-sortfriend div.avatar
 }
 .myprofile
 {
-    background-image:url('../profile/profile.png');
-    background-repeat:no-repeat ;
     background-position: -752px -1248px;
     width:690px;
-    height:370px;
+    height:420px;
     padding:25px;
     margin:0px;
 }
@@ -4522,11 +4519,9 @@ div.friends-sortfriend div.avatar
 
 #newgroup
 {
-    background-image:url('../profile/newgroup.png');
-    background-repeat:no-repeat ;
     background-position: 0px 0px;
     width:690px;
-    height:370px;
+    height:367px;
     padding:25px;
 }
 
@@ -4548,8 +4543,6 @@ div.friends-sortfriend div.avatar
 
 #mygroup
 {
-    background-image:url('../profile/mygroup.png');
-    background-repeat:no-repeat ;
     background-position: -752px -832px;
     width:690px;
     height:370px;
@@ -4564,11 +4557,9 @@ div.friends-sortfriend div.avatar
 
 .newmember
 {
-    background-image:url('../profile/groupmembers.png');
-    background-repeat:no-repeat ;
     background-position: -752px -832px;
     width:690px;
-    height:370px;
+    height:366px;
     padding:25px;
     margin:0px;
 }
@@ -4580,11 +4571,9 @@ div.friends-sortfriend div.avatar
 
 div.allgroups
 {
-    background-image:url('../profile/allgroups.png');
-    background-repeat:no-repeat ;
     background-position: 0px 0px;
     width:690px;
-    height:370px;
+    height:367px;
     padding:25px;
     margin:0px;
 }
@@ -4596,11 +4585,9 @@ div.allgroups h4
 
 div.profile-message-allmessages
 {
-    background-image:url('../profile/forum1.png');
-    background-repeat:no-repeat ;
     background-position: 0px -416px;
     width:690px;
-    height:370px;
+    height:367px;
     padding:25px;
     margin:0px;
 }
@@ -4644,11 +4631,9 @@ div.profile-message-allmessages tr td
 
 div.profile-message-reply
 {
-    background-image:url('../profile/forum2.png');
-    background-repeat:no-repeat ;
     background-position: -752px -416px;
     width:690px;
-    height:370px;
+    height:367px;
     padding:25px;
     margin:0px;
     float:left;
@@ -4879,7 +4864,7 @@ span.friends-wrong-message
  */
 #register
 {
-    background: url('../profile/register.png') no-repeat;
+    background-position: 0px -1248px;
     height: 540px;
     margin: 0px;
     padding: 40px;
@@ -4928,10 +4913,9 @@ span.friends-wrong-message
 
 div#success
 {
-    background-image:url('../profile/finish.png');
-    background-repeat:no-repeat ;
+    background-position: -752px 0px;
     width:690px;
-    height:370px;
+    height:366px;
     padding:25px;
     margin:0px;
 }
@@ -4949,7 +4933,7 @@ div#success a
 
 #login
 {
-    background: url('../profile/login.png');
+    background-position: 0px -1248px;
     width: 690px;
     height: 365px;
     padding: 25px;
