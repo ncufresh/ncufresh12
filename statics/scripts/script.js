@@ -3020,19 +3020,19 @@
         },
         { // 31 (文學院)
             N:{ photo: 'Day 3 (54).JPG', nextPoint: 28 },
-            E:{ photo: 'Day 3 (53).JPG', nextPoint: 32 },
+            E:{ photo: 'Day 3 (53).JPG', nextPoint: (-1) },
             S:{ photo: 'Day 3 (56).JPG', nextPoint: 33 },
-            W:{ photo: 'Day 3 (55).JPG', nextPoint: 30 }
+            W:{ photo: 'Day 3 (55).JPG', nextPoint: (-1) }
         },
         { // 32 (文院到舊圖間岔路)
             N:{ photo: 'Day 2 (24).JPG', nextPoint: 24 },
             E:{ photo: 'Day 2 (21).JPG', nextPoint: 21 },
             S:{ photo: 'Day 2 (22).JPG', nextPoint: 34 },
-            W:{ photo: 'Day 2 (23).JPG', nextPoint: 31 }
+            W:{ photo: 'Day 2 (23).JPG', nextPoint: 33 }
         },
         { // 33 (國鼎東岔路)
             N:{ photo: 'Day 3 (50).JPG', nextPoint: 31 },
-            E:{ photo: 'Day 3 (51).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (51).JPG', nextPoint: 32 },
             S:{ photo: 'Day 3 (52).JPG', nextPoint: 35 },
             W:{ photo: 'Day 3 (49).JPG', nextPoint: (-1) }
         },
@@ -3411,7 +3411,6 @@
         $('#street-div .picture, #street-div .button-text').click(function()
         {
             isInPicture = false;
-            // $('.loading').hide();
             $('#street-div #back-div, #street-div #curtain-close-div').css(
             {
                height: 552,
