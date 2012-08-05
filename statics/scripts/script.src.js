@@ -3051,7 +3051,7 @@
         },
         { // 37 (百花川、棒球場)
             N:{ photo: 'Day 2 (35).JPG', nextPoint: 34 },
-            E:{ photo: 'Day 2 (36).JPG', nextPoint: 38 },
+            E:{ photo: 'Day 2 (44).JPG', nextPoint: 38 },
             S:{ photo: 'Day 2 (33).JPG', nextPoint: (-1) },
             W:{ photo: 'Day 2 (34).JPG', nextPoint: 36 }
         },
