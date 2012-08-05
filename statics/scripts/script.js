@@ -5167,17 +5167,18 @@
             // $('.form-addfriend').submit();
             // return false;
             var friends = [];
-            var link = $(this);
+            var link = $(this).attr('class');
             friends[0] = $(this).attr('href').replace('#', '');
             $.post($.configures.makeFriendUrl, { 
                 friends: friends,
                 token: $.configures.token
                 }, function(data){
-                    if( data.result == true )
-                    {
-                        link.replaceWith($('<span></span>').text('已送出邀請'));
-                        alert('已經送出好友邀請!');
-                    }
+                if( data.result == true )
+                {
+                    $('<span></span>').text('已送出邀請').replaceAll($('.profile-add-friend .'+link));
+                    alert('已經送出好友邀請!');
+                }
+                $.configures.token = data.token;
             });
             // console.log('!!!');
         });
