@@ -3302,14 +3302,15 @@
                     $('#street-div .street-loading').show();
                     $('#street-div .arrow').eq(0).unbind('click').click(function() //前進nextDirection
                     {
+                    console.log(loading);
                         if ( ! loading ) forward();
                     });
                      $('#street-div .arrow').eq(1).unbind('click').click(function() // 左旋
-                    {
+                    {console.log(loading);
                         if ( ! loading ) turnLeft();
                     });
                     $('#street-div .arrow').eq(2).unbind('click').click(function() // 右旋
-                    {
+                    {console.log(loading);
                         if ( ! loading ) turnRight();
                     });
 
