@@ -1585,7 +1585,14 @@
             self.markToday();
         }
         $('#personal-calendar .right').remove();
-        container = $('<div></div>').addClass('right').insertAfter($('#personal-calendar .date'));
+        if ( $.browser.msie )
+        {
+            container = $('<div></div>').addClass('scroll-container').addClass('right').insertAfter($('#personal-calendar .date'));
+        }
+        else
+        {
+            container = $('<div></div>').addClass('right').insertAfter($('#personal-calendar .date'));
+        }
         if ( cal_events && cal_events.length )
         {
             var event_ids = [];
