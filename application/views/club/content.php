@@ -21,16 +21,16 @@
     </div>
     <div class="display-head" id="head-<?php echo $data->category; ?>">
 <?php if ( $is_subscript == false ): ?>
-        <a href="<?php echo Yii::app()->createUrl('calendar/subscriptfromclub/', array('club_id'=>$id)) ?>" title="訂閱">訂閱</a>
+        <a href="<?php echo Yii::app()->createUrl('calendar/subscriptfromclub/', array('club_id'=>$id)) ?>" title="訂閱">訂閱行事曆</a>
 <?php elseif ( $is_subscript == true ): ?>
-        <a href="<?php echo Yii::app()->createUrl('calendar/cancelsubscriptfromclub/', array('club_id'=>$id)) ?>" title="訂閱">取消訂閱</a>
+        <a href="<?php echo Yii::app()->createUrl('calendar/cancelsubscriptfromclub/', array('club_id'=>$id)) ?>" title="訂閱">取消訂閱行事曆</a>
 <?php endif; ?>
 <?php if ( Club::model()->getIsAdmin($id) ) : ?>
         <a href="<?php echo Yii::app()->createUrl('club/modify/', array('id'=>$id)); ?>" title="修改">修改</a>
         <a href="<?php echo Yii::app()->createUrl('club/uploadpicture/', array('id'=>$id)); ?>" title="上傳圖片">上傳圖片</a>
 <?php endif; ?>
 <?php if ( Club::model()->getIsMaster($id) ) : ?>
-        <a href="<?php echo Yii::app()->createUrl('calendar/club/', array('id'=>$id)); ?>" title="修改行事曆">修改行事曆</a>
+        <a href="<?php echo Yii::app()->createUrl('calendar/club/', array('id'=>$id)); ?>" title="編輯行事曆">編輯行事曆</a>
 <?php endif; ?>
         <h4><?php echo $data->name; ?></h4>
     </div>
