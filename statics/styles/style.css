@@ -5342,6 +5342,29 @@ img.user_img
     display: inline-block;
 }
 
+.game-display .first-row-items,
+.game-display .second-row-items
+{
+    width: 78px;
+    border: 2px #006110 solid;
+    margin: 0px 2px 6px 1px;
+    padding: 3px;
+    border-radius: 18px;
+    background: #C0FFB0;
+    float: left;
+}
+
+.game-display .first-row-items img,
+.game-display .second-row-items img
+{
+    width: 78px;
+}
+
+.game-display .the-first-item
+{
+    margin-left: 48px
+}
+
 .item-description,
 .mission-description
 {
