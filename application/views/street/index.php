@@ -59,7 +59,7 @@
             <div id="flower-brook" class="landscape picture" streetPoints="37" faceto="W" show="landscape" href="#24"></div>
             <div id="big-tree" class="landscape picture" streetPoints="20" faceto="S" show="landscape" href="#25"></div>
             <div id="calligraphy" class="landscape picture opacity-picture" streetPoints="-1" faceto="-1" show="landscape" href="#26"></div>
-            <div id="kon-fu" class="landscape picture opacity-picture" streetPoints="-1" faceto="-1" show="landscape" href="#61"></div>
+            <div id="kon-fu" class="landscape picture" streetPoints="36" faceto="N" show="landscape" href="#61"></div>
             <div id="green-plain" class="landscape picture opacity-picture" streetPoints="-1" faceto="-1" show="landscape" href="#62"></div>
             <div id="girl-14-front" class="landscape picture" streetPoints="14" faceto="E" show="landscape" href="#63"></div>
             <!--飲食-->

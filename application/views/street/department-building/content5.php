@@ -14,7 +14,7 @@
     國鼎光電大樓歡迎您的參訪
 </p>
 <p>
-    科系：<a href="http://www.dop.ncu.edu.tw/" title="光電">光電</a>
+	科系：<a href="http://www.dop.ncu.edu.tw/" title="光電">光電</a>
 </p>
 <p>
     <img alt="國鼎光電大樓" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2774.JPG" style="width:320px;height:180px;" /><img alt="國鼎光電大樓" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2772.JPG" style="width:320px;height:180px;" />

@@ -17,6 +17,19 @@
         return this.split('').reverse().join('');
     };
 
+    Array.prototype.indexOf = function(obj)
+    {
+        for(var i=0; i<this.length; i++)
+        {
+            if(this[i]==obj)
+            {
+                return i;
+            }
+        }
+        return -1;
+    };
+    
+    
     $.extend({
         random: function(min, max)
         {
@@ -962,8 +975,36 @@
             fadeOutDuration:        'slow',
             wheelSpeed:             48
         }, options);
+
+        var scrollWidth = (function()
+        {
+            var inner = document.createElement('p');
+            inner.style.width = '100%';
+            inner.style.height = '200px';
+
+            var outer = document.createElement('div');
+            outer.style.position = 'absolute';
+            outer.style.top = '0px';
+            outer.style.left = '0px';
+            outer.style.visibility = 'hidden';
+            outer.style.width = '200px';
+            outer.style.height = '150px';
+            outer.style.overflow = 'hidden';
+            outer.appendChild(inner);
+
+            document.body.appendChild (outer);
+            var w1 = inner.offsetWidth;
+            outer.style.overflow = 'scroll';
+            var w2 = inner.offsetWidth;
+            if (w1 == w2) w2 = outer.clientWidth;
+
+            document.body.removeChild (outer);
+            return (w1 - w2);
+        })();
+
         if ( $.browser.msie )
         {
+            var scrollArea = $(this);
             var container = $('<div></div>')
                 .addClass('scroll-container')
                 .css({
@@ -971,10 +1012,24 @@
                 })
                 .insertAfter($(this));
             $(this).css({
-                height: container.height(),
-                overflowY: 'scroll'
+                height: '100%',
+                overflowX: 'hidden',
+                overflowY: 'auto',
+                width: container.width()
             });
-            container.wrapInner($(this))
+            container.wrapInner($(this));
+            container.css({
+                width: $(this).width() + scrollWidth
+            });
+            this.each(function()
+            {
+                $.extend($(this).constructor.prototype, {
+                    scrollTo: function(position)
+                    {
+                        scrollArea.scrollTop(position);
+                    }
+                });
+            });
             return this;
         }
         return this.each(function()
@@ -982,31 +1037,6 @@
             var active = false;
             var inside = false;
             var scrollHeight = 0;
-            var scrollWidth = (function()
-            {
-                var inner = document.createElement('p');
-                inner.style.width = '100%';
-                inner.style.height = '200px';
-
-                var outer = document.createElement('div');
-                outer.style.position = 'absolute';
-                outer.style.top = '0px';
-                outer.style.left = '0px';
-                outer.style.visibility = 'hidden';
-                outer.style.width = '200px';
-                outer.style.height = '150px';
-                outer.style.overflow = 'hidden';
-                outer.appendChild(inner);
-
-                document.body.appendChild (outer);
-                var w1 = inner.offsetWidth;
-                outer.style.overflow = 'scroll';
-                var w2 = inner.offsetWidth;
-                if (w1 == w2) w2 = outer.clientWidth;
-
-                document.body.removeChild (outer);
-                return (w1 - w2);
-            })();
             var updateScrollDraggableHeight = function()
             {
                 var originalHeight = parseInt(scrollDragable.css('height'));
@@ -2677,6 +2707,8 @@
             return true;
         };
         var back = $.overlay({
+            closeOnEscape: false,
+            closeOnClick: false,
             onBeforeHide: function()
             {
                 box.remove();
@@ -2980,7 +3012,7 @@
             W:{ photo: 'Day 3 (64).JPG', nextPoint: (-1) }
         },
         { // 30 (國鼎、烏龜池旁邊)
-            N:{ photo: 'Day 3 (58).JPG', nextPoint: (-1) },
+            N:{ photo: 'Day 3 (58).JPG', nextPoint: 29 },
             E:{ photo: 'Day 3 (57).JPG', nextPoint: 31 },
             S:{ photo: 'Day 3 (60).JPG', nextPoint: (-1) },
             W:{ photo: 'Day 3 (59).JPG', nextPoint: 50 }
@@ -3017,8 +3049,8 @@
         },
         { // 36 (太極銅雕)
             N:{ photo: 'Day 2 (29).JPG', nextPoint: (-1) },
-            E:{ photo: 'Day 2 (31).JPG', nextPoint: 37 },
-            S:{ photo: 'Day 2 (32).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 2 (32).JPG', nextPoint: 37 },
+            S:{ photo: 'Day 2 (31).JPG', nextPoint: (-1) },
             W:{ photo: 'Day 2 (30).JPG', nextPoint: 35 }
         },
         { // 37 (百花川、棒球場)
@@ -3100,9 +3132,9 @@
             W:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) }
         },
         { // 50 (男12舍)
-            N:{ photo: 'Day 3 (95).JPG', nextPoint: (-1) },
-            E:{ photo: 'Day 3 (96).JPG', nextPoint: 30 },
-            S:{ photo: 'Day 3 (94).JPG', nextPoint: (-1) },
+            N:{ photo: 'Day 3 (96).JPG', nextPoint: 29 },
+            E:{ photo: 'Day 3 (95).JPG', nextPoint: 30 },
+            S:{ photo: 'Day 3 (94).JPG', nextPoint: 30 },
             W:{ photo: 'Day 3 (61).JPG', nextPoint: (-1) }
         },
         { // 51 (工2)
@@ -3689,6 +3721,8 @@
  * Lightbox
  */
 (function($) {
+    var initialized = false;
+
     $.fn.lightbox = function(options)
     {
         var options = $.extend({
@@ -3731,6 +3765,7 @@
 
         var lightboxInitialize = function()
         {
+            if ( initialized ) return false;
             if ( options.onBeforeShow() )
             {
                 var overlay = $('<div></div>')
@@ -3791,6 +3826,7 @@
 
                 active = 0;
                 images = [];
+                initialized = true;
                 objects.each(function(index)
                 {
                     var object = objects.eq(index);
@@ -3845,6 +3881,7 @@
             {
                 options.onHide();
                 $('#' + options.lightboxId).remove();
+                initialized = false;
             }
             return true;
         }
@@ -4205,7 +4242,7 @@
 
         $('#multimedia .items').each(function()
         {
-            $(this).height($(this).find('a').length*$(this).find('a').height());
+            $(this).height($(this).find('a').length * $(this).find('a').height());
         });
         
         $('#multimedia .menu a').click(function()
@@ -4255,10 +4292,24 @@
         });
         
         $('#multimedia .tab').first().click();
+
+        $.konami({
+            complete: function()
+            {
+                var url = $.configures.multimediaYoutubeUrl.replace(':v', 'vcMVddGa0LU');
+                $('#multimedia-frame').attr('src', url);
+                $.getJSON($.configures.multimediaIntroductionUrl.replace(':v', 'vcMVddGa0LU'), function(data)
+                {
+                    $('#multimedia .introduction').text(data.introduction);
+                });
+                return false;
+            }
+        });
     }
 })(jQuery);
 
-(function($){
+(function($)
+{
     $.game = function()
     {
         $('.game-display').scrollable({
@@ -4333,7 +4384,7 @@
         {
             var target = $(this);
             $.confirm({
-                message: '您確定要裝備此物品嗎？',
+                message: '您確定要裝備或卸載此物品嗎？',
                 confirmed: function(result)
                 {
                     if ( result )
@@ -4846,6 +4897,10 @@
         if ( $('#marquee').length ) $('#marquee').marquee();
 
         if ( $('#index-calendar').length ) $('#index-calendar div').calendar($.configures.calendarEventsUrl);
+
+        $.konami({
+            complete: $.ultimatePassword
+        });
     };
 })(jQuery);
 
