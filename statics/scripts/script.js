@@ -1580,7 +1580,8 @@
             }
             self.markToday();
         }
-        $(container).empty();
+        $('#personal-calendar .right').remove();
+        container = $('<div></div>').addClass('right').insertAfter($('#personal-calendar .date'));
         if ( cal_events && cal_events.length )
         {
             var event_ids = [];
@@ -1624,6 +1625,7 @@
                     });
                     div.append(header).append(ul).appendTo(container);
                 }
+                container.scrollable();
                 $.configures.token = data.token;
             });
         }
@@ -1761,25 +1763,26 @@
 
     $.fn.calendar = function(url)
     {
-        var todolist;
         var container = $(this);
         var updateTodolist = function()
         {
             var events = $(this).data('cal_events');
             var todos = [];
-            if ( todolist ) todolist.remove();
-            for ( var key=0; key<events.length; key++ )
+            $(this).parents('table').next().remove();
+            if ( events )
             {
-                var start = new Date((events[key].start - (new Date()).getTimezoneOffset() * 60) * 1000);
-                var end = new Date((events[key].end - (new Date()).getTimezoneOffset() * 60) * 1000);
-                todos[key]=
-                [
-                    (start.getMonth()+1) + '/' + start.getDate() + ' ~ ' + (end.getMonth()+1) + '/' + end.getDate(),
-                    events[key].name
-                ];
+                for ( var key=0; key<events.length; key++ )
+                {
+                    var start = new Date((events[key].start - (new Date()).getTimezoneOffset() * 60) * 1000);
+                    var end = new Date((events[key].end - (new Date()).getTimezoneOffset() * 60) * 1000);
+                    todos[key]=
+                    [
+                        (start.getMonth()+1) + '/' + start.getDate() + ' ~ ' + (end.getMonth()+1) + '/' + end.getDate(),
+                        events[key].name
+                    ];
+                }
             }
-            todolist = $.generateTodolist(todos).appendTo(container);
-            return todolist;
+            $.generateTodolist(todos).appendTo(container).scrollable();
         };
         var generate = function(year, month)
         {
@@ -1794,8 +1797,8 @@
                         year += 1;
                         month = 1;
                     }
+                    $(this).parents('table').next().remove();
                     calendar.remove();
-                    if ( todolist ) todolist.remove();
                     calendar = generate(year, month);
                     return false;
                 },
@@ -1807,8 +1810,8 @@
                         year -= 1;
                         month = 12;
                     }
+                    $(this).parents('table').next().remove();
                     calendar.remove();
-                    if ( todolist ) todolist.remove();
                     calendar = generate(year, month);
                     return false;
                 },
@@ -2128,7 +2131,6 @@
             scrollableClass:    false
         });
     };
-
 })(jQuery);
 
 /**

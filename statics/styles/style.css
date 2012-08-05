@@ -655,7 +655,7 @@ a:hover
 #club #calendar-button,
 #index-calendar > div,
 .calendar,
-.calendar .right div,
+.calendar .right .scroll-content div > div,
 .calendar .right div h4,
 .calendar .calendar-create-button,
 .calendar .calendar-hide-button,
@@ -1679,6 +1679,17 @@ table.gsc-completion-container
     color: #946722;
 }
 
+.scroll-container.todolist-table
+{
+    height: 160px;
+    width: 205px;
+}
+
+.todolist-table .scroll-content
+{
+    width: 205px;
+}
+
 #calendar-recycle,
 #calendar-recycle h4,
 #calendar-recycle a.calendar-show-event,
@@ -1770,15 +1781,23 @@ table.gsc-completion-container
     height: 80%;
     width: 50%;
     float: left;
-    
 }
 
-.calendar .right div
+.calendar .right.scroll-container
+{
+    height: 550px;
+    width: 300px;
+}
+
+.calendar .right.scroll-container .scroll-content
+{
+    width: 300px;
+}
+
+.calendar .right .scroll-content div > div
 {
     background-position: -848px -1264px;
-    padding-top: 2em;
-    width: 100%;
-    float: left;
+    padding-top: 15px;
 }
 
 .calendar .right div h4
