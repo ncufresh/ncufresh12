@@ -23,6 +23,7 @@ class Profile extends CActiveRecord
             array('department', 'numerical','min' => 1, 'max' => 21, 'on' => 'register, editor'),
             array('grade', 'numerical','min' => 0, 'max' => 4, 'on' => 'register, editor'),
             array('nickname', 'unique', 'className' => 'Profile', 'on' => 'register, editor'),
+            array('gender', 'numerical','min' => 0, 'max' => 1, 'on' => 'register, editor'),
             array('birthday', 'isDate', 'on' => 'register, editor'),
         );
     }
