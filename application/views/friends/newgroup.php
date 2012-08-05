@@ -6,6 +6,7 @@
 <input type="text" name="group-description" />
     <label>成員: </label>
     <div id="newgroup">
+    <h4>可加成員(朋友)</h4>
     <div id="new-group-members">
         <ul class="users-department">
 <?php foreach ( $user->friends as $friend ) : ?>
