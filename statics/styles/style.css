@@ -2575,7 +2575,7 @@ button.news-button
 
 #multimedia .introduction
 {
-    background-position: 0px 720px;
+    background-position: 0px -720px;
     background-repeat: no-repeat;
     color: #000000;
     height: 150px;
