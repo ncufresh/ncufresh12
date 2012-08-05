@@ -1538,6 +1538,10 @@
                     cal_events[cal_events.length] = event;
                     $(this).data('cal_events', cal_events);
                 }
+                else
+                {
+                    $(this).data('cal_events', []);
+                }
             }
         });
         return this;
@@ -1765,7 +1769,7 @@
         var container = $(this);
         var updateTodolist = function()
         {
-            var events = $(this).data('cal_events');
+            var events = $(this).data('cal_events')?$(this).data('cal_events'):[];
             var todos = [];
             if ( todolist ) todolist.remove();
             for ( var key=0; key<events.length; key++ )
