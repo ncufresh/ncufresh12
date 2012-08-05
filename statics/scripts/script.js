@@ -17,6 +17,19 @@
         return this.split('').reverse().join('');
     };
 
+    Array.prototype.indexOf = function(obj)
+    {
+        for(var i=0; i<this.length; i++)
+        {
+            if(this[i]==obj)
+            {
+                return i;
+            }
+        }
+        return -1;
+    };
+    
+    
     $.extend({
         random: function(min, max)
         {
@@ -962,36 +975,68 @@
             fadeOutDuration:        'slow',
             wheelSpeed:             48
         }, options);
+
+        var scrollWidth = (function()
+        {
+            var inner = document.createElement('p');
+            inner.style.width = '100%';
+            inner.style.height = '200px';
+
+            var outer = document.createElement('div');
+            outer.style.position = 'absolute';
+            outer.style.top = '0px';
+            outer.style.left = '0px';
+            outer.style.visibility = 'hidden';
+            outer.style.width = '200px';
+            outer.style.height = '150px';
+            outer.style.overflow = 'hidden';
+            outer.appendChild(inner);
+
+            document.body.appendChild (outer);
+            var w1 = inner.offsetWidth;
+            outer.style.overflow = 'scroll';
+            var w2 = inner.offsetWidth;
+            if (w1 == w2) w2 = outer.clientWidth;
+
+            document.body.removeChild (outer);
+            return (w1 - w2);
+        })();
+
+        if ( $.browser.msie )
+        {
+            var scrollArea = $(this);
+            var container = $('<div></div>')
+                .addClass('scroll-container')
+                .css({
+                    overflow: 'hidden'
+                })
+                .insertAfter($(this));
+            $(this).css({
+                height: '100%',
+                overflowX: 'hidden',
+                overflowY: 'auto',
+                width: container.width()
+            });
+            container.wrapInner($(this));
+            container.css({
+                width: $(this).width() + scrollWidth
+            });
+            this.each(function()
+            {
+                $.extend($(this).constructor.prototype, {
+                    scrollTo: function(position)
+                    {
+                        scrollArea.scrollTop(position);
+                    }
+                });
+            });
+            return this;
+        }
         return this.each(function()
         {
             var active = false;
             var inside = false;
             var scrollHeight = 0;
-            var scrollWidth = (function()
-            {
-                var inner = document.createElement('p');
-                inner.style.width = '100%';
-                inner.style.height = '200px';
-
-                var outer = document.createElement('div');
-                outer.style.position = 'absolute';
-                outer.style.top = '0px';
-                outer.style.left = '0px';
-                outer.style.visibility = 'hidden';
-                outer.style.width = '200px';
-                outer.style.height = '150px';
-                outer.style.overflow = 'hidden';
-                outer.appendChild(inner);
-
-                document.body.appendChild (outer);
-                var w1 = inner.offsetWidth;
-                outer.style.overflow = 'scroll';
-                var w2 = inner.offsetWidth;
-                if (w1 == w2) w2 = outer.clientWidth;
-
-                document.body.removeChild (outer);
-                return (w1 - w2);
-            })();
             var updateScrollDraggableHeight = function()
             {
                 var originalHeight = parseInt(scrollDragable.css('height'));
@@ -2662,6 +2707,8 @@
             return true;
         };
         var back = $.overlay({
+            closeOnEscape: false,
+            closeOnClick: false,
             onBeforeHide: function()
             {
                 box.remove();
@@ -2794,7 +2841,7 @@
             N:{ photo: 'Day 3 (3).JPG', nextPoint: (-1) },
             E:{ photo: 'Day 3 (2).JPG', nextPoint: 0 },
             S:{ photo: 'Day 3 (1).JPG', nextPoint: (-1) },
-            W:{ photo: 'Day 3 (4).JPG', nextPoint: 48 }
+            W:{ photo: 'Day 3 (4).JPG', nextPoint: 49 }
         },
         { // 2 (工3)
             N:{ photo: 'Day 1 (6).JPG', nextPoint: 3 },
@@ -2965,7 +3012,7 @@
             W:{ photo: 'Day 3 (64).JPG', nextPoint: (-1) }
         },
         { // 30 (國鼎、烏龜池旁邊)
-            N:{ photo: 'Day 3 (58).JPG', nextPoint: (-1) },
+            N:{ photo: 'Day 3 (58).JPG', nextPoint: 29 },
             E:{ photo: 'Day 3 (57).JPG', nextPoint: 31 },
             S:{ photo: 'Day 3 (60).JPG', nextPoint: (-1) },
             W:{ photo: 'Day 3 (59).JPG', nextPoint: 50 }
@@ -3002,8 +3049,8 @@
         },
         { // 36 (太極銅雕)
             N:{ photo: 'Day 2 (29).JPG', nextPoint: (-1) },
-            E:{ photo: 'Day 2 (31).JPG', nextPoint: 37 },
-            S:{ photo: 'Day 2 (32).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 2 (32).JPG', nextPoint: 37 },
+            S:{ photo: 'Day 2 (31).JPG', nextPoint: (-1) },
             W:{ photo: 'Day 2 (30).JPG', nextPoint: 35 }
         },
         { // 37 (百花川、棒球場)
@@ -3025,10 +3072,10 @@
             W:{ photo: 'Day 2 (40).JPG', nextPoint: (-1) }
         },
         { // 40 (鬆餅屋)
-            N:{ photo: 'Day 3 (39).JPG', nextPoint: 35 },
-            E:{ photo: 'Day 3 (40).JPG', nextPoint: (-1) },
-            S:{ photo: 'Day 3 (37).JPG', nextPoint: 44 },
-            W:{ photo: 'Day 3 (38).JPG', nextPoint: 41 }
+            N:{ photo: 'Day 3 (36).JPG', nextPoint: 35 },
+            E:{ photo: 'Day 3 (35).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 3 (34).JPG', nextPoint: 44 },
+            W:{ photo: 'Day 3 (33).JPG', nextPoint: 41 }
         },
         { // 41 (科四至管院路)
             N:{ photo: 'Day 3 (32).JPG', nextPoint: (-1) },
@@ -3046,7 +3093,7 @@
             N:{ photo: 'Day 3 (21).JPG', nextPoint: 44 },
             E:{ photo: 'Day 3 (22).JPG', nextPoint: 53 },
             S:{ photo: 'Day 3 (23).JPG', nextPoint: 46 },
-            W:{ photo: 'Day 3 (24).JPG', nextPoint: 42 }
+            W:{ photo: 'Day 3 (24).JPG', nextPoint: (-1) }
         },
         { // 44 (科二東路)
             N:{ photo: 'Day 3 (39).JPG', nextPoint: 40 },
@@ -3074,20 +3121,20 @@
         },
         { // 48 (游泳池)
             N:{ photo: 'Day 3 (10).JPG', nextPoint: 47 },
-            E:{ photo: 'Day 3 (11).JPG', nextPoint: 1 },
+            E:{ photo: 'Day 3 (11).JPG', nextPoint: (-1) },
             S:{ photo: 'Day 3 (12).JPG', nextPoint: 49 },
             W:{ photo: 'Day 3 (9).JPG', nextPoint: (-1) }
         },
         { // 49 (游泳池旁側門)
             N:{ photo: 'Day 3 (8).JPG', nextPoint: 48 },
-            E:{ photo: 'Day 3 (7).JPG', nextPoint: (-1) },
-            S:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) },
-            W:{ photo: 'Day 3 (6).JPG', nextPoint: (-1) }
+            E:{ photo: 'Day 3 (7).JPG', nextPoint: 1 },
+            S:{ photo: 'Day 3 (6).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) }
         },
         { // 50 (男12舍)
-            N:{ photo: 'Day 3 (95).JPG', nextPoint: (-1) },
-            E:{ photo: 'Day 3 (96).JPG', nextPoint: 30 },
-            S:{ photo: 'Day 3 (94).JPG', nextPoint: (-1) },
+            N:{ photo: 'Day 3 (96).JPG', nextPoint: 29 },
+            E:{ photo: 'Day 3 (95).JPG', nextPoint: 30 },
+            S:{ photo: 'Day 3 (94).JPG', nextPoint: 30 },
             W:{ photo: 'Day 3 (61).JPG', nextPoint: (-1) }
         },
         { // 51 (工2)
@@ -3439,7 +3486,7 @@
                 jQuery.configures.ncuLifeUrl.replace(':tab', tab).replace(':page', page),
                 function(data)
                 { 
-                    $('#nculife-content-view').html(data.content);
+                    $('#nculife-content-view').html(data.content).scrollTo(0);
                 }
             ); 
             return false;
@@ -3559,13 +3606,14 @@
                 jQuery.configures.readMeUrl.replace(':tab', tab).replace(':page', page),
                 function(data)
                 { 
-                    $('.readme-view').html(data.content);
+                    $('.readme-view').html(data.content).scrollTo(0);
                 }
             ); 
             return false;
         }
 
-        $('.readme-view').scrollable({
+        $('.readme-view').scrollable(
+		{
             scrollableClass: false
         });
 
@@ -3673,6 +3721,8 @@
  * Lightbox
  */
 (function($) {
+    var initialized = false;
+
     $.fn.lightbox = function(options)
     {
         var options = $.extend({
@@ -3715,6 +3765,7 @@
 
         var lightboxInitialize = function()
         {
+            if ( initialized ) return false;
             if ( options.onBeforeShow() )
             {
                 var overlay = $('<div></div>')
@@ -3775,6 +3826,7 @@
 
                 active = 0;
                 images = [];
+                initialized = true;
                 objects.each(function(index)
                 {
                     var object = objects.eq(index);
@@ -3829,6 +3881,7 @@
             {
                 options.onHide();
                 $('#' + options.lightboxId).remove();
+                initialized = false;
             }
             return true;
         }
@@ -4189,7 +4242,7 @@
 
         $('#multimedia .items').each(function()
         {
-            $(this).height($(this).find('a').length*$(this).find('a').height());
+            $(this).height($(this).find('a').length * $(this).find('a').height());
         });
         
         $('#multimedia .menu a').click(function()
@@ -4239,10 +4292,24 @@
         });
         
         $('#multimedia .tab').first().click();
+
+        $.konami({
+            complete: function()
+            {
+                var url = $.configures.multimediaYoutubeUrl.replace(':v', 'vcMVddGa0LU');
+                $('#multimedia-frame').attr('src', url);
+                $.getJSON($.configures.multimediaIntroductionUrl.replace(':v', 'vcMVddGa0LU'), function(data)
+                {
+                    $('#multimedia .introduction').text(data.introduction);
+                });
+                return false;
+            }
+        });
     }
 })(jQuery);
 
-(function($){
+(function($)
+{
     $.game = function()
     {
         $('.game-display').scrollable({
@@ -4317,7 +4384,7 @@
         {
             var target = $(this);
             $.confirm({
-                message: '您確定要裝備此物品嗎？',
+                message: '您確定要裝備或卸載此物品嗎？',
                 confirmed: function(result)
                 {
                     if ( result )
@@ -4357,11 +4424,12 @@
         $('.button-all-choose').click(function()
         {
             checked = ! checked;
-            $('input[type="checkbox"][name^="friends"]').each(function()
+            $('input[type="checkbox"][name^="friends"], input[type="checkbox"][name^="group-members"]').each(function()
             {
                 $(this).prop('checked', checked);
             });
             $('input[type="checkbox"][name^="friends"]').change();
+            $('input[type="checkbox"][name^="group-members"]').change();
             return false;
         });
 
@@ -4555,10 +4623,10 @@
         {
             var url = $(this).attr('href');
             if (
-                url.match(/^\/.+/)
+                (url.match(/^\/.+/)
              || url.match(/^#.*/)
-             || url.search(location.hostname) >= 0
-             || $(this).attr('rel') !== 'external'
+             || url.search(location.hostname) >= 0)
+             && $(this).attr('rel') !== 'external'
             )
             {
                 return true;
@@ -4829,6 +4897,10 @@
         if ( $('#marquee').length ) $('#marquee').marquee();
 
         if ( $('#index-calendar').length ) $('#index-calendar div').calendar($.configures.calendarEventsUrl);
+
+        $.konami({
+            complete: $.ultimatePassword
+        });
     };
 })(jQuery);
 
@@ -5125,10 +5197,24 @@
             return false;
         });
         $('.profile-add-friend a').click(function (){
-            $('.form-addfriend .addfriend-input').attr('value', $(this).attr('href').replace('#', ''));
-            $('.form-addfriend .addfriend-input').attr('name', 'friends['+$(this).attr('href').replace('#', '')+']');
-            $('.form-addfriend').submit();
-            return false;
+            // $('.form-addfriend .addfriend-input').attr('value', $(this).attr('href').replace('#', ''));
+            // $('.form-addfriend .addfriend-input').attr('name', 'friends['+$(this).attr('href').replace('#', '')+']');
+            // $('.form-addfriend').submit();
+            // return false;
+            var friends = [];
+            var link = $(this);
+            friends[0] = $(this).attr('href').replace('#', '');
+            $.post($.configures.makeFriendUrl, { 
+                friends: friends,
+                token: $.configures.token
+                }, function(data){
+                    if( data.result == true )
+                    {
+                        link.replaceWith($('<span></span>').text('已送出邀請'));
+                        alert('已經送出好友邀請!');
+                    }
+            });
+            // console.log('!!!');
         });
         $("#forum-forum-top2 .sort-list").change(function() {
             var url = $.configures.forumSortUrl;
@@ -5216,7 +5302,7 @@
     $(document).ready(function()
     {
         $.configures.lasttime = 0;
-
+        
         $.configures.sequence = $.random(0, 1000);
 
         $.ncufresh();

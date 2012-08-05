@@ -53,13 +53,13 @@ jQuery(document).ready(function()
                         <li page="school" tab="8">海音咖啡</li>
                         <li page="school" tab="9">阿諾可麗餅</li>
                         <li page="school" tab="10">小木屋鬆餅</li>
-                        <li page="school" tab="11">校園Cafe</li>
+                        <li page="school" tab="11">校園cafe</li>
                     </ul>
                 </li>
                 <li class="life-bar">
                 <span>松苑</span>
                      <ul class="life-inner">
-                        <li page="school" tab="12">香草田園(2F)</li>
+                        <li page="school" tab="12">香草庭園(2F)</li>
                         <li page="school" tab="13">全家</li>
                         <li page="school" tab="14">華碩</li>
                         <li page="school" tab="15">喫茶小舖</li>

@@ -71,7 +71,7 @@ class Subscription extends CActiveRecord
     {
         $calendar = Calendar::model()->getClubCalendar($club_id);
         if ( $calendar ) {
-            if ( $this->find('calendar_id='.$calendar->id.' AND invisible = 0 AND user_id='.Yii::app()->user->getId()) )
+            if ( $this->find('calendar_id=' . $calendar->id . ' AND invisible = 0 AND user_id=' . (integer)Yii::app()->user->getId()) )
             {
                 return true;
             }

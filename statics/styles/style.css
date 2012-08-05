@@ -14,7 +14,6 @@ body
 {
     background: #DCE4ED url('../images/header.png') repeat-x;
     margin: 0 auto;
-    overflow-x: hidden;
     overflow-y: scroll;
     padding: 0;
     width: 1000px;
@@ -222,6 +221,19 @@ form dl.file dt label
 form dl.file input
 {
     width: 100%;
+}
+
+form dl.error input,
+form dl.radio.error,
+form dl.checkbox.error,
+form dl.select.error
+{
+    border: 1px solid #FF0000;
+}
+
+form span.error
+{
+    color: #FF0000;
 }
 
 form span.radio
@@ -1666,17 +1678,6 @@ table.gsc-completion-container
     color: #946722;
 }
 
-
-#calendar .scroll-content
-{
-    width: 484px;
-}
-
-#calendar .scroll-container
-{
-    width: 484px;
-}
-
 #calendar-recycle,
 #calendar-recycle h4,
 #calendar-recycle a.calendar-show-event,
@@ -1691,6 +1692,21 @@ table.gsc-completion-container
 {
     background: url('../images/calendar.png');
 }
+
+#calendar-recycle .scroll-content,
+#calendar-event .scroll-content
+{
+    width: 610px;
+}
+
+#calendar-recycle .scroll-container,
+#calendar-event .scroll-container
+{
+    width: 610px;
+    height: 240px;
+}
+
+
 
 .calendar
 {
@@ -2577,7 +2593,8 @@ button.news-button
     background-position: -752px 0px;
     background-repeat: no-repeat;
     height: 200px;
-    width: 100%;
+    width: 80%;
+    margin-left: 20%;
 }
 
 #multimedia .loading
@@ -2765,6 +2782,11 @@ button.news-button
 #nculife-content-view
 {
     margin-left: 10px;
+}
+
+#nculife-content-view p
+{
+	text-indent: 2em;
 }
 
 #life-index1
@@ -2989,8 +3011,8 @@ button.news-button
 
 #readme .download-background
 {
-    height: 357px;
-    padding: 30px 25px;
+    height: 332px;
+    padding: 60px 25px;
     position: relative;
     width: 700px;
     overflow: hidden;
@@ -2999,6 +3021,11 @@ button.news-button
 #readme .readme-view
 {
 	width: 590px;
+}
+
+#readme .readme-view p
+{
+	text-indent: 2em;
 }
 
 #readme-body
@@ -3189,7 +3216,7 @@ button.news-button
     display: block;
     list-style: none;
     opacity: 0.95;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .readme-menu li
@@ -3240,6 +3267,16 @@ button.news-button
 .download-index li
 {
     margin-top: 6px
+}
+
+#readme .arrow-right
+{
+	width: 0px; 
+	height: 0px; 
+	border: 10px solid; 
+	border-color: transparent transparent transparent white;
+    border-style: dashed dashed dashed solid;
+	margin: -25px 0 0 205px;
 }
 
 #about .title1,
@@ -3884,7 +3921,7 @@ button.news-button
     padding: 0px;
     cursor: pointer;
     width: 204px;
-    height: 110px;
+  
     display: block;
 }
 
@@ -4020,7 +4057,7 @@ ul.friends-sort li
 {
     width:690px;
     height:30px;
-    margin-top:-15px;
+    margin-top:-10px;
     padding:0px;
 }
 
@@ -4596,7 +4633,8 @@ div.profile-message-reply h4
 #same-department-same-grade-search,
 #same-department-diff-grade-search,
 #other-department-search,
-#newmember-search
+#newmember-search,
+#request-search
 {
     width:100px;
     height:25px;
@@ -4683,6 +4721,11 @@ a#button-editor-cancel,
     height:70px;
     padding:0px;
     float:left;
+}
+
+span.friends-wrong-message
+{
+    color:red;
 }
 
 .is_exist
@@ -5318,6 +5361,45 @@ img.user_img
     display: inline-block;
 }
 
+.game-display .first-row-items,
+.game-display .second-row-items
+{
+    width: 76px;
+    border: 2px #007C0A solid;
+    margin: 0px 2px 6px 1px;
+    padding: 3px;
+    border-radius: 18px;
+    background: #E0FFA8;
+    float: left;
+}
+
+.game-display .first-row-items img,
+.game-display .second-row-items img
+{
+    width: 76px;
+}
+
+.game-display .the-first-item
+{
+    margin-left: 46px
+}
+
+.game-display .index-data
+{
+    width: 356px;
+    height: 20px;
+    margin: 5px 0px;
+    font-size: 1.4em;
+    text-align: center;
+    background-color: black;
+    border: 3px solid #A7FF76;
+    border-radius: 10px;
+    color: #D8FF5E;
+    clear: both;
+    padding: 1px 0 10px;
+    font-weight: bold;
+}
+
 .item-description,
 .mission-description
 {
@@ -5377,6 +5459,7 @@ div.item-description .exist
 }
 #game-mission a
 {
+    display: block;
     color: #FFA747;
 }
 #game-mission-dialog
@@ -5513,6 +5596,7 @@ div.game-system
 
 div.game-system .scroll-container
 {
+    height: 320px;
     width: 380px;
 }
 
@@ -5581,7 +5665,7 @@ div.game-display
     height: 312px;
     /* outline: 1px solid blue; */
     margin: 15px 0 0 15px;
-    overflow-y:hidden;
+    /* overflow-y:hidden; */
 }
 
 div.game-display span
@@ -6025,7 +6109,8 @@ li.enabled a
     padding-left: 30px;
 }
 
-.forum-view-profile .profile-add-friend a
+.forum-view-profile .profile-add-friend a,
+.forum-view-profile .profile-add-friend span
 {
     color: #C57902;
 }
@@ -6060,6 +6145,7 @@ li.enabled a
     border: 2px solid #EAA520;
     padding: 9px 11px 9px 11px;
     word-break: break-all;
+    word-wrap: break-word;
 }
 
 .hululu
@@ -6110,6 +6196,8 @@ li.enabled a
 #forum-view-replies .reply-content
 {
     width: 378px;
+    word-break: break-all;
+    word-wrap: break-word;
     min-height: 232px;
     border-radius: 6px;
     background: white;
@@ -6118,7 +6206,6 @@ li.enabled a
     margin-top: 20px;
     border: 2px solid #EAA520;
     padding: 9px 11px 9px 11px;
-    word-break: break-all;
 }
 /*end of yellow*/
 
@@ -6543,6 +6630,12 @@ li.enabled a
     background-color:white;
 }
 
+#forum-forum-body #body-table .table-body:last-child td,
+#forum-forum-body #body-table .table-body:last-child td.time
+{
+    border-bottom: none;
+}
+
 #forum-forum-body #body-table .table-body td.author
 {
     width:80px;
@@ -6601,7 +6694,7 @@ li.enabled a
 #forum-forum-body.blue #body-table .table-title th,
 #forum-forum-body.blue #body-table .table-foot td
 {
-    background: #69C1F2;
+    background: #8DCDF1;
 }
 
 #forum-forum-body.blue #body-table .table-title th.head,
@@ -6878,6 +6971,7 @@ li.enabled a
     top: 50%;
     left: 50%;
     width: 300px;
+    z-index: 1500;
 }
 
 #ultimate-password .title
@@ -7777,7 +7871,7 @@ li.enabled a
     width: 160px;
     height: 160px;
     background-position: -1520px -320px;
-    left: 23px;
+    left: 3px;
     top: 84px;
 }
 
@@ -7873,7 +7967,7 @@ li.enabled a
     width: 160px;
     height: 120px;
     background-position: -1840px -160px;
-    left: 252px;
+    left: 277px;
     top: 49px;
 }
 

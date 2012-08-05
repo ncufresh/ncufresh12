@@ -18,12 +18,8 @@
 )); ?>
                 </a>
                 <input type="checkbox" name="group-members[<?php echo $profile->id; ?>]" value="<?php echo $profile->id; ?>" />
-                <p class="user-name">
-<?php echo $profile->name; ?>
-                </p>
-                <p class="user-department">
-<?php echo $profile->mydepartment->abbreviation; ?>
-                </p>
+                <p class="user-name"><?php echo $profile->name; ?></p>
+                <p class="user-department"><?php echo $profile->mydepartment->abbreviation; ?></p>
             </li>
 <?php endforeach; ?>
         </ul>
@@ -34,5 +30,10 @@
     <button type="submit" id="button-deletemember">刪除成員</button>
     <a href="<?php echo Yii::app()->createUrl('friends/deletegroup', array('id'=>$mygroup->id))  ?>" id="button-deletegroup" >刪除群組</a>
     <a href="<?php echo $this->createUrl('friends/allgroups'); ?>" class="button-back">BACK</a>
+<?php if ( Yii::app()->user->getFlash('add-new-members-error') ) : ?>
+    <span class="friends-wrong-message">新增成員失敗!!</span>
+<?php elseif ( Yii::app()->user->getFlash('delete-members-error') ) : ?>
+    <span class="friends-wrong-message">刪除成員失敗!!</span>
+<?php endif; ?>
 </form>
 

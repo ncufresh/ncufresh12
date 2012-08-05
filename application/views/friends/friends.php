@@ -94,4 +94,7 @@
 </ul>
 </div>
 </div>
+<?php if ( Yii::app()->user->getFlash('add-new-group-error') ) : ?>
+    <span class="friends-wrong-message">新增群組失敗!!</span>
+<?php endif; ?>
 </div>

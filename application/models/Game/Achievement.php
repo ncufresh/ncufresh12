@@ -26,11 +26,11 @@ class Achievement extends CActiveRecord
     public function getAchievementsByUserId($id)
     {
         Yii::import('application.models.Forum.*');
-        $character_data = Character::model()->findByPk($id); //傳入id 查詢使用者遊戲腳色資料
-        $user_data = User::model()->findByPk($id); //傳入id 查詢使用者資料
-        $profile_data = Profile::model()->findByPk($id); //傳入id 查詢使用者資料
-        $level = Character::model()->getLevel($id); //傳入id 查詢等級
-        $level_exp = Character::model()->getLevelExp($level); //傳入等級 查詢等級經驗
+        $character_data = Character::model()->findByPk($id); // 傳入id 查詢使用者遊戲腳色資料
+        $user_data = User::model()->findByPk($id); // 傳入id 查詢使用者資料
+        $profile_data = Profile::model()->findByPk($id); // 傳入id 查詢使用者資料
+        $level = Character::model()->getLevel($id); // 傳入id 查詢等級
+        $level_exp = Character::model()->getLevelExp($level); // 傳入等級 查詢等級經驗
         $user_friend = Friend::model()->getAmount($id);
         $nickname = $profile_data->nickname;
         $user_login_times = $user_data->online_count; // $user_value['login_times'];

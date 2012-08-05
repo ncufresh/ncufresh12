@@ -18,6 +18,7 @@
     </div>    
     <input id="same-department-same-grade-search" type="text" value="搜尋"/>
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
+    <button class="button-all-choose">全選</button>
     <button type="submit" class="button-addfriends">新增好友</button>
     <a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>
 </form>

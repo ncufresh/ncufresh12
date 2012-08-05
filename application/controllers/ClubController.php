@@ -41,29 +41,34 @@ class ClubController extends Controller
 
     public function actionClub()
     {
+        $this->setPageTitle(Yii::app()->name . ' - 社團列表');
         $this->render('club');
     }
 
     public function actionStudent()
     {
+        $this->setPageTitle(Yii::app()->name . ' - 學生組織列表');
         $this->render('student');
     }
 
     public function actionDepartment()
     {
+        $this->setPageTitle(Yii::app()->name . ' - 系所列表');
         $this->render('department');
     }
 
     public function actionContent($id)
     {
         $id = (integer)$id;
-        if ( Club::model()->findByPK($id) )
+        $club = Club::model()->findByPk($id);
+        if ( $club )
         {
             $is_subscript = Subscription::model()->getIsSubscriptByClubID($id);
         }
 
+        $this->setPageTitle(Yii::app()->name . ' - ' . $club->name);
         $this->render('content', array(
-            'data'          => Club::model()->findByPk($id),
+            'data'          => $club,
 			'id'		    => $id,
             'is_subscript'  => $is_subscript
         )); 
@@ -89,6 +94,8 @@ class ClubController extends Controller
                 ));
             } 
         }
+
+        $this->setPageTitle(Yii::app()->name . ' - 修改社團資料');
         $this->render('modify', array(
             'data'      => $club,
             'id'        => $id
@@ -126,11 +133,14 @@ class ClubController extends Controller
                     move_uploaded_file($_FILES['pictures']['tmp_name'][$index], $file);
                 }
             }
+
             $this->redirect(array(
                 'content',
                 'id'    => $id
             ));
         }
+
+        $this->setPageTitle(Yii::app()->name . ' - 上傳照片');
         $this->render('uploadpicture', array(
             'id'    => $id
         ));

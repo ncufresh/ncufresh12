@@ -11,9 +11,6 @@
     膳緣麵食/饗閣飯食
 </h5>
 <p>
-    <img alt="九餐-膳緣" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2617.JPG" style="width:500px;height:375px;" />
-</p>
-<p>
     健康餐：素食拉麵
 </p>
 <table align="left" border="1" cellpadding="0" cellspacing="0">
@@ -75,7 +72,7 @@
     </tbody>
 </table>
 <p>
-    <img alt="九餐-滷味" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2613.JPG" style="width:500px;height:375px;" />
+    <img alt="九餐-膳緣" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2617.JPG" style="width:500px;height:375px;" />
 </p>
 <h5>
     中大滷味
@@ -142,7 +139,7 @@
     </tbody>
 </table>
 <p>
-    <img alt="九餐-比司多" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2610.JPG" style="width:500px;height:375px;" />
+    <img alt="九餐-滷味" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2613.JPG" style="width:500px;height:375px;" />
 </p>
 <h5>
     比司多早餐
@@ -209,7 +206,11 @@
     </tbody>
 </table>
 <p>
-    <img alt="九餐-全家" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2619.jpg" style="width:500px;height:667px;" />
-</p><h5>
+    <img alt="九餐-比司多" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2610.JPG" style="width:500px;height:375px;" />
+</p>
+<h5>
     全家(中央二店)
 </h5>
+<p>
+    <img alt="九餐-全家" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2619.jpg" style="width:500px;height:667px;" />
+</p>

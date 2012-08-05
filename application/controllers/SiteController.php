@@ -30,16 +30,22 @@ class SiteController extends Controller
                     'error',
                     'search',
                     'pull',
-                    'register',
                     'login',
                     'channel',
                     'profile',
                     'editor',
                     'contact',
-                    'sitemap',
-                    'success'
+                    'sitemap'
                 ),
                 'users'     => array('*')
+            ),
+            array(
+                'allow',
+                'actions'    => array(
+                    'register',
+                    'success'
+                ),
+                'roles'     => array('guest')
             ),
             array(
                 'allow',
@@ -223,6 +229,7 @@ class SiteController extends Controller
                 $this->redirect(Yii::app()->user->returnUrl);
             }
         }
+        if ( Yii::app()->user->getId() > 0 ) $this->redirect(array('site/index'));
         $this->setPageTitle(Yii::app()->name . ' - 需要驗證您的身分');
         $this->render('login');
     }
@@ -254,30 +261,27 @@ class SiteController extends Controller
         {
             $user->attributes = $_POST['register'];
             $profile->attributes = $_POST['profile'];
-            $user_validate = $user->validate();
-            $profile_validate = $profile->validate();
-            if ( $user_validate && $profile_validate )
+            $userValidate = $user->validate();
+            $profileValidate = $profile->validate();
+            if ( $userValidate && $profileValidate )
             {
                 if ( $user->save() )
                 {
                     $profile->id = $user->id;
                     if ( $profile->save() )
                     {
-                        $item_save = ItemBag::model()->characterNewItem($user->id);
-                        $character_save = Character::model()->createNewCharacter($user->id);
-                         if ( $character_save && $item_save )
-                        { 
-                            $this->redirect(array('site/success'));
-                        }
+                        $this->redirect(array('site/success'));
                     }
-                   
                 }
+            }
+            foreach ( array_merge($user->getErrors(), $profile->getErrors()) as $field => $error )
+            {
+                Yii::app()->user->setFlash('register-error-' . $field, true);
+                Yii::app()->user->setFlash('register-error-' . $field . '-message', true);
             }
         }
         $this->render('register', array(
-            'departments'           => Department::model()->getDepartment(),
-            'username_errors'       => $user->getErrors(),
-            'profile_errors'        => $profile->getErrors()
+            'departments'           => Department::model()->getDepartment()
         ));
     }
 
