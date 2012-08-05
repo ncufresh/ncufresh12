@@ -134,10 +134,10 @@
             <a href="<?php echo Yii::app()->createUrl('club/index'); ?>" title="系所社團">系所社團</a>
             <ul>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('club/student'); ?>" title="學生組織">學生組織</a>
+                    <a href="<?php echo Yii::app()->createUrl('club/department'); ?>" title="系所">系所</a>
                 </li>
                 <li>
-                    <a href="<?php echo Yii::app()->createUrl('club/department'); ?>" title="系所">系所</a>
+                    <a href="<?php echo Yii::app()->createUrl('club/student'); ?>" title="學生組織">學生組織</a>
                 </li>
                 <li>
                     <a href="<?php echo Yii::app()->createUrl('club/club'); ?>" title="社團">社團</a>
@@ -324,9 +324,6 @@
     });
 </script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/script.js"></script>
-<?php if ( file_exists(dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'statics' . DIRECTORY_SEPARATOR . 'scripts' . DIRECTORY_SEPARATOR . $this->getId() . '.js') ) : ?>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/<?php echo $this->getId(); ?>.js"></script>
-<?php endif; ?>
 <!--[if lt IE 8]>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/ie.js"></script>
 <![endif]-->

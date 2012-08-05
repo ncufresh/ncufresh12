@@ -7,11 +7,11 @@
 )); ?>
          <ul class="user-editor">
             <li>
-                <span>姓名:</span>
+                <span>姓名：</span>
                 <input type="text" name="profile[name]"  value="<?php echo $user->profile->name ; ?>" />
             </li>
             <li>
-                <span> 暱稱:</span>
+                <span> 暱稱：</span>
                 <input type="text" name="profile[nickname]" value="<?php echo $user->profile->nickname; ?>" />
             </li>
             <li class="is_exist">
@@ -22,34 +22,36 @@
 <?php endif; ?>
             </li>
             <li>
-                性別:
 <?php if ( $user->profile->gender == 0 ): ?>
-                男孩兒
+                性別：男孩兒<input type="hidden" name="profile[gender]" value="<?php echo $user->profile->gender; ?>"  />
 <?php else:?>
-                女孩兒
-<?php endif; ?>    
-                <input type="hidden" name="profile[gender]" value="<?php echo $user->profile->gender; ?>"  />
+                性別：女孩兒<input type="hidden" name="profile[gender]" value="<?php echo $user->profile->gender; ?>"  />
+<?php endif; ?>
             </li>
             <li>
-                <span>帳號:<?php echo $user->username; ?></span>
+                <span>帳號：<?php echo $user->username; ?></span>
                 <input type="hidden" name="register[username]" value="<?php echo $user->username; ?>" />
                 <input type="hidden" name="register[password]" value="<?php echo $user->password; ?>"  />
                 <input type="hidden" name="register[confirm]" value="<?php echo $user->password; ?>"  />
             </li>
             <li>
-                <span>系所:</span><?php echo $user->profile->mydepartment->abbreviation; ?>
+                <span>系所：</span><?php echo $user->profile->mydepartment->abbreviation; ?>
                 <input type="hidden" name="profile[department]" value="<?php echo $user->profile->department_id; ?>"  />
             </li>
             <li>
-                <span>系級:</span><?php echo $user->profile->grade; ?>年級
+<?php if ( $user->profile->grade == 0 ) : ?>
+                 <span>系級：這是秘密唷^.&lt;</span>
+<?php else : ?>
+                 <span>系級：<?php echo $user->profile->grade; ?>年級</span>
+<?php endif; ?>
                 <input type="hidden" name="profile[grade]" value="<?php echo $user->profile->grade; ?>"  />
             </li>
             <li>
-                <span>畢業高中:</span>
+                <span>畢業高中：</span>
                 <input type="text" name="profile[senior]" value="<?php echo $user->profile->senior; ?>" />
             </li>
             <li>
-                <span>生日:</span>
+                <span>生日：</span>
                 <input id="form-editor-birthday" class="datepicker" name="profile[birthday]" type="text" value="<?php echo $user->profile->birthday; ?>" />
             </li>
         </ul>

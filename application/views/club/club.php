@@ -1,9 +1,9 @@
-<div class ="alltag"> 
+<div class="alltag">
     <a href="<?php echo Yii::app()->createUrl('club/department'); ?>" class = "department-head" title="系所"></a>
     <a href="<?php echo Yii::app()->createUrl('club/student'); ?>" class="student-head" title="學生組織"></a>
     <a href="<?php echo Yii::app()->createUrl('club/club'); ?>" class="club-head" title="社團"></a>
 </div>
-<div class = "club">
+<div class="club">
     <div class="club-list">
         <ul>
             <li>
