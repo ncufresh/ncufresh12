@@ -23,6 +23,17 @@ class  UserGroup extends CActiveRecord
             )
         ));
     }
+    
+    public function relations()
+    {
+        return array(
+            'profile'  => array(
+                self::BELONGS_TO,
+                'Profile',
+                'user_id'
+            )
+        );
+    }
 
     public function closeMember($userid,$groupid)
     {

@@ -224,6 +224,19 @@ form dl.file input
     width: 100%;
 }
 
+form dl.error input,
+form dl.radio.error,
+form dl.checkbox.error,
+form dl.select.error
+{
+    border: 1px solid #FF0000;
+}
+
+form span.error
+{
+    color: #FF0000;
+}
+
 form span.radio
 {
     background: #FFFFFF;
@@ -326,21 +339,6 @@ a
 a:hover
 {
     color: #7C7C7C;
-}
-
-.ui-dialog
-{
-    position: absolute;
-}
-
-.ui-widget-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000000;
-    opacity: 0.7;
 }
 
 .scroll-container
@@ -1540,12 +1538,6 @@ table.gsc-completion-container
     border: 3px solid #7C7C7C;
 }
 
-ul#nculife-details
-{  
-    margin: 0;
-    padding: 0;
-}
-
 /**
  * Index style
  */
@@ -1609,26 +1601,25 @@ ul#nculife-details
     position: relative;
 }
 
-#club #calendar  .calendar-table,
+#club #calendar .calendar-table,
 #index-calendar .calendar-table
 {
     border-collapse: collapse;
 }
 
-#club #calendar  .calendar-table caption,
+#club #calendar .calendar-table caption,
 #index-calendar .calendar-table caption
 {
     margin: 15px 0 10px 0;
 }
 
-#club #calendar  .calendar-table td,
+#club #calendar .calendar-table td,
 #index-calendar .calendar-table td
 {
     text-align: center;
     width: 28px;
     cursor: pointer;
 }
-
 
 #club #calendar .calendar-table td.today,
 #index-calendar .calendar-table td.today
@@ -1654,20 +1645,20 @@ ul#nculife-details
     display: block;
 }
 
-#club #calendar  .calendar-table thead td,
+#club #calendar .calendar-table thead td,
 #index-calendar .calendar-table thead td
 {
     color: #af8d5a;
     text-align: center;
 }
 
-#club #calendar  .calendar-table thead td.weekend,
+#club #calendar .calendar-table thead td.weekend,
 #index-calendar .calendar-table thead td.weekend
 {
     color: red;
 }
 
-#club #calendar  .calendar-table tbody,
+#club #calendar .calendar-table tbody,
 #index-calendar .calendar-table tbody
 {
     border-top: 1px solid #946722;
@@ -1675,14 +1666,14 @@ ul#nculife-details
     display: block;
 }
 
-#club #calendar  .todolist-table td,
+#club #calendar .todolist-table td,
 #index-calendar .todolist-table td
 {
     width: 100px;
     text-align: center;
 }
 
-#club #calendar  .todolist-table thead td,
+#club #calendar .todolist-table thead td,
 #index-calendar .todolist-table thead td
 {
     color: #946722;
@@ -2458,10 +2449,10 @@ button.news-button
 
 #multimedia .title
 {
-    background-position: -752px -240px;
+    background-position: 0 -912px;
     background-repeat: no-repeat;
-    height: 60px;
-    width: 324px;
+    height: 65px;
+    width: 630px;
     margin: 15px auto;
 }
 
@@ -2485,25 +2476,25 @@ button.news-button
 
 #multimedia .sidebar #tab1
 {
-    background-position: -752px -320px;
+    background-position: -816px -320px;
 }
 
 #multimedia .sidebar #tab1:active,
 #multimedia .sidebar #tab1.active 
 {
-    background-position: -784px -320px;
+    background-position: -848px -320px;
 }
 
 #multimedia .sidebar #tab2
 {
-    background-position: -816px -320px;
+    background-position: -752px -320px;
     top: 100px;
 }
 
 #multimedia .sidebar #tab2:active,
 #multimedia .sidebar #tab2.active 
 {
-    background-position: -848px -320px;
+    background-position: -784px -320px;  
 }
 
 #multimedia .content
@@ -2612,8 +2603,8 @@ button.news-button
     background-position: 0px -720px;
     background-repeat: no-repeat;
     color: #000000;
-    height: 150px;
-    padding: 25px 55px;
+    height: 160px;
+    padding: 15px 55px;
 }
 
 #multimedia-frame
@@ -3211,7 +3202,7 @@ button.news-button
     display: block;
     list-style: none;
     opacity: 0.95;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .readme-menu li
@@ -3264,6 +3255,16 @@ button.news-button
     margin-top: 6px
 }
 
+#readme .arrow-right
+{
+	width: 0px; 
+	height: 0px; 
+	border: 10px solid; 
+	border-color: transparent transparent transparent white;
+    border-style: dashed dashed dashed solid;
+	margin: -25px 0 0 205px;
+}
+
 #about .title1,
 #about .title2,
 #about .button-left,
@@ -3272,7 +3273,7 @@ button.news-button
 #about .tag,
 #about .tag-txt
 {
-    background: url('../about/picture.png') no-repeat;
+    background: url('../images/about.png') no-repeat;
 }
 
 #about .tag-bar0,
@@ -3282,7 +3283,7 @@ button.news-button
 #about .tag-bar4,
 #about .tag-bar5
 {
-    background: url('../about/photo.jpg') no-repeat;
+    background: url('../images/about_photos.jpg') no-repeat;
 }
 
 #about .itrodution-block
@@ -3724,14 +3725,14 @@ button.news-button
     text-align: left;
     overflow: hidden;
     margin-top: 56px;
-    margin-left: 30px;
+    margin-left: 27px;
 }
 
 #club .club-list ul
 {
     float: left;
     padding: 0;
-    width: 24%;
+    width: 23.5%;
     list-style: none;
 }
 
@@ -3739,16 +3740,23 @@ button.news-button
 {
     text-align: left;
     margin-top: 98px;
-    margin-left: 91px;
+    margin-left: 81px;
 }
 
 #club .department-list ul
 {
     float: left;
     padding: 0;
-    width: 30%;
+    width: 28.5%;
     height: 320px;
     list-style: none;
+}
+
+#club .department li,
+#club .student li,
+#club .club li
+{
+    line-height: 1.6em;
 }
 
 #club .student-list
@@ -3760,10 +3768,10 @@ button.news-button
 {
     float: left;
     padding: 0;
-    width: 28%;
+    width: 18.5%;
     list-style: none;
     margin-top: 69px;
-    margin-left: 143px;
+    margin-left: 172px;
 }
 
 #club .title
@@ -3918,9 +3926,11 @@ button.news-button
 
 #club .underpicture > div
 {
-    position: relative;
-    height: 400px;
     display: none;
+    height: 400px;
+    padding: 0 5px;
+    position: relative;
+    width: 200px;
 }
 
 #club .underpicture ul
@@ -4033,7 +4043,7 @@ ul.friends-sort li
 {
     width:690px;
     height:30px;
-    margin-top:-15px;
+    margin-top:-10px;
     padding:0px;
 }
 
@@ -4127,7 +4137,7 @@ ul.users-department li p.user-department
 
 #user-data-view li
 {
-    width: 165px;
+    width: 180px;
     height: 25px;
     display: block;
     list-style-type:none;
@@ -4492,7 +4502,7 @@ div.friends-sortfriend div.avatar
     text-align:center;
 }
 
-div.newmember
+.newmember
 {
     background-image:url('../profile/groupmembers.png');
     background-repeat:no-repeat ;
@@ -4500,6 +4510,11 @@ div.newmember
     height:370px;
     padding:25px;
     margin:0px;
+}
+
+.newmember h4
+{
+    text-align:center;
 }
 
 div.allgroups
@@ -4591,6 +4606,38 @@ div.profile-message-reply h4
     text-align:center;
 }
 
+#mygroup-search
+{
+    width:100px;
+    height:25px;
+    position:absolute;
+    right:450px;
+    top:440px;
+}
+
+#myfriend-search,
+#same-department-same-grade-search,
+#same-department-diff-grade-search,
+#other-department-search,
+#newmember-search,
+#request-search
+{
+    width:100px;
+    height:25px;
+    position:absolute;
+    right:440px;
+    top:265px;
+}
+
+#new-group-search
+{
+    width:100px;
+    height:25px;
+    position:absolute;
+    right:518px;
+    top:408px;
+}
+
 .button-viewProfile-back,
 .button-all-choose,
 .button-addfriend,
@@ -4648,8 +4695,8 @@ a#button-editor-cancel,
 #new-group-members
 {
     width:650px;
-    height:335px;
-    margin:0px;
+    height:290px;
+    margin-top:45px;
 }
 
 #new-group-members div.avatar
@@ -5293,6 +5340,29 @@ img.user_img
 {
     width:115px;
     display: inline-block;
+}
+
+.game-display .first-row-items,
+.game-display .second-row-items
+{
+    width: 78px;
+    border: 2px #006110 solid;
+    margin: 0px 2px 6px 1px;
+    padding: 3px;
+    border-radius: 18px;
+    background: #C0FFB0;
+    float: left;
+}
+
+.game-display .first-row-items img,
+.game-display .second-row-items img
+{
+    width: 78px;
+}
+
+.game-display .the-first-item
+{
+    margin-left: 48px
 }
 
 .item-description,
@@ -6907,13 +6977,18 @@ li.enabled a
 }
 
 #ultimate-password .click
-{    
+{
     color: yellow;    
 }
 
 /**
  * street style
  */
+ #street-div #back-div
+ {
+    background: url('../building/street.png');
+ }
+  
 #street-div #all-selected-pic-ul
 {
     margin-left: 50px;
@@ -6982,7 +7057,7 @@ li.enabled a
 
 #street-div #back-div
 {
-    background: url('../building/bottom.png') no-repeat;
+    background-position: 0px -1280px;
     position: relative;
     height: 551px;
     width: 750px;
@@ -7102,8 +7177,8 @@ li.enabled a
 
 #street-div #boy-dormitory-12
 {
-    width: 112px;
-    height: 84px;
+    width: 90px;
+    height: 67px;
     background:  url('../building/dormitory/mouseleave/boy_dormitory_12.png');
     left: 489px;
     top: 98px;
@@ -7116,10 +7191,10 @@ li.enabled a
 
 #street-div #boy-dormitory-13
 {
-    width: 103px;
-    height: 120px;
+    width: 82px;
+    height: 96px;
     background:  url('../building/dormitory/mouseleave/boy_dormitory_13.png');
-    left: 135px;
+    left: 148px;
     top: 431px;
 }
 
@@ -7672,8 +7747,8 @@ li.enabled a
 
 #street-div #restaurant-9
 {
-    width: 106px;
-    height: 94px;
+    width: 85px;
+    height: 75px;
     background:  url('../building/food/mouseleave/restaurant_9.png');
     left: 493px;
     top: 240px;
@@ -7712,10 +7787,10 @@ li.enabled a
 
 #street-div #stadium
 {
-    width: 163px;
-    height: 84px;
+    width: 132px;
+    height: 99px;
     background:  url('../building/exercise/mouseleave/stadium.png');
-    left: 129px;
+    left: 163px;
     top: 84px;
 }
 
@@ -8028,10 +8103,14 @@ li.enabled a
     left: 0px;
 }
 
-#street-div .loading
+#street-div .street-loading
 {
-    position:absolute;
+    background: #000000;
+    height: 100%;
     display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 3;
 }
 
 #street-div .one-image

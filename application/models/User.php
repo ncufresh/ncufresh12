@@ -20,6 +20,7 @@ class User extends CActiveRecord
     {
         return array(
             array('username', 'unique', 'className' => 'User'),
+            array('username', 'match', 'pattern'=>'/^([a-z0-9_])+$/'), 
             array('username, password, confirm', 'required'),
             array('username', 'length', 'min' => 8, 'max' => 256),
             array('password, confirm', 'length', 'max' => 128),

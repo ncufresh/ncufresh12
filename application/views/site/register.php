@@ -1,20 +1,21 @@
 <h2>註冊</h2>
 <form id="register" method="POST">
     <h4>帳號資訊</h4>
+<?php if ( Yii::app()->user->getFlash('register-error-username') ) : ?>
+    <dl class="error">
+<?php else: ?>
     <dl>
+<?php endif; ?>
         <dt>
             <label for="form-register-username">帳號</label>
         </dt>
         <dd>
             <input id="form-register-username" name="register[username]" type="text" />
             <span>
-<?php if ( isset($username_errors['username']) ) :?>
-<?php foreach ( $username_errors['username'] as $error ) : ?>
-<?php echo $error; ?>
-<?php endforeach; ?>
-<?php else: ?>
-            須大於8碼唷
+<?php if ( Yii::app()->user->getFlash('register-error-username-message') ) : ?>
+                <span class="error">您的帳號少於八個字元或著帳號已經存在了！</span>
 <?php endif; ?>
+                帳號必須大於八個字元，且不能有特殊符號。
             </span>
         </dd>
     </dl>
@@ -24,15 +25,7 @@
         </dt>
         <dd>
             <input id="form-register-password" name="register[password]" type="password" />
-            <span>
-<?php if ( isset($username_errors['password']) ) : ?>
-<?php foreach ( $username_errors['password'] as $error ) : ?>
-<?php echo $error; ?>
-<?php endforeach; ?>
-<?php else: ?>
-            請輸入密碼
-<?php endif; ?>
-            </span>
+            <span>密碼建議設定八個字元以上，並且英文、數字與特殊符號的組合。</span>
             <div id="form-password-meter">
                 <table>
                     <tr>
@@ -46,52 +39,66 @@
             </div>
         </dd>
     </dl>
+<?php if ( Yii::app()->user->getFlash('register-error-confirm') ) : ?>
+    <dl class="error">
+<?php else: ?>
     <dl>
+<?php endif; ?>
         <dt>
             <label for="form-register-confirm">再輸入一次</label>
         </dt>
         <dd>
             <input id="form-register-confirm" name="register[confirm]" type="password" />
-            <span>再來輸入一次吧....要與密碼相同</span>
+            <span>
+<?php if ( Yii::app()->user->getFlash('register-error-confirm-message') ) : ?>
+                <span class="error">您的密碼兩次輸入不一樣喔！</span>
+<?php endif; ?>
+                請再次輸入一次密碼以確認密碼輸入正確！
+            </span>
         </dd>
     </dl>
     <h4>基本資料</h4>
+<?php if ( Yii::app()->user->getFlash('register-error-name') ) : ?>
+    <dl class="error">
+<?php else: ?>
     <dl>
+<?php endif; ?>
         <dt>
             <label for="form-register-name">姓名</label>
         </dt>
         <dd>
             <input id="form-register-name" name="profile[name]" type="text" maxlength=10 />
             <span>
-<?php if ( isset($profile_errors['name']) ) : ?>
-<?php foreach ( $profile_errors['name'] as $error ) : ?>
-<?php echo $error; ?>
-<?php endforeach; ?>
-<?php else: ?>
-             不大於10個字元
+<?php if ( Yii::app()->user->getFlash('register-error-name-message') ) : ?>
+                <span class="error">您輸入的名字太長了喔！</span>
 <?php endif; ?>
+                請輸入您的真實姓名，最多十個字元。
             </span>
         </dd>
     </dl>
+<?php if ( Yii::app()->user->getFlash('register-error-nickname') ) : ?>
+    <dl class="error">
+<?php else: ?>
     <dl>
+<?php endif; ?>
         <dt>
             <label for="form-register-nickname">暱稱</label>
         </dt>
         <dd>
             <input id="form-register-nickname" name="profile[nickname]" type="text" maxlength=8/>
             <span>
-<?php if ( isset($profile_errors['nickname']) ) : ?>
-<?php foreach ( $profile_errors['nickname'] as $error ) : ?>
-<?php echo $error; ?>
-<?php endforeach; ?>
-<?php else: ?>
-            人家都怎麼叫你哩
-            不大於8個字元
+<?php if ( Yii::app()->user->getFlash('register-error-nickname-message') ) : ?>
+                <span class="error">您的暱稱太長了或著已經有人使用過了！</span>
 <?php endif; ?>
+                請輸入您的暱稱，不超過八個字元。
             </span>
         </dd>
     </dl>
+<?php if ( Yii::app()->user->getFlash('register-error-gender') ) : ?>
+    <dl class="radio error">
+<?php else: ?>
     <dl class="radio">
+<?php endif; ?>
         <dt>
             <label for="form-register-gender-male">性別</label>
         </dt>
@@ -99,17 +106,18 @@
             <input id="form-register-gender-male" name="profile[gender]" type="radio" value="0" /><label for="form-register-gender-male">Male</label>
             <input id="form-register-gender-female" name="profile[gender]" type="radio" value="1" /><label for="form-register-gender-female">Female</label>
             <span>
-<?php if ( isset($profile_errors['gender']) ) :?>
-<?php foreach ( $profile_errors['gender'] as $error ) : ?>
-<?php echo $error; ?>
-<?php endforeach; ?>
-<?php else: ?>
-            Are U MAN OR WOMAN
+<?php if ( Yii::app()->user->getFlash('register-error-gender-message') ) : ?>
+                <span class="error">您的暱稱太長了或著已經有人使用過了！</span>
 <?php endif; ?>
+                請選擇您的性別。
             </span>
         </dd>
     </dl>
+<?php if ( Yii::app()->user->getFlash('register-error-department') ) : ?>
+    <dl class="select error">
+<?php else: ?>
     <dl class="select">
+<?php endif; ?>
         <dt>
         </dt>
         <dd>
@@ -127,10 +135,19 @@
                 <option value="3">三年級</option>
                 <option value="4">四年級</option>
             </select>
-            <span>系級</span>
+            <span>
+<?php if ( Yii::app()->user->getFlash('register-error-department-message') ) : ?>
+                <span class="error">請選擇正確的系級！</span>
+<?php endif; ?>
+                請選擇您的系級，<strong>一旦決定後便無法再次修改</strong>。
+            </span>
         </dd>
     </dl>
+<?php if ( Yii::app()->user->getFlash('register-error-birthday') ) : ?>
+    <dl class="error">
+<?php else: ?>
     <dl>
+<?php endif; ?>
         <dt>
             <label for="form-register-birthday">生日</label>
         </dt>
@@ -138,20 +155,18 @@
             <input class="datepicker" id="form-register-birthday" name="profile[birthday]" type="text" />
         </dd>
     </dl>
+<?php if ( Yii::app()->user->getFlash('register-error-birthday-senior') ) : ?>
+    <dl class="error">
+<?php else: ?>
     <dl>
+<?php endif; ?>
         <dt>
             <label for="form-register-senior">畢業高中</label>
         </dt>
         <dd>
             <input id="form-register-senior" name="profile[senior]" type="text" />
             <span>
-<?php if ( isset($profile_errors['senior']) ) :?>
-<?php foreach ( $profile_errors['senior'] as $error ) : ?>
-<?php echo $error; ?>
-<?php endforeach; ?>
-<?php else: ?>
-            輸入畢業高中吧!!
-<?php endif; ?>
+                請輸入您的畢業高中！
             </span>
         </dd>
     </dl>
