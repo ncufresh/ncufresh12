@@ -2,7 +2,7 @@
     綜教館
 </h4>
 <p>
-    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2812.JPG" style="width:270px;height:200px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2817.JPG" style="width:280px;height:200px;" />
+    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2812.JPG" style="width:270px;height:200px; margin-left: 13px; margin-right: 15px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2817.JPG" style="width:280px;height:200px;" />
 </p>
 <p>
     全名為綜合教育館，在志希館和理學院之間。
@@ -35,5 +35,5 @@
     微光電實驗室之設計目的為提供高度潔淨的實驗空間，以提供4吋矽晶製程技術及砷化鎵高頻元件及光電元件製程技術之開發，來完成跨越多項學科之尖端研究計畫。
 </p>
 <p>
-    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2813.JPG" style="width:300px;height:200px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2815.JPG" style="height:200px;width:280px;" />
+    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2813.JPG" style="width:300px;height:200px; margin-left: 4px; margin-right: 4px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2815.JPG" style="height:200px;width:280px;" />
 </p>

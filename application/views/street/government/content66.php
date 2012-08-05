@@ -2,7 +2,7 @@
     國鼎圖書資料館
 </h4>
 <p>
-    <img alt="國鼎圖書資料館" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2830.JPG" style="width:270px;height:200px;" /><img alt="國鼎圖書資料館" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2831%20(1).JPG" style="width:300px;height:200px;" />
+    <img alt="國鼎圖書資料館" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2830.JPG" style="width:270px;height:200px; margin-left: 7px; margin-right: 7px;" /><img alt="國鼎圖書資料館" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2831%20(1).JPG" style="width:300px;height:200px;" />
 </p>
 <p>
     <a href="http://www.lib.ncu.edu.tw/kuo/kuoindex.php" title="國鼎圖書資料館">國鼎圖書資料館</a>位於志希館旁，建築特色是以「鼎」字造形的建築，為了紀念中央大學傑出校友、<strong>台灣的經濟學之父：李國鼎先生</strong>。

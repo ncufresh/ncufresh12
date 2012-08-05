@@ -17,18 +17,28 @@
         return this.split('').reverse().join('');
     };
 
-    Array.prototype.indexOf = function(obj)
+    if ( ! Array.prototype.indexOf ) 
     {
-        for(var i=0; i<this.length; i++)
+        Array.prototype.indexOf = function(obj)
         {
-            if(this[i]==obj)
+            for(var i=0; i<this.length; i++)
             {
-                return i;
+                if(this[i]==obj)
+                {
+                    return i;
+                }
             }
-        }
-        return -1;
+            return -1;
+        };
     };
-    
+
+    if ( $.browser.msie )
+    {
+        $.fn.blur = function(handler)
+        {
+            $.fn.focusout.call($(this), handler);
+        };
+    }
     
     $.extend({
         random: function(min, max)
@@ -505,7 +515,8 @@
 
     $.fn.chat.notify = function(dialog)
     {
-        $('#' + $.chat.options.chatNotifyId).get(0).play();
+        var audio = $('#' + $.chat.options.chatNotifyId).get(0);
+        if ( audio.play ) audio.play();
         dialog.data('timer', setInterval(function()
         {
             dialog.children('.' + $.chat.options.chatTitleClass).highlight();
@@ -1661,7 +1672,7 @@
         $('<td></td>').text(options.dateText).appendTo(tr);
         $('<td></td>').text(options.eventText).appendTo(tr);
         tr.appendTo(thead);
-        for(var key in events)
+        for(var key=0;  key<events.length; key++)
         {
             var tr = $('<tr></tr>');
             var td = $('<td></td>').text(events[key][0]);
@@ -1729,7 +1740,7 @@
         var tbody = $('<tbody></tbody>');
         var tr = $('<tr></tr>');
         var date = new Date(options.year, options.month);
-        for( var key in options.dayOfWeek )
+        for ( var key = 0; key < options.dayOfWeek.length; key++ )
         {
             var td = $('<td></td>').text(options.dayOfWeek[key]);
             if ( key==0 || key==6 ) td.addClass('weekend');
@@ -3019,19 +3030,19 @@
         },
         { // 31 (文學院)
             N:{ photo: 'Day 3 (54).JPG', nextPoint: 28 },
-            E:{ photo: 'Day 3 (53).JPG', nextPoint: 32 },
+            E:{ photo: 'Day 3 (53).JPG', nextPoint: (-1) },
             S:{ photo: 'Day 3 (56).JPG', nextPoint: 33 },
-            W:{ photo: 'Day 3 (55).JPG', nextPoint: 30 }
+            W:{ photo: 'Day 3 (55).JPG', nextPoint: (-1) }
         },
         { // 32 (文院到舊圖間岔路)
             N:{ photo: 'Day 2 (24).JPG', nextPoint: 24 },
             E:{ photo: 'Day 2 (21).JPG', nextPoint: 21 },
             S:{ photo: 'Day 2 (22).JPG', nextPoint: 34 },
-            W:{ photo: 'Day 2 (23).JPG', nextPoint: 31 }
+            W:{ photo: 'Day 2 (23).JPG', nextPoint: 33 }
         },
         { // 33 (國鼎東岔路)
             N:{ photo: 'Day 3 (50).JPG', nextPoint: 31 },
-            E:{ photo: 'Day 3 (51).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (51).JPG', nextPoint: 32 },
             S:{ photo: 'Day 3 (52).JPG', nextPoint: 35 },
             W:{ photo: 'Day 3 (49).JPG', nextPoint: (-1) }
         },
@@ -3410,7 +3421,6 @@
         $('#street-div .picture, #street-div .button-text').click(function()
         {
             isInPicture = false;
-            // $('.loading').hide();
             $('#street-div #back-div, #street-div #curtain-close-div').css(
             {
                height: 552,
@@ -4336,15 +4346,10 @@
             $.post($.configures.gameSolveUrl.replace(':id',id), {
                 answer: $(this).find('input[name=answer]').val(),
                 token: $.configures.token
-            }, function(data){
-                if ( data.result )
-                {
-                    $('#game-mission-correct').get(0).play();
-                }
-                else
-                {
-                    $('#game-mission-wrong').get(0).play();
-                }
+            }, function(data)
+            {
+                var audio = $('#game-mission-' + (data.result ? 'correct' : 'wrong')).get(0);
+                if ( audio.play ) audio.play();
                 $.alert({
                     message: data.result ? '恭喜您～答對囉！獲取了金幣與經驗值' : '答錯囉～請再接再厲',
                     confirmed: function()
@@ -4436,10 +4441,9 @@
         $('#same-department-diff-grade-search, #other-department-search, #same-department-same-grade-search, #request-search, #new-group-search, #mygroup-search, #myfriend-search, #newmember-search').keyup(function()
         {
             var name = $(this).val().toLowerCase();
-            for ( var key in friends )
+            for ( var key = 0 ; key < friends.length ; ++key )
             {
                 var data = friends[key];
-                console.log(data);
                 if ( data[0].toLowerCase().search(name) == 0 )
                 {
                     data[1].show();
@@ -4611,7 +4615,6 @@
                     {
                         $(this).next().removeClass('checked');
                     }
-                    console.log($(this).prop('checked'));
                 });
 
             if ( $(this).prop('checked') ) {
@@ -5214,11 +5217,9 @@
                         alert('已經送出好友邀請!');
                     }
             });
-            // console.log('!!!');
         });
         $("#forum-forum-top2 .sort-list").change(function() {
             var url = $.configures.forumSortUrl;
-            console.log(url);
             window.location = url.replace(':sort', $(this).val());
         });
         /*forum create*/
