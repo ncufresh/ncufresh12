@@ -1,5 +1,5 @@
 <div id="sitemap">
-    <div>
+    <div class="freshman">
         <h4>新生須知</h4>
         <ul>
             <li>
@@ -55,7 +55,7 @@
             </li>
         </ul>
     </div>
-    <div>
+    <div class="discuss">
         <h4>討論交流</h4>
         <ul>
             <li>
@@ -85,7 +85,7 @@
             </li>
         </ul>
     </div>
-    <div>
+    <div class="personal">
         <h4>個人專區</h4>
         <ul>
             <li>
@@ -135,14 +135,14 @@
             </li>
         </ul>
     </div>
-    <div>
+    <div class="information">
         <h4>網站資訊</h4>
         <ul>
             <li>
                 <a href="<?php echo Yii::app()->createUrl('about/index'); ?>" title="關於我們">關於我們</a>
             </li>
             <li>
-                聯絡我們
+                <a href="<?php echo Yii::app()->createUrl('site/contact'); ?>" title="聯絡我們">聯絡我們</a>
             </li>
         </ul>
     </div>
