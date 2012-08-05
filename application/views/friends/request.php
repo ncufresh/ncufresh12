@@ -11,12 +11,12 @@
 )); ?>
                 </a>
                 <input type="checkbox" name="friends[<?php echo $friend->friend_request->id;?>]" value="<?php echo $friend->friend_request->id;?>"  />
-                <h3>
+                <p class="user-name">
 <?php echo $friend->friend_request->name;?>
-                </h3>
-                <h4>
+                </p>
+                <p class="user-department">
 <?php echo $friend->friend_request->mydepartment->abbreviation; ?>
-                </h4>
+                </p>
             </li>
 <?php endforeach; ?>
         </ul>

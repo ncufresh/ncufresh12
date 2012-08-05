@@ -3986,6 +3986,7 @@ ul.friends-sort li
     float:left;
     color:DarkBlue;
     list-style-type:none;
+    text-align:center;
 }
 
 .friends-self li a.friends-title
@@ -4009,6 +4010,7 @@ ul.friends-sort li
     height:30px;
     float:left;
     list-style-type:none;
+    text-align:center;
 }
 
 ul.users-department li
@@ -4059,16 +4061,6 @@ ul.users-department li p.user-department
     float:left;
     list-style-type:none;
 }
-
-/*.friends-part3 div.avatar
-{
-    margin-left:40px;
-    margin-top:20px;
-    width:180px; 
-    height:310px;
-    padding:0px;
-    float:left;
-}*/
 
 .user-editor
 {
@@ -4193,6 +4185,11 @@ div.friends
     height:370px;
     padding:25px;
     margin:0px;
+}
+
+#request h4
+{
+    text-align:center;
 }
 
 div.all-sorts-of-friends
@@ -4407,9 +4404,9 @@ div.friends-sortfriend
 div.friends-sortfriend div.avatar 
 {
     margin-left:0px;
-    margin-top:0px;
-    width:35px; 
-    height:45px;
+    margin-top:-10px;
+    width:90px; 
+    height:70px;
     padding:0px;
     float:left;
 }
@@ -4424,6 +4421,10 @@ div.friends-sortfriend div.avatar
     margin:0px;
 }
 
+#myfriend h4
+{
+    text-align:center;
+}
 .myprofile
 {
     background-image:url('../profile/profile.png');
@@ -4460,6 +4461,11 @@ div.friends-sortfriend div.avatar
     margin:0px;
 }
 
+#mygroup h4
+{
+    text-align:center;
+}
+
 div.newmember
 {
     background-image:url('../profile/groupmembers.png');
@@ -4478,6 +4484,11 @@ div.allgroups
     height:370px;
     padding:25px;
     margin:0px;
+}
+
+div.allgroups h4
+{
+    text-align:center;
 }
 
 div.profile-message-allmessages
@@ -4527,16 +4538,6 @@ div.profile-message-reply
     float:left;
 }
 
-.profile-message-reply .scroll-container
-{
-    width:690px;
-}
-
-.profile-message-reply .scroll-content
-{
-    width:690px;
-}
-
 .button-viewProfile-back,
 .button-all-choose,
 .button-addfriend,
@@ -4549,10 +4550,7 @@ div.profile-message-reply
 #is_friend,
 #button-editor-sure,
 .button-addgroup,
-#button-deletegroup,
-#button-addmember,
 #button-deletemember,
-#button-back-reply,
 #button-push,
 .button-mygroup,
 #add-new-friends
@@ -4574,7 +4572,10 @@ div.profile-message-reply
 
 a.button-back,
 a#button-editor,
-a#button-editor-cancel
+a#button-editor-cancel,
+#button-addmember,
+#button-deletegroup,
+#button-back-reply
 {
     background: #FFFFFF;
     border: 1px solid #B0B0B0;
@@ -4827,7 +4828,7 @@ div.delete-group
     margin:0px;
 }
 
-div.self-messages
+#self-messages-content
 {
     width:165px;
     height:125px;
@@ -4836,12 +4837,12 @@ div.self-messages
     float:left;
 }
 
-div.self-messages .scroll-container
+#self-messages-content .scroll-container
 {
     width:165px;
 }
 
-div.self-messages .scroll-content
+#self-messages-content .scroll-content
 {
     width:165px;
 }

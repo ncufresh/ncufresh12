@@ -4439,7 +4439,7 @@
         $('.my-all-messages').scrollable({
             wheelSpeed: 90
         });
-        $('.self-messages').scrollable({
+        $('#self-messages-content').scrollable({
             wheelSpeed: 90
         });
         $('.friend-chatting').scrollable({
