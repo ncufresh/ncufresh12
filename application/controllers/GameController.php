@@ -42,13 +42,14 @@ class GameController extends Controller
         $id = (integer)$id;
         if ( $id === 0 ) $id = $this->userId;
         
-        if ( Character::model()->findByPk($id) ) //判斷使用者是否存在
+        if ( Profile::model()->findByPk($id) ) // 判斷使用者是否存在
         {
+            Character::model()->checkCharacter($id); // 檢查遊戲腳色是否存在
             $this->setPageTitle(Yii::app()->name . ' - 遊戲專區');
-            $watch_character_data = Character::model()->findByPk($id); //傳入id 查詢使用者遊戲腳色資料
-            $watch_user_data = User::model()->findByPk($id); //傳入id 查詢使用者資料
-            $watch_profile_data = Profile::model()->findByPk($id); //傳入id 查詢使用者資料
-            $level = Character::model()->getLevel($id); //傳入id 查詢等級
+            $watch_character_data = Character::model()->findByPk($id); // 傳入id 查詢使用者遊戲腳色資料
+            $watch_user_data = User::model()->findByPk($id); // 傳入id 查詢使用者資料
+            $watch_profile_data = Profile::model()->findByPk($id); // 傳入id 查詢使用者資料
+            $level = Character::model()->getLevel($id); // 傳入id 查詢等級
             $level_exp = Character::model()->getLevelExp($level); //傳入等級 查詢等級經驗
             $nickname = $watch_profile_data->nickname;
             $online_count = $watch_user_data->online_count;
@@ -107,8 +108,9 @@ class GameController extends Controller
         $id = (integer)$id;
         if ( $id === 0 ) $id = $this->userId;
 
-        if ( Character::model()->findByPk($id) ) //判斷使用者是否存在
+        if ( Profile::model()->findByPk($id) ) // 判斷使用者是否存在
         {
+            Character::model()->checkCharacter($id); // 檢查遊戲腳色是否存在
             $this->setPageTitle(Yii::app()->name . ' - 成就系統');
             $return = Achievement::model()->getAchievementsByUserId($id);
             $content = $this->renderPartial('achievements', array(

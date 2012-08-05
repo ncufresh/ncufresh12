@@ -5,7 +5,7 @@
         var options = $.extend({
             aboutId:                         'about',
             titleClass:                      'title',
-            introdutionBlock:                'itr-block',
+            introdutionBlock:                'itrodution-block',
             introdutionPicture:              'about-picture',
             photoUl:                         'photo-ul',
             introduceId:                     'introdution',
@@ -16,8 +16,8 @@
             tagTxtClass:                     'tag-txt',
             title1Class:                     'title1',
             title2Class:                     'title2',
-            picBarSpeed:                     1000,
-            picAutoSpeed:                    6000,
+            PictureBarSpeed:                     1000,
+            PictureAutoSpeed:                    6000,
             tagBarSpeed:                     30000
         }, options);
         var photoIndex = 0;
@@ -43,22 +43,25 @@
             block1Inf.each(function(){
                 $(this).hide();
             });
-            block1Inf.eq(tagbarIndex).show();
-            tagbar.eq(tagbarIndex).show();
-            tagbarPerson.each(function(){
-                $(this).hide();
-            });
-            for (var p = 0; p < 9; p++)
+            if ( tagbarIndex != 6 )
             {
-                tagbarPerson.eq(tagbarIndex * 9 + p).show();
-                if ( tagbarIndex == 4 && p == 1 )
+                block1Inf.eq(tagbarIndex).show();
+                tagbarPerson.each(function(){
+                    $(this).hide();
+                });
+                for (var p = 0; p < 9; p++)
                 {
-                    break;
+                    tagbarPerson.eq(tagbarIndex * 9 + p).show();
+                    if ( tagbarIndex == 4 && p == 1 )
+                    {
+                        break;
+                    }
                 }
             }
+            tagbar.eq(tagbarIndex).show();
         };
         var blocks = [$('#' + options.aboutId + ' .block1'), $('#' + options.aboutId + ' .block2')];
-        var itrPic = $('#' + options.aboutId + ' .' + options.introdutionPicture);
+        var itrodutionPicture = $('#' + options.aboutId + ' .' + options.introdutionPicture);
         var picture = $('<div></div>')
             .css({
                 borderRadius: 10,
@@ -71,20 +74,20 @@
                 display.show().stop().animate({
                     height: 50,
                     opacity: 1
-                }, options.picBarSpeed);
+                }, options.PictureBarSpeed);
             })
             .mouseleave(function()
             {
                 display.stop().animate({
                     height: 0,
                     opacity: 0
-                }, options.picBarSpeed);
+                }, options.PictureBarSpeed);
             })
-            .appendTo(itrPic);
+            .appendTo(itrodutionPicture);
         var display = $('<div></div>').addClass('about-display').hide().appendTo(picture);
         var photoBar = $('<div></div>').addClass('photo-bar').appendTo(display);
-        var itr = $('#' + options.aboutId + ' .' + options.introdutionBlock).appendTo(blocks[0]);
-        var block1Pic = $('<div></div>').addClass('about-block1Pic').appendTo(blocks[1]);
+        var itrodution = $('#' + options.aboutId + ' .' + options.introdutionBlock).appendTo(blocks[0]);
+        var block1Picture = $('<div></div>').addClass('about-block1Picture').appendTo(blocks[1]);
         var block1Tag = $('#' + options.aboutId + ' .' + options.tagClass).appendTo(blocks[1]);
         var block1Txt = $('#' + options.aboutId + ' .' + options.tagTxtClass).appendTo(blocks[1]);
         var block1Inf = $('#' + options.aboutId + ' .' + options.block1InfClass);
@@ -100,12 +103,16 @@
         {
             $(this).addClass('about-small-' + index ).mouseenter(function()
             {
-                $(this).css({
-                    cursor: 'pointer'
-                })
+                if ( index != 0 )
+                {
+                    $(this).css({
+                        cursor: 'pointer'
+                    })
+                }
             })
             .click(function()
             {
+                if ( index == 0 ) return false;
                 tagBool = false;
                 for ( var i = 0; i < 5; i++)
                 {
@@ -114,7 +121,7 @@
                 tagbarIndex = index - 1;
                 jumpTo();
             })
-            .appendTo(block1Pic);
+            .appendTo(block1Picture);
         });
         tagbarPerson.each(function(){
             $(this).css({
@@ -156,12 +163,12 @@
                 photoIndex = 0;
             }
             picture.css('background-image', 'url(\'' + photoA.eq(photoIndex).attr('href') + '\')');
-        },options.picAutoSpeed);
+        },options.PictureAutoSpeed);
         setInterval(function()
         {
             if ( tagBool )
             {
-                if ( tagbarIndex < 4 )
+                if ( tagbarIndex < 5 )
                 {
                     tagbarIndex++;
                 }
