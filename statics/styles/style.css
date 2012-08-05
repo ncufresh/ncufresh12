@@ -4117,11 +4117,12 @@ ul.users-department li p.user-department
 
 #user-data-view
 {
-    width:185px; 
-    height:350px;
-    padding:0px;
-    margin-top:10px;
-    margin-left:90px;
+    width: 185px;
+    height: 350px;
+    padding: 0px;
+    margin-top: 10px;
+    margin-left: 71px;
+    font-weight: bold;
 }
 
 #user-data-view li
@@ -4276,28 +4277,29 @@ div.a-group-users div.avatar
     padding:0px;
 }
 
-.friend-chatting .scroll-container
+#friend-chatting .scroll-container
 {
-    width:388px;
+    width:212px;
+    height:78px;
 }
 
-.friend-chatting .scroll-content
+#friend-chatting .scroll-content
 {
-    width:388px;
+    width:214px;
 }
 
-.friend-chatting ul
+#friend-chatting ul
 {
-    width:388px;
-    margin-left:1px;
+    width:445px;
+    margin-left:25px;
     padding:0px;
     outline:1px solid black;
     outline-style:dotted;
 }
 
-.friend-chatting ul li
+#friend-chatting ul li
 {
-    width:192px;
+    width:222px;
     padding:0px;
     float:left;
     list-style-type:none;
@@ -4321,16 +4323,6 @@ div.a-group-users div.avatar
     outline-style:dotted;
 }
 
-.friend-chatting-content .scroll-container
-{
-    width: 190px;
-}
-
-.friend-chatting-content .scroll-content
-{
-    width: 190px;
-}
-
 .profile-modify
 {
     width:240px;
@@ -4351,7 +4343,6 @@ div.a-group-users div.avatar
 #profile-friend
 {
     width:240px;
-    height:350px;
     margin:-25px;
     padding:5px;
     float:left;
@@ -4380,7 +4371,6 @@ div.allmessages
     width:490px;
     height:290px;
     margin-top:0px;
-    padding:5px;
 }
 
 div.allmessages form
@@ -4450,6 +4440,17 @@ div.friends-sortfriend div.avatar
     margin:0px;
 }
 
+.myprofile .scroll-container
+{
+    width:445px;
+    height:280px;
+}
+
+.myprofile .scroll-content
+{
+    width:445px;
+}
+
 .myprofile h4
 {
     text-align:center;
@@ -4463,7 +4464,17 @@ div.friends-sortfriend div.avatar
     width:690px;
     height:370px;
     padding:25px;
-    margin:0px;
+}
+
+#newgroup .scroll-container
+{
+    width:665px;
+    height:340px;
+}
+
+#newgroup .scroll-content
+{
+    width:665px;
 }
 
 #mygroup
@@ -4641,22 +4652,11 @@ a#button-editor-cancel,
     margin:0px;
 }
 
-#new-group-members div .scroll-container
-{
-    width:650px;
-}
-
-#new-group-members div .scroll-content
-{
-    width:650px;
-}
-
-
 #new-group-members div.avatar
 {
     margin-left:20px;
     margin-top:0px;
-    width:100px; 
+    width:94px; 
     height:70px;
     padding:0px;
     float:left;
