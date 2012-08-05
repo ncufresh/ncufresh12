@@ -96,11 +96,15 @@ class FriendsController extends Controller
             {   
                 $relation = Friend::model()->friendRelation($friendid);
                 if ( $this->userId != $friendid && ($relation === Friend::IS_RECEIVERED_REQUEST || $relation === Friend::IS_NOT_FRIEND) )
-                
                 {
                     Friend::model()->addFriend($friendid); //本人加朋友資料
                     Friend::model()->makeFriend($friendid);
                 }
+            }
+            foreach ( array_merge(Friend::model()->getErrors()) as $field => $error )
+            {
+                Yii::app()->user->setFlash('交友失敗咯', true);
+                Yii::app()->user->setFlash('交友失敗咯', true);
             }
             $this->redirect(array('friends/myfriends'));
         }
@@ -120,9 +124,7 @@ class FriendsController extends Controller
     }
 
     public function actionMyGroups($id)
-    {   
-        // var_dump(UserGroup::model()->getMembers($id));
-        // exit;
+    {
         $this->setPageTitle(Yii::app()->name . ' - 我的群組');
         $this->render('mygroups', array(
             'user'          => $this->user,
