@@ -164,6 +164,10 @@ class Event extends CActiveRecord
         $this->start -= date('Z', $this->start);
         $this->end   -= date('Z', $this->end);
         $this->description = nl2br(htmlspecialchars($this->description));
+        if ( ! Yii::app()->request->isAjaxRequest )
+        {
+            $this->name = htmlspecialchars($this->name);
+        }
     }
 
     public function beforeSave()
