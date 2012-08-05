@@ -175,11 +175,26 @@ form dl.select dt
 }
 
 form dl.radio input,
+form dl.checkbox input,
+form dl.select select
+{
+    width: auto;
+}
+
+form dl.radio input,
 form dl.checkbox input
-form dl.select input
 {
     float: left;
-    width: auto;
+}
+
+form dl.checkbox input
+{
+    margin-left: 8px;
+}
+
+form dl.select select
+{
+    margin-top: 8px;
 }
 
 form dl.radio dd label,
@@ -213,6 +228,30 @@ form span.radio:hover {
 }
 
 form span.radio.checked {
+    background: #4B4B4B;
+}
+
+form span.checkbox
+{
+    background: #FFFFFF;
+    border: 1px solid #B0B0B0;
+    border-radius: 0;
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 8px;
+    margin: 15px 0 0 8px;
+    min-height: 0;
+    padding: 0;
+    position: static;
+    width: 8px;
+}
+
+form span.checkbox:hover {
+    border: 1px solid #909090;
+}
+
+form span.checkbox.checked {
     background: #4B4B4B;
 }
 
@@ -294,7 +333,6 @@ a:hover
 
 .scroll-container .scroll-bar
 {
-    display: none;
     height: 98%;
     right: 2px;
     margin-top: -1px;
@@ -1082,10 +1120,15 @@ a:hover
     cursor: pointer;
 }
 
-#chat-friend-list .scroll-container,
-#chat-friend-list-container
+#chat-friend-list .scroll-container
 {
     height: 180px;
+    width: 160px;
+}
+
+#chat-friend-list .scroll-content
+{
+    width: 160px;
 }
 
 #chat-friend-list .friend-list-entry
@@ -1261,12 +1304,22 @@ a:hover
 .chat-dialog .scroll-container
 {
     height: 150px;
+    width: 160px;
+}
+
+.chat-dialog .scroll-content
+{
+    width: 160px;
+}
+
+.chat-dialog .scroll-bar
+{
+    height: 144px;
 }
 
 .chat-dialog .scroll-area
 {
     margin: -3px 0;
-    width: 160px;
 }
 
 #chat-name
@@ -1551,7 +1604,7 @@ ul#nculife-details
 #club #calendar  .calendar-table td,
 #index-calendar .calendar-table td
 {
-    text-align: right;
+    text-align: center;
     width: 28px;
     cursor: pointer;
 }
@@ -4352,23 +4405,6 @@ div.profile-message-reply
     width:690px;
 }
 
-#add-new-friends
-{
-    position:absolute;
-    right:472px;
-    bottom:23px;
-    display: block;
-    border: 2px black solid;
-    width: 74px;
-    height:29px;
-    padding: 3px;
-    font-weight: bold;
-    color: #0A5163;
-    background: #C9F8E7;
-    border-radius: 9px;
-    text-align: center;
-}
-
 .button-viewProfile-back,
 .button-all-choose,
 .button-addfriend,
@@ -4379,7 +4415,15 @@ div.profile-message-reply
 .button-makefriend,
 #friend_request,
 #is_friend,
-#button-editor-sure
+#button-editor-sure,
+.button-addgroup,
+#button-deletegroup,
+#button-addmember,
+#button-deletemember,
+#button-back-reply,
+#button-push,
+.button-mygroup,
+#add-new-friends
 {
     background: #FFFFFF;
     border: 1px solid #B0B0B0;
@@ -4417,19 +4461,19 @@ a#button-editor-cancel
 
 #new-group-members
 {
-    width:670px;
+    width:650px;
     height:335px;
     margin:0px;
 }
 
-#new-group-members .scroll-container
+#new-group-members div .scroll-container
 {
-    width:670px;
+    width:650px;
 }
 
-#new-group-members .scroll-content
+#new-group-members div .scroll-content
 {
-    width:670px;
+    width:650px;
 }
 
 
@@ -4441,111 +4485,6 @@ a#button-editor-cancel
     height:70px;
     padding:0px;
     float:left;
-}
-
-#button-back-reply
-{
-    background-image: url('../profile/button/back.png');
-    background-repeat: no-repeat ;
-    width: 84px;
-    height: 37px;
-    padding: 0px;
-    margin: 0px;
-    float:right;
-    position:relative;
-    right:-85px;
-    bottom:0px;
-}
-
-#button-push
-{
-    background-image:url('../profile/button/push.png');
-    background-repeat:no-repeat ;
-    width:67px;
-    height:35px;
-    padding:0px;
-    margin:0px;
-    position:relative;
-    right:68px;
-    bottom:0px;
-}
-
-.button-addgroup
-{
-     display: block;
-    border: 2px black solid;
-    padding: 3px;
-    font-weight: bold;
-    color: #0A5163;
-    background: #C9F8E7;
-    border-radius: 9px;
-    text-align: center;
-    position:absolute;
-    right:28px;
-    bottom:66px;
-    width: 77px;
-    height:35px;
-}
-
-#button-deletegroup
-{
-     display: block;
-    border: 2px black solid;
-    padding: 3px;
-    font-weight: bold;
-    color: #0A5163;
-    background: #C9F8E7;
-    border-radius: 9px;
-    text-align: center;
-    position:absolute;
-    right:28px;
-    bottom:97px;
-    width: 67px;
-    height:26px;
-}
-
-#button-addmember
-{
-    display: block;
-    border: 2px black solid;
-    padding: 3px;
-    font-weight: bold;
-    color: #0A5163;
-    background: #C9F8E7;
-    border-radius: 9px;
-    text-align: center;
-    position:absolute;
-    right:28px;
-    bottom:21px;
-    width: 66px;
-    height:26px;
-}
-
-#button-deletemember
-{
-    display: block;
-    border: 2px black solid;
-    padding: 3px;
-    font-weight: bold;
-    color: #0A5163;
-    background: #C9F8E7;
-    border-radius: 9px;
-    text-align: center;
-    position:absolute;
-    right:28px;
-    bottom:60px;
-    width: 77px;
-    height:35px;
-}
-
-.button-mygroup
-{
-    background-image:url('../profile/button/mygroup.png');
-    background-repeat:no-repeat ;
-    width:50px;
-    height:50px;
-    padding:0px;
-    margin:0px;
 }
 
 .is_exist
@@ -5508,12 +5447,12 @@ li.enabled a
     padding:10px 0 0 32px;
 }
 
-#forum-create-form .form-body dl,
+/*#forum-create-form .form-body dl,
 #forum-create-form .form-body input
 {
     margin:0 0 10px 0;
     padding:0px;
-}
+}*/
 
 #forum-create-form .form-body .article-is-top
 {
@@ -5556,10 +5495,10 @@ li.enabled a
     margin-top: 5px;
 }
 
-#forum-create-text-title
+/*#forum-create-text-title
 {
     margin-top:6px;
-}
+}*/
 
 #forum-create-title
 {
@@ -5569,7 +5508,7 @@ li.enabled a
 
 #forum-create-category
 {
-    height:30px;
+    /*height:30px;*/
     width:200px;
 }
 

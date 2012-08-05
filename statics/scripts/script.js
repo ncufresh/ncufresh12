@@ -12,6 +12,11 @@
         return this.substr(0, index) + string + this.substr(index + string.length);
     };
 
+    String.prototype.reverse = function()
+    {
+        return this.split('').reverse().join('');
+    };
+
     $.extend({
         random: function(min, max)
         {
@@ -926,7 +931,7 @@
             {
                 var originalHeight = parseInt(scrollDragable.css('height'));
                 var scrollContentHeight = scrollContent.height();
-                var scrollTrackHeight = scrollTrack.height();
+                var scrollBarHeight = scrollBar.height();
                 var height = 0;
                 if ( scrollContent.width() - scrollContainer.width() >= 0 )
                 {
@@ -934,10 +939,10 @@
                         width: scrollContainer.width() + scrollWidth
                     });
                 }
-                if ( scrollContentHeight > scrollTrackHeight )
+                if ( scrollContentHeight > scrollBarHeight )
                 {
-                    height = scrollTrackHeight
-                           * scrollTrackHeight
+                    height = scrollBarHeight
+                           * scrollBarHeight
                            / scrollContentHeight;
                 }
                 if ( height != originalHeight )
@@ -1000,25 +1005,28 @@
                     updateScrollDragable(top - delta * multiplier);
                     return false;
                 })
-                .mousedown(function()
+                .mousedown(function(event)
                 {
-                    var timer = setInterval(function()
+                    if ( event.which === 1 )
                     {
-                        scrollDragable.css({
-                            top: (scrollTrack.height()
-                               - updateScrollDraggableHeight())
-                               * scrollArea.scrollTop()
-                               / scrollHeight
-                        });
-                    }, 1);
-                    var revert = function()
-                    {
-                        active = false;
-                        $(document).off('mouseup', revert);
-                        clearInterval(timer);
-                    };
-                    $(document).on('mouseup', revert);
-                    active = true;
+                        var timer = setInterval(function()
+                        {
+                            scrollDragable.css({
+                                top: (scrollTrack.height()
+                                   - updateScrollDraggableHeight())
+                                   * scrollArea.scrollTop()
+                                   / scrollHeight
+                            });
+                        }, 1);
+                        var revert = function()
+                        {
+                            active = false;
+                            $(document).off('mouseup', revert);
+                            clearInterval(timer);
+                        };
+                        $(document).on('mouseup', revert);
+                        active = true;
+                    }
                 })
                 .wrapInner($(this))
                 .appendTo(scrollArea);
@@ -1029,41 +1037,47 @@
                 .addClass('scroll-track')
                 .mousedown(function(event)
                 {
-                    var y = event.pageY;
-                    var top = $(this).offset().top;
-                    var height = updateScrollDraggableHeight();
-                    updateScrollDragable(y - top - height / 2);
-                    return false;
+                    if ( event.which === 1 )
+                    {
+                        var y = event.pageY;
+                        var top = $(this).offset().top;
+                        var height = updateScrollDraggableHeight();
+                        updateScrollDragable(y - top - height / 2);
+                        return false;
+                    }
                 })
                 .appendTo(scrollBar);
             var scrollDragable = $('<div></div>')
                 .addClass('scroll-dragable')
                 .mousedown(function(event)
                 {
-                    var origin = parseInt(scrollDragable.css('top')) - event.pageY;
-                    var stop = function()
+                    if ( event.which === 1 )
                     {
-                        $(document)
-                            .unbind('mouseup', stop)
-                            .unbind('mousemove', update);
-                        if ( ! inside )
+                        var origin = parseInt(scrollDragable.css('top')) - event.pageY;
+                        var stop = function()
                         {
-                            scrollBar
-                                .stop(true, true)
-                                .fadeOut(options.fadeInDuration);
-                        }
-                        active = false;
-                    };
-                    var update = function(event)
-                    {
-                        updateScrollDragable(origin + event.pageY);
-                    };
-                    $(document)
-                        .bind('mouseup', stop)
-                        .bind('mouseleave', stop)
-                        .bind('mousemove', update);
-                    active = true;
-                    return false;
+                            $(document)
+                                .unbind('mouseup', stop)
+                                .unbind('mousemove', update);
+                            if ( ! inside )
+                            {
+                                scrollBar
+                                    .stop(true, true)
+                                    .fadeOut(options.fadeInDuration);
+                            }
+                            active = false;
+                        };
+                        var update = function(event)
+                        {
+                            updateScrollDragable(origin + event.pageY);
+                        };
+                        $(document)
+                            .bind('mouseup', stop)
+                            .bind('mouseleave', stop)
+                            .bind('mousemove', update);
+                        active = true;
+                        return false;
+                    }
                 })
                 .appendTo(scrollTrack);
             var updateScrollDragable = function(position)
@@ -4096,7 +4110,6 @@
 
         var mmMenuScroll = function(offset)
         {
-            console.log(target);
             if ( typeof(mmMenuScroll.mousein) == 'undefined' )
             {
                 mmMenuScroll.mousein = false;
@@ -4337,52 +4350,64 @@
     };
 })(jQuery);
 
-/**
- * Main
- */
 (function($)
 {
-    $(document).ready(function()
+    var checked = false;
+    $.friends = function()
     {
-        $.configures.lasttime = 0;
+        $('.a-group-users').scrollable({
+            wheelSpeed: 90
+        });
+        $('.users-group').scrollable({
+            wheelSpeed: 90
+        });
+        $('#new-group-members').scrollable({
+            wheelSpeed: 90
+        });
+    }
+    $('.button-all-choose').click(function()
+    {
+        checked = ! checked;
+        $('input[type="checkbox"][name^="friends"]').each(function()
+        {
+            $(this).prop('checked', checked);
+        });
+        return false;
+    });
+})(jQuery);
 
-        $.configures.sequence = $.random(0, 1000);
+(function($)
+{
+    $.profile = function()
+    {
+        $('.allmessages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.my-all-messages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.self-messages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.friend-chatting').scrollable({
+            wheelSpeed: 90
+        })
+        $('.friend-chatting-content').scrollable({
+            wheelSpeed: 90
+        });
+        jQuery('.button-viewProfile-back').click(function()
+        {
+            window.history.back();
+        }); 
+    
+    }
+})(jQuery);
 
-        if ( $('#chat').length ) $('#chat').chat();
-
-        $('#header').star();
-
-        $('#moon').moon();
-
+(function($)
+{
+    $.ncufresh = function()
+    {
         $('.loading').sprite();
-        
-        if ( $('#club').length ) $.clubs();
-
-        if ( $('#game').length ) $.game();
-
-        if ( $('#friends').length ) $.friends();
-
-        if ( $('#profile').length ) $.profile();
-
-        if ( $('#nculife').length ) $.nculife();
-
-        if ( $('#readme').length ) $.readme(); 
-
-        if ( $('#street').length ) $.street(); 
-
-        if ( $('#multimedia').length ) $.multimedia();
-
-        if ( $('.calendar-create').length ) $.calendarCreate();
-
-        if ( $('#calendar-recycle').length ) $.calendarRecycle();
-
-        if ( $('#personal-calendar').length ) $.calendarView();
-
-        if ( $('#calendar-subscript').length ) $.calendarSubscript();
-
-        if ( $('#calendar-club').length ) $.calendarClub();
-
-        if ( $('#calendar-event').length ) $.calendarEvent();
 
         $('input.datepicker:not(#form-register-birthday, #form-editor-birthday)').datepicker();
         $('#form-register-birthday, #form-editor-birthday').datepicker({
@@ -4446,6 +4471,7 @@
                 });
             }
         });
+
         $('form input[type="radio"]').each(function(element)
         {
             var span = $('<span></span>')
@@ -4478,7 +4504,49 @@
                 });
 
             if ( $(this).prop('checked') ) {
-                $(this).prev().addClass('checked');
+                $(this).next().addClass('checked');
+            }
+        });
+
+        $('form input[type="checkbox"]').each(function(element)
+        {
+            var span = $('<span></span>')
+                .addClass('checkbox')
+                .mousedown(function()
+                {
+                    if ( $(this).hasClass('checked') )
+                    {
+                        $(this).prev().prop('checked', false);
+                        $(this).removeClass('checked');
+                    }
+                    else
+                    {
+                        $(this).prev().prop('checked', true);
+                        $(this).addClass('checked');
+                    }
+                })
+                .insertAfter($(this));
+
+            $(this).css({
+                    display: 'none',
+                    height: 'auto',
+                    width: 'auto'
+                })
+                .change(function()
+                {
+                    if ( $(this).prop('checked') )
+                    {
+                        $(this).next().addClass('checked');
+                    }
+                    else
+                    {
+                        $(this).next().removeClass('checked');
+                    }
+                    console.log($(this).prop('checked'));
+                });
+
+            if ( $(this).prop('checked') ) {
+                $(this).next().addClass('checked');
             }
         });
 
@@ -4495,6 +4563,316 @@
             window.open(url);
             return false;
         });
+    };
+})(jQuery);
+
+(function($)
+{
+    $.site = function()
+    {
+        const SEGMENT = 100 / 5;
+
+        var meter = $('#form-password-meter');
+
+        var offset = parseInt(meter.css('margin-top'));
+
+        var calculatePasswordScore = function(password)
+        {
+            var lengthMultiplier = 4;
+            var numberMultiplier = 4;
+            var symbolMultiplier = 6;
+            var middleCharacterMultipler = 2;
+            var upperCaseAlphaMultipler = 2;
+            var lowerCaseAlphaMultipler = 2;
+            var consecutiveNumberMultipler = 2;
+            var sequentialAlplaMultipler = 3;
+            var sequentialNumberMultipler = 3;
+            var sequentialSymbolMultipler = 3;
+
+            var upperCaseAlpha = '';
+            var lowerCaseAlpha = '';
+            var number = '';
+            var symbol = '';
+            var repeatCharacterCountIncreasement = 0;
+
+            var repeatChatacterExists = false;
+            var upperCaseAlphaCount = 0;
+            var lowerCaseAlphaCount = 0;
+            var middleCharacterCount = 0;
+            var numberCount = 0;
+            var symbolCount = 0;
+            var repeatCharacterCount = 0;
+            var uniqueCharacterCount = 0;
+
+            var consecutiveUpperCaseAlphaCount = 0;
+            var consecutiveLowerCaseAlphaCount = 0;
+            var consecutiveNumberCount = 0;
+            var consecutiveSymbolCount = 0;
+
+            var sequentialAlplaCount = 0;
+            var sequentialNumberCount = 0;
+            var sequentialSymbolCount = 0;
+            var sequentialCharacterCount = 0;
+
+            var length = password.length;
+            var score = parseInt(length * lengthMultiplier);
+            var array = password.replace(/\s+/g, '').split(/\s*/);
+
+            for ( var index = 0; index < array.length ; ++index )
+            {
+                if ( array[index].match(/[A-Z]/g) )
+                {
+                    if ( upperCaseAlpha !== '' )
+                    {
+                        if ( (upperCaseAlpha + 1) == index ) consecutiveUpperCaseAlphaCount++;
+                    }
+                    upperCaseAlpha = index;
+                    upperCaseAlphaCount++;
+                }
+                else if ( array[index].match(/[a-z]/g) )
+                { 
+                    if ( lowerCaseAlpha !== '')
+                    {
+                        if ( (lowerCaseAlpha + 1) == index ) consecutiveLowerCaseAlphaCount++;
+                    }
+                    lowerCaseAlpha = index;
+                    lowerCaseAlphaCount++;
+                }
+                else if ( array[index].match(/[0-9]/g) )
+                { 
+                    if ( index > 0 && index < (array.length - 1) )
+                    {
+                        middleCharacterCount++;
+                    }
+                    if ( number !== '' )
+                    {
+                        if ( (number + 1) == index ) consecutiveNumberCount++;
+                    }
+                    number = index;
+                    numberCount++;
+                }
+                else if ( array[index].match(/[^a-zA-Z0-9_]/g) )
+                { 
+                    if ( index > 0 && index < (array.length - 1) )
+                    {
+                        middleCharacterCount++;
+                    }
+                    if ( symbol !== '' )
+                    {
+                        if ( (symbol + 1) == index ) consecutiveSymbolCount++;
+                    }
+                    symbol = index;
+                    symbolCount++;
+                }
+
+                for ( var t = 0 ; t < array.length ; ++t )
+                {
+                    if ( array[index] == array[t] && index != t )
+                    {
+                        repeatChatacterExists = true;
+                        repeatCharacterCountIncreasement += Math.abs(array.length/(t - index));
+                    }
+                }
+                if ( repeatChatacterExists )
+                { 
+                    repeatCharacterCount++; 
+                    uniqueCharacterCount = array.length - repeatCharacterCount;
+                    repeatCharacterCountIncreasement = (uniqueCharacterCount) ? Math.ceil(repeatCharacterCountIncreasement / uniqueCharacterCount) : Math.ceil(repeatCharacterCountIncreasement); 
+                }
+            }
+
+            for ( var t = 0 ; t < 23 ; ++t )
+            {
+                var forward = 'abcdefghijklmnopqrstuvwxyz'.substring(t, parseInt(t + 3));
+                var reverse = forward.reverse();
+                if (
+                    password.toLowerCase().indexOf(forward) != -1
+                 || password.toLowerCase().indexOf(reverse) != -1
+                )
+                {
+                    sequentialAlplaCount++;
+                    sequentialCharacterCount++;
+                }
+            }
+
+            for ( var t = 0 ; t < 8 ; ++t )
+            {
+                var forward = '01234567890'.substring(t, parseInt(t + 3));
+                var reverse = forward.reverse();
+                if (
+                    password.toLowerCase().indexOf(forward) != -1
+                 || password.toLowerCase().indexOf(reverse) != -1
+                )
+                {
+                    sequentialNumberCount++;
+                    sequentialCharacterCount++;
+                }
+            }
+
+            for ( var t = 0 ; t < 8; ++t )
+            {
+                var forward = ')!@#$%^&*()'.substring(t, parseInt(t + 3));
+                var reverse = forward.reverse();
+                if (
+                    password.toLowerCase().indexOf(forward) != -1
+                 || password.toLowerCase().indexOf(reverse) != -1
+                )
+                {
+                    sequentialSymbolCount++;
+                    sequentialCharacterCount++;
+                }
+            }
+
+            if ( upperCaseAlphaCount > 0 && upperCaseAlphaCount < length )
+            {
+                score += parseInt((length - upperCaseAlphaCount) * 2);
+            }
+            if ( lowerCaseAlphaCount > 0 && lowerCaseAlphaCount < length )
+            {
+                score += parseInt((length - lowerCaseAlphaCount) * 2);
+            }
+            if ( numberCount > 0 && numberCount < length )
+            {
+                score += parseInt(numberCount * numberMultiplier);
+            }
+            if ( symbolCount > 0 )
+            {
+                score += parseInt(symbolCount * symbolMultiplier);
+            }
+            if ( middleCharacterCount > 0)
+            {
+                score += parseInt(middleCharacterCount * middleCharacterMultipler);
+            }
+            if ( (lowerCaseAlphaCount > 0 || upperCaseAlphaCount > 0) && symbolCount === 0 && numberCount === 0 )
+            {
+                score -= parseInt(length);
+            }
+            if ( lowerCaseAlphaCount === 0 && upperCaseAlphaCount === 0 && symbolCount === 0 && numberCount > 0 )
+            {
+                score -= parseInt(length); 
+            }
+            if ( repeatCharacterCount > 0 )
+            {
+                score -= parseInt(repeatCharacterCountIncreasement);
+            }
+            if ( consecutiveUpperCaseAlphaCount > 0 )
+            {
+                score -= parseInt(consecutiveUpperCaseAlphaCount * upperCaseAlphaMultipler);
+            }
+            if ( consecutiveLowerCaseAlphaCount > 0 )
+            {
+                score -= parseInt(consecutiveLowerCaseAlphaCount * lowerCaseAlphaMultipler);
+            }
+            if ( consecutiveNumberCount > 0 )
+            {
+                score -= parseInt(consecutiveNumberCount * consecutiveNumberMultipler);
+            }
+            if ( sequentialAlplaCount > 0 )
+            {
+                score -= parseInt(sequentialAlplaCount * sequentialAlplaMultipler);
+            }
+            if ( sequentialNumberCount > 0 )
+            {
+                score -= parseInt(sequentialNumberCount * sequentialNumberMultipler); 
+            }
+            if ( sequentialSymbolCount > 0 )
+            {
+                score -= parseInt(sequentialSymbolCount * sequentialSymbolMultipler);
+            }
+
+            if ( length < 8 ) score /= 2;
+            if ( score > 100 ) score = 100;
+            if ( score < 0 ) score = 0;
+            return score;
+        };
+
+        var colors = [
+            '#FF0000',
+            '#F79F1D',
+            '#EAF722',
+            '#99E653',
+            '#3AF463'
+        ];
+
+        var checkPasswordStrength = function()
+        {
+            if ( $(this).val() !== '' )
+            {
+                var score = calculatePasswordScore($(this).val());
+                var level = parseInt(score / SEGMENT) + 1;
+
+                meter.find('td').css({
+                    backgroundColor: 'transparent'
+                });
+
+                for ( var index = 0 ; index < level ; ++index )
+                {
+                    meter.find('td').eq(index).css({
+                        backgroundColor: colors[level - 1]
+                    });
+                }
+            }
+        };
+
+        if ( $('#form-register-password').length )
+        {
+            checkPasswordStrength.call(
+                $('#form-register-password')
+                    .keyup(checkPasswordStrength)
+                    .keydown(checkPasswordStrength)
+            );
+        }
+    };
+})(jQuery);
+
+/**
+ * Main
+ */
+(function($)
+{
+    $(document).ready(function()
+    {
+        $.configures.lasttime = 0;
+
+        $.configures.sequence = $.random(0, 1000);
+
+        $.ncufresh();
+
+        $('#header').star();
+
+        $('#moon').moon();
+
+        if ( $('#chat').length ) $('#chat').chat();
+
+        if ( $('#site').length ) $.site();
+
+        if ( $('#club').length ) $.clubs();
+
+        if ( $('#game').length ) $.game();
+
+        if ( $('#friends').length ) $.friends();
+
+        if ( $('#profile').length ) $.profile();
+
+        if ( $('#nculife').length ) $.nculife();
+
+        if ( $('#readme').length ) $.readme(); 
+
+        if ( $('#street').length ) $.street(); 
+
+        if ( $('#multimedia').length ) $.multimedia();
+
+        if ( $('.calendar-create').length ) $.calendarCreate();
+
+        if ( $('#calendar-recycle').length ) $.calendarRecycle();
+
+        if ( $('#personal-calendar').length ) $.calendarView();
+
+        if ( $('#calendar-subscript').length ) $.calendarSubscript();
+
+        if ( $('#calendar-club').length ) $.calendarClub();
+
+        if ( $('#calendar-event').length ) $.calendarEvent();
 
         $.pull.start({
             friendcounter: $('#chat .friendcounts'),
@@ -4517,7 +4895,7 @@
             .appendTo($('#fb-root'));
 
         $('<fb:like></fb:like>')
-            .attr('href', window.location.href)
+            .attr('href', $.configures.ncuFreshWebUrl)
             .attr('data-send', 'false')
             .attr('data-layout', 'button_count')
             .attr('data-show-faces', 'false')
@@ -4531,65 +4909,17 @@
             xfbml:      true
         });
     };
-})(jQuery);
 
-(function($){
-    var checked = false;
-    $.friends = function()
+    google.setOnLoadCallback(function()
     {
-        $('.a-group-users').scrollable({
-            wheelSpeed: 90
-        });
-        $('#new-group-members').scrollable({
-            wheelSpeed: 90
-        });
-    }
-    $('.button-all-choose').click(function()
-    {
-        checked = ! checked;
-        $('input[type="checkbox"][name^="friends"]').each(function()
-        {
-            $(this).prop('checked', checked);
-        });
-        return false;
+        google.search.CustomSearchControl.attachAutoCompletion(
+            $.configures.googleSearchAppId,
+            $('#form-search-query').get(0),
+            'search'
+        );
     });
-})(jQuery);
-
-(function($){
-    $.profile = function()
-    {
-        $('.allmessages').scrollable({
-            wheelSpeed: 90
-        });
-        $('.my-all-messages').scrollable({
-            wheelSpeed: 90
-        });
-        $('.self-messages').scrollable({
-            wheelSpeed: 90
-        });
-        $('.friend-chatting').scrollable({
-            wheelSpeed: 90
-        })
-        $('.friend-chatting-content').scrollable({
-            wheelSpeed: 90
-        });
-        jQuery('.button-viewProfile-back').click(function()
-        {
-            window.history.back();
-        }); 
-    
-    }
 })(jQuery);
 
 google.load('search', '1', {
     language: 'zh_TW'
-});
-
-google.setOnLoadCallback(function()
-{
-    google.search.CustomSearchControl.attachAutoCompletion(
-        $.configures.googleSearchAppId,
-        document.getElementById('form-search-query'),
-        'search'
-    );
 });
