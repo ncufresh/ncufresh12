@@ -46,10 +46,10 @@
 <?php foreach ( $messages as $message ) : ?>
             <li>時間：
 <?php echo $message['time']; ?>
-                <br />名字：<?php echo $message['name'] ?>
+                <br />名字：<?php echo $message['name']; ?>
 <?php $this->widget('Avatar', array(
     'id'        => $message['id']
-)); ?>
+)); ?>            
             </li>
             <li class="friend-chatting-content">對話內容：<br />
 <?php echo $message['message']; ?>
