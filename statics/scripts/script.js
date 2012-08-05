@@ -4557,7 +4557,9 @@
             if (
                 url.match(/^\/.+/)
              || url.match(/^#.*/)
-             || url.search(location.hostname) >= 0 )
+             || url.search(location.hostname) >= 0
+             || $(this).attr('rel') !== 'external'
+            )
             {
                 return true;
             }
