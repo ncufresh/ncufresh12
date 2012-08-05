@@ -324,7 +324,7 @@ class Character extends CActiveRecord
             if ( $this->getIsNewRecord() )
             {
                 $this->experience = 0; //一開始使用者經驗設為0
-                $this->money = 45000; //一開始使用者金錢設為25000
+                $this->money = 35000; //一開始使用者金錢設為25000
                 $this->total_money = 55000; //一開始使用者總金錢設為35000
             }
             return true;

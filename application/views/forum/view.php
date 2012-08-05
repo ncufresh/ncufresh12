@@ -49,7 +49,8 @@ else if ( $fid == 22 || $fid == 23 )
     <div class="forum-view-profile">
         <div class="profile-pic">
         <?php $this->widget('Avatar', array(
-            'id'        => $article->author_id
+            'id'        => $article->author_id,
+            'link'      => true
         )); ?>
         </div>
         <div class="profile-name">暱稱：<?php echo User::model()->findByPK($article->author_id)->profile->nickname; ?></div>
@@ -93,7 +94,8 @@ foreach ($replies as $each):
     <div class="forum-view-profile">
         <div class="profile-pic">
         <?php $this->widget('Avatar', array(
-            'id'        => $each->author_id
+            'id'        => $each->author_id,
+            'link'      => true
         )); ?>
         </div>
         <div class="profile-name">暱稱：<?php echo User::model()->findByPK($each->author_id)->profile->nickname; ?></div>

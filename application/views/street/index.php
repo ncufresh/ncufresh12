@@ -1,26 +1,3 @@
-<?php
-    $file_path = array();
-    $index = 0;
-    if(empty($files))
-    {
-        // echo 'no files';
-    }
-    else
-    {
-        foreach ( $files as $key => $path )
-        {
-            echo 'key: '.$key.' ';
-            echo 'value: '.$path;
-            $file_path[$index] = $path;
-            $index = $index + 1;
-        }
-    }
-    
-// #street-div .opacity-picture
-// {
-    // opacity: 0.5;
-// }
-?>
 <div id="street-div">
     <div id="back-div">    
     
@@ -33,7 +10,7 @@
         
         <div id="map-div">
             <img id="mapPicture" path="<?php echo Yii::app()->baseUrl?>/statics/building/map_no_text.png">
-            
+            <div class="loading"></div>
             <!--選擇鈕-->
             <div class="one-image dormitory" show="dormitory"></div>
             <div class="one-image diet" show="diet"></div>
@@ -46,7 +23,6 @@
             <div class="arrow left"></div>
             <div class="arrow right"></div>
             <div class="arrow back"></div>
-<!--<div class ="loading" ></div>-->
 
             <img id="experience-personally" src="<?php echo Yii::app()->baseUrl?>/statics/building/little_man.png">
             <p id="drag-me">拉我到建築喔!!</p>
@@ -54,7 +30,7 @@
             <!--系館-->
             <div id="engineering-5" class="department-building picture" streetPoints="0" faceto="E" show="department-building" href="#1"></div>
             <div id="engineering-3" class="department-building picture" streetPoints="2" faceto="W" show="department-building" href="#2"></div>
-            <div id="engineering-2" class="department-building picture" streetPoints="51" faceto="W" show="department-building" href="#3"></div>          
+            <div id="engineering-2" class="department-building picture" streetPoints="51" faceto="W" show="department-building" href="#3"></div>
             <div id="engineering-1" class="department-building picture" streetPoints="10" faceto="W" show="department-building" href="#4"></div>
             <div id="photonics" class="department-building picture opacity-picture" streetPoints="-1" faceto="W" show="department-building" href="#5"></div>
             <div id="science-5" class="department-building picture opacity-picture" streetPoints="-1" faceto="-1" show="department-building" href="#6"></div>
@@ -125,11 +101,11 @@
         <div id="curtainDiv">
         <!--選擇鈕2-->
             
-            <div id="inside-choose">                
-                <p class="two-image department-building" show="department-building" detailItem="department">系館</p>                
-                <p class="two-image landscape" show="landscape" detailItem="landscape">景點</p>                
-                <p class="two-image diet" show="diet" detailItem="meal">餐廳</p>                
-                <p class="two-image government" show="government" detailItem="govern">建築</p>               
+            <div id="inside-choose">
+                <p class="two-image department-building" show="department-building" detailItem="department">系館</p>
+                <p class="two-image landscape" show="landscape" detailItem="landscape">景點</p>
+                <p class="two-image diet" show="diet" detailItem="meal">餐廳</p>
+                <p class="two-image government" show="government" detailItem="govern">建築</p>
                 <p class="two-image dormitory" show="dormitory" detailItem="dorm">宿舍</p>
                 <p class="two-image exercise" show="exercise" detailItem="sport">運動</p>
 
@@ -205,7 +181,7 @@
                     <li class="exercise-text button-text" detailItem="sport" href="#53">操場</li>
                     <li class="exercise-text button-text" detailItem="sport" href="#54">依仁堂</li>
                 </ul>
-                <img id="curtainclose" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain_close.png">            
+                <img id="curtainclose" src="<?php echo Yii::app()->baseUrl?>/statics/building/curtain_close.png">
             </div>
         </div>
         <div id="text-container"><!--第一層-->
@@ -214,8 +190,4 @@
         </div>
     </div>
 </div>
-
-<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
-
-<?php $this->endWidget();?>
 </div>
