@@ -1,4 +1,4 @@
-<div id="readme-download" class="downlaod-background">
+<div id="readme-download" class="download-background">
     <div class="readme-view">
         <ul class="index">
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/附件-申請就學貸款須知.doc" title="附件-申請就學貸款須知" rel="external">附件-申請就學貸款須知</a></li>
@@ -26,5 +26,5 @@
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/生活助學金申請表.doc" title="生活助學金申請表" rel="external">生活助學金申請表</a></li>
         </ul>
     </div>
-    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" id="download-back" class="download-back" title="回上一頁"></a>
+    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" id="download-back" class="back" title="回上一頁"></a>
 </div>
