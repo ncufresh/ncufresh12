@@ -314,6 +314,7 @@
             buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),
             forumSortUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('forum/forum', array('fid' => Yii::app()->request->getQuery('fid', 0), 'sort' => ':sort', 'category' => Yii::app()->request->getQuery('category', 0)));?>'),
             forumCancelUrl: decodeURIComponent('<?php echo Yii::app()->createUrl('forum/forum', array('fid' => Yii::app()->request->getQuery('fid', 0), 'sort' => 'create'));?>'),
+            makeFriendUrl: decodeURIComponent('<?php echo Yii::app()->createUrl('friends/makefriends');?>'),
             gameMissionUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/problem', array('id' => ':id'));?>'),
             gameSolveUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/solve', array('id' => ':id'));?>'),
             facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),

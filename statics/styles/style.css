@@ -5342,6 +5342,29 @@ img.user_img
     display: inline-block;
 }
 
+.game-display .first-row-items,
+.game-display .second-row-items
+{
+    width: 78px;
+    border: 2px #006110 solid;
+    margin: 0px 2px 6px 1px;
+    padding: 3px;
+    border-radius: 18px;
+    background: #C0FFB0;
+    float: left;
+}
+
+.game-display .first-row-items img,
+.game-display .second-row-items img
+{
+    width: 78px;
+}
+
+.game-display .the-first-item
+{
+    margin-left: 48px
+}
+
 .item-description,
 .mission-description
 {
@@ -6049,7 +6072,8 @@ li.enabled a
     padding-left: 30px;
 }
 
-.forum-view-profile .profile-add-friend a
+.forum-view-profile .profile-add-friend a,
+.forum-view-profile .profile-add-friend span
 {
     color: #C57902;
 }
@@ -6084,6 +6108,7 @@ li.enabled a
     border: 2px solid #EAA520;
     padding: 9px 11px 9px 11px;
     word-break: break-all;
+    word-wrap: break-word;
 }
 
 .hululu
@@ -6134,6 +6159,8 @@ li.enabled a
 #forum-view-replies .reply-content
 {
     width: 378px;
+    word-break: break-all;
+    word-wrap: break-word;
     min-height: 232px;
     border-radius: 6px;
     background: white;
@@ -6142,7 +6169,6 @@ li.enabled a
     margin-top: 20px;
     border: 2px solid #EAA520;
     padding: 9px 11px 9px 11px;
-    word-break: break-all;
 }
 /*end of yellow*/
 
