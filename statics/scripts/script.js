@@ -3046,10 +3046,10 @@
             W:{ photo: 'Day 2 (34).JPG', nextPoint: 36 }
         },
         { // 38 (百花川、舊圖)
-            N:{ photo: 'Day 1 (17).JPG', nextPoint: 39 },
-            E:{ photo: 'Day 1 (18).JPG', nextPoint: (-1) },
-            S:{ photo: 'Day 1 (19).JPG', nextPoint: (-1) },
-            W:{ photo: 'Day 1 (16).JPG', nextPoint: 37 }
+            N:{ photo: 'Day 2 (39).JPG', nextPoint: 39 },
+            E:{ photo: 'Day 2 (36).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 2 (37).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 2 (38).JPG', nextPoint: 37 }
         },
         { // 39 (舊圖)
             N:{ photo: 'Day 2 (41).JPG', nextPoint: 21 },
