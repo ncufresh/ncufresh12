@@ -1,5 +1,5 @@
-<h4>我的群組</h4>
 <div class="allgroups">
+    <h4>我的群組</h4>
     <div class="a-group-users">
         <ul class="all-groups">
 <?php foreach ( $groups as $mygroup ) : ?>
