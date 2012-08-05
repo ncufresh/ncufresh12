@@ -3993,6 +3993,7 @@ ul.friends-sort li
     float:left;
     color:DarkBlue;
     list-style-type:none;
+    text-align:center;
 }
 
 .friends-self li a.friends-title
@@ -4016,6 +4017,7 @@ ul.friends-sort li
     height:30px;
     float:left;
     list-style-type:none;
+    text-align:center;
 }
 
 ul.users-department li
@@ -4066,16 +4068,6 @@ ul.users-department li p.user-department
     float:left;
     list-style-type:none;
 }
-
-/*.friends-part3 div.avatar
-{
-    margin-left:40px;
-    margin-top:20px;
-    width:180px; 
-    height:310px;
-    padding:0px;
-    float:left;
-}*/
 
 .user-editor
 {
@@ -4200,6 +4192,11 @@ div.friends
     height:370px;
     padding:25px;
     margin:0px;
+}
+
+#request h4
+{
+    text-align:center;
 }
 
 div.all-sorts-of-friends
@@ -4414,9 +4411,9 @@ div.friends-sortfriend
 div.friends-sortfriend div.avatar 
 {
     margin-left:0px;
-    margin-top:0px;
-    width:35px; 
-    height:45px;
+    margin-top:-10px;
+    width:90px; 
+    height:70px;
     padding:0px;
     float:left;
 }
@@ -4431,6 +4428,10 @@ div.friends-sortfriend div.avatar
     margin:0px;
 }
 
+#myfriend h4
+{
+    text-align:center;
+}
 .myprofile
 {
     background-image:url('../profile/profile.png');
@@ -4467,6 +4468,11 @@ div.friends-sortfriend div.avatar
     margin:0px;
 }
 
+#mygroup h4
+{
+    text-align:center;
+}
+
 div.newmember
 {
     background-image:url('../profile/groupmembers.png');
@@ -4485,6 +4491,11 @@ div.allgroups
     height:370px;
     padding:25px;
     margin:0px;
+}
+
+div.allgroups h4
+{
+    text-align:center;
 }
 
 div.profile-message-allmessages
@@ -4534,16 +4545,6 @@ div.profile-message-reply
     float:left;
 }
 
-.profile-message-reply .scroll-container
-{
-    width:690px;
-}
-
-.profile-message-reply .scroll-content
-{
-    width:690px;
-}
-
 .button-viewProfile-back,
 .button-all-choose,
 .button-addfriend,
@@ -4556,10 +4557,7 @@ div.profile-message-reply
 #is_friend,
 #button-editor-sure,
 .button-addgroup,
-#button-deletegroup,
-#button-addmember,
 #button-deletemember,
-#button-back-reply,
 #button-push,
 .button-mygroup,
 #add-new-friends
@@ -4581,7 +4579,10 @@ div.profile-message-reply
 
 a.button-back,
 a#button-editor,
-a#button-editor-cancel
+a#button-editor-cancel,
+#button-addmember,
+#button-deletegroup,
+#button-back-reply
 {
     background: #FFFFFF;
     border: 1px solid #B0B0B0;
@@ -4834,7 +4835,7 @@ div.delete-group
     margin:0px;
 }
 
-div.self-messages
+#self-messages-content
 {
     width:165px;
     height:125px;
@@ -4843,12 +4844,12 @@ div.self-messages
     float:left;
 }
 
-div.self-messages .scroll-container
+#self-messages-content .scroll-container
 {
     width:165px;
 }
 
-div.self-messages .scroll-content
+#self-messages-content .scroll-content
 {
     width:165px;
 }
@@ -7545,8 +7546,8 @@ li.enabled a
     width: 192px;
     height: 144px;
     background:  url('../building/exercise/mouseleave/playground.png');
-    left: 50px;
-    top: 300px;
+    left: 23px;
+    top: 84px;
 }
 
 #street-div #playground:hover
@@ -7652,8 +7653,8 @@ li.enabled a
 
 #street-div #stadium
 {
-    width: 132px;
-    height: 99px;
+    width: 163px;
+    height: 84px;
     background:  url('../building/exercise/mouseleave/stadium.png');
     left: 129px;
     top: 84px;
@@ -7878,7 +7879,7 @@ li.enabled a
 #street-div .arrow.up
 {
     width: 77px;
-    height: 64px;
+    height: 54px;
     background: url('../building/arrow_up.png') no-repeat;
     left: 350px;
     top: 0px;
@@ -7891,30 +7892,30 @@ li.enabled a
 
 #street-div .arrow.left
 {
-    width: 50px;
-    height: 82px;
-    background: url('../building/arrow_left.png');
-    left: 0px;
+    width: 40px;
+    height: 62px;
+    background: url('../building/arrow_left.png') no-repeat;
+    left: 4px;
     top: 249px;
 }
 
 #street-div .arrow.left:hover
 {
-    background: url('../building/show-point_left.png');
+    background: url('../building/show-point_left.png') no-repeat;
 }
 
 #street-div .arrow.right
 {
-    width: 50px;
-    height: 76px;
-    background: url('../building/arrow_right.png');
-    left: 700px;
+    width: 40px;
+    height: 62px;
+    background: url('../building/arrow_right.png') no-repeat;
+    left: 707px;
     top: 249px;
 }
 
 #street-div .arrow.right:hover
 {
-    background: url('../building/show-point_right.png');
+    background: url('../building/show-point_right.png') no-repeat;
 }
 
 #street-div .arrow.back
@@ -7966,6 +7967,12 @@ li.enabled a
 {
     top: 440px;
     left: 0px;
+}
+
+#street-div .loading
+{
+    position:absolute;
+    display: none;
 }
 
 #street-div .one-image

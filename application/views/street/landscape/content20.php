@@ -5,7 +5,7 @@
     設置於近後門的松林區，包括一件模擬松樹形貌的鑄銅作品，和兩件一組的銅製長椅。
 </p>
 <p>
-    <img alt="坐聽松風" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2484(1).JPG" style="width:150px;height:200px;" /><img alt="坐聽松風" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2485.JPG" style="width:150px;height:200px;" /><img alt="坐聽松風" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2487.JPG" style="width:150px;height:200px;" />
+    <img alt="坐聽松風" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2484(1).JPG" style="width:150px;height:200px;" />      <img alt="坐聽松風" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2485.JPG" style="width:150px;height:200px;" />      <img alt="坐聽松風" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2487.JPG" style="width:150px;height:200px;" />
 </p>
 <div>
     <p>
