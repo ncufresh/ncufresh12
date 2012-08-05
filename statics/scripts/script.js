@@ -2781,6 +2781,7 @@
     var url = '../statics/street-view/';
     var nowfaceto;
     var nowpointat;
+    var loading = false;
     var streetPoints =
     [
         { // 0 (工5)
@@ -3133,15 +3134,17 @@
         {
             var photo = url + streetPoints[pointat][faceto].photo;
             var preloader = new Image();
+            loading = true;
             preloader.onload = function()
             {
-                $('#street-div #mapPicture').attr('src', photo).fadeIn();
+                $('#street-div #mapPicture').attr('src', photo).fadeIn(300);
+                loading = false;
             };
             preloader.src = photo;
 
             nowpointat = pointat;
             nowfaceto = faceto;
-            $('#street-div #mapPicture').fadeOut();
+            $('#street-div #mapPicture').fadeOut(300);
         }
     };
 
@@ -3192,10 +3195,12 @@
 
     $.street = function()
     {
+        var isStreet = false;
         $('.picture').hide();
         $('#street-div #experience-personally').mousedown(function()
         {
             $(document).mousemove(mousemove);
+            isStreet = true;
             return false;
         });
         var mouseInId;
@@ -3232,9 +3237,8 @@
             {
                 opacity: 1,
             });
-            if( isInPicture == true )
+            if ( isInPicture && isStreet )
             {
-                $('.loading').show();
                 if( $('#' + mouseInId).attr('streetPoints') == (-1) )
                 {
                     $('#street-div #experience-personally').css(
@@ -3265,21 +3269,24 @@
                     $('#street-div .arrow').show();
 
                     move($('#' + mouseInId).attr('streetPoints'), $('#' + mouseInId).attr('faceto'));
+
+                    $('#street-div .street-loading').show();
                     $('#street-div .arrow').eq(0).unbind('click').click(function() //前進nextDirection
                     {
-                        forward();
+                        if ( ! loading ) forward();
                     });
-                    $('#street-div .arrow').eq(1).unbind('click').click(function() // 左旋
+                     $('#street-div .arrow').eq(1).unbind('click').click(function() // 左旋
                     {
-                        turnLeft();
+                        if ( ! loading ) turnLeft();
                     });
                     $('#street-div .arrow').eq(2).unbind('click').click(function() // 右旋
                     {
-                        turnRight();
+                        if ( ! loading ) turnRight();
                     });
 
                     isInPicture = false;
                 }
+                isStreet = false;;
             }
             $(document).unbind('mousemove', mousemove);
             $('#street-div #experience-personally').css(
@@ -3351,11 +3358,12 @@
             {
                 zIndex: 3,
             });
-            $('.loading').hide();
+            $('#street-div .street-loading').hide();
         });
         $('#street-div .picture, #street-div .button-text').click(function()
         {
             isInPicture = false;
+            // $('.loading').hide();
             $('#street-div #back-div, #street-div #curtain-close-div').css(
             {
                height: 552,
@@ -3393,7 +3401,7 @@
                 dataType: 'json',
                 success: function(data)
                 {
-                    $('#building-text').html(data.content);
+                    $('#building-text').html(data.content).scrollTo(0);
                     $('#building-text img').css(
                     {
                         cursor: 'pointer',
