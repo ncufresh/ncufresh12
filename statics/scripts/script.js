@@ -3691,6 +3691,8 @@
  * Lightbox
  */
 (function($) {
+    var initialized = false;
+
     $.fn.lightbox = function(options)
     {
         var options = $.extend({
@@ -3733,6 +3735,7 @@
 
         var lightboxInitialize = function()
         {
+            if ( initialized ) return false;
             if ( options.onBeforeShow() )
             {
                 var overlay = $('<div></div>')
@@ -3793,6 +3796,7 @@
 
                 active = 0;
                 images = [];
+                initialized = true;
                 objects.each(function(index)
                 {
                     var object = objects.eq(index);
@@ -3847,6 +3851,7 @@
             {
                 options.onHide();
                 $('#' + options.lightboxId).remove();
+                initialized = false;
             }
             return true;
         }
