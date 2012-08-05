@@ -2982,7 +2982,7 @@
             W:{ photo: 'Day 3 (64).JPG', nextPoint: (-1) }
         },
         { // 30 (國鼎、烏龜池旁邊)
-            N:{ photo: 'Day 3 (58).JPG', nextPoint: (-1) },
+            N:{ photo: 'Day 3 (58).JPG', nextPoint: 29 },
             E:{ photo: 'Day 3 (57).JPG', nextPoint: 31 },
             S:{ photo: 'Day 3 (60).JPG', nextPoint: (-1) },
             W:{ photo: 'Day 3 (59).JPG', nextPoint: 50 }
@@ -3019,8 +3019,8 @@
         },
         { // 36 (太極銅雕)
             N:{ photo: 'Day 2 (29).JPG', nextPoint: (-1) },
-            E:{ photo: 'Day 2 (31).JPG', nextPoint: 37 },
-            S:{ photo: 'Day 2 (32).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 2 (32).JPG', nextPoint: 37 },
+            S:{ photo: 'Day 2 (29).JPG', nextPoint: (-1) },
             W:{ photo: 'Day 2 (30).JPG', nextPoint: 35 }
         },
         { // 37 (百花川、棒球場)
@@ -3102,9 +3102,9 @@
             W:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) }
         },
         { // 50 (男12舍)
-            N:{ photo: 'Day 3 (96).JPG', nextPoint: (-1) },
+            N:{ photo: 'Day 3 (96).JPG', nextPoint: 29 },
             E:{ photo: 'Day 3 (95).JPG', nextPoint: 30 },
-            S:{ photo: 'Day 3 (94).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 3 (94).JPG', nextPoint: 30 },
             W:{ photo: 'Day 3 (61).JPG', nextPoint: (-1) }
         },
         { // 51 (工2)
