@@ -2780,6 +2780,11 @@ button.news-button
     margin-left: 10px;
 }
 
+#nculife-content-view p
+{
+	text-indent: 2em;
+}
+
 #life-index1
 {
     width: 110px;
@@ -3012,6 +3017,11 @@ button.news-button
 #readme .readme-view
 {
 	width: 590px;
+}
+
+#readme .readme-view p
+{
+	text-indent: 2em;
 }
 
 #readme-body
