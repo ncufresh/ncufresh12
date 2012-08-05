@@ -150,7 +150,8 @@ form dl.textarea
 
 form dl.radio,
 form dl.checkbox,
-form dl.select
+form dl.select,
+form dl.file
 {
     background: #FFFFFF;
     border: 1px solid #B0B0B0;
@@ -205,6 +206,22 @@ form dl.select dd label
     float: left;
     line-height: 30px;
     padding: 4px 8px;
+}
+
+form dl.file input
+{
+    border-radius: 0;
+    box-shadow: none;
+}
+
+form dl.file dt label
+{
+    display: none;
+}
+
+form dl.file input
+{
+    width: 100%;
 }
 
 form span.radio
@@ -1612,11 +1629,20 @@ ul#nculife-details
     cursor: pointer;
 }
 
+
+#club #calendar .calendar-table td.today,
+#index-calendar .calendar-table td.today
+{
+    color: red;
+}
+
+#club #calendar .calendar-table td.hover,
 #index-calendar .calendar-table td.hover
 {
     color: green;
 }
 
+#club #calendar .calendar-table td.selected,
 #index-calendar .calendar-table td.selected
 {
     outline: 1px solid #000;
@@ -3590,7 +3616,6 @@ button.news-button
 #club #back1,
 #club #back2,
 #club #back3,
-#club .modify,
 #club #bottom-1,
 #club #bottom-2,
 #club #bottom-3
@@ -3602,9 +3627,9 @@ button.news-button
  * Club style
  */
 #club .alltag
- {
+{
     height: 66px;
- }
+}
  
 #club .club
  {
@@ -3766,17 +3791,17 @@ button.news-button
 
 #club-1
 {
-    background: url('../club/5-2.png');
-}
-
-#club-3
-{
-    background: url('../club/6-2.png');
+    background: url('../images/club_background_1.png');
 }
 
 #club-2
 {
-    background: url('../club/4-2.png');
+    background: url('../images/club_background_2.png');
+}
+
+#club-3
+{
+    background: url('../images/club_background_3.png');
 }
 
 #club .display-head
@@ -3876,8 +3901,6 @@ button.news-button
     width: 204px;
     height: 110px;
     display: block;
-    padding-top: 80px;
-    margin-left: -34px;
 }
 
 #club .picture img
@@ -3891,19 +3914,20 @@ button.news-button
 #club .underpicture
 {
 	float: left;
-    margin-left: -20px;
 }
 
 #club .underpicture > div
 {
     position: relative;
-    height: 470px;
+    height: 400px;
     display: none;
 }
 
 #club .underpicture ul
 {
     display: inline-block;
+    margin: 0;
+    padding: 80px 0 0 0;
 }
 
 #club #calendar-button
@@ -3926,6 +3950,7 @@ button.news-button
     height: 400px;
     position: absolute;
     margin-top: 52px;
+    width: 100%;
 }
 
 #club #calendar table
@@ -3951,11 +3976,12 @@ button.news-button
 
 #club .modify
 {
+    background: #CCCCFF;
+    border-radius: 5px;
+    overflow: hidden;
     padding: 5px;
-    height: 600px;
-    width: 750px;
-    background-position: -16px 0px;
 }
+
 /* profile... */
 ul.friends-sort 
 
@@ -4074,8 +4100,10 @@ ul.users-department li p.user-department
     width:380px; 
     height:350px;
     padding:0px;
-    margin-top:-300px;
+    margin-top:-309px;
     margin-left:300px;
+    font-size: 1.4em;
+    font-weight: bold;
 }
 
 .user-editor li
@@ -4307,7 +4335,7 @@ div.a-group-users div.avatar
     margin-left:65px;
     margin-top:-5px;
     width:180px; 
-    height:300px;
+    height:320px;
     padding:0px;
 }
 
@@ -5619,7 +5647,7 @@ li.enabled a
 #forum-forum-body.yellow #body-table .table-title th.tail,
 #forum-forum-body.yellow #body-table .table-foot td.tail
 {
-    background: url('../forum/merge.png');
+    background: url('../images/forum.png');
 }
 
 #forum-index
@@ -5901,7 +5929,7 @@ li.enabled a
 
 #forum-view-body
 {
-    background: url('../forum/view/background.png');
+    background: url('../images/forum_background.png');
     width: 683px;
     min-height: 324px;
     margin-left:35px;
@@ -6050,7 +6078,7 @@ li.enabled a
 
 #forum-view-replies
 {
-    background: url('../forum/view/background.png');
+    background: url('../images/forum_background.png');
     width: 683px;
     min-height: 300px;
     margin-left:35px;
@@ -6318,7 +6346,7 @@ li.enabled a
 
 #forum-forum-body
 {
-    background: url('../forum/view/background.png');
+    background: url('../images/forum_background.png');
     width: 683px;
     min-height: 183px;
     margin-left:35px;

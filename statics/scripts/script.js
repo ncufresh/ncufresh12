@@ -3510,85 +3510,22 @@
         {
             scrollableClass:    false
         });
-        $('#life-play').mouseenter(function()
-        {
-            $('#life-index1').stop().animate(
-            {
-                height: '95px'
-            },500);
-        });
-
-        $('#life-play').mouseleave(function()
-        {
-            $('.life-items').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
-
-        $('#life-traffic').mouseenter(function()
-        {
-            $('#life-index2').stop().animate(
-            {
-                height: '120px'
-            },500);
-        });
-
-        $('#life-traffic').mouseleave(function()
-        {
-            $('#life-index2').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
-
-        $('#life-school').mouseenter(function()
-        {
-            $('#life-index3').stop().animate(
-            {
-                height: '335px'
-            },500);
-        });
-
-        $('#life-school').mouseleave(function()
-        {
-            $('#life-index3').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
-
-        $('#life-live').mouseenter(function()
-        {
-            $('#life-index4').stop().animate(
-            {
-                height: '150px'
-            },500);
-        });
-
-        $('#life-live').mouseleave(function()
-        {
-            $('#life-index4').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
-
-        $('#life-health').mouseenter(function()
-        {
-            $('#life-index5').stop().animate(
-            {
-                height: '100px'
-            },500);
-        });
-
-        $('#life-health').mouseleave(function()
-        {
-            $('#life-index5').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
+		
+		$('.nculife-hover').mouseenter(function()
+		{
+			$(this).children('ul').stop().animate(
+			{
+				height: $(this).attr('height')
+			},500);
+		});
+		
+		$('.nculife-hover').mouseleave(function()
+		{
+			$(this).children('ul').stop().animate(
+			{
+				height: '0px'
+			},500);
+		});
 
         switch( window.location.hash.replace('#', '') )
         {
@@ -4897,25 +4834,28 @@
     $.about = function(options)
     {
         var options = $.extend({
-            aboutId:                         'about',
-            titleClass:                      'title',
-            introdutionBlock:                'itrodution-block',
-            introdutionPicture:              'about-picture',
-            photoUl:                         'photo-ul',
-            introduceId:                     'introdution',
-            tagBar:                          'tag-bar',
-            animationClass:                  'animation',
-            block1InfClass:                  'about-block1Inf',
-            tagClass:                        'tag',
-            tagTxtClass:                     'tag-txt',
-            title1Class:                     'title1',
-            title2Class:                     'title2',
-            PictureBarSpeed:                     1000,
-            PictureAutoSpeed:                    6000,
-            tagBarSpeed:                     30000
+            aboutId:                        'about',
+            titleClass:                     'title',
+            introdutionBlock:               'itrodution-block',
+            introdutionPicture:             'about-picture',
+            photoUl:                        'photo-ul',
+            introduceId:                    'introdution',
+            tagBar:                         'tag-bar',
+            animationClass:                 'animation',
+            block1InfClass:                 'about-block1Inf',
+            tagClass:                       'tag',
+            tagTxtClass:                    'tag-txt',
+            title1Class:                    'title1',
+            title2Class:                    'title2',
+            PictureBarSpeed:                1000,
+            PictureAutoSpeed:               6000,
+            tagBarSpeed:                    30000
         }, options);
         var photoIndex = 0;
-        var button = [$('#' + options.aboutId + ' .button-left'), $('#' + options.aboutId + ' .button-right')];
+        var button = [
+            $('#' + options.aboutId + ' .button-left'),
+            $('#' + options.aboutId + ' .button-right')
+        ];
         var photos = $('#' + options.aboutId + ' img');
         var tagbarIndex = 0;
         var tagbar = $('.' + options.tagBar + ' .tag-image').each(function(index)
@@ -4940,7 +4880,8 @@
             if ( tagbarIndex != 6 )
             {
                 block1Inf.eq(tagbarIndex).show();
-                tagbarPerson.each(function(){
+                tagbarPerson.each(function()
+                {
                     $(this).hide();
                 });
                 for (var p = 0; p < 9; p++)
@@ -4954,7 +4895,10 @@
             }
             tagbar.eq(tagbarIndex).show();
         };
-        var blocks = [$('#' + options.aboutId + ' .block1'), $('#' + options.aboutId + ' .block2')];
+        var blocks = [
+            $('#' + options.aboutId + ' .block1'),
+            $('#' + options.aboutId + ' .block2')
+        ];
         var itrodutionPicture = $('#' + options.aboutId + ' .' + options.introdutionPicture);
         var picture = $('<div></div>')
             .css({
@@ -5017,7 +4961,8 @@
             })
             .appendTo(block1Picture);
         });
-        tagbarPerson.each(function(){
+        tagbarPerson.each(function()
+        {
             $(this).css({
                 position: 'absolute',
                 top: 45 + parseInt($(this).attr('top')),
@@ -5165,8 +5110,9 @@
             $('.form-addfriend').submit();
             return false;
         });
-        $("#forum-forum-top2 #sort_list").change(function() {
+        $("#forum-forum-top2 .sort-list").change(function() {
             var url = $.configures.forumSortUrl;
+            console.log(url);
             window.location = url.replace(':sort', $(this).val());
         });
         /*forum create*/
@@ -5258,6 +5204,7 @@
         $('#header').star();
 
         $('#moon').moon();
+        alert('!!!');
 
         if ( $('#chat').length ) $('#chat').chat();
 
