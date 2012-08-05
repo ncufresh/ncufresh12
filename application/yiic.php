@@ -6,7 +6,7 @@ defined('YII_DEBUG') or define('YII_DEBUG', true);
 
 defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL', 3);
 
-$yii = require_once('../ncufresh2012.php');
+$yii = require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'ncufresh2012.php');
 
 $yiic = dirname($yii) . DIRECTORY_SEPARATOR . 'yiic.php';
 
