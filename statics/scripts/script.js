@@ -3424,7 +3424,7 @@
                 escape: false,
                 onClose: function()
                 {
-                    // $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
+                    // $('  #mapPicture').attr('src', $('#mapPicture').attr('path'));
                 }
             });
 
