@@ -150,7 +150,8 @@ form dl.textarea
 
 form dl.radio,
 form dl.checkbox,
-form dl.select
+form dl.select,
+form dl.file
 {
     background: #FFFFFF;
     border: 1px solid #B0B0B0;
@@ -205,6 +206,22 @@ form dl.select dd label
     float: left;
     line-height: 30px;
     padding: 4px 8px;
+}
+
+form dl.file input
+{
+    border-radius: 0;
+    box-shadow: none;
+}
+
+form dl.file dt label
+{
+    display: none;
+}
+
+form dl.file input
+{
+    width: 100%;
 }
 
 form span.radio
@@ -1612,11 +1629,20 @@ ul#nculife-details
     cursor: pointer;
 }
 
+
+#club #calendar .calendar-table td.today,
+#index-calendar .calendar-table td.today
+{
+    color: red;
+}
+
+#club #calendar .calendar-table td.hover,
 #index-calendar .calendar-table td.hover
 {
     color: green;
 }
 
+#club #calendar .calendar-table td.selected,
 #index-calendar .calendar-table td.selected
 {
     outline: 1px solid #000;
@@ -3590,7 +3616,6 @@ button.news-button
 #club #back1,
 #club #back2,
 #club #back3,
-#club .modify,
 #club #bottom-1,
 #club #bottom-2,
 #club #bottom-3
@@ -3602,9 +3627,9 @@ button.news-button
  * Club style
  */
 #club .alltag
- {
+{
     height: 66px;
- }
+}
  
 #club .club
  {
@@ -3766,17 +3791,17 @@ button.news-button
 
 #club-1
 {
-    background: url('../club/5-2.png');
-}
-
-#club-3
-{
-    background: url('../club/6-2.png');
+    background: url('../images/club_background_1.png');
 }
 
 #club-2
 {
-    background: url('../club/4-2.png');
+    background: url('../images/club_background_2.png');
+}
+
+#club-3
+{
+    background: url('../images/club_background_3.png');
 }
 
 #club .display-head
@@ -3876,8 +3901,6 @@ button.news-button
     width: 204px;
     height: 110px;
     display: block;
-    padding-top: 80px;
-    margin-left: -34px;
 }
 
 #club .picture img
@@ -3891,19 +3914,20 @@ button.news-button
 #club .underpicture
 {
 	float: left;
-    margin-left: -20px;
 }
 
 #club .underpicture > div
 {
     position: relative;
-    height: 470px;
+    height: 400px;
     display: none;
 }
 
 #club .underpicture ul
 {
     display: inline-block;
+    margin: 0;
+    padding: 80px 0 0 0;
 }
 
 #club #calendar-button
@@ -3926,6 +3950,7 @@ button.news-button
     height: 400px;
     position: absolute;
     margin-top: 52px;
+    width: 100%;
 }
 
 #club #calendar table
@@ -3951,11 +3976,12 @@ button.news-button
 
 #club .modify
 {
+    background: #CCCCFF;
+    border-radius: 5px;
+    overflow: hidden;
     padding: 5px;
-    height: 600px;
-    width: 750px;
-    background-position: -16px 0px;
 }
+
 /* profile... */
 ul.friends-sort 
 
@@ -4074,8 +4100,10 @@ ul.users-department li p.user-department
     width:380px; 
     height:350px;
     padding:0px;
-    margin-top:-300px;
+    margin-top:-309px;
     margin-left:300px;
+    font-size: 1.4em;
+    font-weight: bold;
 }
 
 .user-editor li
@@ -4233,7 +4261,7 @@ div.a-group-users div.avatar
 {
     margin-left:20px;
     margin-top:0px;
-    width:100px; 
+    width:94px; 
     height:70px;
     padding:0px;
     float:left;
@@ -4316,7 +4344,7 @@ div.a-group-users div.avatar
     margin-left:65px;
     margin-top:-5px;
     width:180px; 
-    height:300px;
+    height:320px;
     padding:0px;
 }
 
@@ -4338,41 +4366,21 @@ div.a-group-users div.avatar
     padding:0px;
 }
 
-div.my-all-messages
+#my-all-messages
 {
     width:600px;
-    height:310px;
-    margin-top:20px;
+    height:330px;
+    margin-top:35px;
     margin-left:35px;
     padding:5px;
-}
-
-.my-all-messages .scroll-container
-{
-    width:600px;
-}
-
-.my-all-messages .scroll-content
-{
-    width:600px;
 }
 
 div.allmessages
 {
     width:490px;
     height:290px;
-    margin-top:55px;
+    margin-top:0px;
     padding:5px;
-}
-
-div.allmessages .scroll-container
-{
-    width:490px;
-}
-
-div.allmessages .scroll-content
-{
-    width:490px;
 }
 
 div.allmessages form
@@ -4508,6 +4516,17 @@ div.profile-message-allmessages
     margin:0px;
 }
 
+div.profile-message-allmessages .scroll-container
+{
+    width:670px;
+    height:317px;
+}
+
+div.profile-message-allmessages .scroll-content
+{
+    width:690px;
+}
+
 div.profile-message-allmessages table
 {
     width:530px;
@@ -4543,6 +4562,22 @@ div.profile-message-reply
     padding:25px;
     margin:0px;
     float:left;
+}
+
+.profile-message-reply .scroll-container
+{
+    width:490px;
+    height:290px;
+}
+
+.profile-message-reply .scroll-content
+{
+     width:490px;
+}
+
+div.profile-message-reply h4
+{
+    text-align:center;
 }
 
 .button-viewProfile-back,
@@ -4838,18 +4873,18 @@ div.delete-group
 #self-messages-content
 {
     width:165px;
-    height:125px;
     padding:0px;
     margin:0px;
     float:left;
 }
 
-#self-messages-content .scroll-container
+#article-content .scroll-container
 {
     width:165px;
+    height:125px;
 }
 
-#self-messages-content .scroll-content
+#article-content .scroll-content
 {
     width:165px;
 }
@@ -4887,6 +4922,16 @@ ul#self-message
     list-style-type:none;
 }
 
+ul#self-message .scroll-container
+{
+    width: 165px;
+}
+
+ul#self-message .scroll-content
+{
+    width: 165px;
+}
+
 li.article-title
 {
     text-align: left;
@@ -4907,8 +4952,19 @@ li#article-content
 {
     outline: 1px solid black;
     width: 165px;
-	height: 125px;
+	height: 120px;
     list-style-type:none;
+}
+
+li#article-content .scroll-container
+{
+    width: 165px;
+    height: 120px;
+}
+
+li#article-content .scroll-content
+{
+    width: 165px;
 }
 
 #introduce
@@ -7546,8 +7602,8 @@ li.enabled a
     width: 192px;
     height: 144px;
     background:  url('../building/exercise/mouseleave/playground.png');
-    left: 50px;
-    top: 300px;
+    left: 23px;
+    top: 84px;
 }
 
 #street-div #playground:hover
@@ -7653,8 +7709,8 @@ li.enabled a
 
 #street-div #stadium
 {
-    width: 132px;
-    height: 99px;
+    width: 163px;
+    height: 84px;
     background:  url('../building/exercise/mouseleave/stadium.png');
     left: 129px;
     top: 84px;
@@ -7879,7 +7935,7 @@ li.enabled a
 #street-div .arrow.up
 {
     width: 77px;
-    height: 64px;
+    height: 54px;
     background: url('../building/arrow_up.png') no-repeat;
     left: 350px;
     top: 0px;
@@ -7892,30 +7948,30 @@ li.enabled a
 
 #street-div .arrow.left
 {
-    width: 50px;
-    height: 82px;
-    background: url('../building/arrow_left.png');
-    left: 0px;
+    width: 40px;
+    height: 62px;
+    background: url('../building/arrow_left.png') no-repeat;
+    left: 4px;
     top: 249px;
 }
 
 #street-div .arrow.left:hover
 {
-    background: url('../building/show-point_left.png');
+    background: url('../building/show-point_left.png') no-repeat;
 }
 
 #street-div .arrow.right
 {
-    width: 50px;
-    height: 76px;
-    background: url('../building/arrow_right.png');
-    left: 700px;
+    width: 40px;
+    height: 62px;
+    background: url('../building/arrow_right.png') no-repeat;
+    left: 707px;
     top: 249px;
 }
 
 #street-div .arrow.right:hover
 {
-    background: url('../building/show-point_right.png');
+    background: url('../building/show-point_right.png') no-repeat;
 }
 
 #street-div .arrow.back
@@ -7967,6 +8023,12 @@ li.enabled a
 {
     top: 440px;
     left: 0px;
+}
+
+#street-div .loading
+{
+    position:absolute;
+    display: none;
 }
 
 #street-div .one-image

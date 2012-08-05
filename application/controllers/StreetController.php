@@ -1,5 +1,4 @@
 <?php
-
 class StreetController extends Controller
 {
     protected $_path;
@@ -9,29 +8,9 @@ class StreetController extends Controller
         $this->_path =  Yii::app()->baseUrl . '/statics';
     }
 
-    private function loadFiles($directory)
-    {
-        $files = array();
-        if ( is_dir($directory) ) // directory 是資料夾
-        {
-            $dir = dir($directory);
-            while ( $entry = $dir->read() )
-            {
-                if ( $entry != '.' && $entry != '..' ) // 不是上一層及上上一層 
-                {
-                    $files[$entry] = Yii::app()->baseUrl . '/' . $dir->path . '/' . $entry;
-                }
-            }
-        }
-        return $files;
-    }
-
     public function actionIndex() // main page
     {
-        $files = $this->loadFiles('statics/building/pictureLayerTwo');
-        $this->render('index' , array(
-            'files'           => $files 
-        ));
+        $this->render('index');
 	}
 
 	public function actionBuilding($id = 0) // dialog building information page
