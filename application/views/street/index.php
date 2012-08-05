@@ -15,6 +15,11 @@
             $index = $index + 1;
         }
     }
+    
+// #street-div .opacity-picture
+// {
+    // opacity: 0.5;
+// }
 ?>
 <div id="street-div">
     <div id="back-div">    
@@ -30,18 +35,19 @@
             <img id="mapPicture" path="<?php echo Yii::app()->baseUrl?>/statics/building/map_no_text.png">
             
             <!--選擇鈕-->
-            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/dormitory/dormitory.png" class="one-image dormitory" show="dormitory">
-            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/food/food.png" class="one-image diet" show="diet">
-            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/college/college.png" class="one-image department-building" show="department-building">
-            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/landscape/landscape.png" class="one-image landscape" show="landscape">
-            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/government/government-out.png" class="one-image government" show="government">
-            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/exercise/exercise.png" class="one-image exercise" show="exercise">
-
-            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow_up.png" class="arrow up">        
-            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow_left.png" class="arrow left">
-            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/arrow_right.png" class="arrow right">
-            <img src="<?php echo Yii::app()->baseUrl?>/statics/building/back.png" class="arrow back">
+            <div class="one-image dormitory" show="dormitory"></div>
+            <div class="one-image diet" show="diet"></div>
+            <div class="one-image department-building" show="department-building"></div>
+            <div class="one-image landscape" show="landscape"></div>
+            <div class="one-image government" show="government"></div>
+            <div class="one-image exercise" show="exercise"></div>
             
+            <div class="arrow up"></div>
+            <div class="arrow left"></div>
+            <div class="arrow right"></div>
+            <div class="arrow back"></div>
+<!--<div class ="loading" ></div>-->
+
             <img id="experience-personally" src="<?php echo Yii::app()->baseUrl?>/statics/building/little_man.png">
             <p id="drag-me">拉我到建築喔!!</p>
             
@@ -50,41 +56,41 @@
             <div id="engineering-3" class="department-building picture" streetPoints="2" faceto="W" show="department-building" href="#2"></div>
             <div id="engineering-2" class="department-building picture" streetPoints="51" faceto="W" show="department-building" href="#3"></div>          
             <div id="engineering-1" class="department-building picture" streetPoints="10" faceto="W" show="department-building" href="#4"></div>
-            <div id="photonics" class="department-building picture" streetPoints="-1" faceto="W" show="department-building" href="#5"></div>
-            <div id="science-5" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#6"></div>
-            <div id="science-4" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#7"></div>
+            <div id="photonics" class="department-building picture opacity-picture" streetPoints="-1" faceto="W" show="department-building" href="#5"></div>
+            <div id="science-5" class="department-building picture opacity-picture" streetPoints="-1" faceto="-1" show="department-building" href="#6"></div>
+            <div id="science-4" class="department-building picture opacity-picture" streetPoints="-1" faceto="-1" show="department-building" href="#7"></div>
             <div id="science-3" class="department-building picture" streetPoints="45" faceto="S" show="department-building" href="#8"></div>
-            <div id="science-2" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#9"></div>
-            <div id="science-1" class="department-building picture" streetPoints="19" faceto="W" show="department-building" href="#10"></div>
-            <div id="science-teach" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#11"></div>
-            <div id="mathematics" class="department-building picture" streetPoints="45" faceto="W" show="department-building" href="#12"></div>
+            <div id="science-2" class="department-building picture opacity-picture" streetPoints="-1" faceto="-1" show="department-building" href="#9"></div>
+            <div id="science-1" class="department-building picture" streetPoints="18" faceto="W" show="department-building" href="#10"></div>
+            <div id="science-teach" class="department-building picture opacity-picture" streetPoints="-1" faceto="-1" show="department-building" href="#11"></div>
+            <div id="mathematics" class="department-building picture opacity-picture" streetPoints="45" faceto="W" show="department-building" href="#12"></div>
             <div id="liberal-arts" class="department-building picture" streetPoints="24" faceto="W" show="department-building" href="#13"></div>
             <div id="management" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#14"> </div>
-            <div id="hakka" class="department-building picture" streetPoints="-1" faceto="-1" show="department-building" href="#16"></div>
+            <div id="hakka" class="department-building picture opacity-picture" streetPoints="-1" faceto="-1" show="department-building" href="#16"></div>
 
-            <!-- 12舍及操場前移 style 街景照片測試 有錯 缺漏圖片-->
+            <!-- 街景照片測試 -->
              
             <!--景觀-->
-            <div id="ncu-lake"class="landscape picture"  streetPoints="-1" faceto="-1" show="landscape" href="#17"></div>
+            <div id="ncu-lake"class="landscape picture opacity-picture"  streetPoints="-1" faceto="-1" show="landscape" href="#17"></div>
             <div id="turtle-pond" class="landscape picture" streetPoints="29" faceto="W" show="landscape" href="#18"></div>
-            <div id="pine-wind" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#20"></div>
-            <div id="stepping-cloud" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#21"></div>
+            <div id="pine-wind" class="landscape picture opacity-picture" streetPoints="-1" faceto="-1" show="landscape" href="#20"></div>
+            <div id="stepping-cloud" class="landscape picture opacity-picture" streetPoints="-1" faceto="-1" show="landscape" href="#21"></div>
             <div id="elephant-element" class="landscape picture" streetPoints="27" faceto="S" show="landscape" href="#22"></div>
             <div id="yun-step" class="landscape picture" streetPoints="39" faceto="E" show="landscape" href="#23"></div>
             <div id="flower-brook" class="landscape picture" streetPoints="37" faceto="W" show="landscape" href="#24"></div>
             <div id="big-tree" class="landscape picture" streetPoints="20" faceto="S" show="landscape" href="#25"></div>
-            <div id="calligraphy" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#26"></div>
-            <div id="kon-fu" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#61"></div>
-            <div id="green-plain" class="landscape picture" streetPoints="-1" faceto="-1" show="landscape" href="#62"></div>
+            <div id="calligraphy" class="landscape picture opacity-picture" streetPoints="-1" faceto="-1" show="landscape" href="#26"></div>
+            <div id="kon-fu" class="landscape picture opacity-picture" streetPoints="-1" faceto="-1" show="landscape" href="#61"></div>
+            <div id="green-plain" class="landscape picture opacity-picture" streetPoints="-1" faceto="-1" show="landscape" href="#62"></div>
             <div id="girl-14-front" class="landscape picture" streetPoints="14" faceto="E" show="landscape" href="#63"></div>
             <!--飲食-->
             <div id="restaurant-7" class="diet picture" streetPoints="16" faceto="E" show="diet" href="#28"></div>
             <div id="restaurant-9" class="diet picture" streetPoints="29" faceto="N" show="diet" href="#29"></div>
             <div id="midnight-food" class="diet picture" streetPoints="13" faceto="E" show="diet" href="#30"></div>
             <div id="backdoor" class="diet picture" streetPoints="8" faceto="E" show="diet" href="#31"></div>
-            <div id="school-coffee" class="diet picture" streetPoints="-1" faceto="-1" show="diet" href="#32"></div>
-            <div id="cottage-muffin" class="diet picture" streetPoints="-1" faceto="-1" show="diet" href="#33"></div>
-            <div id="pine-restaurant" class="diet picture" streetPoints="-1" faceto="-1" show="diet" href="#68"></div>
+            <div id="school-coffee" class="diet picture opacity-picture" streetPoints="-1" faceto="-1" show="diet" href="#32"></div>
+            <div id="cottage-muffin" class="diet picture opacity-picture" streetPoints="-1" faceto="-1" show="diet" href="#33"></div>
+            <div id="pine-restaurant" class="diet picture opacity-picture" streetPoints="-1" faceto="-1" show="diet" href="#68"></div>
             <!--建築-->
             <div id="administration" class="government picture" streetPoints="25" faceto="S" show="government" href="#34"></div>
             <div id="computer-center" class="government picture" streetPoints="35" faceto="W" show="government" href="#35"></div>
@@ -92,22 +98,22 @@
             <div id="all-teach" class="government picture" streetPoints="44" faceto="W" show="government" href="#37"></div>
             <div id="big-library" class="government picture" streetPoints="23" faceto="S" show="government" href="#64"></div>
             <div id="playing-dancing" class="government picture" streetPoints="17" faceto="E" show="government" href="#65"></div>
-            <div id="ding-data-library" class="government picture" streetPoints="-1" faceto="-1" show="government" href="#66"></div>
+            <div id="ding-data-library" class="government picture opacity-picture" streetPoints="-1" faceto="-1" show="government" href="#66"></div>
             <div id="old-library" class="government picture" streetPoints="39" faceto="W" show="government" href="#67"></div>
             <!--宿舍-->
             <div id="girl-dormitory-1234" class="dormitory picture" streetPoints="54" faceto="S" show="dormitory" href="#39"></div>
             <div id="girl-dormitory-5" class="dormitory picture" streetPoints="55" faceto="W" show="dormitory" href="#40"></div>
             <div id="boy-dormitory-3" class="dormitory picture" streetPoints="55" faceto="E" show="dormitory" href="#41"></div>
-            <div id="boy-dormitory-5" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#42"></div>
-            <div id="boy-dormitory-6" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#43"></div>
+            <div id="boy-dormitory-5" class="dormitory picture opacity-picture" streetPoints="-1" faceto="-1" show="dormitory" href="#42"></div>
+            <div id="boy-dormitory-6" class="dormitory picture opacity-picture" streetPoints="-1" faceto="-1" show="dormitory" href="#43"></div>
             <div id="boy-dormitory-7" class="dormitory picture" streetPoints="16" faceto="E" show="dormitory" href="#44"></div>
             <div id="boy-dormitory-9" class="dormitory picture" streetPoints="29" faceto="N" show="dormitory" href="#45"></div>
             <div id="boy-dormitory-11" class="dormitory picture" streetPoints="15" faceto="E" show="dormitory" href="#46"></div>
             <div id="boy-dormitory-12" class="dormitory picture" streetPoints="50" faceto="W" show="dormitory" href="#47"></div>
-            <div id="boy-dormitory-13" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#48"></div>
+            <div id="boy-dormitory-13" class="dormitory picture opacity-picture" streetPoints="-1" faceto="-1" show="dormitory" href="#48"></div>
             <div id="girl-dormitory-14" class="dormitory picture" streetPoints="14" faceto="E" show="dormitory" href="#49"></div>
-            <div id="new-postgraduate" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#50"></div>
-            <div id="international-dormitory" class="dormitory picture" streetPoints="-1" faceto="-1" show="dormitory" href="#51"></div>
+            <div id="new-postgraduate" class="dormitory picture opacity-picture" streetPoints="-1" faceto="-1" show="dormitory" href="#50"></div>
+            <div id="international-dormitory" class="dormitory picture opacity-picture" streetPoints="-1" faceto="-1" show="dormitory" href="#51"></div>
             <!--運動-->
             <div id="swimming-pool" class="exercise picture" streetPoints="48" faceto="W" show="exercise" href="#52"></div>
             <div id="playground" class="exercise picture" streetPoints="4" faceto="W" show="exercise" href="#53"></div>

@@ -1,4 +1,5 @@
 <?php
+require('phpmailer/phpmailer.php');
 
 class SiteController extends Controller
 {
@@ -34,6 +35,7 @@ class SiteController extends Controller
                     'channel',
                     'profile',
                     'editor',
+                    'contact',
                     'sitemap',
                     'success'
                 ),
@@ -217,6 +219,7 @@ class SiteController extends Controller
                 {
                     $this->redirect(array('profile/editor'));
                 }
+                Character::model()->checkCharacter($user->id);
                 $this->redirect(Yii::app()->user->returnUrl);
             }
         }
@@ -276,6 +279,38 @@ class SiteController extends Controller
             'username_errors'       => $user->getErrors(),
             'profile_errors'        => $profile->getErrors()
         ));
+    }
+
+    public function actionContact()
+    {
+        if ( isset($_POST['contact']) )
+        {
+            global $ncufreshma;
+            $mailer = new PHPMailer();
+            $mailer->IsSMTP();
+            $mailer->CharSet = 'utf-8';
+            $mailer->Encoding = 'base64';
+            $mailer->Host = 'smtp.gmail.com';
+            $mailer->Port = 465;
+            $mailer->SMTPSecure = 'ssl';
+            $mailer->SMTPAuth = true;
+            $mailer->Username = $ncufreshma['address'];
+            $mailer->Password = $ncufreshma['password'];
+            $mailer->Subject = $_POST['contact']['subject'];
+            $mailer->Body = $_POST['contact']['content'];
+            $mailer->SetFrom($ncufreshma['address'], 'NCUFRESH2012');
+            $mailer->AddReplyTo($ncufreshma['address']);
+            $mailer->AddAddress($ncufreshma['address']);
+            if ( $mailer->Send() )
+            {
+                Yii::app()->user->setFlash('mailer', '郵件已經成功寄出！');
+            }
+            else
+            {
+                Yii::app()->user->setFlash('mailer', '郵件寄出失敗！');
+            }
+        }
+        $this->render('contact');
     }
 
     public function actionSitemap()

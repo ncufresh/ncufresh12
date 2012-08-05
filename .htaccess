@@ -10,12 +10,12 @@ AddDefaultCharset UTF-8
     </filesMatch>
 </ifModule>
 
-<IfModule mod_expires.c>
-    <FilesMatch "\.(png|ico|css|js)$">
-        ExpiresActive on
-        ExpiresDefault "access plus 2 months"
-    </FilesMatch>
-</IfModule>
+#<IfModule mod_expires.c>
+#    <FilesMatch "\.(png|ico|css|js)$">
+#        ExpiresActive on
+#        ExpiresDefault "access plus 2 months"
+#    </FilesMatch>
+#</IfModule>
 
 <ifModule mod_deflate.c>
     AddOutputFilter DEFLATE .html .js .css

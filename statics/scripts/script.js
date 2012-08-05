@@ -12,6 +12,11 @@
         return this.substr(0, index) + string + this.substr(index + string.length);
     };
 
+    String.prototype.reverse = function()
+    {
+        return this.split('').reverse().join('');
+    };
+
     $.extend({
         random: function(min, max)
         {
@@ -219,6 +224,8 @@
 {
     $.pull = {};
 
+    $.pull.pulling = false;
+
     $.pull.options = {
         friendcounter:          null,
         onlinecounter:          null,
@@ -231,90 +238,96 @@
 
     $.pull.start = function(options)
     {
-        $.pull.options = $.extend($.pull.options, options);
-        $.getJSON(
-            $.configures.pullUrl,
-            {
-                lasttime: $.configures.lasttime
-            },
-            function(response)
-            {
-                $.configures.lasttime = response.lasttime;
-                if ( response.counter )
+        if ( ! $.pull.pulling )
+        {
+            $.pull.pulling = true;
+
+            $.pull.options = $.extend($.pull.options, options);
+            $.getJSON(
+                $.configures.pullUrl,
                 {
-                    if ( $.pull.options.friendcounter )
+                    lasttime: $.configures.lasttime
+                },
+                function(response)
+                {
+                    $.configures.lasttime = response.lasttime;
+                    if ( response.counter )
                     {
-                        $.pull.options.friendcounter.text(
-                            response.counter.friends
-                        );
-                    }
-                    if ( $.pull.options.onlinecounter )
-                    {
-                        $.pull.options.onlinecounter.text(
-                            response.counter.online
-                        );
-                    }
-                    if ( $.pull.options.browseredcounter )
-                    {
-                        var p = 0;
-                        var c = 0;
-                        var browsered = response.counter.browsered.toString();
-                        var text = $.pull.options.browseredcounter.text();
-                        if ( text.length > browsered.length ) text = '';
-                        for ( var i = 0 ; i < browsered.length ; ++i )
+                        if ( $.pull.options.friendcounter )
                         {
-                            if ( text[i] != browsered[i] )
-                            {
-                                text = text.replaceAt(i, '0');
-                            }
+                            $.pull.options.friendcounter.text(
+                                response.counter.friends
+                            );
                         }
-                        var timer = setInterval(function()
+                        if ( $.pull.options.onlinecounter )
                         {
-                            if ( text === browsered )
+                            $.pull.options.onlinecounter.text(
+                                response.counter.online
+                            );
+                        }
+                        if ( $.pull.options.browseredcounter )
+                        {
+                            var p = 0;
+                            var c = 0;
+                            var browsered = response.counter.browsered.toString();
+                            var text = $.pull.options.browseredcounter.text();
+                            if ( text.length > browsered.length ) text = '';
+                            for ( var i = 0 ; i < browsered.length ; ++i )
                             {
-                                clearInterval(timer);
-                            }
-                            else
-                            {
-                                if ( text[p] == browsered[p] )
+                                if ( text[i] != browsered[i] )
                                 {
-                                    c = 0;
-                                    p++;
+                                    text = text.replaceAt(i, '0');
+                                }
+                            }
+                            var timer = setInterval(function()
+                            {
+                                if ( text === browsered )
+                                {
+                                    clearInterval(timer);
                                 }
                                 else
                                 {
-                                    c++;
+                                    if ( text[p] == browsered[p] )
+                                    {
+                                        c = 0;
+                                        p++;
+                                    }
+                                    else
+                                    {
+                                        c++;
+                                    }
+                                    for ( var i = p ; i < browsered.length ; ++i )
+                                    {
+                                        var d = $.pull.options.counterDigitElements[
+                                            $.random(
+                                                0,
+                                                $.pull.options.counterDigitElements.length - 1
+                                            )
+                                        ].toString();
+                                        text = text.replaceAt(i, d);
+                                    }
+                                    text = text.replaceAt(p, c.toString());
+                                    $.pull.options.browseredcounter.text(text);
                                 }
-                                for ( var i = p ; i < browsered.length ; ++i )
-                                {
-                                    var d = $.pull.options.counterDigitElements[
-                                        $.random(
-                                            0,
-                                            $.pull.options.counterDigitElements.length - 1
-                                        )
-                                    ].toString();
-                                    text = text.replaceAt(i, d);
-                                }
-                                text = text.replaceAt(p, c.toString());
-                                $.pull.options.browseredcounter.text(text);
-                            }
-                        }, $.pull.options.counterAnimationSpeed);
+                            }, $.pull.options.counterAnimationSpeed);
+                        }
                     }
-                }
-                if ( response.friends )
-                {
-                    $.fn.chat.updateFriendList(response.friends);
-                }
-                if ( response.messages )
-                {
-                    for ( var key in response.messages )
+                    if ( response.friends )
                     {
-                        var data = response.messages[key];
-                        $.fn.chat.updateChatDialog(data.id, data);
+                        $.fn.chat.updateFriendList(response.friends);
                     }
+                    if ( response.messages )
+                    {
+                        for ( var key in response.messages )
+                        {
+                            var data = response.messages[key];
+                            $.fn.chat.updateChatDialog(data.id, data);
+                        }
+                    }
+                    $.pull.pulling = false;
                 }
-            }
-        );
+            );
+        }
         $.pull.timer = setTimeout(arguments.callee, $.pull.options.interval);
     };
 
@@ -326,6 +339,69 @@
     $.pull.restart = function()
     {
         $.pull.timer = setTimeout($.pull.start, $.pull.options.interval);
+    };
+})(jQuery);
+
+
+(function($)
+{
+    $.push = {};
+
+    $.push.options = {
+        interval:               5000
+    };
+
+    $.push.pushing = false;
+
+    $.push.start = function()
+    {
+        if ( ! $.push.pushing )
+        {
+            var messages = $.fn.getMessageQueue();
+
+            if ( messages.length )
+            {
+                $.push.pushing = true;
+
+                $.post(
+                    $.configures.chatSendUrl,
+                    {
+                        messages: messages,
+                        token: $.configures.token,
+                        lasttime: $.configures.lasttime
+                    },
+                    function(response)
+                    {
+                        $.pull.pause();
+                        $.push.pause();
+                        $.configures.token = response.token;
+                        $.configures.lasttime = response.lasttime;
+                        if ( $.errors(response.errors) )
+                        {
+                            for ( var key in response.messages )
+                            {
+                                var data = response.messages[key];
+                                $.fn.chat.updateChatDialog(data.id, data);
+                            }
+                        }
+                        $.push.pushing = false;
+                        $.push.restart();
+                        $.pull.restart();
+                    }
+                );
+            }
+        }
+        $.push.timer = setTimeout(arguments.callee, $.push.options.interval);
+    };
+
+    $.push.pause = function()
+    {
+        clearTimeout($.push.timer);
+    };
+
+    $.push.restart = function()
+    {
+        $.push.timer = setTimeout($.push.start, $.push.options.interval);
     };
 })(jQuery);
 
@@ -358,6 +434,8 @@
 
 (function($)
 {
+    var queues = [];
+
     var avatars = [];
 
     var friends = [];
@@ -632,7 +710,9 @@
                 .addClass($.chat.options.chatFormClass)
                 .submit(function()
                 {
-                    $.fn.chat.sendMessage(id, input.val());
+                    var message = input.val();
+                    $.fn.chat.updateChatDialog(id, message);
+                    $.fn.chat.queueMessage(id, message);
                     input.val('');
                     return false;
                 })
@@ -781,33 +861,23 @@
         $.fn.chat.updateChatDialogsPosition();
     };
 
-    $.fn.chat.sendMessage = function(id, message)
+    $.fn.chat.queueMessage = function(id, message)
     {
-        $.post(
-            $.configures.chatSendUrl,
-            {
-                receiver: id,
-                message: message,
-                token: $.configures.token,
-                lasttime: $.configures.lasttime,
-                sequence: $.configures.sequence++
-            },
-            function(response)
-            {
-                $.pull.pause();
-                $.configures.token = response.token;
-                $.configures.lasttime = response.lasttime;
-                if ( $.errors(response.errors) )
-                {
-                    for ( var key in response.messages )
-                    {
-                        var data = response.messages[key];
-                        $.fn.chat.updateChatDialog(data.id, data);
-                    }
-                }
-                $.pull.restart();
-            }
-        );
+        queues[queues.length] = {
+            receiver: id,
+            message: message,
+            sequence: $.configures.sequence++
+        };
+        $.push.start();
+        return true;
+    };
+
+    $.fn.getMessageQueue = function()
+    {
+        var messages = queues;
+        if ( queues.length === 0 ) return false;
+        queues = [];
+        return messages;
     };
 })(jQuery);
 
@@ -926,18 +996,18 @@
             {
                 var originalHeight = parseInt(scrollDragable.css('height'));
                 var scrollContentHeight = scrollContent.height();
-                var scrollTrackHeight = scrollTrack.height();
+                var scrollBarHeight = scrollBar.height();
                 var height = 0;
-                if ( scrollContainer.width() - scrollContent.width() > 0 )
+                if ( scrollContent.width() - scrollContainer.width() >= 0 )
                 {
                     scrollArea.css({
                         width: scrollContainer.width() + scrollWidth
                     });
                 }
-                if ( scrollContentHeight > scrollTrackHeight )
+                if ( scrollContentHeight > scrollBarHeight )
                 {
-                    height = scrollTrackHeight
-                           * scrollTrackHeight
+                    height = scrollBarHeight
+                           * scrollBarHeight
                            / scrollContentHeight;
                 }
                 if ( height != originalHeight )
@@ -1000,25 +1070,28 @@
                     updateScrollDragable(top - delta * multiplier);
                     return false;
                 })
-                .mousedown(function()
+                .mousedown(function(event)
                 {
-                    var timer = setInterval(function()
+                    if ( event.which === 1 )
                     {
-                        scrollDragable.css({
-                            top: (scrollTrack.height()
-                               - updateScrollDraggableHeight())
-                               * scrollArea.scrollTop()
-                               / scrollHeight
-                        });
-                    }, 1);
-                    var revert = function()
-                    {
-                        active = false;
-                        $(document).off('mouseup', revert);
-                        clearInterval(timer);
-                    };
-                    $(document).on('mouseup', revert);
-                    active = true;
+                        var timer = setInterval(function()
+                        {
+                            scrollDragable.css({
+                                top: (scrollTrack.height()
+                                   - updateScrollDraggableHeight())
+                                   * scrollArea.scrollTop()
+                                   / scrollHeight
+                            });
+                        }, 1);
+                        var revert = function()
+                        {
+                            active = false;
+                            $(document).off('mouseup', revert);
+                            clearInterval(timer);
+                        };
+                        $(document).on('mouseup', revert);
+                        active = true;
+                    }
                 })
                 .wrapInner($(this))
                 .appendTo(scrollArea);
@@ -1029,41 +1102,47 @@
                 .addClass('scroll-track')
                 .mousedown(function(event)
                 {
-                    var y = event.pageY;
-                    var top = $(this).offset().top;
-                    var height = updateScrollDraggableHeight();
-                    updateScrollDragable(y - top - height / 2);
-                    return false;
+                    if ( event.which === 1 )
+                    {
+                        var y = event.pageY;
+                        var top = $(this).offset().top;
+                        var height = updateScrollDraggableHeight();
+                        updateScrollDragable(y - top - height / 2);
+                        return false;
+                    }
                 })
                 .appendTo(scrollBar);
             var scrollDragable = $('<div></div>')
                 .addClass('scroll-dragable')
                 .mousedown(function(event)
                 {
-                    var origin = parseInt(scrollDragable.css('top')) - event.pageY;
-                    var stop = function()
+                    if ( event.which === 1 )
                     {
-                        $(document)
-                            .unbind('mouseup', stop)
-                            .unbind('mousemove', update);
-                        if ( ! inside )
+                        var origin = parseInt(scrollDragable.css('top')) - event.pageY;
+                        var stop = function()
                         {
-                            scrollBar
-                                .stop(true, true)
-                                .fadeOut(options.fadeInDuration);
-                        }
-                        active = false;
-                    };
-                    var update = function(event)
-                    {
-                        updateScrollDragable(origin + event.pageY);
-                    };
-                    $(document)
-                        .bind('mouseup', stop)
-                        .bind('mouseleave', stop)
-                        .bind('mousemove', update);
-                    active = true;
-                    return false;
+                            $(document)
+                                .unbind('mouseup', stop)
+                                .unbind('mousemove', update);
+                            if ( ! inside )
+                            {
+                                scrollBar
+                                    .stop(true, true)
+                                    .fadeOut(options.fadeInDuration);
+                            }
+                            active = false;
+                        };
+                        var update = function(event)
+                        {
+                            updateScrollDragable(origin + event.pageY);
+                        };
+                        $(document)
+                            .bind('mouseup', stop)
+                            .bind('mouseleave', stop)
+                            .bind('mousemove', update);
+                        active = true;
+                        return false;
+                    }
                 })
                 .appendTo(scrollTrack);
             var updateScrollDragable = function(position)
@@ -1323,7 +1402,23 @@
     var updateData = function(url, callback)
     {
         var self = this;
-        $.getJSON( url, function(data){
+        // $.getJSON( url, function(data){
+            // self.cleanUpMark(true);
+            // for ( var key in data.events )
+            // {
+                // self.markEvent(data.events[key], { textDecoration: 'underline'});
+            // }
+            // self.markToday();
+            // self.data('all_events', data.events);
+            // if ( callback ) 
+            // {
+                // callback(self);
+            // }
+        // });
+        $.get( url, {
+            m : self.data('options').month,
+            y : self.data('options').year
+        }, function(data){
             self.cleanUpMark(true);
             for ( var key in data.events )
             {
@@ -1335,7 +1430,7 @@
             {
                 callback(self);
             }
-        });
+        } );
         return this;
     }
 
@@ -2658,335 +2753,18 @@
         var errorMessage = $('<p></p>').text('').addClass('error').appendTo(box);
     };
 })(jQuery);
+
 (function($) {
-    $.street = function()
-    {
-        $('.picture').hide();
-    $('#street-div #experience-personally').mousedown(function()
-    {
-        $(document).mousemove(mousemove);
-        return false;
-    });
-    var mouseInId;
-    var isInPicture = false;
-    var mousemove = function(event)
-    {
-        x = event.pageX - $('#street-div #back-div').offset().left;
-        y = event.pageY - $('#street-div #back-div').offset().top;
-        $('#street-div #experience-personally').css(
-        {
-        top: y +  2 + 'px',
-        left: x + 2 + 'px',
-        });
-    };
-    $('#street-div .picture').mouseenter(function()
-    {
-        isInPicture = true;
-        mouseInId = $(this).attr('id');
-        $(this).attr('src', $(this).attr('src').replace('mouseleave', 'mouseenter'));
-    });
-    $('#street-div .picture').mouseleave(function()
-    {
-        isInPicture = false;
-        $(this).attr('src', $(this).attr('src').replace('mouseenter', 'mouseleave'));
-    });
-    var mouseup = function()
-    {
-        if( isInPicture == true )
-        {
-            if( $('#' + mouseInId).attr('streetPoints') == (-1) )
-            {
-                $('#street-div #experience-personally').css(
-                {
-                    top: 410,
-                    left: 530,
-                });
-            }
-            else
-            {
-                $('#street-div #experience-personally').css(
-                {
-                    zIndex: 2,
-                });
-                var id = $('#street-div #' + mouseInId).attr('href').replace( '#', '' );
-                $('#street-div #mapPicture').attr('src', url + streetPoints[$('#street-div #' + mouseInId).attr('streetPoints')][$('#' + mouseInId).attr('faceto')].photo);
-                
-                nowfaceto = $('#' + mouseInId).attr('faceto');
-                nowpointat = [$('#' + mouseInId).attr('streetPoints')];
-                nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
-
-                console.log('一開始');
-                console.log('nowpointat: ' + nowpointat);
-                console.log('nowfaceto: ' + nowfaceto);
-                console.log('nextpointat: ' + nextpointat); 
-                console.log('--------------------------');
-                $('#street-div .arrow').eq( 0 ).click(function() //前進nextDirection
-                {
-                    if( nextpointat == (-1) )
-                    {
-                    // console.log('這裡不能走！');
-                        $.alert({
-                            message: '這裡不能走！'
-                        });
-                    }
-                    else if( nextpointat != (-1))
-                    {
-                        nowpointat = nextpointat;
-                        nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
-                        $('#street-div #mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
-                    }
-                    console.log('按前進');
-                    console.log('nowpointat: ' + nowpointat);
-                    console.log('nowfaceto: ' + nowfaceto);
-                    console.log('nextpointat: ' + nextpointat);            
-                    console.log('--------------------------');
-                });
-                $('#street-div .arrow').eq( 1 ).click(function() // 左旋
-                {                        
-                    turnLeft();
-                    $('#street-div #mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
-                    nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
-                    console.log('按左旋');
-                    console.log('nowpointat: ' + nowpointat);
-                    console.log('nowfaceto: ' + nowfaceto);
-                    console.log('nextpointat: ' + nextpointat);
-                    console.log('--------------------------');
-                });
-                $('#street-div .arrow').eq( 2 ).click(function() // 右旋
-                {
-                    turnRight();
-                    $('#street-div #mapPicture').attr('src', url + streetPoints[nowpointat][nowfaceto].photo);
-                    nextpointat = streetPoints[nowpointat][nowfaceto].nextPoint;
-                    console.log('按右旋');
-                    console.log('nowpointat: ' + nowpointat);
-                    console.log('nowfaceto: ' + nowfaceto);
-                    console.log('nextpointat: ' + nextpointat);                        
-                    console.log('--------------------------');
-                });
-    //-------------------------------------------------------------------------------------------------
-                function turnLeft()
-                {
-                    if( nowfaceto == 'N')
-                    {
-                        nowfaceto = 'W';
-                    }
-                    else if( nowfaceto == 'E')
-                    {
-                        nowfaceto = 'N';
-                    }
-                    else if( nowfaceto == 'S')
-                    {
-                        nowfaceto = 'E';
-                    }
-                    else if( nowfaceto == 'W')
-                    {
-                        nowfaceto = 'S';
-                    }
-                    else
-                    {
-                        return;
-                    }
-                };
-                function turnRight()
-                {
-
-                    if( nowfaceto == 'N')
-                    {
-                        nowfaceto = 'E';
-                    }
-                    else if( nowfaceto == 'E')
-                    {
-                        nowfaceto = 'S';
-                    }
-                    else if( nowfaceto == 'S')
-                    {
-                        nowfaceto = 'W';
-                    }
-                    else if( nowfaceto == 'W')
-                    {
-                        nowfaceto = 'N';
-                    }
-                    else
-                    {
-                        return;
-                    }
-                };
-                    
-                $('#street-div #map-div, #street-div #curtain-close-div, #street-div #back-div').css(
-                {
-                    height: 498,
-                });
-
-                $('#street-div #mapPicture').css(
-                {
-                    zIndex: '3',
-                    width: 750,
-                    height: 498,
-                });
-                $('#street-div .arrow').show();
-                isInPicture = false;
-            }
-        }
-            $(document).unbind('mousemove', mousemove);
-            $('#street-div #experience-personally').css(
-            {
-                top: 410,
-                left: 530,
-            });
-            isInPicture = false;
-    };
-    $(document).mouseup(mouseup);
-
-    $('#street-div .picture').hide();
-    $('#street-div .landscape').show();
-
-    var littleBuilding = function() // building icon show
-    {
-        $('#street-div .picture').hide();
-        $( '.' + $(this).attr('show')).show();
-    };
-    $('#street-div .one-image').bind('click', littleBuilding);
-
-    $('#street-div .two-image').click(function(){
-        $('#street-div .button-text').hide();
-        $('#street-div .button-text[ detailItem = ' + $(this).attr('detailItem') + ']' ).show();
-    });
-
-    $('#street-div .curtainOpen').click(function()
-    { // 窗簾
-        $('#street-div #experience-personally').css(
-        {
-            zIndex: 1,
-        });
-        $('#street-div #curtainDiv').animate(
-        {
-            left: '370px'
-        });
-        $('#street-div .button-text').hide();
-        $('#street-div .button-text[ detailItem = "department" ]').show();        
-        $('#street-div .one-image').unbind('click', littleBuilding);
-    });
-    $('#street-div #curtainclose').click(function()
-    {// 窗簾
-        $('#street-div #curtainDiv').animate(
-        {
-            left: '750px'
-        });
-        $('#street-div #experience-personally').css(
-        {
-            zIndex: 4,
-        });
-        $('#street-div .one-image').bind('click', littleBuilding);
-        $('#street-div .landscape').show();
-    });
-
-    $('#street-div .arrow').eq( 3 ).click(function() // 親身體驗 back
-    {
-        $('#street-div #mapPicture').attr('src', $('#street-div #mapPicture').attr('path'));
-        $('#street-div .arrow').hide();
-
-        $('#street-div #map-div, #street-div #curtain-close-div, #street-div #back-div').css(
-        {
-            height: 552,
-        });
-        $('#street-div #mapPicture').css(
-        {
-            width: 601,
-            height: 552,  
-            zIndex: 0,
-        });
-        $('#street-div #experience-personally').css(
-        {
-            zIndex: 3,
-        });
-    });
-    $('#street-div .picture, #street-div .button-text').click(function()
-    {
-        isInPicture = false;
-        $('#street-div #back-div, #street-div #curtain-close-div').css(
-        {
-           height: 552,
-        });
-        $('#street-div #experience-personally').css(
-        {
-            zIndex: 3,
-        });
-        $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
-        $('#text-container').dialog(
-        {
-            width: 680,
-            height: 400,
-            modal: true,
-            escape: false,
-            onClose: function()
-            {
-                
-            }
-        });
-
-        $('#street-div .arrow').hide();
-        $('#street-div #mapPicture').css(
-        {
-            width: 601,
-            height: 552,
-            zIndex: 0,
-        });
-
-        var id = $(this).attr('href').replace('#', '');
-        $.ajax(
-        {
-            type: 'GET',
-            url: jQuery.configures.buildingContentUrl.replace(':id', id),
-            dataType: 'json',
-            success: function(data)
-            {
-                $('#building-text').html(data.content);
-                $('#building-text img').css(
-                {
-                    cursor: 'pointer',
-                });
-                $('#building-text img').each(function()
-                {
-                    $(this).wrapAll(
-                        $('<a></a>')
-                            .addClass('lightbox')
-                            .attr('href', $(this).attr('src'))
-                            .attr('title', $(this).attr('alt'))
-                    );
-                });
-                $('#building-text a.lightbox').lightbox({
-                    hideOverlayBackground: true
-                });             
-            },
-        });
-        
-    });
-    $('#street-div #building-text').scrollable({
-        scrollableClass: false
-    });
-    
-    $('#street-div .arrow.up, #street-div .arrow.right, #street-div .arrow.left').hover(function()
-    {
-        var arrowStrong = $(this).attr('src').replace('arrow', 'showPoint');
-        $(this).attr('src', arrowStrong);
-    }, function()
-    {
-        var arrowStrong = $(this).attr('src').replace('showPoint', 'arrow');
-        $(this).attr('src', arrowStrong);
-    });
-
-    var howmanyphoto;
-    var position = 0;    
     var url = '../statics/street-view/';
     var nowfaceto;
     var nowpointat;
-    var streetPoints = 
+    var streetPoints =
     [
         { // 0 (工5)
             N:{ photo: 'Day 1 (4).JPG', nextPoint: 2 },
             E:{ photo: 'Day 1 (3).JPG', nextPoint: (-1) },
             S:{ photo: 'Day 1 (2).JPG', nextPoint: (-1) },
-            W:{ photo: 'Day 1 (1).JPG', nextPoint: 1 }            
+            W:{ photo: 'Day 1 (1).JPG', nextPoint: 1 }
         },
         { // 1 (環工)
             N:{ photo: 'Day 3 (3).JPG', nextPoint: (-1) },
@@ -3017,310 +2795,616 @@
             E:{ photo: 'Day 1 (18).JPG', nextPoint: (-1) },
             S:{ photo: 'Day 1 (19).JPG', nextPoint: 4 },
             W:{ photo: 'Day 1 (16).JPG', nextPoint: (-1) }
-        },        
-        { // 6 (可麗餅)            
-            N:{ photo: 'Day 1 (23).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 1 (20).JPG', nextPoint: 7 },    
-            S:{ photo: 'Day 1 (21).JPG', nextPoint: 5 },    
-            W:{ photo: 'Day 1 (22).JPG', nextPoint: 52 }         
         },
-        { // 7 (育成中心前)            
+        { // 6 (可麗餅)
+            N:{ photo: 'Day 1 (23).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 1 (20).JPG', nextPoint: 7 },
+            S:{ photo: 'Day 1 (21).JPG', nextPoint: 5 },
+            W:{ photo: 'Day 1 (22).JPG', nextPoint: 52 }
+        },
+        { // 7 (育成中心前)
             N:{ photo: 'Day 1 (24).JPG', nextPoint: 51 },
             E:{ photo: 'Day 1 (26).JPG', nextPoint: 8 },
             S:{ photo: 'Day 1 (27).JPG', nextPoint: (-1) },
             W:{ photo: 'Day 1 (25).JPG', nextPoint: 6 }
         },
-        { // 8 (後門)            
-            N:{ photo: 'Day 1 (29).JPG', nextPoint: 9 },       
-            E:{ photo: 'Day 1 (28).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 1 (31).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 1 (30).JPG', nextPoint: 7 }         
+        { // 8 (後門)
+            N:{ photo: 'Day 1 (29).JPG', nextPoint: 9 },
+            E:{ photo: 'Day 1 (28).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (31).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 1 (30).JPG', nextPoint: 7 }
         },
-        { // 9 (女四東)            
-            N:{ photo: 'Day 1 (45).JPG', nextPoint: 55 },       
-            E:{ photo: 'Day 1 (44).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 1 (46).JPG', nextPoint: 8 },    
-            W:{ photo: 'Day 1 (47).JPG', nextPoint: 54 }         
+        { // 9 (女四東)
+            N:{ photo: 'Day 1 (45).JPG', nextPoint: 55 },
+            E:{ photo: 'Day 1 (44).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (46).JPG', nextPoint: 8 },
+            W:{ photo: 'Day 1 (47).JPG', nextPoint: 54 }
         },
-        { // 10 (工1)            
-            N:{ photo: 'Day 1 (37).JPG', nextPoint: 11 },       
-            E:{ photo: 'Day 1 (39).JPG', nextPoint: 54 },    
-            S:{ photo: 'Day 1 (38).JPG', nextPoint: 51 },    
-            W:{ photo: 'Day 1 (36).JPG', nextPoint: (-1) }         
+        { // 10 (工1)
+            N:{ photo: 'Day 1 (37).JPG', nextPoint: 11 },
+            E:{ photo: 'Day 1 (39).JPG', nextPoint: 54 },
+            S:{ photo: 'Day 1 (38).JPG', nextPoint: 51 },
+            W:{ photo: 'Day 1 (36).JPG', nextPoint: (-1) }
         },
-        { // 11 (海音西方岔路)            
-            N:{ photo: 'Day 1 (63).JPG', nextPoint: 19 },       
-            E:{ photo: 'Day 1 (62).JPG', nextPoint: 12 },    
-            S:{ photo: 'Day 1 (61).JPG', nextPoint: 10 },    
-            W:{ photo: 'Day 1 (60).JPG', nextPoint: (-1) }         
+        { // 11 (海音西方岔路)
+            N:{ photo: 'Day 1 (63).JPG', nextPoint: 19 },
+            E:{ photo: 'Day 1 (62).JPG', nextPoint: 12 },
+            S:{ photo: 'Day 1 (61).JPG', nextPoint: 10 },
+            W:{ photo: 'Day 1 (60).JPG', nextPoint: (-1) }
         },
-        { // 12 (海音咖啡)            
-            N:{ photo: 'Day 1 (56).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 1 (59).JPG', nextPoint: 13 },    
-            S:{ photo: 'Day 1 (58).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 1 (57).JPG', nextPoint: 11 }         
+        { // 12 (海音咖啡)
+            N:{ photo: 'Day 1 (56).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 1 (59).JPG', nextPoint: 13 },
+            S:{ photo: 'Day 1 (58).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 1 (57).JPG', nextPoint: 11 }
         },
-        { // 13 (宵夜街口)            
-            N:{ photo: 'Day 1 (53).JPG', nextPoint: 14 },       
-            E:{ photo: 'Day 1 (54).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 1 (55).JPG', nextPoint: 55 },    
-            W:{ photo: 'Day 1 (52).JPG', nextPoint: 12 }         
+        { // 13 (宵夜街口)
+            N:{ photo: 'Day 1 (53).JPG', nextPoint: 14 },
+            E:{ photo: 'Day 1 (54).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (55).JPG', nextPoint: 55 },
+            W:{ photo: 'Day 1 (52).JPG', nextPoint: 12 }
         },
-        { // 14 (女14舍)            
-            N:{ photo: 'Day 3 (89).JPG', nextPoint: 15 },       
-            E:{ photo: 'Day 3 (86).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (87).JPG', nextPoint: 13 },    
-            W:{ photo: 'Day 3 (88).JPG', nextPoint: (-1) }         
+        { // 14 (女14舍)
+            N:{ photo: 'Day 3 (89).JPG', nextPoint: 15 },
+            E:{ photo: 'Day 3 (86).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 3 (87).JPG', nextPoint: 13 },
+            W:{ photo: 'Day 3 (88).JPG', nextPoint: (-1) }
         },
-        { // 15 (男11舍)            
-            N:{ photo: 'Day 3 (91).JPG', nextPoint: 16 },       
-            E:{ photo: 'Day 3 (90).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (93).JPG', nextPoint: 14 },    
-            W:{ photo: 'Day 3 (92).JPG', nextPoint: (-1) }         
+        { // 15 (男11舍)
+            N:{ photo: 'Day 3 (91).JPG', nextPoint: 16 },
+            E:{ photo: 'Day 3 (90).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 3 (93).JPG', nextPoint: 14 },
+            W:{ photo: 'Day 3 (92).JPG', nextPoint: (-1) }
         },
-        { // 16 (男7舍；7餐前L轉角)            
-            N:{ photo: 'Day 3 (82).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (85).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (84).JPG', nextPoint: 15 },    
-            W:{ photo: 'Day 3 (83).JPG', nextPoint: 17 }         
+        { // 16 (男7舍；7餐前L轉角)
+            N:{ photo: 'Day 3 (82).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (85).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 3 (84).JPG', nextPoint: 15 },
+            W:{ photo: 'Day 3 (83).JPG', nextPoint: 17 }
         },
-        { // 17 (據德樓)            
-            N:{ photo: 'Day 1 (74).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 1 (73).JPG', nextPoint: 16 },    
-            S:{ photo: 'Day 1 (72).JPG', nextPoint: 18 },    
-            W:{ photo: 'Day 1 (75).JPG', nextPoint: 26 }         
+        { // 17 (據德樓)
+            N:{ photo: 'Day 1 (74).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 1 (73).JPG', nextPoint: 16 },
+            S:{ photo: 'Day 1 (72).JPG', nextPoint: 18 },
+            W:{ photo: 'Day 1 (75).JPG', nextPoint: 26 }
         },
-        { // 18 (地科學院)            
-            N:{ photo: 'Day 1 (69).JPG', nextPoint: 17 },       
-            E:{ photo: 'Day 1 (70).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 1 (71).JPG', nextPoint: 19 },    
-            W:{ photo: 'Day 1 (68).JPG', nextPoint: (-1) }         
-        }, 
-        { // 19 (地科南方馬路)            
-            N:{ photo: 'Day 1 (65).JPG', nextPoint: 18 },       
-            E:{ photo: 'Day 1 (66).JPG', nextPoint: (-1) },   
-            S:{ photo: 'Day 1 (67).JPG', nextPoint: 11 },    
-            W:{ photo: 'Day 1 (64).JPG', nextPoint: 20 }         
+        { // 18 (地科學院)
+            N:{ photo: 'Day 1 (69).JPG', nextPoint: 17 },
+            E:{ photo: 'Day 1 (70).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (71).JPG', nextPoint: 19 },
+            W:{ photo: 'Day 1 (68).JPG', nextPoint: (-1) }
         },
-        { // 20 (國泰樹)            
-            N:{ photo: 'Day 2 (7).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 2 (6).JPG', nextPoint: 19 },    
-            S:{ photo: 'Day 2 (5).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 2 (8).JPG', nextPoint: 21 }         
+        { // 19 (地科南方馬路)
+            N:{ photo: 'Day 1 (65).JPG', nextPoint: 18 },
+            E:{ photo: 'Day 1 (66).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (67).JPG', nextPoint: 11 },
+            W:{ photo: 'Day 1 (64).JPG', nextPoint: 20 }
         },
-        { // 21 (舊北十字)            
-            N:{ photo: 'Day 2 (2).JPG', nextPoint: 22 },       
-            E:{ photo: 'Day 2 (3).JPG', nextPoint: 20 },    
-            S:{ photo: 'Day 2 (4).JPG', nextPoint: 39 },    
-            W:{ photo: 'Day 2 (1).JPG', nextPoint: 32 }         
+        { // 20 (國泰樹)
+            N:{ photo: 'Day 2 (7).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 2 (6).JPG', nextPoint: 19 },
+            S:{ photo: 'Day 2 (5).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 2 (8).JPG', nextPoint: 21 }
         },
-        { // 22 (總圖前路)            
-            N:{ photo: 'Day 2 (10).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 2 (11).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 2 (12).JPG', nextPoint: 21 },    
-            W:{ photo: 'Day 2 (9).JPG', nextPoint: 23 }         
+        { // 21 (舊北十字)
+            N:{ photo: 'Day 2 (2).JPG', nextPoint: 22 },
+            E:{ photo: 'Day 2 (3).JPG', nextPoint: 20 },
+            S:{ photo: 'Day 2 (4).JPG', nextPoint: 39 },
+            W:{ photo: 'Day 2 (1).JPG', nextPoint: 32 }
         },
-        { // 23 (總圖)            
-            N:{ photo: 'Day 2 (14).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 2 (13).JPG', nextPoint: 22 },    
-            S:{ photo: 'Day 2 (16).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 2 (15).JPG', nextPoint: 24 }         
+        { // 22 (總圖前路)
+            N:{ photo: 'Day 2 (10).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 2 (11).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 2 (12).JPG', nextPoint: 21 },
+            W:{ photo: 'Day 2 (9).JPG', nextPoint: 23 }
         },
-        { // 24 (文學院)            
-            N:{ photo: 'Day 2 (18).JPG', nextPoint: 25 },       
-            E:{ photo: 'Day 2 (19).JPG', nextPoint: 23 },    
-            S:{ photo: 'Day 2 (20).JPG', nextPoint: 32 },    
-            W:{ photo: 'Day 2 (17).JPG', nextPoint: (-1) }         
+        { // 23 (總圖)
+            N:{ photo: 'Day 2 (14).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 2 (13).JPG', nextPoint: 22 },
+            S:{ photo: 'Day 2 (16).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 2 (15).JPG', nextPoint: 24 }
         },
-        { // 25 (行政大樓)            
-            N:{ photo: 'Day 1 (81).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 1 (82).JPG', nextPoint: 26 },    
-            S:{ photo: 'Day 1 (80).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 1 (83).JPG', nextPoint: 27 }         
+        { // 24 (文學院)
+            N:{ photo: 'Day 2 (18).JPG', nextPoint: 25 },
+            E:{ photo: 'Day 2 (19).JPG', nextPoint: 23 },
+            S:{ photo: 'Day 2 (20).JPG', nextPoint: 32 },
+            W:{ photo: 'Day 2 (17).JPG', nextPoint: (-1) }
         },
-        { // 26 (大講堂)            
-            N:{ photo: 'Day 1 (79).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 1 (78).JPG', nextPoint: 17 },    
-            S:{ photo: 'Day 1 (77).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 1 (76).JPG', nextPoint: 25 }         
+        { // 25 (行政大樓)
+            N:{ photo: 'Day 1 (81).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 1 (82).JPG', nextPoint: 26 },
+            S:{ photo: 'Day 1 (80).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 1 (83).JPG', nextPoint: 27 }
         },
-        { // 27 (黑盒子)            
-            N:{ photo: 'Day 3 (70).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (73).JPG', nextPoint: 25 },    
-            S:{ photo: 'Day 3 (72).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (71).JPG', nextPoint: 28 }         
+        { // 26 (大講堂)
+            N:{ photo: 'Day 1 (79).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 1 (78).JPG', nextPoint: 17 },
+            S:{ photo: 'Day 1 (77).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 1 (76).JPG', nextPoint: 25 }
         },
-        { // 28 (品好9舍)            
-            N:{ photo: 'Day 3 (67).JPG', nextPoint: 27 },       
-            E:{ photo: 'Day 3 (66).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (69).JPG', nextPoint: 31 },    
-            W:{ photo: 'Day 3 (68).JPG', nextPoint: 29 }         
+        { // 27 (黑盒子)
+            N:{ photo: 'Day 3 (70).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (73).JPG', nextPoint: 25 },
+            S:{ photo: 'Day 3 (72).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 3 (71).JPG', nextPoint: 28 }
         },
-        { // 29 (烏龜池)            
-            N:{ photo: 'Day 3 (63).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (62).JPG', nextPoint: 28 },    
-            S:{ photo: 'Day 3 (65).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (64).JPG', nextPoint: (-1) }         
+        { // 28 (品好9舍)
+            N:{ photo: 'Day 3 (67).JPG', nextPoint: 27 },
+            E:{ photo: 'Day 3 (66).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 3 (69).JPG', nextPoint: 31 },
+            W:{ photo: 'Day 3 (68).JPG', nextPoint: 29 }
         },
-        { // 30 (國鼎、烏龜池旁邊)            
-            N:{ photo: 'Day 3 (58).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (57).JPG', nextPoint: 31 },    
-            S:{ photo: 'Day 3 (60).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (59).JPG', nextPoint: 50 }         
+        { // 29 (烏龜池)
+            N:{ photo: 'Day 3 (63).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (62).JPG', nextPoint: 28 },
+            S:{ photo: 'Day 3 (65).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 3 (64).JPG', nextPoint: (-1) }
         },
-        { // 31 (文學院)            
-            N:{ photo: 'Day 3 (54).JPG', nextPoint: 28 },       
-            E:{ photo: 'Day 3 (53).JPG', nextPoint: 32 },    
-            S:{ photo: 'Day 3 (56).JPG', nextPoint: 33 },    
-            W:{ photo: 'Day 3 (55).JPG', nextPoint: 30 }         
+        { // 30 (國鼎、烏龜池旁邊)
+            N:{ photo: 'Day 3 (58).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (57).JPG', nextPoint: 31 },
+            S:{ photo: 'Day 3 (60).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 3 (59).JPG', nextPoint: 50 }
         },
-        { // 32 (文院到舊圖間岔路)            
-            N:{ photo: 'Day 2 (24).JPG', nextPoint: 24 },       
-            E:{ photo: 'Day 2 (21).JPG', nextPoint: 21 },    
-            S:{ photo: 'Day 2 (22).JPG', nextPoint: 34 },    
-            W:{ photo: 'Day 2 (23).JPG', nextPoint: 31 }         
+        { // 31 (文學院)
+            N:{ photo: 'Day 3 (54).JPG', nextPoint: 28 },
+            E:{ photo: 'Day 3 (53).JPG', nextPoint: 32 },
+            S:{ photo: 'Day 3 (56).JPG', nextPoint: 33 },
+            W:{ photo: 'Day 3 (55).JPG', nextPoint: 30 }
         },
-        { // 33 (國鼎東岔路)            
-            N:{ photo: 'Day 3 (50).JPG', nextPoint: 31 },       
-            E:{ photo: 'Day 3 (51).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (52).JPG', nextPoint: 35 },    
-            W:{ photo: 'Day 3 (49).JPG', nextPoint: (-1) }         
+        { // 32 (文院到舊圖間岔路)
+            N:{ photo: 'Day 2 (24).JPG', nextPoint: 24 },
+            E:{ photo: 'Day 2 (21).JPG', nextPoint: 21 },
+            S:{ photo: 'Day 2 (22).JPG', nextPoint: 34 },
+            W:{ photo: 'Day 2 (23).JPG', nextPoint: 31 }
         },
-        { // 34 (學務處)            
-            N:{ photo: 'Day 2 (28).JPG', nextPoint: 32 },       
-            E:{ photo: 'Day 2 (25).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 2 (26).JPG', nextPoint: 37 },    
-            W:{ photo: 'Day 2 (27).JPG', nextPoint: (-1) }         
+        { // 33 (國鼎東岔路)
+            N:{ photo: 'Day 3 (50).JPG', nextPoint: 31 },
+            E:{ photo: 'Day 3 (51).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 3 (52).JPG', nextPoint: 35 },
+            W:{ photo: 'Day 3 (49).JPG', nextPoint: (-1) }
         },
-        { // 35 (志希)            
-            N:{ photo: 'Day 3 (46).JPG', nextPoint: 33 },       
-            E:{ photo: 'Day 3 (48).JPG', nextPoint: 36 },    
-            S:{ photo: 'Day 3 (47).JPG', nextPoint: 40 },    
-            W:{ photo: 'Day 3 (45).JPG', nextPoint: (-1) }         
+        { // 34 (學務處)
+            N:{ photo: 'Day 2 (28).JPG', nextPoint: 32 },
+            E:{ photo: 'Day 2 (25).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 2 (26).JPG', nextPoint: 37 },
+            W:{ photo: 'Day 2 (27).JPG', nextPoint: (-1) }
         },
-        { // 36 (太極銅雕)            
-            N:{ photo: 'Day 2 (29).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 2 (31).JPG', nextPoint: 37 },    
-            S:{ photo: 'Day 2 (32).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 2 (30).JPG', nextPoint: 35 }         
+        { // 35 (志希)
+            N:{ photo: 'Day 3 (46).JPG', nextPoint: 33 },
+            E:{ photo: 'Day 3 (48).JPG', nextPoint: 36 },
+            S:{ photo: 'Day 3 (47).JPG', nextPoint: 40 },
+            W:{ photo: 'Day 3 (45).JPG', nextPoint: (-1) }
         },
-        { // 37 (百花川、棒球場)            
-            N:{ photo: 'Day 2 (35).JPG', nextPoint: 34 },       
-            E:{ photo: 'Day 2 (36).JPG', nextPoint: 38 },    
-            S:{ photo: 'Day 2 (33).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 2 (34).JPG', nextPoint: 36 }         
+        { // 36 (太極銅雕)
+            N:{ photo: 'Day 2 (29).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 2 (31).JPG', nextPoint: 37 },
+            S:{ photo: 'Day 2 (32).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 2 (30).JPG', nextPoint: 35 }
         },
-        { // 38 (百花川、舊圖)            
-            N:{ photo: 'Day 1 (17).JPG', nextPoint: 39 },       
-            E:{ photo: 'Day 1 (18).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 1 (19).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 1 (16).JPG', nextPoint: 37 }         
+        { // 37 (百花川、棒球場)
+            N:{ photo: 'Day 2 (35).JPG', nextPoint: 34 },
+            E:{ photo: 'Day 2 (36).JPG', nextPoint: 38 },
+            S:{ photo: 'Day 2 (33).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 2 (34).JPG', nextPoint: 36 }
         },
-        { // 39 (舊圖)            
-            N:{ photo: 'Day 2 (41).JPG', nextPoint: 21 },       
-            E:{ photo: 'Day 2 (42).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 2 (43).JPG', nextPoint: 38 },    
-            W:{ photo: 'Day 2 (40).JPG', nextPoint: (-1) }         
+        { // 38 (百花川、舊圖)
+            N:{ photo: 'Day 1 (17).JPG', nextPoint: 39 },
+            E:{ photo: 'Day 1 (18).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (19).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 1 (16).JPG', nextPoint: 37 }
         },
-        { // 40 (鬆餅屋)            
-            N:{ photo: 'Day 3 (39).JPG', nextPoint: 35 },       
-            E:{ photo: 'Day 3 (40).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (37).JPG', nextPoint: 44 },    
-            W:{ photo: 'Day 3 (38).JPG', nextPoint: 41 }         
+        { // 39 (舊圖)
+            N:{ photo: 'Day 2 (41).JPG', nextPoint: 21 },
+            E:{ photo: 'Day 2 (42).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 2 (43).JPG', nextPoint: 38 },
+            W:{ photo: 'Day 2 (40).JPG', nextPoint: (-1) }
         },
-        { // 41 (科四至管院路)            
-            N:{ photo: 'Day 3 (32).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (31).JPG', nextPoint: 40 },    
-            S:{ photo: 'Day 3 (30).JPG', nextPoint: 42 },    
-            W:{ photo: 'Day 3 (29).JPG', nextPoint: (-1) }         
+        { // 40 (鬆餅屋)
+            N:{ photo: 'Day 3 (39).JPG', nextPoint: 35 },
+            E:{ photo: 'Day 3 (40).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 3 (37).JPG', nextPoint: 44 },
+            W:{ photo: 'Day 3 (38).JPG', nextPoint: 41 }
         },
-        { // 42 (科學館)            
-            N:{ photo: 'Day 3 (28).JPG', nextPoint: 41 },       
-            E:{ photo: 'Day 3 (27).JPG', nextPoint: 43 },    
-            S:{ photo: 'Day 3 (26).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (25).JPG', nextPoint: (-1) }         
+        { // 41 (科四至管院路)
+            N:{ photo: 'Day 3 (32).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (31).JPG', nextPoint: 40 },
+            S:{ photo: 'Day 3 (30).JPG', nextPoint: 42 },
+            W:{ photo: 'Day 3 (29).JPG', nextPoint: (-1) }
         },
-        { // 43 (中大湖前路)            
-            N:{ photo: 'Day 3 (21).JPG', nextPoint: 44 },       
-            E:{ photo: 'Day 3 (22).JPG', nextPoint: 53 },    
-            S:{ photo: 'Day 3 (23).JPG', nextPoint: 46 },    
-            W:{ photo: 'Day 3 (24).JPG', nextPoint: 42 }         
+        { // 42 (科學館)
+            N:{ photo: 'Day 3 (28).JPG', nextPoint: 41 },
+            E:{ photo: 'Day 3 (27).JPG', nextPoint: 43 },
+            S:{ photo: 'Day 3 (26).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 3 (25).JPG', nextPoint: (-1) }
         },
-        { // 44 (科二東路)            
-            N:{ photo: 'Day 3 (39).JPG', nextPoint: 40 },       
-            E:{ photo: 'Day 3 (40).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (37).JPG', nextPoint: 43 },    
-            W:{ photo: 'Day 3 (38).JPG', nextPoint: 45 }         
+        { // 43 (中大湖前路)
+            N:{ photo: 'Day 3 (21).JPG', nextPoint: 44 },
+            E:{ photo: 'Day 3 (22).JPG', nextPoint: 53 },
+            S:{ photo: 'Day 3 (23).JPG', nextPoint: 46 },
+            W:{ photo: 'Day 3 (24).JPG', nextPoint: 42 }
         },
-        { // 45 (鴻經館)            
-            N:{ photo: 'Day 3 (43).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (44).JPG', nextPoint: 44 },    
-            S:{ photo: 'Day 3 (42).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (41).JPG', nextPoint: (-1) }         
+        { // 44 (科二東路)
+            N:{ photo: 'Day 3 (39).JPG', nextPoint: 40 },
+            E:{ photo: 'Day 3 (40).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 3 (37).JPG', nextPoint: 43 },
+            W:{ photo: 'Day 3 (38).JPG', nextPoint: 45 }
         },
-        { // 46 (籃球)            
-            N:{ photo: 'Day 3 (18).JPG', nextPoint: 43 },       
-            E:{ photo: 'Day 3 (17).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (20).JPG', nextPoint: 47 },    
-            W:{ photo: 'Day 3 (19).JPG', nextPoint: (-1) }         
+        { // 45 (鴻經館)
+            N:{ photo: 'Day 3 (43).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (44).JPG', nextPoint: 44 },
+            S:{ photo: 'Day 3 (42).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 3 (41).JPG', nextPoint: (-1) }
         },
-        { // 47 (網球場)            
+        { // 46 (籃球)
+            N:{ photo: 'Day 3 (18).JPG', nextPoint: 43 },
+            E:{ photo: 'Day 3 (17).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 3 (20).JPG', nextPoint: 47 },
+            W:{ photo: 'Day 3 (19).JPG', nextPoint: (-1) }
+        },
+        { // 47 (網球場)
             N:{ photo: 'Day 3 (16).JPG', nextPoint: 46 },
-            E:{ photo: 'Day 3 (15).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (14).JPG', nextPoint: 48 },    
+            E:{ photo: 'Day 3 (15).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 3 (14).JPG', nextPoint: 48 },
             W:{ photo: 'Day 3 (13).JPG', nextPoint: (-1) }
         },
-        { // 48 (游泳池)            
-            N:{ photo: 'Day 3 (10).JPG', nextPoint: 47 },       
-            E:{ photo: 'Day 3 (11).JPG', nextPoint: 1 },    
-            S:{ photo: 'Day 3 (12).JPG', nextPoint: 49 },    
-            W:{ photo: 'Day 3 (9).JPG', nextPoint: (-1) }         
+        { // 48 (游泳池)
+            N:{ photo: 'Day 3 (10).JPG', nextPoint: 47 },
+            E:{ photo: 'Day 3 (11).JPG', nextPoint: 1 },
+            S:{ photo: 'Day 3 (12).JPG', nextPoint: 49 },
+            W:{ photo: 'Day 3 (9).JPG', nextPoint: (-1) }
         },
-        { // 49 (游泳池旁側門)            
-            N:{ photo: 'Day 3 (8).JPG', nextPoint: 48 },       
-            E:{ photo: 'Day 3 (7).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (6).JPG', nextPoint: (-1) }         
+        { // 49 (游泳池旁側門)
+            N:{ photo: 'Day 3 (8).JPG', nextPoint: 48 },
+            E:{ photo: 'Day 3 (7).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 3 (6).JPG', nextPoint: (-1) }
         },
         { // 50 (男12舍)
             N:{ photo: 'Day 3 (95).JPG', nextPoint: (-1) },
-            E:{ photo: 'Day 3 (96).JPG', nextPoint: 30 },    
-            S:{ photo: 'Day 3 (94).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (61).JPG', nextPoint: (-1) }         
+            E:{ photo: 'Day 3 (96).JPG', nextPoint: 30 },
+            S:{ photo: 'Day 3 (94).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 3 (61).JPG', nextPoint: (-1) }
         },
-        { // 51 (工2)            
-            N:{ photo: 'Day 1 (35).JPG', nextPoint: 10 },       
-            E:{ photo: 'Day 1 (34).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 1 (33).JPG', nextPoint: 7 },    
-            W:{ photo: 'Day 1 (32).JPG', nextPoint: (-1) }         
+        { // 51 (工2)
+            N:{ photo: 'Day 1 (35).JPG', nextPoint: 10 },
+            E:{ photo: 'Day 1 (34).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (33).JPG', nextPoint: 7 },
+            W:{ photo: 'Day 1 (32).JPG', nextPoint: (-1) }
         },
-        { // 52 (依仁堂)            
-            N:{ photo: 'Day 3 (80).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (81).JPG', nextPoint: 6 },    
-            S:{ photo: 'Day 3 (78).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (79).JPG', nextPoint: 53 }         
+        { // 52 (依仁堂)
+            N:{ photo: 'Day 3 (80).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (81).JPG', nextPoint: 6 },
+            S:{ photo: 'Day 3 (78).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 3 (79).JPG', nextPoint: 53 }
         },
-        { // 53 (羽球館)            
-            N:{ photo: 'Day 3 (75).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 3 (76).JPG', nextPoint: 52 },    
-            S:{ photo: 'Day 3 (77).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 3 (74).JPG', nextPoint: 43 }         
+        { // 53 (羽球館)
+            N:{ photo: 'Day 3 (75).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (76).JPG', nextPoint: 52 },
+            S:{ photo: 'Day 3 (77).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 3 (74).JPG', nextPoint: 43 }
         },
-        { // 54 (女1~4)            
-            N:{ photo: 'Day 1 (42).JPG', nextPoint: (-1) },       
-            E:{ photo: 'Day 1 (41).JPG', nextPoint: 9 },    
-            S:{ photo: 'Day 1 (40).JPG', nextPoint: (-1) },    
-            W:{ photo: 'Day 1 (43).JPG', nextPoint: 10 }         
+        { // 54 (女1~4)
+            N:{ photo: 'Day 1 (42).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 1 (41).JPG', nextPoint: 9 },
+            S:{ photo: 'Day 1 (40).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 1 (43).JPG', nextPoint: 10 }
         },
-        { // 55 (女5男3)            
-            N:{ photo: 'Day 1 (49).JPG', nextPoint: 13 },       
-            E:{ photo: 'Day 1 (50).JPG', nextPoint: (-1) },    
-            S:{ photo: 'Day 1 (51).JPG', nextPoint: 9 },    
-            W:{ photo: 'Day 1 (48).JPG', nextPoint: (-1) }         
+        { // 55 (女5男3)
+            N:{ photo: 'Day 1 (49).JPG', nextPoint: 13 },
+            E:{ photo: 'Day 1 (50).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 1 (51).JPG', nextPoint: 9 },
+            W:{ photo: 'Day 1 (48).JPG', nextPoint: (-1) }
         },
     ];
+
+    var move = function(pointat, faceto)
+    {
+        if ( pointat == -1 )
+        {
+            $.alert({
+                message: '這裡不能走！'
+            });
+        }
+        else
+        {
+            nowpointat = pointat;
+            nowfaceto = faceto;
+            $('#street-div #mapPicture')
+                .attr(
+                    'src',
+                    url + streetPoints[nowpointat][nowfaceto].photo
+                );
+        }
+    };
+
+    var forward = function()
+    {
+        move(streetPoints[nowpointat][nowfaceto].nextPoint, nowfaceto);
+    };
+
+    var turnLeft = function()
+    {
+        switch ( nowfaceto )
+        {
+            case 'N':
+                nowfaceto = 'W';
+                break;
+            case 'E':
+                nowfaceto = 'N';
+                break;
+            case 'S':
+                nowfaceto = 'E';
+                break;
+            case 'W':
+                nowfaceto = 'S';
+                break;
+        }
+        move(nowpointat, nowfaceto);
+    };
+
+    var turnRight = function()
+    {
+        switch ( nowfaceto )
+        {
+            case 'N':
+                nowfaceto = 'E';
+                break;
+            case 'E':
+                nowfaceto = 'S';
+                break;
+            case 'S':
+                nowfaceto = 'W';
+                break;
+            case 'W':
+                nowfaceto = 'N';
+                break;
+        }
+        move(nowpointat, nowfaceto);
+    };
+
+    $.street = function()
+    {
+        $('.picture').hide();
+        $('#street-div #experience-personally').mousedown(function()
+        {
+            $(document).mousemove(mousemove);
+            return false;
+        });
+        var mouseInId;
+        var isInPicture = false;
+        var mousemove = function(event)
+        {
+            $('.opacity-picture').css(
+            {
+                opacity: 0.5,
+            });
+            x = event.pageX - $('#street-div #back-div').offset().left;
+            y = event.pageY - $('#street-div #back-div').offset().top;
+            $('#street-div #experience-personally').css(
+            {
+            top: y +  2 + 'px',
+            left: x + 2 + 'px',
+            });
+        };
+
+        $('#street-div .picture').mouseenter(function()
+        {
+            isInPicture = true;
+            mouseInId = $(this).attr('id');
+        });
+
+        $('#street-div .picture').mouseleave(function()
+        {
+            isInPicture = false;
+        });
+
+        var mouseup = function()
+        {
+            $('.opacity-picture').css(
+            {
+                opacity: 1,
+            });
+            if( isInPicture == true )
+            {
+                if( $('#' + mouseInId).attr('streetPoints') == (-1) )
+                {
+                    $('#street-div #experience-personally').css(
+                    {
+                        top: 410,
+                        left: 530,
+                    });
+                }
+                else
+                {
+                    $('#street-div #experience-personally').css(
+                    {
+                        zIndex: 2,
+                    });
+
+                    $('#street-div #map-div, #street-div #curtain-close-div, #street-div #back-div').css(
+                    {
+                        height: 498,
+                    });
+
+                    $('#street-div #mapPicture').css(
+                    {
+                        zIndex: '3',
+                        width: 750,
+                        height: 498,
+                    });
+
+                    $('#street-div .arrow').show();
+
+                    move($('#' + mouseInId).attr('streetPoints'), $('#' + mouseInId).attr('faceto'));
+                    $('#street-div .arrow').eq(0).unbind('click').click(function() //前進nextDirection
+                    {
+                        forward();
+                    });
+                    $('#street-div .arrow').eq(1).unbind('click').click(function() // 左旋
+                    {
+                        turnLeft();
+                    });
+                    $('#street-div .arrow').eq(2).unbind('click').click(function() // 右旋
+                    {
+                        turnRight();
+                    });
+
+                    isInPicture = false;
+                }
+            }
+            $(document).unbind('mousemove', mousemove);
+            $('#street-div #experience-personally').css(
+            {
+                top: 410,
+                left: 530,
+            });
+        };
+        $(document).mouseup(mouseup);
+
+        $('#street-div .picture').hide();
+        $('#street-div .landscape').show();
+
+        var littleBuilding = function() // building icon show
+        {
+            $('#street-div .picture').hide();
+            $( '.' + $(this).attr('show')).show();
+        };
+        $('#street-div .one-image').bind('click', littleBuilding);
+
+        $('#street-div .two-image').click(function(){
+            $('#street-div .button-text').hide();
+            $('#street-div .button-text[ detailItem = ' + $(this).attr('detailItem') + ']' ).show();
+        });
+
+        $('#street-div .curtainOpen').click(function()
+        { // 窗簾
+            $('#street-div #experience-personally').css(
+            {
+                zIndex: 1,
+            });
+            $('#street-div #curtainDiv').animate(
+            {
+                left: '370px'
+            });
+            $('#street-div .button-text').hide();
+            $('#street-div .button-text[ detailItem = "department" ]').show();        
+            $('#street-div .one-image').unbind('click', littleBuilding);
+        });
+        $('#street-div #curtainclose').click(function()
+        {// 窗簾
+            $('#street-div #curtainDiv').animate(
+            {
+                left: '750px'
+            });
+            $('#street-div #experience-personally').css(
+            {
+                zIndex: 4,
+            });
+            $('#street-div .one-image').bind('click', littleBuilding);
+            $('#street-div .landscape').show();
+        });
+
+        $('#street-div .arrow').eq( 3 ).click(function() // 親身體驗 back
+        {
+            $('#street-div #mapPicture').attr('src', $('#street-div #mapPicture').attr('path'));
+            $('#street-div .arrow').hide();
+
+            $('#street-div #map-div, #street-div #curtain-close-div, #street-div #back-div').css(
+            {
+                height: 552,
+            });
+            $('#street-div #mapPicture').css(
+            {
+                width: 601,
+                height: 552,  
+                zIndex: 0,
+            });
+            $('#street-div #experience-personally').css(
+            {
+                zIndex: 3,
+            });
+        });
+        $('#street-div .picture, #street-div .button-text').click(function()
+        {
+            isInPicture = false;
+            $('#street-div #back-div, #street-div #curtain-close-div').css(
+            {
+               height: 552,
+            });
+            $('#street-div #experience-personally').css(
+            {
+                zIndex: 3,
+            });
+            $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
+            $('#text-container').dialog(
+            {
+                width: 680,
+                height: 400,
+                modal: true,
+                escape: false,
+                onClose: function()
+                {
+                    
+                }
+            });
+
+            $('#street-div .arrow').hide();
+            $('#street-div #mapPicture').css(
+            {
+                width: 601,
+                height: 552,
+                zIndex: 0,
+            });
+
+            var id = $(this).attr('href').replace('#', '');
+            $.ajax(
+            {
+                type: 'GET',
+                url: jQuery.configures.buildingContentUrl.replace(':id', id),
+                dataType: 'json',
+                success: function(data)
+                {
+                    $('#building-text').html(data.content);
+                    $('#building-text img').css(
+                    {
+                        cursor: 'pointer',
+                    });
+                    $('#building-text img').each(function()
+                    {
+                        $(this).wrapAll(
+                            $('<a></a>')
+                                .addClass('lightbox')
+                                .attr('href', $(this).attr('src'))
+                                .attr('title', $(this).attr('alt'))
+                        );
+                    });
+                    $('#building-text a.lightbox').lightbox({
+                        hideOverlayBackground: true
+                    });             
+                },
+            });
+            
+        });
+        $('#street-div #building-text').scrollable({
+            scrollableClass: 'street-scrollable'
+        });
+        
+        // $('#street-div .arrow.up, #street-div .arrow.right, #street-div .arrow.left').hover(function()
+        // {
+            // var arrowStrong = $(this).attr('src').replace('arrow', 'showPoint');
+            // $(this).attr('src', arrowStrong);
+        // }, function()
+        // {
+            // var arrowStrong = $(this).attr('src').replace('showPoint', 'arrow');
+            // $(this).attr('src', arrowStrong);
+        // });
+
+        // var howmanyphoto;
+        // var position = 0;
     };
 })(jQuery);
+
 (function($) {
     $.nculife = function()
     {
@@ -3566,7 +3650,7 @@
         {
             $(this).stop().animate(
             {
-                left : '-197px'
+                left : '-200px'
             },500);
         });
 
@@ -3611,9 +3695,12 @@
             return false;
         });
 
-        $('#calendar div').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
-
-        $('.back').click(function()
+        if ( $('#calendar div').length ) 
+        {
+            $('#calendar div').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
+        }
+        
+        $('#club .back').click(function()
         {
             window.history.back();
         });      
@@ -4096,7 +4183,6 @@
 
         var mmMenuScroll = function(offset)
         {
-            console.log(target);
             if ( typeof(mmMenuScroll.mousein) == 'undefined' )
             {
                 mmMenuScroll.mousein = false;
@@ -4191,45 +4277,6 @@
         });
         
         $('#multimedia .tab').first().click();
-    }
-})(jQuery);
-
-(function($){
-    $.friends = function()
-    {
-        jQuery('.button-back').click(function()
-        {
-            window.history.back();
-        }); 
-        $('.a-group-users').scrollable({
-            wheelSpeed: 90
-        });
-        $('.users-group').scrollable({
-            wheelSpeed: 90
-        });
-    
-    }
-})(jQuery);
-
-(function($){
-    $.profile = function()
-    {
-        $('.allmessages').scrollable({
-            wheelSpeed: 90
-        });
-        $('.my-all-messages').scrollable({
-            wheelSpeed: 90
-        });
-        $('.self-messages').scrollable({
-            wheelSpeed: 90
-        });
-        $('.friend-chatting').scrollable({
-            wheelSpeed: 90
-        })
-        $('.friend-chatting-content').scrollable({
-            wheelSpeed: 90
-        });
-    
     }
 })(jQuery);
 
@@ -4337,55 +4384,69 @@
     };
 })(jQuery);
 
-/**
- * Main
- */
 (function($)
 {
-    $(document).ready(function()
+    $.friends = function()
     {
-        $.configures.lasttime = 0;
+        var checked = false;
+        $('.a-group-users').scrollable({
+            wheelSpeed: 90
+        });
+        $('.users-group').scrollable({
+            wheelSpeed: 90
+        });
+        $('#new-group-members').scrollable({
+            wheelSpeed: 90
+        });
+        $('.button-all-choose').click(function()
+        {
+            checked = ! checked;
+            $('input[type="checkbox"][name^="friends"]').each(function()
+            {
+                $(this).prop('checked', checked);
+            });
+            $('input[type="checkbox"][name^="friends"]').change();
+            return false;
+        });
+    };
+    
+})(jQuery);
 
-        $.configures.sequence = $.random(0, 1000);
+(function($)
+{
+    $.profile = function()
+    {
+        $('.allmessages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.my-all-messages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.self-messages').scrollable({
+            wheelSpeed: 90
+        });
+        $('.friend-chatting').scrollable({
+            wheelSpeed: 90
+        })
+        $('.friend-chatting-content').scrollable({
+            wheelSpeed: 90
+        });
+        jQuery('.button-viewProfile-back').click(function()
+        {
+            window.history.back();
+        }); 
+    
+    };
+})(jQuery);
 
-        if ( $('#chat').length ) $('#chat').chat();
-
-        $('#header').star();
-
-        $('#moon').moon();
-
+(function($)
+{
+    $.ncufresh = function()
+    {
         $('.loading').sprite();
-        
-        if ( $('#club').length ) $.clubs();
 
-        if ( $('#game').length ) $.game();
-
-        if ( $('#friends').length ) $.friends();
-
-        if ( $('#profile').length ) $.profile();
-
-        if ( $('#nculife').length ) $.nculife();
-
-        if ( $('#readme').length ) $.readme(); 
-
-        if ( $('#street').length ) $.street(); 
-
-        if ( $('#multimedia').length ) $.multimedia();
-
-        if ( $('.calendar-create').length ) $.calendarCreate();
-
-        if ( $('#calendar-recycle').length ) $.calendarRecycle();
-
-        if ( $('#personal-calendar').length ) $.calendarView();
-
-        if ( $('#calendar-subscript').length ) $.calendarSubscript();
-
-        if ( $('#calendar-club').length ) $.calendarClub();
-
-        if ( $('#calendar-event').length ) $.calendarEvent();
-
-        $('input.datepicker:not(#form-register-birthday)').datepicker();
-        $('#form-register-birthday').datepicker({
+        $('input.datepicker:not(#form-register-birthday, #form-editor-birthday)').datepicker();
+        $('#form-register-birthday, #form-editor-birthday').datepicker({
             year: 1994,
             month: 8
         });
@@ -4446,6 +4507,7 @@
                 });
             }
         });
+
         $('form input[type="radio"]').each(function(element)
         {
             var span = $('<span></span>')
@@ -4478,7 +4540,49 @@
                 });
 
             if ( $(this).prop('checked') ) {
-                $(this).prev().addClass('checked');
+                $(this).next().addClass('checked');
+            }
+        });
+
+        $('form input[type="checkbox"]').each(function(element)
+        {
+            var span = $('<span></span>')
+                .addClass('checkbox')
+                .mousedown(function()
+                {
+                    if ( $(this).hasClass('checked') )
+                    {
+                        $(this).prev().prop('checked', false);
+                        $(this).removeClass('checked');
+                    }
+                    else
+                    {
+                        $(this).prev().prop('checked', true);
+                        $(this).addClass('checked');
+                    }
+                })
+                .insertAfter($(this));
+
+            $(this).css({
+                    display: 'none',
+                    height: 'auto',
+                    width: 'auto'
+                })
+                .change(function()
+                {
+                    if ( $(this).prop('checked') )
+                    {
+                        $(this).next().addClass('checked');
+                    }
+                    else
+                    {
+                        $(this).next().removeClass('checked');
+                    }
+                    console.log($(this).prop('checked'));
+                });
+
+            if ( $(this).prop('checked') ) {
+                $(this).next().addClass('checked');
             }
         });
 
@@ -4495,12 +4599,324 @@
             window.open(url);
             return false;
         });
+    };
+})(jQuery);
+
+(function($)
+{
+    $.site = function()
+    {
+        const SEGMENT = 100 / 5;
+
+        var meter = $('#form-password-meter');
+
+        var offset = parseInt(meter.css('margin-top'));
+
+        var calculatePasswordScore = function(password)
+        {
+            var lengthMultiplier = 4;
+            var numberMultiplier = 4;
+            var symbolMultiplier = 6;
+            var middleCharacterMultipler = 2;
+            var upperCaseAlphaMultipler = 2;
+            var lowerCaseAlphaMultipler = 2;
+            var consecutiveNumberMultipler = 2;
+            var sequentialAlplaMultipler = 3;
+            var sequentialNumberMultipler = 3;
+            var sequentialSymbolMultipler = 3;
+
+            var upperCaseAlpha = '';
+            var lowerCaseAlpha = '';
+            var number = '';
+            var symbol = '';
+            var repeatCharacterCountIncreasement = 0;
+
+            var repeatChatacterExists = false;
+            var upperCaseAlphaCount = 0;
+            var lowerCaseAlphaCount = 0;
+            var middleCharacterCount = 0;
+            var numberCount = 0;
+            var symbolCount = 0;
+            var repeatCharacterCount = 0;
+            var uniqueCharacterCount = 0;
+
+            var consecutiveUpperCaseAlphaCount = 0;
+            var consecutiveLowerCaseAlphaCount = 0;
+            var consecutiveNumberCount = 0;
+            var consecutiveSymbolCount = 0;
+
+            var sequentialAlplaCount = 0;
+            var sequentialNumberCount = 0;
+            var sequentialSymbolCount = 0;
+            var sequentialCharacterCount = 0;
+
+            var length = password.length;
+            var score = parseInt(length * lengthMultiplier);
+            var array = password.replace(/\s+/g, '').split(/\s*/);
+
+            for ( var index = 0; index < array.length ; ++index )
+            {
+                if ( array[index].match(/[A-Z]/g) )
+                {
+                    if ( upperCaseAlpha !== '' )
+                    {
+                        if ( (upperCaseAlpha + 1) == index ) consecutiveUpperCaseAlphaCount++;
+                    }
+                    upperCaseAlpha = index;
+                    upperCaseAlphaCount++;
+                }
+                else if ( array[index].match(/[a-z]/g) )
+                { 
+                    if ( lowerCaseAlpha !== '')
+                    {
+                        if ( (lowerCaseAlpha + 1) == index ) consecutiveLowerCaseAlphaCount++;
+                    }
+                    lowerCaseAlpha = index;
+                    lowerCaseAlphaCount++;
+                }
+                else if ( array[index].match(/[0-9]/g) )
+                { 
+                    if ( index > 0 && index < (array.length - 1) )
+                    {
+                        middleCharacterCount++;
+                    }
+                    if ( number !== '' )
+                    {
+                        if ( (number + 1) == index ) consecutiveNumberCount++;
+                    }
+                    number = index;
+                    numberCount++;
+                }
+                else if ( array[index].match(/[^a-zA-Z0-9_]/g) )
+                { 
+                    if ( index > 0 && index < (array.length - 1) )
+                    {
+                        middleCharacterCount++;
+                    }
+                    if ( symbol !== '' )
+                    {
+                        if ( (symbol + 1) == index ) consecutiveSymbolCount++;
+                    }
+                    symbol = index;
+                    symbolCount++;
+                }
+
+                for ( var t = 0 ; t < array.length ; ++t )
+                {
+                    if ( array[index] == array[t] && index != t )
+                    {
+                        repeatChatacterExists = true;
+                        repeatCharacterCountIncreasement += Math.abs(array.length/(t - index));
+                    }
+                }
+                if ( repeatChatacterExists )
+                { 
+                    repeatCharacterCount++; 
+                    uniqueCharacterCount = array.length - repeatCharacterCount;
+                    repeatCharacterCountIncreasement = (uniqueCharacterCount) ? Math.ceil(repeatCharacterCountIncreasement / uniqueCharacterCount) : Math.ceil(repeatCharacterCountIncreasement); 
+                }
+            }
+
+            for ( var t = 0 ; t < 23 ; ++t )
+            {
+                var forward = 'abcdefghijklmnopqrstuvwxyz'.substring(t, parseInt(t + 3));
+                var reverse = forward.reverse();
+                if (
+                    password.toLowerCase().indexOf(forward) != -1
+                 || password.toLowerCase().indexOf(reverse) != -1
+                )
+                {
+                    sequentialAlplaCount++;
+                    sequentialCharacterCount++;
+                }
+            }
+
+            for ( var t = 0 ; t < 8 ; ++t )
+            {
+                var forward = '01234567890'.substring(t, parseInt(t + 3));
+                var reverse = forward.reverse();
+                if (
+                    password.toLowerCase().indexOf(forward) != -1
+                 || password.toLowerCase().indexOf(reverse) != -1
+                )
+                {
+                    sequentialNumberCount++;
+                    sequentialCharacterCount++;
+                }
+            }
+
+            for ( var t = 0 ; t < 8; ++t )
+            {
+                var forward = ')!@#$%^&*()'.substring(t, parseInt(t + 3));
+                var reverse = forward.reverse();
+                if (
+                    password.toLowerCase().indexOf(forward) != -1
+                 || password.toLowerCase().indexOf(reverse) != -1
+                )
+                {
+                    sequentialSymbolCount++;
+                    sequentialCharacterCount++;
+                }
+            }
+
+            if ( upperCaseAlphaCount > 0 && upperCaseAlphaCount < length )
+            {
+                score += parseInt((length - upperCaseAlphaCount) * 2);
+            }
+            if ( lowerCaseAlphaCount > 0 && lowerCaseAlphaCount < length )
+            {
+                score += parseInt((length - lowerCaseAlphaCount) * 2);
+            }
+            if ( numberCount > 0 && numberCount < length )
+            {
+                score += parseInt(numberCount * numberMultiplier);
+            }
+            if ( symbolCount > 0 )
+            {
+                score += parseInt(symbolCount * symbolMultiplier);
+            }
+            if ( middleCharacterCount > 0)
+            {
+                score += parseInt(middleCharacterCount * middleCharacterMultipler);
+            }
+            if ( (lowerCaseAlphaCount > 0 || upperCaseAlphaCount > 0) && symbolCount === 0 && numberCount === 0 )
+            {
+                score -= parseInt(length);
+            }
+            if ( lowerCaseAlphaCount === 0 && upperCaseAlphaCount === 0 && symbolCount === 0 && numberCount > 0 )
+            {
+                score -= parseInt(length); 
+            }
+            if ( repeatCharacterCount > 0 )
+            {
+                score -= parseInt(repeatCharacterCountIncreasement);
+            }
+            if ( consecutiveUpperCaseAlphaCount > 0 )
+            {
+                score -= parseInt(consecutiveUpperCaseAlphaCount * upperCaseAlphaMultipler);
+            }
+            if ( consecutiveLowerCaseAlphaCount > 0 )
+            {
+                score -= parseInt(consecutiveLowerCaseAlphaCount * lowerCaseAlphaMultipler);
+            }
+            if ( consecutiveNumberCount > 0 )
+            {
+                score -= parseInt(consecutiveNumberCount * consecutiveNumberMultipler);
+            }
+            if ( sequentialAlplaCount > 0 )
+            {
+                score -= parseInt(sequentialAlplaCount * sequentialAlplaMultipler);
+            }
+            if ( sequentialNumberCount > 0 )
+            {
+                score -= parseInt(sequentialNumberCount * sequentialNumberMultipler); 
+            }
+            if ( sequentialSymbolCount > 0 )
+            {
+                score -= parseInt(sequentialSymbolCount * sequentialSymbolMultipler);
+            }
+
+            if ( length < 8 ) score /= 2;
+            if ( score > 100 ) score = 100;
+            if ( score < 0 ) score = 0;
+            return score;
+        };
+
+        var colors = [
+            '#FF0000',
+            '#F79F1D',
+            '#EAF722',
+            '#99E653',
+            '#3AF463'
+        ];
+
+        var checkPasswordStrength = function()
+        {
+            if ( $(this).val() !== '' )
+            {
+                var score = calculatePasswordScore($(this).val());
+                var level = parseInt(score / SEGMENT) + 1;
+
+                meter.find('td').css({
+                    backgroundColor: 'transparent'
+                });
+
+                for ( var index = 0 ; index < level ; ++index )
+                {
+                    meter.find('td').eq(index).css({
+                        backgroundColor: colors[level - 1]
+                    });
+                }
+            }
+        };
+
+        if ( $('#form-register-password').length )
+        {
+            checkPasswordStrength.call(
+                $('#form-register-password')
+                    .keyup(checkPasswordStrength)
+                    .keydown(checkPasswordStrength)
+            );
+        }
+    };
+})(jQuery);
+
+/**
+ * Main
+ */
+(function($)
+{
+    $(document).ready(function()
+    {
+        $.configures.lasttime = 0;
+
+        $.configures.sequence = $.random(0, 1000);
+
+        $.ncufresh();
+
+        $('#header').star();
+
+        $('#moon').moon();
+
+        if ( $('#chat').length ) $('#chat').chat();
+
+        if ( $('#site').length ) $.site();
+
+        if ( $('#club').length ) $.clubs();
+
+        if ( $('#game').length ) $.game();
+
+        if ( $('#friends').length ) $.friends();
+
+        if ( $('#profile').length ) $.profile();
+
+        if ( $('#nculife').length ) $.nculife();
+
+        if ( $('#readme').length ) $.readme(); 
+
+        if ( $('#street').length ) $.street(); 
+
+        if ( $('#multimedia').length ) $.multimedia();
+
+        if ( $('.calendar-create').length ) $.calendarCreate();
+
+        if ( $('#calendar-recycle').length ) $.calendarRecycle();
+
+        if ( $('#personal-calendar').length ) $.calendarView();
+
+        if ( $('#calendar-subscript').length ) $.calendarSubscript();
+
+        if ( $('#calendar-club').length ) $.calendarClub();
+
+        if ( $('#calendar-event').length ) $.calendarEvent();
 
         $.pull.start({
             friendcounter: $('#chat .friendcounts'),
             onlinecounter: $('#header .online'),
             browseredcounter: $('#header .browsered')
         });
+
+        $.push.start();
     });
 
     $('<script></script>')
@@ -4517,7 +4933,7 @@
             .appendTo($('#fb-root'));
 
         $('<fb:like></fb:like>')
-            .attr('href', window.location.href)
+            .attr('href', $.configures.ncuFreshWebUrl)
             .attr('data-send', 'false')
             .attr('data-layout', 'button_count')
             .attr('data-show-faces', 'false')
@@ -4531,17 +4947,17 @@
             xfbml:      true
         });
     };
+
+    google.setOnLoadCallback(function()
+    {
+        google.search.CustomSearchControl.attachAutoCompletion(
+            $.configures.googleSearchAppId,
+            $('#form-search-query').get(0),
+            'search'
+        );
+    });
 })(jQuery);
 
 google.load('search', '1', {
     language: 'zh_TW'
-});
-
-google.setOnLoadCallback(function()
-{
-    google.search.CustomSearchControl.attachAutoCompletion(
-        $.configures.googleSearchAppId,
-        document.getElementById('form-search-query'),
-        'search'
-    );
 });
