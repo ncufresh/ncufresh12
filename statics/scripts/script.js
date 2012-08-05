@@ -4504,7 +4504,7 @@
                 });
 
             if ( $(this).prop('checked') ) {
-                $(this).prev().addClass('checked');
+                $(this).next().addClass('checked');
             }
         });
 
@@ -4546,7 +4546,7 @@
                 });
 
             if ( $(this).prop('checked') ) {
-                $(this).prev().addClass('checked');
+                $(this).next().addClass('checked');
             }
         });
 
