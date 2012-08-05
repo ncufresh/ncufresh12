@@ -613,9 +613,9 @@
         for ( var key in response )
         {
             var data = response[key];
-            var entry;
+            var entry = null;
             $('#' + $.chat.options.friendListContainerId)
-                .find('div')
+                .find('.friend-list-entry')
                 .each(function()
                 {
                     if ( $(this).data('id') == data.id ) entry = $(this);
