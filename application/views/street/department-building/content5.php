@@ -14,6 +14,9 @@
     國鼎光電大樓歡迎您的參訪
 </p>
 <p>
+	科系：<a href="http://www.dop.ncu.edu.tw/" title="光電">光電</a>
+</p>
+<p>
     科系：<a href="http://www.dop.ncu.edu.tw/" title="光電">光電</a>
 </p>
 <p>

@@ -3085,8 +3085,8 @@
             W:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) }
         },
         { // 50 (男12舍)
-            N:{ photo: 'Day 3 (95).JPG', nextPoint: (-1) },
-            E:{ photo: 'Day 3 (96).JPG', nextPoint: 30 },
+            N:{ photo: 'Day 3 (96).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (95).JPG', nextPoint: 30 },
             S:{ photo: 'Day 3 (94).JPG', nextPoint: (-1) },
             W:{ photo: 'Day 3 (61).JPG', nextPoint: (-1) }
         },
