@@ -17,16 +17,11 @@
         return this.split('').reverse().join('');
     };
 
-    Array.prototype.indexOf = function(obj)
-    {
-        for(var i=0; i<this.length; i++)
+    if ( ! Array.prototype.indexOf ) {
+        Array.prototype.indexOf = function(obj)
         {
-            if(this[i]==obj)
-            {
-                return i;
-            }
-        }
-        return -1;
+            return $.inArray(obj, this);
+        };
     };
 
     if ( $.browser.msie )
@@ -1669,7 +1664,7 @@
         $('<td></td>').text(options.dateText).appendTo(tr);
         $('<td></td>').text(options.eventText).appendTo(tr);
         tr.appendTo(thead);
-        for(var key in events)
+        for(var key=0;  key<events.length; key++)
         {
             var tr = $('<tr></tr>');
             var td = $('<td></td>').text(events[key][0]);
@@ -1737,11 +1732,12 @@
         var tbody = $('<tbody></tbody>');
         var tr = $('<tr></tr>');
         var date = new Date(options.year, options.month);
-        for( var key in options.dayOfWeek )
+        for ( var key = 0; key < options.dayOfWeek.length; key++ )
         {
             var td = $('<td></td>').text(options.dayOfWeek[key]);
             if ( key==0 || key==6 ) td.addClass('weekend');
             td.appendTo(tr);
+            console.log(td.text());
         }
         tr.appendTo(thead);
         for( var day = 1, position = 0; day <= $.daysInMonth(options.month, options.year); position++ )
