@@ -39,20 +39,24 @@ class ChatController extends Controller
 
         if ( Yii::app()->request->getIsPostRequest() )
         {
-            if ( Yii::app()->user->getId() != $_POST['receiver'] )
+            foreach ( $_POST['messages'] as $message )
             {
-                $model = new Chat();
-                $model->message = $_POST['message'];
-                $model->receiver_id = $_POST['receiver'];
-                $model->sequence = $_POST['sequence'];
-                if ( $model->validate() && $model->save() )
+                if ( Yii::app()->user->getId() != $message['receiver'] )
                 {
-                    $this->_data['messages'] = Chat::model()->getMessages(
-                        $_POST['lasttime']
-                    );
+                    $model = new Chat();
+                    $model->message = $message['message'];
+                    $model->receiver_id = $message['receiver'];
+                    $model->sequence = $message['sequence'];
+                    if ( ! $model->validate() || ! $model->save() )
+                    {
+                        return false;
+                    }
                 }
-                return true;
             }
+            $this->_data['messages'] = Chat::model()->getMessages(
+                $_POST['lasttime']
+            );
+            return true;
         }
 
         $this->_data['errors'][] = '發生錯誤！';
