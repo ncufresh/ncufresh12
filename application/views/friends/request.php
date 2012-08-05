@@ -1,3 +1,14 @@
+<form class="friends-search">
+    <dl>
+        <dt>
+            <label for="request-search">搜尋</label>
+        </dt>
+        <dd>
+            <input id="request-search" type="text" />
+        </dd>
+    </dl>
+</form>
+
 <form id="request" method="POST" action="<?php echo $this->createUrl('friends/request'); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
     <h4>好友確認</h4>
@@ -17,10 +28,8 @@
 <?php endforeach; ?>
         </ul>
     </div>
-    <input id="request-search" type="text" value="搜尋"/>
     <button type="submit" name="agree" class="button-makefriend">好友確認</button>
     <button type="submit" name="cancel" class="button-cancel">取消</button>
     <button class="button-all-choose">全選</button>
     <a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>
 </form>
-

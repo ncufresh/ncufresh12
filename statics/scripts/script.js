@@ -4434,6 +4434,11 @@
         {
             friends[friends.length] = [$(this).text(), $(this).parent()];
         });
+        
+        $('.friends-search').submit(function()
+        {
+            return false;
+        });
     };
     
 })(jQuery);
