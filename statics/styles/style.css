@@ -1609,26 +1609,25 @@ ul#nculife-details
     position: relative;
 }
 
-#club #calendar  .calendar-table,
+#club #calendar .calendar-table,
 #index-calendar .calendar-table
 {
     border-collapse: collapse;
 }
 
-#club #calendar  .calendar-table caption,
+#club #calendar .calendar-table caption,
 #index-calendar .calendar-table caption
 {
     margin: 15px 0 10px 0;
 }
 
-#club #calendar  .calendar-table td,
+#club #calendar .calendar-table td,
 #index-calendar .calendar-table td
 {
     text-align: center;
     width: 28px;
     cursor: pointer;
 }
-
 
 #club #calendar .calendar-table td.today,
 #index-calendar .calendar-table td.today
@@ -1654,20 +1653,20 @@ ul#nculife-details
     display: block;
 }
 
-#club #calendar  .calendar-table thead td,
+#club #calendar .calendar-table thead td,
 #index-calendar .calendar-table thead td
 {
     color: #af8d5a;
     text-align: center;
 }
 
-#club #calendar  .calendar-table thead td.weekend,
+#club #calendar .calendar-table thead td.weekend,
 #index-calendar .calendar-table thead td.weekend
 {
     color: red;
 }
 
-#club #calendar  .calendar-table tbody,
+#club #calendar .calendar-table tbody,
 #index-calendar .calendar-table tbody
 {
     border-top: 1px solid #946722;
@@ -1675,14 +1674,14 @@ ul#nculife-details
     display: block;
 }
 
-#club #calendar  .todolist-table td,
+#club #calendar .todolist-table td,
 #index-calendar .todolist-table td
 {
     width: 100px;
     text-align: center;
 }
 
-#club #calendar  .todolist-table thead td,
+#club #calendar .todolist-table thead td,
 #index-calendar .todolist-table thead td
 {
     color: #946722;
@@ -3918,9 +3917,11 @@ button.news-button
 
 #club .underpicture > div
 {
-    position: relative;
-    height: 400px;
     display: none;
+    height: 400px;
+    padding: 0 5px;
+    position: relative;
+    width: 200px;
 }
 
 #club .underpicture ul
