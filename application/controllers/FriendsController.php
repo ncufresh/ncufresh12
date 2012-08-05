@@ -89,26 +89,50 @@ class FriendsController extends Controller
     }
 
     public function actionMakeFriends() 
-    {  
-        if ( isset($_POST['friends']) )
+    {
+        if ( Yii::app()->request->getIsAjaxRequest() )
         {
-            foreach ( $_POST['friends'] as $friendid )
-            {   
-                $relation = Friend::model()->friendRelation($friendid);
-                if ( $this->userId != $friendid && ($relation === Friend::IS_RECEIVERED_REQUEST || $relation === Friend::IS_NOT_FRIEND) )
-                {
-                    Friend::model()->addFriend($friendid); //本人加朋友資料
-                    Friend::model()->makeFriend($friendid);
+            if ( isset($_POST['friends']) )
+            {
+                foreach ( $_POST['friends'] as $friendid )
+                {   
+                    $relation = Friend::model()->friendRelation($friendid);
+                    if ( $this->userId != $friendid && ($relation === Friend::IS_RECEIVERED_REQUEST || $relation === Friend::IS_NOT_FRIEND) )
+                    {
+                        Friend::model()->addFriend($friendid);
+                        Friend::model()->makeFriend($friendid);
+                        $this->_data['result'] = true;
+                    }
+                    else
+                    {
+                        $this->_data['result'] = false;
+                    }
                 }
             }
-            foreach ( array_merge(Friend::model()->getErrors()) as $field => $error )
-            {
-                Yii::app()->user->setFlash('交友失敗咯', true);
-                Yii::app()->user->setFlash('交友失敗咯', true);
-            }
-            $this->redirect(array('friends/myfriends'));
+            else $this->_data['result'] = 4;
         }
-        $this->redirect(array('friends/friends'));
+        else
+        {
+            if ( isset($_POST['friends']) )
+            {
+                foreach ( $_POST['friends'] as $friendid )
+                {   
+                    $relation = Friend::model()->friendRelation($friendid);
+                    if ( $this->userId != $friendid && ($relation === Friend::IS_RECEIVERED_REQUEST || $relation === Friend::IS_NOT_FRIEND) )
+                    
+                    {
+                        Friend::model()->addFriend($friendid); //本人加朋友資料
+                        Friend::model()->makeFriend($friendid);
+                    }
+                }
+                foreach ( Friend::model()->getErrors() as $field => $error )
+                {
+                    Yii::app()->user->setFlash('make-friends-error', true);
+                }
+                $this->redirect(array('friends/myfriends'));
+            }
+            $this->redirect(array('friends/friends'));
+        }
     }
 
     public function actionDeleteFriends()
@@ -118,7 +142,11 @@ class FriendsController extends Controller
             foreach ( $_POST['friends'] as $cancelfriend )
             {
                 Friend::model()->deleteFriend($cancelfriend);
-            }         
+            }
+            foreach ( Friend::model()->getErrors() as $field => $error )
+            {
+                Yii::app()->user->setFlash('delete-friends-error', true);
+            }
         }
         $this->redirect(array('friends/myfriends'));
     }
@@ -149,6 +177,10 @@ class FriendsController extends Controller
                 {
                 }
             }
+            foreach ( $usergroup->getErrors() as $field => $error )
+            {
+                Yii::app()->user->setFlash('add-new-members-error', true);
+            }
             $this->redirect(array('friends/mygroups', 'id' => $id));
         }
         $this->redirect(array('friends/newmembers', 'id' => $id));
@@ -164,7 +196,11 @@ class FriendsController extends Controller
                 if ( ! $close )
                 {
                 }
-            } 
+            }
+            foreach ( $close->getErrors() as $field => $error )
+            {
+                Yii::app()->user->setFlash('delete-members-error', true);
+            }
             $this->redirect(array('friends/mygroups', 'id'=> $id));
         }
         $this->redirect(array('friends/mygroups', 'id'=> $id));
@@ -172,18 +208,15 @@ class FriendsController extends Controller
 
     public function actionNewGroup()
     {
-        $grade = Profile::model()->findByPK($this->userId)->grade;
-        if ( isset($_POST['all-choose']) )
-        {
-            if ( ! Group::model()->addNewGroup($this->userId, $_POST['group-name'], $_POST['group-description'], $_POST['friends-all-choose']) )
-            {
-            }
-            $this->redirect(array('friends/friends'));
-        }        
+        $grade = Profile::model()->findByPK($this->userId)->grade;       
         if ( isset($_POST['friends']) )
         {
             if ( ! Group::model()->addNewGroup($this->userId, $_POST['group-name'], $_POST['group-description'], $_POST['friends']) )
             {
+            }
+            foreach ( Group::model()->getErrors() as $field => $error )
+            {
+                Yii::app()->user->setFlash('add-new-group-error', true);
             }
             $this->redirect(array('friends/friends'));
         }
@@ -203,7 +236,11 @@ class FriendsController extends Controller
                 if ( ! $close )
                 {
                 }
-            } 
+            }
+            foreach (  UserGroup::model()->getErrors() as $field => $error )
+            {
+                Yii::app()->user->setFlash('delete-group-error', true);
+            }
             $this->redirect(array('friends/allgroups'));
         }
         $this->redirect(array('friends/friends'));
@@ -238,6 +275,10 @@ class FriendsController extends Controller
                     Friend::model()->makeFriend($friendid);
                 }
             }
+            foreach (  Friend::model()->getErrors() as $field => $error )
+            {
+                Yii::app()->user->setFlash('answer-request-error', true);
+            }
             $this->redirect(array('friends/myfriends'));
         }
         else if ( isset($_POST['friends']) && isset($_POST['cancel']) )
@@ -245,6 +286,10 @@ class FriendsController extends Controller
             foreach ( $_POST['friends'] as $cancelfriend )
             {
                 Friend::model()->deleteFriend($cancelfriend);
+            }
+            foreach (  Friend::model()->getErrors() as $field => $error )
+            {
+                Yii::app()->user->setFlash('cancel-request-error', true);
             }
             $this->redirect(array('friends/myfriends'));      
         }
