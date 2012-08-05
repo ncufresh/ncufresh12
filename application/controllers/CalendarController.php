@@ -476,7 +476,17 @@ class CalendarController extends Controller
 
     public function actionAjaxClubEvents($id)
     {
-        $events = Calendar::model()->getClubCalendar($id)->events;
+        if ( isset($_GET['y'])&&isset($_GET['m']) )
+        {
+            $year = $_GET['y'];
+            $month = $_GET['m'] + 1;
+            $calendar = Calendar::model()->limitMonth($year,$month)->getClubCalendar($id);
+            $events = $calendar?$calendar->events:array();
+        }
+        else
+        {
+            $events = Calendar::model()->getClubCalendar($id)->events;
+        }
         foreach ( $events as $key => $event )
         {
             $this->_data['events'][$key]['id'] = $event->id;
@@ -487,19 +497,6 @@ class CalendarController extends Controller
         }
     }
 
-    protected function getAjaxClubEvents()
-    {
-        $events = Calendar::model()->getClubCalendar()->events;
-        foreach ( $events as $key => $event )
-        {
-            $this->_data['events'][$key]['id'] = $event->id;
-            $this->_data['events'][$key]['start'] = $event->start;
-            $this->_data['events'][$key]['name'] = $event->name;
-            $this->_data['events'][$key]['end'] = $event->end;
-            $this->_data['events'][$key]['invisible'] = $event->invisible;
-        }
-    }
-    
     protected function loadPersonalCalendar()
     {
         $calendar = Calendar::model()->getPersonalCalendar();

@@ -2,13 +2,13 @@
     男三舍
 </h4>
 <p>
-    <img alt="男三舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2958.JPG" style="width:280px;height:180px;" /><img alt="男三舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2960.JPG" style="width:300px;height:180px;" />
+    <img alt="男三舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2958.JPG" style="width:280px;height:180px;" />   <img alt="男三舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2960.JPG" style="width:300px;height:180px;" />
 </p>
 <p>
     <strong>寢室設備</strong>：4人房（樓梯間三人房，共六間），有床組、衣櫃、書桌、冷氣機（需至校內便利商店購買冷氣儲值卡），屬公共衛浴。床組：皆為上舖，<strong>200cm&times;100cm</strong>。
 </p>
 <p>
-    <img alt="男三舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B3_1-2.jpg" style="width:260px;height:195px;" /><img alt="男三舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B3_1-1.jpg" style="width:240px;height:180px;" />
+    <img alt="男三舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B3_1-2.jpg" style="width:260px;height:195px;" />   <img alt="男三舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B3_1-1.jpg" style="width:240px;height:180px;" />
 </p>
 <ol>
     <li>
@@ -28,8 +28,8 @@
     </li>
 </ol>
 <p>
-    <img alt="交誼廳" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/07-2(1).png" style="width:274px;height:180px;" /><img alt="晒衣場" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/03-1.png" style="width:273px;height:180px;" />
+    <img alt="交誼廳" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/07-2(1).png" style="width:274px;height:180px;" />   <img alt="晒衣場" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/03-1.png" style="width:273px;height:180px;" />
 </p>
 <p>
-    <img alt="簡易廚房" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B3_3-2.jpg" style="width:240px;height:180px;" /><img alt="簡易廚房" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B3_3-1.jpg" style="width:240px;height:180px;" />
+    <img alt="簡易廚房" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B3_3-2.jpg" style="width:240px;height:180px;" />   <img alt="簡易廚房" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B3_3-1.jpg" style="width:240px;height:180px;" />
 </p>

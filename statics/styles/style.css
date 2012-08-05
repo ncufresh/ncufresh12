@@ -328,21 +328,6 @@ a:hover
     color: #7C7C7C;
 }
 
-.ui-dialog
-{
-    position: absolute;
-}
-
-.ui-widget-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000000;
-    opacity: 0.7;
-}
-
 .scroll-container
 {
     position: relative;
@@ -1540,12 +1525,6 @@ table.gsc-completion-container
     border: 3px solid #7C7C7C;
 }
 
-ul#nculife-details
-{  
-    margin: 0;
-    padding: 0;
-}
-
 /**
  * Index style
  */
@@ -1609,26 +1588,25 @@ ul#nculife-details
     position: relative;
 }
 
-#club #calendar  .calendar-table,
+#club #calendar .calendar-table,
 #index-calendar .calendar-table
 {
     border-collapse: collapse;
 }
 
-#club #calendar  .calendar-table caption,
+#club #calendar .calendar-table caption,
 #index-calendar .calendar-table caption
 {
     margin: 15px 0 10px 0;
 }
 
-#club #calendar  .calendar-table td,
+#club #calendar .calendar-table td,
 #index-calendar .calendar-table td
 {
     text-align: center;
     width: 28px;
     cursor: pointer;
 }
-
 
 #club #calendar .calendar-table td.today,
 #index-calendar .calendar-table td.today
@@ -1654,20 +1632,20 @@ ul#nculife-details
     display: block;
 }
 
-#club #calendar  .calendar-table thead td,
+#club #calendar .calendar-table thead td,
 #index-calendar .calendar-table thead td
 {
     color: #af8d5a;
     text-align: center;
 }
 
-#club #calendar  .calendar-table thead td.weekend,
+#club #calendar .calendar-table thead td.weekend,
 #index-calendar .calendar-table thead td.weekend
 {
     color: red;
 }
 
-#club #calendar  .calendar-table tbody,
+#club #calendar .calendar-table tbody,
 #index-calendar .calendar-table tbody
 {
     border-top: 1px solid #946722;
@@ -1675,14 +1653,14 @@ ul#nculife-details
     display: block;
 }
 
-#club #calendar  .todolist-table td,
+#club #calendar .todolist-table td,
 #index-calendar .todolist-table td
 {
     width: 100px;
     text-align: center;
 }
 
-#club #calendar  .todolist-table thead td,
+#club #calendar .todolist-table thead td,
 #index-calendar .todolist-table thead td
 {
     color: #946722;
@@ -2458,10 +2436,10 @@ button.news-button
 
 #multimedia .title
 {
-    background-position: -752px -240px;
+    background-position: 0 -912px;
     background-repeat: no-repeat;
-    height: 60px;
-    width: 324px;
+    height: 65px;
+    width: 630px;
     margin: 15px auto;
 }
 
@@ -2485,25 +2463,25 @@ button.news-button
 
 #multimedia .sidebar #tab1
 {
-    background-position: -752px -320px;
+    background-position: -816px -320px;
 }
 
 #multimedia .sidebar #tab1:active,
 #multimedia .sidebar #tab1.active 
 {
-    background-position: -784px -320px;
+    background-position: -848px -320px;
 }
 
 #multimedia .sidebar #tab2
 {
-    background-position: -816px -320px;
+    background-position: -752px -320px;
     top: 100px;
 }
 
 #multimedia .sidebar #tab2:active,
 #multimedia .sidebar #tab2.active 
 {
-    background-position: -848px -320px;
+    background-position: -784px -320px;  
 }
 
 #multimedia .content
@@ -2612,8 +2590,8 @@ button.news-button
     background-position: 0px -720px;
     background-repeat: no-repeat;
     color: #000000;
-    height: 150px;
-    padding: 25px 55px;
+    height: 160px;
+    padding: 15px 55px;
 }
 
 #multimedia-frame
@@ -3724,14 +3702,14 @@ button.news-button
     text-align: left;
     overflow: hidden;
     margin-top: 56px;
-    margin-left: 30px;
+    margin-left: 27px;
 }
 
 #club .club-list ul
 {
     float: left;
     padding: 0;
-    width: 24%;
+    width: 23.5%;
     list-style: none;
 }
 
@@ -3739,16 +3717,23 @@ button.news-button
 {
     text-align: left;
     margin-top: 98px;
-    margin-left: 91px;
+    margin-left: 81px;
 }
 
 #club .department-list ul
 {
     float: left;
     padding: 0;
-    width: 30%;
+    width: 28.5%;
     height: 320px;
     list-style: none;
+}
+
+#club .department li,
+#club .student li,
+#club .club li
+{
+    line-height: 1.6em;
 }
 
 #club .student-list
@@ -3760,10 +3745,10 @@ button.news-button
 {
     float: left;
     padding: 0;
-    width: 28%;
+    width: 18.5%;
     list-style: none;
     margin-top: 69px;
-    margin-left: 143px;
+    margin-left: 172px;
 }
 
 #club .title
@@ -3918,9 +3903,11 @@ button.news-button
 
 #club .underpicture > div
 {
-    position: relative;
-    height: 400px;
     display: none;
+    height: 400px;
+    padding: 0 5px;
+    position: relative;
+    width: 200px;
 }
 
 #club .underpicture ul
@@ -4117,11 +4104,12 @@ ul.users-department li p.user-department
 
 #user-data-view
 {
-    width:185px; 
-    height:350px;
-    padding:0px;
-    margin-top:10px;
-    margin-left:90px;
+    width: 185px;
+    height: 350px;
+    padding: 0px;
+    margin-top: 10px;
+    margin-left: 71px;
+    font-weight: bold;
 }
 
 #user-data-view li
@@ -7134,8 +7122,8 @@ li.enabled a
 
 #street-div #boy-dormitory-12
 {
-    width: 112px;
-    height: 84px;
+    width: 90px;
+    height: 67px;
     background:  url('../building/dormitory/mouseleave/boy_dormitory_12.png');
     left: 489px;
     top: 98px;
@@ -7148,10 +7136,10 @@ li.enabled a
 
 #street-div #boy-dormitory-13
 {
-    width: 103px;
-    height: 120px;
+    width: 82px;
+    height: 96px;
     background:  url('../building/dormitory/mouseleave/boy_dormitory_13.png');
-    left: 135px;
+    left: 148px;
     top: 431px;
 }
 
@@ -7704,8 +7692,8 @@ li.enabled a
 
 #street-div #restaurant-9
 {
-    width: 106px;
-    height: 94px;
+    width: 85px;
+    height: 75px;
     background:  url('../building/food/mouseleave/restaurant_9.png');
     left: 493px;
     top: 240px;
@@ -7744,10 +7732,10 @@ li.enabled a
 
 #street-div #stadium
 {
-    width: 163px;
-    height: 84px;
+    width: 132px;
+    height: 99px;
     background:  url('../building/exercise/mouseleave/stadium.png');
-    left: 129px;
+    left: 163px;
     top: 84px;
 }
 
@@ -8062,8 +8050,10 @@ li.enabled a
 
 #street-div .loading
 {
-    position:absolute;
+    position: absolute;
     display: none;
+    left: 63%;
+    z-index: 2;
 }
 
 #street-div .one-image
