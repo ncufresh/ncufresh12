@@ -3498,7 +3498,7 @@ button.news-button
  {
     background-position: -800px -880px;
     background-repeat: no-repeat; 
-    height: 900px;
+    height: 810px;
     width: 750px;
     position: relative;
     display: inline-block;
@@ -3528,7 +3528,7 @@ button.news-button
 {
     background-position: -800px 0px;
     background-repeat: no-repeat; 
-    height: 900px;
+    height: 810px;
     width: 750px;
     position: relative;
     display: inline-block;
@@ -3556,7 +3556,7 @@ button.news-button
 {
     background-position: -16px -880px;
     background-repeat: no-repeat; 
-    height: 900px;
+    height: 810px;
     width: 750px;
     position: relative;
     display: inline-block;
