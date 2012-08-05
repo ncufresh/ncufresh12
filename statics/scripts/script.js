@@ -962,8 +962,36 @@
             fadeOutDuration:        'slow',
             wheelSpeed:             48
         }, options);
+
+        var scrollWidth = (function()
+        {
+            var inner = document.createElement('p');
+            inner.style.width = '100%';
+            inner.style.height = '200px';
+
+            var outer = document.createElement('div');
+            outer.style.position = 'absolute';
+            outer.style.top = '0px';
+            outer.style.left = '0px';
+            outer.style.visibility = 'hidden';
+            outer.style.width = '200px';
+            outer.style.height = '150px';
+            outer.style.overflow = 'hidden';
+            outer.appendChild(inner);
+
+            document.body.appendChild (outer);
+            var w1 = inner.offsetWidth;
+            outer.style.overflow = 'scroll';
+            var w2 = inner.offsetWidth;
+            if (w1 == w2) w2 = outer.clientWidth;
+
+            document.body.removeChild (outer);
+            return (w1 - w2);
+        })();
+
         if ( $.browser.msie )
         {
+            var scrollArea = $(this);
             var container = $('<div></div>')
                 .addClass('scroll-container')
                 .css({
@@ -971,10 +999,24 @@
                 })
                 .insertAfter($(this));
             $(this).css({
-                height: container.height(),
-                overflowY: 'scroll'
+                height: '100%',
+                overflowX: 'hidden',
+                overflowY: 'auto',
+                width: container.width()
             });
-            container.wrapInner($(this))
+            container.wrapInner($(this));
+            container.css({
+                width: $(this).width() + scrollWidth
+            });
+            this.each(function()
+            {
+                $.extend($(this).constructor.prototype, {
+                    scrollTo: function(position)
+                    {
+                        scrollArea.scrollTop(position);
+                    }
+                });
+            });
             return this;
         }
         return this.each(function()
@@ -982,31 +1024,6 @@
             var active = false;
             var inside = false;
             var scrollHeight = 0;
-            var scrollWidth = (function()
-            {
-                var inner = document.createElement('p');
-                inner.style.width = '100%';
-                inner.style.height = '200px';
-
-                var outer = document.createElement('div');
-                outer.style.position = 'absolute';
-                outer.style.top = '0px';
-                outer.style.left = '0px';
-                outer.style.visibility = 'hidden';
-                outer.style.width = '200px';
-                outer.style.height = '150px';
-                outer.style.overflow = 'hidden';
-                outer.appendChild(inner);
-
-                document.body.appendChild (outer);
-                var w1 = inner.offsetWidth;
-                outer.style.overflow = 'scroll';
-                var w2 = inner.offsetWidth;
-                if (w1 == w2) w2 = outer.clientWidth;
-
-                document.body.removeChild (outer);
-                return (w1 - w2);
-            })();
             var updateScrollDraggableHeight = function()
             {
                 var originalHeight = parseInt(scrollDragable.css('height'));

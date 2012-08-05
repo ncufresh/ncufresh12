@@ -5345,7 +5345,7 @@ img.user_img
 .game-display .first-row-items,
 .game-display .second-row-items
 {
-    width: 78px;
+    width: 76px;
     border: 2px #007C0A solid;
     margin: 0px 2px 6px 1px;
     padding: 3px;
@@ -5357,12 +5357,12 @@ img.user_img
 .game-display .first-row-items img,
 .game-display .second-row-items img
 {
-    width: 78px;
+    width: 76px;
 }
 
 .game-display .the-first-item
 {
-    margin-left: 48px
+    margin-left: 46px
 }
 
 .game-display .index-data
@@ -5577,6 +5577,7 @@ div.game-system
 
 div.game-system .scroll-container
 {
+    height: 320px;
     width: 380px;
 }
 
@@ -5645,7 +5646,7 @@ div.game-display
     height: 312px;
     /* outline: 1px solid blue; */
     margin: 15px 0 0 15px;
-    overflow-y:hidden;
+    /* overflow-y:hidden; */
 }
 
 div.game-display span
