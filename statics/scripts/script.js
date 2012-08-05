@@ -4370,9 +4370,9 @@
 
 (function($)
 {
-    var checked = false;
     $.friends = function()
     {
+        var checked = false;
         $('.a-group-users').scrollable({
             wheelSpeed: 90
         });
@@ -4389,6 +4389,7 @@
             {
                 $(this).prop('checked', checked);
             });
+            $('input[type="checkbox"][name^="friends"]').change();
             return false;
         });
     };

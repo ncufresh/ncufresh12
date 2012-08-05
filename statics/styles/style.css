@@ -3854,14 +3854,14 @@ ul.friends-sort
     width:210px;
     height:130px;
     float:left;
-    margin-top:-35px;
+    margin-top:-27px;
     padding:0px;
 }
 
 ul.friends-sort li
 {
     width:105px;
-    height:85px;
+    height:75px;
     float:left;
     color:DarkBlue;
     list-style-type:none;
