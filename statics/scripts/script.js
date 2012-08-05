@@ -4919,7 +4919,7 @@
             $('.form-addfriend').submit();
             return false;
         });
-        $("#forum-forum-top2 #sort_list").change(function() {
+        $("#forum-forum-top2 .sort-list").change(function() {
             var url = $.configures.forumSortUrl;
             window.location = url.replace(':sort', $(this).val());
         });
