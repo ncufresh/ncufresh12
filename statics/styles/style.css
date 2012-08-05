@@ -224,6 +224,19 @@ form dl.file input
     width: 100%;
 }
 
+form dl.error input,
+form dl.radio.error,
+form dl.checkbox.error,
+form dl.select.error
+{
+    border: 1px solid #FF0000;
+}
+
+form span.error
+{
+    color: #FF0000;
+}
+
 form span.radio
 {
     background: #FFFFFF;
