@@ -89,22 +89,46 @@ class FriendsController extends Controller
     }
 
     public function actionMakeFriends() 
-    {  
-        if ( isset($_POST['friends']) )
+    {
+        if ( Yii::app()->request->getIsAjaxRequest() )
         {
-            foreach ( $_POST['friends'] as $friendid )
-            {   
-                $relation = Friend::model()->friendRelation($friendid);
-                if ( $this->userId != $friendid && ($relation === Friend::IS_RECEIVERED_REQUEST || $relation === Friend::IS_NOT_FRIEND) )
-                
-                {
-                    Friend::model()->addFriend($friendid); //本人加朋友資料
-                    Friend::model()->makeFriend($friendid);
+            if ( isset($_POST['friends']) )
+            {
+                foreach ( $_POST['friends'] as $friendid )
+                {   
+                    $relation = Friend::model()->friendRelation($friendid);
+                    if ( $this->userId != $friendid && ($relation === Friend::IS_RECEIVERED_REQUEST || $relation === Friend::IS_NOT_FRIEND) )
+                    {
+                        Friend::model()->addFriend($friendid);
+                        Friend::model()->makeFriend($friendid);
+                        $this->_data['result'] = true;
+                    }
+                    else
+                    {
+                        $this->_data['result'] = false;
+                    }
                 }
             }
-            $this->redirect(array('friends/myfriends'));
+            else $this->_data['result'] = 4;
         }
-        $this->redirect(array('friends/friends'));
+        else
+        {
+            if ( isset($_POST['friends']) )
+            {
+                foreach ( $_POST['friends'] as $friendid )
+                {   
+                    $relation = Friend::model()->friendRelation($friendid);
+                    if ( $this->userId != $friendid && ($relation === Friend::IS_RECEIVERED_REQUEST || $relation === Friend::IS_NOT_FRIEND) )
+                    
+                    {
+                        Friend::model()->addFriend($friendid); //本人加朋友資料
+                        Friend::model()->makeFriend($friendid);
+                    }
+                }
+                $this->redirect(array('friends/myfriends'));
+            }
+            $this->redirect(array('friends/friends'));
+        }
     }
 
     public function actionDeleteFriends()
