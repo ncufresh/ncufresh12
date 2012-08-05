@@ -331,11 +331,10 @@
                     }
                     if ( response.messages )
                     {
-                        for ( var key in response.messages )
+                        $(response.messages).each(function(index, data)
                         {
-                            var data = response.messages[key];
                             $.fn.chat.updateChatDialog(data.id, data);
-                        }
+                        });
                     }
                     $.pull.pulling = false;
                 }
@@ -391,11 +390,10 @@
                         $.configures.lasttime = response.lasttime;
                         if ( $.errors(response.errors) )
                         {
-                            for ( var key in response.messages )
+                            $(response.messages).each(function(index, data)
                             {
-                                var data = response.messages[key];
                                 $.fn.chat.updateChatDialog(data.id, data);
-                            }
+                            });
                         }
                         $.push.pushing = false;
                         $.push.restart();
@@ -624,9 +622,8 @@
     $.fn.chat.updateFriendList = function(response)
     {
         var list = $.fn.chat.createFriendList();
-        for ( var key in response )
+        $(response).each(function(index, data)
         {
-            var data = response[key];
             var entry = null;
             $('#' + $.chat.options.friendListContainerId)
                 .find('.friend-list-entry')
@@ -655,7 +652,7 @@
             }
             entry.data('online', data.active);
             $.fn.chat.updateFriendStatus(data.id);
-        }
+        });
         return list;
     };
 
@@ -763,11 +760,10 @@
                 {
                     if ( $.errors(response.errors) )
                     {
-                        for ( var key in response.messages )
+                        $(response.messages).each(function(index, data)
                         {
-                            var data = response.messages[key];
                             $.fn.chat.updateChatDialog(data.id, data);
-                        }
+                        });
                     }
                 }
             );
@@ -4166,7 +4162,10 @@
 
         this.parents('form').find('input, textarea').focus(function()
         {
-            for ( var field in fields ) fields[field].blur();
+            $(fields).each(function(index, field)
+            {
+                field.blur();
+            });
             $.datepicker.fadeOut();
         });
 
@@ -4431,10 +4430,8 @@
         $('#same-department-diff-grade-search, #other-department-search, #same-department-same-grade-search, #request-search, #new-group-search, #mygroup-search, #myfriend-search, #newmember-search').keyup(function()
         {
             var name = $(this).val().toLowerCase();
-            for ( var key in friends )
+            $(friends).each(function(index, data)
             {
-                var data = friends[key];
-                console.log(data);
                 if ( data[0].toLowerCase().search(name) == 0 )
                 {
                     data[1].show();
@@ -4443,7 +4440,7 @@
                 {
                     data[1].hide();
                 }
-            }
+            });
         });
 
         $('p.user-name').each(function()
