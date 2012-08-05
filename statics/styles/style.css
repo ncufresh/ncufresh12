@@ -333,10 +333,11 @@ a:hover
 
 .scroll-container .scroll-bar
 {
+    display: none;
     height: 98%;
-    right: 2px;
     margin-top: -1px;
     position: absolute;
+    right: 2px;
     top: 1%;
     width: 6px;
 }
@@ -1661,6 +1662,32 @@ ul#nculife-details
     color: #946722;
 }
 
+
+#calendar .scroll-content
+{
+    width: 484px;
+}
+
+#calendar .scroll-container
+{
+    width: 484px;
+}
+
+#calendar-recycle,
+#calendar-recycle h4,
+#calendar-recycle a.calendar-show-event,
+#calendar-recycle a.calendar-show-event:active,
+#calendar-recycle a.calendar-hide-event,
+#calendar-recycle a.calendar-hide-event:active,
+#calendar-event,
+#calendar-recycle a.back,
+#calendar-event a.back,
+#calendar-subscript,
+.calendar-create
+{
+    background: url('../images/calendar.png');
+}
+
 .calendar
 {
     background-position: 0 -288px;
@@ -1854,7 +1881,8 @@ a.calendar-hide-event:hover
 
 #calendar-recycle
 {
-    background: url('../images/calendar_recycle_background.png') no-repeat;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
 }
 
 #calendar-recycle .scroll-container
@@ -1864,9 +1892,11 @@ a.calendar-hide-event:hover
 
 #calendar-recycle h4
 {
-    background: url('../images/calendar_recycle_title.png') no-repeat;
+    background-repeat: no-repeat;
+    background-position: 0px -864px;
     padding: 0px 0 32px 45px;
     font-size: 2em;
+    width: 220px;
 }
 
 #calendar-recycle a.calendar-show-event,
@@ -1883,24 +1913,32 @@ a.calendar-hide-event:hover
 
 #calendar-recycle a.calendar-show-event
 {
-    background: url('../images/calendar_recover.png') no-repeat #FFFFFF;
+    background-repeat: no-repeat;
+    background-position: -1504px -96px;
+    background-color: #FFFFFF;
 }
 
 #calendar-recycle a.calendar-show-event:active
 {
     color: #040f1d;
-    background: url('../images/calendar_recover_active.png') no-repeat #51adf4;
+    background-repeat: no-repeat;
+    background-position: -1504px -64px;
+    background-color: #51ADF4;
 }
 
 #calendar-recycle a.calendar-hide-event
 {
-    background: url('../images/calendar_delete.png') no-repeat #FFFFFF;
+    background-repeat: no-repeat;
+    background-position: -1504px 0px;
+    background-color: #FFFFFF;
 }
 
 #calendar-recycle a.calendar-hide-event:active
 {
     color: #040f1d;
-    background: url('../images/calendar_delete_active.png') no-repeat #51adf4;
+    background-repeat: no-repeat;
+    background-position: -1504px -32px;
+    background-color: #51ADF4;
 }
 
 #calendar-recycle ul
@@ -1921,7 +1959,9 @@ a.calendar-hide-event:hover
 
 #calendar-event
 {
-    background: url('../images/calendar_event_background.png');
+    background-repeat: no-repeat;
+    background-position: -752px -432px;
+    background-color: #51ADF4;
 }
 
 #calendar-event h4
@@ -1958,7 +1998,8 @@ a.calendar-hide-event:hover
 #calendar-recycle a.back,
 #calendar-event a.back
 {
-    background: url('../images/calendar_back.png') no-repeat;
+    background-repeat: no-repeat;
+    background-position: -320px -864px;
     height: 80px;
     padding-left: 26px;
     display: inline-block;
@@ -1971,7 +2012,7 @@ a.calendar-hide-event:hover
 
 #calendar-subscript
 {
-    background: url('../images/calendar_subscription_background.png');
+    background-position: -752px 0px;
 }
 
 #calendar-subscript h4
@@ -2030,6 +2071,7 @@ a.calendar-hide-event:hover
 #calendar-subscript form dt label
 {
     line-height: auto;
+    cursor: pointer;
 }
 
 #calendar-subscript form dd
@@ -2039,9 +2081,16 @@ a.calendar-hide-event:hover
     width: 169%;
 }
 
+#calendar-subscript form dd span.checkbox
+{
+    margin: 15px 0 0 140px;
+    cursor: pointer;
+}
+
 .calendar-create
 {
-    background: url('../images/calendar_create_background.png') no-repeat;
+    background-repeat: no-repeat;
+    background-position: 0px -432px;
 }
 
 .calendar-create form textarea
@@ -2356,9 +2405,24 @@ button.news-button
 /**
  * Multimedia style
  */
+
+#multimedia,
+#multimedia .title,
+#multimedia .sidebar #tab1,
+#multimedia .sidebar #tab1:active,
+#multimedia .sidebar #tab1.active ,
+#multimedia .sidebar #tab2,
+#multimedia .sidebar #tab2:active,
+#multimedia .sidebar #tab2.active ,
+#multimedia .projector,
+#multimedia .introduction
+{
+    background: url('../images/multimedia.png');
+} 
+ 
 #multimedia
 {
-    background: url('../images/multimedia_background.png');
+    background-position: 0px 0px;
     border-radius: 5px;
     overflow: visible;
     width: 100%;
@@ -2368,9 +2432,10 @@ button.news-button
 
 #multimedia .title
 {
-    background: url('../images/multimedia_title.png') no-repeat;
+    background-position: -752px -240px;
+    background-repeat: no-repeat;
     height: 60px;
-    width: 304px;
+    width: 324px;
     margin: 15px auto;
 }
 
@@ -2394,25 +2459,25 @@ button.news-button
 
 #multimedia .sidebar #tab1
 {
-    background: url('../images/multimedia_tab1.png');
+    background-position: -752px -320px;
 }
 
 #multimedia .sidebar #tab1:active,
 #multimedia .sidebar #tab1.active 
 {
-    background: url('../images/multimedia_tab1_active.png');
+    background-position: -784px -320px;
 }
 
 #multimedia .sidebar #tab2
 {
-    background: url('../images/multimedia_tab2.png');
+    background-position: -816px -320px;
     top: 100px;
 }
 
 #multimedia .sidebar #tab2:active,
 #multimedia .sidebar #tab2.active 
 {
-    background: url('../images/multimedia_tab2_active.png');
+    background-position: -848px -320px;
 }
 
 #multimedia .content
@@ -2505,7 +2570,8 @@ button.news-button
 
 #multimedia .projector
 {
-    background: url('../images/multimedia_projector.png') 15px 0 no-repeat;
+    background-position: -752px 0px;
+    background-repeat: no-repeat;
     height: 200px;
     width: 100%;
 }
@@ -2517,7 +2583,8 @@ button.news-button
 
 #multimedia .introduction
 {
-    background: url('../images/multimedia_introduction.png') 0 5px no-repeat;
+    background-position: 0px -720px;
+    background-repeat: no-repeat;
     color: #000000;
     height: 150px;
     padding: 25px 55px;
@@ -2538,6 +2605,24 @@ button.news-button
 /**
  * Nculife style
  */
+
+.nculife-style1,
+.nculife-style2,
+.nculife-style3,
+.nculife-style4,
+.nculife-style5,
+.nculife-dialog .dialog-close-button,
+.life-top1,
+.life-top2,
+.life-top3,
+.life-top4,
+.life-top5,
+.life-items,
+#life-body
+{
+    background: url('../images/nculife.png') no-repeat;
+}
+
 #life-dialog
 {
     width: 649px;
@@ -2547,29 +2632,39 @@ button.news-button
     position: fixed;
 }
 
+#nculife .scroll-content
+{
+	width: 665px;
+}
+
+#nculife .scroll-container
+{
+	width: 665px;
+}
+
 .nculife-style1
 {
-    background: url('../images/life_yellow.png');
+    background-position: -800px 0;
 }
 
 .nculife-style2
 {
-    background: url('../images/life_green.png');
+    background-position: 0 -636px;
 }
 
 .nculife-style3
 {
-    background: url('../images/life_blue.png');
+    background-position: -800px -636px;
 }
 
 .nculife-style4
 {
-    background: url('../images/life_purple.png');
+    background-position: 0 -1116px;
 }
 
 .nculife-style5
 {
-    background: url('../images/life_pink.png');
+    background-position: -800px -1116px;
 }
 
 .nculife-dialog .dialog-close-button
@@ -2578,32 +2673,32 @@ button.news-button
     height: 40px;
     margin: -15px 0px 0px 620px;
     display: block;
-    background: url('../images/life_exit.png');
+    background-position: -1760px -800px;
 }
 
 .life-top1
 {
-    background:url('../images/life_top1.png');
+    background-position: -1528px 0;
 }
 
 .life-top2
 {
-    background:url('../images/life_top2.png');
+    background-position: -1528px -172px;
 }
 
 .life-top3
 {
-    background:url('../images/life_top3.png');
+    background-position: -1528px -324px;
 }
 
 .life-top4
 {
-    background:url('../images/life_top4.png');
+    background-position: -1528px -480px;
 }
 
 .life-top5
 {
-    background:url('../images/life_top5.png');
+    background-position: -1528px -640px;
 }
 
 #nculife-title
@@ -2714,7 +2809,7 @@ button.news-button
     overflow: hidden;
     position: absolute;
     list-style: none;
-    background: url('../images/life_rope.png') repeat-y;
+    background-position: -1528px -800px;
     padding: 0 0 0 16px;
 }
 
@@ -2741,7 +2836,7 @@ button.news-button
 {
     height: 600px;
     width: 740px;
-    background: url('../images/life_background.png');
+    background-position: 0px 0px;
 }
 
 #life-play
@@ -3158,12 +3253,13 @@ button.news-button
 #about .tag-bar1,
 #about .tag-bar2,
 #about .tag-bar3,
-#about .tag-bar4
+#about .tag-bar4,
+#about .tag-bar5
 {
     background: url('../about/photo.jpg') no-repeat;
 }
 
-#about .itr-block
+#about .itrodution-block
 {
     padding-left: 15px;
     padding-bottom: 10px;
@@ -3260,7 +3356,7 @@ button.news-button
     overflow: hidden;
 }
 
-#about .about-block1Pic
+#about .about-block1Picture
 {
     left: 25px;
     height: 280px;
@@ -3320,7 +3416,6 @@ button.news-button
 
 #about .about-photos
 {
-    border-radius: 10px;
     height: 40px;
     float: left;
     margin: 5px;
@@ -3391,6 +3486,14 @@ button.news-button
     width: 122px;
 }
 
+#about .about-small-6
+{
+    top: 8px;
+    left: 198px;
+    height: 113px;
+    width: 196px;
+}
+
 #about .hidden
 {
     display: none;
@@ -3441,6 +3544,12 @@ button.news-button
 #about .tag-bar4
 {
     background-position: -560px -432px;
+    display: none;
+}
+
+#about .tag-bar5
+{
+    background-position: -560px -864px;
     display: none;
 }
 
@@ -3854,17 +3963,18 @@ ul.friends-sort
     width:210px;
     height:130px;
     float:left;
-    margin-top:-15px;
+    margin-top:-27px;
     padding:0px;
 }
 
 ul.friends-sort li
 {
     width:105px;
-    height:65px;
+    height:83px;
     float:left;
     color:DarkBlue;
     list-style-type:none;
+    text-align:center;
 }
 
 .friends-self 
@@ -3883,12 +3993,13 @@ ul.friends-sort li
     float:left;
     color:DarkBlue;
     list-style-type:none;
+    text-align:center;
 }
 
 .friends-self li a.friends-title
 {
     width:100px;
-    height:20px;
+    height:45px;
     float:left;
 }
 
@@ -3896,7 +4007,7 @@ ul.friends-sort li
 {
     width:690px;
     height:30px;
-    margin:0px;
+    margin-top:-15px;
     padding:0px;
 }
 
@@ -3906,19 +4017,20 @@ ul.friends-sort li
     height:30px;
     float:left;
     list-style-type:none;
+    text-align:center;
 }
 
 ul.users-department li
 {
     width:132px; 
-    height:230px;
+    height:170px;
     padding:0px;
     margin:0px;
     float:left;
     list-style-type:none;
 }
 
-ul.users-department li h3
+ul.users-department li p.user-name
 {
     color:DarkBlue;
     width:132px; 
@@ -3926,9 +4038,10 @@ ul.users-department li h3
     padding:0px;
     margin:0px;
     text-align:center;
+    float:left;
 }
 
-ul. li h4
+ul.users-department li p.user-department
 {
     color:red;
     width:132px; 
@@ -3936,6 +4049,7 @@ ul. li h4
     padding:0px;
     margin:0px;
     text-align:center;
+    float:left;
 }
 
 .all-groups
@@ -3954,16 +4068,6 @@ ul. li h4
     float:left;
     list-style-type:none;
 }
-
-/*.friends-part3 div.avatar
-{
-    margin-left:40px;
-    margin-top:20px;
-    width:180px; 
-    height:310px;
-    padding:0px;
-    float:left;
-}*/
 
 .user-editor
 {
@@ -4044,6 +4148,12 @@ div.friends
     margin:0px;
 }
 
+#sameDsameG h4
+{
+    text-align:center;
+    color:green;
+}
+
 #sameDdiffG
 {
     background: url('../profile/sameDdiffG.png') no-repeat ;
@@ -4053,6 +4163,12 @@ div.friends
     margin:0px;
 }
 
+#sameDdiffG h4
+{
+    text-align:center;
+    color:green;
+}
+
 #other-department
 {
     background:url('../profile/otherD.png') no-repeat ;
@@ -4060,6 +4176,12 @@ div.friends
     height:370px;
     padding:25px;
     margin:0px;
+}
+
+#other-department h4
+{
+    text-align:center;
+    color:green;
 }
 
 #request
@@ -4072,11 +4194,16 @@ div.friends
     margin:0px;
 }
 
+#request h4
+{
+    text-align:center;
+}
+
 div.all-sorts-of-friends
 {
     width:690px;
     height:370px;
-    margin:25px 25px 25px 25px;
+    margin:8px 25px 25px 25px;
 }
 
 .a-group-users
@@ -4084,6 +4211,16 @@ div.all-sorts-of-friends
     width:657px;
     height:300px;
     margin:0px;
+}
+
+.a-group-users .scroll-container
+{
+    width:657px;
+}
+
+.a-group-users .scroll-content
+{
+    width:657px;
 }
 
 div.a-group-users button
@@ -4109,6 +4246,16 @@ div.a-group-users div.avatar
     margin-top:0;
     margin-left:260px;
     padding:0px;
+}
+
+.friend-chatting .scroll-container
+{
+    width:388px;
+}
+
+.friend-chatting .scroll-content
+{
+    width:388px;
 }
 
 .friend-chatting ul
@@ -4146,20 +4293,30 @@ div.a-group-users div.avatar
     outline-style:dotted;
 }
 
+.friend-chatting-content .scroll-container
+{
+    width: 190px;
+}
+
+.friend-chatting-content .scroll-content
+{
+    width: 190px;
+}
+
 .profile-modify
 {
     width:240px;
     height:350px;
     margin:0px;
-    padding:5px;
+    padding:0px;
 }
 
 .profile-modify div.avatar
 {
     margin-left:65px;
-    margin-top:5px;
+    margin-top:-5px;
     width:180px; 
-    height:338px;
+    height:300px;
     padding:0px;
 }
 
@@ -4190,12 +4347,32 @@ div.my-all-messages
     padding:5px;
 }
 
+.my-all-messages .scroll-container
+{
+    width:600px;
+}
+
+.my-all-messages .scroll-content
+{
+    width:600px;
+}
+
 div.allmessages
 {
     width:490px;
     height:290px;
     margin-top:55px;
     padding:5px;
+}
+
+div.allmessages .scroll-container
+{
+    width:490px;
+}
+
+div.allmessages .scroll-content
+{
+    width:490px;
 }
 
 div.allmessages form
@@ -4210,15 +4387,15 @@ div.friends-addfriend
 {
     display:inline-block;
     width:650px;
-    height:140px;
+    height:150px;
 }
 
 .friends-addfriend .avatar
 {
     margin-left:0px;
     margin-top:0px;
-    width:35px; 
-    height:45px;
+    width:100px; 
+    height:65px;
     padding:0px;
     float:left;
 }
@@ -4234,9 +4411,9 @@ div.friends-sortfriend
 div.friends-sortfriend div.avatar 
 {
     margin-left:0px;
-    margin-top:0px;
-    width:35px; 
-    height:45px;
+    margin-top:-10px;
+    width:90px; 
+    height:70px;
     padding:0px;
     float:left;
 }
@@ -4251,6 +4428,10 @@ div.friends-sortfriend div.avatar
     margin:0px;
 }
 
+#myfriend h4
+{
+    text-align:center;
+}
 .myprofile
 {
     background-image:url('../profile/profile.png');
@@ -4259,6 +4440,12 @@ div.friends-sortfriend div.avatar
     height:370px;
     padding:25px;
     margin:0px;
+}
+
+.myprofile h4
+{
+    text-align:center;
+    color:#8427C2;
 }
 
 #newgroup
@@ -4281,6 +4468,11 @@ div.friends-sortfriend div.avatar
     margin:0px;
 }
 
+#mygroup h4
+{
+    text-align:center;
+}
+
 div.newmember
 {
     background-image:url('../profile/groupmembers.png');
@@ -4299,6 +4491,11 @@ div.allgroups
     height:370px;
     padding:25px;
     margin:0px;
+}
+
+div.allgroups h4
+{
+    text-align:center;
 }
 
 div.profile-message-allmessages
@@ -4348,23 +4545,6 @@ div.profile-message-reply
     float:left;
 }
 
-#add-new-friends
-{
-    position:absolute;
-    right:472px;
-    bottom:23px;
-    display: block;
-    border: 2px black solid;
-    width: 74px;
-    height:29px;
-    padding: 3px;
-    font-weight: bold;
-    color: #0A5163;
-    background: #C9F8E7;
-    border-radius: 9px;
-    text-align: center;
-}
-
 .button-viewProfile-back,
 .button-all-choose,
 .button-addfriend,
@@ -4374,7 +4554,13 @@ div.profile-message-reply
 .button-sure,
 .button-makefriend,
 #friend_request,
-#is_friend
+#is_friend,
+#button-editor-sure,
+.button-addgroup,
+#button-deletemember,
+#button-push,
+.button-mygroup,
+#add-new-friends
 {
     background: #FFFFFF;
     border: 1px solid #B0B0B0;
@@ -4391,7 +4577,12 @@ div.profile-message-reply
     width: auto;
 }
 
-a.button-back
+a.button-back,
+a#button-editor,
+a#button-editor-cancel,
+#button-addmember,
+#button-deletegroup,
+#button-back-reply
 {
     background: #FFFFFF;
     border: 1px solid #B0B0B0;
@@ -4410,10 +4601,21 @@ a.button-back
 
 #new-group-members
 {
-    width:670px;
+    width:650px;
     height:335px;
     margin:0px;
 }
+
+#new-group-members div .scroll-container
+{
+    width:650px;
+}
+
+#new-group-members div .scroll-content
+{
+    width:650px;
+}
+
 
 #new-group-members div.avatar
 {
@@ -4423,152 +4625,6 @@ a.button-back
     height:70px;
     padding:0px;
     float:left;
-}
-
-#button-back-reply
-{
-    background-image: url('../profile/button/back.png');
-    background-repeat: no-repeat ;
-    width: 84px;
-    height: 37px;
-    padding: 0px;
-    margin: 0px;
-    float:right;
-    position:relative;
-    right:-85px;
-    bottom:0px;
-}
-
-#button-editor-cancel
-{
-    background-image:url('../profile/button/cancel.png');
-    background-repeat:no-repeat ;
-    width:62px;
-    height:34px;
-    padding:0px;
-    margin:0px;
-    display:block;
-    position:absolute;
-    right:502px;
-    bottom:34px;
-}
-
-#button-push
-{
-    background-image:url('../profile/button/push.png');
-    background-repeat:no-repeat ;
-    width:67px;
-    height:35px;
-    padding:0px;
-    margin:0px;
-    position:relative;
-    right:68px;
-    bottom:0px;
-}
-
-#button-editor-sure
-{
-    background-image:url('../profile/button/sure.png');
-    background-repeat:no-repeat ;
-    width:62px;
-    height:34px;
-    padding:0px;
-    margin:0px;
-    position:absolute;
-    right:502px;
-    bottom:72px;
-}
-
-.button-addgroup
-{
-     display: block;
-    border: 2px black solid;
-    padding: 3px;
-    font-weight: bold;
-    color: #0A5163;
-    background: #C9F8E7;
-    border-radius: 9px;
-    text-align: center;
-    position:absolute;
-    right:28px;
-    bottom:66px;
-    width: 77px;
-    height:35px;
-}
-
-#button-deletegroup
-{
-     display: block;
-    border: 2px black solid;
-    padding: 3px;
-    font-weight: bold;
-    color: #0A5163;
-    background: #C9F8E7;
-    border-radius: 9px;
-    text-align: center;
-    position:absolute;
-    right:28px;
-    bottom:97px;
-    width: 67px;
-    height:26px;
-}
-
-#button-addmember
-{
-    display: block;
-    border: 2px black solid;
-    padding: 3px;
-    font-weight: bold;
-    color: #0A5163;
-    background: #C9F8E7;
-    border-radius: 9px;
-    text-align: center;
-    position:absolute;
-    right:28px;
-    bottom:21px;
-    width: 66px;
-    height:26px;
-}
-
-#button-deletemember
-{
-    display: block;
-    border: 2px black solid;
-    padding: 3px;
-    font-weight: bold;
-    color: #0A5163;
-    background: #C9F8E7;
-    border-radius: 9px;
-    text-align: center;
-    position:absolute;
-    right:28px;
-    bottom:60px;
-    width: 77px;
-    height:35px;
-}
-
-.button-mygroup
-{
-    background-image:url('../profile/button/mygroup.png');
-    background-repeat:no-repeat ;
-    width:50px;
-    height:50px;
-    padding:0px;
-    margin:0px;
-}
-
-#button-editor
-{
-    background-image:url('../profile/button/editor.png');
-    background-repeat:no-repeat ;
-    width:158px;
-    height:57px;
-    padding:0px;
-    margin:0px;
-    display: block;
-    position:absolute;
-    right:433px;
-    bottom:71px;
 }
 
 .is_exist
@@ -4592,9 +4648,74 @@ a.button-back
     padding: 0;
 }
 
+#sitemap div
 {
-    min-height: 240px;
+    border-radius: 5px;
+    margin: 10px 0;
     overflow: hidden;
+    padding: 10px;
+}
+
+#sitemap h4
+{
+    border-radius: 5px;
+    padding: 5px 5px 5px 10px;
+}
+
+#sitemap ul
+{
+    margin: 5px 0;
+}
+
+#sitemap div > ul > li
+{
+    padding: 0 5px;
+    width: 25%;
+}
+
+#sitemap div > ul ul > li
+{
+    padding-left: 10px;
+}
+
+#sitemap .freshman
+{
+    background: #D9FEDE;
+}
+
+#sitemap .freshman h4
+{
+    background: #BCFCC3;
+}
+
+#sitemap .discuss
+{
+    background: #FCCCE7;
+}
+
+#sitemap .discuss h4
+{
+    background: #FD8BC4;
+}
+
+#sitemap .personal
+{
+    background: #FAFAC9;
+}
+
+#sitemap .personal h4
+{
+    background: #F7E185;
+}
+
+#sitemap .information
+{
+    background: #D1EDF6;
+}
+
+#sitemap .information h4
+{
+    background: #8FC4F0;
 }
 
 #sitemap div > ul > li
@@ -4714,13 +4835,23 @@ div.delete-group
     margin:0px;
 }
 
-div.self-messages
+#self-messages-content
 {
     width:165px;
     height:125px;
     padding:0px;
     margin:0px;
     float:left;
+}
+
+#self-messages-content .scroll-container
+{
+    width:165px;
+}
+
+#self-messages-content .scroll-content
+{
+    width:165px;
 }
 
 td.reply-content
@@ -5707,7 +5838,6 @@ li.enabled a
     padding-top:5px
 }
 
-
 #forum-view-top2 .fb_iframe_widget
 {
     margin-left: 10px;
@@ -6151,6 +6281,11 @@ li.enabled a
     margin-left:35px;
 }
 
+#forum-forum-top2 .sort-list
+{
+    margin-left: 35px;
+}
+
 #forum-forum-body
 {
     background: url('../forum/view/background.png');
@@ -6578,7 +6713,7 @@ li.enabled a
     background-position: -464px -928px;
 }
 
-#forum-forum-body.orange #body-table .table-body td.category
+#forum-forum-body.orange #body-table .table-body td.category,
 #forum-forum-body.orange #body-table .table-body td.title,
 #forum-forum-body.orange #body-table .table-body td.author,
 #forum-forum-body.orange #body-table .table-body td.reply,
@@ -6634,7 +6769,7 @@ li.enabled a
     background-position: -464px -832px;
 }
 
-#forum-forum-body.yellow #body-table .table-body td.category
+#forum-forum-body.yellow #body-table .table-body td.category,
 #forum-forum-body.yellow #body-table .table-body td.title,
 #forum-forum-body.yellow #body-table .table-body td.author,
 #forum-forum-body.yellow #body-table .table-body td.reply,
@@ -7965,4 +8100,12 @@ li.enabled a
 {
     margin-left: 30px;
     margin-right: 100px;
+}
+
+#contact
+{
+    background-image: url('../images/contact.png');
+    width: 664px;
+    height: 340px;
+    padding: 38px;
 }

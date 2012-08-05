@@ -5,7 +5,7 @@
         <li id="article-content-title"><?php echo $article->title; ?></li>
         <li class="article-title">內容:</li>
         <li id="article-content">
-        <div class="self-messages"><?php echo $article->content; ?></div>
+        <div id="self-messages-content"><?php echo $article->content; ?></div>
         <li>
         
     </ul>
@@ -58,8 +58,8 @@
     <form id="forum-comment" enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/comment'); ?>" method="POST"> 
         <input id="forum-comment-text" type="text" maxlength="32" name="comment[content]" />
         <input type="hidden" name="comment[article_id]" value="<?php echo $article->id; ?>" />
-        <button type="submit" id="button-push"></button>
-        <a href="<?php echo Yii::app()->createUrl('profile/message'); ?>" id="button-back-reply"></a>
+        <button type="submit" id="button-push">推文</button>
+        <a href="<?php echo Yii::app()->createUrl('profile/message'); ?>" id="button-back-reply">BACK</a>
         <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
     </form>
     </div>

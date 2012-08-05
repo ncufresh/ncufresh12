@@ -68,7 +68,7 @@
 <?php echo $error; ?>
 <?php endforeach; ?>
 <?php else: ?>
-             需小於等於等於10個字元
+             不大於10個字元
 <?php endif; ?>
             </span>
         </dd>
@@ -86,7 +86,7 @@
 <?php endforeach; ?>
 <?php else: ?>
             人家都怎麼叫你哩
-            需小於等於等於10個字元
+            不大於8個字元
 <?php endif; ?>
             </span>
         </dd>
