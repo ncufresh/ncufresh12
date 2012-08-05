@@ -655,7 +655,7 @@ a:hover
 #club #calendar-button,
 #index-calendar > div,
 .calendar,
-.calendar .right .scroll-content div > div,
+.calendar .right div,
 .calendar .right div h4,
 .calendar .calendar-create-button,
 .calendar .calendar-hide-button,
@@ -1794,10 +1794,18 @@ table.gsc-completion-container
     width: 250px;
 }
 
-.calendar .scroll-content div > div
+.calendar .right .scroll-content > div
 {
     background-position: -848px -1264px;
     padding-top: 15px;
+}
+
+.calendar .right .scroll-container,
+.calendar .right .scroll-area,
+.calendar .right .scroll-content,
+.calendar .right .scroll-content > div div
+{
+    background: none;
 }
 
 .calendar .right div h4
@@ -4302,18 +4310,32 @@ div.all-sorts-of-friends
 .a-group-users
 {
     width:657px;
-    height:300px;
     margin:0px;
 }
 
-.a-group-users .scroll-container
+#sameDsameG .scroll-container,
+#sameDdiffG .scroll-container,
+#other-department .scroll-container,
+#request .scroll-container,
+#myfriend .scroll-container,
+.allgroups .scroll-container,
+#mygroup .scroll-container,
+.newmember .scroll-container
 {
-    width:657px;
+    width:690px;
+    height:300px;
 }
 
-.a-group-users .scroll-content
+#sameDsameG .scroll-content,
+#sameDdiffG .scroll-content,
+#other-department .scroll-content,
+#request .scroll-content,
+#myfriend .scroll-content,
+.allgroups .scroll-content,
+#mygroup .scroll-content,
+.newmember .scroll-content
 {
-    width:657px;
+    width:690px;
 }
 
 div.a-group-users button
@@ -4594,7 +4616,7 @@ div.profile-message-allmessages
 
 div.profile-message-allmessages .scroll-container
 {
-    width:670px;
+    width:690px;
     height:317px;
 }
 
