@@ -507,7 +507,6 @@
         $('.friend-list-entry').each(function()
         {
             var entry = $(this);
-            console.log(entry.data('id'));
             $('.' + $.chat.options.chatDialogClass).each(function(index)
             {
                 if ( $(this).data('id') == entry.data('id') )
@@ -5182,7 +5181,6 @@
         $('#header').star();
 
         $('#moon').moon();
-        alert('!!!');
 
         if ( $('#chat').length ) $('#chat').chat();
 
