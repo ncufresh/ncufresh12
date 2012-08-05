@@ -5165,8 +5165,9 @@
             $('.form-addfriend').submit();
             return false;
         });
-        $("#forum-forum-top2 #sort_list").change(function() {
+        $('select.sort-list').change(function() {
             var url = $.configures.forumSortUrl;
+            console.log(url);
             window.location = url.replace(':sort', $(this).val());
         });
         /*forum create*/
@@ -5258,6 +5259,7 @@
         $('#header').star();
 
         $('#moon').moon();
+        alert('!!!');
 
         if ( $('#chat').length ) $('#chat').chat();
 
