@@ -2809,7 +2809,7 @@
             N:{ photo: 'Day 3 (3).JPG', nextPoint: (-1) },
             E:{ photo: 'Day 3 (2).JPG', nextPoint: 0 },
             S:{ photo: 'Day 3 (1).JPG', nextPoint: (-1) },
-            W:{ photo: 'Day 3 (4).JPG', nextPoint: 48 }
+            W:{ photo: 'Day 3 (4).JPG', nextPoint: 49 }
         },
         { // 2 (工3)
             N:{ photo: 'Day 1 (6).JPG', nextPoint: 3 },
@@ -3040,10 +3040,10 @@
             W:{ photo: 'Day 2 (40).JPG', nextPoint: (-1) }
         },
         { // 40 (鬆餅屋)
-            N:{ photo: 'Day 3 (39).JPG', nextPoint: 35 },
-            E:{ photo: 'Day 3 (40).JPG', nextPoint: (-1) },
-            S:{ photo: 'Day 3 (37).JPG', nextPoint: 44 },
-            W:{ photo: 'Day 3 (38).JPG', nextPoint: 41 }
+            N:{ photo: 'Day 3 (36).JPG', nextPoint: 35 },
+            E:{ photo: 'Day 3 (35).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 3 (34).JPG', nextPoint: 44 },
+            W:{ photo: 'Day 3 (33).JPG', nextPoint: 41 }
         },
         { // 41 (科四至管院路)
             N:{ photo: 'Day 3 (32).JPG', nextPoint: (-1) },
@@ -3061,7 +3061,7 @@
             N:{ photo: 'Day 3 (21).JPG', nextPoint: 44 },
             E:{ photo: 'Day 3 (22).JPG', nextPoint: 53 },
             S:{ photo: 'Day 3 (23).JPG', nextPoint: 46 },
-            W:{ photo: 'Day 3 (24).JPG', nextPoint: 42 }
+            W:{ photo: 'Day 3 (24).JPG', nextPoint: (-1) }
         },
         { // 44 (科二東路)
             N:{ photo: 'Day 3 (39).JPG', nextPoint: 40 },
@@ -3089,15 +3089,15 @@
         },
         { // 48 (游泳池)
             N:{ photo: 'Day 3 (10).JPG', nextPoint: 47 },
-            E:{ photo: 'Day 3 (11).JPG', nextPoint: 1 },
+            E:{ photo: 'Day 3 (11).JPG', nextPoint: (-1) },
             S:{ photo: 'Day 3 (12).JPG', nextPoint: 49 },
             W:{ photo: 'Day 3 (9).JPG', nextPoint: (-1) }
         },
         { // 49 (游泳池旁側門)
             N:{ photo: 'Day 3 (8).JPG', nextPoint: 48 },
-            E:{ photo: 'Day 3 (7).JPG', nextPoint: (-1) },
-            S:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) },
-            W:{ photo: 'Day 3 (6).JPG', nextPoint: (-1) }
+            E:{ photo: 'Day 3 (7).JPG', nextPoint: 1 },
+            S:{ photo: 'Day 3 (6).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) }
         },
         { // 50 (男12舍)
             N:{ photo: 'Day 3 (95).JPG', nextPoint: (-1) },
@@ -3454,7 +3454,7 @@
                 jQuery.configures.ncuLifeUrl.replace(':tab', tab).replace(':page', page),
                 function(data)
                 { 
-                    $('#nculife-content-view').html(data.content);
+                    $('#nculife-content-view').html(data.content).scrollTo(0);
                 }
             ); 
             return false;
@@ -3574,13 +3574,14 @@
                 jQuery.configures.readMeUrl.replace(':tab', tab).replace(':page', page),
                 function(data)
                 { 
-                    $('.readme-view').html(data.content);
+                    $('.readme-view').html(data.content).scrollTo(0);
                 }
             ); 
             return false;
         }
 
-        $('.readme-view').scrollable({
+        $('.readme-view').scrollable(
+		{
             scrollableClass: false
         });
 
@@ -4372,11 +4373,12 @@
         $('.button-all-choose').click(function()
         {
             checked = ! checked;
-            $('input[type="checkbox"][name^="friends"]').each(function()
+            $('input[type="checkbox"][name^="friends"], input[type="checkbox"][name^="group-members"]').each(function()
             {
                 $(this).prop('checked', checked);
             });
             $('input[type="checkbox"][name^="friends"]').change();
+            $('input[type="checkbox"][name^="group-members"]').change();
             return false;
         });
 
@@ -4890,6 +4892,8 @@
         var smallPhotoIndex = 0;
         var photoA = $('#' + options.aboutId + ' a');
         var tagBool = true;
+        var photoMoveLeft = false;
+        var photoMoveRight = false;
         var jumpTo = function()
         {   
             tagbar.each(function(){
@@ -4898,20 +4902,16 @@
             block1Inf.each(function(){
                 $(this).hide();
             });
-            if ( tagbarIndex != 6 )
+            block1Inf.eq(tagbarIndex).show();
+            tagbarPerson.each(function(){
+                $(this).hide();
+            });
+            for (var p = 0; p < 9; p++)
             {
-                block1Inf.eq(tagbarIndex).show();
-                tagbarPerson.each(function()
+                tagbarPerson.eq(tagbarIndex * 9 + p).show();
+                if ( tagbarIndex == 4 && p == 1 )
                 {
-                    $(this).hide();
-                });
-                for (var p = 0; p < 9; p++)
-                {
-                    tagbarPerson.eq(tagbarIndex * 9 + p).show();
-                    if ( tagbarIndex == 4 && p == 1 )
-                    {
-                        break;
-                    }
+                    break;
                 }
             }
             tagbar.eq(tagbarIndex).show();
@@ -5026,6 +5026,29 @@
         },options.PictureAutoSpeed);
         setInterval(function()
         {
+            if ( photoMoveLeft )
+            {
+                if( smallPhotoIndex + 6 < photoNumber )
+                {
+                    smallPhotoIndex++;
+                    $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
+                        left: -40 + smallPhotoIndex * -50
+                    });
+                }
+            }
+            else if ( photoMoveRight )
+            {
+                if ( smallPhotoIndex > 0 )
+                {
+                    smallPhotoIndex--;
+                    $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
+                        left: -40 + smallPhotoIndex * -50
+                    });
+                }
+            }
+        },300);
+        setInterval(function()
+        {
             if ( tagBool )
             {
                 if ( tagbarIndex < 5 )
@@ -5065,28 +5088,22 @@
         button[0].css({
             left: 0,
             position: 'absolute'
-        }).click(function()
+        }).mouseenter(function()
         {
-            if ( smallPhotoIndex > 0 )
-            {
-                smallPhotoIndex--;
-                $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
-                    left: -40 + smallPhotoIndex * -50 
-                });
-            }
+            photoMoveRight = true;
+        }).mouseleave(function()
+        {
+            photoMoveRight = false;
         }).appendTo(display).show();
         button[1].css({
             left: 350,
             position: 'absolute'
-        }).click(function()
+        }).mouseenter(function()
         {
-            if( smallPhotoIndex + 6 < photoNumber )
-            {
-                smallPhotoIndex++;
-                $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
-                    left: -40 + smallPhotoIndex * -50 
-                });
-            }
+            photoMoveLeft = true;
+        }).mouseleave(function()
+        {
+            photoMoveLeft = false;
         }).appendTo(display).show();
         photoA.each(function(index)
         {

@@ -11,8 +11,8 @@
     <ul class="photo-ul">
 <?php for ( $count = 0 ; $count < 31 ; ++$count ) : ?>
         <li class="photo-li">
-            <a href="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photos/photo<?php echo $count; ?>.jpg">
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photos/photo<?php echo $count; ?>.jpg" alt="photo" />
+            <a href="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo<?php echo $count; ?>.jpg">
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/statics/about/photo<?php echo $count; ?>.jpg" alt="photo" />
             </a>
         </li>
 <?php endfor; ?>
@@ -108,5 +108,8 @@
     <p>對外負責與學校各單位、各系學會、社團、學生組織協調知訊網資料；對內負責招募組</p>
     <p>長、規劃預算與年度進度、微調細進度與網頁方向、協調各組問題及關心身邊這群一起</p>
     <p>努力的夥伴。</p>
+    </div>
+    <div class="about-block1Inf">
+    <p></p>
     </div>
 </div>

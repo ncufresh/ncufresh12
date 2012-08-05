@@ -30,16 +30,22 @@ class SiteController extends Controller
                     'error',
                     'search',
                     'pull',
-                    'register',
                     'login',
                     'channel',
                     'profile',
                     'editor',
                     'contact',
-                    'sitemap',
-                    'success'
+                    'sitemap'
                 ),
                 'users'     => array('*')
+            ),
+            array(
+                'allow',
+                'actions'    => array(
+                    'register',
+                    'success'
+                ),
+                'roles'     => array('guest')
             ),
             array(
                 'allow',
@@ -223,6 +229,7 @@ class SiteController extends Controller
                 $this->redirect(Yii::app()->user->returnUrl);
             }
         }
+        if ( Yii::app()->user->getId() > 0 ) $this->redirect(array('site/index'));
         $this->setPageTitle(Yii::app()->name . ' - 需要驗證您的身分');
         $this->render('login');
     }
