@@ -2677,6 +2677,8 @@
             return true;
         };
         var back = $.overlay({
+            closeOnEscape: false,
+            closeOnClick: false,
             onBeforeHide: function()
             {
                 box.remove();
@@ -4205,7 +4207,7 @@
 
         $('#multimedia .items').each(function()
         {
-            $(this).height($(this).find('a').length*$(this).find('a').height());
+            $(this).height($(this).find('a').length * $(this).find('a').height());
         });
         
         $('#multimedia .menu a').click(function()
@@ -4255,10 +4257,24 @@
         });
         
         $('#multimedia .tab').first().click();
+
+        $.konami({
+            complete: function()
+            {
+                var url = $.configures.multimediaYoutubeUrl.replace(':v', 'vcMVddGa0LU');
+                $('#multimedia-frame').attr('src', url);
+                $.getJSON($.configures.multimediaIntroductionUrl.replace(':v', 'vcMVddGa0LU'), function(data)
+                {
+                    $('#multimedia .introduction').text(data.introduction);
+                });
+                return false;
+            }
+        });
     }
 })(jQuery);
 
-(function($){
+(function($)
+{
     $.game = function()
     {
         $('.game-display').scrollable({
@@ -4846,6 +4862,10 @@
         if ( $('#marquee').length ) $('#marquee').marquee();
 
         if ( $('#index-calendar').length ) $('#index-calendar div').calendar($.configures.calendarEventsUrl);
+
+        $.konami({
+            complete: $.ultimatePassword
+        });
     };
 })(jQuery);
 
