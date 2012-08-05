@@ -14,14 +14,14 @@ jQuery(document).ready(function()
 
 <div id="life-container">
     <div id="life-body">
-        <div id="life-play">
+        <div id="life-play" height="95" class="nculife-hover">
             <ul id="life-index1" class="life-items" pattern="nculife-style1" bar="life-top1">
                 <li page="play" tab="1">Movie</li>
                 <li page="play" tab="2">KTV</li>
                 <li page="play" tab="4">夜市</li>
             </ul>
         </div>
-        <div id="life-traffic">
+        <div id="life-traffic" height="120" class="nculife-hover">
             <ul id="life-index2" class="life-items" pattern="nculife-style2"  bar="life-top2">
                 <li page="traffic" tab="1">腳踏車</li>
                 <li page="traffic" tab="2">汽機車</li>
@@ -38,7 +38,7 @@ jQuery(document).ready(function()
                 </li>
             </ul>
         </div>
-        <div id="life-school">
+        <div id="life-school" height="335" class="nculife-hover">
             <ul id="life-index3" class="life-items" pattern="nculife-style3"  bar="life-top3">
                 <li page="school" tab="1">校園影城</li>
                 <li page="school" tab="2">校園影印</li>
@@ -72,7 +72,7 @@ jQuery(document).ready(function()
                     <ul class="life-inner">
                         <li page="school" tab="18">全家</li>
                         <li page="school" tab="19">龍誠影印</li>
-                        <li page="school" tab="20">拉雅漢堡</li>
+                        <li page="school" tab="20">拉亞漢堡</li>
                     </ul>
                 </li>
                 <li class="life-bar">
@@ -84,7 +84,7 @@ jQuery(document).ready(function()
                 </li>
             </ul>
         </div>
-        <div id="life-live">
+        <div id="life-live" height="150" class="nculife-hover">
             <ul id="life-index4" class="life-items" pattern="nculife-style4" bar="life-top4" >
                 <li page="live" tab="1">所需用品</li>
                 <li class="life-bar">
@@ -118,7 +118,7 @@ jQuery(document).ready(function()
                 </li>
             </ul>
         </div>
-        <div id="life-health">
+        <div id="life-health" height="100" class="nculife-hover">
             <ul id="life-index5" class="life-items" pattern="nculife-style5"  bar="life-top5">
                 <li page="health" tab="1">衛保組</li>
                 <li page="health" tab="2">特約醫院</li>

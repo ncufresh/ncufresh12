@@ -150,7 +150,8 @@ form dl.textarea
 
 form dl.radio,
 form dl.checkbox,
-form dl.select
+form dl.select,
+form dl.file
 {
     background: #FFFFFF;
     border: 1px solid #B0B0B0;
@@ -205,6 +206,22 @@ form dl.select dd label
     float: left;
     line-height: 30px;
     padding: 4px 8px;
+}
+
+form dl.file input
+{
+    border-radius: 0;
+    box-shadow: none;
+}
+
+form dl.file dt label
+{
+    display: none;
+}
+
+form dl.file input
+{
+    width: 100%;
 }
 
 form span.radio
@@ -1592,19 +1609,19 @@ ul#nculife-details
     position: relative;
 }
 
-#club #calendar  .calendar-table,
+#club #calendar .calendar-table,
 #index-calendar .calendar-table
 {
     border-collapse: collapse;
 }
 
-#club #calendar  .calendar-table caption,
+#club #calendar .calendar-table caption,
 #index-calendar .calendar-table caption
 {
     margin: 15px 0 10px 0;
 }
 
-#club #calendar  .calendar-table td,
+#club #calendar .calendar-table td,
 #index-calendar .calendar-table td
 {
     text-align: center;
@@ -1612,11 +1629,19 @@ ul#nculife-details
     cursor: pointer;
 }
 
+#club #calendar .calendar-table td.today,
+#index-calendar .calendar-table td.today
+{
+    color: red;
+}
+
+#club #calendar .calendar-table td.hover,
 #index-calendar .calendar-table td.hover
 {
     color: green;
 }
 
+#club #calendar .calendar-table td.selected,
 #index-calendar .calendar-table td.selected
 {
     outline: 1px solid #000;
@@ -1628,20 +1653,20 @@ ul#nculife-details
     display: block;
 }
 
-#club #calendar  .calendar-table thead td,
+#club #calendar .calendar-table thead td,
 #index-calendar .calendar-table thead td
 {
     color: #af8d5a;
     text-align: center;
 }
 
-#club #calendar  .calendar-table thead td.weekend,
+#club #calendar .calendar-table thead td.weekend,
 #index-calendar .calendar-table thead td.weekend
 {
     color: red;
 }
 
-#club #calendar  .calendar-table tbody,
+#club #calendar .calendar-table tbody,
 #index-calendar .calendar-table tbody
 {
     border-top: 1px solid #946722;
@@ -1649,14 +1674,14 @@ ul#nculife-details
     display: block;
 }
 
-#club #calendar  .todolist-table td,
+#club #calendar .todolist-table td,
 #index-calendar .todolist-table td
 {
     width: 100px;
     text-align: center;
 }
 
-#club #calendar  .todolist-table thead td,
+#club #calendar .todolist-table thead td,
 #index-calendar .todolist-table thead td
 {
     color: #946722;
@@ -3590,7 +3615,6 @@ button.news-button
 #club #back1,
 #club #back2,
 #club #back3,
-#club .modify,
 #club #bottom-1,
 #club #bottom-2,
 #club #bottom-3
@@ -3602,9 +3626,9 @@ button.news-button
  * Club style
  */
 #club .alltag
- {
+{
     height: 66px;
- }
+}
  
 #club .club
  {
@@ -3773,17 +3797,17 @@ button.news-button
 
 #club-1
 {
-    background: url('../club/5-2.png');
-}
-
-#club-3
-{
-    background: url('../club/6-2.png');
+    background: url('../images/club_background_1.png');
 }
 
 #club-2
 {
-    background: url('../club/4-2.png');
+    background: url('../images/club_background_2.png');
+}
+
+#club-3
+{
+    background: url('../images/club_background_3.png');
 }
 
 #club .display-head
@@ -3883,8 +3907,6 @@ button.news-button
     width: 204px;
     height: 110px;
     display: block;
-    padding-top: 80px;
-    margin-left: -34px;
 }
 
 #club .picture img
@@ -3898,19 +3920,22 @@ button.news-button
 #club .underpicture
 {
 	float: left;
-    margin-left: -20px;
 }
 
 #club .underpicture > div
 {
-    position: relative;
-    height: 470px;
     display: none;
+    height: 400px;
+    padding: 0 5px;
+    position: relative;
+    width: 200px;
 }
 
 #club .underpicture ul
 {
     display: inline-block;
+    margin: 0;
+    padding: 80px 0 0 0;
 }
 
 #club #calendar-button
@@ -3933,6 +3958,7 @@ button.news-button
     height: 400px;
     position: absolute;
     margin-top: 52px;
+    width: 100%;
 }
 
 #club #calendar table
@@ -3958,11 +3984,12 @@ button.news-button
 
 #club .modify
 {
+    background: #CCCCFF;
+    border-radius: 5px;
+    overflow: hidden;
     padding: 5px;
-    height: 600px;
-    width: 750px;
-    background-position: -16px 0px;
 }
+
 /* profile... */
 ul.friends-sort 
 
@@ -4081,8 +4108,10 @@ ul.users-department li p.user-department
     width:380px; 
     height:350px;
     padding:0px;
-    margin-top:-300px;
+    margin-top:-309px;
     margin-left:300px;
+    font-size: 1.4em;
+    font-weight: bold;
 }
 
 .user-editor li
@@ -4096,11 +4125,12 @@ ul.users-department li p.user-department
 
 #user-data-view
 {
-    width:185px; 
-    height:350px;
-    padding:0px;
-    margin-top:10px;
-    margin-left:90px;
+    width: 185px;
+    height: 350px;
+    padding: 0px;
+    margin-top: 10px;
+    margin-left: 71px;
+    font-weight: bold;
 }
 
 #user-data-view li
@@ -4240,7 +4270,7 @@ div.a-group-users div.avatar
 {
     margin-left:20px;
     margin-top:0px;
-    width:100px; 
+    width:94px; 
     height:70px;
     padding:0px;
     float:left;
@@ -4255,28 +4285,29 @@ div.a-group-users div.avatar
     padding:0px;
 }
 
-.friend-chatting .scroll-container
+#friend-chatting .scroll-container
 {
-    width:388px;
+    width:212px;
+    height:78px;
 }
 
-.friend-chatting .scroll-content
+#friend-chatting .scroll-content
 {
-    width:388px;
+    width:214px;
 }
 
-.friend-chatting ul
+#friend-chatting ul
 {
-    width:388px;
-    margin-left:1px;
+    width:445px;
+    margin-left:25px;
     padding:0px;
     outline:1px solid black;
     outline-style:dotted;
 }
 
-.friend-chatting ul li
+#friend-chatting ul li
 {
-    width:192px;
+    width:222px;
     padding:0px;
     float:left;
     list-style-type:none;
@@ -4300,16 +4331,6 @@ div.a-group-users div.avatar
     outline-style:dotted;
 }
 
-.friend-chatting-content .scroll-container
-{
-    width: 190px;
-}
-
-.friend-chatting-content .scroll-content
-{
-    width: 190px;
-}
-
 .profile-modify
 {
     width:240px;
@@ -4323,14 +4344,13 @@ div.a-group-users div.avatar
     margin-left:65px;
     margin-top:-5px;
     width:180px; 
-    height:300px;
+    height:320px;
     padding:0px;
 }
 
 #profile-friend
 {
     width:240px;
-    height:350px;
     margin:-25px;
     padding:5px;
     float:left;
@@ -4345,41 +4365,20 @@ div.a-group-users div.avatar
     padding:0px;
 }
 
-div.my-all-messages
+#my-all-messages
 {
     width:600px;
-    height:310px;
-    margin-top:20px;
+    height:330px;
+    margin-top:35px;
     margin-left:35px;
     padding:5px;
-}
-
-.my-all-messages .scroll-container
-{
-    width:600px;
-}
-
-.my-all-messages .scroll-content
-{
-    width:600px;
 }
 
 div.allmessages
 {
     width:490px;
     height:290px;
-    margin-top:55px;
-    padding:5px;
-}
-
-div.allmessages .scroll-container
-{
-    width:490px;
-}
-
-div.allmessages .scroll-content
-{
-    width:490px;
+    margin-top:0px;
 }
 
 div.allmessages form
@@ -4449,6 +4448,17 @@ div.friends-sortfriend div.avatar
     margin:0px;
 }
 
+.myprofile .scroll-container
+{
+    width:445px;
+    height:280px;
+}
+
+.myprofile .scroll-content
+{
+    width:445px;
+}
+
 .myprofile h4
 {
     text-align:center;
@@ -4462,7 +4472,17 @@ div.friends-sortfriend div.avatar
     width:690px;
     height:370px;
     padding:25px;
-    margin:0px;
+}
+
+#newgroup .scroll-container
+{
+    width:665px;
+    height:340px;
+}
+
+#newgroup .scroll-content
+{
+    width:665px;
 }
 
 #mygroup
@@ -4515,6 +4535,17 @@ div.profile-message-allmessages
     margin:0px;
 }
 
+div.profile-message-allmessages .scroll-container
+{
+    width:670px;
+    height:317px;
+}
+
+div.profile-message-allmessages .scroll-content
+{
+    width:690px;
+}
+
 div.profile-message-allmessages table
 {
     width:530px;
@@ -4550,6 +4581,22 @@ div.profile-message-reply
     padding:25px;
     margin:0px;
     float:left;
+}
+
+.profile-message-reply .scroll-container
+{
+    width:490px;
+    height:290px;
+}
+
+.profile-message-reply .scroll-content
+{
+     width:490px;
+}
+
+div.profile-message-reply h4
+{
+    text-align:center;
 }
 
 .button-viewProfile-back,
@@ -4613,22 +4660,11 @@ a#button-editor-cancel,
     margin:0px;
 }
 
-#new-group-members div .scroll-container
-{
-    width:650px;
-}
-
-#new-group-members div .scroll-content
-{
-    width:650px;
-}
-
-
 #new-group-members div.avatar
 {
     margin-left:20px;
     margin-top:0px;
-    width:100px; 
+    width:94px; 
     height:70px;
     padding:0px;
     float:left;
@@ -4845,18 +4881,18 @@ div.delete-group
 #self-messages-content
 {
     width:165px;
-    height:125px;
     padding:0px;
     margin:0px;
     float:left;
 }
 
-#self-messages-content .scroll-container
+#article-content .scroll-container
 {
     width:165px;
+    height:125px;
 }
 
-#self-messages-content .scroll-content
+#article-content .scroll-content
 {
     width:165px;
 }
@@ -4894,6 +4930,16 @@ ul#self-message
     list-style-type:none;
 }
 
+ul#self-message .scroll-container
+{
+    width: 165px;
+}
+
+ul#self-message .scroll-content
+{
+    width: 165px;
+}
+
 li.article-title
 {
     text-align: left;
@@ -4914,8 +4960,19 @@ li#article-content
 {
     outline: 1px solid black;
     width: 165px;
-	height: 125px;
+	height: 120px;
     list-style-type:none;
+}
+
+li#article-content .scroll-container
+{
+    width: 165px;
+    height: 120px;
+}
+
+li#article-content .scroll-content
+{
+    width: 165px;
 }
 
 #introduce
@@ -5596,7 +5653,7 @@ li.enabled a
 #forum-forum-body.yellow #body-table .table-title th.tail,
 #forum-forum-body.yellow #body-table .table-foot td.tail
 {
-    background: url('../forum/merge.png');
+    background: url('../images/forum.png');
 }
 
 #forum-index
@@ -5878,7 +5935,7 @@ li.enabled a
 
 #forum-view-body
 {
-    background: url('../forum/view/background.png');
+    background: url('../images/forum_background.png');
     width: 683px;
     min-height: 324px;
     margin-left:35px;
@@ -6027,7 +6084,7 @@ li.enabled a
 
 #forum-view-replies
 {
-    background: url('../forum/view/background.png');
+    background: url('../images/forum_background.png');
     width: 683px;
     min-height: 300px;
     margin-left:35px;
@@ -6295,7 +6352,7 @@ li.enabled a
 
 #forum-forum-body
 {
-    background: url('../forum/view/background.png');
+    background: url('../images/forum_background.png');
     width: 683px;
     min-height: 183px;
     margin-left:35px;
@@ -7050,8 +7107,8 @@ li.enabled a
 
 #street-div #boy-dormitory-12
 {
-    width: 112px;
-    height: 84px;
+    width: 90px;
+    height: 67px;
     background:  url('../building/dormitory/mouseleave/boy_dormitory_12.png');
     left: 489px;
     top: 98px;
@@ -7064,10 +7121,10 @@ li.enabled a
 
 #street-div #boy-dormitory-13
 {
-    width: 103px;
-    height: 120px;
+    width: 82px;
+    height: 96px;
     background:  url('../building/dormitory/mouseleave/boy_dormitory_13.png');
-    left: 135px;
+    left: 148px;
     top: 431px;
 }
 
@@ -7620,8 +7677,8 @@ li.enabled a
 
 #street-div #restaurant-9
 {
-    width: 106px;
-    height: 94px;
+    width: 85px;
+    height: 75px;
     background:  url('../building/food/mouseleave/restaurant_9.png');
     left: 493px;
     top: 240px;
@@ -7660,10 +7717,10 @@ li.enabled a
 
 #street-div #stadium
 {
-    width: 163px;
-    height: 84px;
+    width: 132px;
+    height: 99px;
     background:  url('../building/exercise/mouseleave/stadium.png');
-    left: 129px;
+    left: 163px;
     top: 84px;
 }
 
@@ -7978,8 +8035,10 @@ li.enabled a
 
 #street-div .loading
 {
-    position:absolute;
+    position: absolute;
     display: none;
+    left: 63%;
+    z-index: 2;
 }
 
 #street-div .one-image

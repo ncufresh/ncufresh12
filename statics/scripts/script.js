@@ -507,7 +507,6 @@
         $('.friend-list-entry').each(function()
         {
             var entry = $(this);
-            console.log(entry.data('id'));
             $('.' + $.chat.options.chatDialogClass).each(function(index)
             {
                 if ( $(this).data('id') == entry.data('id') )
@@ -3132,35 +3131,27 @@
         }
         else
         {
+            var photo = url + streetPoints[pointat][faceto].photo;
+            var preloader = new Image();
+            preloader.onload = function()
+            {
+                $('#street-div #mapPicture').attr('src', photo).fadeIn();
+            };
+            preloader.src = photo;
+
             nowpointat = pointat;
             nowfaceto = faceto;
-            $('#street-div #mapPicture')
-                .attr(
-                    'src',
-                    url + streetPoints[nowpointat][nowfaceto].photo
-                );
+            $('#street-div #mapPicture').fadeOut();
         }
-        $('.loading').hide();
     };
 
     var forward = function()
     {
-        $('.loading').show();
-        $('.loading').css(
-        {
-            zIndex: 1000,
-        });
         move(streetPoints[nowpointat][nowfaceto].nextPoint, nowfaceto);
-        // if( nowpointat )
     };
 
     var turnLeft = function()
     {
-        $('.loading').show();
-        $('.loading').css(
-        {
-            zIndex: 1000,
-        });
         switch ( nowfaceto )
         {
             case 'N':
@@ -3181,11 +3172,6 @@
 
     var turnRight = function()
     {
-        $('.loading').show();
-        $('.loading').css(
-        {
-            zIndex: 1000,
-        });
         switch ( nowfaceto )
         {
             case 'N':
@@ -3248,6 +3234,7 @@
             });
             if( isInPicture == true )
             {
+                $('.loading').show();
                 if( $('#' + mouseInId).attr('streetPoints') == (-1) )
                 {
                     $('#street-div #experience-personally').css(
@@ -3343,7 +3330,6 @@
                 zIndex: 4,
             });
             $('#street-div .one-image').bind('click', littleBuilding);
-            $('#street-div .landscape').show();
         });
 
         $('#street-div .arrow').eq( 3 ).click(function() // 親身體驗 back
@@ -3365,6 +3351,7 @@
             {
                 zIndex: 3,
             });
+            $('.loading').hide();
         });
         $('#street-div .picture, #street-div .button-text').click(function()
         {
@@ -3375,9 +3362,9 @@
             });
             $('#street-div #experience-personally').css(
             {
-                zIndex: 3,
+                zIndex: 2,
             });
-            $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
+
             $('#text-container').dialog(
             {
                 width: 680,
@@ -3386,7 +3373,7 @@
                 escape: false,
                 onClose: function()
                 {
-                    
+                    $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
                 }
             });
 
@@ -3510,85 +3497,22 @@
         {
             scrollableClass:    false
         });
-        $('#life-play').mouseenter(function()
-        {
-            $('#life-index1').stop().animate(
-            {
-                height: '95px'
-            },500);
-        });
-
-        $('#life-play').mouseleave(function()
-        {
-            $('.life-items').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
-
-        $('#life-traffic').mouseenter(function()
-        {
-            $('#life-index2').stop().animate(
-            {
-                height: '120px'
-            },500);
-        });
-
-        $('#life-traffic').mouseleave(function()
-        {
-            $('#life-index2').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
-
-        $('#life-school').mouseenter(function()
-        {
-            $('#life-index3').stop().animate(
-            {
-                height: '335px'
-            },500);
-        });
-
-        $('#life-school').mouseleave(function()
-        {
-            $('#life-index3').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
-
-        $('#life-live').mouseenter(function()
-        {
-            $('#life-index4').stop().animate(
-            {
-                height: '150px'
-            },500);
-        });
-
-        $('#life-live').mouseleave(function()
-        {
-            $('#life-index4').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
-
-        $('#life-health').mouseenter(function()
-        {
-            $('#life-index5').stop().animate(
-            {
-                height: '100px'
-            },500);
-        });
-
-        $('#life-health').mouseleave(function()
-        {
-            $('#life-index5').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
+		
+		$('.nculife-hover').mouseenter(function()
+		{
+			$(this).children('ul').stop().animate(
+			{
+				height: $(this).attr('height')
+			},500);
+		});
+		
+		$('.nculife-hover').mouseleave(function()
+		{
+			$(this).children('ul').stop().animate(
+			{
+				height: '0px'
+			},500);
+		});
 
         switch( window.location.hash.replace('#', '') )
         {
@@ -4419,15 +4343,7 @@
     $.friends = function()
     {
         var checked = false;
-        $('.a-group-users').scrollable({
-            wheelSpeed: 90
-        });
-        $('.users-group').scrollable({
-            wheelSpeed: 90
-        });
-        $('#new-group-members').scrollable({
-            wheelSpeed: 90
-        });
+        $('.a-group-users, .users-group, #new-group-members').scrollable();
         $('.button-all-choose').click(function()
         {
             checked = ! checked;
@@ -4446,21 +4362,7 @@
 {
     $.profile = function()
     {
-        $('.allmessages').scrollable({
-            wheelSpeed: 90
-        });
-        $('.my-all-messages').scrollable({
-            wheelSpeed: 90
-        });
-        $('#self-messages-content').scrollable({
-            wheelSpeed: 90
-        });
-        $('.friend-chatting').scrollable({
-            wheelSpeed: 90
-        })
-        $('.friend-chatting-content').scrollable({
-            wheelSpeed: 90
-        });
+        $('.allmessages, #my-all-messages, #self-messages-content, #friend-chatting, .friend-chatting-content').scrollable();
         jQuery('.button-viewProfile-back').click(function()
         {
             window.history.back();
@@ -4899,25 +4801,28 @@
     $.about = function(options)
     {
         var options = $.extend({
-            aboutId:                         'about',
-            titleClass:                      'title',
-            introdutionBlock:                'itrodution-block',
-            introdutionPicture:              'about-picture',
-            photoUl:                         'photo-ul',
-            introduceId:                     'introdution',
-            tagBar:                          'tag-bar',
-            animationClass:                  'animation',
-            block1InfClass:                  'about-block1Inf',
-            tagClass:                        'tag',
-            tagTxtClass:                     'tag-txt',
-            title1Class:                     'title1',
-            title2Class:                     'title2',
-            PictureBarSpeed:                     1000,
-            PictureAutoSpeed:                    6000,
-            tagBarSpeed:                     30000
+            aboutId:                        'about',
+            titleClass:                     'title',
+            introdutionBlock:               'itrodution-block',
+            introdutionPicture:             'about-picture',
+            photoUl:                        'photo-ul',
+            introduceId:                    'introdution',
+            tagBar:                         'tag-bar',
+            animationClass:                 'animation',
+            block1InfClass:                 'about-block1Inf',
+            tagClass:                       'tag',
+            tagTxtClass:                    'tag-txt',
+            title1Class:                    'title1',
+            title2Class:                    'title2',
+            PictureBarSpeed:                1000,
+            PictureAutoSpeed:               6000,
+            tagBarSpeed:                    30000
         }, options);
         var photoIndex = 0;
-        var button = [$('#' + options.aboutId + ' .button-left'), $('#' + options.aboutId + ' .button-right')];
+        var button = [
+            $('#' + options.aboutId + ' .button-left'),
+            $('#' + options.aboutId + ' .button-right')
+        ];
         var photos = $('#' + options.aboutId + ' img');
         var tagbarIndex = 0;
         var tagbar = $('.' + options.tagBar + ' .tag-image').each(function(index)
@@ -4942,7 +4847,8 @@
             if ( tagbarIndex != 6 )
             {
                 block1Inf.eq(tagbarIndex).show();
-                tagbarPerson.each(function(){
+                tagbarPerson.each(function()
+                {
                     $(this).hide();
                 });
                 for (var p = 0; p < 9; p++)
@@ -4956,7 +4862,10 @@
             }
             tagbar.eq(tagbarIndex).show();
         };
-        var blocks = [$('#' + options.aboutId + ' .block1'), $('#' + options.aboutId + ' .block2')];
+        var blocks = [
+            $('#' + options.aboutId + ' .block1'),
+            $('#' + options.aboutId + ' .block2')
+        ];
         var itrodutionPicture = $('#' + options.aboutId + ' .' + options.introdutionPicture);
         var picture = $('<div></div>')
             .css({
@@ -5019,7 +4928,8 @@
             })
             .appendTo(block1Picture);
         });
-        tagbarPerson.each(function(){
+        tagbarPerson.each(function()
+        {
             $(this).css({
                 position: 'absolute',
                 top: 45 + parseInt($(this).attr('top')),
@@ -5143,7 +5053,6 @@
  (function($){ 
     $.forum = function()
     {
-        // $('#form-create-content').ckeditor();
         $("#forum-reply-content").keydown(function(){
             var content_num = 20;
             /* 若content字數小於10則將submit disable */
@@ -5167,8 +5076,9 @@
             $('.form-addfriend').submit();
             return false;
         });
-        $("#forum-forum-top2 #sort_list").change(function() {
+        $("#forum-forum-top2 .sort-list").change(function() {
             var url = $.configures.forumSortUrl;
+            console.log(url);
             window.location = url.replace(':sort', $(this).val());
         });
         /*forum create*/

@@ -8,45 +8,43 @@
     </a>
         <ul id="user-data-view">  
             <li>
-                姓名:<?php echo $user->profile->name; ?>
+                姓名：<?php echo $user->profile->name; ?>
             </li>
             <li>
-                暱稱:<?php echo $user->profile->nickname; ?>
+                暱稱：<?php echo $user->profile->nickname; ?>
             </li>
             <li>
-                性別:
 <?php if ( $user->profile->gender === 0 ): ?>
-                男孩兒
+                性別：男孩兒
 <?php else:?>
-                女孩兒
+                性別：女孩兒
 <?php endif; ?>    
             </li>
             <li>
-                帳號:<?php echo $user->username; ?>      
+                帳號：<?php echo $user->username; ?>      
             </li>
             <li>
-                系所:<?php echo $user->profile->mydepartment->abbreviation; ?>
+                系所：<?php echo $user->profile->mydepartment->abbreviation; ?>
             </li>
             <li>
-                系級:
 <?php if ( $user->profile->grade == 0 ) : ?>
-                嘿嘿!!這是秘密唷
+                系級：嘿嘿!!這是秘密唷
 <?php else : ?>
-<?php echo $user->profile->grade; ?>年級
+                系級：<?php echo $user->profile->grade; ?>年級
 <?php endif; ?>
             </li>
             <li>
-                畢業高中:<?php echo $user->profile->senior; ?>    
+                畢業高中：<?php echo $user->profile->senior; ?>    
             </li>
             <li>
-                生日:<?php echo $user->profile->birthday; ?>
+                生日：<?php echo $user->profile->birthday; ?>
             </li>
         </ul>
-    </div> <!--顯示歷史訊息-->  
-    <div class="friend-chatting">
+    </div>
+    <div id="friend-chatting">
         <ul>
-            <li>時間:</li>
-            <li>對話內容:</li>
+            <li>時間：</li>
+            <li>對話內容：</li>
 <?php foreach ( $messages as $message ) : ?>
             <li>
 <?php echo $message['time']; ?>
@@ -66,7 +64,7 @@
     <button type="submit" id="add-new-friends">新增好友</button>
 </form>
 <?php elseif ( $friend_relation === Friend::IS_SEND_REQUEST ) : ?>
-<button id="friend_request">已送出邀請咯</button>
+<button id="friend_request">已送出邀請！</button>
 <?php elseif( $friend_relation === Friend::IS_FRIEND ): ?>
 <button id="is_friend">**朋友</button>
 <?php endif; ?>
