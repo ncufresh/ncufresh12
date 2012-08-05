@@ -4834,25 +4834,28 @@
     $.about = function(options)
     {
         var options = $.extend({
-            aboutId:                         'about',
-            titleClass:                      'title',
-            introdutionBlock:                'itrodution-block',
-            introdutionPicture:              'about-picture',
-            photoUl:                         'photo-ul',
-            introduceId:                     'introdution',
-            tagBar:                          'tag-bar',
-            animationClass:                  'animation',
-            block1InfClass:                  'about-block1Inf',
-            tagClass:                        'tag',
-            tagTxtClass:                     'tag-txt',
-            title1Class:                     'title1',
-            title2Class:                     'title2',
-            PictureBarSpeed:                     1000,
-            PictureAutoSpeed:                    6000,
-            tagBarSpeed:                     30000
+            aboutId:                        'about',
+            titleClass:                     'title',
+            introdutionBlock:               'itrodution-block',
+            introdutionPicture:             'about-picture',
+            photoUl:                        'photo-ul',
+            introduceId:                    'introdution',
+            tagBar:                         'tag-bar',
+            animationClass:                 'animation',
+            block1InfClass:                 'about-block1Inf',
+            tagClass:                       'tag',
+            tagTxtClass:                    'tag-txt',
+            title1Class:                    'title1',
+            title2Class:                    'title2',
+            PictureBarSpeed:                1000,
+            PictureAutoSpeed:               6000,
+            tagBarSpeed:                    30000
         }, options);
         var photoIndex = 0;
-        var button = [$('#' + options.aboutId + ' .button-left'), $('#' + options.aboutId + ' .button-right')];
+        var button = [
+            $('#' + options.aboutId + ' .button-left'),
+            $('#' + options.aboutId + ' .button-right')
+        ];
         var photos = $('#' + options.aboutId + ' img');
         var tagbarIndex = 0;
         var tagbar = $('.' + options.tagBar + ' .tag-image').each(function(index)
@@ -4877,7 +4880,8 @@
             if ( tagbarIndex != 6 )
             {
                 block1Inf.eq(tagbarIndex).show();
-                tagbarPerson.each(function(){
+                tagbarPerson.each(function()
+                {
                     $(this).hide();
                 });
                 for (var p = 0; p < 9; p++)
@@ -4891,7 +4895,10 @@
             }
             tagbar.eq(tagbarIndex).show();
         };
-        var blocks = [$('#' + options.aboutId + ' .block1'), $('#' + options.aboutId + ' .block2')];
+        var blocks = [
+            $('#' + options.aboutId + ' .block1'),
+            $('#' + options.aboutId + ' .block2')
+        ];
         var itrodutionPicture = $('#' + options.aboutId + ' .' + options.introdutionPicture);
         var picture = $('<div></div>')
             .css({
@@ -4954,7 +4961,8 @@
             })
             .appendTo(block1Picture);
         });
-        tagbarPerson.each(function(){
+        tagbarPerson.each(function()
+        {
             $(this).css({
                 position: 'absolute',
                 top: 45 + parseInt($(this).attr('top')),
