@@ -88,11 +88,8 @@ class FriendsController extends Controller
         ));
     }
 
-    public function actionMakeFriends() //判斷有無網址
+    public function actionMakeFriends() 
     {  
-        // var url = false;
-        // if (  )
-        // else 
         if ( isset($_POST['friends']) )
         {
             foreach ( $_POST['friends'] as $friendid )
@@ -124,6 +121,8 @@ class FriendsController extends Controller
 
     public function actionMyGroups($id)
     {   
+        // var_dump(UserGroup::model()->getMembers($id));
+        // exit;
         $this->setPageTitle(Yii::app()->name . ' - 我的群組');
         $this->render('mygroups', array(
             'user'          => $this->user,

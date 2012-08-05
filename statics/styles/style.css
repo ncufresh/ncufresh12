@@ -4020,7 +4020,7 @@ ul.friends-sort li
 {
     width:690px;
     height:30px;
-    margin-top:-15px;
+    margin-top:-10px;
     padding:0px;
 }
 
@@ -4596,7 +4596,8 @@ div.profile-message-reply h4
 #same-department-same-grade-search,
 #same-department-diff-grade-search,
 #other-department-search,
-#newmember-search
+#newmember-search,
+#request-search
 {
     width:100px;
     height:25px;
