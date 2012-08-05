@@ -1679,17 +1679,6 @@ table.gsc-completion-container
     color: #946722;
 }
 
-
-#calendar .scroll-content
-{
-    width: 484px;
-}
-
-#calendar .scroll-container
-{
-    width: 484px;
-}
-
 #calendar-recycle,
 #calendar-recycle h4,
 #calendar-recycle a.calendar-show-event,
@@ -1704,6 +1693,21 @@ table.gsc-completion-container
 {
     background: url('../images/calendar.png');
 }
+
+#calendar-recycle .scroll-content,
+#calendar-event .scroll-content
+{
+    width: 610px;
+}
+
+#calendar-recycle .scroll-container,
+#calendar-event .scroll-container
+{
+    width: 610px;
+    height: 240px;
+}
+
+
 
 .calendar
 {
@@ -3908,7 +3912,7 @@ button.news-button
     padding: 0px;
     cursor: pointer;
     width: 204px;
-    height: 110px;
+  
     display: block;
 }
 
