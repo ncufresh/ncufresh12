@@ -85,12 +85,12 @@
             <label for="form-register-nickname">暱稱</label>
         </dt>
         <dd>
-            <input id="form-register-nickname" name="profile[nickname]" type="text" maxlength=8/>
+            <input id="form-register-nickname" name="profile[nickname]" type="text" maxlength=5 />
             <span>
 <?php if ( Yii::app()->user->getFlash('register-error-nickname-message') ) : ?>
                 <span class="error">您的暱稱太長了或者已經有人使用過了！</span>
 <?php endif; ?>
-                請輸入您的暱稱，不超過八個字元。
+                請輸入您的暱稱，不超過五個字元。
             </span>
         </dd>
     </dl>
