@@ -8,7 +8,7 @@
     沿著步道，渠道流水潺潺伴隨在旁，沿路上夾道的兩排林蔭幽靜高雅，兩側是校內寬廣的草皮區，視野十分舒暢。
 </p>
 <p>
-    <img alt="百花川" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/1 (2).jpg" style="height:300px;width:360px;" /><img alt="百花川" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2557(1).JPG" style="width:225px;height:300px;" />
+    <img alt="百花川" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/1 (2).jpg" style="height:300px;width:360px; margin-right: 4px;" /><img alt="百花川" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2557(1).JPG" style="width:225px;height:300px;" />
 </p>
 <p>
     百花川旁還有一條行人木走道，步道起點有高齡94歲的名書法家郭雲樵先生致贈的墨寶，走起來格外古色古香

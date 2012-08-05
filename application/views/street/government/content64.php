@@ -2,7 +2,7 @@
     總圖書館
 </h4>
 <p>
-    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0221.JPG" style="width:302px;height:200px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2549.JPG" style="width:267px;height:200px;" />
+    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0221.JPG" style="width:302px;height:200px; margin-left: 7px; margin-right: 7px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2549.JPG" style="width:267px;height:200px;" />
 </p>
 <p>
     總圖書館位於學校正門口附近，介於行政大樓與中正圖書館之間。
@@ -11,7 +11,7 @@
     總圖書館共有地上有8層，地下有1層，內部可使用面積有4000餘坪。
 </p>
 <p>
-    在總圖二樓也設有<strong>英語閱讀坊</strong>，可藉由<strong>台聯大借書系統</strong>借閱台聯大的書籍。
+    在一樓入口右方，可藉由台聯大借書系統借閱台聯大的書籍，二樓也設有<strong>英語閱讀坊</strong>
 </p>
 <p>
     在總圖書館內採用全自動化系統管理館內收藏圖書，借閱書籍必須只用學生證。

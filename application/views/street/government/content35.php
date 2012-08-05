@@ -2,7 +2,7 @@
     志希館
 </h4>
 <p>
-    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2825.JPG" style="width:260px;height:200px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2824.JPG" style="width:320px;height:200px;" />
+    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2825.JPG" style="width:260px;height:200px; margin-left: 4px; margin-right: 4px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2824.JPG" style="width:320px;height:200px;" />
 </p>
 <p>
     中央大學的<strong>電子計算機中心</strong>位於志希館<strong>一樓</strong>，主要提供的服務項目有：
@@ -43,5 +43,5 @@
     臨時狀況（例如：停電、大掃除等）：依狀況臨時公告之。 
 </p>
 <p>
-    <img alt="志希館" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2826.JPG" style="width:260px;height:180px;" /><img alt="志希館" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2827.JPG" style="width:260px;height:180px;" />
+    <img alt="志希館" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2826.JPG" style="width:260px;height:180px; margin-left: 27px; margin-right: 18px;" /><img alt="志希館" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2827.JPG" style="width:260px;height:180px;" />
 </p>

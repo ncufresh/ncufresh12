@@ -1,4 +1,4 @@
-<div id="readme-download" class="downlaod-background">
+<div id="readme-download" class="download-background">
     <div class="readme-view">
         <ul class="index">
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/附件-申請就學貸款須知.doc" title="附件-申請就學貸款須知" rel="external">附件-申請就學貸款須知</a></li>
@@ -17,14 +17,13 @@
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/附件-大一新生取消住宿申請單.doc" title="大一新生取消住宿申請單" rel="external">大一新生取消住宿申請單</a></li>
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/學習導航手冊.doc" title="學習導航手冊" rel="external">學習導航手冊</a></li>
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/軍公教遺族子女就學優待申請書.doc" title="軍公教遺族子女就學優待申請書" rel="external">軍公教遺族子女就學優待申請書</a></li>
-        	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/大一國文.pdf" title="大一國文" rel="external">大一國文</a></li>
+        	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/大一國文願景.pdf" title="大一國文願景" rel="external">大一國文願景</a></li>
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/學分抵免申請表.doc" title="學分抵免申請表" rel="external">學分抵免申請表</a></li>
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/役男兵役資料表.doc" title="役男兵役資料表" rel="external">役男兵役資料表</a></li>
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/學士班新生註冊須知.doc" title="學士班新生註冊須知" rel="external">學士班新生註冊須知</a></li>
-        	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/李代理校長給新生的話20120719.doc" title="李代理校長給新生的話" rel="external">李代理校長給新生的話</a></li>
             <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/校園性侵害或性騷擾防治規定.doc" title="校園性侵害或性騷擾防治規定" rel="external">校園性侵害或性騷擾防治規定</a></li>
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/生活助學金申請表.doc" title="生活助學金申請表" rel="external">生活助學金申請表</a></li>
         </ul>
     </div>
-    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" id="download-back" class="download-back" title="回上一頁"></a>
+    <a href="<?php echo Yii::app()->createUrl('readme/index'); ?>" id="download-back" class="back" title="回上一頁"></a>
 </div>

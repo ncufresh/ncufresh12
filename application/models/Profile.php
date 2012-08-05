@@ -17,7 +17,7 @@ class Profile extends CActiveRecord
     public function rules()
     {   
         return array(
-            array('name, nickname, department, grade, senior, birthday ,gender','required', 'on' => 'register, editor'),
+            array('name, nickname, department, grade, senior, birthday ,gender', 'required', 'on' => 'register, editor'),
             array('name', 'length','min' => 1, 'max' => 10, 'on' => 'register, editor'),
             array('nickname', 'length','min' => 1, 'max' => 8, 'on' => 'register, editor'),
             array('department', 'numerical', 'integerOnly' => true, 'min' => 1, 'max' => 21, 'on' => 'register, editor'),
@@ -148,6 +148,9 @@ class Profile extends CActiveRecord
         {
             if ( $this->getIsNewRecord() || $this->getScenario('editor') )
             {
+                $this->name = trim($this->name);
+                $this->nickname = trim($this->nickname);
+                $this->senior = trim($this->senior);
                 list($year, $month, $day) = explode('-', $this->birthday);
                 $this->birthday = mktime(0, 0, 0, $month, $day, $year);
             }

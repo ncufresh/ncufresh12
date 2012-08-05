@@ -17,6 +17,18 @@
         return this.split('').reverse().join('');
     };
 
+    if (!('indexOf' in Array.prototype)) {
+        Array.prototype.indexOf= function(find, i /*opt*/) {
+            if (i===undefined) i= 0;
+            if (i<0) i+= this.length;
+            if (i<0) i= 0;
+            for (var n= this.length; i<n; i++)
+                if (i in this && this[i]===find)
+                    return i;
+            return -1;
+        };
+    }
+
     $.extend({
         random: function(min, max)
         {
@@ -318,11 +330,10 @@
                     }
                     if ( response.messages )
                     {
-                        for ( var key in response.messages )
+                        $(response.messages).each(function(index, data)
                         {
-                            var data = response.messages[key];
                             $.fn.chat.updateChatDialog(data.id, data);
-                        }
+                        });
                     }
                     $.pull.pulling = false;
                 }
@@ -378,11 +389,10 @@
                         $.configures.lasttime = response.lasttime;
                         if ( $.errors(response.errors) )
                         {
-                            for ( var key in response.messages )
+                            $(response.messages).each(function(index, data)
                             {
-                                var data = response.messages[key];
                                 $.fn.chat.updateChatDialog(data.id, data);
-                            }
+                            });
                         }
                         $.push.pushing = false;
                         $.push.restart();
@@ -415,7 +425,7 @@
         if ( errors )
         {
             var messages = '';
-            for ( var key in errors )
+            for ( var key = 0 ; key < errors.length ; ++key )
             {
                 messages += errors[key];
             }
@@ -492,7 +502,8 @@
 
     $.fn.chat.notify = function(dialog)
     {
-        $('#' + $.chat.options.chatNotifyId).get(0).play();
+        var audio = $('#' + $.chat.options.chatNotifyId).get(0);
+        if ( audio.play ) audio.play();
         dialog.data('timer', setInterval(function()
         {
             dialog.children('.' + $.chat.options.chatTitleClass).highlight();
@@ -554,7 +565,7 @@
                 .keyup(function(event)
                 {
                     var name = $(this).val().toLowerCase();
-                    for ( var key in friends )
+                    for ( var key = 0 ; key < friends.length ; ++key )
                     {
                         var data = friends[key];
                         if ( data[1].toLowerCase().search(name) == 0 )
@@ -610,9 +621,8 @@
     $.fn.chat.updateFriendList = function(response)
     {
         var list = $.fn.chat.createFriendList();
-        for ( var key in response )
+        $(response).each(function(index, data)
         {
-            var data = response[key];
             var entry = null;
             $('#' + $.chat.options.friendListContainerId)
                 .find('.friend-list-entry')
@@ -641,7 +651,7 @@
             }
             entry.data('online', data.active);
             $.fn.chat.updateFriendStatus(data.id);
-        }
+        });
         return list;
     };
 
@@ -749,11 +759,10 @@
                 {
                     if ( $.errors(response.errors) )
                     {
-                        for ( var key in response.messages )
+                        $(response.messages).each(function(index, data)
                         {
-                            var data = response.messages[key];
                             $.fn.chat.updateChatDialog(data.id, data);
-                        }
+                        });
                     }
                 }
             );
@@ -962,8 +971,36 @@
             fadeOutDuration:        'slow',
             wheelSpeed:             48
         }, options);
+
+        var scrollWidth = (function()
+        {
+            var inner = document.createElement('p');
+            inner.style.width = '100%';
+            inner.style.height = '200px';
+
+            var outer = document.createElement('div');
+            outer.style.position = 'absolute';
+            outer.style.top = '0px';
+            outer.style.left = '0px';
+            outer.style.visibility = 'hidden';
+            outer.style.width = '200px';
+            outer.style.height = '150px';
+            outer.style.overflow = 'hidden';
+            outer.appendChild(inner);
+
+            document.body.appendChild (outer);
+            var w1 = inner.offsetWidth;
+            outer.style.overflow = 'scroll';
+            var w2 = inner.offsetWidth;
+            if (w1 == w2) w2 = outer.clientWidth;
+
+            document.body.removeChild (outer);
+            return (w1 - w2);
+        })();
+
         if ( $.browser.msie )
         {
+            var scrollArea = $(this);
             var container = $('<div></div>')
                 .addClass('scroll-container')
                 .css({
@@ -971,10 +1008,24 @@
                 })
                 .insertAfter($(this));
             $(this).css({
-                height: container.height(),
-                overflowY: 'scroll'
+                height: '100%',
+                overflowX: 'hidden',
+                overflowY: 'auto',
+                width: container.width()
             });
-            container.wrapInner($(this))
+            container.wrapInner($(this));
+            container.css({
+                width: $(this).width() + scrollWidth
+            });
+            this.each(function()
+            {
+                $.extend($(this).constructor.prototype, {
+                    scrollTo: function(position)
+                    {
+                        scrollArea.scrollTop(position);
+                    }
+                });
+            });
             return this;
         }
         return this.each(function()
@@ -982,31 +1033,6 @@
             var active = false;
             var inside = false;
             var scrollHeight = 0;
-            var scrollWidth = (function()
-            {
-                var inner = document.createElement('p');
-                inner.style.width = '100%';
-                inner.style.height = '200px';
-
-                var outer = document.createElement('div');
-                outer.style.position = 'absolute';
-                outer.style.top = '0px';
-                outer.style.left = '0px';
-                outer.style.visibility = 'hidden';
-                outer.style.width = '200px';
-                outer.style.height = '150px';
-                outer.style.overflow = 'hidden';
-                outer.appendChild(inner);
-
-                document.body.appendChild (outer);
-                var w1 = inner.offsetWidth;
-                outer.style.overflow = 'scroll';
-                var w2 = inner.offsetWidth;
-                if (w1 == w2) w2 = outer.clientWidth;
-
-                document.body.removeChild (outer);
-                return (w1 - w2);
-            })();
             var updateScrollDraggableHeight = function()
             {
                 var originalHeight = parseInt(scrollDragable.css('height'));
@@ -1429,7 +1455,7 @@
         if ( current_month == calendar_month && current_year ==  calendar_year )
         {
             var tds = $(this).children('tbody').find('td');
-            for( var key in tds )
+            for( var key=0; key<tds.length; key++ )
             {
                 if ( $(tds[key]).data('day') == current_day ) return $(tds[key]);
             }
@@ -1440,25 +1466,12 @@
     var updateData = function(url, callback)
     {
         var self = this;
-        // $.getJSON( url, function(data){
-            // self.cleanUpMark(true);
-            // for ( var key in data.events )
-            // {
-                // self.markEvent(data.events[key], { textDecoration: 'underline'});
-            // }
-            // self.markToday();
-            // self.data('all_events', data.events);
-            // if ( callback ) 
-            // {
-                // callback(self);
-            // }
-        // });
         $.get( url, {
             m : self.data('options').month,
             y : self.data('options').year
         }, function(data){
             self.cleanUpMark(true);
-            for ( var key in data.events )
+            for ( var key=0; key<data.events.length; key++ )
             {
                 self.markEvent(data.events[key], { textDecoration: 'underline'});
             }
@@ -1512,7 +1525,7 @@
                 $(this).css(css);
                 var cal_events = $(this).data('cal_events')?$(this).data('cal_events'):[];
                 var found = false;
-                for( var key in cal_events )
+                for( var key=0; key<cal_events.length; key++ )
                 {
                     if( cal_events[key].id == event.id )
                     {
@@ -1524,6 +1537,10 @@
                 {
                     cal_events[cal_events.length] = event;
                     $(this).data('cal_events', cal_events);
+                }
+                else
+                {
+                    $(this).data('cal_events', []);
                 }
             }
         });
@@ -1561,17 +1578,18 @@
         }
         var eventMouseLeave = function(){
             self.cleanUpMark();
-            for( var key in self.data('all_events') )
+            for( var key=0; key<self.data('all_events').length; key++ )
             {
                 self.markEvent(self.data('all_events')[key], { textDecoration: 'underline'});
             }
             self.markToday();
         }
-        $(container).empty();
+        $('#personal-calendar .right').remove();
+        container = $('<div></div>').addClass('right').insertAfter($('#personal-calendar .date'));
         if ( cal_events && cal_events.length )
         {
             var event_ids = [];
-            for( var key in cal_events )
+            for( var key=0; key<cal_events.length; key++ )
             {
                 event_ids[key] = cal_events[key].id;
             }
@@ -1579,39 +1597,39 @@
                 event_ids : event_ids,
                 token : $.configures.token
             }, function(data){
-                
-                for( var key in data.events )
+                for ( var key in data.events )
                 {
                     var div = $('<div></div>');
                     var header = $('<h4></h4>').text(key);
                     var ul = $('<ul></ul>');
-                    for ( var key2 in data.events[key] )
+                    $(data.events[key]).each(function(k, e)
                     {
                         $('<li></li>')
                             .append(
                                 $('<a></a>')
-                                    .text(data.events[key][key2].name)
+                                    .text(e.name)
                                     .attr(
                                         'href', 
                                         $.configures
                                             .calendarEventUrl
-                                            .replace(':id', data.events[key][key2].id)
+                                            .replace(':id', e.id)
                                     )
                             )
                             .append(
                                 $('<a></a>')
                                     .addClass('calendar-hide-event')
                                     .attr('title', '丟進回收桶')
-                                    .attr('href', '#' + data.events[key][key2].id)
+                                    .attr('href', '#' + e.id)
                                     .text('把我丟掉')
                             )
-                            .data('event', data.events[key][key2])
+                            .data('event', e)
                             .mouseenter(eventMouseEnter)
                             .mouseleave(eventMouseLeave)
                             .appendTo(ul);
-                    }
+                    });
                     div.append(header).append(ul).appendTo(container);
                 }
+                container.scrollable();
                 $.configures.token = data.token;
             });
         }
@@ -1631,7 +1649,7 @@
         $('<td></td>').text(options.dateText).appendTo(tr);
         $('<td></td>').text(options.eventText).appendTo(tr);
         tr.appendTo(thead);
-        for(var key in events)
+        for(var key=0; key<events.length; key++)
         {
             var tr = $('<tr></tr>');
             var td = $('<td></td>').text(events[key][0]);
@@ -1699,7 +1717,7 @@
         var tbody = $('<tbody></tbody>');
         var tr = $('<tr></tr>');
         var date = new Date(options.year, options.month);
-        for( var key in options.dayOfWeek )
+        for( var key=0; key<options.dayOfWeek.length; key++ )
         {
             var td = $('<td></td>').text(options.dayOfWeek[key]);
             if ( key==0 || key==6 ) td.addClass('weekend');
@@ -1749,25 +1767,26 @@
 
     $.fn.calendar = function(url)
     {
-        var todolist;
         var container = $(this);
         var updateTodolist = function()
         {
-            var events = $(this).data('cal_events');
+            var events = $(this).data('cal_events')?$(this).data('cal_events'):[];
             var todos = [];
-            if ( todolist ) todolist.remove();
-            for ( var key in events )
+            $(this).parents('table').next().remove();
+            if ( events )
             {
-                var start = new Date((events[key].start - (new Date()).getTimezoneOffset() * 60) * 1000);
-                var end = new Date((events[key].end - (new Date()).getTimezoneOffset() * 60) * 1000);
-                todos[key]=
-                [
-                    (start.getMonth()+1) + '/' + start.getDate() + ' ~ ' + (end.getMonth()+1) + '/' + end.getDate(),
-                    events[key].name
-                ];
+                for ( var key=0; key<events.length; key++ )
+                {
+                    var start = new Date((events[key].start - (new Date()).getTimezoneOffset() * 60) * 1000);
+                    var end = new Date((events[key].end - (new Date()).getTimezoneOffset() * 60) * 1000);
+                    todos[key]=
+                    [
+                        (start.getMonth()+1) + '/' + start.getDate() + ' ~ ' + (end.getMonth()+1) + '/' + end.getDate(),
+                        events[key].name
+                    ];
+                }
             }
-            todolist = $.generateTodolist(todos).appendTo(container);
-            return todolist;
+            $.generateTodolist(todos).appendTo(container).scrollable();
         };
         var generate = function(year, month)
         {
@@ -1782,8 +1801,8 @@
                         year += 1;
                         month = 1;
                     }
+                    $(this).parents('table').next().remove();
                     calendar.remove();
-                    if ( todolist ) todolist.remove();
                     calendar = generate(year, month);
                     return false;
                 },
@@ -1795,8 +1814,8 @@
                         year -= 1;
                         month = 12;
                     }
+                    $(this).parents('table').next().remove();
                     calendar.remove();
-                    if ( todolist ) todolist.remove();
                     calendar = generate(year, month);
                     return false;
                 },
@@ -1890,7 +1909,7 @@
                     var events = $(this).data('cal_events');
                     if( events && events.length > 0 )
                     {
-                        for( var key in $(this).data('cal_events') )
+                        for( var key=0; key<$(this).data('cal_events').length; key++ )
                         {
                             $('<li></li>').text(events[key].name).appendTo(prompt.find('ul'));
                         }
@@ -1932,7 +1951,7 @@
         $('.calendar-cancel-button').click(function()
         {
             $.confirm({
-                message: '確定取消編輯此篇文章？',
+                message: '確定取消編輯這則事件？',
                 confirmed: function(result)
                 {
                     if ( result ) window.location = $.configures.calendarViewUrl;
@@ -2116,7 +2135,6 @@
             scrollableClass:    false
         });
     };
-
 })(jQuery);
 
 /**
@@ -2366,7 +2384,7 @@
     {
         if ( index === undefined )
         {
-            for ( var index in elements[uuid] )
+            for ( var index = 0 ; index < elements[uuid].length ; ++index )
             {
                 var data = elements[uuid][index];
                 if ( ! overlayCloseInternal(data) ) return false;
@@ -2795,7 +2813,7 @@
 })(jQuery);
 
 (function($) {
-    var url = '../statics/street-view/';
+    var url = '../statics/streets/';
     var nowfaceto;
     var nowpointat;
     var loading = false;
@@ -2982,26 +3000,26 @@
             W:{ photo: 'Day 3 (64).JPG', nextPoint: (-1) }
         },
         { // 30 (國鼎、烏龜池旁邊)
-            N:{ photo: 'Day 3 (58).JPG', nextPoint: (-1) },
+            N:{ photo: 'Day 3 (58).JPG', nextPoint: 29 },
             E:{ photo: 'Day 3 (57).JPG', nextPoint: 31 },
             S:{ photo: 'Day 3 (60).JPG', nextPoint: (-1) },
             W:{ photo: 'Day 3 (59).JPG', nextPoint: 50 }
         },
         { // 31 (文學院)
             N:{ photo: 'Day 3 (54).JPG', nextPoint: 28 },
-            E:{ photo: 'Day 3 (53).JPG', nextPoint: 32 },
+            E:{ photo: 'Day 3 (53).JPG', nextPoint: (-1) },
             S:{ photo: 'Day 3 (56).JPG', nextPoint: 33 },
-            W:{ photo: 'Day 3 (55).JPG', nextPoint: 30 }
+            W:{ photo: 'Day 3 (55).JPG', nextPoint: (-1) }
         },
         { // 32 (文院到舊圖間岔路)
             N:{ photo: 'Day 2 (24).JPG', nextPoint: 24 },
             E:{ photo: 'Day 2 (21).JPG', nextPoint: 21 },
             S:{ photo: 'Day 2 (22).JPG', nextPoint: 34 },
-            W:{ photo: 'Day 2 (23).JPG', nextPoint: 31 }
+            W:{ photo: 'Day 2 (23).JPG', nextPoint: 33 }
         },
         { // 33 (國鼎東岔路)
             N:{ photo: 'Day 3 (50).JPG', nextPoint: 31 },
-            E:{ photo: 'Day 3 (51).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (51).JPG', nextPoint: 32 },
             S:{ photo: 'Day 3 (52).JPG', nextPoint: 35 },
             W:{ photo: 'Day 3 (49).JPG', nextPoint: (-1) }
         },
@@ -3019,8 +3037,8 @@
         },
         { // 36 (太極銅雕)
             N:{ photo: 'Day 2 (29).JPG', nextPoint: (-1) },
-            E:{ photo: 'Day 2 (31).JPG', nextPoint: 37 },
-            S:{ photo: 'Day 2 (32).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 2 (32).JPG', nextPoint: 37 },
+            S:{ photo: 'Day 2 (31).JPG', nextPoint: (-1) },
             W:{ photo: 'Day 2 (30).JPG', nextPoint: 35 }
         },
         { // 37 (百花川、棒球場)
@@ -3030,10 +3048,10 @@
             W:{ photo: 'Day 2 (34).JPG', nextPoint: 36 }
         },
         { // 38 (百花川、舊圖)
-            N:{ photo: 'Day 1 (17).JPG', nextPoint: 39 },
-            E:{ photo: 'Day 1 (18).JPG', nextPoint: (-1) },
-            S:{ photo: 'Day 1 (19).JPG', nextPoint: (-1) },
-            W:{ photo: 'Day 1 (16).JPG', nextPoint: 37 }
+            N:{ photo: 'Day 2 (39).JPG', nextPoint: 39 },
+            E:{ photo: 'Day 2 (36).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 2 (37).JPG', nextPoint: (-1) },
+            W:{ photo: 'Day 2 (38).JPG', nextPoint: 37 }
         },
         { // 39 (舊圖)
             N:{ photo: 'Day 2 (41).JPG', nextPoint: 21 },
@@ -3102,9 +3120,9 @@
             W:{ photo: 'Day 3 (5).JPG', nextPoint: (-1) }
         },
         { // 50 (男12舍)
-            N:{ photo: 'Day 3 (96).JPG', nextPoint: (-1) },
+            N:{ photo: 'Day 3 (96).JPG', nextPoint: 29 },
             E:{ photo: 'Day 3 (95).JPG', nextPoint: 30 },
-            S:{ photo: 'Day 3 (94).JPG', nextPoint: (-1) },
+            S:{ photo: 'Day 3 (94).JPG', nextPoint: 30 },
             W:{ photo: 'Day 3 (61).JPG', nextPoint: (-1) }
         },
         { // 51 (工2)
@@ -3287,7 +3305,7 @@
 
                     move($('#' + mouseInId).attr('streetPoints'), $('#' + mouseInId).attr('faceto'));
 
-                    $('#street-div .street-loading').show();
+                    $('#street-div .street-pu').show();
                     $('#street-div .arrow').eq(0).unbind('click').click(function() //前進nextDirection
                     {
                         if ( ! loading ) forward();
@@ -3358,7 +3376,7 @@
 
         $('#street-div .arrow').eq( 3 ).click(function() // 親身體驗 back
         {
-            $('#street-div #mapPicture').attr('src', $('#street-div #mapPicture').attr('path'));
+            $('#map-div img').hide();            
             $('#street-div .arrow').hide();
 
             $('#street-div #map-div, #street-div #curtain-close-div, #street-div #back-div').css(
@@ -3380,7 +3398,6 @@
         $('#street-div .picture, #street-div .button-text').click(function()
         {
             isInPicture = false;
-            // $('.loading').hide();
             $('#street-div #back-div, #street-div #curtain-close-div').css(
             {
                height: 552,
@@ -3395,11 +3412,7 @@
                 width: 680,
                 height: 400,
                 modal: true,
-                escape: false,
-                onClose: function()
-                {
-                    $('#mapPicture').attr('src', $('#mapPicture').attr('path'));
-                }
+                escape: false
             });
 
             $('#street-div .arrow').hide();
@@ -3691,6 +3704,8 @@
  * Lightbox
  */
 (function($) {
+    var initialized = false;
+
     $.fn.lightbox = function(options)
     {
         var options = $.extend({
@@ -3733,6 +3748,7 @@
 
         var lightboxInitialize = function()
         {
+            if ( initialized ) return false;
             if ( options.onBeforeShow() )
             {
                 var overlay = $('<div></div>')
@@ -3793,6 +3809,7 @@
 
                 active = 0;
                 images = [];
+                initialized = true;
                 objects.each(function(index)
                 {
                     var object = objects.eq(index);
@@ -3847,6 +3864,7 @@
             {
                 options.onHide();
                 $('#' + options.lightboxId).remove();
+                initialized = false;
             }
             return true;
         }
@@ -4131,7 +4149,10 @@
 
         this.parents('form').find('input, textarea').focus(function()
         {
-            for ( var field in fields ) fields[field].blur();
+            $(fields).each(function(index, field)
+            {
+                field.blur();
+            });
             $.datepicker.fadeOut();
         });
 
@@ -4285,6 +4306,8 @@
         {
             id = $(this).attr('href').replace('#', '');
             $('#game-mission-dialog').dialog({
+                height: 600,
+                width: 900
                 // dialogClass: 'game-mission'
             });
             $.getJSON($.configures.gameMissionUrl.replace(':id',id),function(data){
@@ -4301,15 +4324,10 @@
             $.post($.configures.gameSolveUrl.replace(':id',id), {
                 answer: $(this).find('input[name=answer]').val(),
                 token: $.configures.token
-            }, function(data){
-                if ( data.result )
-                {
-                    $('#game-mission-correct').get(0).play();
-                }
-                else
-                {
-                    $('#game-mission-wrong').get(0).play();
-                }
+            }, function(data)
+            {
+                var audio = $('#game-mission-' + (data.result ? 'correct' : 'wrong')).get(0);
+                if ( audio.play ) audio.play();
                 $.alert({
                     message: data.result ? '恭喜您～答對囉！獲取了金幣與經驗值' : '答錯囉～請再接再厲',
                     confirmed: function()
@@ -4401,10 +4419,8 @@
         $('#same-department-diff-grade-search, #other-department-search, #same-department-same-grade-search, #request-search, #new-group-search, #mygroup-search, #myfriend-search, #newmember-search').keyup(function()
         {
             var name = $(this).val().toLowerCase();
-            for ( var key in friends )
+            $(friends).each(function(index, data)
             {
-                var data = friends[key];
-                console.log(data);
                 if ( data[0].toLowerCase().search(name) == 0 )
                 {
                     data[1].show();
@@ -4413,7 +4429,7 @@
                 {
                     data[1].hide();
                 }
-            }
+            });
         });
 
         $('p.user-name').each(function()
