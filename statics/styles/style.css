@@ -7785,26 +7785,51 @@ td.popularity
 
 #street-div .arrow.up
 {
+    width: 77px;
+    height: 64px;
+    background: url('../building/arrow_up.png') no-repeat;
     left: 350px;
     top: 0px;
 }
 
+#street-div .arrow.up:hover
+{
+    background: url('../building/show-point_up.png') no-repeat;
+}
+
 #street-div .arrow.left
 {
-     left: 0px;
-     top: 249px;
+    width: 50px;
+    height: 82px;
+    background: url('../building/arrow_left.png');
+    left: 0px;
+    top: 249px;
+}
+
+#street-div .arrow.left:hover
+{
+    background: url('../building/show-point_left.png');
 }
 
 #street-div .arrow.right
 {
-     left: 700px;
-     top: 249px;
+    width: 50px;
+    height: 76px;
+    background: url('../building/arrow_right.png');
+    left: 700px;
+    top: 249px;
+}
+
+#street-div .arrow.right:hover
+{
+    background: url('../building/show-point_right.png');
 }
 
 #street-div .arrow.back
 {
     height: 51px;
     width: 100px;
+    background: url('../building/back.png');
     left: 650px;
     top: 3px;
     cursor: pointer;
@@ -7862,36 +7887,42 @@ td.popularity
 
 #street-div .one-image.dormitory
 {
+    background: url('../building/dormitory/dormitory.png');
     top: 10px;
     left: 20px;
 }
 
 #street-div .one-image.diet
 {
+    background: url('../building/food/food.png');
     top: 10px;
     left: 475px;
 }
 
 #street-div .one-image.department-building
 {
+    background: url('../building/college/college.png');
     top: -2px;
     left: 306px; 
 }
 
 #street-div .one-image.landscape
 {
+    background: url('../building/landscape/landscape.png');
     top: 10px;
     left: 150px;
 }
 
 #street-div .one-image.government
 {
+    background: url('../building/government/government-out.png');
     top: 10px;
     left: 590px;
 }
 
 #street-div .one-image.exercise
 {
+    background: url('../building/exercise/exercise.png');
     top: 31px;
     left: 687px;
 }
