@@ -3385,7 +3385,7 @@
 
         $('#street-div .arrow').eq( 3 ).click(function() // 親身體驗 back
         {
-            $('#street-div #mapPicture').attr('src', $('#street-div #mapPicture').attr('path'));
+            $('#map-div img').hide();            
             $('#street-div .arrow').hide();
 
             $('#street-div #map-div, #street-div #curtain-close-div, #street-div #back-div').css(
