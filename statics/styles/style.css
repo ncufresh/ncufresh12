@@ -7153,7 +7153,7 @@ li.enabled a
 #street-div #turtle-pond,
 #street-div #turtle-pond:hover,
 #street-div #yun-step,
-#street-div #yun-step:hover
+#street-div #yun-step:hover,
 #street-div .arrow.up,
 #street-div .arrow.up:hover,
 #street-div .arrow.left,
@@ -7396,7 +7396,7 @@ li.enabled a
      background-position: -1136px -192px;
      position: relative;
      float: right;
-     width: 149px;
+     width: 141px;
      height: 552px;
 }
 
@@ -7768,7 +7768,7 @@ li.enabled a
 
 #street-div #management
 {
-    width: 178px;
+    width: 175px;
     height: 86px;
     background-position: -1520px -0px;
     left: 410px;
