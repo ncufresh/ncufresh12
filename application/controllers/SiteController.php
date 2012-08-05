@@ -24,20 +24,26 @@ class SiteController extends Controller
     {
         return array(
             array(
+                'deny',
+                'actions'    => array(
+                    'register',
+                    'success'
+                ),
+                'users'     => array('@')
+            ),
+            array(
                 'allow',
                 'actions'   => array(
                     'index',
                     'error',
                     'search',
                     'pull',
-                    'register',
                     'login',
                     'channel',
                     'profile',
                     'editor',
                     'contact',
-                    'sitemap',
-                    'success'
+                    'sitemap'
                 ),
                 'users'     => array('*')
             ),

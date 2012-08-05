@@ -3189,7 +3189,7 @@ button.news-button
     display: block;
     list-style: none;
     opacity: 0.95;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .readme-menu li
@@ -3242,6 +3242,16 @@ button.news-button
     margin-top: 6px
 }
 
+#readme .arrow-right
+{
+	width: 0px; 
+	height: 0px; 
+	border: 10px solid; 
+	border-color: transparent transparent transparent white;
+    border-style: dashed dashed dashed solid;
+	margin: -25px 0 0 205px;
+}
+
 #about .title1,
 #about .title2,
 #about .button-left,
@@ -3250,7 +3260,7 @@ button.news-button
 #about .tag,
 #about .tag-txt
 {
-    background: url('../about/picture.png') no-repeat;
+    background: url('../images/about.png') no-repeat;
 }
 
 #about .tag-bar0,
@@ -3260,7 +3270,7 @@ button.news-button
 #about .tag-bar4,
 #about .tag-bar5
 {
-    background: url('../about/photo.jpg') no-repeat;
+    background: url('../images/about_photos.jpg') no-repeat;
 }
 
 #about .itrodution-block
@@ -4020,7 +4030,7 @@ ul.friends-sort li
 {
     width:690px;
     height:30px;
-    margin-top:-15px;
+    margin-top:-10px;
     padding:0px;
 }
 
@@ -4596,7 +4606,8 @@ div.profile-message-reply h4
 #same-department-same-grade-search,
 #same-department-diff-grade-search,
 #other-department-search,
-#newmember-search
+#newmember-search,
+#request-search
 {
     width:100px;
     height:25px;

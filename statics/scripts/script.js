@@ -3439,7 +3439,7 @@
                 jQuery.configures.ncuLifeUrl.replace(':tab', tab).replace(':page', page),
                 function(data)
                 { 
-                    $('#nculife-content-view').html(data.content);
+                    $('#nculife-content-view').html(data.content).scrollTo(0);
                 }
             ); 
             return false;
@@ -3559,13 +3559,14 @@
                 jQuery.configures.readMeUrl.replace(':tab', tab).replace(':page', page),
                 function(data)
                 { 
-                    $('.readme-view').html(data.content);
+                    $('.readme-view').html(data.content).scrollTo(0);
                 }
             ); 
             return false;
         }
 
-        $('.readme-view').scrollable({
+        $('.readme-view').scrollable(
+		{
             scrollableClass: false
         });
 
@@ -4357,11 +4358,12 @@
         $('.button-all-choose').click(function()
         {
             checked = ! checked;
-            $('input[type="checkbox"][name^="friends"]').each(function()
+            $('input[type="checkbox"][name^="friends"], input[type="checkbox"][name^="group-members"]').each(function()
             {
                 $(this).prop('checked', checked);
             });
             $('input[type="checkbox"][name^="friends"]').change();
+            $('input[type="checkbox"][name^="group-members"]').change();
             return false;
         });
 
@@ -4557,7 +4559,9 @@
             if (
                 url.match(/^\/.+/)
              || url.match(/^#.*/)
-             || url.search(location.hostname) >= 0 )
+             || url.search(location.hostname) >= 0
+             || $(this).attr('rel') !== 'external'
+            )
             {
                 return true;
             }
@@ -4873,6 +4877,8 @@
         var smallPhotoIndex = 0;
         var photoA = $('#' + options.aboutId + ' a');
         var tagBool = true;
+        var photoMoveLeft = false;
+        var photoMoveRight = false;
         var jumpTo = function()
         {   
             tagbar.each(function(){
@@ -4881,20 +4887,16 @@
             block1Inf.each(function(){
                 $(this).hide();
             });
-            if ( tagbarIndex != 6 )
+            block1Inf.eq(tagbarIndex).show();
+            tagbarPerson.each(function(){
+                $(this).hide();
+            });
+            for (var p = 0; p < 9; p++)
             {
-                block1Inf.eq(tagbarIndex).show();
-                tagbarPerson.each(function()
+                tagbarPerson.eq(tagbarIndex * 9 + p).show();
+                if ( tagbarIndex == 4 && p == 1 )
                 {
-                    $(this).hide();
-                });
-                for (var p = 0; p < 9; p++)
-                {
-                    tagbarPerson.eq(tagbarIndex * 9 + p).show();
-                    if ( tagbarIndex == 4 && p == 1 )
-                    {
-                        break;
-                    }
+                    break;
                 }
             }
             tagbar.eq(tagbarIndex).show();
@@ -5009,6 +5011,29 @@
         },options.PictureAutoSpeed);
         setInterval(function()
         {
+            if ( photoMoveLeft )
+            {
+                if( smallPhotoIndex + 6 < photoNumber )
+                {
+                    smallPhotoIndex++;
+                    $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
+                        left: -40 + smallPhotoIndex * -50
+                    });
+                }
+            }
+            else if ( photoMoveRight )
+            {
+                if ( smallPhotoIndex > 0 )
+                {
+                    smallPhotoIndex--;
+                    $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
+                        left: -40 + smallPhotoIndex * -50
+                    });
+                }
+            }
+        },300);
+        setInterval(function()
+        {
             if ( tagBool )
             {
                 if ( tagbarIndex < 5 )
@@ -5048,28 +5073,22 @@
         button[0].css({
             left: 0,
             position: 'absolute'
-        }).click(function()
+        }).mouseenter(function()
         {
-            if ( smallPhotoIndex > 0 )
-            {
-                smallPhotoIndex--;
-                $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
-                    left: -40 + smallPhotoIndex * -50 
-                });
-            }
+            photoMoveRight = true;
+        }).mouseleave(function()
+        {
+            photoMoveRight = false;
         }).appendTo(display).show();
         button[1].css({
             left: 350,
             position: 'absolute'
-        }).click(function()
+        }).mouseenter(function()
         {
-            if( smallPhotoIndex + 6 < photoNumber )
-            {
-                smallPhotoIndex++;
-                $('#' +  options.aboutId + ' .' + options.photoUl).stop().animate({
-                    left: -40 + smallPhotoIndex * -50 
-                });
-            }
+            photoMoveLeft = true;
+        }).mouseleave(function()
+        {
+            photoMoveLeft = false;
         }).appendTo(display).show();
         photoA.each(function(index)
         {

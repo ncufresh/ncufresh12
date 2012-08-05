@@ -18,12 +18,8 @@
 )); ?>
                 </a>
                 <input type="checkbox" name="group-members[<?php echo $profile->id; ?>]" value="<?php echo $profile->id; ?>" />
-                <p class="user-name">
-<?php echo $profile->name; ?>
-                </p>
-                <p class="user-department">
-<?php echo $profile->mydepartment->abbreviation; ?>
-                </p>
+                <p class="user-name"><?php echo $profile->name; ?></p>
+                <p class="user-department"><?php echo $profile->mydepartment->abbreviation; ?></p>
             </li>
 <?php endforeach; ?>
         </ul>
