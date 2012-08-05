@@ -31,6 +31,14 @@
             return -1;
         };
     };
+
+    if ( $.browser.msie )
+    {
+        $.fn.blur = function(handler)
+        {
+            $.fn.focusout.call($(this), handler);
+        };
+    }
     
     $.extend({
         random: function(min, max)
@@ -4516,8 +4524,7 @@
             tooltip.prepend($('<span></span>').addClass('arrow'));
             if ( $(tooltip).css('display') === 'none' )
             {
-                var object = $(tooltip).parent().parent();
-                object.hover(function()
+                $(tooltip).parent().parent().hover(function()
                 {
                     if ( $(this).find('input:focus').length === 0 )
                     {
@@ -4533,21 +4540,11 @@
                 .find('input').focus(function()
                 {
                     $(tooltip).stop(true, true).fadeIn();
+                })
+                .blur(function()
+                {
+                    $(tooltip).stop(true, true).fadeOut();
                 });
-                if ( object.blur )
-                {
-                    object.blur(function()
-                    {
-                        $(tooltip).stop(true, true).fadeOut();
-                    });
-                }
-                else
-                {
-                    object.focusout(function()
-                    {
-                        $(tooltip).stop(true, true).fadeOut();
-                    });
-                }
             }
         });
 
