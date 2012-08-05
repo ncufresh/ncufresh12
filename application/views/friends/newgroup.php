@@ -17,16 +17,13 @@
                 </a>
                 <input type="checkbox" name="friends[<?php echo $friend->profile->id;?>]" value="<?php echo $friend->profile->id ; ?>" />
                 <input type="hidden" name="friends-all-choose[<?php echo $friend->profile->id;?>]" value="<?php echo $friend->profile->id;?>" />    
-                <p class="user-name">
-<?php echo $friend->profile->name ; ?>
-                </p>
-                <p class="user-department">
-<?php echo $friend->profile->mydepartment->abbreviation ; ?>
-                </p>
+                <p class="user-name"><?php echo $friend->profile->name ; ?></p>
+                <p class="user-department"><?php echo $friend->profile->mydepartment->abbreviation ; ?></p>
             </li>
 <?php endforeach ; ?>
         </ul>
     </div>
+    <input id="new-group-search" type="text" value="搜尋"/>
     <button class="button-all-choose">全選</button>
     <button type="submit" class="button-sure">確認</button>
     <a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>
