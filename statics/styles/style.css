@@ -5704,7 +5704,6 @@ li.enabled a
     padding-top:5px
 }
 
-
 #forum-view-top2 .fb_iframe_widget
 {
     margin-left: 10px;
@@ -6146,6 +6145,11 @@ li.enabled a
     width: 683px;
     height: 32px;
     margin-left:35px;
+}
+
+#forum-forum-top2 .sort-list
+{
+    margin-left: 35px;
 }
 
 #forum-forum-body

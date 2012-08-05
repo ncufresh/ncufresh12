@@ -7,11 +7,12 @@ $aid = $_GET['aid'];
             <label for="forum-reply-content">須滿10個中文字 20個英文字以上</label>
         </dt>
         <dd>
-            <textarea name="reply[content]" id="forum-reply-content" cols="30" rows="40"></textarea>
+            <textarea name="reply[content]" id="forum-reply-content"></textarea>
         </dd>
     </dl>
 <input type="hidden" name="reply[$aid]" value="<?php echo $aid; ?>" />
-
-<button class="reply-submit" type="submit" value="回文" disabled>回文</button>
+<div class="buttons">
+    <button class="reply-submit" type="submit" value="回文" disabled>回文</button>
+</div>
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
 </form>
