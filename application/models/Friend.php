@@ -2,6 +2,14 @@
 
 class Friend extends CActiveRecord
 {
+    const IS_FRIEND = 0;
+
+    const IS_SEND_REQUEST = 1;
+
+    const IS_RECEIVERED_REQUEST = 2;
+
+    const IS_NOT_FRIEND = 3;
+
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
@@ -68,25 +76,27 @@ class Friend extends CActiveRecord
                 ':friendid' => $friendid
             )
         ));
-        $request = $this->find(array(
-                'condition' => 'user_id = :userid AND friend_id = :friendid AND invisible = 1', //一方已送出邀請
+        if ( $friend ) return self::IS_FRIEND;
+
+        $my_request = $this->find(array(
+                'condition' => 'user_id = :userid AND friend_id = :friendid AND invisible = 1', //我已送出邀請
+                'params'    => array(
+                ':userid'   => Yii::app()->user->getId(),
+                ':friendid' => $friendid
+            )
+        ));
+        if ( $my_request ) return self::IS_SEND_REQUEST;
+
+        $other_request = $this->find(array(
+                'condition' => 'user_id = :userid AND friend_id = :friendid AND invisible = 1', //對方已送出邀請
                 'params'    => array(
                 ':userid'   => $friendid,
                 ':friendid' => Yii::app()->user->getId()
             )
         ));
-        if ( $friend )
-        {
-            return 0; //是好友
-        }
-        else if ( $request )
-        {
-            return 1; //已送出邀請等對方接受
-        }
-        else
-        {
-            return 2; //尚未加為好友
-        }
+        if ( $other_request ) return self::IS_RECEIVERED_REQUEST;
+
+        return self::IS_NOT_FRIEND;
     }
 
     public function deleteFriend($friendid) //刪除好友關係
@@ -115,7 +125,7 @@ class Friend extends CActiveRecord
         {
             $this->updateAll(array(
                 'invisible' => 0
-            ), "user_id = :userid AND friend_id = :friendid OR user_id = :friendid AND friend_id = :userid", array(
+            ), "(user_id = :userid AND friend_id = :friendid) OR (user_id = :friendid AND friend_id = :userid)", array(
                 ':userid'   => Yii::app()->user->getId(),
                 ':friendid' => $friendid
             ));

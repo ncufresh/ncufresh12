@@ -1,7 +1,7 @@
-<h4>編輯基本資料</h4>
-<div class="myprofile">
-<form class="profile-modify" action="<?php echo Yii::app()->createUrl('profile/editor'); ?>" method="POST">
+<form class="myprofile"  action="<?php echo Yii::app()->createUrl('profile/editor'); ?>" method="POST">
     <input name="token" value="<?php echo Yii::app()->security->getToken(); ?>" type="hidden" />
+    <h4>編輯基本資料</h4>
+    <div class="profile-modify">
 <?php $this->widget('Avatar', array(
     'id'        => Yii::app()->user->id
 )); ?>
@@ -53,8 +53,8 @@
                 <input id="form-editor-birthday" class="datepicker" name="profile[birthday]" type="text" value="<?php echo $user->profile->birthday; ?>" />
             </li>
         </ul>
-        <button type="submit" id="button-editor-sure"></button>
-        <a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>" id="button-editor-cancel"></a>
-        </form>
-<a href="<?php echo Yii::app()->createUrl('profile/profile'); ?>" class="button-back""></a>
-</div>
+    </div>
+    <button type="submit" id="button-editor-sure">確認</button>
+    <a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>" id="button-editor-cancel">取消</a>
+    <a href="<?php echo Yii::app()->createUrl('profile/profile'); ?>" class="button-back">BACK</a>
+</form>
