@@ -3439,7 +3439,7 @@
                 jQuery.configures.ncuLifeUrl.replace(':tab', tab).replace(':page', page),
                 function(data)
                 { 
-                    $('#nculife-content-view').html(data.content);
+                    $('#nculife-content-view').html(data.content).scrollTo(0);
                 }
             ); 
             return false;
@@ -3559,13 +3559,14 @@
                 jQuery.configures.readMeUrl.replace(':tab', tab).replace(':page', page),
                 function(data)
                 { 
-                    $('.readme-view').html(data.content);
+                    $('.readme-view').html(data.content).scrollTo(0);
                 }
             ); 
             return false;
         }
 
-        $('.readme-view').scrollable({
+        $('.readme-view').scrollable(
+		{
             scrollableClass: false
         });
 

@@ -3189,7 +3189,7 @@ button.news-button
     display: block;
     list-style: none;
     opacity: 0.95;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .readme-menu li
@@ -3240,6 +3240,16 @@ button.news-button
 .download-index li
 {
     margin-top: 6px
+}
+
+#readme .arrow-right
+{
+	width: 0px; 
+	height: 0px; 
+	border: 10px solid; 
+	border-color: transparent transparent transparent white;
+    border-style: dashed dashed dashed solid;
+	margin: -25px 0 0 205px;
 }
 
 #about .title1,
