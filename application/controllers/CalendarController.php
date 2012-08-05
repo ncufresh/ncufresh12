@@ -49,6 +49,7 @@ class CalendarController extends Controller
     
     public function actionView()
     {
+        $this->setPageTitle(Yii::app()->name . ' - 個人行事曆');
         $this->render('view');
     }
 
@@ -57,6 +58,7 @@ class CalendarController extends Controller
         $id = (integer)$id;
         if ( Club::model()->getIsMaster($id) )
         {
+            $this->setPageTitle(Yii::app()->name . ' - 社團行事曆');
             $this->render('club', array('id' => $id));
         }
         else
@@ -102,7 +104,8 @@ class CalendarController extends Controller
                 $result['個人'][] = $event;
             }
         }
-        
+
+        $this->setPageTitle(Yii::app()->name . ' - 回收桶');
         $this->render('recycle', array(
             'result'    => $result
         ));
@@ -127,10 +130,7 @@ class CalendarController extends Controller
             $this->_data['errors'][] = '發生錯誤！';
             return true;
         }
-        else
-        {
-            throw new CHttpException(404);
-        }
+        throw new CHttpException(404);
     }
 
     public function actionEvent($id)
@@ -139,6 +139,7 @@ class CalendarController extends Controller
         $event = Event::model()->getEventById($id);
         if( $event )
         {
+            $this->setPageTitle(Yii::app()->name . ' - 查看事件');
             $this->render('event', array(
                 'event' => $event
             ));
@@ -165,6 +166,7 @@ class CalendarController extends Controller
                 $this->redirect(Yii::app()->createUrl('calendar/view'));
             }
         }
+        $this->setPageTitle(Yii::app()->name . ' - 新增事件');
         $this->render('create_event');
     }
 
@@ -186,6 +188,7 @@ class CalendarController extends Controller
                 $this->redirect(Yii::app()->createUrl('calendar/club', array('id'=>$id)));
             }
         }
+        $this->setPageTitle(Yii::app()->name . ' - 新增社團事件');
         $this->render('create_club_event', array('id'=>$id));
     }
 
@@ -201,6 +204,7 @@ class CalendarController extends Controller
             $this->_data['errors'][] = '發生錯誤！';
             return true;
         }
+        throw new CHttpException(404);
     }
 
     public function actionShowEvent()
@@ -215,6 +219,7 @@ class CalendarController extends Controller
             $this->_data['errors'][] = '發生錯誤！';
             return true;
         }
+        throw new CHttpException(404);
     }
 
     public function actionSubscriptFromClub($club_id)
@@ -338,7 +343,8 @@ class CalendarController extends Controller
         {
             $result[$calendar->club->category][] = $calendar;
         }
-        
+
+        $this->setPageTitle(Yii::app()->name . ' - 訂閱行事曆');
         $this->render('subscript', array(
             'result' => $result
         ));
