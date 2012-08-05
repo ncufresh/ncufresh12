@@ -471,10 +471,10 @@ a:hover
 #lightbox
 {
     left: 0;
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
-    z-index: 10000;
+    z-index: 1500;
 }
 
 #lightbox-box
@@ -537,7 +537,7 @@ a:hover
     position: relative;
     top: 0;
     width: 100%;
-    z-index: 10000;
+    z-index: 1750;
 }
 
 #lightbox-details
@@ -824,7 +824,7 @@ a:hover
     position: relative;
     visibility: hidden;
     width: 100px;
-    z-index: 5000;
+    z-index: 1000;
 }
 
 #navigation ul li
@@ -1206,6 +1206,7 @@ a:hover
     opacity: 0.9;
     position: fixed;
     width: 160px;
+    z-index: 500;
 }
 
 .chat-dialog .chat-title
@@ -1468,7 +1469,7 @@ table.gsc-completion-container
     position: relative;
     text-indent: -100000px;
     width: 32px;
-    z-index: 10000;
+    z-index: 500;
 }
 
 #result
@@ -7398,6 +7399,7 @@ li.enabled a
 #street-div #curtain-close-div
 {
      background-position: -1136px -192px;
+     border-top-right-radius: 20px;
      position: relative;
      float: right;
      width: 141px;
@@ -7750,6 +7752,7 @@ li.enabled a
 #street-div #map-div
 {
     background-position: 0px 0px;
+    border-top-left-radius: 20px;
     position: relative;
     float: left;
     width: 601px;
