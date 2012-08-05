@@ -26,7 +26,7 @@
 <?php else : ?>
                     <input id="form-club-leader" name="club[leader]" type="text" />
 <?php endif; ?>
-                    <span>社長手機</span>
+                    <span>社長名字</span>
                 </dd>
             </dl>
             <dl>
@@ -39,7 +39,7 @@
 <?php else : ?>
                     <input id="form-club-leader-phone" name="club[leader_phone]" type="text" />
 <?php endif; ?>
-                    <span>社長名字</span>
+                    <span>社長手機</span>
                 </dd>
             </dl>
             <dl>
