@@ -9,13 +9,9 @@
 <?php foreach ( $articles as $article ) : ?>
             <tr>
                 <td>
-                    <a href="<?php echo Yii::app()->createUrl('profile/messagereply', array('aid'=> $article->id)); ?>" class="mymessage-title">
-<?php echo $article->title ; ?>
-                    </a>
+                   <a href="<?php echo $article->getUrl(); ?>"><?php echo $article->title ; ?></a>
                 </td>
-                <td>
-<?php echo $article->created; ?>
-                </td>
+                <td><?php echo $article->created; ?></td>
             </tr>
 <?php endforeach; ?>
         </table>

@@ -5044,16 +5044,17 @@ ul#self-message
     float:left;
     list-style-type:none;
 }
-
+/*
 ul#self-message .scroll-container
 {
     width: 165px;
+    height: 285px;
 }
 
 ul#self-message .scroll-content
 {
     width: 165px;
-}
+}*/
 
 li.article-title
 {
@@ -5075,17 +5076,16 @@ li#article-content
 {
     outline: 1px solid black;
     width: 165px;
-	height: 120px;
     list-style-type:none;
 }
 
-li#article-content .scroll-container
+#article-content .scroll-container
 {
     width: 165px;
     height: 120px;
 }
 
-li#article-content .scroll-content
+#article-content .scroll-content
 {
     width: 165px;
 }
