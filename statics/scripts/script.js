@@ -17,10 +17,18 @@
         return this.split('').reverse().join('');
     };
 
-    if ( ! Array.prototype.indexOf ) {
+    if ( ! Array.prototype.indexOf ) 
+    {
         Array.prototype.indexOf = function(obj)
         {
-            return $.inArray(obj, this);
+            for(var i=0; i<this.length; i++)
+            {
+                if(this[i]==obj)
+                {
+                    return i;
+                }
+            }
+            return -1;
         };
     };
 
