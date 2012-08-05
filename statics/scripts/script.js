@@ -224,6 +224,8 @@
 {
     $.pull = {};
 
+    $.pull.pulling = false;
+
     $.pull.options = {
         friendcounter:          null,
         onlinecounter:          null,
@@ -236,90 +238,96 @@
 
     $.pull.start = function(options)
     {
-        $.pull.options = $.extend($.pull.options, options);
-        $.getJSON(
-            $.configures.pullUrl,
-            {
-                lasttime: $.configures.lasttime
-            },
-            function(response)
-            {
-                $.configures.lasttime = response.lasttime;
-                if ( response.counter )
+        if ( ! $.pull.pulling )
+        {
+            $.pull.pulling = true;
+
+            $.pull.options = $.extend($.pull.options, options);
+            $.getJSON(
+                $.configures.pullUrl,
                 {
-                    if ( $.pull.options.friendcounter )
+                    lasttime: $.configures.lasttime
+                },
+                function(response)
+                {
+                    $.configures.lasttime = response.lasttime;
+                    if ( response.counter )
                     {
-                        $.pull.options.friendcounter.text(
-                            response.counter.friends
-                        );
-                    }
-                    if ( $.pull.options.onlinecounter )
-                    {
-                        $.pull.options.onlinecounter.text(
-                            response.counter.online
-                        );
-                    }
-                    if ( $.pull.options.browseredcounter )
-                    {
-                        var p = 0;
-                        var c = 0;
-                        var browsered = response.counter.browsered.toString();
-                        var text = $.pull.options.browseredcounter.text();
-                        if ( text.length > browsered.length ) text = '';
-                        for ( var i = 0 ; i < browsered.length ; ++i )
+                        if ( $.pull.options.friendcounter )
                         {
-                            if ( text[i] != browsered[i] )
-                            {
-                                text = text.replaceAt(i, '0');
-                            }
+                            $.pull.options.friendcounter.text(
+                                response.counter.friends
+                            );
                         }
-                        var timer = setInterval(function()
+                        if ( $.pull.options.onlinecounter )
                         {
-                            if ( text === browsered )
+                            $.pull.options.onlinecounter.text(
+                                response.counter.online
+                            );
+                        }
+                        if ( $.pull.options.browseredcounter )
+                        {
+                            var p = 0;
+                            var c = 0;
+                            var browsered = response.counter.browsered.toString();
+                            var text = $.pull.options.browseredcounter.text();
+                            if ( text.length > browsered.length ) text = '';
+                            for ( var i = 0 ; i < browsered.length ; ++i )
                             {
-                                clearInterval(timer);
-                            }
-                            else
-                            {
-                                if ( text[p] == browsered[p] )
+                                if ( text[i] != browsered[i] )
                                 {
-                                    c = 0;
-                                    p++;
+                                    text = text.replaceAt(i, '0');
+                                }
+                            }
+                            var timer = setInterval(function()
+                            {
+                                if ( text === browsered )
+                                {
+                                    clearInterval(timer);
                                 }
                                 else
                                 {
-                                    c++;
+                                    if ( text[p] == browsered[p] )
+                                    {
+                                        c = 0;
+                                        p++;
+                                    }
+                                    else
+                                    {
+                                        c++;
+                                    }
+                                    for ( var i = p ; i < browsered.length ; ++i )
+                                    {
+                                        var d = $.pull.options.counterDigitElements[
+                                            $.random(
+                                                0,
+                                                $.pull.options.counterDigitElements.length - 1
+                                            )
+                                        ].toString();
+                                        text = text.replaceAt(i, d);
+                                    }
+                                    text = text.replaceAt(p, c.toString());
+                                    $.pull.options.browseredcounter.text(text);
                                 }
-                                for ( var i = p ; i < browsered.length ; ++i )
-                                {
-                                    var d = $.pull.options.counterDigitElements[
-                                        $.random(
-                                            0,
-                                            $.pull.options.counterDigitElements.length - 1
-                                        )
-                                    ].toString();
-                                    text = text.replaceAt(i, d);
-                                }
-                                text = text.replaceAt(p, c.toString());
-                                $.pull.options.browseredcounter.text(text);
-                            }
-                        }, $.pull.options.counterAnimationSpeed);
+                            }, $.pull.options.counterAnimationSpeed);
+                        }
                     }
-                }
-                if ( response.friends )
-                {
-                    $.fn.chat.updateFriendList(response.friends);
-                }
-                if ( response.messages )
-                {
-                    for ( var key in response.messages )
+                    if ( response.friends )
                     {
-                        var data = response.messages[key];
-                        $.fn.chat.updateChatDialog(data.id, data);
+                        $.fn.chat.updateFriendList(response.friends);
                     }
+                    if ( response.messages )
+                    {
+                        for ( var key in response.messages )
+                        {
+                            var data = response.messages[key];
+                            $.fn.chat.updateChatDialog(data.id, data);
+                        }
+                    }
+                    $.pull.pulling = false;
                 }
-            }
-        );
+            );
+        }
         $.pull.timer = setTimeout(arguments.callee, $.pull.options.interval);
     };
 
@@ -331,6 +339,69 @@
     $.pull.restart = function()
     {
         $.pull.timer = setTimeout($.pull.start, $.pull.options.interval);
+    };
+})(jQuery);
+
+
+(function($)
+{
+    $.push = {};
+
+    $.push.options = {
+        interval:               5000
+    };
+
+    $.push.pushing = false;
+
+    $.push.start = function()
+    {
+        if ( ! $.push.pushing )
+        {
+            var messages = $.fn.getMessageQueue();
+
+            if ( messages.length )
+            {
+                $.push.pushing = true;
+
+                $.post(
+                    $.configures.chatSendUrl,
+                    {
+                        messages: messages,
+                        token: $.configures.token,
+                        lasttime: $.configures.lasttime
+                    },
+                    function(response)
+                    {
+                        $.pull.pause();
+                        $.push.pause();
+                        $.configures.token = response.token;
+                        $.configures.lasttime = response.lasttime;
+                        if ( $.errors(response.errors) )
+                        {
+                            for ( var key in response.messages )
+                            {
+                                var data = response.messages[key];
+                                $.fn.chat.updateChatDialog(data.id, data);
+                            }
+                        }
+                        $.push.pushing = false;
+                        $.push.restart();
+                        $.pull.restart();
+                    }
+                );
+            }
+        }
+        $.push.timer = setTimeout(arguments.callee, $.push.options.interval);
+    };
+
+    $.push.pause = function()
+    {
+        clearTimeout($.push.timer);
+    };
+
+    $.push.restart = function()
+    {
+        $.push.timer = setTimeout($.push.start, $.push.options.interval);
     };
 })(jQuery);
 
@@ -363,6 +434,8 @@
 
 (function($)
 {
+    var queues = [];
+
     var avatars = [];
 
     var friends = [];
@@ -637,7 +710,9 @@
                 .addClass($.chat.options.chatFormClass)
                 .submit(function()
                 {
-                    $.fn.chat.sendMessage(id, input.val());
+                    var message = input.val();
+                    $.fn.chat.updateChatDialog(id, message);
+                    $.fn.chat.queueMessage(id, message);
                     input.val('');
                     return false;
                 })
@@ -786,33 +861,23 @@
         $.fn.chat.updateChatDialogsPosition();
     };
 
-    $.fn.chat.sendMessage = function(id, message)
+    $.fn.chat.queueMessage = function(id, message)
     {
-        $.post(
-            $.configures.chatSendUrl,
-            {
-                receiver: id,
-                message: message,
-                token: $.configures.token,
-                lasttime: $.configures.lasttime,
-                sequence: $.configures.sequence++
-            },
-            function(response)
-            {
-                $.pull.pause();
-                $.configures.token = response.token;
-                $.configures.lasttime = response.lasttime;
-                if ( $.errors(response.errors) )
-                {
-                    for ( var key in response.messages )
-                    {
-                        var data = response.messages[key];
-                        $.fn.chat.updateChatDialog(data.id, data);
-                    }
-                }
-                $.pull.restart();
-            }
-        );
+        queues[queues.length] = {
+            receiver: id,
+            message: message,
+            sequence: $.configures.sequence++
+        };
+        $.push.start();
+        return true;
+    };
+
+    $.fn.getMessageQueue = function()
+    {
+        var messages = queues;
+        if ( queues.length === 0 ) return false;
+        queues = [];
+        return messages;
     };
 })(jQuery);
 
@@ -4879,6 +4944,8 @@
             onlinecounter: $('#header .online'),
             browseredcounter: $('#header .browsered')
         });
+
+        $.push.start();
     });
 
     $('<script></script>')
