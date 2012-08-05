@@ -51,7 +51,7 @@
     'id'        => $message['avatar']
 )); ?>            
             </li>
-            <li class="friend-chatting-content">對話內容：<br />
+            <li class="friend-chatting-content">
 <?php echo $message['message']; ?>
             </li>
 <?php endforeach; ?>
