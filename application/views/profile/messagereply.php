@@ -26,7 +26,7 @@
                     <a href="#">人家回我....啥哩</a>
                     <span><?php echo $reply->content ?></span>
                     <br />
-                    <span>....<a href="<?php echo $article->getUrl(); ?>">完整閱讀<a></span>
+                    <span>....<a href="<?php echo $article->getUrl(); ?>">完整閱讀</a></span>
                 </td>
                 <td><?php echo $reply->created; ?></td>
             </tr>
