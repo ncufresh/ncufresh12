@@ -333,7 +333,6 @@ a:hover
 
 .scroll-container .scroll-bar
 {
-    display: none;
     height: 98%;
     right: 2px;
     margin-top: -1px;
