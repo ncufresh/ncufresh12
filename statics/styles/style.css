@@ -7393,6 +7393,7 @@ li.enabled a
 #street-div #curtain-close-div
 {
      background-position: -1136px -192px;
+     border-top-right-radius: 20px;
      position: relative;
      float: right;
      width: 141px;
@@ -7745,6 +7746,7 @@ li.enabled a
 #street-div #map-div
 {
     background-position: 0px 0px;
+    border-top-left-radius: 20px;
     position: relative;
     float: left;
     width: 601px;
