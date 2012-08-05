@@ -165,7 +165,7 @@ class Event extends CActiveRecord
         $this->end   -= date('Z', $this->end);
         $this->description = nl2br(htmlspecialchars($this->description));
     }
-    
+
     public function beforeSave()
     {
         if ( parent::beforeSave() )
@@ -177,9 +177,30 @@ class Event extends CActiveRecord
                 $this->start = mktime(0, 0, 0, $month, $day, $year);
                 list($year, $month, $day) = explode('-', $this->end);
                 $this->end = mktime(0, 0, 0, $month, $day, $year);
+                if ( $this->start > $this->end ) return false;
             }
             return true;
         }
         return false;
+    }
+
+    public function limitMonth($year, $month)
+    {
+        $begin = mktime(0,0,0,$month,1,$year);
+        $end = mktime(0,0,0,$month+1,1,$year);
+        $criteria = new CDbCriteria();
+        $criteria->addCondition('start <= :end AND end >= :begin');
+        $criteria->addCondition('(status.done IS NULL OR status.done = 0) AND invisible = 0');
+        $criteria->with = array(
+            'status' => array(
+                'joinType'  => 'LEFT JOIN'
+            )
+        );
+        $criteria->params = array(
+            ':begin' => $begin,
+            ':end' => $end
+        );
+        $this->setDbCriteria($criteria);
+        return $this;
     }
 }

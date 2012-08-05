@@ -1661,6 +1661,17 @@ ul#nculife-details
     color: #946722;
 }
 
+
+#calendar .scroll-content
+{
+    width: 484px;
+}
+
+#calendar .scroll-container
+{
+    width: 484px;
+}
+
 #calendar-recycle,
 #calendar-recycle h4,
 #calendar-recycle a.calendar-show-event,
@@ -1675,8 +1686,6 @@ ul#nculife-details
 {
     background: url('../images/calendar.png');
 }
-
-
 
 .calendar
 {
@@ -2588,6 +2597,24 @@ button.news-button
 /**
  * Nculife style
  */
+
+.nculife-style1,
+.nculife-style2,
+.nculife-style3,
+.nculife-style4,
+.nculife-style5,
+.nculife-dialog .dialog-close-button,
+.life-top1,
+.life-top2,
+.life-top3,
+.life-top4,
+.life-top5,
+.life-items,
+#life-body
+{
+    background: url('../images/nculife.png') no-repeat;
+}
+
 #life-dialog
 {
     width: 649px;
@@ -2597,29 +2624,39 @@ button.news-button
     position: fixed;
 }
 
+#nculife .scroll-content
+{
+	width: 665px;
+}
+
+#nculife .scroll-container
+{
+	width: 665px;
+}
+
 .nculife-style1
 {
-    background: url('../images/life_yellow.png');
+    background-position: -800px 0;
 }
 
 .nculife-style2
 {
-    background: url('../images/life_green.png');
+    background-position: 0 -636px;
 }
 
 .nculife-style3
 {
-    background: url('../images/life_blue.png');
+    background-position: -800px -636px;
 }
 
 .nculife-style4
 {
-    background: url('../images/life_purple.png');
+    background-position: 0 -1116px;
 }
 
 .nculife-style5
 {
-    background: url('../images/life_pink.png');
+    background-position: -800px -1116px;
 }
 
 .nculife-dialog .dialog-close-button
@@ -2628,32 +2665,32 @@ button.news-button
     height: 40px;
     margin: -15px 0px 0px 620px;
     display: block;
-    background: url('../images/life_exit.png');
+    background-position: -1760px -800px;
 }
 
 .life-top1
 {
-    background:url('../images/life_top1.png');
+    background-position: -1528px 0;
 }
 
 .life-top2
 {
-    background:url('../images/life_top2.png');
+    background-position: -1528px -172px;
 }
 
 .life-top3
 {
-    background:url('../images/life_top3.png');
+    background-position: -1528px -324px;
 }
 
 .life-top4
 {
-    background:url('../images/life_top4.png');
+    background-position: -1528px -480px;
 }
 
 .life-top5
 {
-    background:url('../images/life_top5.png');
+    background-position: -1528px -640px;
 }
 
 #nculife-title
@@ -2764,7 +2801,7 @@ button.news-button
     overflow: hidden;
     position: absolute;
     list-style: none;
-    background: url('../images/life_rope.png') repeat-y;
+    background-position: -1528px -800px;
     padding: 0 0 0 16px;
 }
 
@@ -2791,7 +2828,7 @@ button.news-button
 {
     height: 600px;
     width: 740px;
-    background: url('../images/life_background.png');
+    background-position: 0px 0px;
 }
 
 #life-play
