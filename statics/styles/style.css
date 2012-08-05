@@ -6927,13 +6927,23 @@ li.enabled a
 }
 
 #ultimate-password .click
-{    
+{
     color: yellow;    
 }
 
 /**
  * street style
  */
+ #street-div #back-div
+ {
+    background: url('../building/street.png');
+ }
+ 
+ #street-div #back-div
+ {
+    background: url('../building/street2.png');
+ }
+ 
 #street-div #all-selected-pic-ul
 {
     margin-left: 50px;
@@ -7002,7 +7012,7 @@ li.enabled a
 
 #street-div #back-div
 {
-    background: url('../building/bottom.png') no-repeat;
+    background-position: 0px -1280px;
     position: relative;
     height: 551px;
     width: 750px;
