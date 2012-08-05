@@ -4350,6 +4350,8 @@
 
 (function($)
 {
+    var friends = [];
+
     $.friends = function()
     {
         var checked = false;
@@ -4363,6 +4365,29 @@
             });
             $('input[type="checkbox"][name^="friends"]').change();
             return false;
+        });
+
+        $('#same-department-diff-grade-search, #other-department-search, #same-department-same-grade-search, #request-search, #new-group-search, #mygroup-search, #myfriend-search, #newmember-search').keyup(function()
+        {
+            var name = $(this).val().toLowerCase();
+            for ( var key in friends )
+            {
+                var data = friends[key];
+                console.log(data);
+                if ( data[0].toLowerCase().search(name) == 0 )
+                {
+                    data[1].show();
+                }
+                else
+                {
+                    data[1].hide();
+                }
+            }
+        });
+
+        $('p.user-name').each(function()
+        {
+            friends[friends.length] = [$(this).text(), $(this).parent()];
         });
     };
     

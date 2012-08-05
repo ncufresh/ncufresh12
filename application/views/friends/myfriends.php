@@ -21,6 +21,7 @@
 <?php endforeach;?>
         </ul>
     </div>
+    <input id="myfriend-search" type="text" value="搜尋"/>
     <button type="submit" class="button-deletefriend">刪除好友</button>
     <button class="button-all-choose">全選</button>
     <a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>
