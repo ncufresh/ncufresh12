@@ -3510,85 +3510,22 @@
         {
             scrollableClass:    false
         });
-        $('#life-play').mouseenter(function()
-        {
-            $('#life-index1').stop().animate(
-            {
-                height: '95px'
-            },500);
-        });
-
-        $('#life-play').mouseleave(function()
-        {
-            $('.life-items').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
-
-        $('#life-traffic').mouseenter(function()
-        {
-            $('#life-index2').stop().animate(
-            {
-                height: '120px'
-            },500);
-        });
-
-        $('#life-traffic').mouseleave(function()
-        {
-            $('#life-index2').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
-
-        $('#life-school').mouseenter(function()
-        {
-            $('#life-index3').stop().animate(
-            {
-                height: '335px'
-            },500);
-        });
-
-        $('#life-school').mouseleave(function()
-        {
-            $('#life-index3').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
-
-        $('#life-live').mouseenter(function()
-        {
-            $('#life-index4').stop().animate(
-            {
-                height: '150px'
-            },500);
-        });
-
-        $('#life-live').mouseleave(function()
-        {
-            $('#life-index4').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
-
-        $('#life-health').mouseenter(function()
-        {
-            $('#life-index5').stop().animate(
-            {
-                height: '100px'
-            },500);
-        });
-
-        $('#life-health').mouseleave(function()
-        {
-            $('#life-index5').stop().animate(
-            {
-                height: '0px'
-            },500);
-        });
+		
+		$('.nculife-hover').mouseenter(function()
+		{
+			$(this).children('ul').stop().animate(
+			{
+				height: $(this).attr('height')
+			},500);
+		});
+		
+		$('.nculife-hover').mouseleave(function()
+		{
+			$(this).children('ul').stop().animate(
+			{
+				height: '0px'
+			},500);
+		});
 
         switch( window.location.hash.replace('#', '') )
         {
