@@ -4349,7 +4349,7 @@
         {
             var target = $(this);
             $.confirm({
-                message: '您確定要裝備此物品嗎？',
+                message: '您確定要裝備或卸載此物品嗎？',
                 confirmed: function(result)
                 {
                     if ( result )
