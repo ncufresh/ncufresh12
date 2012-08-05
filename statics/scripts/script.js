@@ -1737,7 +1737,6 @@
             var td = $('<td></td>').text(options.dayOfWeek[key]);
             if ( key==0 || key==6 ) td.addClass('weekend');
             td.appendTo(tr);
-            console.log(td.text());
         }
         tr.appendTo(thead);
         for( var day = 1, position = 0; day <= $.daysInMonth(options.month, options.year); position++ )
@@ -4435,10 +4434,9 @@
         $('#same-department-diff-grade-search, #other-department-search, #same-department-same-grade-search, #request-search, #new-group-search, #mygroup-search, #myfriend-search, #newmember-search').keyup(function()
         {
             var name = $(this).val().toLowerCase();
-            for ( var key in friends )
+            for ( var key = 0 ; key < friends.length ; ++key )
             {
                 var data = friends[key];
-                console.log(data);
                 if ( data[0].toLowerCase().search(name) == 0 )
                 {
                     data[1].show();
@@ -4610,7 +4608,6 @@
                     {
                         $(this).next().removeClass('checked');
                     }
-                    console.log($(this).prop('checked'));
                 });
 
             if ( $(this).prop('checked') ) {
@@ -5213,11 +5210,9 @@
                         alert('已經送出好友邀請!');
                     }
             });
-            // console.log('!!!');
         });
         $("#forum-forum-top2 .sort-list").change(function() {
             var url = $.configures.forumSortUrl;
-            console.log(url);
             window.location = url.replace(':sort', $(this).val());
         });
         /*forum create*/
