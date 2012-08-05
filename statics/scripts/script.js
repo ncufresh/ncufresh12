@@ -2384,7 +2384,7 @@
     {
         if ( index === undefined )
         {
-            for ( var index = 0 ; index < elements[uuid].length ; ++index )
+            for ( var index in elements[uuid] )
             {
                 var data = elements[uuid][index];
                 if ( ! overlayCloseInternal(data) ) return false;
