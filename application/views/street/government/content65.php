@@ -2,7 +2,7 @@
     據德樓、游藝館
 </h4>
 <p>
-    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2526.JPG" style="width:188px;height:250px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2529.JPG" style="width:188px;height:250px;" />
+    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2526.JPG" style="width:188px;height:250px; margin-left: 90px; margin-right: 24px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2529.JPG" style="width:188px;height:250px;" />
 </p>
 <p>
     位於<strong>男7舍的旁邊</strong>，是中央大學多數社團的活動場地。
@@ -17,6 +17,6 @@
     在畢業時刻，中大例行的畢業生活動&mdash;<strong>夜之祭</strong>，將會在游藝館、據德樓盛大地舉辦。活動前兩棟樓都會進行封館佈置成鬼屋，是中央大學畢業季中經典活動之一。
 </p>
 <p>
-    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2527.JPG" style="height:200px;width:267px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2528.JPG" style="width:267px;height:200px;" />
+    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2527.JPG" style="height:200px;width:267px; margin-left: 18px; margin-right: 17px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2528.JPG" style="width:267px;height:200px;" />
 </p>
 
