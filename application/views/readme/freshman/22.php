@@ -138,3 +138,6 @@
 		除僑生班（中文能力分級測驗結果為中級組學生，以及修畢四學分華語課程之初級組學生）與中文系學生之外，其餘時段的同學上下學期不可重複選同一位教師所開的課程。
 	</li>
 </ol>
+<p>
+	※其他詳細資料請見<a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/大一國文.pdf" title="大一國文願景" rel="external">大一國文願景</a>
+</p>

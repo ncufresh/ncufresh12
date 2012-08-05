@@ -2,7 +2,7 @@
     總圖書館
 </h4>
 <p>
-    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0221.JPG" style="width:302px;height:200px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2549.JPG" style="width:267px;height:200px;" />
+    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0221.JPG" style="width:302px;height:200px; margin-left: 7px; margin-right: 7px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2549.JPG" style="width:267px;height:200px;" />
 </p>
 <p>
     總圖書館位於學校正門口附近，介於行政大樓與中正圖書館之間。
