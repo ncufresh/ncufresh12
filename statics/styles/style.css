@@ -2071,6 +2071,7 @@ a.calendar-hide-event:hover
 #calendar-subscript form dt label
 {
     line-height: auto;
+    cursor: pointer;
 }
 
 #calendar-subscript form dd
@@ -2078,6 +2079,12 @@ a.calendar-hide-event:hover
     margin: 0;
     overflow: visible;
     width: 169%;
+}
+
+#calendar-subscript form dd span.checkbox
+{
+    margin: 15px 0 0 140px;
+    cursor: pointer;
 }
 
 .calendar-create
@@ -6706,7 +6713,7 @@ li.enabled a
     background-position: -464px -928px;
 }
 
-#forum-forum-body.orange #body-table .table-body td.category
+#forum-forum-body.orange #body-table .table-body td.category,
 #forum-forum-body.orange #body-table .table-body td.title,
 #forum-forum-body.orange #body-table .table-body td.author,
 #forum-forum-body.orange #body-table .table-body td.reply,
@@ -6762,7 +6769,7 @@ li.enabled a
     background-position: -464px -832px;
 }
 
-#forum-forum-body.yellow #body-table .table-body td.category
+#forum-forum-body.yellow #body-table .table-body td.category,
 #forum-forum-body.yellow #body-table .table-body td.title,
 #forum-forum-body.yellow #body-table .table-body td.author,
 #forum-forum-body.yellow #body-table .table-body td.reply,
