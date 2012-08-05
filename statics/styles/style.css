@@ -7964,3 +7964,11 @@ li.enabled a
     margin-left: 30px;
     margin-right: 100px;
 }
+
+#contact
+{
+    background-image: url('../images/contact.png');
+    width: 664px;
+    height: 340px;
+    padding: 38px;
+}
