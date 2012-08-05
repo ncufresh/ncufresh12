@@ -21,6 +21,15 @@
     <button type="submit" class="button-deletefriend">刪除好友</button>
     <button class="button-all-choose">全選</button>
     <a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>
+<?php if ( Yii::app()->user->getFlash('make-friends-error') ) : ?>
+    <span class="friends-wrong-message">交友失敗!!</span>
+<?php elseif ( Yii::app()->user->getFlash('delete-friends-error') ) :?>
+    <span class="friends-wrong-message">刪除好友失敗!!</span>
+<?php elseif ( Yii::app()->user->getFlash('answer-request-error') ) : ?>
+    <span class="friends-wrong-message">答覆邀請失敗!!</span>
+<?php elseif ( Yii::app()->user->getFlash('cancel-request-error') ) : ?>
+    <span class="friends-wrong-message">取消邀請失敗!!</span>
+<?php endif; ?>
 </form>
 
 

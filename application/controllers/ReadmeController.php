@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class ReadmeController extends Controller
 {
@@ -10,18 +10,23 @@ class ReadmeController extends Controller
 
     public function actionContent($page, $tab)
     {
-        switch( strtolower($page) )
-        {
-            case 'freshman' :
-                $this->freshman($tab);
-                break;
-            case 'reschool' :
-                $this->reschool($tab);
-                break;
-            case 'notice' :
-                $this->notice($tab);
-                break;
-        }
+		if ( Yii::app()->request->getIsAjaxRequest() )
+		{
+			switch( strtolower($page) )
+			{
+				case 'freshman' :
+					$this->freshman($tab);
+					break;
+				case 'reschool' :
+					$this->reschool($tab);
+					break;
+				case 'notice' :
+					$this->notice($tab);
+					break;
+			}
+			return true;
+		}
+		throw new CHttpException(404);
     }
 
     public function freshman($tab)
@@ -87,6 +92,9 @@ class ReadmeController extends Controller
                 break;
             case 21 :
                 $this->_data['content'] = $this->renderPartial('freshman/21', null, true, false);
+                break;
+            case 22 :
+                $this->_data['content'] = $this->renderPartial('freshman/22', null, true, false);
                 break;
         }
     }
@@ -227,10 +235,11 @@ class ReadmeController extends Controller
                 '學雜費減免',
                 '選課',
                 '新生大一英文修課規定',
-                '申請就學貸款須知'
+                '申請就學貸款須知',
+				'新生大一國文修課規定'
             );
-            $tab = array(15, 16, 17, 18, 19, 20);
-            $size = 6;
+            $tab = array(15, 16, 17, 18, 19, 20, 22);
+            $size = 7;
         }
 
         $this->setPageTitle(Yii::app()->name . ' - 新生區');
@@ -311,7 +320,7 @@ class ReadmeController extends Controller
                 '服務學習',
                 '校安中心聯絡電話',
                 '種子,志工團隊',
-                '網路學習資源',
+                '網路學習資源'
             );
             $tab = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
             $size = 11;
