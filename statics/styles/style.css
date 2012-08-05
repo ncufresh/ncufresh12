@@ -369,12 +369,14 @@ a:hover
 .loading
 {
     background: url('../images/loading.png');
+    border: 3px solid #77561D;
+    border-radius: 10px;
     height: 128px;
     left: 50%;
-    margin: -64px 0 0 -64px;
+    margin: -70px 0 0 -64px;
     position: relative;
     top: 50%;
-    width: 128px;
+    width: 122px;
 }
 
 .overlay
@@ -2495,6 +2497,7 @@ button.news-button
 
 #multimedia .player
 {
+    background: #000000;
     height: 400px;
     position: relative;
     width: 100%;
@@ -5183,8 +5186,8 @@ div.item-description .exist
     background: url('../game/exit.png');
     text-indent: -1000%;
     position: absolute;
-    top: -16px;
-    left: 806px;
+    top: -26px;
+    left: 180px;
     display: block;
     z-index: 1;
 }
@@ -7744,26 +7747,51 @@ li.enabled a
 
 #street-div .arrow.up
 {
+    width: 77px;
+    height: 64px;
+    background: url('../building/arrow_up.png') no-repeat;
     left: 350px;
     top: 0px;
 }
 
+#street-div .arrow.up:hover
+{
+    background: url('../building/show-point_up.png') no-repeat;
+}
+
 #street-div .arrow.left
 {
-     left: 0px;
-     top: 249px;
+    width: 50px;
+    height: 82px;
+    background: url('../building/arrow_left.png');
+    left: 0px;
+    top: 249px;
+}
+
+#street-div .arrow.left:hover
+{
+    background: url('../building/show-point_left.png');
 }
 
 #street-div .arrow.right
 {
-     left: 700px;
-     top: 249px;
+    width: 50px;
+    height: 76px;
+    background: url('../building/arrow_right.png');
+    left: 700px;
+    top: 249px;
+}
+
+#street-div .arrow.right:hover
+{
+    background: url('../building/show-point_right.png');
 }
 
 #street-div .arrow.back
 {
     height: 51px;
     width: 100px;
+    background: url('../building/back.png');
     left: 650px;
     top: 3px;
     cursor: pointer;
@@ -7821,36 +7849,42 @@ li.enabled a
 
 #street-div .one-image.dormitory
 {
+    background: url('../building/dormitory/dormitory.png');
     top: 10px;
     left: 20px;
 }
 
 #street-div .one-image.diet
 {
+    background: url('../building/food/food.png');
     top: 10px;
     left: 475px;
 }
 
 #street-div .one-image.department-building
 {
+    background: url('../building/college/college.png');
     top: -2px;
     left: 306px; 
 }
 
 #street-div .one-image.landscape
 {
+    background: url('../building/landscape/landscape.png');
     top: 10px;
     left: 150px;
 }
 
 #street-div .one-image.government
 {
+    background: url('../building/government/government-out.png');
     top: 10px;
     left: 590px;
 }
 
 #street-div .one-image.exercise
 {
+    background: url('../building/exercise/exercise.png');
     top: 31px;
     left: 687px;
 }
