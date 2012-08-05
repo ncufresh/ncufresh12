@@ -4555,10 +4555,10 @@
         {
             var url = $(this).attr('href');
             if (
-                url.match(/^\/.+/)
+                (url.match(/^\/.+/)
              || url.match(/^#.*/)
-             || url.search(location.hostname) >= 0
-             || $(this).attr('rel') !== 'external'
+             || url.search(location.hostname) >= 0)
+             && $(this).attr('rel') !== 'external'
             )
             {
                 return true;
