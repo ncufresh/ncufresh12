@@ -1741,7 +1741,7 @@
                 var end = new Date((events[key].end - (new Date()).getTimezoneOffset() * 60) * 1000);
                 todos[key]=
                 [
-                    start.getMonth() + '/' + start.getDate() + ' ~ ' + end.getMonth() + '/' + end.getDate(),
+                    (start.getMonth()+1) + '/' + start.getDate() + ' ~ ' + (end.getMonth()+1) + '/' + end.getDate(),
                     events[key].name
                 ];
             }
