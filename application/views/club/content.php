@@ -11,7 +11,7 @@
 <?php for ( $index = 0 ; $index < 3 ; ++$index ) : ?>
 <?php if ( file_exists(Yii::app()->basePath . '/../files/clubs/' . $id  . '/' . ($index + 1) . '.jpg') ) : ?>
             <li class="picture">
-                <a href="<?php echo Yii::app()->baseUrl . '/files/clubs/' . $id . '/' . ($index + 1) . '.jpg'; ?>" title="<?php echo $data->name; ?> 照片1">
+                <a href="<?php echo Yii::app()->baseUrl . '/files/clubs/' . $id . '/' . ($index + 1) . '.jpg'; ?>" title="<?php echo $data->name; ?> 照片 <?php echo $index + 1;?>">
                     <img src="<?php echo Yii::app()->baseUrl . '/files/clubs/' . $id . '/' . ($index + 1) . '.jpg'; ?>" />
                 </a>
             </li>

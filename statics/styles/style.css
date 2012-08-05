@@ -14,7 +14,6 @@ body
 {
     background: #DCE4ED url('../images/header.png') repeat-x;
     margin: 0 auto;
-    overflow-x: hidden;
     overflow-y: scroll;
     padding: 0;
     width: 1000px;
@@ -2785,6 +2784,11 @@ button.news-button
     margin-left: 10px;
 }
 
+#nculife-content-view p
+{
+	text-indent: 2em;
+}
+
 #life-index1
 {
     width: 110px;
@@ -3007,8 +3011,8 @@ button.news-button
 
 #readme .download-background
 {
-    height: 357px;
-    padding: 30px 25px;
+    height: 332px;
+    padding: 60px 25px;
     position: relative;
     width: 700px;
     overflow: hidden;
@@ -3017,6 +3021,11 @@ button.news-button
 #readme .readme-view
 {
 	width: 590px;
+}
+
+#readme .readme-view p
+{
+	text-indent: 2em;
 }
 
 #readme-body
@@ -5445,6 +5454,7 @@ div.item-description .exist
 }
 #game-mission a
 {
+    display: block;
     color: #FFA747;
 }
 #game-mission-dialog
@@ -6614,6 +6624,12 @@ li.enabled a
     background-color:white;
 }
 
+#forum-forum-body #body-table .table-body:last-child td,
+#forum-forum-body #body-table .table-body:last-child td.time
+{
+    border-bottom: none;
+}
+
 #forum-forum-body #body-table .table-body td.author
 {
     width:80px;
@@ -6672,7 +6688,7 @@ li.enabled a
 #forum-forum-body.blue #body-table .table-title th,
 #forum-forum-body.blue #body-table .table-foot td
 {
-    background: #69C1F2;
+    background: #8DCDF1;
 }
 
 #forum-forum-body.blue #body-table .table-title th.head,
@@ -6949,6 +6965,7 @@ li.enabled a
     top: 50%;
     left: 50%;
     width: 300px;
+    z-index: 1500;
 }
 
 #ultimate-password .title
@@ -7701,7 +7718,7 @@ li.enabled a
     width: 192px;
     height: 144px;
     background:  url('../building/exercise/mouseleave/playground.png');
-    left: 23px;
+    left: 3px;
     top: 84px;
 }
 
@@ -7797,7 +7814,7 @@ li.enabled a
     width: 160px;
     height: 120px;
     background:  url('../building/exercise/mouseleave/swimming-pool.png');
-    left: 252px;
+    left: 277px;
     top: 49px;
 }
 
