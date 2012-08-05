@@ -3498,7 +3498,7 @@ button.news-button
  {
     background-position: -800px -880px;
     background-repeat: no-repeat; 
-    height: 900px;
+    height: 810px;
     width: 750px;
     position: relative;
     display: inline-block;
@@ -3528,7 +3528,7 @@ button.news-button
 {
     background-position: -800px 0px;
     background-repeat: no-repeat; 
-    height: 900px;
+    height: 810px;
     width: 750px;
     position: relative;
     display: inline-block;
@@ -3556,7 +3556,7 @@ button.news-button
 {
     background-position: -16px -880px;
     background-repeat: no-repeat; 
-    height: 900px;
+    height: 810px;
     width: 750px;
     position: relative;
     display: inline-block;
@@ -4992,9 +4992,9 @@ img.user_img
  */
 .game-display .game-title
 {
-    width: 335px;
+    width: 356px;
     height: 20px;
-    margin: 5px 11px;
+    margin: 5px 0px;
     font-size: 1.5em;
     text-align: center;
     background-color: black;
@@ -5005,9 +5005,9 @@ img.user_img
 
 .game-display .item-category
 {
-    width: 335px;
+    width: 356px;
     height: 20px;
-    margin: 5px 11px;
+    margin: 5px 0px;
     font-size: 1.5em;
     text-align: center;
     background-color: black;
@@ -5021,13 +5021,38 @@ img.user_img
     font-size: 2.5em;
     color: #0C533F;
     padding: 12px 0px;
+    display: block;
+    width: 378px;
+    text-align: center;
+} 
+
+.game-display .shop-foot
+{
+    display: block;
+    width: 361px;
+    height: 36px;
+    text-align: center;
 } 
 
 .game-display .shop-click
 {
-    font-size: 1.5em;
-    color: black;
-} 
+    width: 367px;
+    height: 20px;
+    margin: 5px 0px;
+    font-size: 1.2em;
+    text-align: center;
+    background-color: black;
+    border: 3px solid #BCE96C;
+    border-radius: 10px;
+    color: #DEFF76;
+    padding: 2px 5px;
+    font-weight: bold;
+}
+
+.game-display .shop-click:hover
+{
+    color: #5AF832;
+}
 
 .game-display .experience
 {
