@@ -1,8 +1,7 @@
-<h4>其他科系</h4>
-<div id="other-department">
-<div class="search-users-in-group"></div>
-<form class="a-group-users" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
+<form id="other-department" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
+    <h4>其他科系</h4>
+    <div class="a-group-users">
         <ul class="users-department">
 <?php foreach ( $profiles as $profile ) : ?>
             <li>
@@ -12,7 +11,7 @@
 )); ?>
 </a>
                 <input type="checkbox" name="friends[<?php echo $profile->id;?>]" value="<?php echo $profile->id;?>"  />
-                <input type="hidden" name="friends-all-choose[<?php echo $profile->id;?>]" value="<?php echo $profile->id;?>" />
+                <!--<<input type="hidden" name="friends-all-choose[?php echo $profile->id;?>]" value="?php echo $profile->id;?>" />-->
                 <h3>
 <?php echo $profile->name;?>
                 </h3>
@@ -22,8 +21,9 @@
             </li>
 <?php endforeach; ?>
         </ul>
-    <button type="submit" name="all-choose" class="button-all-choose"></button>
-    <button type="submit" class="button-addfriends"></button>
+    </div>    
+    <button class="button-all-choose">全選</button>
+    <button type="submit" class="button-addfriends">新增好友</button>
+    <a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>
 </form>
-<a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back"></a>
-</div>
+

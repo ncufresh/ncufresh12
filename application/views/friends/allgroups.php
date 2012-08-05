@@ -10,4 +10,4 @@
         </ul>
     </div>
 </div>
-<a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back"></a>
+<a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>

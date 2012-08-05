@@ -2,7 +2,7 @@
     如何到中大 - 高鐵
 </h4>
 <p>
-    <img alt="桃園高鐵" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E6%A1%83%E5%9C%92%E9%AB%98%E9%90%B5.jpg" style="width:412px;height:102px;" />
+    <img alt="桃園高鐵" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/traffic5-1.jpg" style="width:412px;height:102px;" />
 </p>
 <p>
     地址：桃園縣中壢市高鐵北路一段6號

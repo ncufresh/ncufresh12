@@ -207,6 +207,9 @@ class GameController extends Controller
             case 3:
                 $reason = '已經擁有此物品！';
                 break;
+            case 4:
+                $reason = '沒有此物品！';
+                break;
             default:
                 $reason = '資料庫寫入錯誤！';
         }

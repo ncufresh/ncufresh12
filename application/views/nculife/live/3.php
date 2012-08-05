@@ -4,7 +4,7 @@
 <p>
     <strong>寢室設備</strong>：4人房，有床組、衣櫃、書桌、冷氣機（需至校內便利商店購買冷氣儲值卡），屬公共衛浴。床組：皆為上舖，<strong>186cm&times;100cm</strong>。</p>
 <p>
-    <img alt="女一舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/%E6%9C%AA%E5%91%BD%E5%90%8D4(1).png" style="width:500px;height:331px;" />
+    <img alt="女一舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/life3-5.png" style="width:500px;height:331px;" />
     <img alt="女一舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/life3-1.png" style="width:500px;height:763px;" />
 </p>
 <p>
