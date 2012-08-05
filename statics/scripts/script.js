@@ -4357,11 +4357,12 @@
         $('.button-all-choose').click(function()
         {
             checked = ! checked;
-            $('input[type="checkbox"][name^="friends"]').each(function()
+            $('input[type="checkbox"][name^="friends"], input[type="checkbox"][name^="group-members"]').each(function()
             {
                 $(this).prop('checked', checked);
             });
             $('input[type="checkbox"][name^="friends"]').change();
+            $('input[type="checkbox"][name^="group-members"]').change();
             return false;
         });
 

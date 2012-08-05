@@ -17,12 +17,8 @@
                 </a>
                 <input type="checkbox" name="friends[<?php echo $friend->profile->id;?>]" value="<?php echo $friend->profile->id ; ?>" />
                 <input type="hidden" name="friends-all-choose[<?php echo $friend->profile->id;?>]" value="<?php echo $friend->profile->id;?>" />    
-                <p class="user-name">
-<?php echo $friend->profile->name ; ?>
-                </p>
-                <p class="user-department">
-<?php echo $friend->profile->mydepartment->abbreviation ; ?>
-                </p>
+                <p class="user-name"><?php echo $friend->profile->name ; ?></p>
+                <p class="user-department"><?php echo $friend->profile->mydepartment->abbreviation ; ?></p>
             </li>
 <?php endforeach ; ?>
         </ul>
