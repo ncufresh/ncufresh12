@@ -5441,6 +5441,7 @@ div.item-description .exist
 }
 #game-mission a
 {
+    display: block;
     color: #FFA747;
 }
 #game-mission-dialog
