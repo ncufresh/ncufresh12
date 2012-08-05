@@ -9,5 +9,8 @@
 <?php endforeach; ?>
         </ul>
     </div>
+    <a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>
+<?php if ( Yii::app()->user->getFlash('delete-group-error') ) : ?>
+    <span class="friends-wrong-message">刪除群組失敗!!</span>
+<?php endif; ?>   
 </div>
-<a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>
