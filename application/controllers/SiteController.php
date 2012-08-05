@@ -219,6 +219,7 @@ class SiteController extends Controller
                 {
                     $this->redirect(array('profile/editor'));
                 }
+                Character::model()->checkCharacter($user->id);
                 $this->redirect(Yii::app()->user->returnUrl);
             }
         }

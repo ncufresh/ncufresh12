@@ -613,9 +613,9 @@
         for ( var key in response )
         {
             var data = response[key];
-            var entry;
+            var entry = null;
             $('#' + $.chat.options.friendListContainerId)
-                .find('div')
+                .find('.friend-list-entry')
                 .each(function()
                 {
                     if ( $(this).data('id') == data.id ) entry = $(this);
@@ -1050,15 +1050,17 @@
                 .insertAfter($(this));
             var scrollArea = $('<div></div>')
                 .addClass('scroll-area')
-                .css({
-                    height: '100%',
-                    overflowX: 'hidden',
-                    overflowY: 'scroll',
-                    width: '100%'
-                })
                 .appendTo(scrollContainer);
             var scrollContent = $('<div></div>')
                 .addClass('scroll-content')
+                .one(
+                    'mousewheel',
+                    function()
+                    {
+                        showScrollBar();
+                        $(this).off('mousewheel', showScrollBar);
+                    }
+                )
                 .mousewheel(function(event, delta)
                 {
                     var top = parseInt(scrollDragable.css('top'));
@@ -1145,6 +1147,16 @@
                     }
                 })
                 .appendTo(scrollTrack);
+            var showScrollBar = function()
+            {
+                if ( updateScrollDraggableHeight() )
+                {
+                    scrollBar
+                        .stop(true, true)
+                        .fadeIn(options.fadeInDuration);
+                }
+                inside = true;
+            };
             var updateScrollDragable = function(position)
             {
                 var scrollDraggableHeight = updateScrollDraggableHeight();
@@ -1193,6 +1205,11 @@
                 }
             });
             updateScrollDraggableHeight();
+            scrollContainer.one('mousemove', function()
+            {
+                showScrollBar();
+                scrollContainer.off('mousemove', showScrollBar);
+            });
         });
     };
 })(jQuery);
@@ -1402,7 +1419,23 @@
     var updateData = function(url, callback)
     {
         var self = this;
-        $.getJSON( url, function(data){
+        // $.getJSON( url, function(data){
+            // self.cleanUpMark(true);
+            // for ( var key in data.events )
+            // {
+                // self.markEvent(data.events[key], { textDecoration: 'underline'});
+            // }
+            // self.markToday();
+            // self.data('all_events', data.events);
+            // if ( callback ) 
+            // {
+                // callback(self);
+            // }
+        // });
+        $.get( url, {
+            m : self.data('options').month,
+            y : self.data('options').year
+        }, function(data){
             self.cleanUpMark(true);
             for ( var key in data.events )
             {
@@ -1414,7 +1447,7 @@
             {
                 callback(self);
             }
-        });
+        } );
         return this;
     }
 
@@ -1708,7 +1741,7 @@
                 var end = new Date((events[key].end - (new Date()).getTimezoneOffset() * 60) * 1000);
                 todos[key]=
                 [
-                    start.getMonth() + '/' + start.getDate() + ' ~ ' + end.getMonth() + '/' + end.getDate(),
+                    (start.getMonth()+1) + '/' + start.getDate() + ' ~ ' + (end.getMonth()+1) + '/' + end.getDate(),
                     events[key].name
                 ];
             }

@@ -1,5 +1,5 @@
-<?php $user_id = Yii::app()->user->getId(); //使用者的id 
-       //$user_level = Character::model()->findByPk($watch_id)->exp;?>
+<?php $user_id = Yii::app()->user->getId(); //使用者的id ?>
+<?php Character::model()->checkCharacter($user_id); ?>
     <div class="game-system">
     <div class="user-body">
 <?php $this->widget('Avatar', array(

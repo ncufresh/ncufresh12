@@ -333,10 +333,11 @@ a:hover
 
 .scroll-container .scroll-bar
 {
+    display: none;
     height: 98%;
-    right: 2px;
     margin-top: -1px;
     position: absolute;
+    right: 2px;
     top: 1%;
     width: 6px;
 }
@@ -1661,6 +1662,32 @@ ul#nculife-details
     color: #946722;
 }
 
+
+#calendar .scroll-content
+{
+    width: 484px;
+}
+
+#calendar .scroll-container
+{
+    width: 484px;
+}
+
+#calendar-recycle,
+#calendar-recycle h4,
+#calendar-recycle a.calendar-show-event,
+#calendar-recycle a.calendar-show-event:active,
+#calendar-recycle a.calendar-hide-event,
+#calendar-recycle a.calendar-hide-event:active,
+#calendar-event,
+#calendar-recycle a.back,
+#calendar-event a.back,
+#calendar-subscript,
+.calendar-create
+{
+    background: url('../images/calendar.png');
+}
+
 .calendar
 {
     background-position: 0 -288px;
@@ -1854,7 +1881,8 @@ a.calendar-hide-event:hover
 
 #calendar-recycle
 {
-    background: url('../images/calendar_recycle_background.png') no-repeat;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
 }
 
 #calendar-recycle .scroll-container
@@ -1864,9 +1892,11 @@ a.calendar-hide-event:hover
 
 #calendar-recycle h4
 {
-    background: url('../images/calendar_recycle_title.png') no-repeat;
+    background-repeat: no-repeat;
+    background-position: 0px -864px;
     padding: 0px 0 32px 45px;
     font-size: 2em;
+    width: 220px;
 }
 
 #calendar-recycle a.calendar-show-event,
@@ -1883,24 +1913,32 @@ a.calendar-hide-event:hover
 
 #calendar-recycle a.calendar-show-event
 {
-    background: url('../images/calendar_recover.png') no-repeat #FFFFFF;
+    background-repeat: no-repeat;
+    background-position: -1504px -96px;
+    background-color: #FFFFFF;
 }
 
 #calendar-recycle a.calendar-show-event:active
 {
     color: #040f1d;
-    background: url('../images/calendar_recover_active.png') no-repeat #51adf4;
+    background-repeat: no-repeat;
+    background-position: -1504px -64px;
+    background-color: #51ADF4;
 }
 
 #calendar-recycle a.calendar-hide-event
 {
-    background: url('../images/calendar_delete.png') no-repeat #FFFFFF;
+    background-repeat: no-repeat;
+    background-position: -1504px 0px;
+    background-color: #FFFFFF;
 }
 
 #calendar-recycle a.calendar-hide-event:active
 {
     color: #040f1d;
-    background: url('../images/calendar_delete_active.png') no-repeat #51adf4;
+    background-repeat: no-repeat;
+    background-position: -1504px -32px;
+    background-color: #51ADF4;
 }
 
 #calendar-recycle ul
@@ -1921,7 +1959,9 @@ a.calendar-hide-event:hover
 
 #calendar-event
 {
-    background: url('../images/calendar_event_background.png');
+    background-repeat: no-repeat;
+    background-position: -752px -432px;
+    background-color: #51ADF4;
 }
 
 #calendar-event h4
@@ -1958,7 +1998,8 @@ a.calendar-hide-event:hover
 #calendar-recycle a.back,
 #calendar-event a.back
 {
-    background: url('../images/calendar_back.png') no-repeat;
+    background-repeat: no-repeat;
+    background-position: -320px -864px;
     height: 80px;
     padding-left: 26px;
     display: inline-block;
@@ -1971,7 +2012,7 @@ a.calendar-hide-event:hover
 
 #calendar-subscript
 {
-    background: url('../images/calendar_subscription_background.png');
+    background-position: -752px 0px;
 }
 
 #calendar-subscript h4
@@ -2041,7 +2082,8 @@ a.calendar-hide-event:hover
 
 .calendar-create
 {
-    background: url('../images/calendar_create_background.png') no-repeat;
+    background-repeat: no-repeat;
+    background-position: 0px -432px;
 }
 
 .calendar-create form textarea
@@ -2356,9 +2398,24 @@ button.news-button
 /**
  * Multimedia style
  */
+
+#multimedia,
+#multimedia .title,
+#multimedia .sidebar #tab1,
+#multimedia .sidebar #tab1:active,
+#multimedia .sidebar #tab1.active ,
+#multimedia .sidebar #tab2,
+#multimedia .sidebar #tab2:active,
+#multimedia .sidebar #tab2.active ,
+#multimedia .projector,
+#multimedia .introduction
+{
+    background: url('../images/multimedia.png');
+} 
+ 
 #multimedia
 {
-    background: url('../images/multimedia_background.png');
+    background-position: 0px 0px;
     border-radius: 5px;
     overflow: visible;
     width: 100%;
@@ -2368,9 +2425,10 @@ button.news-button
 
 #multimedia .title
 {
-    background: url('../images/multimedia_title.png') no-repeat;
+    background-position: -752px -240px;
+    background-repeat: no-repeat;
     height: 60px;
-    width: 304px;
+    width: 324px;
     margin: 15px auto;
 }
 
@@ -2394,25 +2452,25 @@ button.news-button
 
 #multimedia .sidebar #tab1
 {
-    background: url('../images/multimedia_tab1.png');
+    background-position: -752px -320px;
 }
 
 #multimedia .sidebar #tab1:active,
 #multimedia .sidebar #tab1.active 
 {
-    background: url('../images/multimedia_tab1_active.png');
+    background-position: -784px -320px;
 }
 
 #multimedia .sidebar #tab2
 {
-    background: url('../images/multimedia_tab2.png');
+    background-position: -816px -320px;
     top: 100px;
 }
 
 #multimedia .sidebar #tab2:active,
 #multimedia .sidebar #tab2.active 
 {
-    background: url('../images/multimedia_tab2_active.png');
+    background-position: -848px -320px;
 }
 
 #multimedia .content
@@ -2505,7 +2563,8 @@ button.news-button
 
 #multimedia .projector
 {
-    background: url('../images/multimedia_projector.png') 15px 0 no-repeat;
+    background-position: -752px 0px;
+    background-repeat: no-repeat;
     height: 200px;
     width: 100%;
 }
@@ -2517,7 +2576,8 @@ button.news-button
 
 #multimedia .introduction
 {
-    background: url('../images/multimedia_introduction.png') 0 5px no-repeat;
+    background-position: 0px -720px;
+    background-repeat: no-repeat;
     color: #000000;
     height: 150px;
     padding: 25px 55px;
@@ -2538,6 +2598,24 @@ button.news-button
 /**
  * Nculife style
  */
+
+.nculife-style1,
+.nculife-style2,
+.nculife-style3,
+.nculife-style4,
+.nculife-style5,
+.nculife-dialog .dialog-close-button,
+.life-top1,
+.life-top2,
+.life-top3,
+.life-top4,
+.life-top5,
+.life-items,
+#life-body
+{
+    background: url('../images/nculife.png') no-repeat;
+}
+
 #life-dialog
 {
     width: 649px;
@@ -2547,29 +2625,39 @@ button.news-button
     position: fixed;
 }
 
+#nculife .scroll-content
+{
+	width: 665px;
+}
+
+#nculife .scroll-container
+{
+	width: 665px;
+}
+
 .nculife-style1
 {
-    background: url('../images/life_yellow.png');
+    background-position: -800px 0;
 }
 
 .nculife-style2
 {
-    background: url('../images/life_green.png');
+    background-position: 0 -636px;
 }
 
 .nculife-style3
 {
-    background: url('../images/life_blue.png');
+    background-position: -800px -636px;
 }
 
 .nculife-style4
 {
-    background: url('../images/life_purple.png');
+    background-position: 0 -1116px;
 }
 
 .nculife-style5
 {
-    background: url('../images/life_pink.png');
+    background-position: -800px -1116px;
 }
 
 .nculife-dialog .dialog-close-button
@@ -2578,32 +2666,32 @@ button.news-button
     height: 40px;
     margin: -15px 0px 0px 620px;
     display: block;
-    background: url('../images/life_exit.png');
+    background-position: -1760px -800px;
 }
 
 .life-top1
 {
-    background:url('../images/life_top1.png');
+    background-position: -1528px 0;
 }
 
 .life-top2
 {
-    background:url('../images/life_top2.png');
+    background-position: -1528px -172px;
 }
 
 .life-top3
 {
-    background:url('../images/life_top3.png');
+    background-position: -1528px -324px;
 }
 
 .life-top4
 {
-    background:url('../images/life_top4.png');
+    background-position: -1528px -480px;
 }
 
 .life-top5
 {
-    background:url('../images/life_top5.png');
+    background-position: -1528px -640px;
 }
 
 #nculife-title
@@ -2714,7 +2802,7 @@ button.news-button
     overflow: hidden;
     position: absolute;
     list-style: none;
-    background: url('../images/life_rope.png') repeat-y;
+    background-position: -1528px -800px;
     padding: 0 0 0 16px;
 }
 
@@ -2741,7 +2829,7 @@ button.news-button
 {
     height: 600px;
     width: 740px;
-    background: url('../images/life_background.png');
+    background-position: 0px 0px;
 }
 
 #life-play
@@ -3158,12 +3246,13 @@ button.news-button
 #about .tag-bar1,
 #about .tag-bar2,
 #about .tag-bar3,
-#about .tag-bar4
+#about .tag-bar4,
+#about .tag-bar5
 {
     background: url('../about/photo.jpg') no-repeat;
 }
 
-#about .itr-block
+#about .itrodution-block
 {
     padding-left: 15px;
     padding-bottom: 10px;
@@ -3260,7 +3349,7 @@ button.news-button
     overflow: hidden;
 }
 
-#about .about-block1Pic
+#about .about-block1Picture
 {
     left: 25px;
     height: 280px;
@@ -3320,7 +3409,6 @@ button.news-button
 
 #about .about-photos
 {
-    border-radius: 10px;
     height: 40px;
     float: left;
     margin: 5px;
@@ -3391,6 +3479,14 @@ button.news-button
     width: 122px;
 }
 
+#about .about-small-6
+{
+    top: 8px;
+    left: 198px;
+    height: 113px;
+    width: 196px;
+}
+
 #about .hidden
 {
     display: none;
@@ -3441,6 +3537,12 @@ button.news-button
 #about .tag-bar4
 {
     background-position: -560px -432px;
+    display: none;
+}
+
+#about .tag-bar5
+{
+    background-position: -560px -864px;
     display: none;
 }
 
@@ -3861,7 +3963,7 @@ ul.friends-sort
 ul.friends-sort li
 {
     width:105px;
-    height:75px;
+    height:83px;
     float:left;
     color:DarkBlue;
     list-style-type:none;
@@ -4332,6 +4434,12 @@ div.friends-sortfriend div.avatar
     margin:0px;
 }
 
+.myprofile h4
+{
+    text-align:center;
+    color:#8427C2;
+}
+
 #newgroup
 {
     background-image:url('../profile/newgroup.png');
@@ -4532,9 +4640,74 @@ a#button-editor-cancel
     padding: 0;
 }
 
+#sitemap div
 {
-    min-height: 240px;
+    border-radius: 5px;
+    margin: 10px 0;
     overflow: hidden;
+    padding: 10px;
+}
+
+#sitemap h4
+{
+    border-radius: 5px;
+    padding: 5px 5px 5px 10px;
+}
+
+#sitemap ul
+{
+    margin: 5px 0;
+}
+
+#sitemap div > ul > li
+{
+    padding: 0 5px;
+    width: 25%;
+}
+
+#sitemap div > ul ul > li
+{
+    padding-left: 10px;
+}
+
+#sitemap .freshman
+{
+    background: #D9FEDE;
+}
+
+#sitemap .freshman h4
+{
+    background: #BCFCC3;
+}
+
+#sitemap .discuss
+{
+    background: #FCCCE7;
+}
+
+#sitemap .discuss h4
+{
+    background: #FD8BC4;
+}
+
+#sitemap .personal
+{
+    background: #FAFAC9;
+}
+
+#sitemap .personal h4
+{
+    background: #F7E185;
+}
+
+#sitemap .information
+{
+    background: #D1EDF6;
+}
+
+#sitemap .information h4
+{
+    background: #8FC4F0;
 }
 
 #sitemap div > ul > li
