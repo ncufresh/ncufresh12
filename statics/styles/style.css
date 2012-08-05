@@ -2071,6 +2071,7 @@ a.calendar-hide-event:hover
 #calendar-subscript form dt label
 {
     line-height: auto;
+    cursor: pointer;
 }
 
 #calendar-subscript form dd
@@ -2078,6 +2079,12 @@ a.calendar-hide-event:hover
     margin: 0;
     overflow: visible;
     width: 169%;
+}
+
+#calendar-subscript form dd span.checkbox
+{
+    margin: 15px 0 0 140px;
+    cursor: pointer;
 }
 
 .calendar-create
