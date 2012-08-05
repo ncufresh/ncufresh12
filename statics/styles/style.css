@@ -7690,6 +7690,7 @@ li.enabled a
 #street-div #girl-dormitory-5:hover
 {
     background-position: -1552px -800px;
+    z-index: 3;
 }
 
 #street-div #gymnasium
