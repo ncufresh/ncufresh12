@@ -21,6 +21,7 @@
 <?php endforeach; ?>
     </ul>
     <button type="submit" class="button-sure"></button>
+    <button class="button-all-choose">全選</button>
 </form>
 <a href="<?php echo $this->createUrl('friends/mygroups', array('id' => $id)); ?>" class="button-back"></a>
 </div>

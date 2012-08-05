@@ -292,6 +292,7 @@
 <script type="text/javascript">
     jQuery.extend({
         configures: {
+            ncuFreshWebUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/index'); ?>'),
             pullUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/pull'); ?>'),
             chatOpenUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/open', array('id' => ':id')); ?>'),
             chatSendUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('chat/send'); ?>'),
@@ -311,10 +312,10 @@
             calendarClubRecycleUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/clubrecycle', array('id'=> ':id'));?>'),
             calendarHideEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/hideEvent'); ?>'),
             buildingContentUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('street/building', array('id' => ':id'));?>'),
-            forumSortUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('forum/forum', array('fid' => isset($_GET['fid'])?$_GET['fid']:0, 'sort' => ':sort', 'category' => isset($_GET['category'])?$_GET['category']:0));?>'),
-            forumCancelUrl:decodeURIComponent('<?php echo Yii::app()->createUrl('forum/forum', array('fid' => isset($_GET['fid'])?$_GET['fid']:0, 'sort' => 'create'));?>'),
-            gameMissionUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/problem', array('id' => ':id'));?>'),
-            gameSolveUrl:decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/solve', array('id' => ':id'));?>'),
+            forumSortUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('forum/forum', array('fid' => Yii::app()->request->getQuery('fid', 0), 'sort' => ':sort', 'category' => Yii::app()->request->getQuery('category', 0)));?>'),
+            forumCancelUrl: decodeURIComponent('<?php echo Yii::app()->createUrl('forum/forum', array('fid' => Yii::app()->request->getQuery('fid', 0), 'sort' => 'create'));?>'),
+            gameMissionUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/problem', array('id' => ':id'));?>'),
+            gameSolveUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('game/solve', array('id' => ':id'));?>'),
             facebookChannelUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/channel'); ?>'),
             facebookAppId: '<?php global $ncufreshfb; echo $ncufreshfb['appId']; ?>',
             googleSearchAppId: '011017124764723419863:mdibrr3n-py',
@@ -322,8 +323,6 @@
         }
     });
 </script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/ckeditor/adapters/jquery.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/script.js"></script>
 <?php if ( file_exists(dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . 'statics' . DIRECTORY_SEPARATOR . 'scripts' . DIRECTORY_SEPARATOR . $this->getId() . '.js') ) : ?>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/scripts/<?php echo $this->getId(); ?>.js"></script>

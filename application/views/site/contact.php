@@ -1,3 +1,4 @@
+<div id="contact">
 <h2>聯絡我們</h2>
 
 <?php if ( Yii::app()->user->hasFlash('mailer') ) : ?>
@@ -6,7 +7,7 @@
 </p>
 <?php endif; ?>
 
-<form id="contact" method="POST">
+<form id="contact-form" method="POST">
     <h4>聯絡我們</h4>
     <dl>
         <dt>
@@ -32,3 +33,4 @@
         <button type="reset">重填</button>
     </div>
 </form>
+</div>

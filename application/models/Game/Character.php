@@ -216,6 +216,7 @@ class Character extends CActiveRecord
 
     public static function getAvatar($id)
     {
+        Character::model()->checkCharacter($id);
         $parts = array(
             '皮膚'    => 'skins',
             '臉部'    => 'eyes',
@@ -280,6 +281,40 @@ class Character extends CActiveRecord
             return true;
         else
             return false;
+    }
+    
+    public function checkCharacter($user_id) // 檢查遊戲資料是否存在
+    {
+        $character_data = Character::model()->findByPk($user_id);
+        if ( $character_data == null )
+        {
+            $character = new Character(); //Character Model
+            $character->id = $user_id; //同步寫入user的id至遊戲資料列表
+            $profile = Profile::model()->findByPk($user_id);
+            if ( $profile )
+                $gender = $profile->gender;
+            else
+                return false; // 使用者不存在
+
+            if  ( $gender == 0 )
+                $character->skin_id = 81; //男生 皮膚預設id=81
+            else
+                $character->skin_id = 85; //女生 皮膚預設id=85
+
+            if ( $character->save() == true )
+                return true;
+            else
+                return false;
+        }
+            $item_exist = ItemBag::model()->findAll(array(
+                'condition' => 'user_id = :user_id',
+                'params'    => array(
+                ':user_id'  => $user_id
+            )));
+            if ( $item_exist == null )
+                ItemBag::model()->characterNewItem($user_id); // 存入道具庫
+            return true;
+
     }
     
     protected function beforeSave()
