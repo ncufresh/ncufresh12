@@ -5086,7 +5086,6 @@
  (function($){ 
     $.forum = function()
     {
-        // $('#form-create-content').ckeditor();
         $("#forum-reply-content").keydown(function(){
             var content_num = 20;
             /* 若content字數小於10則將submit disable */
