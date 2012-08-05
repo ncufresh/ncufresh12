@@ -24,14 +24,6 @@ class SiteController extends Controller
     {
         return array(
             array(
-                'deny',
-                'actions'    => array(
-                    'register',
-                    'success'
-                ),
-                'users'     => array('@')
-            ),
-            array(
                 'allow',
                 'actions'   => array(
                     'index',
@@ -46,6 +38,14 @@ class SiteController extends Controller
                     'sitemap'
                 ),
                 'users'     => array('*')
+            ),
+            array(
+                'allow',
+                'actions'    => array(
+                    'register',
+                    'success'
+                ),
+                'roles'     => array('guest')
             ),
             array(
                 'allow',
@@ -229,6 +229,7 @@ class SiteController extends Controller
                 $this->redirect(Yii::app()->user->returnUrl);
             }
         }
+        if ( Yii::app()->user->getId() > 0 ) $this->redirect(array('site/index'));
         $this->setPageTitle(Yii::app()->name . ' - 需要驗證您的身分');
         $this->render('login');
     }
