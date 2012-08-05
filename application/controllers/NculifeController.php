@@ -4,29 +4,35 @@ class NculifeController extends Controller
 {
     public function actionIndex()
     {
-         $this->render('index');
+		$this->setPageTitle(Yii::app()->name . ' - 中大生活');
+        $this->render('index');
     }
 
     public function actionContent($page, $tab)
     {
-        switch( strtolower($page) )
-        {
-            case 'health' :
-                $this->health($tab);
-                break;
-            case 'live' :
-                $this->live($tab);
-                break;
-            case 'traffic' :
-                $this->traffic($tab);
-                break;
-            case 'play' :
-                $this->play($tab);
-                break;
-            case 'school' :
-                $this->school($tab);
-                break;
-        }
+		if ( Yii::app()->request->getIsAjaxRequest() )
+		{
+			switch( strtolower($page) )
+			{
+				case 'health' :
+					$this->health($tab);
+					break;
+				case 'live' :
+					$this->live($tab);
+					break;
+				case 'traffic' :
+					$this->traffic($tab);
+					break;
+				case 'play' :
+					$this->play($tab);
+					break;
+				case 'school' :
+					$this->school($tab);
+					break;
+			}
+			return true;
+		}
+		throw new CHttpException(404);
     }
 
     public function health($tab)

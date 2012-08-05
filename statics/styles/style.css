@@ -1678,17 +1678,6 @@ table.gsc-completion-container
     color: #946722;
 }
 
-
-#calendar .scroll-content
-{
-    width: 484px;
-}
-
-#calendar .scroll-container
-{
-    width: 484px;
-}
-
 #calendar-recycle,
 #calendar-recycle h4,
 #calendar-recycle a.calendar-show-event,
@@ -1703,6 +1692,21 @@ table.gsc-completion-container
 {
     background: url('../images/calendar.png');
 }
+
+#calendar-recycle .scroll-content,
+#calendar-event .scroll-content
+{
+    width: 610px;
+}
+
+#calendar-recycle .scroll-container,
+#calendar-event .scroll-container
+{
+    width: 610px;
+    height: 240px;
+}
+
+
 
 .calendar
 {
@@ -2780,6 +2784,11 @@ button.news-button
     margin-left: 10px;
 }
 
+#nculife-content-view p
+{
+	text-indent: 2em;
+}
+
 #life-index1
 {
     width: 110px;
@@ -3002,8 +3011,8 @@ button.news-button
 
 #readme .download-background
 {
-    height: 357px;
-    padding: 30px 25px;
+    height: 332px;
+    padding: 60px 25px;
     position: relative;
     width: 700px;
     overflow: hidden;
@@ -3012,6 +3021,11 @@ button.news-button
 #readme .readme-view
 {
 	width: 590px;
+}
+
+#readme .readme-view p
+{
+	text-indent: 2em;
 }
 
 #readme-body
@@ -3907,7 +3921,7 @@ button.news-button
     padding: 0px;
     cursor: pointer;
     width: 204px;
-    height: 110px;
+  
     display: block;
 }
 
@@ -5345,7 +5359,7 @@ img.user_img
 .game-display .first-row-items,
 .game-display .second-row-items
 {
-    width: 78px;
+    width: 76px;
     border: 2px #007C0A solid;
     margin: 0px 2px 6px 1px;
     padding: 3px;
@@ -5357,12 +5371,12 @@ img.user_img
 .game-display .first-row-items img,
 .game-display .second-row-items img
 {
-    width: 78px;
+    width: 76px;
 }
 
 .game-display .the-first-item
 {
-    margin-left: 48px
+    margin-left: 46px
 }
 
 .game-display .index-data
@@ -5440,6 +5454,7 @@ div.item-description .exist
 }
 #game-mission a
 {
+    display: block;
     color: #FFA747;
 }
 #game-mission-dialog
@@ -5576,6 +5591,7 @@ div.game-system
 
 div.game-system .scroll-container
 {
+    height: 320px;
     width: 380px;
 }
 
@@ -5644,7 +5660,7 @@ div.game-display
     height: 312px;
     /* outline: 1px solid blue; */
     margin: 15px 0 0 15px;
-    overflow-y:hidden;
+    /* overflow-y:hidden; */
 }
 
 div.game-display span
@@ -6609,6 +6625,12 @@ li.enabled a
     background-color:white;
 }
 
+#forum-forum-body #body-table .table-body:last-child td,
+#forum-forum-body #body-table .table-body:last-child td.time
+{
+    border-bottom: none;
+}
+
 #forum-forum-body #body-table .table-body td.author
 {
     width:80px;
@@ -6667,7 +6689,7 @@ li.enabled a
 #forum-forum-body.blue #body-table .table-title th,
 #forum-forum-body.blue #body-table .table-foot td
 {
-    background: #69C1F2;
+    background: #8DCDF1;
 }
 
 #forum-forum-body.blue #body-table .table-title th.head,
@@ -7697,7 +7719,7 @@ li.enabled a
     width: 192px;
     height: 144px;
     background:  url('../building/exercise/mouseleave/playground.png');
-    left: 23px;
+    left: 3px;
     top: 84px;
 }
 
@@ -7793,7 +7815,7 @@ li.enabled a
     width: 160px;
     height: 120px;
     background:  url('../building/exercise/mouseleave/swimming-pool.png');
-    left: 252px;
+    left: 277px;
     top: 49px;
 }
 
