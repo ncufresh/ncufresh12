@@ -66,7 +66,7 @@ class Profile extends CActiveRecord
     public function getSameDepartmentSameGrade($Depid, $grade)
     {
         return $this->findAll(array(
-            'condition' => 'department_id = :id AND grade = :grade AND id <> :userid',
+            'condition' => 'department_id = :id AND grade = :grade AND id != :userid',
             'params'    => array(
                 ':id' => $Depid,
                 ':grade' => $grade,
@@ -78,7 +78,7 @@ class Profile extends CActiveRecord
     public function getSameDepartmentDiffGrade($Depid, $grade)
     {
         return $this->findAll(array(
-            'condition' => 'department_id = :id AND grade <> :grade',
+            'condition' => 'department_id = :id AND grade != :grade',
             'params'    => array(
                 ':id' => $Depid,
                 ':grade' => $grade
@@ -89,7 +89,7 @@ class Profile extends CActiveRecord
     public function getOtherDepartment($Depid)
     {
         return $this->findAll(array(
-            'condition' => 'department_id <> :id',
+            'condition' => 'department_id != :id',
             'params'    => array(
                 ':id' => $Depid
             )
