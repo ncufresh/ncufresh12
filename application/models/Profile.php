@@ -148,6 +148,8 @@ class Profile extends CActiveRecord
         {
             if ( $this->getIsNewRecord() || $this->getScenario('editor') )
             {
+                $this->name = trim($this->name);
+                $this->nickname = trim($this->nickname);
                 list($year, $month, $day) = explode('-', $this->birthday);
                 $this->birthday = mktime(0, 0, 0, $month, $day, $year);
             }
