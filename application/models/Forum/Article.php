@@ -23,7 +23,7 @@ class Article extends CActiveRecord
         return array(
             array('forum_id, category_id, title, content', 'required'),
             array('forum_id, category_id', 'numerical'),
-            array('title', 'length', 'min' => 1, 'max' => 16),
+            array('title', 'length', 'min' => 1, 'max' => 30),
             array('content', 'length', 'min' => 20),
         );
     }
@@ -177,7 +177,7 @@ class Article extends CActiveRecord
     public function afterFind()
     {
         parent::afterFind();
-        $this->title = nl2br(htmlspecialchars($this->title));
+        $this->title = htmlspecialchars($this->title);
         $this->content = nl2br(htmlspecialchars($this->content));
         $this->created = Yii::app()->format->datetime($this->created);
     }
