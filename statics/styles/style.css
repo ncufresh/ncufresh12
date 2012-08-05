@@ -4117,11 +4117,12 @@ ul.users-department li p.user-department
 
 #user-data-view
 {
-    width:185px; 
-    height:350px;
-    padding:0px;
-    margin-top:10px;
-    margin-left:90px;
+    width: 185px;
+    height: 350px;
+    padding: 0px;
+    margin-top: 10px;
+    margin-left: 71px;
+    font-weight: bold;
 }
 
 #user-data-view li
