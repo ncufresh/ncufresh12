@@ -962,6 +962,21 @@
             fadeOutDuration:        'slow',
             wheelSpeed:             48
         }, options);
+        if ( $.browser.msie )
+        {
+            var container = $('<div></div>')
+                .addClass('scroll-container')
+                .css({
+                    overflow: 'hidden'
+                })
+                .insertAfter($(this));
+            $(this).css({
+                height: container.height(),
+                overflowY: 'scroll'
+            });
+            container.wrapInner($(this))
+            return this;
+        }
         return this.each(function()
         {
             var active = false;
@@ -4557,10 +4572,10 @@
         {
             var url = $(this).attr('href');
             if (
-                url.match(/^\/.+/)
+                (url.match(/^\/.+/)
              || url.match(/^#.*/)
-             || url.search(location.hostname) >= 0
-             || $(this).attr('rel') !== 'external'
+             || url.search(location.hostname) >= 0)
+             && $(this).attr('rel') !== 'external'
             )
             {
                 return true;
