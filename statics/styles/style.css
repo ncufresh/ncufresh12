@@ -4248,28 +4248,29 @@ div.a-group-users div.avatar
     padding:0px;
 }
 
-.friend-chatting .scroll-container
+#friend-chatting .scroll-container
 {
-    width:388px;
+    width:212px;
+    height:78px;
 }
 
-.friend-chatting .scroll-content
+#friend-chatting .scroll-content
 {
-    width:388px;
+    width:214px;
 }
 
-.friend-chatting ul
+#friend-chatting ul
 {
-    width:388px;
-    margin-left:1px;
+    width:445px;
+    margin-left:25px;
     padding:0px;
     outline:1px solid black;
     outline-style:dotted;
 }
 
-.friend-chatting ul li
+#friend-chatting ul li
 {
-    width:192px;
+    width:222px;
     padding:0px;
     float:left;
     list-style-type:none;
@@ -4291,16 +4292,6 @@ div.a-group-users div.avatar
     width: 190px;
     outline:1px solid black;
     outline-style:dotted;
-}
-
-.friend-chatting-content .scroll-container
-{
-    width: 190px;
-}
-
-.friend-chatting-content .scroll-content
-{
-    width: 190px;
 }
 
 .profile-modify
@@ -4420,6 +4411,17 @@ div.friends-sortfriend div.avatar
     height:370px;
     padding:25px;
     margin:0px;
+}
+
+.myprofile .scroll-container
+{
+    width:445px;
+    height:280px;
+}
+
+.myprofile .scroll-container
+{
+    width:445px;
 }
 
 .myprofile h4

@@ -20,7 +20,8 @@
             </li>
 <?php endforeach; ?>
         </ul>
-    </div>    
+    </div>
+    <input type="text" value="搜尋"/>
     <button class="button-all-choose">全選</button>
     <button type="submit" class="button-addfriends">新增好友</button>
     <a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>

@@ -42,8 +42,8 @@
                 生日:<?php echo $user->profile->birthday; ?>
             </li>
         </ul>
-    </div> <!--顯示歷史訊息-->  
-    <div class="friend-chatting">
+    </div>
+    <div id="friend-chatting">
         <ul>
             <li>時間:</li>
             <li>對話內容:</li>
