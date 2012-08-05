@@ -1,3 +1,13 @@
+<form class="friends-search">
+    <dl>
+        <dt>
+            <label for="myfriend-search">搜尋</label>
+        </dt>
+        <dd>
+            <input id="myfriend-search" type="text" />
+        </dd>
+    </dl>
+</form>
 <form id="myfriend" method="POST" action="<?php echo $this->createUrl('friends/deletefriends'); ?>">
 <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
     <h4>我的好友</h4>
@@ -17,7 +27,6 @@
 <?php endforeach;?>
         </ul>
     </div>
-    <input id="myfriend-search" type="text" value="搜尋"/>
     <button type="submit" class="button-deletefriend">刪除好友</button>
     <button class="button-all-choose">全選</button>
     <a href="<?php echo $this->createUrl('friends/friends'); ?>" class="button-back">BACK</a>
@@ -31,5 +40,4 @@
     <span class="friends-wrong-message">取消邀請失敗!!</span>
 <?php endif; ?>
 </form>
-
 

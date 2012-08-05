@@ -1,3 +1,13 @@
+<form class="friends-search">
+    <dl>
+        <dt>
+            <label for="same-department-diff-grade-search">搜尋</label>
+        </dt>
+        <dd>
+            <input id="same-department-diff-grade-search" type="text" />
+        </dd>
+    </dl>
+</form>
 <form id="sameDdiffG" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
     <h4>同屆不同系</h4>
     <div class="a-group-users">
@@ -16,7 +26,6 @@
 <?php endforeach; ?>
         </ul>
     </div>
-    <input id="same-department-diff-grade-search" type="text" value="搜尋"/>
     <button class="button-all-choose">全選</button>
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
     <button type="submit" class="button-addfriends">新增好友</button>

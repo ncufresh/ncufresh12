@@ -17,7 +17,7 @@
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/附件-大一新生取消住宿申請單.doc" title="大一新生取消住宿申請單" rel="external">大一新生取消住宿申請單</a></li>
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/學習導航手冊.doc" title="學習導航手冊" rel="external">學習導航手冊</a></li>
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/軍公教遺族子女就學優待申請書.doc" title="軍公教遺族子女就學優待申請書" rel="external">軍公教遺族子女就學優待申請書</a></li>
-        	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/大一國文.pdf" title="大一國文願景" rel="external">大一國文願景</a></li>
+        	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/大一國文願景.pdf" title="大一國文願景" rel="external">大一國文願景</a></li>
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/學分抵免申請表.doc" title="學分抵免申請表" rel="external">學分抵免申請表</a></li>
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/役男兵役資料表.doc" title="役男兵役資料表" rel="external">役男兵役資料表</a></li>
         	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/學士班新生註冊須知.doc" title="學士班新生註冊須知" rel="external">學士班新生註冊須知</a></li>

@@ -139,5 +139,5 @@
 	</li>
 </ol>
 <p>
-	※其他詳細資料請見<a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/大一國文.pdf" title="大一國文願景" rel="external">大一國文願景</a>
+	※其他詳細資料請見<a href="<?php echo Yii::app()->request->baseUrl; ?>/files/documents/大一國文願景.pdf" title="大一國文願景" rel="external">大一國文願景</a>
 </p>

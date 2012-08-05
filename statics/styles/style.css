@@ -4641,36 +4641,19 @@ div.profile-message-reply h4
     text-align:center;
 }
 
+#new-group-search,
+#myfriend-search,
+#same-department-same-grade-search,
+#same-department-diff-grade-search,
+#request-search,
+#other-department-search,
+#newmember-search,
+#new-group-search,
 #mygroup-search
 {
     width:100px;
     height:25px;
-    position:absolute;
-    right:450px;
-    top:440px;
-}
-
-#myfriend-search,
-#same-department-same-grade-search,
-#same-department-diff-grade-search,
-#other-department-search,
-#newmember-search,
-#request-search
-{
-    width:100px;
-    height:25px;
-    position:absolute;
-    right:440px;
-    top:265px;
-}
-
-#new-group-search
-{
-    width:100px;
-    height:25px;
-    position:absolute;
-    right:518px;
-    top:408px;
+    background-color: transparent
 }
 
 .button-viewProfile-back,
@@ -7696,6 +7679,7 @@ li.enabled a
 #street-div #girl-dormitory-5:hover
 {
     background-position: -1552px -800px;
+    z-index: 3;
 }
 
 #street-div #gymnasium
