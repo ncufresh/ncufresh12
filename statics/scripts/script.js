@@ -962,6 +962,21 @@
             fadeOutDuration:        'slow',
             wheelSpeed:             48
         }, options);
+        if ( $.browser.msie )
+        {
+            var container = $('<div></div>')
+                .addClass('scroll-container')
+                .css({
+                    overflow: 'hidden'
+                })
+                .insertAfter($(this));
+            $(this).css({
+                height: container.height(),
+                overflowY: 'scroll'
+            });
+            container.wrapInner($(this))
+            return this;
+        }
         return this.each(function()
         {
             var active = false;
@@ -2662,6 +2677,8 @@
             return true;
         };
         var back = $.overlay({
+            closeOnEscape: false,
+            closeOnClick: false,
             onBeforeHide: function()
             {
                 box.remove();
@@ -4190,7 +4207,7 @@
 
         $('#multimedia .items').each(function()
         {
-            $(this).height($(this).find('a').length*$(this).find('a').height());
+            $(this).height($(this).find('a').length * $(this).find('a').height());
         });
         
         $('#multimedia .menu a').click(function()
@@ -4240,10 +4257,24 @@
         });
         
         $('#multimedia .tab').first().click();
+
+        $.konami({
+            complete: function()
+            {
+                var url = $.configures.multimediaYoutubeUrl.replace(':v', 'vcMVddGa0LU');
+                $('#multimedia-frame').attr('src', url);
+                $.getJSON($.configures.multimediaIntroductionUrl.replace(':v', 'vcMVddGa0LU'), function(data)
+                {
+                    $('#multimedia .introduction').text(data.introduction);
+                });
+                return false;
+            }
+        });
     }
 })(jQuery);
 
-(function($){
+(function($)
+{
     $.game = function()
     {
         $('.game-display').scrollable({
@@ -4318,7 +4349,7 @@
         {
             var target = $(this);
             $.confirm({
-                message: '您確定要裝備此物品嗎？',
+                message: '您確定要裝備或卸載此物品嗎？',
                 confirmed: function(result)
                 {
                     if ( result )
@@ -4557,10 +4588,10 @@
         {
             var url = $(this).attr('href');
             if (
-                url.match(/^\/.+/)
+                (url.match(/^\/.+/)
              || url.match(/^#.*/)
-             || url.search(location.hostname) >= 0
-             || $(this).attr('rel') !== 'external'
+             || url.search(location.hostname) >= 0)
+             && $(this).attr('rel') !== 'external'
             )
             {
                 return true;
@@ -4831,6 +4862,10 @@
         if ( $('#marquee').length ) $('#marquee').marquee();
 
         if ( $('#index-calendar').length ) $('#index-calendar div').calendar($.configures.calendarEventsUrl);
+
+        $.konami({
+            complete: $.ultimatePassword
+        });
     };
 })(jQuery);
 
@@ -5127,10 +5162,24 @@
             return false;
         });
         $('.profile-add-friend a').click(function (){
-            $('.form-addfriend .addfriend-input').attr('value', $(this).attr('href').replace('#', ''));
-            $('.form-addfriend .addfriend-input').attr('name', 'friends['+$(this).attr('href').replace('#', '')+']');
-            $('.form-addfriend').submit();
-            return false;
+            // $('.form-addfriend .addfriend-input').attr('value', $(this).attr('href').replace('#', ''));
+            // $('.form-addfriend .addfriend-input').attr('name', 'friends['+$(this).attr('href').replace('#', '')+']');
+            // $('.form-addfriend').submit();
+            // return false;
+            var friends = [];
+            var link = $(this);
+            friends[0] = $(this).attr('href').replace('#', '');
+            $.post($.configures.makeFriendUrl, { 
+                friends: friends,
+                token: $.configures.token
+                }, function(data){
+                    if( data.result == true )
+                    {
+                        link.replaceWith($('<span></span>').text('已送出邀請'));
+                        alert('已經送出好友邀請!');
+                    }
+            });
+            // console.log('!!!');
         });
         $("#forum-forum-top2 .sort-list").change(function() {
             var url = $.configures.forumSortUrl;
@@ -5218,7 +5267,7 @@
     $(document).ready(function()
     {
         $.configures.lasttime = 0;
-
+        
         $.configures.sequence = $.random(0, 1000);
 
         $.ncufresh();
