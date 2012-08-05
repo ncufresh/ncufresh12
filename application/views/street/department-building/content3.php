@@ -33,5 +33,5 @@
 </p>
 <hr />
 <p>
-    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2478(1).JPG" style="width:255px;height:340px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2480.JPG" style="width:320px;height:240px;" />
+    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2478(1).JPG" style="width:255px;height:340px; margin-left: 5px; margin-right: 8px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2480.JPG" style="width:320px;height:240px;" />
 </p>

@@ -17,17 +17,17 @@
         return this.split('').reverse().join('');
     };
 
-    Array.prototype.indexOf = function(obj)
-    {
-        for(var i=0; i<this.length; i++)
-        {
-            if(this[i]==obj)
-            {
-                return i;
-            }
-        }
-        return -1;
-    };
+    if (!('indexOf' in Array.prototype)) {
+        Array.prototype.indexOf= function(find, i /*opt*/) {
+            if (i===undefined) i= 0;
+            if (i<0) i+= this.length;
+            if (i<0) i= 0;
+            for (var n= this.length; i<n; i++)
+                if (i in this && this[i]===find)
+                    return i;
+            return -1;
+        };
+    }
     
     
     $.extend({
@@ -331,11 +331,10 @@
                     }
                     if ( response.messages )
                     {
-                        for ( var key in response.messages )
+                        $(response.messages).each(function(index, data)
                         {
-                            var data = response.messages[key];
                             $.fn.chat.updateChatDialog(data.id, data);
-                        }
+                        });
                     }
                     $.pull.pulling = false;
                 }
@@ -391,11 +390,10 @@
                         $.configures.lasttime = response.lasttime;
                         if ( $.errors(response.errors) )
                         {
-                            for ( var key in response.messages )
+                            $(response.messages).each(function(index, data)
                             {
-                                var data = response.messages[key];
                                 $.fn.chat.updateChatDialog(data.id, data);
-                            }
+                            });
                         }
                         $.push.pushing = false;
                         $.push.restart();
@@ -428,7 +426,7 @@
         if ( errors )
         {
             var messages = '';
-            for ( var key in errors )
+            for ( var key = 0 ; key < errors.length ; ++key )
             {
                 messages += errors[key];
             }
@@ -505,7 +503,8 @@
 
     $.fn.chat.notify = function(dialog)
     {
-        $('#' + $.chat.options.chatNotifyId).get(0).play();
+        var audio = $('#' + $.chat.options.chatNotifyId).get(0);
+        if ( audio.play ) audio.play();
         dialog.data('timer', setInterval(function()
         {
             dialog.children('.' + $.chat.options.chatTitleClass).highlight();
@@ -567,7 +566,7 @@
                 .keyup(function(event)
                 {
                     var name = $(this).val().toLowerCase();
-                    for ( var key in friends )
+                    for ( var key = 0 ; key < friends.length ; ++key )
                     {
                         var data = friends[key];
                         if ( data[1].toLowerCase().search(name) == 0 )
@@ -623,9 +622,8 @@
     $.fn.chat.updateFriendList = function(response)
     {
         var list = $.fn.chat.createFriendList();
-        for ( var key in response )
+        $(response).each(function(index, data)
         {
-            var data = response[key];
             var entry = null;
             $('#' + $.chat.options.friendListContainerId)
                 .find('.friend-list-entry')
@@ -654,7 +652,7 @@
             }
             entry.data('online', data.active);
             $.fn.chat.updateFriendStatus(data.id);
-        }
+        });
         return list;
     };
 
@@ -762,11 +760,10 @@
                 {
                     if ( $.errors(response.errors) )
                     {
-                        for ( var key in response.messages )
+                        $(response.messages).each(function(index, data)
                         {
-                            var data = response.messages[key];
                             $.fn.chat.updateChatDialog(data.id, data);
-                        }
+                        });
                     }
                 }
             );
@@ -2396,7 +2393,7 @@
     {
         if ( index === undefined )
         {
-            for ( var index in elements[uuid] )
+            for ( var index = 0 ; index < elements[uuid].length ; ++index )
             {
                 var data = elements[uuid][index];
                 if ( ! overlayCloseInternal(data) ) return false;
@@ -3019,19 +3016,19 @@
         },
         { // 31 (文學院)
             N:{ photo: 'Day 3 (54).JPG', nextPoint: 28 },
-            E:{ photo: 'Day 3 (53).JPG', nextPoint: 32 },
+            E:{ photo: 'Day 3 (53).JPG', nextPoint: (-1) },
             S:{ photo: 'Day 3 (56).JPG', nextPoint: 33 },
-            W:{ photo: 'Day 3 (55).JPG', nextPoint: 30 }
+            W:{ photo: 'Day 3 (55).JPG', nextPoint: (-1) }
         },
         { // 32 (文院到舊圖間岔路)
             N:{ photo: 'Day 2 (24).JPG', nextPoint: 24 },
             E:{ photo: 'Day 2 (21).JPG', nextPoint: 21 },
             S:{ photo: 'Day 2 (22).JPG', nextPoint: 34 },
-            W:{ photo: 'Day 2 (23).JPG', nextPoint: 31 }
+            W:{ photo: 'Day 2 (23).JPG', nextPoint: 33 }
         },
         { // 33 (國鼎東岔路)
             N:{ photo: 'Day 3 (50).JPG', nextPoint: 31 },
-            E:{ photo: 'Day 3 (51).JPG', nextPoint: (-1) },
+            E:{ photo: 'Day 3 (51).JPG', nextPoint: 32 },
             S:{ photo: 'Day 3 (52).JPG', nextPoint: 35 },
             W:{ photo: 'Day 3 (49).JPG', nextPoint: (-1) }
         },
@@ -3410,7 +3407,6 @@
         $('#street-div .picture, #street-div .button-text').click(function()
         {
             isInPicture = false;
-            // $('.loading').hide();
             $('#street-div #back-div, #street-div #curtain-close-div').css(
             {
                height: 552,
@@ -4166,7 +4162,10 @@
 
         this.parents('form').find('input, textarea').focus(function()
         {
-            for ( var field in fields ) fields[field].blur();
+            $(fields).each(function(index, field)
+            {
+                field.blur();
+            });
             $.datepicker.fadeOut();
         });
 
@@ -4336,15 +4335,10 @@
             $.post($.configures.gameSolveUrl.replace(':id',id), {
                 answer: $(this).find('input[name=answer]').val(),
                 token: $.configures.token
-            }, function(data){
-                if ( data.result )
-                {
-                    $('#game-mission-correct').get(0).play();
-                }
-                else
-                {
-                    $('#game-mission-wrong').get(0).play();
-                }
+            }, function(data)
+            {
+                var audio = $('#game-mission-' + (data.result ? 'correct' : 'wrong')).get(0);
+                if ( audio.play ) audio.play();
                 $.alert({
                     message: data.result ? '恭喜您～答對囉！獲取了金幣與經驗值' : '答錯囉～請再接再厲',
                     confirmed: function()
@@ -4436,10 +4430,8 @@
         $('#same-department-diff-grade-search, #other-department-search, #same-department-same-grade-search, #request-search, #new-group-search, #mygroup-search, #myfriend-search, #newmember-search').keyup(function()
         {
             var name = $(this).val().toLowerCase();
-            for ( var key in friends )
+            $(friends).each(function(index, data)
             {
-                var data = friends[key];
-                console.log(data);
                 if ( data[0].toLowerCase().search(name) == 0 )
                 {
                     data[1].show();
@@ -4448,7 +4440,7 @@
                 {
                     data[1].hide();
                 }
-            }
+            });
         });
 
         $('p.user-name').each(function()

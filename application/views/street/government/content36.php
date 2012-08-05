@@ -2,7 +2,7 @@
     校史館
 </h4>
 <p>
-    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2541.JPG" style="width:160px;height:200px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0185.JPG" style="width:302px;height:200px;" />
+    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2541.JPG" style="width:160px;height:200px; margin-left: 53px; margin-right: 20px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0185.JPG" style="width:302px;height:200px;" />
 </p>
 <p>
     位於<strong>校門進來後左側、於據德樓旁</strong>，是一座磚紅色的端莊巍峨建築。
