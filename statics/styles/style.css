@@ -4212,6 +4212,7 @@ div.friends
 {
     background-image:url('../profile/friend.png');
     background-repeat:no-repeat ;
+    background-position: 0px -832px;
     width:740px;
     height:410px;
     padding:5px;
@@ -4220,7 +4221,9 @@ div.friends
 
 #sameDsameG
 {
-    background: url('../profile/sameDsameG.png') no-repeat;
+    background: url('../profile/sameDsameG.png');
+    background-repeat:no-repeat ;
+    background-position: 0px -416px;
     width:690px;
     height:370px;
     padding:25px;
@@ -4236,6 +4239,7 @@ div.friends
 #sameDdiffG
 {
     background: url('../profile/sameDdiffG.png') no-repeat ;
+    background-position: -752px -416px;
     width:690px;
     height:370px;
     padding:25px;
@@ -4251,6 +4255,7 @@ div.friends
 #other-department
 {
     background:url('../profile/otherD.png') no-repeat ;
+    background-position: -752px 0px;
     width:690px;
     height:370px;
     padding:25px;
@@ -4267,6 +4272,7 @@ div.friends
 {
     background-image:url('../profile/request.png');
     background-repeat:no-repeat ;
+    background-position: 0px -832px;
     width:690px;
     height:370px;
     padding:25px;
@@ -4460,6 +4466,7 @@ div.friends-sortfriend div.avatar
 {
     background-image:url('../profile/myfriend.png');
     background-repeat:no-repeat ;
+    background-position: -752px -1248px;
     width:690px;
     height:370px;
     padding:25px;
@@ -4474,6 +4481,7 @@ div.friends-sortfriend div.avatar
 {
     background-image:url('../profile/profile.png');
     background-repeat:no-repeat ;
+    background-position: -752px -1248px;
     width:690px;
     height:370px;
     padding:25px;
@@ -4502,6 +4510,7 @@ div.friends-sortfriend div.avatar
 {
     background-image:url('../profile/newgroup.png');
     background-repeat:no-repeat ;
+    background-position: 0px 0px;
     width:690px;
     height:370px;
     padding:25px;
@@ -4527,6 +4536,7 @@ div.friends-sortfriend div.avatar
 {
     background-image:url('../profile/mygroup.png');
     background-repeat:no-repeat ;
+    background-position: -752px -832px;
     width:690px;
     height:370px;
     padding:25px;
@@ -4542,6 +4552,7 @@ div.friends-sortfriend div.avatar
 {
     background-image:url('../profile/groupmembers.png');
     background-repeat:no-repeat ;
+    background-position: -752px -832px;
     width:690px;
     height:370px;
     padding:25px;
@@ -4557,6 +4568,7 @@ div.allgroups
 {
     background-image:url('../profile/allgroups.png');
     background-repeat:no-repeat ;
+    background-position: 0px 0px;
     width:690px;
     height:370px;
     padding:25px;
@@ -4572,6 +4584,7 @@ div.profile-message-allmessages
 {
     background-image:url('../profile/forum1.png');
     background-repeat:no-repeat ;
+    background-position: 0px -416px;
     width:690px;
     height:370px;
     padding:25px;
@@ -4619,6 +4632,7 @@ div.profile-message-reply
 {
     background-image:url('../profile/forum2.png');
     background-repeat:no-repeat ;
+    background-position: -752px -416px;
     width:690px;
     height:370px;
     padding:25px;
