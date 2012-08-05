@@ -1585,7 +1585,14 @@
             self.markToday();
         }
         $('#personal-calendar .right').remove();
-        container = $('<div></div>').addClass('right').insertAfter($('#personal-calendar .date'));
+        if ( $.browser.msie )
+        {
+            container = $('<div></div>').addClass('scroll-container').addClass('right').insertAfter($('#personal-calendar .date'));
+        }
+        else
+        {
+            container = $('<div></div>').addClass('right').insertAfter($('#personal-calendar .date'));
+        }
         if ( cal_events && cal_events.length )
         {
             var event_ids = [];
@@ -2384,7 +2391,7 @@
     {
         if ( index === undefined )
         {
-            for ( var index = 0 ; index < elements[uuid].length ; ++index )
+            for ( var index in elements[uuid] )
             {
                 var data = elements[uuid][index];
                 if ( ! overlayCloseInternal(data) ) return false;
@@ -4435,6 +4442,11 @@
         $('p.user-name').each(function()
         {
             friends[friends.length] = [$(this).text(), $(this).parent()];
+        });
+        
+        $('.friends-search').submit(function()
+        {
+            return false;
         });
     };
     

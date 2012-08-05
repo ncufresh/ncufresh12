@@ -4,6 +4,16 @@
     <li><span id="introduce">群組簡介:</span><?php echo $mygroup->description; ?></li>
 <ul>
 </div>
+<form class="friends-search">
+    <dl>
+        <dt>
+            <label for="mygroup-search">搜尋</label>
+        </dt>
+        <dd>
+            <input id="mygroup-search" type="text" />
+        </dd>
+    </dl>
+</form>
 <form id="mygroup" method="POST" action="<?php echo $this->createUrl('friends/deletemembers', array('id'=>$mygroup->id)); ?>">
     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken();?>" />
     <h4>群組成員</h4>
@@ -24,7 +34,6 @@
 <?php endforeach; ?>
         </ul>
     </div>
-    <input id="mygroup-search" type="text" value="搜尋"/>
     <a href="<?php echo Yii::app()->createUrl('friends/newmembers', array('id'=>$mygroup->id))  ?>" id="button-addmember" >新增成員</a>
     <button class="button-all-choose">全選</button>
     <button type="submit" id="button-deletemember">刪除成員</button>
@@ -36,4 +45,3 @@
     <span class="friends-wrong-message">刪除成員失敗!!</span>
 <?php endif; ?>
 </form>
-

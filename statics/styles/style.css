@@ -1783,18 +1783,18 @@ table.gsc-completion-container
     float: left;
 }
 
-.calendar .right.scroll-container
+.calendar .scroll-container
 {
     height: 550px;
-    width: 300px;
+    width: 250px;
 }
 
-.calendar .right.scroll-container .scroll-content
+.calendar .scroll-container .scroll-content
 {
-    width: 300px;
+    width: 250px;
 }
 
-.calendar .right .scroll-content div > div
+.calendar .scroll-content div > div
 {
     background-position: -848px -1264px;
     padding-top: 15px;
@@ -4341,6 +4341,7 @@ div.a-group-users div.avatar
 {
     width:195px;
     height:103px;
+    margin-top:0px;
 }
 
 #friend-chatting .scroll-content
@@ -4360,7 +4361,6 @@ div.a-group-users div.avatar
     width:195px;
     float:left;
     list-style-type:none;
-    border:1px solid black;
 }
 
 .profile-modify
@@ -4484,6 +4484,7 @@ div.friends-sortfriend div.avatar
 {
     width:445px;
     height:226px;
+    margin-top:50px;
 }
 
 .myprofile .scroll-content
@@ -4641,36 +4642,19 @@ div.profile-message-reply h4
     text-align:center;
 }
 
+#new-group-search,
+#myfriend-search,
+#same-department-same-grade-search,
+#same-department-diff-grade-search,
+#request-search,
+#other-department-search,
+#newmember-search,
+#new-group-search,
 #mygroup-search
 {
     width:100px;
     height:25px;
-    position:absolute;
-    right:450px;
-    top:440px;
-}
-
-#myfriend-search,
-#same-department-same-grade-search,
-#same-department-diff-grade-search,
-#other-department-search,
-#newmember-search,
-#request-search
-{
-    width:100px;
-    height:25px;
-    position:absolute;
-    right:440px;
-    top:265px;
-}
-
-#new-group-search
-{
-    width:100px;
-    height:25px;
-    position:absolute;
-    right:518px;
-    top:408px;
+    background-color: transparent
 }
 
 .button-viewProfile-back,
