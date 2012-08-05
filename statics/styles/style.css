@@ -5183,8 +5183,8 @@ div.item-description .exist
     background: url('../game/exit.png');
     text-indent: -1000%;
     position: absolute;
-    top: -16px;
-    left: 806px;
+    top: -26px;
+    left: 180px;
     display: block;
     z-index: 1;
 }
