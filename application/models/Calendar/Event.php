@@ -189,7 +189,7 @@ class Event extends CActiveRecord
         $begin = mktime(0,0,0,$month,1,$year);
         $end = mktime(0,0,0,$month+1,1,$year);
         $criteria = new CDbCriteria();
-        $criteria->addCondition('start <= :end AND end >= :begin');
+        $criteria->addCondition('start < :end AND end >= :begin');
         $criteria->addCondition('(status.done IS NULL OR status.done = 0) AND invisible = 0');
         $criteria->with = array(
             'status' => array(

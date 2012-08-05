@@ -3725,7 +3725,9 @@
 
         if ( $('#calendar div').length ) 
         {
-            $('#calendar div').calendar($.configures.calendarClubEventsUrl.replace(':id', $('#club > div').attr('id').replace('club-', '')));
+            var url = $.configures.calendarClubEventsUrl
+                .replace(':id', $('#club > div').attr('id').replace('club-', ''));
+            $('#calendar div').calendar();
         }
         
         $('#club .back').click(function()
