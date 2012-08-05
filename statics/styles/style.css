@@ -5567,7 +5567,6 @@ li.enabled a
     margin-top:10px;
 }
 
-<<<<<<< HEAD
 #forum-create
 {
     background-position: -688px -400px;
@@ -5577,13 +5576,7 @@ li.enabled a
 }
 
 #forum-create-form .form-top
-{   
-=======
-#forum-create-form .form-top
 {
-    background-image: url('../forum/create/background_top.png');
-    background-repeat: no-repeat;
->>>>>>> 3bc3b8ccfb79ab04fd632f87da6cd2ae26ebf972
     margin-left:35px;
     width:656px;
     height:81px;
@@ -5611,12 +5604,7 @@ li.enabled a
 }
 
 #forum-create-form .form-body
-<<<<<<< HEAD
-{   
-=======
 {
-    background-image: url('../forum/create/background_body.png');
->>>>>>> 3bc3b8ccfb79ab04fd632f87da6cd2ae26ebf972
     margin-left:35px;
     margin-top:0px;
     width:656px;
@@ -5650,11 +5638,6 @@ li.enabled a
 
 #forum-create-form .form-foot
 {
-<<<<<<< HEAD
-=======
-    background-image: url('../forum/create/background_foot.png');
-    background-repeat: no-repeat;
->>>>>>> 3bc3b8ccfb79ab04fd632f87da6cd2ae26ebf972
     margin-left:35px;
     margin-top:0px;
     width:656px;
