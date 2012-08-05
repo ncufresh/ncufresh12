@@ -1050,15 +1050,17 @@
                 .insertAfter($(this));
             var scrollArea = $('<div></div>')
                 .addClass('scroll-area')
-                .css({
-                    height: '100%',
-                    overflowX: 'hidden',
-                    overflowY: 'scroll',
-                    width: '100%'
-                })
                 .appendTo(scrollContainer);
             var scrollContent = $('<div></div>')
                 .addClass('scroll-content')
+                .one(
+                    'mousewheel',
+                    function()
+                    {
+                        showScrollBar();
+                        $(this).off('mousewheel', showScrollBar);
+                    }
+                )
                 .mousewheel(function(event, delta)
                 {
                     var top = parseInt(scrollDragable.css('top'));
@@ -1145,6 +1147,16 @@
                     }
                 })
                 .appendTo(scrollTrack);
+            var showScrollBar = function()
+            {
+                if ( updateScrollDraggableHeight() )
+                {
+                    scrollBar
+                        .stop(true, true)
+                        .fadeIn(options.fadeInDuration);
+                }
+                inside = true;
+            };
             var updateScrollDragable = function(position)
             {
                 var scrollDraggableHeight = updateScrollDraggableHeight();
@@ -1193,6 +1205,11 @@
                 }
             });
             updateScrollDraggableHeight();
+            scrollContainer.one('mousemove', function()
+            {
+                showScrollBar();
+                scrollContainer.off('mousemove', showScrollBar);
+            });
         });
     };
 })(jQuery);
