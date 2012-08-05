@@ -71,9 +71,9 @@ else if ( $fid == 22 || $fid == 23 )
         </div>
 <?php endif; ?>
     </div>
-    <div class="forum-view-title"><?php echo $article->title; ?></div>
+    <div class="forum-view-title"><?php echo htmlspecialchars($article->title); ?></div>
     
-    <div id="forum-view-content"><?php echo $article->content; ?></div>
+    <div id="forum-view-content"><?php echo nl2br(htmlspecialchars($article->content)); ?></div>
     <div class="hululu"></div>
     <?php
     $com = $article->comments;
