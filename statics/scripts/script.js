@@ -1584,13 +1584,14 @@
             }
             self.markToday();
         }
-        $('#personal-calendar').find('.right').remove();
         if ( $.browser.msie )
         {
-            container = $('<div></div>').addClass('scroll-container').addClass('right').insertAfter($('#personal-calendar .date'));
+            $('#personal-calendar .scroll-container').remove();
+            container = $('<div></div>').addClass('right').insertAfter($('#personal-calendar .date'));
         }
         else
         {
+            $('#personal-calendar').find('.right').remove();
             container = $('<div></div>').addClass('right').insertAfter($('#personal-calendar .date'));
         }
         if ( cal_events && cal_events.length )
