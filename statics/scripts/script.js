@@ -438,7 +438,7 @@
         if ( errors )
         {
             var messages = '';
-            for ( var key in errors )
+            for ( var key = 0 ; key < errors.length ; ++key )
             {
                 messages += errors[key];
             }
@@ -578,7 +578,7 @@
                 .keyup(function(event)
                 {
                     var name = $(this).val().toLowerCase();
-                    for ( var key in friends )
+                    for ( var key = 0 ; key < friends.length ; ++key )
                     {
                         var data = friends[key];
                         if ( data[1].toLowerCase().search(name) == 0 )
@@ -2407,7 +2407,7 @@
     {
         if ( index === undefined )
         {
-            for ( var index in elements[uuid] )
+            for ( var index = 0 ; index < elements[uuid].length ; ++index )
             {
                 var data = elements[uuid][index];
                 if ( ! overlayCloseInternal(data) ) return false;
