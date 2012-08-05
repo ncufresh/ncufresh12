@@ -5645,7 +5645,7 @@ li.enabled a
 #forum-forum-body.yellow #body-table .table-title th.tail,
 #forum-forum-body.yellow #body-table .table-foot td.tail
 {
-    background: url('../forum/merge.png');
+    background: url('../images/forum.png');
 }
 
 #forum-index
@@ -5927,7 +5927,7 @@ li.enabled a
 
 #forum-view-body
 {
-    background: url('../forum/view/background.png');
+    background: url('../images/forum_background.png');
     width: 683px;
     min-height: 324px;
     margin-left:35px;
@@ -6076,7 +6076,7 @@ li.enabled a
 
 #forum-view-replies
 {
-    background: url('../forum/view/background.png');
+    background: url('../images/forum_background.png');
     width: 683px;
     min-height: 300px;
     margin-left:35px;
@@ -6344,7 +6344,7 @@ li.enabled a
 
 #forum-forum-body
 {
-    background: url('../forum/view/background.png');
+    background: url('../images/forum_background.png');
     width: 683px;
     min-height: 183px;
     margin-left:35px;
