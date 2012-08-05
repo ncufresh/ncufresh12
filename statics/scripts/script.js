@@ -1768,7 +1768,7 @@
                         month = 1;
                     }
                     calendar.remove();
-                    todolist.remove();
+                    if ( todolist ) todolist.remove();
                     calendar = generate(year, month);
                     return false;
                 },
@@ -1781,7 +1781,7 @@
                         month = 12;
                     }
                     calendar.remove();
-                    todolist.remove();
+                    if ( todolist ) todolist.remove();
                     calendar = generate(year, month);
                     return false;
                 },
