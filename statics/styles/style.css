@@ -1606,7 +1606,10 @@ ul#nculife-details
     color: #946722;
 }
 
-#calendar .scroll-content,
+#calendar .scroll-content
+{
+    width: 484px;
+}
 #calendar .scroll-container
 {
     width: 484px;

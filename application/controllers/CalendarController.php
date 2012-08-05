@@ -46,6 +46,7 @@ class CalendarController extends Controller
         );
     }
 
+    
     public function actionView()
     {
         $this->render('view');
@@ -384,7 +385,7 @@ class CalendarController extends Controller
         if ( ! Yii::app()->request->getIsAjaxRequest() ) throw new CHttpException(404);
         if ( $club ) return $this->getAjaxClubEvents();
         $this->_data['events'] = array();
-        
+
         //有POST IDS
         if( isset($_POST['event_ids']) )
         {
@@ -422,8 +423,10 @@ class CalendarController extends Controller
             $this->_data['token'] = Yii::app()->security->getToken();
         }
         //抓取全部事件
-        else
+        else if ( isset($_GET['m']) && isset($_GET['y']) )
         {
+            $month = (integer)$_GET['m'] + 1;
+            $year = (integer)$_GET['y'];
             $counter = 0;
             //登入
             if( Yii::app()->user->isMember )
@@ -431,7 +434,9 @@ class CalendarController extends Controller
                 $user = User::model()->findByPk(Yii::app()->user->id);
                 //個人
                 $calendar = $this->loadPersonalCalendar();
-                foreach ( $calendar->events as $event )
+                $calendar = Calendar::model()->limitMonth($year, $month)->getPersonalCalendar();
+                $events = $calendar?$calendar->events:array();
+                foreach ( $events as $event )
                 {
                     $this->_data['events'][$counter]['id'] = $event->id;
                     $this->_data['events'][$counter]['start'] = $event->start;
@@ -440,9 +445,11 @@ class CalendarController extends Controller
                     $counter++;
                 }
                 //訂閱
-                foreach ( $user->subscriptions as $calendar )
+                $subscriptions = $user->subscriptions;
+                foreach ( $subscriptions as $calendar )
                 {
-                    foreach ( $calendar->events as $event )
+                    $events = Event::model()->limitMonth($year, $month)->getEventsByCalendarId($calendar->id);
+                    foreach ( $events as $event )
                     {
                         $this->_data['events'][$counter]['id'] = $event->id;
                         $this->_data['events'][$counter]['start'] = $event->start;
@@ -453,12 +460,14 @@ class CalendarController extends Controller
                 }
             }
             //未登入/全校
-            $events = Calendar::model()->getGeneralCalendar()->events;
+            // $events = Calendar::model()->getGeneralCalendar()->events;
+            $g_calendar = Calendar::model()->limitMonth($year, $month)->getGeneralCalendar();
+            $events = $g_calendar?$g_calendar->events:array();
             foreach ( $events as $key => $event )
             {
                 $this->_data['events'][$counter]['id'] = $event->id;
-                $this->_data['events'][$counter]['start'] = $event->start;
                 $this->_data['events'][$counter]['name'] = $event->name;
+                $this->_data['events'][$counter]['start'] = $event->start;
                 $this->_data['events'][$counter]['end'] = $event->end;
                 $counter++;
             }
