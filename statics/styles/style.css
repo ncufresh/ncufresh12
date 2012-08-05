@@ -3246,7 +3246,7 @@ button.news-button
 #about .tag,
 #about .tag-txt
 {
-    background: url('../about/picture.png') no-repeat;
+    background: url('../images/about.png') no-repeat;
 }
 
 #about .tag-bar0,
@@ -3256,7 +3256,7 @@ button.news-button
 #about .tag-bar4,
 #about .tag-bar5
 {
-    background: url('../about/photo.jpg') no-repeat;
+    background: url('../images/about_photos.jpg') no-repeat;
 }
 
 #about .itrodution-block
