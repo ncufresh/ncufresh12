@@ -153,9 +153,17 @@
     </div>
 </div>
 <?php endif; ?>
+<span class="index-data">等級：LV.<?php echo $level; ?></span>
+<?php if ( $level < 20 ) : ?>
+    <span class="index-data">經驗值：<?php echo $exp; ?> / <?php echo $level_exp; ?></span>
+<?php else : ?>
+    <span class="index-data">經驗值：<?php echo $exp; ?> / ∞</span>
+<?php endif; ?>
+
+<span class="index-data">剩餘：<?php echo $money; ?> 金幣</span>
+<span class="index-data">總獲得：<?php echo $character_data->total_money; ?> 金幣</span>
+<span class="index-data">花費：<?php echo $character_data->total_money-$money; ?> 金幣</span>
+<span class="index-data">目前身價：<?php echo $character_data->getBodyPrice($watch_id); ?> 金幣</span>
+<span class="index-data">總登入：<?php echo $online_count; ?> 次</span>
 
 
-
-<span>金錢：<?php echo $money; ?> 金幣 [ <?php echo $character_data->total_money; ?> (總獲得) ]</span>
-<span>身價：<?php echo $character_data->getBodyPrice($watch_id); ?> 金幣
-<span>登入：<?php echo $online_count; ?> 次</span>
