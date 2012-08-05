@@ -261,7 +261,9 @@ class SiteController extends Controller
         {
             $user->attributes = $_POST['register'];
             $profile->attributes = $_POST['profile'];
-            if ( $user->validate() && $profile->validate() )
+            $userValidate = $user->validate();
+            $profileValidate = $profile->validate();
+            if ( $userValidate && $profileValidate )
             {
                 if ( $user->save() )
                 {

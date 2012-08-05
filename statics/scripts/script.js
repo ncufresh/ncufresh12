@@ -499,7 +499,8 @@
 
     $.fn.chat.notify = function(dialog)
     {
-        $('#' + $.chat.options.chatNotifyId).get(0).play();
+        var audio = $('#' + $.chat.options.chatNotifyId).get(0);
+        if ( audio.play ) audio.play();
         dialog.data('timer', setInterval(function()
         {
             dialog.children('.' + $.chat.options.chatTitleClass).highlight();
@@ -969,8 +970,36 @@
             fadeOutDuration:        'slow',
             wheelSpeed:             48
         }, options);
+
+        var scrollWidth = (function()
+        {
+            var inner = document.createElement('p');
+            inner.style.width = '100%';
+            inner.style.height = '200px';
+
+            var outer = document.createElement('div');
+            outer.style.position = 'absolute';
+            outer.style.top = '0px';
+            outer.style.left = '0px';
+            outer.style.visibility = 'hidden';
+            outer.style.width = '200px';
+            outer.style.height = '150px';
+            outer.style.overflow = 'hidden';
+            outer.appendChild(inner);
+
+            document.body.appendChild (outer);
+            var w1 = inner.offsetWidth;
+            outer.style.overflow = 'scroll';
+            var w2 = inner.offsetWidth;
+            if (w1 == w2) w2 = outer.clientWidth;
+
+            document.body.removeChild (outer);
+            return (w1 - w2);
+        })();
+
         if ( $.browser.msie )
         {
+            var scrollArea = $(this);
             var container = $('<div></div>')
                 .addClass('scroll-container')
                 .css({
@@ -978,10 +1007,24 @@
                 })
                 .insertAfter($(this));
             $(this).css({
-                height: container.height(),
-                overflowY: 'scroll'
+                height: '100%',
+                overflowX: 'hidden',
+                overflowY: 'auto',
+                width: container.width()
             });
-            container.wrapInner($(this))
+            container.wrapInner($(this));
+            container.css({
+                width: $(this).width() + scrollWidth
+            });
+            this.each(function()
+            {
+                $.extend($(this).constructor.prototype, {
+                    scrollTo: function(position)
+                    {
+                        scrollArea.scrollTop(position);
+                    }
+                });
+            });
             return this;
         }
         return this.each(function()
@@ -989,31 +1032,6 @@
             var active = false;
             var inside = false;
             var scrollHeight = 0;
-            var scrollWidth = (function()
-            {
-                var inner = document.createElement('p');
-                inner.style.width = '100%';
-                inner.style.height = '200px';
-
-                var outer = document.createElement('div');
-                outer.style.position = 'absolute';
-                outer.style.top = '0px';
-                outer.style.left = '0px';
-                outer.style.visibility = 'hidden';
-                outer.style.width = '200px';
-                outer.style.height = '150px';
-                outer.style.overflow = 'hidden';
-                outer.appendChild(inner);
-
-                document.body.appendChild (outer);
-                var w1 = inner.offsetWidth;
-                outer.style.overflow = 'scroll';
-                var w2 = inner.offsetWidth;
-                if (w1 == w2) w2 = outer.clientWidth;
-
-                document.body.removeChild (outer);
-                return (w1 - w2);
-            })();
             var updateScrollDraggableHeight = function()
             {
                 var originalHeight = parseInt(scrollDragable.css('height'));
@@ -3699,6 +3717,8 @@
  * Lightbox
  */
 (function($) {
+    var initialized = false;
+
     $.fn.lightbox = function(options)
     {
         var options = $.extend({
@@ -3741,6 +3761,7 @@
 
         var lightboxInitialize = function()
         {
+            if ( initialized ) return false;
             if ( options.onBeforeShow() )
             {
                 var overlay = $('<div></div>')
@@ -3801,6 +3822,7 @@
 
                 active = 0;
                 images = [];
+                initialized = true;
                 objects.each(function(index)
                 {
                     var object = objects.eq(index);
@@ -3855,6 +3877,7 @@
             {
                 options.onHide();
                 $('#' + options.lightboxId).remove();
+                initialized = false;
             }
             return true;
         }
@@ -4309,15 +4332,10 @@
             $.post($.configures.gameSolveUrl.replace(':id',id), {
                 answer: $(this).find('input[name=answer]').val(),
                 token: $.configures.token
-            }, function(data){
-                if ( data.result )
-                {
-                    $('#game-mission-correct').get(0).play();
-                }
-                else
-                {
-                    $('#game-mission-wrong').get(0).play();
-                }
+            }, function(data)
+            {
+                var audio = $('#game-mission-' + (data.result ? 'correct' : 'wrong')).get(0);
+                if ( audio.play ) audio.play();
                 $.alert({
                     message: data.result ? '恭喜您～答對囉！獲取了金幣與經驗值' : '答錯囉～請再接再厲',
                     confirmed: function()
@@ -4490,7 +4508,8 @@
             tooltip.prepend($('<span></span>').addClass('arrow'));
             if ( $(tooltip).css('display') === 'none' )
             {
-                $(tooltip).parent().parent().hover(function()
+                var object = $(tooltip).parent().parent();
+                object.hover(function()
                 {
                     if ( $(this).find('input:focus').length === 0 )
                     {
@@ -4506,11 +4525,21 @@
                 .find('input').focus(function()
                 {
                     $(tooltip).stop(true, true).fadeIn();
-                })
-                .blur(function()
-                {
-                    $(tooltip).stop(true, true).fadeOut();
                 });
+                if ( object.blur )
+                {
+                    object.blur(function()
+                    {
+                        $(tooltip).stop(true, true).fadeOut();
+                    });
+                }
+                else
+                {
+                    object.focusout(function()
+                    {
+                        $(tooltip).stop(true, true).fadeOut();
+                    });
+                }
             }
         });
 

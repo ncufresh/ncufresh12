@@ -88,7 +88,7 @@
             <input id="form-register-nickname" name="profile[nickname]" type="text" maxlength=8/>
             <span>
 <?php if ( Yii::app()->user->getFlash('register-error-nickname-message') ) : ?>
-                <span class="error">您的暱稱太長了或著已經有人使用過了！</span>
+                <span class="error">您的暱稱太長了或者已經有人使用過了！</span>
 <?php endif; ?>
                 請輸入您的暱稱，不超過八個字元。
             </span>
@@ -107,7 +107,7 @@
             <input id="form-register-gender-female" name="profile[gender]" type="radio" value="1" /><label for="form-register-gender-female">Female</label>
             <span>
 <?php if ( Yii::app()->user->getFlash('register-error-gender-message') ) : ?>
-                <span class="error">您的暱稱太長了或著已經有人使用過了！</span>
+                <span class="error">性別只有男女喔</span>
 <?php endif; ?>
                 請選擇您的性別。
             </span>
@@ -155,7 +155,7 @@
             <input class="datepicker" id="form-register-birthday" name="profile[birthday]" type="text" />
         </dd>
     </dl>
-<?php if ( Yii::app()->user->getFlash('register-error-birthday-senior') ) : ?>
+<?php if ( Yii::app()->user->getFlash('register-error-senior') ) : ?>
     <dl class="error">
 <?php else: ?>
     <dl>
