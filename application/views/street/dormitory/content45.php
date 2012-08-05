@@ -2,13 +2,13 @@
     男九舍B棟
 </h4>
 <p>
-    <img alt="男九舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0189.JPG" style="height:220px;width:146px;" /><img alt="男九舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/boy9-1.jpg" style="width:264px;height:220px;" />
+    <img alt="男九舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0189.JPG" style="height:220px;width:146px; margin-right: 29px; margin-left:75px;" /><img alt="男九舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/boy9-1.jpg" style="width:264px;height:220px;" />
 </p>
 <p>
     <strong>寢室設備</strong>： 4人房，有床組、衣櫃、書桌、冷氣機（需至校內便利商店購買冷氣儲值卡），屬公共衛浴。床組：多為上舖，地下是為下鋪，<strong>187cm&times;88cm</strong>。
 </p>
 <p>
-    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B9_1-1.jpg" style="width:240px;height:180px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B9_1-2.jpg" style="width:240px;height:180px;" />
+    <img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B9_1-1.jpg" style="width:240px;height:180px; margin-right: 25px; margin-left: 44px;" /><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B9_1-2.jpg" style="width:240px;height:180px;" />
 </p>
 <ol>
     <li>
@@ -38,12 +38,12 @@
     </li>
 </ol>
 <p>
-    <img alt="交誼廳" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B9_2-2.jpg" style="width:240px;height:180px;" /><img alt="自修室" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B9_3-2.jpg" style="width:240px;height:180px;" />
+    <img alt="交誼廳" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B9_2-2.jpg" style="width:240px;height:180px; margin-right: 25px; margin-left: 52px;" /><img alt="自修室" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B9_3-2.jpg" style="width:240px;height:180px;" />
 </p>
 <p>
-    <img alt="桌球室" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B9_4-2.jpg" style="width:240px;height:180px;" /><img alt="桌球室" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B9_4-1.jpg" style="width:240px;height:180px;" />
+    <img alt="桌球室" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B9_4-2.jpg" style="width:240px;height:180px; margin-right: 25px; margin-left: 52px;" /><img alt="桌球室" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/B9_4-1.jpg" style="width:240px;height:180px;" />
 </p>
 <p>
-    <img alt="男九舍外" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0194.JPG" style="width:271px;height:180px;" /><img alt="男九舍外" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2607.JPG" style="width:135px;height:180px;" />
+    <img alt="男九舍外" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0194.JPG" style="width:271px;height:180px; margin-right: 35px; margin-left: 38px;" /><img alt="男九舍外" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/IMG_2607.JPG" style="width:135px;height:180px;" />
 </p>
 

@@ -14,7 +14,6 @@ body
 {
     background: #DCE4ED url('../images/header.png') repeat-x;
     margin: 0 auto;
-    overflow-x: hidden;
     overflow-y: scroll;
     padding: 0;
     width: 1000px;
@@ -2590,7 +2589,8 @@ button.news-button
     background-position: -752px 0px;
     background-repeat: no-repeat;
     height: 200px;
-    width: 100%;
+    width: 80%;
+    margin-left: 20%;
 }
 
 #multimedia .loading
@@ -5346,11 +5346,11 @@ img.user_img
 .game-display .second-row-items
 {
     width: 78px;
-    border: 2px #006110 solid;
+    border: 2px #007C0A solid;
     margin: 0px 2px 6px 1px;
     padding: 3px;
     border-radius: 18px;
-    background: #C0FFB0;
+    background: #E0FFA8;
     float: left;
 }
 
@@ -5363,6 +5363,22 @@ img.user_img
 .game-display .the-first-item
 {
     margin-left: 48px
+}
+
+.game-display .index-data
+{
+    width: 356px;
+    height: 20px;
+    margin: 5px 0px;
+    font-size: 1.4em;
+    text-align: center;
+    background-color: black;
+    border: 3px solid #A7FF76;
+    border-radius: 10px;
+    color: #D8FF5E;
+    clear: both;
+    padding: 1px 0 10px;
+    font-weight: bold;
 }
 
 .item-description,
@@ -5424,6 +5440,7 @@ div.item-description .exist
 }
 #game-mission a
 {
+    display: block;
     color: #FFA747;
 }
 #game-mission-dialog
@@ -6934,6 +6951,7 @@ li.enabled a
     top: 50%;
     left: 50%;
     width: 300px;
+    z-index: 1500;
 }
 
 #ultimate-password .title

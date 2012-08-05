@@ -2,7 +2,7 @@
     男十一舍
 </h4>
 <p>
-    <img alt="男十一舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/boy11-1(1).jpg" style="width:267px;height:200px;" /><img alt="男十一舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0236(1).JPG" style="width:302px;height:200px;" />
+    <img alt="男十一舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/boy11-1(1).jpg" style="width:267px;height:200px; margin-right: 5px;" /><img alt="男十一舍" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/DSC_0236(1).JPG" style="width:302px;height:200px;" />
 </p>
 <p>
     <strong>寢室設備</strong>： 4人房，有床組、衣櫃、書桌、冷氣機（需至校內便利商店購買冷氣儲值卡），屬公共衛浴。床組：多為上舖，地下室為下鋪，<strong>190cm&times;93cm</strong>。
@@ -22,7 +22,7 @@
     </li>
 </ol>
 <p>
-    <strong><img alt="寢室內" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/boy11-2.jpg" style="width:240px;height:200px;" /><img alt="交誼廳" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/boy11-3.jpg" style="width:267px;height:200px;" /></strong>
+    <strong><img alt="寢室內" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/boy11-2.jpg" style="width:240px;height:200px; margin-right: 5px;" /><img alt="交誼廳" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/boy11-3.jpg" style="width:267px;height:200px;" /></strong>
 </p>
 <p>
     <strong>PS.其中18房為2人愛心寢室，本舍的愛心寢室為下舖，提供給行動不便或受傷的學生申請使用。<a href="http://www.ncu.edu.tw/~ncu7221/index.php?op=newInfo&amp;p=2" title="愛心寢室相關資訊">愛心寢室相關資訊</a></strong>
