@@ -2,7 +2,7 @@
     大象五行
 </h4>
 <p>
-    置於人文社會科學大樓草坪上的『大象五形』藝術品。
+    置於人文社會科學大樓草坪上的『大象五行』藝術品。
 </p>
 <p>
     <img alt="大象五行" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/documents/2%20(2).jpg" style="width:400px;height:268px;" />
