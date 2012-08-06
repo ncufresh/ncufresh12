@@ -84,7 +84,7 @@ class ProfileController extends Controller
                 $profile->name = '';
                 $profile->nickname = '';
                 $profile->gender = 0; //預設男生
-                $profile->department = 2; //預設他是資工系
+                $profile->department = 22; //預設他是其他
                 $profile->grade = 0; //其他年級
                 $profile->senior = '';
                 $profile->birthday = date('Y-m-d');
