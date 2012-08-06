@@ -8,11 +8,18 @@
          <ul class="user-editor">
             <li>
                 <span>姓名：</span>
-                <input type="text" name="profile[name]"  value="<?php echo $user->profile->name ; ?>" />
+                <input type="text" name="profile[name]"  value="<?php echo $user->profile->name ; ?>" maxlength=10 />
+            </li>
+            <li class="is_exist">
+<?php if ( isset($profile_errors['name']) ) : ?>
+<?php foreach ( $profile_errors['name'] as $error ) : ?>
+<?php echo $error; ?>
+<?php endforeach; ?>
+<?php endif; ?>
             </li>
             <li>
                 <span> 暱稱：</span>
-                <input type="text" name="profile[nickname]" value="<?php echo $user->profile->nickname; ?>" />
+                <input type="text" name="profile[nickname]" value="<?php echo $user->profile->nickname; ?>" maxlength=5/>
             </li>
             <li class="is_exist">
 <?php if ( isset($profile_errors['nickname']) ) : ?>
@@ -48,7 +55,14 @@
             </li>
             <li>
                 <span>畢業高中：</span>
-                <input type="text" name="profile[senior]" value="<?php echo $user->profile->senior; ?>" />
+                <input type="text" name="profile[senior]" value="<?php echo $user->profile->senior; ?>" maxlength=8/>
+            </li>
+            <li>
+<?php if ( isset($profile_errors['senior']) ) : ?>
+<?php foreach ( $profile_errors['senior'] as $error ) : ?>
+<?php echo $error; ?>
+<?php endforeach; ?>
+<?php endif; ?>
             </li>
             <li>
                 <span>生日：</span>
@@ -57,6 +71,5 @@
         </ul>
     </div>
     <button type="submit" id="button-editor-sure">確認</button>
-    <a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>" id="button-editor-cancel">取消</a>
     <a href="<?php echo Yii::app()->createUrl('profile/profile'); ?>" class="button-back">BACK</a>
 </form>

@@ -121,14 +121,13 @@ class ForumController extends Controller
 
     public function actionView($fid, $id, $page=1)
     {
-        if ( Article::model()->findByPk($id) )
+        $article = Article::model()->findByPk($id);
+        if ( $article )
         {
-            $article = Article::model()->findByPk($id);
             $article->viewed++;
             
             if ( $article->save())
             {
-                $article = Article::model()->findByPk($id);
                 $this->setPageTitle(Yii::app()->name . ' - ' . $article->title);
                 $this->render('view', array(
                 'fid'           => $article->forum_id,
