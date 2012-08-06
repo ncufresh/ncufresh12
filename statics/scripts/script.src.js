@@ -244,7 +244,7 @@
         browseredcounter:       null,
         counterAnimationSpeed:  50,
         minimumAnimationTimes:  4,
-        interval:               5000,
+        interval:               20000,
         counterDigitElements:   '0123456789'
     };
 
@@ -359,7 +359,7 @@
     $.push = {};
 
     $.push.options = {
-        interval:               5000
+        interval:               20000
     };
 
     $.push.pushing = false;

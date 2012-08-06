@@ -86,7 +86,7 @@ class Article extends CActiveRecord
         if ( $category == 0 )
         {
             return self::model()->findAll(array(
-                'condition' => 'forum_id='.$fid.' AND invisible=0',
+                'condition' => 'forum_id='.$fid.' AND invisible=0 AND sticky=0',
                 'order'     => $sort . ' DESC',
                 'limit'     => $entries_per_page,
                 'offset'    => ($current_page - 1) * $entries_per_page
@@ -96,7 +96,7 @@ class Article extends CActiveRecord
         else
         {
             return self::model()->findAll(array(
-                'condition' => 'forum_id = ' . $fid . ' AND invisible = 0 AND category_id = ' . $category,
+                'condition' => 'forum_id = ' . $fid . ' AND invisible = 0 AND sticky=0 AND category_id = ' . $category,
                 'order'     => $sort . ' DESC',
                 'limit'     => $entries_per_page,
                 'offset'    => ($current_page - 1) * $entries_per_page
@@ -139,7 +139,11 @@ class Article extends CActiveRecord
                 $this->invisible = 0;
                 if($this->sticky==1)
                 {
-                    if(Category::Model()->getIsMaster()==false) $this->sticky = 0;
+                    if ( Category::Model()->getIsMaster()==false ) return false;
+                }
+                if ( $this->category_id == 12 )
+                {
+                    if ( Yii::app()->user->getIsAdmin() == false ) return false;
                 }
             }
             else
@@ -180,5 +184,24 @@ class Article extends CActiveRecord
         $this->title = htmlspecialchars($this->title);
         $this->content = nl2br(htmlspecialchars($this->content));
         $this->created = Yii::app()->format->datetime($this->created);
+    }
+    
+    public function getStickyArticle($fid)
+    {
+        return $this->findAll('forum_id='.$fid.' AND sticky=1 AND invisible=0');
+    }
+    
+    public function checkCategoryIDtoForumID($fid, $category_id)
+    {
+        $check = false;
+        foreach( Category::model()->findByPk($fid)->article_categories as $each)
+        {
+            if( $each->id == $category_id ) 
+            {
+                $check = true;
+                break;
+            }
+        }
+        return $check;
     }
 }

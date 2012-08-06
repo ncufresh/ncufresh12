@@ -14,7 +14,7 @@
                 暱稱：<?php echo $user->profile->nickname; ?>
             </li>
             <li>
-<?php if ( $user->profile->gender === 0 ): ?>
+<?php if ( $user->profile->gender == 0 ): ?>
                 性別：男孩兒
 <?php else:?>
                 性別：女孩兒
@@ -34,7 +34,8 @@
 <?php endif; ?>
             </li>
             <li>
-                畢業高中：<?php echo $user->profile->senior; ?>    
+                畢業高中：
+            <li><?php echo $user->profile->senior; ?></li>
             </li>
             <li>
                 生日：<?php echo $user->profile->birthday; ?>
