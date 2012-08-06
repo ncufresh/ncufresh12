@@ -11,7 +11,7 @@
             <a href="#vPbHfIX0SYk" title="放手一搏part1">放手一搏part1</a>
             <a href="#1PmLaO6h7wM" title="放手一搏part2">放手一搏part2</a>
             <a href="#QhPY39Os-jc" title="驚悚遊戲part1">驚悚遊戲part1</a>
-            <a href="#A9wY2uy61KM" title="驚悚遊戲part2">驚悚遊戲part2</a>
+            <a href="#LOHQ4JSrBUo" title="驚悚遊戲part2">驚悚遊戲part2</a>
             <a href="#4wWwrdVN0Fs" title="練習曲part1">練習曲part1</a>
             <a href="#reY8fVwDNg8" title="練習曲part2">練習曲part2</a>
             <a href="#j9-zvnloDmY" title="愛。舞動part1">愛。舞動part1</a>
