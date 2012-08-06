@@ -5684,6 +5684,7 @@ div.function-body
     height: 373px;
     margin: 54px 0 0 29px;
     float: left;
+    overflow:hidden;
 }
 
 ul.game-button
