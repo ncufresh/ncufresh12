@@ -1975,7 +1975,18 @@
                 message: '確定取消編輯這則事件？',
                 confirmed: function(result)
                 {
-                    if ( result ) window.location = $.configures.calendarViewUrl;
+                    if ( result )
+                    {
+                        var club = $('.calendar-cancel-button').attr('club');
+                        if ( club )
+                        {
+                            window.location = $.configures.calendarClubUrl.replace(':id', club);
+                        }
+                        else
+                        {
+                            window.location = $.configures.calendarViewUrl;
+                        }
+                    }
                     return false;
                 }
             });
