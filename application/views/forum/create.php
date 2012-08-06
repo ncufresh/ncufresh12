@@ -19,7 +19,9 @@
         </dt>
         <dd>
             <select id="forum-create-category" name="forum[category_id]">
-<?php foreach ( $category->article_categories as $entry ) : ?>
+<?php 
+foreach ( $category->article_categories as $entry ) :
+?>
                 <option value="<?php echo $entry->id; ?>"><?php echo $entry->name; ?></option>
 <?php endforeach; ?>
             </select>
@@ -46,8 +48,6 @@
                 <label for="form-create-top">置頂</label>
             </dd>
         </dl>
-        
-    <input type="hidden" name="forum[sticky]" value="0"/>
     <?php
     endif;
     ?>

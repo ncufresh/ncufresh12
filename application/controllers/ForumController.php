@@ -68,15 +68,18 @@ class ForumController extends Controller
         if ( $forum = Category::model()->findByPk($fid) )
         {
             $forum = Category::model()->findByPk($fid);
+            $count = count( Article::model()->getStickyArticle($fid) );
             $this->setPageTitle(Yii::app()->name . ' - ' . $forum->name);
             // content of each forum
             $this->render('forum', array(
                 'fid'               => $fid,
                 'sort'              => $sort,
                 'current_category'  => $category,
-                'model'             => Article::getArticlesSort($fid, $sort, $category, $page, self::ARTICLES_PER_PAGE),
+                'model'             => Article::getArticlesSort($fid, $sort, $category, $page, self::ARTICLES_PER_PAGE-$count),
+                'sticky_articles'   => Article::model()->getStickyArticle($fid),
                 'category'          => $forum,
-                'page_status'       => Article::getPageStatus($page, self::ARTICLES_PER_PAGE, $fid, $category)
+                'page_status'       => Article::getPageStatus($page, self::ARTICLES_PER_PAGE, $fid, $category),
+                'current_page'      => $page
             ));
         }
         else 
@@ -92,9 +95,12 @@ class ForumController extends Controller
         {
             $article = new Article();
             $article->attributes = $_POST['forum'];
-            if ( Category::model()->findByPk($fid)->getIsMaster() )
+            if ( isset($_POST['forum']['sticky']) )
             {
-                $article->sticky = $_POST['forum']['sticky'];
+                if ( Category::model()->findByPk($fid)->getIsMaster() )
+                {
+                    $article->sticky = $_POST['forum']['sticky'];
+                }
             }
             if ( $article->validate() && $article->save() )
             {

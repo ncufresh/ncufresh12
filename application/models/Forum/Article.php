@@ -86,7 +86,7 @@ class Article extends CActiveRecord
         if ( $category == 0 )
         {
             return self::model()->findAll(array(
-                'condition' => 'forum_id='.$fid.' AND invisible=0',
+                'condition' => 'forum_id='.$fid.' AND invisible=0 AND sticky=0',
                 'order'     => $sort . ' DESC',
                 'limit'     => $entries_per_page,
                 'offset'    => ($current_page - 1) * $entries_per_page
@@ -96,7 +96,7 @@ class Article extends CActiveRecord
         else
         {
             return self::model()->findAll(array(
-                'condition' => 'forum_id = ' . $fid . ' AND invisible = 0 AND category_id = ' . $category,
+                'condition' => 'forum_id = ' . $fid . ' AND invisible = 0 AND sticky=0 AND category_id = ' . $category,
                 'order'     => $sort . ' DESC',
                 'limit'     => $entries_per_page,
                 'offset'    => ($current_page - 1) * $entries_per_page
@@ -180,5 +180,10 @@ class Article extends CActiveRecord
         $this->title = htmlspecialchars($this->title);
         $this->content = nl2br(htmlspecialchars($this->content));
         $this->created = Yii::app()->format->datetime($this->created);
+    }
+    
+    public function getStickyArticle($fid)
+    {
+        return $this->findAll('forum_id='.$fid.' AND sticky=1 AND invisible=0');
     }
 }
