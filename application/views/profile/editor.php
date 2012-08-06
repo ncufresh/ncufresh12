@@ -70,7 +70,6 @@
             </li>
         </ul>
     </div>
-    </form>
     <button type="submit" id="button-editor-sure">確認</button>
-    <a href="<?php echo Yii::app()->createUrl('profile/editor'); ?>" id="button-editor-cancel">取消</a>
     <a href="<?php echo Yii::app()->createUrl('profile/profile'); ?>" class="button-back">BACK</a>
+</form>
