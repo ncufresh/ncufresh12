@@ -5184,9 +5184,9 @@
             }
         });
         $('.article-delete').click(function (){
-            $('.form-delete input').attr('value', $(this).attr('href').replace('#', ''));
+            $('.form-delete input.delete-input').attr('value', $(this).attr('href').replace('#', ''));
             if(confirm("刪除文章?")){
-                $('.form-delete').submit();            
+                $('.form-delete').submit();        
             }
             return false;
         });
