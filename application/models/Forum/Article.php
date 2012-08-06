@@ -66,9 +66,6 @@ class Article extends CActiveRecord
             case 'create':
                 $sort = 'created';
                 break;
-            case 'update':
-                $sort = 'updated';
-                break;
             case 'reply':
                 $sort = 'replies_count';
                 break;
