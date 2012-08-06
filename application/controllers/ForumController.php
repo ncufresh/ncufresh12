@@ -68,15 +68,18 @@ class ForumController extends Controller
         if ( $forum = Category::model()->findByPk($fid) )
         {
             $forum = Category::model()->findByPk($fid);
+            $count = count( Article::model()->getStickyArticle($fid) );
             $this->setPageTitle(Yii::app()->name . ' - ' . $forum->name);
             // content of each forum
             $this->render('forum', array(
                 'fid'               => $fid,
                 'sort'              => $sort,
                 'current_category'  => $category,
-                'model'             => Article::getArticlesSort($fid, $sort, $category, $page, self::ARTICLES_PER_PAGE),
+                'model'             => Article::getArticlesSort($fid, $sort, $category, $page, self::ARTICLES_PER_PAGE-$count),
+                'sticky_articles'   => Article::model()->getStickyArticle($fid),
                 'category'          => $forum,
-                'page_status'       => Article::getPageStatus($page, self::ARTICLES_PER_PAGE, $fid, $category)
+                'page_status'       => Article::getPageStatus($page, self::ARTICLES_PER_PAGE, $fid, $category),
+                'current_page'      => $page
             ));
         }
         else 
@@ -91,16 +94,30 @@ class ForumController extends Controller
         if ( isset($_POST['forum']) )
         {
             $article = new Article();
-            $article->attributes = $_POST['forum'];
-            if ( Category::model()->findByPk($fid)->getIsMaster() )
+            if ( $article->checkCategoryIDtoForumID($_POST['forum']['forum_id'], $_POST['forum']['category_id']) == true)
             {
-                $article->sticky = $_POST['forum']['sticky'];
+                $article->attributes = $_POST['forum'];
+                if ( isset($_POST['forum']['sticky']) )
+                {
+                    if ( Category::model()->findByPk($fid)->getIsMaster() )
+                    {
+                        $article->sticky = $_POST['forum']['sticky'];
+                    }
+                }
+                if ( $article->validate() && $article->save() )
+                {
+                    Character::model()->findByPk(Yii::app()->user->getId())->addExp(self::NEW_ARTICLE_EXP);
+                    Character::model()->findByPk(Yii::app()->user->getId())->addMoney(self::NEW_ARTICLE_VALUE);
+                    $this->redirect($article->url);
+                }
+                else 
+                {
+                    throw new CHttpException(404);
+                }
             }
-            if ( $article->validate() && $article->save() )
+            else
             {
-                Character::model()->findByPk(Yii::app()->user->getId())->addExp(self::NEW_ARTICLE_EXP);
-                Character::model()->findByPk(Yii::app()->user->getId())->addMoney(self::NEW_ARTICLE_VALUE);
-                $this->redirect($article->url);
+                throw new CHttpException(404);
             }
         }
 
