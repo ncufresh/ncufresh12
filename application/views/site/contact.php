@@ -11,6 +11,24 @@
     <h4>聯絡我們</h4>
     <dl>
         <dt>
+            <label for="form-contact-name">名稱</label>
+        </dt>
+        <dd>
+            <input id="form-contact-name" name="contact[name]" type="text" />
+            <span>請填寫您的名字。</span>
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            <label for="form-contact-email">電子信箱</label>
+        </dt>
+        <dd>
+            <input id="form-contact-email" name="contact[email]" type="text" />
+            <span>請填寫您的信箱，方便我們聯絡您。</span>
+        </dd>
+    </dl>
+    <dl>
+        <dt>
             <label for="form-contact-subject">主旨</label>
         </dt>
         <dd>

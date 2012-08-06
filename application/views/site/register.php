@@ -103,8 +103,8 @@
             <label for="form-register-gender-male">性別</label>
         </dt>
         <dd>
-            <input id="form-register-gender-male" name="profile[gender]" type="radio" value="0" /><label for="form-register-gender-male">Male</label>
-            <input id="form-register-gender-female" name="profile[gender]" type="radio" value="1" /><label for="form-register-gender-female">Female</label>
+            <input id="form-register-gender-male" name="profile[gender]" type="radio" value="0" /><label for="form-register-gender-male">男孩</label>
+            <input id="form-register-gender-female" name="profile[gender]" type="radio" value="1" /><label for="form-register-gender-female">女孩</label>
             <span>
 <?php if ( Yii::app()->user->getFlash('register-error-gender-message') ) : ?>
                 <span class="error">性別只有男女喔</span>
