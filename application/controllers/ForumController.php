@@ -94,21 +94,28 @@ class ForumController extends Controller
         if ( isset($_POST['forum']) )
         {
             $article = new Article();
-            $article->attributes = $_POST['forum'];
-            if ( isset($_POST['forum']['sticky']) )
+            if ( $article->checkCategoryIDtoForumID($_POST['forum']['forum_id'], $_POST['forum']['category_id']) == true)
             {
-                if ( Category::model()->findByPk($fid)->getIsMaster() )
+                $article->attributes = $_POST['forum'];
+                if ( isset($_POST['forum']['sticky']) )
                 {
-                    $article->sticky = $_POST['forum']['sticky'];
+                    if ( Category::model()->findByPk($fid)->getIsMaster() )
+                    {
+                        $article->sticky = $_POST['forum']['sticky'];
+                    }
+                }
+                if ( $article->validate() && $article->save() )
+                {
+                    Character::model()->findByPk(Yii::app()->user->getId())->addExp(self::NEW_ARTICLE_EXP);
+                    Character::model()->findByPk(Yii::app()->user->getId())->addMoney(self::NEW_ARTICLE_VALUE);
+                    $this->redirect($article->url);
+                }
+                else 
+                {
+                    throw new CHttpException(404);
                 }
             }
-            if ( $article->validate() && $article->save() )
-            {
-                Character::model()->findByPk(Yii::app()->user->getId())->addExp(self::NEW_ARTICLE_EXP);
-                Character::model()->findByPk(Yii::app()->user->getId())->addMoney(self::NEW_ARTICLE_VALUE);
-                $this->redirect($article->url);
-            }
-            else 
+            else
             {
                 throw new CHttpException(404);
             }

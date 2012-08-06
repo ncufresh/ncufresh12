@@ -141,7 +141,7 @@ class Article extends CActiveRecord
                 {
                     if ( Category::Model()->getIsMaster()==false ) return false;
                 }
-                if ( $this->category_id == 4 )
+                if ( $this->category_id == 12 )
                 {
                     if ( Yii::app()->user->getIsAdmin() == false ) return false;
                 }
@@ -189,5 +189,19 @@ class Article extends CActiveRecord
     public function getStickyArticle($fid)
     {
         return $this->findAll('forum_id='.$fid.' AND sticky=1 AND invisible=0');
+    }
+    
+    public function checkCategoryIDtoForumID($fid, $category_id)
+    {
+        $check = false;
+        foreach( Category::model()->findByPk($fid)->article_categories as $each)
+        {
+            if( $each->id == $category_id ) 
+            {
+                $check = true;
+                break;
+            }
+        }
+        return $check;
     }
 }
