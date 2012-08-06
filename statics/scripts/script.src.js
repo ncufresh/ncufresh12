@@ -1558,6 +1558,7 @@
         });
     }
 
+    var scrollabled = false;
     /**
      * Update the list of events
      */
@@ -1584,16 +1585,24 @@
             }
             self.markToday();
         }
-        if ( $.browser.msie )
-        {
-            $('#personal-calendar .scroll-container').remove();
-            container = $('<div></div>').addClass('right').insertAfter($('#personal-calendar .date'));
-        }
-        else
-        {
-            $('#personal-calendar').find('.right').remove();
-            container = $('<div></div>').addClass('right').insertAfter($('#personal-calendar .date'));
-        }
+        // var parent = container.parent();
+        // console.log($(container));
+        // if ( $.browser.msie )
+        // {
+            // $($(self).data('options').events_container).parent().remove();
+            // $(container).parent().remove();
+        // }
+        // else
+        // {
+            // $('#personal-calendar').find('.right').remove();
+            // $($(self).data('options').events_container).remove();
+            // $(container).remove();
+        // }
+        // c.replaceAll();
+        // container = $('<div></div>').addClass('right');
+        // container.insertAfter(parent.find('.date'));
+        container.find('ul').parent().remove();
+        
         if ( cal_events && cal_events.length )
         {
             var event_ids = [];
@@ -1637,9 +1646,13 @@
                     });
                     div.append(header).append(ul).appendTo(container);
                 }
-                container.scrollable();
                 $.configures.token = data.token;
             });
+        }
+        if ( ! scrollabled )
+        {
+            container.scrollable();
+            scrollabled = true;
         }
     }
 
@@ -3698,7 +3711,7 @@
         {
             var url = $.configures.calendarClubEventsUrl
                 .replace(':id', $('#club > div').attr('id').replace('club-', ''));
-            $('#calendar div').calendar();
+            $('#calendar div').calendar(url);
         }
         
         $('#club .back').click(function()
@@ -4605,7 +4618,7 @@
                     {
                         $(this).next().removeClass('checked');
                     }
-                    console.log($(this).prop('checked'));
+                    // console.log($(this).prop('checked'));
                 });
 
             if ( $(this).prop('checked') ) {
@@ -5213,7 +5226,7 @@
         });
         $("#forum-forum-top2 .sort-list").change(function() {
             var url = $.configures.forumSortUrl;
-            console.log(url);
+            // console.log(url);
             window.location = url.replace(':sort', $(this).val());
         });
         /*forum create*/

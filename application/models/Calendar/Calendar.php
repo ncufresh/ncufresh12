@@ -46,7 +46,7 @@ class Calendar extends CActiveRecord
                 self::HAS_ONE,
                 'Club',
                 '',
-                'on' => 'club.master_id = user_id',
+                'on' => 'club.master_id = t.user_id',
                 'condition' => 't.category=0'
             ),
             'subscriptions' => array(
