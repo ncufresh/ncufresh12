@@ -300,10 +300,10 @@ class SiteController extends Controller
             $mailer->SMTPAuth = true;
             $mailer->Username = $ncufreshma['address'];
             $mailer->Password = $ncufreshma['password'];
-            $mailer->Subject = $_POST['contact']['subject'];
+            $mailer->Subject = $_POST['contact']['name'] . ': ' . $_POST['contact']['subject'];
             $mailer->Body = $_POST['contact']['content'];
             $mailer->SetFrom($ncufreshma['address'], 'NCUFRESH2012');
-            $mailer->AddReplyTo($ncufreshma['address']);
+            $mailer->AddReplyTo($_POST['contact']['email']);
             $mailer->AddAddress($ncufreshma['address']);
             if ( $mailer->Send() )
             {
