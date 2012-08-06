@@ -9,7 +9,7 @@
     </dl>
 </form>
 <form id="sameDdiffG" method="POST" action="<?php echo $this->createUrl('friends/makefriends'); ?>">
-    <h4>同屆不同系</h4>
+    <h4>同系不同屆</h4>
     <div class="a-group-users">
         <ul class="users-department">
 <?php foreach ( $profiles as $profile ) : ?>
