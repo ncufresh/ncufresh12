@@ -148,7 +148,7 @@
                 <ul class="text-ul">
                     <li class="food-text button-text" detailItem="meal" href="#28">男七餐廳</li>
                     <li class="food-text button-text" detailItem="meal" href="#29">男九餐廳</li>
-                    <li class="food-text button-text" detailItem="meal" href="#30">消夜街</li>
+                    <li class="food-text button-text" detailItem="meal" href="#30">宵夜街</li>
                     <li class="food-text button-text" detailItem="meal" href="#31">後門</li>
                     <li class="food-text button-text" detailItem="meal" href="#32">校園咖啡</li>
                     <li class="food-text button-text" detailItem="meal" href="#33">小木屋鬆餅</li>
