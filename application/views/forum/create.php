@@ -21,6 +21,19 @@
             <select id="forum-create-category" name="forum[category_id]">
 <?php 
 foreach ( $category->article_categories as $entry ) :
+    if ( $category->id == 1 )
+    {
+        if ( $entry->id == 4 )
+        {
+            if ( Yii::app()->user->getIsAdmin() ): ?>
+                <option value="<?php echo $entry->id; ?>"><?php echo $entry->name; ?></option>
+<?php
+                continue;
+            else:
+                continue;
+            endif;
+        }
+    }
 ?>
                 <option value="<?php echo $entry->id; ?>"><?php echo $entry->name; ?></option>
 <?php endforeach; ?>

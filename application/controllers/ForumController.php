@@ -108,6 +108,10 @@ class ForumController extends Controller
                 Character::model()->findByPk(Yii::app()->user->getId())->addMoney(self::NEW_ARTICLE_VALUE);
                 $this->redirect($article->url);
             }
+            else 
+            {
+                throw new CHttpException(404);
+            }
         }
 
         if ( Category::model()->findByPk($fid) )

@@ -139,7 +139,11 @@ class Article extends CActiveRecord
                 $this->invisible = 0;
                 if($this->sticky==1)
                 {
-                    if(Category::Model()->getIsMaster()==false) $this->sticky = 0;
+                    if ( Category::Model()->getIsMaster()==false ) return false;
+                }
+                if ( $this->category_id == 4 )
+                {
+                    if ( Yii::app()->user->getIsAdmin() == false ) return false;
                 }
             }
             else
