@@ -132,7 +132,7 @@ else if ( $fid == 22 || $fid == 23 )
                     <?php if( $category->getIsMaster() ): ?>
                     <a href="#<?php echo $each->id;?>" class="article-delete" >刪除</a>
                     <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/delete'); ?>" method="POST" class="form-delete">
-                    <input type="hidden" name="delete" value=""/>
+                    <input class="delete-input" type="hidden" name="delete" value=""/>
                     <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
                     </form>
                     <?php endif; ?>

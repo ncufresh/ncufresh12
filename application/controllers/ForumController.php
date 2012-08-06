@@ -211,11 +211,13 @@ class ForumController extends Controller
 
     public function actionDelete() // delete article
     {
+        
         // [not yet]判斷傳過來的fid
         if ( isset($_POST['delete']) )
         {
             $aid = $_POST['delete'];
             $article_to_be_del = Article::Model()->findByPk($aid);
+            
             if ( ! empty($article_to_be_del) )
             {
                 $article_to_be_del->invisible = 1;
@@ -225,10 +227,13 @@ class ForumController extends Controller
             {
                 throw new Exception('The article is not exist.');
             }
+            $this->redirect(Yii::app()->createUrl('forum/forum', array(
+                'fid'       => $article_to_be_del->forum->id
+            )));
         }
-
-        $this->redirect(Yii::app()->createUrl('forum/forum', array(
-            'fid'       => $article_to_be_del->forum->id
-        )));
+        else 
+        {
+            throw new CHttpException(404);
+        }
     }
 }
