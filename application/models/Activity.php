@@ -50,22 +50,25 @@ class Activity extends CActiveRecord
                 // 'counter'   => 0
             // );
         $data = self::getPersister()->load();
-
-        if ( TIMESTAMP - $data['cleaned'] > self::STATE_CLEAN_TIMEOUT )
+        if ( $data )
         {
-            $table = self::model()->getTableSchema();
-            $builder = self::model()->getCommandBuilder();
-            $command = $builder->createSqlCommand(
-                'ALTER TABLE ' . $table->rawName . ' ENGINE = MEMORY'
-            );
-            $command->execute();
-            $data['cleaned'] = TIMESTAMP;
+            if ( TIMESTAMP - $data['cleaned'] > self::STATE_CLEAN_TIMEOUT )
+            {
+                $table = self::model()->getTableSchema();
+                $builder = self::model()->getCommandBuilder();
+                $command = $builder->createSqlCommand(
+                    'ALTER TABLE ' . $table->rawName . ' ENGINE = MEMORY'
+                );
+                $command->execute();
+                $data['cleaned'] = TIMESTAMP;
+            }
+
+            $data['counter'] = $data['counter'] + self::model()->count($criteria);
+            self::getPersister()->save($data);
+
+            return self::model()->deleteAll($criteria);
         }
-
-        $data['counter'] = $data['counter'] + self::model()->count($criteria);
-        self::getPersister()->save($data);
-
-        return self::model()->deleteAll($criteria);
+        return false;
     }
 
     public static function getUserActivity($id)
