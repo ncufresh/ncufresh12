@@ -90,8 +90,6 @@ class FriendsController extends Controller
 
     public function actionMakeFriends() 
     {
-        print_r($_POST['friends']);
-        exit;
         if ( Yii::app()->request->getIsAjaxRequest() )
         {
             if ( isset($_POST['friends']) )
