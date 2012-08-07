@@ -1975,7 +1975,18 @@
                 message: '確定取消編輯這則事件？',
                 confirmed: function(result)
                 {
-                    if ( result ) window.location = $.configures.calendarViewUrl;
+                    if ( result )
+                    {
+                        var club = $('.calendar-cancel-button').attr('club');
+                        if ( club )
+                        {
+                            window.location = $.configures.calendarClubUrl.replace(':id', club);
+                        }
+                        else
+                        {
+                            window.location = $.configures.calendarViewUrl;
+                        }
+                    }
                     return false;
                 }
             });
@@ -5218,9 +5229,12 @@
                 if( data.result == true )
                 {
                     $('<span></span>').text('已送出邀請').replaceAll($('.profile-add-friend .'+link));
-                    alert('已經送出好友邀請!');
+                    $.alert({
+                        message:'已經送出好友邀請!'
+                    });
                 }
                 $.configures.token = data.token;
+                $('#form-comment input[name=token]').val(data.token);
             });
             // console.log('!!!');
         });

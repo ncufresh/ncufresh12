@@ -318,6 +318,7 @@
             newsIndexUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('news/index'); ?>'),
             registerUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('site/register'); ?>'),
             calendarViewUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/view'); ?>'),
+            calendarClubUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/club', array('id' => ':id')); ?>'),
             calendarEventUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/event', array('id'=> ':id')); ?>'),
             calendarEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/ajaxEvents'); ?>'),
             calendarShowEventsUrl: decodeURIComponent('<?php echo Yii::app()->createAbsoluteUrl('calendar/showevent'); ?>'),
