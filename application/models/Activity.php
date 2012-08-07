@@ -43,28 +43,32 @@ class Activity extends CActiveRecord
             ':timestamp'  => TIMESTAMP - self::STATE_UPDATE_TIMEOUT - 5
         );
 
-        $data = self::getPersister()->load()
-             ?: self::getPersister()->load()
-             ?: array(
-                'cleaned'   => 0,
-                'counter'   => 0
-            );
-
-        if ( TIMESTAMP - $data['cleaned'] > self::STATE_CLEAN_TIMEOUT )
+        // $data = self::getPersister()->load()
+             // ?: self::getPersister()->load()
+             // ?: array(
+                // 'cleaned'   => 0,
+                // 'counter'   => 0
+            // );
+        $data = self::getPersister()->load();
+        if ( $data )
         {
-            $table = self::model()->getTableSchema();
-            $builder = self::model()->getCommandBuilder();
-            $command = $builder->createSqlCommand(
-                'ALTER TABLE ' . $table->rawName . ' ENGINE = MEMORY'
-            );
-            $command->execute();
-            $data['cleaned'] = TIMESTAMP;
+            if ( TIMESTAMP - $data['cleaned'] > self::STATE_CLEAN_TIMEOUT )
+            {
+                $table = self::model()->getTableSchema();
+                $builder = self::model()->getCommandBuilder();
+                $command = $builder->createSqlCommand(
+                    'ALTER TABLE ' . $table->rawName . ' ENGINE = MEMORY'
+                );
+                $command->execute();
+                $data['cleaned'] = TIMESTAMP;
+            }
+
+            $data['counter'] = $data['counter'] + self::model()->count($criteria);
+            self::getPersister()->save($data);
+
+            return self::model()->deleteAll($criteria);
         }
-
-        $data['counter'] = $data['counter'] + self::model()->count($criteria);
-        self::getPersister()->save($data);
-
-        return self::model()->deleteAll($criteria);
+        return false;
     }
 
     public static function getUserActivity($id)

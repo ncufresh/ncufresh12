@@ -25,11 +25,6 @@
 <?php else : ?>
       <option value="create">依發表時間</option>
 <?php endif; ?>
-<?php if ( $sort == 'update' ) : ?>
-      <option value="update" selected="selected">依最新回覆</option>
-<?php else : ?>
-      <option value="update">依最新回覆</option>
-<?php endif; ?>
 <?php if ( $sort == 'reply' ) : ?>
       <option value="reply" selected="selected">依回應數量</option>
 <?php else : ?>
@@ -111,8 +106,43 @@ else if ( $fid == 22 || $fid == 23 )
         
         <tbody>
             <?php
+            if ( $current_page == 1 ):
+            foreach($sticky_articles as $each):
+            ?>
+            <tr class="table-body">
+                <td class="head"></td>
+                <td class="category">置頂</td>
+                <td class="title">
+                    <a href="<?php echo $each->url?>">
+                        <?php
+                        if(mb_strlen($each->title) > mb_strlen(mb_substr($each->title,0,10))) 
+                        {
+                            echo mb_substr($each->title,0,10).'...'; 
+                        }
+                        else
+                        {
+                            echo $each->title;
+                        }?>
+                    </a>
+                    <?php if( $category->getIsMaster() ): ?>
+                    <a href="#<?php echo $each->id;?>" class="article-delete" >刪除</a>
+                    <form enctype="multipart/form-data" action="<?php echo Yii::app()->createUrl('forum/delete'); ?>" method="POST" class="form-delete">
+                    <input class="delete-input" type="hidden" name="delete" value=""/>
+                    <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
+                    </form>
+                    <?php endif; ?>
+                </td>
+                <td class="author"><?php echo User::model()->findByPK($each->author_id)->profile->nickname; ?></td>
+                <td class="reply"><span><?php echo $each->replies_count;?></span></td>
+                <td class="popularity"><span><?php echo $each->viewed;?></span></td>
+                <td class="time"><?php echo $each->created; ?></td>
+            </tr>
+            <?php
+            endforeach;
+            endif;
+            ?>
+            <?php
             foreach($model as $each):
-                
             ?>
             <tr class="table-body">
                 <td class="head"></td>
@@ -122,7 +152,7 @@ else if ( $fid == 22 || $fid == 23 )
                         <?php
                         if(mb_strlen($each->title) > mb_strlen(mb_substr($each->title,0,10))) 
                         {
-                            echo mb_substr($each->title,0,10).'...'; 
+                            echo mb_substr($each->title,0,10).'...';
                         }
                         else
                         {

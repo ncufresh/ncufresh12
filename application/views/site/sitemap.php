@@ -70,6 +70,9 @@
                     <li>
                         <a href="<?php echo Yii::app()->createUrl('forum/forum', array('fid' => 2));?>" title="社團論壇">社團論壇</a>
                     </li>
+                    <li>
+                        <a href="<?php echo Yii::app()->createUrl('profile/message');?>" title="最新更新">最新更新</a>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -95,10 +98,16 @@
                         <a href="<?php echo Yii::app()->createUrl('friends/samedepartmentsamegrade');?>" title="同屆同系">同屆同系</a>
                     </li>
                     <li>
-                        <a href="<?php echo Yii::app()->createUrl('friends/samedepartmentdiffgrade');?>" title="不同屆同系">不同屆同系</a>
+                        <a href="<?php echo Yii::app()->createUrl('friends/samedepartmentdiffgrade');?>" title="同系不同屆">同系不同屆</a>
                     </li>
                     <li>
-                        <a href="<?php echo Yii::app()->createUrl('friends/otherdepartment');?>" title="同系不同屆">同系不同屆</a>
+                        <a href="<?php echo Yii::app()->createUrl('friends/otherdepartment');?>" title="其他科系">其他科系</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo Yii::app()->createUrl('friends/myfriends');?>" title="我的朋友">我的朋友</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo Yii::app()->createUrl('friends/allgroups');?>" title="我的群組">我的群組</a>
                     </li>
                 </ul>
             </li>
@@ -110,6 +119,12 @@
                     </li>
                     <li>
                         <a href="<?php echo Yii::app()->createUrl('calendar/subscript');?>" title="訂閱社團">訂閱社團</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo Yii::app()->createUrl('calendar/createevent');?>" title="新增行程">新增行程</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo Yii::app()->createUrl('calendar/recycle');?>" title="回收桶">回收桶</a>
                     </li>
                 </ul>
             </li>
