@@ -61,8 +61,8 @@
     </div>
 <?php if ( $friend_relation === Friend::IS_NOT_FRIEND ) : ?>
     <form action="<?php echo Yii::app()->createUrl('friends/makefriends'); ?>" method="POST" >
-        <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />]
-        <input type="hidden" name="friends[<?php echo $user->profile->id; ?>]" value="<?php echo $user->profile->id; ?>"  />
+        <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
+        <input type="hidden" name="friends[<?php echo $user->id; ?>]" value="<?php echo $user->id; ?>"  />
         <button type="submit" id="add-new-friends">新增好友</button>
     </form>
 <?php elseif ( $friend_relation === Friend::IS_SEND_REQUEST ) : ?>
