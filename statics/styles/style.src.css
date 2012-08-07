@@ -2114,6 +2114,7 @@ a.calendar-hide-event:hover
     position: relative;
     width: 30%;
     float: left;
+    height: 30px
 }
 
 #calendar-subscript form dt
@@ -2123,7 +2124,7 @@ a.calendar-hide-event:hover
 
 #calendar-subscript form dt label
 {
-    line-height: auto;
+    line-height: 1em;
     cursor: pointer;
 }
 
@@ -2136,7 +2137,7 @@ a.calendar-hide-event:hover
 
 #calendar-subscript form dd span.checkbox
 {
-    margin: 15px 0 0 140px;
+    margin: 12px 0 0 140px;
     cursor: pointer;
 }
 
