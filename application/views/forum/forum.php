@@ -25,6 +25,11 @@
 <?php else : ?>
       <option value="create">依發表時間</option>
 <?php endif; ?>
+<?php if ( $sort == 'update' ) : ?>
+      <option value="update" selected="selected">依最新回覆</option>
+<?php else : ?>
+      <option value="update">依最新回覆</option>
+<?php endif; ?>
 <?php if ( $sort == 'reply' ) : ?>
       <option value="reply" selected="selected">依回應數量</option>
 <?php else : ?>
