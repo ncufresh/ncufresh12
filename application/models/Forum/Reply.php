@@ -38,16 +38,13 @@ class Reply extends CActiveRecord
     
     public function beforeSave()
     {
-        // 尚未檢查是否所有資料都有填寫
         if ( parent::beforeSave() )
         {
             if ( $this->getIsNewRecord() )
             {
-                // 如果未登入author_id=0 ; 檢查登入與否
                 $this->author_id = Yii::app()->user->getId();
                 $this->created = TIMESTAMP;
             }
-            // $this->update_time = TIMESTAMP;
             return true;
         }
         return false;
@@ -87,6 +84,7 @@ class Reply extends CActiveRecord
     {
         parent::afterFind();
         $this->content = nl2br(htmlspecialchars($this->content));
-        $this->created = Yii::app()->format->datetime($this->created);
+        //$this->created = Yii::app()->format->datetime($this->created);
     }
+    
 }
