@@ -5276,7 +5276,7 @@
             else if($(this).val().length < title_num && $(this).val().length > 0){
                 counter[0]=1;
                 if(!check_submit())
-                    $(".form-top p").html(content+" <strong>文章字數須滿10字以上喔!</strong>");
+                    $(".form-top p").html(content+" <strong>文章字數須滿20字以上喔!</strong>");
                 if(check_submit()==true)
                     $("#forum-create-submit").removeAttr('disabled');
             }
