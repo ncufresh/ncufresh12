@@ -199,6 +199,8 @@ class ForumController extends Controller
             {
                 $article = Article::model()->findByPk($aid);
                 $article->replies_count++;
+                // updated value
+                $article->updated = TIMESTAMP;
                 if( $article->save() )
                 {
                     $article = Article::model()->findByPk($aid);

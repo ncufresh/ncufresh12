@@ -136,6 +136,7 @@ class Article extends CActiveRecord
                 // 如果未登入author_id=0 ; 檢查登入與否
                 $this->author_id = Yii::app()->user->getId();
                 $this->created = TIMESTAMP;
+                $this->updated = TIMESTAMP;
                 $this->invisible = 0;
                 if($this->sticky==1)
                 {
@@ -184,6 +185,20 @@ class Article extends CActiveRecord
         $this->title = htmlspecialchars($this->title);
         $this->content = nl2br(htmlspecialchars($this->content));
         $this->created = Yii::app()->format->datetime($this->created);
+        // for old articles, if the articles has replies, put the latest reply created time into updated
+        if( $this->updated == 0 )
+        {
+            if(Reply::model()->find('article_id='.$this->id))
+            {
+                $this->updated = Reply::model()->find(array(
+                        'condition' => 'article_id = ' . $this->id,
+                        'order'     => 'created DESC'))->created;
+            } 
+            else
+            {
+                $this->updated = $this->getRawValue('created');
+            }
+        }
     }
     
     public function getStickyArticle($fid)
