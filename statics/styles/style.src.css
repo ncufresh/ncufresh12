@@ -655,7 +655,7 @@ a:hover
 #club #calendar-button,
 #index-calendar > div,
 .calendar,
-.calendar .right div,
+.calendar .right .scroll-content > div > div,
 .calendar .right div h4,
 .calendar .calendar-create-button,
 .calendar .calendar-hide-button,
@@ -1786,15 +1786,15 @@ table.gsc-completion-container
 .calendar .scroll-container
 {
     height: 500px;
-    width: 250px;
+    width: 280px;
 }
 
 .calendar .scroll-container .scroll-content
 {
-    width: 250px;
+    width: 280px;
 }
 
-.calendar .right .scroll-content > div
+.calendar .right .scroll-content > div > div
 {
     background-position: -848px -1264px;
     padding-top: 15px;
@@ -1803,7 +1803,7 @@ table.gsc-completion-container
 .calendar .right .scroll-container,
 .calendar .right .scroll-area,
 .calendar .right .scroll-content,
-.calendar .right .scroll-content > div div
+.calendar .right .scroll-content > div
 {
     background: none;
 }
@@ -2114,6 +2114,7 @@ a.calendar-hide-event:hover
     position: relative;
     width: 30%;
     float: left;
+    height: 30px
 }
 
 #calendar-subscript form dt
@@ -2123,7 +2124,7 @@ a.calendar-hide-event:hover
 
 #calendar-subscript form dt label
 {
-    line-height: auto;
+    line-height: 1em;
     cursor: pointer;
 }
 
@@ -2136,7 +2137,7 @@ a.calendar-hide-event:hover
 
 #calendar-subscript form dd span.checkbox
 {
-    margin: 15px 0 0 140px;
+    margin: 12px 0 0 140px;
     cursor: pointer;
 }
 
@@ -5684,6 +5685,7 @@ div.function-body
     height: 373px;
     margin: 54px 0 0 29px;
     float: left;
+    overflow:hidden;
 }
 
 ul.game-button
@@ -8496,4 +8498,9 @@ li.enabled a
     width: 664px;
     height: 340px;
     padding: 38px;
+}
+
+#contact textarea
+{
+    height: 90px;
 }

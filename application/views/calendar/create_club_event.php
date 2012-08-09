@@ -35,7 +35,7 @@
     </dl>
     <div class="buttons">
         <button id="calendar-create-submit">發佈</button>
-        <button class="calendar-cancel-button" type="reset">取消</button>
+        <button class="calendar-cancel-button" club="<?php echo $id;?>" type="reset">取消</button>
         <input type="hidden" name="token" value="<?php echo Yii::app()->security->getToken(); ?>" />
     </div>
     </form>
