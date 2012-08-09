@@ -56,7 +56,14 @@ class Article extends CActiveRecord
     
     // for popo
     public function getUserArticles($author_id){
-        return $this->findAll('author_id='.$author_id.' AND invisible = 0');
+        //return $this->findAll('author_id='.$author_id.' AND invisible = 0');
+        return $this->findAll(array(
+            'condition' => 'author_id= :author_id AND invisible = :invisible',
+            'params'    => array(
+                ':author_id'    => $author_id,
+                ':invisible'    => 0,
+            )
+        ));
     }
     
     public static function getArticlesSort($fid, $sort, $category, $page, $entries_per_page){
@@ -86,20 +93,29 @@ class Article extends CActiveRecord
         if ( $category == 0 )
         {
             return self::model()->findAll(array(
-                'condition' => 'forum_id='.$fid.' AND invisible=0 AND sticky=0',
-                'order'     => $sort . ' DESC',
+                'condition' => 'forum_id= :forum_id AND invisible=0 AND sticky=0',
+                'order'     => ':sort DESC',
                 'limit'     => $entries_per_page,
-                'offset'    => ($current_page - 1) * $entries_per_page
+                'offset'    => ($current_page - 1) * $entries_per_page,
+                'params'    => array(
+                    ':forum_id' => $fid,
+                    ':sort'     => $sort
+                )
             ));
         }
         
         else
         {
             return self::model()->findAll(array(
-                'condition' => 'forum_id = ' . $fid . ' AND invisible = 0 AND sticky=0 AND category_id = ' . $category,
-                'order'     => $sort . ' DESC',
+                'condition' => 'forum_id = :forum_id AND invisible = 0 AND sticky=0 AND category_id = :category',
+                'order'     => ':sort DESC',
                 'limit'     => $entries_per_page,
-                'offset'    => ($current_page - 1) * $entries_per_page
+                'offset'    => ($current_page - 1) * $entries_per_page,
+                'params'    => array(
+                    ':forum_id' => $fid,
+                    ':category' => $category,
+                    ':sort'     => $sort
+                )
             ));
         }
     }
@@ -162,9 +178,19 @@ class Article extends CActiveRecord
     public static function getPageStatus($page, $entries_per_page=10, $fid, $category)
     {
         if($category==0)
-            $pages = ceil(self::model()->count('forum_id= '.$fid.' AND invisible = 0') / $entries_per_page);
+            $pages = ceil(self::model()->count(array(
+                'condition' => 'forum_id= :forum_id AND invisible = 0', 
+                'params' => array(
+                    ':forum_id' => $fid)
+                )) / $entries_per_page);
         else
-            $pages = ceil(self::model()->count('forum_id= '.$fid.' AND invisible = 0 AND category_id='.$category) / $entries_per_page);
+            $pages = ceil(self::model()->count(array(
+                'condition' => 'forum_id= :forum_id AND invisible = 0 AND category_id=:category_id',
+                'params'    => array(
+                    ':forum_id'     => $fid,
+                    ':category_id'  => $category
+                )
+            )) / $entries_per_page);
 
         return array(
             'pages'         => $pages,
@@ -176,7 +202,13 @@ class Article extends CActiveRecord
     
     public function getArticlesNumOfUser($author_id)
     {
-        return count($this->findAll('author_id='.$author_id.' AND invisible=0'));
+        //return count($this->findAll('author_id='.$author_id.' AND invisible=0'));
+        return count($this->findAll(array(
+            'condition' =>  'author_id = :author_id AND invisible = 0',
+            'params'    => array(
+                ':author_id'    => $author_id,
+            )
+        )));
     }
     
     public function afterFind()
@@ -188,12 +220,20 @@ class Article extends CActiveRecord
         // for old articles, if the articles has replies, put the latest reply created time into updated
         if( $this->updated == 0 )
         {
-            if(Reply::model()->find('article_id='.$this->id))
+            if(Reply::model()->find(array(
+                'condition' =>  'article_id = :article_id',
+                'params'    =>  array(
+                    ':article_id'   =>  $this->id,
+                )
+            )))
             {
                 $this->updated = Reply::model()->find(array(
-                        'condition' => 'article_id = ' . $this->id,
-                        'order'     => 'created DESC'))->created;
-            } 
+                        'condition' => 'article_id = :article_id',
+                        'order'     => 'created DESC',
+                        'params'     => array(
+                            ':article_id'   =>  $this->id
+                        )))->created;
+            }
             else
             {
                 $this->updated = $this->getRawValue('created');
@@ -203,13 +243,19 @@ class Article extends CActiveRecord
     
     public function getStickyArticle($fid)
     {
-        return $this->findAll('forum_id='.$fid.' AND sticky=1 AND invisible=0');
+        //return $this->findAll('forum_id='.$fid.' AND sticky=1 AND invisible=0');
+        return $this->findAll(array(
+            'condition' =>  'forum_id= :forum_id AND sticky= 1 AND invisible= 0',
+            'params'    =>  array(
+                ':forum_id'     => $fid,
+            )
+        ));
     }
     
     public function checkCategoryIDtoForumID($fid, $category_id)
     {
         $check = false;
-        foreach( Category::model()->findByPk($fid)->article_categories as $each)
+        foreach( Category::model()->findByPk((integer)$fid)->article_categories as $each)
         {
             if( $each->id == $category_id ) 
             {
