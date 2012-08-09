@@ -33,7 +33,13 @@ class Comment extends CActiveRecord
     // for popo
     public function getArticleComments($aid)
     {
-        return $this->findAll('article_id='.$aid);
+        //return $this->findAll('article_id='.$aid);
+        return $this->findAll(array(
+            'condition' => 'article_id = :article_id',
+            'params'    => array(
+                ':article_id'   => $aid,
+            )
+        ));
     }
     
     public function beforeSave()

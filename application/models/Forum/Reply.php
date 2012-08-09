@@ -33,7 +33,13 @@ class Reply extends CActiveRecord
     //for popo
     public function getArticleReplies($aid)
     {
-        return $this->findAll('article_id='.$aid);
+        // return $this->findAll('article_id='.$aid);
+        return $this->findAll(array(
+            'condition' => 'article_id = :article_id',
+            'params'    => array(
+                ':article_id'   => $aid,
+            )
+        ));
     }
     
     public function beforeSave()
@@ -52,7 +58,13 @@ class Reply extends CActiveRecord
         
     public function getRepliesNumOfUser($author_id)
     {
-        return count($this->findAll('author_id='.$author_id));
+        //return count($this->findAll('author_id='.$author_id));
+        return count($this->findAll(array(
+            'condition' => 'author_id = :author_id',
+            'params'    => array(
+                ':author'   => $author_id,
+            )
+        )));
     }
     
     public static function getReplies($article_id, $page, $entries_per_page)
@@ -62,9 +74,12 @@ class Reply extends CActiveRecord
         $current_page = ($page<$total_pages?$page:$total_pages);
         
         return self::model()->findAll(array(
-                'condition' => 'article_id = '.$article_id,
+                'condition' => 'article_id = :article_id',
                 'limit'     => $entries_per_page,
-                'offset'    => ($current_page - 1) * $entries_per_page
+                'offset'    => ($current_page - 1) * $entries_per_page,
+                'params'    => array(
+                    ':article_id'   =>  $article_id,
+                )
         ));
     }
     
