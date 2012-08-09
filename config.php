@@ -33,6 +33,7 @@ return array(
             'rules'             => array(
                 ''                                          => array('site/index', 'urlSuffix' => ''),
                 '<action:\w+>'                              => 'site/<action>',
+                '<controller:\w+>/<id:\d+>/<title:\w+>'     => '<controller>/view',
                 '<controller:\w+>/<id:\d+>'                 => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>'    => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>'             => '<controller>/<action>'

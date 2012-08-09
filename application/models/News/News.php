@@ -113,7 +113,7 @@ class News extends CActiveRecord
     {
         return Yii::app()->createUrl('news/view', array(
             'id'        => $this->id,
-            'title'     => $this->title,
+            'title'     => $this->getRawValue('title'),
         ));
     }
 

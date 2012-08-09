@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS `forum_articles` (
   `viewed` int(10) unsigned NOT NULL DEFAULT 0,
   `replies_count` int(10) unsigned NOT NULL DEFAULT 0,
   `created` int(10) unsigned NOT NULL DEFAULT 0,
+  `updated` int(10) unsigned NOT NULL DEFAULT 0,
   `invisible` tinyint(1) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=1 ;
