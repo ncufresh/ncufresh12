@@ -172,12 +172,12 @@
                     <li class="dormitory-text button-text" detailItem="dorm" href="#43">男六舍</li>
                     <li class="dormitory-text button-text" detailItem="dorm" href="#44">男七舍</li>
                     <li class="dormitory-text button-text" detailItem="dorm" href="#45">男九舍</li>
-                    <li class="dormitory-text button-text" detailItem="dorm" href="#46">男11舍</li>
-                    <li class="dormitory-text button-text" detailItem="dorm" href="#47">男12舍</li>
-                    <li class="dormitory-text button-text" detailItem="dorm" href="#48">男13舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#46">男十一舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#47">男十二舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#48">男十三舍</li>
                     <li class="dormitory-text button-text" detailItem="dorm" href="#49">女十四舍</li>
-                    <li class="dormitory-text button-text" detailItem="dorm" href="#50">新研舍</li>
-                    <li class="dormitory-text button-text" detailItem="dorm" href="#51">國際學生宿舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#50">新研舍(男研舍)</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#51">國際學生宿舍(第二招待所)</li>
                 </ul>
                 <ul class="text-ul">
                     <li class="exercise-text button-text" detailItem="sport" href="#52">游泳池</li>
