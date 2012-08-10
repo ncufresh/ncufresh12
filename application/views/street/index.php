@@ -160,7 +160,7 @@
                     <li class="government-text button-text" detailItem="govern" href="#36">校史館</li>
                     <li class="government-text button-text" detailItem="govern" href="#37">綜教館</li>
                     <li class="government-text button-text" detailItem="govern" href="#64">總圖書館</li>
-                    <li class="government-text button-text" detailItem="govern" href="#65">游藝館 據德樓</li>
+                    <li class="government-text button-text" detailItem="govern" href="#65">游藝館、據德樓</li>
                     <li class="government-text button-text" detailItem="govern" href="#66">國鼎圖書館</li>
                     <li class="government-text button-text" detailItem="govern" href="#67">中正圖書館</li>
                 </ul>
