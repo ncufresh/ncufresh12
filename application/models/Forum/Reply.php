@@ -37,7 +37,7 @@ class Reply extends CActiveRecord
         return $this->findAll(array(
             'condition' => 'article_id = :article_id',
             'params'    => array(
-                ':article_id'   => $aid,
+                ':article_id'   => $aid
             )
         ));
     }
@@ -62,7 +62,7 @@ class Reply extends CActiveRecord
         return count($this->findAll(array(
             'condition' => 'author_id = :author_id',
             'params'    => array(
-                ':author'   => $author_id,
+                ':author_id'    => $author_id
             )
         )));
     }
@@ -78,14 +78,18 @@ class Reply extends CActiveRecord
                 'limit'     => $entries_per_page,
                 'offset'    => ($current_page - 1) * $entries_per_page,
                 'params'    => array(
-                    ':article_id'   =>  $article_id,
+                    ':article_id'   =>  $article_id
                 )
         ));
     }
     
     public static function getPageStatus($page, $entries_per_page=10, $aid)
     {
-        $pages = ceil(self::model()->count('article_id= '.$aid) / $entries_per_page);
+        $pages = ceil(self::model()->count(array(
+                'condition' => 'article_id= :article_id', 
+                'params' => array(
+                    ':article_id' => $aid)
+                )) / $entries_per_page);
 
         return array(
             'pages'         => $pages,

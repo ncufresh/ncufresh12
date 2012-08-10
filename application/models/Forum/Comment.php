@@ -37,7 +37,7 @@ class Comment extends CActiveRecord
         return $this->findAll(array(
             'condition' => 'article_id = :article_id',
             'params'    => array(
-                ':article_id'   => $aid,
+                ':article_id'   => $aid
             )
         ));
     }

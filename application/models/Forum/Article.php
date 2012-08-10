@@ -58,10 +58,9 @@ class Article extends CActiveRecord
     public function getUserArticles($author_id){
         //return $this->findAll('author_id='.$author_id.' AND invisible = 0');
         return $this->findAll(array(
-            'condition' => 'author_id= :author_id AND invisible = :invisible',
+            'condition' => 'author_id= :author_id AND invisible = 0',
             'params'    => array(
-                ':author_id'    => $author_id,
-                ':invisible'    => 0,
+                ':author_id'    => $author_id
             )
         ));
     }
@@ -94,12 +93,11 @@ class Article extends CActiveRecord
         {
             return self::model()->findAll(array(
                 'condition' => 'forum_id= :forum_id AND invisible=0 AND sticky=0',
-                'order'     => ':sort DESC',
+                'order'     => $sort . ' DESC',
                 'limit'     => $entries_per_page,
                 'offset'    => ($current_page - 1) * $entries_per_page,
                 'params'    => array(
-                    ':forum_id' => $fid,
-                    ':sort'     => $sort
+                    ':forum_id' => $fid
                 )
             ));
         }
@@ -108,13 +106,12 @@ class Article extends CActiveRecord
         {
             return self::model()->findAll(array(
                 'condition' => 'forum_id = :forum_id AND invisible = 0 AND sticky=0 AND category_id = :category',
-                'order'     => ':sort DESC',
+                'order'     => $sort . ' DESC',
                 'limit'     => $entries_per_page,
                 'offset'    => ($current_page - 1) * $entries_per_page,
                 'params'    => array(
                     ':forum_id' => $fid,
-                    ':category' => $category,
-                    ':sort'     => $sort
+                    ':category' => $category
                 )
             ));
         }
@@ -206,7 +203,7 @@ class Article extends CActiveRecord
         return count($this->findAll(array(
             'condition' =>  'author_id = :author_id AND invisible = 0',
             'params'    => array(
-                ':author_id'    => $author_id,
+                ':author_id'    => $author_id
             )
         )));
     }
@@ -223,7 +220,7 @@ class Article extends CActiveRecord
             if(Reply::model()->find(array(
                 'condition' =>  'article_id = :article_id',
                 'params'    =>  array(
-                    ':article_id'   =>  $this->id,
+                    ':article_id'   =>  $this->id
                 )
             )))
             {
@@ -247,7 +244,7 @@ class Article extends CActiveRecord
         return $this->findAll(array(
             'condition' =>  'forum_id= :forum_id AND sticky= 1 AND invisible= 0',
             'params'    =>  array(
-                ':forum_id'     => $fid,
+                ':forum_id'     => $fid
             )
         ));
     }
