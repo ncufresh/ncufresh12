@@ -14,8 +14,7 @@
     儘後召集：役畢學生在學期間可暫時免除教育召集、勤務召集、點閱召集。
 </p>
 <p>
-    (二)詳細登錄「<a href="http://www4.is.ncu.edu.tw/register/student.php" title="學生登錄學籍系統"><strong><u>學生登錄學籍系統</u></strong></a>」上之<strong>兵役資料</strong>，請詳看第五點之說明。填妥「國立中央大學役男兵役資料表」，表格請自行於
-    <a href="http://ncufresh.ncu.edu.tw" title="大一生活知訊網">大一生活知訊網</a>中下載<u></u>。僑生、外籍生不必繳交兵役資料。
+    (二)詳細登錄「<a href="http://www4.is.ncu.edu.tw/register/student.php" title="學生登錄學籍系統"><strong><u>學生登錄學籍系統</u></strong></a>」上之<strong>兵役資料</strong>並填妥「<a href="http://ncufresh.ncu.edu.tw/ncufresh12/files/documents/%E5%BD%B9%E7%94%B7%E5%85%B5%E5%BD%B9%E8%B3%87%E6%96%99%E8%A1%A8.doc" title="國立中央大學役男兵役資料表">國立中央大學役男兵役資料表</a>」。僑生、外籍生不必繳交兵役資料。
 </p>
 <p>
     (三)未役者：請將身分證正反面影本黏貼於<strong>「國立中央大學役男兵役資料表」</strong>上，以利<strong>辦理緩徵，戶籍地址務必清楚，如有模糊不清之情形，請於身分證影本旁空白處附註。</strong>

@@ -2,7 +2,7 @@
     新生健檢項目及流程
 </h4>
 <p>
-    (一)健康檢查流程及注意事項：外籍生9月13日
+    (一)健康檢查流程及注意事項：含外籍生、僑生、交換生
 </p>
 <p>
     時間：<strong>101年9月13日</strong>，上午8:10-11:10，下午12:30-16:00
@@ -17,51 +17,44 @@
     <tbody>
         <tr>
             <td rowspan="2">
-                <p align="center"><strong>時間</strong></p>
-                <p align="center"><strong>系別</strong></p>
+                時間
+                系別
             </td>
             <td colspan="3">
-                <p align="center"><strong>上午</strong></p>
+                上午
             </td>
             <td colspan="3">
-                <p align="center"><strong>下午</strong></p>
+                下午
             </td>
         </tr>
         <tr>
             <td>
-                <p align="center"><strong>08</strong><strong>：10～</strong></p>
-                <p align="center"><strong>09</strong><strong>：10</strong></p>
+                08：10～09：10
             </td>
             <td>
-                <p align="center"><strong>09</strong><strong>：10～</strong></p>
-                <p align="center"><strong>10</strong><strong>：10</strong></p>
+                09：10～
+                10：10
             </td>
             <td>
-                <p align="center"><strong>10</strong><strong>：10～</strong></p>
-                <p align="center"><strong>11</strong><strong>：10</strong></p>
+                10：10～
+                11：10
             </td>
             <td>
-                <p align="center"><strong>12</strong><strong>：30～</strong></p>
-                <p align="center"><strong>13</strong><strong>：30</strong></p>
+                12：30～
+                13：30
             </td>
             <td>
-                <p align="center"><strong>13</strong><strong>：30～</strong></p>
-                <p align="center"><strong>15</strong><strong>：00</strong></p>
+                13：30～
+                15：00
             </td>
             <td>
-                <p align="center"><strong>15</strong><strong>：00～</strong></p>
-                <p align="center"><strong>16</strong><strong>：00</strong></p>
+                15：00～
+                16：00
             </td>
         </tr>
         <tr>
             <td>
-                <p align="center"><strong>9</strong></p>
-                <p align="center"><strong>月</strong></p>
-                <p align="center"><strong>13</strong></p>
-                <p align="center"><strong>日</strong></p>
-                <p align="center"><strong>星</strong></p>
-                <p align="center"><strong>期</strong></p>
-                <p align="center"><strong>四</strong></p>
+                9月13日星期四
             </td>
             <td>
                 <p>資工系</p>
@@ -113,7 +106,7 @@
         健檢費用：460元，於9月13日（星期四）當天<strong>現場收費</strong>。
     </li>
     <li>
-        健康檢查項目說明及注意事項，詳如<strong>資料附件6</strong>，請務必詳細閱讀。
+        健康檢查項目說明及注意事項，詳如<strong><a href="http://ncufresh.ncu.edu.tw/ncufresh12/files/documents/%E9%99%84%E4%BB%B6-%E6%96%B0%E7%94%9F%E5%81%A5%E5%BA%B7%E6%AA%A2%E6%9F%A5%E9%A0%85%E7%9B%AE%E8%AA%AA%E6%98%8E.doc">資料附件6</a></strong>，請務必詳細閱讀。
     </li>
     <li>
         無居留證之境外生免參加校內健檢，相關健檢事宜請洽國際事務處(分機：57083)協助辦理。
