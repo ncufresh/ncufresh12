@@ -156,7 +156,7 @@
                 </ul>
                 <ul class="text-ul">
                     <li class="government-text button-text" detailItem="govern" href="#34">行政大樓</li>
-                    <li class="government-text button-text" detailItem="govern" href="#35">志希館 電算中心</li>
+                    <li class="government-text button-text" detailItem="govern" href="#35">志希館(電算中心)</li>
                     <li class="government-text button-text" detailItem="govern" href="#36">校史館</li>
                     <li class="government-text button-text" detailItem="govern" href="#37">綜教館</li>
                     <li class="government-text button-text" detailItem="govern" href="#64">總圖書館</li>
