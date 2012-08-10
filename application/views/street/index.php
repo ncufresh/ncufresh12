@@ -136,12 +136,12 @@
                     <li class="landscape-text button-text" detailItem="landscape" href="#18">烏龜池</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#20">坐聽‧松風</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#21">漫步雲端</li>
-                    <li class="landscape-text button-text" detailItem="landscape" href="#22">大象五行</li>
+                    <li class="landscape-text button-text" detailItem="landscape" href="#22">大象五形</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#23">蘊‧行</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#24">百花川</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#25">國泰樹</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#26">筆墨紙硯</li>
-                    <li class="landscape-text button-text" detailItem="landscape" href="#61">太極銅雕</li>
+                    <li class="landscape-text button-text" detailItem="landscape" href="#61">太極拱門</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#62">綠草如茵</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#63">女14舍前廣場</li>
                 </ul>
