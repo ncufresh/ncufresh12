@@ -127,7 +127,7 @@ a.news-url-delete:hover, a.MultiFile-remove:hover
 }
 </style>
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
-<script type="text/javascript" src="<?php echo Yii::app()->baseUrl . '/statics/scripts/jquery.multifile.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl . '/statics/scripts/jquery.MultiFile.js'; ?>"></script>
 <script type="text/javascript">
     function createNewsUrl()
     {
