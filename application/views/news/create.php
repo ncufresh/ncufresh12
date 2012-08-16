@@ -113,9 +113,11 @@ a.news-url-link
 
 a.news-url-delete, a.MultiFile-remove
 {
+    background: url('<?php echo Yii::app()->baseUrl;?>/statics/images/sprites.png') no-repeat;
+    background-position: 0 -32px;
     padding: 16px  0 0;
     margin: 7px 10px 0 0;
-    background: url('<?php echo Yii::app()->baseUrl;?>/statics/images/chat_close.png') no-repeat;
+
     width: 16px;
     height: 0;
     overflow: hidden;
