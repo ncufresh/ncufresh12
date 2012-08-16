@@ -92,7 +92,7 @@
 </p>
 <ol>
 	<li>
-		進入中央大學教務處課務組首頁，網址為http://course.adm.ncu.edu.tw:8080/Course/main/news/announce 。
+		進入中央大學<a href="https://course.ncu.edu.tw/Course/main/news/announce" title="選課系統">選課系統</a>。
 	</li>
 	<li>
 		登入系統後，點選畫面上方的「課程加退選」裡「選課」的選項，點選「依授課對象」後依序選擇「文學院」&rarr;「中國文學系」&rarr;	「中國文學系[不分類]」search大一國文課程列表。

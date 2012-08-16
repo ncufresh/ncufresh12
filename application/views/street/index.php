@@ -136,12 +136,12 @@
                     <li class="landscape-text button-text" detailItem="landscape" href="#18">烏龜池</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#20">坐聽‧松風</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#21">漫步雲端</li>
-                    <li class="landscape-text button-text" detailItem="landscape" href="#22">大象五行</li>
+                    <li class="landscape-text button-text" detailItem="landscape" href="#22">大象五形</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#23">蘊‧行</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#24">百花川</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#25">國泰樹</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#26">筆墨紙硯</li>
-                    <li class="landscape-text button-text" detailItem="landscape" href="#61">太極銅雕</li>
+                    <li class="landscape-text button-text" detailItem="landscape" href="#61">太極拱門</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#62">綠草如茵</li>
                     <li class="landscape-text button-text" detailItem="landscape" href="#63">女14舍前廣場</li>
                 </ul>
@@ -150,17 +150,17 @@
                     <li class="food-text button-text" detailItem="meal" href="#29">男九餐廳</li>
                     <li class="food-text button-text" detailItem="meal" href="#30">宵夜街</li>
                     <li class="food-text button-text" detailItem="meal" href="#31">後門</li>
-                    <li class="food-text button-text" detailItem="meal" href="#32">校園咖啡</li>
+                    <li class="food-text button-text" detailItem="meal" href="#32">校園cafe</li>
                     <li class="food-text button-text" detailItem="meal" href="#33">小木屋鬆餅</li>
                     <li class="food-text button-text" detailItem="meal" href="#68">松苑廣場</li>
                 </ul>
                 <ul class="text-ul">
                     <li class="government-text button-text" detailItem="govern" href="#34">行政大樓</li>
-                    <li class="government-text button-text" detailItem="govern" href="#35">志希館 電算中心</li>
+                    <li class="government-text button-text" detailItem="govern" href="#35">志希館(電算中心)</li>
                     <li class="government-text button-text" detailItem="govern" href="#36">校史館</li>
                     <li class="government-text button-text" detailItem="govern" href="#37">綜教館</li>
                     <li class="government-text button-text" detailItem="govern" href="#64">總圖書館</li>
-                    <li class="government-text button-text" detailItem="govern" href="#65">游藝館 據德樓</li>
+                    <li class="government-text button-text" detailItem="govern" href="#65">游藝館、據德樓</li>
                     <li class="government-text button-text" detailItem="govern" href="#66">國鼎圖書館</li>
                     <li class="government-text button-text" detailItem="govern" href="#67">中正圖書館</li>
                 </ul>
@@ -172,12 +172,12 @@
                     <li class="dormitory-text button-text" detailItem="dorm" href="#43">男六舍</li>
                     <li class="dormitory-text button-text" detailItem="dorm" href="#44">男七舍</li>
                     <li class="dormitory-text button-text" detailItem="dorm" href="#45">男九舍</li>
-                    <li class="dormitory-text button-text" detailItem="dorm" href="#46">男11舍</li>
-                    <li class="dormitory-text button-text" detailItem="dorm" href="#47">男12舍</li>
-                    <li class="dormitory-text button-text" detailItem="dorm" href="#48">男13舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#46">男十一舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#47">男十二舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#48">男十三舍</li>
                     <li class="dormitory-text button-text" detailItem="dorm" href="#49">女十四舍</li>
-                    <li class="dormitory-text button-text" detailItem="dorm" href="#50">新研舍</li>
-                    <li class="dormitory-text button-text" detailItem="dorm" href="#51">國際學生宿舍</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#50">新研舍(男研舍)</li>
+                    <li class="dormitory-text button-text" detailItem="dorm" href="#51">國際學生宿舍(第二招待所)</li>
                 </ul>
                 <ul class="text-ul">
                     <li class="exercise-text button-text" detailItem="sport" href="#52">游泳池</li>

@@ -275,6 +275,9 @@
             <li>
                 <a href="http://www.facebook.com/groups/282591371819838" title="什麼！">什麼！</a>
             </li>
+            <li>
+                <a href="http://ncufresh.ncu.edu.tw/101-fresh-postgraduate-forum/" title="研究所新生座談">研究所新生座談</a>
+            </li>
         </ul>
     </div>
 </div>

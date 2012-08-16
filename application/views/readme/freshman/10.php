@@ -32,22 +32,21 @@
     3.於<strong>9月17～21日前</strong>將臺灣銀行撥款通知書第二聯送繳至學務處生活輔導組，即完成就貸手續(為縮短辦理註冊時間及流程，凡註冊週前已提早辦畢就學貸款手續者，可先行將就貸撥款通知書第二聯，以掛號信郵寄至本校學務處生輔組吳先生收)。逾期未繳件者，視同未申辦就學貸款，屆時將通知補繳學費。
 </p>
 <p>
-    4.就學貸款相關規定及作業流程請詳見資料附件4，或可進入本校首頁
+    4.就學貸款相關規定及作業流程請詳見<a href="http://ncufresh.ncu.edu.tw/ncufresh12/files/documents/%E9%99%84%E4%BB%B6-%E7%94%B3%E8%AB%8B%E5%B0%B1%E5%AD%B8%E8%B2%B8%E6%AC%BE%E9%A0%88%E7%9F%A5.doc" title="資料附件4">資料附件4</a>，或可進入本校首頁
     <a href="https://portal.ncu.edu.tw/wps/portal/!ut/p/cxml/04_Sj9SPykssy0xPLMnMz0vM0Q_wyU_PzNMvSFdUBACQIYPZ" title="Portal入口">Portal入口</a>&rarr;「<a href="http://www6.is.ncu.edu.tw/SubSidy/" title="就學補助系統">就學補助系統</a>」公告區瀏覽。
 </p>
 <p>
-    5.本校各類獎學金資訊請詳資料附件5。
+    5.本校各類獎學金資訊請詳<a href="http://ncufresh.ncu.edu.tw/ncufresh12/files/documents/%E9%99%84%E4%BB%B6-%E6%A0%A1%E5%85%A7%E7%8D%8E%E5%AD%B8%E9%87%91%E4%B8%80%E8%A6%BD%E8%A1%A8.doc" title="資料附件5">資料附件5</a>。
 </p>
 <p>
     (五)申請學雜費減免者，請至本校首頁&rarr;
-    <a href="https://portal.ncu.edu.tw/wps/portal/!ut/p/cxml/04_Sj9SPykssy0xPLMnMz0vM0Q_wyU_PzNMvSFdUBACQIYPZ" title="Portal入口">Portal入口</a>(輸入ID及密碼)&rarr;<a href="http://www6.is.ncu.edu.tw/SubSidy/" title="就學補助系統">就學補助系統</a>&rarr;學雜費減免申請&rarr;登錄申請所需資料；或從大一生活知訊網(網址見第七點說明)學雜費減免處，連結<a href="http://www6.is.ncu.edu.tw/SubSidy/" title="就學補助系統">就學補助系統</a>，登錄申請資料後，列印申請表連同應繳證件，於
+    <a href="https://portal.ncu.edu.tw/wps/portal/!ut/p/cxml/04_Sj9SPykssy0xPLMnMz0vM0Q_wyU_PzNMvSFdUBACQIYPZ" title="Portal入口">Portal入口</a>(輸入ID及密碼)&rarr;<a href="http://www6.is.ncu.edu.tw/SubSidy/" title="就學補助系統">就學補助系統</a>&rarr;學雜費減免申請&rarr;登錄申請所需資料；或登入<a href="https://www6.is.ncu.edu.tw/SubSidy/main/s_nw/s_nw01" title="就學補助系統">就學補助系統</a>，填寫申請表連同應繳證件，於
     <strong>8月16日至8月20日</strong>(
     <strong>需於20日以前送達或寄達，假日不收件)</strong>以掛號郵寄，或到生活輔導組辦理。如未能及時辦理者，請於郵寄後一週自行上網列印繳費單後再行繳費。
 </p>
 <p>
     (六)申請軍公教遺族子女就學優待者，表格請自行於<a href="http://www6.is.ncu.edu.tw/SubSidy/" title="就學補助系統">就學補助系統</a>下載，網址：本校首頁&rarr;
-    <a href="https://portal.ncu.edu.tw/wps/portal/!ut/p/cxml/04_Sj9SPykssy0xPLMnMz0vM0Q_wyU_PzNMvSFdUBACQIYPZ" title="Portal入口">Portal入口</a>(輸入ID及密碼)&rarr;<a href="http://www6.is.ncu.edu.tw/SubSidy/" title="就學補助系統">就學補助系統</a>&rarr;最新公告&rarr;學雜費減免作業&rarr;法令公告&rarr;軍公教遺族就學費用優待條例之附件下載，或於
-    <a href="http://ncufresh.ncu.edu.tw" title="大一生活知訊網">大一生活知訊網</a>下載。登錄後列印申請表及所需資料，最遲請於
+    <a href="https://portal.ncu.edu.tw/wps/portal/!ut/p/cxml/04_Sj9SPykssy0xPLMnMz0vM0Q_wyU_PzNMvSFdUBACQIYPZ" title="Portal入口">Portal入口</a>(輸入ID及密碼)&rarr;<a href="http://www6.is.ncu.edu.tw/SubSidy/" title="就學補助系統">就學補助系統</a>&rarr;最新公告&rarr;學雜費減免作業&rarr;法令公告&rarr;<a href="http://ncufresh.ncu.edu.tw/ncufresh12/files/documents/%E8%BB%8D%E5%85%AC%E6%95%99%E9%81%BA%E6%97%8F%E5%AD%90%E5%A5%B3%E5%B0%B1%E5%AD%B8%E5%84%AA%E5%BE%85%E7%94%B3%E8%AB%8B%E6%9B%B8.doc" title="軍公教遺族就學費用優待條例之附件下載">軍公教遺族就學費用優待條例之附件下載</a>。登錄後列印申請表及所需資料，最遲請於
     <strong>8月20日前</strong>將表格送達學務處生活輔導組。
 </p>
 <p>

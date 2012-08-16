@@ -113,9 +113,11 @@ a.news-url-link
 
 a.news-url-delete, a.MultiFile-remove
 {
+    background: url('<?php echo Yii::app()->baseUrl;?>/statics/images/sprites.png') no-repeat;
+    background-position: 0 -32px;
     padding: 16px  0 0;
     margin: 7px 10px 0 0;
-    background: url('<?php echo Yii::app()->baseUrl;?>/statics/images/chat_close.png') no-repeat;
+
     width: 16px;
     height: 0;
     overflow: hidden;
@@ -127,7 +129,7 @@ a.news-url-delete:hover, a.MultiFile-remove:hover
 }
 </style>
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'script')); ?>
-<script type="text/javascript" src="<?php echo Yii::app()->baseUrl . '/statics/scripts/jquery.multifile.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl . '/statics/scripts/jquery.MultiFile.js'; ?>"></script>
 <script type="text/javascript">
     function createNewsUrl()
     {
