@@ -278,6 +278,9 @@
             <li>
                 <a href="http://ncufresh.ncu.edu.tw/101-fresh-postgraduate-forum/" title="研究所新生座談">研究所新生座談</a>
             </li>
+            <li>
+                <a href="http://ncutv.ncu.edu.tw/" title="小中大電視台">小中大電視台</a>
+            </li>
         </ul>
     </div>
 </div>

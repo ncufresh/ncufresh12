@@ -96,6 +96,9 @@ class ReadmeController extends Controller
             case 22 :
                 $this->_data['content'] = $this->renderPartial('freshman/22', null, true, false);
                 break;
+            case 23 :
+                $this->_data['content'] = $this->renderPartial('freshman/23', null, true, false);
+                break;
         }
     }
 
@@ -209,9 +212,10 @@ class ReadmeController extends Controller
                 '新生輔導需求調查',
                 '導師輔導資源系統',
                 '新生校園安全須知',
+                '身心適應心理講座場次一覽',
             );
-            $tab = array(4, 5, 6, 7, 8, 21);
-            $size = 6;
+            $tab = array(4, 5, 6, 7, 8, 21, 23);
+            $size = 7;
         }
 
         else if ( $id == 3 )
