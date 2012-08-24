@@ -255,6 +255,9 @@
             <li>
                 <a href="http://www.lib.ncu.edu.tw" title="圖書館首頁">圖書館首頁</a>
             </li>
+            <li>
+                <a href="http://passport.ncu.edu.tw/" title="服務學習網">服務學習網</a>
+            </li>
         </ul>
     </div>
     <div class="links sidebar-box">
@@ -280,6 +283,9 @@
             </li>
             <li>
                 <a href="http://ncutv.ncu.edu.tw/" title="小中大電視台">小中大電視台</a>
+            </li>
+            <li>
+                <a href="http://www.facebook.com/NCU.Seed.Volunteer" title="服務學習種子志工">服務學習種子志工</a>
             </li>
         </ul>
     </div>
