@@ -258,6 +258,15 @@
             <li>
                 <a href="http://passport.ncu.edu.tw/" title="服務學習網">服務學習網</a>
             </li>
+            <li>
+                <a href="http://www.cc.ncu.edu.tw/~ncu7221/Learning/Learning_index.php" title="大一週會報名">大一週會報名</a>
+            </li>
+            <li>
+                <a href="http://www.oaa.ncu.edu.tw/ep/" title="數位學習歷程平台">數位學習歷程平台</a>
+            </li>
+            <li>
+                <a href="http://140.115.184.185/OSA-3I/" title="學生跨領域3I交流活">學生跨領域3I交流活</a>
+            </li>
         </ul>
     </div>
     <div class="links sidebar-box">
