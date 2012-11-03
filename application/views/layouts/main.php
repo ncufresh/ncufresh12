@@ -262,6 +262,9 @@
                 <a href="http://www.cc.ncu.edu.tw/~ncu7221/Learning/Learning_index.php" title="大一週會報名">大一週會報名</a>
             </li>
             <li>
+                <a href="http://love.adm.ncu.edu.tw/center/Gender_Equal/main/index.html" title="性別平等教育">性別平等教育</a>
+            </li>
+            <li>
                 <a href="http://www.oaa.ncu.edu.tw/ep/" title="數位學習歷程平台">數位學習歷程平台</a>
             </li>
             <li>
